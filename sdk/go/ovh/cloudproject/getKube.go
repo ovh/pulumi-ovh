@@ -35,6 +35,8 @@ import (
 //				return err
 //			}
 //			ctx.Export("version", myKubeCluster.Version)
+//			ctx.Export("kubeconfig", myKubeCluster.Kubeconfig)
+//			ctx.Export("kubeHost", myKubeCluster.KubeconfigAttributes[0].Host)
 //			return nil
 //		})
 //	}
@@ -66,6 +68,8 @@ type LookupKubeArgs struct {
 	KubeProxyMode *string `pulumi:"kubeProxyMode"`
 	// The name of the managed kubernetes cluster.
 	Name *string `pulumi:"name"`
+	// Plan of the managed kubernetes cluster.
+	Plan *string `pulumi:"plan"`
 	// The OVHcloud public cloud region ID of the managed kubernetes cluster.
 	Region *string `pulumi:"region"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -96,6 +100,10 @@ type LookupKubeResult struct {
 	KubeId string `pulumi:"kubeId"`
 	// Selected mode for kube-proxy.
 	KubeProxyMode *string `pulumi:"kubeProxyMode"`
+	// (Sensitive) Raw kubeconfig file content for connecting to the cluster.
+	Kubeconfig string `pulumi:"kubeconfig"`
+	// (Sensitive) Structured kubeconfig data for connecting to the cluster.
+	KubeconfigAttributes []GetKubeKubeconfigAttribute `pulumi:"kubeconfigAttributes"`
 	// Openstack private network (or vRack) ID to use for load balancers.
 	LoadBalancersSubnetId string `pulumi:"loadBalancersSubnetId"`
 	// The name of the managed kubernetes cluster.
@@ -106,6 +114,8 @@ type LookupKubeResult struct {
 	NodesSubnetId string `pulumi:"nodesSubnetId"`
 	// Cluster nodes URL.
 	NodesUrl string `pulumi:"nodesUrl"`
+	// Plan of the managed kubernetes cluster.
+	Plan *string `pulumi:"plan"`
 	// OpenStack private network (or vrack) ID to use.
 	PrivateNetworkId string `pulumi:"privateNetworkId"`
 	// The OVHcloud public cloud region ID of the managed kubernetes cluster.
@@ -147,6 +157,8 @@ type LookupKubeOutputArgs struct {
 	KubeProxyMode pulumi.StringPtrInput `pulumi:"kubeProxyMode"`
 	// The name of the managed kubernetes cluster.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Plan of the managed kubernetes cluster.
+	Plan pulumi.StringPtrInput `pulumi:"plan"`
 	// The OVHcloud public cloud region ID of the managed kubernetes cluster.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -218,6 +230,16 @@ func (o LookupKubeResultOutput) KubeProxyMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *string { return v.KubeProxyMode }).(pulumi.StringPtrOutput)
 }
 
+// (Sensitive) Raw kubeconfig file content for connecting to the cluster.
+func (o LookupKubeResultOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubeResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
+}
+
+// (Sensitive) Structured kubeconfig data for connecting to the cluster.
+func (o LookupKubeResultOutput) KubeconfigAttributes() GetKubeKubeconfigAttributeArrayOutput {
+	return o.ApplyT(func(v LookupKubeResult) []GetKubeKubeconfigAttribute { return v.KubeconfigAttributes }).(GetKubeKubeconfigAttributeArrayOutput)
+}
+
 // Openstack private network (or vRack) ID to use for load balancers.
 func (o LookupKubeResultOutput) LoadBalancersSubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.LoadBalancersSubnetId }).(pulumi.StringOutput)
@@ -241,6 +263,11 @@ func (o LookupKubeResultOutput) NodesSubnetId() pulumi.StringOutput {
 // Cluster nodes URL.
 func (o LookupKubeResultOutput) NodesUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.NodesUrl }).(pulumi.StringOutput)
+}
+
+// Plan of the managed kubernetes cluster.
+func (o LookupKubeResultOutput) Plan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupKubeResult) *string { return v.Plan }).(pulumi.StringPtrOutput)
 }
 
 // OpenStack private network (or vrack) ID to use.

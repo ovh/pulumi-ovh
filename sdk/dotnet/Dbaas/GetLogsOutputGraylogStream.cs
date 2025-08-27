@@ -97,7 +97,7 @@ namespace Pulumi.Ovh.Dbaas
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Stream description
+        /// Stream name
         /// </summary>
         [Input("title", required: true)]
         public string Title { get; set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Stream description
+        /// Stream name
         /// </summary>
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;

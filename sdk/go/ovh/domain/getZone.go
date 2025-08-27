@@ -56,7 +56,7 @@ type LookupZoneArgs struct {
 
 // A collection of values returned by getZone.
 type LookupZoneResult struct {
-	// URN of the DNS zone
+	// URN of the DNS Zone to be used inside an IAM policy
 	ZoneURN string `pulumi:"ZoneURN"`
 	// Is DNSSEC supported by this zone
 	DnssecSupported bool `pulumi:"dnssecSupported"`
@@ -105,7 +105,7 @@ func (o LookupZoneResultOutput) ToLookupZoneResultOutputWithContext(ctx context.
 	return o
 }
 
-// URN of the DNS zone
+// URN of the DNS Zone to be used inside an IAM policy
 func (o LookupZoneResultOutput) ZoneURN() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.ZoneURN }).(pulumi.StringOutput)
 }
