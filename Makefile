@@ -7,7 +7,6 @@ PROVIDER_PATH := provider/v2
 VERSION_PATH := $(PROVIDER_PATH)/pkg/version.Version
 CODEGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
-JAVA_GEN := pulumi-java-gen
 TESTPARALLELISM := 10
 GOTESTARGS := ""
 WORKING_DIR := $(shell pwd)
@@ -15,6 +14,7 @@ PULUMI_PROVIDER_BUILD_PARALLELISM ?=
 PULUMI_CONVERT := 1
 PULUMI_MISSING_DOCS_ERROR := false
 
+JAVA_GEN := pulumi-java-gen
 JAVA_GROUP_ID   := com.ovhcloud.pulumi.ovh
 JAVA_ARTIFACT_ID := pulumi-ovh
 
@@ -147,6 +147,7 @@ generate_java: .make/generate_java
 #		gradle --console=plain javadoc
 #	@touch $@
 build_java:: PACKAGE_VERSION := $(shell pulumictl get version --language generic)
+build_java:: .make/generate_java
 build_java::
 	echo "update java version in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/of(11)/of(21)/g' build.gradle
 	echo "update inceptionYear in build.gradle" && cd ./sdk/java/ && ${SED} -e 's/inceptionYear = .*/inceptionYear = "2024"/g' build.gradle
@@ -155,13 +156,14 @@ build_java::
 	${SED} -e 's/group = .*/group = "$(JAVA_GROUP_ID)"/g' build.gradle && \
 	${SED} -e 's/groupId = .*/groupId = "$(JAVA_GROUP_ID)"/g' build.gradle && \
 	${SED} -e 's/artifactId = .*/artifactId = "$(JAVA_ARTIFACT_ID)"/g' build.gradle && \
-	${SED} -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle
+	${SED} -e 's/description = .*/description = "A Pulumi package for creating and managing OVH resources."/g' build.gradle && \
+	${SED} -e 's/"ovh"/"pulumi-ovh"/g' build.gradle
 							
 	echo "update rootProject in settings.gradle" && cd ./sdk/java && ${SED} -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
 
 	cd sdk/java/ && \
 		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
-		gradle --console=plain build
+		gradle --console=plain build && gradle --console=plain javadoc
 .PHONY: generate_java build_java
 
 generate_nodejs: .make/generate_nodejs
@@ -284,12 +286,16 @@ upstream: .make/upstream
 	@touch $@
 .PHONY: upstream
 
-bin/pulumi-java-gen: PULUMI_JAVA_VERSION := $(shell cat .pulumi-java-gen.version)
-bin/pulumi-java-gen: PLAT := $(shell go version | sed -En "s/go version go.* (.*)\/(.*)/\1-\2/p")
-bin/pulumi-java-gen: PULUMI_JAVA_URL := "https://github.com/pulumi/pulumi-java/releases/download/v$(PULUMI_JAVA_VERSION)/pulumi-language-java-v$(PULUMI_JAVA_VERSION)-$(PLAT).tar.gz"
-bin/pulumi-java-gen:
-	wget -q -O - "$(PULUMI_JAVA_URL)" | tar -xzf - -C $(WORKING_DIR)/bin pulumi-java-gen
-	@touch bin/pulumi-language-java
+# Download bin/pulumi-java-gen binary file
+bin/pulumi-java-gen: .pulumi-java-gen.version
+	pulumictl download-binary -n pulumi-language-java -v v$(shell cat .pulumi-java-gen.version) -r pulumi/pulumi-java
+
+#bin/pulumi-java-gen: PULUMI_JAVA_VERSION := $(shell cat .pulumi-java-gen.version)
+#bin/pulumi-java-gen: PLAT := $(shell go version | sed -En "s/go version go.* (.*)\/(.*)/\1-\2/p")
+#bin/pulumi-java-gen: PULUMI_JAVA_URL := "https://github.com/pulumi/pulumi-java/releases/download/v$(PULUMI_JAVA_VERSION)/pulumi-language-java-v$(PULUMI_JAVA_VERSION)-$(PLAT).tar.gz"
+#bin/pulumi-java-gen:
+#	wget -q -O - "$(PULUMI_JAVA_URL)" | tar -xzf - -C $(WORKING_DIR)/bin pulumi-java-gen
+#	@touch bin/pulumi-language-java
 
 # To make an immediately observable change to .ci-mgmt.yaml:
 #
