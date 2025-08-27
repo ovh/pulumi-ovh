@@ -15496,6 +15496,130 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetKubeKubeconfigAttribute struct {
+	// (Sensitive) Client certificate data for authentication.
+	ClientCertificate string `pulumi:"clientCertificate"`
+	// (Sensitive) Client private key data for authentication.
+	ClientKey string `pulumi:"clientKey"`
+	// (Sensitive) Cluster certificate authority data.
+	ClusterCaCertificate string `pulumi:"clusterCaCertificate"`
+	// Kubernetes API server endpoint.
+	Host string `pulumi:"host"`
+}
+
+// GetKubeKubeconfigAttributeInput is an input type that accepts GetKubeKubeconfigAttributeArgs and GetKubeKubeconfigAttributeOutput values.
+// You can construct a concrete instance of `GetKubeKubeconfigAttributeInput` via:
+//
+//	GetKubeKubeconfigAttributeArgs{...}
+type GetKubeKubeconfigAttributeInput interface {
+	pulumi.Input
+
+	ToGetKubeKubeconfigAttributeOutput() GetKubeKubeconfigAttributeOutput
+	ToGetKubeKubeconfigAttributeOutputWithContext(context.Context) GetKubeKubeconfigAttributeOutput
+}
+
+type GetKubeKubeconfigAttributeArgs struct {
+	// (Sensitive) Client certificate data for authentication.
+	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
+	// (Sensitive) Client private key data for authentication.
+	ClientKey pulumi.StringInput `pulumi:"clientKey"`
+	// (Sensitive) Cluster certificate authority data.
+	ClusterCaCertificate pulumi.StringInput `pulumi:"clusterCaCertificate"`
+	// Kubernetes API server endpoint.
+	Host pulumi.StringInput `pulumi:"host"`
+}
+
+func (GetKubeKubeconfigAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeKubeconfigAttribute)(nil)).Elem()
+}
+
+func (i GetKubeKubeconfigAttributeArgs) ToGetKubeKubeconfigAttributeOutput() GetKubeKubeconfigAttributeOutput {
+	return i.ToGetKubeKubeconfigAttributeOutputWithContext(context.Background())
+}
+
+func (i GetKubeKubeconfigAttributeArgs) ToGetKubeKubeconfigAttributeOutputWithContext(ctx context.Context) GetKubeKubeconfigAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeKubeconfigAttributeOutput)
+}
+
+// GetKubeKubeconfigAttributeArrayInput is an input type that accepts GetKubeKubeconfigAttributeArray and GetKubeKubeconfigAttributeArrayOutput values.
+// You can construct a concrete instance of `GetKubeKubeconfigAttributeArrayInput` via:
+//
+//	GetKubeKubeconfigAttributeArray{ GetKubeKubeconfigAttributeArgs{...} }
+type GetKubeKubeconfigAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetKubeKubeconfigAttributeArrayOutput() GetKubeKubeconfigAttributeArrayOutput
+	ToGetKubeKubeconfigAttributeArrayOutputWithContext(context.Context) GetKubeKubeconfigAttributeArrayOutput
+}
+
+type GetKubeKubeconfigAttributeArray []GetKubeKubeconfigAttributeInput
+
+func (GetKubeKubeconfigAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubeKubeconfigAttribute)(nil)).Elem()
+}
+
+func (i GetKubeKubeconfigAttributeArray) ToGetKubeKubeconfigAttributeArrayOutput() GetKubeKubeconfigAttributeArrayOutput {
+	return i.ToGetKubeKubeconfigAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubeKubeconfigAttributeArray) ToGetKubeKubeconfigAttributeArrayOutputWithContext(ctx context.Context) GetKubeKubeconfigAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeKubeconfigAttributeArrayOutput)
+}
+
+type GetKubeKubeconfigAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetKubeKubeconfigAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeKubeconfigAttribute)(nil)).Elem()
+}
+
+func (o GetKubeKubeconfigAttributeOutput) ToGetKubeKubeconfigAttributeOutput() GetKubeKubeconfigAttributeOutput {
+	return o
+}
+
+func (o GetKubeKubeconfigAttributeOutput) ToGetKubeKubeconfigAttributeOutputWithContext(ctx context.Context) GetKubeKubeconfigAttributeOutput {
+	return o
+}
+
+// (Sensitive) Client certificate data for authentication.
+func (o GetKubeKubeconfigAttributeOutput) ClientCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeKubeconfigAttribute) string { return v.ClientCertificate }).(pulumi.StringOutput)
+}
+
+// (Sensitive) Client private key data for authentication.
+func (o GetKubeKubeconfigAttributeOutput) ClientKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeKubeconfigAttribute) string { return v.ClientKey }).(pulumi.StringOutput)
+}
+
+// (Sensitive) Cluster certificate authority data.
+func (o GetKubeKubeconfigAttributeOutput) ClusterCaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeKubeconfigAttribute) string { return v.ClusterCaCertificate }).(pulumi.StringOutput)
+}
+
+// Kubernetes API server endpoint.
+func (o GetKubeKubeconfigAttributeOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeKubeconfigAttribute) string { return v.Host }).(pulumi.StringOutput)
+}
+
+type GetKubeKubeconfigAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubeKubeconfigAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubeKubeconfigAttribute)(nil)).Elem()
+}
+
+func (o GetKubeKubeconfigAttributeArrayOutput) ToGetKubeKubeconfigAttributeArrayOutput() GetKubeKubeconfigAttributeArrayOutput {
+	return o
+}
+
+func (o GetKubeKubeconfigAttributeArrayOutput) ToGetKubeKubeconfigAttributeArrayOutputWithContext(ctx context.Context) GetKubeKubeconfigAttributeArrayOutput {
+	return o
+}
+
+func (o GetKubeKubeconfigAttributeArrayOutput) Index(i pulumi.IntInput) GetKubeKubeconfigAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubeKubeconfigAttribute {
+		return vs[0].([]GetKubeKubeconfigAttribute)[vs[1].(int)]
+	}).(GetKubeKubeconfigAttributeOutput)
+}
+
 type GetKubeNodePoolNodesNode struct {
 	// Creation date.
 	CreatedAt string `pulumi:"createdAt"`
@@ -20938,6 +21062,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIptablesPtrInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIptablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIpvsInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIpvsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIpvsPtrInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIpvsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeKubeconfigAttributeInput)(nil)).Elem(), GetKubeKubeconfigAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeKubeconfigAttributeArrayInput)(nil)).Elem(), GetKubeKubeconfigAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolNodesNodeInput)(nil)).Elem(), GetKubeNodePoolNodesNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolNodesNodeArrayInput)(nil)).Elem(), GetKubeNodePoolNodesNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolTemplateInput)(nil)).Elem(), GetKubeNodePoolTemplateArgs{})
@@ -21228,6 +21354,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIptablesPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIpvsOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIpvsPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeKubeconfigAttributeOutput{})
+	pulumi.RegisterOutputType(GetKubeKubeconfigAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolNodesNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolTemplateOutput{})

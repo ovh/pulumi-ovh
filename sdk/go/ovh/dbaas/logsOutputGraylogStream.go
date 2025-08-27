@@ -78,6 +78,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// DBaas logs output Graylog stream can be imported using the `service_name` of the cluster and `stream_id` of the graylog output stream, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream ldp ldp-az-12345/9d2f9cf8-9f92-1337-c0f3-48a0213d2c6f
+// ```
 type LogsOutputGraylogStream struct {
 	pulumi.CustomResourceState
 
@@ -115,7 +125,7 @@ type LogsOutputGraylogStream struct {
 	NbArchive pulumi.IntOutput `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrOutput `pulumi:"parentStreamId"`
-	// If set, pause indexing when maximum size is reach
+	// If set, pause indexing when maximum size is reached
 	PauseIndexingOnMaxSize pulumi.BoolOutput `pulumi:"pauseIndexingOnMaxSize"`
 	// Retention ID
 	RetentionId pulumi.StringOutput `pulumi:"retentionId"`
@@ -123,7 +133,7 @@ type LogsOutputGraylogStream struct {
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Stream ID
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
-	// Stream description
+	// Stream name
 	Title pulumi.StringOutput `pulumi:"title"`
 	// Stream last updater
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -210,7 +220,7 @@ type logsOutputGraylogStreamState struct {
 	NbArchive *int `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId *string `pulumi:"parentStreamId"`
-	// If set, pause indexing when maximum size is reach
+	// If set, pause indexing when maximum size is reached
 	PauseIndexingOnMaxSize *bool `pulumi:"pauseIndexingOnMaxSize"`
 	// Retention ID
 	RetentionId *string `pulumi:"retentionId"`
@@ -218,7 +228,7 @@ type logsOutputGraylogStreamState struct {
 	ServiceName *string `pulumi:"serviceName"`
 	// Stream ID
 	StreamId *string `pulumi:"streamId"`
-	// Stream description
+	// Stream name
 	Title *string `pulumi:"title"`
 	// Stream last updater
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -263,7 +273,7 @@ type LogsOutputGraylogStreamState struct {
 	NbArchive pulumi.IntPtrInput
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrInput
-	// If set, pause indexing when maximum size is reach
+	// If set, pause indexing when maximum size is reached
 	PauseIndexingOnMaxSize pulumi.BoolPtrInput
 	// Retention ID
 	RetentionId pulumi.StringPtrInput
@@ -271,7 +281,7 @@ type LogsOutputGraylogStreamState struct {
 	ServiceName pulumi.StringPtrInput
 	// Stream ID
 	StreamId pulumi.StringPtrInput
-	// Stream description
+	// Stream name
 	Title pulumi.StringPtrInput
 	// Stream last updater
 	UpdatedAt pulumi.StringPtrInput
@@ -308,13 +318,13 @@ type logsOutputGraylogStreamArgs struct {
 	IndexingNotifyEnabled *bool `pulumi:"indexingNotifyEnabled"`
 	// Parent stream ID
 	ParentStreamId *string `pulumi:"parentStreamId"`
-	// If set, pause indexing when maximum size is reach
+	// If set, pause indexing when maximum size is reached
 	PauseIndexingOnMaxSize *bool `pulumi:"pauseIndexingOnMaxSize"`
 	// Retention ID
 	RetentionId *string `pulumi:"retentionId"`
 	// The service name
 	ServiceName string `pulumi:"serviceName"`
-	// Stream description
+	// Stream name
 	Title string `pulumi:"title"`
 	// Enable Websocket
 	WebSocketEnabled *bool `pulumi:"webSocketEnabled"`
@@ -344,13 +354,13 @@ type LogsOutputGraylogStreamArgs struct {
 	IndexingNotifyEnabled pulumi.BoolPtrInput
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrInput
-	// If set, pause indexing when maximum size is reach
+	// If set, pause indexing when maximum size is reached
 	PauseIndexingOnMaxSize pulumi.BoolPtrInput
 	// Retention ID
 	RetentionId pulumi.StringPtrInput
 	// The service name
 	ServiceName pulumi.StringInput
-	// Stream description
+	// Stream name
 	Title pulumi.StringInput
 	// Enable Websocket
 	WebSocketEnabled pulumi.BoolPtrInput
@@ -528,7 +538,7 @@ func (o LogsOutputGraylogStreamOutput) ParentStreamId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringPtrOutput { return v.ParentStreamId }).(pulumi.StringPtrOutput)
 }
 
-// If set, pause indexing when maximum size is reach
+// If set, pause indexing when maximum size is reached
 func (o LogsOutputGraylogStreamOutput) PauseIndexingOnMaxSize() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.BoolOutput { return v.PauseIndexingOnMaxSize }).(pulumi.BoolOutput)
 }
@@ -548,7 +558,7 @@ func (o LogsOutputGraylogStreamOutput) StreamId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.StreamId }).(pulumi.StringOutput)
 }
 
-// Stream description
+// Stream name
 func (o LogsOutputGraylogStreamOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
