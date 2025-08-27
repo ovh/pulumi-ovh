@@ -68,22 +68,6 @@ jobs:
         # Avoid creating directories for each artifact
         merge-multiple: true
         path: dist
-    - name: Calculate checksums
-      working-directory: dist
-      run: shasum ./*.tar.gz > "pulumi-ovh_${{ inputs.version }}_checksums.txt"
-    - name: Get Schema Change Summary
-      id: schema-summary
-      shell: bash
-      run: |
-        # Get latest stable release. Return only first column from result (tag).
-        LAST_VERSION=$(gh release view --repo ovh/pulumi-ovh --json tagName -q .tagName || echo "No stable release" )
-        {
-          echo 'summary<<EOF'
-          if [[ "$LAST_VERSION" != "No stable release" ]]; then
-            schema-tools compare --provider="ovh" --old-commit="$LAST_VERSION" --repository="github://api.github.com/ovh" --new-commit="--local-path=provider/cmd/pulumi-resource-ovh/schema.json"
-          fi
-          echo 'EOF'
-        } >> "$GITHUB_OUTPUT"
 
   publish_sdk:
     name: publish_sdk
