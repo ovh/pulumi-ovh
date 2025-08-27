@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -43,6 +44,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Set the reverse of an IP
  *         var test = new Reverse("test", ReverseArgs.builder()
+ *             .readinessTimeoutDuration("1m")
  *             .ip("192.0.2.0/24")
  *             .ReverseIp("192.0.2.1")
  *             .ReverseValue("example.com")
@@ -109,6 +111,20 @@ public class Reverse extends com.pulumi.resources.CustomResource {
     public Output<String> ip() {
         return this.ip;
     }
+    /**
+     * The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+     * 
+     */
+    @Export(name="readinessTimeoutDuration", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> readinessTimeoutDuration;
+
+    /**
+     * @return The maximum duration that the provider will wait for a successful response (while retrying every 5s). If the record cannot be verified within this timeout, the operation will fail (default value: 60s)
+     * 
+     */
+    public Output<Optional<String>> readinessTimeoutDuration() {
+        return Codegen.optional(this.readinessTimeoutDuration);
+    }
 
     /**
      *
@@ -149,6 +165,7 @@ public class Reverse extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

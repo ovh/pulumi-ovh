@@ -3,11 +3,10 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
-import com.ovhcloud.pulumi.ovh.CloudProject.inputs.StorageReplicationRuleFilterTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -37,13 +36,13 @@ public final class StorageReplicationRuleFilterArgs extends com.pulumi.resources
      * 
      */
     @Import(name="tags")
-    private @Nullable Output<List<StorageReplicationRuleFilterTagArgs>> tags;
+    private @Nullable Output<Map<String,String>> tags;
 
     /**
      * @return Tags filter
      * 
      */
-    public Optional<Output<List<StorageReplicationRuleFilterTagArgs>>> tags() {
+    public Optional<Output<Map<String,String>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
@@ -99,7 +98,7 @@ public final class StorageReplicationRuleFilterArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder tags(@Nullable Output<List<StorageReplicationRuleFilterTagArgs>> tags) {
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
             $.tags = tags;
             return this;
         }
@@ -110,18 +109,8 @@ public final class StorageReplicationRuleFilterArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder tags(List<StorageReplicationRuleFilterTagArgs> tags) {
+        public Builder tags(Map<String,String> tags) {
             return tags(Output.of(tags));
-        }
-
-        /**
-         * @param tags Tags filter
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tags(StorageReplicationRuleFilterTagArgs... tags) {
-            return tags(List.of(tags));
         }
 
         public StorageReplicationRuleFilterArgs build() {

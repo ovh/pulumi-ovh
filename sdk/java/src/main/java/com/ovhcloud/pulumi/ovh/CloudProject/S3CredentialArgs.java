@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class S3CredentialArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +20,15 @@ public final class S3CredentialArgs extends com.pulumi.resources.ResourceArgs {
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -75,7 +77,7 @@ public final class S3CredentialArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -112,9 +114,6 @@ public final class S3CredentialArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public S3CredentialArgs build() {
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("S3CredentialArgs", "serviceName");
-            }
             if ($.userId == null) {
                 throw new MissingRequiredPropertyException("S3CredentialArgs", "userId");
             }

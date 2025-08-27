@@ -5,9 +5,10 @@ package com.ovhcloud.pulumi.ovh.Vrack;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
      * The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The service name of the vrack. If omitted, the `OVH_VRACK_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private CloudProjectArgs() {}
@@ -75,7 +76,7 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -96,7 +97,7 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -112,12 +113,6 @@ public final class CloudProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CloudProjectArgs build() {
-            if ($.projectId == null) {
-                throw new MissingRequiredPropertyException("CloudProjectArgs", "projectId");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("CloudProjectArgs", "serviceName");
-            }
             return $;
         }
     }
