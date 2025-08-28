@@ -17,8 +17,8 @@ on:
         default: main
         type: string
   schedule:
-    # 3 AM UTC ~ 8 PM PDT / 7 PM PST daily. Time chosen to run during off hours.
-    - cron: 0 3 * * *
+    # 4 AM UTC ~ 8 PM PDT / 7 PM PST daily. Time chosen to run during off hours.
+    - cron: 0 4 * * *
 
 permissions:
   contents: write
@@ -72,6 +72,7 @@ jobs:
         run: "${GITHUB_WORKSPACE}/upgrade-provider-only.sh v${{ steps.target_version.outputs.version }}"
       - name: Create Pull Request
         id: cpr
+        if: steps.target_version.outputs.version != ''
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.PULUMI_PAT }}
@@ -81,7 +82,7 @@ jobs:
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: upgrade-terraform-provider-ovh-to-v${{ steps.target_version.outputs.version }}-ci
+          branch: upgrade-terraform-provider-ovh-to-v${{ steps.target_version.outputs.version }}-only
           delete-branch: true
           body: |
             This PR was generated via GH action
