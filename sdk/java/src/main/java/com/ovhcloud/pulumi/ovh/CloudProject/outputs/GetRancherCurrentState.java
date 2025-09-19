@@ -8,6 +8,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRancherCurrentStateNetwor
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRancherCurrentStateUsage;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,11 @@ public final class GetRancherCurrentState {
      * 
      */
     private String bootstrapPassword;
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    private Boolean iamAuthEnabled;
     /**
      * @return List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
      * 
@@ -67,6 +73,13 @@ public final class GetRancherCurrentState {
      */
     public String bootstrapPassword() {
         return this.bootstrapPassword;
+    }
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    public Boolean iamAuthEnabled() {
+        return this.iamAuthEnabled;
     }
     /**
      * @return List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
@@ -135,6 +148,7 @@ public final class GetRancherCurrentState {
     @CustomType.Builder
     public static final class Builder {
         private String bootstrapPassword;
+        private Boolean iamAuthEnabled;
         private List<GetRancherCurrentStateIpRestriction> ipRestrictions;
         private String name;
         private GetRancherCurrentStateNetworking networking;
@@ -147,6 +161,7 @@ public final class GetRancherCurrentState {
         public Builder(GetRancherCurrentState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bootstrapPassword = defaults.bootstrapPassword;
+    	      this.iamAuthEnabled = defaults.iamAuthEnabled;
     	      this.ipRestrictions = defaults.ipRestrictions;
     	      this.name = defaults.name;
     	      this.networking = defaults.networking;
@@ -163,6 +178,14 @@ public final class GetRancherCurrentState {
               throw new MissingRequiredPropertyException("GetRancherCurrentState", "bootstrapPassword");
             }
             this.bootstrapPassword = bootstrapPassword;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder iamAuthEnabled(Boolean iamAuthEnabled) {
+            if (iamAuthEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRancherCurrentState", "iamAuthEnabled");
+            }
+            this.iamAuthEnabled = iamAuthEnabled;
             return this;
         }
         @CustomType.Setter
@@ -235,6 +258,7 @@ public final class GetRancherCurrentState {
         public GetRancherCurrentState build() {
             final var _resultValue = new GetRancherCurrentState();
             _resultValue.bootstrapPassword = bootstrapPassword;
+            _resultValue.iamAuthEnabled = iamAuthEnabled;
             _resultValue.ipRestrictions = ipRestrictions;
             _resultValue.name = name;
             _resultValue.networking = networking;

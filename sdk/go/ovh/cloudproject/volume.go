@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewVolume(ctx, "vol", &cloudproject.VolumeArgs{
+//			_, err := cloudproject.NewVolume(ctx, "volume", &cloudproject.VolumeArgs{
 //				RegionName:  pulumi.String("xxx"),
 //				ServiceName: pulumi.String("yyyyy"),
 //				Description: pulumi.String("Terraform volume"),
@@ -44,6 +44,28 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
+//
+// terraform
+//
+// import {
+//
+//	to = ovh_cloud_project_volume.volume
+//
+//	id = "<public cloud project ID>/<region>/<volume ID>"
+//
+// }
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=volume.tf
+//
+// $ pulumi up
+//
+// The file `volume.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type Volume struct {
 	pulumi.CustomResourceState
 

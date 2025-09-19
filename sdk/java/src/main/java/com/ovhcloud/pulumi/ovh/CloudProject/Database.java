@@ -382,6 +382,20 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
+     * Enable deletion protection
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    /**
+     * @return Enable deletion protection
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
+    }
+    /**
      * Small description of the database service.
      * 
      */

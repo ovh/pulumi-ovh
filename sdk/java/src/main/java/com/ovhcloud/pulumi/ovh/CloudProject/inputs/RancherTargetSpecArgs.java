@@ -7,6 +7,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.RancherTargetSpecIpRestrictio
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class RancherTargetSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RancherTargetSpecArgs Empty = new RancherTargetSpecArgs();
+
+    /**
+     * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    @Import(name="iamAuthEnabled")
+    private @Nullable Output<Boolean> iamAuthEnabled;
+
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    public Optional<Output<Boolean>> iamAuthEnabled() {
+        return Optional.ofNullable(this.iamAuthEnabled);
+    }
 
     /**
      * List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
@@ -81,6 +97,7 @@ public final class RancherTargetSpecArgs extends com.pulumi.resources.ResourceAr
     private RancherTargetSpecArgs() {}
 
     private RancherTargetSpecArgs(RancherTargetSpecArgs $) {
+        this.iamAuthEnabled = $.iamAuthEnabled;
         this.ipRestrictions = $.ipRestrictions;
         this.name = $.name;
         this.plan = $.plan;
@@ -103,6 +120,27 @@ public final class RancherTargetSpecArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(RancherTargetSpecArgs defaults) {
             $ = new RancherTargetSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param iamAuthEnabled Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamAuthEnabled(@Nullable Output<Boolean> iamAuthEnabled) {
+            $.iamAuthEnabled = iamAuthEnabled;
+            return this;
+        }
+
+        /**
+         * @param iamAuthEnabled Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder iamAuthEnabled(Boolean iamAuthEnabled) {
+            return iamAuthEnabled(Output.of(iamAuthEnabled));
         }
 
         /**

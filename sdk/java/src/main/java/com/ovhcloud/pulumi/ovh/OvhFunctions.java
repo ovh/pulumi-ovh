@@ -20,6 +20,10 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplateArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplatePlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetLocationArgs;
@@ -50,6 +54,8 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesVersion
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeysResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsOutputGraylogStreamUrlResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthVrackResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplateResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplatesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetLocationResult;
@@ -1801,6 +1807,426 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetDbaasLogsOutputGraylogStreamUrlResult> getDbaasLogsOutputGraylogStreamUrlPlain(GetDbaasLogsOutputGraylogStreamUrlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl", TypeShape.of(GetDbaasLogsOutputGraylogStreamUrlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedServerOrderableBandwidthResult> getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs args) {
+        return getDedicatedServerOrderableBandwidth(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDedicatedServerOrderableBandwidthResult> getDedicatedServerOrderableBandwidthPlain(GetDedicatedServerOrderableBandwidthPlainArgs args) {
+        return getDedicatedServerOrderableBandwidthPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedServerOrderableBandwidthResult> getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth", TypeShape.of(GetDedicatedServerOrderableBandwidthResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedServerOrderableBandwidthResult> getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth", TypeShape.of(GetDedicatedServerOrderableBandwidthResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDedicatedServerOrderableBandwidthResult> getDedicatedServerOrderableBandwidthPlain(GetDedicatedServerOrderableBandwidthPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth", TypeShape.of(GetDedicatedServerOrderableBandwidthResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedServerOrderableBandwidthVrackResult> getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs args) {
+        return getDedicatedServerOrderableBandwidthVrack(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDedicatedServerOrderableBandwidthVrackResult> getDedicatedServerOrderableBandwidthVrackPlain(GetDedicatedServerOrderableBandwidthVrackPlainArgs args) {
+        return getDedicatedServerOrderableBandwidthVrackPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedServerOrderableBandwidthVrackResult> getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", TypeShape.of(GetDedicatedServerOrderableBandwidthVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDedicatedServerOrderableBandwidthVrackResult> getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", TypeShape.of(GetDedicatedServerOrderableBandwidthVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *             .serviceName("myserver")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDedicatedServerOrderableBandwidthVrackResult> getDedicatedServerOrderableBandwidthVrackPlain(GetDedicatedServerOrderableBandwidthVrackPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", TypeShape.of(GetDedicatedServerOrderableBandwidthVrackResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a specific OVH dedicated server installation template.
