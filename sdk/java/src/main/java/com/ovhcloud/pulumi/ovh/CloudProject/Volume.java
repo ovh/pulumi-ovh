@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vol = new Volume("vol", VolumeArgs.builder()
+ *         var volume = new Volume("volume", VolumeArgs.builder()
  *             .regionName("xxx")
  *             .serviceName("yyyyy")
  *             .description("Terraform volume")
@@ -58,6 +58,28 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = ovh_cloud_project_volume.volume
+ * 
+ *   id = &#34;&lt;public cloud project ID&gt;/&lt;region&gt;/&lt;volume ID&gt;&#34;
+ * 
+ * }
+ * 
+ * bash
+ * 
+ * $ pulumi preview -generate-config-out=volume.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `volume.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  * 
  */
 @ResourceType(type="ovh:CloudProject/volume:Volume")

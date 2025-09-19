@@ -18,6 +18,8 @@ from .get_cloud_project_rancher_capabilities_version import *
 from .get_cloud_project_ssh_key import *
 from .get_cloud_project_ssh_keys import *
 from .get_dbaas_logs_output_graylog_stream_url import *
+from .get_dedicated_server_orderable_bandwidth import *
+from .get_dedicated_server_orderable_bandwidth_vrack import *
 from .get_installation_template import *
 from .get_installation_templates import *
 from .get_location import *

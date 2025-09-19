@@ -65,6 +65,16 @@ export const getDbaasLogsOutputGraylogStreamUrl: typeof import("./getDbaasLogsOu
 export const getDbaasLogsOutputGraylogStreamUrlOutput: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrlOutput = null as any;
 utilities.lazyLoad(exports, ["getDbaasLogsOutputGraylogStreamUrl","getDbaasLogsOutputGraylogStreamUrlOutput"], () => require("./getDbaasLogsOutputGraylogStreamUrl"));
 
+export { GetDedicatedServerOrderableBandwidthArgs, GetDedicatedServerOrderableBandwidthResult, GetDedicatedServerOrderableBandwidthOutputArgs } from "./getDedicatedServerOrderableBandwidth";
+export const getDedicatedServerOrderableBandwidth: typeof import("./getDedicatedServerOrderableBandwidth").getDedicatedServerOrderableBandwidth = null as any;
+export const getDedicatedServerOrderableBandwidthOutput: typeof import("./getDedicatedServerOrderableBandwidth").getDedicatedServerOrderableBandwidthOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedServerOrderableBandwidth","getDedicatedServerOrderableBandwidthOutput"], () => require("./getDedicatedServerOrderableBandwidth"));
+
+export { GetDedicatedServerOrderableBandwidthVrackArgs, GetDedicatedServerOrderableBandwidthVrackResult, GetDedicatedServerOrderableBandwidthVrackOutputArgs } from "./getDedicatedServerOrderableBandwidthVrack";
+export const getDedicatedServerOrderableBandwidthVrack: typeof import("./getDedicatedServerOrderableBandwidthVrack").getDedicatedServerOrderableBandwidthVrack = null as any;
+export const getDedicatedServerOrderableBandwidthVrackOutput: typeof import("./getDedicatedServerOrderableBandwidthVrack").getDedicatedServerOrderableBandwidthVrackOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedServerOrderableBandwidthVrack","getDedicatedServerOrderableBandwidthVrackOutput"], () => require("./getDedicatedServerOrderableBandwidthVrack"));
+
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
 export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;

@@ -272,6 +272,10 @@ export class Database extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
+     * Enable deletion protection
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Small description of the database service.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -362,6 +366,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["backupRegions"] = state ? state.backupRegions : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["diskType"] = state ? state.diskType : undefined;
@@ -399,6 +404,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["advancedConfiguration"] = args ? args.advancedConfiguration : undefined;
             resourceInputs["backupRegions"] = args ? args.backupRegions : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskSize"] = args ? args.diskSize : undefined;
             resourceInputs["engine"] = args ? args.engine : undefined;
@@ -443,6 +449,10 @@ export interface DatabaseState {
      * Date of the creation of the cluster.
      */
     createdAt?: pulumi.Input<string>;
+    /**
+     * Enable deletion protection
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Small description of the database service.
      */
@@ -534,6 +544,10 @@ export interface DatabaseArgs {
      * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
      */
     backupTime?: pulumi.Input<string>;
+    /**
+     * Enable deletion protection
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Small description of the database service.
      */

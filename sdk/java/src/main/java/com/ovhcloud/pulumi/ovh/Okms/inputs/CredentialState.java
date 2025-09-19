@@ -34,6 +34,21 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * 
+     */
+    @Import(name="certificateType")
+    private @Nullable Output<String> certificateType;
+
+    /**
+     * @return (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * 
+     */
+    public Optional<Output<String>> certificateType() {
+        return Optional.ofNullable(this.certificateType);
+    }
+
+    /**
      * (String) Creation time of the credential
      * 
      */
@@ -202,6 +217,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
 
     private CredentialState(CredentialState $) {
         this.certificatePem = $.certificatePem;
+        this.certificateType = $.certificateType;
         this.createdAt = $.createdAt;
         this.csr = $.csr;
         this.description = $.description;
@@ -252,6 +268,27 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder certificatePem(String certificatePem) {
             return certificatePem(Output.of(certificatePem));
+        }
+
+        /**
+         * @param certificateType (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateType(@Nullable Output<String> certificateType) {
+            $.certificateType = certificateType;
+            return this;
+        }
+
+        /**
+         * @param certificateType (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateType(String certificateType) {
+            return certificateType(Output.of(certificateType));
         }
 
         /**

@@ -81,6 +81,8 @@ type Rancher struct {
 	CurrentTasks RancherCurrentTaskArrayOutput `pulumi:"currentTasks"`
 	// Project ID
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// Rancher ID
+	RancherId pulumi.StringOutput `pulumi:"rancherId"`
 	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 	ResourceStatus pulumi.StringOutput `pulumi:"resourceStatus"`
 	// Target specification for the managed Rancher service
@@ -133,6 +135,8 @@ type rancherState struct {
 	CurrentTasks []RancherCurrentTask `pulumi:"currentTasks"`
 	// Project ID
 	ProjectId *string `pulumi:"projectId"`
+	// Rancher ID
+	RancherId *string `pulumi:"rancherId"`
 	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 	ResourceStatus *string `pulumi:"resourceStatus"`
 	// Target specification for the managed Rancher service
@@ -150,6 +154,8 @@ type RancherState struct {
 	CurrentTasks RancherCurrentTaskArrayInput
 	// Project ID
 	ProjectId pulumi.StringPtrInput
+	// Rancher ID
+	RancherId pulumi.StringPtrInput
 	// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
 	ResourceStatus pulumi.StringPtrInput
 	// Target specification for the managed Rancher service
@@ -165,6 +171,8 @@ func (RancherState) ElementType() reflect.Type {
 type rancherArgs struct {
 	// Project ID
 	ProjectId string `pulumi:"projectId"`
+	// Rancher ID
+	RancherId *string `pulumi:"rancherId"`
 	// Target specification for the managed Rancher service
 	TargetSpec RancherTargetSpec `pulumi:"targetSpec"`
 }
@@ -173,6 +181,8 @@ type rancherArgs struct {
 type RancherArgs struct {
 	// Project ID
 	ProjectId pulumi.StringInput
+	// Rancher ID
+	RancherId pulumi.StringPtrInput
 	// Target specification for the managed Rancher service
 	TargetSpec RancherTargetSpecInput
 }
@@ -282,6 +292,11 @@ func (o RancherOutput) CurrentTasks() RancherCurrentTaskArrayOutput {
 // Project ID
 func (o RancherOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rancher) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Rancher ID
+func (o RancherOutput) RancherId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rancher) pulumi.StringOutput { return v.RancherId }).(pulumi.StringOutput)
 }
 
 // Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status

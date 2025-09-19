@@ -26,10 +26,13 @@ class GetOkmsCredentialResult:
     """
     A collection of values returned by getOkmsCredential.
     """
-    def __init__(__self__, certificate_pem=None, created_at=None, description=None, expired_at=None, from_csr=None, id=None, identity_urns=None, name=None, okms_id=None, status=None):
+    def __init__(__self__, certificate_pem=None, certificate_type=None, created_at=None, description=None, expired_at=None, from_csr=None, id=None, identity_urns=None, name=None, okms_id=None, status=None):
         if certificate_pem and not isinstance(certificate_pem, str):
             raise TypeError("Expected argument 'certificate_pem' to be a str")
         pulumi.set(__self__, "certificate_pem", certificate_pem)
+        if certificate_type and not isinstance(certificate_type, str):
+            raise TypeError("Expected argument 'certificate_type' to be a str")
+        pulumi.set(__self__, "certificate_type", certificate_type)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -65,6 +68,14 @@ class GetOkmsCredentialResult:
         (String) PEM encoded certificate of the credential
         """
         return pulumi.get(self, "certificate_pem")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> _builtins.str:
+        """
+        (String) Type of the certificate (ECDSA or RSA)
+        """
+        return pulumi.get(self, "certificate_type")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -140,6 +151,7 @@ class AwaitableGetOkmsCredentialResult(GetOkmsCredentialResult):
             yield self
         return GetOkmsCredentialResult(
             certificate_pem=self.certificate_pem,
+            certificate_type=self.certificate_type,
             created_at=self.created_at,
             description=self.description,
             expired_at=self.expired_at,
@@ -169,6 +181,7 @@ def get_okms_credential(id: Optional[_builtins.str] = None,
 
     return AwaitableGetOkmsCredentialResult(
         certificate_pem=pulumi.get(__ret__, 'certificate_pem'),
+        certificate_type=pulumi.get(__ret__, 'certificate_type'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
         expired_at=pulumi.get(__ret__, 'expired_at'),
@@ -195,6 +208,7 @@ def get_okms_credential_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('ovh:Okms/getOkmsCredential:getOkmsCredential', __args__, opts=opts, typ=GetOkmsCredentialResult)
     return __ret__.apply(lambda __response__: GetOkmsCredentialResult(
         certificate_pem=pulumi.get(__response__, 'certificate_pem'),
+        certificate_type=pulumi.get(__response__, 'certificate_type'),
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),
         expired_at=pulumi.get(__response__, 'expired_at'),

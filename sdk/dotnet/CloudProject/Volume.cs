@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vol = new Ovh.CloudProject.Volume("vol", new()
+    ///     var volume = new Ovh.CloudProject.Volume("volume", new()
     ///     {
     ///         RegionName = "xxx",
     ///         ServiceName = "yyyyy",
@@ -34,6 +34,28 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_cloud_project_volume.volume
+    /// 
+    ///   id = "&lt;public cloud project ID&gt;/&lt;region&gt;/&lt;volume ID&gt;"
+    /// 
+    /// }
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=volume.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `volume.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:CloudProject/volume:Volume")]
     public partial class Volume : global::Pulumi.CustomResource

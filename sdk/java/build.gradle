@@ -8,7 +8,7 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0"
 }
 
-group = "com.ovhcloud.pulumi.ovh"
+group = "com.pulumi"
 
 def resolvedVersion = System.getenv("PACKAGE_VERSION") ?:
     (project.version == "unspecified"
@@ -24,7 +24,7 @@ def publishRepoPassword = System.getenv("PUBLISH_REPO_PASSWORD")
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(11)
     }
 }
 
@@ -69,7 +69,7 @@ def genPulumiResources = tasks.register('genPulumiResources') {
         def builder = new groovy.json.JsonBuilder()
         builder {
             resource true
-            name "pulumi-ovh"
+            name "ovh"
             server "github://api.github.com/ovh/pulumi-ovh"
             version resolvedVersion
         }
@@ -85,15 +85,15 @@ jar.configure {
 publishing {
     publications {
         mainPublication(MavenPublication) {
-            groupId = "com.ovhcloud.pulumi.ovh"
-            artifactId = "pulumi-ovh"
+            groupId = "com.pulumi"
+            artifactId = "ovh"
             version = resolvedVersion
             from components.java
             artifact sourcesJar
             artifact javadocJar
 
             pom {
-                inceptionYear = "2024"
+                inceptionYear = "2022"
                 name = "pulumi-ovh"
                 packaging = "jar"
                 description = "A Pulumi package for creating and managing OVH resources."

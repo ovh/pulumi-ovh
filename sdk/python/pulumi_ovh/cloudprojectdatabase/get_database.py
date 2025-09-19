@@ -27,7 +27,7 @@ class GetDatabaseResult:
     """
     A collection of values returned by getDatabase.
     """
-    def __init__(__self__, advanced_configuration=None, backup_regions=None, backup_time=None, created_at=None, description=None, disk_size=None, disk_type=None, endpoints=None, engine=None, flavor=None, id=None, ip_restrictions=None, kafka_rest_api=None, kafka_schema_registry=None, maintenance_time=None, network_type=None, nodes=None, opensearch_acls_enabled=None, plan=None, service_name=None, status=None, version=None):
+    def __init__(__self__, advanced_configuration=None, backup_regions=None, backup_time=None, created_at=None, deletion_protection=None, description=None, disk_size=None, disk_type=None, endpoints=None, engine=None, flavor=None, id=None, ip_restrictions=None, kafka_rest_api=None, kafka_schema_registry=None, maintenance_time=None, network_type=None, nodes=None, opensearch_acls_enabled=None, plan=None, service_name=None, status=None, version=None):
         if advanced_configuration and not isinstance(advanced_configuration, dict):
             raise TypeError("Expected argument 'advanced_configuration' to be a dict")
         pulumi.set(__self__, "advanced_configuration", advanced_configuration)
@@ -40,6 +40,9 @@ class GetDatabaseResult:
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -126,6 +129,14 @@ class GetDatabaseResult:
         Date of the creation of the cluster.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> _builtins.bool:
+        """
+        Enable deletion protection
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter
@@ -279,6 +290,7 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
             backup_regions=self.backup_regions,
             backup_time=self.backup_time,
             created_at=self.created_at,
+            deletion_protection=self.deletion_protection,
             description=self.description,
             disk_size=self.disk_size,
             disk_type=self.disk_type,
@@ -337,6 +349,7 @@ def get_database(engine: Optional[_builtins.str] = None,
         backup_regions=pulumi.get(__ret__, 'backup_regions'),
         backup_time=pulumi.get(__ret__, 'backup_time'),
         created_at=pulumi.get(__ret__, 'created_at'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         disk_size=pulumi.get(__ret__, 'disk_size'),
         disk_type=pulumi.get(__ret__, 'disk_type'),
@@ -392,6 +405,7 @@ def get_database_output(engine: Optional[pulumi.Input[_builtins.str]] = None,
         backup_regions=pulumi.get(__response__, 'backup_regions'),
         backup_time=pulumi.get(__response__, 'backup_time'),
         created_at=pulumi.get(__response__, 'created_at'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         description=pulumi.get(__response__, 'description'),
         disk_size=pulumi.get(__response__, 'disk_size'),
         disk_type=pulumi.get(__response__, 'disk_type'),
