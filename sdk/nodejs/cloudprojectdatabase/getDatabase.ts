@@ -73,6 +73,10 @@ export interface GetDatabaseResult {
      */
     readonly createdAt: string;
     /**
+     * Enable deletion protection
+     */
+    readonly deletionProtection: boolean;
+    /**
      * Description of the IP restriction
      */
     readonly description: string;

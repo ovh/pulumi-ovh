@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const vol = new ovh.cloudproject.Volume("vol", {
+ * const volume = new ovh.cloudproject.Volume("volume", {
  *     regionName: "xxx",
  *     serviceName: "yyyyy",
  *     description: "Terraform volume",
@@ -24,6 +24,28 @@ import * as utilities from "../utilities";
  *     type: "classic",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = ovh_cloud_project_volume.volume
+ *
+ *   id = "<public cloud project ID>/<region>/<volume ID>"
+ *
+ * }
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=volume.tf
+ *
+ * $ pulumi up
+ *
+ * The file `volume.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
  */
 export class Volume extends pulumi.CustomResource {
     /**
