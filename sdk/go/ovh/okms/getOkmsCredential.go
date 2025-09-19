@@ -34,6 +34,8 @@ type GetOkmsCredentialArgs struct {
 type GetOkmsCredentialResult struct {
 	// (String) PEM encoded certificate of the credential
 	CertificatePem string `pulumi:"certificatePem"`
+	// (String) Type of the certificate (ECDSA or RSA)
+	CertificateType string `pulumi:"certificateType"`
 	// (String) Creation time of the credential
 	CreatedAt string `pulumi:"createdAt"`
 	// (String) Description of the credential
@@ -91,6 +93,11 @@ func (o GetOkmsCredentialResultOutput) ToGetOkmsCredentialResultOutputWithContex
 // (String) PEM encoded certificate of the credential
 func (o GetOkmsCredentialResultOutput) CertificatePem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.CertificatePem }).(pulumi.StringOutput)
+}
+
+// (String) Type of the certificate (ECDSA or RSA)
+func (o GetOkmsCredentialResultOutput) CertificateType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.CertificateType }).(pulumi.StringOutput)
 }
 
 // (String) Creation time of the credential

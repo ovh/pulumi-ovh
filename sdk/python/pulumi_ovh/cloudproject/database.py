@@ -29,6 +29,7 @@ class DatabaseArgs:
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  ip_restrictions: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]]] = None,
@@ -52,6 +53,7 @@ class DatabaseArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
         :param pulumi.Input[_builtins.int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
@@ -72,6 +74,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "backup_regions", backup_regions)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_size is not None:
@@ -191,6 +195,18 @@ class DatabaseArgs:
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable deletion protection
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -294,6 +310,7 @@ class _DatabaseState:
                  backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -317,6 +334,7 @@ class _DatabaseState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[_builtins.str] created_at: Date of the creation of the cluster.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
         :param pulumi.Input[_builtins.int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[_builtins.str] disk_type: Defines the disk type of the database service.
@@ -348,6 +366,8 @@ class _DatabaseState:
             pulumi.set(__self__, "backup_time", backup_time)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_size is not None:
@@ -430,6 +450,18 @@ class _DatabaseState:
     @created_at.setter
     def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable deletion protection
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
@@ -650,6 +682,7 @@ class Database(pulumi.CustomResource):
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  engine: Optional[pulumi.Input[_builtins.str]] = None,
@@ -878,6 +911,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
         :param pulumi.Input[_builtins.int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[_builtins.str] engine: The database engine you want to deploy. To get a full list of available engine visit. [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases).
@@ -1130,6 +1164,7 @@ class Database(pulumi.CustomResource):
                  advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  engine: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1155,6 +1190,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["advanced_configuration"] = advanced_configuration
             __props__.__dict__["backup_regions"] = backup_regions
             __props__.__dict__["backup_time"] = backup_time
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_size"] = disk_size
             if engine is None and not opts.urn:
@@ -1197,6 +1233,7 @@ class Database(pulumi.CustomResource):
             backup_regions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_time: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             disk_size: Optional[pulumi.Input[_builtins.int]] = None,
             disk_type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1225,6 +1262,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
         :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
         :param pulumi.Input[_builtins.str] created_at: Date of the creation of the cluster.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
         :param pulumi.Input[_builtins.int] disk_size: The disk size (in GB) of the database service.
         :param pulumi.Input[_builtins.str] disk_type: Defines the disk type of the database service.
@@ -1256,6 +1294,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["backup_regions"] = backup_regions
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["disk_type"] = disk_type
@@ -1306,6 +1345,14 @@ class Database(pulumi.CustomResource):
         Date of the creation of the cluster.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Enable deletion protection
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter

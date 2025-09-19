@@ -11,6 +11,27 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// The resource can be imported using the public cloud project ID and the user ID, e.g.,
+//
+// terraform
+//
+// import {
+//
+//	to = ovh_cloud_project_user.user
+//
+//	id = "<public cloud project ID>/<user ID>"
+//
+// }
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=user.tf
+//
+// $ pulumi up
+//
+// The file `user.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type User struct {
 	pulumi.CustomResourceState
 

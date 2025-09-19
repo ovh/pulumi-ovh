@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.RancherTargetSpecIpRestriction;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RancherTargetSpec {
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    private @Nullable Boolean iamAuthEnabled;
     /**
      * @return List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
      * 
@@ -36,6 +42,13 @@ public final class RancherTargetSpec {
     private @Nullable String version;
 
     private RancherTargetSpec() {}
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    public Optional<Boolean> iamAuthEnabled() {
+        return Optional.ofNullable(this.iamAuthEnabled);
+    }
     /**
      * @return List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
      * 
@@ -74,6 +87,7 @@ public final class RancherTargetSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean iamAuthEnabled;
         private @Nullable List<RancherTargetSpecIpRestriction> ipRestrictions;
         private String name;
         private String plan;
@@ -81,12 +95,19 @@ public final class RancherTargetSpec {
         public Builder() {}
         public Builder(RancherTargetSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.iamAuthEnabled = defaults.iamAuthEnabled;
     	      this.ipRestrictions = defaults.ipRestrictions;
     	      this.name = defaults.name;
     	      this.plan = defaults.plan;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder iamAuthEnabled(@Nullable Boolean iamAuthEnabled) {
+
+            this.iamAuthEnabled = iamAuthEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder ipRestrictions(@Nullable List<RancherTargetSpecIpRestriction> ipRestrictions) {
 
@@ -120,6 +141,7 @@ public final class RancherTargetSpec {
         }
         public RancherTargetSpec build() {
             final var _resultValue = new RancherTargetSpec();
+            _resultValue.iamAuthEnabled = iamAuthEnabled;
             _resultValue.ipRestrictions = ipRestrictions;
             _resultValue.name = name;
             _resultValue.plan = plan;

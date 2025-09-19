@@ -38,6 +38,10 @@ export interface GetOkmsCredentialResult {
      */
     readonly certificatePem: string;
     /**
+     * (String) Type of the certificate (ECDSA or RSA)
+     */
+    readonly certificateType: string;
+    /**
      * (String) Creation time of the credential
      */
     readonly createdAt: string;

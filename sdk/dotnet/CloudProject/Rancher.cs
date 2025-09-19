@@ -91,6 +91,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// Rancher ID
+        /// </summary>
+        [Output("rancherId")]
+        public Output<string> RancherId { get; private set; } = null!;
+
+        /// <summary>
         /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         /// </summary>
         [Output("resourceStatus")]
@@ -162,6 +168,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// Rancher ID
+        /// </summary>
+        [Input("rancherId")]
+        public Input<string>? RancherId { get; set; }
+
+        /// <summary>
         /// Target specification for the managed Rancher service
         /// </summary>
         [Input("targetSpec", required: true)]
@@ -204,6 +216,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Rancher ID
+        /// </summary>
+        [Input("rancherId")]
+        public Input<string>? RancherId { get; set; }
 
         /// <summary>
         /// Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status

@@ -40,6 +40,10 @@ export class Credential extends pulumi.CustomResource {
      */
     public /*out*/ readonly certificatePem!: pulumi.Output<string>;
     /**
+     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     */
+    public readonly certificateType!: pulumi.Output<string>;
+    /**
      * (String) Creation time of the credential
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class Credential extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CredentialState | undefined;
             resourceInputs["certificatePem"] = state ? state.certificatePem : undefined;
+            resourceInputs["certificateType"] = state ? state.certificateType : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["csr"] = state ? state.csr : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -117,6 +122,7 @@ export class Credential extends pulumi.CustomResource {
             if ((!args || args.okmsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'okmsId'");
             }
+            resourceInputs["certificateType"] = args ? args.certificateType : undefined;
             resourceInputs["csr"] = args ? args.csr : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["identityUrns"] = args ? args.identityUrns : undefined;
@@ -145,6 +151,10 @@ export interface CredentialState {
      * (String) Certificate PEM of the credential.
      */
     certificatePem?: pulumi.Input<string>;
+    /**
+     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     */
+    certificateType?: pulumi.Input<string>;
     /**
      * (String) Creation time of the credential
      */
@@ -195,6 +205,10 @@ export interface CredentialState {
  * The set of arguments for constructing a Credential resource.
  */
 export interface CredentialArgs {
+    /**
+     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     */
+    certificateType?: pulumi.Input<string>;
     /**
      * Valid Certificate Signing Request
      */

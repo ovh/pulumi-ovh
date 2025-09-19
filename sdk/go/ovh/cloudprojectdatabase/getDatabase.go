@@ -73,6 +73,8 @@ type GetDatabaseResult struct {
 	BackupTime string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt string `pulumi:"createdAt"`
+	// Enable deletion protection
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// Description of the IP restriction
 	Description string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
@@ -166,6 +168,11 @@ func (o GetDatabaseResultOutput) BackupTime() pulumi.StringOutput {
 // Date of the creation of the cluster.
 func (o GetDatabaseResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Enable deletion protection
+func (o GetDatabaseResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // Description of the IP restriction

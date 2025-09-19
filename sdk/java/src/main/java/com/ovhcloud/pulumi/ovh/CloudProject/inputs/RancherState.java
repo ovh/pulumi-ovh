@@ -80,6 +80,21 @@ public final class RancherState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Rancher ID
+     * 
+     */
+    @Import(name="rancherId")
+    private @Nullable Output<String> rancherId;
+
+    /**
+     * @return Rancher ID
+     * 
+     */
+    public Optional<Output<String>> rancherId() {
+        return Optional.ofNullable(this.rancherId);
+    }
+
+    /**
      * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
      * 
      */
@@ -131,6 +146,7 @@ public final class RancherState extends com.pulumi.resources.ResourceArgs {
         this.currentState = $.currentState;
         this.currentTasks = $.currentTasks;
         this.projectId = $.projectId;
+        this.rancherId = $.rancherId;
         this.resourceStatus = $.resourceStatus;
         this.targetSpec = $.targetSpec;
         this.updatedAt = $.updatedAt;
@@ -246,6 +262,27 @@ public final class RancherState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param rancherId Rancher ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rancherId(@Nullable Output<String> rancherId) {
+            $.rancherId = rancherId;
+            return this;
+        }
+
+        /**
+         * @param rancherId Rancher ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rancherId(String rancherId) {
+            return rancherId(Output.of(rancherId));
         }
 
         /**

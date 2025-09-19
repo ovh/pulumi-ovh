@@ -6,12 +6,18 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetRancherTargetSpecIpRestriction;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetRancherTargetSpec {
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    private Boolean iamAuthEnabled;
     /**
      * @return List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
      * 
@@ -34,6 +40,13 @@ public final class GetRancherTargetSpec {
     private String version;
 
     private GetRancherTargetSpec() {}
+    /**
+     * @return Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+     * 
+     */
+    public Boolean iamAuthEnabled() {
+        return this.iamAuthEnabled;
+    }
     /**
      * @return List of allowed CIDR blocks for a managed Rancher service&#39;s IP restrictions. When empty, any IP is allowed
      * 
@@ -72,6 +85,7 @@ public final class GetRancherTargetSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean iamAuthEnabled;
         private List<GetRancherTargetSpecIpRestriction> ipRestrictions;
         private String name;
         private String plan;
@@ -79,12 +93,21 @@ public final class GetRancherTargetSpec {
         public Builder() {}
         public Builder(GetRancherTargetSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.iamAuthEnabled = defaults.iamAuthEnabled;
     	      this.ipRestrictions = defaults.ipRestrictions;
     	      this.name = defaults.name;
     	      this.plan = defaults.plan;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder iamAuthEnabled(Boolean iamAuthEnabled) {
+            if (iamAuthEnabled == null) {
+              throw new MissingRequiredPropertyException("GetRancherTargetSpec", "iamAuthEnabled");
+            }
+            this.iamAuthEnabled = iamAuthEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder ipRestrictions(List<GetRancherTargetSpecIpRestriction> ipRestrictions) {
             if (ipRestrictions == null) {
@@ -122,6 +145,7 @@ public final class GetRancherTargetSpec {
         }
         public GetRancherTargetSpec build() {
             final var _resultValue = new GetRancherTargetSpec();
+            _resultValue.iamAuthEnabled = iamAuthEnabled;
             _resultValue.ipRestrictions = ipRestrictions;
             _resultValue.name = name;
             _resultValue.plan = plan;

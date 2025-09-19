@@ -330,6 +330,8 @@ type Database struct {
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Enable deletion protection
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Small description of the database service.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The disk size (in GB) of the database service.
@@ -424,6 +426,8 @@ type databaseState struct {
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Enable deletion protection
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Small description of the database service.
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
@@ -474,6 +478,8 @@ type DatabaseState struct {
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringPtrInput
+	// Enable deletion protection
+	DeletionProtection pulumi.BoolPtrInput
 	// Small description of the database service.
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
@@ -526,6 +532,8 @@ type databaseArgs struct {
 	BackupRegions []string `pulumi:"backupRegions"`
 	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime *string `pulumi:"backupTime"`
+	// Enable deletion protection
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Small description of the database service.
 	Description *string `pulumi:"description"`
 	// The disk size (in GB) of the database service.
@@ -567,6 +575,8 @@ type DatabaseArgs struct {
 	BackupRegions pulumi.StringArrayInput
 	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
 	BackupTime pulumi.StringPtrInput
+	// Enable deletion protection
+	DeletionProtection pulumi.BoolPtrInput
 	// Small description of the database service.
 	Description pulumi.StringPtrInput
 	// The disk size (in GB) of the database service.
@@ -705,6 +715,11 @@ func (o DatabaseOutput) BackupTime() pulumi.StringOutput {
 // Date of the creation of the cluster.
 func (o DatabaseOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Enable deletion protection
+func (o DatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // Small description of the database service.

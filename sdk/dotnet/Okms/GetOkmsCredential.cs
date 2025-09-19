@@ -80,6 +80,10 @@ namespace Pulumi.Ovh.Okms
         /// </summary>
         public readonly string CertificatePem;
         /// <summary>
+        /// (String) Type of the certificate (ECDSA or RSA)
+        /// </summary>
+        public readonly string CertificateType;
+        /// <summary>
         /// (String) Creation time of the credential
         /// </summary>
         public readonly string CreatedAt;
@@ -114,6 +118,8 @@ namespace Pulumi.Ovh.Okms
         private GetOkmsCredentialResult(
             string certificatePem,
 
+            string certificateType,
+
             string createdAt,
 
             string description,
@@ -133,6 +139,7 @@ namespace Pulumi.Ovh.Okms
             string status)
         {
             CertificatePem = certificatePem;
+            CertificateType = certificateType;
             CreatedAt = createdAt;
             Description = description;
             ExpiredAt = expiredAt;

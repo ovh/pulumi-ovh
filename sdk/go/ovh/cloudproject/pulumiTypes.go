@@ -9359,6 +9359,8 @@ func (o ProjectRegionServiceArrayOutput) Index(i pulumi.IntInput) ProjectRegionS
 type RancherCurrentState struct {
 	// Bootstrap password of the managed Rancher service, returned only on creation
 	BootstrapPassword *string `pulumi:"bootstrapPassword"`
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled *bool `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions []RancherCurrentStateIpRestriction `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -9391,6 +9393,8 @@ type RancherCurrentStateInput interface {
 type RancherCurrentStateArgs struct {
 	// Bootstrap password of the managed Rancher service, returned only on creation
 	BootstrapPassword pulumi.StringPtrInput `pulumi:"bootstrapPassword"`
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled pulumi.BoolPtrInput `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions RancherCurrentStateIpRestrictionArrayInput `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -9491,6 +9495,11 @@ func (o RancherCurrentStateOutput) BootstrapPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RancherCurrentState) *string { return v.BootstrapPassword }).(pulumi.StringPtrOutput)
 }
 
+// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+func (o RancherCurrentStateOutput) IamAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RancherCurrentState) *bool { return v.IamAuthEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 func (o RancherCurrentStateOutput) IpRestrictions() RancherCurrentStateIpRestrictionArrayOutput {
 	return o.ApplyT(func(v RancherCurrentState) []RancherCurrentStateIpRestriction { return v.IpRestrictions }).(RancherCurrentStateIpRestrictionArrayOutput)
@@ -9563,6 +9572,16 @@ func (o RancherCurrentStatePtrOutput) BootstrapPassword() pulumi.StringPtrOutput
 		}
 		return v.BootstrapPassword
 	}).(pulumi.StringPtrOutput)
+}
+
+// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+func (o RancherCurrentStatePtrOutput) IamAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RancherCurrentState) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IamAuthEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
@@ -10169,6 +10188,8 @@ func (o RancherCurrentTaskArrayOutput) Index(i pulumi.IntInput) RancherCurrentTa
 }
 
 type RancherTargetSpec struct {
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled *bool `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions []RancherTargetSpecIpRestriction `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -10191,6 +10212,8 @@ type RancherTargetSpecInput interface {
 }
 
 type RancherTargetSpecArgs struct {
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled pulumi.BoolPtrInput `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions RancherTargetSpecIpRestrictionArrayInput `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -10278,6 +10301,11 @@ func (o RancherTargetSpecOutput) ToRancherTargetSpecPtrOutputWithContext(ctx con
 	}).(RancherTargetSpecPtrOutput)
 }
 
+// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+func (o RancherTargetSpecOutput) IamAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RancherTargetSpec) *bool { return v.IamAuthEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 func (o RancherTargetSpecOutput) IpRestrictions() RancherTargetSpecIpRestrictionArrayOutput {
 	return o.ApplyT(func(v RancherTargetSpec) []RancherTargetSpecIpRestriction { return v.IpRestrictions }).(RancherTargetSpecIpRestrictionArrayOutput)
@@ -10320,6 +10348,16 @@ func (o RancherTargetSpecPtrOutput) Elem() RancherTargetSpecOutput {
 		var ret RancherTargetSpec
 		return ret
 	}).(RancherTargetSpecOutput)
+}
+
+// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+func (o RancherTargetSpecPtrOutput) IamAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RancherTargetSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IamAuthEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
@@ -17785,6 +17823,8 @@ func (o GetPrometheusTargetArrayOutput) Index(i pulumi.IntInput) GetPrometheusTa
 type GetRancherCurrentState struct {
 	// Bootstrap password of the managed Rancher service, returned only on creation
 	BootstrapPassword string `pulumi:"bootstrapPassword"`
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled bool `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions []GetRancherCurrentStateIpRestriction `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -17817,6 +17857,8 @@ type GetRancherCurrentStateInput interface {
 type GetRancherCurrentStateArgs struct {
 	// Bootstrap password of the managed Rancher service, returned only on creation
 	BootstrapPassword pulumi.StringInput `pulumi:"bootstrapPassword"`
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled pulumi.BoolInput `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions GetRancherCurrentStateIpRestrictionArrayInput `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -17864,6 +17906,11 @@ func (o GetRancherCurrentStateOutput) ToGetRancherCurrentStateOutputWithContext(
 // Bootstrap password of the managed Rancher service, returned only on creation
 func (o GetRancherCurrentStateOutput) BootstrapPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRancherCurrentState) string { return v.BootstrapPassword }).(pulumi.StringOutput)
+}
+
+// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+func (o GetRancherCurrentStateOutput) IamAuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRancherCurrentState) bool { return v.IamAuthEnabled }).(pulumi.BoolOutput)
 }
 
 // List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
@@ -18374,6 +18421,8 @@ func (o GetRancherPlanPlanArrayOutput) Index(i pulumi.IntInput) GetRancherPlanPl
 }
 
 type GetRancherTargetSpec struct {
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled bool `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions []GetRancherTargetSpecIpRestriction `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -18396,6 +18445,8 @@ type GetRancherTargetSpecInput interface {
 }
 
 type GetRancherTargetSpecArgs struct {
+	// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+	IamAuthEnabled pulumi.BoolInput `pulumi:"iamAuthEnabled"`
 	// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
 	IpRestrictions GetRancherTargetSpecIpRestrictionArrayInput `pulumi:"ipRestrictions"`
 	// Name of the managed Rancher service
@@ -18430,6 +18481,11 @@ func (o GetRancherTargetSpecOutput) ToGetRancherTargetSpecOutput() GetRancherTar
 
 func (o GetRancherTargetSpecOutput) ToGetRancherTargetSpecOutputWithContext(ctx context.Context) GetRancherTargetSpecOutput {
 	return o
+}
+
+// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+func (o GetRancherTargetSpecOutput) IamAuthEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRancherTargetSpec) bool { return v.IamAuthEnabled }).(pulumi.BoolOutput)
 }
 
 // List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
