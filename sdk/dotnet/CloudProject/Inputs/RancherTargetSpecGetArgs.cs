@@ -12,6 +12,12 @@ namespace Pulumi.Ovh.CloudProject.Inputs
 
     public sealed class RancherTargetSpecGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        /// </summary>
+        [Input("iamAuthEnabled")]
+        public Input<bool>? IamAuthEnabled { get; set; }
+
         [Input("ipRestrictions")]
         private InputList<Inputs.RancherTargetSpecIpRestrictionGetArgs>? _ipRestrictions;
 

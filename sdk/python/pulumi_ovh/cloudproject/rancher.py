@@ -22,14 +22,18 @@ __all__ = ['RancherArgs', 'Rancher']
 class RancherArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 target_spec: pulumi.Input['RancherTargetSpecArgs']):
+                 target_spec: pulumi.Input['RancherTargetSpecArgs'],
+                 rancher_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rancher resource.
         :param pulumi.Input[_builtins.str] project_id: Project ID
         :param pulumi.Input['RancherTargetSpecArgs'] target_spec: Target specification for the managed Rancher service
+        :param pulumi.Input[_builtins.str] rancher_id: Rancher ID
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "target_spec", target_spec)
+        if rancher_id is not None:
+            pulumi.set(__self__, "rancher_id", rancher_id)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -55,6 +59,18 @@ class RancherArgs:
     def target_spec(self, value: pulumi.Input['RancherTargetSpecArgs']):
         pulumi.set(self, "target_spec", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rancherId")
+    def rancher_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Rancher ID
+        """
+        return pulumi.get(self, "rancher_id")
+
+    @rancher_id.setter
+    def rancher_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "rancher_id", value)
+
 
 @pulumi.input_type
 class _RancherState:
@@ -63,6 +79,7 @@ class _RancherState:
                  current_state: Optional[pulumi.Input['RancherCurrentStateArgs']] = None,
                  current_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['RancherCurrentTaskArgs']]]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 rancher_id: Optional[pulumi.Input[_builtins.str]] = None,
                  resource_status: Optional[pulumi.Input[_builtins.str]] = None,
                  target_spec: Optional[pulumi.Input['RancherTargetSpecArgs']] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
@@ -72,6 +89,7 @@ class _RancherState:
         :param pulumi.Input['RancherCurrentStateArgs'] current_state: Current configuration applied to the managed Rancher service
         :param pulumi.Input[Sequence[pulumi.Input['RancherCurrentTaskArgs']]] current_tasks: Asynchronous operations ongoing on the managed Rancher service
         :param pulumi.Input[_builtins.str] project_id: Project ID
+        :param pulumi.Input[_builtins.str] rancher_id: Rancher ID
         :param pulumi.Input[_builtins.str] resource_status: Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         :param pulumi.Input['RancherTargetSpecArgs'] target_spec: Target specification for the managed Rancher service
         :param pulumi.Input[_builtins.str] updated_at: Date of the last managed Rancher service update
@@ -84,6 +102,8 @@ class _RancherState:
             pulumi.set(__self__, "current_tasks", current_tasks)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if rancher_id is not None:
+            pulumi.set(__self__, "rancher_id", rancher_id)
         if resource_status is not None:
             pulumi.set(__self__, "resource_status", resource_status)
         if target_spec is not None:
@@ -140,6 +160,18 @@ class _RancherState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="rancherId")
+    def rancher_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Rancher ID
+        """
+        return pulumi.get(self, "rancher_id")
+
+    @rancher_id.setter
+    def rancher_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "rancher_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="resourceStatus")
     def resource_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -183,6 +215,7 @@ class Rancher(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 rancher_id: Optional[pulumi.Input[_builtins.str]] = None,
                  target_spec: Optional[pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']]] = None,
                  __props__=None):
         """
@@ -230,6 +263,7 @@ class Rancher(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: Project ID
+        :param pulumi.Input[_builtins.str] rancher_id: Rancher ID
         :param pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']] target_spec: Target specification for the managed Rancher service
         """
         ...
@@ -296,6 +330,7 @@ class Rancher(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 rancher_id: Optional[pulumi.Input[_builtins.str]] = None,
                  target_spec: Optional[pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -309,6 +344,7 @@ class Rancher(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["rancher_id"] = rancher_id
             if target_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'target_spec'")
             __props__.__dict__["target_spec"] = target_spec
@@ -331,6 +367,7 @@ class Rancher(pulumi.CustomResource):
             current_state: Optional[pulumi.Input[Union['RancherCurrentStateArgs', 'RancherCurrentStateArgsDict']]] = None,
             current_tasks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RancherCurrentTaskArgs', 'RancherCurrentTaskArgsDict']]]]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+            rancher_id: Optional[pulumi.Input[_builtins.str]] = None,
             resource_status: Optional[pulumi.Input[_builtins.str]] = None,
             target_spec: Optional[pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'Rancher':
@@ -345,6 +382,7 @@ class Rancher(pulumi.CustomResource):
         :param pulumi.Input[Union['RancherCurrentStateArgs', 'RancherCurrentStateArgsDict']] current_state: Current configuration applied to the managed Rancher service
         :param pulumi.Input[Sequence[pulumi.Input[Union['RancherCurrentTaskArgs', 'RancherCurrentTaskArgsDict']]]] current_tasks: Asynchronous operations ongoing on the managed Rancher service
         :param pulumi.Input[_builtins.str] project_id: Project ID
+        :param pulumi.Input[_builtins.str] rancher_id: Rancher ID
         :param pulumi.Input[_builtins.str] resource_status: Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
         :param pulumi.Input[Union['RancherTargetSpecArgs', 'RancherTargetSpecArgsDict']] target_spec: Target specification for the managed Rancher service
         :param pulumi.Input[_builtins.str] updated_at: Date of the last managed Rancher service update
@@ -357,6 +395,7 @@ class Rancher(pulumi.CustomResource):
         __props__.__dict__["current_state"] = current_state
         __props__.__dict__["current_tasks"] = current_tasks
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["rancher_id"] = rancher_id
         __props__.__dict__["resource_status"] = resource_status
         __props__.__dict__["target_spec"] = target_spec
         __props__.__dict__["updated_at"] = updated_at
@@ -393,6 +432,14 @@ class Rancher(pulumi.CustomResource):
         Project ID
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rancherId")
+    def rancher_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Rancher ID
+        """
+        return pulumi.get(self, "rancher_id")
 
     @_builtins.property
     @pulumi.getter(name="resourceStatus")

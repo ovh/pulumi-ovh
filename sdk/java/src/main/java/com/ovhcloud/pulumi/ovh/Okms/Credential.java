@@ -37,6 +37,20 @@ public class Credential extends com.pulumi.resources.CustomResource {
         return this.certificatePem;
     }
     /**
+     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * 
+     */
+    @Export(name="certificateType", refs={String.class}, tree="[0]")
+    private Output<String> certificateType;
+
+    /**
+     * @return (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * 
+     */
+    public Output<String> certificateType() {
+        return this.certificateType;
+    }
+    /**
      * (String) Creation time of the credential
      * 
      */

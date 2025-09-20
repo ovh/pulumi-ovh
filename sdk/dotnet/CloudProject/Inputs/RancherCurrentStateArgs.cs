@@ -28,6 +28,12 @@ namespace Pulumi.Ovh.CloudProject.Inputs
             }
         }
 
+        /// <summary>
+        /// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        /// </summary>
+        [Input("iamAuthEnabled")]
+        public Input<bool>? IamAuthEnabled { get; set; }
+
         [Input("ipRestrictions")]
         private InputList<Inputs.RancherCurrentStateIpRestrictionArgs>? _ipRestrictions;
 

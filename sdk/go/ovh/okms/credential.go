@@ -18,6 +18,8 @@ type Credential struct {
 
 	// (String) Certificate PEM of the credential.
 	CertificatePem pulumi.StringOutput `pulumi:"certificatePem"`
+	// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+	CertificateType pulumi.StringOutput `pulumi:"certificateType"`
 	// (String) Creation time of the credential
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Valid Certificate Signing Request
@@ -84,6 +86,8 @@ func GetCredential(ctx *pulumi.Context,
 type credentialState struct {
 	// (String) Certificate PEM of the credential.
 	CertificatePem *string `pulumi:"certificatePem"`
+	// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+	CertificateType *string `pulumi:"certificateType"`
 	// (String) Creation time of the credential
 	CreatedAt *string `pulumi:"createdAt"`
 	// Valid Certificate Signing Request
@@ -111,6 +115,8 @@ type credentialState struct {
 type CredentialState struct {
 	// (String) Certificate PEM of the credential.
 	CertificatePem pulumi.StringPtrInput
+	// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+	CertificateType pulumi.StringPtrInput
 	// (String) Creation time of the credential
 	CreatedAt pulumi.StringPtrInput
 	// Valid Certificate Signing Request
@@ -140,6 +146,8 @@ func (CredentialState) ElementType() reflect.Type {
 }
 
 type credentialArgs struct {
+	// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+	CertificateType *string `pulumi:"certificateType"`
 	// Valid Certificate Signing Request
 	Csr *string `pulumi:"csr"`
 	// Description of the credential (max 200)
@@ -156,6 +164,8 @@ type credentialArgs struct {
 
 // The set of arguments for constructing a Credential resource.
 type CredentialArgs struct {
+	// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+	CertificateType pulumi.StringPtrInput
 	// Valid Certificate Signing Request
 	Csr pulumi.StringPtrInput
 	// Description of the credential (max 200)
@@ -260,6 +270,11 @@ func (o CredentialOutput) ToCredentialOutputWithContext(ctx context.Context) Cre
 // (String) Certificate PEM of the credential.
 func (o CredentialOutput) CertificatePem() pulumi.StringOutput {
 	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CertificatePem }).(pulumi.StringOutput)
+}
+
+// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+func (o CredentialOutput) CertificateType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Credential) pulumi.StringOutput { return v.CertificateType }).(pulumi.StringOutput)
 }
 
 // (String) Creation time of the credential

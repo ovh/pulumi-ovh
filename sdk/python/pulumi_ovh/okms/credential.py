@@ -21,6 +21,7 @@ class CredentialArgs:
     def __init__(__self__, *,
                  identity_urns: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  okms_id: pulumi.Input[_builtins.str],
+                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -29,6 +30,7 @@ class CredentialArgs:
         The set of arguments for constructing a Credential resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identity_urns: List of identity URNs associated with the credential (max 25)
         :param pulumi.Input[_builtins.str] okms_id: Okms ID
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
         :param pulumi.Input[_builtins.str] name: Name of the credential (max 50)
@@ -36,6 +38,8 @@ class CredentialArgs:
         """
         pulumi.set(__self__, "identity_urns", identity_urns)
         pulumi.set(__self__, "okms_id", okms_id)
+        if certificate_type is not None:
+            pulumi.set(__self__, "certificate_type", certificate_type)
         if csr is not None:
             pulumi.set(__self__, "csr", csr)
         if description is not None:
@@ -68,6 +72,18 @@ class CredentialArgs:
     @okms_id.setter
     def okms_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "okms_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        """
+        return pulumi.get(self, "certificate_type")
+
+    @certificate_type.setter
+    def certificate_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "certificate_type", value)
 
     @_builtins.property
     @pulumi.getter
@@ -122,6 +138,7 @@ class CredentialArgs:
 class _CredentialState:
     def __init__(__self__, *,
                  certificate_pem: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -136,6 +153,7 @@ class _CredentialState:
         """
         Input properties used for looking up and filtering Credential resources.
         :param pulumi.Input[_builtins.str] certificate_pem: (String) Certificate PEM of the credential.
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] created_at: (String) Creation time of the credential
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
@@ -150,6 +168,8 @@ class _CredentialState:
         """
         if certificate_pem is not None:
             pulumi.set(__self__, "certificate_pem", certificate_pem)
+        if certificate_type is not None:
+            pulumi.set(__self__, "certificate_type", certificate_type)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if csr is not None:
@@ -184,6 +204,18 @@ class _CredentialState:
     @certificate_pem.setter
     def certificate_pem(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "certificate_pem", value)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        """
+        return pulumi.get(self, "certificate_type")
+
+    @certificate_type.setter
+    def certificate_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "certificate_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -324,6 +356,7 @@ class Credential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  identity_urns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -336,6 +369,7 @@ class Credential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identity_urns: List of identity URNs associated with the credential (max 25)
@@ -367,6 +401,7 @@ class Credential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
                  csr: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  identity_urns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -382,6 +417,7 @@ class Credential(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CredentialArgs.__new__(CredentialArgs)
 
+            __props__.__dict__["certificate_type"] = certificate_type
             __props__.__dict__["csr"] = csr
             __props__.__dict__["description"] = description
             if identity_urns is None and not opts.urn:
@@ -411,6 +447,7 @@ class Credential(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_pem: Optional[pulumi.Input[_builtins.str]] = None,
+            certificate_type: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             csr: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -430,6 +467,7 @@ class Credential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_pem: (String) Certificate PEM of the credential.
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] created_at: (String) Creation time of the credential
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
@@ -447,6 +485,7 @@ class Credential(pulumi.CustomResource):
         __props__ = _CredentialState.__new__(_CredentialState)
 
         __props__.__dict__["certificate_pem"] = certificate_pem
+        __props__.__dict__["certificate_type"] = certificate_type
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["csr"] = csr
         __props__.__dict__["description"] = description
@@ -467,6 +506,14 @@ class Credential(pulumi.CustomResource):
         (String) Certificate PEM of the credential.
         """
         return pulumi.get(self, "certificate_pem")
+
+    @_builtins.property
+    @pulumi.getter(name="certificateType")
+    def certificate_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        """
+        return pulumi.get(self, "certificate_type")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
