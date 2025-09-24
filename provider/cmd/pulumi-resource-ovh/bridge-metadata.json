@@ -2753,6 +2753,30 @@
                     }
                 }
             },
+            "ovh_dedicated_server_orderable_bandwidth": {
+                "current": "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth",
+                "majorVersion": 2,
+                "fields": {
+                    "platinium": {
+                        "maxItemsOne": false
+                    },
+                    "premium": {
+                        "maxItemsOne": false
+                    },
+                    "ultimate": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_dedicated_server_orderable_bandwidth_vrack": {
+                "current": "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack",
+                "majorVersion": 2,
+                "fields": {
+                    "vrack": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_dedicated_server_specifications_hardware": {
                 "current": "ovh:Dedicated/getServerSpecificationsHardware:getServerSpecificationsHardware",
                 "majorVersion": 2,
@@ -3672,6 +3696,8 @@
             "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey": 1,
             "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys": 1,
             "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
+            "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": 0,
+            "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack": 0,
             "ovh:index/getInstallationTemplate:getInstallationTemplate": 0,
             "ovh:index/getInstallationTemplates:getInstallationTemplates": 0,
             "ovh:index/getLocation:getLocation": 1,

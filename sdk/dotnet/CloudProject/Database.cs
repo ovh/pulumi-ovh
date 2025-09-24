@@ -348,6 +348,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
+        /// Enable deletion protection
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Small description of the database service.
         /// </summary>
         [Output("description")]
@@ -532,6 +538,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
+        /// Enable deletion protection
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Small description of the database service.
         /// </summary>
         [Input("description")]
@@ -669,6 +681,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
+
+        /// <summary>
+        /// Enable deletion protection
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Small description of the database service.

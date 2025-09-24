@@ -182,6 +182,10 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
+        /// Enable deletion protection
+        /// </summary>
+        public readonly bool DeletionProtection;
+        /// <summary>
         /// Description of the IP restriction
         /// </summary>
         public readonly string Description;
@@ -261,6 +265,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
 
             string createdAt,
 
+            bool deletionProtection,
+
             string description,
 
             int diskSize,
@@ -301,6 +307,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             BackupRegions = backupRegions;
             BackupTime = backupTime;
             CreatedAt = createdAt;
+            DeletionProtection = deletionProtection;
             Description = description;
             DiskSize = diskSize;
             DiskType = diskType;

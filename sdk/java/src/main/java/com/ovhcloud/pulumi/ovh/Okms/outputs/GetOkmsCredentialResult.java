@@ -18,6 +18,11 @@ public final class GetOkmsCredentialResult {
      */
     private String certificatePem;
     /**
+     * @return (String) Type of the certificate (ECDSA or RSA)
+     * 
+     */
+    private String certificateType;
+    /**
      * @return (String) Creation time of the credential
      * 
      */
@@ -62,6 +67,13 @@ public final class GetOkmsCredentialResult {
      */
     public String certificatePem() {
         return this.certificatePem;
+    }
+    /**
+     * @return (String) Type of the certificate (ECDSA or RSA)
+     * 
+     */
+    public String certificateType() {
+        return this.certificateType;
     }
     /**
      * @return (String) Creation time of the credential
@@ -129,6 +141,7 @@ public final class GetOkmsCredentialResult {
     @CustomType.Builder
     public static final class Builder {
         private String certificatePem;
+        private String certificateType;
         private String createdAt;
         private String description;
         private String expiredAt;
@@ -142,6 +155,7 @@ public final class GetOkmsCredentialResult {
         public Builder(GetOkmsCredentialResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.certificatePem = defaults.certificatePem;
+    	      this.certificateType = defaults.certificateType;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
     	      this.expiredAt = defaults.expiredAt;
@@ -159,6 +173,14 @@ public final class GetOkmsCredentialResult {
               throw new MissingRequiredPropertyException("GetOkmsCredentialResult", "certificatePem");
             }
             this.certificatePem = certificatePem;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder certificateType(String certificateType) {
+            if (certificateType == null) {
+              throw new MissingRequiredPropertyException("GetOkmsCredentialResult", "certificateType");
+            }
+            this.certificateType = certificateType;
             return this;
         }
         @CustomType.Setter
@@ -239,6 +261,7 @@ public final class GetOkmsCredentialResult {
         public GetOkmsCredentialResult build() {
             final var _resultValue = new GetOkmsCredentialResult();
             _resultValue.certificatePem = certificatePem;
+            _resultValue.certificateType = certificateType;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
             _resultValue.expiredAt = expiredAt;

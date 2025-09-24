@@ -207,6 +207,8 @@
         "getCloudProjectSshKey.ts",
         "getCloudProjectSshKeys.ts",
         "getDbaasLogsOutputGraylogStreamUrl.ts",
+        "getDedicatedServerOrderableBandwidth.ts",
+        "getDedicatedServerOrderableBandwidthVrack.ts",
         "getInstallationTemplate.ts",
         "getInstallationTemplates.ts",
         "getLocation.ts",

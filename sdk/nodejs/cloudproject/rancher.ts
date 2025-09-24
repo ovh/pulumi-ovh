@@ -94,6 +94,10 @@ export class Rancher extends pulumi.CustomResource {
      */
     public readonly projectId!: pulumi.Output<string>;
     /**
+     * Rancher ID
+     */
+    public readonly rancherId!: pulumi.Output<string>;
+    /**
      * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<string>;
@@ -123,6 +127,7 @@ export class Rancher extends pulumi.CustomResource {
             resourceInputs["currentState"] = state ? state.currentState : undefined;
             resourceInputs["currentTasks"] = state ? state.currentTasks : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["rancherId"] = state ? state.rancherId : undefined;
             resourceInputs["resourceStatus"] = state ? state.resourceStatus : undefined;
             resourceInputs["targetSpec"] = state ? state.targetSpec : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
@@ -135,6 +140,7 @@ export class Rancher extends pulumi.CustomResource {
                 throw new Error("Missing required property 'targetSpec'");
             }
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["rancherId"] = args ? args.rancherId : undefined;
             resourceInputs["targetSpec"] = args ? args.targetSpec : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["currentState"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface RancherState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * Rancher ID
+     */
+    rancherId?: pulumi.Input<string>;
+    /**
      * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
      */
     resourceStatus?: pulumi.Input<string>;
@@ -189,6 +199,10 @@ export interface RancherArgs {
      * Project ID
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Rancher ID
+     */
+    rancherId?: pulumi.Input<string>;
     /**
      * Target specification for the managed Rancher service
      */

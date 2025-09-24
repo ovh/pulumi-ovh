@@ -145,6 +145,20 @@ public class Rancher extends com.pulumi.resources.CustomResource {
         return this.projectId;
     }
     /**
+     * Rancher ID
+     * 
+     */
+    @Export(name="rancherId", refs={String.class}, tree="[0]")
+    private Output<String> rancherId;
+
+    /**
+     * @return Rancher ID
+     * 
+     */
+    public Output<String> rancherId() {
+        return this.rancherId;
+    }
+    /**
      * Reflects the readiness of the managed Rancher service. A new target specification request will be accepted only in `READY` status
      * 
      */
