@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class GetRancherTargetSpecResult
     {
         /// <summary>
+        /// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        /// </summary>
+        public readonly bool IamAuthEnabled;
+        /// <summary>
         /// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRancherTargetSpecIpRestrictionResult> IpRestrictions;
@@ -32,6 +36,8 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
         [OutputConstructor]
         private GetRancherTargetSpecResult(
+            bool iamAuthEnabled,
+
             ImmutableArray<Outputs.GetRancherTargetSpecIpRestrictionResult> ipRestrictions,
 
             string name,
@@ -40,6 +46,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
             string version)
         {
+            IamAuthEnabled = iamAuthEnabled;
             IpRestrictions = ipRestrictions;
             Name = name;
             Plan = plan;

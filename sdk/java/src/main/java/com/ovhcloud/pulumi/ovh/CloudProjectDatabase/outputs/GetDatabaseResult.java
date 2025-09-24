@@ -38,6 +38,11 @@ public final class GetDatabaseResult {
      */
     private String createdAt;
     /**
+     * @return Enable deletion protection
+     * 
+     */
+    private Boolean deletionProtection;
+    /**
      * @return Description of the IP restriction
      * 
      */
@@ -152,6 +157,13 @@ public final class GetDatabaseResult {
      */
     public String createdAt() {
         return this.createdAt;
+    }
+    /**
+     * @return Enable deletion protection
+     * 
+     */
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     /**
      * @return Description of the IP restriction
@@ -289,6 +301,7 @@ public final class GetDatabaseResult {
         private List<String> backupRegions;
         private String backupTime;
         private String createdAt;
+        private Boolean deletionProtection;
         private String description;
         private Integer diskSize;
         private String diskType;
@@ -314,6 +327,7 @@ public final class GetDatabaseResult {
     	      this.backupRegions = defaults.backupRegions;
     	      this.backupTime = defaults.backupTime;
     	      this.createdAt = defaults.createdAt;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
@@ -367,6 +381,14 @@ public final class GetDatabaseResult {
               throw new MissingRequiredPropertyException("GetDatabaseResult", "createdAt");
             }
             this.createdAt = createdAt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -528,6 +550,7 @@ public final class GetDatabaseResult {
             _resultValue.backupRegions = backupRegions;
             _resultValue.backupTime = backupTime;
             _resultValue.createdAt = createdAt;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.diskSize = diskSize;
             _resultValue.diskType = diskType;

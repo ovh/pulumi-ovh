@@ -9,6 +9,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RancherArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,6 +33,21 @@ public final class RancherArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Rancher ID
+     * 
+     */
+    @Import(name="rancherId")
+    private @Nullable Output<String> rancherId;
+
+    /**
+     * @return Rancher ID
+     * 
+     */
+    public Optional<Output<String>> rancherId() {
+        return Optional.ofNullable(this.rancherId);
+    }
+
+    /**
      * Target specification for the managed Rancher service
      * 
      */
@@ -49,6 +66,7 @@ public final class RancherArgs extends com.pulumi.resources.ResourceArgs {
 
     private RancherArgs(RancherArgs $) {
         this.projectId = $.projectId;
+        this.rancherId = $.rancherId;
         this.targetSpec = $.targetSpec;
     }
 
@@ -89,6 +107,27 @@ public final class RancherArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param rancherId Rancher ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rancherId(@Nullable Output<String> rancherId) {
+            $.rancherId = rancherId;
+            return this;
+        }
+
+        /**
+         * @param rancherId Rancher ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rancherId(String rancherId) {
+            return rancherId(Output.of(rancherId));
         }
 
         /**

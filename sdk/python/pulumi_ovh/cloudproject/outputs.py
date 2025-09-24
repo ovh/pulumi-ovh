@@ -3419,6 +3419,8 @@ class RancherCurrentState(dict):
         suggest = None
         if key == "bootstrapPassword":
             suggest = "bootstrap_password"
+        elif key == "iamAuthEnabled":
+            suggest = "iam_auth_enabled"
         elif key == "ipRestrictions":
             suggest = "ip_restrictions"
 
@@ -3435,6 +3437,7 @@ class RancherCurrentState(dict):
 
     def __init__(__self__, *,
                  bootstrap_password: Optional[_builtins.str] = None,
+                 iam_auth_enabled: Optional[_builtins.bool] = None,
                  ip_restrictions: Optional[Sequence['outputs.RancherCurrentStateIpRestriction']] = None,
                  name: Optional[_builtins.str] = None,
                  networking: Optional['outputs.RancherCurrentStateNetworking'] = None,
@@ -3445,6 +3448,7 @@ class RancherCurrentState(dict):
                  version: Optional[_builtins.str] = None):
         """
         :param _builtins.str bootstrap_password: Bootstrap password of the managed Rancher service, returned only on creation
+        :param _builtins.bool iam_auth_enabled: Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
         :param Sequence['RancherCurrentStateIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
         :param _builtins.str name: Name of the managed Rancher service
         :param 'RancherCurrentStateNetworkingArgs' networking: Networking properties of a managed Rancher service
@@ -3456,6 +3460,8 @@ class RancherCurrentState(dict):
         """
         if bootstrap_password is not None:
             pulumi.set(__self__, "bootstrap_password", bootstrap_password)
+        if iam_auth_enabled is not None:
+            pulumi.set(__self__, "iam_auth_enabled", iam_auth_enabled)
         if ip_restrictions is not None:
             pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if name is not None:
@@ -3480,6 +3486,14 @@ class RancherCurrentState(dict):
         Bootstrap password of the managed Rancher service, returned only on creation
         """
         return pulumi.get(self, "bootstrap_password")
+
+    @_builtins.property
+    @pulumi.getter(name="iamAuthEnabled")
+    def iam_auth_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        """
+        return pulumi.get(self, "iam_auth_enabled")
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")
@@ -3738,7 +3752,9 @@ class RancherTargetSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "ipRestrictions":
+        if key == "iamAuthEnabled":
+            suggest = "iam_auth_enabled"
+        elif key == "ipRestrictions":
             suggest = "ip_restrictions"
 
         if suggest:
@@ -3755,16 +3771,20 @@ class RancherTargetSpec(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  plan: _builtins.str,
+                 iam_auth_enabled: Optional[_builtins.bool] = None,
                  ip_restrictions: Optional[Sequence['outputs.RancherTargetSpecIpRestriction']] = None,
                  version: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Name of the managed Rancher service
         :param _builtins.str plan: Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
+        :param _builtins.bool iam_auth_enabled: Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
         :param Sequence['RancherTargetSpecIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
         :param _builtins.str version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using ovh*cloud*project*rancher*version datasource. Default is the latest version.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "plan", plan)
+        if iam_auth_enabled is not None:
+            pulumi.set(__self__, "iam_auth_enabled", iam_auth_enabled)
         if ip_restrictions is not None:
             pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         if version is not None:
@@ -3785,6 +3805,14 @@ class RancherTargetSpec(dict):
         Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
         """
         return pulumi.get(self, "plan")
+
+    @_builtins.property
+    @pulumi.getter(name="iamAuthEnabled")
+    def iam_auth_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        """
+        return pulumi.get(self, "iam_auth_enabled")
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")
@@ -6894,6 +6922,7 @@ class GetPrometheusTargetResult(dict):
 class GetRancherCurrentStateResult(dict):
     def __init__(__self__, *,
                  bootstrap_password: _builtins.str,
+                 iam_auth_enabled: _builtins.bool,
                  ip_restrictions: Sequence['outputs.GetRancherCurrentStateIpRestrictionResult'],
                  name: _builtins.str,
                  networking: 'outputs.GetRancherCurrentStateNetworkingResult',
@@ -6904,6 +6933,7 @@ class GetRancherCurrentStateResult(dict):
                  version: _builtins.str):
         """
         :param _builtins.str bootstrap_password: Bootstrap password of the managed Rancher service, returned only on creation
+        :param _builtins.bool iam_auth_enabled: Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
         :param Sequence['GetRancherCurrentStateIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
         :param _builtins.str name: Name of the managed Rancher service
         :param 'GetRancherCurrentStateNetworkingArgs' networking: Networking properties of a managed Rancher service
@@ -6914,6 +6944,7 @@ class GetRancherCurrentStateResult(dict):
         :param _builtins.str version: Version of the managed Rancher service
         """
         pulumi.set(__self__, "bootstrap_password", bootstrap_password)
+        pulumi.set(__self__, "iam_auth_enabled", iam_auth_enabled)
         pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "networking", networking)
@@ -6930,6 +6961,14 @@ class GetRancherCurrentStateResult(dict):
         Bootstrap password of the managed Rancher service, returned only on creation
         """
         return pulumi.get(self, "bootstrap_password")
+
+    @_builtins.property
+    @pulumi.getter(name="iamAuthEnabled")
+    def iam_auth_enabled(self) -> _builtins.bool:
+        """
+        Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        """
+        return pulumi.get(self, "iam_auth_enabled")
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")
@@ -7177,20 +7216,31 @@ class GetRancherPlanPlanResult(dict):
 @pulumi.output_type
 class GetRancherTargetSpecResult(dict):
     def __init__(__self__, *,
+                 iam_auth_enabled: _builtins.bool,
                  ip_restrictions: Sequence['outputs.GetRancherTargetSpecIpRestrictionResult'],
                  name: _builtins.str,
                  plan: _builtins.str,
                  version: _builtins.str):
         """
+        :param _builtins.bool iam_auth_enabled: Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
         :param Sequence['GetRancherTargetSpecIpRestrictionArgs'] ip_restrictions: List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
         :param _builtins.str name: Name of the managed Rancher service
         :param _builtins.str plan: Plan of the managed Rancher service. Available plans for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/plan
         :param _builtins.str version: Version of the managed Rancher service. Available versions for an existing managed Rancher can be retrieved using GET /rancher/rancherID/capabilities/version
         """
+        pulumi.set(__self__, "iam_auth_enabled", iam_auth_enabled)
         pulumi.set(__self__, "ip_restrictions", ip_restrictions)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "plan", plan)
         pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="iamAuthEnabled")
+    def iam_auth_enabled(self) -> _builtins.bool:
+        """
+        Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        """
+        return pulumi.get(self, "iam_auth_enabled")
 
     @_builtins.property
     @pulumi.getter(name="ipRestrictions")

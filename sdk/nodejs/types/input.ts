@@ -1161,6 +1161,10 @@ export namespace CloudProject {
          */
         bootstrapPassword?: pulumi.Input<string>;
         /**
+         * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         */
+        iamAuthEnabled?: pulumi.Input<boolean>;
+        /**
          * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
          */
         ipRestrictions?: pulumi.Input<pulumi.Input<inputs.CloudProject.RancherCurrentStateIpRestriction>[]>;
@@ -1243,6 +1247,10 @@ export namespace CloudProject {
     }
 
     export interface RancherTargetSpec {
+        /**
+         * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         */
+        iamAuthEnabled?: pulumi.Input<boolean>;
         /**
          * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
          */

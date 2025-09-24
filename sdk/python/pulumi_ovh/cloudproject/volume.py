@@ -522,7 +522,7 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vol = ovh.cloudproject.Volume("vol",
+        volume = ovh.cloudproject.Volume("volume",
             region_name="xxx",
             service_name="yyyyy",
             description="Terraform volume",
@@ -530,6 +530,28 @@ class Volume(pulumi.CustomResource):
             size=15,
             type="classic")
         ```
+
+        ## Import
+
+        The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
+
+        terraform
+
+        import {
+
+          to = ovh_cloud_project_volume.volume
+
+          id = "<public cloud project ID>/<region>/<volume ID>"
+
+        }
+
+        bash
+
+        $ pulumi preview -generate-config-out=volume.tf
+
+        $ pulumi up
+
+        The file `volume.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -559,7 +581,7 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        vol = ovh.cloudproject.Volume("vol",
+        volume = ovh.cloudproject.Volume("volume",
             region_name="xxx",
             service_name="yyyyy",
             description="Terraform volume",
@@ -567,6 +589,28 @@ class Volume(pulumi.CustomResource):
             size=15,
             type="classic")
         ```
+
+        ## Import
+
+        The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
+
+        terraform
+
+        import {
+
+          to = ovh_cloud_project_volume.volume
+
+          id = "<public cloud project ID>/<region>/<volume ID>"
+
+        }
+
+        bash
+
+        $ pulumi preview -generate-config-out=volume.tf
+
+        $ pulumi up
+
+        The file `volume.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.

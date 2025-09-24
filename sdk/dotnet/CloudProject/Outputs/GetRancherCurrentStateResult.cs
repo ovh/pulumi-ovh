@@ -18,6 +18,10 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string BootstrapPassword;
         /// <summary>
+        /// Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+        /// </summary>
+        public readonly bool IamAuthEnabled;
+        /// <summary>
         /// List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRancherCurrentStateIpRestrictionResult> IpRestrictions;
@@ -54,6 +58,8 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         private GetRancherCurrentStateResult(
             string bootstrapPassword,
 
+            bool iamAuthEnabled,
+
             ImmutableArray<Outputs.GetRancherCurrentStateIpRestrictionResult> ipRestrictions,
 
             string name,
@@ -71,6 +77,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
             string version)
         {
             BootstrapPassword = bootstrapPassword;
+            IamAuthEnabled = iamAuthEnabled;
             IpRestrictions = ipRestrictions;
             Name = name;
             Networking = networking;

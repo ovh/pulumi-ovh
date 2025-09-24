@@ -83,6 +83,21 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable deletion protection
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Enable deletion protection
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
      * Small description of the database service.
      * 
      */
@@ -354,6 +369,7 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         this.backupRegions = $.backupRegions;
         this.backupTime = $.backupTime;
         this.createdAt = $.createdAt;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
@@ -483,6 +499,27 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
+        }
+
+        /**
+         * @param deletionProtection Enable deletion protection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Enable deletion protection
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

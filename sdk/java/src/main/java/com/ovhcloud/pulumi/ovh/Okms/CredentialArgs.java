@@ -19,6 +19,21 @@ public final class CredentialArgs extends com.pulumi.resources.ResourceArgs {
     public static final CredentialArgs Empty = new CredentialArgs();
 
     /**
+     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * 
+     */
+    @Import(name="certificateType")
+    private @Nullable Output<String> certificateType;
+
+    /**
+     * @return (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * 
+     */
+    public Optional<Output<String>> certificateType() {
+        return Optional.ofNullable(this.certificateType);
+    }
+
+    /**
      * Valid Certificate Signing Request
      * 
      */
@@ -111,6 +126,7 @@ public final class CredentialArgs extends com.pulumi.resources.ResourceArgs {
     private CredentialArgs() {}
 
     private CredentialArgs(CredentialArgs $) {
+        this.certificateType = $.certificateType;
         this.csr = $.csr;
         this.description = $.description;
         this.identityUrns = $.identityUrns;
@@ -135,6 +151,27 @@ public final class CredentialArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(CredentialArgs defaults) {
             $ = new CredentialArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param certificateType (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateType(@Nullable Output<String> certificateType) {
+            $.certificateType = certificateType;
+            return this;
+        }
+
+        /**
+         * @param certificateType (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateType(String certificateType) {
+            return certificateType(Output.of(certificateType));
         }
 
         /**

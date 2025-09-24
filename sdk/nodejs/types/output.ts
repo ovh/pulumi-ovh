@@ -1523,6 +1523,10 @@ export namespace CloudProject {
          */
         bootstrapPassword: string;
         /**
+         * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         */
+        iamAuthEnabled: boolean;
+        /**
          * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
          */
         ipRestrictions: outputs.CloudProject.GetRancherCurrentStateIpRestriction[];
@@ -1624,6 +1628,10 @@ export namespace CloudProject {
     }
 
     export interface GetRancherTargetSpec {
+        /**
+         * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         */
+        iamAuthEnabled: boolean;
         /**
          * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
          */
@@ -2831,6 +2839,10 @@ export namespace CloudProject {
          */
         bootstrapPassword: string;
         /**
+         * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         */
+        iamAuthEnabled: boolean;
+        /**
          * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
          */
         ipRestrictions: outputs.CloudProject.RancherCurrentStateIpRestriction[];
@@ -2913,6 +2925,10 @@ export namespace CloudProject {
     }
 
     export interface RancherTargetSpec {
+        /**
+         * Allows Rancher to use identities managed by OVHcloud IAM (Identity and Access Management) to control access
+         */
+        iamAuthEnabled: boolean;
         /**
          * List of allowed CIDR blocks for a managed Rancher service's IP restrictions. When empty, any IP is allowed
          */

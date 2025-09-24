@@ -380,7 +380,28 @@ class User(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a User resource with the given unique name, props, and options.
+        ## Import
+
+        The resource can be imported using the public cloud project ID and the user ID, e.g.,
+
+        terraform
+
+        import {
+
+          to = ovh_cloud_project_user.user
+
+          id = "<public cloud project ID>/<user ID>"
+
+        }
+
+        bash
+
+        $ pulumi preview -generate-config-out=user.tf
+
+        $ pulumi up
+
+        The file `user.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description associated with the user.
@@ -412,7 +433,28 @@ class User(pulumi.CustomResource):
                  args: Optional[UserArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a User resource with the given unique name, props, and options.
+        ## Import
+
+        The resource can be imported using the public cloud project ID and the user ID, e.g.,
+
+        terraform
+
+        import {
+
+          to = ovh_cloud_project_user.user
+
+          id = "<public cloud project ID>/<user ID>"
+
+        }
+
+        bash
+
+        $ pulumi preview -generate-config-out=user.tf
+
+        $ pulumi up
+
+        The file `user.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+
         :param str resource_name: The name of the resource.
         :param UserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
