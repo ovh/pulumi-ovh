@@ -381,7 +381,11 @@ public class Server extends com.pulumi.resources.CustomResource {
     /**
      * Arbitrary properties to pass to cloud-init&#39;s config drive datasource
      * 
+     * @deprecated
+     * Attribute &#39;properties&#39; is deprecated and has no effect
+     * 
      */
+    @Deprecated /* Attribute 'properties' is deprecated and has no effect */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 

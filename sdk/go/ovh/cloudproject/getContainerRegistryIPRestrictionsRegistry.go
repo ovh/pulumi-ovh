@@ -12,6 +12,34 @@ import (
 )
 
 // Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myIprestrictionsData, err := cloudproject.GetContainerRegistryIPRestrictionsRegistry(ctx, &cloudproject.GetContainerRegistryIPRestrictionsRegistryArgs{
+//				ServiceName: "XXXXXX",
+//				RegistryId:  "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("myIpRestrictions", myIprestrictionsData.IpRestrictions)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupContainerRegistryIPRestrictionsRegistry(ctx *pulumi.Context, args *LookupContainerRegistryIPRestrictionsRegistryArgs, opts ...pulumi.InvokeOption) (*LookupContainerRegistryIPRestrictionsRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRegistryIPRestrictionsRegistryResult

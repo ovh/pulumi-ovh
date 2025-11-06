@@ -58,7 +58,7 @@ class GetDedicatedServerOrderableBandwidthResult:
     @pulumi.getter
     def orderable(self) -> _builtins.bool:
         """
-        Wether or not additional bandwidth is orderable.
+        Whether or not additional bandwidth is orderable
         """
         return pulumi.get(self, "orderable")
 
@@ -66,7 +66,7 @@ class GetDedicatedServerOrderableBandwidthResult:
     @pulumi.getter
     def platinia(self) -> Sequence[_builtins.int]:
         """
-        The list of orderable platinimum bandwidth in mbps.
+        Additional orderable platinium bandwidth
         """
         return pulumi.get(self, "platinia")
 
@@ -74,7 +74,7 @@ class GetDedicatedServerOrderableBandwidthResult:
     @pulumi.getter
     def premia(self) -> Sequence[_builtins.int]:
         """
-        The list of orderable premium bandwidth in mbps.
+        Additional orderable premium bandwidth
         """
         return pulumi.get(self, "premia")
 
@@ -87,7 +87,7 @@ class GetDedicatedServerOrderableBandwidthResult:
     @pulumi.getter
     def ultimates(self) -> Sequence[_builtins.int]:
         """
-        The list of orderable ultimate bandwidth in mbps.
+        Additional orderable ultimate bandwidth
         """
         return pulumi.get(self, "ultimates")
 
@@ -117,7 +117,7 @@ def get_dedicated_server_orderable_bandwidth(service_name: Optional[_builtins.st
     import pulumi
     import pulumi_ovh as ovh
 
-    bp = ovh.get_dedicated_server_orderable_bandwidth(service_name="myserver")
+    spec = ovh.get_dedicated_server_orderable_bandwidth(service_name="myserver")
     ```
 
 
@@ -146,7 +146,7 @@ def get_dedicated_server_orderable_bandwidth_output(service_name: Optional[pulum
     import pulumi
     import pulumi_ovh as ovh
 
-    bp = ovh.get_dedicated_server_orderable_bandwidth(service_name="myserver")
+    spec = ovh.get_dedicated_server_orderable_bandwidth(service_name="myserver")
     ```
 
 

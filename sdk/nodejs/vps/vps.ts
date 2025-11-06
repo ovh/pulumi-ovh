@@ -50,7 +50,7 @@ export class Vps extends pulumi.CustomResource {
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Vps.VpsIam>;
     /**
-     * Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
+     * Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
     /**
@@ -199,7 +199,7 @@ export interface VpsState {
      */
     iam?: pulumi.Input<inputs.Vps.VpsIam>;
     /**
-     * Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
+     * Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
      */
     imageId?: pulumi.Input<string>;
     /**
@@ -278,7 +278,7 @@ export interface VpsArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
+     * Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
      */
     imageId?: pulumi.Input<string>;
     /**

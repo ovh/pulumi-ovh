@@ -65,9 +65,10 @@ type LookupMitigationResult struct {
 	// The IP or the CIDR
 	Ip string `pulumi:"ip"`
 	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// * ` permanent  ` - (Deprecated) Set on true if the IP is on permanent mitigation
 	IpOnMitigation string `pulumi:"ipOnMitigation"`
-	Permanent      bool   `pulumi:"permanent"`
+	// Deprecated: Attribute 'permanent' is deprecated and has no effect.
+	Permanent bool `pulumi:"permanent"`
 	// Current state of the IP on mitigation
 	State string `pulumi:"state"`
 }
@@ -123,11 +124,12 @@ func (o LookupMitigationResultOutput) Ip() pulumi.StringOutput {
 }
 
 // IPv4 address
-// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+// * ` permanent  ` - (Deprecated) Set on true if the IP is on permanent mitigation
 func (o LookupMitigationResultOutput) IpOnMitigation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMitigationResult) string { return v.IpOnMitigation }).(pulumi.StringOutput)
 }
 
+// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 func (o LookupMitigationResultOutput) Permanent() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMitigationResult) bool { return v.Permanent }).(pulumi.BoolOutput)
 }

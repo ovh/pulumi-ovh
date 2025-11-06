@@ -15,7 +15,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+ * &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead. Using the `ovh.CloudProjectDatabase.IpRestriction` resource to add an IP restriction to a `ovh.CloudProject.Database` resource will cause its update on each apply
+ * 
+ * &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
  * 
  * Apply IP restrictions to an OVHcloud Managed Database cluster.
  * 

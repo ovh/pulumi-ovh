@@ -71,14 +71,14 @@ public final class ServerReinstallTaskArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Arbitrary properties to pass to cloud-init&#39;s config drive datasource. It supports any key with any string value.
+     * Deprecated, has no effect
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Arbitrary properties to pass to cloud-init&#39;s config drive datasource. It supports any key with any string value.
+     * @return Deprecated, has no effect
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -212,7 +212,7 @@ public final class ServerReinstallTaskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param properties Arbitrary properties to pass to cloud-init&#39;s config drive datasource. It supports any key with any string value.
+         * @param properties Deprecated, has no effect
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ServerReinstallTaskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param properties Arbitrary properties to pass to cloud-init&#39;s config drive datasource. It supports any key with any string value.
+         * @param properties Deprecated, has no effect
          * 
          * @return builder
          * 

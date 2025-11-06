@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectSshKey{}
 	case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
 		r = &DomainZoneDynhostRecord{}
+	case "ovh:index/iamResourceTags:IamResourceTags":
+		r = &IamResourceTags{}
 	case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
 		r = &OvhcloudConnectPopConfig{}
 	case "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig":
@@ -92,6 +94,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/domainZoneDynhostRecord",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/iamResourceTags",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

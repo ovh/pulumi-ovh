@@ -1145,6 +1145,10 @@
                     }
                 }
             },
+            "ovh_iam_resource_tags": {
+                "current": "ovh:index/iamResourceTags:IamResourceTags",
+                "majorVersion": 2
+            },
             "ovh_ip_firewall": {
                 "current": "ovh:Ip/firewall:Firewall",
                 "majorVersion": 2
@@ -1412,6 +1416,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "ovh_okms_secret": {
+                "current": "ovh:Okms/secret:Secret",
+                "majorVersion": 2
             },
             "ovh_okms_service_key": {
                 "current": "ovh:Okms/serviceKey:ServiceKey",
@@ -2837,6 +2845,19 @@
                 "current": "ovh:Domain/getZoneDNSSec:getZoneDNSSec",
                 "majorVersion": 2
             },
+            "ovh_domain_zone_record": {
+                "current": "ovh:index/getDomainZoneRecord:getDomainZoneRecord",
+                "majorVersion": 2
+            },
+            "ovh_domain_zone_records": {
+                "current": "ovh:index/getDomainZoneRecords:getDomainZoneRecords",
+                "majorVersion": 2,
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_hosting_privatedatabase": {
                 "current": "ovh:Hosting/getPrivateDatabase:getPrivateDatabase",
                 "majorVersion": 2
@@ -3099,6 +3120,10 @@
             },
             "ovh_okms_resource": {
                 "current": "ovh:Okms/getOkmsResource:getOkmsResource",
+                "majorVersion": 2
+            },
+            "ovh_okms_secret": {
+                "current": "ovh:index/getOkmsSecret:getOkmsSecret",
                 "majorVersion": 2
             },
             "ovh_okms_service_key": {
@@ -3518,6 +3543,7 @@
             "ovh:Me/identityUser:IdentityUser": 0,
             "ovh:Okms/credential:Credential": 1,
             "ovh:Okms/okms:Okms": 1,
+            "ovh:Okms/secret:Secret": 1,
             "ovh:Okms/serviceKey:ServiceKey": 1,
             "ovh:Okms/serviceKeyJWK:ServiceKeyJWK": 1,
             "ovh:SavingsPlan/savingsPlan:SavingsPlan": 0,
@@ -3537,6 +3563,7 @@
             "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
+            "ovh:index/iamResourceTags:IamResourceTags": 0,
             "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": 1,
             "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig": 1,
             "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig": 1,
@@ -3698,9 +3725,12 @@
             "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
             "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": 0,
             "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack": 0,
+            "ovh:index/getDomainZoneRecord:getDomainZoneRecord": 1,
+            "ovh:index/getDomainZoneRecords:getDomainZoneRecords": 1,
             "ovh:index/getInstallationTemplate:getInstallationTemplate": 0,
             "ovh:index/getInstallationTemplates:getInstallationTemplates": 0,
             "ovh:index/getLocation:getLocation": 1,
+            "ovh:index/getOkmsSecret:getOkmsSecret": 1,
             "ovh:index/getOvhcloudConnectConfigPopDatacenterExtras:getOvhcloudConnectConfigPopDatacenterExtras": 1,
             "ovh:index/getOvhcloudConnectConfigPopDatacenters:getOvhcloudConnectConfigPopDatacenters": 1,
             "ovh:index/getOvhcloudConnectConfigPops:getOvhcloudConnectConfigPops": 1,

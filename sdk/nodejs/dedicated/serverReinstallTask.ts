@@ -65,7 +65,7 @@ export class ServerReinstallTask extends pulumi.CustomResource {
      */
     public readonly os!: pulumi.Output<string>;
     /**
-     * Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+     * Deprecated, has no effect
      */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface ServerReinstallTaskState {
      */
     os?: pulumi.Input<string>;
     /**
-     * Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+     * Deprecated, has no effect
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -211,7 +211,7 @@ export interface ServerReinstallTaskArgs {
      */
     os: pulumi.Input<string>;
     /**
-     * Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+     * Deprecated, has no effect
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

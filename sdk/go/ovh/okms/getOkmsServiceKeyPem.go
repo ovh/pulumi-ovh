@@ -12,6 +12,33 @@ import (
 )
 
 // Use this data source to retrieve information about a KMS service key, in the PEM format.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/okms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := okms.GetOkmsServiceKeyPem(ctx, &okms.GetOkmsServiceKeyPemArgs{
+//				OkmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+//				Id:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOkmsServiceKeyPem(ctx *pulumi.Context, args *GetOkmsServiceKeyPemArgs, opts ...pulumi.InvokeOption) (*GetOkmsServiceKeyPemResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOkmsServiceKeyPemResult

@@ -57,11 +57,13 @@ export class Mitigation extends pulumi.CustomResource {
     public readonly ip!: pulumi.Output<string>;
     /**
      * IPv4 address
-     * * `permanent ` - Set on true if the IP is on permanent mitigation
+     * * `permanent ` - Deprecated, has no effect
      */
     public readonly ipOnMitigation!: pulumi.Output<string>;
     /**
      * Set on true if your ip is on permanent mitigation
+     *
+     * @deprecated Attribute 'permanent' is deprecated and has no effect.
      */
     public readonly permanent!: pulumi.Output<boolean>;
     /**
@@ -120,11 +122,13 @@ export interface MitigationState {
     ip?: pulumi.Input<string>;
     /**
      * IPv4 address
-     * * `permanent ` - Set on true if the IP is on permanent mitigation
+     * * `permanent ` - Deprecated, has no effect
      */
     ipOnMitigation?: pulumi.Input<string>;
     /**
      * Set on true if your ip is on permanent mitigation
+     *
+     * @deprecated Attribute 'permanent' is deprecated and has no effect.
      */
     permanent?: pulumi.Input<boolean>;
     /**
@@ -143,11 +147,13 @@ export interface MitigationArgs {
     ip: pulumi.Input<string>;
     /**
      * IPv4 address
-     * * `permanent ` - Set on true if the IP is on permanent mitigation
+     * * `permanent ` - Deprecated, has no effect
      */
     ipOnMitigation: pulumi.Input<string>;
     /**
      * Set on true if your ip is on permanent mitigation
+     *
+     * @deprecated Attribute 'permanent' is deprecated and has no effect.
      */
     permanent?: pulumi.Input<boolean>;
 }

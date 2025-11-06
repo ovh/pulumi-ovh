@@ -2149,7 +2149,7 @@
             "properties": {
                 "status": {
                     "type": "string",
-                    "description": "Versioning status\n"
+                    "description": "Versioning status (E.g. \"enabled\", \"disabled\" or \"suspended\")\n"
                 }
             },
             "type": "object",
@@ -4941,6 +4941,13 @@
         },
         "ovh:Dedicated/ServerCustomizations:ServerCustomizations": {
             "properties": {
+                "configDriveMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Config Drive MetaData\n"
+                },
                 "configDriveUserData": {
                     "type": "string",
                     "description": "Config Drive UserData\n"
@@ -5228,6 +5235,14 @@
         },
         "ovh:Dedicated/ServerReinstallTaskCustomizations:ServerReinstallTaskCustomizations": {
             "properties": {
+                "configDriveMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Config Drive MetaData\n",
+                    "willReplaceOnChanges": true
+                },
                 "configDriveUserData": {
                     "type": "string",
                     "description": "Config Drive UserData\n",
@@ -7997,6 +8012,133 @@
                 }
             }
         },
+        "ovh:Okms/SecretIam:SecretIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "displayName",
+                        "id",
+                        "tags",
+                        "urn"
+                    ]
+                }
+            }
+        },
+        "ovh:Okms/SecretMetadata:SecretMetadata": {
+            "properties": {
+                "casRequired": {
+                    "type": "boolean",
+                    "description": "The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Time of creation of the secret\n"
+                },
+                "currentVersion": {
+                    "type": "number",
+                    "description": "The secret version\n"
+                },
+                "customMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom metadata\n"
+                },
+                "deactivateVersionAfter": {
+                    "type": "string",
+                    "description": "Time duration before a version is deactivated\n"
+                },
+                "maxVersions": {
+                    "type": "number",
+                    "description": "The number of versions to keep (10 default)\n"
+                },
+                "oldestVersion": {
+                    "type": "number",
+                    "description": "The secret oldest version\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Time of the last update of the secret\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "casRequired",
+                        "createdAt",
+                        "currentVersion",
+                        "customMetadata",
+                        "deactivateVersionAfter",
+                        "maxVersions",
+                        "oldestVersion",
+                        "updatedAt"
+                    ]
+                }
+            }
+        },
+        "ovh:Okms/SecretVersion:SecretVersion": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Time of creation of the secret version\n"
+                },
+                "data": {
+                    "type": "string",
+                    "secret": true
+                },
+                "deactivatedAt": {
+                    "type": "string",
+                    "description": "Time of deactivation of the secret version\n"
+                },
+                "id": {
+                    "type": "number",
+                    "description": "Secret version\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the secret version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "data"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "data",
+                        "deactivatedAt",
+                        "id",
+                        "state"
+                    ]
+                }
+            }
+        },
         "ovh:Okms/ServiceKeyJWKIam:ServiceKeyJWKIam": {
             "properties": {
                 "displayName": {
@@ -10309,6 +10451,96 @@
                 "releaseNotes",
                 "url",
                 "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getOkmsSecretIam:getOkmsSecretIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "id",
+                "tags",
+                "urn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getOkmsSecretMetadata:getOkmsSecretMetadata": {
+            "properties": {
+                "casRequired": {
+                    "type": "boolean",
+                    "description": "The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Time of creation of the secret\n"
+                },
+                "currentVersion": {
+                    "type": "number",
+                    "description": "The secret version\n"
+                },
+                "customMetadata": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Custom metadata\n"
+                },
+                "deactivateVersionAfter": {
+                    "type": "string",
+                    "description": "Time duration before a version is deactivated\n"
+                },
+                "maxVersions": {
+                    "type": "number",
+                    "description": "The number of versions to keep (10 default)\n"
+                },
+                "oldestVersion": {
+                    "type": "number",
+                    "description": "The secret oldest version\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Time of the last update of the secret\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "casRequired",
+                "createdAt",
+                "currentVersion",
+                "customMetadata",
+                "deactivateVersionAfter",
+                "maxVersions",
+                "oldestVersion",
+                "updatedAt"
             ],
             "language": {
                 "nodejs": {
@@ -16247,7 +16479,7 @@
             }
         },
         "ovh:CloudProjectDatabase/ipRestriction:IpRestriction": {
-            "description": "Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the ovh.CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply\n\nApply IP restrictions to an OVHcloud Managed Database cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst db = ovh.CloudProjectDatabase.getDatabase({\n    serviceName: \"XXXX\",\n    engine: \"YYYY\",\n    id: \"ZZZZ\",\n});\nconst ipRestriction = new ovh.cloudprojectdatabase.IpRestriction(\"ip_restriction\", {\n    serviceName: db.then(db =\u003e db.serviceName),\n    engine: db.then(db =\u003e db.engine),\n    clusterId: db.then(db =\u003e db.id),\n    ip: \"178.97.6.0/24\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ndb = ovh.CloudProjectDatabase.get_database(service_name=\"XXXX\",\n    engine=\"YYYY\",\n    id=\"ZZZZ\")\nip_restriction = ovh.cloudprojectdatabase.IpRestriction(\"ip_restriction\",\n    service_name=db.service_name,\n    engine=db.engine,\n    cluster_id=db.id,\n    ip=\"178.97.6.0/24\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()\n    {\n        ServiceName = \"XXXX\",\n        Engine = \"YYYY\",\n        Id = \"ZZZZ\",\n    });\n\n    var ipRestriction = new Ovh.CloudProjectDatabase.IpRestriction(\"ip_restriction\", new()\n    {\n        ServiceName = db.Apply(getDatabaseResult =\u003e getDatabaseResult.ServiceName),\n        Engine = db.Apply(getDatabaseResult =\u003e getDatabaseResult.Engine),\n        ClusterId = db.Apply(getDatabaseResult =\u003e getDatabaseResult.Id),\n        Ip = \"178.97.6.0/24\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudprojectdatabase\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdb, err := cloudprojectdatabase.GetDatabase(ctx, \u0026cloudprojectdatabase.GetDatabaseArgs{\n\t\t\tServiceName: \"XXXX\",\n\t\t\tEngine:      \"YYYY\",\n\t\t\tId:          \"ZZZZ\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudprojectdatabase.NewIpRestriction(ctx, \"ip_restriction\", \u0026cloudprojectdatabase.IpRestrictionArgs{\n\t\t\tServiceName: pulumi.String(db.ServiceName),\n\t\t\tEngine:      pulumi.String(db.Engine),\n\t\t\tClusterId:   pulumi.String(db.Id),\n\t\t\tIp:          pulumi.String(\"178.97.6.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;\nimport com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;\nimport com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IpRestriction;\nimport com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IpRestrictionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()\n            .serviceName(\"XXXX\")\n            .engine(\"YYYY\")\n            .id(\"ZZZZ\")\n            .build());\n\n        var ipRestriction = new IpRestriction(\"ipRestriction\", IpRestrictionArgs.builder()\n            .serviceName(db.serviceName())\n            .engine(db.engine())\n            .clusterId(db.id())\n            .ip(\"178.97.6.0/24\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ipRestriction:\n    type: ovh:CloudProjectDatabase:IpRestriction\n    name: ip_restriction\n    properties:\n      serviceName: ${db.serviceName}\n      engine: ${db.engine}\n      clusterId: ${db.id}\n      ip: 178.97.6.0/24\nvariables:\n  db:\n    fn::invoke:\n      function: ovh:CloudProjectDatabase:getDatabase\n      arguments:\n        serviceName: XXXX\n        engine: YYYY\n        id: ZZZZ\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24\n```\n\n",
+            "description": "\u003e **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead. Using the `ovh.CloudProjectDatabase.IpRestriction` resource to add an IP restriction to a `ovh.CloudProject.Database` resource will cause its update on each apply\n\n\u003e **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**\n\nApply IP restrictions to an OVHcloud Managed Database cluster.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst db = ovh.CloudProjectDatabase.getDatabase({\n    serviceName: \"XXXX\",\n    engine: \"YYYY\",\n    id: \"ZZZZ\",\n});\nconst ipRestriction = new ovh.cloudprojectdatabase.IpRestriction(\"ip_restriction\", {\n    serviceName: db.then(db =\u003e db.serviceName),\n    engine: db.then(db =\u003e db.engine),\n    clusterId: db.then(db =\u003e db.id),\n    ip: \"178.97.6.0/24\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ndb = ovh.CloudProjectDatabase.get_database(service_name=\"XXXX\",\n    engine=\"YYYY\",\n    id=\"ZZZZ\")\nip_restriction = ovh.cloudprojectdatabase.IpRestriction(\"ip_restriction\",\n    service_name=db.service_name,\n    engine=db.engine,\n    cluster_id=db.id,\n    ip=\"178.97.6.0/24\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var db = Ovh.CloudProjectDatabase.GetDatabase.Invoke(new()\n    {\n        ServiceName = \"XXXX\",\n        Engine = \"YYYY\",\n        Id = \"ZZZZ\",\n    });\n\n    var ipRestriction = new Ovh.CloudProjectDatabase.IpRestriction(\"ip_restriction\", new()\n    {\n        ServiceName = db.Apply(getDatabaseResult =\u003e getDatabaseResult.ServiceName),\n        Engine = db.Apply(getDatabaseResult =\u003e getDatabaseResult.Engine),\n        ClusterId = db.Apply(getDatabaseResult =\u003e getDatabaseResult.Id),\n        Ip = \"178.97.6.0/24\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudprojectdatabase\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdb, err := cloudprojectdatabase.GetDatabase(ctx, \u0026cloudprojectdatabase.GetDatabaseArgs{\n\t\t\tServiceName: \"XXXX\",\n\t\t\tEngine:      \"YYYY\",\n\t\t\tId:          \"ZZZZ\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudprojectdatabase.NewIpRestriction(ctx, \"ip_restriction\", \u0026cloudprojectdatabase.IpRestrictionArgs{\n\t\t\tServiceName: pulumi.String(db.ServiceName),\n\t\t\tEngine:      pulumi.String(db.Engine),\n\t\t\tClusterId:   pulumi.String(db.Id),\n\t\t\tIp:          pulumi.String(\"178.97.6.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;\nimport com.pulumi.ovh.CloudProjectDatabase.inputs.GetDatabaseArgs;\nimport com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IpRestriction;\nimport com.ovhcloud.pulumi.ovh.CloudProjectDatabase.IpRestrictionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var db = CloudProjectDatabaseFunctions.getDatabase(GetDatabaseArgs.builder()\n            .serviceName(\"XXXX\")\n            .engine(\"YYYY\")\n            .id(\"ZZZZ\")\n            .build());\n\n        var ipRestriction = new IpRestriction(\"ipRestriction\", IpRestrictionArgs.builder()\n            .serviceName(db.serviceName())\n            .engine(db.engine())\n            .clusterId(db.id())\n            .ip(\"178.97.6.0/24\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ipRestriction:\n    type: ovh:CloudProjectDatabase:IpRestriction\n    name: ip_restriction\n    properties:\n      serviceName: ${db.serviceName}\n      engine: ${db.engine}\n      clusterId: ${db.id}\n      ip: 178.97.6.0/24\nvariables:\n  db:\n    fn::invoke:\n      function: ovh:CloudProjectDatabase:getDatabase\n      arguments:\n        serviceName: XXXX\n        engine: YYYY\n        id: ZZZZ\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed database cluster IP restrictions can be imported using the `service_name`, `engine`, `cluster_id` and the `ip`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProjectDatabase/ipRestriction:IpRestriction my_ip_restriction service_name/engine/cluster_id/178.97.6.0/24\n```\n\n",
             "properties": {
                 "clusterId": {
                     "type": "string",
@@ -20100,7 +20332,8 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n"
+                    "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n",
+                    "deprecationMessage": "Attribute 'properties' is deprecated and has no effect"
                 },
                 "rack": {
                     "type": "string",
@@ -20250,7 +20483,8 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n"
+                    "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n",
+                    "deprecationMessage": "Attribute 'properties' is deprecated and has no effect"
                 },
                 "rescueMail": {
                     "type": "string",
@@ -20398,7 +20632,8 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n"
+                        "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n",
+                        "deprecationMessage": "Attribute 'properties' is deprecated and has no effect"
                     },
                     "rack": {
                         "type": "string",
@@ -20680,7 +20915,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.\n"
+                    "description": "Deprecated, has no effect\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -20732,7 +20967,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.\n",
+                    "description": "Deprecated, has no effect\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
@@ -20791,7 +21026,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.\n",
+                        "description": "Deprecated, has no effect\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
@@ -23250,11 +23485,12 @@
                 },
                 "ipOnMitigation": {
                     "type": "string",
-                    "description": "IPv4 address\n* `permanent ` - Set on true if the IP is on permanent mitigation\n"
+                    "description": "IPv4 address\n* `permanent ` - Deprecated, has no effect\n"
                 },
                 "permanent": {
                     "type": "boolean",
-                    "description": "Set on true if your ip is on permanent mitigation\n"
+                    "description": "Set on true if your ip is on permanent mitigation\n",
+                    "deprecationMessage": "Attribute 'permanent' is deprecated and has no effect."
                 },
                 "state": {
                     "type": "string",
@@ -23275,11 +23511,12 @@
                 },
                 "ipOnMitigation": {
                     "type": "string",
-                    "description": "IPv4 address\n* `permanent ` - Set on true if the IP is on permanent mitigation\n"
+                    "description": "IPv4 address\n* `permanent ` - Deprecated, has no effect\n"
                 },
                 "permanent": {
                     "type": "boolean",
-                    "description": "Set on true if your ip is on permanent mitigation\n"
+                    "description": "Set on true if your ip is on permanent mitigation\n",
+                    "deprecationMessage": "Attribute 'permanent' is deprecated and has no effect."
                 }
             },
             "requiredInputs": [
@@ -23299,11 +23536,12 @@
                     },
                     "ipOnMitigation": {
                         "type": "string",
-                        "description": "IPv4 address\n* `permanent ` - Set on true if the IP is on permanent mitigation\n"
+                        "description": "IPv4 address\n* `permanent ` - Deprecated, has no effect\n"
                     },
                     "permanent": {
                         "type": "boolean",
-                        "description": "Set on true if your ip is on permanent mitigation\n"
+                        "description": "Set on true if your ip is on permanent mitigation\n",
+                        "deprecationMessage": "Attribute 'permanent' is deprecated and has no effect."
                     },
                     "state": {
                         "type": "string",
@@ -26246,7 +26484,7 @@
                 },
                 "certificateType": {
                     "type": "string",
-                    "description": "(String) Type of the certificate key algorithm (`ECDSA` or `RSA`).\n"
+                    "description": "(String) Type of certificate key (`ECDSA` or `RSA`).\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -26315,7 +26553,7 @@
             "inputProperties": {
                 "certificateType": {
                     "type": "string",
-                    "description": "(String) Type of the certificate key algorithm (`ECDSA` or `RSA`).\n"
+                    "description": "(String) Type of certificate key (`ECDSA` or `RSA`).\n"
                 },
                 "csr": {
                     "type": "string",
@@ -26358,7 +26596,7 @@
                     },
                     "certificateType": {
                         "type": "string",
-                        "description": "(String) Type of the certificate key algorithm (`ECDSA` or `RSA`).\n"
+                        "description": "(String) Type of certificate key (`ECDSA` or `RSA`).\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -26510,6 +26748,112 @@
                     "swaggerEndpoint": {
                         "type": "string",
                         "description": "(String) KMS rest API swagger UI\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:Okms/secret:Secret": {
+            "description": "## \n\n---\n## subcategory : \"Key Management Service (KMS)\"\n\n---\n\n# ovh.Okms.Secret (Resource)\n\nManages a secret stored in OVHcloud KMS.\n\n\u003e WARNING: `version.data` is marked **Sensitive** but still ends up in the state file. To mitigate that, it is recommended to protect your state with encryption and access controls. Avoid committing it to source control.\n\n",
+            "properties": {
+                "cas": {
+                    "type": "number",
+                    "description": "Check-and-set guard. Only used on update operations: must equal the current secret version for the update to succeed.\nIgnored on create.\n"
+                },
+                "iam": {
+                    "$ref": "#/types/ovh:Okms/SecretIam:SecretIam",
+                    "description": "IAM resource metadata embedded in services models\n"
+                },
+                "includeData": {
+                    "type": "boolean",
+                    "deprecationMessage": "No effect; will be removed in a future version."
+                },
+                "metadata": {
+                    "$ref": "#/types/ovh:Okms/SecretMetadata:SecretMetadata",
+                    "description": "Create a secret metadata\n"
+                },
+                "okmsId": {
+                    "type": "string",
+                    "description": "Okms ID\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Secret path\n"
+                },
+                "version": {
+                    "$ref": "#/types/ovh:Okms/SecretVersion:SecretVersion",
+                    "description": "Create an OKMS secret version\n"
+                }
+            },
+            "required": [
+                "iam",
+                "includeData",
+                "metadata",
+                "okmsId",
+                "path",
+                "version"
+            ],
+            "inputProperties": {
+                "cas": {
+                    "type": "number",
+                    "description": "Check-and-set guard. Only used on update operations: must equal the current secret version for the update to succeed.\nIgnored on create.\n"
+                },
+                "includeData": {
+                    "type": "boolean",
+                    "deprecationMessage": "No effect; will be removed in a future version."
+                },
+                "metadata": {
+                    "$ref": "#/types/ovh:Okms/SecretMetadata:SecretMetadata",
+                    "description": "Create a secret metadata\n"
+                },
+                "okmsId": {
+                    "type": "string",
+                    "description": "Okms ID\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Secret path\n"
+                },
+                "version": {
+                    "$ref": "#/types/ovh:Okms/SecretVersion:SecretVersion",
+                    "description": "Create an OKMS secret version\n"
+                }
+            },
+            "requiredInputs": [
+                "okmsId",
+                "path",
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Secret resources.\n",
+                "properties": {
+                    "cas": {
+                        "type": "number",
+                        "description": "Check-and-set guard. Only used on update operations: must equal the current secret version for the update to succeed.\nIgnored on create.\n"
+                    },
+                    "iam": {
+                        "$ref": "#/types/ovh:Okms/SecretIam:SecretIam",
+                        "description": "IAM resource metadata embedded in services models\n"
+                    },
+                    "includeData": {
+                        "type": "boolean",
+                        "deprecationMessage": "No effect; will be removed in a future version."
+                    },
+                    "metadata": {
+                        "$ref": "#/types/ovh:Okms/SecretMetadata:SecretMetadata",
+                        "description": "Create a secret metadata\n"
+                    },
+                    "okmsId": {
+                        "type": "string",
+                        "description": "Okms ID\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "Secret path\n"
+                    },
+                    "version": {
+                        "$ref": "#/types/ovh:Okms/SecretVersion:SecretVersion",
+                        "description": "Create an OKMS secret version\n"
                     }
                 },
                 "type": "object"
@@ -26964,7 +27308,7 @@
             }
         },
         "ovh:Vps/vps:Vps": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  myVps:\n    type: ovh:Vps:Vps\n    name: my_vps\n    properties:\n      displayName: dev_vps\n      imageId: 45b2f222-ab10-44ed-863f-720942762b6f\n      ovhSubsidiary: ${mycart.ovhSubsidiary}\n      plans:\n        - duration: P1M\n          plan_code: ${vps.planCode}\n          pricing_mode: default\n          configuration:\n            - label: vps_datacenter\n              value: WAW\n            - label: vps_os\n              value: Debian 10\n      publicSshKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSD76EaLUzJjf70W8W2uU9FzEyl68di67Bd20qtYfBLJpFJuX/RJC9StI1y1RnXXqC1Lf/Yo+yJzvNx0iqLxCX1G7g0XYex74HkgC6a2QeNhp9M56ANZtA3TKKAbkZ1xobfhOPWpq3lEFp7dgJctcILBPL3l6OjKf6NIxHo5yF67Vy4D0nWl5utumNdWhhlX7MtVQooszLyIwPlNO+DzD3ZnJFCt2Z1jdRkhm/Oobtx17CZ+5SN23tgHXS6pLOgM6w30M11zkI510z95IAIHhRT7MbiXICkvG/0qHuSftz1j/CcHFbttNB27dH86vByumfSEgRKaoRkCqrn64IWrSsFr3Smsf7gZWLBlYLliGPyn8Tsr9bT5pRul6yTvVbfZ31RREBr1I0Lp4q++d+fIpa3LtMGRaMb9huJYy8cwW/Vfzbxsqfz9xzjIOFNcYl7J9l4cvz3hgSlai2Jgngw5ShNVlxcIKUdiynZWm09nQudlYNHgor9ID+JACzCfPkUZ8\nvariables:\n  myAccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n  mycart:\n    fn::invoke:\n      function: ovh:Order:getCart\n      arguments:\n        ovhSubsidiary: ${myAccount.ovhSubsidiary}\n  vps:\n    fn::invoke:\n      function: ovh:Order:getCartProductPlan\n      arguments:\n        cartId: ${mycart.id}\n        priceCapacity: renew\n        product: vps\n        planCode: vps-le-2-2-40\noutputs:\n  vpsDisplayName: ${myVps.displayName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud VPS database can be imported using the `service_name`, E.g.,\n\nterraform\n\nimport {\n\n  to = ovh_vps.myvps\n\n  id = \"\u003cyour existing VPS service_name\u003e\"\n\n}\n\nYou can then run:\n\npulumi preview -generate-config-out=./vps.tf\n\nThe file `vps.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  myVps:\n    type: ovh:Vps:Vps\n    name: my_vps\n    properties:\n      displayName: dev_vps\n      imageId: 45b2f222-ab10-44ed-863f-720942762b6f\n      ovhSubsidiary: ${myAccount.ovhSubsidiary}\n      plans:\n        - duration: P1M\n          plan_code: vps-le-2-2-40\n          pricing_mode: default\n          configuration:\n            - label: vps_datacenter\n              value: WAW\n            - label: vps_os\n              value: Debian 13\n      publicSshKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSD76EaLUzJjf70W8W2uU9FzEyl68di67Bd20qtYfBLJpFJuX/RJC9StI1y1RnXXqC1Lf/Yo+yJzvNx0iqLxCX1G7g0XYex74HkgC6a2QeNhp9M56ANZtA3TKKAbkZ1xobfhOPWpq3lEFp7dgJctcILBPL3l6OjKf6NIxHo5yF67Vy4D0nWl5utumNdWhhlX7MtVQooszLyIwPlNO+DzD3ZnJFCt2Z1jdRkhm/Oobtx17CZ+5SN23tgHXS6pLOgM6w30M11zkI510z95IAIHhRT7MbiXICkvG/0qHuSftz1j/CcHFbttNB27dH86vByumfSEgRKaoRkCqrn64IWrSsFr3Smsf7gZWLBlYLliGPyn8Tsr9bT5pRul6yTvVbfZ31RREBr1I0Lp4q++d+fIpa3LtMGRaMb9huJYy8cwW/Vfzbxsqfz9xzjIOFNcYl7J9l4cvz3hgSlai2Jgngw5ShNVlxcIKUdiynZWm09nQudlYNHgor9ID+JACzCfPkUZ8\nvariables:\n  myAccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\noutputs:\n  vpsDisplayName: ${myVps.displayName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud VPS database can be imported using the `service_name`, E.g.,\n\nterraform\n\nimport {\n\n  to = ovh_vps.myvps\n\n  id = \"\u003cyour existing VPS service_name\u003e\"\n\n}\n\nYou can then run:\n\npulumi preview -generate-config-out=./vps.tf\n\nThe file `vps.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
             "properties": {
                 "cluster": {
                     "type": "string",
@@ -26980,7 +27324,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps\u0026branch=v1#get-/vps/-serviceName-/images/available)\n"
+                    "description": "Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps\u0026branch=v1#get-/vps/-serviceName-/images/available)\n"
                 },
                 "keymap": {
                     "type": "string",
@@ -27084,7 +27428,7 @@
                 },
                 "imageId": {
                     "type": "string",
-                    "description": "Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps\u0026branch=v1#get-/vps/-serviceName-/images/available)\n"
+                    "description": "Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps\u0026branch=v1#get-/vps/-serviceName-/images/available)\n"
                 },
                 "keymap": {
                     "type": "string",
@@ -27172,7 +27516,7 @@
                     },
                     "imageId": {
                         "type": "string",
-                        "description": "Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps\u0026branch=v1#get-/vps/-serviceName-/images/available)\n"
+                        "description": "Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps\u0026branch=v1#get-/vps/-serviceName-/images/available)\n"
                     },
                     "keymap": {
                         "type": "string",
@@ -28394,6 +28738,60 @@
                 "type": "object"
             }
         },
+        "ovh:index/iamResourceTags:IamResourceTags": {
+            "description": "\n\n## Import\n\nIAM resource tags can be imported using the resource URN:\n\nbash\n\n```sh\n$ pulumi import ovh:index/iamResourceTags:IamResourceTags my_tags \"urn:v1:eu:resource:cloudProject:1234567890abcdef\"\n```\n\nAfter importing, you should update your Terraform configuration to match the imported state. The import will bring in all tags currently applied to the resource, but only tags defined in your configuration will be managed by Terraform.\n\n",
+            "properties": {
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to apply to the resource. Each tag consists of a key-value pair. Tag keys must match the pattern `^[a-zA-Z0-9_.:/=+@-]{1,128}$` (1-128 characters) and values must match `^[a-zA-Z0-9_.:/=+@-]{0,256}$` (0-256 characters). Both keys and values can contain alphanumeric characters, underscores, dots, colons, slashes, equals signs, plus signs, at signs, and hyphens. **Note:** Tags with keys prefixed by `ovh:` are managed by OVH and cannot be set via the API.\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "The URN (Uniform Resource Name) of the resource to manage tags for. Changing this forces a new resource to be created. The URN format is typically `urn:v1:{region}:resource:{resourceType}:{resourceId}`.\n"
+                }
+            },
+            "required": [
+                "urn"
+            ],
+            "inputProperties": {
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of tags to apply to the resource. Each tag consists of a key-value pair. Tag keys must match the pattern `^[a-zA-Z0-9_.:/=+@-]{1,128}$` (1-128 characters) and values must match `^[a-zA-Z0-9_.:/=+@-]{0,256}$` (0-256 characters). Both keys and values can contain alphanumeric characters, underscores, dots, colons, slashes, equals signs, plus signs, at signs, and hyphens. **Note:** Tags with keys prefixed by `ovh:` are managed by OVH and cannot be set via the API.\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "The URN (Uniform Resource Name) of the resource to manage tags for. Changing this forces a new resource to be created. The URN format is typically `urn:v1:{region}:resource:{resourceType}:{resourceId}`.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "urn"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IamResourceTags resources.\n",
+                "properties": {
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of tags to apply to the resource. Each tag consists of a key-value pair. Tag keys must match the pattern `^[a-zA-Z0-9_.:/=+@-]{1,128}$` (1-128 characters) and values must match `^[a-zA-Z0-9_.:/=+@-]{0,256}$` (0-256 characters). Both keys and values can contain alphanumeric characters, underscores, dots, colons, slashes, equals signs, plus signs, at signs, and hyphens. **Note:** Tags with keys prefixed by `ovh:` are managed by OVH and cannot be set via the API.\n"
+                    },
+                    "urn": {
+                        "type": "string",
+                        "description": "The URN (Uniform Resource Name) of the resource to manage tags for. Changing this forces a new resource to be created. The URN format is typically `urn:v1:{region}:resource:{resourceType}:{resourceId}`.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": {
             "description": "Creates a pop configuration for an Ovhcloud Connect product.\n\nPlease take a look at the list of available `types` in the `Required` section in order to know the list of available type configurations.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst occ = ovh.OVHcloud.Connect({\n    serviceName: \"XXX\",\n});\nconst pop = new ovh.OvhcloudConnectPopConfig(\"pop\", {\n    serviceName: occ.then(occ =\u003e occ.serviceName),\n    interfaceId: occ.then(occ =\u003e occ.interfaceLists?.[0]),\n    type: \"l3\",\n    customerBgpArea: 65400,\n    ovhBgpArea: 65401,\n    subnet: \"I.I.I.I/30\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nocc = ovh.OVHcloud.connect(service_name=\"XXX\")\npop = ovh.OvhcloudConnectPopConfig(\"pop\",\n    service_name=occ.service_name,\n    interface_id=occ.interface_lists[0],\n    type=\"l3\",\n    customer_bgp_area=65400,\n    ovh_bgp_area=65401,\n    subnet=\"I.I.I.I/30\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var occ = Ovh.OVHcloud.Connect.Invoke(new()\n    {\n        ServiceName = \"XXX\",\n    });\n\n    var pop = new Ovh.OvhcloudConnectPopConfig(\"pop\", new()\n    {\n        ServiceName = occ.Apply(connectResult =\u003e connectResult.ServiceName),\n        InterfaceId = occ.Apply(connectResult =\u003e connectResult.InterfaceLists[0]),\n        Type = \"l3\",\n        CustomerBgpArea = 65400,\n        OvhBgpArea = 65401,\n        Subnet = \"I.I.I.I/30\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/ovhcloud\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tocc, err := ovhcloud.Connect(ctx, \u0026ovhcloud.ConnectArgs{\n\t\t\tServiceName: \"XXX\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ovh.NewOvhcloudConnectPopConfig(ctx, \"pop\", \u0026ovh.OvhcloudConnectPopConfigArgs{\n\t\t\tServiceName:     pulumi.String(occ.ServiceName),\n\t\t\tInterfaceId:     pulumi.Float64(occ.InterfaceLists[0]),\n\t\t\tType:            pulumi.String(\"l3\"),\n\t\t\tCustomerBgpArea: pulumi.Float64(65400),\n\t\t\tOvhBgpArea:      pulumi.Float64(65401),\n\t\t\tSubnet:          pulumi.String(\"I.I.I.I/30\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OVHcloud.OVHcloudFunctions;\nimport com.pulumi.ovh.OVHcloud.inputs.ConnectArgs;\nimport com.ovhcloud.pulumi.ovh.OvhcloudConnectPopConfig;\nimport com.ovhcloud.pulumi.ovh.OvhcloudConnectPopConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var occ = OVHcloudFunctions.Connect(ConnectArgs.builder()\n            .serviceName(\"XXX\")\n            .build());\n\n        var pop = new OvhcloudConnectPopConfig(\"pop\", OvhcloudConnectPopConfigArgs.builder()\n            .serviceName(occ.serviceName())\n            .interfaceId(occ.interfaceLists()[0])\n            .type(\"l3\")\n            .customerBgpArea(65400.0)\n            .ovhBgpArea(65401.0)\n            .subnet(\"I.I.I.I/30\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pop:\n    type: ovh:OvhcloudConnectPopConfig\n    properties:\n      serviceName: ${occ.serviceName}\n      interfaceId: ${occ.interfaceLists[0]}\n      type: l3\n      customerBgpArea: 65400\n      ovhBgpArea: 65401\n      subnet: I.I.I.I/30\nvariables:\n  occ:\n    fn::invoke:\n      function: ovh:OVHcloud:Connect\n      arguments:\n        serviceName: XXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -29519,7 +29917,7 @@
             }
         },
         "ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement": {
-            "description": "Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.\n\n",
+            "description": "Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst mgtIprestrictionsData = ovh.CloudProject.getContainerRegistryIPRestrictionsManagement({\n    serviceName: \"XXXXXX\",\n    registryId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n});\nexport const myIpRestrictions = mgtIprestrictionsData.then(mgtIprestrictionsData =\u003e mgtIprestrictionsData.ipRestrictions);\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmgt_iprestrictions_data = ovh.CloudProject.get_container_registry_ip_restrictions_management(service_name=\"XXXXXX\",\n    registry_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\npulumi.export(\"myIpRestrictions\", mgt_iprestrictions_data.ip_restrictions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mgtIprestrictionsData = Ovh.CloudProject.GetContainerRegistryIPRestrictionsManagement.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        RegistryId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myIpRestrictions\"] = mgtIprestrictionsData.Apply(getContainerRegistryIPRestrictionsManagementResult =\u003e getContainerRegistryIPRestrictionsManagementResult.IpRestrictions),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmgtIprestrictionsData, err := cloudproject.GetContainerRegistryIPRestrictionsManagement(ctx, \u0026cloudproject.GetContainerRegistryIPRestrictionsManagementArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tRegistryId:  \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myIpRestrictions\", mgtIprestrictionsData.IpRestrictions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var mgtIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .registryId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\n            .build());\n\n        ctx.export(\"myIpRestrictions\", mgtIprestrictionsData.ipRestrictions());\n    }\n}\n```\n```yaml\nvariables:\n  mgtIprestrictionsData:\n    fn::invoke:\n      function: ovh:CloudProject:getContainerRegistryIPRestrictionsManagement\n      arguments:\n        serviceName: XXXXXX\n        registryId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\noutputs:\n  myIpRestrictions: ${mgtIprestrictionsData.ipRestrictions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRegistryIPRestrictionsManagement.\n",
                 "properties": {
@@ -29574,7 +29972,7 @@
             }
         },
         "ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry": {
-            "description": "Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.\n\n",
+            "description": "Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myIprestrictionsData = ovh.CloudProject.getContainerRegistryIPRestrictionsRegistry({\n    serviceName: \"XXXXXX\",\n    registryId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n});\nexport const myIpRestrictions = myIprestrictionsData.then(myIprestrictionsData =\u003e myIprestrictionsData.ipRestrictions);\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_iprestrictions_data = ovh.CloudProject.get_container_registry_ip_restrictions_registry(service_name=\"XXXXXX\",\n    registry_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\npulumi.export(\"myIpRestrictions\", my_iprestrictions_data.ip_restrictions)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myIprestrictionsData = Ovh.CloudProject.GetContainerRegistryIPRestrictionsRegistry.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        RegistryId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"myIpRestrictions\"] = myIprestrictionsData.Apply(getContainerRegistryIPRestrictionsRegistryResult =\u003e getContainerRegistryIPRestrictionsRegistryResult.IpRestrictions),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyIprestrictionsData, err := cloudproject.GetContainerRegistryIPRestrictionsRegistry(ctx, \u0026cloudproject.GetContainerRegistryIPRestrictionsRegistryArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tRegistryId:  \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"myIpRestrictions\", myIprestrictionsData.IpRestrictions)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProject.CloudProjectFunctions;\nimport com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var myIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .registryId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\n            .build());\n\n        ctx.export(\"myIpRestrictions\", myIprestrictionsData.ipRestrictions());\n    }\n}\n```\n```yaml\nvariables:\n  myIprestrictionsData:\n    fn::invoke:\n      function: ovh:CloudProject:getContainerRegistryIPRestrictionsRegistry\n      arguments:\n        serviceName: XXXXXX\n        registryId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\noutputs:\n  myIpRestrictions: ${myIprestrictionsData.ipRestrictions}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRegistryIPRestrictionsRegistry.\n",
                 "properties": {
@@ -34270,7 +34668,7 @@
             }
         },
         "ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions": {
-            "description": "Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.\n\nUse this data source to get the list of IP restrictions associated with a public cloud project.\n\n## Example Usage\n\nTo get the list of IP restriction on a database cluster service:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst ipRestrictions = ovh.CloudProjectDatabase.getIpRestrictions({\n    serviceName: \"XXXXXX\",\n    engine: \"YYYY\",\n    clusterId: \"ZZZZ\",\n});\nexport const ips = ipRestrictions.then(ipRestrictions =\u003e ipRestrictions.ips);\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nip_restrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name=\"XXXXXX\",\n    engine=\"YYYY\",\n    cluster_id=\"ZZZZ\")\npulumi.export(\"ips\", ip_restrictions.ips)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        Engine = \"YYYY\",\n        ClusterId = \"ZZZZ\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ips\"] = ipRestrictions.Apply(getIpRestrictionsResult =\u003e getIpRestrictionsResult.Ips),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudprojectdatabase\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tipRestrictions, err := cloudprojectdatabase.GetIpRestrictions(ctx, \u0026cloudprojectdatabase.GetIpRestrictionsArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tEngine:      \"YYYY\",\n\t\t\tClusterId:   \"ZZZZ\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ips\", ipRestrictions.Ips)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;\nimport com.pulumi.ovh.CloudProjectDatabase.inputs.GetIpRestrictionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .engine(\"YYYY\")\n            .clusterId(\"ZZZZ\")\n            .build());\n\n        ctx.export(\"ips\", ipRestrictions.ips());\n    }\n}\n```\n```yaml\nvariables:\n  ipRestrictions:\n    fn::invoke:\n      function: ovh:CloudProjectDatabase:getIpRestrictions\n      arguments:\n        serviceName: XXXXXX\n        engine: YYYY\n        clusterId: ZZZZ\noutputs:\n  ips: ${ipRestrictions.ips}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "\u003e **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.\n\n\u003e **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**\n\nUse this data source to get the list of IP restrictions associated with a public cloud project.\n\n## Example Usage\n\nTo get the list of IP restriction on a database cluster service:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst ipRestrictions = ovh.CloudProjectDatabase.getIpRestrictions({\n    serviceName: \"XXXXXX\",\n    engine: \"YYYY\",\n    clusterId: \"ZZZZ\",\n});\nexport const ips = ipRestrictions.then(ipRestrictions =\u003e ipRestrictions.ips);\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nip_restrictions = ovh.CloudProjectDatabase.get_ip_restrictions(service_name=\"XXXXXX\",\n    engine=\"YYYY\",\n    cluster_id=\"ZZZZ\")\npulumi.export(\"ips\", ip_restrictions.ips)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ipRestrictions = Ovh.CloudProjectDatabase.GetIpRestrictions.Invoke(new()\n    {\n        ServiceName = \"XXXXXX\",\n        Engine = \"YYYY\",\n        ClusterId = \"ZZZZ\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"ips\"] = ipRestrictions.Apply(getIpRestrictionsResult =\u003e getIpRestrictionsResult.Ips),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudprojectdatabase\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tipRestrictions, err := cloudprojectdatabase.GetIpRestrictions(ctx, \u0026cloudprojectdatabase.GetIpRestrictionsArgs{\n\t\t\tServiceName: \"XXXXXX\",\n\t\t\tEngine:      \"YYYY\",\n\t\t\tClusterId:   \"ZZZZ\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"ips\", ipRestrictions.Ips)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.CloudProjectDatabase.CloudProjectDatabaseFunctions;\nimport com.pulumi.ovh.CloudProjectDatabase.inputs.GetIpRestrictionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var ipRestrictions = CloudProjectDatabaseFunctions.getIpRestrictions(GetIpRestrictionsArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .engine(\"YYYY\")\n            .clusterId(\"ZZZZ\")\n            .build());\n\n        ctx.export(\"ips\", ipRestrictions.ips());\n    }\n}\n```\n```yaml\nvariables:\n  ipRestrictions:\n    fn::invoke:\n      function: ovh:CloudProjectDatabase:getIpRestrictions\n      arguments:\n        serviceName: XXXXXX\n        engine: YYYY\n        clusterId: ZZZZ\noutputs:\n  ips: ${ipRestrictions.ips}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getIpRestrictions.\n",
                 "properties": {
@@ -37339,10 +37737,11 @@
                         "type": "string"
                     },
                     "ipOnMitigation": {
-                        "description": "IPv4 address\n* `permanent ` - Set on true if the IP is on permanent mitigation\n",
+                        "description": "IPv4 address\n* `permanent ` - (Deprecated) Set on true if the IP is on permanent mitigation\n",
                         "type": "string"
                     },
                     "permanent": {
+                        "deprecationMessage": "Attribute 'permanent' is deprecated and has no effect.",
                         "type": "boolean"
                     },
                     "state": {
@@ -38328,7 +38727,7 @@
             }
         },
         "ovh:Okms/getOkmsCredential:getOkmsCredential": {
-            "description": "Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nvariables:\n  kms:\n    fn::invoke:\n      function: ovh:Okms:getOkmsResource\n      arguments:\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst kms = ovh.Okms.getOkmsCredential({\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    id: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkms = ovh.Okms.get_okms_credential(okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var kms = Ovh.Okms.GetOkmsCredential.Invoke(new()\n    {\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := okms.GetOkmsCredential(ctx, \u0026okms.GetOkmsCredentialArgs{\n\t\t\tOkmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tId:     \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.OkmsFunctions;\nimport com.pulumi.ovh.Okms.inputs.GetOkmsCredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var kms = OkmsFunctions.getOkmsCredential(GetOkmsCredentialArgs.builder()\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  kms:\n    fn::invoke:\n      function: ovh:Okms:getOkmsCredential\n      arguments:\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getOkmsCredential.\n",
                 "properties": {
@@ -38355,7 +38754,7 @@
                         "type": "string"
                     },
                     "certificateType": {
-                        "description": "(String) Type of the certificate (ECDSA or RSA)\n",
+                        "description": "(String) Type of certificate key (`ECDSA` or `RSA`).\n",
                         "type": "string"
                     },
                     "createdAt": {
@@ -38612,7 +39011,7 @@
             }
         },
         "ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem": {
-            "description": "Use this data source to retrieve information about a KMS service key, in the PEM format.\n\n",
+            "description": "Use this data source to retrieve information about a KMS service key, in the PEM format.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst keyInfo = ovh.Okms.getOkmsServiceKeyPem({\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    id: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkey_info = ovh.Okms.get_okms_service_key_pem(okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var keyInfo = Ovh.Okms.GetOkmsServiceKeyPem.Invoke(new()\n    {\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/okms\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := okms.GetOkmsServiceKeyPem(ctx, \u0026okms.GetOkmsServiceKeyPemArgs{\n\t\t\tOkmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tId:     \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Okms.OkmsFunctions;\nimport com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var keyInfo = OkmsFunctions.getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs.builder()\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .id(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  keyInfo:\n    fn::invoke:\n      function: ovh:Okms:getOkmsServiceKeyPem\n      arguments:\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getOkmsServiceKeyPem.\n",
                 "properties": {
@@ -39944,7 +40343,7 @@
             }
         },
         "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": {
-            "description": "Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst bp = ovh.getDedicatedServerOrderableBandwidth({\n    serviceName: \"myserver\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nbp = ovh.get_dedicated_server_orderable_bandwidth(service_name=\"myserver\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bp = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()\n    {\n        ServiceName = \"myserver\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetDedicatedServerOrderableBandwidth(ctx, \u0026ovh.GetDedicatedServerOrderableBandwidthArgs{\n\t\t\tServiceName: \"myserver\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()\n            .serviceName(\"myserver\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  bp:\n    fn::invoke:\n      function: ovh:getDedicatedServerOrderableBandwidth\n      arguments:\n        serviceName: myserver\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst spec = ovh.getDedicatedServerOrderableBandwidth({\n    serviceName: \"myserver\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nspec = ovh.get_dedicated_server_orderable_bandwidth(service_name=\"myserver\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var spec = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()\n    {\n        ServiceName = \"myserver\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetDedicatedServerOrderableBandwidth(ctx, \u0026ovh.GetDedicatedServerOrderableBandwidthArgs{\n\t\t\tServiceName: \"myserver\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var spec = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()\n            .serviceName(\"myserver\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  spec:\n    fn::invoke:\n      function: ovh:getDedicatedServerOrderableBandwidth\n      arguments:\n        serviceName: myserver\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDedicatedServerOrderableBandwidth.\n",
                 "properties": {
@@ -39966,18 +40365,18 @@
                         "type": "string"
                     },
                     "orderable": {
-                        "description": "Wether or not additional bandwidth is orderable.\n",
+                        "description": "Whether or not additional bandwidth is orderable\n",
                         "type": "boolean"
                     },
                     "platinia": {
-                        "description": "The list of orderable platinimum bandwidth in mbps.\n",
+                        "description": "Additional orderable platinium bandwidth\n",
                         "items": {
                             "type": "integer"
                         },
                         "type": "array"
                     },
                     "premia": {
-                        "description": "The list of orderable premium bandwidth in mbps.\n",
+                        "description": "Additional orderable premium bandwidth\n",
                         "items": {
                             "type": "integer"
                         },
@@ -39987,7 +40386,7 @@
                         "type": "string"
                     },
                     "ultimates": {
-                        "description": "The list of orderable ultimate bandwidth in mbps.\n",
+                        "description": "Additional orderable ultimate bandwidth\n",
                         "items": {
                             "type": "integer"
                         },
@@ -40006,7 +40405,7 @@
             }
         },
         "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack": {
-            "description": "Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst bp = ovh.getDedicatedServerOrderableBandwidthVrack({\n    serviceName: \"myserver\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nbp = ovh.get_dedicated_server_orderable_bandwidth_vrack(service_name=\"myserver\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bp = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()\n    {\n        ServiceName = \"myserver\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetDedicatedServerOrderableBandwidthVrack(ctx, \u0026ovh.GetDedicatedServerOrderableBandwidthVrackArgs{\n\t\t\tServiceName: \"myserver\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()\n            .serviceName(\"myserver\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  bp:\n    fn::invoke:\n      function: ovh:getDedicatedServerOrderableBandwidthVrack\n      arguments:\n        serviceName: myserver\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst spec = ovh.getDedicatedServerOrderableBandwidthVrack({\n    serviceName: \"myserver\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nspec = ovh.get_dedicated_server_orderable_bandwidth_vrack(service_name=\"myserver\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var spec = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()\n    {\n        ServiceName = \"myserver\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetDedicatedServerOrderableBandwidthVrack(ctx, \u0026ovh.GetDedicatedServerOrderableBandwidthVrackArgs{\n\t\t\tServiceName: \"myserver\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var spec = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()\n            .serviceName(\"myserver\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  spec:\n    fn::invoke:\n      function: ovh:getDedicatedServerOrderableBandwidthVrack\n      arguments:\n        serviceName: myserver\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDedicatedServerOrderableBandwidthVrack.\n",
                 "properties": {
@@ -40028,14 +40427,14 @@
                         "type": "string"
                     },
                     "orderable": {
-                        "description": "Wether or not additional bandwidth is orderable.\n",
+                        "description": "Whether or not additional bandwidth is orderable\n",
                         "type": "boolean"
                     },
                     "serviceName": {
                         "type": "string"
                     },
                     "vracks": {
-                        "description": "The list of orderable vrack bandwidth in mbps.\n",
+                        "description": "Additional orderable vrack bandwidth\n",
                         "items": {
                             "type": "integer"
                         },
@@ -40046,6 +40445,112 @@
                     "orderable",
                     "serviceName",
                     "vracks",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getDomainZoneRecord:getDomainZoneRecord": {
+            "description": "Get record object properties\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst record = ovh.getDomainZoneRecord({\n    zoneName: \"\u003czone_name\u003e\",\n    id: \"\u003crecord_id\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nrecord = ovh.get_domain_zone_record(zone_name=\"\u003czone_name\u003e\",\n    id=\"\u003crecord_id\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var record = Ovh.GetDomainZoneRecord.Invoke(new()\n    {\n        ZoneName = \"\u003czone_name\u003e\",\n        Id = \"\u003crecord_id\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetDomainZoneRecord(ctx, \u0026ovh.GetDomainZoneRecordArgs{\n\t\t\tZoneName: \"\u003czone_name\u003e\",\n\t\t\tId:       \"\u003crecord_id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDomainZoneRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var record = OvhFunctions.getDomainZoneRecord(GetDomainZoneRecordArgs.builder()\n            .zoneName(\"\u003czone_name\u003e\")\n            .id(\"\u003crecord_id\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  record:\n    fn::invoke:\n      function: ovh:getDomainZoneRecord\n      arguments:\n        zoneName: \u003czone_name\u003e\n        id: \u003crecord_id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDomainZoneRecord.\n",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "description": "Record ID\n"
+                    },
+                    "zoneName": {
+                        "type": "string",
+                        "description": "Zone name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "zoneName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDomainZoneRecord.\n",
+                "properties": {
+                    "fieldType": {
+                        "description": "Field type\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "Record ID\n",
+                        "type": "number"
+                    },
+                    "subDomain": {
+                        "description": "Record subDomain\n",
+                        "type": "string"
+                    },
+                    "target": {
+                        "description": "Target of the record\n",
+                        "type": "string"
+                    },
+                    "ttl": {
+                        "description": "TTL of the record\n",
+                        "type": "number"
+                    },
+                    "zone": {
+                        "description": "Resource record zone\n",
+                        "type": "string"
+                    },
+                    "zoneName": {
+                        "description": "Zone name\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "fieldType",
+                    "id",
+                    "subDomain",
+                    "target",
+                    "ttl",
+                    "zone",
+                    "zoneName"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getDomainZoneRecords:getDomainZoneRecords": {
+            "description": "List record\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst records = ovh.getDomainZoneRecords({\n    zoneName: \"\u003czone_name\u003e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nrecords = ovh.get_domain_zone_records(zone_name=\"\u003czone_name\u003e\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var records = Ovh.GetDomainZoneRecords.Invoke(new()\n    {\n        ZoneName = \"\u003czone_name\u003e\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetDomainZoneRecords(ctx, \u0026ovh.GetDomainZoneRecordsArgs{\n\t\t\tZoneName: \"\u003czone_name\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var records = OvhFunctions.getDomainZoneRecords(GetDomainZoneRecordsArgs.builder()\n            .zoneName(\"\u003czone_name\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  records:\n    fn::invoke:\n      function: ovh:getDomainZoneRecords\n      arguments:\n        zoneName: \u003czone_name\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDomainZoneRecords.\n",
+                "properties": {
+                    "zoneName": {
+                        "type": "string",
+                        "description": "Zone name\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zoneName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDomainZoneRecords.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "ids": {
+                        "description": "IDs of the records in the zone\n",
+                        "items": {
+                            "type": "number"
+                        },
+                        "type": "array"
+                    },
+                    "zoneName": {
+                        "description": "Zone name\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "ids",
+                    "zoneName",
                     "id"
                 ],
                 "type": "object"
@@ -40301,6 +40806,72 @@
                     "openingYear",
                     "specificType",
                     "type",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getOkmsSecret:getOkmsSecret": {
+            "description": "## Example Usage\n\nGet the latest secret version (metadata only):\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst latest = ovh.getOkmsSecret({\n    okmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    path: \"app/api_credentials\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nlatest = ovh.get_okms_secret(okms_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    path=\"app/api_credentials\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var latest = Ovh.GetOkmsSecret.Invoke(new()\n    {\n        OkmsId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Path = \"app/api_credentials\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetOkmsSecret(ctx, \u0026ovh.GetOkmsSecretArgs{\n\t\t\tOkmsId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n\t\t\tPath:   \"app/api_credentials\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetOkmsSecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var latest = OvhFunctions.getOkmsSecret(GetOkmsSecretArgs.builder()\n            .okmsId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .path(\"app/api_credentials\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  latest:\n    fn::invoke:\n      function: ovh:getOkmsSecret\n      arguments:\n        okmsId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n        path: app/api_credentials\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet the latest secret version including its data:\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOkmsSecret.\n",
+                "properties": {
+                    "includeData": {
+                        "type": "boolean"
+                    },
+                    "okmsId": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "number"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "okmsId",
+                    "path"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOkmsSecret.\n",
+                "properties": {
+                    "data": {
+                        "secret": true,
+                        "type": "string"
+                    },
+                    "iam": {
+                        "$ref": "#/types/ovh:index/getOkmsSecretIam:getOkmsSecretIam"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "includeData": {
+                        "type": "boolean"
+                    },
+                    "metadata": {
+                        "$ref": "#/types/ovh:index/getOkmsSecretMetadata:getOkmsSecretMetadata"
+                    },
+                    "okmsId": {
+                        "type": "string"
+                    },
+                    "path": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "data",
+                    "iam",
+                    "metadata",
+                    "okmsId",
+                    "path",
+                    "version",
                     "id"
                 ],
                 "type": "object"

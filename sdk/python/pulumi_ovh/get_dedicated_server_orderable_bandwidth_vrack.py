@@ -52,7 +52,7 @@ class GetDedicatedServerOrderableBandwidthVrackResult:
     @pulumi.getter
     def orderable(self) -> _builtins.bool:
         """
-        Wether or not additional bandwidth is orderable.
+        Whether or not additional bandwidth is orderable
         """
         return pulumi.get(self, "orderable")
 
@@ -65,7 +65,7 @@ class GetDedicatedServerOrderableBandwidthVrackResult:
     @pulumi.getter
     def vracks(self) -> Sequence[_builtins.int]:
         """
-        The list of orderable vrack bandwidth in mbps.
+        Additional orderable vrack bandwidth
         """
         return pulumi.get(self, "vracks")
 
@@ -85,7 +85,7 @@ class AwaitableGetDedicatedServerOrderableBandwidthVrackResult(GetDedicatedServe
 def get_dedicated_server_orderable_bandwidth_vrack(service_name: Optional[_builtins.str] = None,
                                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDedicatedServerOrderableBandwidthVrackResult:
     """
-    Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+    Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
 
     ## Example Usage
 
@@ -93,7 +93,7 @@ def get_dedicated_server_orderable_bandwidth_vrack(service_name: Optional[_built
     import pulumi
     import pulumi_ovh as ovh
 
-    bp = ovh.get_dedicated_server_orderable_bandwidth_vrack(service_name="myserver")
+    spec = ovh.get_dedicated_server_orderable_bandwidth_vrack(service_name="myserver")
     ```
 
 
@@ -112,7 +112,7 @@ def get_dedicated_server_orderable_bandwidth_vrack(service_name: Optional[_built
 def get_dedicated_server_orderable_bandwidth_vrack_output(service_name: Optional[pulumi.Input[_builtins.str]] = None,
                                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedServerOrderableBandwidthVrackResult]:
     """
-    Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+    Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
 
     ## Example Usage
 
@@ -120,7 +120,7 @@ def get_dedicated_server_orderable_bandwidth_vrack_output(service_name: Optional
     import pulumi
     import pulumi_ovh as ovh
 
-    bp = ovh.get_dedicated_server_orderable_bandwidth_vrack(service_name="myserver")
+    spec = ovh.get_dedicated_server_orderable_bandwidth_vrack(service_name="myserver")
     ```
 
 

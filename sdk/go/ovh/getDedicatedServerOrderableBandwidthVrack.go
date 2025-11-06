@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+// Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
 //
 // ## Example Usage
 //
@@ -58,10 +58,10 @@ type GetDedicatedServerOrderableBandwidthVrackArgs struct {
 type GetDedicatedServerOrderableBandwidthVrackResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Wether or not additional bandwidth is orderable.
+	// Whether or not additional bandwidth is orderable
 	Orderable   bool   `pulumi:"orderable"`
 	ServiceName string `pulumi:"serviceName"`
-	// The list of orderable vrack bandwidth in mbps.
+	// Additional orderable vrack bandwidth
 	Vracks []int `pulumi:"vracks"`
 }
 
@@ -104,7 +104,7 @@ func (o GetDedicatedServerOrderableBandwidthVrackResultOutput) Id() pulumi.Strin
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthVrackResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Wether or not additional bandwidth is orderable.
+// Whether or not additional bandwidth is orderable
 func (o GetDedicatedServerOrderableBandwidthVrackResultOutput) Orderable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthVrackResult) bool { return v.Orderable }).(pulumi.BoolOutput)
 }
@@ -113,7 +113,7 @@ func (o GetDedicatedServerOrderableBandwidthVrackResultOutput) ServiceName() pul
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthVrackResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The list of orderable vrack bandwidth in mbps.
+// Additional orderable vrack bandwidth
 func (o GetDedicatedServerOrderableBandwidthVrackResultOutput) Vracks() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthVrackResult) []int { return v.Vracks }).(pulumi.IntArrayOutput)
 }

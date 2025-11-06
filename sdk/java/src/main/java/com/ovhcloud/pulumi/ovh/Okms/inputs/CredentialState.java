@@ -34,14 +34,14 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * (String) Type of certificate key (`ECDSA` or `RSA`).
      * 
      */
     @Import(name="certificateType")
     private @Nullable Output<String> certificateType;
 
     /**
-     * @return (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * @return (String) Type of certificate key (`ECDSA` or `RSA`).
      * 
      */
     public Optional<Output<String>> certificateType() {
@@ -271,7 +271,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateType (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+         * @param certificateType (String) Type of certificate key (`ECDSA` or `RSA`).
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class CredentialState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateType (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+         * @param certificateType (String) Type of certificate key (`ECDSA` or `RSA`).
          * 
          * @return builder
          * 

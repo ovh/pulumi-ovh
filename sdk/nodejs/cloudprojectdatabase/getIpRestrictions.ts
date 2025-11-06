@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Deprecated: Use ipRestrictions field in cloudProjectDatabase datasource instead.
+ * > **DEPRECATED** Use `ipRestrictions` field in `ovh.CloudProject.Database` resource instead.
+ *
+ * > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
  *
  * Use this data source to get the list of IP restrictions associated with a public cloud project.
  *
@@ -78,7 +80,9 @@ export interface GetIpRestrictionsResult {
     readonly serviceName: string;
 }
 /**
- * Deprecated: Use ipRestrictions field in cloudProjectDatabase datasource instead.
+ * > **DEPRECATED** Use `ipRestrictions` field in `ovh.CloudProject.Database` resource instead.
+ *
+ * > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
  *
  * Use this data source to get the list of IP restrictions associated with a public cloud project.
  *

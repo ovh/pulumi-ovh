@@ -1756,6 +1756,200 @@ func (o GetInstallationTemplateProjectUsageArrayOutput) Index(i pulumi.IntInput)
 	}).(GetInstallationTemplateProjectUsageOutput)
 }
 
+type GetOkmsSecretIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetOkmsSecretIamInput is an input type that accepts GetOkmsSecretIamArgs and GetOkmsSecretIamOutput values.
+// You can construct a concrete instance of `GetOkmsSecretIamInput` via:
+//
+//	GetOkmsSecretIamArgs{...}
+type GetOkmsSecretIamInput interface {
+	pulumi.Input
+
+	ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput
+	ToGetOkmsSecretIamOutputWithContext(context.Context) GetOkmsSecretIamOutput
+}
+
+type GetOkmsSecretIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetOkmsSecretIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretIam)(nil)).Elem()
+}
+
+func (i GetOkmsSecretIamArgs) ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput {
+	return i.ToGetOkmsSecretIamOutputWithContext(context.Background())
+}
+
+func (i GetOkmsSecretIamArgs) ToGetOkmsSecretIamOutputWithContext(ctx context.Context) GetOkmsSecretIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsSecretIamOutput)
+}
+
+type GetOkmsSecretIamOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsSecretIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretIam)(nil)).Elem()
+}
+
+func (o GetOkmsSecretIamOutput) ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput {
+	return o
+}
+
+func (o GetOkmsSecretIamOutput) ToGetOkmsSecretIamOutputWithContext(ctx context.Context) GetOkmsSecretIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetOkmsSecretIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetOkmsSecretIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetOkmsSecretIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetOkmsSecretIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetOkmsSecretMetadata struct {
+	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+	CasRequired bool `pulumi:"casRequired"`
+	// Time of creation of the secret
+	CreatedAt string `pulumi:"createdAt"`
+	// The secret version
+	CurrentVersion float64 `pulumi:"currentVersion"`
+	// Custom metadata
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
+	// Time duration before a version is deactivated
+	DeactivateVersionAfter string `pulumi:"deactivateVersionAfter"`
+	// The number of versions to keep (10 default)
+	MaxVersions float64 `pulumi:"maxVersions"`
+	// The secret oldest version
+	OldestVersion float64 `pulumi:"oldestVersion"`
+	// Time of the last update of the secret
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetOkmsSecretMetadataInput is an input type that accepts GetOkmsSecretMetadataArgs and GetOkmsSecretMetadataOutput values.
+// You can construct a concrete instance of `GetOkmsSecretMetadataInput` via:
+//
+//	GetOkmsSecretMetadataArgs{...}
+type GetOkmsSecretMetadataInput interface {
+	pulumi.Input
+
+	ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput
+	ToGetOkmsSecretMetadataOutputWithContext(context.Context) GetOkmsSecretMetadataOutput
+}
+
+type GetOkmsSecretMetadataArgs struct {
+	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+	CasRequired pulumi.BoolInput `pulumi:"casRequired"`
+	// Time of creation of the secret
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The secret version
+	CurrentVersion pulumi.Float64Input `pulumi:"currentVersion"`
+	// Custom metadata
+	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
+	// Time duration before a version is deactivated
+	DeactivateVersionAfter pulumi.StringInput `pulumi:"deactivateVersionAfter"`
+	// The number of versions to keep (10 default)
+	MaxVersions pulumi.Float64Input `pulumi:"maxVersions"`
+	// The secret oldest version
+	OldestVersion pulumi.Float64Input `pulumi:"oldestVersion"`
+	// Time of the last update of the secret
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetOkmsSecretMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretMetadata)(nil)).Elem()
+}
+
+func (i GetOkmsSecretMetadataArgs) ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput {
+	return i.ToGetOkmsSecretMetadataOutputWithContext(context.Background())
+}
+
+func (i GetOkmsSecretMetadataArgs) ToGetOkmsSecretMetadataOutputWithContext(ctx context.Context) GetOkmsSecretMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsSecretMetadataOutput)
+}
+
+type GetOkmsSecretMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsSecretMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretMetadata)(nil)).Elem()
+}
+
+func (o GetOkmsSecretMetadataOutput) ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput {
+	return o
+}
+
+func (o GetOkmsSecretMetadataOutput) ToGetOkmsSecretMetadataOutputWithContext(ctx context.Context) GetOkmsSecretMetadataOutput {
+	return o
+}
+
+// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+func (o GetOkmsSecretMetadataOutput) CasRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) bool { return v.CasRequired }).(pulumi.BoolOutput)
+}
+
+// Time of creation of the secret
+func (o GetOkmsSecretMetadataOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The secret version
+func (o GetOkmsSecretMetadataOutput) CurrentVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.CurrentVersion }).(pulumi.Float64Output)
+}
+
+// Custom metadata
+func (o GetOkmsSecretMetadataOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
+}
+
+// Time duration before a version is deactivated
+func (o GetOkmsSecretMetadataOutput) DeactivateVersionAfter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.DeactivateVersionAfter }).(pulumi.StringOutput)
+}
+
+// The number of versions to keep (10 default)
+func (o GetOkmsSecretMetadataOutput) MaxVersions() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.MaxVersions }).(pulumi.Float64Output)
+}
+
+// The secret oldest version
+func (o GetOkmsSecretMetadataOutput) OldestVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.OldestVersion }).(pulumi.Float64Output)
+}
+
+// Time of the last update of the secret
+func (o GetOkmsSecretMetadataOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
 type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig struct {
 	// BGP AS number
 	BgpNeighborArea float64 `pulumi:"bgpNeighborArea"`
@@ -2700,6 +2894,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOArrayInput)(nil)).Elem(), GetInstallationTemplateProjectOArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageArrayInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretIamInput)(nil)).Elem(), GetOkmsSecretIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretMetadataInput)(nil)).Elem(), GetOkmsSecretMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{})
@@ -2743,6 +2939,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectOArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetOkmsSecretIamOutput{})
+	pulumi.RegisterOutputType(GetOkmsSecretMetadataOutput{})
 	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput{})
 	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput{})

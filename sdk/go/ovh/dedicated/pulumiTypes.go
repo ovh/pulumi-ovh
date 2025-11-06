@@ -14,6 +14,8 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ServerCustomizations struct {
+	// Config Drive MetaData
+	ConfigDriveMetadata map[string]string `pulumi:"configDriveMetadata"`
 	// Config Drive UserData
 	ConfigDriveUserData *string `pulumi:"configDriveUserData"`
 	// Path of the EFI bootloader
@@ -52,6 +54,8 @@ type ServerCustomizationsInput interface {
 }
 
 type ServerCustomizationsArgs struct {
+	// Config Drive MetaData
+	ConfigDriveMetadata pulumi.StringMapInput `pulumi:"configDriveMetadata"`
 	// Config Drive UserData
 	ConfigDriveUserData pulumi.StringPtrInput `pulumi:"configDriveUserData"`
 	// Path of the EFI bootloader
@@ -155,6 +159,11 @@ func (o ServerCustomizationsOutput) ToServerCustomizationsPtrOutputWithContext(c
 	}).(ServerCustomizationsPtrOutput)
 }
 
+// Config Drive MetaData
+func (o ServerCustomizationsOutput) ConfigDriveMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServerCustomizations) map[string]string { return v.ConfigDriveMetadata }).(pulumi.StringMapOutput)
+}
+
 // Config Drive UserData
 func (o ServerCustomizationsOutput) ConfigDriveUserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerCustomizations) *string { return v.ConfigDriveUserData }).(pulumi.StringPtrOutput)
@@ -237,6 +246,16 @@ func (o ServerCustomizationsPtrOutput) Elem() ServerCustomizationsOutput {
 		var ret ServerCustomizations
 		return ret
 	}).(ServerCustomizationsOutput)
+}
+
+// Config Drive MetaData
+func (o ServerCustomizationsPtrOutput) ConfigDriveMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerCustomizations) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigDriveMetadata
+	}).(pulumi.StringMapOutput)
 }
 
 // Config Drive UserData
@@ -1440,6 +1459,8 @@ func (o ServerPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) Serve
 }
 
 type ServerReinstallTaskCustomizations struct {
+	// Config Drive MetaData
+	ConfigDriveMetadata map[string]string `pulumi:"configDriveMetadata"`
 	// Config Drive UserData
 	ConfigDriveUserData *string `pulumi:"configDriveUserData"`
 	// EFI bootloader path
@@ -1478,6 +1499,8 @@ type ServerReinstallTaskCustomizationsInput interface {
 }
 
 type ServerReinstallTaskCustomizationsArgs struct {
+	// Config Drive MetaData
+	ConfigDriveMetadata pulumi.StringMapInput `pulumi:"configDriveMetadata"`
 	// Config Drive UserData
 	ConfigDriveUserData pulumi.StringPtrInput `pulumi:"configDriveUserData"`
 	// EFI bootloader path
@@ -1581,6 +1604,11 @@ func (o ServerReinstallTaskCustomizationsOutput) ToServerReinstallTaskCustomizat
 	}).(ServerReinstallTaskCustomizationsPtrOutput)
 }
 
+// Config Drive MetaData
+func (o ServerReinstallTaskCustomizationsOutput) ConfigDriveMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServerReinstallTaskCustomizations) map[string]string { return v.ConfigDriveMetadata }).(pulumi.StringMapOutput)
+}
+
 // Config Drive UserData
 func (o ServerReinstallTaskCustomizationsOutput) ConfigDriveUserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerReinstallTaskCustomizations) *string { return v.ConfigDriveUserData }).(pulumi.StringPtrOutput)
@@ -1663,6 +1691,16 @@ func (o ServerReinstallTaskCustomizationsPtrOutput) Elem() ServerReinstallTaskCu
 		var ret ServerReinstallTaskCustomizations
 		return ret
 	}).(ServerReinstallTaskCustomizationsOutput)
+}
+
+// Config Drive MetaData
+func (o ServerReinstallTaskCustomizationsPtrOutput) ConfigDriveMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServerReinstallTaskCustomizations) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigDriveMetadata
+	}).(pulumi.StringMapOutput)
 }
 
 // Config Drive UserData

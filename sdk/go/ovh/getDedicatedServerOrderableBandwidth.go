@@ -58,14 +58,14 @@ type GetDedicatedServerOrderableBandwidthArgs struct {
 type GetDedicatedServerOrderableBandwidthResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Wether or not additional bandwidth is orderable.
+	// Whether or not additional bandwidth is orderable
 	Orderable bool `pulumi:"orderable"`
-	// The list of orderable platinimum bandwidth in mbps.
+	// Additional orderable platinium bandwidth
 	Platinia []int `pulumi:"platinia"`
-	// The list of orderable premium bandwidth in mbps.
+	// Additional orderable premium bandwidth
 	Premia      []int  `pulumi:"premia"`
 	ServiceName string `pulumi:"serviceName"`
-	// The list of orderable ultimate bandwidth in mbps.
+	// Additional orderable ultimate bandwidth
 	Ultimates []int `pulumi:"ultimates"`
 }
 
@@ -108,17 +108,17 @@ func (o GetDedicatedServerOrderableBandwidthResultOutput) Id() pulumi.StringOutp
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Wether or not additional bandwidth is orderable.
+// Whether or not additional bandwidth is orderable
 func (o GetDedicatedServerOrderableBandwidthResultOutput) Orderable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthResult) bool { return v.Orderable }).(pulumi.BoolOutput)
 }
 
-// The list of orderable platinimum bandwidth in mbps.
+// Additional orderable platinium bandwidth
 func (o GetDedicatedServerOrderableBandwidthResultOutput) Platinia() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthResult) []int { return v.Platinia }).(pulumi.IntArrayOutput)
 }
 
-// The list of orderable premium bandwidth in mbps.
+// Additional orderable premium bandwidth
 func (o GetDedicatedServerOrderableBandwidthResultOutput) Premia() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthResult) []int { return v.Premia }).(pulumi.IntArrayOutput)
 }
@@ -127,7 +127,7 @@ func (o GetDedicatedServerOrderableBandwidthResultOutput) ServiceName() pulumi.S
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The list of orderable ultimate bandwidth in mbps.
+// Additional orderable ultimate bandwidth
 func (o GetDedicatedServerOrderableBandwidthResultOutput) Ultimates() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetDedicatedServerOrderableBandwidthResult) []int { return v.Ultimates }).(pulumi.IntArrayOutput)
 }

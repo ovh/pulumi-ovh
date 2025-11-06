@@ -12,7 +12,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     public static class GetIpRestrictions
     {
         /// <summary>
-        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+        /// &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+        /// 
+        /// &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
         /// 
         /// Use this data source to get the list of IP restrictions associated with a public cloud project.
         /// 
@@ -46,7 +48,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+        /// &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+        /// 
+        /// &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
         /// 
         /// Use this data source to get the list of IP restrictions associated with a public cloud project.
         /// 
@@ -80,7 +84,9 @@ namespace Pulumi.Ovh.CloudProjectDatabase
             => global::Pulumi.Deployment.Instance.Invoke<GetIpRestrictionsResult>("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", args ?? new GetIpRestrictionsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+        /// &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+        /// 
+        /// &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
         /// 
         /// Use this data source to get the list of IP restrictions associated with a public cloud project.
         /// 

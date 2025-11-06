@@ -20,9 +20,12 @@ from .get_cloud_project_ssh_keys import *
 from .get_dbaas_logs_output_graylog_stream_url import *
 from .get_dedicated_server_orderable_bandwidth import *
 from .get_dedicated_server_orderable_bandwidth_vrack import *
+from .get_domain_zone_record import *
+from .get_domain_zone_records import *
 from .get_installation_template import *
 from .get_installation_templates import *
 from .get_location import *
+from .get_okms_secret import *
 from .get_ovhcloud_connect_config_pop_datacenter_extras import *
 from .get_ovhcloud_connect_config_pop_datacenters import *
 from .get_ovhcloud_connect_config_pops import *
@@ -33,6 +36,7 @@ from .get_storage_efs import *
 from .get_storage_efs_share_access_path import *
 from .get_storage_efs_share_access_paths import *
 from .get_vrack_networks import *
+from .iam_resource_tags import *
 from .ovhcloud_connect_pop_config import *
 from .ovhcloud_connect_pop_datacenter_config import *
 from .ovhcloud_connect_pop_datacenter_extra_config import *
@@ -1013,6 +1017,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Okms/secret",
+  "fqn": "pulumi_ovh.okms",
+  "classes": {
+   "ovh:Okms/secret:Secret": "Secret"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Okms/serviceKey",
   "fqn": "pulumi_ovh.okms",
   "classes": {
@@ -1161,6 +1173,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": "DomainZoneDynhostRecord"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/iamResourceTags",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/iamResourceTags:IamResourceTags": "IamResourceTags"
   }
  },
  {

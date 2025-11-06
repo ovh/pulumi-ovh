@@ -13,18 +13,75 @@ namespace Pulumi.Ovh.Okms
     {
         /// <summary>
         /// Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kms = Ovh.Okms.GetOkmsCredential.Invoke(new()
+        ///     {
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOkmsCredentialResult> InvokeAsync(GetOkmsCredentialArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOkmsCredentialResult>("ovh:Okms/getOkmsCredential:getOkmsCredential", args ?? new GetOkmsCredentialArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kms = Ovh.Okms.GetOkmsCredential.Invoke(new()
+        ///     {
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOkmsCredentialResult> Invoke(GetOkmsCredentialInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsCredentialResult>("ovh:Okms/getOkmsCredential:getOkmsCredential", args ?? new GetOkmsCredentialInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var kms = Ovh.Okms.GetOkmsCredential.Invoke(new()
+        ///     {
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOkmsCredentialResult> Invoke(GetOkmsCredentialInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsCredentialResult>("ovh:Okms/getOkmsCredential:getOkmsCredential", args ?? new GetOkmsCredentialInvokeArgs(), options.WithDefaults());
@@ -80,7 +137,7 @@ namespace Pulumi.Ovh.Okms
         /// </summary>
         public readonly string CertificatePem;
         /// <summary>
-        /// (String) Type of the certificate (ECDSA or RSA)
+        /// (String) Type of certificate key (`ECDSA` or `RSA`).
         /// </summary>
         public readonly string CertificateType;
         /// <summary>

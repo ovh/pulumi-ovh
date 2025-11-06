@@ -56,9 +56,12 @@ export interface GetMitigationResult {
     readonly ip: string;
     /**
      * IPv4 address
-     * * `permanent ` - Set on true if the IP is on permanent mitigation
+     * * `permanent ` - (Deprecated) Set on true if the IP is on permanent mitigation
      */
     readonly ipOnMitigation: string;
+    /**
+     * @deprecated Attribute 'permanent' is deprecated and has no effect.
+     */
     readonly permanent: boolean;
     /**
      * Current state of the IP on mitigation

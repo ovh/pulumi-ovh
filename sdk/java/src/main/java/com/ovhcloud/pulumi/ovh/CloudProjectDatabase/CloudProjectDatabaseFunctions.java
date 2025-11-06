@@ -2572,7 +2572,9 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProjectDatabase/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+     * 
+     * &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
      * 
      * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
@@ -2621,7 +2623,9 @@ public final class CloudProjectDatabaseFunctions {
         return getIpRestrictions(args, InvokeOptions.Empty);
     }
     /**
-     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+     * 
+     * &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
      * 
      * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
@@ -2670,7 +2674,9 @@ public final class CloudProjectDatabaseFunctions {
         return getIpRestrictionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+     * 
+     * &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
      * 
      * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
@@ -2719,7 +2725,9 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", TypeShape.of(GetIpRestrictionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+     * 
+     * &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
      * 
      * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 
@@ -2768,7 +2776,9 @@ public final class CloudProjectDatabaseFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions", TypeShape.of(GetIpRestrictionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+     * &gt; **DEPRECATED** Use `ip_restrictions` field in `ovh.CloudProject.Database` resource instead.
+     * 
+     * &gt; **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
      * 
      * Use this data source to get the list of IP restrictions associated with a public cloud project.
      * 

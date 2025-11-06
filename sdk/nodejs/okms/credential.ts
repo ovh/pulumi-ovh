@@ -40,7 +40,7 @@ export class Credential extends pulumi.CustomResource {
      */
     public /*out*/ readonly certificatePem!: pulumi.Output<string>;
     /**
-     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * (String) Type of certificate key (`ECDSA` or `RSA`).
      */
     public readonly certificateType!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export interface CredentialState {
      */
     certificatePem?: pulumi.Input<string>;
     /**
-     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * (String) Type of certificate key (`ECDSA` or `RSA`).
      */
     certificateType?: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface CredentialState {
  */
 export interface CredentialArgs {
     /**
-     * (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+     * (String) Type of certificate key (`ECDSA` or `RSA`).
      */
     certificateType?: pulumi.Input<string>;
     /**

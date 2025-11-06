@@ -8,6 +8,18 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to retrieve information about a KMS service key, in the PEM format.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const keyInfo = ovh.Okms.getOkmsServiceKeyPem({
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ * });
+ * ```
  */
 export function getOkmsServiceKeyPem(args: GetOkmsServiceKeyPemArgs, opts?: pulumi.InvokeOptions): Promise<GetOkmsServiceKeyPemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -43,6 +55,18 @@ export interface GetOkmsServiceKeyPemResult {
 }
 /**
  * Use this data source to retrieve information about a KMS service key, in the PEM format.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const keyInfo = ovh.Okms.getOkmsServiceKeyPem({
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ * });
+ * ```
  */
 export function getOkmsServiceKeyPemOutput(args: GetOkmsServiceKeyPemOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsServiceKeyPemResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

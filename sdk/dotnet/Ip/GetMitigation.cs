@@ -143,7 +143,7 @@ namespace Pulumi.Ovh.Ip
         public readonly string Ip;
         /// <summary>
         /// IPv4 address
-        /// * `permanent ` - Set on true if the IP is on permanent mitigation
+        /// * `permanent ` - (Deprecated) Set on true if the IP is on permanent mitigation
         /// </summary>
         public readonly string IpOnMitigation;
         public readonly bool Permanent;

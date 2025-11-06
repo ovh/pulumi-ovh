@@ -13,18 +13,87 @@ namespace Pulumi.Ovh.CloudProject
     {
         /// <summary>
         /// Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mgtIprestrictionsData = Ovh.CloudProject.GetContainerRegistryIPRestrictionsManagement.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myIpRestrictions"] = mgtIprestrictionsData.Apply(getContainerRegistryIPRestrictionsManagementResult =&gt; getContainerRegistryIPRestrictionsManagementResult.IpRestrictions),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetContainerRegistryIPRestrictionsManagementResult> InvokeAsync(GetContainerRegistryIPRestrictionsManagementArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryIPRestrictionsManagementResult>("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", args ?? new GetContainerRegistryIPRestrictionsManagementArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mgtIprestrictionsData = Ovh.CloudProject.GetContainerRegistryIPRestrictionsManagement.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myIpRestrictions"] = mgtIprestrictionsData.Apply(getContainerRegistryIPRestrictionsManagementResult =&gt; getContainerRegistryIPRestrictionsManagementResult.IpRestrictions),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetContainerRegistryIPRestrictionsManagementResult> Invoke(GetContainerRegistryIPRestrictionsManagementInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryIPRestrictionsManagementResult>("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", args ?? new GetContainerRegistryIPRestrictionsManagementInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mgtIprestrictionsData = Ovh.CloudProject.GetContainerRegistryIPRestrictionsManagement.Invoke(new()
+        ///     {
+        ///         ServiceName = "XXXXXX",
+        ///         RegistryId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["myIpRestrictions"] = mgtIprestrictionsData.Apply(getContainerRegistryIPRestrictionsManagementResult =&gt; getContainerRegistryIPRestrictionsManagementResult.IpRestrictions),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetContainerRegistryIPRestrictionsManagementResult> Invoke(GetContainerRegistryIPRestrictionsManagementInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryIPRestrictionsManagementResult>("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", args ?? new GetContainerRegistryIPRestrictionsManagementInvokeArgs(), options.WithDefaults());

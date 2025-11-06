@@ -17,6 +17,21 @@ public final class ServerCustomizationsArgs extends com.pulumi.resources.Resourc
     public static final ServerCustomizationsArgs Empty = new ServerCustomizationsArgs();
 
     /**
+     * Config Drive MetaData
+     * 
+     */
+    @Import(name="configDriveMetadata")
+    private @Nullable Output<Map<String,String>> configDriveMetadata;
+
+    /**
+     * @return Config Drive MetaData
+     * 
+     */
+    public Optional<Output<Map<String,String>>> configDriveMetadata() {
+        return Optional.ofNullable(this.configDriveMetadata);
+    }
+
+    /**
      * Config Drive UserData
      * 
      */
@@ -199,6 +214,7 @@ public final class ServerCustomizationsArgs extends com.pulumi.resources.Resourc
     private ServerCustomizationsArgs() {}
 
     private ServerCustomizationsArgs(ServerCustomizationsArgs $) {
+        this.configDriveMetadata = $.configDriveMetadata;
         this.configDriveUserData = $.configDriveUserData;
         this.efiBootloaderPath = $.efiBootloaderPath;
         this.hostname = $.hostname;
@@ -229,6 +245,27 @@ public final class ServerCustomizationsArgs extends com.pulumi.resources.Resourc
 
         public Builder(ServerCustomizationsArgs defaults) {
             $ = new ServerCustomizationsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param configDriveMetadata Config Drive MetaData
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configDriveMetadata(@Nullable Output<Map<String,String>> configDriveMetadata) {
+            $.configDriveMetadata = configDriveMetadata;
+            return this;
+        }
+
+        /**
+         * @param configDriveMetadata Config Drive MetaData
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configDriveMetadata(Map<String,String> configDriveMetadata) {
+            return configDriveMetadata(Output.of(configDriveMetadata));
         }
 
         /**

@@ -12,6 +12,33 @@ import (
 )
 
 // Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/okms"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := okms.GetOkmsCredential(ctx, &okms.GetOkmsCredentialArgs{
+//				OkmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+//				Id:     "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetOkmsCredential(ctx *pulumi.Context, args *GetOkmsCredentialArgs, opts ...pulumi.InvokeOption) (*GetOkmsCredentialResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOkmsCredentialResult
@@ -34,7 +61,7 @@ type GetOkmsCredentialArgs struct {
 type GetOkmsCredentialResult struct {
 	// (String) PEM encoded certificate of the credential
 	CertificatePem string `pulumi:"certificatePem"`
-	// (String) Type of the certificate (ECDSA or RSA)
+	// (String) Type of certificate key (`ECDSA` or `RSA`).
 	CertificateType string `pulumi:"certificateType"`
 	// (String) Creation time of the credential
 	CreatedAt string `pulumi:"createdAt"`
@@ -95,7 +122,7 @@ func (o GetOkmsCredentialResultOutput) CertificatePem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.CertificatePem }).(pulumi.StringOutput)
 }
 
-// (String) Type of the certificate (ECDSA or RSA)
+// (String) Type of certificate key (`ECDSA` or `RSA`).
 func (o GetOkmsCredentialResultOutput) CertificateType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOkmsCredentialResult) string { return v.CertificateType }).(pulumi.StringOutput)
 }

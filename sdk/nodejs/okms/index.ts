@@ -40,6 +40,11 @@ export type Okms = import("./okms").Okms;
 export const Okms: typeof import("./okms").Okms = null as any;
 utilities.lazyLoad(exports, ["Okms"], () => require("./okms"));
 
+export { SecretArgs, SecretState } from "./secret";
+export type Secret = import("./secret").Secret;
+export const Secret: typeof import("./secret").Secret = null as any;
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+
 export { ServiceKeyArgs, ServiceKeyState } from "./serviceKey";
 export type ServiceKey = import("./serviceKey").ServiceKey;
 export const ServiceKey: typeof import("./serviceKey").ServiceKey = null as any;
@@ -59,6 +64,8 @@ const _module = {
                 return new Credential(name, <any>undefined, { urn })
             case "ovh:Okms/okms:Okms":
                 return new Okms(name, <any>undefined, { urn })
+            case "ovh:Okms/secret:Secret":
+                return new Secret(name, <any>undefined, { urn })
             case "ovh:Okms/serviceKey:ServiceKey":
                 return new ServiceKey(name, <any>undefined, { urn })
             case "ovh:Okms/serviceKeyJWK:ServiceKeyJWK":
@@ -70,5 +77,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("ovh", "Okms/credential", _module)
 pulumi.runtime.registerResourceModule("ovh", "Okms/okms", _module)
+pulumi.runtime.registerResourceModule("ovh", "Okms/secret", _module)
 pulumi.runtime.registerResourceModule("ovh", "Okms/serviceKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "Okms/serviceKeyJWK", _module)

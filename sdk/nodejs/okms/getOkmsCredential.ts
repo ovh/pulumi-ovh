@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const kms = ovh.Okms.getOkmsCredential({
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ * });
+ * ```
  */
 export function getOkmsCredential(args: GetOkmsCredentialArgs, opts?: pulumi.InvokeOptions): Promise<GetOkmsCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -38,7 +50,7 @@ export interface GetOkmsCredentialResult {
      */
     readonly certificatePem: string;
     /**
-     * (String) Type of the certificate (ECDSA or RSA)
+     * (String) Type of certificate key (`ECDSA` or `RSA`).
      */
     readonly certificateType: string;
     /**
@@ -74,6 +86,18 @@ export interface GetOkmsCredentialResult {
 }
 /**
  * Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const kms = ovh.Okms.getOkmsCredential({
+ *     okmsId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *     id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ * });
+ * ```
  */
 export function getOkmsCredentialOutput(args: GetOkmsCredentialOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOkmsCredentialResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

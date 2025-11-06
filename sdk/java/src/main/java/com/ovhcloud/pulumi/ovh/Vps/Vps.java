@@ -94,14 +94,14 @@ public class Vps extends com.pulumi.resources.CustomResource {
         return this.iam;
     }
     /**
-     * Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+     * Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     /**
-     * @return Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+     * @return Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
      * 
      */
     public Output<Optional<String>> imageId() {

@@ -152,6 +152,8 @@ export class Server extends pulumi.CustomResource {
     public /*out*/ readonly professionalUse!: pulumi.Output<boolean>;
     /**
      * Arbitrary properties to pass to cloud-init's config drive datasource
+     *
+     * @deprecated Attribute 'properties' is deprecated and has no effect
      */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -397,6 +399,8 @@ export interface ServerState {
     professionalUse?: pulumi.Input<boolean>;
     /**
      * Arbitrary properties to pass to cloud-init's config drive datasource
+     *
+     * @deprecated Attribute 'properties' is deprecated and has no effect
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -505,6 +509,8 @@ export interface ServerArgs {
     preventInstallOnImport?: pulumi.Input<boolean>;
     /**
      * Arbitrary properties to pass to cloud-init's config drive datasource
+     *
+     * @deprecated Attribute 'properties' is deprecated and has no effect
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

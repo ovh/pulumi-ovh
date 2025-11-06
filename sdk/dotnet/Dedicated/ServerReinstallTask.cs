@@ -57,7 +57,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> Os { get; private set; } = null!;
 
         /// <summary>
-        /// Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        /// Deprecated, has no effect
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        /// Deprecated, has no effect
         /// </summary>
         public InputMap<string> Properties
         {
@@ -239,7 +239,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        /// Deprecated, has no effect
         /// </summary>
         public InputMap<string> Properties
         {

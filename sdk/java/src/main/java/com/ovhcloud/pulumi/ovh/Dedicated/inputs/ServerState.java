@@ -379,14 +379,22 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     /**
      * Arbitrary properties to pass to cloud-init&#39;s config drive datasource
      * 
+     * @deprecated
+     * Attribute &#39;properties&#39; is deprecated and has no effect
+     * 
      */
+    @Deprecated /* Attribute 'properties' is deprecated and has no effect */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
      * @return Arbitrary properties to pass to cloud-init&#39;s config drive datasource
      * 
+     * @deprecated
+     * Attribute &#39;properties&#39; is deprecated and has no effect
+     * 
      */
+    @Deprecated /* Attribute 'properties' is deprecated and has no effect */
     public Optional<Output<Map<String,String>>> properties() {
         return Optional.ofNullable(this.properties);
     }
@@ -1134,7 +1142,11 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;properties&#39; is deprecated and has no effect
+         * 
          */
+        @Deprecated /* Attribute 'properties' is deprecated and has no effect */
         public Builder properties(@Nullable Output<Map<String,String>> properties) {
             $.properties = properties;
             return this;
@@ -1145,7 +1157,11 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;properties&#39; is deprecated and has no effect
+         * 
          */
+        @Deprecated /* Attribute 'properties' is deprecated and has no effect */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
         }

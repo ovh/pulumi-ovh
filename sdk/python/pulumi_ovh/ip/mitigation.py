@@ -26,11 +26,14 @@ class MitigationArgs:
         The set of arguments for constructing a Mitigation resource.
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_mitigation: IPv4 address
-               * `permanent ` - Set on true if the IP is on permanent mitigation
+               * `permanent ` - Deprecated, has no effect
         :param pulumi.Input[_builtins.bool] permanent: Set on true if your ip is on permanent mitigation
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_on_mitigation", ip_on_mitigation)
+        if permanent is not None:
+            warnings.warn("""Attribute 'permanent' is deprecated and has no effect.""", DeprecationWarning)
+            pulumi.log.warn("""permanent is deprecated: Attribute 'permanent' is deprecated and has no effect.""")
         if permanent is not None:
             pulumi.set(__self__, "permanent", permanent)
 
@@ -51,7 +54,7 @@ class MitigationArgs:
     def ip_on_mitigation(self) -> pulumi.Input[_builtins.str]:
         """
         IPv4 address
-        * `permanent ` - Set on true if the IP is on permanent mitigation
+        * `permanent ` - Deprecated, has no effect
         """
         return pulumi.get(self, "ip_on_mitigation")
 
@@ -61,6 +64,7 @@ class MitigationArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'permanent' is deprecated and has no effect.""")
     def permanent(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Set on true if your ip is on permanent mitigation
@@ -85,7 +89,7 @@ class _MitigationState:
         :param pulumi.Input[_builtins.bool] auto: Set on true if the IP is on auto-mitigation
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_mitigation: IPv4 address
-               * `permanent ` - Set on true if the IP is on permanent mitigation
+               * `permanent ` - Deprecated, has no effect
         :param pulumi.Input[_builtins.bool] permanent: Set on true if your ip is on permanent mitigation
         :param pulumi.Input[_builtins.str] state: Current state of the IP on mitigation
         """
@@ -95,6 +99,9 @@ class _MitigationState:
             pulumi.set(__self__, "ip", ip)
         if ip_on_mitigation is not None:
             pulumi.set(__self__, "ip_on_mitigation", ip_on_mitigation)
+        if permanent is not None:
+            warnings.warn("""Attribute 'permanent' is deprecated and has no effect.""", DeprecationWarning)
+            pulumi.log.warn("""permanent is deprecated: Attribute 'permanent' is deprecated and has no effect.""")
         if permanent is not None:
             pulumi.set(__self__, "permanent", permanent)
         if state is not None:
@@ -129,7 +136,7 @@ class _MitigationState:
     def ip_on_mitigation(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         IPv4 address
-        * `permanent ` - Set on true if the IP is on permanent mitigation
+        * `permanent ` - Deprecated, has no effect
         """
         return pulumi.get(self, "ip_on_mitigation")
 
@@ -139,6 +146,7 @@ class _MitigationState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'permanent' is deprecated and has no effect.""")
     def permanent(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Set on true if your ip is on permanent mitigation
@@ -190,7 +198,7 @@ class Mitigation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_mitigation: IPv4 address
-               * `permanent ` - Set on true if the IP is on permanent mitigation
+               * `permanent ` - Deprecated, has no effect
         :param pulumi.Input[_builtins.bool] permanent: Set on true if your ip is on permanent mitigation
         """
         ...
@@ -274,7 +282,7 @@ class Mitigation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto: Set on true if the IP is on auto-mitigation
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_mitigation: IPv4 address
-               * `permanent ` - Set on true if the IP is on permanent mitigation
+               * `permanent ` - Deprecated, has no effect
         :param pulumi.Input[_builtins.bool] permanent: Set on true if your ip is on permanent mitigation
         :param pulumi.Input[_builtins.str] state: Current state of the IP on mitigation
         """
@@ -310,12 +318,13 @@ class Mitigation(pulumi.CustomResource):
     def ip_on_mitigation(self) -> pulumi.Output[_builtins.str]:
         """
         IPv4 address
-        * `permanent ` - Set on true if the IP is on permanent mitigation
+        * `permanent ` - Deprecated, has no effect
         """
         return pulumi.get(self, "ip_on_mitigation")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'permanent' is deprecated and has no effect.""")
     def permanent(self) -> pulumi.Output[_builtins.bool]:
         """
         Set on true if your ip is on permanent mitigation

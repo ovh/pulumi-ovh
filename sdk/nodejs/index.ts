@@ -75,6 +75,16 @@ export const getDedicatedServerOrderableBandwidthVrack: typeof import("./getDedi
 export const getDedicatedServerOrderableBandwidthVrackOutput: typeof import("./getDedicatedServerOrderableBandwidthVrack").getDedicatedServerOrderableBandwidthVrackOutput = null as any;
 utilities.lazyLoad(exports, ["getDedicatedServerOrderableBandwidthVrack","getDedicatedServerOrderableBandwidthVrackOutput"], () => require("./getDedicatedServerOrderableBandwidthVrack"));
 
+export { GetDomainZoneRecordArgs, GetDomainZoneRecordResult, GetDomainZoneRecordOutputArgs } from "./getDomainZoneRecord";
+export const getDomainZoneRecord: typeof import("./getDomainZoneRecord").getDomainZoneRecord = null as any;
+export const getDomainZoneRecordOutput: typeof import("./getDomainZoneRecord").getDomainZoneRecordOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainZoneRecord","getDomainZoneRecordOutput"], () => require("./getDomainZoneRecord"));
+
+export { GetDomainZoneRecordsArgs, GetDomainZoneRecordsResult, GetDomainZoneRecordsOutputArgs } from "./getDomainZoneRecords";
+export const getDomainZoneRecords: typeof import("./getDomainZoneRecords").getDomainZoneRecords = null as any;
+export const getDomainZoneRecordsOutput: typeof import("./getDomainZoneRecords").getDomainZoneRecordsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomainZoneRecords","getDomainZoneRecordsOutput"], () => require("./getDomainZoneRecords"));
+
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
 export const getInstallationTemplateOutput: typeof import("./getInstallationTemplate").getInstallationTemplateOutput = null as any;
@@ -89,6 +99,11 @@ export { GetLocationArgs, GetLocationResult, GetLocationOutputArgs } from "./get
 export const getLocation: typeof import("./getLocation").getLocation = null as any;
 export const getLocationOutput: typeof import("./getLocation").getLocationOutput = null as any;
 utilities.lazyLoad(exports, ["getLocation","getLocationOutput"], () => require("./getLocation"));
+
+export { GetOkmsSecretArgs, GetOkmsSecretResult, GetOkmsSecretOutputArgs } from "./getOkmsSecret";
+export const getOkmsSecret: typeof import("./getOkmsSecret").getOkmsSecret = null as any;
+export const getOkmsSecretOutput: typeof import("./getOkmsSecret").getOkmsSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getOkmsSecret","getOkmsSecretOutput"], () => require("./getOkmsSecret"));
 
 export { GetOvhcloudConnectConfigPopDatacenterExtrasArgs, GetOvhcloudConnectConfigPopDatacenterExtrasResult, GetOvhcloudConnectConfigPopDatacenterExtrasOutputArgs } from "./getOvhcloudConnectConfigPopDatacenterExtras";
 export const getOvhcloudConnectConfigPopDatacenterExtras: typeof import("./getOvhcloudConnectConfigPopDatacenterExtras").getOvhcloudConnectConfigPopDatacenterExtras = null as any;
@@ -139,6 +154,11 @@ export { GetVrackNetworksArgs, GetVrackNetworksResult, GetVrackNetworksOutputArg
 export const getVrackNetworks: typeof import("./getVrackNetworks").getVrackNetworks = null as any;
 export const getVrackNetworksOutput: typeof import("./getVrackNetworks").getVrackNetworksOutput = null as any;
 utilities.lazyLoad(exports, ["getVrackNetworks","getVrackNetworksOutput"], () => require("./getVrackNetworks"));
+
+export { IamResourceTagsArgs, IamResourceTagsState } from "./iamResourceTags";
+export type IamResourceTags = import("./iamResourceTags").IamResourceTags;
+export const IamResourceTags: typeof import("./iamResourceTags").IamResourceTags = null as any;
+utilities.lazyLoad(exports, ["IamResourceTags"], () => require("./iamResourceTags"));
 
 export { OvhcloudConnectPopConfigArgs, OvhcloudConnectPopConfigState } from "./ovhcloudConnectPopConfig";
 export type OvhcloudConnectPopConfig = import("./ovhcloudConnectPopConfig").OvhcloudConnectPopConfig;
@@ -236,6 +256,8 @@ const _module = {
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
             case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
                 return new DomainZoneDynhostRecord(name, <any>undefined, { urn })
+            case "ovh:index/iamResourceTags:IamResourceTags":
+                return new IamResourceTags(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
                 return new OvhcloudConnectPopConfig(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig":
@@ -259,6 +281,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistr
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/iamResourceTags", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterExtraConfig", _module)

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const bp = ovh.getDedicatedServerOrderableBandwidth({
+ * const spec = ovh.getDedicatedServerOrderableBandwidth({
  *     serviceName: "myserver",
  * });
  * ```
@@ -44,20 +44,20 @@ export interface GetDedicatedServerOrderableBandwidthResult {
      */
     readonly id: string;
     /**
-     * Wether or not additional bandwidth is orderable.
+     * Whether or not additional bandwidth is orderable
      */
     readonly orderable: boolean;
     /**
-     * The list of orderable platinimum bandwidth in mbps.
+     * Additional orderable platinium bandwidth
      */
     readonly platinia: number[];
     /**
-     * The list of orderable premium bandwidth in mbps.
+     * Additional orderable premium bandwidth
      */
     readonly premia: number[];
     readonly serviceName: string;
     /**
-     * The list of orderable ultimate bandwidth in mbps.
+     * Additional orderable ultimate bandwidth
      */
     readonly ultimates: number[];
 }
@@ -70,7 +70,7 @@ export interface GetDedicatedServerOrderableBandwidthResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const bp = ovh.getDedicatedServerOrderableBandwidth({
+ * const spec = ovh.getDedicatedServerOrderableBandwidth({
  *     serviceName: "myserver",
  * });
  * ```

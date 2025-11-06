@@ -19,13 +19,13 @@ public final class GetDedicatedServerOrderableBandwidthVrackResult {
      */
     private String id;
     /**
-     * @return Wether or not additional bandwidth is orderable.
+     * @return Whether or not additional bandwidth is orderable
      * 
      */
     private Boolean orderable;
     private String serviceName;
     /**
-     * @return The list of orderable vrack bandwidth in mbps.
+     * @return Additional orderable vrack bandwidth
      * 
      */
     private List<Integer> vracks;
@@ -39,7 +39,7 @@ public final class GetDedicatedServerOrderableBandwidthVrackResult {
         return this.id;
     }
     /**
-     * @return Wether or not additional bandwidth is orderable.
+     * @return Whether or not additional bandwidth is orderable
      * 
      */
     public Boolean orderable() {
@@ -49,7 +49,7 @@ public final class GetDedicatedServerOrderableBandwidthVrackResult {
         return this.serviceName;
     }
     /**
-     * @return The list of orderable vrack bandwidth in mbps.
+     * @return Additional orderable vrack bandwidth
      * 
      */
     public List<Integer> vracks() {

@@ -24,10 +24,16 @@ public final class GetMitigationResult {
     private String ip;
     /**
      * @return IPv4 address
-     * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+     * * ` permanent  ` - (Deprecated) Set on true if the IP is on permanent mitigation
      * 
      */
     private String ipOnMitigation;
+    /**
+     * @deprecated
+     * Attribute &#39;permanent&#39; is deprecated and has no effect.
+     * 
+     */
+    @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
     private Boolean permanent;
     /**
      * @return Current state of the IP on mitigation
@@ -55,12 +61,18 @@ public final class GetMitigationResult {
     }
     /**
      * @return IPv4 address
-     * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+     * * ` permanent  ` - (Deprecated) Set on true if the IP is on permanent mitigation
      * 
      */
     public String ipOnMitigation() {
         return this.ipOnMitigation;
     }
+    /**
+     * @deprecated
+     * Attribute &#39;permanent&#39; is deprecated and has no effect.
+     * 
+     */
+    @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
     public Boolean permanent() {
         return this.permanent;
     }

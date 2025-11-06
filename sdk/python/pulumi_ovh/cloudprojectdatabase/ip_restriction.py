@@ -218,7 +218,9 @@ class IpRestriction(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+        > **DEPRECATED** Use `ip_restrictions` field in `CloudProject.Database` resource instead. Using the `CloudProjectDatabase.IpRestriction` resource to add an IP restriction to a `CloudProject.Database` resource will cause its update on each apply
+
+        > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
 
         Apply IP restrictions to an OVHcloud Managed Database cluster.
 
@@ -263,7 +265,9 @@ class IpRestriction(pulumi.CustomResource):
                  args: IpRestrictionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Deprecated: Use ip_restriction field in cloud_project_database resource instead. Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloud_project_database resource will cause the cloud_project_database resource to be updated on every apply
+        > **DEPRECATED** Use `ip_restrictions` field in `CloudProject.Database` resource instead. Using the `CloudProjectDatabase.IpRestriction` resource to add an IP restriction to a `CloudProject.Database` resource will cause its update on each apply
+
+        > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
 
         Apply IP restrictions to an OVHcloud Managed Database cluster.
 

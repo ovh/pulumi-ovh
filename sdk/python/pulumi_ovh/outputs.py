@@ -32,6 +32,8 @@ __all__ = [
     'GetInstallationTemplateProjectResult',
     'GetInstallationTemplateProjectOResult',
     'GetInstallationTemplateProjectUsageResult',
+    'GetOkmsSecretIamResult',
+    'GetOkmsSecretMetadataResult',
     'GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigResult',
     'GetOvhcloudConnectConfigPopDatacentersDatacenterConfigResult',
     'GetOvhcloudConnectConfigPopsPopConfigResult',
@@ -658,6 +660,152 @@ class GetInstallationTemplateProjectUsageResult(dict):
         OS template project item version
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetOkmsSecretIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 id: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 urn: _builtins.str):
+        """
+        :param _builtins.str display_name: Resource display name
+        :param _builtins.str id: Unique identifier of the resource
+        :param Mapping[str, _builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param _builtins.str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> _builtins.str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetOkmsSecretMetadataResult(dict):
+    def __init__(__self__, *,
+                 cas_required: _builtins.bool,
+                 created_at: _builtins.str,
+                 current_version: _builtins.float,
+                 custom_metadata: Mapping[str, _builtins.str],
+                 deactivate_version_after: _builtins.str,
+                 max_versions: _builtins.float,
+                 oldest_version: _builtins.float,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.bool cas_required: The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+        :param _builtins.str created_at: Time of creation of the secret
+        :param _builtins.float current_version: The secret version
+        :param Mapping[str, _builtins.str] custom_metadata: Custom metadata
+        :param _builtins.str deactivate_version_after: Time duration before a version is deactivated
+        :param _builtins.float max_versions: The number of versions to keep (10 default)
+        :param _builtins.float oldest_version: The secret oldest version
+        :param _builtins.str updated_at: Time of the last update of the secret
+        """
+        pulumi.set(__self__, "cas_required", cas_required)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_version", current_version)
+        pulumi.set(__self__, "custom_metadata", custom_metadata)
+        pulumi.set(__self__, "deactivate_version_after", deactivate_version_after)
+        pulumi.set(__self__, "max_versions", max_versions)
+        pulumi.set(__self__, "oldest_version", oldest_version)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="casRequired")
+    def cas_required(self) -> _builtins.bool:
+        """
+        The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+        """
+        return pulumi.get(self, "cas_required")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Time of creation of the secret
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> _builtins.float:
+        """
+        The secret version
+        """
+        return pulumi.get(self, "current_version")
+
+    @_builtins.property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        Custom metadata
+        """
+        return pulumi.get(self, "custom_metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="deactivateVersionAfter")
+    def deactivate_version_after(self) -> _builtins.str:
+        """
+        Time duration before a version is deactivated
+        """
+        return pulumi.get(self, "deactivate_version_after")
+
+    @_builtins.property
+    @pulumi.getter(name="maxVersions")
+    def max_versions(self) -> _builtins.float:
+        """
+        The number of versions to keep (10 default)
+        """
+        return pulumi.get(self, "max_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="oldestVersion")
+    def oldest_version(self) -> _builtins.float:
+        """
+        The secret oldest version
+        """
+        return pulumi.get(self, "oldest_version")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Time of the last update of the secret
+        """
+        return pulumi.get(self, "updated_at")
 
 
 @pulumi.output_type

@@ -33,6 +33,37 @@ public final class OkmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kms = OkmsFunctions.getOkmsCredential(GetOkmsCredentialArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -45,6 +76,37 @@ public final class OkmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kms = OkmsFunctions.getOkmsCredential(GetOkmsCredentialArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -57,6 +119,37 @@ public final class OkmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kms = OkmsFunctions.getOkmsCredential(GetOkmsCredentialArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -69,6 +162,37 @@ public final class OkmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kms = OkmsFunctions.getOkmsCredential(GetOkmsCredentialArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,6 +205,37 @@ public final class OkmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsCredentialArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var kms = OkmsFunctions.getOkmsCredential(GetOkmsCredentialArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -730,12 +885,84 @@ public final class OkmsFunctions {
     /**
      * Use this data source to retrieve information about a KMS service key, in the PEM format.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keyInfo = OkmsFunctions.getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args) {
         return getOkmsServiceKeyPem(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to retrieve information about a KMS service key, in the PEM format.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keyInfo = OkmsFunctions.getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPemPlain(GetOkmsServiceKeyPemPlainArgs args) {
@@ -744,6 +971,42 @@ public final class OkmsFunctions {
     /**
      * Use this data source to retrieve information about a KMS service key, in the PEM format.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keyInfo = OkmsFunctions.getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", TypeShape.of(GetOkmsServiceKeyPemResult.class), args, Utilities.withVersion(options));
@@ -751,12 +1014,84 @@ public final class OkmsFunctions {
     /**
      * Use this data source to retrieve information about a KMS service key, in the PEM format.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keyInfo = OkmsFunctions.getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", TypeShape.of(GetOkmsServiceKeyPemResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a KMS service key, in the PEM format.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.Okms.OkmsFunctions;
+     * import com.pulumi.ovh.Okms.inputs.GetOkmsServiceKeyPemArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keyInfo = OkmsFunctions.getOkmsServiceKeyPem(GetOkmsServiceKeyPemArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .id("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOkmsServiceKeyPemResult> getOkmsServiceKeyPemPlain(GetOkmsServiceKeyPemPlainArgs args, InvokeOptions options) {
