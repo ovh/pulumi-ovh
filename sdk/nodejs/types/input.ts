@@ -1449,7 +1449,7 @@ export namespace CloudProject {
 
     export interface StorageVersioning {
         /**
-         * Versioning status
+         * Versioning status (E.g. "enabled", "disabled" or "suspended")
          */
         status?: pulumi.Input<string>;
     }
@@ -1550,6 +1550,10 @@ export namespace Dbaas {
 
 export namespace Dedicated {
     export interface ServerCustomizations {
+        /**
+         * Config Drive MetaData
+         */
+        configDriveMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Config Drive UserData
          */
@@ -1715,6 +1719,10 @@ export namespace Dedicated {
     }
 
     export interface ServerReinstallTaskCustomizations {
+        /**
+         * Config Drive MetaData
+         */
+        configDriveMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * Config Drive UserData
          */
@@ -2862,6 +2870,80 @@ export namespace Okms {
          * (String) Unique resource name used in policies
          */
         urn?: pulumi.Input<string>;
+    }
+
+    export interface SecretIam {
+        /**
+         * Resource display name
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Unique identifier of the resource
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Unique resource name used in policies
+         */
+        urn?: pulumi.Input<string>;
+    }
+
+    export interface SecretMetadata {
+        /**
+         * The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+         */
+        casRequired?: pulumi.Input<boolean>;
+        /**
+         * Time of creation of the secret
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * The secret version
+         */
+        currentVersion?: pulumi.Input<number>;
+        /**
+         * Custom metadata
+         */
+        customMetadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Time duration before a version is deactivated
+         */
+        deactivateVersionAfter?: pulumi.Input<string>;
+        /**
+         * The number of versions to keep (10 default)
+         */
+        maxVersions?: pulumi.Input<number>;
+        /**
+         * The secret oldest version
+         */
+        oldestVersion?: pulumi.Input<number>;
+        /**
+         * Time of the last update of the secret
+         */
+        updatedAt?: pulumi.Input<string>;
+    }
+
+    export interface SecretVersion {
+        /**
+         * Time of creation of the secret version
+         */
+        createdAt?: pulumi.Input<string>;
+        data: pulumi.Input<string>;
+        /**
+         * Time of deactivation of the secret version
+         */
+        deactivatedAt?: pulumi.Input<string>;
+        /**
+         * Secret version
+         */
+        id?: pulumi.Input<number>;
+        /**
+         * State of the secret version
+         */
+        state?: pulumi.Input<string>;
     }
 
     export interface ServiceKeyJWKIam {

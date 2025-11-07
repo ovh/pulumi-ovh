@@ -6,6 +6,19 @@ import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const mgtIprestrictionsData = ovh.CloudProject.getContainerRegistryIPRestrictionsManagement({
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * export const myIpRestrictions = mgtIprestrictionsData.then(mgtIprestrictionsData => mgtIprestrictionsData.ipRestrictions);
+ * ```
  */
 export function getContainerRegistryIPRestrictionsManagement(args: GetContainerRegistryIPRestrictionsManagementArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRegistryIPRestrictionsManagementResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -52,6 +65,19 @@ export interface GetContainerRegistryIPRestrictionsManagementResult {
 }
 /**
  * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const mgtIprestrictionsData = ovh.CloudProject.getContainerRegistryIPRestrictionsManagement({
+ *     serviceName: "XXXXXX",
+ *     registryId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+ * });
+ * export const myIpRestrictions = mgtIprestrictionsData.then(mgtIprestrictionsData => mgtIprestrictionsData.ipRestrictions);
+ * ```
  */
 export function getContainerRegistryIPRestrictionsManagementOutput(args: GetContainerRegistryIPRestrictionsManagementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerRegistryIPRestrictionsManagementResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -506,6 +506,13 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_okms_credential": {
 				Tok: ovhResource(okmsMod, "Credential"),
 			},
+			"ovh_okms_secret": {
+				Tok: ovhResource(okmsMod, "Secret"),
+				//ComputeID: delegateID("okms_id"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					return resource.ID(state["okms_id"].String() + "_" + state["path"].String()), nil
+				},
+			},
 			"ovh_okms_service_key": {
 				Tok: ovhResource(okmsMod, "ServiceKey"),
 			},

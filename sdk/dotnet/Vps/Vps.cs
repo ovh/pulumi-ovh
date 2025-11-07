@@ -34,7 +34,7 @@ namespace Pulumi.Ovh.Vps
         public Output<Outputs.VpsIam> Iam { get; private set; } = null!;
 
         /// <summary>
-        /// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+        /// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
         /// </summary>
         [Output("imageId")]
         public Output<string?> ImageId { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Ovh.Vps
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+        /// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.Ovh.Vps
         public Input<Inputs.VpsIamGetArgs>? Iam { get; set; }
 
         /// <summary>
-        /// Id of the image to install on the VPS. This attribute is only useful to trigger a VPS reinstallation. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
+        /// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }

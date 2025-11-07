@@ -95,6 +95,9 @@ class ServerArgs:
         if prevent_install_on_import is not None:
             pulumi.set(__self__, "prevent_install_on_import", prevent_install_on_import)
         if properties is not None:
+            warnings.warn("""Attribute 'properties' is deprecated and has no effect""", DeprecationWarning)
+            pulumi.log.warn("""properties is deprecated: Attribute 'properties' is deprecated and has no effect""")
+        if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if rescue_mail is not None:
             pulumi.set(__self__, "rescue_mail", rescue_mail)
@@ -275,6 +278,7 @@ class ServerArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'properties' is deprecated and has no effect""")
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Arbitrary properties to pass to cloud-init's config drive datasource
@@ -499,6 +503,9 @@ class _ServerState:
             pulumi.set(__self__, "prevent_install_on_import", prevent_install_on_import)
         if professional_use is not None:
             pulumi.set(__self__, "professional_use", professional_use)
+        if properties is not None:
+            warnings.warn("""Attribute 'properties' is deprecated and has no effect""", DeprecationWarning)
+            pulumi.log.warn("""properties is deprecated: Attribute 'properties' is deprecated and has no effect""")
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if rack is not None:
@@ -819,6 +826,7 @@ class _ServerState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'properties' is deprecated and has no effect""")
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Arbitrary properties to pass to cloud-init's config drive datasource
@@ -1494,6 +1502,7 @@ class Server(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'properties' is deprecated and has no effect""")
     def properties(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
         Arbitrary properties to pass to cloud-init's config drive datasource

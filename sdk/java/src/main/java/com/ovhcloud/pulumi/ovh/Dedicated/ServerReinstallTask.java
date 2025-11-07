@@ -124,14 +124,14 @@ public class ServerReinstallTask extends com.pulumi.resources.CustomResource {
         return this.os;
     }
     /**
-     * Arbitrary properties to pass to cloud-init&#39;s config drive datasource. It supports any key with any string value.
+     * Deprecated, has no effect
      * 
      */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
-     * @return Arbitrary properties to pass to cloud-init&#39;s config drive datasource. It supports any key with any string value.
+     * @return Deprecated, has no effect
      * 
      */
     public Output<Optional<Map<String,String>>> properties() {

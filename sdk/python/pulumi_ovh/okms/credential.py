@@ -30,7 +30,7 @@ class CredentialArgs:
         The set of arguments for constructing a Credential resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identity_urns: List of identity URNs associated with the credential (max 25)
         :param pulumi.Input[_builtins.str] okms_id: Okms ID
-        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of certificate key (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
         :param pulumi.Input[_builtins.str] name: Name of the credential (max 50)
@@ -77,7 +77,7 @@ class CredentialArgs:
     @pulumi.getter(name="certificateType")
     def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        (String) Type of certificate key (`ECDSA` or `RSA`).
         """
         return pulumi.get(self, "certificate_type")
 
@@ -153,7 +153,7 @@ class _CredentialState:
         """
         Input properties used for looking up and filtering Credential resources.
         :param pulumi.Input[_builtins.str] certificate_pem: (String) Certificate PEM of the credential.
-        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of certificate key (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] created_at: (String) Creation time of the credential
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
@@ -209,7 +209,7 @@ class _CredentialState:
     @pulumi.getter(name="certificateType")
     def certificate_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        (String) Type of certificate key (`ECDSA` or `RSA`).
         """
         return pulumi.get(self, "certificate_type")
 
@@ -369,7 +369,7 @@ class Credential(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of certificate key (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identity_urns: List of identity URNs associated with the credential (max 25)
@@ -467,7 +467,7 @@ class Credential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_pem: (String) Certificate PEM of the credential.
-        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        :param pulumi.Input[_builtins.str] certificate_type: (String) Type of certificate key (`ECDSA` or `RSA`).
         :param pulumi.Input[_builtins.str] created_at: (String) Creation time of the credential
         :param pulumi.Input[_builtins.str] csr: Valid Certificate Signing Request
         :param pulumi.Input[_builtins.str] description: Description of the credential (max 200)
@@ -511,7 +511,7 @@ class Credential(pulumi.CustomResource):
     @pulumi.getter(name="certificateType")
     def certificate_type(self) -> pulumi.Output[_builtins.str]:
         """
-        (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        (String) Type of certificate key (`ECDSA` or `RSA`).
         """
         return pulumi.get(self, "certificate_type")
 

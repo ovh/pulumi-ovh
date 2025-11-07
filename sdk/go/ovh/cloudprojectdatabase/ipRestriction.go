@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Deprecated: Use ipRestriction field in cloudProjectDatabase resource instead. Continuing to use the CloudProjectDatabase.IpRestriction resource to add an IP restriction to a cloudProjectDatabase resource will cause the cloudProjectDatabase resource to be updated on every apply
+// > **DEPRECATED** Use `ipRestrictions` field in `CloudProject.Database` resource instead. Using the `CloudProjectDatabase.IpRestriction` resource to add an IP restriction to a `CloudProject.Database` resource will cause its update on each apply
+//
+// > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
 //
 // Apply IP restrictions to an OVHcloud Managed Database cluster.
 //

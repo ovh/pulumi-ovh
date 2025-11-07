@@ -48,7 +48,7 @@ namespace Pulumi.Ovh.Ip
 
         /// <summary>
         /// IPv4 address
-        /// * `permanent ` - Set on true if the IP is on permanent mitigation
+        /// * `permanent ` - Deprecated, has no effect
         /// </summary>
         [Output("ipOnMitigation")]
         public Output<string> IpOnMitigation { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Ovh.Ip
 
         /// <summary>
         /// IPv4 address
-        /// * `permanent ` - Set on true if the IP is on permanent mitigation
+        /// * `permanent ` - Deprecated, has no effect
         /// </summary>
         [Input("ipOnMitigation", required: true)]
         public Input<string> IpOnMitigation { get; set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.Ovh.Ip
 
         /// <summary>
         /// IPv4 address
-        /// * `permanent ` - Set on true if the IP is on permanent mitigation
+        /// * `permanent ` - Deprecated, has no effect
         /// </summary>
         [Input("ipOnMitigation")]
         public Input<string>? IpOnMitigation { get; set; }

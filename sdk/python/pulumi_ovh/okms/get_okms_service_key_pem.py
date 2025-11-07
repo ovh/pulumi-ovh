@@ -142,6 +142,16 @@ def get_okms_service_key_pem(id: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOkmsServiceKeyPemResult:
     """
     Use this data source to retrieve information about a KMS service key, in the PEM format.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    key_info = ovh.Okms.get_okms_service_key_pem(okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    ```
     """
     __args__ = dict()
     __args__['id'] = id
@@ -166,6 +176,16 @@ def get_okms_service_key_pem_output(id: Optional[pulumi.Input[_builtins.str]] = 
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsServiceKeyPemResult]:
     """
     Use this data source to retrieve information about a KMS service key, in the PEM format.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    key_info = ovh.Okms.get_okms_service_key_pem(okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    ```
     """
     __args__ = dict()
     __args__['id'] = id

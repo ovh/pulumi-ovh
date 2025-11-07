@@ -91,6 +91,17 @@ def get_container_registry_ip_restrictions_management(registry_id: Optional[_bui
     """
     Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mgt_iprestrictions_data = ovh.CloudProject.get_container_registry_ip_restrictions_management(service_name="XXXXXX",
+        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("myIpRestrictions", mgt_iprestrictions_data.ip_restrictions)
+    ```
+
 
     :param _builtins.str registry_id: The id of the Managed Private Registry.
     :param _builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -111,6 +122,17 @@ def get_container_registry_ip_restrictions_management_output(registry_id: Option
                                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryIPRestrictionsManagementResult]:
     """
     Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    mgt_iprestrictions_data = ovh.CloudProject.get_container_registry_ip_restrictions_management(service_name="XXXXXX",
+        registry_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+    pulumi.export("myIpRestrictions", mgt_iprestrictions_data.ip_restrictions)
+    ```
 
 
     :param _builtins.str registry_id: The id of the Managed Private Registry.

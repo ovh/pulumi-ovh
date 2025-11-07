@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StorageVersioning {
     /**
-     * @return Versioning status
+     * @return Versioning status (E.g. &#34;enabled&#34;, &#34;disabled&#34; or &#34;suspended&#34;)
      * 
      */
     private @Nullable String status;
 
     private StorageVersioning() {}
     /**
-     * @return Versioning status
+     * @return Versioning status (E.g. &#34;enabled&#34;, &#34;disabled&#34; or &#34;suspended&#34;)
      * 
      */
     public Optional<String> status() {

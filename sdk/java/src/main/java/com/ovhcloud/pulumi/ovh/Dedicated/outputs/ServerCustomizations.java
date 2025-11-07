@@ -13,6 +13,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerCustomizations {
     /**
+     * @return Config Drive MetaData
+     * 
+     */
+    private @Nullable Map<String,String> configDriveMetadata;
+    /**
      * @return Config Drive UserData
      * 
      */
@@ -74,6 +79,13 @@ public final class ServerCustomizations {
     private @Nullable String sshKey;
 
     private ServerCustomizations() {}
+    /**
+     * @return Config Drive MetaData
+     * 
+     */
+    public Map<String,String> configDriveMetadata() {
+        return this.configDriveMetadata == null ? Map.of() : this.configDriveMetadata;
+    }
     /**
      * @return Config Drive UserData
      * 
@@ -168,6 +180,7 @@ public final class ServerCustomizations {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Map<String,String> configDriveMetadata;
         private @Nullable String configDriveUserData;
         private @Nullable String efiBootloaderPath;
         private @Nullable String hostname;
@@ -183,6 +196,7 @@ public final class ServerCustomizations {
         public Builder() {}
         public Builder(ServerCustomizations defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.configDriveMetadata = defaults.configDriveMetadata;
     	      this.configDriveUserData = defaults.configDriveUserData;
     	      this.efiBootloaderPath = defaults.efiBootloaderPath;
     	      this.hostname = defaults.hostname;
@@ -197,6 +211,12 @@ public final class ServerCustomizations {
     	      this.sshKey = defaults.sshKey;
         }
 
+        @CustomType.Setter
+        public Builder configDriveMetadata(@Nullable Map<String,String> configDriveMetadata) {
+
+            this.configDriveMetadata = configDriveMetadata;
+            return this;
+        }
         @CustomType.Setter
         public Builder configDriveUserData(@Nullable String configDriveUserData) {
 
@@ -271,6 +291,7 @@ public final class ServerCustomizations {
         }
         public ServerCustomizations build() {
             final var _resultValue = new ServerCustomizations();
+            _resultValue.configDriveMetadata = configDriveMetadata;
             _resultValue.configDriveUserData = configDriveUserData;
             _resultValue.efiBootloaderPath = efiBootloaderPath;
             _resultValue.hostname = hostname;

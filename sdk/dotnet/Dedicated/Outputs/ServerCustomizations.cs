@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerCustomizations
     {
         /// <summary>
+        /// Config Drive MetaData
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ConfigDriveMetadata;
+        /// <summary>
         /// Config Drive UserData
         /// </summary>
         public readonly string? ConfigDriveUserData;
@@ -64,6 +68,8 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
         [OutputConstructor]
         private ServerCustomizations(
+            ImmutableDictionary<string, string>? configDriveMetadata,
+
             string? configDriveUserData,
 
             string? efiBootloaderPath,
@@ -88,6 +94,7 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
             string? sshKey)
         {
+            ConfigDriveMetadata = configDriveMetadata;
             ConfigDriveUserData = configDriveUserData;
             EfiBootloaderPath = efiBootloaderPath;
             Hostname = hostname;

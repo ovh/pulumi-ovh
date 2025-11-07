@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
     public sealed class StorageVersioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Versioning status
+        /// Versioning status (E.g. "enabled", "disabled" or "suspended")
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

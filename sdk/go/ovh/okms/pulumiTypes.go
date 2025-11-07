@@ -207,6 +207,679 @@ func (o OkmsIamPtrOutput) Urn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecretIam struct {
+	// Resource display name
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id *string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn *string `pulumi:"urn"`
+}
+
+// SecretIamInput is an input type that accepts SecretIamArgs and SecretIamOutput values.
+// You can construct a concrete instance of `SecretIamInput` via:
+//
+//	SecretIamArgs{...}
+type SecretIamInput interface {
+	pulumi.Input
+
+	ToSecretIamOutput() SecretIamOutput
+	ToSecretIamOutputWithContext(context.Context) SecretIamOutput
+}
+
+type SecretIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringPtrInput `pulumi:"urn"`
+}
+
+func (SecretIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretIam)(nil)).Elem()
+}
+
+func (i SecretIamArgs) ToSecretIamOutput() SecretIamOutput {
+	return i.ToSecretIamOutputWithContext(context.Background())
+}
+
+func (i SecretIamArgs) ToSecretIamOutputWithContext(ctx context.Context) SecretIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamOutput)
+}
+
+func (i SecretIamArgs) ToSecretIamPtrOutput() SecretIamPtrOutput {
+	return i.ToSecretIamPtrOutputWithContext(context.Background())
+}
+
+func (i SecretIamArgs) ToSecretIamPtrOutputWithContext(ctx context.Context) SecretIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamOutput).ToSecretIamPtrOutputWithContext(ctx)
+}
+
+// SecretIamPtrInput is an input type that accepts SecretIamArgs, SecretIamPtr and SecretIamPtrOutput values.
+// You can construct a concrete instance of `SecretIamPtrInput` via:
+//
+//	        SecretIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretIamPtrInput interface {
+	pulumi.Input
+
+	ToSecretIamPtrOutput() SecretIamPtrOutput
+	ToSecretIamPtrOutputWithContext(context.Context) SecretIamPtrOutput
+}
+
+type secretIamPtrType SecretIamArgs
+
+func SecretIamPtr(v *SecretIamArgs) SecretIamPtrInput {
+	return (*secretIamPtrType)(v)
+}
+
+func (*secretIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretIam)(nil)).Elem()
+}
+
+func (i *secretIamPtrType) ToSecretIamPtrOutput() SecretIamPtrOutput {
+	return i.ToSecretIamPtrOutputWithContext(context.Background())
+}
+
+func (i *secretIamPtrType) ToSecretIamPtrOutputWithContext(ctx context.Context) SecretIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPtrOutput)
+}
+
+type SecretIamOutput struct{ *pulumi.OutputState }
+
+func (SecretIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretIam)(nil)).Elem()
+}
+
+func (o SecretIamOutput) ToSecretIamOutput() SecretIamOutput {
+	return o
+}
+
+func (o SecretIamOutput) ToSecretIamOutputWithContext(ctx context.Context) SecretIamOutput {
+	return o
+}
+
+func (o SecretIamOutput) ToSecretIamPtrOutput() SecretIamPtrOutput {
+	return o.ToSecretIamPtrOutputWithContext(context.Background())
+}
+
+func (o SecretIamOutput) ToSecretIamPtrOutputWithContext(ctx context.Context) SecretIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretIam) *SecretIam {
+		return &v
+	}).(SecretIamPtrOutput)
+}
+
+// Resource display name
+func (o SecretIamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o SecretIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o SecretIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o SecretIamOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
+}
+
+type SecretIamPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretIam)(nil)).Elem()
+}
+
+func (o SecretIamPtrOutput) ToSecretIamPtrOutput() SecretIamPtrOutput {
+	return o
+}
+
+func (o SecretIamPtrOutput) ToSecretIamPtrOutputWithContext(ctx context.Context) SecretIamPtrOutput {
+	return o
+}
+
+func (o SecretIamPtrOutput) Elem() SecretIamOutput {
+	return o.ApplyT(func(v *SecretIam) SecretIam {
+		if v != nil {
+			return *v
+		}
+		var ret SecretIam
+		return ret
+	}).(SecretIamOutput)
+}
+
+// Resource display name
+func (o SecretIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o SecretIamPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o SecretIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o SecretIamPtrOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Urn
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretMetadata struct {
+	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+	CasRequired *bool `pulumi:"casRequired"`
+	// Time of creation of the secret
+	CreatedAt *string `pulumi:"createdAt"`
+	// The secret version
+	CurrentVersion *float64 `pulumi:"currentVersion"`
+	// Custom metadata
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
+	// Time duration before a version is deactivated
+	DeactivateVersionAfter *string `pulumi:"deactivateVersionAfter"`
+	// The number of versions to keep (10 default)
+	MaxVersions *float64 `pulumi:"maxVersions"`
+	// The secret oldest version
+	OldestVersion *float64 `pulumi:"oldestVersion"`
+	// Time of the last update of the secret
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// SecretMetadataInput is an input type that accepts SecretMetadataArgs and SecretMetadataOutput values.
+// You can construct a concrete instance of `SecretMetadataInput` via:
+//
+//	SecretMetadataArgs{...}
+type SecretMetadataInput interface {
+	pulumi.Input
+
+	ToSecretMetadataOutput() SecretMetadataOutput
+	ToSecretMetadataOutputWithContext(context.Context) SecretMetadataOutput
+}
+
+type SecretMetadataArgs struct {
+	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+	CasRequired pulumi.BoolPtrInput `pulumi:"casRequired"`
+	// Time of creation of the secret
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// The secret version
+	CurrentVersion pulumi.Float64PtrInput `pulumi:"currentVersion"`
+	// Custom metadata
+	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
+	// Time duration before a version is deactivated
+	DeactivateVersionAfter pulumi.StringPtrInput `pulumi:"deactivateVersionAfter"`
+	// The number of versions to keep (10 default)
+	MaxVersions pulumi.Float64PtrInput `pulumi:"maxVersions"`
+	// The secret oldest version
+	OldestVersion pulumi.Float64PtrInput `pulumi:"oldestVersion"`
+	// Time of the last update of the secret
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (SecretMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretMetadata)(nil)).Elem()
+}
+
+func (i SecretMetadataArgs) ToSecretMetadataOutput() SecretMetadataOutput {
+	return i.ToSecretMetadataOutputWithContext(context.Background())
+}
+
+func (i SecretMetadataArgs) ToSecretMetadataOutputWithContext(ctx context.Context) SecretMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretMetadataOutput)
+}
+
+func (i SecretMetadataArgs) ToSecretMetadataPtrOutput() SecretMetadataPtrOutput {
+	return i.ToSecretMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i SecretMetadataArgs) ToSecretMetadataPtrOutputWithContext(ctx context.Context) SecretMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretMetadataOutput).ToSecretMetadataPtrOutputWithContext(ctx)
+}
+
+// SecretMetadataPtrInput is an input type that accepts SecretMetadataArgs, SecretMetadataPtr and SecretMetadataPtrOutput values.
+// You can construct a concrete instance of `SecretMetadataPtrInput` via:
+//
+//	        SecretMetadataArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretMetadataPtrInput interface {
+	pulumi.Input
+
+	ToSecretMetadataPtrOutput() SecretMetadataPtrOutput
+	ToSecretMetadataPtrOutputWithContext(context.Context) SecretMetadataPtrOutput
+}
+
+type secretMetadataPtrType SecretMetadataArgs
+
+func SecretMetadataPtr(v *SecretMetadataArgs) SecretMetadataPtrInput {
+	return (*secretMetadataPtrType)(v)
+}
+
+func (*secretMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretMetadata)(nil)).Elem()
+}
+
+func (i *secretMetadataPtrType) ToSecretMetadataPtrOutput() SecretMetadataPtrOutput {
+	return i.ToSecretMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *secretMetadataPtrType) ToSecretMetadataPtrOutputWithContext(ctx context.Context) SecretMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretMetadataPtrOutput)
+}
+
+type SecretMetadataOutput struct{ *pulumi.OutputState }
+
+func (SecretMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretMetadata)(nil)).Elem()
+}
+
+func (o SecretMetadataOutput) ToSecretMetadataOutput() SecretMetadataOutput {
+	return o
+}
+
+func (o SecretMetadataOutput) ToSecretMetadataOutputWithContext(ctx context.Context) SecretMetadataOutput {
+	return o
+}
+
+func (o SecretMetadataOutput) ToSecretMetadataPtrOutput() SecretMetadataPtrOutput {
+	return o.ToSecretMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o SecretMetadataOutput) ToSecretMetadataPtrOutputWithContext(ctx context.Context) SecretMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretMetadata) *SecretMetadata {
+		return &v
+	}).(SecretMetadataPtrOutput)
+}
+
+// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+func (o SecretMetadataOutput) CasRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *bool { return v.CasRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Time of creation of the secret
+func (o SecretMetadataOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The secret version
+func (o SecretMetadataOutput) CurrentVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *float64 { return v.CurrentVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Custom metadata
+func (o SecretMetadataOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SecretMetadata) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
+}
+
+// Time duration before a version is deactivated
+func (o SecretMetadataOutput) DeactivateVersionAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *string { return v.DeactivateVersionAfter }).(pulumi.StringPtrOutput)
+}
+
+// The number of versions to keep (10 default)
+func (o SecretMetadataOutput) MaxVersions() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *float64 { return v.MaxVersions }).(pulumi.Float64PtrOutput)
+}
+
+// The secret oldest version
+func (o SecretMetadataOutput) OldestVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *float64 { return v.OldestVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Time of the last update of the secret
+func (o SecretMetadataOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretMetadata) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type SecretMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretMetadata)(nil)).Elem()
+}
+
+func (o SecretMetadataPtrOutput) ToSecretMetadataPtrOutput() SecretMetadataPtrOutput {
+	return o
+}
+
+func (o SecretMetadataPtrOutput) ToSecretMetadataPtrOutputWithContext(ctx context.Context) SecretMetadataPtrOutput {
+	return o
+}
+
+func (o SecretMetadataPtrOutput) Elem() SecretMetadataOutput {
+	return o.ApplyT(func(v *SecretMetadata) SecretMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret SecretMetadata
+		return ret
+	}).(SecretMetadataOutput)
+}
+
+// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+func (o SecretMetadataPtrOutput) CasRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CasRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Time of creation of the secret
+func (o SecretMetadataPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The secret version
+func (o SecretMetadataPtrOutput) CurrentVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.CurrentVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Custom metadata
+func (o SecretMetadataPtrOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretMetadata) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomMetadata
+	}).(pulumi.StringMapOutput)
+}
+
+// Time duration before a version is deactivated
+func (o SecretMetadataPtrOutput) DeactivateVersionAfter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeactivateVersionAfter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of versions to keep (10 default)
+func (o SecretMetadataPtrOutput) MaxVersions() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MaxVersions
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The secret oldest version
+func (o SecretMetadataPtrOutput) OldestVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OldestVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Time of the last update of the secret
+func (o SecretMetadataPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretMetadata) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecretVersion struct {
+	// Time of creation of the secret version
+	CreatedAt *string `pulumi:"createdAt"`
+	Data      string  `pulumi:"data"`
+	// Time of deactivation of the secret version
+	DeactivatedAt *string `pulumi:"deactivatedAt"`
+	// Secret version
+	Id *float64 `pulumi:"id"`
+	// State of the secret version
+	State *string `pulumi:"state"`
+}
+
+// SecretVersionInput is an input type that accepts SecretVersionArgs and SecretVersionOutput values.
+// You can construct a concrete instance of `SecretVersionInput` via:
+//
+//	SecretVersionArgs{...}
+type SecretVersionInput interface {
+	pulumi.Input
+
+	ToSecretVersionOutput() SecretVersionOutput
+	ToSecretVersionOutputWithContext(context.Context) SecretVersionOutput
+}
+
+type SecretVersionArgs struct {
+	// Time of creation of the secret version
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	Data      pulumi.StringInput    `pulumi:"data"`
+	// Time of deactivation of the secret version
+	DeactivatedAt pulumi.StringPtrInput `pulumi:"deactivatedAt"`
+	// Secret version
+	Id pulumi.Float64PtrInput `pulumi:"id"`
+	// State of the secret version
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (SecretVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersionArgs) ToSecretVersionOutput() SecretVersionOutput {
+	return i.ToSecretVersionOutputWithContext(context.Background())
+}
+
+func (i SecretVersionArgs) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionOutput)
+}
+
+func (i SecretVersionArgs) ToSecretVersionPtrOutput() SecretVersionPtrOutput {
+	return i.ToSecretVersionPtrOutputWithContext(context.Background())
+}
+
+func (i SecretVersionArgs) ToSecretVersionPtrOutputWithContext(ctx context.Context) SecretVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionOutput).ToSecretVersionPtrOutputWithContext(ctx)
+}
+
+// SecretVersionPtrInput is an input type that accepts SecretVersionArgs, SecretVersionPtr and SecretVersionPtrOutput values.
+// You can construct a concrete instance of `SecretVersionPtrInput` via:
+//
+//	        SecretVersionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretVersionPtrInput interface {
+	pulumi.Input
+
+	ToSecretVersionPtrOutput() SecretVersionPtrOutput
+	ToSecretVersionPtrOutputWithContext(context.Context) SecretVersionPtrOutput
+}
+
+type secretVersionPtrType SecretVersionArgs
+
+func SecretVersionPtr(v *SecretVersionArgs) SecretVersionPtrInput {
+	return (*secretVersionPtrType)(v)
+}
+
+func (*secretVersionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretVersion)(nil)).Elem()
+}
+
+func (i *secretVersionPtrType) ToSecretVersionPtrOutput() SecretVersionPtrOutput {
+	return i.ToSecretVersionPtrOutputWithContext(context.Background())
+}
+
+func (i *secretVersionPtrType) ToSecretVersionPtrOutputWithContext(ctx context.Context) SecretVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionPtrOutput)
+}
+
+type SecretVersionOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutput() SecretVersionOutput {
+	return o
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return o
+}
+
+func (o SecretVersionOutput) ToSecretVersionPtrOutput() SecretVersionPtrOutput {
+	return o.ToSecretVersionPtrOutputWithContext(context.Background())
+}
+
+func (o SecretVersionOutput) ToSecretVersionPtrOutputWithContext(ctx context.Context) SecretVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretVersion) *SecretVersion {
+		return &v
+	}).(SecretVersionPtrOutput)
+}
+
+// Time of creation of the secret version
+func (o SecretVersionOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+func (o SecretVersionOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretVersion) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// Time of deactivation of the secret version
+func (o SecretVersionOutput) DeactivatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.DeactivatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Secret version
+func (o SecretVersionOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecretVersion) *float64 { return v.Id }).(pulumi.Float64PtrOutput)
+}
+
+// State of the secret version
+func (o SecretVersionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecretVersion) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SecretVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretVersion)(nil)).Elem()
+}
+
+func (o SecretVersionPtrOutput) ToSecretVersionPtrOutput() SecretVersionPtrOutput {
+	return o
+}
+
+func (o SecretVersionPtrOutput) ToSecretVersionPtrOutputWithContext(ctx context.Context) SecretVersionPtrOutput {
+	return o
+}
+
+func (o SecretVersionPtrOutput) Elem() SecretVersionOutput {
+	return o.ApplyT(func(v *SecretVersion) SecretVersion {
+		if v != nil {
+			return *v
+		}
+		var ret SecretVersion
+		return ret
+	}).(SecretVersionOutput)
+}
+
+// Time of creation of the secret version
+func (o SecretVersionPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecretVersionPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time of deactivation of the secret version
+func (o SecretVersionPtrOutput) DeactivatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeactivatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret version
+func (o SecretVersionPtrOutput) Id() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SecretVersion) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.Float64PtrOutput)
+}
+
+// State of the secret version
+func (o SecretVersionPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretVersion) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceKeyJWKIam struct {
 	// Resource display name
 	DisplayName *string `pulumi:"displayName"`
@@ -1236,6 +1909,12 @@ func (o GetOkmsServiceKeyPemKeysPemArrayOutput) Index(i pulumi.IntInput) GetOkms
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OkmsIamInput)(nil)).Elem(), OkmsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OkmsIamPtrInput)(nil)).Elem(), OkmsIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamInput)(nil)).Elem(), SecretIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamPtrInput)(nil)).Elem(), SecretIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretMetadataInput)(nil)).Elem(), SecretMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretMetadataPtrInput)(nil)).Elem(), SecretMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionInput)(nil)).Elem(), SecretVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretVersionPtrInput)(nil)).Elem(), SecretVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKIamInput)(nil)).Elem(), ServiceKeyJWKIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKIamPtrInput)(nil)).Elem(), ServiceKeyJWKIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceKeyJWKKeyInput)(nil)).Elem(), ServiceKeyJWKKeyArgs{})
@@ -1250,6 +1929,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsServiceKeyPemKeysPemArrayInput)(nil)).Elem(), GetOkmsServiceKeyPemKeysPemArray{})
 	pulumi.RegisterOutputType(OkmsIamOutput{})
 	pulumi.RegisterOutputType(OkmsIamPtrOutput{})
+	pulumi.RegisterOutputType(SecretIamOutput{})
+	pulumi.RegisterOutputType(SecretIamPtrOutput{})
+	pulumi.RegisterOutputType(SecretMetadataOutput{})
+	pulumi.RegisterOutputType(SecretMetadataPtrOutput{})
+	pulumi.RegisterOutputType(SecretVersionOutput{})
+	pulumi.RegisterOutputType(SecretVersionPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKeyJWKIamOutput{})
 	pulumi.RegisterOutputType(ServiceKeyJWKIamPtrOutput{})
 	pulumi.RegisterOutputType(ServiceKeyJWKKeyOutput{})

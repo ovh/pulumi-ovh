@@ -397,6 +397,7 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Arbitrary properties to pass to cloud-init's config drive datasource
         /// </summary>
+        [Obsolete(@"Attribute 'properties' is deprecated and has no effect")]
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());
@@ -622,6 +623,7 @@ namespace Pulumi.Ovh.Dedicated
         /// <summary>
         /// Arbitrary properties to pass to cloud-init's config drive datasource
         /// </summary>
+        [Obsolete(@"Attribute 'properties' is deprecated and has no effect")]
         public InputMap<string> Properties
         {
             get => _properties ?? (_properties = new InputMap<string>());

@@ -85,6 +85,8 @@ type Server struct {
 	// Does this server have professional use option
 	ProfessionalUse pulumi.BoolOutput `pulumi:"professionalUse"`
 	// Arbitrary properties to pass to cloud-init's config drive datasource
+	//
+	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Rack id of the server
 	Rack pulumi.StringOutput `pulumi:"rack"`
@@ -190,6 +192,8 @@ type serverState struct {
 	// Does this server have professional use option
 	ProfessionalUse *bool `pulumi:"professionalUse"`
 	// Arbitrary properties to pass to cloud-init's config drive datasource
+	//
+	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties map[string]string `pulumi:"properties"`
 	// Rack id of the server
 	Rack *string `pulumi:"rack"`
@@ -266,6 +270,8 @@ type ServerState struct {
 	// Does this server have professional use option
 	ProfessionalUse pulumi.BoolPtrInput
 	// Arbitrary properties to pass to cloud-init's config drive datasource
+	//
+	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties pulumi.StringMapInput
 	// Rack id of the server
 	Rack pulumi.StringPtrInput
@@ -325,6 +331,8 @@ type serverArgs struct {
 	// Defines whether the server should not be reinstalled when importing the resource
 	PreventInstallOnImport *bool `pulumi:"preventInstallOnImport"`
 	// Arbitrary properties to pass to cloud-init's config drive datasource
+	//
+	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties map[string]string `pulumi:"properties"`
 	// Rescue mail of the server
 	RescueMail *string `pulumi:"rescueMail"`
@@ -371,6 +379,8 @@ type ServerArgs struct {
 	// Defines whether the server should not be reinstalled when importing the resource
 	PreventInstallOnImport pulumi.BoolPtrInput
 	// Arbitrary properties to pass to cloud-init's config drive datasource
+	//
+	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties pulumi.StringMapInput
 	// Rescue mail of the server
 	RescueMail pulumi.StringPtrInput
@@ -598,6 +608,8 @@ func (o ServerOutput) ProfessionalUse() pulumi.BoolOutput {
 }
 
 // Arbitrary properties to pass to cloud-init's config drive datasource
+//
+// Deprecated: Attribute 'properties' is deprecated and has no effect
 func (o ServerOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }

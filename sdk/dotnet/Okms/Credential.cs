@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Okms
         public Output<string> CertificatePem { get; private set; } = null!;
 
         /// <summary>
-        /// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        /// (String) Type of certificate key (`ECDSA` or `RSA`).
         /// </summary>
         [Output("certificateType")]
         public Output<string> CertificateType { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Ovh.Okms
     public sealed class CredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        /// (String) Type of certificate key (`ECDSA` or `RSA`).
         /// </summary>
         [Input("certificateType")]
         public Input<string>? CertificateType { get; set; }
@@ -207,7 +207,7 @@ namespace Pulumi.Ovh.Okms
         public Input<string>? CertificatePem { get; set; }
 
         /// <summary>
-        /// (String) Type of the certificate key algorithm (`ECDSA` or `RSA`).
+        /// (String) Type of certificate key (`ECDSA` or `RSA`).
         /// </summary>
         [Input("certificateType")]
         public Input<string>? CertificateType { get; set; }

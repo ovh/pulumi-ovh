@@ -1041,12 +1041,86 @@ public final class CloudProjectFunctions {
     /**
      * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mgtIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", mgtIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs args) {
         return getContainerRegistryIPRestrictionsManagement(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mgtIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", mgtIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagementPlain(GetContainerRegistryIPRestrictionsManagementPlainArgs args) {
@@ -1055,12 +1129,86 @@ public final class CloudProjectFunctions {
     /**
      * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mgtIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", mgtIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", TypeShape.of(GetContainerRegistryIPRestrictionsManagementResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mgtIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", mgtIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs args, InvokeOutputOptions options) {
@@ -1069,12 +1217,86 @@ public final class CloudProjectFunctions {
     /**
      * Use this data source to get the list of Management IP Restrictions of a container registry associated with a public cloud project.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsManagementArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mgtIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsManagement(GetContainerRegistryIPRestrictionsManagementArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", mgtIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetContainerRegistryIPRestrictionsManagementResult> getContainerRegistryIPRestrictionsManagementPlain(GetContainerRegistryIPRestrictionsManagementPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getContainerRegistryIPRestrictionsManagement:getContainerRegistryIPRestrictionsManagement", TypeShape.of(GetContainerRegistryIPRestrictionsManagementResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", myIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args) {
@@ -1083,12 +1305,86 @@ public final class CloudProjectFunctions {
     /**
      * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", myIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistryPlain(GetContainerRegistryIPRestrictionsRegistryPlainArgs args) {
         return getContainerRegistryIPRestrictionsRegistryPlain(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", myIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args, InvokeOptions options) {
@@ -1097,12 +1393,86 @@ public final class CloudProjectFunctions {
     /**
      * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", myIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("ovh:CloudProject/getContainerRegistryIPRestrictionsRegistry:getContainerRegistryIPRestrictionsRegistry", TypeShape.of(GetContainerRegistryIPRestrictionsRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of Registry IP Restrictions of a container registry associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.CloudProject.CloudProjectFunctions;
+     * import com.pulumi.ovh.CloudProject.inputs.GetContainerRegistryIPRestrictionsRegistryArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myIprestrictionsData = CloudProjectFunctions.getContainerRegistryIPRestrictionsRegistry(GetContainerRegistryIPRestrictionsRegistryArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .registryId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx")
+     *             .build());
+     * 
+     *         ctx.export("myIpRestrictions", myIprestrictionsData.ipRestrictions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetContainerRegistryIPRestrictionsRegistryResult> getContainerRegistryIPRestrictionsRegistryPlain(GetContainerRegistryIPRestrictionsRegistryPlainArgs args, InvokeOptions options) {

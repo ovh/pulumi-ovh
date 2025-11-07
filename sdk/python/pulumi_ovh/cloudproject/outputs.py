@@ -4485,7 +4485,7 @@ class StorageVersioning(dict):
     def __init__(__self__, *,
                  status: Optional[_builtins.str] = None):
         """
-        :param _builtins.str status: Versioning status
+        :param _builtins.str status: Versioning status (E.g. "enabled", "disabled" or "suspended")
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -4494,7 +4494,7 @@ class StorageVersioning(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Versioning status
+        Versioning status (E.g. "enabled", "disabled" or "suspended")
         """
         return pulumi.get(self, "status")
 

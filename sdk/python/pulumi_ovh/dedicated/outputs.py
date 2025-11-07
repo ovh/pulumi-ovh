@@ -76,7 +76,9 @@ class ServerCustomizations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configDriveUserData":
+        if key == "configDriveMetadata":
+            suggest = "config_drive_metadata"
+        elif key == "configDriveUserData":
             suggest = "config_drive_user_data"
         elif key == "efiBootloaderPath":
             suggest = "efi_bootloader_path"
@@ -109,6 +111,7 @@ class ServerCustomizations(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 config_drive_metadata: Optional[Mapping[str, _builtins.str]] = None,
                  config_drive_user_data: Optional[_builtins.str] = None,
                  efi_bootloader_path: Optional[_builtins.str] = None,
                  hostname: Optional[_builtins.str] = None,
@@ -122,6 +125,7 @@ class ServerCustomizations(dict):
                  post_installation_script_extension: Optional[_builtins.str] = None,
                  ssh_key: Optional[_builtins.str] = None):
         """
+        :param Mapping[str, _builtins.str] config_drive_metadata: Config Drive MetaData
         :param _builtins.str config_drive_user_data: Config Drive UserData
         :param _builtins.str efi_bootloader_path: Path of the EFI bootloader
         :param _builtins.str hostname: Custom hostname
@@ -135,6 +139,8 @@ class ServerCustomizations(dict):
         :param _builtins.str post_installation_script_extension: Post-Installation Script File Extension
         :param _builtins.str ssh_key: SSH Public Key
         """
+        if config_drive_metadata is not None:
+            pulumi.set(__self__, "config_drive_metadata", config_drive_metadata)
         if config_drive_user_data is not None:
             pulumi.set(__self__, "config_drive_user_data", config_drive_user_data)
         if efi_bootloader_path is not None:
@@ -159,6 +165,14 @@ class ServerCustomizations(dict):
             pulumi.set(__self__, "post_installation_script_extension", post_installation_script_extension)
         if ssh_key is not None:
             pulumi.set(__self__, "ssh_key", ssh_key)
+
+    @_builtins.property
+    @pulumi.getter(name="configDriveMetadata")
+    def config_drive_metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Config Drive MetaData
+        """
+        return pulumi.get(self, "config_drive_metadata")
 
     @_builtins.property
     @pulumi.getter(name="configDriveUserData")
@@ -718,7 +732,9 @@ class ServerReinstallTaskCustomizations(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "configDriveUserData":
+        if key == "configDriveMetadata":
+            suggest = "config_drive_metadata"
+        elif key == "configDriveUserData":
             suggest = "config_drive_user_data"
         elif key == "efiBootloaderPath":
             suggest = "efi_bootloader_path"
@@ -751,6 +767,7 @@ class ServerReinstallTaskCustomizations(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 config_drive_metadata: Optional[Mapping[str, _builtins.str]] = None,
                  config_drive_user_data: Optional[_builtins.str] = None,
                  efi_bootloader_path: Optional[_builtins.str] = None,
                  hostname: Optional[_builtins.str] = None,
@@ -764,6 +781,7 @@ class ServerReinstallTaskCustomizations(dict):
                  post_installation_script_extension: Optional[_builtins.str] = None,
                  ssh_key: Optional[_builtins.str] = None):
         """
+        :param Mapping[str, _builtins.str] config_drive_metadata: Config Drive MetaData
         :param _builtins.str config_drive_user_data: Config Drive UserData
         :param _builtins.str efi_bootloader_path: EFI bootloader path
         :param _builtins.str hostname: Custom hostname
@@ -777,6 +795,8 @@ class ServerReinstallTaskCustomizations(dict):
         :param _builtins.str post_installation_script_extension: Post-Installation Script File Extension
         :param _builtins.str ssh_key: SSH Public Key
         """
+        if config_drive_metadata is not None:
+            pulumi.set(__self__, "config_drive_metadata", config_drive_metadata)
         if config_drive_user_data is not None:
             pulumi.set(__self__, "config_drive_user_data", config_drive_user_data)
         if efi_bootloader_path is not None:
@@ -801,6 +821,14 @@ class ServerReinstallTaskCustomizations(dict):
             pulumi.set(__self__, "post_installation_script_extension", post_installation_script_extension)
         if ssh_key is not None:
             pulumi.set(__self__, "ssh_key", ssh_key)
+
+    @_builtins.property
+    @pulumi.getter(name="configDriveMetadata")
+    def config_drive_metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Config Drive MetaData
+        """
+        return pulumi.get(self, "config_drive_metadata")
 
     @_builtins.property
     @pulumi.getter(name="configDriveUserData")

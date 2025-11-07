@@ -12,6 +12,18 @@ namespace Pulumi.Ovh.Dedicated.Inputs
 
     public sealed class ServerCustomizationsGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("configDriveMetadata")]
+        private InputMap<string>? _configDriveMetadata;
+
+        /// <summary>
+        /// Config Drive MetaData
+        /// </summary>
+        public InputMap<string> ConfigDriveMetadata
+        {
+            get => _configDriveMetadata ?? (_configDriveMetadata = new InputMap<string>());
+            set => _configDriveMetadata = value;
+        }
+
         /// <summary>
         /// Config Drive UserData
         /// </summary>

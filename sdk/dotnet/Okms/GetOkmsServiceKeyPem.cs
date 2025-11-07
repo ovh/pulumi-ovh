@@ -13,18 +13,75 @@ namespace Pulumi.Ovh.Okms
     {
         /// <summary>
         /// Use this data source to retrieve information about a KMS service key, in the PEM format.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKeyPem.Invoke(new()
+        ///     {
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetOkmsServiceKeyPemResult> InvokeAsync(GetOkmsServiceKeyPemArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOkmsServiceKeyPemResult>("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", args ?? new GetOkmsServiceKeyPemArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a KMS service key, in the PEM format.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKeyPem.Invoke(new()
+        ///     {
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOkmsServiceKeyPemResult> Invoke(GetOkmsServiceKeyPemInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyPemResult>("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", args ?? new GetOkmsServiceKeyPemInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to retrieve information about a KMS service key, in the PEM format.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Ovh = Pulumi.Ovh;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var keyInfo = Ovh.Okms.GetOkmsServiceKeyPem.Invoke(new()
+        ///     {
+        ///         OkmsId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///         Id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetOkmsServiceKeyPemResult> Invoke(GetOkmsServiceKeyPemInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetOkmsServiceKeyPemResult>("ovh:Okms/getOkmsServiceKeyPem:getOkmsServiceKeyPem", args ?? new GetOkmsServiceKeyPemInvokeArgs(), options.WithDefaults());

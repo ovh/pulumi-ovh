@@ -73,7 +73,7 @@ class GetOkmsCredentialResult:
     @pulumi.getter(name="certificateType")
     def certificate_type(self) -> _builtins.str:
         """
-        (String) Type of the certificate (ECDSA or RSA)
+        (String) Type of certificate key (`ECDSA` or `RSA`).
         """
         return pulumi.get(self, "certificate_type")
 
@@ -169,6 +169,16 @@ def get_okms_credential(id: Optional[_builtins.str] = None,
     """
     Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    kms = ovh.Okms.get_okms_credential(okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    ```
+
 
     :param _builtins.str id: ID of the credential
     :param _builtins.str okms_id: ID of the KMS
@@ -196,6 +206,16 @@ def get_okms_credential_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOkmsCredentialResult]:
     """
     Use this data source to retrieve data associated with a KMS credential, such as the PEM encoded certificate.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_ovh as ovh
+
+    kms = ovh.Okms.get_okms_credential(okms_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+    ```
 
 
     :param _builtins.str id: ID of the credential

@@ -86,7 +86,7 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
     }
     /**
      * IPv4 address
-     * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+     * * ` permanent  ` - Deprecated, has no effect
      * 
      */
     @Export(name="ipOnMitigation", refs={String.class}, tree="[0]")
@@ -94,7 +94,7 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
 
     /**
      * @return IPv4 address
-     * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+     * * ` permanent  ` - Deprecated, has no effect
      * 
      */
     public Output<String> ipOnMitigation() {
@@ -103,7 +103,11 @@ public class Mitigation extends com.pulumi.resources.CustomResource {
     /**
      * Set on true if your ip is on permanent mitigation
      * 
+     * @deprecated
+     * Attribute &#39;permanent&#39; is deprecated and has no effect.
+     * 
      */
+    @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
     @Export(name="permanent", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> permanent;
 

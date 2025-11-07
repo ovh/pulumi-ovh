@@ -11934,7 +11934,7 @@ func (o StorageReplicationRuleFilterPtrOutput) Tags() pulumi.StringMapOutput {
 }
 
 type StorageVersioning struct {
-	// Versioning status
+	// Versioning status (E.g. "enabled", "disabled" or "suspended")
 	Status *string `pulumi:"status"`
 }
 
@@ -11950,7 +11950,7 @@ type StorageVersioningInput interface {
 }
 
 type StorageVersioningArgs struct {
-	// Versioning status
+	// Versioning status (E.g. "enabled", "disabled" or "suspended")
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -12031,7 +12031,7 @@ func (o StorageVersioningOutput) ToStorageVersioningPtrOutputWithContext(ctx con
 	}).(StorageVersioningPtrOutput)
 }
 
-// Versioning status
+// Versioning status (E.g. "enabled", "disabled" or "suspended")
 func (o StorageVersioningOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageVersioning) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -12060,7 +12060,7 @@ func (o StorageVersioningPtrOutput) Elem() StorageVersioningOutput {
 	}).(StorageVersioningOutput)
 }
 
-// Versioning status
+// Versioning status (E.g. "enabled", "disabled" or "suspended")
 func (o StorageVersioningPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageVersioning) *string {
 		if v == nil {

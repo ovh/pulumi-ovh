@@ -6021,7 +6021,7 @@ if not MYPY:
     class StorageVersioningArgsDict(TypedDict):
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Versioning status
+        Versioning status (E.g. "enabled", "disabled" or "suspended")
         """
 elif False:
     StorageVersioningArgsDict: TypeAlias = Mapping[str, Any]
@@ -6031,7 +6031,7 @@ class StorageVersioningArgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] status: Versioning status
+        :param pulumi.Input[_builtins.str] status: Versioning status (E.g. "enabled", "disabled" or "suspended")
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -6040,7 +6040,7 @@ class StorageVersioningArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Versioning status
+        Versioning status (E.g. "enabled", "disabled" or "suspended")
         """
         return pulumi.get(self, "status")
 

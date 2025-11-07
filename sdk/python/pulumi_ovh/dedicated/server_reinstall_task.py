@@ -35,7 +35,7 @@ class ServerReinstallTaskArgs:
         :param pulumi.Input['ServerReinstallTaskCustomizationsArgs'] customizations: Available attributes and their types are OS-dependant. Example: `hostname`.
                
                > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Deprecated, has no effect
         :param pulumi.Input[Sequence[pulumi.Input['ServerReinstallTaskStorageArgs']]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
         pulumi.set(__self__, "os", os)
@@ -103,7 +103,7 @@ class ServerReinstallTaskArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        Deprecated, has no effect
         """
         return pulumi.get(self, "properties")
 
@@ -150,7 +150,7 @@ class _ServerReinstallTaskState:
         :param pulumi.Input[_builtins.str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[_builtins.str] last_update: Last update
         :param pulumi.Input[_builtins.str] os: Operating system to install.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Deprecated, has no effect
         :param pulumi.Input[_builtins.str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[_builtins.str] start_date: Task creation date in RFC3339 format.
         :param pulumi.Input[_builtins.str] status: Task status (should be `done`)
@@ -271,7 +271,7 @@ class _ServerReinstallTaskState:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        Deprecated, has no effect
         """
         return pulumi.get(self, "properties")
 
@@ -350,7 +350,7 @@ class ServerReinstallTask(pulumi.CustomResource):
                
                > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         :param pulumi.Input[_builtins.str] os: Operating system to install.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Deprecated, has no effect
         :param pulumi.Input[_builtins.str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerReinstallTaskStorageArgs', 'ServerReinstallTaskStorageArgsDict']]]] storages: OS reinstallation storage configurations. [More details about disks, hardware/software RAID and partitioning configuration](https://help.ovhcloud.com/csm/en-dedicated-servers-api-partitioning?id=kb_article_view&sysparm_article=KB0043882) (do not forget to adapt camel case parameters to snake case parameters).
         """
@@ -446,7 +446,7 @@ class ServerReinstallTask(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] function: Function name (should be `hardInstall`).
         :param pulumi.Input[_builtins.str] last_update: Last update
         :param pulumi.Input[_builtins.str] os: Operating system to install.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Deprecated, has no effect
         :param pulumi.Input[_builtins.str] service_name: The service_name of your dedicated server.
         :param pulumi.Input[_builtins.str] start_date: Task creation date in RFC3339 format.
         :param pulumi.Input[_builtins.str] status: Task status (should be `done`)
@@ -532,7 +532,7 @@ class ServerReinstallTask(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        Arbitrary properties to pass to cloud-init's config drive datasource. It supports any key with any string value.
+        Deprecated, has no effect
         """
         return pulumi.get(self, "properties")
 

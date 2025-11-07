@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+ * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
  *
  * ## Example Usage
  *
@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const bp = ovh.getDedicatedServerOrderableBandwidthVrack({
+ * const spec = ovh.getDedicatedServerOrderableBandwidthVrack({
  *     serviceName: "myserver",
  * });
  * ```
@@ -44,17 +44,17 @@ export interface GetDedicatedServerOrderableBandwidthVrackResult {
      */
     readonly id: string;
     /**
-     * Wether or not additional bandwidth is orderable.
+     * Whether or not additional bandwidth is orderable
      */
     readonly orderable: boolean;
     readonly serviceName: string;
     /**
-     * The list of orderable vrack bandwidth in mbps.
+     * Additional orderable vrack bandwidth
      */
     readonly vracks: number[];
 }
 /**
- * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+ * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
  *
  * ## Example Usage
  *
@@ -62,7 +62,7 @@ export interface GetDedicatedServerOrderableBandwidthVrackResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const bp = ovh.getDedicatedServerOrderableBandwidthVrack({
+ * const spec = ovh.getDedicatedServerOrderableBandwidthVrack({
  *     serviceName: "myserver",
  * });
  * ```

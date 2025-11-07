@@ -16,14 +16,14 @@ public final class StorageVersioningArgs extends com.pulumi.resources.ResourceAr
     public static final StorageVersioningArgs Empty = new StorageVersioningArgs();
 
     /**
-     * Versioning status
+     * Versioning status (E.g. &#34;enabled&#34;, &#34;disabled&#34; or &#34;suspended&#34;)
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Versioning status
+     * @return Versioning status (E.g. &#34;enabled&#34;, &#34;disabled&#34; or &#34;suspended&#34;)
      * 
      */
     public Optional<Output<String>> status() {
@@ -55,7 +55,7 @@ public final class StorageVersioningArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status Versioning status
+         * @param status Versioning status (E.g. &#34;enabled&#34;, &#34;disabled&#34; or &#34;suspended&#34;)
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class StorageVersioningArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status Versioning status
+         * @param status Versioning status (E.g. &#34;enabled&#34;, &#34;disabled&#34; or &#34;suspended&#34;)
          * 
          * @return builder
          * 

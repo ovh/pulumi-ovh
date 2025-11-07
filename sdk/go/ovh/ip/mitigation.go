@@ -48,9 +48,11 @@ type Mitigation struct {
 	// The IP or the CIDR
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// * ` permanent  ` - Deprecated, has no effect
 	IpOnMitigation pulumi.StringOutput `pulumi:"ipOnMitigation"`
 	// Set on true if your ip is on permanent mitigation
+	//
+	// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 	Permanent pulumi.BoolOutput `pulumi:"permanent"`
 	// Current state of the IP on mitigation
 	State pulumi.StringOutput `pulumi:"state"`
@@ -97,9 +99,11 @@ type mitigationState struct {
 	// The IP or the CIDR
 	Ip *string `pulumi:"ip"`
 	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// * ` permanent  ` - Deprecated, has no effect
 	IpOnMitigation *string `pulumi:"ipOnMitigation"`
 	// Set on true if your ip is on permanent mitigation
+	//
+	// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 	Permanent *bool `pulumi:"permanent"`
 	// Current state of the IP on mitigation
 	State *string `pulumi:"state"`
@@ -111,9 +115,11 @@ type MitigationState struct {
 	// The IP or the CIDR
 	Ip pulumi.StringPtrInput
 	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// * ` permanent  ` - Deprecated, has no effect
 	IpOnMitigation pulumi.StringPtrInput
 	// Set on true if your ip is on permanent mitigation
+	//
+	// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 	Permanent pulumi.BoolPtrInput
 	// Current state of the IP on mitigation
 	State pulumi.StringPtrInput
@@ -127,9 +133,11 @@ type mitigationArgs struct {
 	// The IP or the CIDR
 	Ip string `pulumi:"ip"`
 	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// * ` permanent  ` - Deprecated, has no effect
 	IpOnMitigation string `pulumi:"ipOnMitigation"`
 	// Set on true if your ip is on permanent mitigation
+	//
+	// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 	Permanent *bool `pulumi:"permanent"`
 }
 
@@ -138,9 +146,11 @@ type MitigationArgs struct {
 	// The IP or the CIDR
 	Ip pulumi.StringInput
 	// IPv4 address
-	// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+	// * ` permanent  ` - Deprecated, has no effect
 	IpOnMitigation pulumi.StringInput
 	// Set on true if your ip is on permanent mitigation
+	//
+	// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 	Permanent pulumi.BoolPtrInput
 }
 
@@ -242,12 +252,14 @@ func (o MitigationOutput) Ip() pulumi.StringOutput {
 }
 
 // IPv4 address
-// * ` permanent  ` - Set on true if the IP is on permanent mitigation
+// * ` permanent  ` - Deprecated, has no effect
 func (o MitigationOutput) IpOnMitigation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.StringOutput { return v.IpOnMitigation }).(pulumi.StringOutput)
 }
 
 // Set on true if your ip is on permanent mitigation
+//
+// Deprecated: Attribute 'permanent' is deprecated and has no effect.
 func (o MitigationOutput) Permanent() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Mitigation) pulumi.BoolOutput { return v.Permanent }).(pulumi.BoolOutput)
 }

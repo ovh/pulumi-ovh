@@ -18,7 +18,7 @@ public final class GetOkmsCredentialResult {
      */
     private String certificatePem;
     /**
-     * @return (String) Type of the certificate (ECDSA or RSA)
+     * @return (String) Type of certificate key (`ECDSA` or `RSA`).
      * 
      */
     private String certificateType;
@@ -69,7 +69,7 @@ public final class GetOkmsCredentialResult {
         return this.certificatePem;
     }
     /**
-     * @return (String) Type of the certificate (ECDSA or RSA)
+     * @return (String) Type of certificate key (`ECDSA` or `RSA`).
      * 
      */
     public String certificateType() {

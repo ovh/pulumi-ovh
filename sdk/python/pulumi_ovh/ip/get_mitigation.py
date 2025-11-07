@@ -72,12 +72,13 @@ class GetMitigationResult:
     def ip_on_mitigation(self) -> _builtins.str:
         """
         IPv4 address
-        * `permanent ` - Set on true if the IP is on permanent mitigation
+        * `permanent ` - (Deprecated) Set on true if the IP is on permanent mitigation
         """
         return pulumi.get(self, "ip_on_mitigation")
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Attribute 'permanent' is deprecated and has no effect.""")
     def permanent(self) -> _builtins.bool:
         return pulumi.get(self, "permanent")
 

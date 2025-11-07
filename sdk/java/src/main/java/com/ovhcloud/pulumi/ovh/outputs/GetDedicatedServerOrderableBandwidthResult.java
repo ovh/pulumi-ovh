@@ -19,23 +19,23 @@ public final class GetDedicatedServerOrderableBandwidthResult {
      */
     private String id;
     /**
-     * @return Wether or not additional bandwidth is orderable.
+     * @return Whether or not additional bandwidth is orderable
      * 
      */
     private Boolean orderable;
     /**
-     * @return The list of orderable platinimum bandwidth in mbps.
+     * @return Additional orderable platinium bandwidth
      * 
      */
     private List<Integer> platinia;
     /**
-     * @return The list of orderable premium bandwidth in mbps.
+     * @return Additional orderable premium bandwidth
      * 
      */
     private List<Integer> premia;
     private String serviceName;
     /**
-     * @return The list of orderable ultimate bandwidth in mbps.
+     * @return Additional orderable ultimate bandwidth
      * 
      */
     private List<Integer> ultimates;
@@ -49,21 +49,21 @@ public final class GetDedicatedServerOrderableBandwidthResult {
         return this.id;
     }
     /**
-     * @return Wether or not additional bandwidth is orderable.
+     * @return Whether or not additional bandwidth is orderable
      * 
      */
     public Boolean orderable() {
         return this.orderable;
     }
     /**
-     * @return The list of orderable platinimum bandwidth in mbps.
+     * @return Additional orderable platinium bandwidth
      * 
      */
     public List<Integer> platinia() {
         return this.platinia;
     }
     /**
-     * @return The list of orderable premium bandwidth in mbps.
+     * @return Additional orderable premium bandwidth
      * 
      */
     public List<Integer> premia() {
@@ -73,7 +73,7 @@ public final class GetDedicatedServerOrderableBandwidthResult {
         return this.serviceName;
     }
     /**
-     * @return The list of orderable ultimate bandwidth in mbps.
+     * @return Additional orderable ultimate bandwidth
      * 
      */
     public List<Integer> ultimates() {

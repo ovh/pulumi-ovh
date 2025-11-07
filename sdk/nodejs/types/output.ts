@@ -221,6 +221,60 @@ export interface GetInstallationTemplateProjectUsage {
     version: string;
 }
 
+export interface GetOkmsSecretIam {
+    /**
+     * Resource display name
+     */
+    displayName: string;
+    /**
+     * Unique identifier of the resource
+     */
+    id: string;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags: {[key: string]: string};
+    /**
+     * Unique resource name used in policies
+     */
+    urn: string;
+}
+
+export interface GetOkmsSecretMetadata {
+    /**
+     * The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+     */
+    casRequired: boolean;
+    /**
+     * Time of creation of the secret
+     */
+    createdAt: string;
+    /**
+     * The secret version
+     */
+    currentVersion: number;
+    /**
+     * Custom metadata
+     */
+    customMetadata: {[key: string]: string};
+    /**
+     * Time duration before a version is deactivated
+     */
+    deactivateVersionAfter: string;
+    /**
+     * The number of versions to keep (10 default)
+     */
+    maxVersions: number;
+    /**
+     * The secret oldest version
+     */
+    oldestVersion: number;
+    /**
+     * Time of the last update of the secret
+     */
+    updatedAt: string;
+}
+
 export interface GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig {
     /**
      * BGP AS number
@@ -3127,7 +3181,7 @@ export namespace CloudProject {
 
     export interface StorageVersioning {
         /**
-         * Versioning status
+         * Versioning status (E.g. "enabled", "disabled" or "suspended")
          */
         status: string;
     }
@@ -3663,6 +3717,10 @@ export namespace Dedicated {
 
     export interface ServerCustomizations {
         /**
+         * Config Drive MetaData
+         */
+        configDriveMetadata?: {[key: string]: string};
+        /**
          * Config Drive UserData
          */
         configDriveUserData?: string;
@@ -3827,6 +3885,10 @@ export namespace Dedicated {
     }
 
     export interface ServerReinstallTaskCustomizations {
+        /**
+         * Config Drive MetaData
+         */
+        configDriveMetadata?: {[key: string]: string};
         /**
          * Config Drive UserData
          */
@@ -5264,6 +5326,80 @@ export namespace Okms {
          * (String) Unique resource name used in policies
          */
         urn: string;
+    }
+
+    export interface SecretIam {
+        /**
+         * Resource display name
+         */
+        displayName: string;
+        /**
+         * Unique identifier of the resource
+         */
+        id: string;
+        /**
+         * Resource tags. Tags that were internally computed are prefixed with ovh:
+         */
+        tags: {[key: string]: string};
+        /**
+         * Unique resource name used in policies
+         */
+        urn: string;
+    }
+
+    export interface SecretMetadata {
+        /**
+         * The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+         */
+        casRequired: boolean;
+        /**
+         * Time of creation of the secret
+         */
+        createdAt: string;
+        /**
+         * The secret version
+         */
+        currentVersion: number;
+        /**
+         * Custom metadata
+         */
+        customMetadata: {[key: string]: string};
+        /**
+         * Time duration before a version is deactivated
+         */
+        deactivateVersionAfter: string;
+        /**
+         * The number of versions to keep (10 default)
+         */
+        maxVersions: number;
+        /**
+         * The secret oldest version
+         */
+        oldestVersion: number;
+        /**
+         * Time of the last update of the secret
+         */
+        updatedAt: string;
+    }
+
+    export interface SecretVersion {
+        /**
+         * Time of creation of the secret version
+         */
+        createdAt: string;
+        data: string;
+        /**
+         * Time of deactivation of the secret version
+         */
+        deactivatedAt: string;
+        /**
+         * Secret version
+         */
+        id: number;
+        /**
+         * State of the secret version
+         */
+        state: string;
     }
 
     export interface ServiceKeyJWKIam {

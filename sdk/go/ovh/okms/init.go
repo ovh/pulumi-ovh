@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Credential{}
 	case "ovh:Okms/okms:Okms":
 		r = &Okms{}
+	case "ovh:Okms/secret:Secret":
+		r = &Secret{}
 	case "ovh:Okms/serviceKey:ServiceKey":
 		r = &ServiceKey{}
 	case "ovh:Okms/serviceKeyJWK:ServiceKeyJWK":
@@ -50,6 +52,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Okms/okms",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Okms/secret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

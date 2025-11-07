@@ -12,7 +12,7 @@ namespace Pulumi.Ovh
     public static class GetDedicatedServerOrderableBandwidthVrack
     {
         /// <summary>
-        /// Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+        /// Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
         /// 
         /// ## Example Usage
         /// 
@@ -24,7 +24,7 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bp = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()
+        ///     var spec = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()
         ///     {
         ///         ServiceName = "myserver",
         ///     });
@@ -36,7 +36,7 @@ namespace Pulumi.Ovh
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedServerOrderableBandwidthVrackResult>("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", args ?? new GetDedicatedServerOrderableBandwidthVrackArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+        /// Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bp = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()
+        ///     var spec = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()
         ///     {
         ///         ServiceName = "myserver",
         ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Ovh
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedServerOrderableBandwidthVrackResult>("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", args ?? new GetDedicatedServerOrderableBandwidthVrackInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+        /// Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
         /// 
         /// ## Example Usage
         /// 
@@ -72,7 +72,7 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bp = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()
+        ///     var spec = Ovh.GetDedicatedServerOrderableBandwidthVrack.Invoke(new()
         ///     {
         ///         ServiceName = "myserver",
         ///     });
@@ -122,12 +122,12 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Wether or not additional bandwidth is orderable.
+        /// Whether or not additional bandwidth is orderable
         /// </summary>
         public readonly bool Orderable;
         public readonly string ServiceName;
         /// <summary>
-        /// The list of orderable vrack bandwidth in mbps.
+        /// Additional orderable vrack bandwidth
         /// </summary>
         public readonly ImmutableArray<int> Vracks;
 

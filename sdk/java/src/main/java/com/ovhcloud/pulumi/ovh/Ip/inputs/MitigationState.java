@@ -48,7 +48,7 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * IPv4 address
-     * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+     * * ` permanent  ` - Deprecated, has no effect
      * 
      */
     @Import(name="ipOnMitigation")
@@ -56,7 +56,7 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return IPv4 address
-     * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+     * * ` permanent  ` - Deprecated, has no effect
      * 
      */
     public Optional<Output<String>> ipOnMitigation() {
@@ -66,14 +66,22 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
     /**
      * Set on true if your ip is on permanent mitigation
      * 
+     * @deprecated
+     * Attribute &#39;permanent&#39; is deprecated and has no effect.
+     * 
      */
+    @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
     @Import(name="permanent")
     private @Nullable Output<Boolean> permanent;
 
     /**
      * @return Set on true if your ip is on permanent mitigation
      * 
+     * @deprecated
+     * Attribute &#39;permanent&#39; is deprecated and has no effect.
+     * 
      */
+    @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
     public Optional<Output<Boolean>> permanent() {
         return Optional.ofNullable(this.permanent);
     }
@@ -165,7 +173,7 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipOnMitigation IPv4 address
-         * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+         * * ` permanent  ` - Deprecated, has no effect
          * 
          * @return builder
          * 
@@ -177,7 +185,7 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipOnMitigation IPv4 address
-         * * ` permanent  ` - Set on true if the IP is on permanent mitigation
+         * * ` permanent  ` - Deprecated, has no effect
          * 
          * @return builder
          * 
@@ -191,7 +199,11 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;permanent&#39; is deprecated and has no effect.
+         * 
          */
+        @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
         public Builder permanent(@Nullable Output<Boolean> permanent) {
             $.permanent = permanent;
             return this;
@@ -202,7 +214,11 @@ public final class MitigationState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Attribute &#39;permanent&#39; is deprecated and has no effect.
+         * 
          */
+        @Deprecated /* Attribute 'permanent' is deprecated and has no effect. */
         public Builder permanent(Boolean permanent) {
             return permanent(Output.of(permanent));
         }

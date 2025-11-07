@@ -24,7 +24,7 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bp = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()
+        ///     var spec = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()
         ///     {
         ///         ServiceName = "myserver",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bp = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()
+        ///     var spec = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()
         ///     {
         ///         ServiceName = "myserver",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.Ovh
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bp = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()
+        ///     var spec = Ovh.GetDedicatedServerOrderableBandwidth.Invoke(new()
         ///     {
         ///         ServiceName = "myserver",
         ///     });
@@ -122,20 +122,20 @@ namespace Pulumi.Ovh
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Wether or not additional bandwidth is orderable.
+        /// Whether or not additional bandwidth is orderable
         /// </summary>
         public readonly bool Orderable;
         /// <summary>
-        /// The list of orderable platinimum bandwidth in mbps.
+        /// Additional orderable platinium bandwidth
         /// </summary>
         public readonly ImmutableArray<int> Platinia;
         /// <summary>
-        /// The list of orderable premium bandwidth in mbps.
+        /// Additional orderable premium bandwidth
         /// </summary>
         public readonly ImmutableArray<int> Premia;
         public readonly string ServiceName;
         /// <summary>
-        /// The list of orderable ultimate bandwidth in mbps.
+        /// Additional orderable ultimate bandwidth
         /// </summary>
         public readonly ImmutableArray<int> Ultimates;
 

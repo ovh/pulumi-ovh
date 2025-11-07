@@ -16,6 +16,9 @@ from .. import _utilities
 
 __all__ = [
     'OkmsIam',
+    'SecretIam',
+    'SecretMetadata',
+    'SecretVersion',
     'ServiceKeyJWKIam',
     'ServiceKeyJWKKey',
     'GetOkmsResourceIamResult',
@@ -96,6 +99,293 @@ class OkmsIam(dict):
         (String) Unique resource name used in policies
         """
         return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class SecretIam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretIam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretIam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretIam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
+                 urn: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: Resource display name
+        :param _builtins.str id: Unique identifier of the resource
+        :param Mapping[str, _builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param _builtins.str urn: Unique resource name used in policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> Optional[_builtins.str]:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class SecretMetadata(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "casRequired":
+            suggest = "cas_required"
+        elif key == "createdAt":
+            suggest = "created_at"
+        elif key == "currentVersion":
+            suggest = "current_version"
+        elif key == "customMetadata":
+            suggest = "custom_metadata"
+        elif key == "deactivateVersionAfter":
+            suggest = "deactivate_version_after"
+        elif key == "maxVersions":
+            suggest = "max_versions"
+        elif key == "oldestVersion":
+            suggest = "oldest_version"
+        elif key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretMetadata. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretMetadata.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretMetadata.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cas_required: Optional[_builtins.bool] = None,
+                 created_at: Optional[_builtins.str] = None,
+                 current_version: Optional[_builtins.float] = None,
+                 custom_metadata: Optional[Mapping[str, _builtins.str]] = None,
+                 deactivate_version_after: Optional[_builtins.str] = None,
+                 max_versions: Optional[_builtins.float] = None,
+                 oldest_version: Optional[_builtins.float] = None,
+                 updated_at: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool cas_required: The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+        :param _builtins.str created_at: Time of creation of the secret
+        :param _builtins.float current_version: The secret version
+        :param Mapping[str, _builtins.str] custom_metadata: Custom metadata
+        :param _builtins.str deactivate_version_after: Time duration before a version is deactivated
+        :param _builtins.float max_versions: The number of versions to keep (10 default)
+        :param _builtins.float oldest_version: The secret oldest version
+        :param _builtins.str updated_at: Time of the last update of the secret
+        """
+        if cas_required is not None:
+            pulumi.set(__self__, "cas_required", cas_required)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if current_version is not None:
+            pulumi.set(__self__, "current_version", current_version)
+        if custom_metadata is not None:
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
+        if deactivate_version_after is not None:
+            pulumi.set(__self__, "deactivate_version_after", deactivate_version_after)
+        if max_versions is not None:
+            pulumi.set(__self__, "max_versions", max_versions)
+        if oldest_version is not None:
+            pulumi.set(__self__, "oldest_version", oldest_version)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="casRequired")
+    def cas_required(self) -> Optional[_builtins.bool]:
+        """
+        The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+        """
+        return pulumi.get(self, "cas_required")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        Time of creation of the secret
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentVersion")
+    def current_version(self) -> Optional[_builtins.float]:
+        """
+        The secret version
+        """
+        return pulumi.get(self, "current_version")
+
+    @_builtins.property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Custom metadata
+        """
+        return pulumi.get(self, "custom_metadata")
+
+    @_builtins.property
+    @pulumi.getter(name="deactivateVersionAfter")
+    def deactivate_version_after(self) -> Optional[_builtins.str]:
+        """
+        Time duration before a version is deactivated
+        """
+        return pulumi.get(self, "deactivate_version_after")
+
+    @_builtins.property
+    @pulumi.getter(name="maxVersions")
+    def max_versions(self) -> Optional[_builtins.float]:
+        """
+        The number of versions to keep (10 default)
+        """
+        return pulumi.get(self, "max_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="oldestVersion")
+    def oldest_version(self) -> Optional[_builtins.float]:
+        """
+        The secret oldest version
+        """
+        return pulumi.get(self, "oldest_version")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[_builtins.str]:
+        """
+        Time of the last update of the secret
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class SecretVersion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "deactivatedAt":
+            suggest = "deactivated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretVersion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretVersion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretVersion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data: _builtins.str,
+                 created_at: Optional[_builtins.str] = None,
+                 deactivated_at: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.float] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Time of creation of the secret version
+        :param _builtins.str deactivated_at: Time of deactivation of the secret version
+        :param _builtins.float id: Secret version
+        :param _builtins.str state: State of the secret version
+        """
+        pulumi.set(__self__, "data", data)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if deactivated_at is not None:
+            pulumi.set(__self__, "deactivated_at", deactivated_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> _builtins.str:
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        Time of creation of the secret version
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="deactivatedAt")
+    def deactivated_at(self) -> Optional[_builtins.str]:
+        """
+        Time of deactivation of the secret version
+        """
+        return pulumi.get(self, "deactivated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.float]:
+        """
+        Secret version
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        State of the secret version
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

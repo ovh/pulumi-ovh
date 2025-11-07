@@ -24,10 +24,16 @@ import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplateArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplatePlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetLocationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetLocationPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetOkmsSecretArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetOkmsSecretPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetOvhcloudConnectConfigPopDatacenterExtrasArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetOvhcloudConnectConfigPopDatacenterExtrasPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetOvhcloudConnectConfigPopDatacentersArgs;
@@ -56,9 +62,12 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeysResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsOutputGraylogStreamUrlResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthVrackResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplateResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplatesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetLocationResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetOkmsSecretResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetOvhcloudConnectConfigPopDatacenterExtrasResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetOvhcloudConnectConfigPopDatacentersResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetOvhcloudConnectConfigPopsResult;
@@ -1836,7 +1845,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -1878,7 +1887,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -1920,7 +1929,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -1962,7 +1971,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2004,7 +2013,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidth(GetDedicatedServerOrderableBandwidthArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2019,7 +2028,7 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth", TypeShape.of(GetDedicatedServerOrderableBandwidthResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
      * 
@@ -2046,7 +2055,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2061,7 +2070,7 @@ public final class OvhFunctions {
         return getDedicatedServerOrderableBandwidthVrack(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
      * 
@@ -2088,7 +2097,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2103,7 +2112,7 @@ public final class OvhFunctions {
         return getDedicatedServerOrderableBandwidthVrackPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
      * 
@@ -2130,7 +2139,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2145,7 +2154,7 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", TypeShape.of(GetDedicatedServerOrderableBandwidthVrackResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
      * 
@@ -2172,7 +2181,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2187,7 +2196,7 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", TypeShape.of(GetDedicatedServerOrderableBandwidthVrackResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get the list of orderable additional vrack bandwidth for a dedicated server associated with your OVHcloud Account.
+     * Use this data source to get the orderable vrack bandwidth information about a dedicated server associated with your OVHcloud Account.
      * 
      * ## Example Usage
      * 
@@ -2214,7 +2223,7 @@ public final class OvhFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var bp = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
+     *         final var spec = OvhFunctions.getDedicatedServerOrderableBandwidthVrack(GetDedicatedServerOrderableBandwidthVrackArgs.builder()
      *             .serviceName("myserver")
      *             .build());
      * 
@@ -2227,6 +2236,431 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetDedicatedServerOrderableBandwidthVrackResult> getDedicatedServerOrderableBandwidthVrackPlain(GetDedicatedServerOrderableBandwidthVrackPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack", TypeShape.of(GetDedicatedServerOrderableBandwidthVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get record object properties
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var record = OvhFunctions.getDomainZoneRecord(GetDomainZoneRecordArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .id("<record_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainZoneRecordResult> getDomainZoneRecord(GetDomainZoneRecordArgs args) {
+        return getDomainZoneRecord(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get record object properties
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var record = OvhFunctions.getDomainZoneRecord(GetDomainZoneRecordArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .id("<record_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDomainZoneRecordResult> getDomainZoneRecordPlain(GetDomainZoneRecordPlainArgs args) {
+        return getDomainZoneRecordPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get record object properties
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var record = OvhFunctions.getDomainZoneRecord(GetDomainZoneRecordArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .id("<record_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainZoneRecordResult> getDomainZoneRecord(GetDomainZoneRecordArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDomainZoneRecord:getDomainZoneRecord", TypeShape.of(GetDomainZoneRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get record object properties
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var record = OvhFunctions.getDomainZoneRecord(GetDomainZoneRecordArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .id("<record_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainZoneRecordResult> getDomainZoneRecord(GetDomainZoneRecordArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDomainZoneRecord:getDomainZoneRecord", TypeShape.of(GetDomainZoneRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get record object properties
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var record = OvhFunctions.getDomainZoneRecord(GetDomainZoneRecordArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .id("<record_id>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDomainZoneRecordResult> getDomainZoneRecordPlain(GetDomainZoneRecordPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getDomainZoneRecord:getDomainZoneRecord", TypeShape.of(GetDomainZoneRecordResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List record
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var records = OvhFunctions.getDomainZoneRecords(GetDomainZoneRecordsArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainZoneRecordsResult> getDomainZoneRecords(GetDomainZoneRecordsArgs args) {
+        return getDomainZoneRecords(args, InvokeOptions.Empty);
+    }
+    /**
+     * List record
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var records = OvhFunctions.getDomainZoneRecords(GetDomainZoneRecordsArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDomainZoneRecordsResult> getDomainZoneRecordsPlain(GetDomainZoneRecordsPlainArgs args) {
+        return getDomainZoneRecordsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List record
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var records = OvhFunctions.getDomainZoneRecords(GetDomainZoneRecordsArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainZoneRecordsResult> getDomainZoneRecords(GetDomainZoneRecordsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDomainZoneRecords:getDomainZoneRecords", TypeShape.of(GetDomainZoneRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List record
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var records = OvhFunctions.getDomainZoneRecords(GetDomainZoneRecordsArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDomainZoneRecordsResult> getDomainZoneRecords(GetDomainZoneRecordsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDomainZoneRecords:getDomainZoneRecords", TypeShape.of(GetDomainZoneRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List record
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var records = OvhFunctions.getDomainZoneRecords(GetDomainZoneRecordsArgs.builder()
+     *             .zoneName("<zone_name>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDomainZoneRecordsResult> getDomainZoneRecordsPlain(GetDomainZoneRecordsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getDomainZoneRecords:getDomainZoneRecords", TypeShape.of(GetDomainZoneRecordsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a specific OVH dedicated server installation template.
@@ -2925,6 +3359,231 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetLocationResult> getLocationPlain(GetLocationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getLocation:getLocation", TypeShape.of(GetLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the latest secret version (metadata only):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetOkmsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = OvhFunctions.getOkmsSecret(GetOkmsSecretArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .path("app/api_credentials")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the latest secret version including its data:
+     * 
+     */
+    public static Output<GetOkmsSecretResult> getOkmsSecret(GetOkmsSecretArgs args) {
+        return getOkmsSecret(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the latest secret version (metadata only):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetOkmsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = OvhFunctions.getOkmsSecret(GetOkmsSecretArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .path("app/api_credentials")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the latest secret version including its data:
+     * 
+     */
+    public static CompletableFuture<GetOkmsSecretResult> getOkmsSecretPlain(GetOkmsSecretPlainArgs args) {
+        return getOkmsSecretPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the latest secret version (metadata only):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetOkmsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = OvhFunctions.getOkmsSecret(GetOkmsSecretArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .path("app/api_credentials")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the latest secret version including its data:
+     * 
+     */
+    public static Output<GetOkmsSecretResult> getOkmsSecret(GetOkmsSecretArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getOkmsSecret:getOkmsSecret", TypeShape.of(GetOkmsSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the latest secret version (metadata only):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetOkmsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = OvhFunctions.getOkmsSecret(GetOkmsSecretArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .path("app/api_credentials")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the latest secret version including its data:
+     * 
+     */
+    public static Output<GetOkmsSecretResult> getOkmsSecret(GetOkmsSecretArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getOkmsSecret:getOkmsSecret", TypeShape.of(GetOkmsSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the latest secret version (metadata only):
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetOkmsSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = OvhFunctions.getOkmsSecret(GetOkmsSecretArgs.builder()
+     *             .okmsId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .path("app/api_credentials")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the latest secret version including its data:
+     * 
+     */
+    public static CompletableFuture<GetOkmsSecretResult> getOkmsSecretPlain(GetOkmsSecretPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getOkmsSecret:getOkmsSecret", TypeShape.of(GetOkmsSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about an Ovhcloud Connect Datacenter Extra configuration

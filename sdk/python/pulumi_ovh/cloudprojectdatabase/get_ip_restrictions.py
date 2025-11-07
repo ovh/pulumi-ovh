@@ -102,7 +102,9 @@ def get_ip_restrictions(cluster_id: Optional[_builtins.str] = None,
                         service_name: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRestrictionsResult:
     """
-    Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+    > **DEPRECATED** Use `ip_restrictions` field in `CloudProject.Database` resource instead.
+
+    > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
 
     Use this data source to get the list of IP restrictions associated with a public cloud project.
 
@@ -143,7 +145,9 @@ def get_ip_restrictions_output(cluster_id: Optional[pulumi.Input[_builtins.str]]
                                service_name: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpRestrictionsResult]:
     """
-    Deprecated: Use ip_restrictions field in cloud_project_database datasource instead.
+    > **DEPRECATED** Use `ip_restrictions` field in `CloudProject.Database` resource instead.
+
+    > **NOTE** This resource is only compatible with the following engines: **cassandra, grafana, kafka, kakfaConnect, m3db, mongodb, mysql, opensearch, postgres, redis**
 
     Use this data source to get the list of IP restrictions associated with a public cloud project.
 
