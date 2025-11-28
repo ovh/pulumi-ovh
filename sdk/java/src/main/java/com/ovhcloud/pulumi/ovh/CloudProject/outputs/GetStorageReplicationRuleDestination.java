@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ public final class GetStorageReplicationRuleDestination {
      * 
      */
     private String region;
+    private Boolean removeOnMainBucketDeletion;
     /**
      * @return Destination storage class
      * 
@@ -41,6 +43,9 @@ public final class GetStorageReplicationRuleDestination {
     public String region() {
         return this.region;
     }
+    public Boolean removeOnMainBucketDeletion() {
+        return this.removeOnMainBucketDeletion;
+    }
     /**
      * @return Destination storage class
      * 
@@ -60,12 +65,14 @@ public final class GetStorageReplicationRuleDestination {
     public static final class Builder {
         private String name;
         private String region;
+        private Boolean removeOnMainBucketDeletion;
         private String storageClass;
         public Builder() {}
         public Builder(GetStorageReplicationRuleDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.region = defaults.region;
+    	      this.removeOnMainBucketDeletion = defaults.removeOnMainBucketDeletion;
     	      this.storageClass = defaults.storageClass;
         }
 
@@ -86,6 +93,14 @@ public final class GetStorageReplicationRuleDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder removeOnMainBucketDeletion(Boolean removeOnMainBucketDeletion) {
+            if (removeOnMainBucketDeletion == null) {
+              throw new MissingRequiredPropertyException("GetStorageReplicationRuleDestination", "removeOnMainBucketDeletion");
+            }
+            this.removeOnMainBucketDeletion = removeOnMainBucketDeletion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageClass(String storageClass) {
             if (storageClass == null) {
               throw new MissingRequiredPropertyException("GetStorageReplicationRuleDestination", "storageClass");
@@ -97,6 +112,7 @@ public final class GetStorageReplicationRuleDestination {
             final var _resultValue = new GetStorageReplicationRuleDestination();
             _resultValue.name = name;
             _resultValue.region = region;
+            _resultValue.removeOnMainBucketDeletion = removeOnMainBucketDeletion;
             _resultValue.storageClass = storageClass;
             return _resultValue;
         }

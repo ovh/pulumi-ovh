@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +48,21 @@ public final class StorageReplicationRuleDestinationArgs extends com.pulumi.reso
     }
 
     /**
+     * Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * 
+     */
+    @Import(name="removeOnMainBucketDeletion")
+    private @Nullable Output<Boolean> removeOnMainBucketDeletion;
+
+    /**
+     * @return Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * 
+     */
+    public Optional<Output<Boolean>> removeOnMainBucketDeletion() {
+        return Optional.ofNullable(this.removeOnMainBucketDeletion);
+    }
+
+    /**
      * Destination storage class
      * 
      */
@@ -66,6 +82,7 @@ public final class StorageReplicationRuleDestinationArgs extends com.pulumi.reso
     private StorageReplicationRuleDestinationArgs(StorageReplicationRuleDestinationArgs $) {
         this.name = $.name;
         this.region = $.region;
+        this.removeOnMainBucketDeletion = $.removeOnMainBucketDeletion;
         this.storageClass = $.storageClass;
     }
 
@@ -127,6 +144,27 @@ public final class StorageReplicationRuleDestinationArgs extends com.pulumi.reso
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param removeOnMainBucketDeletion Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeOnMainBucketDeletion(@Nullable Output<Boolean> removeOnMainBucketDeletion) {
+            $.removeOnMainBucketDeletion = removeOnMainBucketDeletion;
+            return this;
+        }
+
+        /**
+         * @param removeOnMainBucketDeletion Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeOnMainBucketDeletion(Boolean removeOnMainBucketDeletion) {
+            return removeOnMainBucketDeletion(Output.of(removeOnMainBucketDeletion));
         }
 
         /**

@@ -5905,6 +5905,10 @@ if not MYPY:
         """
         Destination region
         """
+        remove_on_main_bucket_deletion: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        """
         storage_class: NotRequired[pulumi.Input[_builtins.str]]
         """
         Destination storage class
@@ -5917,14 +5921,18 @@ class StorageReplicationRuleDestinationArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
+                 remove_on_main_bucket_deletion: Optional[pulumi.Input[_builtins.bool]] = None,
                  storage_class: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Destination bucket name
         :param pulumi.Input[_builtins.str] region: Destination region
+        :param pulumi.Input[_builtins.bool] remove_on_main_bucket_deletion: Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
         :param pulumi.Input[_builtins.str] storage_class: Destination storage class
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
+        if remove_on_main_bucket_deletion is not None:
+            pulumi.set(__self__, "remove_on_main_bucket_deletion", remove_on_main_bucket_deletion)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
 
@@ -5951,6 +5959,18 @@ class StorageReplicationRuleDestinationArgs:
     @region.setter
     def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="removeOnMainBucketDeletion")
+    def remove_on_main_bucket_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        """
+        return pulumi.get(self, "remove_on_main_bucket_deletion")
+
+    @remove_on_main_bucket_deletion.setter
+    def remove_on_main_bucket_deletion(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "remove_on_main_bucket_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="storageClass")

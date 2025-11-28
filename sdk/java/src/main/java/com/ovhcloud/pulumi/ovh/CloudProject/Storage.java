@@ -14,9 +14,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -115,6 +117,20 @@ public class Storage extends com.pulumi.resources.CustomResource {
      */
     public Output<StorageEncryption> encryption() {
         return this.encryption;
+    }
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    @Export(name="hideObjects", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> hideObjects;
+
+    /**
+     * @return If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    public Output<Optional<Boolean>> hideObjects() {
+        return Codegen.optional(this.hideObjects);
     }
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)

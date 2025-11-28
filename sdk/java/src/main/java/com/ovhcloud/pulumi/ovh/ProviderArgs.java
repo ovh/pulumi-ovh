@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -137,6 +138,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+     * 
+     */
+    @Import(name="ignoreInitError", json=true)
+    private @Nullable Output<Boolean> ignoreInitError;
+
+    /**
+     * @return If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreInitError() {
+        return Optional.ofNullable(this.ignoreInitError);
+    }
+
+    /**
      * Extra information to append to the user-agent
      * 
      */
@@ -162,6 +178,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientSecret = $.clientSecret;
         this.consumerKey = $.consumerKey;
         this.endpoint = $.endpoint;
+        this.ignoreInitError = $.ignoreInitError;
         this.userAgentExtra = $.userAgentExtra;
     }
 
@@ -349,6 +366,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param ignoreInitError If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreInitError(@Nullable Output<Boolean> ignoreInitError) {
+            $.ignoreInitError = ignoreInitError;
+            return this;
+        }
+
+        /**
+         * @param ignoreInitError If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreInitError(Boolean ignoreInitError) {
+            return ignoreInitError(Output.of(ignoreInitError));
         }
 
         /**

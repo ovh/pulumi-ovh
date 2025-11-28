@@ -31,7 +31,7 @@ type ServerReinstallTask struct {
 	LastUpdate pulumi.StringOutput `pulumi:"lastUpdate"`
 	// Operating system to install.
 	Os pulumi.StringOutput `pulumi:"os"`
-	// Deprecated, has no effect
+	// Attribute 'properties' is deprecated and has no effect.
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -95,7 +95,7 @@ type serverReinstallTaskState struct {
 	LastUpdate *string `pulumi:"lastUpdate"`
 	// Operating system to install.
 	Os *string `pulumi:"os"`
-	// Deprecated, has no effect
+	// Attribute 'properties' is deprecated and has no effect.
 	Properties map[string]string `pulumi:"properties"`
 	// The serviceName of your dedicated server.
 	ServiceName *string `pulumi:"serviceName"`
@@ -124,7 +124,7 @@ type ServerReinstallTaskState struct {
 	LastUpdate pulumi.StringPtrInput
 	// Operating system to install.
 	Os pulumi.StringPtrInput
-	// Deprecated, has no effect
+	// Attribute 'properties' is deprecated and has no effect.
 	Properties pulumi.StringMapInput
 	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringPtrInput
@@ -149,7 +149,7 @@ type serverReinstallTaskArgs struct {
 	Customizations *ServerReinstallTaskCustomizations `pulumi:"customizations"`
 	// Operating system to install.
 	Os string `pulumi:"os"`
-	// Deprecated, has no effect
+	// Attribute 'properties' is deprecated and has no effect.
 	Properties map[string]string `pulumi:"properties"`
 	// The serviceName of your dedicated server.
 	ServiceName string `pulumi:"serviceName"`
@@ -167,7 +167,7 @@ type ServerReinstallTaskArgs struct {
 	Customizations ServerReinstallTaskCustomizationsPtrInput
 	// Operating system to install.
 	Os pulumi.StringInput
-	// Deprecated, has no effect
+	// Attribute 'properties' is deprecated and has no effect.
 	Properties pulumi.StringMapInput
 	// The serviceName of your dedicated server.
 	ServiceName pulumi.StringInput
@@ -299,7 +299,7 @@ func (o ServerReinstallTaskOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerReinstallTask) pulumi.StringOutput { return v.Os }).(pulumi.StringOutput)
 }
 
-// Deprecated, has no effect
+// Attribute 'properties' is deprecated and has no effect.
 func (o ServerReinstallTaskOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServerReinstallTask) pulumi.StringMapOutput { return v.Properties }).(pulumi.StringMapOutput)
 }

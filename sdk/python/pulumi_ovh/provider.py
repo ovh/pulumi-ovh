@@ -27,6 +27,7 @@ class ProviderArgs:
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  consumer_key: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignore_init_error: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_agent_extra: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -38,6 +39,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] client_secret: OAuth 2.0 application's secret
         :param pulumi.Input[_builtins.str] consumer_key: The OVH API Consumer Key
         :param pulumi.Input[_builtins.str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
+        :param pulumi.Input[_builtins.bool] ignore_init_error: If set to true, initialization errors (like invalid OAuth credentials) will be ignored
         :param pulumi.Input[_builtins.str] user_agent_extra: Extra information to append to the user-agent
         """
         if access_token is not None:
@@ -56,6 +58,8 @@ class ProviderArgs:
             pulumi.set(__self__, "consumer_key", consumer_key)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if ignore_init_error is not None:
+            pulumi.set(__self__, "ignore_init_error", ignore_init_error)
         if user_agent_extra is not None:
             pulumi.set(__self__, "user_agent_extra", user_agent_extra)
 
@@ -156,6 +160,18 @@ class ProviderArgs:
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="ignoreInitError")
+    def ignore_init_error(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+        """
+        return pulumi.get(self, "ignore_init_error")
+
+    @ignore_init_error.setter
+    def ignore_init_error(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ignore_init_error", value)
+
+    @_builtins.property
     @pulumi.getter(name="userAgentExtra")
     def user_agent_extra(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -182,6 +198,7 @@ class Provider(pulumi.ProviderResource):
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  consumer_key: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignore_init_error: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_agent_extra: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -200,6 +217,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] client_secret: OAuth 2.0 application's secret
         :param pulumi.Input[_builtins.str] consumer_key: The OVH API Consumer Key
         :param pulumi.Input[_builtins.str] endpoint: The OVH API endpoint to target (ex: "ovh-eu")
+        :param pulumi.Input[_builtins.bool] ignore_init_error: If set to true, initialization errors (like invalid OAuth credentials) will be ignored
         :param pulumi.Input[_builtins.str] user_agent_extra: Extra information to append to the user-agent
         """
         ...
@@ -237,6 +255,7 @@ class Provider(pulumi.ProviderResource):
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  consumer_key: Optional[pulumi.Input[_builtins.str]] = None,
                  endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 ignore_init_error: Optional[pulumi.Input[_builtins.bool]] = None,
                  user_agent_extra: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -255,6 +274,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["client_secret"] = client_secret
             __props__.__dict__["consumer_key"] = consumer_key
             __props__.__dict__["endpoint"] = endpoint
+            __props__.__dict__["ignore_init_error"] = pulumi.Output.from_input(ignore_init_error).apply(pulumi.runtime.to_json) if ignore_init_error is not None else None
             __props__.__dict__["user_agent_extra"] = user_agent_extra
         super(Provider, __self__).__init__(
             'ovh',

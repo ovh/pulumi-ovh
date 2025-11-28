@@ -84,6 +84,10 @@ export class Storage extends pulumi.CustomResource {
      */
     public readonly encryption!: pulumi.Output<outputs.CloudProject.StorageEncryption>;
     /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     */
+    public readonly hideObjects!: pulumi.Output<boolean | undefined>;
+    /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
      */
     public readonly limit!: pulumi.Output<number>;
@@ -155,6 +159,7 @@ export class Storage extends pulumi.CustomResource {
             const state = argsOrState as StorageState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["encryption"] = state ? state.encryption : undefined;
+            resourceInputs["hideObjects"] = state ? state.hideObjects : undefined;
             resourceInputs["limit"] = state ? state.limit : undefined;
             resourceInputs["marker"] = state ? state.marker : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -178,6 +183,7 @@ export class Storage extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["encryption"] = args ? args.encryption : undefined;
+            resourceInputs["hideObjects"] = args ? args.hideObjects : undefined;
             resourceInputs["limit"] = args ? args.limit : undefined;
             resourceInputs["marker"] = args ? args.marker : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -211,6 +217,10 @@ export interface StorageState {
      * Encryption configuration
      */
     encryption?: pulumi.Input<inputs.CloudProject.StorageEncryption>;
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     */
+    hideObjects?: pulumi.Input<boolean>;
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
      */
@@ -277,6 +287,10 @@ export interface StorageArgs {
      * Encryption configuration
      */
     encryption?: pulumi.Input<inputs.CloudProject.StorageEncryption>;
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     */
+    hideObjects?: pulumi.Input<boolean>;
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
      */

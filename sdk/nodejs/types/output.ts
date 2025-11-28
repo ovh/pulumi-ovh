@@ -1873,6 +1873,7 @@ export namespace CloudProject {
          * Destination region, can be null if destination bucket has been deleted
          */
         region: string;
+        removeOnMainBucketDeletion: boolean;
         /**
          * Destination storage class
          */
@@ -2033,6 +2034,7 @@ export namespace CloudProject {
          * Destination region, can be null if destination bucket has been deleted
          */
         region: string;
+        removeOnMainBucketDeletion: boolean;
         /**
          * Destination storage class
          */
@@ -3162,6 +3164,10 @@ export namespace CloudProject {
          * Destination region
          */
         region: string;
+        /**
+         * Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         */
+        removeOnMainBucketDeletion?: boolean;
         /**
          * Destination storage class
          */

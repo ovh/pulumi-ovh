@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class GetStoragePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetStoragePlainArgs Empty = new GetStoragePlainArgs();
+
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    @Import(name="hideObjects")
+    private @Nullable Boolean hideObjects;
+
+    /**
+     * @return If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    public Optional<Boolean> hideObjects() {
+        return Optional.ofNullable(this.hideObjects);
+    }
 
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
@@ -109,6 +125,7 @@ public final class GetStoragePlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetStoragePlainArgs() {}
 
     private GetStoragePlainArgs(GetStoragePlainArgs $) {
+        this.hideObjects = $.hideObjects;
         this.limit = $.limit;
         this.marker = $.marker;
         this.name = $.name;
@@ -133,6 +150,17 @@ public final class GetStoragePlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetStoragePlainArgs defaults) {
             $ = new GetStoragePlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hideObjects If true, objects list will not be saved in state (useful for large buckets)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideObjects(@Nullable Boolean hideObjects) {
+            $.hideObjects = hideObjects;
+            return this;
         }
 
         /**

@@ -65,7 +65,7 @@ export class ServerReinstallTask extends pulumi.CustomResource {
      */
     public readonly os!: pulumi.Output<string>;
     /**
-     * Deprecated, has no effect
+     * Attribute 'properties' is deprecated and has no effect.
      */
     public readonly properties!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -171,7 +171,7 @@ export interface ServerReinstallTaskState {
      */
     os?: pulumi.Input<string>;
     /**
-     * Deprecated, has no effect
+     * Attribute 'properties' is deprecated and has no effect.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -211,7 +211,7 @@ export interface ServerReinstallTaskArgs {
      */
     os: pulumi.Input<string>;
     /**
-     * Deprecated, has no effect
+     * Attribute 'properties' is deprecated and has no effect.
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

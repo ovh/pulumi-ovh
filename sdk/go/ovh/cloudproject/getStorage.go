@@ -52,6 +52,8 @@ func LookupStorage(ctx *pulumi.Context, args *LookupStorageArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getStorage.
 type LookupStorageArgs struct {
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects *bool `pulumi:"hideObjects"`
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit *float64 `pulumi:"limit"`
 	// Key to start with when listing objects
@@ -72,6 +74,8 @@ type LookupStorageResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Encryption configuration
 	Encryption GetStorageEncryption `pulumi:"encryption"`
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects *bool `pulumi:"hideObjects"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
@@ -117,6 +121,8 @@ func LookupStorageOutput(ctx *pulumi.Context, args LookupStorageOutputArgs, opts
 
 // A collection of arguments for invoking getStorage.
 type LookupStorageOutputArgs struct {
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects pulumi.BoolPtrInput `pulumi:"hideObjects"`
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
 	// Key to start with when listing objects
@@ -158,6 +164,11 @@ func (o LookupStorageResultOutput) CreatedAt() pulumi.StringOutput {
 // Encryption configuration
 func (o LookupStorageResultOutput) Encryption() GetStorageEncryptionOutput {
 	return o.ApplyT(func(v LookupStorageResult) GetStorageEncryption { return v.Encryption }).(GetStorageEncryptionOutput)
+}
+
+// If true, objects list will not be saved in state (useful for large buckets)
+func (o LookupStorageResultOutput) HideObjects() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupStorageResult) *bool { return v.HideObjects }).(pulumi.BoolPtrOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

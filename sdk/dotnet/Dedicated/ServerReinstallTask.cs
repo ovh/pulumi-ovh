@@ -57,7 +57,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> Os { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated, has no effect
+        /// Attribute 'properties' is deprecated and has no effect.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Deprecated, has no effect
+        /// Attribute 'properties' is deprecated and has no effect.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -239,7 +239,7 @@ namespace Pulumi.Ovh.Dedicated
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Deprecated, has no effect
+        /// Attribute 'properties' is deprecated and has no effect.
         /// </summary>
         public InputMap<string> Properties
         {

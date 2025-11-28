@@ -103,7 +103,7 @@ type Volume struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Sub-operations of the operation
 	SubOperations VolumeSubOperationArrayOutput `pulumi:"subOperations"`
-	// Type of the volume **Changing this value recreates the resource.**
+	// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Volume ID
 	VolumeId pulumi.StringOutput `pulumi:"volumeId"`
@@ -179,7 +179,7 @@ type volumeState struct {
 	Status *string `pulumi:"status"`
 	// Sub-operations of the operation
 	SubOperations []VolumeSubOperation `pulumi:"subOperations"`
-	// Type of the volume **Changing this value recreates the resource.**
+	// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
 	Type *string `pulumi:"type"`
 	// Volume ID
 	VolumeId *string `pulumi:"volumeId"`
@@ -220,7 +220,7 @@ type VolumeState struct {
 	Status pulumi.StringPtrInput
 	// Sub-operations of the operation
 	SubOperations VolumeSubOperationArrayInput
-	// Type of the volume **Changing this value recreates the resource.**
+	// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
 	Type pulumi.StringPtrInput
 	// Volume ID
 	VolumeId pulumi.StringPtrInput
@@ -247,7 +247,7 @@ type volumeArgs struct {
 	Size *float64 `pulumi:"size"`
 	// Snapshot ID
 	SnapshotId *string `pulumi:"snapshotId"`
-	// Type of the volume **Changing this value recreates the resource.**
+	// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
 	Type *string `pulumi:"type"`
 	// Volume ID
 	VolumeId *string `pulumi:"volumeId"`
@@ -271,7 +271,7 @@ type VolumeArgs struct {
 	Size pulumi.Float64PtrInput
 	// Snapshot ID
 	SnapshotId pulumi.StringPtrInput
-	// Type of the volume **Changing this value recreates the resource.**
+	// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
 	Type pulumi.StringPtrInput
 	// Volume ID
 	VolumeId pulumi.StringPtrInput
@@ -449,7 +449,7 @@ func (o VolumeOutput) SubOperations() VolumeSubOperationArrayOutput {
 	return o.ApplyT(func(v *Volume) VolumeSubOperationArrayOutput { return v.SubOperations }).(VolumeSubOperationArrayOutput)
 }
 
-// Type of the volume **Changing this value recreates the resource.**
+// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
 func (o VolumeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

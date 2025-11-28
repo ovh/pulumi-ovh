@@ -274,14 +274,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of the volume **Changing this value recreates the resource.**
+     * Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Type of the volume **Changing this value recreates the resource.**
+     * @return Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      * 
      */
     public Optional<Output<String>> type() {
@@ -723,7 +723,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the volume **Changing this value recreates the resource.**
+         * @param type Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
          * 
          * @return builder
          * 
@@ -734,7 +734,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Type of the volume **Changing this value recreates the resource.**
+         * @param type Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
          * 
          * @return builder
          * 

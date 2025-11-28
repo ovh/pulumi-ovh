@@ -1431,6 +1431,10 @@ export namespace CloudProject {
          */
         region: pulumi.Input<string>;
         /**
+         * Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         */
+        removeOnMainBucketDeletion?: pulumi.Input<boolean>;
+        /**
          * Destination storage class
          */
         storageClass?: pulumi.Input<string>;

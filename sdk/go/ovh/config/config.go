@@ -51,6 +51,11 @@ func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "ovh:endpoint")
 }
 
+// If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+func GetIgnoreInitError(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "ovh:ignoreInitError")
+}
+
 // Extra information to append to the user-agent
 func GetUserAgentExtra(ctx *pulumi.Context) string {
 	return config.Get(ctx, "ovh:userAgentExtra")

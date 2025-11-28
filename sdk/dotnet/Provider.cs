@@ -150,6 +150,12 @@ namespace Pulumi.Ovh
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
+        /// If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+        /// </summary>
+        [Input("ignoreInitError", json: true)]
+        public Input<bool>? IgnoreInitError { get; set; }
+
+        /// <summary>
         /// Extra information to append to the user-agent
         /// </summary>
         [Input("userAgentExtra")]

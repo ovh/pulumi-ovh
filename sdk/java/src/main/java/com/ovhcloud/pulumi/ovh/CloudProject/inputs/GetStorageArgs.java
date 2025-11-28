@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetStorageArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetStorageArgs Empty = new GetStorageArgs();
+
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    @Import(name="hideObjects")
+    private @Nullable Output<Boolean> hideObjects;
+
+    /**
+     * @return If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    public Optional<Output<Boolean>> hideObjects() {
+        return Optional.ofNullable(this.hideObjects);
+    }
 
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
@@ -110,6 +126,7 @@ public final class GetStorageArgs extends com.pulumi.resources.InvokeArgs {
     private GetStorageArgs() {}
 
     private GetStorageArgs(GetStorageArgs $) {
+        this.hideObjects = $.hideObjects;
         this.limit = $.limit;
         this.marker = $.marker;
         this.name = $.name;
@@ -134,6 +151,27 @@ public final class GetStorageArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetStorageArgs defaults) {
             $ = new GetStorageArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param hideObjects If true, objects list will not be saved in state (useful for large buckets)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideObjects(@Nullable Output<Boolean> hideObjects) {
+            $.hideObjects = hideObjects;
+            return this;
+        }
+
+        /**
+         * @param hideObjects If true, objects list will not be saved in state (useful for large buckets)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hideObjects(Boolean hideObjects) {
+            return hideObjects(Output.of(hideObjects));
         }
 
         /**

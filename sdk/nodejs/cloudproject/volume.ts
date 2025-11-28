@@ -144,7 +144,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly subOperations!: pulumi.Output<outputs.CloudProject.VolumeSubOperation[]>;
     /**
-     * Type of the volume **Changing this value recreates the resource.**
+     * Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -290,7 +290,7 @@ export interface VolumeState {
      */
     subOperations?: pulumi.Input<pulumi.Input<inputs.CloudProject.VolumeSubOperation>[]>;
     /**
-     * Type of the volume **Changing this value recreates the resource.**
+     * Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      */
     type?: pulumi.Input<string>;
     /**
@@ -336,7 +336,7 @@ export interface VolumeArgs {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * Type of the volume **Changing this value recreates the resource.**
+     * Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      */
     type?: pulumi.Input<string>;
     /**

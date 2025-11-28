@@ -74,6 +74,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<Outputs.StorageEncryption> Encryption { get; private set; } = null!;
 
         /// <summary>
+        /// If true, objects list will not be saved in state (useful for large buckets)
+        /// </summary>
+        [Output("hideObjects")]
+        public Output<bool?> HideObjects { get; private set; } = null!;
+
+        /// <summary>
         /// Limit the number of objects returned (1000 maximum, defaults to 1000)
         /// </summary>
         [Output("limit")]
@@ -211,6 +217,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<Inputs.StorageEncryptionArgs>? Encryption { get; set; }
 
         /// <summary>
+        /// If true, objects list will not be saved in state (useful for large buckets)
+        /// </summary>
+        [Input("hideObjects")]
+        public Input<bool>? HideObjects { get; set; }
+
+        /// <summary>
         /// Limit the number of objects returned (1000 maximum, defaults to 1000)
         /// </summary>
         [Input("limit")]
@@ -283,6 +295,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.StorageEncryptionGetArgs>? Encryption { get; set; }
+
+        /// <summary>
+        /// If true, objects list will not be saved in state (useful for large buckets)
+        /// </summary>
+        [Input("hideObjects")]
+        public Input<bool>? HideObjects { get; set; }
 
         /// <summary>
         /// Limit the number of objects returned (1000 maximum, defaults to 1000)

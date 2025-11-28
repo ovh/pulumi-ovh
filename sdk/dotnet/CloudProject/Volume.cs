@@ -163,7 +163,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.VolumeSubOperation>> SubOperations { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the volume **Changing this value recreates the resource.**
+        /// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -270,7 +270,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// Type of the volume **Changing this value recreates the resource.**
+        /// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Type of the volume **Changing this value recreates the resource.**
+        /// Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

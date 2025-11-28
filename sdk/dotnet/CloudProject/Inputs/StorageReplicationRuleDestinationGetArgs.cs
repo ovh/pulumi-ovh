@@ -25,6 +25,12 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
+        /// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        /// </summary>
+        [Input("removeOnMainBucketDeletion")]
+        public Input<bool>? RemoveOnMainBucketDeletion { get; set; }
+
+        /// <summary>
         /// Destination storage class
         /// </summary>
         [Input("storageClass")]

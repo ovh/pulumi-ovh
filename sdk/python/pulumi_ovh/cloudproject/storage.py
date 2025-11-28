@@ -24,6 +24,7 @@ class StorageArgs:
                  region_name: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
                  encryption: Optional[pulumi.Input['StorageEncryptionArgs']] = None,
+                 hide_objects: Optional[pulumi.Input[_builtins.bool]] = None,
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -36,6 +37,7 @@ class StorageArgs:
         :param pulumi.Input[_builtins.str] region_name: Region name
         :param pulumi.Input[_builtins.str] service_name: Service name
         :param pulumi.Input['StorageEncryptionArgs'] encryption: Encryption configuration
+        :param pulumi.Input[_builtins.bool] hide_objects: If true, objects list will not be saved in state (useful for large buckets)
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
@@ -48,6 +50,8 @@ class StorageArgs:
         pulumi.set(__self__, "service_name", service_name)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
+        if hide_objects is not None:
+            pulumi.set(__self__, "hide_objects", hide_objects)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
         if marker is not None:
@@ -98,6 +102,18 @@ class StorageArgs:
     @encryption.setter
     def encryption(self, value: Optional[pulumi.Input['StorageEncryptionArgs']]):
         pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hideObjects")
+    def hide_objects(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, objects list will not be saved in state (useful for large buckets)
+        """
+        return pulumi.get(self, "hide_objects")
+
+    @hide_objects.setter
+    def hide_objects(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "hide_objects", value)
 
     @_builtins.property
     @pulumi.getter
@@ -189,6 +205,7 @@ class _StorageState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption: Optional[pulumi.Input['StorageEncryptionArgs']] = None,
+                 hide_objects: Optional[pulumi.Input[_builtins.bool]] = None,
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -207,6 +224,7 @@ class _StorageState:
         Input properties used for looking up and filtering Storage resources.
         :param pulumi.Input[_builtins.str] created_at: The date and timestamp when the resource was created
         :param pulumi.Input['StorageEncryptionArgs'] encryption: Encryption configuration
+        :param pulumi.Input[_builtins.bool] hide_objects: If true, objects list will not be saved in state (useful for large buckets)
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
@@ -226,6 +244,8 @@ class _StorageState:
             pulumi.set(__self__, "created_at", created_at)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
+        if hide_objects is not None:
+            pulumi.set(__self__, "hide_objects", hide_objects)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
         if marker is not None:
@@ -278,6 +298,18 @@ class _StorageState:
     @encryption.setter
     def encryption(self, value: Optional[pulumi.Input['StorageEncryptionArgs']]):
         pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hideObjects")
+    def hide_objects(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true, objects list will not be saved in state (useful for large buckets)
+        """
+        return pulumi.get(self, "hide_objects")
+
+    @hide_objects.setter
+    def hide_objects(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "hide_objects", value)
 
     @_builtins.property
     @pulumi.getter
@@ -455,6 +487,7 @@ class Storage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encryption: Optional[pulumi.Input[Union['StorageEncryptionArgs', 'StorageEncryptionArgsDict']]] = None,
+                 hide_objects: Optional[pulumi.Input[_builtins.bool]] = None,
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -508,6 +541,7 @@ class Storage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['StorageEncryptionArgs', 'StorageEncryptionArgsDict']] encryption: Encryption configuration
+        :param pulumi.Input[_builtins.bool] hide_objects: If true, objects list will not be saved in state (useful for large buckets)
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
@@ -580,6 +614,7 @@ class Storage(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  encryption: Optional[pulumi.Input[Union['StorageEncryptionArgs', 'StorageEncryptionArgsDict']]] = None,
+                 hide_objects: Optional[pulumi.Input[_builtins.bool]] = None,
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -599,6 +634,7 @@ class Storage(pulumi.CustomResource):
             __props__ = StorageArgs.__new__(StorageArgs)
 
             __props__.__dict__["encryption"] = encryption
+            __props__.__dict__["hide_objects"] = hide_objects
             __props__.__dict__["limit"] = limit
             __props__.__dict__["marker"] = marker
             __props__.__dict__["name"] = name
@@ -630,6 +666,7 @@ class Storage(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             encryption: Optional[pulumi.Input[Union['StorageEncryptionArgs', 'StorageEncryptionArgsDict']]] = None,
+            hide_objects: Optional[pulumi.Input[_builtins.bool]] = None,
             limit: Optional[pulumi.Input[_builtins.float]] = None,
             marker: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -653,6 +690,7 @@ class Storage(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: The date and timestamp when the resource was created
         :param pulumi.Input[Union['StorageEncryptionArgs', 'StorageEncryptionArgsDict']] encryption: Encryption configuration
+        :param pulumi.Input[_builtins.bool] hide_objects: If true, objects list will not be saved in state (useful for large buckets)
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
@@ -674,6 +712,7 @@ class Storage(pulumi.CustomResource):
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["encryption"] = encryption
+        __props__.__dict__["hide_objects"] = hide_objects
         __props__.__dict__["limit"] = limit
         __props__.__dict__["marker"] = marker
         __props__.__dict__["name"] = name
@@ -705,6 +744,14 @@ class Storage(pulumi.CustomResource):
         Encryption configuration
         """
         return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="hideObjects")
+    def hide_objects(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, objects list will not be saved in state (useful for large buckets)
+        """
+        return pulumi.get(self, "hide_objects")
 
     @_builtins.property
     @pulumi.getter

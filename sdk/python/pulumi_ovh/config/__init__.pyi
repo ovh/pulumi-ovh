@@ -54,6 +54,11 @@ endpoint: Optional[str]
 The OVH API endpoint to target (ex: "ovh-eu")
 """
 
+ignoreInitError: Optional[bool]
+"""
+If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+"""
+
 userAgentExtra: Optional[str]
 """
 Extra information to append to the user-agent
