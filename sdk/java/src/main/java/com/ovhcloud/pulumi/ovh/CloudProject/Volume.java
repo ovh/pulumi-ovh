@@ -323,14 +323,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.subOperations;
     }
     /**
-     * Type of the volume **Changing this value recreates the resource.**
+     * Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Type of the volume **Changing this value recreates the resource.**
+     * @return Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
      * 
      */
     public Output<String> type() {

@@ -94,6 +94,12 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetStorageArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// If true, objects list will not be saved in state (useful for large buckets)
+        /// </summary>
+        [Input("hideObjects")]
+        public bool? HideObjects { get; set; }
+
+        /// <summary>
         /// Limit the number of objects returned (1000 maximum, defaults to 1000)
         /// </summary>
         [Input("limit")]
@@ -137,6 +143,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetStorageInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If true, objects list will not be saved in state (useful for large buckets)
+        /// </summary>
+        [Input("hideObjects")]
+        public Input<bool>? HideObjects { get; set; }
+
         /// <summary>
         /// Limit the number of objects returned (1000 maximum, defaults to 1000)
         /// </summary>
@@ -191,6 +203,10 @@ namespace Pulumi.Ovh.CloudProject
         /// Encryption configuration
         /// </summary>
         public readonly Outputs.GetStorageEncryptionResult Encryption;
+        /// <summary>
+        /// If true, objects list will not be saved in state (useful for large buckets)
+        /// </summary>
+        public readonly bool? HideObjects;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -262,6 +278,8 @@ namespace Pulumi.Ovh.CloudProject
 
             Outputs.GetStorageEncryptionResult encryption,
 
+            bool? hideObjects,
+
             string id,
 
             double limit,
@@ -296,6 +314,7 @@ namespace Pulumi.Ovh.CloudProject
         {
             CreatedAt = createdAt;
             Encryption = encryption;
+            HideObjects = hideObjects;
             Id = id;
             Limit = limit;
             Marker = marker;

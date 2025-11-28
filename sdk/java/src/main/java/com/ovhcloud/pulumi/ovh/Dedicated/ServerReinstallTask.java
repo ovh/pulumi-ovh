@@ -124,14 +124,14 @@ public class ServerReinstallTask extends com.pulumi.resources.CustomResource {
         return this.os;
     }
     /**
-     * Deprecated, has no effect
+     * Attribute &#39;properties&#39; is deprecated and has no effect.
      * 
      */
     @Export(name="properties", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> properties;
 
     /**
-     * @return Deprecated, has no effect
+     * @return Attribute &#39;properties&#39; is deprecated and has no effect.
      * 
      */
     public Output<Optional<Map<String,String>>> properties() {

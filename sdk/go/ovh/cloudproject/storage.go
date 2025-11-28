@@ -73,6 +73,8 @@ type Storage struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Encryption configuration
 	Encryption StorageEncryptionOutput `pulumi:"encryption"`
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects pulumi.BoolPtrOutput `pulumi:"hideObjects"`
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit pulumi.Float64Output `pulumi:"limit"`
 	// Key to start with when listing objects
@@ -143,6 +145,8 @@ type storageState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Encryption configuration
 	Encryption *StorageEncryption `pulumi:"encryption"`
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects *bool `pulumi:"hideObjects"`
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit *float64 `pulumi:"limit"`
 	// Key to start with when listing objects
@@ -178,6 +182,8 @@ type StorageState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Encryption configuration
 	Encryption StorageEncryptionPtrInput
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects pulumi.BoolPtrInput
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit pulumi.Float64PtrInput
 	// Key to start with when listing objects
@@ -215,6 +221,8 @@ func (StorageState) ElementType() reflect.Type {
 type storageArgs struct {
 	// Encryption configuration
 	Encryption *StorageEncryption `pulumi:"encryption"`
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects *bool `pulumi:"hideObjects"`
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit *float64 `pulumi:"limit"`
 	// Key to start with when listing objects
@@ -239,6 +247,8 @@ type storageArgs struct {
 type StorageArgs struct {
 	// Encryption configuration
 	Encryption StorageEncryptionPtrInput
+	// If true, objects list will not be saved in state (useful for large buckets)
+	HideObjects pulumi.BoolPtrInput
 	// Limit the number of objects returned (1000 maximum, defaults to 1000)
 	Limit pulumi.Float64PtrInput
 	// Key to start with when listing objects
@@ -354,6 +364,11 @@ func (o StorageOutput) CreatedAt() pulumi.StringOutput {
 // Encryption configuration
 func (o StorageOutput) Encryption() StorageEncryptionOutput {
 	return o.ApplyT(func(v *Storage) StorageEncryptionOutput { return v.Encryption }).(StorageEncryptionOutput)
+}
+
+// If true, objects list will not be saved in state (useful for large buckets)
+func (o StorageOutput) HideObjects() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Storage) pulumi.BoolPtrOutput { return v.HideObjects }).(pulumi.BoolPtrOutput)
 }
 
 // Limit the number of objects returned (1000 maximum, defaults to 1000)

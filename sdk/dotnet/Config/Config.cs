@@ -112,6 +112,16 @@ namespace Pulumi.Ovh
             set => _endpoint.Set(value);
         }
 
+        private static readonly __Value<bool?> _ignoreInitError = new __Value<bool?>(() => __config.GetBoolean("ignoreInitError"));
+        /// <summary>
+        /// If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+        /// </summary>
+        public static bool? IgnoreInitError
+        {
+            get => _ignoreInitError.Get();
+            set => _ignoreInitError.Set(value);
+        }
+
         private static readonly __Value<string?> _userAgentExtra = new __Value<string?>(() => __config.Get("userAgentExtra"));
         /// <summary>
         /// Extra information to append to the user-agent

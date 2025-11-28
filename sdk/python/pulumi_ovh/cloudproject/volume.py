@@ -41,7 +41,7 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] name: Name of the volume
         :param pulumi.Input[_builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID
-        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         :param pulumi.Input[_builtins.str] volume_id: Volume ID
         """
         pulumi.set(__self__, "region_name", region_name)
@@ -163,7 +163,7 @@ class VolumeArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the volume **Changing this value recreates the resource.**
+        Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         """
         return pulumi.get(self, "type")
 
@@ -225,7 +225,7 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] started_at: Datetime of the operation creation
         :param pulumi.Input[_builtins.str] status: Volume status
         :param pulumi.Input[Sequence[pulumi.Input['VolumeSubOperationArgs']]] sub_operations: Sub-operations of the operation
-        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         :param pulumi.Input[_builtins.str] volume_id: Volume ID
         """
         if action is not None:
@@ -475,7 +475,7 @@ class _VolumeState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the volume **Changing this value recreates the resource.**
+        Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         """
         return pulumi.get(self, "type")
 
@@ -563,7 +563,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID
-        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         :param pulumi.Input[_builtins.str] volume_id: Volume ID
         """
         ...
@@ -722,7 +722,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] started_at: Datetime of the operation creation
         :param pulumi.Input[_builtins.str] status: Volume status
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeSubOperationArgs', 'VolumeSubOperationArgsDict']]]] sub_operations: Sub-operations of the operation
-        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         :param pulumi.Input[_builtins.str] volume_id: Volume ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -890,7 +890,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of the volume **Changing this value recreates the resource.**
+        Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         """
         return pulumi.get(self, "type")
 

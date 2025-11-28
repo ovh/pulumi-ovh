@@ -77,6 +77,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('endpoint')
 
     @_builtins.property
+    def ignore_init_error(self) -> Optional[bool]:
+        """
+        If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+        """
+        return __config__.get_bool('ignoreInitError')
+
+    @_builtins.property
     def user_agent_extra(self) -> Optional[str]:
         """
         Extra information to append to the user-agent

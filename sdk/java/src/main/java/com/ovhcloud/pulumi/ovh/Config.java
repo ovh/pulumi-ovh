@@ -4,6 +4,7 @@
 package com.ovhcloud.pulumi.ovh;
 
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -66,6 +67,13 @@ public final class Config {
  */
     public Optional<String> endpoint() {
         return Codegen.stringProp("endpoint").config(config).get();
+    }
+/**
+ * If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+ * 
+ */
+    public Optional<Boolean> ignoreInitError() {
+        return Codegen.booleanProp("ignoreInitError").config(config).get();
     }
 /**
  * Extra information to append to the user-agent

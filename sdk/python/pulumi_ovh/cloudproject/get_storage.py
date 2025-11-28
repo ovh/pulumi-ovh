@@ -27,13 +27,16 @@ class GetStorageResult:
     """
     A collection of values returned by getStorage.
     """
-    def __init__(__self__, created_at=None, encryption=None, id=None, limit=None, marker=None, name=None, objects=None, objects_count=None, objects_size=None, owner_id=None, prefix=None, region=None, region_name=None, replication=None, service_name=None, tags=None, versioning=None, virtual_host=None):
+    def __init__(__self__, created_at=None, encryption=None, hide_objects=None, id=None, limit=None, marker=None, name=None, objects=None, objects_count=None, objects_size=None, owner_id=None, prefix=None, region=None, region_name=None, replication=None, service_name=None, tags=None, versioning=None, virtual_host=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
         if encryption and not isinstance(encryption, dict):
             raise TypeError("Expected argument 'encryption' to be a dict")
         pulumi.set(__self__, "encryption", encryption)
+        if hide_objects and not isinstance(hide_objects, bool):
+            raise TypeError("Expected argument 'hide_objects' to be a bool")
+        pulumi.set(__self__, "hide_objects", hide_objects)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -98,6 +101,14 @@ class GetStorageResult:
         Encryption configuration
         """
         return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="hideObjects")
+    def hide_objects(self) -> Optional[_builtins.bool]:
+        """
+        If true, objects list will not be saved in state (useful for large buckets)
+        """
+        return pulumi.get(self, "hide_objects")
 
     @_builtins.property
     @pulumi.getter
@@ -236,6 +247,7 @@ class AwaitableGetStorageResult(GetStorageResult):
         return GetStorageResult(
             created_at=self.created_at,
             encryption=self.encryption,
+            hide_objects=self.hide_objects,
             id=self.id,
             limit=self.limit,
             marker=self.marker,
@@ -254,7 +266,8 @@ class AwaitableGetStorageResult(GetStorageResult):
             virtual_host=self.virtual_host)
 
 
-def get_storage(limit: Optional[_builtins.float] = None,
+def get_storage(hide_objects: Optional[_builtins.bool] = None,
+                limit: Optional[_builtins.float] = None,
                 marker: Optional[_builtins.str] = None,
                 name: Optional[_builtins.str] = None,
                 prefix: Optional[_builtins.str] = None,
@@ -276,6 +289,7 @@ def get_storage(limit: Optional[_builtins.float] = None,
     ```
 
 
+    :param _builtins.bool hide_objects: If true, objects list will not be saved in state (useful for large buckets)
     :param _builtins.float limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
     :param _builtins.str marker: Key to start with when listing objects
     :param _builtins.str name: Name
@@ -284,6 +298,7 @@ def get_storage(limit: Optional[_builtins.float] = None,
     :param _builtins.str service_name: Service name
     """
     __args__ = dict()
+    __args__['hideObjects'] = hide_objects
     __args__['limit'] = limit
     __args__['marker'] = marker
     __args__['name'] = name
@@ -296,6 +311,7 @@ def get_storage(limit: Optional[_builtins.float] = None,
     return AwaitableGetStorageResult(
         created_at=pulumi.get(__ret__, 'created_at'),
         encryption=pulumi.get(__ret__, 'encryption'),
+        hide_objects=pulumi.get(__ret__, 'hide_objects'),
         id=pulumi.get(__ret__, 'id'),
         limit=pulumi.get(__ret__, 'limit'),
         marker=pulumi.get(__ret__, 'marker'),
@@ -312,7 +328,8 @@ def get_storage(limit: Optional[_builtins.float] = None,
         tags=pulumi.get(__ret__, 'tags'),
         versioning=pulumi.get(__ret__, 'versioning'),
         virtual_host=pulumi.get(__ret__, 'virtual_host'))
-def get_storage_output(limit: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
+def get_storage_output(hide_objects: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+                       limit: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
                        marker: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                        name: Optional[pulumi.Input[_builtins.str]] = None,
                        prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -334,6 +351,7 @@ def get_storage_output(limit: Optional[pulumi.Input[Optional[_builtins.float]]] 
     ```
 
 
+    :param _builtins.bool hide_objects: If true, objects list will not be saved in state (useful for large buckets)
     :param _builtins.float limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
     :param _builtins.str marker: Key to start with when listing objects
     :param _builtins.str name: Name
@@ -342,6 +360,7 @@ def get_storage_output(limit: Optional[pulumi.Input[Optional[_builtins.float]]] 
     :param _builtins.str service_name: Service name
     """
     __args__ = dict()
+    __args__['hideObjects'] = hide_objects
     __args__['limit'] = limit
     __args__['marker'] = marker
     __args__['name'] = name
@@ -353,6 +372,7 @@ def get_storage_output(limit: Optional[pulumi.Input[Optional[_builtins.float]]] 
     return __ret__.apply(lambda __response__: GetStorageResult(
         created_at=pulumi.get(__response__, 'created_at'),
         encryption=pulumi.get(__response__, 'encryption'),
+        hide_objects=pulumi.get(__response__, 'hide_objects'),
         id=pulumi.get(__response__, 'id'),
         limit=pulumi.get(__response__, 'limit'),
         marker=pulumi.get(__response__, 'marker'),

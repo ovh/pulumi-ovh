@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,6 +23,11 @@ public final class StorageReplicationRuleDestination {
      * 
      */
     private String region;
+    /**
+     * @return Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * 
+     */
+    private @Nullable Boolean removeOnMainBucketDeletion;
     /**
      * @return Destination storage class
      * 
@@ -44,6 +50,13 @@ public final class StorageReplicationRuleDestination {
         return this.region;
     }
     /**
+     * @return Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * 
+     */
+    public Optional<Boolean> removeOnMainBucketDeletion() {
+        return Optional.ofNullable(this.removeOnMainBucketDeletion);
+    }
+    /**
      * @return Destination storage class
      * 
      */
@@ -62,12 +75,14 @@ public final class StorageReplicationRuleDestination {
     public static final class Builder {
         private String name;
         private String region;
+        private @Nullable Boolean removeOnMainBucketDeletion;
         private @Nullable String storageClass;
         public Builder() {}
         public Builder(StorageReplicationRuleDestination defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
     	      this.region = defaults.region;
+    	      this.removeOnMainBucketDeletion = defaults.removeOnMainBucketDeletion;
     	      this.storageClass = defaults.storageClass;
         }
 
@@ -88,6 +103,12 @@ public final class StorageReplicationRuleDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder removeOnMainBucketDeletion(@Nullable Boolean removeOnMainBucketDeletion) {
+
+            this.removeOnMainBucketDeletion = removeOnMainBucketDeletion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storageClass(@Nullable String storageClass) {
 
             this.storageClass = storageClass;
@@ -97,6 +118,7 @@ public final class StorageReplicationRuleDestination {
             final var _resultValue = new StorageReplicationRuleDestination();
             _resultValue.name = name;
             _resultValue.region = region;
+            _resultValue.removeOnMainBucketDeletion = removeOnMainBucketDeletion;
             _resultValue.storageClass = storageClass;
             return _resultValue;
         }

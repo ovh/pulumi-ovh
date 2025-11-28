@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
 export function getStorage(args: GetStorageArgs, opts?: pulumi.InvokeOptions): Promise<GetStorageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getStorage:getStorage", {
+        "hideObjects": args.hideObjects,
         "limit": args.limit,
         "marker": args.marker,
         "name": args.name,
@@ -38,6 +39,10 @@ export function getStorage(args: GetStorageArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getStorage.
  */
 export interface GetStorageArgs {
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     */
+    hideObjects?: boolean;
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
      */
@@ -76,6 +81,10 @@ export interface GetStorageResult {
      * Encryption configuration
      */
     readonly encryption: outputs.CloudProject.GetStorageEncryption;
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     */
+    readonly hideObjects?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -160,6 +169,7 @@ export interface GetStorageResult {
 export function getStorageOutput(args: GetStorageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getStorage:getStorage", {
+        "hideObjects": args.hideObjects,
         "limit": args.limit,
         "marker": args.marker,
         "name": args.name,
@@ -173,6 +183,10 @@ export function getStorageOutput(args: GetStorageOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getStorage.
  */
 export interface GetStorageOutputArgs {
+    /**
+     * If true, objects list will not be saved in state (useful for large buckets)
+     */
+    hideObjects?: pulumi.Input<boolean>;
     /**
      * Limit the number of objects returned (1000 maximum, defaults to 1000)
      */

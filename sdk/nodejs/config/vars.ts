@@ -96,6 +96,17 @@ Object.defineProperty(exports, "endpoint", {
 });
 
 /**
+ * If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+ */
+export declare const ignoreInitError: boolean | undefined;
+Object.defineProperty(exports, "ignoreInitError", {
+    get() {
+        return __config.getObject<boolean>("ignoreInitError");
+    },
+    enumerable: true,
+});
+
+/**
  * Extra information to append to the user-agent
  */
 export declare const userAgentExtra: string | undefined;

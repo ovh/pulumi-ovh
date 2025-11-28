@@ -99,6 +99,10 @@
                 "type": "string",
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
             },
+            "ignoreInitError": {
+                "type": "boolean",
+                "description": "If set to true, initialization errors (like invalid OAuth credentials) will be ignored\n"
+            },
             "userAgentExtra": {
                 "type": "string",
                 "description": "Extra information to append to the user-agent\n"
@@ -2100,6 +2104,10 @@
                 "region": {
                     "type": "string",
                     "description": "Destination region\n"
+                },
+                "removeOnMainBucketDeletion": {
+                    "type": "boolean",
+                    "description": "Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)\n"
                 },
                 "storageClass": {
                     "type": "string",
@@ -4142,6 +4150,9 @@
                     "type": "string",
                     "description": "Destination region, can be null if destination bucket has been deleted\n"
                 },
+                "removeOnMainBucketDeletion": {
+                    "type": "boolean"
+                },
                 "storageClass": {
                     "type": "string",
                     "description": "Destination storage class\n"
@@ -4151,6 +4162,7 @@
             "required": [
                 "name",
                 "region",
+                "removeOnMainBucketDeletion",
                 "storageClass"
             ],
             "language": {
@@ -4420,6 +4432,9 @@
                     "type": "string",
                     "description": "Destination region, can be null if destination bucket has been deleted\n"
                 },
+                "removeOnMainBucketDeletion": {
+                    "type": "boolean"
+                },
                 "storageClass": {
                     "type": "string",
                     "description": "Destination storage class\n"
@@ -4429,6 +4444,7 @@
             "required": [
                 "name",
                 "region",
+                "removeOnMainBucketDeletion",
                 "storageClass"
             ],
             "language": {
@@ -10864,6 +10880,10 @@
                 "type": "string",
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
             },
+            "ignoreInitError": {
+                "type": "boolean",
+                "description": "If set to true, initialization errors (like invalid OAuth credentials) will be ignored\n"
+            },
             "userAgentExtra": {
                 "type": "string",
                 "description": "Extra information to append to the user-agent\n"
@@ -10901,6 +10921,10 @@
             "endpoint": {
                 "type": "string",
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
+            },
+            "ignoreInitError": {
+                "type": "boolean",
+                "description": "If set to true, initialization errors (like invalid OAuth credentials) will be ignored\n"
             },
             "userAgentExtra": {
                 "type": "string",
@@ -15391,6 +15415,10 @@
                     "$ref": "#/types/ovh:CloudProject/StorageEncryption:StorageEncryption",
                     "description": "Encryption configuration\n"
                 },
+                "hideObjects": {
+                    "type": "boolean",
+                    "description": "If true, objects list will not be saved in state (useful for large buckets)\n"
+                },
                 "limit": {
                     "type": "number",
                     "description": "Limit the number of objects returned (1000 maximum, defaults to 1000)\n"
@@ -15474,6 +15502,10 @@
                     "$ref": "#/types/ovh:CloudProject/StorageEncryption:StorageEncryption",
                     "description": "Encryption configuration\n"
                 },
+                "hideObjects": {
+                    "type": "boolean",
+                    "description": "If true, objects list will not be saved in state (useful for large buckets)\n"
+                },
                 "limit": {
                     "type": "number",
                     "description": "Limit the number of objects returned (1000 maximum, defaults to 1000)\n"
@@ -15525,6 +15557,10 @@
                     "encryption": {
                         "$ref": "#/types/ovh:CloudProject/StorageEncryption:StorageEncryption",
                         "description": "Encryption configuration\n"
+                    },
+                    "hideObjects": {
+                        "type": "boolean",
+                        "description": "If true, objects list will not be saved in state (useful for large buckets)\n"
                     },
                     "limit": {
                         "type": "number",
@@ -15832,7 +15868,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the volume **Changing this value recreates the resource.**\n"
+                    "description": "Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks\n"
                 },
                 "volumeId": {
                     "type": "string",
@@ -15895,7 +15931,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the volume **Changing this value recreates the resource.**\n"
+                    "description": "Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks\n"
                 },
                 "volumeId": {
                     "type": "string",
@@ -15985,7 +16021,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of the volume **Changing this value recreates the resource.**\n"
+                        "description": "Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks\n"
                     },
                     "volumeId": {
                         "type": "string",
@@ -20915,7 +20951,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Deprecated, has no effect\n"
+                    "description": "Attribute 'properties' is deprecated and has no effect.\n"
                 },
                 "serviceName": {
                     "type": "string",
@@ -20967,7 +21003,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Deprecated, has no effect\n",
+                    "description": "Attribute 'properties' is deprecated and has no effect.\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
@@ -21026,7 +21062,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Deprecated, has no effect\n",
+                        "description": "Attribute 'properties' is deprecated and has no effect.\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
@@ -26754,7 +26790,7 @@
             }
         },
         "ovh:Okms/secret:Secret": {
-            "description": "## \n\n---\n## subcategory : \"Key Management Service (KMS)\"\n\n---\n\n# ovh.Okms.Secret (Resource)\n\nManages a secret stored in OVHcloud KMS.\n\n\u003e WARNING: `version.data` is marked **Sensitive** but still ends up in the state file. To mitigate that, it is recommended to protect your state with encryption and access controls. Avoid committing it to source control.\n\n",
+            "description": "Manages a secret stored in OVHcloud KMS.\n\n\u003e WARNING: `version.data` is marked **Sensitive** but still ends up in the state file. To mitigate that, it is recommended to protect your state with encryption and access controls. Avoid committing it to source control.\n\n",
             "properties": {
                 "cas": {
                     "type": "number",
@@ -33018,6 +33054,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getStorage.\n",
                 "properties": {
+                    "hideObjects": {
+                        "type": "boolean",
+                        "description": "If true, objects list will not be saved in state (useful for large buckets)\n"
+                    },
                     "limit": {
                         "type": "number",
                         "description": "Limit the number of objects returned (1000 maximum, defaults to 1000)\n"
@@ -33060,6 +33100,10 @@
                     "encryption": {
                         "$ref": "#/types/ovh:CloudProject/getStorageEncryption:getStorageEncryption",
                         "description": "Encryption configuration\n"
+                    },
+                    "hideObjects": {
+                        "description": "If true, objects list will not be saved in state (useful for large buckets)\n",
+                        "type": "boolean"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",

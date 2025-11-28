@@ -77,6 +77,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["consumerKey"] = args ? args.consumerKey : undefined;
             resourceInputs["endpoint"] = args ? args.endpoint : undefined;
+            resourceInputs["ignoreInitError"] = pulumi.output(args ? args.ignoreInitError : undefined).apply(JSON.stringify);
             resourceInputs["userAgentExtra"] = args ? args.userAgentExtra : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -129,6 +130,10 @@ export interface ProviderArgs {
      * The OVH API endpoint to target (ex: "ovh-eu")
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * If set to true, initialization errors (like invalid OAuth credentials) will be ignored
+     */
+    ignoreInitError?: pulumi.Input<boolean>;
     /**
      * Extra information to append to the user-agent
      */

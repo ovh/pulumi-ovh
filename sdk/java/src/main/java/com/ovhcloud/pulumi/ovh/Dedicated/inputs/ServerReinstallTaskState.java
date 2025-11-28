@@ -130,14 +130,14 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Deprecated, has no effect
+     * Attribute &#39;properties&#39; is deprecated and has no effect.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Deprecated, has no effect
+     * @return Attribute &#39;properties&#39; is deprecated and has no effect.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -391,7 +391,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param properties Deprecated, has no effect
+         * @param properties Attribute &#39;properties&#39; is deprecated and has no effect.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param properties Deprecated, has no effect
+         * @param properties Attribute &#39;properties&#39; is deprecated and has no effect.
          * 
          * @return builder
          * 

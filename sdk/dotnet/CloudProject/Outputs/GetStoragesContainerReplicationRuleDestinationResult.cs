@@ -21,6 +21,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// Destination region, can be null if destination bucket has been deleted
         /// </summary>
         public readonly string Region;
+        public readonly bool RemoveOnMainBucketDeletion;
         /// <summary>
         /// Destination storage class
         /// </summary>
@@ -32,10 +33,13 @@ namespace Pulumi.Ovh.CloudProject.Outputs
 
             string region,
 
+            bool removeOnMainBucketDeletion,
+
             string storageClass)
         {
             Name = name;
             Region = region;
+            RemoveOnMainBucketDeletion = removeOnMainBucketDeletion;
             StorageClass = storageClass;
         }
     }

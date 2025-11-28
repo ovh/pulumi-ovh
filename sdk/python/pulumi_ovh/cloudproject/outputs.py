@@ -4396,7 +4396,9 @@ class StorageReplicationRuleDestination(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "storageClass":
+        if key == "removeOnMainBucketDeletion":
+            suggest = "remove_on_main_bucket_deletion"
+        elif key == "storageClass":
             suggest = "storage_class"
 
         if suggest:
@@ -4413,14 +4415,18 @@ class StorageReplicationRuleDestination(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  region: _builtins.str,
+                 remove_on_main_bucket_deletion: Optional[_builtins.bool] = None,
                  storage_class: Optional[_builtins.str] = None):
         """
         :param _builtins.str name: Destination bucket name
         :param _builtins.str region: Destination region
+        :param _builtins.bool remove_on_main_bucket_deletion: Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
         :param _builtins.str storage_class: Destination storage class
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
+        if remove_on_main_bucket_deletion is not None:
+            pulumi.set(__self__, "remove_on_main_bucket_deletion", remove_on_main_bucket_deletion)
         if storage_class is not None:
             pulumi.set(__self__, "storage_class", storage_class)
 
@@ -4439,6 +4445,14 @@ class StorageReplicationRuleDestination(dict):
         Destination region
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="removeOnMainBucketDeletion")
+    def remove_on_main_bucket_deletion(self) -> Optional[_builtins.bool]:
+        """
+        Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        """
+        return pulumi.get(self, "remove_on_main_bucket_deletion")
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
@@ -7710,6 +7724,7 @@ class GetStorageReplicationRuleDestinationResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  region: _builtins.str,
+                 remove_on_main_bucket_deletion: _builtins.bool,
                  storage_class: _builtins.str):
         """
         :param _builtins.str name: Destination bucket name
@@ -7718,6 +7733,7 @@ class GetStorageReplicationRuleDestinationResult(dict):
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "remove_on_main_bucket_deletion", remove_on_main_bucket_deletion)
         pulumi.set(__self__, "storage_class", storage_class)
 
     @_builtins.property
@@ -7735,6 +7751,11 @@ class GetStorageReplicationRuleDestinationResult(dict):
         Destination region, can be null if destination bucket has been deleted
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="removeOnMainBucketDeletion")
+    def remove_on_main_bucket_deletion(self) -> _builtins.bool:
+        return pulumi.get(self, "remove_on_main_bucket_deletion")
 
     @_builtins.property
     @pulumi.getter(name="storageClass")
@@ -8140,6 +8161,7 @@ class GetStoragesContainerReplicationRuleDestinationResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
                  region: _builtins.str,
+                 remove_on_main_bucket_deletion: _builtins.bool,
                  storage_class: _builtins.str):
         """
         :param _builtins.str name: Destination bucket name
@@ -8148,6 +8170,7 @@ class GetStoragesContainerReplicationRuleDestinationResult(dict):
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "remove_on_main_bucket_deletion", remove_on_main_bucket_deletion)
         pulumi.set(__self__, "storage_class", storage_class)
 
     @_builtins.property
@@ -8165,6 +8188,11 @@ class GetStoragesContainerReplicationRuleDestinationResult(dict):
         Destination region, can be null if destination bucket has been deleted
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="removeOnMainBucketDeletion")
+    def remove_on_main_bucket_deletion(self) -> _builtins.bool:
+        return pulumi.get(self, "remove_on_main_bucket_deletion")
 
     @_builtins.property
     @pulumi.getter(name="storageClass")

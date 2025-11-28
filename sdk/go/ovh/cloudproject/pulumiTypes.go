@@ -11607,6 +11607,8 @@ type StorageReplicationRuleDestination struct {
 	Name string `pulumi:"name"`
 	// Destination region
 	Region string `pulumi:"region"`
+	// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+	RemoveOnMainBucketDeletion *bool `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass *string `pulumi:"storageClass"`
 }
@@ -11627,6 +11629,8 @@ type StorageReplicationRuleDestinationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Destination region
 	Region pulumi.StringInput `pulumi:"region"`
+	// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+	RemoveOnMainBucketDeletion pulumi.BoolPtrInput `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 }
@@ -11718,6 +11722,11 @@ func (o StorageReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
 }
 
+// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+func (o StorageReplicationRuleDestinationOutput) RemoveOnMainBucketDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StorageReplicationRuleDestination) *bool { return v.RemoveOnMainBucketDeletion }).(pulumi.BoolPtrOutput)
+}
+
 // Destination storage class
 func (o StorageReplicationRuleDestinationOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageReplicationRuleDestination) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
@@ -11765,6 +11774,16 @@ func (o StorageReplicationRuleDestinationPtrOutput) Region() pulumi.StringPtrOut
 		}
 		return &v.Region
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+func (o StorageReplicationRuleDestinationPtrOutput) RemoveOnMainBucketDeletion() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StorageReplicationRuleDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoveOnMainBucketDeletion
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Destination storage class
@@ -19432,7 +19451,8 @@ type GetStorageReplicationRuleDestination struct {
 	// Destination bucket name
 	Name string `pulumi:"name"`
 	// Destination region, can be null if destination bucket has been deleted
-	Region string `pulumi:"region"`
+	Region                     string `pulumi:"region"`
+	RemoveOnMainBucketDeletion bool   `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass string `pulumi:"storageClass"`
 }
@@ -19452,7 +19472,8 @@ type GetStorageReplicationRuleDestinationArgs struct {
 	// Destination bucket name
 	Name pulumi.StringInput `pulumi:"name"`
 	// Destination region, can be null if destination bucket has been deleted
-	Region pulumi.StringInput `pulumi:"region"`
+	Region                     pulumi.StringInput `pulumi:"region"`
+	RemoveOnMainBucketDeletion pulumi.BoolInput   `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
@@ -19491,6 +19512,10 @@ func (o GetStorageReplicationRuleDestinationOutput) Name() pulumi.StringOutput {
 // Destination region, can be null if destination bucket has been deleted
 func (o GetStorageReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStorageReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetStorageReplicationRuleDestinationOutput) RemoveOnMainBucketDeletion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageReplicationRuleDestination) bool { return v.RemoveOnMainBucketDeletion }).(pulumi.BoolOutput)
 }
 
 // Destination storage class
@@ -20219,7 +20244,8 @@ type GetStoragesContainerReplicationRuleDestination struct {
 	// Destination bucket name
 	Name string `pulumi:"name"`
 	// Destination region, can be null if destination bucket has been deleted
-	Region string `pulumi:"region"`
+	Region                     string `pulumi:"region"`
+	RemoveOnMainBucketDeletion bool   `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass string `pulumi:"storageClass"`
 }
@@ -20239,7 +20265,8 @@ type GetStoragesContainerReplicationRuleDestinationArgs struct {
 	// Destination bucket name
 	Name pulumi.StringInput `pulumi:"name"`
 	// Destination region, can be null if destination bucket has been deleted
-	Region pulumi.StringInput `pulumi:"region"`
+	Region                     pulumi.StringInput `pulumi:"region"`
+	RemoveOnMainBucketDeletion pulumi.BoolInput   `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
@@ -20278,6 +20305,10 @@ func (o GetStoragesContainerReplicationRuleDestinationOutput) Name() pulumi.Stri
 // Destination region, can be null if destination bucket has been deleted
 func (o GetStoragesContainerReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStoragesContainerReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o GetStoragesContainerReplicationRuleDestinationOutput) RemoveOnMainBucketDeletion() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStoragesContainerReplicationRuleDestination) bool { return v.RemoveOnMainBucketDeletion }).(pulumi.BoolOutput)
 }
 
 // Destination storage class

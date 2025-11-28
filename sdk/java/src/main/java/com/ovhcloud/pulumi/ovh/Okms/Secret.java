@@ -20,15 +20,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## 
- * 
- * ***
- * ## subcategory : &#34;Key Management Service (KMS)&#34;
- * 
- * ***
- * 
- * # ovh.Okms.Secret (Resource)
- * 
  * Manages a secret stored in OVHcloud KMS.
  * 
  * &gt; WARNING: `version.data` is marked **Sensitive** but still ends up in the state file. To mitigate that, it is recommended to protect your state with encryption and access controls. Avoid committing it to source control.

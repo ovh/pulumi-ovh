@@ -9,11 +9,14 @@ import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStorageReplication;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetStorageVersioning;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetStorageResult {
@@ -27,6 +30,11 @@ public final class GetStorageResult {
      * 
      */
     private GetStorageEncryption encryption;
+    /**
+     * @return If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    private @Nullable Boolean hideObjects;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -122,6 +130,13 @@ public final class GetStorageResult {
      */
     public GetStorageEncryption encryption() {
         return this.encryption;
+    }
+    /**
+     * @return If true, objects list will not be saved in state (useful for large buckets)
+     * 
+     */
+    public Optional<Boolean> hideObjects() {
+        return Optional.ofNullable(this.hideObjects);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -247,6 +262,7 @@ public final class GetStorageResult {
     public static final class Builder {
         private String createdAt;
         private GetStorageEncryption encryption;
+        private @Nullable Boolean hideObjects;
         private String id;
         private Double limit;
         private String marker;
@@ -268,6 +284,7 @@ public final class GetStorageResult {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.encryption = defaults.encryption;
+    	      this.hideObjects = defaults.hideObjects;
     	      this.id = defaults.id;
     	      this.limit = defaults.limit;
     	      this.marker = defaults.marker;
@@ -300,6 +317,12 @@ public final class GetStorageResult {
               throw new MissingRequiredPropertyException("GetStorageResult", "encryption");
             }
             this.encryption = encryption;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hideObjects(@Nullable Boolean hideObjects) {
+
+            this.hideObjects = hideObjects;
             return this;
         }
         @CustomType.Setter
@@ -437,6 +460,7 @@ public final class GetStorageResult {
             final var _resultValue = new GetStorageResult();
             _resultValue.createdAt = createdAt;
             _resultValue.encryption = encryption;
+            _resultValue.hideObjects = hideObjects;
             _resultValue.id = id;
             _resultValue.limit = limit;
             _resultValue.marker = marker;

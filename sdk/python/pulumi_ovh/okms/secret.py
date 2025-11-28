@@ -257,15 +257,6 @@ class Secret(pulumi.CustomResource):
                  version: Optional[pulumi.Input[Union['SecretVersionArgs', 'SecretVersionArgsDict']]] = None,
                  __props__=None):
         """
-        ## 
-
-        ***
-        ## subcategory : "Key Management Service (KMS)"
-
-        ***
-
-        # Okms.Secret (Resource)
-
         Manages a secret stored in OVHcloud KMS.
 
         > WARNING: `version.data` is marked **Sensitive** but still ends up in the state file. To mitigate that, it is recommended to protect your state with encryption and access controls. Avoid committing it to source control.
@@ -286,15 +277,6 @@ class Secret(pulumi.CustomResource):
                  args: SecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## 
-
-        ***
-        ## subcategory : "Key Management Service (KMS)"
-
-        ***
-
-        # Okms.Secret (Resource)
-
         Manages a secret stored in OVHcloud KMS.
 
         > WARNING: `version.data` is marked **Sensitive** but still ends up in the state file. To mitigate that, it is recommended to protect your state with encryption and access controls. Avoid committing it to source control.
