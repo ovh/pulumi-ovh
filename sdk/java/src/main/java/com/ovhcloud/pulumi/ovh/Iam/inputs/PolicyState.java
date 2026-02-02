@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.Iam.inputs;
 
+import com.ovhcloud.pulumi.ovh.Iam.inputs.PolicyConditionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -30,6 +31,21 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> allows() {
         return Optional.ofNullable(this.allows);
+    }
+
+    /**
+     * Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     * 
+     */
+    @Import(name="conditions")
+    private @Nullable Output<PolicyConditionsArgs> conditions;
+
+    /**
+     * @return Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     * 
+     */
+    public Optional<Output<PolicyConditionsArgs>> conditions() {
+        return Optional.ofNullable(this.conditions);
     }
 
     /**
@@ -90,6 +106,21 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> excepts() {
         return Optional.ofNullable(this.excepts);
+    }
+
+    /**
+     * Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     * 
+     */
+    @Import(name="expiredAt")
+    private @Nullable Output<String> expiredAt;
+
+    /**
+     * @return Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     * 
+     */
+    public Optional<Output<String>> expiredAt() {
+        return Optional.ofNullable(this.expiredAt);
     }
 
     /**
@@ -201,10 +232,12 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     private PolicyState(PolicyState $) {
         this.allows = $.allows;
+        this.conditions = $.conditions;
         this.createdAt = $.createdAt;
         this.denies = $.denies;
         this.description = $.description;
         this.excepts = $.excepts;
+        this.expiredAt = $.expiredAt;
         this.identities = $.identities;
         this.name = $.name;
         this.owner = $.owner;
@@ -261,6 +294,27 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allows(String... allows) {
             return allows(List.of(allows));
+        }
+
+        /**
+         * @param conditions Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(@Nullable Output<PolicyConditionsArgs> conditions) {
+            $.conditions = conditions;
+            return this;
+        }
+
+        /**
+         * @param conditions Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditions(PolicyConditionsArgs conditions) {
+            return conditions(Output.of(conditions));
         }
 
         /**
@@ -365,6 +419,27 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder excepts(String... excepts) {
             return excepts(List.of(excepts));
+        }
+
+        /**
+         * @param expiredAt Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiredAt(@Nullable Output<String> expiredAt) {
+            $.expiredAt = expiredAt;
+            return this;
+        }
+
+        /**
+         * @param expiredAt Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiredAt(String expiredAt) {
+            return expiredAt(Output.of(expiredAt));
         }
 
         /**

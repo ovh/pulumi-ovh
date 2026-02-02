@@ -28,6 +28,7 @@ class StorageArgs:
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 object_lock: Optional[pulumi.Input['StorageObjectLockArgs']] = None,
                  owner_id: Optional[pulumi.Input[_builtins.float]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input['StorageReplicationArgs']] = None,
@@ -41,6 +42,7 @@ class StorageArgs:
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
+        :param pulumi.Input['StorageObjectLockArgs'] object_lock: Object lock configuration
         :param pulumi.Input[_builtins.float] owner_id: Container owner user ID
         :param pulumi.Input[_builtins.str] prefix: List objects whose key begins with this prefix
         :param pulumi.Input['StorageReplicationArgs'] replication: Replication configuration
@@ -58,6 +60,8 @@ class StorageArgs:
             pulumi.set(__self__, "marker", marker)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if object_lock is not None:
+            pulumi.set(__self__, "object_lock", object_lock)
         if owner_id is not None:
             pulumi.set(__self__, "owner_id", owner_id)
         if prefix is not None:
@@ -152,6 +156,18 @@ class StorageArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> Optional[pulumi.Input['StorageObjectLockArgs']]:
+        """
+        Object lock configuration
+        """
+        return pulumi.get(self, "object_lock")
+
+    @object_lock.setter
+    def object_lock(self, value: Optional[pulumi.Input['StorageObjectLockArgs']]):
+        pulumi.set(self, "object_lock", value)
+
+    @_builtins.property
     @pulumi.getter(name="ownerId")
     def owner_id(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
@@ -209,6 +225,7 @@ class _StorageState:
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 object_lock: Optional[pulumi.Input['StorageObjectLockArgs']] = None,
                  objects: Optional[pulumi.Input[Sequence[pulumi.Input['StorageObjectArgs']]]] = None,
                  objects_count: Optional[pulumi.Input[_builtins.float]] = None,
                  objects_size: Optional[pulumi.Input[_builtins.float]] = None,
@@ -228,6 +245,7 @@ class _StorageState:
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
+        :param pulumi.Input['StorageObjectLockArgs'] object_lock: Object lock configuration
         :param pulumi.Input[Sequence[pulumi.Input['StorageObjectArgs']]] objects: Container objects
         :param pulumi.Input[_builtins.float] objects_count: Container total objects count
         :param pulumi.Input[_builtins.float] objects_size: Container total objects size (bytes)
@@ -252,6 +270,8 @@ class _StorageState:
             pulumi.set(__self__, "marker", marker)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if object_lock is not None:
+            pulumi.set(__self__, "object_lock", object_lock)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
         if objects_count is not None:
@@ -346,6 +366,18 @@ class _StorageState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> Optional[pulumi.Input['StorageObjectLockArgs']]:
+        """
+        Object lock configuration
+        """
+        return pulumi.get(self, "object_lock")
+
+    @object_lock.setter
+    def object_lock(self, value: Optional[pulumi.Input['StorageObjectLockArgs']]):
+        pulumi.set(self, "object_lock", value)
 
     @_builtins.property
     @pulumi.getter
@@ -491,6 +523,7 @@ class Storage(pulumi.CustomResource):
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 object_lock: Optional[pulumi.Input[Union['StorageObjectLockArgs', 'StorageObjectLockArgsDict']]] = None,
                  owner_id: Optional[pulumi.Input[_builtins.float]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -499,21 +532,6 @@ class Storage(pulumi.CustomResource):
                  versioning: Optional[pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        storage = ovh.cloudproject.Storage("storage",
-            service_name="<public cloud project ID>",
-            region_name="GRA",
-            name="my-storage",
-            versioning={
-                "status": "enabled",
-            })
-        ```
-
         ## Import
 
         A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
@@ -545,6 +563,7 @@ class Storage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
+        :param pulumi.Input[Union['StorageObjectLockArgs', 'StorageObjectLockArgsDict']] object_lock: Object lock configuration
         :param pulumi.Input[_builtins.float] owner_id: Container owner user ID
         :param pulumi.Input[_builtins.str] prefix: List objects whose key begins with this prefix
         :param pulumi.Input[_builtins.str] region_name: Region name
@@ -559,21 +578,6 @@ class Storage(pulumi.CustomResource):
                  args: StorageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        storage = ovh.cloudproject.Storage("storage",
-            service_name="<public cloud project ID>",
-            region_name="GRA",
-            name="my-storage",
-            versioning={
-                "status": "enabled",
-            })
-        ```
-
         ## Import
 
         A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
@@ -618,6 +622,7 @@ class Storage(pulumi.CustomResource):
                  limit: Optional[pulumi.Input[_builtins.float]] = None,
                  marker: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 object_lock: Optional[pulumi.Input[Union['StorageObjectLockArgs', 'StorageObjectLockArgsDict']]] = None,
                  owner_id: Optional[pulumi.Input[_builtins.float]] = None,
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -638,6 +643,7 @@ class Storage(pulumi.CustomResource):
             __props__.__dict__["limit"] = limit
             __props__.__dict__["marker"] = marker
             __props__.__dict__["name"] = name
+            __props__.__dict__["object_lock"] = object_lock
             __props__.__dict__["owner_id"] = owner_id
             __props__.__dict__["prefix"] = prefix
             if region_name is None and not opts.urn:
@@ -670,6 +676,7 @@ class Storage(pulumi.CustomResource):
             limit: Optional[pulumi.Input[_builtins.float]] = None,
             marker: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            object_lock: Optional[pulumi.Input[Union['StorageObjectLockArgs', 'StorageObjectLockArgsDict']]] = None,
             objects: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StorageObjectArgs', 'StorageObjectArgsDict']]]]] = None,
             objects_count: Optional[pulumi.Input[_builtins.float]] = None,
             objects_size: Optional[pulumi.Input[_builtins.float]] = None,
@@ -694,6 +701,7 @@ class Storage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] limit: Limit the number of objects returned (1000 maximum, defaults to 1000)
         :param pulumi.Input[_builtins.str] marker: Key to start with when listing objects
         :param pulumi.Input[_builtins.str] name: Container name
+        :param pulumi.Input[Union['StorageObjectLockArgs', 'StorageObjectLockArgsDict']] object_lock: Object lock configuration
         :param pulumi.Input[Sequence[pulumi.Input[Union['StorageObjectArgs', 'StorageObjectArgsDict']]]] objects: Container objects
         :param pulumi.Input[_builtins.float] objects_count: Container total objects count
         :param pulumi.Input[_builtins.float] objects_size: Container total objects size (bytes)
@@ -716,6 +724,7 @@ class Storage(pulumi.CustomResource):
         __props__.__dict__["limit"] = limit
         __props__.__dict__["marker"] = marker
         __props__.__dict__["name"] = name
+        __props__.__dict__["object_lock"] = object_lock
         __props__.__dict__["objects"] = objects
         __props__.__dict__["objects_count"] = objects_count
         __props__.__dict__["objects_size"] = objects_size
@@ -776,6 +785,14 @@ class Storage(pulumi.CustomResource):
         Container name
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> pulumi.Output['outputs.StorageObjectLock']:
+        """
+        Object lock configuration
+        """
+        return pulumi.get(self, "object_lock")
 
     @_builtins.property
     @pulumi.getter

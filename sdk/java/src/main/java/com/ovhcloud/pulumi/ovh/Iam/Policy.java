@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.Iam;
 
 import com.ovhcloud.pulumi.ovh.Iam.PolicyArgs;
 import com.ovhcloud.pulumi.ovh.Iam.inputs.PolicyState;
+import com.ovhcloud.pulumi.ovh.Iam.outputs.PolicyConditions;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -34,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.ovhcloud.pulumi.ovh.Me.IdentityGroupArgs;
  * import com.ovhcloud.pulumi.ovh.Iam.Policy;
  * import com.ovhcloud.pulumi.ovh.Iam.PolicyArgs;
+ * import com.pulumi.ovh.Iam.inputs.PolicyConditionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,6 +70,42 @@ import javax.annotation.Nullable;
  *                 "account:apiovh:*")
  *             .build());
  * 
+ *         var ipRestrictedProdAccess = new Policy("ipRestrictedProdAccess", PolicyArgs.builder()
+ *             .name("ip_restricted_prod_access")
+ *             .description("Allow access only from a specific IP to resources tagged prod")
+ *             .identities(myGroup.GroupURN())
+ *             .resources("urn:v1:eu:resource:vps:*")
+ *             .allows("vps:apiovh:*")
+ *             .conditions(PolicyConditionsArgs.builder()
+ *                 .operator("MATCH")
+ *                 .values(Map.ofEntries(
+ *                     Map.entry("resource.Tag(environment)", "prod"),
+ *                     Map.entry("request.IP", "192.72.0.1")
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *         var workdaysAndIpRestrictedAndExpiring = new Policy("workdaysAndIpRestrictedAndExpiring", PolicyArgs.builder()
+ *             .name("workdays_and_ip_restricted_and_expiring")
+ *             .description("Allow access only on workdays, expires end of 2026")
+ *             .identities(myGroup.GroupURN())
+ *             .resources("urn:v1:eu:resource:vps:*")
+ *             .allows("vps:apiovh:*")
+ *             .conditions(PolicyConditionsArgs.builder()
+ *                 .operator("AND")
+ *                 .conditions(                
+ *                     PolicyConditionsConditionArgs.builder()
+ *                         .operator("MATCH")
+ *                         .values(Map.of("date(Europe/Paris).WeekDay.In", "monday,tuesday,wednesday,thursday,friday"))
+ *                         .build(),
+ *                     PolicyConditionsConditionArgs.builder()
+ *                         .operator("MATCH")
+ *                         .values(Map.of("request.IP", "192.72.0.1"))
+ *                         .build())
+ *                 .build())
+ *             .expiredAt("2026-12-31T23:59:59Z")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -90,6 +128,20 @@ public class Policy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> allows() {
         return Codegen.optional(this.allows);
+    }
+    /**
+     * Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     * 
+     */
+    @Export(name="conditions", refs={PolicyConditions.class}, tree="[0]")
+    private Output</* @Nullable */ PolicyConditions> conditions;
+
+    /**
+     * @return Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     * 
+     */
+    public Output<Optional<PolicyConditions>> conditions() {
+        return Codegen.optional(this.conditions);
     }
     /**
      * Creation date of this group.
@@ -146,6 +198,20 @@ public class Policy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> excepts() {
         return Codegen.optional(this.excepts);
+    }
+    /**
+     * Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     * 
+     */
+    @Export(name="expiredAt", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> expiredAt;
+
+    /**
+     * @return Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     * 
+     */
+    public Output<Optional<String>> expiredAt() {
+        return Codegen.optional(this.expiredAt);
     }
     /**
      * List of identities affected by the policy

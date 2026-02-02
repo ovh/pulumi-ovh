@@ -16,6 +16,23 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'VrackservicesCurrentState',
+    'VrackservicesCurrentStateSubnet',
+    'VrackservicesCurrentStateSubnetServiceEndpoint',
+    'VrackservicesCurrentStateSubnetServiceEndpointEndpoint',
+    'VrackservicesCurrentStateSubnetServiceRange',
+    'VrackservicesCurrentTask',
+    'VrackservicesIam',
+    'VrackservicesOrder',
+    'VrackservicesOrderDetail',
+    'VrackservicesPlan',
+    'VrackservicesPlanConfiguration',
+    'VrackservicesPlanOption',
+    'VrackservicesPlanOptionConfiguration',
+    'VrackservicesTargetSpec',
+    'VrackservicesTargetSpecSubnet',
+    'VrackservicesTargetSpecSubnetServiceEndpoint',
+    'VrackservicesTargetSpecSubnetServiceRange',
     'GetCloudProjectFlavorCapabilityResult',
     'GetCloudProjectFlavorPlanCodesResult',
     'GetCloudProjectGatewayExternalInformationResult',
@@ -32,6 +49,7 @@ __all__ = [
     'GetInstallationTemplateProjectResult',
     'GetInstallationTemplateProjectOResult',
     'GetInstallationTemplateProjectUsageResult',
+    'GetIploadbalancingNatIpsNatIpResult',
     'GetOkmsSecretIamResult',
     'GetOkmsSecretMetadataResult',
     'GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigResult',
@@ -41,7 +59,971 @@ __all__ = [
     'GetServerVniResult',
     'GetStorageEfsIamResult',
     'GetStorageEfsShareAccessPathsAccessPathResult',
+    'GetVrackservicesCurrentStateResult',
+    'GetVrackservicesCurrentStateSubnetResult',
+    'GetVrackservicesCurrentStateSubnetServiceEndpointResult',
+    'GetVrackservicesCurrentStateSubnetServiceEndpointEndpointResult',
+    'GetVrackservicesCurrentStateSubnetServiceRangeResult',
+    'GetVrackservicesCurrentTaskResult',
+    'GetVrackservicesIamResult',
+    'GetVrackservicesTargetSpecResult',
+    'GetVrackservicesTargetSpecSubnetResult',
+    'GetVrackservicesTargetSpecSubnetServiceEndpointResult',
+    'GetVrackservicesTargetSpecSubnetServiceRangeResult',
+    'GetVrackservicessVrackservicessResult',
+    'GetVrackservicessVrackservicessCurrentStateResult',
+    'GetVrackservicessVrackservicessCurrentStateSubnetResult',
+    'GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointResult',
+    'GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointResult',
+    'GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeResult',
+    'GetVrackservicessVrackservicessCurrentTaskResult',
+    'GetVrackservicessVrackservicessIamResult',
+    'GetVrackservicessVrackservicessTargetSpecResult',
+    'GetVrackservicessVrackservicessTargetSpecSubnetResult',
+    'GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointResult',
+    'GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeResult',
 ]
+
+@pulumi.output_type
+class VrackservicesCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "productStatus":
+            suggest = "product_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 product_status: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 subnets: Optional[Sequence['outputs.VrackservicesCurrentStateSubnet']] = None):
+        """
+        :param _builtins.str product_status: Product status of the vRack Services
+        :param _builtins.str region: Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+        :param Sequence['VrackservicesCurrentStateSubnetArgs'] subnets: Subnets of the current vRack Services
+        """
+        if product_status is not None:
+            pulumi.set(__self__, "product_status", product_status)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="productStatus")
+    def product_status(self) -> Optional[_builtins.str]:
+        """
+        Product status of the vRack Services
+        """
+        return pulumi.get(self, "product_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional[Sequence['outputs.VrackservicesCurrentStateSubnet']]:
+        """
+        Subnets of the current vRack Services
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class VrackservicesCurrentStateSubnet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "serviceEndpoints":
+            suggest = "service_endpoints"
+        elif key == "serviceRange":
+            suggest = "service_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesCurrentStateSubnet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesCurrentStateSubnet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesCurrentStateSubnet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr: Optional[_builtins.str] = None,
+                 display_name: Optional[_builtins.str] = None,
+                 service_endpoints: Optional[Sequence['outputs.VrackservicesCurrentStateSubnetServiceEndpoint']] = None,
+                 service_range: Optional['outputs.VrackservicesCurrentStateSubnetServiceRange'] = None,
+                 vlan: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str cidr: IP address range of the subnet in CIDR format
+        :param _builtins.str display_name: Display name of the subnet
+        :param Sequence['VrackservicesCurrentStateSubnetServiceEndpointArgs'] service_endpoints: Service endpoints of the subnet
+        :param 'VrackservicesCurrentStateSubnetServiceRangeArgs' service_range: Defines a smaller subnet dedicated to the managed services IPs
+        :param _builtins.float vlan: Unique inner VLAN that allows subnets segregation
+        """
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if service_endpoints is not None:
+            pulumi.set(__self__, "service_endpoints", service_endpoints)
+        if service_range is not None:
+            pulumi.set(__self__, "service_range", service_range)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> Optional[_builtins.str]:
+        """
+        IP address range of the subnet in CIDR format
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the subnet
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceEndpoints")
+    def service_endpoints(self) -> Optional[Sequence['outputs.VrackservicesCurrentStateSubnetServiceEndpoint']]:
+        """
+        Service endpoints of the subnet
+        """
+        return pulumi.get(self, "service_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRange")
+    def service_range(self) -> Optional['outputs.VrackservicesCurrentStateSubnetServiceRange']:
+        """
+        Defines a smaller subnet dedicated to the managed services IPs
+        """
+        return pulumi.get(self, "service_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.float]:
+        """
+        Unique inner VLAN that allows subnets segregation
+        """
+        return pulumi.get(self, "vlan")
+
+
+@pulumi.output_type
+class VrackservicesCurrentStateSubnetServiceEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedServiceUrn":
+            suggest = "managed_service_urn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesCurrentStateSubnetServiceEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesCurrentStateSubnetServiceEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesCurrentStateSubnetServiceEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoints: Optional[Sequence['outputs.VrackservicesCurrentStateSubnetServiceEndpointEndpoint']] = None,
+                 managed_service_urn: Optional[_builtins.str] = None):
+        """
+        :param Sequence['VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs'] endpoints: Endpoints representing the IPs assigned to the managed services
+        :param _builtins.str managed_service_urn: IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+        """
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if managed_service_urn is not None:
+            pulumi.set(__self__, "managed_service_urn", managed_service_urn)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Sequence['outputs.VrackservicesCurrentStateSubnetServiceEndpointEndpoint']]:
+        """
+        Endpoints representing the IPs assigned to the managed services
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="managedServiceUrn")
+    def managed_service_urn(self) -> Optional[_builtins.str]:
+        """
+        IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+        """
+        return pulumi.get(self, "managed_service_urn")
+
+
+@pulumi.output_type
+class VrackservicesCurrentStateSubnetServiceEndpointEndpoint(dict):
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: IP description defined in the managed service
+        :param _builtins.str ip: IP address assigned by OVHcloud
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        IP description defined in the managed service
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        IP address assigned by OVHcloud
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class VrackservicesCurrentStateSubnetServiceRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remainingIps":
+            suggest = "remaining_ips"
+        elif key == "reservedIps":
+            suggest = "reserved_ips"
+        elif key == "usedIps":
+            suggest = "used_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesCurrentStateSubnetServiceRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesCurrentStateSubnetServiceRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesCurrentStateSubnetServiceRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr: Optional[_builtins.str] = None,
+                 remaining_ips: Optional[_builtins.float] = None,
+                 reserved_ips: Optional[_builtins.float] = None,
+                 used_ips: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str cidr: CIDR dedicated to the subnet's services
+        :param _builtins.float remaining_ips: Number of remaining IPs in the service range
+        :param _builtins.float reserved_ips: Number of service range IPs reserved by OVHcloud
+        :param _builtins.float used_ips: Number of service range IPs assigned to the managed services
+        """
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if remaining_ips is not None:
+            pulumi.set(__self__, "remaining_ips", remaining_ips)
+        if reserved_ips is not None:
+            pulumi.set(__self__, "reserved_ips", reserved_ips)
+        if used_ips is not None:
+            pulumi.set(__self__, "used_ips", used_ips)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> Optional[_builtins.str]:
+        """
+        CIDR dedicated to the subnet's services
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="remainingIps")
+    def remaining_ips(self) -> Optional[_builtins.float]:
+        """
+        Number of remaining IPs in the service range
+        """
+        return pulumi.get(self, "remaining_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="reservedIps")
+    def reserved_ips(self) -> Optional[_builtins.float]:
+        """
+        Number of service range IPs reserved by OVHcloud
+        """
+        return pulumi.get(self, "reserved_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="usedIps")
+    def used_ips(self) -> Optional[_builtins.float]:
+        """
+        Number of service range IPs assigned to the managed services
+        """
+        return pulumi.get(self, "used_ips")
+
+
+@pulumi.output_type
+class VrackservicesCurrentTask(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None,
+                 link: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Identifier of the current task
+        :param _builtins.str link: Link to the related resource
+        :param _builtins.str status: Current global status of the current task
+        :param _builtins.str type: Type of the current task
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> Optional[_builtins.str]:
+        """
+        Link to the related resource
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VrackservicesIam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesIam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesIam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesIam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
+                 urn: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str display_name: Resource display name
+        :param _builtins.str id: Unique identifier of the resource
+        :param Mapping[str, _builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param _builtins.str urn: Unique resource name used in policies
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if urn is not None:
+            pulumi.set(__self__, "urn", urn)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> Optional[_builtins.str]:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class VrackservicesOrder(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationDate":
+            suggest = "expiration_date"
+        elif key == "orderId":
+            suggest = "order_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesOrder. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesOrder.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesOrder.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 date: Optional[_builtins.str] = None,
+                 details: Optional[Sequence['outputs.VrackservicesOrderDetail']] = None,
+                 expiration_date: Optional[_builtins.str] = None,
+                 order_id: Optional[_builtins.float] = None):
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if expiration_date is not None:
+            pulumi.set(__self__, "expiration_date", expiration_date)
+        if order_id is not None:
+            pulumi.set(__self__, "order_id", order_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def date(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "date")
+
+    @_builtins.property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence['outputs.VrackservicesOrderDetail']]:
+        return pulumi.get(self, "details")
+
+    @_builtins.property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "expiration_date")
+
+    @_builtins.property
+    @pulumi.getter(name="orderId")
+    def order_id(self) -> Optional[_builtins.float]:
+        return pulumi.get(self, "order_id")
+
+
+@pulumi.output_type
+class VrackservicesOrderDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detailType":
+            suggest = "detail_type"
+        elif key == "orderDetailId":
+            suggest = "order_detail_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesOrderDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesOrderDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesOrderDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 detail_type: Optional[_builtins.str] = None,
+                 domain: Optional[_builtins.str] = None,
+                 order_detail_id: Optional[_builtins.float] = None,
+                 quantity: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str detail_type: Product type of item in order
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if detail_type is not None:
+            pulumi.set(__self__, "detail_type", detail_type)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if order_detail_id is not None:
+            pulumi.set(__self__, "order_detail_id", order_detail_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="detailType")
+    def detail_type(self) -> Optional[_builtins.str]:
+        """
+        Product type of item in order
+        """
+        return pulumi.get(self, "detail_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter(name="orderDetailId")
+    def order_detail_id(self) -> Optional[_builtins.float]:
+        return pulumi.get(self, "order_detail_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def quantity(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class VrackservicesPlan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "planCode":
+            suggest = "plan_code"
+        elif key == "pricingMode":
+            suggest = "pricing_mode"
+        elif key == "itemId":
+            suggest = "item_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesPlan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesPlan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesPlan.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: _builtins.str,
+                 plan_code: _builtins.str,
+                 pricing_mode: _builtins.str,
+                 configurations: Optional[Sequence['outputs.VrackservicesPlanConfiguration']] = None,
+                 item_id: Optional[_builtins.float] = None,
+                 quantity: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str duration: Duration selected for the purchase of the product
+        :param _builtins.str plan_code: Identifier of the option offer
+        :param _builtins.str pricing_mode: Pricing mode selected for the purchase of the product
+        :param _builtins.float item_id: Cart item to be linked
+        :param _builtins.float quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if item_id is not None:
+            pulumi.set(__self__, "item_id", item_id)
+        if quantity is not None:
+            pulumi.set(__self__, "quantity", quantity)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> _builtins.str:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @_builtins.property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> _builtins.str:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def configurations(self) -> Optional[Sequence['outputs.VrackservicesPlanConfiguration']]:
+        return pulumi.get(self, "configurations")
+
+    @_builtins.property
+    @pulumi.getter(name="itemId")
+    def item_id(self) -> Optional[_builtins.float]:
+        """
+        Cart item to be linked
+        """
+        return pulumi.get(self, "item_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def quantity(self) -> Optional[_builtins.float]:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+
+@pulumi.output_type
+class VrackservicesPlanConfiguration(dict):
+    def __init__(__self__, *,
+                 label: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str label: Label for your configuration item
+        :param _builtins.str value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VrackservicesPlanOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "planCode":
+            suggest = "plan_code"
+        elif key == "pricingMode":
+            suggest = "pricing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesPlanOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesPlanOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesPlanOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: _builtins.str,
+                 plan_code: _builtins.str,
+                 pricing_mode: _builtins.str,
+                 quantity: _builtins.float,
+                 configurations: Optional[Sequence['outputs.VrackservicesPlanOptionConfiguration']] = None):
+        """
+        :param _builtins.str duration: Duration selected for the purchase of the product
+        :param _builtins.str plan_code: Identifier of the option offer
+        :param _builtins.str pricing_mode: Pricing mode selected for the purchase of the product
+        :param _builtins.float quantity: Quantity of product desired
+        """
+        pulumi.set(__self__, "duration", duration)
+        pulumi.set(__self__, "plan_code", plan_code)
+        pulumi.set(__self__, "pricing_mode", pricing_mode)
+        pulumi.set(__self__, "quantity", quantity)
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+
+    @_builtins.property
+    @pulumi.getter
+    def duration(self) -> _builtins.str:
+        """
+        Duration selected for the purchase of the product
+        """
+        return pulumi.get(self, "duration")
+
+    @_builtins.property
+    @pulumi.getter(name="planCode")
+    def plan_code(self) -> _builtins.str:
+        """
+        Identifier of the option offer
+        """
+        return pulumi.get(self, "plan_code")
+
+    @_builtins.property
+    @pulumi.getter(name="pricingMode")
+    def pricing_mode(self) -> _builtins.str:
+        """
+        Pricing mode selected for the purchase of the product
+        """
+        return pulumi.get(self, "pricing_mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def quantity(self) -> _builtins.float:
+        """
+        Quantity of product desired
+        """
+        return pulumi.get(self, "quantity")
+
+    @_builtins.property
+    @pulumi.getter
+    def configurations(self) -> Optional[Sequence['outputs.VrackservicesPlanOptionConfiguration']]:
+        return pulumi.get(self, "configurations")
+
+
+@pulumi.output_type
+class VrackservicesPlanOptionConfiguration(dict):
+    def __init__(__self__, *,
+                 label: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str label: Label for your configuration item
+        :param _builtins.str value: Value or resource URL on API.OVH.COM of your configuration item
+        """
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        Label for your configuration item
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value or resource URL on API.OVH.COM of your configuration item
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VrackservicesTargetSpec(dict):
+    def __init__(__self__, *,
+                 subnets: Sequence['outputs.VrackservicesTargetSpecSubnet']):
+        """
+        :param Sequence['VrackservicesTargetSpecSubnetArgs'] subnets: Target specification of the subnets. Maximum one subnet per vRack Services
+        """
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.VrackservicesTargetSpecSubnet']:
+        """
+        Target specification of the subnets. Maximum one subnet per vRack Services
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class VrackservicesTargetSpecSubnet(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceEndpoints":
+            suggest = "service_endpoints"
+        elif key == "serviceRange":
+            suggest = "service_range"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesTargetSpecSubnet. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesTargetSpecSubnet.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesTargetSpecSubnet.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 service_endpoints: Sequence['outputs.VrackservicesTargetSpecSubnetServiceEndpoint'],
+                 service_range: 'outputs.VrackservicesTargetSpecSubnetServiceRange',
+                 display_name: Optional[_builtins.str] = None,
+                 vlan: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str cidr: IPv4 CIDR notation (e.g., 192.0.2.0/24)
+        :param Sequence['VrackservicesTargetSpecSubnetServiceEndpointArgs'] service_endpoints: Target specification of the Service Endpoints
+        :param 'VrackservicesTargetSpecSubnetServiceRangeArgs' service_range: Target specification of the range dedicated to the subnet's services
+        :param _builtins.str display_name: Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+        :param _builtins.float vlan: Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "service_endpoints", service_endpoints)
+        pulumi.set(__self__, "service_range", service_range)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IPv4 CIDR notation (e.g., 192.0.2.0/24)
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceEndpoints")
+    def service_endpoints(self) -> Sequence['outputs.VrackservicesTargetSpecSubnetServiceEndpoint']:
+        """
+        Target specification of the Service Endpoints
+        """
+        return pulumi.get(self, "service_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRange")
+    def service_range(self) -> 'outputs.VrackservicesTargetSpecSubnetServiceRange':
+        """
+        Target specification of the range dedicated to the subnet's services
+        """
+        return pulumi.get(self, "service_range")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[_builtins.str]:
+        """
+        Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional[_builtins.float]:
+        """
+        Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+        """
+        return pulumi.get(self, "vlan")
+
+
+@pulumi.output_type
+class VrackservicesTargetSpecSubnetServiceEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managedServiceUrn":
+            suggest = "managed_service_urn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VrackservicesTargetSpecSubnetServiceEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VrackservicesTargetSpecSubnetServiceEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VrackservicesTargetSpecSubnetServiceEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 managed_service_urn: _builtins.str):
+        """
+        :param _builtins.str managed_service_urn: IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+        """
+        pulumi.set(__self__, "managed_service_urn", managed_service_urn)
+
+    @_builtins.property
+    @pulumi.getter(name="managedServiceUrn")
+    def managed_service_urn(self) -> _builtins.str:
+        """
+        IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+        """
+        return pulumi.get(self, "managed_service_urn")
+
+
+@pulumi.output_type
+class VrackservicesTargetSpecSubnetServiceRange(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str):
+        """
+        :param _builtins.str cidr: IPv4 CIDR notation (e.g., 192.0.2.0/24)
+        """
+        pulumi.set(__self__, "cidr", cidr)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IPv4 CIDR notation (e.g., 192.0.2.0/24)
+        """
+        return pulumi.get(self, "cidr")
+
 
 @pulumi.output_type
 class GetCloudProjectFlavorCapabilityResult(dict):
@@ -663,6 +1645,25 @@ class GetInstallationTemplateProjectUsageResult(dict):
 
 
 @pulumi.output_type
+class GetIploadbalancingNatIpsNatIpResult(dict):
+    def __init__(__self__, *,
+                 ips: Sequence[_builtins.str],
+                 zone: _builtins.str):
+        pulumi.set(__self__, "ips", ips)
+        pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def ips(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> _builtins.str:
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
 class GetOkmsSecretIamResult(dict):
     def __init__(__self__, *,
                  display_name: _builtins.str,
@@ -1273,5 +2274,1002 @@ class GetStorageEfsShareAccessPathsAccessPathResult(dict):
         Is this the preferred access path?
         """
         return pulumi.get(self, "preferred")
+
+
+@pulumi.output_type
+class GetVrackservicesCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 product_status: _builtins.str,
+                 region: _builtins.str,
+                 subnets: Sequence['outputs.GetVrackservicesCurrentStateSubnetResult']):
+        """
+        :param _builtins.str product_status: Product status of the vRack Services
+        :param _builtins.str region: Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+        :param Sequence['GetVrackservicesCurrentStateSubnetArgs'] subnets: Subnets of the current vRack Services
+        """
+        pulumi.set(__self__, "product_status", product_status)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="productStatus")
+    def product_status(self) -> _builtins.str:
+        """
+        Product status of the vRack Services
+        """
+        return pulumi.get(self, "product_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetVrackservicesCurrentStateSubnetResult']:
+        """
+        Subnets of the current vRack Services
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetVrackservicesCurrentStateSubnetResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 display_name: _builtins.str,
+                 service_endpoints: Sequence['outputs.GetVrackservicesCurrentStateSubnetServiceEndpointResult'],
+                 service_range: 'outputs.GetVrackservicesCurrentStateSubnetServiceRangeResult',
+                 vlan: _builtins.float):
+        """
+        :param _builtins.str cidr: IP address range of the subnet in CIDR format
+        :param _builtins.str display_name: Display name of the subnet
+        :param Sequence['GetVrackservicesCurrentStateSubnetServiceEndpointArgs'] service_endpoints: Service endpoints of the subnet
+        :param 'GetVrackservicesCurrentStateSubnetServiceRangeArgs' service_range: Defines a smaller subnet dedicated to the managed services IPs
+        :param _builtins.float vlan: Unique inner VLAN that allows subnets segregation
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "service_endpoints", service_endpoints)
+        pulumi.set(__self__, "service_range", service_range)
+        pulumi.set(__self__, "vlan", vlan)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IP address range of the subnet in CIDR format
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the subnet
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceEndpoints")
+    def service_endpoints(self) -> Sequence['outputs.GetVrackservicesCurrentStateSubnetServiceEndpointResult']:
+        """
+        Service endpoints of the subnet
+        """
+        return pulumi.get(self, "service_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRange")
+    def service_range(self) -> 'outputs.GetVrackservicesCurrentStateSubnetServiceRangeResult':
+        """
+        Defines a smaller subnet dedicated to the managed services IPs
+        """
+        return pulumi.get(self, "service_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.float:
+        """
+        Unique inner VLAN that allows subnets segregation
+        """
+        return pulumi.get(self, "vlan")
+
+
+@pulumi.output_type
+class GetVrackservicesCurrentStateSubnetServiceEndpointResult(dict):
+    def __init__(__self__, *,
+                 endpoints: Sequence['outputs.GetVrackservicesCurrentStateSubnetServiceEndpointEndpointResult'],
+                 managed_service_urn: _builtins.str):
+        """
+        :param Sequence['GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs'] endpoints: Endpoints representing the IPs assigned to the managed services
+        :param _builtins.str managed_service_urn: IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+        """
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "managed_service_urn", managed_service_urn)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.GetVrackservicesCurrentStateSubnetServiceEndpointEndpointResult']:
+        """
+        Endpoints representing the IPs assigned to the managed services
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="managedServiceUrn")
+    def managed_service_urn(self) -> _builtins.str:
+        """
+        IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+        """
+        return pulumi.get(self, "managed_service_urn")
+
+
+@pulumi.output_type
+class GetVrackservicesCurrentStateSubnetServiceEndpointEndpointResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 ip: _builtins.str):
+        """
+        :param _builtins.str description: IP description defined in the managed service
+        :param _builtins.str ip: IP address assigned by OVHcloud
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        IP description defined in the managed service
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address assigned by OVHcloud
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class GetVrackservicesCurrentStateSubnetServiceRangeResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 remaining_ips: _builtins.float,
+                 reserved_ips: _builtins.float,
+                 used_ips: _builtins.float):
+        """
+        :param _builtins.str cidr: CIDR dedicated to the subnet's services
+        :param _builtins.float remaining_ips: Number of remaining IPs in the service range
+        :param _builtins.float reserved_ips: Number of service range IPs reserved by OVHcloud
+        :param _builtins.float used_ips: Number of service range IPs assigned to the managed services
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "remaining_ips", remaining_ips)
+        pulumi.set(__self__, "reserved_ips", reserved_ips)
+        pulumi.set(__self__, "used_ips", used_ips)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        CIDR dedicated to the subnet's services
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="remainingIps")
+    def remaining_ips(self) -> _builtins.float:
+        """
+        Number of remaining IPs in the service range
+        """
+        return pulumi.get(self, "remaining_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="reservedIps")
+    def reserved_ips(self) -> _builtins.float:
+        """
+        Number of service range IPs reserved by OVHcloud
+        """
+        return pulumi.get(self, "reserved_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="usedIps")
+    def used_ips(self) -> _builtins.float:
+        """
+        Number of service range IPs assigned to the managed services
+        """
+        return pulumi.get(self, "used_ips")
+
+
+@pulumi.output_type
+class GetVrackservicesCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the current task
+        :param _builtins.str link: Link to the task details
+        :param _builtins.str status: Current global status of the current task
+        :param _builtins.str type: Type of the current task
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVrackservicesIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 id: _builtins.str,
+                 state: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 urn: _builtins.str):
+        """
+        :param _builtins.str display_name: Resource display name
+        :param _builtins.str id: Unique identifier of the resource
+        :param _builtins.str state: Resource state
+        :param Mapping[str, _builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param _builtins.str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Resource state
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> _builtins.str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetVrackservicesTargetSpecResult(dict):
+    def __init__(__self__, *,
+                 subnets: Sequence['outputs.GetVrackservicesTargetSpecSubnetResult']):
+        """
+        :param Sequence['GetVrackservicesTargetSpecSubnetArgs'] subnets: Target specification of the subnets. Maximum one subnet per vRack Services
+        """
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetVrackservicesTargetSpecSubnetResult']:
+        """
+        Target specification of the subnets. Maximum one subnet per vRack Services
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetVrackservicesTargetSpecSubnetResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 display_name: _builtins.str,
+                 service_endpoints: Sequence['outputs.GetVrackservicesTargetSpecSubnetServiceEndpointResult'],
+                 service_range: 'outputs.GetVrackservicesTargetSpecSubnetServiceRangeResult',
+                 vlan: _builtins.float):
+        """
+        :param _builtins.str cidr: IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+        :param _builtins.str display_name: Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+        :param Sequence['GetVrackservicesTargetSpecSubnetServiceEndpointArgs'] service_endpoints: Target specification of the Service Endpoints
+        :param 'GetVrackservicesTargetSpecSubnetServiceRangeArgs' service_range: Defines a smaller subnet dedicated to the managed service IPs
+        :param _builtins.float vlan: Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "service_endpoints", service_endpoints)
+        pulumi.set(__self__, "service_range", service_range)
+        pulumi.set(__self__, "vlan", vlan)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceEndpoints")
+    def service_endpoints(self) -> Sequence['outputs.GetVrackservicesTargetSpecSubnetServiceEndpointResult']:
+        """
+        Target specification of the Service Endpoints
+        """
+        return pulumi.get(self, "service_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRange")
+    def service_range(self) -> 'outputs.GetVrackservicesTargetSpecSubnetServiceRangeResult':
+        """
+        Defines a smaller subnet dedicated to the managed service IPs
+        """
+        return pulumi.get(self, "service_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.float:
+        """
+        Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+        """
+        return pulumi.get(self, "vlan")
+
+
+@pulumi.output_type
+class GetVrackservicesTargetSpecSubnetServiceEndpointResult(dict):
+    def __init__(__self__, *,
+                 managed_service_urn: _builtins.str):
+        """
+        :param _builtins.str managed_service_urn: IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+        """
+        pulumi.set(__self__, "managed_service_urn", managed_service_urn)
+
+    @_builtins.property
+    @pulumi.getter(name="managedServiceUrn")
+    def managed_service_urn(self) -> _builtins.str:
+        """
+        IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+        """
+        return pulumi.get(self, "managed_service_urn")
+
+
+@pulumi.output_type
+class GetVrackservicesTargetSpecSubnetServiceRangeResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str):
+        """
+        :param _builtins.str cidr: IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+        """
+        pulumi.set(__self__, "cidr", cidr)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+        """
+        return pulumi.get(self, "cidr")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetVrackservicessVrackservicessCurrentStateResult',
+                 current_tasks: Sequence['outputs.GetVrackservicessVrackservicessCurrentTaskResult'],
+                 iam: 'outputs.GetVrackservicessVrackservicessIamResult',
+                 id: _builtins.str,
+                 resource_status: _builtins.str,
+                 target_spec: 'outputs.GetVrackservicessVrackservicessTargetSpecResult',
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
+        :param _builtins.str created_at: Date of the vRack Services delivery
+        :param 'GetVrackservicessVrackservicessCurrentStateArgs' current_state: Current configuration applied to the vRack Services
+        :param Sequence['GetVrackservicessVrackservicessCurrentTaskArgs'] current_tasks: Asynchronous operations ongoing on the vRack Services
+        :param 'GetVrackservicessVrackservicessIamArgs' iam: IAM resource metadata
+        :param _builtins.str id: Unique identifier
+        :param _builtins.str resource_status: Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
+        :param 'GetVrackservicessVrackservicessTargetSpecArgs' target_spec: Last target specification of the vRack Services
+        :param _builtins.str updated_at: Date of the Last vRack Services update
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "current_tasks", current_tasks)
+        pulumi.set(__self__, "iam", iam)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "target_spec", target_spec)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Date of the vRack Services delivery
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetVrackservicessVrackservicessCurrentStateResult':
+        """
+        Current configuration applied to the vRack Services
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter(name="currentTasks")
+    def current_tasks(self) -> Sequence['outputs.GetVrackservicessVrackservicessCurrentTaskResult']:
+        """
+        Asynchronous operations ongoing on the vRack Services
+        """
+        return pulumi.get(self, "current_tasks")
+
+    @_builtins.property
+    @pulumi.getter
+    def iam(self) -> 'outputs.GetVrackservicessVrackservicessIamResult':
+        """
+        IAM resource metadata
+        """
+        return pulumi.get(self, "iam")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="targetSpec")
+    def target_spec(self) -> 'outputs.GetVrackservicessVrackservicessTargetSpecResult':
+        """
+        Last target specification of the vRack Services
+        """
+        return pulumi.get(self, "target_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Date of the Last vRack Services update
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 product_status: _builtins.str,
+                 region: _builtins.str,
+                 subnets: Sequence['outputs.GetVrackservicessVrackservicessCurrentStateSubnetResult'],
+                 vrack_id: _builtins.str):
+        """
+        :param _builtins.str product_status: Product status of the vRack Services
+        :param _builtins.str region: Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+        :param Sequence['GetVrackservicessVrackservicessCurrentStateSubnetArgs'] subnets: Subnets of the current vRack Services
+        :param _builtins.str vrack_id: vRack associated to the vRack Services
+        """
+        pulumi.set(__self__, "product_status", product_status)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnets", subnets)
+        pulumi.set(__self__, "vrack_id", vrack_id)
+
+    @_builtins.property
+    @pulumi.getter(name="productStatus")
+    def product_status(self) -> _builtins.str:
+        """
+        Product status of the vRack Services
+        """
+        return pulumi.get(self, "product_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetVrackservicessVrackservicessCurrentStateSubnetResult']:
+        """
+        Subnets of the current vRack Services
+        """
+        return pulumi.get(self, "subnets")
+
+    @_builtins.property
+    @pulumi.getter(name="vrackId")
+    def vrack_id(self) -> _builtins.str:
+        """
+        vRack associated to the vRack Services
+        """
+        return pulumi.get(self, "vrack_id")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessCurrentStateSubnetResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 display_name: _builtins.str,
+                 service_endpoints: Sequence['outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointResult'],
+                 service_range: 'outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeResult',
+                 vlan: _builtins.float):
+        """
+        :param _builtins.str cidr: IP address range of the subnet in CIDR format
+        :param _builtins.str display_name: Display name of the subnet
+        :param Sequence['GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs'] service_endpoints: Service endpoints of the subnet
+        :param 'GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs' service_range: Defines a smaller subnet dedicated to the managed services IPs
+        :param _builtins.float vlan: Unique inner VLAN that allows subnets segregation
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "service_endpoints", service_endpoints)
+        pulumi.set(__self__, "service_range", service_range)
+        pulumi.set(__self__, "vlan", vlan)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IP address range of the subnet in CIDR format
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the subnet
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceEndpoints")
+    def service_endpoints(self) -> Sequence['outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointResult']:
+        """
+        Service endpoints of the subnet
+        """
+        return pulumi.get(self, "service_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRange")
+    def service_range(self) -> 'outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeResult':
+        """
+        Defines a smaller subnet dedicated to the managed services IPs
+        """
+        return pulumi.get(self, "service_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.float:
+        """
+        Unique inner VLAN that allows subnets segregation
+        """
+        return pulumi.get(self, "vlan")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointResult(dict):
+    def __init__(__self__, *,
+                 endpoints: Sequence['outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointResult'],
+                 managed_service_urn: _builtins.str):
+        """
+        :param Sequence['GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs'] endpoints: Endpoints representing the IPs assigned to the managed services
+        :param _builtins.str managed_service_urn: IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+        """
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "managed_service_urn", managed_service_urn)
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoints(self) -> Sequence['outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointResult']:
+        """
+        Endpoints representing the IPs assigned to the managed services
+        """
+        return pulumi.get(self, "endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="managedServiceUrn")
+    def managed_service_urn(self) -> _builtins.str:
+        """
+        IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+        """
+        return pulumi.get(self, "managed_service_urn")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 ip: _builtins.str):
+        """
+        :param _builtins.str description: IP description defined in the managed service
+        :param _builtins.str ip: IP address assigned by OVHcloud
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        IP description defined in the managed service
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address assigned by OVHcloud
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 remaining_ips: _builtins.float,
+                 reserved_ips: _builtins.float,
+                 used_ips: _builtins.float):
+        """
+        :param _builtins.str cidr: CIDR dedicated to the subnet's services
+        :param _builtins.float remaining_ips: Number of remaining IPs in the service range
+        :param _builtins.float reserved_ips: Number of service range IPs reserved by OVHcloud
+        :param _builtins.float used_ips: Number of service range IPs assigned to the managed services
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "remaining_ips", remaining_ips)
+        pulumi.set(__self__, "reserved_ips", reserved_ips)
+        pulumi.set(__self__, "used_ips", used_ips)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        CIDR dedicated to the subnet's services
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="remainingIps")
+    def remaining_ips(self) -> _builtins.float:
+        """
+        Number of remaining IPs in the service range
+        """
+        return pulumi.get(self, "remaining_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="reservedIps")
+    def reserved_ips(self) -> _builtins.float:
+        """
+        Number of service range IPs reserved by OVHcloud
+        """
+        return pulumi.get(self, "reserved_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="usedIps")
+    def used_ips(self) -> _builtins.float:
+        """
+        Number of service range IPs assigned to the managed services
+        """
+        return pulumi.get(self, "used_ips")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the current task
+        :param _builtins.str link: Link to the task details
+        :param _builtins.str status: Current global status of the current task
+        :param _builtins.str type: Type of the current task
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 id: _builtins.str,
+                 state: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 urn: _builtins.str):
+        """
+        :param _builtins.str display_name: Resource display name
+        :param _builtins.str id: Unique identifier of the resource
+        :param _builtins.str state: Resource state
+        :param Mapping[str, _builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param _builtins.str urn: Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Resource state
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> _builtins.str:
+        """
+        Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessTargetSpecResult(dict):
+    def __init__(__self__, *,
+                 subnets: Sequence['outputs.GetVrackservicessVrackservicessTargetSpecSubnetResult']):
+        """
+        :param Sequence['GetVrackservicessVrackservicessTargetSpecSubnetArgs'] subnets: Target specification of the subnets. Maximum one subnet per vRack Services
+        """
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetVrackservicessVrackservicessTargetSpecSubnetResult']:
+        """
+        Target specification of the subnets. Maximum one subnet per vRack Services
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessTargetSpecSubnetResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str,
+                 display_name: _builtins.str,
+                 service_endpoints: Sequence['outputs.GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointResult'],
+                 service_range: 'outputs.GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeResult',
+                 vlan: _builtins.float):
+        """
+        :param _builtins.str cidr: IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+        :param _builtins.str display_name: Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+        :param Sequence['GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs'] service_endpoints: Target specification of the Service Endpoints
+        :param 'GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs' service_range: Defines a smaller subnet dedicated to the managed service IPs
+        :param _builtins.float vlan: Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "service_endpoints", service_endpoints)
+        pulumi.set(__self__, "service_range", service_range)
+        pulumi.set(__self__, "vlan", vlan)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceEndpoints")
+    def service_endpoints(self) -> Sequence['outputs.GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointResult']:
+        """
+        Target specification of the Service Endpoints
+        """
+        return pulumi.get(self, "service_endpoints")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceRange")
+    def service_range(self) -> 'outputs.GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeResult':
+        """
+        Defines a smaller subnet dedicated to the managed service IPs
+        """
+        return pulumi.get(self, "service_range")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> _builtins.float:
+        """
+        Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+        """
+        return pulumi.get(self, "vlan")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointResult(dict):
+    def __init__(__self__, *,
+                 managed_service_urn: _builtins.str):
+        """
+        :param _builtins.str managed_service_urn: IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+        """
+        pulumi.set(__self__, "managed_service_urn", managed_service_urn)
+
+    @_builtins.property
+    @pulumi.getter(name="managedServiceUrn")
+    def managed_service_urn(self) -> _builtins.str:
+        """
+        IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+        """
+        return pulumi.get(self, "managed_service_urn")
+
+
+@pulumi.output_type
+class GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeResult(dict):
+    def __init__(__self__, *,
+                 cidr: _builtins.str):
+        """
+        :param _builtins.str cidr: IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+        """
+        pulumi.set(__self__, "cidr", cidr)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+        """
+        return pulumi.get(self, "cidr")
 
 

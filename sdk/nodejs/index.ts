@@ -20,6 +20,11 @@ export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshK
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
 utilities.lazyLoad(exports, ["CloudProjectSshKey"], () => require("./cloudProjectSshKey"));
 
+export { CloudProjectStorageReplicationJobArgs, CloudProjectStorageReplicationJobState } from "./cloudProjectStorageReplicationJob";
+export type CloudProjectStorageReplicationJob = import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob;
+export const CloudProjectStorageReplicationJob: typeof import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob = null as any;
+utilities.lazyLoad(exports, ["CloudProjectStorageReplicationJob"], () => require("./cloudProjectStorageReplicationJob"));
+
 export { DomainZoneDynhostRecordArgs, DomainZoneDynhostRecordState } from "./domainZoneDynhostRecord";
 export type DomainZoneDynhostRecord = import("./domainZoneDynhostRecord").DomainZoneDynhostRecord;
 export const DomainZoneDynhostRecord: typeof import("./domainZoneDynhostRecord").DomainZoneDynhostRecord = null as any;
@@ -95,6 +100,16 @@ export const getInstallationTemplates: typeof import("./getInstallationTemplates
 export const getInstallationTemplatesOutput: typeof import("./getInstallationTemplates").getInstallationTemplatesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstallationTemplates","getInstallationTemplatesOutput"], () => require("./getInstallationTemplates"));
 
+export { GetIploadbalancingNatIpsArgs, GetIploadbalancingNatIpsResult, GetIploadbalancingNatIpsOutputArgs } from "./getIploadbalancingNatIps";
+export const getIploadbalancingNatIps: typeof import("./getIploadbalancingNatIps").getIploadbalancingNatIps = null as any;
+export const getIploadbalancingNatIpsOutput: typeof import("./getIploadbalancingNatIps").getIploadbalancingNatIpsOutput = null as any;
+utilities.lazyLoad(exports, ["getIploadbalancingNatIps","getIploadbalancingNatIpsOutput"], () => require("./getIploadbalancingNatIps"));
+
+export { GetIploadbalancingsResult } from "./getIploadbalancings";
+export const getIploadbalancings: typeof import("./getIploadbalancings").getIploadbalancings = null as any;
+export const getIploadbalancingsOutput: typeof import("./getIploadbalancings").getIploadbalancingsOutput = null as any;
+utilities.lazyLoad(exports, ["getIploadbalancings","getIploadbalancingsOutput"], () => require("./getIploadbalancings"));
+
 export { GetLocationArgs, GetLocationResult, GetLocationOutputArgs } from "./getLocation";
 export const getLocation: typeof import("./getLocation").getLocation = null as any;
 export const getLocationOutput: typeof import("./getLocation").getLocationOutput = null as any;
@@ -155,6 +170,16 @@ export const getVrackNetworks: typeof import("./getVrackNetworks").getVrackNetwo
 export const getVrackNetworksOutput: typeof import("./getVrackNetworks").getVrackNetworksOutput = null as any;
 utilities.lazyLoad(exports, ["getVrackNetworks","getVrackNetworksOutput"], () => require("./getVrackNetworks"));
 
+export { GetVrackservicesArgs, GetVrackservicesResult, GetVrackservicesOutputArgs } from "./getVrackservices";
+export const getVrackservices: typeof import("./getVrackservices").getVrackservices = null as any;
+export const getVrackservicesOutput: typeof import("./getVrackservices").getVrackservicesOutput = null as any;
+utilities.lazyLoad(exports, ["getVrackservices","getVrackservicesOutput"], () => require("./getVrackservices"));
+
+export { GetVrackservicessResult } from "./getVrackservicess";
+export const getVrackservicess: typeof import("./getVrackservicess").getVrackservicess = null as any;
+export const getVrackservicessOutput: typeof import("./getVrackservicess").getVrackservicessOutput = null as any;
+utilities.lazyLoad(exports, ["getVrackservicess","getVrackservicessOutput"], () => require("./getVrackservicess"));
+
 export { IamResourceTagsArgs, IamResourceTagsState } from "./iamResourceTags";
 export type IamResourceTags = import("./iamResourceTags").IamResourceTags;
 export const IamResourceTags: typeof import("./iamResourceTags").IamResourceTags = null as any;
@@ -197,6 +222,11 @@ export { VrackIpv6RoutedSubrangeArgs, VrackIpv6RoutedSubrangeState } from "./vra
 export type VrackIpv6RoutedSubrange = import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange;
 export const VrackIpv6RoutedSubrange: typeof import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange = null as any;
 utilities.lazyLoad(exports, ["VrackIpv6RoutedSubrange"], () => require("./vrackIpv6RoutedSubrange"));
+
+export { VrackservicesArgs, VrackservicesState } from "./vrackservices";
+export type Vrackservices = import("./vrackservices").Vrackservices;
+export const Vrackservices: typeof import("./vrackservices").Vrackservices = null as any;
+utilities.lazyLoad(exports, ["Vrackservices"], () => require("./vrackservices"));
 
 
 // Export sub-modules:
@@ -254,6 +284,8 @@ const _module = {
                 return new CloudProjectDatabaseValkeyUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
+                return new CloudProjectStorageReplicationJob(name, <any>undefined, { urn })
             case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
                 return new DomainZoneDynhostRecord(name, <any>undefined, { urn })
             case "ovh:index/iamResourceTags:IamResourceTags":
@@ -272,6 +304,8 @@ const _module = {
                 return new StorageEfsShareSnapshot(name, <any>undefined, { urn })
             case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
                 return new VrackIpv6RoutedSubrange(name, <any>undefined, { urn })
+            case "ovh:index/vrackservices:Vrackservices":
+                return new Vrackservices(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -280,6 +314,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageReplicationJob", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/iamResourceTags", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
@@ -289,6 +324,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShare", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/vrackIpv6RoutedSubrange", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/vrackservices", _module)
 pulumi.runtime.registerResourcePackage("ovh", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

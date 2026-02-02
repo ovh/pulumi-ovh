@@ -52,6 +52,7 @@ import javax.annotation.Nullable;
  *             .oidcClientId("xxx")
  *             .oidcClientSecret("xxx")
  *             .oidcScope("openid,profile,email,offline_access")
+ *             .oidcGroupFilter("harbor-admin")
  *             .oidcGroupsClaim("groups")
  *             .oidcAdminGroup("harbor-admin")
  *             .oidcVerifyCert(true)
@@ -163,6 +164,20 @@ public class ContainerRegistryOIDC extends com.pulumi.resources.CustomResource {
      */
     public Output<String> oidcEndpoint() {
         return this.oidcEndpoint;
+    }
+    /**
+     * The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     * 
+     */
+    @Export(name="oidcGroupFilter", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> oidcGroupFilter;
+
+    /**
+     * @return The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     * 
+     */
+    public Output<Optional<String>> oidcGroupFilter() {
+        return Codegen.optional(this.oidcGroupFilter);
     }
     /**
      * The name of Claim in the ID token whose value is the list of group names.

@@ -30,6 +30,8 @@ import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplateArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplatePlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetIploadbalancingNatIpsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetLocationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetLocationPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetOkmsSecretArgs;
@@ -52,6 +54,8 @@ import com.ovhcloud.pulumi.ovh.inputs.GetStorageEfsShareAccessPathsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetStorageEfsShareAccessPathsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesPlainArgs;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectDatabaseValkeyUserResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectFlavorResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectGatewayResult;
@@ -66,6 +70,8 @@ import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplateResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplatesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetIploadbalancingNatIpsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetIploadbalancingsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetLocationResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetOkmsSecretResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetOvhcloudConnectConfigPopDatacenterExtrasResult;
@@ -78,6 +84,8 @@ import com.ovhcloud.pulumi.ovh.outputs.GetStorageEfsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetStorageEfsShareAccessPathResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetStorageEfsShareAccessPathsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetVrackNetworksResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetVrackservicesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetVrackservicessResult;
 import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
@@ -3151,6 +3159,489 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getInstallationTemplates:getInstallationTemplates", TypeShape.of(GetInstallationTemplatesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieve the IP subnet used by OVHcloud IPLB to contact your backends.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplb = OvhFunctions.getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs.builder()
+     *             .serviceName("iplb-example-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingNatIpsResult> getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs args) {
+        return getIploadbalancingNatIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the IP subnet used by OVHcloud IPLB to contact your backends.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplb = OvhFunctions.getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs.builder()
+     *             .serviceName("iplb-example-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIploadbalancingNatIpsResult> getIploadbalancingNatIpsPlain(GetIploadbalancingNatIpsPlainArgs args) {
+        return getIploadbalancingNatIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve the IP subnet used by OVHcloud IPLB to contact your backends.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplb = OvhFunctions.getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs.builder()
+     *             .serviceName("iplb-example-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingNatIpsResult> getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps", TypeShape.of(GetIploadbalancingNatIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve the IP subnet used by OVHcloud IPLB to contact your backends.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplb = OvhFunctions.getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs.builder()
+     *             .serviceName("iplb-example-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingNatIpsResult> getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps", TypeShape.of(GetIploadbalancingNatIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve the IP subnet used by OVHcloud IPLB to contact your backends.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplb = OvhFunctions.getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs.builder()
+     *             .serviceName("iplb-example-1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIploadbalancingNatIpsResult> getIploadbalancingNatIpsPlain(GetIploadbalancingNatIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps", TypeShape.of(GetIploadbalancingNatIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingsResult> getIploadbalancings() {
+        return getIploadbalancings(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIploadbalancingsResult> getIploadbalancingsPlain() {
+        return getIploadbalancingsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingsResult> getIploadbalancings(InvokeArgs args) {
+        return getIploadbalancings(args, InvokeOptions.Empty);
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIploadbalancingsResult> getIploadbalancingsPlain(InvokeArgs args) {
+        return getIploadbalancingsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingsResult> getIploadbalancings(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getIploadbalancings:getIploadbalancings", TypeShape.of(GetIploadbalancingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIploadbalancingsResult> getIploadbalancings(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getIploadbalancings:getIploadbalancings", TypeShape.of(GetIploadbalancingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List of your Load Balancers (IPLB)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetIploadbalancingsResult> getIploadbalancingsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getIploadbalancings:getIploadbalancings", TypeShape.of(GetIploadbalancingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get available regions and their availability zones
      * 
      * ## Example Usage
@@ -5832,5 +6323,89 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetVrackNetworksResult> getVrackNetworksPlain(GetVrackNetworksPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getVrackNetworks:getVrackNetworks", TypeShape.of(GetVrackNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a vRack Services
+     * 
+     */
+    public static Output<GetVrackservicesResult> getVrackservices(GetVrackservicesArgs args) {
+        return getVrackservices(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve a vRack Services
+     * 
+     */
+    public static CompletableFuture<GetVrackservicesResult> getVrackservicesPlain(GetVrackservicesPlainArgs args) {
+        return getVrackservicesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieve a vRack Services
+     * 
+     */
+    public static Output<GetVrackservicesResult> getVrackservices(GetVrackservicesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrackservices:getVrackservices", TypeShape.of(GetVrackservicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a vRack Services
+     * 
+     */
+    public static Output<GetVrackservicesResult> getVrackservices(GetVrackservicesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrackservices:getVrackservices", TypeShape.of(GetVrackservicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a vRack Services
+     * 
+     */
+    public static CompletableFuture<GetVrackservicesResult> getVrackservicesPlain(GetVrackservicesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getVrackservices:getVrackservices", TypeShape.of(GetVrackservicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static Output<GetVrackservicessResult> getVrackservicess() {
+        return getVrackservicess(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static CompletableFuture<GetVrackservicessResult> getVrackservicessPlain() {
+        return getVrackservicessPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static Output<GetVrackservicessResult> getVrackservicess(InvokeArgs args) {
+        return getVrackservicess(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static CompletableFuture<GetVrackservicessResult> getVrackservicessPlain(InvokeArgs args) {
+        return getVrackservicessPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static Output<GetVrackservicessResult> getVrackservicess(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrackservicess:getVrackservicess", TypeShape.of(GetVrackservicessResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static Output<GetVrackservicessResult> getVrackservicess(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrackservicess:getVrackservicess", TypeShape.of(GetVrackservicessResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all vRack Services
+     * 
+     */
+    public static CompletableFuture<GetVrackservicessResult> getVrackservicessPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getVrackservicess:getVrackservicess", TypeShape.of(GetVrackservicessResult.class), args, Utilities.withVersion(options));
     }
 }

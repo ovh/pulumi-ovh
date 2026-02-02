@@ -36,7 +36,7 @@ type CloudProjectDatabaseValkeyUser struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Keys of the user.
 	Keys pulumi.StringArrayOutput `pulumi:"keys"`
-	// Name of the user.
+	// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -97,7 +97,7 @@ type cloudProjectDatabaseValkeyUserState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Keys of the user.
 	Keys []string `pulumi:"keys"`
-	// Name of the user.
+	// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// (Sensitive) Password of the user.
 	Password *string `pulumi:"password"`
@@ -122,7 +122,7 @@ type CloudProjectDatabaseValkeyUserState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Keys of the user.
 	Keys pulumi.StringArrayInput
-	// Name of the user.
+	// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// (Sensitive) Password of the user.
 	Password pulumi.StringPtrInput
@@ -149,7 +149,7 @@ type cloudProjectDatabaseValkeyUserArgs struct {
 	Commands []string `pulumi:"commands"`
 	// Keys of the user.
 	Keys []string `pulumi:"keys"`
-	// Name of the user.
+	// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
 	Name *string `pulumi:"name"`
 	// Arbitrary string to change to trigger a password update
 	PasswordReset *string `pulumi:"passwordReset"`
@@ -169,7 +169,7 @@ type CloudProjectDatabaseValkeyUserArgs struct {
 	Commands pulumi.StringArrayInput
 	// Keys of the user.
 	Keys pulumi.StringArrayInput
-	// Name of the user.
+	// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
 	Name pulumi.StringPtrInput
 	// Arbitrary string to change to trigger a password update
 	PasswordReset pulumi.StringPtrInput
@@ -294,7 +294,7 @@ func (o CloudProjectDatabaseValkeyUserOutput) Keys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudProjectDatabaseValkeyUser) pulumi.StringArrayOutput { return v.Keys }).(pulumi.StringArrayOutput)
 }
 
-// Name of the user.
+// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
 func (o CloudProjectDatabaseValkeyUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudProjectDatabaseValkeyUser) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

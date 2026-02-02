@@ -17,9 +17,17 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FirewallArgs Empty = new FirewallArgs();
 
+    /**
+     * Whether firewall should be enabled
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether firewall should be enabled
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -41,7 +49,6 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * IPv4 address
-     * * ` enabled  ` - Whether firewall should be enabled
      * 
      */
     @Import(name="ipOnFirewall", required=true)
@@ -49,7 +56,6 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return IPv4 address
-     * * ` enabled  ` - Whether firewall should be enabled
      * 
      */
     public Output<String> ipOnFirewall() {
@@ -82,11 +88,23 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
             $ = new FirewallArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether firewall should be enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether firewall should be enabled
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -114,7 +132,6 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipOnFirewall IPv4 address
-         * * ` enabled  ` - Whether firewall should be enabled
          * 
          * @return builder
          * 
@@ -126,7 +143,6 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipOnFirewall IPv4 address
-         * * ` enabled  ` - Whether firewall should be enabled
          * 
          * @return builder
          * 

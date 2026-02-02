@@ -59,6 +59,8 @@ type SavingsPlan struct {
 
 	// Whether Savings Plan should be renewed at the end of the period (defaults to false)
 	AutoRenewal pulumi.BoolOutput `pulumi:"autoRenewal"`
+	// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+	DeploymentType pulumi.StringPtrOutput `pulumi:"deploymentType"`
 	// Custom display name, used in invoices
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// End date of the Savings Plan
@@ -129,6 +131,8 @@ func GetSavingsPlan(ctx *pulumi.Context,
 type savingsPlanState struct {
 	// Whether Savings Plan should be renewed at the end of the period (defaults to false)
 	AutoRenewal *bool `pulumi:"autoRenewal"`
+	// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+	DeploymentType *string `pulumi:"deploymentType"`
 	// Custom display name, used in invoices
 	DisplayName *string `pulumi:"displayName"`
 	// End date of the Savings Plan
@@ -158,6 +162,8 @@ type savingsPlanState struct {
 type SavingsPlanState struct {
 	// Whether Savings Plan should be renewed at the end of the period (defaults to false)
 	AutoRenewal pulumi.BoolPtrInput
+	// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+	DeploymentType pulumi.StringPtrInput
 	// Custom display name, used in invoices
 	DisplayName pulumi.StringPtrInput
 	// End date of the Savings Plan
@@ -191,6 +197,8 @@ func (SavingsPlanState) ElementType() reflect.Type {
 type savingsPlanArgs struct {
 	// Whether Savings Plan should be renewed at the end of the period (defaults to false)
 	AutoRenewal *bool `pulumi:"autoRenewal"`
+	// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+	DeploymentType *string `pulumi:"deploymentType"`
 	// Custom display name, used in invoices
 	DisplayName string `pulumi:"displayName"`
 	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
@@ -207,6 +215,8 @@ type savingsPlanArgs struct {
 type SavingsPlanArgs struct {
 	// Whether Savings Plan should be renewed at the end of the period (defaults to false)
 	AutoRenewal pulumi.BoolPtrInput
+	// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+	DeploymentType pulumi.StringPtrInput
 	// Custom display name, used in invoices
 	DisplayName pulumi.StringInput
 	// Savings Plan flavor. The list of available flavors can be retrieved in the next section.
@@ -309,6 +319,11 @@ func (o SavingsPlanOutput) ToSavingsPlanOutputWithContext(ctx context.Context) S
 // Whether Savings Plan should be renewed at the end of the period (defaults to false)
 func (o SavingsPlanOutput) AutoRenewal() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SavingsPlan) pulumi.BoolOutput { return v.AutoRenewal }).(pulumi.BoolOutput)
+}
+
+// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+func (o SavingsPlanOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SavingsPlan) pulumi.StringPtrOutput { return v.DeploymentType }).(pulumi.StringPtrOutput)
 }
 
 // Custom display name, used in invoices

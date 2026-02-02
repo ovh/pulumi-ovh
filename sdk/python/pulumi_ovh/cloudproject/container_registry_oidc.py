@@ -28,6 +28,7 @@ class ContainerRegistryOIDCArgs:
                  delete_users: Optional[pulumi.Input[_builtins.bool]] = None,
                  oidc_admin_group: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_auto_onboard: Optional[pulumi.Input[_builtins.bool]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_user_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_verify_cert: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -43,6 +44,7 @@ class ContainerRegistryOIDCArgs:
         :param pulumi.Input[_builtins.bool] delete_users: Delete existing users from Harbor. OIDC can't be enabled if there is at least one user already created. This parameter is only used at OIDC configuration creation. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] oidc_admin_group: Specify an OIDC admin group name. All OIDC users in this group will have harbor admin privilege. Keep it blank if you do not want to.
         :param pulumi.Input[_builtins.bool] oidc_auto_onboard: Skip the onboarding screen, so user cannot change its username. Username is provided from ID Token.
+        :param pulumi.Input[_builtins.str] oidc_group_filter: The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
         :param pulumi.Input[_builtins.str] oidc_groups_claim: The name of Claim in the ID token whose value is the list of group names.
         :param pulumi.Input[_builtins.str] oidc_user_claim: The name of the claim in the ID Token where the username is retrieved from. If not specified, it will default to 'name' (only useful when automatic Onboarding is enabled).
         :param pulumi.Input[_builtins.bool] oidc_verify_cert: Set it to `false` if your OIDC server is hosted via self-signed certificate.
@@ -60,6 +62,8 @@ class ContainerRegistryOIDCArgs:
             pulumi.set(__self__, "oidc_admin_group", oidc_admin_group)
         if oidc_auto_onboard is not None:
             pulumi.set(__self__, "oidc_auto_onboard", oidc_auto_onboard)
+        if oidc_group_filter is not None:
+            pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim is not None:
             pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
         if oidc_user_claim is not None:
@@ -178,6 +182,18 @@ class ContainerRegistryOIDCArgs:
         pulumi.set(self, "oidc_auto_onboard", value)
 
     @_builtins.property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+        """
+        return pulumi.get(self, "oidc_group_filter")
+
+    @oidc_group_filter.setter
+    def oidc_group_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oidc_group_filter", value)
+
+    @_builtins.property
     @pulumi.getter(name="oidcGroupsClaim")
     def oidc_groups_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -235,6 +251,7 @@ class _ContainerRegistryOIDCState:
                  oidc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_name: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_scope: Optional[pulumi.Input[_builtins.str]] = None,
@@ -250,6 +267,7 @@ class _ContainerRegistryOIDCState:
         :param pulumi.Input[_builtins.str] oidc_client_id: The client ID with which Harbor is registered as client application with the OIDC provider.
         :param pulumi.Input[_builtins.str] oidc_client_secret: The secret for the Harbor client application.
         :param pulumi.Input[_builtins.str] oidc_endpoint: The URL of an OIDC-compliant server.
+        :param pulumi.Input[_builtins.str] oidc_group_filter: The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
         :param pulumi.Input[_builtins.str] oidc_groups_claim: The name of Claim in the ID token whose value is the list of group names.
         :param pulumi.Input[_builtins.str] oidc_name: The name of the OIDC provider.
         :param pulumi.Input[_builtins.str] oidc_scope: The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
@@ -270,6 +288,8 @@ class _ContainerRegistryOIDCState:
             pulumi.set(__self__, "oidc_client_secret", oidc_client_secret)
         if oidc_endpoint is not None:
             pulumi.set(__self__, "oidc_endpoint", oidc_endpoint)
+        if oidc_group_filter is not None:
+            pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim is not None:
             pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
         if oidc_name is not None:
@@ -356,6 +376,18 @@ class _ContainerRegistryOIDCState:
     @oidc_endpoint.setter
     def oidc_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "oidc_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+        """
+        return pulumi.get(self, "oidc_group_filter")
+
+    @oidc_group_filter.setter
+    def oidc_group_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oidc_group_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcGroupsClaim")
@@ -454,6 +486,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
                  oidc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_name: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_scope: Optional[pulumi.Input[_builtins.str]] = None,
@@ -479,6 +512,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             oidc_client_id="xxx",
             oidc_client_secret="xxx",
             oidc_scope="openid,profile,email,offline_access",
+            oidc_group_filter="harbor-admin",
             oidc_groups_claim="groups",
             oidc_admin_group="harbor-admin",
             oidc_verify_cert=True,
@@ -506,6 +540,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oidc_client_id: The client ID with which Harbor is registered as client application with the OIDC provider.
         :param pulumi.Input[_builtins.str] oidc_client_secret: The secret for the Harbor client application.
         :param pulumi.Input[_builtins.str] oidc_endpoint: The URL of an OIDC-compliant server.
+        :param pulumi.Input[_builtins.str] oidc_group_filter: The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
         :param pulumi.Input[_builtins.str] oidc_groups_claim: The name of Claim in the ID token whose value is the list of group names.
         :param pulumi.Input[_builtins.str] oidc_name: The name of the OIDC provider.
         :param pulumi.Input[_builtins.str] oidc_scope: The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
@@ -537,6 +572,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             oidc_client_id="xxx",
             oidc_client_secret="xxx",
             oidc_scope="openid,profile,email,offline_access",
+            oidc_group_filter="harbor-admin",
             oidc_groups_claim="groups",
             oidc_admin_group="harbor-admin",
             oidc_verify_cert=True,
@@ -577,6 +613,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
                  oidc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_group_filter: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_name: Optional[pulumi.Input[_builtins.str]] = None,
                  oidc_scope: Optional[pulumi.Input[_builtins.str]] = None,
@@ -605,6 +642,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             if oidc_endpoint is None and not opts.urn:
                 raise TypeError("Missing required property 'oidc_endpoint'")
             __props__.__dict__["oidc_endpoint"] = oidc_endpoint
+            __props__.__dict__["oidc_group_filter"] = oidc_group_filter
             __props__.__dict__["oidc_groups_claim"] = oidc_groups_claim
             if oidc_name is None and not opts.urn:
                 raise TypeError("Missing required property 'oidc_name'")
@@ -636,6 +674,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
             oidc_client_id: Optional[pulumi.Input[_builtins.str]] = None,
             oidc_client_secret: Optional[pulumi.Input[_builtins.str]] = None,
             oidc_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+            oidc_group_filter: Optional[pulumi.Input[_builtins.str]] = None,
             oidc_groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
             oidc_name: Optional[pulumi.Input[_builtins.str]] = None,
             oidc_scope: Optional[pulumi.Input[_builtins.str]] = None,
@@ -656,6 +695,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] oidc_client_id: The client ID with which Harbor is registered as client application with the OIDC provider.
         :param pulumi.Input[_builtins.str] oidc_client_secret: The secret for the Harbor client application.
         :param pulumi.Input[_builtins.str] oidc_endpoint: The URL of an OIDC-compliant server.
+        :param pulumi.Input[_builtins.str] oidc_group_filter: The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
         :param pulumi.Input[_builtins.str] oidc_groups_claim: The name of Claim in the ID token whose value is the list of group names.
         :param pulumi.Input[_builtins.str] oidc_name: The name of the OIDC provider.
         :param pulumi.Input[_builtins.str] oidc_scope: The scope sent to OIDC server during authentication. It's a comma-separated string that must contain 'openid' and usually also contains 'profile' and 'email'. To obtain refresh tokens it should also contain 'offline_access'.
@@ -674,6 +714,7 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
         __props__.__dict__["oidc_client_id"] = oidc_client_id
         __props__.__dict__["oidc_client_secret"] = oidc_client_secret
         __props__.__dict__["oidc_endpoint"] = oidc_endpoint
+        __props__.__dict__["oidc_group_filter"] = oidc_group_filter
         __props__.__dict__["oidc_groups_claim"] = oidc_groups_claim
         __props__.__dict__["oidc_name"] = oidc_name
         __props__.__dict__["oidc_scope"] = oidc_scope
@@ -730,6 +771,14 @@ class ContainerRegistryOIDC(pulumi.CustomResource):
         The URL of an OIDC-compliant server.
         """
         return pulumi.get(self, "oidc_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+        """
+        return pulumi.get(self, "oidc_group_filter")
 
     @_builtins.property
     @pulumi.getter(name="oidcGroupsClaim")

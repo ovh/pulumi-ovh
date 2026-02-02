@@ -107,14 +107,14 @@ public final class CloudProjectDatabaseValkeyUserState extends com.pulumi.resour
     }
 
     /**
-     * Name of the user.
+     * Name of the user. A user named &#34;default&#34; is mapped with an already created user and reset his password instead of creating a new user.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the user.
+     * @return Name of the user. A user named &#34;default&#34; is mapped with an already created user and reset his password instead of creating a new user.
      * 
      */
     public Optional<Output<String>> name() {
@@ -382,7 +382,7 @@ public final class CloudProjectDatabaseValkeyUserState extends com.pulumi.resour
         }
 
         /**
-         * @param name Name of the user.
+         * @param name Name of the user. A user named &#34;default&#34; is mapped with an already created user and reset his password instead of creating a new user.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class CloudProjectDatabaseValkeyUserState extends com.pulumi.resour
         }
 
         /**
-         * @param name Name of the user.
+         * @param name Name of the user. A user named &#34;default&#34; is mapped with an already created user and reset his password instead of creating a new user.
          * 
          * @return builder
          * 

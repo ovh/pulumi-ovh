@@ -26,6 +26,7 @@ namespace Pulumi.Ovh.Ip
     ///     {
     ///         Ip = "XXXXXX",
     ///         IpOnFirewall = "XXXXXX",
+    ///         Enabled = true,
     ///     });
     /// 
     /// });
@@ -34,6 +35,9 @@ namespace Pulumi.Ovh.Ip
     [OvhResourceType("ovh:Ip/firewall:Firewall")]
     public partial class Firewall : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether firewall should be enabled
+        /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
@@ -45,7 +49,6 @@ namespace Pulumi.Ovh.Ip
 
         /// <summary>
         /// IPv4 address
-        /// * `enabled ` - Whether firewall should be enabled
         /// </summary>
         [Output("ipOnFirewall")]
         public Output<string> IpOnFirewall { get; private set; } = null!;
@@ -103,6 +106,9 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether firewall should be enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -114,7 +120,6 @@ namespace Pulumi.Ovh.Ip
 
         /// <summary>
         /// IPv4 address
-        /// * `enabled ` - Whether firewall should be enabled
         /// </summary>
         [Input("ipOnFirewall", required: true)]
         public Input<string> IpOnFirewall { get; set; } = null!;
@@ -127,6 +132,9 @@ namespace Pulumi.Ovh.Ip
 
     public sealed class FirewallState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether firewall should be enabled
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -138,7 +146,6 @@ namespace Pulumi.Ovh.Ip
 
         /// <summary>
         /// IPv4 address
-        /// * `enabled ` - Whether firewall should be enabled
         /// </summary>
         [Input("ipOnFirewall")]
         public Input<string>? IpOnFirewall { get; set; }

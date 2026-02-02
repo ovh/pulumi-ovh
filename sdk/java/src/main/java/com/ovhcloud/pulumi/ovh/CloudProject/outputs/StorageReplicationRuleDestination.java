@@ -24,7 +24,7 @@ public final class StorageReplicationRuleDestination {
      */
     private String region;
     /**
-     * @return Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * @return Whether to remove replicated bucket when the main bucket is deleted
      * 
      */
     private @Nullable Boolean removeOnMainBucketDeletion;
@@ -50,7 +50,7 @@ public final class StorageReplicationRuleDestination {
         return this.region;
     }
     /**
-     * @return Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * @return Whether to remove replicated bucket when the main bucket is deleted
      * 
      */
     public Optional<Boolean> removeOnMainBucketDeletion() {

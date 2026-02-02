@@ -26,7 +26,7 @@ class GetContainerRegistryOIDCResult:
     """
     A collection of values returned by getContainerRegistryOIDC.
     """
-    def __init__(__self__, id=None, oidc_admin_group=None, oidc_auto_onboard=None, oidc_client_id=None, oidc_endpoint=None, oidc_groups_claim=None, oidc_name=None, oidc_scope=None, oidc_user_claim=None, oidc_verify_cert=None, registry_id=None, service_name=None):
+    def __init__(__self__, id=None, oidc_admin_group=None, oidc_auto_onboard=None, oidc_client_id=None, oidc_endpoint=None, oidc_group_filter=None, oidc_groups_claim=None, oidc_name=None, oidc_scope=None, oidc_user_claim=None, oidc_verify_cert=None, registry_id=None, service_name=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -42,6 +42,9 @@ class GetContainerRegistryOIDCResult:
         if oidc_endpoint and not isinstance(oidc_endpoint, str):
             raise TypeError("Expected argument 'oidc_endpoint' to be a str")
         pulumi.set(__self__, "oidc_endpoint", oidc_endpoint)
+        if oidc_group_filter and not isinstance(oidc_group_filter, str):
+            raise TypeError("Expected argument 'oidc_group_filter' to be a str")
+        pulumi.set(__self__, "oidc_group_filter", oidc_group_filter)
         if oidc_groups_claim and not isinstance(oidc_groups_claim, str):
             raise TypeError("Expected argument 'oidc_groups_claim' to be a str")
         pulumi.set(__self__, "oidc_groups_claim", oidc_groups_claim)
@@ -103,6 +106,11 @@ class GetContainerRegistryOIDCResult:
         The URL of an OIDC-compliant server.
         """
         return pulumi.get(self, "oidc_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcGroupFilter")
+    def oidc_group_filter(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "oidc_group_filter")
 
     @_builtins.property
     @pulumi.getter(name="oidcGroupsClaim")
@@ -172,6 +180,7 @@ class AwaitableGetContainerRegistryOIDCResult(GetContainerRegistryOIDCResult):
             oidc_auto_onboard=self.oidc_auto_onboard,
             oidc_client_id=self.oidc_client_id,
             oidc_endpoint=self.oidc_endpoint,
+            oidc_group_filter=self.oidc_group_filter,
             oidc_groups_claim=self.oidc_groups_claim,
             oidc_name=self.oidc_name,
             oidc_scope=self.oidc_scope,
@@ -185,6 +194,7 @@ def get_container_registry_oidc(oidc_admin_group: Optional[_builtins.str] = None
                                 oidc_auto_onboard: Optional[_builtins.bool] = None,
                                 oidc_client_id: Optional[_builtins.str] = None,
                                 oidc_endpoint: Optional[_builtins.str] = None,
+                                oidc_group_filter: Optional[_builtins.str] = None,
                                 oidc_groups_claim: Optional[_builtins.str] = None,
                                 oidc_name: Optional[_builtins.str] = None,
                                 oidc_scope: Optional[_builtins.str] = None,
@@ -225,6 +235,7 @@ def get_container_registry_oidc(oidc_admin_group: Optional[_builtins.str] = None
     __args__['oidcAutoOnboard'] = oidc_auto_onboard
     __args__['oidcClientId'] = oidc_client_id
     __args__['oidcEndpoint'] = oidc_endpoint
+    __args__['oidcGroupFilter'] = oidc_group_filter
     __args__['oidcGroupsClaim'] = oidc_groups_claim
     __args__['oidcName'] = oidc_name
     __args__['oidcScope'] = oidc_scope
@@ -241,6 +252,7 @@ def get_container_registry_oidc(oidc_admin_group: Optional[_builtins.str] = None
         oidc_auto_onboard=pulumi.get(__ret__, 'oidc_auto_onboard'),
         oidc_client_id=pulumi.get(__ret__, 'oidc_client_id'),
         oidc_endpoint=pulumi.get(__ret__, 'oidc_endpoint'),
+        oidc_group_filter=pulumi.get(__ret__, 'oidc_group_filter'),
         oidc_groups_claim=pulumi.get(__ret__, 'oidc_groups_claim'),
         oidc_name=pulumi.get(__ret__, 'oidc_name'),
         oidc_scope=pulumi.get(__ret__, 'oidc_scope'),
@@ -252,6 +264,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
                                        oidc_auto_onboard: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                                        oidc_client_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        oidc_endpoint: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                                       oidc_group_filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        oidc_groups_claim: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        oidc_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                        oidc_scope: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -292,6 +305,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
     __args__['oidcAutoOnboard'] = oidc_auto_onboard
     __args__['oidcClientId'] = oidc_client_id
     __args__['oidcEndpoint'] = oidc_endpoint
+    __args__['oidcGroupFilter'] = oidc_group_filter
     __args__['oidcGroupsClaim'] = oidc_groups_claim
     __args__['oidcName'] = oidc_name
     __args__['oidcScope'] = oidc_scope
@@ -307,6 +321,7 @@ def get_container_registry_oidc_output(oidc_admin_group: Optional[pulumi.Input[O
         oidc_auto_onboard=pulumi.get(__response__, 'oidc_auto_onboard'),
         oidc_client_id=pulumi.get(__response__, 'oidc_client_id'),
         oidc_endpoint=pulumi.get(__response__, 'oidc_endpoint'),
+        oidc_group_filter=pulumi.get(__response__, 'oidc_group_filter'),
         oidc_groups_claim=pulumi.get(__response__, 'oidc_groups_claim'),
         oidc_name=pulumi.get(__response__, 'oidc_name'),
         oidc_scope=pulumi.get(__response__, 'oidc_scope'),

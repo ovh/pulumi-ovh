@@ -10,30 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProject
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Ovh = Pulumi.Ovh;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var storage = new Ovh.CloudProject.Storage("storage", new()
-    ///     {
-    ///         ServiceName = "&lt;public cloud project ID&gt;",
-    ///         RegionName = "GRA",
-    ///         Name = "my-storage",
-    ///         Versioning = new Ovh.CloudProject.Inputs.StorageVersioningArgs
-    ///         {
-    ///             Status = "enabled",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
@@ -96,6 +72,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Object lock configuration
+        /// </summary>
+        [Output("objectLock")]
+        public Output<Outputs.StorageObjectLock> ObjectLock { get; private set; } = null!;
 
         /// <summary>
         /// Container objects
@@ -241,6 +223,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Object lock configuration
+        /// </summary>
+        [Input("objectLock")]
+        public Input<Inputs.StorageObjectLockArgs>? ObjectLock { get; set; }
+
+        /// <summary>
         /// Container owner user ID
         /// </summary>
         [Input("ownerId")]
@@ -319,6 +307,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Object lock configuration
+        /// </summary>
+        [Input("objectLock")]
+        public Input<Inputs.StorageObjectLockGetArgs>? ObjectLock { get; set; }
 
         [Input("objects")]
         private InputList<Inputs.StorageObjectGetArgs>? _objects;

@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * const myFirewall = new ovh.ip.Firewall("my_firewall", {
  *     ip: "XXXXXX",
  *     ipOnFirewall: "XXXXXX",
+ *     enabled: true,
  * });
  * ```
  */
@@ -47,6 +48,9 @@ export class Firewall extends pulumi.CustomResource {
         return obj['__pulumiType'] === Firewall.__pulumiType;
     }
 
+    /**
+     * Whether firewall should be enabled
+     */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The IP or the CIDR
@@ -54,7 +58,6 @@ export class Firewall extends pulumi.CustomResource {
     public readonly ip!: pulumi.Output<string>;
     /**
      * IPv4 address
-     * * `enabled ` - Whether firewall should be enabled
      */
     public readonly ipOnFirewall!: pulumi.Output<string>;
     /**
@@ -101,6 +104,9 @@ export class Firewall extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Firewall resources.
  */
 export interface FirewallState {
+    /**
+     * Whether firewall should be enabled
+     */
     enabled?: pulumi.Input<boolean>;
     /**
      * The IP or the CIDR
@@ -108,7 +114,6 @@ export interface FirewallState {
     ip?: pulumi.Input<string>;
     /**
      * IPv4 address
-     * * `enabled ` - Whether firewall should be enabled
      */
     ipOnFirewall?: pulumi.Input<string>;
     /**
@@ -121,6 +126,9 @@ export interface FirewallState {
  * The set of arguments for constructing a Firewall resource.
  */
 export interface FirewallArgs {
+    /**
+     * Whether firewall should be enabled
+     */
     enabled?: pulumi.Input<boolean>;
     /**
      * The IP or the CIDR
@@ -128,7 +136,6 @@ export interface FirewallArgs {
     ip: pulumi.Input<string>;
     /**
      * IPv4 address
-     * * `enabled ` - Whether firewall should be enabled
      */
     ipOnFirewall: pulumi.Input<string>;
 }

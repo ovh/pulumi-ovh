@@ -34,7 +34,7 @@ class CloudProjectDatabaseValkeyUserArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] channels: Channels of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Commands of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keys: Keys of the user.
-        :param pulumi.Input[_builtins.str] name: Name of the user.
+        :param pulumi.Input[_builtins.str] name: Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         :param pulumi.Input[_builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -118,7 +118,7 @@ class CloudProjectDatabaseValkeyUserArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the user.
+        Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -173,7 +173,7 @@ class _CloudProjectDatabaseValkeyUserState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Commands of the user.
         :param pulumi.Input[_builtins.str] created_at: Date of the creation of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keys: Keys of the user.
-        :param pulumi.Input[_builtins.str] name: Name of the user.
+        :param pulumi.Input[_builtins.str] name: Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         :param pulumi.Input[_builtins.str] password: (Sensitive) Password of the user.
         :param pulumi.Input[_builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -278,7 +278,7 @@ class _CloudProjectDatabaseValkeyUserState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Name of the user.
+        Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 
@@ -368,7 +368,7 @@ class CloudProjectDatabaseValkeyUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Commands of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keys: Keys of the user.
-        :param pulumi.Input[_builtins.str] name: Name of the user.
+        :param pulumi.Input[_builtins.str] name: Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         :param pulumi.Input[_builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -470,7 +470,7 @@ class CloudProjectDatabaseValkeyUser(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Commands of the user.
         :param pulumi.Input[_builtins.str] created_at: Date of the creation of the user.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keys: Keys of the user.
-        :param pulumi.Input[_builtins.str] name: Name of the user.
+        :param pulumi.Input[_builtins.str] name: Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         :param pulumi.Input[_builtins.str] password: (Sensitive) Password of the user.
         :param pulumi.Input[_builtins.str] password_reset: Arbitrary string to change to trigger a password update
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -545,7 +545,7 @@ class CloudProjectDatabaseValkeyUser(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the user.
+        Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         """
         return pulumi.get(self, "name")
 

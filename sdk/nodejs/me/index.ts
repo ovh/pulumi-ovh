@@ -65,6 +65,11 @@ export type IdentityUser = import("./identityUser").IdentityUser;
 export const IdentityUser: typeof import("./identityUser").IdentityUser = null as any;
 utilities.lazyLoad(exports, ["IdentityUser"], () => require("./identityUser"));
 
+export { IdentityUserTokenArgs, IdentityUserTokenState } from "./identityUserToken";
+export type IdentityUserToken = import("./identityUserToken").IdentityUserToken;
+export const IdentityUserToken: typeof import("./identityUserToken").IdentityUserToken = null as any;
+utilities.lazyLoad(exports, ["IdentityUserToken"], () => require("./identityUserToken"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -76,6 +81,8 @@ const _module = {
                 return new IdentityGroup(name, <any>undefined, { urn })
             case "ovh:Me/identityUser:IdentityUser":
                 return new IdentityUser(name, <any>undefined, { urn })
+            case "ovh:Me/identityUserToken:IdentityUserToken":
+                return new IdentityUserToken(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -84,3 +91,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "Me/aPIOAuth2Client", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/identityGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "Me/identityUser", _module)
+pulumi.runtime.registerResourceModule("ovh", "Me/identityUserToken", _module)

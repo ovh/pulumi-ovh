@@ -59,7 +59,8 @@ type LookupContainerRegistryOIDCArgs struct {
 	// The client ID with which Harbor is registered as client application with the OIDC provider.
 	OidcClientId *string `pulumi:"oidcClientId"`
 	// The URL of an OIDC-compliant server.
-	OidcEndpoint *string `pulumi:"oidcEndpoint"`
+	OidcEndpoint    *string `pulumi:"oidcEndpoint"`
+	OidcGroupFilter *string `pulumi:"oidcGroupFilter"`
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim *string `pulumi:"oidcGroupsClaim"`
 	// The name of the OIDC provider.
@@ -87,7 +88,8 @@ type LookupContainerRegistryOIDCResult struct {
 	// The client ID with which Harbor is registered as client application with the OIDC provider.
 	OidcClientId *string `pulumi:"oidcClientId"`
 	// The URL of an OIDC-compliant server.
-	OidcEndpoint *string `pulumi:"oidcEndpoint"`
+	OidcEndpoint    *string `pulumi:"oidcEndpoint"`
+	OidcGroupFilter *string `pulumi:"oidcGroupFilter"`
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim *string `pulumi:"oidcGroupsClaim"`
 	// The name of the OIDC provider.
@@ -122,7 +124,8 @@ type LookupContainerRegistryOIDCOutputArgs struct {
 	// The client ID with which Harbor is registered as client application with the OIDC provider.
 	OidcClientId pulumi.StringPtrInput `pulumi:"oidcClientId"`
 	// The URL of an OIDC-compliant server.
-	OidcEndpoint pulumi.StringPtrInput `pulumi:"oidcEndpoint"`
+	OidcEndpoint    pulumi.StringPtrInput `pulumi:"oidcEndpoint"`
+	OidcGroupFilter pulumi.StringPtrInput `pulumi:"oidcGroupFilter"`
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim pulumi.StringPtrInput `pulumi:"oidcGroupsClaim"`
 	// The name of the OIDC provider.
@@ -181,6 +184,10 @@ func (o LookupContainerRegistryOIDCResultOutput) OidcClientId() pulumi.StringPtr
 // The URL of an OIDC-compliant server.
 func (o LookupContainerRegistryOIDCResultOutput) OidcEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContainerRegistryOIDCResult) *string { return v.OidcEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupContainerRegistryOIDCResultOutput) OidcGroupFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupContainerRegistryOIDCResult) *string { return v.OidcGroupFilter }).(pulumi.StringPtrOutput)
 }
 
 // The name of Claim in the ID token whose value is the list of group names.

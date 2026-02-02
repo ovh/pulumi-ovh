@@ -5,6 +5,250 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface VrackservicesCurrentState {
+    /**
+     * Product status of the vRack Services
+     */
+    productStatus?: pulumi.Input<string>;
+    /**
+     * Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * Subnets of the current vRack Services
+     */
+    subnets?: pulumi.Input<pulumi.Input<inputs.VrackservicesCurrentStateSubnet>[]>;
+}
+
+export interface VrackservicesCurrentStateSubnet {
+    /**
+     * IP address range of the subnet in CIDR format
+     */
+    cidr?: pulumi.Input<string>;
+    /**
+     * Display name of the subnet
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Service endpoints of the subnet
+     */
+    serviceEndpoints?: pulumi.Input<pulumi.Input<inputs.VrackservicesCurrentStateSubnetServiceEndpoint>[]>;
+    /**
+     * Defines a smaller subnet dedicated to the managed services IPs
+     */
+    serviceRange?: pulumi.Input<inputs.VrackservicesCurrentStateSubnetServiceRange>;
+    /**
+     * Unique inner VLAN that allows subnets segregation
+     */
+    vlan?: pulumi.Input<number>;
+}
+
+export interface VrackservicesCurrentStateSubnetServiceEndpoint {
+    /**
+     * Endpoints representing the IPs assigned to the managed services
+     */
+    endpoints?: pulumi.Input<pulumi.Input<inputs.VrackservicesCurrentStateSubnetServiceEndpointEndpoint>[]>;
+    /**
+     * IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+     */
+    managedServiceUrn?: pulumi.Input<string>;
+}
+
+export interface VrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+    /**
+     * IP description defined in the managed service
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * IP address assigned by OVHcloud
+     */
+    ip?: pulumi.Input<string>;
+}
+
+export interface VrackservicesCurrentStateSubnetServiceRange {
+    /**
+     * CIDR dedicated to the subnet's services
+     */
+    cidr?: pulumi.Input<string>;
+    /**
+     * Number of remaining IPs in the service range
+     */
+    remainingIps?: pulumi.Input<number>;
+    /**
+     * Number of service range IPs reserved by OVHcloud
+     */
+    reservedIps?: pulumi.Input<number>;
+    /**
+     * Number of service range IPs assigned to the managed services
+     */
+    usedIps?: pulumi.Input<number>;
+}
+
+export interface VrackservicesCurrentTask {
+    /**
+     * Identifier of the current task
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Link to the related resource
+     */
+    link?: pulumi.Input<string>;
+    /**
+     * Current global status of the current task
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Type of the current task
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface VrackservicesIam {
+    /**
+     * Resource display name
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Unique identifier of the resource
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Unique resource name used in policies
+     */
+    urn?: pulumi.Input<string>;
+}
+
+export interface VrackservicesOrder {
+    date?: pulumi.Input<string>;
+    details?: pulumi.Input<pulumi.Input<inputs.VrackservicesOrderDetail>[]>;
+    expirationDate?: pulumi.Input<string>;
+    orderId?: pulumi.Input<number>;
+}
+
+export interface VrackservicesOrderDetail {
+    description?: pulumi.Input<string>;
+    /**
+     * Product type of item in order
+     */
+    detailType?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
+    orderDetailId?: pulumi.Input<number>;
+    quantity?: pulumi.Input<string>;
+}
+
+export interface VrackservicesPlan {
+    configurations?: pulumi.Input<pulumi.Input<inputs.VrackservicesPlanConfiguration>[]>;
+    /**
+     * Duration selected for the purchase of the product
+     */
+    duration: pulumi.Input<string>;
+    /**
+     * Cart item to be linked
+     */
+    itemId?: pulumi.Input<number>;
+    /**
+     * Identifier of the option offer
+     */
+    planCode: pulumi.Input<string>;
+    /**
+     * Pricing mode selected for the purchase of the product
+     */
+    pricingMode: pulumi.Input<string>;
+    /**
+     * Quantity of product desired
+     */
+    quantity?: pulumi.Input<number>;
+}
+
+export interface VrackservicesPlanConfiguration {
+    /**
+     * Label for your configuration item
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Value or resource URL on API.OVH.COM of your configuration item
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface VrackservicesPlanOption {
+    configurations?: pulumi.Input<pulumi.Input<inputs.VrackservicesPlanOptionConfiguration>[]>;
+    /**
+     * Duration selected for the purchase of the product
+     */
+    duration: pulumi.Input<string>;
+    /**
+     * Identifier of the option offer
+     */
+    planCode: pulumi.Input<string>;
+    /**
+     * Pricing mode selected for the purchase of the product
+     */
+    pricingMode: pulumi.Input<string>;
+    /**
+     * Quantity of product desired
+     */
+    quantity: pulumi.Input<number>;
+}
+
+export interface VrackservicesPlanOptionConfiguration {
+    /**
+     * Label for your configuration item
+     */
+    label: pulumi.Input<string>;
+    /**
+     * Value or resource URL on API.OVH.COM of your configuration item
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface VrackservicesTargetSpec {
+    /**
+     * Target specification of the subnets. Maximum one subnet per vRack Services
+     */
+    subnets: pulumi.Input<pulumi.Input<inputs.VrackservicesTargetSpecSubnet>[]>;
+}
+
+export interface VrackservicesTargetSpecSubnet {
+    /**
+     * IPv4 CIDR notation (e.g., 192.0.2.0/24)
+     */
+    cidr: pulumi.Input<string>;
+    /**
+     * Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Target specification of the Service Endpoints
+     */
+    serviceEndpoints: pulumi.Input<pulumi.Input<inputs.VrackservicesTargetSpecSubnetServiceEndpoint>[]>;
+    /**
+     * Target specification of the range dedicated to the subnet's services
+     */
+    serviceRange: pulumi.Input<inputs.VrackservicesTargetSpecSubnetServiceRange>;
+    /**
+     * Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+     */
+    vlan?: pulumi.Input<number>;
+}
+
+export interface VrackservicesTargetSpecSubnetServiceEndpoint {
+    /**
+     * IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+     */
+    managedServiceUrn: pulumi.Input<string>;
+}
+
+export interface VrackservicesTargetSpecSubnetServiceRange {
+    /**
+     * IPv4 CIDR notation (e.g., 192.0.2.0/24)
+     */
+    cidr: pulumi.Input<string>;
+}
 export namespace Cloud {
 }
 
@@ -1387,6 +1631,28 @@ export namespace CloudProject {
         versionId?: pulumi.Input<string>;
     }
 
+    export interface StorageObjectLock {
+        /**
+         * Object lock default rule
+         */
+        rule?: pulumi.Input<inputs.CloudProject.StorageObjectLockRule>;
+        /**
+         * Object lock status
+         */
+        status?: pulumi.Input<string>;
+    }
+
+    export interface StorageObjectLockRule {
+        /**
+         * Object lock mode
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+         */
+        period?: pulumi.Input<string>;
+    }
+
     export interface StorageReplication {
         /**
          * Replication rules
@@ -1431,7 +1697,7 @@ export namespace CloudProject {
          */
         region: pulumi.Input<string>;
         /**
-         * Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         * Whether to remove replicated bucket when the main bucket is deleted
          */
         removeOnMainBucketDeletion?: pulumi.Input<boolean>;
         /**
@@ -1453,7 +1719,7 @@ export namespace CloudProject {
 
     export interface StorageVersioning {
         /**
-         * Versioning status (E.g. "enabled", "disabled" or "suspended")
+         * Versioning status
          */
         status?: pulumi.Input<string>;
     }
@@ -2449,6 +2715,51 @@ export namespace Hosting {
 }
 
 export namespace Iam {
+    export interface PolicyConditions {
+        /**
+         * List of condition blocks. Each condition supports:
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.Iam.PolicyConditionsCondition>[]>;
+        /**
+         * Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+         */
+        values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface PolicyConditionsCondition {
+        /**
+         * A list of nested conditions. This is the recursive part.
+         */
+        conditions?: pulumi.Input<pulumi.Input<inputs.Iam.PolicyConditionsConditionCondition>[]>;
+        /**
+         * Operator for this condition (typically `MATCH`).
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Map of key-value pairs to match. Keys can reference:
+         * * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+         * * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+         * * Request attributes: `request.IP`
+         *
+         * **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+         */
+        values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface PolicyConditionsConditionCondition {
+        /**
+         * Operator for this condition (MATCH, AND, OR, NOT)
+         */
+        operator: pulumi.Input<string>;
+        /**
+         * Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+         */
+        values?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
 }
 
 export namespace Ip {

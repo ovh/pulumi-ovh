@@ -415,6 +415,21 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     * 
+     */
+    @Import(name="range")
+    private @Nullable Output<String> range;
+
+    /**
+     * @return Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     * 
+     */
+    public Optional<Output<String>> range() {
+        return Optional.ofNullable(this.range);
+    }
+
+    /**
      * Dedicated region localisation
      * 
      */
@@ -609,6 +624,7 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
         this.professionalUse = $.professionalUse;
         this.properties = $.properties;
         this.rack = $.rack;
+        this.range = $.range;
         this.region = $.region;
         this.rescueMail = $.rescueMail;
         this.rescueSshKey = $.rescueSshKey;
@@ -1185,6 +1201,27 @@ public final class ServerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder rack(String rack) {
             return rack(Output.of(rack));
+        }
+
+        /**
+         * @param range Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder range(@Nullable Output<String> range) {
+            $.range = range;
+            return this;
+        }
+
+        /**
+         * @param range Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder range(String range) {
+            return range(Output.of(range));
         }
 
         /**

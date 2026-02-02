@@ -34,6 +34,21 @@ public final class SavingsPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     * 
+     */
+    @Import(name="deploymentType")
+    private @Nullable Output<String> deploymentType;
+
+    /**
+     * @return Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     * 
+     */
+    public Optional<Output<String>> deploymentType() {
+        return Optional.ofNullable(this.deploymentType);
+    }
+
+    /**
      * Custom display name, used in invoices
      * 
      */
@@ -112,6 +127,7 @@ public final class SavingsPlanArgs extends com.pulumi.resources.ResourceArgs {
 
     private SavingsPlanArgs(SavingsPlanArgs $) {
         this.autoRenewal = $.autoRenewal;
+        this.deploymentType = $.deploymentType;
         this.displayName = $.displayName;
         this.flavor = $.flavor;
         this.period = $.period;
@@ -156,6 +172,27 @@ public final class SavingsPlanArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoRenewal(Boolean autoRenewal) {
             return autoRenewal(Output.of(autoRenewal));
+        }
+
+        /**
+         * @param deploymentType Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentType(@Nullable Output<String> deploymentType) {
+            $.deploymentType = deploymentType;
+            return this;
+        }
+
+        /**
+         * @param deploymentType Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentType(String deploymentType) {
+            return deploymentType(Output.of(deploymentType));
         }
 
         /**

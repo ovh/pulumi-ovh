@@ -24,6 +24,7 @@ class SavingsPlanArgs:
                  period: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
                  auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SavingsPlan resource.
@@ -32,6 +33,7 @@ class SavingsPlanArgs:
         :param pulumi.Input[_builtins.str] period: Periodicity of the Savings Plan
         :param pulumi.Input[_builtins.int] size: Size of the Savings Plan
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
+        :param pulumi.Input[_builtins.str] deployment_type: Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
         :param pulumi.Input[_builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -40,6 +42,8 @@ class SavingsPlanArgs:
         pulumi.set(__self__, "size", size)
         if auto_renewal is not None:
             pulumi.set(__self__, "auto_renewal", auto_renewal)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
 
@@ -104,6 +108,18 @@ class SavingsPlanArgs:
         pulumi.set(self, "auto_renewal", value)
 
     @_builtins.property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deployment_type", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -120,6 +136,7 @@ class SavingsPlanArgs:
 class _SavingsPlanState:
     def __init__(__self__, *,
                  auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  end_date: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor: Optional[pulumi.Input[_builtins.str]] = None,
@@ -135,6 +152,7 @@ class _SavingsPlanState:
         """
         Input properties used for looking up and filtering SavingsPlan resources.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
+        :param pulumi.Input[_builtins.str] deployment_type: Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
         :param pulumi.Input[_builtins.str] display_name: Custom display name, used in invoices
         :param pulumi.Input[_builtins.str] end_date: End date of the Savings Plan
         :param pulumi.Input[_builtins.str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
@@ -150,6 +168,8 @@ class _SavingsPlanState:
         """
         if auto_renewal is not None:
             pulumi.set(__self__, "auto_renewal", auto_renewal)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if end_date is not None:
@@ -186,6 +206,18 @@ class _SavingsPlanState:
     @auto_renewal.setter
     def auto_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "auto_renewal", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deployment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -339,6 +371,7 @@ class SavingsPlan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.str]] = None,
@@ -376,6 +409,7 @@ class SavingsPlan(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
+        :param pulumi.Input[_builtins.str] deployment_type: Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
         :param pulumi.Input[_builtins.str] display_name: Custom display name, used in invoices
         :param pulumi.Input[_builtins.str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
         :param pulumi.Input[_builtins.str] period: Periodicity of the Savings Plan
@@ -432,6 +466,7 @@ class SavingsPlan(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
+                 deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  flavor: Optional[pulumi.Input[_builtins.str]] = None,
                  period: Optional[pulumi.Input[_builtins.str]] = None,
@@ -447,6 +482,7 @@ class SavingsPlan(pulumi.CustomResource):
             __props__ = SavingsPlanArgs.__new__(SavingsPlanArgs)
 
             __props__.__dict__["auto_renewal"] = auto_renewal
+            __props__.__dict__["deployment_type"] = deployment_type
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -478,6 +514,7 @@ class SavingsPlan(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
+            deployment_type: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
             end_date: Optional[pulumi.Input[_builtins.str]] = None,
             flavor: Optional[pulumi.Input[_builtins.str]] = None,
@@ -498,6 +535,7 @@ class SavingsPlan(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_renewal: Whether Savings Plan should be renewed at the end of the period (defaults to false)
+        :param pulumi.Input[_builtins.str] deployment_type: Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
         :param pulumi.Input[_builtins.str] display_name: Custom display name, used in invoices
         :param pulumi.Input[_builtins.str] end_date: End date of the Savings Plan
         :param pulumi.Input[_builtins.str] flavor: Savings Plan flavor. The list of available flavors can be retrieved in the next section.
@@ -516,6 +554,7 @@ class SavingsPlan(pulumi.CustomResource):
         __props__ = _SavingsPlanState.__new__(_SavingsPlanState)
 
         __props__.__dict__["auto_renewal"] = auto_renewal
+        __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["end_date"] = end_date
         __props__.__dict__["flavor"] = flavor
@@ -537,6 +576,14 @@ class SavingsPlan(pulumi.CustomResource):
         Whether Savings Plan should be renewed at the end of the period (defaults to false)
         """
         return pulumi.get(self, "auto_renewal")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+        """
+        return pulumi.get(self, "deployment_type")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

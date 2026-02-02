@@ -11323,6 +11323,318 @@ func (o StorageObjectArrayOutput) Index(i pulumi.IntInput) StorageObjectOutput {
 	}).(StorageObjectOutput)
 }
 
+type StorageObjectLock struct {
+	// Object lock default rule
+	Rule *StorageObjectLockRule `pulumi:"rule"`
+	// Object lock status
+	Status *string `pulumi:"status"`
+}
+
+// StorageObjectLockInput is an input type that accepts StorageObjectLockArgs and StorageObjectLockOutput values.
+// You can construct a concrete instance of `StorageObjectLockInput` via:
+//
+//	StorageObjectLockArgs{...}
+type StorageObjectLockInput interface {
+	pulumi.Input
+
+	ToStorageObjectLockOutput() StorageObjectLockOutput
+	ToStorageObjectLockOutputWithContext(context.Context) StorageObjectLockOutput
+}
+
+type StorageObjectLockArgs struct {
+	// Object lock default rule
+	Rule StorageObjectLockRulePtrInput `pulumi:"rule"`
+	// Object lock status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (StorageObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageObjectLock)(nil)).Elem()
+}
+
+func (i StorageObjectLockArgs) ToStorageObjectLockOutput() StorageObjectLockOutput {
+	return i.ToStorageObjectLockOutputWithContext(context.Background())
+}
+
+func (i StorageObjectLockArgs) ToStorageObjectLockOutputWithContext(ctx context.Context) StorageObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectLockOutput)
+}
+
+func (i StorageObjectLockArgs) ToStorageObjectLockPtrOutput() StorageObjectLockPtrOutput {
+	return i.ToStorageObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i StorageObjectLockArgs) ToStorageObjectLockPtrOutputWithContext(ctx context.Context) StorageObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectLockOutput).ToStorageObjectLockPtrOutputWithContext(ctx)
+}
+
+// StorageObjectLockPtrInput is an input type that accepts StorageObjectLockArgs, StorageObjectLockPtr and StorageObjectLockPtrOutput values.
+// You can construct a concrete instance of `StorageObjectLockPtrInput` via:
+//
+//	        StorageObjectLockArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageObjectLockPtrInput interface {
+	pulumi.Input
+
+	ToStorageObjectLockPtrOutput() StorageObjectLockPtrOutput
+	ToStorageObjectLockPtrOutputWithContext(context.Context) StorageObjectLockPtrOutput
+}
+
+type storageObjectLockPtrType StorageObjectLockArgs
+
+func StorageObjectLockPtr(v *StorageObjectLockArgs) StorageObjectLockPtrInput {
+	return (*storageObjectLockPtrType)(v)
+}
+
+func (*storageObjectLockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageObjectLock)(nil)).Elem()
+}
+
+func (i *storageObjectLockPtrType) ToStorageObjectLockPtrOutput() StorageObjectLockPtrOutput {
+	return i.ToStorageObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i *storageObjectLockPtrType) ToStorageObjectLockPtrOutputWithContext(ctx context.Context) StorageObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectLockPtrOutput)
+}
+
+type StorageObjectLockOutput struct{ *pulumi.OutputState }
+
+func (StorageObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageObjectLock)(nil)).Elem()
+}
+
+func (o StorageObjectLockOutput) ToStorageObjectLockOutput() StorageObjectLockOutput {
+	return o
+}
+
+func (o StorageObjectLockOutput) ToStorageObjectLockOutputWithContext(ctx context.Context) StorageObjectLockOutput {
+	return o
+}
+
+func (o StorageObjectLockOutput) ToStorageObjectLockPtrOutput() StorageObjectLockPtrOutput {
+	return o.ToStorageObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (o StorageObjectLockOutput) ToStorageObjectLockPtrOutputWithContext(ctx context.Context) StorageObjectLockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageObjectLock) *StorageObjectLock {
+		return &v
+	}).(StorageObjectLockPtrOutput)
+}
+
+// Object lock default rule
+func (o StorageObjectLockOutput) Rule() StorageObjectLockRulePtrOutput {
+	return o.ApplyT(func(v StorageObjectLock) *StorageObjectLockRule { return v.Rule }).(StorageObjectLockRulePtrOutput)
+}
+
+// Object lock status
+func (o StorageObjectLockOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObjectLock) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type StorageObjectLockPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageObjectLockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageObjectLock)(nil)).Elem()
+}
+
+func (o StorageObjectLockPtrOutput) ToStorageObjectLockPtrOutput() StorageObjectLockPtrOutput {
+	return o
+}
+
+func (o StorageObjectLockPtrOutput) ToStorageObjectLockPtrOutputWithContext(ctx context.Context) StorageObjectLockPtrOutput {
+	return o
+}
+
+func (o StorageObjectLockPtrOutput) Elem() StorageObjectLockOutput {
+	return o.ApplyT(func(v *StorageObjectLock) StorageObjectLock {
+		if v != nil {
+			return *v
+		}
+		var ret StorageObjectLock
+		return ret
+	}).(StorageObjectLockOutput)
+}
+
+// Object lock default rule
+func (o StorageObjectLockPtrOutput) Rule() StorageObjectLockRulePtrOutput {
+	return o.ApplyT(func(v *StorageObjectLock) *StorageObjectLockRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rule
+	}).(StorageObjectLockRulePtrOutput)
+}
+
+// Object lock status
+func (o StorageObjectLockPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageObjectLock) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageObjectLockRule struct {
+	// Object lock mode
+	Mode *string `pulumi:"mode"`
+	// The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+	Period *string `pulumi:"period"`
+}
+
+// StorageObjectLockRuleInput is an input type that accepts StorageObjectLockRuleArgs and StorageObjectLockRuleOutput values.
+// You can construct a concrete instance of `StorageObjectLockRuleInput` via:
+//
+//	StorageObjectLockRuleArgs{...}
+type StorageObjectLockRuleInput interface {
+	pulumi.Input
+
+	ToStorageObjectLockRuleOutput() StorageObjectLockRuleOutput
+	ToStorageObjectLockRuleOutputWithContext(context.Context) StorageObjectLockRuleOutput
+}
+
+type StorageObjectLockRuleArgs struct {
+	// Object lock mode
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+	Period pulumi.StringPtrInput `pulumi:"period"`
+}
+
+func (StorageObjectLockRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageObjectLockRule)(nil)).Elem()
+}
+
+func (i StorageObjectLockRuleArgs) ToStorageObjectLockRuleOutput() StorageObjectLockRuleOutput {
+	return i.ToStorageObjectLockRuleOutputWithContext(context.Background())
+}
+
+func (i StorageObjectLockRuleArgs) ToStorageObjectLockRuleOutputWithContext(ctx context.Context) StorageObjectLockRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectLockRuleOutput)
+}
+
+func (i StorageObjectLockRuleArgs) ToStorageObjectLockRulePtrOutput() StorageObjectLockRulePtrOutput {
+	return i.ToStorageObjectLockRulePtrOutputWithContext(context.Background())
+}
+
+func (i StorageObjectLockRuleArgs) ToStorageObjectLockRulePtrOutputWithContext(ctx context.Context) StorageObjectLockRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectLockRuleOutput).ToStorageObjectLockRulePtrOutputWithContext(ctx)
+}
+
+// StorageObjectLockRulePtrInput is an input type that accepts StorageObjectLockRuleArgs, StorageObjectLockRulePtr and StorageObjectLockRulePtrOutput values.
+// You can construct a concrete instance of `StorageObjectLockRulePtrInput` via:
+//
+//	        StorageObjectLockRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageObjectLockRulePtrInput interface {
+	pulumi.Input
+
+	ToStorageObjectLockRulePtrOutput() StorageObjectLockRulePtrOutput
+	ToStorageObjectLockRulePtrOutputWithContext(context.Context) StorageObjectLockRulePtrOutput
+}
+
+type storageObjectLockRulePtrType StorageObjectLockRuleArgs
+
+func StorageObjectLockRulePtr(v *StorageObjectLockRuleArgs) StorageObjectLockRulePtrInput {
+	return (*storageObjectLockRulePtrType)(v)
+}
+
+func (*storageObjectLockRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageObjectLockRule)(nil)).Elem()
+}
+
+func (i *storageObjectLockRulePtrType) ToStorageObjectLockRulePtrOutput() StorageObjectLockRulePtrOutput {
+	return i.ToStorageObjectLockRulePtrOutputWithContext(context.Background())
+}
+
+func (i *storageObjectLockRulePtrType) ToStorageObjectLockRulePtrOutputWithContext(ctx context.Context) StorageObjectLockRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageObjectLockRulePtrOutput)
+}
+
+type StorageObjectLockRuleOutput struct{ *pulumi.OutputState }
+
+func (StorageObjectLockRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageObjectLockRule)(nil)).Elem()
+}
+
+func (o StorageObjectLockRuleOutput) ToStorageObjectLockRuleOutput() StorageObjectLockRuleOutput {
+	return o
+}
+
+func (o StorageObjectLockRuleOutput) ToStorageObjectLockRuleOutputWithContext(ctx context.Context) StorageObjectLockRuleOutput {
+	return o
+}
+
+func (o StorageObjectLockRuleOutput) ToStorageObjectLockRulePtrOutput() StorageObjectLockRulePtrOutput {
+	return o.ToStorageObjectLockRulePtrOutputWithContext(context.Background())
+}
+
+func (o StorageObjectLockRuleOutput) ToStorageObjectLockRulePtrOutputWithContext(ctx context.Context) StorageObjectLockRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageObjectLockRule) *StorageObjectLockRule {
+		return &v
+	}).(StorageObjectLockRulePtrOutput)
+}
+
+// Object lock mode
+func (o StorageObjectLockRuleOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObjectLockRule) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+func (o StorageObjectLockRuleOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageObjectLockRule) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+type StorageObjectLockRulePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageObjectLockRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageObjectLockRule)(nil)).Elem()
+}
+
+func (o StorageObjectLockRulePtrOutput) ToStorageObjectLockRulePtrOutput() StorageObjectLockRulePtrOutput {
+	return o
+}
+
+func (o StorageObjectLockRulePtrOutput) ToStorageObjectLockRulePtrOutputWithContext(ctx context.Context) StorageObjectLockRulePtrOutput {
+	return o
+}
+
+func (o StorageObjectLockRulePtrOutput) Elem() StorageObjectLockRuleOutput {
+	return o.ApplyT(func(v *StorageObjectLockRule) StorageObjectLockRule {
+		if v != nil {
+			return *v
+		}
+		var ret StorageObjectLockRule
+		return ret
+	}).(StorageObjectLockRuleOutput)
+}
+
+// Object lock mode
+func (o StorageObjectLockRulePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageObjectLockRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+func (o StorageObjectLockRulePtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageObjectLockRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
 type StorageReplication struct {
 	// Replication rules
 	Rules []StorageReplicationRule `pulumi:"rules"`
@@ -11607,7 +11919,7 @@ type StorageReplicationRuleDestination struct {
 	Name string `pulumi:"name"`
 	// Destination region
 	Region string `pulumi:"region"`
-	// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+	// Whether to remove replicated bucket when the main bucket is deleted
 	RemoveOnMainBucketDeletion *bool `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass *string `pulumi:"storageClass"`
@@ -11629,7 +11941,7 @@ type StorageReplicationRuleDestinationArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Destination region
 	Region pulumi.StringInput `pulumi:"region"`
-	// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+	// Whether to remove replicated bucket when the main bucket is deleted
 	RemoveOnMainBucketDeletion pulumi.BoolPtrInput `pulumi:"removeOnMainBucketDeletion"`
 	// Destination storage class
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
@@ -11722,7 +12034,7 @@ func (o StorageReplicationRuleDestinationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v StorageReplicationRuleDestination) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+// Whether to remove replicated bucket when the main bucket is deleted
 func (o StorageReplicationRuleDestinationOutput) RemoveOnMainBucketDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StorageReplicationRuleDestination) *bool { return v.RemoveOnMainBucketDeletion }).(pulumi.BoolPtrOutput)
 }
@@ -11776,7 +12088,7 @@ func (o StorageReplicationRuleDestinationPtrOutput) Region() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+// Whether to remove replicated bucket when the main bucket is deleted
 func (o StorageReplicationRuleDestinationPtrOutput) RemoveOnMainBucketDeletion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StorageReplicationRuleDestination) *bool {
 		if v == nil {
@@ -11953,7 +12265,7 @@ func (o StorageReplicationRuleFilterPtrOutput) Tags() pulumi.StringMapOutput {
 }
 
 type StorageVersioning struct {
-	// Versioning status (E.g. "enabled", "disabled" or "suspended")
+	// Versioning status
 	Status *string `pulumi:"status"`
 }
 
@@ -11969,7 +12281,7 @@ type StorageVersioningInput interface {
 }
 
 type StorageVersioningArgs struct {
-	// Versioning status (E.g. "enabled", "disabled" or "suspended")
+	// Versioning status
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -12050,7 +12362,7 @@ func (o StorageVersioningOutput) ToStorageVersioningPtrOutputWithContext(ctx con
 	}).(StorageVersioningPtrOutput)
 }
 
-// Versioning status (E.g. "enabled", "disabled" or "suspended")
+// Versioning status
 func (o StorageVersioningOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StorageVersioning) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -12079,7 +12391,7 @@ func (o StorageVersioningPtrOutput) Elem() StorageVersioningOutput {
 	}).(StorageVersioningOutput)
 }
 
-// Versioning status (E.g. "enabled", "disabled" or "suspended")
+// Versioning status
 func (o StorageVersioningPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageVersioning) *string {
 		if v == nil {
@@ -21087,6 +21399,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEncryptionPtrInput)(nil)).Elem(), StorageEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectInput)(nil)).Elem(), StorageObjectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectArrayInput)(nil)).Elem(), StorageObjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectLockInput)(nil)).Elem(), StorageObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectLockPtrInput)(nil)).Elem(), StorageObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectLockRuleInput)(nil)).Elem(), StorageObjectLockRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StorageObjectLockRulePtrInput)(nil)).Elem(), StorageObjectLockRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationInput)(nil)).Elem(), StorageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationPtrInput)(nil)).Elem(), StorageReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageReplicationRuleInput)(nil)).Elem(), StorageReplicationRuleArgs{})
@@ -21379,6 +21695,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(StorageObjectOutput{})
 	pulumi.RegisterOutputType(StorageObjectArrayOutput{})
+	pulumi.RegisterOutputType(StorageObjectLockOutput{})
+	pulumi.RegisterOutputType(StorageObjectLockPtrOutput{})
+	pulumi.RegisterOutputType(StorageObjectLockRuleOutput{})
+	pulumi.RegisterOutputType(StorageObjectLockRulePtrOutput{})
 	pulumi.RegisterOutputType(StorageReplicationOutput{})
 	pulumi.RegisterOutputType(StorageReplicationPtrOutput{})
 	pulumi.RegisterOutputType(StorageReplicationRuleOutput{})

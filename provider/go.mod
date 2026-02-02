@@ -7,7 +7,7 @@ toolchain go1.24.10
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250530111747-935112552988
 
 require (
-	github.com/ovh/terraform-provider-ovh/v2 v2.10.0
+	github.com/ovh/terraform-provider-ovh/v2 v2.11.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.112.0
 	github.com/pulumi/pulumi/sdk/v3 v3.185.0
 )
@@ -132,6 +132,7 @@ require (
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/ovh/go-ovh v1.7.0 // indirect
+	github.com/peterhellberg/duration v0.0.2 // indirect
 	github.com/pgavlin/fx v0.1.6 // indirect
 	github.com/pgavlin/goldmark v1.1.33-0.20200616210433-b5eb04559386 // indirect
 	github.com/pjbgf/sha1cd v0.3.2 // indirect

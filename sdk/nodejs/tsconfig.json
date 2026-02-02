@@ -19,6 +19,7 @@
         "cloudProjectContainerregistryIam.ts",
         "cloudProjectDatabaseValkeyUser.ts",
         "cloudProjectSshKey.ts",
+        "cloudProjectStorageReplicationJob.ts",
         "cloudproject/alerting.ts",
         "cloudproject/containerRegistry.ts",
         "cloudproject/containerRegistryIPRestrictionsManagement.ts",
@@ -213,6 +214,8 @@
         "getDomainZoneRecords.ts",
         "getInstallationTemplate.ts",
         "getInstallationTemplates.ts",
+        "getIploadbalancingNatIps.ts",
+        "getIploadbalancings.ts",
         "getLocation.ts",
         "getOkmsSecret.ts",
         "getOvhcloudConnectConfigPopDatacenterExtras.ts",
@@ -225,6 +228,8 @@
         "getStorageEfsShareAccessPath.ts",
         "getStorageEfsShareAccessPaths.ts",
         "getVrackNetworks.ts",
+        "getVrackservices.ts",
+        "getVrackservicess.ts",
         "hosting/getPrivateDatabase.ts",
         "hosting/getPrivateDatabaseAllowlist.ts",
         "hosting/getPrivateDatabaseDb.ts",
@@ -293,6 +298,7 @@
         "me/getPaymentmeanCreditCard.ts",
         "me/identityGroup.ts",
         "me/identityUser.ts",
+        "me/identityUserToken.ts",
         "me/index.ts",
         "okms/credential.ts",
         "okms/getOkmsCredential.ts",
@@ -347,6 +353,7 @@
         "vrack/vrack.ts",
         "vrack/vrackDedicatedCloud.ts",
         "vrack/vrackservices.ts",
-        "vrackIpv6RoutedSubrange.ts"
+        "vrackIpv6RoutedSubrange.ts",
+        "vrackservices.ts"
     ]
 }

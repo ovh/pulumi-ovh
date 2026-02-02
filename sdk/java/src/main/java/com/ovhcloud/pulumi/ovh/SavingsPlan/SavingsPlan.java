@@ -13,6 +13,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -84,6 +85,20 @@ public class SavingsPlan extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> autoRenewal() {
         return this.autoRenewal;
+    }
+    /**
+     * Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     * 
+     */
+    @Export(name="deploymentType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deploymentType;
+
+    /**
+     * @return Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     * 
+     */
+    public Output<Optional<String>> deploymentType() {
+        return Codegen.optional(this.deploymentType);
     }
     /**
      * Custom display name, used in invoices

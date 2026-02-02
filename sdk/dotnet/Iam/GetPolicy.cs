@@ -230,6 +230,10 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         public readonly ImmutableArray<string> Allows;
         /// <summary>
+        /// Conditions restricting the policy.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetPolicyConditionResult> Conditions;
+        /// <summary>
         /// Creation date of this group.
         /// </summary>
         public readonly string CreatedAt;
@@ -245,6 +249,10 @@ namespace Pulumi.Ovh.Iam
         /// Set of actions that will be subtracted from the `allow` list.
         /// </summary>
         public readonly ImmutableArray<string> Excepts;
+        /// <summary>
+        /// Expiration date of the policy.
+        /// </summary>
+        public readonly string ExpiredAt;
         public readonly string Id;
         /// <summary>
         /// Set of identities affected by the policy.
@@ -279,6 +287,8 @@ namespace Pulumi.Ovh.Iam
         private GetPolicyResult(
             ImmutableArray<string> allows,
 
+            ImmutableArray<Outputs.GetPolicyConditionResult> conditions,
+
             string createdAt,
 
             ImmutableArray<string> denies,
@@ -286,6 +296,8 @@ namespace Pulumi.Ovh.Iam
             string? description,
 
             ImmutableArray<string> excepts,
+
+            string expiredAt,
 
             string id,
 
@@ -304,10 +316,12 @@ namespace Pulumi.Ovh.Iam
             string updatedAt)
         {
             Allows = allows;
+            Conditions = conditions;
             CreatedAt = createdAt;
             Denies = denies;
             Description = description;
             Excepts = excepts;
+            ExpiredAt = expiredAt;
             Id = id;
             Identities = identities;
             Name = name;

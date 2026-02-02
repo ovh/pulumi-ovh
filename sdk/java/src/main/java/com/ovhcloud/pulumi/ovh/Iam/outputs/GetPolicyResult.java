@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.Iam.outputs;
 
+import com.ovhcloud.pulumi.ovh.Iam.outputs.GetPolicyCondition;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -19,6 +20,11 @@ public final class GetPolicyResult {
      * 
      */
     private @Nullable List<String> allows;
+    /**
+     * @return Conditions restricting the policy.
+     * 
+     */
+    private List<GetPolicyCondition> conditions;
     /**
      * @return Creation date of this group.
      * 
@@ -39,6 +45,11 @@ public final class GetPolicyResult {
      * 
      */
     private @Nullable List<String> excepts;
+    /**
+     * @return Expiration date of the policy.
+     * 
+     */
+    private String expiredAt;
     private String id;
     /**
      * @return Set of identities affected by the policy.
@@ -85,6 +96,13 @@ public final class GetPolicyResult {
         return this.allows == null ? List.of() : this.allows;
     }
     /**
+     * @return Conditions restricting the policy.
+     * 
+     */
+    public List<GetPolicyCondition> conditions() {
+        return this.conditions;
+    }
+    /**
      * @return Creation date of this group.
      * 
      */
@@ -111,6 +129,13 @@ public final class GetPolicyResult {
      */
     public List<String> excepts() {
         return this.excepts == null ? List.of() : this.excepts;
+    }
+    /**
+     * @return Expiration date of the policy.
+     * 
+     */
+    public String expiredAt() {
+        return this.expiredAt;
     }
     public String id() {
         return this.id;
@@ -175,10 +200,12 @@ public final class GetPolicyResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allows;
+        private List<GetPolicyCondition> conditions;
         private String createdAt;
         private @Nullable List<String> denies;
         private @Nullable String description;
         private @Nullable List<String> excepts;
+        private String expiredAt;
         private String id;
         private List<String> identities;
         private String name;
@@ -191,10 +218,12 @@ public final class GetPolicyResult {
         public Builder(GetPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allows = defaults.allows;
+    	      this.conditions = defaults.conditions;
     	      this.createdAt = defaults.createdAt;
     	      this.denies = defaults.denies;
     	      this.description = defaults.description;
     	      this.excepts = defaults.excepts;
+    	      this.expiredAt = defaults.expiredAt;
     	      this.id = defaults.id;
     	      this.identities = defaults.identities;
     	      this.name = defaults.name;
@@ -213,6 +242,17 @@ public final class GetPolicyResult {
         }
         public Builder allows(String... allows) {
             return allows(List.of(allows));
+        }
+        @CustomType.Setter
+        public Builder conditions(List<GetPolicyCondition> conditions) {
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "conditions");
+            }
+            this.conditions = conditions;
+            return this;
+        }
+        public Builder conditions(GetPolicyCondition... conditions) {
+            return conditions(List.of(conditions));
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
@@ -245,6 +285,14 @@ public final class GetPolicyResult {
         }
         public Builder excepts(String... excepts) {
             return excepts(List.of(excepts));
+        }
+        @CustomType.Setter
+        public Builder expiredAt(String expiredAt) {
+            if (expiredAt == null) {
+              throw new MissingRequiredPropertyException("GetPolicyResult", "expiredAt");
+            }
+            this.expiredAt = expiredAt;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -320,10 +368,12 @@ public final class GetPolicyResult {
         public GetPolicyResult build() {
             final var _resultValue = new GetPolicyResult();
             _resultValue.allows = allows;
+            _resultValue.conditions = conditions;
             _resultValue.createdAt = createdAt;
             _resultValue.denies = denies;
             _resultValue.description = description;
             _resultValue.excepts = excepts;
+            _resultValue.expiredAt = expiredAt;
             _resultValue.id = id;
             _resultValue.identities = identities;
             _resultValue.name = name;

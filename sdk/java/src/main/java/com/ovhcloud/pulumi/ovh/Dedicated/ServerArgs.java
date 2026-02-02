@@ -241,6 +241,21 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     * 
+     */
+    @Import(name="range")
+    private @Nullable Output<String> range;
+
+    /**
+     * @return Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     * 
+     */
+    public Optional<Output<String>> range() {
+        return Optional.ofNullable(this.range);
+    }
+
+    /**
      * Rescue mail of the server
      * 
      */
@@ -363,6 +378,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         this.preventInstallOnCreate = $.preventInstallOnCreate;
         this.preventInstallOnImport = $.preventInstallOnImport;
         this.properties = $.properties;
+        this.range = $.range;
         this.rescueMail = $.rescueMail;
         this.rescueSshKey = $.rescueSshKey;
         this.rootDevice = $.rootDevice;
@@ -695,6 +711,27 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Attribute 'properties' is deprecated and has no effect */
         public Builder properties(Map<String,String> properties) {
             return properties(Output.of(properties));
+        }
+
+        /**
+         * @param range Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder range(@Nullable Output<String> range) {
+            $.range = range;
+            return this;
+        }
+
+        /**
+         * @param range Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder range(String range) {
+            return range(Output.of(range));
         }
 
         /**

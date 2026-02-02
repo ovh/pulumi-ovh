@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *         var myFirewall = new Firewall("myFirewall", FirewallArgs.builder()
  *             .ip("XXXXXX")
  *             .ipOnFirewall("XXXXXX")
+ *             .enabled(true)
  *             .build());
  * 
  *     }
@@ -56,9 +57,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="ovh:Ip/firewall:Firewall")
 public class Firewall extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether firewall should be enabled
+     * 
+     */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
+    /**
+     * @return Whether firewall should be enabled
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -78,7 +87,6 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     }
     /**
      * IPv4 address
-     * * ` enabled  ` - Whether firewall should be enabled
      * 
      */
     @Export(name="ipOnFirewall", refs={String.class}, tree="[0]")
@@ -86,7 +94,6 @@ public class Firewall extends com.pulumi.resources.CustomResource {
 
     /**
      * @return IPv4 address
-     * * ` enabled  ` - Whether firewall should be enabled
      * 
      */
     public Output<String> ipOnFirewall() {

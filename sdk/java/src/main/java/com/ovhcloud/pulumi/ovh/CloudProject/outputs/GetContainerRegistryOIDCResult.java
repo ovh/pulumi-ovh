@@ -38,6 +38,7 @@ public final class GetContainerRegistryOIDCResult {
      * 
      */
     private @Nullable String oidcEndpoint;
+    private @Nullable String oidcGroupFilter;
     /**
      * @return The name of Claim in the ID token whose value is the list of group names.
      * 
@@ -110,6 +111,9 @@ public final class GetContainerRegistryOIDCResult {
     public Optional<String> oidcEndpoint() {
         return Optional.ofNullable(this.oidcEndpoint);
     }
+    public Optional<String> oidcGroupFilter() {
+        return Optional.ofNullable(this.oidcGroupFilter);
+    }
     /**
      * @return The name of Claim in the ID token whose value is the list of group names.
      * 
@@ -174,6 +178,7 @@ public final class GetContainerRegistryOIDCResult {
         private @Nullable Boolean oidcAutoOnboard;
         private @Nullable String oidcClientId;
         private @Nullable String oidcEndpoint;
+        private @Nullable String oidcGroupFilter;
         private @Nullable String oidcGroupsClaim;
         private @Nullable String oidcName;
         private @Nullable String oidcScope;
@@ -189,6 +194,7 @@ public final class GetContainerRegistryOIDCResult {
     	      this.oidcAutoOnboard = defaults.oidcAutoOnboard;
     	      this.oidcClientId = defaults.oidcClientId;
     	      this.oidcEndpoint = defaults.oidcEndpoint;
+    	      this.oidcGroupFilter = defaults.oidcGroupFilter;
     	      this.oidcGroupsClaim = defaults.oidcGroupsClaim;
     	      this.oidcName = defaults.oidcName;
     	      this.oidcScope = defaults.oidcScope;
@@ -228,6 +234,12 @@ public final class GetContainerRegistryOIDCResult {
         public Builder oidcEndpoint(@Nullable String oidcEndpoint) {
 
             this.oidcEndpoint = oidcEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oidcGroupFilter(@Nullable String oidcGroupFilter) {
+
+            this.oidcGroupFilter = oidcGroupFilter;
             return this;
         }
         @CustomType.Setter
@@ -283,6 +295,7 @@ public final class GetContainerRegistryOIDCResult {
             _resultValue.oidcAutoOnboard = oidcAutoOnboard;
             _resultValue.oidcClientId = oidcClientId;
             _resultValue.oidcEndpoint = oidcEndpoint;
+            _resultValue.oidcGroupFilter = oidcGroupFilter;
             _resultValue.oidcGroupsClaim = oidcGroupsClaim;
             _resultValue.oidcName = oidcName;
             _resultValue.oidcScope = oidcScope;
