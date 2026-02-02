@@ -68,7 +68,7 @@ export class CloudProjectDatabaseValkeyUser extends pulumi.CustomResource {
      */
     public readonly keys!: pulumi.Output<string[] | undefined>;
     /**
-     * Name of the user.
+     * Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -165,7 +165,7 @@ export interface CloudProjectDatabaseValkeyUserState {
      */
     keys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the user.
+     * Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**
@@ -211,7 +211,7 @@ export interface CloudProjectDatabaseValkeyUserArgs {
      */
     keys?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the user.
+     * Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
      */
     name?: pulumi.Input<string>;
     /**

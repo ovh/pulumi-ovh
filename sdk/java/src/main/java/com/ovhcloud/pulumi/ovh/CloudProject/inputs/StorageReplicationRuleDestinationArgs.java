@@ -48,14 +48,14 @@ public final class StorageReplicationRuleDestinationArgs extends com.pulumi.reso
     }
 
     /**
-     * Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * Whether to remove replicated bucket when the main bucket is deleted
      * 
      */
     @Import(name="removeOnMainBucketDeletion")
     private @Nullable Output<Boolean> removeOnMainBucketDeletion;
 
     /**
-     * @return Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+     * @return Whether to remove replicated bucket when the main bucket is deleted
      * 
      */
     public Optional<Output<Boolean>> removeOnMainBucketDeletion() {
@@ -147,7 +147,7 @@ public final class StorageReplicationRuleDestinationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param removeOnMainBucketDeletion Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         * @param removeOnMainBucketDeletion Whether to remove replicated bucket when the main bucket is deleted
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class StorageReplicationRuleDestinationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param removeOnMainBucketDeletion Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         * @param removeOnMainBucketDeletion Whether to remove replicated bucket when the main bucket is deleted
          * 
          * @return builder
          * 

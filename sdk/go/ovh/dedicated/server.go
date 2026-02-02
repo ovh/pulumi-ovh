@@ -90,6 +90,8 @@ type Server struct {
 	Properties pulumi.StringMapOutput `pulumi:"properties"`
 	// Rack id of the server
 	Rack pulumi.StringOutput `pulumi:"rack"`
+	// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+	Range pulumi.StringPtrOutput `pulumi:"range"`
 	// Dedicated region localisation
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Rescue mail of the server
@@ -197,6 +199,8 @@ type serverState struct {
 	Properties map[string]string `pulumi:"properties"`
 	// Rack id of the server
 	Rack *string `pulumi:"rack"`
+	// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+	Range *string `pulumi:"range"`
 	// Dedicated region localisation
 	Region *string `pulumi:"region"`
 	// Rescue mail of the server
@@ -275,6 +279,8 @@ type ServerState struct {
 	Properties pulumi.StringMapInput
 	// Rack id of the server
 	Rack pulumi.StringPtrInput
+	// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+	Range pulumi.StringPtrInput
 	// Dedicated region localisation
 	Region pulumi.StringPtrInput
 	// Rescue mail of the server
@@ -334,6 +340,8 @@ type serverArgs struct {
 	//
 	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties map[string]string `pulumi:"properties"`
+	// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+	Range *string `pulumi:"range"`
 	// Rescue mail of the server
 	RescueMail *string `pulumi:"rescueMail"`
 	// Public SSH Key used in the rescue mode
@@ -382,6 +390,8 @@ type ServerArgs struct {
 	//
 	// Deprecated: Attribute 'properties' is deprecated and has no effect
 	Properties pulumi.StringMapInput
+	// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+	Range pulumi.StringPtrInput
 	// Rescue mail of the server
 	RescueMail pulumi.StringPtrInput
 	// Public SSH Key used in the rescue mode
@@ -617,6 +627,11 @@ func (o ServerOutput) Properties() pulumi.StringMapOutput {
 // Rack id of the server
 func (o ServerOutput) Rack() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Rack }).(pulumi.StringOutput)
+}
+
+// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+func (o ServerOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.Range }).(pulumi.StringPtrOutput)
 }
 
 // Dedicated region localisation

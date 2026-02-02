@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -69,6 +71,10 @@ export interface GetPolicyResult {
      */
     readonly allows?: string[];
     /**
+     * Conditions restricting the policy.
+     */
+    readonly conditions: outputs.Iam.GetPolicyCondition[];
+    /**
      * Creation date of this group.
      */
     readonly createdAt: string;
@@ -84,6 +90,10 @@ export interface GetPolicyResult {
      * Set of actions that will be subtracted from the `allow` list.
      */
     readonly excepts?: string[];
+    /**
+     * Expiration date of the policy.
+     */
+    readonly expiredAt: string;
     readonly id: string;
     /**
      * Set of identities affected by the policy.

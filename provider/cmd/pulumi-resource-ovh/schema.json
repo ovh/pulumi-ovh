@@ -2035,6 +2035,48 @@
                 }
             }
         },
+        "ovh:CloudProject/StorageObjectLock:StorageObjectLock": {
+            "properties": {
+                "rule": {
+                    "$ref": "#/types/ovh:CloudProject/StorageObjectLockRule:StorageObjectLockRule",
+                    "description": "Object lock default rule\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Object lock status\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "rule",
+                        "status"
+                    ]
+                }
+            }
+        },
+        "ovh:CloudProject/StorageObjectLockRule:StorageObjectLockRule": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock mode\n"
+                },
+                "period": {
+                    "type": "string",
+                    "description": "The retention period that the default retention configuration must apply (e.g., P30D for 30 days)\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "mode",
+                        "period"
+                    ]
+                }
+            }
+        },
         "ovh:CloudProject/StorageReplication:StorageReplication": {
             "properties": {
                 "rules": {
@@ -2107,7 +2149,7 @@
                 },
                 "removeOnMainBucketDeletion": {
                     "type": "boolean",
-                    "description": "Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)\n"
+                    "description": "Whether to remove replicated bucket when the main bucket is deleted\n"
                 },
                 "storageClass": {
                     "type": "string",
@@ -2157,7 +2199,7 @@
             "properties": {
                 "status": {
                     "type": "string",
-                    "description": "Versioning status (E.g. \"enabled\", \"disabled\" or \"suspended\")\n"
+                    "description": "Versioning status\n"
                 }
             },
             "type": "object",
@@ -7148,6 +7190,168 @@
                 }
             }
         },
+        "ovh:Iam/PolicyConditions:PolicyConditions": {
+            "properties": {
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Iam/PolicyConditionsCondition:PolicyConditionsCondition"
+                    },
+                    "description": "List of condition blocks. Each condition supports:\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.\n"
+                },
+                "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator"
+            ]
+        },
+        "ovh:Iam/PolicyConditionsCondition:PolicyConditionsCondition": {
+            "properties": {
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Iam/PolicyConditionsConditionCondition:PolicyConditionsConditionCondition"
+                    },
+                    "description": "A list of nested conditions. This is the recursive part.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Operator for this condition (typically `MATCH`).\n"
+                },
+                "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of key-value pairs to match. Keys can reference:\n* Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)\n* Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)\n* Request attributes: `request.IP`\n\n**Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator"
+            ]
+        },
+        "ovh:Iam/PolicyConditionsConditionCondition:PolicyConditionsConditionCondition": {
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "description": "Operator for this condition (MATCH, AND, OR, NOT)\n"
+                },
+                "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator"
+            ]
+        },
+        "ovh:Iam/getPolicyCondition:getPolicyCondition": {
+            "properties": {
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Iam/getPolicyConditionCondition:getPolicyConditionCondition"
+                    },
+                    "description": "List of condition blocks. Each condition supports:\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Operator for this condition.\n"
+                },
+                "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of key-value pairs to match.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "conditions",
+                "operator",
+                "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:Iam/getPolicyConditionCondition:getPolicyConditionCondition": {
+            "properties": {
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:Iam/getPolicyConditionConditionCondition:getPolicyConditionConditionCondition"
+                    },
+                    "description": "List of condition blocks. Each condition supports:\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Operator for this condition.\n"
+                },
+                "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of key-value pairs to match.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "conditions",
+                "operator",
+                "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:Iam/getPolicyConditionConditionCondition:getPolicyConditionConditionCondition": {
+            "properties": {
+                "operator": {
+                    "type": "string",
+                    "description": "Operator for this condition.\n"
+                },
+                "values": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of key-value pairs to match.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "operator",
+                "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "ovh:Iam/getReferenceActionsAction:getReferenceActionsAction": {
             "properties": {
                 "action": {
@@ -10006,6 +10210,462 @@
                 "value"
             ]
         },
+        "ovh:index/VrackservicesCurrentState:VrackservicesCurrentState": {
+            "properties": {
+                "productStatus": {
+                    "type": "string",
+                    "description": "Product status of the vRack Services\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the vRack Services. List of compatible regions can be retrieved from /reference/region\n"
+                },
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesCurrentStateSubnet:VrackservicesCurrentStateSubnet"
+                    },
+                    "description": "Subnets of the current vRack Services\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "productStatus",
+                        "region",
+                        "subnets"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesCurrentStateSubnet:VrackservicesCurrentStateSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range of the subnet in CIDR format\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the subnet\n"
+                },
+                "serviceEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesCurrentStateSubnetServiceEndpoint:VrackservicesCurrentStateSubnetServiceEndpoint"
+                    },
+                    "description": "Service endpoints of the subnet\n"
+                },
+                "serviceRange": {
+                    "$ref": "#/types/ovh:index/VrackservicesCurrentStateSubnetServiceRange:VrackservicesCurrentStateSubnetServiceRange",
+                    "description": "Defines a smaller subnet dedicated to the managed services IPs\n"
+                },
+                "vlan": {
+                    "type": "number",
+                    "description": "Unique inner VLAN that allows subnets segregation\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidr",
+                        "displayName",
+                        "serviceEndpoints",
+                        "serviceRange",
+                        "vlan"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesCurrentStateSubnetServiceEndpoint:VrackservicesCurrentStateSubnetServiceEndpoint": {
+            "properties": {
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesCurrentStateSubnetServiceEndpointEndpoint:VrackservicesCurrentStateSubnetServiceEndpointEndpoint"
+                    },
+                    "description": "Endpoints representing the IPs assigned to the managed services\n"
+                },
+                "managedServiceUrn": {
+                    "type": "string",
+                    "description": "IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "endpoints",
+                        "managedServiceUrn"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesCurrentStateSubnetServiceEndpointEndpoint:VrackservicesCurrentStateSubnetServiceEndpointEndpoint": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "IP description defined in the managed service\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "IP address assigned by OVHcloud\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "ip"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesCurrentStateSubnetServiceRange:VrackservicesCurrentStateSubnetServiceRange": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "CIDR dedicated to the subnet's services\n"
+                },
+                "remainingIps": {
+                    "type": "number",
+                    "description": "Number of remaining IPs in the service range\n"
+                },
+                "reservedIps": {
+                    "type": "number",
+                    "description": "Number of service range IPs reserved by OVHcloud\n"
+                },
+                "usedIps": {
+                    "type": "number",
+                    "description": "Number of service range IPs assigned to the managed services\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cidr",
+                        "remainingIps",
+                        "reservedIps",
+                        "usedIps"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesCurrentTask:VrackservicesCurrentTask": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the current task\n"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "Link to the related resource\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Current global status of the current task\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the current task\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "link",
+                        "status",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesIam:VrackservicesIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "displayName",
+                        "id",
+                        "tags",
+                        "urn"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesOrder:VrackservicesOrder": {
+            "properties": {
+                "date": {
+                    "type": "string"
+                },
+                "details": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesOrderDetail:VrackservicesOrderDetail"
+                    }
+                },
+                "expirationDate": {
+                    "type": "string"
+                },
+                "orderId": {
+                    "type": "number"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "date",
+                        "details",
+                        "expirationDate",
+                        "orderId"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesOrderDetail:VrackservicesOrderDetail": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "detailType": {
+                    "type": "string",
+                    "description": "Product type of item in order\n"
+                },
+                "domain": {
+                    "type": "string"
+                },
+                "orderDetailId": {
+                    "type": "number"
+                },
+                "quantity": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "detailType",
+                        "domain",
+                        "orderDetailId",
+                        "quantity"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesPlan:VrackservicesPlan": {
+            "properties": {
+                "configurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesPlanConfiguration:VrackservicesPlanConfiguration"
+                    }
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Duration selected for the purchase of the product\n"
+                },
+                "itemId": {
+                    "type": "number",
+                    "description": "Cart item to be linked\n"
+                },
+                "planCode": {
+                    "type": "string",
+                    "description": "Identifier of the option offer\n"
+                },
+                "pricingMode": {
+                    "type": "string",
+                    "description": "Pricing mode selected for the purchase of the product\n"
+                },
+                "quantity": {
+                    "type": "number",
+                    "description": "Quantity of product desired\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "planCode",
+                "pricingMode"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "configurations",
+                        "duration",
+                        "planCode",
+                        "pricingMode"
+                    ]
+                }
+            }
+        },
+        "ovh:index/VrackservicesPlanConfiguration:VrackservicesPlanConfiguration": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Label for your configuration item\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value or resource URL on API.OVH.COM of your configuration item\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
+            ]
+        },
+        "ovh:index/VrackservicesPlanOption:VrackservicesPlanOption": {
+            "properties": {
+                "configurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesPlanOptionConfiguration:VrackservicesPlanOptionConfiguration"
+                    }
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Duration selected for the purchase of the product\n"
+                },
+                "planCode": {
+                    "type": "string",
+                    "description": "Identifier of the option offer\n"
+                },
+                "pricingMode": {
+                    "type": "string",
+                    "description": "Pricing mode selected for the purchase of the product\n"
+                },
+                "quantity": {
+                    "type": "number",
+                    "description": "Quantity of product desired\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "planCode",
+                "pricingMode",
+                "quantity"
+            ]
+        },
+        "ovh:index/VrackservicesPlanOptionConfiguration:VrackservicesPlanOptionConfiguration": {
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "description": "Label for your configuration item\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value or resource URL on API.OVH.COM of your configuration item\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "label",
+                "value"
+            ]
+        },
+        "ovh:index/VrackservicesTargetSpec:VrackservicesTargetSpec": {
+            "properties": {
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesTargetSpecSubnet:VrackservicesTargetSpecSubnet"
+                    },
+                    "description": "Target specification of the subnets. Maximum one subnet per vRack Services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnets"
+            ]
+        },
+        "ovh:index/VrackservicesTargetSpecSubnet:VrackservicesTargetSpecSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IPv4 CIDR notation (e.g., 192.0.2.0/24)\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`\n"
+                },
+                "serviceEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesTargetSpecSubnetServiceEndpoint:VrackservicesTargetSpecSubnetServiceEndpoint"
+                    },
+                    "description": "Target specification of the Service Endpoints\n"
+                },
+                "serviceRange": {
+                    "$ref": "#/types/ovh:index/VrackservicesTargetSpecSubnetServiceRange:VrackservicesTargetSpecSubnetServiceRange",
+                    "description": "Target specification of the range dedicated to the subnet's services\n"
+                },
+                "vlan": {
+                    "type": "number",
+                    "description": "Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "serviceEndpoints",
+                "serviceRange"
+            ]
+        },
+        "ovh:index/VrackservicesTargetSpecSubnetServiceEndpoint:VrackservicesTargetSpecSubnetServiceEndpoint": {
+            "properties": {
+                "managedServiceUrn": {
+                    "type": "string",
+                    "description": "IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "managedServiceUrn"
+            ]
+        },
+        "ovh:index/VrackservicesTargetSpecSubnetServiceRange:VrackservicesTargetSpecSubnetServiceRange": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IPv4 CIDR notation (e.g., 192.0.2.0/24)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr"
+            ]
+        },
         "ovh:index/getCloudProjectFlavorCapability:getCloudProjectFlavorCapability": {
             "properties": {
                 "enabled": {
@@ -10474,6 +11134,29 @@
                 }
             }
         },
+        "ovh:index/getIploadbalancingNatIpsNatIp:getIploadbalancingNatIpsNatIp": {
+            "properties": {
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "zone": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ips",
+                "zone"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "ovh:index/getOkmsSecretIam:getOkmsSecretIam": {
             "properties": {
                 "displayName": {
@@ -10837,6 +11520,701 @@
                 "id",
                 "path",
                 "preferred"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesCurrentState:getVrackservicesCurrentState": {
+            "properties": {
+                "productStatus": {
+                    "type": "string",
+                    "description": "Product status of the vRack Services\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the vRack Services. List of compatible regions can be retrieved from /reference/region\n"
+                },
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicesCurrentStateSubnet:getVrackservicesCurrentStateSubnet"
+                    },
+                    "description": "Subnets of the current vRack Services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "productStatus",
+                "region",
+                "subnets"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesCurrentStateSubnet:getVrackservicesCurrentStateSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range of the subnet in CIDR format\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the subnet\n"
+                },
+                "serviceEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicesCurrentStateSubnetServiceEndpoint:getVrackservicesCurrentStateSubnetServiceEndpoint"
+                    },
+                    "description": "Service endpoints of the subnet\n"
+                },
+                "serviceRange": {
+                    "$ref": "#/types/ovh:index/getVrackservicesCurrentStateSubnetServiceRange:getVrackservicesCurrentStateSubnetServiceRange",
+                    "description": "Defines a smaller subnet dedicated to the managed services IPs\n"
+                },
+                "vlan": {
+                    "type": "number",
+                    "description": "Unique inner VLAN that allows subnets segregation\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "displayName",
+                "serviceEndpoints",
+                "serviceRange",
+                "vlan"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesCurrentStateSubnetServiceEndpoint:getVrackservicesCurrentStateSubnetServiceEndpoint": {
+            "properties": {
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicesCurrentStateSubnetServiceEndpointEndpoint:getVrackservicesCurrentStateSubnetServiceEndpointEndpoint"
+                    },
+                    "description": "Endpoints representing the IPs assigned to the managed services\n"
+                },
+                "managedServiceUrn": {
+                    "type": "string",
+                    "description": "IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoints",
+                "managedServiceUrn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesCurrentStateSubnetServiceEndpointEndpoint:getVrackservicesCurrentStateSubnetServiceEndpointEndpoint": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "IP description defined in the managed service\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "IP address assigned by OVHcloud\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "ip"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesCurrentStateSubnetServiceRange:getVrackservicesCurrentStateSubnetServiceRange": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "CIDR dedicated to the subnet's services\n"
+                },
+                "remainingIps": {
+                    "type": "number",
+                    "description": "Number of remaining IPs in the service range\n"
+                },
+                "reservedIps": {
+                    "type": "number",
+                    "description": "Number of service range IPs reserved by OVHcloud\n"
+                },
+                "usedIps": {
+                    "type": "number",
+                    "description": "Number of service range IPs assigned to the managed services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "remainingIps",
+                "reservedIps",
+                "usedIps"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesCurrentTask:getVrackservicesCurrentTask": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the current task\n"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "Link to the task details\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Current global status of the current task\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the current task\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "link",
+                "status",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesIam:getVrackservicesIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Resource state\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "id",
+                "state",
+                "tags",
+                "urn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesTargetSpec:getVrackservicesTargetSpec": {
+            "properties": {
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicesTargetSpecSubnet:getVrackservicesTargetSpecSubnet"
+                    },
+                    "description": "Target specification of the subnets. Maximum one subnet per vRack Services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnets"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesTargetSpecSubnet:getVrackservicesTargetSpecSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`\n"
+                },
+                "serviceEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicesTargetSpecSubnetServiceEndpoint:getVrackservicesTargetSpecSubnetServiceEndpoint"
+                    },
+                    "description": "Target specification of the Service Endpoints\n"
+                },
+                "serviceRange": {
+                    "$ref": "#/types/ovh:index/getVrackservicesTargetSpecSubnetServiceRange:getVrackservicesTargetSpecSubnetServiceRange",
+                    "description": "Defines a smaller subnet dedicated to the managed service IPs\n"
+                },
+                "vlan": {
+                    "type": "number",
+                    "description": "Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "displayName",
+                "serviceEndpoints",
+                "serviceRange",
+                "vlan"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesTargetSpecSubnetServiceEndpoint:getVrackservicesTargetSpecSubnetServiceEndpoint": {
+            "properties": {
+                "managedServiceUrn": {
+                    "type": "string",
+                    "description": "IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "managedServiceUrn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicesTargetSpecSubnetServiceRange:getVrackservicesTargetSpecSubnetServiceRange": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicess:getVrackservicessVrackservicess": {
+            "properties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "Computed hash used to control concurrent modification requests. Here, it represents the current target specification value\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Date of the vRack Services delivery\n"
+                },
+                "currentState": {
+                    "$ref": "#/types/ovh:index/getVrackservicessVrackservicessCurrentState:getVrackservicessVrackservicessCurrentState",
+                    "description": "Current configuration applied to the vRack Services\n"
+                },
+                "currentTasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicessVrackservicessCurrentTask:getVrackservicessVrackservicessCurrentTask"
+                    },
+                    "description": "Asynchronous operations ongoing on the vRack Services\n"
+                },
+                "iam": {
+                    "$ref": "#/types/ovh:index/getVrackservicessVrackservicessIam:getVrackservicessVrackservicessIam",
+                    "description": "IAM resource metadata\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier\n"
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status\n"
+                },
+                "targetSpec": {
+                    "$ref": "#/types/ovh:index/getVrackservicessVrackservicessTargetSpec:getVrackservicessVrackservicessTargetSpec",
+                    "description": "Last target specification of the vRack Services\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Date of the Last vRack Services update\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "checksum",
+                "createdAt",
+                "currentState",
+                "currentTasks",
+                "iam",
+                "id",
+                "resourceStatus",
+                "targetSpec",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessCurrentState:getVrackservicessVrackservicessCurrentState": {
+            "properties": {
+                "productStatus": {
+                    "type": "string",
+                    "description": "Product status of the vRack Services\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the vRack Services. List of compatible regions can be retrieved from /reference/region\n"
+                },
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicessVrackservicessCurrentStateSubnet:getVrackservicessVrackservicessCurrentStateSubnet"
+                    },
+                    "description": "Subnets of the current vRack Services\n"
+                },
+                "vrackId": {
+                    "type": "string",
+                    "description": "vRack associated to the vRack Services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "productStatus",
+                "region",
+                "subnets",
+                "vrackId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessCurrentStateSubnet:getVrackservicessVrackservicessCurrentStateSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range of the subnet in CIDR format\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the subnet\n"
+                },
+                "serviceEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint:getVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint"
+                    },
+                    "description": "Service endpoints of the subnet\n"
+                },
+                "serviceRange": {
+                    "$ref": "#/types/ovh:index/getVrackservicessVrackservicessCurrentStateSubnetServiceRange:getVrackservicessVrackservicessCurrentStateSubnetServiceRange",
+                    "description": "Defines a smaller subnet dedicated to the managed services IPs\n"
+                },
+                "vlan": {
+                    "type": "number",
+                    "description": "Unique inner VLAN that allows subnets segregation\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "displayName",
+                "serviceEndpoints",
+                "serviceRange",
+                "vlan"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint:getVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint": {
+            "properties": {
+                "endpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint:getVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint"
+                    },
+                    "description": "Endpoints representing the IPs assigned to the managed services\n"
+                },
+                "managedServiceUrn": {
+                    "type": "string",
+                    "description": "IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "endpoints",
+                "managedServiceUrn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint:getVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "IP description defined in the managed service\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "IP address assigned by OVHcloud\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "ip"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessCurrentStateSubnetServiceRange:getVrackservicessVrackservicessCurrentStateSubnetServiceRange": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "CIDR dedicated to the subnet's services\n"
+                },
+                "remainingIps": {
+                    "type": "number",
+                    "description": "Number of remaining IPs in the service range\n"
+                },
+                "reservedIps": {
+                    "type": "number",
+                    "description": "Number of service range IPs reserved by OVHcloud\n"
+                },
+                "usedIps": {
+                    "type": "number",
+                    "description": "Number of service range IPs assigned to the managed services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "remainingIps",
+                "reservedIps",
+                "usedIps"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessCurrentTask:getVrackservicessVrackservicessCurrentTask": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Identifier of the current task\n"
+                },
+                "link": {
+                    "type": "string",
+                    "description": "Link to the task details\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Current global status of the current task\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of the current task\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "link",
+                "status",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessIam:getVrackservicessVrackservicessIam": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Resource display name\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Unique identifier of the resource\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Resource state\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Resource tags. Tags that were internally computed are prefixed with ovh:\n"
+                },
+                "urn": {
+                    "type": "string",
+                    "description": "Unique resource name used in policies\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "id",
+                "state",
+                "tags",
+                "urn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessTargetSpec:getVrackservicessVrackservicessTargetSpec": {
+            "properties": {
+                "subnets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicessVrackservicessTargetSpecSubnet:getVrackservicessVrackservicessTargetSpecSubnet"
+                    },
+                    "description": "Target specification of the subnets. Maximum one subnet per vRack Services\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnets"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessTargetSpecSubnet:getVrackservicessVrackservicessTargetSpecSubnet": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`\n"
+                },
+                "serviceEndpoints": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/getVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint:getVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint"
+                    },
+                    "description": "Target specification of the Service Endpoints\n"
+                },
+                "serviceRange": {
+                    "$ref": "#/types/ovh:index/getVrackservicessVrackservicessTargetSpecSubnetServiceRange:getVrackservicessVrackservicessTargetSpecSubnetServiceRange",
+                    "description": "Defines a smaller subnet dedicated to the managed service IPs\n"
+                },
+                "vlan": {
+                    "type": "number",
+                    "description": "Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr",
+                "displayName",
+                "serviceEndpoints",
+                "serviceRange",
+                "vlan"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint:getVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint": {
+            "properties": {
+                "managedServiceUrn": {
+                    "type": "string",
+                    "description": "IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "managedServiceUrn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getVrackservicessVrackservicessTargetSpecSubnetServiceRange:getVrackservicessVrackservicessTargetSpecSubnetServiceRange": {
+            "properties": {
+                "cidr": {
+                    "type": "string",
+                    "description": "IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cidr"
             ],
             "language": {
                 "nodejs": {
@@ -11345,7 +12723,7 @@
             }
         },
         "ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC": {
-            "description": "Creates an OIDC configuration in an OVHcloud Managed Private Registry.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myOidc = new ovh.cloudproject.ContainerRegistryOIDC(\"my_oidc\", {\n    serviceName: \"XXXXXX\",\n    registryId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    oidcName: \"my-oidc-provider\",\n    oidcEndpoint: \"https://xxxx.yyy.com\",\n    oidcClientId: \"xxx\",\n    oidcClientSecret: \"xxx\",\n    oidcScope: \"openid,profile,email,offline_access\",\n    oidcGroupsClaim: \"groups\",\n    oidcAdminGroup: \"harbor-admin\",\n    oidcVerifyCert: true,\n    oidcAutoOnboard: true,\n    oidcUserClaim: \"preferred_username\",\n    deleteUsers: false,\n});\nexport const oidcClientSecret = myOidc.oidcClientSecret;\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_oidc = ovh.cloudproject.ContainerRegistryOIDC(\"my_oidc\",\n    service_name=\"XXXXXX\",\n    registry_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    oidc_name=\"my-oidc-provider\",\n    oidc_endpoint=\"https://xxxx.yyy.com\",\n    oidc_client_id=\"xxx\",\n    oidc_client_secret=\"xxx\",\n    oidc_scope=\"openid,profile,email,offline_access\",\n    oidc_groups_claim=\"groups\",\n    oidc_admin_group=\"harbor-admin\",\n    oidc_verify_cert=True,\n    oidc_auto_onboard=True,\n    oidc_user_claim=\"preferred_username\",\n    delete_users=False)\npulumi.export(\"oidcClientSecret\", my_oidc.oidc_client_secret)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOidc = new Ovh.CloudProject.ContainerRegistryOIDC(\"my_oidc\", new()\n    {\n        ServiceName = \"XXXXXX\",\n        RegistryId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n        OidcName = \"my-oidc-provider\",\n        OidcEndpoint = \"https://xxxx.yyy.com\",\n        OidcClientId = \"xxx\",\n        OidcClientSecret = \"xxx\",\n        OidcScope = \"openid,profile,email,offline_access\",\n        OidcGroupsClaim = \"groups\",\n        OidcAdminGroup = \"harbor-admin\",\n        OidcVerifyCert = true,\n        OidcAutoOnboard = true,\n        OidcUserClaim = \"preferred_username\",\n        DeleteUsers = false,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oidcClientSecret\"] = myOidc.OidcClientSecret,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyOidc, err := cloudproject.NewContainerRegistryOIDC(ctx, \"my_oidc\", \u0026cloudproject.ContainerRegistryOIDCArgs{\n\t\t\tServiceName:      pulumi.String(\"XXXXXX\"),\n\t\t\tRegistryId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"),\n\t\t\tOidcName:         pulumi.String(\"my-oidc-provider\"),\n\t\t\tOidcEndpoint:     pulumi.String(\"https://xxxx.yyy.com\"),\n\t\t\tOidcClientId:     pulumi.String(\"xxx\"),\n\t\t\tOidcClientSecret: pulumi.String(\"xxx\"),\n\t\t\tOidcScope:        pulumi.String(\"openid,profile,email,offline_access\"),\n\t\t\tOidcGroupsClaim:  pulumi.String(\"groups\"),\n\t\t\tOidcAdminGroup:   pulumi.String(\"harbor-admin\"),\n\t\t\tOidcVerifyCert:   pulumi.Bool(true),\n\t\t\tOidcAutoOnboard:  pulumi.Bool(true),\n\t\t\tOidcUserClaim:    pulumi.String(\"preferred_username\"),\n\t\t\tDeleteUsers:      pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"oidcClientSecret\", myOidc.OidcClientSecret)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.ContainerRegistryOIDC;\nimport com.ovhcloud.pulumi.ovh.CloudProject.ContainerRegistryOIDCArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOidc = new ContainerRegistryOIDC(\"myOidc\", ContainerRegistryOIDCArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .registryId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\n            .oidcName(\"my-oidc-provider\")\n            .oidcEndpoint(\"https://xxxx.yyy.com\")\n            .oidcClientId(\"xxx\")\n            .oidcClientSecret(\"xxx\")\n            .oidcScope(\"openid,profile,email,offline_access\")\n            .oidcGroupsClaim(\"groups\")\n            .oidcAdminGroup(\"harbor-admin\")\n            .oidcVerifyCert(true)\n            .oidcAutoOnboard(true)\n            .oidcUserClaim(\"preferred_username\")\n            .deleteUsers(false)\n            .build());\n\n        ctx.export(\"oidcClientSecret\", myOidc.oidcClientSecret());\n    }\n}\n```\n```yaml\nresources:\n  myOidc:\n    type: ovh:CloudProject:ContainerRegistryOIDC\n    name: my_oidc\n    properties:\n      serviceName: XXXXXX\n      registryId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\n      oidcName: my-oidc-provider\n      oidcEndpoint: https://xxxx.yyy.com\n      oidcClientId: xxx\n      oidcClientSecret: xxx\n      oidcScope: openid,profile,email,offline_access\n      oidcGroupsClaim: groups\n      oidcAdminGroup: harbor-admin\n      oidcVerifyCert: true\n      oidcAutoOnboard: true\n      oidcUserClaim: preferred_username\n      deleteUsers: false\noutputs:\n  oidcClientSecret: ${myOidc.oidcClientSecret}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id\n```\n\n",
+            "description": "Creates an OIDC configuration in an OVHcloud Managed Private Registry.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myOidc = new ovh.cloudproject.ContainerRegistryOIDC(\"my_oidc\", {\n    serviceName: \"XXXXXX\",\n    registryId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    oidcName: \"my-oidc-provider\",\n    oidcEndpoint: \"https://xxxx.yyy.com\",\n    oidcClientId: \"xxx\",\n    oidcClientSecret: \"xxx\",\n    oidcScope: \"openid,profile,email,offline_access\",\n    oidcGroupFilter: \"harbor-admin\",\n    oidcGroupsClaim: \"groups\",\n    oidcAdminGroup: \"harbor-admin\",\n    oidcVerifyCert: true,\n    oidcAutoOnboard: true,\n    oidcUserClaim: \"preferred_username\",\n    deleteUsers: false,\n});\nexport const oidcClientSecret = myOidc.oidcClientSecret;\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_oidc = ovh.cloudproject.ContainerRegistryOIDC(\"my_oidc\",\n    service_name=\"XXXXXX\",\n    registry_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n    oidc_name=\"my-oidc-provider\",\n    oidc_endpoint=\"https://xxxx.yyy.com\",\n    oidc_client_id=\"xxx\",\n    oidc_client_secret=\"xxx\",\n    oidc_scope=\"openid,profile,email,offline_access\",\n    oidc_group_filter=\"harbor-admin\",\n    oidc_groups_claim=\"groups\",\n    oidc_admin_group=\"harbor-admin\",\n    oidc_verify_cert=True,\n    oidc_auto_onboard=True,\n    oidc_user_claim=\"preferred_username\",\n    delete_users=False)\npulumi.export(\"oidcClientSecret\", my_oidc.oidc_client_secret)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOidc = new Ovh.CloudProject.ContainerRegistryOIDC(\"my_oidc\", new()\n    {\n        ServiceName = \"XXXXXX\",\n        RegistryId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\",\n        OidcName = \"my-oidc-provider\",\n        OidcEndpoint = \"https://xxxx.yyy.com\",\n        OidcClientId = \"xxx\",\n        OidcClientSecret = \"xxx\",\n        OidcScope = \"openid,profile,email,offline_access\",\n        OidcGroupFilter = \"harbor-admin\",\n        OidcGroupsClaim = \"groups\",\n        OidcAdminGroup = \"harbor-admin\",\n        OidcVerifyCert = true,\n        OidcAutoOnboard = true,\n        OidcUserClaim = \"preferred_username\",\n        DeleteUsers = false,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"oidcClientSecret\"] = myOidc.OidcClientSecret,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmyOidc, err := cloudproject.NewContainerRegistryOIDC(ctx, \"my_oidc\", \u0026cloudproject.ContainerRegistryOIDCArgs{\n\t\t\tServiceName:      pulumi.String(\"XXXXXX\"),\n\t\t\tRegistryId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\"),\n\t\t\tOidcName:         pulumi.String(\"my-oidc-provider\"),\n\t\t\tOidcEndpoint:     pulumi.String(\"https://xxxx.yyy.com\"),\n\t\t\tOidcClientId:     pulumi.String(\"xxx\"),\n\t\t\tOidcClientSecret: pulumi.String(\"xxx\"),\n\t\t\tOidcScope:        pulumi.String(\"openid,profile,email,offline_access\"),\n\t\t\tOidcGroupFilter:  pulumi.String(\"harbor-admin\"),\n\t\t\tOidcGroupsClaim:  pulumi.String(\"groups\"),\n\t\t\tOidcAdminGroup:   pulumi.String(\"harbor-admin\"),\n\t\t\tOidcVerifyCert:   pulumi.Bool(true),\n\t\t\tOidcAutoOnboard:  pulumi.Bool(true),\n\t\t\tOidcUserClaim:    pulumi.String(\"preferred_username\"),\n\t\t\tDeleteUsers:      pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"oidcClientSecret\", myOidc.OidcClientSecret)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.ContainerRegistryOIDC;\nimport com.ovhcloud.pulumi.ovh.CloudProject.ContainerRegistryOIDCArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOidc = new ContainerRegistryOIDC(\"myOidc\", ContainerRegistryOIDCArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .registryId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\")\n            .oidcName(\"my-oidc-provider\")\n            .oidcEndpoint(\"https://xxxx.yyy.com\")\n            .oidcClientId(\"xxx\")\n            .oidcClientSecret(\"xxx\")\n            .oidcScope(\"openid,profile,email,offline_access\")\n            .oidcGroupFilter(\"harbor-admin\")\n            .oidcGroupsClaim(\"groups\")\n            .oidcAdminGroup(\"harbor-admin\")\n            .oidcVerifyCert(true)\n            .oidcAutoOnboard(true)\n            .oidcUserClaim(\"preferred_username\")\n            .deleteUsers(false)\n            .build());\n\n        ctx.export(\"oidcClientSecret\", myOidc.oidcClientSecret());\n    }\n}\n```\n```yaml\nresources:\n  myOidc:\n    type: ovh:CloudProject:ContainerRegistryOIDC\n    name: my_oidc\n    properties:\n      serviceName: XXXXXX\n      registryId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx\n      oidcName: my-oidc-provider\n      oidcEndpoint: https://xxxx.yyy.com\n      oidcClientId: xxx\n      oidcClientSecret: xxx\n      oidcScope: openid,profile,email,offline_access\n      oidcGroupFilter: harbor-admin\n      oidcGroupsClaim: groups\n      oidcAdminGroup: harbor-admin\n      oidcVerifyCert: true\n      oidcAutoOnboard: true\n      oidcUserClaim: preferred_username\n      deleteUsers: false\noutputs:\n  oidcClientSecret: ${myOidc.oidcClientSecret}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed Private Registry OIDC can be imported using the tenant `service_name` and registry id `registry_id` separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/containerRegistryOIDC:ContainerRegistryOIDC my-oidc service_name/registry_id\n```\n\n",
             "properties": {
                 "deleteUsers": {
                     "type": "boolean",
@@ -11371,6 +12749,10 @@
                 "oidcEndpoint": {
                     "type": "string",
                     "description": "The URL of an OIDC-compliant server.\n"
+                },
+                "oidcGroupFilter": {
+                    "type": "string",
+                    "description": "The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.\n"
                 },
                 "oidcGroupsClaim": {
                     "type": "string",
@@ -11437,6 +12819,10 @@
                 "oidcEndpoint": {
                     "type": "string",
                     "description": "The URL of an OIDC-compliant server.\n"
+                },
+                "oidcGroupFilter": {
+                    "type": "string",
+                    "description": "The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.\n"
                 },
                 "oidcGroupsClaim": {
                     "type": "string",
@@ -11505,6 +12891,10 @@
                     "oidcEndpoint": {
                         "type": "string",
                         "description": "The URL of an OIDC-compliant server.\n"
+                    },
+                    "oidcGroupFilter": {
+                        "type": "string",
+                        "description": "The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.\n"
                     },
                     "oidcGroupsClaim": {
                         "type": "string",
@@ -15405,7 +16795,7 @@
             }
         },
         "ovh:CloudProject/storage:Storage": {
-            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst storage = new ovh.cloudproject.Storage(\"storage\", {\n    serviceName: \"\u003cpublic cloud project ID\u003e\",\n    regionName: \"GRA\",\n    name: \"my-storage\",\n    versioning: {\n        status: \"enabled\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nstorage = ovh.cloudproject.Storage(\"storage\",\n    service_name=\"\u003cpublic cloud project ID\u003e\",\n    region_name=\"GRA\",\n    name=\"my-storage\",\n    versioning={\n        \"status\": \"enabled\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var storage = new Ovh.CloudProject.Storage(\"storage\", new()\n    {\n        ServiceName = \"\u003cpublic cloud project ID\u003e\",\n        RegionName = \"GRA\",\n        Name = \"my-storage\",\n        Versioning = new Ovh.CloudProject.Inputs.StorageVersioningArgs\n        {\n            Status = \"enabled\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewStorage(ctx, \"storage\", \u0026cloudproject.StorageArgs{\n\t\t\tServiceName: pulumi.String(\"\u003cpublic cloud project ID\u003e\"),\n\t\t\tRegionName:  pulumi.String(\"GRA\"),\n\t\t\tName:        pulumi.String(\"my-storage\"),\n\t\t\tVersioning: \u0026cloudproject.StorageVersioningArgs{\n\t\t\t\tStatus: pulumi.String(\"enabled\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.Storage;\nimport com.ovhcloud.pulumi.ovh.CloudProject.StorageArgs;\nimport com.pulumi.ovh.CloudProject.inputs.StorageVersioningArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var storage = new Storage(\"storage\", StorageArgs.builder()\n            .serviceName(\"\u003cpublic cloud project ID\u003e\")\n            .regionName(\"GRA\")\n            .name(\"my-storage\")\n            .versioning(StorageVersioningArgs.builder()\n                .status(\"enabled\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  storage:\n    type: ovh:CloudProject:Storage\n    properties:\n      serviceName: \u003cpublic cloud project ID\u003e\n      regionName: GRA\n      name: my-storage\n      versioning:\n        status: enabled\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:\n\nterraform\n\nimport {\n\n  id = \"\u003cservice_name\u003e/\u003cregion_name\u003e/\u003cname\u003e\"\n\n  to = ovh_cloud_project_storage.storage\n\n}\n\nYou can then run:\n\nbash\n\n$ pulumi preview -generate-config-out=storage.tf\n\n$ pulumi up\n\nThe file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
+            "description": "\n\n## Import\n\nA storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:\n\nterraform\n\nimport {\n\n  id = \"\u003cservice_name\u003e/\u003cregion_name\u003e/\u003cname\u003e\"\n\n  to = ovh_cloud_project_storage.storage\n\n}\n\nYou can then run:\n\nbash\n\n$ pulumi preview -generate-config-out=storage.tf\n\n$ pulumi up\n\nThe file `storage.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -15430,6 +16820,10 @@
                 "name": {
                     "type": "string",
                     "description": "Container name\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:CloudProject/StorageObjectLock:StorageObjectLock",
+                    "description": "Object lock configuration\n"
                 },
                 "objects": {
                     "type": "array",
@@ -15485,6 +16879,7 @@
                 "limit",
                 "marker",
                 "name",
+                "objectLock",
                 "objects",
                 "objectsCount",
                 "objectsSize",
@@ -15517,6 +16912,10 @@
                 "name": {
                     "type": "string",
                     "description": "Container name\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:CloudProject/StorageObjectLock:StorageObjectLock",
+                    "description": "Object lock configuration\n"
                 },
                 "ownerId": {
                     "type": "number",
@@ -15573,6 +16972,10 @@
                     "name": {
                         "type": "string",
                         "description": "Container name\n"
+                    },
+                    "objectLock": {
+                        "$ref": "#/types/ovh:CloudProject/StorageObjectLock:StorageObjectLock",
+                        "description": "Object lock configuration\n"
                     },
                     "objects": {
                         "type": "array",
@@ -20375,6 +21778,10 @@
                     "type": "string",
                     "description": "Rack id of the server\n"
                 },
+                "range": {
+                    "type": "string",
+                    "description": "Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "Dedicated region localisation\n"
@@ -20521,6 +21928,10 @@
                     },
                     "description": "Arbitrary properties to pass to cloud-init's config drive datasource\n",
                     "deprecationMessage": "Attribute 'properties' is deprecated and has no effect"
+                },
+                "range": {
+                    "type": "string",
+                    "description": "Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`\n"
                 },
                 "rescueMail": {
                     "type": "string",
@@ -20674,6 +22085,10 @@
                     "rack": {
                         "type": "string",
                         "description": "Rack id of the server\n"
+                    },
+                    "range": {
+                        "type": "string",
+                        "description": "Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`\n"
                     },
                     "region": {
                         "type": "string",
@@ -22748,7 +24163,7 @@
             }
         },
         "ovh:Iam/policy:Policy": {
-            "description": "Creates an IAM policy.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst account = ovh.Me.getMe({});\nconst myGroup = new ovh.me.IdentityGroup(\"my_group\", {\n    name: \"my_group\",\n    description: \"my_group created in Terraform\",\n});\nconst manager = new ovh.iam.Policy(\"manager\", {\n    name: \"allow_ovh_manager\",\n    description: \"Users are allowed to use the OVH manager\",\n    identities: [myGroup.GroupURN],\n    resources: [account.then(account =\u003e account.AccountURN)],\n    allows: [\n        \"account:apiovh:me/get\",\n        \"account:apiovh:me/supportLevel/get\",\n        \"account:apiovh:me/certificates/get\",\n        \"account:apiovh:me/tag/get\",\n        \"account:apiovh:services/get\",\n        \"account:apiovh:*\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\naccount = ovh.Me.get_me()\nmy_group = ovh.me.IdentityGroup(\"my_group\",\n    name=\"my_group\",\n    description=\"my_group created in Terraform\")\nmanager = ovh.iam.Policy(\"manager\",\n    name=\"allow_ovh_manager\",\n    description=\"Users are allowed to use the OVH manager\",\n    identities=[my_group.group_urn],\n    resources=[account.account_urn],\n    allows=[\n        \"account:apiovh:me/get\",\n        \"account:apiovh:me/supportLevel/get\",\n        \"account:apiovh:me/certificates/get\",\n        \"account:apiovh:me/tag/get\",\n        \"account:apiovh:services/get\",\n        \"account:apiovh:*\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account = Ovh.Me.GetMe.Invoke();\n\n    var myGroup = new Ovh.Me.IdentityGroup(\"my_group\", new()\n    {\n        Name = \"my_group\",\n        Description = \"my_group created in Terraform\",\n    });\n\n    var manager = new Ovh.Iam.Policy(\"manager\", new()\n    {\n        Name = \"allow_ovh_manager\",\n        Description = \"Users are allowed to use the OVH manager\",\n        Identities = new[]\n        {\n            myGroup.GroupURN,\n        },\n        Resources = new[]\n        {\n            account.Apply(getMeResult =\u003e getMeResult.AccountURN),\n        },\n        Allows = new[]\n        {\n            \"account:apiovh:me/get\",\n            \"account:apiovh:me/supportLevel/get\",\n            \"account:apiovh:me/certificates/get\",\n            \"account:apiovh:me/tag/get\",\n            \"account:apiovh:services/get\",\n            \"account:apiovh:*\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/iam\"\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\taccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyGroup, err := me.NewIdentityGroup(ctx, \"my_group\", \u0026me.IdentityGroupArgs{\n\t\t\tName:        pulumi.String(\"my_group\"),\n\t\t\tDescription: pulumi.String(\"my_group created in Terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewPolicy(ctx, \"manager\", \u0026iam.PolicyArgs{\n\t\t\tName:        pulumi.String(\"allow_ovh_manager\"),\n\t\t\tDescription: pulumi.String(\"Users are allowed to use the OVH manager\"),\n\t\t\tIdentities: pulumi.StringArray{\n\t\t\t\tmyGroup.GroupURN,\n\t\t\t},\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tpulumi.String(account.AccountURN),\n\t\t\t},\n\t\t\tAllows: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"account:apiovh:me/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:me/supportLevel/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:me/certificates/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:me/tag/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:services/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:*\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityGroup;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityGroupArgs;\nimport com.ovhcloud.pulumi.ovh.Iam.Policy;\nimport com.ovhcloud.pulumi.ovh.Iam.PolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        var myGroup = new IdentityGroup(\"myGroup\", IdentityGroupArgs.builder()\n            .name(\"my_group\")\n            .description(\"my_group created in Terraform\")\n            .build());\n\n        var manager = new Policy(\"manager\", PolicyArgs.builder()\n            .name(\"allow_ovh_manager\")\n            .description(\"Users are allowed to use the OVH manager\")\n            .identities(myGroup.GroupURN())\n            .resources(account.AccountURN())\n            .allows(            \n                \"account:apiovh:me/get\",\n                \"account:apiovh:me/supportLevel/get\",\n                \"account:apiovh:me/certificates/get\",\n                \"account:apiovh:me/tag/get\",\n                \"account:apiovh:services/get\",\n                \"account:apiovh:*\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myGroup:\n    type: ovh:Me:IdentityGroup\n    name: my_group\n    properties:\n      name: my_group\n      description: my_group created in Terraform\n  manager:\n    type: ovh:Iam:Policy\n    properties:\n      name: allow_ovh_manager\n      description: Users are allowed to use the OVH manager\n      identities:\n        - ${myGroup.GroupURN}\n      resources:\n        - ${account.AccountURN}\n      allows:\n        - account:apiovh:me/get\n        - account:apiovh:me/supportLevel/get\n        - account:apiovh:me/certificates/get\n        - account:apiovh:me/tag/get\n        - account:apiovh:services/get\n        - account:apiovh:*\nvariables:\n  account:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Creates an IAM policy.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst account = ovh.Me.getMe({});\nconst myGroup = new ovh.me.IdentityGroup(\"my_group\", {\n    name: \"my_group\",\n    description: \"my_group created in Terraform\",\n});\nconst manager = new ovh.iam.Policy(\"manager\", {\n    name: \"allow_ovh_manager\",\n    description: \"Users are allowed to use the OVH manager\",\n    identities: [myGroup.GroupURN],\n    resources: [account.then(account =\u003e account.AccountURN)],\n    allows: [\n        \"account:apiovh:me/get\",\n        \"account:apiovh:me/supportLevel/get\",\n        \"account:apiovh:me/certificates/get\",\n        \"account:apiovh:me/tag/get\",\n        \"account:apiovh:services/get\",\n        \"account:apiovh:*\",\n    ],\n});\nconst ipRestrictedProdAccess = new ovh.iam.Policy(\"ip_restricted_prod_access\", {\n    name: \"ip_restricted_prod_access\",\n    description: \"Allow access only from a specific IP to resources tagged prod\",\n    identities: [myGroup.GroupURN],\n    resources: [\"urn:v1:eu:resource:vps:*\"],\n    allows: [\"vps:apiovh:*\"],\n    conditions: {\n        operator: \"MATCH\",\n        values: {\n            \"resource.Tag(environment)\": \"prod\",\n            \"request.IP\": \"192.72.0.1\",\n        },\n    },\n});\nconst workdaysAndIpRestrictedAndExpiring = new ovh.iam.Policy(\"workdays_and_ip_restricted_and_expiring\", {\n    name: \"workdays_and_ip_restricted_and_expiring\",\n    description: \"Allow access only on workdays, expires end of 2026\",\n    identities: [myGroup.GroupURN],\n    resources: [\"urn:v1:eu:resource:vps:*\"],\n    allows: [\"vps:apiovh:*\"],\n    conditions: {\n        operator: \"AND\",\n        conditions: [\n            {\n                operator: \"MATCH\",\n                values: {\n                    \"date(Europe/Paris).WeekDay.In\": \"monday,tuesday,wednesday,thursday,friday\",\n                },\n            },\n            {\n                operator: \"MATCH\",\n                values: {\n                    \"request.IP\": \"192.72.0.1\",\n                },\n            },\n        ],\n    },\n    expiredAt: \"2026-12-31T23:59:59Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\naccount = ovh.Me.get_me()\nmy_group = ovh.me.IdentityGroup(\"my_group\",\n    name=\"my_group\",\n    description=\"my_group created in Terraform\")\nmanager = ovh.iam.Policy(\"manager\",\n    name=\"allow_ovh_manager\",\n    description=\"Users are allowed to use the OVH manager\",\n    identities=[my_group.group_urn],\n    resources=[account.account_urn],\n    allows=[\n        \"account:apiovh:me/get\",\n        \"account:apiovh:me/supportLevel/get\",\n        \"account:apiovh:me/certificates/get\",\n        \"account:apiovh:me/tag/get\",\n        \"account:apiovh:services/get\",\n        \"account:apiovh:*\",\n    ])\nip_restricted_prod_access = ovh.iam.Policy(\"ip_restricted_prod_access\",\n    name=\"ip_restricted_prod_access\",\n    description=\"Allow access only from a specific IP to resources tagged prod\",\n    identities=[my_group.group_urn],\n    resources=[\"urn:v1:eu:resource:vps:*\"],\n    allows=[\"vps:apiovh:*\"],\n    conditions={\n        \"operator\": \"MATCH\",\n        \"values\": {\n            \"resource.Tag(environment)\": \"prod\",\n            \"request.IP\": \"192.72.0.1\",\n        },\n    })\nworkdays_and_ip_restricted_and_expiring = ovh.iam.Policy(\"workdays_and_ip_restricted_and_expiring\",\n    name=\"workdays_and_ip_restricted_and_expiring\",\n    description=\"Allow access only on workdays, expires end of 2026\",\n    identities=[my_group.group_urn],\n    resources=[\"urn:v1:eu:resource:vps:*\"],\n    allows=[\"vps:apiovh:*\"],\n    conditions={\n        \"operator\": \"AND\",\n        \"conditions\": [\n            {\n                \"operator\": \"MATCH\",\n                \"values\": {\n                    \"date(Europe/Paris).WeekDay.In\": \"monday,tuesday,wednesday,thursday,friday\",\n                },\n            },\n            {\n                \"operator\": \"MATCH\",\n                \"values\": {\n                    \"request.IP\": \"192.72.0.1\",\n                },\n            },\n        ],\n    },\n    expired_at=\"2026-12-31T23:59:59Z\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var account = Ovh.Me.GetMe.Invoke();\n\n    var myGroup = new Ovh.Me.IdentityGroup(\"my_group\", new()\n    {\n        Name = \"my_group\",\n        Description = \"my_group created in Terraform\",\n    });\n\n    var manager = new Ovh.Iam.Policy(\"manager\", new()\n    {\n        Name = \"allow_ovh_manager\",\n        Description = \"Users are allowed to use the OVH manager\",\n        Identities = new[]\n        {\n            myGroup.GroupURN,\n        },\n        Resources = new[]\n        {\n            account.Apply(getMeResult =\u003e getMeResult.AccountURN),\n        },\n        Allows = new[]\n        {\n            \"account:apiovh:me/get\",\n            \"account:apiovh:me/supportLevel/get\",\n            \"account:apiovh:me/certificates/get\",\n            \"account:apiovh:me/tag/get\",\n            \"account:apiovh:services/get\",\n            \"account:apiovh:*\",\n        },\n    });\n\n    var ipRestrictedProdAccess = new Ovh.Iam.Policy(\"ip_restricted_prod_access\", new()\n    {\n        Name = \"ip_restricted_prod_access\",\n        Description = \"Allow access only from a specific IP to resources tagged prod\",\n        Identities = new[]\n        {\n            myGroup.GroupURN,\n        },\n        Resources = new[]\n        {\n            \"urn:v1:eu:resource:vps:*\",\n        },\n        Allows = new[]\n        {\n            \"vps:apiovh:*\",\n        },\n        Conditions = new Ovh.Iam.Inputs.PolicyConditionsArgs\n        {\n            Operator = \"MATCH\",\n            Values = \n            {\n                { \"resource.Tag(environment)\", \"prod\" },\n                { \"request.IP\", \"192.72.0.1\" },\n            },\n        },\n    });\n\n    var workdaysAndIpRestrictedAndExpiring = new Ovh.Iam.Policy(\"workdays_and_ip_restricted_and_expiring\", new()\n    {\n        Name = \"workdays_and_ip_restricted_and_expiring\",\n        Description = \"Allow access only on workdays, expires end of 2026\",\n        Identities = new[]\n        {\n            myGroup.GroupURN,\n        },\n        Resources = new[]\n        {\n            \"urn:v1:eu:resource:vps:*\",\n        },\n        Allows = new[]\n        {\n            \"vps:apiovh:*\",\n        },\n        Conditions = new Ovh.Iam.Inputs.PolicyConditionsArgs\n        {\n            Operator = \"AND\",\n            Conditions = new[]\n            {\n                new Ovh.Iam.Inputs.PolicyConditionsConditionArgs\n                {\n                    Operator = \"MATCH\",\n                    Values = \n                    {\n                        { \"date(Europe/Paris).WeekDay.In\", \"monday,tuesday,wednesday,thursday,friday\" },\n                    },\n                },\n                new Ovh.Iam.Inputs.PolicyConditionsConditionArgs\n                {\n                    Operator = \"MATCH\",\n                    Values = \n                    {\n                        { \"request.IP\", \"192.72.0.1\" },\n                    },\n                },\n            },\n        },\n        ExpiredAt = \"2026-12-31T23:59:59Z\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/iam\"\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\taccount, err := me.GetMe(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyGroup, err := me.NewIdentityGroup(ctx, \"my_group\", \u0026me.IdentityGroupArgs{\n\t\t\tName:        pulumi.String(\"my_group\"),\n\t\t\tDescription: pulumi.String(\"my_group created in Terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewPolicy(ctx, \"manager\", \u0026iam.PolicyArgs{\n\t\t\tName:        pulumi.String(\"allow_ovh_manager\"),\n\t\t\tDescription: pulumi.String(\"Users are allowed to use the OVH manager\"),\n\t\t\tIdentities: pulumi.StringArray{\n\t\t\t\tmyGroup.GroupURN,\n\t\t\t},\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tpulumi.String(account.AccountURN),\n\t\t\t},\n\t\t\tAllows: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"account:apiovh:me/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:me/supportLevel/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:me/certificates/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:me/tag/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:services/get\"),\n\t\t\t\tpulumi.String(\"account:apiovh:*\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewPolicy(ctx, \"ip_restricted_prod_access\", \u0026iam.PolicyArgs{\n\t\t\tName:        pulumi.String(\"ip_restricted_prod_access\"),\n\t\t\tDescription: pulumi.String(\"Allow access only from a specific IP to resources tagged prod\"),\n\t\t\tIdentities: pulumi.StringArray{\n\t\t\t\tmyGroup.GroupURN,\n\t\t\t},\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"urn:v1:eu:resource:vps:*\"),\n\t\t\t},\n\t\t\tAllows: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"vps:apiovh:*\"),\n\t\t\t},\n\t\t\tConditions: \u0026iam.PolicyConditionsArgs{\n\t\t\t\tOperator: pulumi.String(\"MATCH\"),\n\t\t\t\tValues: pulumi.StringMap{\n\t\t\t\t\t\"resource.Tag(environment)\": pulumi.String(\"prod\"),\n\t\t\t\t\t\"request.IP\":                pulumi.String(\"192.72.0.1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = iam.NewPolicy(ctx, \"workdays_and_ip_restricted_and_expiring\", \u0026iam.PolicyArgs{\n\t\t\tName:        pulumi.String(\"workdays_and_ip_restricted_and_expiring\"),\n\t\t\tDescription: pulumi.String(\"Allow access only on workdays, expires end of 2026\"),\n\t\t\tIdentities: pulumi.StringArray{\n\t\t\t\tmyGroup.GroupURN,\n\t\t\t},\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"urn:v1:eu:resource:vps:*\"),\n\t\t\t},\n\t\t\tAllows: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"vps:apiovh:*\"),\n\t\t\t},\n\t\t\tConditions: \u0026iam.PolicyConditionsArgs{\n\t\t\t\tOperator: pulumi.String(\"AND\"),\n\t\t\t\tConditions: iam.PolicyConditionsConditionArray{\n\t\t\t\t\t\u0026iam.PolicyConditionsConditionArgs{\n\t\t\t\t\t\tOperator: pulumi.String(\"MATCH\"),\n\t\t\t\t\t\tValues: pulumi.StringMap{\n\t\t\t\t\t\t\t\"date(Europe/Paris).WeekDay.In\": pulumi.String(\"monday,tuesday,wednesday,thursday,friday\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\u0026iam.PolicyConditionsConditionArgs{\n\t\t\t\t\t\tOperator: pulumi.String(\"MATCH\"),\n\t\t\t\t\t\tValues: pulumi.StringMap{\n\t\t\t\t\t\t\t\"request.IP\": pulumi.String(\"192.72.0.1\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tExpiredAt: pulumi.String(\"2026-12-31T23:59:59Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.Me.MeFunctions;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityGroup;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityGroupArgs;\nimport com.ovhcloud.pulumi.ovh.Iam.Policy;\nimport com.ovhcloud.pulumi.ovh.Iam.PolicyArgs;\nimport com.pulumi.ovh.Iam.inputs.PolicyConditionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var account = MeFunctions.getMe(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        var myGroup = new IdentityGroup(\"myGroup\", IdentityGroupArgs.builder()\n            .name(\"my_group\")\n            .description(\"my_group created in Terraform\")\n            .build());\n\n        var manager = new Policy(\"manager\", PolicyArgs.builder()\n            .name(\"allow_ovh_manager\")\n            .description(\"Users are allowed to use the OVH manager\")\n            .identities(myGroup.GroupURN())\n            .resources(account.AccountURN())\n            .allows(            \n                \"account:apiovh:me/get\",\n                \"account:apiovh:me/supportLevel/get\",\n                \"account:apiovh:me/certificates/get\",\n                \"account:apiovh:me/tag/get\",\n                \"account:apiovh:services/get\",\n                \"account:apiovh:*\")\n            .build());\n\n        var ipRestrictedProdAccess = new Policy(\"ipRestrictedProdAccess\", PolicyArgs.builder()\n            .name(\"ip_restricted_prod_access\")\n            .description(\"Allow access only from a specific IP to resources tagged prod\")\n            .identities(myGroup.GroupURN())\n            .resources(\"urn:v1:eu:resource:vps:*\")\n            .allows(\"vps:apiovh:*\")\n            .conditions(PolicyConditionsArgs.builder()\n                .operator(\"MATCH\")\n                .values(Map.ofEntries(\n                    Map.entry(\"resource.Tag(environment)\", \"prod\"),\n                    Map.entry(\"request.IP\", \"192.72.0.1\")\n                ))\n                .build())\n            .build());\n\n        var workdaysAndIpRestrictedAndExpiring = new Policy(\"workdaysAndIpRestrictedAndExpiring\", PolicyArgs.builder()\n            .name(\"workdays_and_ip_restricted_and_expiring\")\n            .description(\"Allow access only on workdays, expires end of 2026\")\n            .identities(myGroup.GroupURN())\n            .resources(\"urn:v1:eu:resource:vps:*\")\n            .allows(\"vps:apiovh:*\")\n            .conditions(PolicyConditionsArgs.builder()\n                .operator(\"AND\")\n                .conditions(                \n                    PolicyConditionsConditionArgs.builder()\n                        .operator(\"MATCH\")\n                        .values(Map.of(\"date(Europe/Paris).WeekDay.In\", \"monday,tuesday,wednesday,thursday,friday\"))\n                        .build(),\n                    PolicyConditionsConditionArgs.builder()\n                        .operator(\"MATCH\")\n                        .values(Map.of(\"request.IP\", \"192.72.0.1\"))\n                        .build())\n                .build())\n            .expiredAt(\"2026-12-31T23:59:59Z\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myGroup:\n    type: ovh:Me:IdentityGroup\n    name: my_group\n    properties:\n      name: my_group\n      description: my_group created in Terraform\n  manager:\n    type: ovh:Iam:Policy\n    properties:\n      name: allow_ovh_manager\n      description: Users are allowed to use the OVH manager\n      identities:\n        - ${myGroup.GroupURN}\n      resources:\n        - ${account.AccountURN}\n      allows:\n        - account:apiovh:me/get\n        - account:apiovh:me/supportLevel/get\n        - account:apiovh:me/certificates/get\n        - account:apiovh:me/tag/get\n        - account:apiovh:services/get\n        - account:apiovh:*\n  ipRestrictedProdAccess:\n    type: ovh:Iam:Policy\n    name: ip_restricted_prod_access\n    properties:\n      name: ip_restricted_prod_access\n      description: Allow access only from a specific IP to resources tagged prod\n      identities:\n        - ${myGroup.GroupURN}\n      resources:\n        - urn:v1:eu:resource:vps:*\n      allows:\n        - vps:apiovh:*\n      conditions:\n        operator: MATCH\n        values:\n          resource.Tag(environment): prod\n          request.IP: 192.72.0.1\n  workdaysAndIpRestrictedAndExpiring:\n    type: ovh:Iam:Policy\n    name: workdays_and_ip_restricted_and_expiring\n    properties:\n      name: workdays_and_ip_restricted_and_expiring\n      description: Allow access only on workdays, expires end of 2026\n      identities:\n        - ${myGroup.GroupURN}\n      resources:\n        - urn:v1:eu:resource:vps:*\n      allows:\n        - vps:apiovh:*\n      conditions:\n        operator: AND\n        conditions:\n          - operator: MATCH\n            values:\n              date(Europe/Paris).WeekDay.In: monday,tuesday,wednesday,thursday,friday\n          - operator: MATCH\n            values:\n              request.IP: 192.72.0.1\n      expiredAt: 2026-12-31T23:59:59Z\nvariables:\n  account:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "allows": {
                     "type": "array",
@@ -22756,6 +24171,10 @@
                         "type": "string"
                     },
                     "description": "List of actions allowed on resources by identities\n"
+                },
+                "conditions": {
+                    "$ref": "#/types/ovh:Iam/PolicyConditions:PolicyConditions",
+                    "description": "Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -22778,6 +24197,10 @@
                         "type": "string"
                     },
                     "description": "List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.\n"
+                },
+                "expiredAt": {
+                    "type": "string",
+                    "description": "Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.\n"
                 },
                 "identities": {
                     "type": "array",
@@ -22834,6 +24257,10 @@
                     },
                     "description": "List of actions allowed on resources by identities\n"
                 },
+                "conditions": {
+                    "$ref": "#/types/ovh:Iam/PolicyConditions:PolicyConditions",
+                    "description": "Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.\n"
+                },
                 "denies": {
                     "type": "array",
                     "items": {
@@ -22851,6 +24278,10 @@
                         "type": "string"
                     },
                     "description": "List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.\n"
+                },
+                "expiredAt": {
+                    "type": "string",
+                    "description": "Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.\n"
                 },
                 "identities": {
                     "type": "array",
@@ -22892,6 +24323,10 @@
                         },
                         "description": "List of actions allowed on resources by identities\n"
                     },
+                    "conditions": {
+                        "$ref": "#/types/ovh:Iam/PolicyConditions:PolicyConditions",
+                        "description": "Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.\n"
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "Creation date of this group.\n"
@@ -22913,6 +24348,10 @@
                             "type": "string"
                         },
                         "description": "List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.\n"
+                    },
+                    "expiredAt": {
+                        "type": "string",
+                        "description": "Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.\n"
                     },
                     "identities": {
                         "type": "array",
@@ -23050,10 +24489,11 @@
             }
         },
         "ovh:Ip/firewall:Firewall": {
-            "description": "Use this resource to manage an IP firewall.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myFirewall = new ovh.ip.Firewall(\"my_firewall\", {\n    ip: \"XXXXXX\",\n    ipOnFirewall: \"XXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_firewall = ovh.ip.Firewall(\"my_firewall\",\n    ip=\"XXXXXX\",\n    ip_on_firewall=\"XXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myFirewall = new Ovh.Ip.Firewall(\"my_firewall\", new()\n    {\n        Ip = \"XXXXXX\",\n        IpOnFirewall = \"XXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/ip\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ip.NewFirewall(ctx, \"my_firewall\", \u0026ip.FirewallArgs{\n\t\t\tIp:           pulumi.String(\"XXXXXX\"),\n\t\t\tIpOnFirewall: pulumi.String(\"XXXXXX\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.Ip.Firewall;\nimport com.ovhcloud.pulumi.ovh.Ip.FirewallArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myFirewall = new Firewall(\"myFirewall\", FirewallArgs.builder()\n            .ip(\"XXXXXX\")\n            .ipOnFirewall(\"XXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myFirewall:\n    type: ovh:Ip:Firewall\n    name: my_firewall\n    properties:\n      ip: XXXXXX\n      ipOnFirewall: XXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Use this resource to manage an IP firewall.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myFirewall = new ovh.ip.Firewall(\"my_firewall\", {\n    ip: \"XXXXXX\",\n    ipOnFirewall: \"XXXXXX\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_firewall = ovh.ip.Firewall(\"my_firewall\",\n    ip=\"XXXXXX\",\n    ip_on_firewall=\"XXXXXX\",\n    enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myFirewall = new Ovh.Ip.Firewall(\"my_firewall\", new()\n    {\n        Ip = \"XXXXXX\",\n        IpOnFirewall = \"XXXXXX\",\n        Enabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/ip\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ip.NewFirewall(ctx, \"my_firewall\", \u0026ip.FirewallArgs{\n\t\t\tIp:           pulumi.String(\"XXXXXX\"),\n\t\t\tIpOnFirewall: pulumi.String(\"XXXXXX\"),\n\t\t\tEnabled:      pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.Ip.Firewall;\nimport com.ovhcloud.pulumi.ovh.Ip.FirewallArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myFirewall = new Firewall(\"myFirewall\", FirewallArgs.builder()\n            .ip(\"XXXXXX\")\n            .ipOnFirewall(\"XXXXXX\")\n            .enabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myFirewall:\n    type: ovh:Ip:Firewall\n    name: my_firewall\n    properties:\n      ip: XXXXXX\n      ipOnFirewall: XXXXXX\n      enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether firewall should be enabled\n"
                 },
                 "ip": {
                     "type": "string",
@@ -23061,7 +24501,7 @@
                 },
                 "ipOnFirewall": {
                     "type": "string",
-                    "description": "IPv4 address\n* `enabled ` - Whether firewall should be enabled\n"
+                    "description": "IPv4 address\n"
                 },
                 "state": {
                     "type": "string",
@@ -23076,7 +24516,8 @@
             ],
             "inputProperties": {
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether firewall should be enabled\n"
                 },
                 "ip": {
                     "type": "string",
@@ -23084,7 +24525,7 @@
                 },
                 "ipOnFirewall": {
                     "type": "string",
-                    "description": "IPv4 address\n* `enabled ` - Whether firewall should be enabled\n"
+                    "description": "IPv4 address\n"
                 }
             },
             "requiredInputs": [
@@ -23095,7 +24536,8 @@
                 "description": "Input properties used for looking up and filtering Firewall resources.\n",
                 "properties": {
                     "enabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether firewall should be enabled\n"
                     },
                     "ip": {
                         "type": "string",
@@ -23103,7 +24545,7 @@
                     },
                     "ipOnFirewall": {
                         "type": "string",
-                        "description": "IPv4 address\n* `enabled ` - Whether firewall should be enabled\n"
+                        "description": "IPv4 address\n"
                     },
                     "state": {
                         "type": "string",
@@ -26511,6 +27953,118 @@
                 "type": "object"
             }
         },
+        "ovh:Me/identityUserToken:IdentityUserToken": {
+            "description": "Creates a token for an identity user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst user = new ovh.me.IdentityUser(\"user\", {\n    description: \"User description\",\n    email: \"user.email@example.com\",\n    group: \"DEFAULT\",\n    login: \"user_login\",\n    password: \"SecretPassword123\",\n});\nconst token = new ovh.me.IdentityUserToken(\"token\", {\n    userLogin: user.login,\n    name: \"token_name\",\n    description: \"Token description\",\n    expiresAt: \"2030-01-01T00:00:00Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nuser = ovh.me.IdentityUser(\"user\",\n    description=\"User description\",\n    email=\"user.email@example.com\",\n    group=\"DEFAULT\",\n    login=\"user_login\",\n    password=\"SecretPassword123\")\ntoken = ovh.me.IdentityUserToken(\"token\",\n    user_login=user.login,\n    name=\"token_name\",\n    description=\"Token description\",\n    expires_at=\"2030-01-01T00:00:00Z\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var user = new Ovh.Me.IdentityUser(\"user\", new()\n    {\n        Description = \"User description\",\n        Email = \"user.email@example.com\",\n        Group = \"DEFAULT\",\n        Login = \"user_login\",\n        Password = \"SecretPassword123\",\n    });\n\n    var token = new Ovh.Me.IdentityUserToken(\"token\", new()\n    {\n        UserLogin = user.Login,\n        Name = \"token_name\",\n        Description = \"Token description\",\n        ExpiresAt = \"2030-01-01T00:00:00Z\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tuser, err := me.NewIdentityUser(ctx, \"user\", \u0026me.IdentityUserArgs{\n\t\t\tDescription: pulumi.String(\"User description\"),\n\t\t\tEmail:       pulumi.String(\"user.email@example.com\"),\n\t\t\tGroup:       pulumi.String(\"DEFAULT\"),\n\t\t\tLogin:       pulumi.String(\"user_login\"),\n\t\t\tPassword:    pulumi.String(\"SecretPassword123\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = me.NewIdentityUserToken(ctx, \"token\", \u0026me.IdentityUserTokenArgs{\n\t\t\tUserLogin:   user.Login,\n\t\t\tName:        pulumi.String(\"token_name\"),\n\t\t\tDescription: pulumi.String(\"Token description\"),\n\t\t\tExpiresAt:   pulumi.String(\"2030-01-01T00:00:00Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityUser;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityUserArgs;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityUserToken;\nimport com.ovhcloud.pulumi.ovh.Me.IdentityUserTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var user = new IdentityUser(\"user\", IdentityUserArgs.builder()\n            .description(\"User description\")\n            .email(\"user.email@example.com\")\n            .group(\"DEFAULT\")\n            .login(\"user_login\")\n            .password(\"SecretPassword123\")\n            .build());\n\n        var token = new IdentityUserToken(\"token\", IdentityUserTokenArgs.builder()\n            .userLogin(user.login())\n            .name(\"token_name\")\n            .description(\"Token description\")\n            .expiresAt(\"2030-01-01T00:00:00Z\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  user:\n    type: ovh:Me:IdentityUser\n    properties:\n      description: User description\n      email: user.email@example.com\n      group: DEFAULT\n      login: user_login\n      password: SecretPassword123\n  token:\n    type: ovh:Me:IdentityUserToken\n    properties:\n      userLogin: ${user.login}\n      name: token_name\n      description: Token description\n      expiresAt: 2030-01-01T00:00:00Z\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "creation": {
+                    "type": "string",
+                    "description": "Creation date of this token.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Token description.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Token expiration date.\n"
+                },
+                "expiresIn": {
+                    "type": "integer",
+                    "description": "Token validity duration in seconds.\n"
+                },
+                "lastUsed": {
+                    "type": "string",
+                    "description": "Last use of this token.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Token name.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The token value.\n",
+                    "secret": true
+                },
+                "userLogin": {
+                    "type": "string",
+                    "description": "User's login suffix.\n"
+                }
+            },
+            "required": [
+                "creation",
+                "description",
+                "expiresAt",
+                "lastUsed",
+                "name",
+                "token",
+                "userLogin"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Token description.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Token expiration date.\n"
+                },
+                "expiresIn": {
+                    "type": "integer",
+                    "description": "Token validity duration in seconds.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Token name.\n"
+                },
+                "userLogin": {
+                    "type": "string",
+                    "description": "User's login suffix.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "userLogin"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IdentityUserToken resources.\n",
+                "properties": {
+                    "creation": {
+                        "type": "string",
+                        "description": "Creation date of this token.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Token description.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Token expiration date.\n"
+                    },
+                    "expiresIn": {
+                        "type": "integer",
+                        "description": "Token validity duration in seconds.\n"
+                    },
+                    "lastUsed": {
+                        "type": "string",
+                        "description": "Last use of this token.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Token name.\n"
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "The token value.\n",
+                        "secret": true
+                    },
+                    "userLogin": {
+                        "type": "string",
+                        "description": "User's login suffix.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:Okms/credential:Credential": {
             "description": "Creates a credential for an OVHcloud KMS.\n\n",
             "properties": {
@@ -27182,6 +28736,10 @@
                     "type": "boolean",
                     "description": "Whether Savings Plan should be renewed at the end of the period (defaults to false)\n"
                 },
+                "deploymentType": {
+                    "type": "string",
+                    "description": "Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "Custom display name, used in invoices\n"
@@ -27251,6 +28809,10 @@
                     "type": "boolean",
                     "description": "Whether Savings Plan should be renewed at the end of the period (defaults to false)\n"
                 },
+                "deploymentType": {
+                    "type": "string",
+                    "description": "Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "Custom display name, used in invoices\n"
@@ -27287,6 +28849,10 @@
                     "autoRenewal": {
                         "type": "boolean",
                         "description": "Whether Savings Plan should be renewed at the end of the period (defaults to false)\n"
+                    },
+                    "deploymentType": {
+                        "type": "string",
+                        "description": "Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.\n"
                     },
                     "displayName": {
                         "type": "string",
@@ -28456,7 +30022,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the user.\n"
+                    "description": "Name of the user. A user named \"default\" is mapped with an already created user and reset his password instead of creating a new user.\n"
                 },
                 "password": {
                     "type": "string",
@@ -28521,7 +30087,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the user.\n",
+                    "description": "Name of the user. A user named \"default\" is mapped with an already created user and reset his password instead of creating a new user.\n",
                     "willReplaceOnChanges": true
                 },
                 "passwordReset": {
@@ -28579,7 +30145,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the user.\n",
+                        "description": "Name of the user. A user named \"default\" is mapped with an already created user and reset his password instead of creating a new user.\n",
                         "willReplaceOnChanges": true
                     },
                     "password": {
@@ -28694,6 +30260,65 @@
                     "serviceName": {
                         "type": "string",
                         "description": "Service name\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst catchup = new ovh.CloudProjectStorageReplicationJob(\"catchup\", {\n    serviceName: \"xxxxxxxxxxxx\",\n    regionName: \"GRA\",\n    containerName: \"my-source-container\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ncatchup = ovh.CloudProjectStorageReplicationJob(\"catchup\",\n    service_name=\"xxxxxxxxxxxx\",\n    region_name=\"GRA\",\n    container_name=\"my-source-container\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var catchup = new Ovh.CloudProjectStorageReplicationJob(\"catchup\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxx\",\n        RegionName = \"GRA\",\n        ContainerName = \"my-source-container\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudProjectStorageReplicationJob(ctx, \"catchup\", \u0026ovh.CloudProjectStorageReplicationJobArgs{\n\t\t\tServiceName:   pulumi.String(\"xxxxxxxxxxxx\"),\n\t\t\tRegionName:    pulumi.String(\"GRA\"),\n\t\t\tContainerName: pulumi.String(\"my-source-container\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProjectStorageReplicationJob;\nimport com.ovhcloud.pulumi.ovh.CloudProjectStorageReplicationJobArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var catchup = new CloudProjectStorageReplicationJob(\"catchup\", CloudProjectStorageReplicationJobArgs.builder()\n            .serviceName(\"xxxxxxxxxxxx\")\n            .regionName(\"GRA\")\n            .containerName(\"my-source-container\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  catchup:\n    type: ovh:CloudProjectStorageReplicationJob\n    properties:\n      serviceName: xxxxxxxxxxxx\n      regionName: GRA\n      containerName: my-source-container\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "containerName": {
+                    "type": "string",
+                    "description": "Name of the storage container\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "Region name of the storage container\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                }
+            },
+            "required": [
+                "containerName",
+                "regionName",
+                "serviceName"
+            ],
+            "inputProperties": {
+                "containerName": {
+                    "type": "string",
+                    "description": "Name of the storage container\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "Region name of the storage container\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "containerName",
+                "regionName",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CloudProjectStorageReplicationJob resources.\n",
+                "properties": {
+                    "containerName": {
+                        "type": "string",
+                        "description": "Name of the storage container\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "Region name of the storage container\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.\n"
                     }
                 },
                 "type": "object"
@@ -29571,6 +31196,163 @@
                 },
                 "type": "object"
             }
+        },
+        "ovh:index/vrackservices:Vrackservices": {
+            "description": "## Example Usage\n\n### Example 1 - Simple Vrack Services order\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  my-vrackservices:\n    type: ovh:Vrackservices\n    properties:\n      ovhSubsidiary: ${myaccount.ovhSubsidiary}\n      plans:\n        - plan_code: vrack-services\n          duration: P1M\n          pricing_mode: default\n          configuration:\n            - label: region_name\n              value: ${region}\n      targetSpec:\n        subnets: []\nvariables:\n  region: eu-west-lim\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Example 2 - Vrack Services basic configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  my-vrackservices:\n    type: ovh:Vrackservices\n    properties:\n      ovhSubsidiary: ${myaccount.ovhSubsidiary}\n      plans:\n        - plan_code: vrack-services\n          duration: P1M\n          pricing_mode: default\n          configuration:\n            - label: region_name\n              value: ${region}\n      targetSpec:\n        subnets:\n          - cidr: 192.168.0.0/24\n            serviceRange:\n              cidr: 192.168.0.0/29\n            serviceEndpoints: []\nvariables:\n  region: eu-west-lim\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Example 3 - Vrack Services associated to a vRack\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  my-vrackservices:\n    type: ovh:Vrackservices\n    properties:\n      ovhSubsidiary: ${myaccount.ovhSubsidiary}\n      plans:\n        - plan_code: vrack-services\n          duration: P1M\n          pricing_mode: default\n          configuration:\n            - label: region_name\n              value: ${region}\n      targetSpec:\n        subnets: []\n  vrack-vrackservices-binding:\n    type: ovh:Vrack:Vrackservices\n    properties:\n      serviceName: ${vrackName}\n      vrackServices: ${[\"my-vrackservices\"].id}\nvariables:\n  region: eu-west-lim\n  vrackName: pn-000000\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Example 4 - Vrack Services configuration with a managed service\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  my-vrackservices:\n    type: ovh:Vrackservices\n    properties:\n      ovhSubsidiary: ${myaccount.ovhSubsidiary}\n      plans:\n        - plan_code: vrack-services\n          duration: P1M\n          pricing_mode: default\n          configuration:\n            - label: region_name\n              value: ${region}\n      targetSpec:\n        subnets:\n          - cidr: 192.168.0.0/24\n            displayName: my.subnet\n            serviceRange:\n              cidr: 192.168.0.0/29\n            vlan: 30\n            serviceEndpoints:\n              - managedServiceUrn: ${[\"my-efs\"].iam.urn}\nvariables:\n  region: eu-west-lim\n  efsName: example-efs-service-name-000e75d3d4c1\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n  my-efs:\n    fn::invoke:\n      function: ovh:getStorageEfs\n      arguments:\n        serviceName: ${efsName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Example 5 - Vrack Services complete configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  my-vrackservices:\n    type: ovh:Vrackservices\n    properties:\n      ovhSubsidiary: ${myaccount.ovhSubsidiary}\n      plans:\n        - plan_code: vrack-services\n          duration: P1M\n          pricing_mode: default\n          configuration:\n            - label: region_name\n              value: ${region}\n      targetSpec:\n        subnets:\n          - cidr: 192.168.0.0/24\n            displayName: my.subnet\n            serviceRange:\n              cidr: 192.168.0.0/29\n            vlan: 30\n            serviceEndpoints:\n              - managedServiceUrn: ${[\"my-efs\"].iam.urn}\n  vrack-vrackservices-binding:\n    type: ovh:Vrack:Vrackservices\n    properties:\n      serviceName: ${vrackName}\n      vrackServices: ${[\"my-vrackservices\"].id}\nvariables:\n  region: eu-west-lim\n  efsName: example-efs-service-name-000e75d3d4c1\n  vrackName: pn-000000\n  myaccount:\n    fn::invoke:\n      function: ovh:Me:getMe\n      arguments: {}\n  my-efs:\n    fn::invoke:\n      function: ovh:getStorageEfs\n      arguments:\n        serviceName: ${efsName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA VrackServices can be imported using the `id`. Using the following configuration:\n\nterraform\n\nimport {\n\n  to = ovh_vrackservices.vrackservices\n\n  id = \"vrs-xxx-xxx-xxx-xxx\"\n\n}\n\nYou can then run:\n\nbash\n\n$ pulumi preview -generate-config-out=vrackservices.tf\n\n$ pulumi up\n\nThe file `vrackservices.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.\n\n",
+            "properties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "Computed hash used to control concurrent modification requests. Here, it represents the target specification value the request is based on\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Date of the vRack Services delivery\n"
+                },
+                "currentState": {
+                    "$ref": "#/types/ovh:index/VrackservicesCurrentState:VrackservicesCurrentState",
+                    "description": "Current configuration applied to the vRack Services\n"
+                },
+                "currentTasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesCurrentTask:VrackservicesCurrentTask"
+                    },
+                    "description": "Asynchronous operations ongoing on the vRack Services\n"
+                },
+                "iam": {
+                    "$ref": "#/types/ovh:index/VrackservicesIam:VrackservicesIam",
+                    "description": "IAM resource metadata\n"
+                },
+                "order": {
+                    "$ref": "#/types/ovh:index/VrackservicesOrder:VrackservicesOrder",
+                    "description": "Details about an Order\n"
+                },
+                "ovhSubsidiary": {
+                    "type": "string",
+                    "description": "OVH subsidiaries\n"
+                },
+                "planOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesPlanOption:VrackservicesPlanOption"
+                    }
+                },
+                "plans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesPlan:VrackservicesPlan"
+                    }
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status\n"
+                },
+                "targetSpec": {
+                    "$ref": "#/types/ovh:index/VrackservicesTargetSpec:VrackservicesTargetSpec",
+                    "description": "Target specification of the vRack Services\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Date of the Last vRack Services update\n"
+                }
+            },
+            "required": [
+                "checksum",
+                "createdAt",
+                "currentState",
+                "currentTasks",
+                "iam",
+                "order",
+                "resourceStatus",
+                "targetSpec",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "ovhSubsidiary": {
+                    "type": "string",
+                    "description": "OVH subsidiaries\n"
+                },
+                "planOptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesPlanOption:VrackservicesPlanOption"
+                    }
+                },
+                "plans": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/ovh:index/VrackservicesPlan:VrackservicesPlan"
+                    }
+                },
+                "targetSpec": {
+                    "$ref": "#/types/ovh:index/VrackservicesTargetSpec:VrackservicesTargetSpec",
+                    "description": "Target specification of the vRack Services\n"
+                }
+            },
+            "requiredInputs": [
+                "targetSpec"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vrackservices resources.\n",
+                "properties": {
+                    "checksum": {
+                        "type": "string",
+                        "description": "Computed hash used to control concurrent modification requests. Here, it represents the target specification value the request is based on\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Date of the vRack Services delivery\n"
+                    },
+                    "currentState": {
+                        "$ref": "#/types/ovh:index/VrackservicesCurrentState:VrackservicesCurrentState",
+                        "description": "Current configuration applied to the vRack Services\n"
+                    },
+                    "currentTasks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:index/VrackservicesCurrentTask:VrackservicesCurrentTask"
+                        },
+                        "description": "Asynchronous operations ongoing on the vRack Services\n"
+                    },
+                    "iam": {
+                        "$ref": "#/types/ovh:index/VrackservicesIam:VrackservicesIam",
+                        "description": "IAM resource metadata\n"
+                    },
+                    "order": {
+                        "$ref": "#/types/ovh:index/VrackservicesOrder:VrackservicesOrder",
+                        "description": "Details about an Order\n"
+                    },
+                    "ovhSubsidiary": {
+                        "type": "string",
+                        "description": "OVH subsidiaries\n"
+                    },
+                    "planOptions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:index/VrackservicesPlanOption:VrackservicesPlanOption"
+                        }
+                    },
+                    "plans": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/ovh:index/VrackservicesPlan:VrackservicesPlan"
+                        }
+                    },
+                    "resourceStatus": {
+                        "type": "string",
+                        "description": "Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status\n"
+                    },
+                    "targetSpec": {
+                        "$ref": "#/types/ovh:index/VrackservicesTargetSpec:VrackservicesTargetSpec",
+                        "description": "Target specification of the vRack Services\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Date of the Last vRack Services update\n"
+                    }
+                },
+                "type": "object"
+            }
         }
     },
     "functions": {
@@ -30083,6 +31865,9 @@
                         "type": "string",
                         "description": "The URL of an OIDC-compliant server.\n"
                     },
+                    "oidcGroupFilter": {
+                        "type": "string"
+                    },
                     "oidcGroupsClaim": {
                         "type": "string",
                         "description": "The name of Claim in the ID token whose value is the list of group names.\n"
@@ -30141,6 +31926,9 @@
                     },
                     "oidcEndpoint": {
                         "description": "The URL of an OIDC-compliant server.\n",
+                        "type": "string"
+                    },
+                    "oidcGroupFilter": {
                         "type": "string"
                     },
                     "oidcGroupsClaim": {
@@ -37354,6 +39142,13 @@
                         },
                         "type": "array"
                     },
+                    "conditions": {
+                        "description": "Conditions restricting the policy.\n",
+                        "items": {
+                            "$ref": "#/types/ovh:Iam/getPolicyCondition:getPolicyCondition"
+                        },
+                        "type": "array"
+                    },
                     "createdAt": {
                         "description": "Creation date of this group.\n",
                         "type": "string"
@@ -37375,6 +39170,10 @@
                             "type": "string"
                         },
                         "type": "array"
+                    },
+                    "expiredAt": {
+                        "description": "Expiration date of the policy.\n",
+                        "type": "string"
                     },
                     "id": {
                         "type": "string"
@@ -37418,7 +39217,9 @@
                     }
                 },
                 "required": [
+                    "conditions",
                     "createdAt",
+                    "expiredAt",
                     "id",
                     "identities",
                     "name",
@@ -40743,6 +42544,70 @@
                 "type": "object"
             }
         },
+        "ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps": {
+            "description": "Retrieve the IP subnet used by OVHcloud IPLB to contact your backends.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst iplb = ovh.getIploadbalancingNatIps({\n    serviceName: \"iplb-example-1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\niplb = ovh.get_iploadbalancing_nat_ips(service_name=\"iplb-example-1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var iplb = Ovh.GetIploadbalancingNatIps.Invoke(new()\n    {\n        ServiceName = \"iplb-example-1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetIploadbalancingNatIps(ctx, \u0026ovh.GetIploadbalancingNatIpsArgs{\n\t\t\tServiceName: \"iplb-example-1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var iplb = OvhFunctions.getIploadbalancingNatIps(GetIploadbalancingNatIpsArgs.builder()\n            .serviceName(\"iplb-example-1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  iplb:\n    fn::invoke:\n      function: ovh:getIploadbalancingNatIps\n      arguments:\n        serviceName: iplb-example-1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIploadbalancingNatIps.\n",
+                "properties": {
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The service name of your IP load balancing\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIploadbalancingNatIps.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "natIps": {
+                        "items": {
+                            "$ref": "#/types/ovh:index/getIploadbalancingNatIpsNatIp:getIploadbalancingNatIpsNatIp"
+                        },
+                        "type": "array"
+                    },
+                    "serviceName": {
+                        "description": "The service name of your IP load balancing\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "natIps",
+                    "serviceName",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getIploadbalancings:getIploadbalancings": {
+            "description": "List of your Load Balancers (IPLB)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst iplbs = ovh.getIploadbalancings({});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\niplbs = ovh.get_iploadbalancings()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var iplbs = Ovh.GetIploadbalancings.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetIploadbalancings(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var iplbs = OvhFunctions.getIploadbalancings(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  iplbs:\n    fn::invoke:\n      function: ovh:getIploadbalancings\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getIploadbalancings.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "iploadbalancings": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "iploadbalancings",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "ovh:index/getLocation:getLocation": {
             "description": "Get available regions and their availability zones\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst paris = ovh.getLocation({\n    name: \"eu-west-par\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nparis = ovh.get_location(name=\"eu-west-par\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var paris = Ovh.GetLocation.Invoke(new()\n    {\n        Name = \"eu-west-par\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.GetLocation(ctx, \u0026ovh.GetLocationArgs{\n\t\t\tName: \"eu-west-par\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetLocationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var paris = OvhFunctions.getLocation(GetLocationArgs.builder()\n            .name(\"eu-west-par\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  paris:\n    fn::invoke:\n      function: ovh:getLocation\n      arguments:\n        name: eu-west-par\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -41575,6 +43440,106 @@
                 "required": [
                     "results",
                     "serviceName",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getVrackservices:getVrackservices": {
+            "description": "Retrieve a vRack Services\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVrackservices.\n",
+                "properties": {
+                    "vrackServicesId": {
+                        "type": "string",
+                        "description": "Vrack services ID\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "vrackServicesId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVrackservices.\n",
+                "properties": {
+                    "checksum": {
+                        "description": "Computed hash used to control concurrent modification requests. Here, it represents the current target specification value\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "Date of the vRack Services delivery\n",
+                        "type": "string"
+                    },
+                    "currentState": {
+                        "$ref": "#/types/ovh:index/getVrackservicesCurrentState:getVrackservicesCurrentState",
+                        "description": "Current configuration applied to the vRack Services\n"
+                    },
+                    "currentTasks": {
+                        "description": "Asynchronous operations ongoing on the vRack Services\n",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getVrackservicesCurrentTask:getVrackservicesCurrentTask"
+                        },
+                        "type": "array"
+                    },
+                    "iam": {
+                        "$ref": "#/types/ovh:index/getVrackservicesIam:getVrackservicesIam",
+                        "description": "IAM resource metadata\n"
+                    },
+                    "id": {
+                        "description": "Unique identifier\n",
+                        "type": "string"
+                    },
+                    "resourceStatus": {
+                        "description": "Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status\n",
+                        "type": "string"
+                    },
+                    "targetSpec": {
+                        "$ref": "#/types/ovh:index/getVrackservicesTargetSpec:getVrackservicesTargetSpec",
+                        "description": "Last target specification of the vRack Services\n"
+                    },
+                    "updatedAt": {
+                        "description": "Date of the Last vRack Services update\n",
+                        "type": "string"
+                    },
+                    "vrackServicesId": {
+                        "description": "Vrack services ID\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "checksum",
+                    "createdAt",
+                    "currentState",
+                    "currentTasks",
+                    "iam",
+                    "id",
+                    "resourceStatus",
+                    "targetSpec",
+                    "updatedAt",
+                    "vrackServicesId"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getVrackservicess:getVrackservicess": {
+            "description": "List all vRack Services\n",
+            "outputs": {
+                "description": "A collection of values returned by getVrackservicess.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "vrackservicesses": {
+                        "items": {
+                            "$ref": "#/types/ovh:index/getVrackservicessVrackservicess:getVrackservicessVrackservicess"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "vrackservicesses",
                     "id"
                 ],
                 "type": "object"

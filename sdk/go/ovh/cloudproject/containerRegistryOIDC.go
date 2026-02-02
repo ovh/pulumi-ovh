@@ -36,6 +36,7 @@ import (
 //				OidcClientId:     pulumi.String("xxx"),
 //				OidcClientSecret: pulumi.String("xxx"),
 //				OidcScope:        pulumi.String("openid,profile,email,offline_access"),
+//				OidcGroupFilter:  pulumi.String("harbor-admin"),
 //				OidcGroupsClaim:  pulumi.String("groups"),
 //				OidcAdminGroup:   pulumi.String("harbor-admin"),
 //				OidcVerifyCert:   pulumi.Bool(true),
@@ -77,6 +78,8 @@ type ContainerRegistryOIDC struct {
 	OidcClientSecret pulumi.StringOutput `pulumi:"oidcClientSecret"`
 	// The URL of an OIDC-compliant server.
 	OidcEndpoint pulumi.StringOutput `pulumi:"oidcEndpoint"`
+	// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+	OidcGroupFilter pulumi.StringPtrOutput `pulumi:"oidcGroupFilter"`
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim pulumi.StringPtrOutput `pulumi:"oidcGroupsClaim"`
 	// The name of the OIDC provider.
@@ -160,6 +163,8 @@ type containerRegistryOIDCState struct {
 	OidcClientSecret *string `pulumi:"oidcClientSecret"`
 	// The URL of an OIDC-compliant server.
 	OidcEndpoint *string `pulumi:"oidcEndpoint"`
+	// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+	OidcGroupFilter *string `pulumi:"oidcGroupFilter"`
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim *string `pulumi:"oidcGroupsClaim"`
 	// The name of the OIDC provider.
@@ -189,6 +194,8 @@ type ContainerRegistryOIDCState struct {
 	OidcClientSecret pulumi.StringPtrInput
 	// The URL of an OIDC-compliant server.
 	OidcEndpoint pulumi.StringPtrInput
+	// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+	OidcGroupFilter pulumi.StringPtrInput
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim pulumi.StringPtrInput
 	// The name of the OIDC provider.
@@ -222,6 +229,8 @@ type containerRegistryOIDCArgs struct {
 	OidcClientSecret string `pulumi:"oidcClientSecret"`
 	// The URL of an OIDC-compliant server.
 	OidcEndpoint string `pulumi:"oidcEndpoint"`
+	// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+	OidcGroupFilter *string `pulumi:"oidcGroupFilter"`
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim *string `pulumi:"oidcGroupsClaim"`
 	// The name of the OIDC provider.
@@ -252,6 +261,8 @@ type ContainerRegistryOIDCArgs struct {
 	OidcClientSecret pulumi.StringInput
 	// The URL of an OIDC-compliant server.
 	OidcEndpoint pulumi.StringInput
+	// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+	OidcGroupFilter pulumi.StringPtrInput
 	// The name of Claim in the ID token whose value is the list of group names.
 	OidcGroupsClaim pulumi.StringPtrInput
 	// The name of the OIDC provider.
@@ -383,6 +394,11 @@ func (o ContainerRegistryOIDCOutput) OidcClientSecret() pulumi.StringOutput {
 // The URL of an OIDC-compliant server.
 func (o ContainerRegistryOIDCOutput) OidcEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringOutput { return v.OidcEndpoint }).(pulumi.StringOutput)
+}
+
+// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+func (o ContainerRegistryOIDCOutput) OidcGroupFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerRegistryOIDC) pulumi.StringPtrOutput { return v.OidcGroupFilter }).(pulumi.StringPtrOutput)
 }
 
 // The name of Claim in the ID token whose value is the list of group names.

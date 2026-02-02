@@ -66,6 +66,10 @@ export class SavingsPlan extends pulumi.CustomResource {
      */
     public readonly autoRenewal!: pulumi.Output<boolean>;
     /**
+     * Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     */
+    public readonly deploymentType!: pulumi.Output<string | undefined>;
+    /**
      * Custom display name, used in invoices
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class SavingsPlan extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SavingsPlanState | undefined;
             resourceInputs["autoRenewal"] = state ? state.autoRenewal : undefined;
+            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["endDate"] = state ? state.endDate : undefined;
             resourceInputs["flavor"] = state ? state.flavor : undefined;
@@ -155,6 +160,7 @@ export class SavingsPlan extends pulumi.CustomResource {
                 throw new Error("Missing required property 'size'");
             }
             resourceInputs["autoRenewal"] = args ? args.autoRenewal : undefined;
+            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["flavor"] = args ? args.flavor : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
@@ -181,6 +187,10 @@ export interface SavingsPlanState {
      * Whether Savings Plan should be renewed at the end of the period (defaults to false)
      */
     autoRenewal?: pulumi.Input<boolean>;
+    /**
+     * Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     */
+    deploymentType?: pulumi.Input<string>;
     /**
      * Custom display name, used in invoices
      */
@@ -239,6 +249,10 @@ export interface SavingsPlanArgs {
      * Whether Savings Plan should be renewed at the end of the period (defaults to false)
      */
     autoRenewal?: pulumi.Input<boolean>;
+    /**
+     * Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+     */
+    deploymentType?: pulumi.Input<string>;
     /**
      * Custom display name, used in invoices
      */

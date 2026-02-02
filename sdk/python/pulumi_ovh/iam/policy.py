@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['PolicyArgs', 'Policy']
 
@@ -22,9 +24,11 @@ class PolicyArgs:
                  identities: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 conditions: Optional[pulumi.Input['PolicyConditionsArgs']] = None,
                  denies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 expired_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
@@ -32,9 +36,11 @@ class PolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identities: List of identities affected by the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: List of resources affected by the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input['PolicyConditionsArgs'] conditions: Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[_builtins.str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[_builtins.str] expired_at: Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
         :param pulumi.Input[_builtins.str] name: Name of the policy, must be unique
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
         """
@@ -42,12 +48,16 @@ class PolicyArgs:
         pulumi.set(__self__, "resources", resources)
         if allows is not None:
             pulumi.set(__self__, "allows", allows)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
         if denies is not None:
             pulumi.set(__self__, "denies", denies)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if excepts is not None:
             pulumi.set(__self__, "excepts", excepts)
+        if expired_at is not None:
+            pulumi.set(__self__, "expired_at", expired_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if permissions_groups is not None:
@@ -91,6 +101,18 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input['PolicyConditionsArgs']]:
+        """
+        Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input['PolicyConditionsArgs']]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter
     def denies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of actions that will always be denied even if also allowed by this policy or another one.
@@ -126,6 +148,18 @@ class PolicyArgs:
         pulumi.set(self, "excepts", value)
 
     @_builtins.property
+    @pulumi.getter(name="expiredAt")
+    def expired_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+        """
+        return pulumi.get(self, "expired_at")
+
+    @expired_at.setter
+    def expired_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expired_at", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -154,10 +188,12 @@ class PolicyArgs:
 class _PolicyState:
     def __init__(__self__, *,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 conditions: Optional[pulumi.Input['PolicyConditionsArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  denies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 expired_at: Optional[pulumi.Input[_builtins.str]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  owner: Optional[pulumi.Input[_builtins.str]] = None,
@@ -168,10 +204,12 @@ class _PolicyState:
         """
         Input properties used for looking up and filtering Policy resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input['PolicyConditionsArgs'] conditions: Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
         :param pulumi.Input[_builtins.str] created_at: Creation date of this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[_builtins.str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[_builtins.str] expired_at: Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identities: List of identities affected by the policy
         :param pulumi.Input[_builtins.str] name: Name of the policy, must be unique
         :param pulumi.Input[_builtins.str] owner: Owner of the policy.
@@ -182,6 +220,8 @@ class _PolicyState:
         """
         if allows is not None:
             pulumi.set(__self__, "allows", allows)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if denies is not None:
@@ -190,6 +230,8 @@ class _PolicyState:
             pulumi.set(__self__, "description", description)
         if excepts is not None:
             pulumi.set(__self__, "excepts", excepts)
+        if expired_at is not None:
+            pulumi.set(__self__, "expired_at", expired_at)
         if identities is not None:
             pulumi.set(__self__, "identities", identities)
         if name is not None:
@@ -216,6 +258,18 @@ class _PolicyState:
     @allows.setter
     def allows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allows", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input['PolicyConditionsArgs']]:
+        """
+        Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input['PolicyConditionsArgs']]):
+        pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -264,6 +318,18 @@ class _PolicyState:
     @excepts.setter
     def excepts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "excepts", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expiredAt")
+    def expired_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+        """
+        return pulumi.get(self, "expired_at")
+
+    @expired_at.setter
+    def expired_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expired_at", value)
 
     @_builtins.property
     @pulumi.getter
@@ -357,9 +423,11 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 conditions: Optional[pulumi.Input[Union['PolicyConditionsArgs', 'PolicyConditionsArgsDict']]] = None,
                  denies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 expired_at: Optional[pulumi.Input[_builtins.str]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -391,14 +459,53 @@ class Policy(pulumi.CustomResource):
                 "account:apiovh:services/get",
                 "account:apiovh:*",
             ])
+        ip_restricted_prod_access = ovh.iam.Policy("ip_restricted_prod_access",
+            name="ip_restricted_prod_access",
+            description="Allow access only from a specific IP to resources tagged prod",
+            identities=[my_group.group_urn],
+            resources=["urn:v1:eu:resource:vps:*"],
+            allows=["vps:apiovh:*"],
+            conditions={
+                "operator": "MATCH",
+                "values": {
+                    "resource.Tag(environment)": "prod",
+                    "request.IP": "192.72.0.1",
+                },
+            })
+        workdays_and_ip_restricted_and_expiring = ovh.iam.Policy("workdays_and_ip_restricted_and_expiring",
+            name="workdays_and_ip_restricted_and_expiring",
+            description="Allow access only on workdays, expires end of 2026",
+            identities=[my_group.group_urn],
+            resources=["urn:v1:eu:resource:vps:*"],
+            allows=["vps:apiovh:*"],
+            conditions={
+                "operator": "AND",
+                "conditions": [
+                    {
+                        "operator": "MATCH",
+                        "values": {
+                            "date(Europe/Paris).WeekDay.In": "monday,tuesday,wednesday,thursday,friday",
+                        },
+                    },
+                    {
+                        "operator": "MATCH",
+                        "values": {
+                            "request.IP": "192.72.0.1",
+                        },
+                    },
+                ],
+            },
+            expired_at="2026-12-31T23:59:59Z")
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[Union['PolicyConditionsArgs', 'PolicyConditionsArgsDict']] conditions: Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[_builtins.str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[_builtins.str] expired_at: Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identities: List of identities affected by the policy
         :param pulumi.Input[_builtins.str] name: Name of the policy, must be unique
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions_groups: Set of permissions groups included in the policy. At evaluation, these permissions groups are each evaluated independently (notably, excepts actions only affect actions in the same permission group).
@@ -436,6 +543,43 @@ class Policy(pulumi.CustomResource):
                 "account:apiovh:services/get",
                 "account:apiovh:*",
             ])
+        ip_restricted_prod_access = ovh.iam.Policy("ip_restricted_prod_access",
+            name="ip_restricted_prod_access",
+            description="Allow access only from a specific IP to resources tagged prod",
+            identities=[my_group.group_urn],
+            resources=["urn:v1:eu:resource:vps:*"],
+            allows=["vps:apiovh:*"],
+            conditions={
+                "operator": "MATCH",
+                "values": {
+                    "resource.Tag(environment)": "prod",
+                    "request.IP": "192.72.0.1",
+                },
+            })
+        workdays_and_ip_restricted_and_expiring = ovh.iam.Policy("workdays_and_ip_restricted_and_expiring",
+            name="workdays_and_ip_restricted_and_expiring",
+            description="Allow access only on workdays, expires end of 2026",
+            identities=[my_group.group_urn],
+            resources=["urn:v1:eu:resource:vps:*"],
+            allows=["vps:apiovh:*"],
+            conditions={
+                "operator": "AND",
+                "conditions": [
+                    {
+                        "operator": "MATCH",
+                        "values": {
+                            "date(Europe/Paris).WeekDay.In": "monday,tuesday,wednesday,thursday,friday",
+                        },
+                    },
+                    {
+                        "operator": "MATCH",
+                        "values": {
+                            "request.IP": "192.72.0.1",
+                        },
+                    },
+                ],
+            },
+            expired_at="2026-12-31T23:59:59Z")
         ```
 
         :param str resource_name: The name of the resource.
@@ -454,9 +598,11 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 conditions: Optional[pulumi.Input[Union['PolicyConditionsArgs', 'PolicyConditionsArgsDict']]] = None,
                  denies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  excepts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 expired_at: Optional[pulumi.Input[_builtins.str]] = None,
                  identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  permissions_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -471,9 +617,11 @@ class Policy(pulumi.CustomResource):
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
             __props__.__dict__["allows"] = allows
+            __props__.__dict__["conditions"] = conditions
             __props__.__dict__["denies"] = denies
             __props__.__dict__["description"] = description
             __props__.__dict__["excepts"] = excepts
+            __props__.__dict__["expired_at"] = expired_at
             if identities is None and not opts.urn:
                 raise TypeError("Missing required property 'identities'")
             __props__.__dict__["identities"] = identities
@@ -497,10 +645,12 @@ class Policy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             allows: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            conditions: Optional[pulumi.Input[Union['PolicyConditionsArgs', 'PolicyConditionsArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             denies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             excepts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            expired_at: Optional[pulumi.Input[_builtins.str]] = None,
             identities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             owner: Optional[pulumi.Input[_builtins.str]] = None,
@@ -516,10 +666,12 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allows: List of actions allowed on resources by identities
+        :param pulumi.Input[Union['PolicyConditionsArgs', 'PolicyConditionsArgsDict']] conditions: Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
         :param pulumi.Input[_builtins.str] created_at: Creation date of this group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] denies: List of actions that will always be denied even if also allowed by this policy or another one.
         :param pulumi.Input[_builtins.str] description: Description of the policy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excepts: List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
+        :param pulumi.Input[_builtins.str] expired_at: Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] identities: List of identities affected by the policy
         :param pulumi.Input[_builtins.str] name: Name of the policy, must be unique
         :param pulumi.Input[_builtins.str] owner: Owner of the policy.
@@ -533,10 +685,12 @@ class Policy(pulumi.CustomResource):
         __props__ = _PolicyState.__new__(_PolicyState)
 
         __props__.__dict__["allows"] = allows
+        __props__.__dict__["conditions"] = conditions
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["denies"] = denies
         __props__.__dict__["description"] = description
         __props__.__dict__["excepts"] = excepts
+        __props__.__dict__["expired_at"] = expired_at
         __props__.__dict__["identities"] = identities
         __props__.__dict__["name"] = name
         __props__.__dict__["owner"] = owner
@@ -553,6 +707,14 @@ class Policy(pulumi.CustomResource):
         List of actions allowed on resources by identities
         """
         return pulumi.get(self, "allows")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Output[Optional['outputs.PolicyConditions']]:
+        """
+        Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+        """
+        return pulumi.get(self, "conditions")
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
@@ -585,6 +747,14 @@ class Policy(pulumi.CustomResource):
         List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
         """
         return pulumi.get(self, "excepts")
+
+    @_builtins.property
+    @pulumi.getter(name="expiredAt")
+    def expired_at(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+        """
+        return pulumi.get(self, "expired_at")
 
     @_builtins.property
     @pulumi.getter

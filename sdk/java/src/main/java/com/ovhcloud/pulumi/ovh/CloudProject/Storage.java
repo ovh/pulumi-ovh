@@ -7,6 +7,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.StorageArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.StorageState;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.StorageEncryption;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.StorageObject;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.StorageObjectLock;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.StorageReplication;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.StorageVersioning;
 import com.ovhcloud.pulumi.ovh.Utilities;
@@ -22,47 +23,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.CloudProject.Storage;
- * import com.ovhcloud.pulumi.ovh.CloudProject.StorageArgs;
- * import com.pulumi.ovh.CloudProject.inputs.StorageVersioningArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var storage = new Storage("storage", StorageArgs.builder()
- *             .serviceName("<public cloud project ID>")
- *             .regionName("GRA")
- *             .name("my-storage")
- *             .versioning(StorageVersioningArgs.builder()
- *                 .status("enabled")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
@@ -173,6 +133,20 @@ public class Storage extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Object lock configuration
+     * 
+     */
+    @Export(name="objectLock", refs={StorageObjectLock.class}, tree="[0]")
+    private Output<StorageObjectLock> objectLock;
+
+    /**
+     * @return Object lock configuration
+     * 
+     */
+    public Output<StorageObjectLock> objectLock() {
+        return this.objectLock;
     }
     /**
      * Container objects

@@ -17,4 +17,5 @@ from .get_resource_groups import *
 from .permissions_group import *
 from .policy import *
 from .resource_group import *
+from ._inputs import *
 from . import outputs

@@ -161,6 +161,10 @@ export class Server extends pulumi.CustomResource {
      */
     public /*out*/ readonly rack!: pulumi.Output<string>;
     /**
+     * Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     */
+    public readonly range!: pulumi.Output<string | undefined>;
+    /**
      * Dedicated region localisation
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
@@ -245,6 +249,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["professionalUse"] = state ? state.professionalUse : undefined;
             resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["rack"] = state ? state.rack : undefined;
+            resourceInputs["range"] = state ? state.range : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["rescueMail"] = state ? state.rescueMail : undefined;
             resourceInputs["rescueSshKey"] = state ? state.rescueSshKey : undefined;
@@ -273,6 +278,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["preventInstallOnCreate"] = args ? args.preventInstallOnCreate : undefined;
             resourceInputs["preventInstallOnImport"] = args ? args.preventInstallOnImport : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
+            resourceInputs["range"] = args ? args.range : undefined;
             resourceInputs["rescueMail"] = args ? args.rescueMail : undefined;
             resourceInputs["rescueSshKey"] = args ? args.rescueSshKey : undefined;
             resourceInputs["rootDevice"] = args ? args.rootDevice : undefined;
@@ -408,6 +414,10 @@ export interface ServerState {
      */
     rack?: pulumi.Input<string>;
     /**
+     * Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     */
+    range?: pulumi.Input<string>;
+    /**
      * Dedicated region localisation
      */
     region?: pulumi.Input<string>;
@@ -513,6 +523,10 @@ export interface ServerArgs {
      * @deprecated Attribute 'properties' is deprecated and has no effect
      */
     properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     */
+    range?: pulumi.Input<string>;
     /**
      * Rescue mail of the server
      */

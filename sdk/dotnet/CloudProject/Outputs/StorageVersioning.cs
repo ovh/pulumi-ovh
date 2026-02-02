@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class StorageVersioning
     {
         /// <summary>
-        /// Versioning status (E.g. "enabled", "disabled" or "suspended")
+        /// Versioning status
         /// </summary>
         public readonly string? Status;
 

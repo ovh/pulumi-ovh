@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'GetPolicyResult',
@@ -26,10 +27,13 @@ class GetPolicyResult:
     """
     A collection of values returned by getPolicy.
     """
-    def __init__(__self__, allows=None, created_at=None, denies=None, description=None, excepts=None, id=None, identities=None, name=None, owner=None, permissions_groups=None, read_only=None, resources=None, updated_at=None):
+    def __init__(__self__, allows=None, conditions=None, created_at=None, denies=None, description=None, excepts=None, expired_at=None, id=None, identities=None, name=None, owner=None, permissions_groups=None, read_only=None, resources=None, updated_at=None):
         if allows and not isinstance(allows, list):
             raise TypeError("Expected argument 'allows' to be a list")
         pulumi.set(__self__, "allows", allows)
+        if conditions and not isinstance(conditions, list):
+            raise TypeError("Expected argument 'conditions' to be a list")
+        pulumi.set(__self__, "conditions", conditions)
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -42,6 +46,9 @@ class GetPolicyResult:
         if excepts and not isinstance(excepts, list):
             raise TypeError("Expected argument 'excepts' to be a list")
         pulumi.set(__self__, "excepts", excepts)
+        if expired_at and not isinstance(expired_at, str):
+            raise TypeError("Expected argument 'expired_at' to be a str")
+        pulumi.set(__self__, "expired_at", expired_at)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -76,6 +83,14 @@ class GetPolicyResult:
         return pulumi.get(self, "allows")
 
     @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetPolicyConditionResult']:
+        """
+        Conditions restricting the policy.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
@@ -106,6 +121,14 @@ class GetPolicyResult:
         Set of actions that will be subtracted from the `allow` list.
         """
         return pulumi.get(self, "excepts")
+
+    @_builtins.property
+    @pulumi.getter(name="expiredAt")
+    def expired_at(self) -> _builtins.str:
+        """
+        Expiration date of the policy.
+        """
+        return pulumi.get(self, "expired_at")
 
     @_builtins.property
     @pulumi.getter
@@ -176,10 +199,12 @@ class AwaitableGetPolicyResult(GetPolicyResult):
             yield self
         return GetPolicyResult(
             allows=self.allows,
+            conditions=self.conditions,
             created_at=self.created_at,
             denies=self.denies,
             description=self.description,
             excepts=self.excepts,
+            expired_at=self.expired_at,
             id=self.id,
             identities=self.identities,
             name=self.name,
@@ -229,10 +254,12 @@ def get_policy(allows: Optional[Sequence[_builtins.str]] = None,
 
     return AwaitableGetPolicyResult(
         allows=pulumi.get(__ret__, 'allows'),
+        conditions=pulumi.get(__ret__, 'conditions'),
         created_at=pulumi.get(__ret__, 'created_at'),
         denies=pulumi.get(__ret__, 'denies'),
         description=pulumi.get(__ret__, 'description'),
         excepts=pulumi.get(__ret__, 'excepts'),
+        expired_at=pulumi.get(__ret__, 'expired_at'),
         id=pulumi.get(__ret__, 'id'),
         identities=pulumi.get(__ret__, 'identities'),
         name=pulumi.get(__ret__, 'name'),
@@ -279,10 +306,12 @@ def get_policy_output(allows: Optional[pulumi.Input[Optional[Sequence[_builtins.
     __ret__ = pulumi.runtime.invoke_output('ovh:Iam/getPolicy:getPolicy', __args__, opts=opts, typ=GetPolicyResult)
     return __ret__.apply(lambda __response__: GetPolicyResult(
         allows=pulumi.get(__response__, 'allows'),
+        conditions=pulumi.get(__response__, 'conditions'),
         created_at=pulumi.get(__response__, 'created_at'),
         denies=pulumi.get(__response__, 'denies'),
         description=pulumi.get(__response__, 'description'),
         excepts=pulumi.get(__response__, 'excepts'),
+        expired_at=pulumi.get(__response__, 'expired_at'),
         id=pulumi.get(__response__, 'id'),
         identities=pulumi.get(__response__, 'identities'),
         name=pulumi.get(__response__, 'name'),

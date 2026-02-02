@@ -7,22 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const storage = new ovh.cloudproject.Storage("storage", {
- *     serviceName: "<public cloud project ID>",
- *     regionName: "GRA",
- *     name: "my-storage",
- *     versioning: {
- *         status: "enabled",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
@@ -100,6 +84,10 @@ export class Storage extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Object lock configuration
+     */
+    public readonly objectLock!: pulumi.Output<outputs.CloudProject.StorageObjectLock>;
+    /**
      * Container objects
      */
     public /*out*/ readonly objects!: pulumi.Output<outputs.CloudProject.StorageObject[]>;
@@ -163,6 +151,7 @@ export class Storage extends pulumi.CustomResource {
             resourceInputs["limit"] = state ? state.limit : undefined;
             resourceInputs["marker"] = state ? state.marker : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["objectLock"] = state ? state.objectLock : undefined;
             resourceInputs["objects"] = state ? state.objects : undefined;
             resourceInputs["objectsCount"] = state ? state.objectsCount : undefined;
             resourceInputs["objectsSize"] = state ? state.objectsSize : undefined;
@@ -187,6 +176,7 @@ export class Storage extends pulumi.CustomResource {
             resourceInputs["limit"] = args ? args.limit : undefined;
             resourceInputs["marker"] = args ? args.marker : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["objectLock"] = args ? args.objectLock : undefined;
             resourceInputs["ownerId"] = args ? args.ownerId : undefined;
             resourceInputs["prefix"] = args ? args.prefix : undefined;
             resourceInputs["regionName"] = args ? args.regionName : undefined;
@@ -233,6 +223,10 @@ export interface StorageState {
      * Container name
      */
     name?: pulumi.Input<string>;
+    /**
+     * Object lock configuration
+     */
+    objectLock?: pulumi.Input<inputs.CloudProject.StorageObjectLock>;
     /**
      * Container objects
      */
@@ -303,6 +297,10 @@ export interface StorageArgs {
      * Container name
      */
     name?: pulumi.Input<string>;
+    /**
+     * Object lock configuration
+     */
+    objectLock?: pulumi.Input<inputs.CloudProject.StorageObjectLock>;
     /**
      * Container owner user ID
      */

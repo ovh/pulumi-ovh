@@ -9,6 +9,7 @@ import typing
 from .cloud_project_containerregistry_iam import *
 from .cloud_project_database_valkey_user import *
 from .cloud_project_ssh_key import *
+from .cloud_project_storage_replication_job import *
 from .domain_zone_dynhost_record import *
 from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
@@ -24,6 +25,8 @@ from .get_domain_zone_record import *
 from .get_domain_zone_records import *
 from .get_installation_template import *
 from .get_installation_templates import *
+from .get_iploadbalancing_nat_ips import *
+from .get_iploadbalancings import *
 from .get_location import *
 from .get_okms_secret import *
 from .get_ovhcloud_connect_config_pop_datacenter_extras import *
@@ -36,6 +39,8 @@ from .get_storage_efs import *
 from .get_storage_efs_share_access_path import *
 from .get_storage_efs_share_access_paths import *
 from .get_vrack_networks import *
+from .get_vrackservices import *
+from .get_vrackservicess import *
 from .iam_resource_tags import *
 from .ovhcloud_connect_pop_config import *
 from .ovhcloud_connect_pop_datacenter_config import *
@@ -45,6 +50,8 @@ from .storage_efs_share import *
 from .storage_efs_share_acl import *
 from .storage_efs_share_snapshot import *
 from .vrack_ipv6_routed_subrange import *
+from .vrackservices import *
+from ._inputs import *
 from . import outputs
 
 # Make subpackages available:
@@ -1001,6 +1008,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "Me/identityUserToken",
+  "fqn": "pulumi_ovh.me",
+  "classes": {
+   "ovh:Me/identityUserToken:IdentityUserToken": "IdentityUserToken"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "Okms/credential",
   "fqn": "pulumi_ovh.okms",
   "classes": {
@@ -1169,6 +1184,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudProjectStorageReplicationJob",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": "CloudProjectStorageReplicationJob"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/domainZoneDynhostRecord",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1237,6 +1260,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": "VrackIpv6RoutedSubrange"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/vrackservices",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/vrackservices:Vrackservices": "Vrackservices"
   }
  }
 ]

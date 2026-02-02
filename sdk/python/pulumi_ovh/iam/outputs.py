@@ -13,10 +13,250 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'PolicyConditions',
+    'PolicyConditionsCondition',
+    'PolicyConditionsConditionCondition',
+    'GetPolicyConditionResult',
+    'GetPolicyConditionConditionResult',
+    'GetPolicyConditionConditionConditionResult',
     'GetReferenceActionsActionResult',
 ]
+
+@pulumi.output_type
+class PolicyConditions(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 conditions: Optional[Sequence['outputs.PolicyConditionsCondition']] = None,
+                 values: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str operator: Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+        :param Sequence['PolicyConditionsConditionArgs'] conditions: List of condition blocks. Each condition supports:
+        :param Mapping[str, _builtins.str] values: Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+        """
+        pulumi.set(__self__, "operator", operator)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.PolicyConditionsCondition']]:
+        """
+        List of condition blocks. Each condition supports:
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyConditionsCondition(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 conditions: Optional[Sequence['outputs.PolicyConditionsConditionCondition']] = None,
+                 values: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str operator: Operator for this condition (typically `MATCH`).
+        :param Sequence['PolicyConditionsConditionConditionArgs'] conditions: A list of nested conditions. This is the recursive part.
+        :param Mapping[str, _builtins.str] values: Map of key-value pairs to match. Keys can reference:
+               * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+               * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+               * Request attributes: `request.IP`
+               
+               **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+        """
+        pulumi.set(__self__, "operator", operator)
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for this condition (typically `MATCH`).
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.PolicyConditionsConditionCondition']]:
+        """
+        A list of nested conditions. This is the recursive part.
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Map of key-value pairs to match. Keys can reference:
+        * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+        * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+        * Request attributes: `request.IP`
+
+        **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class PolicyConditionsConditionCondition(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Optional[Mapping[str, _builtins.str]] = None):
+        """
+        :param _builtins.str operator: Operator for this condition (MATCH, AND, OR, NOT)
+        :param Mapping[str, _builtins.str] values: Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+        """
+        pulumi.set(__self__, "operator", operator)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for this condition (MATCH, AND, OR, NOT)
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetPolicyConditionResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetPolicyConditionConditionResult'],
+                 operator: _builtins.str,
+                 values: Mapping[str, _builtins.str]):
+        """
+        :param Sequence['GetPolicyConditionConditionArgs'] conditions: List of condition blocks. Each condition supports:
+        :param _builtins.str operator: Operator for this condition.
+        :param Mapping[str, _builtins.str] values: Map of key-value pairs to match.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetPolicyConditionConditionResult']:
+        """
+        List of condition blocks. Each condition supports:
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for this condition.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Mapping[str, _builtins.str]:
+        """
+        Map of key-value pairs to match.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetPolicyConditionConditionResult(dict):
+    def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetPolicyConditionConditionConditionResult'],
+                 operator: _builtins.str,
+                 values: Mapping[str, _builtins.str]):
+        """
+        :param Sequence['GetPolicyConditionConditionConditionArgs'] conditions: List of condition blocks. Each condition supports:
+        :param _builtins.str operator: Operator for this condition.
+        :param Mapping[str, _builtins.str] values: Map of key-value pairs to match.
+        """
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetPolicyConditionConditionConditionResult']:
+        """
+        List of condition blocks. Each condition supports:
+        """
+        return pulumi.get(self, "conditions")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for this condition.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Mapping[str, _builtins.str]:
+        """
+        Map of key-value pairs to match.
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetPolicyConditionConditionConditionResult(dict):
+    def __init__(__self__, *,
+                 operator: _builtins.str,
+                 values: Mapping[str, _builtins.str]):
+        """
+        :param _builtins.str operator: Operator for this condition.
+        :param Mapping[str, _builtins.str] values: Map of key-value pairs to match.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        Operator for this condition.
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Mapping[str, _builtins.str]:
+        """
+        Map of key-value pairs to match.
+        """
+        return pulumi.get(self, "values")
+
 
 @pulumi.output_type
 class GetReferenceActionsActionResult(dict):

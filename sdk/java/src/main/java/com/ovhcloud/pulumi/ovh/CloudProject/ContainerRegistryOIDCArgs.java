@@ -108,6 +108,21 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     * 
+     */
+    @Import(name="oidcGroupFilter")
+    private @Nullable Output<String> oidcGroupFilter;
+
+    /**
+     * @return The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     * 
+     */
+    public Optional<Output<String>> oidcGroupFilter() {
+        return Optional.ofNullable(this.oidcGroupFilter);
+    }
+
+    /**
      * The name of Claim in the ID token whose value is the list of group names.
      * 
      */
@@ -221,6 +236,7 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
         this.oidcClientId = $.oidcClientId;
         this.oidcClientSecret = $.oidcClientSecret;
         this.oidcEndpoint = $.oidcEndpoint;
+        this.oidcGroupFilter = $.oidcGroupFilter;
         this.oidcGroupsClaim = $.oidcGroupsClaim;
         this.oidcName = $.oidcName;
         this.oidcScope = $.oidcScope;
@@ -372,6 +388,27 @@ public final class ContainerRegistryOIDCArgs extends com.pulumi.resources.Resour
          */
         public Builder oidcEndpoint(String oidcEndpoint) {
             return oidcEndpoint(Output.of(oidcEndpoint));
+        }
+
+        /**
+         * @param oidcGroupFilter The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcGroupFilter(@Nullable Output<String> oidcGroupFilter) {
+            $.oidcGroupFilter = oidcGroupFilter;
+            return this;
+        }
+
+        /**
+         * @param oidcGroupFilter The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcGroupFilter(String oidcGroupFilter) {
+            return oidcGroupFilter(Output.of(oidcGroupFilter));
         }
 
         /**

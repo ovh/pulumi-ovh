@@ -26,7 +26,7 @@ class FirewallArgs:
         The set of arguments for constructing a Firewall resource.
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
+        :param pulumi.Input[_builtins.bool] enabled: Whether firewall should be enabled
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "ip_on_firewall", ip_on_firewall)
@@ -50,7 +50,6 @@ class FirewallArgs:
     def ip_on_firewall(self) -> pulumi.Input[_builtins.str]:
         """
         IPv4 address
-        * `enabled ` - Whether firewall should be enabled
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -61,6 +60,9 @@ class FirewallArgs:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether firewall should be enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -77,9 +79,9 @@ class _FirewallState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+        :param pulumi.Input[_builtins.bool] enabled: Whether firewall should be enabled
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
         :param pulumi.Input[_builtins.str] state: Current state of your ip on firewall
         """
         if enabled is not None:
@@ -94,6 +96,9 @@ class _FirewallState:
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether firewall should be enabled
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -117,7 +122,6 @@ class _FirewallState:
     def ip_on_firewall(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         IPv4 address
-        * `enabled ` - Whether firewall should be enabled
         """
         return pulumi.get(self, "ip_on_firewall")
 
@@ -159,14 +163,15 @@ class Firewall(pulumi.CustomResource):
 
         my_firewall = ovh.ip.Firewall("my_firewall",
             ip="XXXXXX",
-            ip_on_firewall="XXXXXX")
+            ip_on_firewall="XXXXXX",
+            enabled=True)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] enabled: Whether firewall should be enabled
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
         """
         ...
     @overload
@@ -185,7 +190,8 @@ class Firewall(pulumi.CustomResource):
 
         my_firewall = ovh.ip.Firewall("my_firewall",
             ip="XXXXXX",
-            ip_on_firewall="XXXXXX")
+            ip_on_firewall="XXXXXX",
+            enabled=True)
         ```
 
         :param str resource_name: The name of the resource.
@@ -244,9 +250,9 @@ class Firewall(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] enabled: Whether firewall should be enabled
         :param pulumi.Input[_builtins.str] ip: The IP or the CIDR
         :param pulumi.Input[_builtins.str] ip_on_firewall: IPv4 address
-               * `enabled ` - Whether firewall should be enabled
         :param pulumi.Input[_builtins.str] state: Current state of your ip on firewall
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -262,6 +268,9 @@ class Firewall(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether firewall should be enabled
+        """
         return pulumi.get(self, "enabled")
 
     @_builtins.property
@@ -277,7 +286,6 @@ class Firewall(pulumi.CustomResource):
     def ip_on_firewall(self) -> pulumi.Output[_builtins.str]:
         """
         IPv4 address
-        * `enabled ` - Whether firewall should be enabled
         """
         return pulumi.get(self, "ip_on_firewall")
 

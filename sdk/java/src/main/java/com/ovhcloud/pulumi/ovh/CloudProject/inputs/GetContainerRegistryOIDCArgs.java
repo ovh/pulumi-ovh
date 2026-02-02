@@ -77,6 +77,13 @@ public final class GetContainerRegistryOIDCArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.oidcEndpoint);
     }
 
+    @Import(name="oidcGroupFilter")
+    private @Nullable Output<String> oidcGroupFilter;
+
+    public Optional<Output<String>> oidcGroupFilter() {
+        return Optional.ofNullable(this.oidcGroupFilter);
+    }
+
     /**
      * The name of Claim in the ID token whose value is the list of group names.
      * 
@@ -189,6 +196,7 @@ public final class GetContainerRegistryOIDCArgs extends com.pulumi.resources.Inv
         this.oidcAutoOnboard = $.oidcAutoOnboard;
         this.oidcClientId = $.oidcClientId;
         this.oidcEndpoint = $.oidcEndpoint;
+        this.oidcGroupFilter = $.oidcGroupFilter;
         this.oidcGroupsClaim = $.oidcGroupsClaim;
         this.oidcName = $.oidcName;
         this.oidcScope = $.oidcScope;
@@ -298,6 +306,15 @@ public final class GetContainerRegistryOIDCArgs extends com.pulumi.resources.Inv
          */
         public Builder oidcEndpoint(String oidcEndpoint) {
             return oidcEndpoint(Output.of(oidcEndpoint));
+        }
+
+        public Builder oidcGroupFilter(@Nullable Output<String> oidcGroupFilter) {
+            $.oidcGroupFilter = oidcGroupFilter;
+            return this;
+        }
+
+        public Builder oidcGroupFilter(String oidcGroupFilter) {
+            return oidcGroupFilter(Output.of(oidcGroupFilter));
         }
 
         /**

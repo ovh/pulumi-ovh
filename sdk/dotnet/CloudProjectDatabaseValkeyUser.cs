@@ -60,7 +60,7 @@ namespace Pulumi.Ovh
         public Output<ImmutableArray<string>> Keys { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.Ovh
         }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.Ovh
         }
 
         /// <summary>
-        /// Name of the user.
+        /// Name of the user. A user named "default" is mapped with an already created user and reset his password instead of creating a new user.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

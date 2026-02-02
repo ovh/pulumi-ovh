@@ -61,6 +61,63 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = iam.NewPolicy(ctx, "ip_restricted_prod_access", &iam.PolicyArgs{
+//				Name:        pulumi.String("ip_restricted_prod_access"),
+//				Description: pulumi.String("Allow access only from a specific IP to resources tagged prod"),
+//				Identities: pulumi.StringArray{
+//					myGroup.GroupURN,
+//				},
+//				Resources: pulumi.StringArray{
+//					pulumi.String("urn:v1:eu:resource:vps:*"),
+//				},
+//				Allows: pulumi.StringArray{
+//					pulumi.String("vps:apiovh:*"),
+//				},
+//				Conditions: &iam.PolicyConditionsArgs{
+//					Operator: pulumi.String("MATCH"),
+//					Values: pulumi.StringMap{
+//						"resource.Tag(environment)": pulumi.String("prod"),
+//						"request.IP":                pulumi.String("192.72.0.1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewPolicy(ctx, "workdays_and_ip_restricted_and_expiring", &iam.PolicyArgs{
+//				Name:        pulumi.String("workdays_and_ip_restricted_and_expiring"),
+//				Description: pulumi.String("Allow access only on workdays, expires end of 2026"),
+//				Identities: pulumi.StringArray{
+//					myGroup.GroupURN,
+//				},
+//				Resources: pulumi.StringArray{
+//					pulumi.String("urn:v1:eu:resource:vps:*"),
+//				},
+//				Allows: pulumi.StringArray{
+//					pulumi.String("vps:apiovh:*"),
+//				},
+//				Conditions: &iam.PolicyConditionsArgs{
+//					Operator: pulumi.String("AND"),
+//					Conditions: iam.PolicyConditionsConditionArray{
+//						&iam.PolicyConditionsConditionArgs{
+//							Operator: pulumi.String("MATCH"),
+//							Values: pulumi.StringMap{
+//								"date(Europe/Paris).WeekDay.In": pulumi.String("monday,tuesday,wednesday,thursday,friday"),
+//							},
+//						},
+//						&iam.PolicyConditionsConditionArgs{
+//							Operator: pulumi.String("MATCH"),
+//							Values: pulumi.StringMap{
+//								"request.IP": pulumi.String("192.72.0.1"),
+//							},
+//						},
+//					},
+//				},
+//				ExpiredAt: pulumi.String("2026-12-31T23:59:59Z"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -71,6 +128,8 @@ type Policy struct {
 
 	// List of actions allowed on resources by identities
 	Allows pulumi.StringArrayOutput `pulumi:"allows"`
+	// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+	Conditions PolicyConditionsPtrOutput `pulumi:"conditions"`
 	// Creation date of this group.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// List of actions that will always be denied even if also allowed by this policy or another one.
@@ -79,6 +138,8 @@ type Policy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 	Excepts pulumi.StringArrayOutput `pulumi:"excepts"`
+	// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+	ExpiredAt pulumi.StringPtrOutput `pulumi:"expiredAt"`
 	// List of identities affected by the policy
 	Identities pulumi.StringArrayOutput `pulumi:"identities"`
 	// Name of the policy, must be unique
@@ -133,6 +194,8 @@ func GetPolicy(ctx *pulumi.Context,
 type policyState struct {
 	// List of actions allowed on resources by identities
 	Allows []string `pulumi:"allows"`
+	// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+	Conditions *PolicyConditions `pulumi:"conditions"`
 	// Creation date of this group.
 	CreatedAt *string `pulumi:"createdAt"`
 	// List of actions that will always be denied even if also allowed by this policy or another one.
@@ -141,6 +204,8 @@ type policyState struct {
 	Description *string `pulumi:"description"`
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 	Excepts []string `pulumi:"excepts"`
+	// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+	ExpiredAt *string `pulumi:"expiredAt"`
 	// List of identities affected by the policy
 	Identities []string `pulumi:"identities"`
 	// Name of the policy, must be unique
@@ -160,6 +225,8 @@ type policyState struct {
 type PolicyState struct {
 	// List of actions allowed on resources by identities
 	Allows pulumi.StringArrayInput
+	// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+	Conditions PolicyConditionsPtrInput
 	// Creation date of this group.
 	CreatedAt pulumi.StringPtrInput
 	// List of actions that will always be denied even if also allowed by this policy or another one.
@@ -168,6 +235,8 @@ type PolicyState struct {
 	Description pulumi.StringPtrInput
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 	Excepts pulumi.StringArrayInput
+	// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+	ExpiredAt pulumi.StringPtrInput
 	// List of identities affected by the policy
 	Identities pulumi.StringArrayInput
 	// Name of the policy, must be unique
@@ -191,12 +260,16 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// List of actions allowed on resources by identities
 	Allows []string `pulumi:"allows"`
+	// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+	Conditions *PolicyConditions `pulumi:"conditions"`
 	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies []string `pulumi:"denies"`
 	// Description of the policy
 	Description *string `pulumi:"description"`
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 	Excepts []string `pulumi:"excepts"`
+	// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+	ExpiredAt *string `pulumi:"expiredAt"`
 	// List of identities affected by the policy
 	Identities []string `pulumi:"identities"`
 	// Name of the policy, must be unique
@@ -211,12 +284,16 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// List of actions allowed on resources by identities
 	Allows pulumi.StringArrayInput
+	// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+	Conditions PolicyConditionsPtrInput
 	// List of actions that will always be denied even if also allowed by this policy or another one.
 	Denies pulumi.StringArrayInput
 	// Description of the policy
 	Description pulumi.StringPtrInput
 	// List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 	Excepts pulumi.StringArrayInput
+	// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+	ExpiredAt pulumi.StringPtrInput
 	// List of identities affected by the policy
 	Identities pulumi.StringArrayInput
 	// Name of the policy, must be unique
@@ -319,6 +396,11 @@ func (o PolicyOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Allows }).(pulumi.StringArrayOutput)
 }
 
+// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+func (o PolicyOutput) Conditions() PolicyConditionsPtrOutput {
+	return o.ApplyT(func(v *Policy) PolicyConditionsPtrOutput { return v.Conditions }).(PolicyConditionsPtrOutput)
+}
+
 // Creation date of this group.
 func (o PolicyOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
@@ -337,6 +419,11 @@ func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 // List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
 func (o PolicyOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringArrayOutput { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+func (o PolicyOutput) ExpiredAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.ExpiredAt }).(pulumi.StringPtrOutput)
 }
 
 // List of identities affected by the policy

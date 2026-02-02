@@ -36,6 +36,7 @@ class ServerArgs:
                  prevent_install_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_install_on_import: Optional[pulumi.Input[_builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 range: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_mail: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[_builtins.str]] = None,
                  root_device: Optional[pulumi.Input[_builtins.str]] = None,
@@ -58,6 +59,7 @@ class ServerArgs:
         :param pulumi.Input[_builtins.bool] prevent_install_on_create: Defines whether the server should not be reinstalled after creating the resource
         :param pulumi.Input[_builtins.bool] prevent_install_on_import: Defines whether the server should not be reinstalled when importing the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
+        :param pulumi.Input[_builtins.str] range: Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
         :param pulumi.Input[_builtins.str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[_builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[_builtins.str] root_device: Root device of the server
@@ -99,6 +101,8 @@ class ServerArgs:
             pulumi.log.warn("""properties is deprecated: Attribute 'properties' is deprecated and has no effect""")
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
         if rescue_mail is not None:
             pulumi.set(__self__, "rescue_mail", rescue_mail)
         if rescue_ssh_key is not None:
@@ -290,6 +294,18 @@ class ServerArgs:
         pulumi.set(self, "properties", value)
 
     @_builtins.property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
     @pulumi.getter(name="rescueMail")
     def rescue_mail(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -404,6 +420,7 @@ class _ServerState:
                  professional_use: Optional[pulumi.Input[_builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  rack: Optional[pulumi.Input[_builtins.str]] = None,
+                 range: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_mail: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -441,6 +458,7 @@ class _ServerState:
         :param pulumi.Input[_builtins.bool] professional_use: Does this server have professional use option
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[_builtins.str] rack: Rack id of the server
+        :param pulumi.Input[_builtins.str] range: Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
         :param pulumi.Input[_builtins.str] region: Dedicated region localisation
         :param pulumi.Input[_builtins.str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[_builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
@@ -510,6 +528,8 @@ class _ServerState:
             pulumi.set(__self__, "properties", properties)
         if rack is not None:
             pulumi.set(__self__, "rack", rack)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if rescue_mail is not None:
@@ -851,6 +871,18 @@ class _ServerState:
 
     @_builtins.property
     @pulumi.getter
+    def range(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "range", value)
+
+    @_builtins.property
+    @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Dedicated region localisation
@@ -1003,6 +1035,7 @@ class Server(pulumi.CustomResource):
                  prevent_install_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_install_on_import: Optional[pulumi.Input[_builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 range: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_mail: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[_builtins.str]] = None,
                  root_device: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1051,6 +1084,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] prevent_install_on_create: Defines whether the server should not be reinstalled after creating the resource
         :param pulumi.Input[_builtins.bool] prevent_install_on_import: Defines whether the server should not be reinstalled when importing the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
+        :param pulumi.Input[_builtins.str] range: Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
         :param pulumi.Input[_builtins.str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[_builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
         :param pulumi.Input[_builtins.str] root_device: Root device of the server
@@ -1120,6 +1154,7 @@ class Server(pulumi.CustomResource):
                  prevent_install_on_create: Optional[pulumi.Input[_builtins.bool]] = None,
                  prevent_install_on_import: Optional[pulumi.Input[_builtins.bool]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 range: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_mail: Optional[pulumi.Input[_builtins.str]] = None,
                  rescue_ssh_key: Optional[pulumi.Input[_builtins.str]] = None,
                  root_device: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1151,6 +1186,7 @@ class Server(pulumi.CustomResource):
             __props__.__dict__["prevent_install_on_create"] = prevent_install_on_create
             __props__.__dict__["prevent_install_on_import"] = prevent_install_on_import
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["range"] = range
             __props__.__dict__["rescue_mail"] = rescue_mail
             __props__.__dict__["rescue_ssh_key"] = rescue_ssh_key
             __props__.__dict__["root_device"] = root_device
@@ -1211,6 +1247,7 @@ class Server(pulumi.CustomResource):
             professional_use: Optional[pulumi.Input[_builtins.bool]] = None,
             properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             rack: Optional[pulumi.Input[_builtins.str]] = None,
+            range: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             rescue_mail: Optional[pulumi.Input[_builtins.str]] = None,
             rescue_ssh_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1253,6 +1290,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] professional_use: Does this server have professional use option
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Arbitrary properties to pass to cloud-init's config drive datasource
         :param pulumi.Input[_builtins.str] rack: Rack id of the server
+        :param pulumi.Input[_builtins.str] range: Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
         :param pulumi.Input[_builtins.str] region: Dedicated region localisation
         :param pulumi.Input[_builtins.str] rescue_mail: Rescue mail of the server
         :param pulumi.Input[_builtins.str] rescue_ssh_key: Public SSH Key used in the rescue mode
@@ -1296,6 +1334,7 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["professional_use"] = professional_use
         __props__.__dict__["properties"] = properties
         __props__.__dict__["rack"] = rack
+        __props__.__dict__["range"] = range
         __props__.__dict__["region"] = region
         __props__.__dict__["rescue_mail"] = rescue_mail
         __props__.__dict__["rescue_ssh_key"] = rescue_ssh_key
@@ -1516,6 +1555,14 @@ class Server(pulumi.CustomResource):
         Rack id of the server
         """
         return pulumi.get(self, "rack")
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+        """
+        return pulumi.get(self, "range")
 
     @_builtins.property
     @pulumi.getter

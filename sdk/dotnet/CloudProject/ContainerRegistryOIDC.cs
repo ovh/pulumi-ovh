@@ -31,6 +31,7 @@ namespace Pulumi.Ovh.CloudProject
     ///         OidcClientId = "xxx",
     ///         OidcClientSecret = "xxx",
     ///         OidcScope = "openid,profile,email,offline_access",
+    ///         OidcGroupFilter = "harbor-admin",
     ///         OidcGroupsClaim = "groups",
     ///         OidcAdminGroup = "harbor-admin",
     ///         OidcVerifyCert = true,
@@ -94,6 +95,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("oidcEndpoint")]
         public Output<string> OidcEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+        /// </summary>
+        [Output("oidcGroupFilter")]
+        public Output<string?> OidcGroupFilter { get; private set; } = null!;
 
         /// <summary>
         /// The name of Claim in the ID token whose value is the list of group names.
@@ -235,6 +242,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> OidcEndpoint { get; set; } = null!;
 
         /// <summary>
+        /// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+        /// </summary>
+        [Input("oidcGroupFilter")]
+        public Input<string>? OidcGroupFilter { get; set; }
+
+        /// <summary>
         /// The name of Claim in the ID token whose value is the list of group names.
         /// </summary>
         [Input("oidcGroupsClaim")]
@@ -329,6 +342,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
+
+        /// <summary>
+        /// The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+        /// </summary>
+        [Input("oidcGroupFilter")]
+        public Input<string>? OidcGroupFilter { get; set; }
 
         /// <summary>
         /// The name of Claim in the ID token whose value is the list of group names.

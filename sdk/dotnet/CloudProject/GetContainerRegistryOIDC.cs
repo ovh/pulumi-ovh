@@ -126,6 +126,9 @@ namespace Pulumi.Ovh.CloudProject
         [Input("oidcEndpoint")]
         public string? OidcEndpoint { get; set; }
 
+        [Input("oidcGroupFilter")]
+        public string? OidcGroupFilter { get; set; }
+
         /// <summary>
         /// The name of Claim in the ID token whose value is the list of group names.
         /// </summary>
@@ -200,6 +203,9 @@ namespace Pulumi.Ovh.CloudProject
         [Input("oidcEndpoint")]
         public Input<string>? OidcEndpoint { get; set; }
 
+        [Input("oidcGroupFilter")]
+        public Input<string>? OidcGroupFilter { get; set; }
+
         /// <summary>
         /// The name of Claim in the ID token whose value is the list of group names.
         /// </summary>
@@ -272,6 +278,7 @@ namespace Pulumi.Ovh.CloudProject
         /// The URL of an OIDC-compliant server.
         /// </summary>
         public readonly string? OidcEndpoint;
+        public readonly string? OidcGroupFilter;
         /// <summary>
         /// The name of Claim in the ID token whose value is the list of group names.
         /// </summary>
@@ -313,6 +320,8 @@ namespace Pulumi.Ovh.CloudProject
 
             string? oidcEndpoint,
 
+            string? oidcGroupFilter,
+
             string? oidcGroupsClaim,
 
             string? oidcName,
@@ -332,6 +341,7 @@ namespace Pulumi.Ovh.CloudProject
             OidcAutoOnboard = oidcAutoOnboard;
             OidcClientId = oidcClientId;
             OidcEndpoint = oidcEndpoint;
+            OidcGroupFilter = oidcGroupFilter;
             OidcGroupsClaim = oidcGroupsClaim;
             OidcName = oidcName;
             OidcScope = oidcScope;

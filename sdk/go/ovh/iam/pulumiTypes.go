@@ -13,6 +13,753 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type PolicyConditions struct {
+	// List of condition blocks. Each condition supports:
+	Conditions []PolicyConditionsCondition `pulumi:"conditions"`
+	// Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+	Operator string `pulumi:"operator"`
+	// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+	Values map[string]string `pulumi:"values"`
+}
+
+// PolicyConditionsInput is an input type that accepts PolicyConditionsArgs and PolicyConditionsOutput values.
+// You can construct a concrete instance of `PolicyConditionsInput` via:
+//
+//	PolicyConditionsArgs{...}
+type PolicyConditionsInput interface {
+	pulumi.Input
+
+	ToPolicyConditionsOutput() PolicyConditionsOutput
+	ToPolicyConditionsOutputWithContext(context.Context) PolicyConditionsOutput
+}
+
+type PolicyConditionsArgs struct {
+	// List of condition blocks. Each condition supports:
+	Conditions PolicyConditionsConditionArrayInput `pulumi:"conditions"`
+	// Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (PolicyConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyConditions)(nil)).Elem()
+}
+
+func (i PolicyConditionsArgs) ToPolicyConditionsOutput() PolicyConditionsOutput {
+	return i.ToPolicyConditionsOutputWithContext(context.Background())
+}
+
+func (i PolicyConditionsArgs) ToPolicyConditionsOutputWithContext(ctx context.Context) PolicyConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsOutput)
+}
+
+func (i PolicyConditionsArgs) ToPolicyConditionsPtrOutput() PolicyConditionsPtrOutput {
+	return i.ToPolicyConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyConditionsArgs) ToPolicyConditionsPtrOutputWithContext(ctx context.Context) PolicyConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsOutput).ToPolicyConditionsPtrOutputWithContext(ctx)
+}
+
+// PolicyConditionsPtrInput is an input type that accepts PolicyConditionsArgs, PolicyConditionsPtr and PolicyConditionsPtrOutput values.
+// You can construct a concrete instance of `PolicyConditionsPtrInput` via:
+//
+//	        PolicyConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyConditionsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyConditionsPtrOutput() PolicyConditionsPtrOutput
+	ToPolicyConditionsPtrOutputWithContext(context.Context) PolicyConditionsPtrOutput
+}
+
+type policyConditionsPtrType PolicyConditionsArgs
+
+func PolicyConditionsPtr(v *PolicyConditionsArgs) PolicyConditionsPtrInput {
+	return (*policyConditionsPtrType)(v)
+}
+
+func (*policyConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyConditions)(nil)).Elem()
+}
+
+func (i *policyConditionsPtrType) ToPolicyConditionsPtrOutput() PolicyConditionsPtrOutput {
+	return i.ToPolicyConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyConditionsPtrType) ToPolicyConditionsPtrOutputWithContext(ctx context.Context) PolicyConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsPtrOutput)
+}
+
+type PolicyConditionsOutput struct{ *pulumi.OutputState }
+
+func (PolicyConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyConditions)(nil)).Elem()
+}
+
+func (o PolicyConditionsOutput) ToPolicyConditionsOutput() PolicyConditionsOutput {
+	return o
+}
+
+func (o PolicyConditionsOutput) ToPolicyConditionsOutputWithContext(ctx context.Context) PolicyConditionsOutput {
+	return o
+}
+
+func (o PolicyConditionsOutput) ToPolicyConditionsPtrOutput() PolicyConditionsPtrOutput {
+	return o.ToPolicyConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyConditionsOutput) ToPolicyConditionsPtrOutputWithContext(ctx context.Context) PolicyConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyConditions) *PolicyConditions {
+		return &v
+	}).(PolicyConditionsPtrOutput)
+}
+
+// List of condition blocks. Each condition supports:
+func (o PolicyConditionsOutput) Conditions() PolicyConditionsConditionArrayOutput {
+	return o.ApplyT(func(v PolicyConditions) []PolicyConditionsCondition { return v.Conditions }).(PolicyConditionsConditionArrayOutput)
+}
+
+// Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+func (o PolicyConditionsOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyConditions) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+func (o PolicyConditionsOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PolicyConditions) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type PolicyConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyConditions)(nil)).Elem()
+}
+
+func (o PolicyConditionsPtrOutput) ToPolicyConditionsPtrOutput() PolicyConditionsPtrOutput {
+	return o
+}
+
+func (o PolicyConditionsPtrOutput) ToPolicyConditionsPtrOutputWithContext(ctx context.Context) PolicyConditionsPtrOutput {
+	return o
+}
+
+func (o PolicyConditionsPtrOutput) Elem() PolicyConditionsOutput {
+	return o.ApplyT(func(v *PolicyConditions) PolicyConditions {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyConditions
+		return ret
+	}).(PolicyConditionsOutput)
+}
+
+// List of condition blocks. Each condition supports:
+func (o PolicyConditionsPtrOutput) Conditions() PolicyConditionsConditionArrayOutput {
+	return o.ApplyT(func(v *PolicyConditions) []PolicyConditionsCondition {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(PolicyConditionsConditionArrayOutput)
+}
+
+// Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+func (o PolicyConditionsPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+func (o PolicyConditionsPtrOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PolicyConditions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringMapOutput)
+}
+
+type PolicyConditionsCondition struct {
+	// A list of nested conditions. This is the recursive part.
+	Conditions []PolicyConditionsConditionCondition `pulumi:"conditions"`
+	// Operator for this condition (typically `MATCH`).
+	Operator string `pulumi:"operator"`
+	// Map of key-value pairs to match. Keys can reference:
+	// * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+	// * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+	// * Request attributes: `request.IP`
+	//
+	// **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+	Values map[string]string `pulumi:"values"`
+}
+
+// PolicyConditionsConditionInput is an input type that accepts PolicyConditionsConditionArgs and PolicyConditionsConditionOutput values.
+// You can construct a concrete instance of `PolicyConditionsConditionInput` via:
+//
+//	PolicyConditionsConditionArgs{...}
+type PolicyConditionsConditionInput interface {
+	pulumi.Input
+
+	ToPolicyConditionsConditionOutput() PolicyConditionsConditionOutput
+	ToPolicyConditionsConditionOutputWithContext(context.Context) PolicyConditionsConditionOutput
+}
+
+type PolicyConditionsConditionArgs struct {
+	// A list of nested conditions. This is the recursive part.
+	Conditions PolicyConditionsConditionConditionArrayInput `pulumi:"conditions"`
+	// Operator for this condition (typically `MATCH`).
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Map of key-value pairs to match. Keys can reference:
+	// * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+	// * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+	// * Request attributes: `request.IP`
+	//
+	// **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (PolicyConditionsConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyConditionsCondition)(nil)).Elem()
+}
+
+func (i PolicyConditionsConditionArgs) ToPolicyConditionsConditionOutput() PolicyConditionsConditionOutput {
+	return i.ToPolicyConditionsConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyConditionsConditionArgs) ToPolicyConditionsConditionOutputWithContext(ctx context.Context) PolicyConditionsConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsConditionOutput)
+}
+
+// PolicyConditionsConditionArrayInput is an input type that accepts PolicyConditionsConditionArray and PolicyConditionsConditionArrayOutput values.
+// You can construct a concrete instance of `PolicyConditionsConditionArrayInput` via:
+//
+//	PolicyConditionsConditionArray{ PolicyConditionsConditionArgs{...} }
+type PolicyConditionsConditionArrayInput interface {
+	pulumi.Input
+
+	ToPolicyConditionsConditionArrayOutput() PolicyConditionsConditionArrayOutput
+	ToPolicyConditionsConditionArrayOutputWithContext(context.Context) PolicyConditionsConditionArrayOutput
+}
+
+type PolicyConditionsConditionArray []PolicyConditionsConditionInput
+
+func (PolicyConditionsConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyConditionsCondition)(nil)).Elem()
+}
+
+func (i PolicyConditionsConditionArray) ToPolicyConditionsConditionArrayOutput() PolicyConditionsConditionArrayOutput {
+	return i.ToPolicyConditionsConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyConditionsConditionArray) ToPolicyConditionsConditionArrayOutputWithContext(ctx context.Context) PolicyConditionsConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsConditionArrayOutput)
+}
+
+type PolicyConditionsConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyConditionsConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyConditionsCondition)(nil)).Elem()
+}
+
+func (o PolicyConditionsConditionOutput) ToPolicyConditionsConditionOutput() PolicyConditionsConditionOutput {
+	return o
+}
+
+func (o PolicyConditionsConditionOutput) ToPolicyConditionsConditionOutputWithContext(ctx context.Context) PolicyConditionsConditionOutput {
+	return o
+}
+
+// A list of nested conditions. This is the recursive part.
+func (o PolicyConditionsConditionOutput) Conditions() PolicyConditionsConditionConditionArrayOutput {
+	return o.ApplyT(func(v PolicyConditionsCondition) []PolicyConditionsConditionCondition { return v.Conditions }).(PolicyConditionsConditionConditionArrayOutput)
+}
+
+// Operator for this condition (typically `MATCH`).
+func (o PolicyConditionsConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyConditionsCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Map of key-value pairs to match. Keys can reference:
+// * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+// * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+// * Request attributes: `request.IP`
+//
+// **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+func (o PolicyConditionsConditionOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PolicyConditionsCondition) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type PolicyConditionsConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyConditionsConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyConditionsCondition)(nil)).Elem()
+}
+
+func (o PolicyConditionsConditionArrayOutput) ToPolicyConditionsConditionArrayOutput() PolicyConditionsConditionArrayOutput {
+	return o
+}
+
+func (o PolicyConditionsConditionArrayOutput) ToPolicyConditionsConditionArrayOutputWithContext(ctx context.Context) PolicyConditionsConditionArrayOutput {
+	return o
+}
+
+func (o PolicyConditionsConditionArrayOutput) Index(i pulumi.IntInput) PolicyConditionsConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyConditionsCondition {
+		return vs[0].([]PolicyConditionsCondition)[vs[1].(int)]
+	}).(PolicyConditionsConditionOutput)
+}
+
+type PolicyConditionsConditionCondition struct {
+	// Operator for this condition (MATCH, AND, OR, NOT)
+	Operator string `pulumi:"operator"`
+	// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+	Values map[string]string `pulumi:"values"`
+}
+
+// PolicyConditionsConditionConditionInput is an input type that accepts PolicyConditionsConditionConditionArgs and PolicyConditionsConditionConditionOutput values.
+// You can construct a concrete instance of `PolicyConditionsConditionConditionInput` via:
+//
+//	PolicyConditionsConditionConditionArgs{...}
+type PolicyConditionsConditionConditionInput interface {
+	pulumi.Input
+
+	ToPolicyConditionsConditionConditionOutput() PolicyConditionsConditionConditionOutput
+	ToPolicyConditionsConditionConditionOutputWithContext(context.Context) PolicyConditionsConditionConditionOutput
+}
+
+type PolicyConditionsConditionConditionArgs struct {
+	// Operator for this condition (MATCH, AND, OR, NOT)
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (PolicyConditionsConditionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyConditionsConditionCondition)(nil)).Elem()
+}
+
+func (i PolicyConditionsConditionConditionArgs) ToPolicyConditionsConditionConditionOutput() PolicyConditionsConditionConditionOutput {
+	return i.ToPolicyConditionsConditionConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyConditionsConditionConditionArgs) ToPolicyConditionsConditionConditionOutputWithContext(ctx context.Context) PolicyConditionsConditionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsConditionConditionOutput)
+}
+
+// PolicyConditionsConditionConditionArrayInput is an input type that accepts PolicyConditionsConditionConditionArray and PolicyConditionsConditionConditionArrayOutput values.
+// You can construct a concrete instance of `PolicyConditionsConditionConditionArrayInput` via:
+//
+//	PolicyConditionsConditionConditionArray{ PolicyConditionsConditionConditionArgs{...} }
+type PolicyConditionsConditionConditionArrayInput interface {
+	pulumi.Input
+
+	ToPolicyConditionsConditionConditionArrayOutput() PolicyConditionsConditionConditionArrayOutput
+	ToPolicyConditionsConditionConditionArrayOutputWithContext(context.Context) PolicyConditionsConditionConditionArrayOutput
+}
+
+type PolicyConditionsConditionConditionArray []PolicyConditionsConditionConditionInput
+
+func (PolicyConditionsConditionConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyConditionsConditionCondition)(nil)).Elem()
+}
+
+func (i PolicyConditionsConditionConditionArray) ToPolicyConditionsConditionConditionArrayOutput() PolicyConditionsConditionConditionArrayOutput {
+	return i.ToPolicyConditionsConditionConditionArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyConditionsConditionConditionArray) ToPolicyConditionsConditionConditionArrayOutputWithContext(ctx context.Context) PolicyConditionsConditionConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyConditionsConditionConditionArrayOutput)
+}
+
+type PolicyConditionsConditionConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyConditionsConditionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyConditionsConditionCondition)(nil)).Elem()
+}
+
+func (o PolicyConditionsConditionConditionOutput) ToPolicyConditionsConditionConditionOutput() PolicyConditionsConditionConditionOutput {
+	return o
+}
+
+func (o PolicyConditionsConditionConditionOutput) ToPolicyConditionsConditionConditionOutputWithContext(ctx context.Context) PolicyConditionsConditionConditionOutput {
+	return o
+}
+
+// Operator for this condition (MATCH, AND, OR, NOT)
+func (o PolicyConditionsConditionConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyConditionsConditionCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+func (o PolicyConditionsConditionConditionOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PolicyConditionsConditionCondition) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type PolicyConditionsConditionConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyConditionsConditionConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyConditionsConditionCondition)(nil)).Elem()
+}
+
+func (o PolicyConditionsConditionConditionArrayOutput) ToPolicyConditionsConditionConditionArrayOutput() PolicyConditionsConditionConditionArrayOutput {
+	return o
+}
+
+func (o PolicyConditionsConditionConditionArrayOutput) ToPolicyConditionsConditionConditionArrayOutputWithContext(ctx context.Context) PolicyConditionsConditionConditionArrayOutput {
+	return o
+}
+
+func (o PolicyConditionsConditionConditionArrayOutput) Index(i pulumi.IntInput) PolicyConditionsConditionConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyConditionsConditionCondition {
+		return vs[0].([]PolicyConditionsConditionCondition)[vs[1].(int)]
+	}).(PolicyConditionsConditionConditionOutput)
+}
+
+type GetPolicyCondition struct {
+	// List of condition blocks. Each condition supports:
+	Conditions []GetPolicyConditionCondition `pulumi:"conditions"`
+	// Operator for this condition.
+	Operator string `pulumi:"operator"`
+	// Map of key-value pairs to match.
+	Values map[string]string `pulumi:"values"`
+}
+
+// GetPolicyConditionInput is an input type that accepts GetPolicyConditionArgs and GetPolicyConditionOutput values.
+// You can construct a concrete instance of `GetPolicyConditionInput` via:
+//
+//	GetPolicyConditionArgs{...}
+type GetPolicyConditionInput interface {
+	pulumi.Input
+
+	ToGetPolicyConditionOutput() GetPolicyConditionOutput
+	ToGetPolicyConditionOutputWithContext(context.Context) GetPolicyConditionOutput
+}
+
+type GetPolicyConditionArgs struct {
+	// List of condition blocks. Each condition supports:
+	Conditions GetPolicyConditionConditionArrayInput `pulumi:"conditions"`
+	// Operator for this condition.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Map of key-value pairs to match.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (GetPolicyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyCondition)(nil)).Elem()
+}
+
+func (i GetPolicyConditionArgs) ToGetPolicyConditionOutput() GetPolicyConditionOutput {
+	return i.ToGetPolicyConditionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyConditionArgs) ToGetPolicyConditionOutputWithContext(ctx context.Context) GetPolicyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyConditionOutput)
+}
+
+// GetPolicyConditionArrayInput is an input type that accepts GetPolicyConditionArray and GetPolicyConditionArrayOutput values.
+// You can construct a concrete instance of `GetPolicyConditionArrayInput` via:
+//
+//	GetPolicyConditionArray{ GetPolicyConditionArgs{...} }
+type GetPolicyConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyConditionArrayOutput() GetPolicyConditionArrayOutput
+	ToGetPolicyConditionArrayOutputWithContext(context.Context) GetPolicyConditionArrayOutput
+}
+
+type GetPolicyConditionArray []GetPolicyConditionInput
+
+func (GetPolicyConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyCondition)(nil)).Elem()
+}
+
+func (i GetPolicyConditionArray) ToGetPolicyConditionArrayOutput() GetPolicyConditionArrayOutput {
+	return i.ToGetPolicyConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyConditionArray) ToGetPolicyConditionArrayOutputWithContext(ctx context.Context) GetPolicyConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyConditionArrayOutput)
+}
+
+type GetPolicyConditionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyCondition)(nil)).Elem()
+}
+
+func (o GetPolicyConditionOutput) ToGetPolicyConditionOutput() GetPolicyConditionOutput {
+	return o
+}
+
+func (o GetPolicyConditionOutput) ToGetPolicyConditionOutputWithContext(ctx context.Context) GetPolicyConditionOutput {
+	return o
+}
+
+// List of condition blocks. Each condition supports:
+func (o GetPolicyConditionOutput) Conditions() GetPolicyConditionConditionArrayOutput {
+	return o.ApplyT(func(v GetPolicyCondition) []GetPolicyConditionCondition { return v.Conditions }).(GetPolicyConditionConditionArrayOutput)
+}
+
+// Operator for this condition.
+func (o GetPolicyConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Map of key-value pairs to match.
+func (o GetPolicyConditionOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPolicyCondition) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type GetPolicyConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyCondition)(nil)).Elem()
+}
+
+func (o GetPolicyConditionArrayOutput) ToGetPolicyConditionArrayOutput() GetPolicyConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyConditionArrayOutput) ToGetPolicyConditionArrayOutputWithContext(ctx context.Context) GetPolicyConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyConditionArrayOutput) Index(i pulumi.IntInput) GetPolicyConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyCondition {
+		return vs[0].([]GetPolicyCondition)[vs[1].(int)]
+	}).(GetPolicyConditionOutput)
+}
+
+type GetPolicyConditionCondition struct {
+	// List of condition blocks. Each condition supports:
+	Conditions []GetPolicyConditionConditionCondition `pulumi:"conditions"`
+	// Operator for this condition.
+	Operator string `pulumi:"operator"`
+	// Map of key-value pairs to match.
+	Values map[string]string `pulumi:"values"`
+}
+
+// GetPolicyConditionConditionInput is an input type that accepts GetPolicyConditionConditionArgs and GetPolicyConditionConditionOutput values.
+// You can construct a concrete instance of `GetPolicyConditionConditionInput` via:
+//
+//	GetPolicyConditionConditionArgs{...}
+type GetPolicyConditionConditionInput interface {
+	pulumi.Input
+
+	ToGetPolicyConditionConditionOutput() GetPolicyConditionConditionOutput
+	ToGetPolicyConditionConditionOutputWithContext(context.Context) GetPolicyConditionConditionOutput
+}
+
+type GetPolicyConditionConditionArgs struct {
+	// List of condition blocks. Each condition supports:
+	Conditions GetPolicyConditionConditionConditionArrayInput `pulumi:"conditions"`
+	// Operator for this condition.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Map of key-value pairs to match.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (GetPolicyConditionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyConditionCondition)(nil)).Elem()
+}
+
+func (i GetPolicyConditionConditionArgs) ToGetPolicyConditionConditionOutput() GetPolicyConditionConditionOutput {
+	return i.ToGetPolicyConditionConditionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyConditionConditionArgs) ToGetPolicyConditionConditionOutputWithContext(ctx context.Context) GetPolicyConditionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyConditionConditionOutput)
+}
+
+// GetPolicyConditionConditionArrayInput is an input type that accepts GetPolicyConditionConditionArray and GetPolicyConditionConditionArrayOutput values.
+// You can construct a concrete instance of `GetPolicyConditionConditionArrayInput` via:
+//
+//	GetPolicyConditionConditionArray{ GetPolicyConditionConditionArgs{...} }
+type GetPolicyConditionConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyConditionConditionArrayOutput() GetPolicyConditionConditionArrayOutput
+	ToGetPolicyConditionConditionArrayOutputWithContext(context.Context) GetPolicyConditionConditionArrayOutput
+}
+
+type GetPolicyConditionConditionArray []GetPolicyConditionConditionInput
+
+func (GetPolicyConditionConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyConditionCondition)(nil)).Elem()
+}
+
+func (i GetPolicyConditionConditionArray) ToGetPolicyConditionConditionArrayOutput() GetPolicyConditionConditionArrayOutput {
+	return i.ToGetPolicyConditionConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyConditionConditionArray) ToGetPolicyConditionConditionArrayOutputWithContext(ctx context.Context) GetPolicyConditionConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyConditionConditionArrayOutput)
+}
+
+type GetPolicyConditionConditionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyConditionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyConditionCondition)(nil)).Elem()
+}
+
+func (o GetPolicyConditionConditionOutput) ToGetPolicyConditionConditionOutput() GetPolicyConditionConditionOutput {
+	return o
+}
+
+func (o GetPolicyConditionConditionOutput) ToGetPolicyConditionConditionOutputWithContext(ctx context.Context) GetPolicyConditionConditionOutput {
+	return o
+}
+
+// List of condition blocks. Each condition supports:
+func (o GetPolicyConditionConditionOutput) Conditions() GetPolicyConditionConditionConditionArrayOutput {
+	return o.ApplyT(func(v GetPolicyConditionCondition) []GetPolicyConditionConditionCondition { return v.Conditions }).(GetPolicyConditionConditionConditionArrayOutput)
+}
+
+// Operator for this condition.
+func (o GetPolicyConditionConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyConditionCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Map of key-value pairs to match.
+func (o GetPolicyConditionConditionOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPolicyConditionCondition) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type GetPolicyConditionConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyConditionConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyConditionCondition)(nil)).Elem()
+}
+
+func (o GetPolicyConditionConditionArrayOutput) ToGetPolicyConditionConditionArrayOutput() GetPolicyConditionConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyConditionConditionArrayOutput) ToGetPolicyConditionConditionArrayOutputWithContext(ctx context.Context) GetPolicyConditionConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyConditionConditionArrayOutput) Index(i pulumi.IntInput) GetPolicyConditionConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyConditionCondition {
+		return vs[0].([]GetPolicyConditionCondition)[vs[1].(int)]
+	}).(GetPolicyConditionConditionOutput)
+}
+
+type GetPolicyConditionConditionCondition struct {
+	// Operator for this condition.
+	Operator string `pulumi:"operator"`
+	// Map of key-value pairs to match.
+	Values map[string]string `pulumi:"values"`
+}
+
+// GetPolicyConditionConditionConditionInput is an input type that accepts GetPolicyConditionConditionConditionArgs and GetPolicyConditionConditionConditionOutput values.
+// You can construct a concrete instance of `GetPolicyConditionConditionConditionInput` via:
+//
+//	GetPolicyConditionConditionConditionArgs{...}
+type GetPolicyConditionConditionConditionInput interface {
+	pulumi.Input
+
+	ToGetPolicyConditionConditionConditionOutput() GetPolicyConditionConditionConditionOutput
+	ToGetPolicyConditionConditionConditionOutputWithContext(context.Context) GetPolicyConditionConditionConditionOutput
+}
+
+type GetPolicyConditionConditionConditionArgs struct {
+	// Operator for this condition.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Map of key-value pairs to match.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (GetPolicyConditionConditionConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyConditionConditionCondition)(nil)).Elem()
+}
+
+func (i GetPolicyConditionConditionConditionArgs) ToGetPolicyConditionConditionConditionOutput() GetPolicyConditionConditionConditionOutput {
+	return i.ToGetPolicyConditionConditionConditionOutputWithContext(context.Background())
+}
+
+func (i GetPolicyConditionConditionConditionArgs) ToGetPolicyConditionConditionConditionOutputWithContext(ctx context.Context) GetPolicyConditionConditionConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyConditionConditionConditionOutput)
+}
+
+// GetPolicyConditionConditionConditionArrayInput is an input type that accepts GetPolicyConditionConditionConditionArray and GetPolicyConditionConditionConditionArrayOutput values.
+// You can construct a concrete instance of `GetPolicyConditionConditionConditionArrayInput` via:
+//
+//	GetPolicyConditionConditionConditionArray{ GetPolicyConditionConditionConditionArgs{...} }
+type GetPolicyConditionConditionConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetPolicyConditionConditionConditionArrayOutput() GetPolicyConditionConditionConditionArrayOutput
+	ToGetPolicyConditionConditionConditionArrayOutputWithContext(context.Context) GetPolicyConditionConditionConditionArrayOutput
+}
+
+type GetPolicyConditionConditionConditionArray []GetPolicyConditionConditionConditionInput
+
+func (GetPolicyConditionConditionConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyConditionConditionCondition)(nil)).Elem()
+}
+
+func (i GetPolicyConditionConditionConditionArray) ToGetPolicyConditionConditionConditionArrayOutput() GetPolicyConditionConditionConditionArrayOutput {
+	return i.ToGetPolicyConditionConditionConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetPolicyConditionConditionConditionArray) ToGetPolicyConditionConditionConditionArrayOutputWithContext(ctx context.Context) GetPolicyConditionConditionConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPolicyConditionConditionConditionArrayOutput)
+}
+
+type GetPolicyConditionConditionConditionOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyConditionConditionConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPolicyConditionConditionCondition)(nil)).Elem()
+}
+
+func (o GetPolicyConditionConditionConditionOutput) ToGetPolicyConditionConditionConditionOutput() GetPolicyConditionConditionConditionOutput {
+	return o
+}
+
+func (o GetPolicyConditionConditionConditionOutput) ToGetPolicyConditionConditionConditionOutputWithContext(ctx context.Context) GetPolicyConditionConditionConditionOutput {
+	return o
+}
+
+// Operator for this condition.
+func (o GetPolicyConditionConditionConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPolicyConditionConditionCondition) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// Map of key-value pairs to match.
+func (o GetPolicyConditionConditionConditionOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPolicyConditionConditionCondition) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type GetPolicyConditionConditionConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPolicyConditionConditionConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPolicyConditionConditionCondition)(nil)).Elem()
+}
+
+func (o GetPolicyConditionConditionConditionArrayOutput) ToGetPolicyConditionConditionConditionArrayOutput() GetPolicyConditionConditionConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyConditionConditionConditionArrayOutput) ToGetPolicyConditionConditionConditionArrayOutputWithContext(ctx context.Context) GetPolicyConditionConditionConditionArrayOutput {
+	return o
+}
+
+func (o GetPolicyConditionConditionConditionArrayOutput) Index(i pulumi.IntInput) GetPolicyConditionConditionConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPolicyConditionConditionCondition {
+		return vs[0].([]GetPolicyConditionConditionCondition)[vs[1].(int)]
+	}).(GetPolicyConditionConditionConditionOutput)
+}
+
 type GetReferenceActionsAction struct {
 	// Name of the action
 	Action string `pulumi:"action"`
@@ -138,8 +885,32 @@ func (o GetReferenceActionsActionArrayOutput) Index(i pulumi.IntInput) GetRefere
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyConditionsInput)(nil)).Elem(), PolicyConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyConditionsPtrInput)(nil)).Elem(), PolicyConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyConditionsConditionInput)(nil)).Elem(), PolicyConditionsConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyConditionsConditionArrayInput)(nil)).Elem(), PolicyConditionsConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyConditionsConditionConditionInput)(nil)).Elem(), PolicyConditionsConditionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyConditionsConditionConditionArrayInput)(nil)).Elem(), PolicyConditionsConditionConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyConditionInput)(nil)).Elem(), GetPolicyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyConditionArrayInput)(nil)).Elem(), GetPolicyConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyConditionConditionInput)(nil)).Elem(), GetPolicyConditionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyConditionConditionArrayInput)(nil)).Elem(), GetPolicyConditionConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyConditionConditionConditionInput)(nil)).Elem(), GetPolicyConditionConditionConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPolicyConditionConditionConditionArrayInput)(nil)).Elem(), GetPolicyConditionConditionConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReferenceActionsActionInput)(nil)).Elem(), GetReferenceActionsActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReferenceActionsActionArrayInput)(nil)).Elem(), GetReferenceActionsActionArray{})
+	pulumi.RegisterOutputType(PolicyConditionsOutput{})
+	pulumi.RegisterOutputType(PolicyConditionsPtrOutput{})
+	pulumi.RegisterOutputType(PolicyConditionsConditionOutput{})
+	pulumi.RegisterOutputType(PolicyConditionsConditionArrayOutput{})
+	pulumi.RegisterOutputType(PolicyConditionsConditionConditionOutput{})
+	pulumi.RegisterOutputType(PolicyConditionsConditionConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyConditionOutput{})
+	pulumi.RegisterOutputType(GetPolicyConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyConditionConditionOutput{})
+	pulumi.RegisterOutputType(GetPolicyConditionConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetPolicyConditionConditionConditionOutput{})
+	pulumi.RegisterOutputType(GetPolicyConditionConditionConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetReferenceActionsActionOutput{})
 	pulumi.RegisterOutputType(GetReferenceActionsActionArrayOutput{})
 }

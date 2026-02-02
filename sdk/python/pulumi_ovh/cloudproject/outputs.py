@@ -92,6 +92,8 @@ __all__ = [
     'RegionNetworkSubnetHostRoute',
     'StorageEncryption',
     'StorageObject',
+    'StorageObjectLock',
+    'StorageObjectLockRule',
     'StorageReplication',
     'StorageReplicationRule',
     'StorageReplicationRuleDestination',
@@ -4277,6 +4279,68 @@ class StorageObject(dict):
 
 
 @pulumi.output_type
+class StorageObjectLock(dict):
+    def __init__(__self__, *,
+                 rule: Optional['outputs.StorageObjectLockRule'] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param 'StorageObjectLockRuleArgs' rule: Object lock default rule
+        :param _builtins.str status: Object lock status
+        """
+        if rule is not None:
+            pulumi.set(__self__, "rule", rule)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> Optional['outputs.StorageObjectLockRule']:
+        """
+        Object lock default rule
+        """
+        return pulumi.get(self, "rule")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Object lock status
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class StorageObjectLockRule(dict):
+    def __init__(__self__, *,
+                 mode: Optional[_builtins.str] = None,
+                 period: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str mode: Object lock mode
+        :param _builtins.str period: The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Object lock mode
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.str]:
+        """
+        The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+        """
+        return pulumi.get(self, "period")
+
+
+@pulumi.output_type
 class StorageReplication(dict):
     def __init__(__self__, *,
                  rules: Optional[Sequence['outputs.StorageReplicationRule']] = None):
@@ -4420,7 +4484,7 @@ class StorageReplicationRuleDestination(dict):
         """
         :param _builtins.str name: Destination bucket name
         :param _builtins.str region: Destination region
-        :param _builtins.bool remove_on_main_bucket_deletion: Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        :param _builtins.bool remove_on_main_bucket_deletion: Whether to remove replicated bucket when the main bucket is deleted
         :param _builtins.str storage_class: Destination storage class
         """
         pulumi.set(__self__, "name", name)
@@ -4450,7 +4514,7 @@ class StorageReplicationRuleDestination(dict):
     @pulumi.getter(name="removeOnMainBucketDeletion")
     def remove_on_main_bucket_deletion(self) -> Optional[_builtins.bool]:
         """
-        Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        Whether to remove replicated bucket when the main bucket is deleted
         """
         return pulumi.get(self, "remove_on_main_bucket_deletion")
 
@@ -4499,7 +4563,7 @@ class StorageVersioning(dict):
     def __init__(__self__, *,
                  status: Optional[_builtins.str] = None):
         """
-        :param _builtins.str status: Versioning status (E.g. "enabled", "disabled" or "suspended")
+        :param _builtins.str status: Versioning status
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -4508,7 +4572,7 @@ class StorageVersioning(dict):
     @pulumi.getter
     def status(self) -> Optional[_builtins.str]:
         """
-        Versioning status (E.g. "enabled", "disabled" or "suspended")
+        Versioning status
         """
         return pulumi.get(self, "status")
 

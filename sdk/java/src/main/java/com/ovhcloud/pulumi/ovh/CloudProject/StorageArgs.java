@@ -4,6 +4,7 @@
 package com.ovhcloud.pulumi.ovh.CloudProject;
 
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.StorageEncryptionArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.StorageObjectLockArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.StorageReplicationArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.StorageVersioningArgs;
 import com.pulumi.core.Output;
@@ -94,6 +95,21 @@ public final class StorageArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Object lock configuration
+     * 
+     */
+    @Import(name="objectLock")
+    private @Nullable Output<StorageObjectLockArgs> objectLock;
+
+    /**
+     * @return Object lock configuration
+     * 
+     */
+    public Optional<Output<StorageObjectLockArgs>> objectLock() {
+        return Optional.ofNullable(this.objectLock);
     }
 
     /**
@@ -194,6 +210,7 @@ public final class StorageArgs extends com.pulumi.resources.ResourceArgs {
         this.limit = $.limit;
         this.marker = $.marker;
         this.name = $.name;
+        this.objectLock = $.objectLock;
         this.ownerId = $.ownerId;
         this.prefix = $.prefix;
         this.regionName = $.regionName;
@@ -323,6 +340,27 @@ public final class StorageArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param objectLock Object lock configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectLock(@Nullable Output<StorageObjectLockArgs> objectLock) {
+            $.objectLock = objectLock;
+            return this;
+        }
+
+        /**
+         * @param objectLock Object lock configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectLock(StorageObjectLockArgs objectLock) {
+            return objectLock(Output.of(objectLock));
         }
 
         /**

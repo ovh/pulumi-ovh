@@ -68,6 +68,8 @@ type LookupPolicyArgs struct {
 type LookupPolicyResult struct {
 	// Set of actions allowed by the policy.
 	Allows []string `pulumi:"allows"`
+	// Conditions restricting the policy.
+	Conditions []GetPolicyCondition `pulumi:"conditions"`
 	// Creation date of this group.
 	CreatedAt string `pulumi:"createdAt"`
 	// Set of actions that will be denied no matter what policy exists.
@@ -76,7 +78,9 @@ type LookupPolicyResult struct {
 	Description *string `pulumi:"description"`
 	// Set of actions that will be subtracted from the `allow` list.
 	Excepts []string `pulumi:"excepts"`
-	Id      string   `pulumi:"id"`
+	// Expiration date of the policy.
+	ExpiredAt string `pulumi:"expiredAt"`
+	Id        string `pulumi:"id"`
 	// Set of identities affected by the policy.
 	Identities []string `pulumi:"identities"`
 	// Name of the policy.
@@ -142,6 +146,11 @@ func (o LookupPolicyResultOutput) Allows() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Allows }).(pulumi.StringArrayOutput)
 }
 
+// Conditions restricting the policy.
+func (o LookupPolicyResultOutput) Conditions() GetPolicyConditionArrayOutput {
+	return o.ApplyT(func(v LookupPolicyResult) []GetPolicyCondition { return v.Conditions }).(GetPolicyConditionArrayOutput)
+}
+
 // Creation date of this group.
 func (o LookupPolicyResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicyResult) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -160,6 +169,11 @@ func (o LookupPolicyResultOutput) Description() pulumi.StringPtrOutput {
 // Set of actions that will be subtracted from the `allow` list.
 func (o LookupPolicyResultOutput) Excepts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPolicyResult) []string { return v.Excepts }).(pulumi.StringArrayOutput)
+}
+
+// Expiration date of the policy.
+func (o LookupPolicyResultOutput) ExpiredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicyResult) string { return v.ExpiredAt }).(pulumi.StringOutput)
 }
 
 func (o LookupPolicyResultOutput) Id() pulumi.StringOutput {

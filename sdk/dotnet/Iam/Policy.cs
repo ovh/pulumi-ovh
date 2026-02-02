@@ -53,6 +53,75 @@ namespace Pulumi.Ovh.Iam
     ///         },
     ///     });
     /// 
+    ///     var ipRestrictedProdAccess = new Ovh.Iam.Policy("ip_restricted_prod_access", new()
+    ///     {
+    ///         Name = "ip_restricted_prod_access",
+    ///         Description = "Allow access only from a specific IP to resources tagged prod",
+    ///         Identities = new[]
+    ///         {
+    ///             myGroup.GroupURN,
+    ///         },
+    ///         Resources = new[]
+    ///         {
+    ///             "urn:v1:eu:resource:vps:*",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             "vps:apiovh:*",
+    ///         },
+    ///         Conditions = new Ovh.Iam.Inputs.PolicyConditionsArgs
+    ///         {
+    ///             Operator = "MATCH",
+    ///             Values = 
+    ///             {
+    ///                 { "resource.Tag(environment)", "prod" },
+    ///                 { "request.IP", "192.72.0.1" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var workdaysAndIpRestrictedAndExpiring = new Ovh.Iam.Policy("workdays_and_ip_restricted_and_expiring", new()
+    ///     {
+    ///         Name = "workdays_and_ip_restricted_and_expiring",
+    ///         Description = "Allow access only on workdays, expires end of 2026",
+    ///         Identities = new[]
+    ///         {
+    ///             myGroup.GroupURN,
+    ///         },
+    ///         Resources = new[]
+    ///         {
+    ///             "urn:v1:eu:resource:vps:*",
+    ///         },
+    ///         Allows = new[]
+    ///         {
+    ///             "vps:apiovh:*",
+    ///         },
+    ///         Conditions = new Ovh.Iam.Inputs.PolicyConditionsArgs
+    ///         {
+    ///             Operator = "AND",
+    ///             Conditions = new[]
+    ///             {
+    ///                 new Ovh.Iam.Inputs.PolicyConditionsConditionArgs
+    ///                 {
+    ///                     Operator = "MATCH",
+    ///                     Values = 
+    ///                     {
+    ///                         { "date(Europe/Paris).WeekDay.In", "monday,tuesday,wednesday,thursday,friday" },
+    ///                     },
+    ///                 },
+    ///                 new Ovh.Iam.Inputs.PolicyConditionsConditionArgs
+    ///                 {
+    ///                     Operator = "MATCH",
+    ///                     Values = 
+    ///                     {
+    ///                         { "request.IP", "192.72.0.1" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         ExpiredAt = "2026-12-31T23:59:59Z",
+    ///     });
+    /// 
     /// });
     /// ```
     /// </summary>
@@ -64,6 +133,12 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         [Output("allows")]
         public Output<ImmutableArray<string>> Allows { get; private set; } = null!;
+
+        /// <summary>
+        /// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+        /// </summary>
+        [Output("conditions")]
+        public Output<Outputs.PolicyConditions?> Conditions { get; private set; } = null!;
 
         /// <summary>
         /// Creation date of this group.
@@ -88,6 +163,12 @@ namespace Pulumi.Ovh.Iam
         /// </summary>
         [Output("excepts")]
         public Output<ImmutableArray<string>> Excepts { get; private set; } = null!;
+
+        /// <summary>
+        /// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+        /// </summary>
+        [Output("expiredAt")]
+        public Output<string?> ExpiredAt { get; private set; } = null!;
 
         /// <summary>
         /// List of identities affected by the policy
@@ -190,6 +271,12 @@ namespace Pulumi.Ovh.Iam
             set => _allows = value;
         }
 
+        /// <summary>
+        /// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+        /// </summary>
+        [Input("conditions")]
+        public Input<Inputs.PolicyConditionsArgs>? Conditions { get; set; }
+
         [Input("denies")]
         private InputList<string>? _denies;
 
@@ -219,6 +306,12 @@ namespace Pulumi.Ovh.Iam
             get => _excepts ?? (_excepts = new InputList<string>());
             set => _excepts = value;
         }
+
+        /// <summary>
+        /// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+        /// </summary>
+        [Input("expiredAt")]
+        public Input<string>? ExpiredAt { get; set; }
 
         [Input("identities", required: true)]
         private InputList<string>? _identities;
@@ -283,6 +376,12 @@ namespace Pulumi.Ovh.Iam
         }
 
         /// <summary>
+        /// Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+        /// </summary>
+        [Input("conditions")]
+        public Input<Inputs.PolicyConditionsGetArgs>? Conditions { get; set; }
+
+        /// <summary>
         /// Creation date of this group.
         /// </summary>
         [Input("createdAt")]
@@ -317,6 +416,12 @@ namespace Pulumi.Ovh.Iam
             get => _excepts ?? (_excepts = new InputList<string>());
             set => _excepts = value;
         }
+
+        /// <summary>
+        /// Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+        /// </summary>
+        [Input("expiredAt")]
+        public Input<string>? ExpiredAt { get; set; }
 
         [Input("identities")]
         private InputList<string>? _identities;

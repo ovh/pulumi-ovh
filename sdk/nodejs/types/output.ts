@@ -221,6 +221,11 @@ export interface GetInstallationTemplateProjectUsage {
     version: string;
 }
 
+export interface GetIploadbalancingNatIpsNatIp {
+    ips: string[];
+    zone: string;
+}
+
 export interface GetOkmsSecretIam {
     /**
      * Resource display name
@@ -446,6 +451,624 @@ export interface GetStorageEfsShareAccessPathsAccessPath {
      * Is this the preferred access path?
      */
     preferred: boolean;
+}
+
+export interface GetVrackservicesCurrentState {
+    /**
+     * Product status of the vRack Services
+     */
+    productStatus: string;
+    /**
+     * Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+     */
+    region: string;
+    /**
+     * Subnets of the current vRack Services
+     */
+    subnets: outputs.GetVrackservicesCurrentStateSubnet[];
+}
+
+export interface GetVrackservicesCurrentStateSubnet {
+    /**
+     * IP address range of the subnet in CIDR format
+     */
+    cidr: string;
+    /**
+     * Display name of the subnet
+     */
+    displayName: string;
+    /**
+     * Service endpoints of the subnet
+     */
+    serviceEndpoints: outputs.GetVrackservicesCurrentStateSubnetServiceEndpoint[];
+    /**
+     * Defines a smaller subnet dedicated to the managed services IPs
+     */
+    serviceRange: outputs.GetVrackservicesCurrentStateSubnetServiceRange;
+    /**
+     * Unique inner VLAN that allows subnets segregation
+     */
+    vlan: number;
+}
+
+export interface GetVrackservicesCurrentStateSubnetServiceEndpoint {
+    /**
+     * Endpoints representing the IPs assigned to the managed services
+     */
+    endpoints: outputs.GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint[];
+    /**
+     * IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+     */
+    managedServiceUrn: string;
+}
+
+export interface GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+    /**
+     * IP description defined in the managed service
+     */
+    description: string;
+    /**
+     * IP address assigned by OVHcloud
+     */
+    ip: string;
+}
+
+export interface GetVrackservicesCurrentStateSubnetServiceRange {
+    /**
+     * CIDR dedicated to the subnet's services
+     */
+    cidr: string;
+    /**
+     * Number of remaining IPs in the service range
+     */
+    remainingIps: number;
+    /**
+     * Number of service range IPs reserved by OVHcloud
+     */
+    reservedIps: number;
+    /**
+     * Number of service range IPs assigned to the managed services
+     */
+    usedIps: number;
+}
+
+export interface GetVrackservicesCurrentTask {
+    /**
+     * Identifier of the current task
+     */
+    id: string;
+    /**
+     * Link to the task details
+     */
+    link: string;
+    /**
+     * Current global status of the current task
+     */
+    status: string;
+    /**
+     * Type of the current task
+     */
+    type: string;
+}
+
+export interface GetVrackservicesIam {
+    /**
+     * Resource display name
+     */
+    displayName: string;
+    /**
+     * Unique identifier of the resource
+     */
+    id: string;
+    /**
+     * Resource state
+     */
+    state: string;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags: {[key: string]: string};
+    /**
+     * Unique resource name used in policies
+     */
+    urn: string;
+}
+
+export interface GetVrackservicesTargetSpec {
+    /**
+     * Target specification of the subnets. Maximum one subnet per vRack Services
+     */
+    subnets: outputs.GetVrackservicesTargetSpecSubnet[];
+}
+
+export interface GetVrackservicesTargetSpecSubnet {
+    /**
+     * IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+     */
+    cidr: string;
+    /**
+     * Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+     */
+    displayName: string;
+    /**
+     * Target specification of the Service Endpoints
+     */
+    serviceEndpoints: outputs.GetVrackservicesTargetSpecSubnetServiceEndpoint[];
+    /**
+     * Defines a smaller subnet dedicated to the managed service IPs
+     */
+    serviceRange: outputs.GetVrackservicesTargetSpecSubnetServiceRange;
+    /**
+     * Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+     */
+    vlan: number;
+}
+
+export interface GetVrackservicesTargetSpecSubnetServiceEndpoint {
+    /**
+     * IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+     */
+    managedServiceUrn: string;
+}
+
+export interface GetVrackservicesTargetSpecSubnetServiceRange {
+    /**
+     * IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+     */
+    cidr: string;
+}
+
+export interface GetVrackservicessVrackservicess {
+    /**
+     * Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
+     */
+    checksum: string;
+    /**
+     * Date of the vRack Services delivery
+     */
+    createdAt: string;
+    /**
+     * Current configuration applied to the vRack Services
+     */
+    currentState: outputs.GetVrackservicessVrackservicessCurrentState;
+    /**
+     * Asynchronous operations ongoing on the vRack Services
+     */
+    currentTasks: outputs.GetVrackservicessVrackservicessCurrentTask[];
+    /**
+     * IAM resource metadata
+     */
+    iam: outputs.GetVrackservicessVrackservicessIam;
+    /**
+     * Unique identifier
+     */
+    id: string;
+    /**
+     * Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
+     */
+    resourceStatus: string;
+    /**
+     * Last target specification of the vRack Services
+     */
+    targetSpec: outputs.GetVrackservicessVrackservicessTargetSpec;
+    /**
+     * Date of the Last vRack Services update
+     */
+    updatedAt: string;
+}
+
+export interface GetVrackservicessVrackservicessCurrentState {
+    /**
+     * Product status of the vRack Services
+     */
+    productStatus: string;
+    /**
+     * Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+     */
+    region: string;
+    /**
+     * Subnets of the current vRack Services
+     */
+    subnets: outputs.GetVrackservicessVrackservicessCurrentStateSubnet[];
+    /**
+     * vRack associated to the vRack Services
+     */
+    vrackId: string;
+}
+
+export interface GetVrackservicessVrackservicessCurrentStateSubnet {
+    /**
+     * IP address range of the subnet in CIDR format
+     */
+    cidr: string;
+    /**
+     * Display name of the subnet
+     */
+    displayName: string;
+    /**
+     * Service endpoints of the subnet
+     */
+    serviceEndpoints: outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint[];
+    /**
+     * Defines a smaller subnet dedicated to the managed services IPs
+     */
+    serviceRange: outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceRange;
+    /**
+     * Unique inner VLAN that allows subnets segregation
+     */
+    vlan: number;
+}
+
+export interface GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint {
+    /**
+     * Endpoints representing the IPs assigned to the managed services
+     */
+    endpoints: outputs.GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint[];
+    /**
+     * IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+     */
+    managedServiceUrn: string;
+}
+
+export interface GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint {
+    /**
+     * IP description defined in the managed service
+     */
+    description: string;
+    /**
+     * IP address assigned by OVHcloud
+     */
+    ip: string;
+}
+
+export interface GetVrackservicessVrackservicessCurrentStateSubnetServiceRange {
+    /**
+     * CIDR dedicated to the subnet's services
+     */
+    cidr: string;
+    /**
+     * Number of remaining IPs in the service range
+     */
+    remainingIps: number;
+    /**
+     * Number of service range IPs reserved by OVHcloud
+     */
+    reservedIps: number;
+    /**
+     * Number of service range IPs assigned to the managed services
+     */
+    usedIps: number;
+}
+
+export interface GetVrackservicessVrackservicessCurrentTask {
+    /**
+     * Identifier of the current task
+     */
+    id: string;
+    /**
+     * Link to the task details
+     */
+    link: string;
+    /**
+     * Current global status of the current task
+     */
+    status: string;
+    /**
+     * Type of the current task
+     */
+    type: string;
+}
+
+export interface GetVrackservicessVrackservicessIam {
+    /**
+     * Resource display name
+     */
+    displayName: string;
+    /**
+     * Unique identifier of the resource
+     */
+    id: string;
+    /**
+     * Resource state
+     */
+    state: string;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags: {[key: string]: string};
+    /**
+     * Unique resource name used in policies
+     */
+    urn: string;
+}
+
+export interface GetVrackservicessVrackservicessTargetSpec {
+    /**
+     * Target specification of the subnets. Maximum one subnet per vRack Services
+     */
+    subnets: outputs.GetVrackservicessVrackservicessTargetSpecSubnet[];
+}
+
+export interface GetVrackservicessVrackservicessTargetSpecSubnet {
+    /**
+     * IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+     */
+    cidr: string;
+    /**
+     * Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+     */
+    displayName: string;
+    /**
+     * Target specification of the Service Endpoints
+     */
+    serviceEndpoints: outputs.GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint[];
+    /**
+     * Defines a smaller subnet dedicated to the managed service IPs
+     */
+    serviceRange: outputs.GetVrackservicessVrackservicessTargetSpecSubnetServiceRange;
+    /**
+     * Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+     */
+    vlan: number;
+}
+
+export interface GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint {
+    /**
+     * IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+     */
+    managedServiceUrn: string;
+}
+
+export interface GetVrackservicessVrackservicessTargetSpecSubnetServiceRange {
+    /**
+     * IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+     */
+    cidr: string;
+}
+
+export interface VrackservicesCurrentState {
+    /**
+     * Product status of the vRack Services
+     */
+    productStatus: string;
+    /**
+     * Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+     */
+    region: string;
+    /**
+     * Subnets of the current vRack Services
+     */
+    subnets: outputs.VrackservicesCurrentStateSubnet[];
+}
+
+export interface VrackservicesCurrentStateSubnet {
+    /**
+     * IP address range of the subnet in CIDR format
+     */
+    cidr: string;
+    /**
+     * Display name of the subnet
+     */
+    displayName: string;
+    /**
+     * Service endpoints of the subnet
+     */
+    serviceEndpoints: outputs.VrackservicesCurrentStateSubnetServiceEndpoint[];
+    /**
+     * Defines a smaller subnet dedicated to the managed services IPs
+     */
+    serviceRange: outputs.VrackservicesCurrentStateSubnetServiceRange;
+    /**
+     * Unique inner VLAN that allows subnets segregation
+     */
+    vlan: number;
+}
+
+export interface VrackservicesCurrentStateSubnetServiceEndpoint {
+    /**
+     * Endpoints representing the IPs assigned to the managed services
+     */
+    endpoints: outputs.VrackservicesCurrentStateSubnetServiceEndpointEndpoint[];
+    /**
+     * IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+     */
+    managedServiceUrn: string;
+}
+
+export interface VrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+    /**
+     * IP description defined in the managed service
+     */
+    description: string;
+    /**
+     * IP address assigned by OVHcloud
+     */
+    ip: string;
+}
+
+export interface VrackservicesCurrentStateSubnetServiceRange {
+    /**
+     * CIDR dedicated to the subnet's services
+     */
+    cidr: string;
+    /**
+     * Number of remaining IPs in the service range
+     */
+    remainingIps: number;
+    /**
+     * Number of service range IPs reserved by OVHcloud
+     */
+    reservedIps: number;
+    /**
+     * Number of service range IPs assigned to the managed services
+     */
+    usedIps: number;
+}
+
+export interface VrackservicesCurrentTask {
+    /**
+     * Identifier of the current task
+     */
+    id: string;
+    /**
+     * Link to the related resource
+     */
+    link: string;
+    /**
+     * Current global status of the current task
+     */
+    status: string;
+    /**
+     * Type of the current task
+     */
+    type: string;
+}
+
+export interface VrackservicesIam {
+    /**
+     * Resource display name
+     */
+    displayName: string;
+    /**
+     * Unique identifier of the resource
+     */
+    id: string;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags: {[key: string]: string};
+    /**
+     * Unique resource name used in policies
+     */
+    urn: string;
+}
+
+export interface VrackservicesOrder {
+    date: string;
+    details: outputs.VrackservicesOrderDetail[];
+    expirationDate: string;
+    orderId: number;
+}
+
+export interface VrackservicesOrderDetail {
+    description: string;
+    /**
+     * Product type of item in order
+     */
+    detailType: string;
+    domain: string;
+    orderDetailId: number;
+    quantity: string;
+}
+
+export interface VrackservicesPlan {
+    configurations: outputs.VrackservicesPlanConfiguration[];
+    /**
+     * Duration selected for the purchase of the product
+     */
+    duration: string;
+    /**
+     * Cart item to be linked
+     */
+    itemId?: number;
+    /**
+     * Identifier of the option offer
+     */
+    planCode: string;
+    /**
+     * Pricing mode selected for the purchase of the product
+     */
+    pricingMode: string;
+    /**
+     * Quantity of product desired
+     */
+    quantity?: number;
+}
+
+export interface VrackservicesPlanConfiguration {
+    /**
+     * Label for your configuration item
+     */
+    label: string;
+    /**
+     * Value or resource URL on API.OVH.COM of your configuration item
+     */
+    value: string;
+}
+
+export interface VrackservicesPlanOption {
+    configurations?: outputs.VrackservicesPlanOptionConfiguration[];
+    /**
+     * Duration selected for the purchase of the product
+     */
+    duration: string;
+    /**
+     * Identifier of the option offer
+     */
+    planCode: string;
+    /**
+     * Pricing mode selected for the purchase of the product
+     */
+    pricingMode: string;
+    /**
+     * Quantity of product desired
+     */
+    quantity: number;
+}
+
+export interface VrackservicesPlanOptionConfiguration {
+    /**
+     * Label for your configuration item
+     */
+    label: string;
+    /**
+     * Value or resource URL on API.OVH.COM of your configuration item
+     */
+    value: string;
+}
+
+export interface VrackservicesTargetSpec {
+    /**
+     * Target specification of the subnets. Maximum one subnet per vRack Services
+     */
+    subnets: outputs.VrackservicesTargetSpecSubnet[];
+}
+
+export interface VrackservicesTargetSpecSubnet {
+    /**
+     * IPv4 CIDR notation (e.g., 192.0.2.0/24)
+     */
+    cidr: string;
+    /**
+     * Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+     */
+    displayName?: string;
+    /**
+     * Target specification of the Service Endpoints
+     */
+    serviceEndpoints: outputs.VrackservicesTargetSpecSubnetServiceEndpoint[];
+    /**
+     * Target specification of the range dedicated to the subnet's services
+     */
+    serviceRange: outputs.VrackservicesTargetSpecSubnetServiceRange;
+    /**
+     * Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+     */
+    vlan?: number;
+}
+
+export interface VrackservicesTargetSpecSubnetServiceEndpoint {
+    /**
+     * IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+     */
+    managedServiceUrn: string;
+}
+
+export interface VrackservicesTargetSpecSubnetServiceRange {
+    /**
+     * IPv4 CIDR notation (e.g., 192.0.2.0/24)
+     */
+    cidr: string;
 }
 
 export namespace Cloud {
@@ -3121,6 +3744,28 @@ export namespace CloudProject {
         versionId: string;
     }
 
+    export interface StorageObjectLock {
+        /**
+         * Object lock default rule
+         */
+        rule: outputs.CloudProject.StorageObjectLockRule;
+        /**
+         * Object lock status
+         */
+        status: string;
+    }
+
+    export interface StorageObjectLockRule {
+        /**
+         * Object lock mode
+         */
+        mode: string;
+        /**
+         * The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+         */
+        period: string;
+    }
+
     export interface StorageReplication {
         /**
          * Replication rules
@@ -3165,7 +3810,7 @@ export namespace CloudProject {
          */
         region: string;
         /**
-         * Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+         * Whether to remove replicated bucket when the main bucket is deleted
          */
         removeOnMainBucketDeletion?: boolean;
         /**
@@ -3187,7 +3832,7 @@ export namespace CloudProject {
 
     export interface StorageVersioning {
         /**
-         * Versioning status (E.g. "enabled", "disabled" or "suspended")
+         * Versioning status
          */
         status: string;
     }
@@ -4642,6 +5287,47 @@ export namespace Hosting {
 }
 
 export namespace Iam {
+    export interface GetPolicyCondition {
+        /**
+         * List of condition blocks. Each condition supports:
+         */
+        conditions: outputs.Iam.GetPolicyConditionCondition[];
+        /**
+         * Operator for this condition.
+         */
+        operator: string;
+        /**
+         * Map of key-value pairs to match.
+         */
+        values: {[key: string]: string};
+    }
+
+    export interface GetPolicyConditionCondition {
+        /**
+         * List of condition blocks. Each condition supports:
+         */
+        conditions: outputs.Iam.GetPolicyConditionConditionCondition[];
+        /**
+         * Operator for this condition.
+         */
+        operator: string;
+        /**
+         * Map of key-value pairs to match.
+         */
+        values: {[key: string]: string};
+    }
+
+    export interface GetPolicyConditionConditionCondition {
+        /**
+         * Operator for this condition.
+         */
+        operator: string;
+        /**
+         * Map of key-value pairs to match.
+         */
+        values: {[key: string]: string};
+    }
+
     export interface GetReferenceActionsAction {
         /**
          * Name of the action
@@ -4659,6 +5345,52 @@ export namespace Iam {
          * Resource type the action is related to
          */
         resourceType: string;
+    }
+
+    export interface PolicyConditions {
+        /**
+         * List of condition blocks. Each condition supports:
+         */
+        conditions?: outputs.Iam.PolicyConditionsCondition[];
+        /**
+         * Operator to combine conditions. Valid values are `AND`, `OR`, `NOT`, or `MATCH`.
+         */
+        operator: string;
+        /**
+         * Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+         */
+        values?: {[key: string]: string};
+    }
+
+    export interface PolicyConditionsCondition {
+        /**
+         * A list of nested conditions. This is the recursive part.
+         */
+        conditions?: outputs.Iam.PolicyConditionsConditionCondition[];
+        /**
+         * Operator for this condition (typically `MATCH`).
+         */
+        operator: string;
+        /**
+         * Map of key-value pairs to match. Keys can reference:
+         * * Resource tags: `resource.Tag(tag_name)` (e.g., `resource.Tag(environment)`)
+         * * Date/time: `date(timezone).WeekDay`, `date(timezone).WeekDay.In` (e.g., `date(Europe/Paris).WeekDay`)
+         * * Request attributes: `request.IP`
+         *
+         * **Note:** Conditions can be nested up to 3 levels deep. The `MATCH` operator is terminal and cannot have sub-conditions.
+         */
+        values?: {[key: string]: string};
+    }
+
+    export interface PolicyConditionsConditionCondition {
+        /**
+         * Operator for this condition (MATCH, AND, OR, NOT)
+         */
+        operator: string;
+        /**
+         * Key-value pairs to match (e.g., resource.Tag(name), date(Europe/Paris).WeekDay, request.IP)
+         */
+        values?: {[key: string]: string};
     }
 
 }

@@ -500,6 +500,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+			"ovh_me_identity_user_token": {
+				Tok:       ovhResource(meMod, "IdentityUserToken"),
+				ComputeID: delegateID("name"),
+			},
 			"ovh_okms": {
 				Tok: ovhResource(okmsMod, "Okms"),
 			},

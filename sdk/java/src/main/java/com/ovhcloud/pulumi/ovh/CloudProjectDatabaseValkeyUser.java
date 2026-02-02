@@ -114,14 +114,14 @@ public class CloudProjectDatabaseValkeyUser extends com.pulumi.resources.CustomR
         return Codegen.optional(this.keys);
     }
     /**
-     * Name of the user.
+     * Name of the user. A user named &#34;default&#34; is mapped with an already created user and reset his password instead of creating a new user.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the user.
+     * @return Name of the user. A user named &#34;default&#34; is mapped with an already created user and reset his password instead of creating a new user.
      * 
      */
     public Output<String> name() {

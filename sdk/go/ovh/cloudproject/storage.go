@@ -12,37 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewStorage(ctx, "storage", &cloudproject.StorageArgs{
-//				ServiceName: pulumi.String("<public cloud project ID>"),
-//				RegionName:  pulumi.String("GRA"),
-//				Name:        pulumi.String("my-storage"),
-//				Versioning: &cloudproject.StorageVersioningArgs{
-//					Status: pulumi.String("enabled"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // A storage in a public cloud project can be imported using the `service_name`, `region_name` and `name` attributes. Using the following configuration:
@@ -81,6 +50,8 @@ type Storage struct {
 	Marker pulumi.StringOutput `pulumi:"marker"`
 	// Container name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Object lock configuration
+	ObjectLock StorageObjectLockOutput `pulumi:"objectLock"`
 	// Container objects
 	Objects StorageObjectArrayOutput `pulumi:"objects"`
 	// Container total objects count
@@ -153,6 +124,8 @@ type storageState struct {
 	Marker *string `pulumi:"marker"`
 	// Container name
 	Name *string `pulumi:"name"`
+	// Object lock configuration
+	ObjectLock *StorageObjectLock `pulumi:"objectLock"`
 	// Container objects
 	Objects []StorageObject `pulumi:"objects"`
 	// Container total objects count
@@ -190,6 +163,8 @@ type StorageState struct {
 	Marker pulumi.StringPtrInput
 	// Container name
 	Name pulumi.StringPtrInput
+	// Object lock configuration
+	ObjectLock StorageObjectLockPtrInput
 	// Container objects
 	Objects StorageObjectArrayInput
 	// Container total objects count
@@ -229,6 +204,8 @@ type storageArgs struct {
 	Marker *string `pulumi:"marker"`
 	// Container name
 	Name *string `pulumi:"name"`
+	// Object lock configuration
+	ObjectLock *StorageObjectLock `pulumi:"objectLock"`
 	// Container owner user ID
 	OwnerId *float64 `pulumi:"ownerId"`
 	// List objects whose key begins with this prefix
@@ -255,6 +232,8 @@ type StorageArgs struct {
 	Marker pulumi.StringPtrInput
 	// Container name
 	Name pulumi.StringPtrInput
+	// Object lock configuration
+	ObjectLock StorageObjectLockPtrInput
 	// Container owner user ID
 	OwnerId pulumi.Float64PtrInput
 	// List objects whose key begins with this prefix
@@ -384,6 +363,11 @@ func (o StorageOutput) Marker() pulumi.StringOutput {
 // Container name
 func (o StorageOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Storage) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Object lock configuration
+func (o StorageOutput) ObjectLock() StorageObjectLockOutput {
+	return o.ApplyT(func(v *Storage) StorageObjectLockOutput { return v.ObjectLock }).(StorageObjectLockOutput)
 }
 
 // Container objects

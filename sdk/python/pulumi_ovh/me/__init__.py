@@ -18,4 +18,5 @@ from .get_paymentmean_bank_account import *
 from .get_paymentmean_credit_card import *
 from .identity_group import *
 from .identity_user import *
+from .identity_user_token import *
 from . import outputs

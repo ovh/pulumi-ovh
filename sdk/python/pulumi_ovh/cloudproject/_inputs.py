@@ -167,6 +167,10 @@ __all__ = [
     'StorageEncryptionArgsDict',
     'StorageObjectArgs',
     'StorageObjectArgsDict',
+    'StorageObjectLockArgs',
+    'StorageObjectLockArgsDict',
+    'StorageObjectLockRuleArgs',
+    'StorageObjectLockRuleArgsDict',
     'StorageReplicationArgs',
     'StorageReplicationArgsDict',
     'StorageReplicationRuleArgs',
@@ -5732,6 +5736,110 @@ class StorageObjectArgs:
 
 
 if not MYPY:
+    class StorageObjectLockArgsDict(TypedDict):
+        rule: NotRequired[pulumi.Input['StorageObjectLockRuleArgsDict']]
+        """
+        Object lock default rule
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Object lock status
+        """
+elif False:
+    StorageObjectLockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StorageObjectLockArgs:
+    def __init__(__self__, *,
+                 rule: Optional[pulumi.Input['StorageObjectLockRuleArgs']] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['StorageObjectLockRuleArgs'] rule: Object lock default rule
+        :param pulumi.Input[_builtins.str] status: Object lock status
+        """
+        if rule is not None:
+            pulumi.set(__self__, "rule", rule)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def rule(self) -> Optional[pulumi.Input['StorageObjectLockRuleArgs']]:
+        """
+        Object lock default rule
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: Optional[pulumi.Input['StorageObjectLockRuleArgs']]):
+        pulumi.set(self, "rule", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Object lock status
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class StorageObjectLockRuleArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Object lock mode
+        """
+        period: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+        """
+elif False:
+    StorageObjectLockRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StorageObjectLockRuleArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 period: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: Object lock mode
+        :param pulumi.Input[_builtins.str] period: The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Object lock mode
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The retention period that the default retention configuration must apply (e.g., P30D for 30 days)
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "period", value)
+
+
+if not MYPY:
     class StorageReplicationArgsDict(TypedDict):
         rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['StorageReplicationRuleArgsDict']]]]
         """
@@ -5907,7 +6015,7 @@ if not MYPY:
         """
         remove_on_main_bucket_deletion: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        Whether to remove replicated bucket when the main bucket is deleted
         """
         storage_class: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -5926,7 +6034,7 @@ class StorageReplicationRuleDestinationArgs:
         """
         :param pulumi.Input[_builtins.str] name: Destination bucket name
         :param pulumi.Input[_builtins.str] region: Destination region
-        :param pulumi.Input[_builtins.bool] remove_on_main_bucket_deletion: Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        :param pulumi.Input[_builtins.bool] remove_on_main_bucket_deletion: Whether to remove replicated bucket when the main bucket is deleted
         :param pulumi.Input[_builtins.str] storage_class: Destination storage class
         """
         pulumi.set(__self__, "name", name)
@@ -5964,7 +6072,7 @@ class StorageReplicationRuleDestinationArgs:
     @pulumi.getter(name="removeOnMainBucketDeletion")
     def remove_on_main_bucket_deletion(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        Whether to remove replicated bucket when the main bucket is deleted
         """
         return pulumi.get(self, "remove_on_main_bucket_deletion")
 
@@ -6041,7 +6149,7 @@ if not MYPY:
     class StorageVersioningArgsDict(TypedDict):
         status: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Versioning status (E.g. "enabled", "disabled" or "suspended")
+        Versioning status
         """
 elif False:
     StorageVersioningArgsDict: TypeAlias = Mapping[str, Any]
@@ -6051,7 +6159,7 @@ class StorageVersioningArgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] status: Versioning status (E.g. "enabled", "disabled" or "suspended")
+        :param pulumi.Input[_builtins.str] status: Versioning status
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -6060,7 +6168,7 @@ class StorageVersioningArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Versioning status (E.g. "enabled", "disabled" or "suspended")
+        Versioning status
         """
         return pulumi.get(self, "status")
 

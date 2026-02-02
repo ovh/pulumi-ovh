@@ -411,6 +411,20 @@ public class Server extends com.pulumi.resources.CustomResource {
         return this.rack;
     }
     /**
+     * Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     * 
+     */
+    @Export(name="range", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> range;
+
+    /**
+     * @return Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+     * 
+     */
+    public Output<Optional<String>> range() {
+        return Codegen.optional(this.range);
+    }
+    /**
      * Dedicated region localisation
      * 
      */

@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IdentityGroup{}
 	case "ovh:Me/identityUser:IdentityUser":
 		r = &IdentityUser{}
+	case "ovh:Me/identityUserToken:IdentityUserToken":
+		r = &IdentityUserToken{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"Me/identityUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"Me/identityUserToken",
 		&module{version},
 	)
 }

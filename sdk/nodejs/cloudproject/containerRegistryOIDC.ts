@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     oidcClientId: "xxx",
  *     oidcClientSecret: "xxx",
  *     oidcScope: "openid,profile,email,offline_access",
+ *     oidcGroupFilter: "harbor-admin",
  *     oidcGroupsClaim: "groups",
  *     oidcAdminGroup: "harbor-admin",
  *     oidcVerifyCert: true,
@@ -94,6 +95,10 @@ export class ContainerRegistryOIDC extends pulumi.CustomResource {
      */
     public readonly oidcEndpoint!: pulumi.Output<string>;
     /**
+     * The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     */
+    public readonly oidcGroupFilter!: pulumi.Output<string | undefined>;
+    /**
      * The name of Claim in the ID token whose value is the list of group names.
      */
     public readonly oidcGroupsClaim!: pulumi.Output<string | undefined>;
@@ -141,6 +146,7 @@ export class ContainerRegistryOIDC extends pulumi.CustomResource {
             resourceInputs["oidcClientId"] = state ? state.oidcClientId : undefined;
             resourceInputs["oidcClientSecret"] = state ? state.oidcClientSecret : undefined;
             resourceInputs["oidcEndpoint"] = state ? state.oidcEndpoint : undefined;
+            resourceInputs["oidcGroupFilter"] = state ? state.oidcGroupFilter : undefined;
             resourceInputs["oidcGroupsClaim"] = state ? state.oidcGroupsClaim : undefined;
             resourceInputs["oidcName"] = state ? state.oidcName : undefined;
             resourceInputs["oidcScope"] = state ? state.oidcScope : undefined;
@@ -174,6 +180,7 @@ export class ContainerRegistryOIDC extends pulumi.CustomResource {
             resourceInputs["oidcClientId"] = args ? args.oidcClientId : undefined;
             resourceInputs["oidcClientSecret"] = args?.oidcClientSecret ? pulumi.secret(args.oidcClientSecret) : undefined;
             resourceInputs["oidcEndpoint"] = args ? args.oidcEndpoint : undefined;
+            resourceInputs["oidcGroupFilter"] = args ? args.oidcGroupFilter : undefined;
             resourceInputs["oidcGroupsClaim"] = args ? args.oidcGroupsClaim : undefined;
             resourceInputs["oidcName"] = args ? args.oidcName : undefined;
             resourceInputs["oidcScope"] = args ? args.oidcScope : undefined;
@@ -217,6 +224,10 @@ export interface ContainerRegistryOIDCState {
      * The URL of an OIDC-compliant server.
      */
     oidcEndpoint?: pulumi.Input<string>;
+    /**
+     * The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     */
+    oidcGroupFilter?: pulumi.Input<string>;
     /**
      * The name of Claim in the ID token whose value is the list of group names.
      */
@@ -275,6 +286,10 @@ export interface ContainerRegistryOIDCArgs {
      * The URL of an OIDC-compliant server.
      */
     oidcEndpoint: pulumi.Input<string>;
+    /**
+     * The regular expression to select matching groups from the Group Claim Name list. Matching groups are added to Harbor. This filter does not limit the users’ capability to log in into Harbor.
+     */
+    oidcGroupFilter?: pulumi.Input<string>;
     /**
      * The name of Claim in the ID token whose value is the list of group names.
      */

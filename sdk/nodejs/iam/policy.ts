@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -31,6 +33,45 @@ import * as utilities from "../utilities";
  *         "account:apiovh:services/get",
  *         "account:apiovh:*",
  *     ],
+ * });
+ * const ipRestrictedProdAccess = new ovh.iam.Policy("ip_restricted_prod_access", {
+ *     name: "ip_restricted_prod_access",
+ *     description: "Allow access only from a specific IP to resources tagged prod",
+ *     identities: [myGroup.GroupURN],
+ *     resources: ["urn:v1:eu:resource:vps:*"],
+ *     allows: ["vps:apiovh:*"],
+ *     conditions: {
+ *         operator: "MATCH",
+ *         values: {
+ *             "resource.Tag(environment)": "prod",
+ *             "request.IP": "192.72.0.1",
+ *         },
+ *     },
+ * });
+ * const workdaysAndIpRestrictedAndExpiring = new ovh.iam.Policy("workdays_and_ip_restricted_and_expiring", {
+ *     name: "workdays_and_ip_restricted_and_expiring",
+ *     description: "Allow access only on workdays, expires end of 2026",
+ *     identities: [myGroup.GroupURN],
+ *     resources: ["urn:v1:eu:resource:vps:*"],
+ *     allows: ["vps:apiovh:*"],
+ *     conditions: {
+ *         operator: "AND",
+ *         conditions: [
+ *             {
+ *                 operator: "MATCH",
+ *                 values: {
+ *                     "date(Europe/Paris).WeekDay.In": "monday,tuesday,wednesday,thursday,friday",
+ *                 },
+ *             },
+ *             {
+ *                 operator: "MATCH",
+ *                 values: {
+ *                     "request.IP": "192.72.0.1",
+ *                 },
+ *             },
+ *         ],
+ *     },
+ *     expiredAt: "2026-12-31T23:59:59Z",
  * });
  * ```
  */
@@ -67,6 +108,10 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly allows!: pulumi.Output<string[] | undefined>;
     /**
+     * Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     */
+    public readonly conditions!: pulumi.Output<outputs.Iam.PolicyConditions | undefined>;
+    /**
      * Creation date of this group.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -82,6 +127,10 @@ export class Policy extends pulumi.CustomResource {
      * List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
      */
     public readonly excepts!: pulumi.Output<string[] | undefined>;
+    /**
+     * Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     */
+    public readonly expiredAt!: pulumi.Output<string | undefined>;
     /**
      * List of identities affected by the policy
      */
@@ -125,10 +174,12 @@ export class Policy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["allows"] = state ? state.allows : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["denies"] = state ? state.denies : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["excepts"] = state ? state.excepts : undefined;
+            resourceInputs["expiredAt"] = state ? state.expiredAt : undefined;
             resourceInputs["identities"] = state ? state.identities : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["owner"] = state ? state.owner : undefined;
@@ -145,9 +196,11 @@ export class Policy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resources'");
             }
             resourceInputs["allows"] = args ? args.allows : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["denies"] = args ? args.denies : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["excepts"] = args ? args.excepts : undefined;
+            resourceInputs["expiredAt"] = args ? args.expiredAt : undefined;
             resourceInputs["identities"] = args ? args.identities : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["permissionsGroups"] = args ? args.permissionsGroups : undefined;
@@ -171,6 +224,10 @@ export interface PolicyState {
      */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     */
+    conditions?: pulumi.Input<inputs.Iam.PolicyConditions>;
+    /**
      * Creation date of this group.
      */
     createdAt?: pulumi.Input<string>;
@@ -186,6 +243,10 @@ export interface PolicyState {
      * List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
      */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     */
+    expiredAt?: pulumi.Input<string>;
     /**
      * List of identities affected by the policy
      */
@@ -225,6 +286,10 @@ export interface PolicyArgs {
      */
     allows?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Conditions restrict permissions based on resource tags, date/time, or request attributes. See Conditions below.
+     */
+    conditions?: pulumi.Input<inputs.Iam.PolicyConditions>;
+    /**
      * List of actions that will always be denied even if also allowed by this policy or another one.
      */
     denies?: pulumi.Input<pulumi.Input<string>[]>;
@@ -236,6 +301,10 @@ export interface PolicyArgs {
      * List of overrides of action that must not be allowed even if they are caught by allow. Only makes sens if allow contains wildcards.
      */
     excepts?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Expiration date of the policy in RFC3339 format (e.g., `2025-12-31T23:59:59Z`). After this date, the policy will no longer be applied.
+     */
+    expiredAt?: pulumi.Input<string>;
     /**
      * List of identities affected by the policy
      */

@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Whether to remove replicated bucket when the main bucket is deleted (make sure to apply your configuration when changing this value before deleting the main bucket)
+        /// Whether to remove replicated bucket when the main bucket is deleted
         /// </summary>
         public readonly bool? RemoveOnMainBucketDeletion;
         /// <summary>

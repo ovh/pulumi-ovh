@@ -55,6 +55,12 @@ namespace Pulumi.Ovh.SavingsPlan
         public Output<bool> AutoRenewal { get; private set; } = null!;
 
         /// <summary>
+        /// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+        /// </summary>
+        [Output("deploymentType")]
+        public Output<string?> DeploymentType { get; private set; } = null!;
+
+        /// <summary>
         /// Custom display name, used in invoices
         /// </summary>
         [Output("displayName")]
@@ -180,6 +186,12 @@ namespace Pulumi.Ovh.SavingsPlan
         public Input<bool>? AutoRenewal { get; set; }
 
         /// <summary>
+        /// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+        /// </summary>
+        [Input("deploymentType")]
+        public Input<string>? DeploymentType { get; set; }
+
+        /// <summary>
         /// Custom display name, used in invoices
         /// </summary>
         [Input("displayName", required: true)]
@@ -222,6 +234,12 @@ namespace Pulumi.Ovh.SavingsPlan
         /// </summary>
         [Input("autoRenewal")]
         public Input<bool>? AutoRenewal { get; set; }
+
+        /// <summary>
+        /// Deployment type of the Savings Plan. Can be either `1AZ` or `3AZ`. Defaults to `1AZ` and cannot be set to `3AZ` for Rancher flavors.
+        /// </summary>
+        [Input("deploymentType")]
+        public Input<string>? DeploymentType { get; set; }
 
         /// <summary>
         /// Custom display name, used in invoices

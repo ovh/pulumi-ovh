@@ -634,6 +634,10 @@
                     }
                 }
             },
+            "ovh_cloud_project_storage_replication_job": {
+                "current": "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob",
+                "majorVersion": 2
+            },
             "ovh_cloud_project_user": {
                 "current": "ovh:CloudProject/user:User",
                 "majorVersion": 2,
@@ -1119,6 +1123,23 @@
                     "allow": {
                         "maxItemsOne": false
                     },
+                    "conditions": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "condition": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "condition": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "deny": {
                         "maxItemsOne": false
                     },
@@ -1404,6 +1425,10 @@
                 "current": "ovh:Me/identityUser:IdentityUser",
                 "majorVersion": 2
             },
+            "ovh_me_identity_user_token": {
+                "current": "ovh:Me/identityUserToken:IdentityUserToken",
+                "majorVersion": 2
+            },
             "ovh_okms": {
                 "current": "ovh:Okms/okms:Okms",
                 "majorVersion": 2
@@ -1604,6 +1629,77 @@
             "ovh_vrack_vrackservices": {
                 "current": "ovh:Vrack/vrackservices:Vrackservices",
                 "majorVersion": 2
+            },
+            "ovh_vrackservices": {
+                "current": "ovh:index/vrackservices:Vrackservices",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "subnets": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "service_endpoints": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "endpoints": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "current_tasks": {
+                        "maxItemsOne": false
+                    },
+                    "order": {
+                        "fields": {
+                            "details": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "plan": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "plan_option": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "target_spec": {
+                        "fields": {
+                            "subnets": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "service_endpoints": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "datasources": {
@@ -2928,6 +3024,23 @@
                     "allow": {
                         "maxItemsOne": false
                     },
+                    "conditions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "condition": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "condition": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "deny": {
                         "maxItemsOne": false
                     },
@@ -3021,6 +3134,22 @@
                     }
                 }
             },
+            "ovh_iploadbalancing_nat_ips": {
+                "current": "ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps",
+                "majorVersion": 2,
+                "fields": {
+                    "nat_ips": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_iploadbalancing_vrack_network": {
                 "current": "ovh:IpLoadBalancing/getVrackNetwork:getVrackNetwork",
                 "majorVersion": 2
@@ -3030,6 +3159,15 @@
                 "majorVersion": 2,
                 "fields": {
                     "result": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_iploadbalancings": {
+                "current": "ovh:index/getIploadbalancings:getIploadbalancings",
+                "majorVersion": 2,
+                "fields": {
+                    "iploadbalancings": {
                         "maxItemsOne": false
                     }
                 }
@@ -3424,6 +3562,101 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "ovh_vrackservices": {
+                "current": "ovh:index/getVrackservices:getVrackservices",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "subnets": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "service_endpoints": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "endpoints": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "current_tasks": {
+                        "maxItemsOne": false
+                    },
+                    "target_spec": {
+                        "fields": {
+                            "subnets": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "service_endpoints": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_vrackservicess": {
+                "current": "ovh:index/getVrackservicess:getVrackservicess",
+                "majorVersion": 2,
+                "fields": {
+                    "vrackservicess": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "subnets": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "service_endpoints": {
+                                                        "maxItemsOne": false,
+                                                        "elem": {
+                                                            "fields": {
+                                                                "endpoints": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "current_tasks": {
+                                    "maxItemsOne": false
+                                },
+                                "target_spec": {
+                                    "fields": {
+                                        "subnets": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "service_endpoints": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     },
@@ -3541,6 +3774,7 @@
             "ovh:Me/aPIOAuth2Client:APIOAuth2Client": 0,
             "ovh:Me/identityGroup:IdentityGroup": 0,
             "ovh:Me/identityUser:IdentityUser": 0,
+            "ovh:Me/identityUserToken:IdentityUserToken": 1,
             "ovh:Okms/credential:Credential": 1,
             "ovh:Okms/okms:Okms": 1,
             "ovh:Okms/secret:Secret": 1,
@@ -3562,6 +3796,7 @@
             "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
             "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
+            "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
             "ovh:index/iamResourceTags:IamResourceTags": 0,
             "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": 1,
@@ -3570,7 +3805,8 @@
             "ovh:index/storageEfsShare:StorageEfsShare": 1,
             "ovh:index/storageEfsShareAcl:StorageEfsShareAcl": 1,
             "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot": 1,
-            "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": 1
+            "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": 1,
+            "ovh:index/vrackservices:Vrackservices": 1
         },
         "functions": {
             "ovh:Cloud/getProject:getProject": 1,
@@ -3729,6 +3965,8 @@
             "ovh:index/getDomainZoneRecords:getDomainZoneRecords": 1,
             "ovh:index/getInstallationTemplate:getInstallationTemplate": 0,
             "ovh:index/getInstallationTemplates:getInstallationTemplates": 0,
+            "ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps": 1,
+            "ovh:index/getIploadbalancings:getIploadbalancings": 1,
             "ovh:index/getLocation:getLocation": 1,
             "ovh:index/getOkmsSecret:getOkmsSecret": 1,
             "ovh:index/getOvhcloudConnectConfigPopDatacenterExtras:getOvhcloudConnectConfigPopDatacenterExtras": 1,
@@ -3740,7 +3978,9 @@
             "ovh:index/getStorageEfs:getStorageEfs": 1,
             "ovh:index/getStorageEfsShareAccessPath:getStorageEfsShareAccessPath": 1,
             "ovh:index/getStorageEfsShareAccessPaths:getStorageEfsShareAccessPaths": 1,
-            "ovh:index/getVrackNetworks:getVrackNetworks": 0
+            "ovh:index/getVrackNetworks:getVrackNetworks": 0,
+            "ovh:index/getVrackservices:getVrackservices": 1,
+            "ovh:index/getVrackservicess:getVrackservicess": 1
         }
     },
     "renames": {

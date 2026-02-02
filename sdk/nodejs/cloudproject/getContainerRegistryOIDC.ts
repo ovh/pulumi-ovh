@@ -31,6 +31,7 @@ export function getContainerRegistryOIDC(args: GetContainerRegistryOIDCArgs, opt
         "oidcAutoOnboard": args.oidcAutoOnboard,
         "oidcClientId": args.oidcClientId,
         "oidcEndpoint": args.oidcEndpoint,
+        "oidcGroupFilter": args.oidcGroupFilter,
         "oidcGroupsClaim": args.oidcGroupsClaim,
         "oidcName": args.oidcName,
         "oidcScope": args.oidcScope,
@@ -61,6 +62,7 @@ export interface GetContainerRegistryOIDCArgs {
      * The URL of an OIDC-compliant server.
      */
     oidcEndpoint?: string;
+    oidcGroupFilter?: string;
     /**
      * The name of Claim in the ID token whose value is the list of group names.
      */
@@ -115,6 +117,7 @@ export interface GetContainerRegistryOIDCResult {
      * The URL of an OIDC-compliant server.
      */
     readonly oidcEndpoint?: string;
+    readonly oidcGroupFilter?: string;
     /**
      * The name of Claim in the ID token whose value is the list of group names.
      */
@@ -171,6 +174,7 @@ export function getContainerRegistryOIDCOutput(args: GetContainerRegistryOIDCOut
         "oidcAutoOnboard": args.oidcAutoOnboard,
         "oidcClientId": args.oidcClientId,
         "oidcEndpoint": args.oidcEndpoint,
+        "oidcGroupFilter": args.oidcGroupFilter,
         "oidcGroupsClaim": args.oidcGroupsClaim,
         "oidcName": args.oidcName,
         "oidcScope": args.oidcScope,
@@ -201,6 +205,7 @@ export interface GetContainerRegistryOIDCOutputArgs {
      * The URL of an OIDC-compliant server.
      */
     oidcEndpoint?: pulumi.Input<string>;
+    oidcGroupFilter?: pulumi.Input<string>;
     /**
      * The name of Claim in the ID token whose value is the list of group names.
      */

@@ -13,6 +13,2245 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type VrackservicesCurrentState struct {
+	// Product status of the vRack Services
+	ProductStatus *string `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region *string `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets []VrackservicesCurrentStateSubnet `pulumi:"subnets"`
+}
+
+// VrackservicesCurrentStateInput is an input type that accepts VrackservicesCurrentStateArgs and VrackservicesCurrentStateOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateInput` via:
+//
+//	VrackservicesCurrentStateArgs{...}
+type VrackservicesCurrentStateInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateOutput() VrackservicesCurrentStateOutput
+	ToVrackservicesCurrentStateOutputWithContext(context.Context) VrackservicesCurrentStateOutput
+}
+
+type VrackservicesCurrentStateArgs struct {
+	// Product status of the vRack Services
+	ProductStatus pulumi.StringPtrInput `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets VrackservicesCurrentStateSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (VrackservicesCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentState)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateArgs) ToVrackservicesCurrentStateOutput() VrackservicesCurrentStateOutput {
+	return i.ToVrackservicesCurrentStateOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateArgs) ToVrackservicesCurrentStateOutputWithContext(ctx context.Context) VrackservicesCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateOutput)
+}
+
+func (i VrackservicesCurrentStateArgs) ToVrackservicesCurrentStatePtrOutput() VrackservicesCurrentStatePtrOutput {
+	return i.ToVrackservicesCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateArgs) ToVrackservicesCurrentStatePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateOutput).ToVrackservicesCurrentStatePtrOutputWithContext(ctx)
+}
+
+// VrackservicesCurrentStatePtrInput is an input type that accepts VrackservicesCurrentStateArgs, VrackservicesCurrentStatePtr and VrackservicesCurrentStatePtrOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStatePtrInput` via:
+//
+//	        VrackservicesCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type VrackservicesCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStatePtrOutput() VrackservicesCurrentStatePtrOutput
+	ToVrackservicesCurrentStatePtrOutputWithContext(context.Context) VrackservicesCurrentStatePtrOutput
+}
+
+type vrackservicesCurrentStatePtrType VrackservicesCurrentStateArgs
+
+func VrackservicesCurrentStatePtr(v *VrackservicesCurrentStateArgs) VrackservicesCurrentStatePtrInput {
+	return (*vrackservicesCurrentStatePtrType)(v)
+}
+
+func (*vrackservicesCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesCurrentState)(nil)).Elem()
+}
+
+func (i *vrackservicesCurrentStatePtrType) ToVrackservicesCurrentStatePtrOutput() VrackservicesCurrentStatePtrOutput {
+	return i.ToVrackservicesCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *vrackservicesCurrentStatePtrType) ToVrackservicesCurrentStatePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStatePtrOutput)
+}
+
+type VrackservicesCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentState)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateOutput) ToVrackservicesCurrentStateOutput() VrackservicesCurrentStateOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateOutput) ToVrackservicesCurrentStateOutputWithContext(ctx context.Context) VrackservicesCurrentStateOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateOutput) ToVrackservicesCurrentStatePtrOutput() VrackservicesCurrentStatePtrOutput {
+	return o.ToVrackservicesCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o VrackservicesCurrentStateOutput) ToVrackservicesCurrentStatePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VrackservicesCurrentState) *VrackservicesCurrentState {
+		return &v
+	}).(VrackservicesCurrentStatePtrOutput)
+}
+
+// Product status of the vRack Services
+func (o VrackservicesCurrentStateOutput) ProductStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentState) *string { return v.ProductStatus }).(pulumi.StringPtrOutput)
+}
+
+// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+func (o VrackservicesCurrentStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentState) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Subnets of the current vRack Services
+func (o VrackservicesCurrentStateOutput) Subnets() VrackservicesCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v VrackservicesCurrentState) []VrackservicesCurrentStateSubnet { return v.Subnets }).(VrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type VrackservicesCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesCurrentState)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStatePtrOutput) ToVrackservicesCurrentStatePtrOutput() VrackservicesCurrentStatePtrOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStatePtrOutput) ToVrackservicesCurrentStatePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStatePtrOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStatePtrOutput) Elem() VrackservicesCurrentStateOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentState) VrackservicesCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret VrackservicesCurrentState
+		return ret
+	}).(VrackservicesCurrentStateOutput)
+}
+
+// Product status of the vRack Services
+func (o VrackservicesCurrentStatePtrOutput) ProductStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+func (o VrackservicesCurrentStatePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnets of the current vRack Services
+func (o VrackservicesCurrentStatePtrOutput) Subnets() VrackservicesCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentState) []VrackservicesCurrentStateSubnet {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(VrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type VrackservicesCurrentStateSubnet struct {
+	// IP address range of the subnet in CIDR format
+	Cidr *string `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName *string `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints []VrackservicesCurrentStateSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange *VrackservicesCurrentStateSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan *float64 `pulumi:"vlan"`
+}
+
+// VrackservicesCurrentStateSubnetInput is an input type that accepts VrackservicesCurrentStateSubnetArgs and VrackservicesCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetInput` via:
+//
+//	VrackservicesCurrentStateSubnetArgs{...}
+type VrackservicesCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetOutput() VrackservicesCurrentStateSubnetOutput
+	ToVrackservicesCurrentStateSubnetOutputWithContext(context.Context) VrackservicesCurrentStateSubnetOutput
+}
+
+type VrackservicesCurrentStateSubnetArgs struct {
+	// IP address range of the subnet in CIDR format
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints VrackservicesCurrentStateSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange VrackservicesCurrentStateSubnetServiceRangePtrInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan pulumi.Float64PtrInput `pulumi:"vlan"`
+}
+
+func (VrackservicesCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetArgs) ToVrackservicesCurrentStateSubnetOutput() VrackservicesCurrentStateSubnetOutput {
+	return i.ToVrackservicesCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetArgs) ToVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetOutput)
+}
+
+// VrackservicesCurrentStateSubnetArrayInput is an input type that accepts VrackservicesCurrentStateSubnetArray and VrackservicesCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetArrayInput` via:
+//
+//	VrackservicesCurrentStateSubnetArray{ VrackservicesCurrentStateSubnetArgs{...} }
+type VrackservicesCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetArrayOutput() VrackservicesCurrentStateSubnetArrayOutput
+	ToVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Context) VrackservicesCurrentStateSubnetArrayOutput
+}
+
+type VrackservicesCurrentStateSubnetArray []VrackservicesCurrentStateSubnetInput
+
+func (VrackservicesCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetArray) ToVrackservicesCurrentStateSubnetArrayOutput() VrackservicesCurrentStateSubnetArrayOutput {
+	return i.ToVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetArray) ToVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type VrackservicesCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetOutput) ToVrackservicesCurrentStateSubnetOutput() VrackservicesCurrentStateSubnetOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetOutput) ToVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetOutput {
+	return o
+}
+
+// IP address range of the subnet in CIDR format
+func (o VrackservicesCurrentStateSubnetOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnet) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// Display name of the subnet
+func (o VrackservicesCurrentStateSubnetOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnet) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Service endpoints of the subnet
+func (o VrackservicesCurrentStateSubnetOutput) ServiceEndpoints() VrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnet) []VrackservicesCurrentStateSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(VrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+// Defines a smaller subnet dedicated to the managed services IPs
+func (o VrackservicesCurrentStateSubnetOutput) ServiceRange() VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnet) *VrackservicesCurrentStateSubnetServiceRange {
+		return v.ServiceRange
+	}).(VrackservicesCurrentStateSubnetServiceRangePtrOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation
+func (o VrackservicesCurrentStateSubnetOutput) Vlan() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnet) *float64 { return v.Vlan }).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetArrayOutput) ToVrackservicesCurrentStateSubnetArrayOutput() VrackservicesCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetArrayOutput) ToVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) VrackservicesCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesCurrentStateSubnet {
+		return vs[0].([]VrackservicesCurrentStateSubnet)[vs[1].(int)]
+	}).(VrackservicesCurrentStateSubnetOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpoint struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints []VrackservicesCurrentStateSubnetServiceEndpointEndpoint `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn *string `pulumi:"managedServiceUrn"`
+}
+
+// VrackservicesCurrentStateSubnetServiceEndpointInput is an input type that accepts VrackservicesCurrentStateSubnetServiceEndpointArgs and VrackservicesCurrentStateSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetServiceEndpointInput` via:
+//
+//	VrackservicesCurrentStateSubnetServiceEndpointArgs{...}
+type VrackservicesCurrentStateSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetServiceEndpointOutput() VrackservicesCurrentStateSubnetServiceEndpointOutput
+	ToVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Context) VrackservicesCurrentStateSubnetServiceEndpointOutput
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointArgs struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn pulumi.StringPtrInput `pulumi:"managedServiceUrn"`
+}
+
+func (VrackservicesCurrentStateSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointArgs) ToVrackservicesCurrentStateSubnetServiceEndpointOutput() VrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointArgs) ToVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceEndpointOutput)
+}
+
+// VrackservicesCurrentStateSubnetServiceEndpointArrayInput is an input type that accepts VrackservicesCurrentStateSubnetServiceEndpointArray and VrackservicesCurrentStateSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetServiceEndpointArrayInput` via:
+//
+//	VrackservicesCurrentStateSubnetServiceEndpointArray{ VrackservicesCurrentStateSubnetServiceEndpointArgs{...} }
+type VrackservicesCurrentStateSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() VrackservicesCurrentStateSubnetServiceEndpointArrayOutput
+	ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Context) VrackservicesCurrentStateSubnetServiceEndpointArrayOutput
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointArray []VrackservicesCurrentStateSubnetServiceEndpointInput
+
+func (VrackservicesCurrentStateSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointArray) ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() VrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointArray) ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointOutput) ToVrackservicesCurrentStateSubnetServiceEndpointOutput() VrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointOutput) ToVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+// Endpoints representing the IPs assigned to the managed services
+func (o VrackservicesCurrentStateSubnetServiceEndpointOutput) Endpoints() VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceEndpoint) []VrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+		return v.Endpoints
+	}).(VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+func (o VrackservicesCurrentStateSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceEndpoint) *string { return v.ManagedServiceUrn }).(pulumi.StringPtrOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() VrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) VrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesCurrentStateSubnetServiceEndpoint {
+		return vs[0].([]VrackservicesCurrentStateSubnetServiceEndpoint)[vs[1].(int)]
+	}).(VrackservicesCurrentStateSubnetServiceEndpointOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointEndpoint struct {
+	// IP description defined in the managed service
+	Description *string `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip *string `pulumi:"ip"`
+}
+
+// VrackservicesCurrentStateSubnetServiceEndpointEndpointInput is an input type that accepts VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs and VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetServiceEndpointEndpointInput` via:
+//
+//	VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...}
+type VrackservicesCurrentStateSubnetServiceEndpointEndpointInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
+	ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Context) VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs struct {
+	// IP description defined in the managed service
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+}
+
+func (VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+// VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput is an input type that accepts VrackservicesCurrentStateSubnetServiceEndpointEndpointArray and VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput` via:
+//
+//	VrackservicesCurrentStateSubnetServiceEndpointEndpointArray{ VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...} }
+type VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
+	ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Context) VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointEndpointArray []VrackservicesCurrentStateSubnetServiceEndpointEndpointInput
+
+func (VrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+// IP description defined in the managed service
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceEndpointEndpoint) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// IP address assigned by OVHcloud
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceEndpointEndpoint) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) Index(i pulumi.IntInput) VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+		return vs[0].([]VrackservicesCurrentStateSubnetServiceEndpointEndpoint)[vs[1].(int)]
+	}).(VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceRange struct {
+	// CIDR dedicated to the subnet's services
+	Cidr *string `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps *float64 `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps *float64 `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps *float64 `pulumi:"usedIps"`
+}
+
+// VrackservicesCurrentStateSubnetServiceRangeInput is an input type that accepts VrackservicesCurrentStateSubnetServiceRangeArgs and VrackservicesCurrentStateSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetServiceRangeInput` via:
+//
+//	VrackservicesCurrentStateSubnetServiceRangeArgs{...}
+type VrackservicesCurrentStateSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetServiceRangeOutput() VrackservicesCurrentStateSubnetServiceRangeOutput
+	ToVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Context) VrackservicesCurrentStateSubnetServiceRangeOutput
+}
+
+type VrackservicesCurrentStateSubnetServiceRangeArgs struct {
+	// CIDR dedicated to the subnet's services
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps pulumi.Float64PtrInput `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps pulumi.Float64PtrInput `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps pulumi.Float64PtrInput `pulumi:"usedIps"`
+}
+
+func (VrackservicesCurrentStateSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentStateSubnetServiceRangeArgs) ToVrackservicesCurrentStateSubnetServiceRangeOutput() VrackservicesCurrentStateSubnetServiceRangeOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetServiceRangeArgs) ToVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceRangeOutput)
+}
+
+func (i VrackservicesCurrentStateSubnetServiceRangeArgs) ToVrackservicesCurrentStateSubnetServiceRangePtrOutput() VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentStateSubnetServiceRangeArgs) ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceRangeOutput).ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(ctx)
+}
+
+// VrackservicesCurrentStateSubnetServiceRangePtrInput is an input type that accepts VrackservicesCurrentStateSubnetServiceRangeArgs, VrackservicesCurrentStateSubnetServiceRangePtr and VrackservicesCurrentStateSubnetServiceRangePtrOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentStateSubnetServiceRangePtrInput` via:
+//
+//	        VrackservicesCurrentStateSubnetServiceRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type VrackservicesCurrentStateSubnetServiceRangePtrInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentStateSubnetServiceRangePtrOutput() VrackservicesCurrentStateSubnetServiceRangePtrOutput
+	ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(context.Context) VrackservicesCurrentStateSubnetServiceRangePtrOutput
+}
+
+type vrackservicesCurrentStateSubnetServiceRangePtrType VrackservicesCurrentStateSubnetServiceRangeArgs
+
+func VrackservicesCurrentStateSubnetServiceRangePtr(v *VrackservicesCurrentStateSubnetServiceRangeArgs) VrackservicesCurrentStateSubnetServiceRangePtrInput {
+	return (*vrackservicesCurrentStateSubnetServiceRangePtrType)(v)
+}
+
+func (*vrackservicesCurrentStateSubnetServiceRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (i *vrackservicesCurrentStateSubnetServiceRangePtrType) ToVrackservicesCurrentStateSubnetServiceRangePtrOutput() VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return i.ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(context.Background())
+}
+
+func (i *vrackservicesCurrentStateSubnetServiceRangePtrType) ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentStateSubnetServiceRangePtrOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) ToVrackservicesCurrentStateSubnetServiceRangeOutput() VrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) ToVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) ToVrackservicesCurrentStateSubnetServiceRangePtrOutput() VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return o.ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(context.Background())
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VrackservicesCurrentStateSubnetServiceRange) *VrackservicesCurrentStateSubnetServiceRange {
+		return &v
+	}).(VrackservicesCurrentStateSubnetServiceRangePtrOutput)
+}
+
+// CIDR dedicated to the subnet's services
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceRange) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// Number of remaining IPs in the service range
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) RemainingIps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceRange) *float64 { return v.RemainingIps }).(pulumi.Float64PtrOutput)
+}
+
+// Number of service range IPs reserved by OVHcloud
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) ReservedIps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceRange) *float64 { return v.ReservedIps }).(pulumi.Float64PtrOutput)
+}
+
+// Number of service range IPs assigned to the managed services
+func (o VrackservicesCurrentStateSubnetServiceRangeOutput) UsedIps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentStateSubnetServiceRange) *float64 { return v.UsedIps }).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesCurrentStateSubnetServiceRangePtrOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentStateSubnetServiceRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) ToVrackservicesCurrentStateSubnetServiceRangePtrOutput() VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) ToVrackservicesCurrentStateSubnetServiceRangePtrOutputWithContext(ctx context.Context) VrackservicesCurrentStateSubnetServiceRangePtrOutput {
+	return o
+}
+
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) Elem() VrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentStateSubnetServiceRange) VrackservicesCurrentStateSubnetServiceRange {
+		if v != nil {
+			return *v
+		}
+		var ret VrackservicesCurrentStateSubnetServiceRange
+		return ret
+	}).(VrackservicesCurrentStateSubnetServiceRangeOutput)
+}
+
+// CIDR dedicated to the subnet's services
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentStateSubnetServiceRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of remaining IPs in the service range
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) RemainingIps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentStateSubnetServiceRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.RemainingIps
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Number of service range IPs reserved by OVHcloud
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) ReservedIps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentStateSubnetServiceRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedIps
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Number of service range IPs assigned to the managed services
+func (o VrackservicesCurrentStateSubnetServiceRangePtrOutput) UsedIps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VrackservicesCurrentStateSubnetServiceRange) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.UsedIps
+	}).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesCurrentTask struct {
+	// Identifier of the current task
+	Id *string `pulumi:"id"`
+	// Link to the related resource
+	Link *string `pulumi:"link"`
+	// Current global status of the current task
+	Status *string `pulumi:"status"`
+	// Type of the current task
+	Type *string `pulumi:"type"`
+}
+
+// VrackservicesCurrentTaskInput is an input type that accepts VrackservicesCurrentTaskArgs and VrackservicesCurrentTaskOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentTaskInput` via:
+//
+//	VrackservicesCurrentTaskArgs{...}
+type VrackservicesCurrentTaskInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentTaskOutput() VrackservicesCurrentTaskOutput
+	ToVrackservicesCurrentTaskOutputWithContext(context.Context) VrackservicesCurrentTaskOutput
+}
+
+type VrackservicesCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Link to the related resource
+	Link pulumi.StringPtrInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VrackservicesCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentTaskArgs) ToVrackservicesCurrentTaskOutput() VrackservicesCurrentTaskOutput {
+	return i.ToVrackservicesCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentTaskArgs) ToVrackservicesCurrentTaskOutputWithContext(ctx context.Context) VrackservicesCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentTaskOutput)
+}
+
+// VrackservicesCurrentTaskArrayInput is an input type that accepts VrackservicesCurrentTaskArray and VrackservicesCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `VrackservicesCurrentTaskArrayInput` via:
+//
+//	VrackservicesCurrentTaskArray{ VrackservicesCurrentTaskArgs{...} }
+type VrackservicesCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesCurrentTaskArrayOutput() VrackservicesCurrentTaskArrayOutput
+	ToVrackservicesCurrentTaskArrayOutputWithContext(context.Context) VrackservicesCurrentTaskArrayOutput
+}
+
+type VrackservicesCurrentTaskArray []VrackservicesCurrentTaskInput
+
+func (VrackservicesCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (i VrackservicesCurrentTaskArray) ToVrackservicesCurrentTaskArrayOutput() VrackservicesCurrentTaskArrayOutput {
+	return i.ToVrackservicesCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesCurrentTaskArray) ToVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) VrackservicesCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesCurrentTaskArrayOutput)
+}
+
+type VrackservicesCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentTaskOutput) ToVrackservicesCurrentTaskOutput() VrackservicesCurrentTaskOutput {
+	return o
+}
+
+func (o VrackservicesCurrentTaskOutput) ToVrackservicesCurrentTaskOutputWithContext(ctx context.Context) VrackservicesCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o VrackservicesCurrentTaskOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentTask) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Link to the related resource
+func (o VrackservicesCurrentTaskOutput) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentTask) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Current global status of the current task
+func (o VrackservicesCurrentTaskOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentTask) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of the current task
+func (o VrackservicesCurrentTaskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesCurrentTask) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VrackservicesCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (o VrackservicesCurrentTaskArrayOutput) ToVrackservicesCurrentTaskArrayOutput() VrackservicesCurrentTaskArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentTaskArrayOutput) ToVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) VrackservicesCurrentTaskArrayOutput {
+	return o
+}
+
+func (o VrackservicesCurrentTaskArrayOutput) Index(i pulumi.IntInput) VrackservicesCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesCurrentTask {
+		return vs[0].([]VrackservicesCurrentTask)[vs[1].(int)]
+	}).(VrackservicesCurrentTaskOutput)
+}
+
+type VrackservicesIam struct {
+	// Resource display name
+	DisplayName *string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id *string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn *string `pulumi:"urn"`
+}
+
+// VrackservicesIamInput is an input type that accepts VrackservicesIamArgs and VrackservicesIamOutput values.
+// You can construct a concrete instance of `VrackservicesIamInput` via:
+//
+//	VrackservicesIamArgs{...}
+type VrackservicesIamInput interface {
+	pulumi.Input
+
+	ToVrackservicesIamOutput() VrackservicesIamOutput
+	ToVrackservicesIamOutputWithContext(context.Context) VrackservicesIamOutput
+}
+
+type VrackservicesIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringPtrInput `pulumi:"urn"`
+}
+
+func (VrackservicesIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesIam)(nil)).Elem()
+}
+
+func (i VrackservicesIamArgs) ToVrackservicesIamOutput() VrackservicesIamOutput {
+	return i.ToVrackservicesIamOutputWithContext(context.Background())
+}
+
+func (i VrackservicesIamArgs) ToVrackservicesIamOutputWithContext(ctx context.Context) VrackservicesIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesIamOutput)
+}
+
+func (i VrackservicesIamArgs) ToVrackservicesIamPtrOutput() VrackservicesIamPtrOutput {
+	return i.ToVrackservicesIamPtrOutputWithContext(context.Background())
+}
+
+func (i VrackservicesIamArgs) ToVrackservicesIamPtrOutputWithContext(ctx context.Context) VrackservicesIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesIamOutput).ToVrackservicesIamPtrOutputWithContext(ctx)
+}
+
+// VrackservicesIamPtrInput is an input type that accepts VrackservicesIamArgs, VrackservicesIamPtr and VrackservicesIamPtrOutput values.
+// You can construct a concrete instance of `VrackservicesIamPtrInput` via:
+//
+//	        VrackservicesIamArgs{...}
+//
+//	or:
+//
+//	        nil
+type VrackservicesIamPtrInput interface {
+	pulumi.Input
+
+	ToVrackservicesIamPtrOutput() VrackservicesIamPtrOutput
+	ToVrackservicesIamPtrOutputWithContext(context.Context) VrackservicesIamPtrOutput
+}
+
+type vrackservicesIamPtrType VrackservicesIamArgs
+
+func VrackservicesIamPtr(v *VrackservicesIamArgs) VrackservicesIamPtrInput {
+	return (*vrackservicesIamPtrType)(v)
+}
+
+func (*vrackservicesIamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesIam)(nil)).Elem()
+}
+
+func (i *vrackservicesIamPtrType) ToVrackservicesIamPtrOutput() VrackservicesIamPtrOutput {
+	return i.ToVrackservicesIamPtrOutputWithContext(context.Background())
+}
+
+func (i *vrackservicesIamPtrType) ToVrackservicesIamPtrOutputWithContext(ctx context.Context) VrackservicesIamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesIamPtrOutput)
+}
+
+type VrackservicesIamOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesIam)(nil)).Elem()
+}
+
+func (o VrackservicesIamOutput) ToVrackservicesIamOutput() VrackservicesIamOutput {
+	return o
+}
+
+func (o VrackservicesIamOutput) ToVrackservicesIamOutputWithContext(ctx context.Context) VrackservicesIamOutput {
+	return o
+}
+
+func (o VrackservicesIamOutput) ToVrackservicesIamPtrOutput() VrackservicesIamPtrOutput {
+	return o.ToVrackservicesIamPtrOutputWithContext(context.Background())
+}
+
+func (o VrackservicesIamOutput) ToVrackservicesIamPtrOutputWithContext(ctx context.Context) VrackservicesIamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VrackservicesIam) *VrackservicesIam {
+		return &v
+	}).(VrackservicesIamPtrOutput)
+}
+
+// Resource display name
+func (o VrackservicesIamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesIam) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o VrackservicesIamOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesIam) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o VrackservicesIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VrackservicesIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o VrackservicesIamOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesIam) *string { return v.Urn }).(pulumi.StringPtrOutput)
+}
+
+type VrackservicesIamPtrOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesIamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesIam)(nil)).Elem()
+}
+
+func (o VrackservicesIamPtrOutput) ToVrackservicesIamPtrOutput() VrackservicesIamPtrOutput {
+	return o
+}
+
+func (o VrackservicesIamPtrOutput) ToVrackservicesIamPtrOutputWithContext(ctx context.Context) VrackservicesIamPtrOutput {
+	return o
+}
+
+func (o VrackservicesIamPtrOutput) Elem() VrackservicesIamOutput {
+	return o.ApplyT(func(v *VrackservicesIam) VrackservicesIam {
+		if v != nil {
+			return *v
+		}
+		var ret VrackservicesIam
+		return ret
+	}).(VrackservicesIamOutput)
+}
+
+// Resource display name
+func (o VrackservicesIamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unique identifier of the resource
+func (o VrackservicesIamPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o VrackservicesIamPtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VrackservicesIam) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o VrackservicesIamPtrOutput) Urn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesIam) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Urn
+	}).(pulumi.StringPtrOutput)
+}
+
+type VrackservicesOrder struct {
+	Date           *string                    `pulumi:"date"`
+	Details        []VrackservicesOrderDetail `pulumi:"details"`
+	ExpirationDate *string                    `pulumi:"expirationDate"`
+	OrderId        *float64                   `pulumi:"orderId"`
+}
+
+// VrackservicesOrderInput is an input type that accepts VrackservicesOrderArgs and VrackservicesOrderOutput values.
+// You can construct a concrete instance of `VrackservicesOrderInput` via:
+//
+//	VrackservicesOrderArgs{...}
+type VrackservicesOrderInput interface {
+	pulumi.Input
+
+	ToVrackservicesOrderOutput() VrackservicesOrderOutput
+	ToVrackservicesOrderOutputWithContext(context.Context) VrackservicesOrderOutput
+}
+
+type VrackservicesOrderArgs struct {
+	Date           pulumi.StringPtrInput              `pulumi:"date"`
+	Details        VrackservicesOrderDetailArrayInput `pulumi:"details"`
+	ExpirationDate pulumi.StringPtrInput              `pulumi:"expirationDate"`
+	OrderId        pulumi.Float64PtrInput             `pulumi:"orderId"`
+}
+
+func (VrackservicesOrderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesOrder)(nil)).Elem()
+}
+
+func (i VrackservicesOrderArgs) ToVrackservicesOrderOutput() VrackservicesOrderOutput {
+	return i.ToVrackservicesOrderOutputWithContext(context.Background())
+}
+
+func (i VrackservicesOrderArgs) ToVrackservicesOrderOutputWithContext(ctx context.Context) VrackservicesOrderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesOrderOutput)
+}
+
+func (i VrackservicesOrderArgs) ToVrackservicesOrderPtrOutput() VrackservicesOrderPtrOutput {
+	return i.ToVrackservicesOrderPtrOutputWithContext(context.Background())
+}
+
+func (i VrackservicesOrderArgs) ToVrackservicesOrderPtrOutputWithContext(ctx context.Context) VrackservicesOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesOrderOutput).ToVrackservicesOrderPtrOutputWithContext(ctx)
+}
+
+// VrackservicesOrderPtrInput is an input type that accepts VrackservicesOrderArgs, VrackservicesOrderPtr and VrackservicesOrderPtrOutput values.
+// You can construct a concrete instance of `VrackservicesOrderPtrInput` via:
+//
+//	        VrackservicesOrderArgs{...}
+//
+//	or:
+//
+//	        nil
+type VrackservicesOrderPtrInput interface {
+	pulumi.Input
+
+	ToVrackservicesOrderPtrOutput() VrackservicesOrderPtrOutput
+	ToVrackservicesOrderPtrOutputWithContext(context.Context) VrackservicesOrderPtrOutput
+}
+
+type vrackservicesOrderPtrType VrackservicesOrderArgs
+
+func VrackservicesOrderPtr(v *VrackservicesOrderArgs) VrackservicesOrderPtrInput {
+	return (*vrackservicesOrderPtrType)(v)
+}
+
+func (*vrackservicesOrderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesOrder)(nil)).Elem()
+}
+
+func (i *vrackservicesOrderPtrType) ToVrackservicesOrderPtrOutput() VrackservicesOrderPtrOutput {
+	return i.ToVrackservicesOrderPtrOutputWithContext(context.Background())
+}
+
+func (i *vrackservicesOrderPtrType) ToVrackservicesOrderPtrOutputWithContext(ctx context.Context) VrackservicesOrderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesOrderPtrOutput)
+}
+
+type VrackservicesOrderOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesOrderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesOrder)(nil)).Elem()
+}
+
+func (o VrackservicesOrderOutput) ToVrackservicesOrderOutput() VrackservicesOrderOutput {
+	return o
+}
+
+func (o VrackservicesOrderOutput) ToVrackservicesOrderOutputWithContext(ctx context.Context) VrackservicesOrderOutput {
+	return o
+}
+
+func (o VrackservicesOrderOutput) ToVrackservicesOrderPtrOutput() VrackservicesOrderPtrOutput {
+	return o.ToVrackservicesOrderPtrOutputWithContext(context.Background())
+}
+
+func (o VrackservicesOrderOutput) ToVrackservicesOrderPtrOutputWithContext(ctx context.Context) VrackservicesOrderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VrackservicesOrder) *VrackservicesOrder {
+		return &v
+	}).(VrackservicesOrderPtrOutput)
+}
+
+func (o VrackservicesOrderOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesOrder) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+func (o VrackservicesOrderOutput) Details() VrackservicesOrderDetailArrayOutput {
+	return o.ApplyT(func(v VrackservicesOrder) []VrackservicesOrderDetail { return v.Details }).(VrackservicesOrderDetailArrayOutput)
+}
+
+func (o VrackservicesOrderOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesOrder) *string { return v.ExpirationDate }).(pulumi.StringPtrOutput)
+}
+
+func (o VrackservicesOrderOutput) OrderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesOrder) *float64 { return v.OrderId }).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesOrderPtrOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesOrderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesOrder)(nil)).Elem()
+}
+
+func (o VrackservicesOrderPtrOutput) ToVrackservicesOrderPtrOutput() VrackservicesOrderPtrOutput {
+	return o
+}
+
+func (o VrackservicesOrderPtrOutput) ToVrackservicesOrderPtrOutputWithContext(ctx context.Context) VrackservicesOrderPtrOutput {
+	return o
+}
+
+func (o VrackservicesOrderPtrOutput) Elem() VrackservicesOrderOutput {
+	return o.ApplyT(func(v *VrackservicesOrder) VrackservicesOrder {
+		if v != nil {
+			return *v
+		}
+		var ret VrackservicesOrder
+		return ret
+	}).(VrackservicesOrderOutput)
+}
+
+func (o VrackservicesOrderPtrOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Date
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VrackservicesOrderPtrOutput) Details() VrackservicesOrderDetailArrayOutput {
+	return o.ApplyT(func(v *VrackservicesOrder) []VrackservicesOrderDetail {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(VrackservicesOrderDetailArrayOutput)
+}
+
+func (o VrackservicesOrderPtrOutput) ExpirationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VrackservicesOrder) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationDate
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o VrackservicesOrderPtrOutput) OrderId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VrackservicesOrder) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.OrderId
+	}).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesOrderDetail struct {
+	Description *string `pulumi:"description"`
+	// Product type of item in order
+	DetailType    *string  `pulumi:"detailType"`
+	Domain        *string  `pulumi:"domain"`
+	OrderDetailId *float64 `pulumi:"orderDetailId"`
+	Quantity      *string  `pulumi:"quantity"`
+}
+
+// VrackservicesOrderDetailInput is an input type that accepts VrackservicesOrderDetailArgs and VrackservicesOrderDetailOutput values.
+// You can construct a concrete instance of `VrackservicesOrderDetailInput` via:
+//
+//	VrackservicesOrderDetailArgs{...}
+type VrackservicesOrderDetailInput interface {
+	pulumi.Input
+
+	ToVrackservicesOrderDetailOutput() VrackservicesOrderDetailOutput
+	ToVrackservicesOrderDetailOutputWithContext(context.Context) VrackservicesOrderDetailOutput
+}
+
+type VrackservicesOrderDetailArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Product type of item in order
+	DetailType    pulumi.StringPtrInput  `pulumi:"detailType"`
+	Domain        pulumi.StringPtrInput  `pulumi:"domain"`
+	OrderDetailId pulumi.Float64PtrInput `pulumi:"orderDetailId"`
+	Quantity      pulumi.StringPtrInput  `pulumi:"quantity"`
+}
+
+func (VrackservicesOrderDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesOrderDetail)(nil)).Elem()
+}
+
+func (i VrackservicesOrderDetailArgs) ToVrackservicesOrderDetailOutput() VrackservicesOrderDetailOutput {
+	return i.ToVrackservicesOrderDetailOutputWithContext(context.Background())
+}
+
+func (i VrackservicesOrderDetailArgs) ToVrackservicesOrderDetailOutputWithContext(ctx context.Context) VrackservicesOrderDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesOrderDetailOutput)
+}
+
+// VrackservicesOrderDetailArrayInput is an input type that accepts VrackservicesOrderDetailArray and VrackservicesOrderDetailArrayOutput values.
+// You can construct a concrete instance of `VrackservicesOrderDetailArrayInput` via:
+//
+//	VrackservicesOrderDetailArray{ VrackservicesOrderDetailArgs{...} }
+type VrackservicesOrderDetailArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesOrderDetailArrayOutput() VrackservicesOrderDetailArrayOutput
+	ToVrackservicesOrderDetailArrayOutputWithContext(context.Context) VrackservicesOrderDetailArrayOutput
+}
+
+type VrackservicesOrderDetailArray []VrackservicesOrderDetailInput
+
+func (VrackservicesOrderDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesOrderDetail)(nil)).Elem()
+}
+
+func (i VrackservicesOrderDetailArray) ToVrackservicesOrderDetailArrayOutput() VrackservicesOrderDetailArrayOutput {
+	return i.ToVrackservicesOrderDetailArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesOrderDetailArray) ToVrackservicesOrderDetailArrayOutputWithContext(ctx context.Context) VrackservicesOrderDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesOrderDetailArrayOutput)
+}
+
+type VrackservicesOrderDetailOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesOrderDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesOrderDetail)(nil)).Elem()
+}
+
+func (o VrackservicesOrderDetailOutput) ToVrackservicesOrderDetailOutput() VrackservicesOrderDetailOutput {
+	return o
+}
+
+func (o VrackservicesOrderDetailOutput) ToVrackservicesOrderDetailOutputWithContext(ctx context.Context) VrackservicesOrderDetailOutput {
+	return o
+}
+
+func (o VrackservicesOrderDetailOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesOrderDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Product type of item in order
+func (o VrackservicesOrderDetailOutput) DetailType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesOrderDetail) *string { return v.DetailType }).(pulumi.StringPtrOutput)
+}
+
+func (o VrackservicesOrderDetailOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesOrderDetail) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+func (o VrackservicesOrderDetailOutput) OrderDetailId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesOrderDetail) *float64 { return v.OrderDetailId }).(pulumi.Float64PtrOutput)
+}
+
+func (o VrackservicesOrderDetailOutput) Quantity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesOrderDetail) *string { return v.Quantity }).(pulumi.StringPtrOutput)
+}
+
+type VrackservicesOrderDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesOrderDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesOrderDetail)(nil)).Elem()
+}
+
+func (o VrackservicesOrderDetailArrayOutput) ToVrackservicesOrderDetailArrayOutput() VrackservicesOrderDetailArrayOutput {
+	return o
+}
+
+func (o VrackservicesOrderDetailArrayOutput) ToVrackservicesOrderDetailArrayOutputWithContext(ctx context.Context) VrackservicesOrderDetailArrayOutput {
+	return o
+}
+
+func (o VrackservicesOrderDetailArrayOutput) Index(i pulumi.IntInput) VrackservicesOrderDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesOrderDetail {
+		return vs[0].([]VrackservicesOrderDetail)[vs[1].(int)]
+	}).(VrackservicesOrderDetailOutput)
+}
+
+type VrackservicesPlan struct {
+	Configurations []VrackservicesPlanConfiguration `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration string `pulumi:"duration"`
+	// Cart item to be linked
+	ItemId *float64 `pulumi:"itemId"`
+	// Identifier of the option offer
+	PlanCode string `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode string `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity *float64 `pulumi:"quantity"`
+}
+
+// VrackservicesPlanInput is an input type that accepts VrackservicesPlanArgs and VrackservicesPlanOutput values.
+// You can construct a concrete instance of `VrackservicesPlanInput` via:
+//
+//	VrackservicesPlanArgs{...}
+type VrackservicesPlanInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanOutput() VrackservicesPlanOutput
+	ToVrackservicesPlanOutputWithContext(context.Context) VrackservicesPlanOutput
+}
+
+type VrackservicesPlanArgs struct {
+	Configurations VrackservicesPlanConfigurationArrayInput `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Cart item to be linked
+	ItemId pulumi.Float64PtrInput `pulumi:"itemId"`
+	// Identifier of the option offer
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity pulumi.Float64PtrInput `pulumi:"quantity"`
+}
+
+func (VrackservicesPlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlan)(nil)).Elem()
+}
+
+func (i VrackservicesPlanArgs) ToVrackservicesPlanOutput() VrackservicesPlanOutput {
+	return i.ToVrackservicesPlanOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanArgs) ToVrackservicesPlanOutputWithContext(ctx context.Context) VrackservicesPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanOutput)
+}
+
+// VrackservicesPlanArrayInput is an input type that accepts VrackservicesPlanArray and VrackservicesPlanArrayOutput values.
+// You can construct a concrete instance of `VrackservicesPlanArrayInput` via:
+//
+//	VrackservicesPlanArray{ VrackservicesPlanArgs{...} }
+type VrackservicesPlanArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanArrayOutput() VrackservicesPlanArrayOutput
+	ToVrackservicesPlanArrayOutputWithContext(context.Context) VrackservicesPlanArrayOutput
+}
+
+type VrackservicesPlanArray []VrackservicesPlanInput
+
+func (VrackservicesPlanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlan)(nil)).Elem()
+}
+
+func (i VrackservicesPlanArray) ToVrackservicesPlanArrayOutput() VrackservicesPlanArrayOutput {
+	return i.ToVrackservicesPlanArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanArray) ToVrackservicesPlanArrayOutputWithContext(ctx context.Context) VrackservicesPlanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanArrayOutput)
+}
+
+type VrackservicesPlanOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlan)(nil)).Elem()
+}
+
+func (o VrackservicesPlanOutput) ToVrackservicesPlanOutput() VrackservicesPlanOutput {
+	return o
+}
+
+func (o VrackservicesPlanOutput) ToVrackservicesPlanOutputWithContext(ctx context.Context) VrackservicesPlanOutput {
+	return o
+}
+
+func (o VrackservicesPlanOutput) Configurations() VrackservicesPlanConfigurationArrayOutput {
+	return o.ApplyT(func(v VrackservicesPlan) []VrackservicesPlanConfiguration { return v.Configurations }).(VrackservicesPlanConfigurationArrayOutput)
+}
+
+// Duration selected for the purchase of the product
+func (o VrackservicesPlanOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlan) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Cart item to be linked
+func (o VrackservicesPlanOutput) ItemId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesPlan) *float64 { return v.ItemId }).(pulumi.Float64PtrOutput)
+}
+
+// Identifier of the option offer
+func (o VrackservicesPlanOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlan) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Pricing mode selected for the purchase of the product
+func (o VrackservicesPlanOutput) PricingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlan) string { return v.PricingMode }).(pulumi.StringOutput)
+}
+
+// Quantity of product desired
+func (o VrackservicesPlanOutput) Quantity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesPlan) *float64 { return v.Quantity }).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesPlanArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlan)(nil)).Elem()
+}
+
+func (o VrackservicesPlanArrayOutput) ToVrackservicesPlanArrayOutput() VrackservicesPlanArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanArrayOutput) ToVrackservicesPlanArrayOutputWithContext(ctx context.Context) VrackservicesPlanArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanArrayOutput) Index(i pulumi.IntInput) VrackservicesPlanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesPlan {
+		return vs[0].([]VrackservicesPlan)[vs[1].(int)]
+	}).(VrackservicesPlanOutput)
+}
+
+type VrackservicesPlanConfiguration struct {
+	// Label for your configuration item
+	Label string `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value string `pulumi:"value"`
+}
+
+// VrackservicesPlanConfigurationInput is an input type that accepts VrackservicesPlanConfigurationArgs and VrackservicesPlanConfigurationOutput values.
+// You can construct a concrete instance of `VrackservicesPlanConfigurationInput` via:
+//
+//	VrackservicesPlanConfigurationArgs{...}
+type VrackservicesPlanConfigurationInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanConfigurationOutput() VrackservicesPlanConfigurationOutput
+	ToVrackservicesPlanConfigurationOutputWithContext(context.Context) VrackservicesPlanConfigurationOutput
+}
+
+type VrackservicesPlanConfigurationArgs struct {
+	// Label for your configuration item
+	Label pulumi.StringInput `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (VrackservicesPlanConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlanConfiguration)(nil)).Elem()
+}
+
+func (i VrackservicesPlanConfigurationArgs) ToVrackservicesPlanConfigurationOutput() VrackservicesPlanConfigurationOutput {
+	return i.ToVrackservicesPlanConfigurationOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanConfigurationArgs) ToVrackservicesPlanConfigurationOutputWithContext(ctx context.Context) VrackservicesPlanConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanConfigurationOutput)
+}
+
+// VrackservicesPlanConfigurationArrayInput is an input type that accepts VrackservicesPlanConfigurationArray and VrackservicesPlanConfigurationArrayOutput values.
+// You can construct a concrete instance of `VrackservicesPlanConfigurationArrayInput` via:
+//
+//	VrackservicesPlanConfigurationArray{ VrackservicesPlanConfigurationArgs{...} }
+type VrackservicesPlanConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanConfigurationArrayOutput() VrackservicesPlanConfigurationArrayOutput
+	ToVrackservicesPlanConfigurationArrayOutputWithContext(context.Context) VrackservicesPlanConfigurationArrayOutput
+}
+
+type VrackservicesPlanConfigurationArray []VrackservicesPlanConfigurationInput
+
+func (VrackservicesPlanConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlanConfiguration)(nil)).Elem()
+}
+
+func (i VrackservicesPlanConfigurationArray) ToVrackservicesPlanConfigurationArrayOutput() VrackservicesPlanConfigurationArrayOutput {
+	return i.ToVrackservicesPlanConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanConfigurationArray) ToVrackservicesPlanConfigurationArrayOutputWithContext(ctx context.Context) VrackservicesPlanConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanConfigurationArrayOutput)
+}
+
+type VrackservicesPlanConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlanConfiguration)(nil)).Elem()
+}
+
+func (o VrackservicesPlanConfigurationOutput) ToVrackservicesPlanConfigurationOutput() VrackservicesPlanConfigurationOutput {
+	return o
+}
+
+func (o VrackservicesPlanConfigurationOutput) ToVrackservicesPlanConfigurationOutputWithContext(ctx context.Context) VrackservicesPlanConfigurationOutput {
+	return o
+}
+
+// Label for your configuration item
+func (o VrackservicesPlanConfigurationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanConfiguration) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Value or resource URL on API.OVH.COM of your configuration item
+func (o VrackservicesPlanConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type VrackservicesPlanConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlanConfiguration)(nil)).Elem()
+}
+
+func (o VrackservicesPlanConfigurationArrayOutput) ToVrackservicesPlanConfigurationArrayOutput() VrackservicesPlanConfigurationArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanConfigurationArrayOutput) ToVrackservicesPlanConfigurationArrayOutputWithContext(ctx context.Context) VrackservicesPlanConfigurationArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanConfigurationArrayOutput) Index(i pulumi.IntInput) VrackservicesPlanConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesPlanConfiguration {
+		return vs[0].([]VrackservicesPlanConfiguration)[vs[1].(int)]
+	}).(VrackservicesPlanConfigurationOutput)
+}
+
+type VrackservicesPlanOption struct {
+	Configurations []VrackservicesPlanOptionConfiguration `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration string `pulumi:"duration"`
+	// Identifier of the option offer
+	PlanCode string `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode string `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity float64 `pulumi:"quantity"`
+}
+
+// VrackservicesPlanOptionInput is an input type that accepts VrackservicesPlanOptionArgs and VrackservicesPlanOptionOutput values.
+// You can construct a concrete instance of `VrackservicesPlanOptionInput` via:
+//
+//	VrackservicesPlanOptionArgs{...}
+type VrackservicesPlanOptionInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanOptionOutput() VrackservicesPlanOptionOutput
+	ToVrackservicesPlanOptionOutputWithContext(context.Context) VrackservicesPlanOptionOutput
+}
+
+type VrackservicesPlanOptionArgs struct {
+	Configurations VrackservicesPlanOptionConfigurationArrayInput `pulumi:"configurations"`
+	// Duration selected for the purchase of the product
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Identifier of the option offer
+	PlanCode pulumi.StringInput `pulumi:"planCode"`
+	// Pricing mode selected for the purchase of the product
+	PricingMode pulumi.StringInput `pulumi:"pricingMode"`
+	// Quantity of product desired
+	Quantity pulumi.Float64Input `pulumi:"quantity"`
+}
+
+func (VrackservicesPlanOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlanOption)(nil)).Elem()
+}
+
+func (i VrackservicesPlanOptionArgs) ToVrackservicesPlanOptionOutput() VrackservicesPlanOptionOutput {
+	return i.ToVrackservicesPlanOptionOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanOptionArgs) ToVrackservicesPlanOptionOutputWithContext(ctx context.Context) VrackservicesPlanOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanOptionOutput)
+}
+
+// VrackservicesPlanOptionArrayInput is an input type that accepts VrackservicesPlanOptionArray and VrackservicesPlanOptionArrayOutput values.
+// You can construct a concrete instance of `VrackservicesPlanOptionArrayInput` via:
+//
+//	VrackservicesPlanOptionArray{ VrackservicesPlanOptionArgs{...} }
+type VrackservicesPlanOptionArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanOptionArrayOutput() VrackservicesPlanOptionArrayOutput
+	ToVrackservicesPlanOptionArrayOutputWithContext(context.Context) VrackservicesPlanOptionArrayOutput
+}
+
+type VrackservicesPlanOptionArray []VrackservicesPlanOptionInput
+
+func (VrackservicesPlanOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlanOption)(nil)).Elem()
+}
+
+func (i VrackservicesPlanOptionArray) ToVrackservicesPlanOptionArrayOutput() VrackservicesPlanOptionArrayOutput {
+	return i.ToVrackservicesPlanOptionArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanOptionArray) ToVrackservicesPlanOptionArrayOutputWithContext(ctx context.Context) VrackservicesPlanOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanOptionArrayOutput)
+}
+
+type VrackservicesPlanOptionOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlanOption)(nil)).Elem()
+}
+
+func (o VrackservicesPlanOptionOutput) ToVrackservicesPlanOptionOutput() VrackservicesPlanOptionOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionOutput) ToVrackservicesPlanOptionOutputWithContext(ctx context.Context) VrackservicesPlanOptionOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionOutput) Configurations() VrackservicesPlanOptionConfigurationArrayOutput {
+	return o.ApplyT(func(v VrackservicesPlanOption) []VrackservicesPlanOptionConfiguration { return v.Configurations }).(VrackservicesPlanOptionConfigurationArrayOutput)
+}
+
+// Duration selected for the purchase of the product
+func (o VrackservicesPlanOptionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanOption) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Identifier of the option offer
+func (o VrackservicesPlanOptionOutput) PlanCode() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanOption) string { return v.PlanCode }).(pulumi.StringOutput)
+}
+
+// Pricing mode selected for the purchase of the product
+func (o VrackservicesPlanOptionOutput) PricingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanOption) string { return v.PricingMode }).(pulumi.StringOutput)
+}
+
+// Quantity of product desired
+func (o VrackservicesPlanOptionOutput) Quantity() pulumi.Float64Output {
+	return o.ApplyT(func(v VrackservicesPlanOption) float64 { return v.Quantity }).(pulumi.Float64Output)
+}
+
+type VrackservicesPlanOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlanOption)(nil)).Elem()
+}
+
+func (o VrackservicesPlanOptionArrayOutput) ToVrackservicesPlanOptionArrayOutput() VrackservicesPlanOptionArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionArrayOutput) ToVrackservicesPlanOptionArrayOutputWithContext(ctx context.Context) VrackservicesPlanOptionArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionArrayOutput) Index(i pulumi.IntInput) VrackservicesPlanOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesPlanOption {
+		return vs[0].([]VrackservicesPlanOption)[vs[1].(int)]
+	}).(VrackservicesPlanOptionOutput)
+}
+
+type VrackservicesPlanOptionConfiguration struct {
+	// Label for your configuration item
+	Label string `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value string `pulumi:"value"`
+}
+
+// VrackservicesPlanOptionConfigurationInput is an input type that accepts VrackservicesPlanOptionConfigurationArgs and VrackservicesPlanOptionConfigurationOutput values.
+// You can construct a concrete instance of `VrackservicesPlanOptionConfigurationInput` via:
+//
+//	VrackservicesPlanOptionConfigurationArgs{...}
+type VrackservicesPlanOptionConfigurationInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanOptionConfigurationOutput() VrackservicesPlanOptionConfigurationOutput
+	ToVrackservicesPlanOptionConfigurationOutputWithContext(context.Context) VrackservicesPlanOptionConfigurationOutput
+}
+
+type VrackservicesPlanOptionConfigurationArgs struct {
+	// Label for your configuration item
+	Label pulumi.StringInput `pulumi:"label"`
+	// Value or resource URL on API.OVH.COM of your configuration item
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (VrackservicesPlanOptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (i VrackservicesPlanOptionConfigurationArgs) ToVrackservicesPlanOptionConfigurationOutput() VrackservicesPlanOptionConfigurationOutput {
+	return i.ToVrackservicesPlanOptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanOptionConfigurationArgs) ToVrackservicesPlanOptionConfigurationOutputWithContext(ctx context.Context) VrackservicesPlanOptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanOptionConfigurationOutput)
+}
+
+// VrackservicesPlanOptionConfigurationArrayInput is an input type that accepts VrackservicesPlanOptionConfigurationArray and VrackservicesPlanOptionConfigurationArrayOutput values.
+// You can construct a concrete instance of `VrackservicesPlanOptionConfigurationArrayInput` via:
+//
+//	VrackservicesPlanOptionConfigurationArray{ VrackservicesPlanOptionConfigurationArgs{...} }
+type VrackservicesPlanOptionConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesPlanOptionConfigurationArrayOutput() VrackservicesPlanOptionConfigurationArrayOutput
+	ToVrackservicesPlanOptionConfigurationArrayOutputWithContext(context.Context) VrackservicesPlanOptionConfigurationArrayOutput
+}
+
+type VrackservicesPlanOptionConfigurationArray []VrackservicesPlanOptionConfigurationInput
+
+func (VrackservicesPlanOptionConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (i VrackservicesPlanOptionConfigurationArray) ToVrackservicesPlanOptionConfigurationArrayOutput() VrackservicesPlanOptionConfigurationArrayOutput {
+	return i.ToVrackservicesPlanOptionConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesPlanOptionConfigurationArray) ToVrackservicesPlanOptionConfigurationArrayOutputWithContext(ctx context.Context) VrackservicesPlanOptionConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesPlanOptionConfigurationArrayOutput)
+}
+
+type VrackservicesPlanOptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanOptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (o VrackservicesPlanOptionConfigurationOutput) ToVrackservicesPlanOptionConfigurationOutput() VrackservicesPlanOptionConfigurationOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionConfigurationOutput) ToVrackservicesPlanOptionConfigurationOutputWithContext(ctx context.Context) VrackservicesPlanOptionConfigurationOutput {
+	return o
+}
+
+// Label for your configuration item
+func (o VrackservicesPlanOptionConfigurationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanOptionConfiguration) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Value or resource URL on API.OVH.COM of your configuration item
+func (o VrackservicesPlanOptionConfigurationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesPlanOptionConfiguration) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type VrackservicesPlanOptionConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesPlanOptionConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesPlanOptionConfiguration)(nil)).Elem()
+}
+
+func (o VrackservicesPlanOptionConfigurationArrayOutput) ToVrackservicesPlanOptionConfigurationArrayOutput() VrackservicesPlanOptionConfigurationArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionConfigurationArrayOutput) ToVrackservicesPlanOptionConfigurationArrayOutputWithContext(ctx context.Context) VrackservicesPlanOptionConfigurationArrayOutput {
+	return o
+}
+
+func (o VrackservicesPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) VrackservicesPlanOptionConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesPlanOptionConfiguration {
+		return vs[0].([]VrackservicesPlanOptionConfiguration)[vs[1].(int)]
+	}).(VrackservicesPlanOptionConfigurationOutput)
+}
+
+type VrackservicesTargetSpec struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets []VrackservicesTargetSpecSubnet `pulumi:"subnets"`
+}
+
+// VrackservicesTargetSpecInput is an input type that accepts VrackservicesTargetSpecArgs and VrackservicesTargetSpecOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecInput` via:
+//
+//	VrackservicesTargetSpecArgs{...}
+type VrackservicesTargetSpecInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecOutput() VrackservicesTargetSpecOutput
+	ToVrackservicesTargetSpecOutputWithContext(context.Context) VrackservicesTargetSpecOutput
+}
+
+type VrackservicesTargetSpecArgs struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets VrackservicesTargetSpecSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (VrackservicesTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (i VrackservicesTargetSpecArgs) ToVrackservicesTargetSpecOutput() VrackservicesTargetSpecOutput {
+	return i.ToVrackservicesTargetSpecOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecArgs) ToVrackservicesTargetSpecOutputWithContext(ctx context.Context) VrackservicesTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecOutput)
+}
+
+func (i VrackservicesTargetSpecArgs) ToVrackservicesTargetSpecPtrOutput() VrackservicesTargetSpecPtrOutput {
+	return i.ToVrackservicesTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecArgs) ToVrackservicesTargetSpecPtrOutputWithContext(ctx context.Context) VrackservicesTargetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecOutput).ToVrackservicesTargetSpecPtrOutputWithContext(ctx)
+}
+
+// VrackservicesTargetSpecPtrInput is an input type that accepts VrackservicesTargetSpecArgs, VrackservicesTargetSpecPtr and VrackservicesTargetSpecPtrOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecPtrInput` via:
+//
+//	        VrackservicesTargetSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type VrackservicesTargetSpecPtrInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecPtrOutput() VrackservicesTargetSpecPtrOutput
+	ToVrackservicesTargetSpecPtrOutputWithContext(context.Context) VrackservicesTargetSpecPtrOutput
+}
+
+type vrackservicesTargetSpecPtrType VrackservicesTargetSpecArgs
+
+func VrackservicesTargetSpecPtr(v *VrackservicesTargetSpecArgs) VrackservicesTargetSpecPtrInput {
+	return (*vrackservicesTargetSpecPtrType)(v)
+}
+
+func (*vrackservicesTargetSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (i *vrackservicesTargetSpecPtrType) ToVrackservicesTargetSpecPtrOutput() VrackservicesTargetSpecPtrOutput {
+	return i.ToVrackservicesTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *vrackservicesTargetSpecPtrType) ToVrackservicesTargetSpecPtrOutputWithContext(ctx context.Context) VrackservicesTargetSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecPtrOutput)
+}
+
+type VrackservicesTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecOutput) ToVrackservicesTargetSpecOutput() VrackservicesTargetSpecOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecOutput) ToVrackservicesTargetSpecOutputWithContext(ctx context.Context) VrackservicesTargetSpecOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecOutput) ToVrackservicesTargetSpecPtrOutput() VrackservicesTargetSpecPtrOutput {
+	return o.ToVrackservicesTargetSpecPtrOutputWithContext(context.Background())
+}
+
+func (o VrackservicesTargetSpecOutput) ToVrackservicesTargetSpecPtrOutputWithContext(ctx context.Context) VrackservicesTargetSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VrackservicesTargetSpec) *VrackservicesTargetSpec {
+		return &v
+	}).(VrackservicesTargetSpecPtrOutput)
+}
+
+// Target specification of the subnets. Maximum one subnet per vRack Services
+func (o VrackservicesTargetSpecOutput) Subnets() VrackservicesTargetSpecSubnetArrayOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpec) []VrackservicesTargetSpecSubnet { return v.Subnets }).(VrackservicesTargetSpecSubnetArrayOutput)
+}
+
+type VrackservicesTargetSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecPtrOutput) ToVrackservicesTargetSpecPtrOutput() VrackservicesTargetSpecPtrOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecPtrOutput) ToVrackservicesTargetSpecPtrOutputWithContext(ctx context.Context) VrackservicesTargetSpecPtrOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecPtrOutput) Elem() VrackservicesTargetSpecOutput {
+	return o.ApplyT(func(v *VrackservicesTargetSpec) VrackservicesTargetSpec {
+		if v != nil {
+			return *v
+		}
+		var ret VrackservicesTargetSpec
+		return ret
+	}).(VrackservicesTargetSpecOutput)
+}
+
+// Target specification of the subnets. Maximum one subnet per vRack Services
+func (o VrackservicesTargetSpecPtrOutput) Subnets() VrackservicesTargetSpecSubnetArrayOutput {
+	return o.ApplyT(func(v *VrackservicesTargetSpec) []VrackservicesTargetSpecSubnet {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(VrackservicesTargetSpecSubnetArrayOutput)
+}
+
+type VrackservicesTargetSpecSubnet struct {
+	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
+	Cidr string `pulumi:"cidr"`
+	// Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+	DisplayName *string `pulumi:"displayName"`
+	// Target specification of the Service Endpoints
+	ServiceEndpoints []VrackservicesTargetSpecSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Target specification of the range dedicated to the subnet's services
+	ServiceRange VrackservicesTargetSpecSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+	Vlan *float64 `pulumi:"vlan"`
+}
+
+// VrackservicesTargetSpecSubnetInput is an input type that accepts VrackservicesTargetSpecSubnetArgs and VrackservicesTargetSpecSubnetOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecSubnetInput` via:
+//
+//	VrackservicesTargetSpecSubnetArgs{...}
+type VrackservicesTargetSpecSubnetInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecSubnetOutput() VrackservicesTargetSpecSubnetOutput
+	ToVrackservicesTargetSpecSubnetOutputWithContext(context.Context) VrackservicesTargetSpecSubnetOutput
+}
+
+type VrackservicesTargetSpecSubnetArgs struct {
+	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Target specification of the Service Endpoints
+	ServiceEndpoints VrackservicesTargetSpecSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Target specification of the range dedicated to the subnet's services
+	ServiceRange VrackservicesTargetSpecSubnetServiceRangeInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+	Vlan pulumi.Float64PtrInput `pulumi:"vlan"`
+}
+
+func (VrackservicesTargetSpecSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (i VrackservicesTargetSpecSubnetArgs) ToVrackservicesTargetSpecSubnetOutput() VrackservicesTargetSpecSubnetOutput {
+	return i.ToVrackservicesTargetSpecSubnetOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecSubnetArgs) ToVrackservicesTargetSpecSubnetOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecSubnetOutput)
+}
+
+// VrackservicesTargetSpecSubnetArrayInput is an input type that accepts VrackservicesTargetSpecSubnetArray and VrackservicesTargetSpecSubnetArrayOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecSubnetArrayInput` via:
+//
+//	VrackservicesTargetSpecSubnetArray{ VrackservicesTargetSpecSubnetArgs{...} }
+type VrackservicesTargetSpecSubnetArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecSubnetArrayOutput() VrackservicesTargetSpecSubnetArrayOutput
+	ToVrackservicesTargetSpecSubnetArrayOutputWithContext(context.Context) VrackservicesTargetSpecSubnetArrayOutput
+}
+
+type VrackservicesTargetSpecSubnetArray []VrackservicesTargetSpecSubnetInput
+
+func (VrackservicesTargetSpecSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (i VrackservicesTargetSpecSubnetArray) ToVrackservicesTargetSpecSubnetArrayOutput() VrackservicesTargetSpecSubnetArrayOutput {
+	return i.ToVrackservicesTargetSpecSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecSubnetArray) ToVrackservicesTargetSpecSubnetArrayOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecSubnetArrayOutput)
+}
+
+type VrackservicesTargetSpecSubnetOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecSubnetOutput) ToVrackservicesTargetSpecSubnetOutput() VrackservicesTargetSpecSubnetOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetOutput) ToVrackservicesTargetSpecSubnetOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetOutput {
+	return o
+}
+
+// IPv4 CIDR notation (e.g., 192.0.2.0/24)
+func (o VrackservicesTargetSpecSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Display name of the subnet. Format must follow `^[a-zA-Z0-9-_.]{0,40}$`
+func (o VrackservicesTargetSpecSubnetOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnet) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Target specification of the Service Endpoints
+func (o VrackservicesTargetSpecSubnetOutput) ServiceEndpoints() VrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnet) []VrackservicesTargetSpecSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(VrackservicesTargetSpecSubnetServiceEndpointArrayOutput)
+}
+
+// Target specification of the range dedicated to the subnet's services
+func (o VrackservicesTargetSpecSubnetOutput) ServiceRange() VrackservicesTargetSpecSubnetServiceRangeOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnet) VrackservicesTargetSpecSubnetServiceRange { return v.ServiceRange }).(VrackservicesTargetSpecSubnetServiceRangeOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+func (o VrackservicesTargetSpecSubnetOutput) Vlan() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnet) *float64 { return v.Vlan }).(pulumi.Float64PtrOutput)
+}
+
+type VrackservicesTargetSpecSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecSubnetArrayOutput) ToVrackservicesTargetSpecSubnetArrayOutput() VrackservicesTargetSpecSubnetArrayOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetArrayOutput) ToVrackservicesTargetSpecSubnetArrayOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetArrayOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetArrayOutput) Index(i pulumi.IntInput) VrackservicesTargetSpecSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesTargetSpecSubnet {
+		return vs[0].([]VrackservicesTargetSpecSubnet)[vs[1].(int)]
+	}).(VrackservicesTargetSpecSubnetOutput)
+}
+
+type VrackservicesTargetSpecSubnetServiceEndpoint struct {
+	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
+}
+
+// VrackservicesTargetSpecSubnetServiceEndpointInput is an input type that accepts VrackservicesTargetSpecSubnetServiceEndpointArgs and VrackservicesTargetSpecSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecSubnetServiceEndpointInput` via:
+//
+//	VrackservicesTargetSpecSubnetServiceEndpointArgs{...}
+type VrackservicesTargetSpecSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecSubnetServiceEndpointOutput() VrackservicesTargetSpecSubnetServiceEndpointOutput
+	ToVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(context.Context) VrackservicesTargetSpecSubnetServiceEndpointOutput
+}
+
+type VrackservicesTargetSpecSubnetServiceEndpointArgs struct {
+	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
+}
+
+func (VrackservicesTargetSpecSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i VrackservicesTargetSpecSubnetServiceEndpointArgs) ToVrackservicesTargetSpecSubnetServiceEndpointOutput() VrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return i.ToVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecSubnetServiceEndpointArgs) ToVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecSubnetServiceEndpointOutput)
+}
+
+// VrackservicesTargetSpecSubnetServiceEndpointArrayInput is an input type that accepts VrackservicesTargetSpecSubnetServiceEndpointArray and VrackservicesTargetSpecSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecSubnetServiceEndpointArrayInput` via:
+//
+//	VrackservicesTargetSpecSubnetServiceEndpointArray{ VrackservicesTargetSpecSubnetServiceEndpointArgs{...} }
+type VrackservicesTargetSpecSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() VrackservicesTargetSpecSubnetServiceEndpointArrayOutput
+	ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Context) VrackservicesTargetSpecSubnetServiceEndpointArrayOutput
+}
+
+type VrackservicesTargetSpecSubnetServiceEndpointArray []VrackservicesTargetSpecSubnetServiceEndpointInput
+
+func (VrackservicesTargetSpecSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i VrackservicesTargetSpecSubnetServiceEndpointArray) ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() VrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return i.ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecSubnetServiceEndpointArray) ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecSubnetServiceEndpointArrayOutput)
+}
+
+type VrackservicesTargetSpecSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecSubnetServiceEndpointOutput) ToVrackservicesTargetSpecSubnetServiceEndpointOutput() VrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetServiceEndpointOutput) ToVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return o
+}
+
+// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+func (o VrackservicesTargetSpecSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnetServiceEndpoint) string { return v.ManagedServiceUrn }).(pulumi.StringOutput)
+}
+
+type VrackservicesTargetSpecSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() VrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ToVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) VrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackservicesTargetSpecSubnetServiceEndpoint {
+		return vs[0].([]VrackservicesTargetSpecSubnetServiceEndpoint)[vs[1].(int)]
+	}).(VrackservicesTargetSpecSubnetServiceEndpointOutput)
+}
+
+type VrackservicesTargetSpecSubnetServiceRange struct {
+	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
+	Cidr string `pulumi:"cidr"`
+}
+
+// VrackservicesTargetSpecSubnetServiceRangeInput is an input type that accepts VrackservicesTargetSpecSubnetServiceRangeArgs and VrackservicesTargetSpecSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `VrackservicesTargetSpecSubnetServiceRangeInput` via:
+//
+//	VrackservicesTargetSpecSubnetServiceRangeArgs{...}
+type VrackservicesTargetSpecSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToVrackservicesTargetSpecSubnetServiceRangeOutput() VrackservicesTargetSpecSubnetServiceRangeOutput
+	ToVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(context.Context) VrackservicesTargetSpecSubnetServiceRangeOutput
+}
+
+type VrackservicesTargetSpecSubnetServiceRangeArgs struct {
+	// IPv4 CIDR notation (e.g., 192.0.2.0/24)
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+}
+
+func (VrackservicesTargetSpecSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceRange)(nil)).Elem()
+}
+
+func (i VrackservicesTargetSpecSubnetServiceRangeArgs) ToVrackservicesTargetSpecSubnetServiceRangeOutput() VrackservicesTargetSpecSubnetServiceRangeOutput {
+	return i.ToVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i VrackservicesTargetSpecSubnetServiceRangeArgs) ToVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackservicesTargetSpecSubnetServiceRangeOutput)
+}
+
+type VrackservicesTargetSpecSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (VrackservicesTargetSpecSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceRange)(nil)).Elem()
+}
+
+func (o VrackservicesTargetSpecSubnetServiceRangeOutput) ToVrackservicesTargetSpecSubnetServiceRangeOutput() VrackservicesTargetSpecSubnetServiceRangeOutput {
+	return o
+}
+
+func (o VrackservicesTargetSpecSubnetServiceRangeOutput) ToVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) VrackservicesTargetSpecSubnetServiceRangeOutput {
+	return o
+}
+
+// IPv4 CIDR notation (e.g., 192.0.2.0/24)
+func (o VrackservicesTargetSpecSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v VrackservicesTargetSpecSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
 type GetCloudProjectFlavorCapability struct {
 	// Is the capability enabled
 	Enabled bool `pulumi:"enabled"`
@@ -1756,6 +3995,106 @@ func (o GetInstallationTemplateProjectUsageArrayOutput) Index(i pulumi.IntInput)
 	}).(GetInstallationTemplateProjectUsageOutput)
 }
 
+type GetIploadbalancingNatIpsNatIp struct {
+	Ips  []string `pulumi:"ips"`
+	Zone string   `pulumi:"zone"`
+}
+
+// GetIploadbalancingNatIpsNatIpInput is an input type that accepts GetIploadbalancingNatIpsNatIpArgs and GetIploadbalancingNatIpsNatIpOutput values.
+// You can construct a concrete instance of `GetIploadbalancingNatIpsNatIpInput` via:
+//
+//	GetIploadbalancingNatIpsNatIpArgs{...}
+type GetIploadbalancingNatIpsNatIpInput interface {
+	pulumi.Input
+
+	ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput
+	ToGetIploadbalancingNatIpsNatIpOutputWithContext(context.Context) GetIploadbalancingNatIpsNatIpOutput
+}
+
+type GetIploadbalancingNatIpsNatIpArgs struct {
+	Ips  pulumi.StringArrayInput `pulumi:"ips"`
+	Zone pulumi.StringInput      `pulumi:"zone"`
+}
+
+func (GetIploadbalancingNatIpsNatIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (i GetIploadbalancingNatIpsNatIpArgs) ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput {
+	return i.ToGetIploadbalancingNatIpsNatIpOutputWithContext(context.Background())
+}
+
+func (i GetIploadbalancingNatIpsNatIpArgs) ToGetIploadbalancingNatIpsNatIpOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIploadbalancingNatIpsNatIpOutput)
+}
+
+// GetIploadbalancingNatIpsNatIpArrayInput is an input type that accepts GetIploadbalancingNatIpsNatIpArray and GetIploadbalancingNatIpsNatIpArrayOutput values.
+// You can construct a concrete instance of `GetIploadbalancingNatIpsNatIpArrayInput` via:
+//
+//	GetIploadbalancingNatIpsNatIpArray{ GetIploadbalancingNatIpsNatIpArgs{...} }
+type GetIploadbalancingNatIpsNatIpArrayInput interface {
+	pulumi.Input
+
+	ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput
+	ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(context.Context) GetIploadbalancingNatIpsNatIpArrayOutput
+}
+
+type GetIploadbalancingNatIpsNatIpArray []GetIploadbalancingNatIpsNatIpInput
+
+func (GetIploadbalancingNatIpsNatIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (i GetIploadbalancingNatIpsNatIpArray) ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput {
+	return i.ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetIploadbalancingNatIpsNatIpArray) ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIploadbalancingNatIpsNatIpArrayOutput)
+}
+
+type GetIploadbalancingNatIpsNatIpOutput struct{ *pulumi.OutputState }
+
+func (GetIploadbalancingNatIpsNatIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) ToGetIploadbalancingNatIpsNatIpOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIploadbalancingNatIpsNatIp) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIploadbalancingNatIpsNatIp) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetIploadbalancingNatIpsNatIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIploadbalancingNatIpsNatIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (o GetIploadbalancingNatIpsNatIpArrayOutput) ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpArrayOutput) ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpArrayOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpArrayOutput) Index(i pulumi.IntInput) GetIploadbalancingNatIpsNatIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIploadbalancingNatIpsNatIp {
+		return vs[0].([]GetIploadbalancingNatIpsNatIp)[vs[1].(int)]
+	}).(GetIploadbalancingNatIpsNatIpOutput)
+}
+
 type GetOkmsSecretIam struct {
 	// Resource display name
 	DisplayName string `pulumi:"displayName"`
@@ -2863,7 +5202,2332 @@ func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) Index(i pulumi.IntIn
 	}).(GetStorageEfsShareAccessPathsAccessPathOutput)
 }
 
+type GetVrackservicesCurrentState struct {
+	// Product status of the vRack Services
+	ProductStatus string `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region string `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets []GetVrackservicesCurrentStateSubnet `pulumi:"subnets"`
+}
+
+// GetVrackservicesCurrentStateInput is an input type that accepts GetVrackservicesCurrentStateArgs and GetVrackservicesCurrentStateOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateInput` via:
+//
+//	GetVrackservicesCurrentStateArgs{...}
+type GetVrackservicesCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput
+	ToGetVrackservicesCurrentStateOutputWithContext(context.Context) GetVrackservicesCurrentStateOutput
+}
+
+type GetVrackservicesCurrentStateArgs struct {
+	// Product status of the vRack Services
+	ProductStatus pulumi.StringInput `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets GetVrackservicesCurrentStateSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetVrackservicesCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentState)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateArgs) ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput {
+	return i.ToGetVrackservicesCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateArgs) ToGetVrackservicesCurrentStateOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateOutput)
+}
+
+type GetVrackservicesCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentState)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateOutput) ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateOutput) ToGetVrackservicesCurrentStateOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateOutput {
+	return o
+}
+
+// Product status of the vRack Services
+func (o GetVrackservicesCurrentStateOutput) ProductStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentState) string { return v.ProductStatus }).(pulumi.StringOutput)
+}
+
+// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+func (o GetVrackservicesCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Subnets of the current vRack Services
+func (o GetVrackservicesCurrentStateOutput) Subnets() GetVrackservicesCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentState) []GetVrackservicesCurrentStateSubnet { return v.Subnets }).(GetVrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnet struct {
+	// IP address range of the subnet in CIDR format
+	Cidr string `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName string `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints []GetVrackservicesCurrentStateSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange GetVrackservicesCurrentStateSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan float64 `pulumi:"vlan"`
+}
+
+// GetVrackservicesCurrentStateSubnetInput is an input type that accepts GetVrackservicesCurrentStateSubnetArgs and GetVrackservicesCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetArgs{...}
+type GetVrackservicesCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput
+	ToGetVrackservicesCurrentStateSubnetOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetOutput
+}
+
+type GetVrackservicesCurrentStateSubnetArgs struct {
+	// IP address range of the subnet in CIDR format
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange GetVrackservicesCurrentStateSubnetServiceRangeInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan pulumi.Float64Input `pulumi:"vlan"`
+}
+
+func (GetVrackservicesCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetArgs) ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetArgs) ToGetVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetOutput)
+}
+
+// GetVrackservicesCurrentStateSubnetArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetArray and GetVrackservicesCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetArrayInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetArray{ GetVrackservicesCurrentStateSubnetArgs{...} }
+type GetVrackservicesCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput
+	ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetArrayOutput
+}
+
+type GetVrackservicesCurrentStateSubnetArray []GetVrackservicesCurrentStateSubnetInput
+
+func (GetVrackservicesCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetArray) ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetArray) ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetOutput) ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetOutput) ToGetVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetOutput {
+	return o
+}
+
+// IP address range of the subnet in CIDR format
+func (o GetVrackservicesCurrentStateSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Display name of the subnet
+func (o GetVrackservicesCurrentStateSubnetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Service endpoints of the subnet
+func (o GetVrackservicesCurrentStateSubnetOutput) ServiceEndpoints() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) []GetVrackservicesCurrentStateSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+// Defines a smaller subnet dedicated to the managed services IPs
+func (o GetVrackservicesCurrentStateSubnetOutput) ServiceRange() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) GetVrackservicesCurrentStateSubnetServiceRange {
+		return v.ServiceRange
+	}).(GetVrackservicesCurrentStateSubnetServiceRangeOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation
+func (o GetVrackservicesCurrentStateSubnetOutput) Vlan() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
+}
+
+type GetVrackservicesCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetArrayOutput) ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetArrayOutput) ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnet {
+		return vs[0].([]GetVrackservicesCurrentStateSubnet)[vs[1].(int)]
+	}).(GetVrackservicesCurrentStateSubnetOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpoint struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints []GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointArgs and GetVrackservicesCurrentStateSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointArgs{...}
+type GetVrackservicesCurrentStateSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointArgs struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
+}
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointOutput)
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointArray and GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointArray{ GetVrackservicesCurrentStateSubnetServiceEndpointArgs{...} }
+type GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointArray []GetVrackservicesCurrentStateSubnetServiceEndpointInput
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+// Endpoints representing the IPs assigned to the managed services
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) Endpoints() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpoint) []GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+		return v.Endpoints
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpoint) string { return v.ManagedServiceUrn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnetServiceEndpoint {
+		return vs[0].([]GetVrackservicesCurrentStateSubnetServiceEndpoint)[vs[1].(int)]
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint struct {
+	// IP description defined in the managed service
+	Description string `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip string `pulumi:"ip"`
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs and GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...}
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs struct {
+	// IP description defined in the managed service
+	Description pulumi.StringInput `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray and GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray{ GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...} }
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray []GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+// IP description defined in the managed service
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// IP address assigned by OVHcloud
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+		return vs[0].([]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)[vs[1].(int)]
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceRange struct {
+	// CIDR dedicated to the subnet's services
+	Cidr string `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps float64 `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps float64 `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps float64 `pulumi:"usedIps"`
+}
+
+// GetVrackservicesCurrentStateSubnetServiceRangeInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceRangeArgs and GetVrackservicesCurrentStateSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceRangeInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceRangeArgs{...}
+type GetVrackservicesCurrentStateSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput
+	ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceRangeArgs struct {
+	// CIDR dedicated to the subnet's services
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps pulumi.Float64Input `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps pulumi.Float64Input `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps pulumi.Float64Input `pulumi:"usedIps"`
+}
+
+func (GetVrackservicesCurrentStateSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceRangeArgs) ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceRangeArgs) ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceRangeOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+// CIDR dedicated to the subnet's services
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Number of remaining IPs in the service range
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) RemainingIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.RemainingIps }).(pulumi.Float64Output)
+}
+
+// Number of service range IPs reserved by OVHcloud
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ReservedIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.ReservedIps }).(pulumi.Float64Output)
+}
+
+// Number of service range IPs assigned to the managed services
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) UsedIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.UsedIps }).(pulumi.Float64Output)
+}
+
+type GetVrackservicesCurrentTask struct {
+	// Identifier of the current task
+	Id string `pulumi:"id"`
+	// Link to the task details
+	Link string `pulumi:"link"`
+	// Current global status of the current task
+	Status string `pulumi:"status"`
+	// Type of the current task
+	Type string `pulumi:"type"`
+}
+
+// GetVrackservicesCurrentTaskInput is an input type that accepts GetVrackservicesCurrentTaskArgs and GetVrackservicesCurrentTaskOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentTaskInput` via:
+//
+//	GetVrackservicesCurrentTaskArgs{...}
+type GetVrackservicesCurrentTaskInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput
+	ToGetVrackservicesCurrentTaskOutputWithContext(context.Context) GetVrackservicesCurrentTaskOutput
+}
+
+type GetVrackservicesCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetVrackservicesCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentTaskArgs) ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput {
+	return i.ToGetVrackservicesCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentTaskArgs) ToGetVrackservicesCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentTaskOutput)
+}
+
+// GetVrackservicesCurrentTaskArrayInput is an input type that accepts GetVrackservicesCurrentTaskArray and GetVrackservicesCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentTaskArrayInput` via:
+//
+//	GetVrackservicesCurrentTaskArray{ GetVrackservicesCurrentTaskArgs{...} }
+type GetVrackservicesCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput
+	ToGetVrackservicesCurrentTaskArrayOutputWithContext(context.Context) GetVrackservicesCurrentTaskArrayOutput
+}
+
+type GetVrackservicesCurrentTaskArray []GetVrackservicesCurrentTaskInput
+
+func (GetVrackservicesCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentTaskArray) ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput {
+	return i.ToGetVrackservicesCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentTaskArray) ToGetVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentTaskArrayOutput)
+}
+
+type GetVrackservicesCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentTaskOutput) ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentTaskOutput) ToGetVrackservicesCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o GetVrackservicesCurrentTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Link to the task details
+func (o GetVrackservicesCurrentTaskOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Link }).(pulumi.StringOutput)
+}
+
+// Current global status of the current task
+func (o GetVrackservicesCurrentTaskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the current task
+func (o GetVrackservicesCurrentTaskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentTaskArrayOutput) ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentTaskArrayOutput) ToGetVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentTaskArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentTask {
+		return vs[0].([]GetVrackservicesCurrentTask)[vs[1].(int)]
+	}).(GetVrackservicesCurrentTaskOutput)
+}
+
+type GetVrackservicesIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource state
+	State string `pulumi:"state"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetVrackservicesIamInput is an input type that accepts GetVrackservicesIamArgs and GetVrackservicesIamOutput values.
+// You can construct a concrete instance of `GetVrackservicesIamInput` via:
+//
+//	GetVrackservicesIamArgs{...}
+type GetVrackservicesIamInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesIamOutput() GetVrackservicesIamOutput
+	ToGetVrackservicesIamOutputWithContext(context.Context) GetVrackservicesIamOutput
+}
+
+type GetVrackservicesIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource state
+	State pulumi.StringInput `pulumi:"state"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetVrackservicesIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesIam)(nil)).Elem()
+}
+
+func (i GetVrackservicesIamArgs) ToGetVrackservicesIamOutput() GetVrackservicesIamOutput {
+	return i.ToGetVrackservicesIamOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesIamArgs) ToGetVrackservicesIamOutputWithContext(ctx context.Context) GetVrackservicesIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesIamOutput)
+}
+
+type GetVrackservicesIamOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesIam)(nil)).Elem()
+}
+
+func (o GetVrackservicesIamOutput) ToGetVrackservicesIamOutput() GetVrackservicesIamOutput {
+	return o
+}
+
+func (o GetVrackservicesIamOutput) ToGetVrackservicesIamOutputWithContext(ctx context.Context) GetVrackservicesIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetVrackservicesIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetVrackservicesIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource state
+func (o GetVrackservicesIamOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetVrackservicesIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetVrackservicesIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesTargetSpec struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets []GetVrackservicesTargetSpecSubnet `pulumi:"subnets"`
+}
+
+// GetVrackservicesTargetSpecInput is an input type that accepts GetVrackservicesTargetSpecArgs and GetVrackservicesTargetSpecOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecInput` via:
+//
+//	GetVrackservicesTargetSpecArgs{...}
+type GetVrackservicesTargetSpecInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput
+	ToGetVrackservicesTargetSpecOutputWithContext(context.Context) GetVrackservicesTargetSpecOutput
+}
+
+type GetVrackservicesTargetSpecArgs struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets GetVrackservicesTargetSpecSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetVrackservicesTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecArgs) ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput {
+	return i.ToGetVrackservicesTargetSpecOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecArgs) ToGetVrackservicesTargetSpecOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecOutput)
+}
+
+type GetVrackservicesTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecOutput) ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecOutput) ToGetVrackservicesTargetSpecOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecOutput {
+	return o
+}
+
+// Target specification of the subnets. Maximum one subnet per vRack Services
+func (o GetVrackservicesTargetSpecOutput) Subnets() GetVrackservicesTargetSpecSubnetArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpec) []GetVrackservicesTargetSpecSubnet { return v.Subnets }).(GetVrackservicesTargetSpecSubnetArrayOutput)
+}
+
+type GetVrackservicesTargetSpecSubnet struct {
+	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+	Cidr string `pulumi:"cidr"`
+	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+	DisplayName string `pulumi:"displayName"`
+	// Target specification of the Service Endpoints
+	ServiceEndpoints []GetVrackservicesTargetSpecSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed service IPs
+	ServiceRange GetVrackservicesTargetSpecSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+	Vlan float64 `pulumi:"vlan"`
+}
+
+// GetVrackservicesTargetSpecSubnetInput is an input type that accepts GetVrackservicesTargetSpecSubnetArgs and GetVrackservicesTargetSpecSubnetOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetInput` via:
+//
+//	GetVrackservicesTargetSpecSubnetArgs{...}
+type GetVrackservicesTargetSpecSubnetInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecSubnetOutput() GetVrackservicesTargetSpecSubnetOutput
+	ToGetVrackservicesTargetSpecSubnetOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetOutput
+}
+
+type GetVrackservicesTargetSpecSubnetArgs struct {
+	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Target specification of the Service Endpoints
+	ServiceEndpoints GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed service IPs
+	ServiceRange GetVrackservicesTargetSpecSubnetServiceRangeInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+	Vlan pulumi.Float64Input `pulumi:"vlan"`
+}
+
+func (GetVrackservicesTargetSpecSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecSubnetArgs) ToGetVrackservicesTargetSpecSubnetOutput() GetVrackservicesTargetSpecSubnetOutput {
+	return i.ToGetVrackservicesTargetSpecSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecSubnetArgs) ToGetVrackservicesTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetOutput)
+}
+
+// GetVrackservicesTargetSpecSubnetArrayInput is an input type that accepts GetVrackservicesTargetSpecSubnetArray and GetVrackservicesTargetSpecSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetArrayInput` via:
+//
+//	GetVrackservicesTargetSpecSubnetArray{ GetVrackservicesTargetSpecSubnetArgs{...} }
+type GetVrackservicesTargetSpecSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecSubnetArrayOutput() GetVrackservicesTargetSpecSubnetArrayOutput
+	ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetArrayOutput
+}
+
+type GetVrackservicesTargetSpecSubnetArray []GetVrackservicesTargetSpecSubnetInput
+
+func (GetVrackservicesTargetSpecSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecSubnetArray) ToGetVrackservicesTargetSpecSubnetArrayOutput() GetVrackservicesTargetSpecSubnetArrayOutput {
+	return i.ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecSubnetArray) ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetArrayOutput)
+}
+
+type GetVrackservicesTargetSpecSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecSubnetOutput) ToGetVrackservicesTargetSpecSubnetOutput() GetVrackservicesTargetSpecSubnetOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetOutput) ToGetVrackservicesTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetOutput {
+	return o
+}
+
+// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+func (o GetVrackservicesTargetSpecSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+func (o GetVrackservicesTargetSpecSubnetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Target specification of the Service Endpoints
+func (o GetVrackservicesTargetSpecSubnetOutput) ServiceEndpoints() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) []GetVrackservicesTargetSpecSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput)
+}
+
+// Defines a smaller subnet dedicated to the managed service IPs
+func (o GetVrackservicesTargetSpecSubnetOutput) ServiceRange() GetVrackservicesTargetSpecSubnetServiceRangeOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) GetVrackservicesTargetSpecSubnetServiceRange {
+		return v.ServiceRange
+	}).(GetVrackservicesTargetSpecSubnetServiceRangeOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+func (o GetVrackservicesTargetSpecSubnetOutput) Vlan() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
+}
+
+type GetVrackservicesTargetSpecSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecSubnetArrayOutput) ToGetVrackservicesTargetSpecSubnetArrayOutput() GetVrackservicesTargetSpecSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetArrayOutput) ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicesTargetSpecSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesTargetSpecSubnet {
+		return vs[0].([]GetVrackservicesTargetSpecSubnet)[vs[1].(int)]
+	}).(GetVrackservicesTargetSpecSubnetOutput)
+}
+
+type GetVrackservicesTargetSpecSubnetServiceEndpoint struct {
+	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
+}
+
+// GetVrackservicesTargetSpecSubnetServiceEndpointInput is an input type that accepts GetVrackservicesTargetSpecSubnetServiceEndpointArgs and GetVrackservicesTargetSpecSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetServiceEndpointInput` via:
+//
+//	GetVrackservicesTargetSpecSubnetServiceEndpointArgs{...}
+type GetVrackservicesTargetSpecSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecSubnetServiceEndpointOutput() GetVrackservicesTargetSpecSubnetServiceEndpointOutput
+	ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointOutput
+}
+
+type GetVrackservicesTargetSpecSubnetServiceEndpointArgs struct {
+	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
+}
+
+func (GetVrackservicesTargetSpecSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutput() GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return i.ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetServiceEndpointOutput)
+}
+
+// GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicesTargetSpecSubnetServiceEndpointArray and GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput` via:
+//
+//	GetVrackservicesTargetSpecSubnetServiceEndpointArray{ GetVrackservicesTargetSpecSubnetServiceEndpointArgs{...} }
+type GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput
+	ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput
+}
+
+type GetVrackservicesTargetSpecSubnetServiceEndpointArray []GetVrackservicesTargetSpecSubnetServiceEndpointInput
+
+func (GetVrackservicesTargetSpecSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecSubnetServiceEndpointArray) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return i.ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecSubnetServiceEndpointArray) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput)
+}
+
+type GetVrackservicesTargetSpecSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutput() GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return o
+}
+
+// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+func (o GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnetServiceEndpoint) string { return v.ManagedServiceUrn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesTargetSpecSubnetServiceEndpoint {
+		return vs[0].([]GetVrackservicesTargetSpecSubnetServiceEndpoint)[vs[1].(int)]
+	}).(GetVrackservicesTargetSpecSubnetServiceEndpointOutput)
+}
+
+type GetVrackservicesTargetSpecSubnetServiceRange struct {
+	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+	Cidr string `pulumi:"cidr"`
+}
+
+// GetVrackservicesTargetSpecSubnetServiceRangeInput is an input type that accepts GetVrackservicesTargetSpecSubnetServiceRangeArgs and GetVrackservicesTargetSpecSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetServiceRangeInput` via:
+//
+//	GetVrackservicesTargetSpecSubnetServiceRangeArgs{...}
+type GetVrackservicesTargetSpecSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecSubnetServiceRangeOutput() GetVrackservicesTargetSpecSubnetServiceRangeOutput
+	ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetServiceRangeOutput
+}
+
+type GetVrackservicesTargetSpecSubnetServiceRangeArgs struct {
+	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+}
+
+func (GetVrackservicesTargetSpecSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceRange)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecSubnetServiceRangeArgs) ToGetVrackservicesTargetSpecSubnetServiceRangeOutput() GetVrackservicesTargetSpecSubnetServiceRangeOutput {
+	return i.ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecSubnetServiceRangeArgs) ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetServiceRangeOutput)
+}
+
+type GetVrackservicesTargetSpecSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceRange)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceRangeOutput) ToGetVrackservicesTargetSpecSubnetServiceRangeOutput() GetVrackservicesTargetSpecSubnetServiceRangeOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecSubnetServiceRangeOutput) ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceRangeOutput {
+	return o
+}
+
+// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+func (o GetVrackservicesTargetSpecSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicess struct {
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
+	Checksum string `pulumi:"checksum"`
+	// Date of the vRack Services delivery
+	CreatedAt string `pulumi:"createdAt"`
+	// Current configuration applied to the vRack Services
+	CurrentState GetVrackservicessVrackservicessCurrentState `pulumi:"currentState"`
+	// Asynchronous operations ongoing on the vRack Services
+	CurrentTasks []GetVrackservicessVrackservicessCurrentTask `pulumi:"currentTasks"`
+	// IAM resource metadata
+	Iam GetVrackservicessVrackservicessIam `pulumi:"iam"`
+	// Unique identifier
+	Id string `pulumi:"id"`
+	// Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last target specification of the vRack Services
+	TargetSpec GetVrackservicessVrackservicessTargetSpec `pulumi:"targetSpec"`
+	// Date of the Last vRack Services update
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetVrackservicessVrackservicessInput is an input type that accepts GetVrackservicessVrackservicessArgs and GetVrackservicessVrackservicessOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessInput` via:
+//
+//	GetVrackservicessVrackservicessArgs{...}
+type GetVrackservicessVrackservicessInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessOutput() GetVrackservicessVrackservicessOutput
+	ToGetVrackservicessVrackservicessOutputWithContext(context.Context) GetVrackservicessVrackservicessOutput
+}
+
+type GetVrackservicessVrackservicessArgs struct {
+	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Date of the vRack Services delivery
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current configuration applied to the vRack Services
+	CurrentState GetVrackservicessVrackservicessCurrentStateInput `pulumi:"currentState"`
+	// Asynchronous operations ongoing on the vRack Services
+	CurrentTasks GetVrackservicessVrackservicessCurrentTaskArrayInput `pulumi:"currentTasks"`
+	// IAM resource metadata
+	Iam GetVrackservicessVrackservicessIamInput `pulumi:"iam"`
+	// Unique identifier
+	Id pulumi.StringInput `pulumi:"id"`
+	// Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last target specification of the vRack Services
+	TargetSpec GetVrackservicessVrackservicessTargetSpecInput `pulumi:"targetSpec"`
+	// Date of the Last vRack Services update
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetVrackservicessVrackservicessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicess)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessArgs) ToGetVrackservicessVrackservicessOutput() GetVrackservicessVrackservicessOutput {
+	return i.ToGetVrackservicessVrackservicessOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessArgs) ToGetVrackservicessVrackservicessOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessOutput)
+}
+
+// GetVrackservicessVrackservicessArrayInput is an input type that accepts GetVrackservicessVrackservicessArray and GetVrackservicessVrackservicessArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessArrayInput` via:
+//
+//	GetVrackservicessVrackservicessArray{ GetVrackservicessVrackservicessArgs{...} }
+type GetVrackservicessVrackservicessArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessArrayOutput() GetVrackservicessVrackservicessArrayOutput
+	ToGetVrackservicessVrackservicessArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessArrayOutput
+}
+
+type GetVrackservicessVrackservicessArray []GetVrackservicessVrackservicessInput
+
+func (GetVrackservicessVrackservicessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicess)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessArray) ToGetVrackservicessVrackservicessArrayOutput() GetVrackservicessVrackservicessArrayOutput {
+	return i.ToGetVrackservicessVrackservicessArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessArray) ToGetVrackservicessVrackservicessArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessArrayOutput)
+}
+
+type GetVrackservicessVrackservicessOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicess)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessOutput) ToGetVrackservicessVrackservicessOutput() GetVrackservicessVrackservicessOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessOutput) ToGetVrackservicessVrackservicessOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessOutput {
+	return o
+}
+
+// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
+func (o GetVrackservicessVrackservicessOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Date of the vRack Services delivery
+func (o GetVrackservicessVrackservicessOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current configuration applied to the vRack Services
+func (o GetVrackservicessVrackservicessOutput) CurrentState() GetVrackservicessVrackservicessCurrentStateOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) GetVrackservicessVrackservicessCurrentState {
+		return v.CurrentState
+	}).(GetVrackservicessVrackservicessCurrentStateOutput)
+}
+
+// Asynchronous operations ongoing on the vRack Services
+func (o GetVrackservicessVrackservicessOutput) CurrentTasks() GetVrackservicessVrackservicessCurrentTaskArrayOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) []GetVrackservicessVrackservicessCurrentTask {
+		return v.CurrentTasks
+	}).(GetVrackservicessVrackservicessCurrentTaskArrayOutput)
+}
+
+// IAM resource metadata
+func (o GetVrackservicessVrackservicessOutput) Iam() GetVrackservicessVrackservicessIamOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) GetVrackservicessVrackservicessIam { return v.Iam }).(GetVrackservicessVrackservicessIamOutput)
+}
+
+// Unique identifier
+func (o GetVrackservicessVrackservicessOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
+func (o GetVrackservicessVrackservicessOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last target specification of the vRack Services
+func (o GetVrackservicessVrackservicessOutput) TargetSpec() GetVrackservicessVrackservicessTargetSpecOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) GetVrackservicessVrackservicessTargetSpec { return v.TargetSpec }).(GetVrackservicessVrackservicessTargetSpecOutput)
+}
+
+// Date of the Last vRack Services update
+func (o GetVrackservicessVrackservicessOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicess)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessArrayOutput) ToGetVrackservicessVrackservicessArrayOutput() GetVrackservicessVrackservicessArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessArrayOutput) ToGetVrackservicessVrackservicessArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicess {
+		return vs[0].([]GetVrackservicessVrackservicess)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentState struct {
+	// Product status of the vRack Services
+	ProductStatus string `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region string `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets []GetVrackservicessVrackservicessCurrentStateSubnet `pulumi:"subnets"`
+	// vRack associated to the vRack Services
+	VrackId string `pulumi:"vrackId"`
+}
+
+// GetVrackservicessVrackservicessCurrentStateInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateArgs and GetVrackservicessVrackservicessCurrentStateOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateArgs{...}
+type GetVrackservicessVrackservicessCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateOutput() GetVrackservicessVrackservicessCurrentStateOutput
+	ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateArgs struct {
+	// Product status of the vRack Services
+	ProductStatus pulumi.StringInput `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets GetVrackservicessVrackservicessCurrentStateSubnetArrayInput `pulumi:"subnets"`
+	// vRack associated to the vRack Services
+	VrackId pulumi.StringInput `pulumi:"vrackId"`
+}
+
+func (GetVrackservicessVrackservicessCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentState)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateArgs) ToGetVrackservicessVrackservicessCurrentStateOutput() GetVrackservicessVrackservicessCurrentStateOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateArgs) ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentState)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateOutput) ToGetVrackservicessVrackservicessCurrentStateOutput() GetVrackservicessVrackservicessCurrentStateOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateOutput) ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateOutput {
+	return o
+}
+
+// Product status of the vRack Services
+func (o GetVrackservicessVrackservicessCurrentStateOutput) ProductStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) string { return v.ProductStatus }).(pulumi.StringOutput)
+}
+
+// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+func (o GetVrackservicessVrackservicessCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Subnets of the current vRack Services
+func (o GetVrackservicessVrackservicessCurrentStateOutput) Subnets() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) []GetVrackservicessVrackservicessCurrentStateSubnet {
+		return v.Subnets
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput)
+}
+
+// vRack associated to the vRack Services
+func (o GetVrackservicessVrackservicessCurrentStateOutput) VrackId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) string { return v.VrackId }).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnet struct {
+	// IP address range of the subnet in CIDR format
+	Cidr string `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName string `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange GetVrackservicessVrackservicessCurrentStateSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan float64 `pulumi:"vlan"`
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetArgs and GetVrackservicessVrackservicessCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetArgs{...}
+type GetVrackservicessVrackservicessCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetOutput() GetVrackservicessVrackservicessCurrentStateSubnetOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetArgs struct {
+	// IP address range of the subnet in CIDR format
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan pulumi.Float64Input `pulumi:"vlan"`
+}
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetOutput() GetVrackservicessVrackservicessCurrentStateSubnetOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetOutput)
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetArray and GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetArrayInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetArray{ GetVrackservicessVrackservicessCurrentStateSubnetArgs{...} }
+type GetVrackservicessVrackservicessCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetArray []GetVrackservicessVrackservicessCurrentStateSubnetInput
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetArray) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetArray) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetOutput() GetVrackservicessVrackservicessCurrentStateSubnetOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetOutput {
+	return o
+}
+
+// IP address range of the subnet in CIDR format
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Display name of the subnet
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Service endpoints of the subnet
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ServiceEndpoints() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+// Defines a smaller subnet dedicated to the managed services IPs
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ServiceRange() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) GetVrackservicessVrackservicessCurrentStateSubnetServiceRange {
+		return v.ServiceRange
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation
+func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) Vlan() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentStateSubnet {
+		return vs[0].([]GetVrackservicessVrackservicessCurrentStateSubnet)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs{...}
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
+}
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput)
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray{ GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs{...} }
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+// Endpoints representing the IPs assigned to the managed services
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) Endpoints() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint) []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint {
+		return v.Endpoints
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint) string {
+		return v.ManagedServiceUrn
+	}).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint {
+		return vs[0].([]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint struct {
+	// IP description defined in the managed service
+	Description string `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip string `pulumi:"ip"`
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs{...}
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs struct {
+	// IP description defined in the managed service
+	Description pulumi.StringInput `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray{ GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs{...} }
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+// IP description defined in the managed service
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// IP address assigned by OVHcloud
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint {
+		return vs[0].([]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceRange struct {
+	// CIDR dedicated to the subnet's services
+	Cidr string `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps float64 `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps float64 `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps float64 `pulumi:"usedIps"`
+}
+
+// GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs and GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs{...}
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput
+	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs struct {
+	// CIDR dedicated to the subnet's services
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps pulumi.Float64Input `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps pulumi.Float64Input `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps pulumi.Float64Input `pulumi:"usedIps"`
+}
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+// CIDR dedicated to the subnet's services
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Number of remaining IPs in the service range
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) RemainingIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) float64 { return v.RemainingIps }).(pulumi.Float64Output)
+}
+
+// Number of service range IPs reserved by OVHcloud
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ReservedIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) float64 { return v.ReservedIps }).(pulumi.Float64Output)
+}
+
+// Number of service range IPs assigned to the managed services
+func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) UsedIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) float64 { return v.UsedIps }).(pulumi.Float64Output)
+}
+
+type GetVrackservicessVrackservicessCurrentTask struct {
+	// Identifier of the current task
+	Id string `pulumi:"id"`
+	// Link to the task details
+	Link string `pulumi:"link"`
+	// Current global status of the current task
+	Status string `pulumi:"status"`
+	// Type of the current task
+	Type string `pulumi:"type"`
+}
+
+// GetVrackservicessVrackservicessCurrentTaskInput is an input type that accepts GetVrackservicessVrackservicessCurrentTaskArgs and GetVrackservicessVrackservicessCurrentTaskOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentTaskInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentTaskArgs{...}
+type GetVrackservicessVrackservicessCurrentTaskInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentTaskOutput() GetVrackservicessVrackservicessCurrentTaskOutput
+	ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentTaskOutput
+}
+
+type GetVrackservicessVrackservicessCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetVrackservicessVrackservicessCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentTaskArgs) ToGetVrackservicessVrackservicessCurrentTaskOutput() GetVrackservicessVrackservicessCurrentTaskOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentTaskArgs) ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentTaskOutput)
+}
+
+// GetVrackservicessVrackservicessCurrentTaskArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentTaskArray and GetVrackservicessVrackservicessCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentTaskArrayInput` via:
+//
+//	GetVrackservicessVrackservicessCurrentTaskArray{ GetVrackservicessVrackservicessCurrentTaskArgs{...} }
+type GetVrackservicessVrackservicessCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessCurrentTaskArrayOutput() GetVrackservicessVrackservicessCurrentTaskArrayOutput
+	ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentTaskArrayOutput
+}
+
+type GetVrackservicessVrackservicessCurrentTaskArray []GetVrackservicessVrackservicessCurrentTaskInput
+
+func (GetVrackservicessVrackservicessCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessCurrentTaskArray) ToGetVrackservicessVrackservicessCurrentTaskArrayOutput() GetVrackservicessVrackservicessCurrentTaskArrayOutput {
+	return i.ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessCurrentTaskArray) ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentTaskArrayOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentTaskOutput) ToGetVrackservicessVrackservicessCurrentTaskOutput() GetVrackservicessVrackservicessCurrentTaskOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentTaskOutput) ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o GetVrackservicessVrackservicessCurrentTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Link to the task details
+func (o GetVrackservicessVrackservicessCurrentTaskOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Link }).(pulumi.StringOutput)
+}
+
+// Current global status of the current task
+func (o GetVrackservicessVrackservicessCurrentTaskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the current task
+func (o GetVrackservicessVrackservicessCurrentTaskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessCurrentTaskArrayOutput) ToGetVrackservicessVrackservicessCurrentTaskArrayOutput() GetVrackservicessVrackservicessCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentTaskArrayOutput) ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessCurrentTaskArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentTask {
+		return vs[0].([]GetVrackservicessVrackservicessCurrentTask)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessCurrentTaskOutput)
+}
+
+type GetVrackservicessVrackservicessIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource state
+	State string `pulumi:"state"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetVrackservicessVrackservicessIamInput is an input type that accepts GetVrackservicessVrackservicessIamArgs and GetVrackservicessVrackservicessIamOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessIamInput` via:
+//
+//	GetVrackservicessVrackservicessIamArgs{...}
+type GetVrackservicessVrackservicessIamInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessIamOutput() GetVrackservicessVrackservicessIamOutput
+	ToGetVrackservicessVrackservicessIamOutputWithContext(context.Context) GetVrackservicessVrackservicessIamOutput
+}
+
+type GetVrackservicessVrackservicessIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource state
+	State pulumi.StringInput `pulumi:"state"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetVrackservicessVrackservicessIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessIam)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessIamArgs) ToGetVrackservicessVrackservicessIamOutput() GetVrackservicessVrackservicessIamOutput {
+	return i.ToGetVrackservicessVrackservicessIamOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessIamArgs) ToGetVrackservicessVrackservicessIamOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessIamOutput)
+}
+
+type GetVrackservicessVrackservicessIamOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessIam)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessIamOutput) ToGetVrackservicessVrackservicessIamOutput() GetVrackservicessVrackservicessIamOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessIamOutput) ToGetVrackservicessVrackservicessIamOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetVrackservicessVrackservicessIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetVrackservicessVrackservicessIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource state
+func (o GetVrackservicessVrackservicessIamOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetVrackservicessVrackservicessIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetVrackservicessVrackservicessIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpec struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets []GetVrackservicessVrackservicessTargetSpecSubnet `pulumi:"subnets"`
+}
+
+// GetVrackservicessVrackservicessTargetSpecInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecArgs and GetVrackservicessVrackservicessTargetSpecOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecInput` via:
+//
+//	GetVrackservicessVrackservicessTargetSpecArgs{...}
+type GetVrackservicessVrackservicessTargetSpecInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessTargetSpecOutput() GetVrackservicessVrackservicessTargetSpecOutput
+	ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecOutput
+}
+
+type GetVrackservicessVrackservicessTargetSpecArgs struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets GetVrackservicessVrackservicessTargetSpecSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetVrackservicessVrackservicessTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpec)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecArgs) ToGetVrackservicessVrackservicessTargetSpecOutput() GetVrackservicessVrackservicessTargetSpecOutput {
+	return i.ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecArgs) ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpec)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecOutput) ToGetVrackservicessVrackservicessTargetSpecOutput() GetVrackservicessVrackservicessTargetSpecOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecOutput) ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecOutput {
+	return o
+}
+
+// Target specification of the subnets. Maximum one subnet per vRack Services
+func (o GetVrackservicessVrackservicessTargetSpecOutput) Subnets() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpec) []GetVrackservicessVrackservicessTargetSpecSubnet {
+		return v.Subnets
+	}).(GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnet struct {
+	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+	Cidr string `pulumi:"cidr"`
+	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+	DisplayName string `pulumi:"displayName"`
+	// Target specification of the Service Endpoints
+	ServiceEndpoints []GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed service IPs
+	ServiceRange GetVrackservicessVrackservicessTargetSpecSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+	Vlan float64 `pulumi:"vlan"`
+}
+
+// GetVrackservicessVrackservicessTargetSpecSubnetInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetArgs and GetVrackservicessVrackservicessTargetSpecSubnetOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetInput` via:
+//
+//	GetVrackservicessVrackservicessTargetSpecSubnetArgs{...}
+type GetVrackservicessVrackservicessTargetSpecSubnetInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessTargetSpecSubnetOutput() GetVrackservicessVrackservicessTargetSpecSubnetOutput
+	ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetOutput
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetArgs struct {
+	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Target specification of the Service Endpoints
+	ServiceEndpoints GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed service IPs
+	ServiceRange GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+	Vlan pulumi.Float64Input `pulumi:"vlan"`
+}
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetOutput() GetVrackservicessVrackservicessTargetSpecSubnetOutput {
+	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetOutput)
+}
+
+// GetVrackservicessVrackservicessTargetSpecSubnetArrayInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetArray and GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetArrayInput` via:
+//
+//	GetVrackservicessVrackservicessTargetSpecSubnetArray{ GetVrackservicessVrackservicessTargetSpecSubnetArgs{...} }
+type GetVrackservicessVrackservicessTargetSpecSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput
+	ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetArray []GetVrackservicessVrackservicessTargetSpecSubnetInput
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetArray) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
+	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetArray) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetOutput() GetVrackservicessVrackservicessTargetSpecSubnetOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetOutput {
+	return o
+}
+
+// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Target specification of the Service Endpoints
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ServiceEndpoints() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) []GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput)
+}
+
+// Defines a smaller subnet dedicated to the managed service IPs
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ServiceRange() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) GetVrackservicessVrackservicessTargetSpecSubnetServiceRange {
+		return v.ServiceRange
+	}).(GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
+func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) Vlan() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessTargetSpecSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessTargetSpecSubnet {
+		return vs[0].([]GetVrackservicessVrackservicessTargetSpecSubnet)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessTargetSpecSubnetOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint struct {
+	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
+}
+
+// GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs and GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput` via:
+//
+//	GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{...}
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput
+	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs struct {
+	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
+}
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
+	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput)
+}
+
+// GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray and GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput` via:
+//
+//	GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray{ GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{...} }
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput
+	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray []GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
+	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
+	return o
+}
+
+// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint) string {
+		return v.ManagedServiceUrn
+	}).(pulumi.StringOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint {
+		return vs[0].([]GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)[vs[1].(int)]
+	}).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceRange struct {
+	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+	Cidr string `pulumi:"cidr"`
+}
+
+// GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs and GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput` via:
+//
+//	GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs{...}
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput
+	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs struct {
+	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+}
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRange)(nil)).Elem()
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
+	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput)
+}
+
+type GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRange)(nil)).Elem()
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
+	return o
+}
+
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
+	return o
+}
+
+// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
+func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateInput)(nil)).Elem(), VrackservicesCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStatePtrInput)(nil)).Elem(), VrackservicesCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetInput)(nil)).Elem(), VrackservicesCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetArrayInput)(nil)).Elem(), VrackservicesCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpointInput)(nil)).Elem(), VrackservicesCurrentStateSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpointArrayInput)(nil)).Elem(), VrackservicesCurrentStateSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpointEndpointInput)(nil)).Elem(), VrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput)(nil)).Elem(), VrackservicesCurrentStateSubnetServiceEndpointEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceRangeInput)(nil)).Elem(), VrackservicesCurrentStateSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetServiceRangePtrInput)(nil)).Elem(), VrackservicesCurrentStateSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentTaskInput)(nil)).Elem(), VrackservicesCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentTaskArrayInput)(nil)).Elem(), VrackservicesCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesIamInput)(nil)).Elem(), VrackservicesIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesIamPtrInput)(nil)).Elem(), VrackservicesIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesOrderInput)(nil)).Elem(), VrackservicesOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesOrderPtrInput)(nil)).Elem(), VrackservicesOrderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesOrderDetailInput)(nil)).Elem(), VrackservicesOrderDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesOrderDetailArrayInput)(nil)).Elem(), VrackservicesOrderDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanInput)(nil)).Elem(), VrackservicesPlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanArrayInput)(nil)).Elem(), VrackservicesPlanArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanConfigurationInput)(nil)).Elem(), VrackservicesPlanConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanConfigurationArrayInput)(nil)).Elem(), VrackservicesPlanConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanOptionInput)(nil)).Elem(), VrackservicesPlanOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanOptionArrayInput)(nil)).Elem(), VrackservicesPlanOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanOptionConfigurationInput)(nil)).Elem(), VrackservicesPlanOptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesPlanOptionConfigurationArrayInput)(nil)).Elem(), VrackservicesPlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecInput)(nil)).Elem(), VrackservicesTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecPtrInput)(nil)).Elem(), VrackservicesTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetInput)(nil)).Elem(), VrackservicesTargetSpecSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetArrayInput)(nil)).Elem(), VrackservicesTargetSpecSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), VrackservicesTargetSpecSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), VrackservicesTargetSpecSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceRangeInput)(nil)).Elem(), VrackservicesTargetSpecSubnetServiceRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityArrayInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorPlanCodesInput)(nil)).Elem(), GetCloudProjectFlavorPlanCodesArgs{})
@@ -2894,6 +7558,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOArrayInput)(nil)).Elem(), GetInstallationTemplateProjectOArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageArrayInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIploadbalancingNatIpsNatIpInput)(nil)).Elem(), GetIploadbalancingNatIpsNatIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIploadbalancingNatIpsNatIpArrayInput)(nil)).Elem(), GetIploadbalancingNatIpsNatIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretIamInput)(nil)).Elem(), GetOkmsSecretIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretMetadataInput)(nil)).Elem(), GetOkmsSecretMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{})
@@ -2909,6 +7575,75 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsIamInput)(nil)).Elem(), GetStorageEfsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathArrayInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateInput)(nil)).Elem(), GetVrackservicesCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskInput)(nil)).Elem(), GetVrackservicesCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskArrayInput)(nil)).Elem(), GetVrackservicesCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesIamInput)(nil)).Elem(), GetVrackservicesIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecInput)(nil)).Elem(), GetVrackservicesTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetArrayInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessInput)(nil)).Elem(), GetVrackservicessVrackservicessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTaskInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTaskArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessIamInput)(nil)).Elem(), GetVrackservicessVrackservicessIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetServiceEndpointEndpointOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetServiceRangeOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetServiceRangePtrOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentTaskOutput{})
+	pulumi.RegisterOutputType(VrackservicesCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesIamOutput{})
+	pulumi.RegisterOutputType(VrackservicesIamPtrOutput{})
+	pulumi.RegisterOutputType(VrackservicesOrderOutput{})
+	pulumi.RegisterOutputType(VrackservicesOrderPtrOutput{})
+	pulumi.RegisterOutputType(VrackservicesOrderDetailOutput{})
+	pulumi.RegisterOutputType(VrackservicesOrderDetailArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanConfigurationOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanOptionOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanOptionArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanOptionConfigurationOutput{})
+	pulumi.RegisterOutputType(VrackservicesPlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecPtrOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetServiceRangeOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorPlanCodesOutput{})
@@ -2939,6 +7674,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectOArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetIploadbalancingNatIpsNatIpOutput{})
+	pulumi.RegisterOutputType(GetIploadbalancingNatIpsNatIpArrayOutput{})
 	pulumi.RegisterOutputType(GetOkmsSecretIamOutput{})
 	pulumi.RegisterOutputType(GetOkmsSecretMetadataOutput{})
 	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput{})
@@ -2954,4 +7691,40 @@ func init() {
 	pulumi.RegisterOutputType(GetStorageEfsIamOutput{})
 	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathOutput{})
 	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceRangeOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesIamOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceRangeOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentTaskOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessIamOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput{})
 }

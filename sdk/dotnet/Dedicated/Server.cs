@@ -191,6 +191,12 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> Rack { get; private set; } = null!;
 
         /// <summary>
+        /// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+        /// </summary>
+        [Output("range")]
+        public Output<string?> Range { get; private set; } = null!;
+
+        /// <summary>
         /// Dedicated region localisation
         /// </summary>
         [Output("region")]
@@ -403,6 +409,12 @@ namespace Pulumi.Ovh.Dedicated
             get => _properties ?? (_properties = new InputMap<string>());
             set => _properties = value;
         }
+
+        /// <summary>
+        /// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+        /// </summary>
+        [Input("range")]
+        public Input<string>? Range { get; set; }
 
         /// <summary>
         /// Rescue mail of the server
@@ -635,6 +647,12 @@ namespace Pulumi.Ovh.Dedicated
         /// </summary>
         [Input("rack")]
         public Input<string>? Rack { get; set; }
+
+        /// <summary>
+        /// Range of the dedicated server to order. Can be `standard` or `eco`. Defaults to `standard`
+        /// </summary>
+        [Input("range")]
+        public Input<string>? Range { get; set; }
 
         /// <summary>
         /// Dedicated region localisation
