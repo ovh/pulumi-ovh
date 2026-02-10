@@ -20,19 +20,32 @@ jobs:
         env:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-          
+
       - name: Prepare workspace
+        run: mkdir creds-test
+
+      - name: Prepare dummy Maven project
         run: |
-          mkdir creds-test && cd creds-test
-        shell: bash
+          mkdir -p creds-test/maven-test && cd creds-test/maven-test
+          cat <<EOF > pom.xml
+          <project xmlns="http://maven.apache.org/POM/4.0.0"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
+            <modelVersion>4.0.0</modelVersion>
+            <groupId>com.example</groupId>
+            <artifactId>token-validation-test</artifactId>
+            <version>0.0.0-SNAPSHOT</version>
+          </project>
+          EOF
 
       - name: Test Maven / OSSRH credentials
         run: |
           echo "🔹 Testing Maven / OSSRH credentials..."
+          cd creds-test/maven-test
           mvn -B -DskipTests -Dgpg.skip=true deploy && echo "✅ OSSRH credentials valid"
         env:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           GPG_KEYNAME: ${{ secrets.JAVA_SIGNING_KEY_ID }}
           GPG_PASSPHRASE: ${{ secrets.JAVA_SIGNING_PASSWORD }}
-
