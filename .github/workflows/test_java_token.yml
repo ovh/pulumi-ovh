@@ -43,7 +43,9 @@ jobs:
         run: |
           echo "🔹 Testing Maven / OSSRH credentials..."
           cd creds-test/maven-test
-          mvn -B -DskipTests -Dgpg.skip=true deploy && echo "✅ OSSRH credentials valid"
+          mvn -B -DskipTests -Dgpg.skip=true \
+              -DaltDeploymentRepository=ossrh::default::https://s01.oss.sonatype.org/content/repositories/snapshots/ \
+              deploy && echo "✅ OSSRH credentials valid"
         env:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
