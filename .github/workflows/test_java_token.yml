@@ -21,17 +21,17 @@ jobs:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
 
-      - name: Test OSSRH authentication (Nexus status)
+      - name: Test OSSRH authentication (staging profiles)
         run: |
           HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
             -u "$OSSRH_USERNAME:$OSSRH_PASSWORD" \
-            https://s01.oss.sonatype.org/service/rest/v1/status)
-
+            https://s01.oss.sonatype.org/service/rest/v1/staging/profiles)
+      
           if [ "$HTTP_CODE" != "200" ]; then
             echo "❌ OSSRH auth failed (HTTP $HTTP_CODE)"
             exit 1
           fi
-
+      
           echo "✅ OSSRH auth OK"
         env:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
