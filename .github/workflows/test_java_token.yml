@@ -1,0 +1,38 @@
+name: Test OSSRH credentials
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  ossrh-auth-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sanity check secrets presence
+        run: |
+          if [ -z "$OSSRH_USERNAME" ] || [ -z "$OSSRH_PASSWORD" ]; then
+            echo "❌ OSSRH credentials not injected"
+            exit 1
+          fi
+          echo "✅ OSSRH credentials injected"
+        env:
+          OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+
+      - name: Test OSSRH authentication (Nexus status)
+        run: |
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -u "$OSSRH_USERNAME:$OSSRH_PASSWORD" \
+            https://s01.oss.sonatype.org/service/rest/v1/status)
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "❌ OSSRH auth failed (HTTP $HTTP_CODE)"
+            exit 1
+          fi
+
+          echo "✅ OSSRH auth OK"
+        env:
+          OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
+          OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
