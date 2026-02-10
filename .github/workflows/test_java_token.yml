@@ -1,4 +1,4 @@
-name: Test OSSRH credentials
+name: Test Maven central credentials
 
 on:
   workflow_dispatch:
@@ -21,19 +21,41 @@ jobs:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
           
-      - name: Test OSSRH authentication (legacy staging API)
+      - name: Prepare workspace
         run: |
-          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
-            -u "$OSSRH_USERNAME:$OSSRH_PASSWORD" \
-            https://s01.oss.sonatype.org/service/local/staging/profiles)
-      
-          if [ "$HTTP_CODE" != "200" ]; then
-            echo "❌ OSSRH auth failed (HTTP $HTTP_CODE)"
-            exit 1
-          fi
-      
-          echo "✅ OSSRH auth OK"
+          mkdir creds-test && cd creds-test
+        shell: bash
+
+      - name: Install GPG
+        run: sudo apt-get update && sudo apt-get install -y gnupg
+
+      - name: Import GPG key
+        run: |
+          echo "$SIGNING_KEY" | base64 --decode | gpg --batch --import
+        env:
+          SIGNING_KEY: ${{ secrets.JAVA_SIGNING_KEY }}
+
+      - name: Test GPG signing
+        run: |
+          echo "🔹 Testing GPG signing..."
+          echo "test" > creds-test/test.txt
+          gpg --batch --yes \
+            --pinentry-mode loopback \
+            --passphrase "$SIGNING_PASSWORD" \
+            --local-user "$SIGNING_KEY_ID" \
+            --output creds-test/test.txt.sig \
+            --detach-sign creds-test/test.txt && echo "✅ GPG key valid"
+        env:
+          SIGNING_PASSWORD: ${{ secrets.JAVA_SIGNING_PASSWORD }}
+          SIGNING_KEY_ID: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+
+      - name: Test Maven / OSSRH credentials
+        run: |
+          echo "🔹 Testing Maven / OSSRH credentials..."
+          mvn -B -DskipTests -Dgpg.skip=true deploy && echo "✅ OSSRH credentials valid"
         env:
           OSSRH_USERNAME: ${{ vars.OSSRH_USERNAME }}
           OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+          GPG_KEYNAME: ${{ secrets.JAVA_SIGNING_KEY_ID }}
+          GPG_PASSPHRASE: ${{ secrets.JAVA_SIGNING_PASSWORD }}
 
