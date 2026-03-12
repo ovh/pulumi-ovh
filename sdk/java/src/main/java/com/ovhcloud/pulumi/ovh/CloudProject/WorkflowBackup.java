@@ -59,6 +59,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A cloud project workflow backup can be imported using the `id` (workflow ID) E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:CloudProject/workflowBackup:WorkflowBackup my_workflow id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:CloudProject/workflowBackup:WorkflowBackup")
 public class WorkflowBackup extends com.pulumi.resources.CustomResource {
@@ -76,9 +86,17 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
     public Output<String> backupName() {
         return this.backupName;
     }
+    /**
+     * The creation date of the workflow.
+     * 
+     */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
+    /**
+     * @return The creation date of the workflow.
+     * 
+     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
@@ -100,9 +118,17 @@ public class WorkflowBackup extends com.pulumi.resources.CustomResource {
     public Output<String> cron() {
         return this.cron;
     }
+    /**
+     * See Argument Reference above.
+     * 
+     */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public Output<String> instanceId() {
         return this.instanceId;
     }

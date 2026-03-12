@@ -14,6 +14,7 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -239,18 +240,18 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.resourceId;
     }
     /**
-     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
-    private Output<String> serviceName;
+    private Output</* @Nullable */ String> serviceName;
 
     /**
-     * @return Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * @return Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Output<Optional<String>> serviceName() {
+        return Codegen.optional(this.serviceName);
     }
     /**
      * Size (GB) of the volume

@@ -123,6 +123,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An IAM policy can be imported using the `id` E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Iam/policy:Policy manager policy_id
+// ```
 type Policy struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -128,18 +129,18 @@ public class CloudProjectSshKey extends com.pulumi.resources.CustomResource {
         return this.regions;
     }
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
-    private Output<String> serviceName;
+    private Output</* @Nullable */ String> serviceName;
 
     /**
-     * @return Service name
+     * @return Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Output<Optional<String>> serviceName() {
+        return Codegen.optional(this.serviceName);
     }
 
     /**

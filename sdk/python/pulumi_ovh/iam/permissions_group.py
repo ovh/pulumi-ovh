@@ -287,6 +287,16 @@ class PermissionsGroup(pulumi.CustomResource):
         """
         Create am IAM permissions group.
 
+        ## Import
+
+        An IAM permissions group can be imported using the `id` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Iam/permissionsGroup:PermissionsGroup read_vps permissions_group_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allows: Set of actions allowed by the permissions group.
@@ -304,6 +314,16 @@ class PermissionsGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create am IAM permissions group.
+
+        ## Import
+
+        An IAM permissions group can be imported using the `id` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Iam/permissionsGroup:PermissionsGroup read_vps permissions_group_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param PermissionsGroupArgs args: The arguments to use to populate this resource's properties.

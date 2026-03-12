@@ -31,6 +31,16 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A cloud project failover IP attachment can be imported using the `id` (failover IP block ID) E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/failoverIpAttach:FailoverIpAttach my_ip id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/failoverIpAttach:FailoverIpAttach")]
     public partial class FailoverIpAttach : global::Pulumi.CustomResource
@@ -100,7 +110,7 @@ namespace Pulumi.Ovh.CloudProject
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FailoverIpAttach(string name, FailoverIpAttachArgs args, CustomResourceOptions? options = null)
+        public FailoverIpAttach(string name, FailoverIpAttachArgs? args = null, CustomResourceOptions? options = null)
             : base("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, args ?? new FailoverIpAttachArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -173,8 +183,8 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public FailoverIpAttachArgs()
         {

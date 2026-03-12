@@ -24,7 +24,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myOauth2Clients = Ovh.Me.GetAPIOAuth2Client.Invoke();
+        ///     var myOauth2Clients = Ovh.Me.GetAPIOAuth2Clients.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myOauth2Clients = Ovh.Me.GetAPIOAuth2Client.Invoke();
+        ///     var myOauth2Clients = Ovh.Me.GetAPIOAuth2Clients.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.Ovh.Me
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myOauth2Clients = Ovh.Me.GetAPIOAuth2Client.Invoke();
+        ///     var myOauth2Clients = Ovh.Me.GetAPIOAuth2Clients.Invoke();
         /// 
         /// });
         /// ```

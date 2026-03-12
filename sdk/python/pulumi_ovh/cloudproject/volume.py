@@ -22,11 +22,11 @@ __all__ = ['VolumeArgs', 'Volume']
 class VolumeArgs:
     def __init__(__self__, *,
                  region_name: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.float]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,18 +34,17 @@ class VolumeArgs:
         """
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[_builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: A description of the volume
         :param pulumi.Input[_builtins.str] image_id: Image ID
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Name of the volume
+        :param pulumi.Input[_builtins.str] service_name: Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID
         :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
         :param pulumi.Input[_builtins.str] volume_id: Volume ID
         """
         pulumi.set(__self__, "region_name", region_name)
-        pulumi.set(__self__, "service_name", service_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if image_id is not None:
@@ -54,6 +53,8 @@ class VolumeArgs:
             pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -74,18 +75,6 @@ class VolumeArgs:
     @region_name.setter
     def region_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Required. The id of the public cloud project. **Changing this value recreates the resource.**
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -134,6 +123,18 @@ class VolumeArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -219,7 +220,7 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of regions
         :param pulumi.Input[_builtins.str] resource_id: Id of the resource
-        :param pulumi.Input[_builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] service_name: Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID
         :param pulumi.Input[_builtins.str] started_at: Datetime of the operation creation
@@ -403,7 +404,7 @@ class _VolumeState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 
@@ -560,7 +561,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Name of the volume
         :param pulumi.Input[_builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] service_name: Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID
         :param pulumi.Input[_builtins.str] type: Type of the volume **Changing this value recreates the resource.** Available types are: classic, classic-luks, classic-multiattach, high-speed, high-speed-luks, high-speed-gen2, high-speed-gen2-luks
@@ -653,8 +654,6 @@ class Volume(pulumi.CustomResource):
             if region_name is None and not opts.urn:
                 raise TypeError("Missing required property 'region_name'")
             __props__.__dict__["region_name"] = region_name
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
@@ -716,7 +715,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: List of regions
         :param pulumi.Input[_builtins.str] resource_id: Id of the resource
-        :param pulumi.Input[_builtins.str] service_name: Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] service_name: Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.float] size: Size (GB) of the volume
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID
         :param pulumi.Input[_builtins.str] started_at: Datetime of the operation creation
@@ -840,9 +839,9 @@ class Volume(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "service_name")
 

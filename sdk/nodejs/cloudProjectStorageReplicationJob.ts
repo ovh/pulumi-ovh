@@ -57,7 +57,7 @@ export class CloudProjectStorageReplicationJob extends pulumi.CustomResource {
     /**
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CloudProjectStorageReplicationJob resource with the given unique name, arguments, and options.
@@ -82,9 +82,6 @@ export class CloudProjectStorageReplicationJob extends pulumi.CustomResource {
             }
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["containerName"] = args ? args.containerName : undefined;
             resourceInputs["regionName"] = args ? args.regionName : undefined;
@@ -128,5 +125,5 @@ export interface CloudProjectStorageReplicationJobArgs {
     /**
      * The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

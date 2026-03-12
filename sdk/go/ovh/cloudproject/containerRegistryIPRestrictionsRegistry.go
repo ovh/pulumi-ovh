@@ -53,6 +53,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// OVHcloud Managed Private Registry IP restrictions of registry type can be imported using the `service_name` and `registry_id`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry my_ip_restrictions service_name/registry_id
+// ```
 type ContainerRegistryIPRestrictionsRegistry struct {
 	pulumi.CustomResourceState
 

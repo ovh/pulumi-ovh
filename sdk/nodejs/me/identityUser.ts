@@ -21,6 +21,16 @@ import * as utilities from "../utilities";
  *     password: "super-s3cr3t!password",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * An identity user can be imported using the `login` E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Me/identityUser:IdentityUser my_user login
+ * ```
  */
 export class IdentityUser extends pulumi.CustomResource {
     /**

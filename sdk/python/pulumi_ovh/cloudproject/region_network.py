@@ -22,23 +22,24 @@ __all__ = ['RegionNetworkArgs', 'RegionNetwork']
 class RegionNetworkArgs:
     def __init__(__self__, *,
                  region_name: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  subnet: pulumi.Input['RegionNetworkSubnetArgs'],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  vlan_id: Optional[pulumi.Input[_builtins.float]] = None):
         """
         The set of arguments for constructing a RegionNetwork resource.
         :param pulumi.Input[_builtins.str] region_name: Network region
-        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project
         :param pulumi.Input['RegionNetworkSubnetArgs'] subnet: Parameters to create a subnet
         :param pulumi.Input[_builtins.str] name: Name of the network
+        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.float] vlan_id: VLAN ID, between 1 and 4000
         """
         pulumi.set(__self__, "region_name", region_name)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "subnet", subnet)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
         if vlan_id is not None:
             pulumi.set(__self__, "vlan_id", vlan_id)
 
@@ -53,18 +54,6 @@ class RegionNetworkArgs:
     @region_name.setter
     def region_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The id of the public cloud project
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -89,6 +78,18 @@ class RegionNetworkArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
@@ -118,7 +119,7 @@ class _RegionNetworkState:
         :param pulumi.Input[_builtins.str] name: Name of the network
         :param pulumi.Input[_builtins.str] region: Network region returned by the API
         :param pulumi.Input[_builtins.str] region_name: Network region
-        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project
+        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input['RegionNetworkSubnetArgs'] subnet: Parameters to create a subnet
         :param pulumi.Input[_builtins.str] visibility: Network visibility
         :param pulumi.Input[_builtins.float] vlan_id: VLAN ID, between 1 and 4000
@@ -178,7 +179,7 @@ class _RegionNetworkState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The id of the public cloud project
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -242,7 +243,7 @@ class RegionNetwork(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the network
         :param pulumi.Input[_builtins.str] region_name: Network region
-        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project
+        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[Union['RegionNetworkSubnetArgs', 'RegionNetworkSubnetArgsDict']] subnet: Parameters to create a subnet
         :param pulumi.Input[_builtins.float] vlan_id: VLAN ID, between 1 and 4000
         """
@@ -288,8 +289,6 @@ class RegionNetwork(pulumi.CustomResource):
             if region_name is None and not opts.urn:
                 raise TypeError("Missing required property 'region_name'")
             __props__.__dict__["region_name"] = region_name
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             if subnet is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet'")
@@ -324,7 +323,7 @@ class RegionNetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the network
         :param pulumi.Input[_builtins.str] region: Network region returned by the API
         :param pulumi.Input[_builtins.str] region_name: Network region
-        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project
+        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[Union['RegionNetworkSubnetArgs', 'RegionNetworkSubnetArgsDict']] subnet: Parameters to create a subnet
         :param pulumi.Input[_builtins.str] visibility: Network visibility
         :param pulumi.Input[_builtins.float] vlan_id: VLAN ID, between 1 and 4000
@@ -368,9 +367,9 @@ class RegionNetwork(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The id of the public cloud project
+        The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.GetAPIOAuth2Client(ctx, &me.GetAPIOAuth2ClientArgs{}, nil)
+//			_, err := me.GetAPIOAuth2Clients(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

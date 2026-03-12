@@ -68,8 +68,8 @@ type Storage struct {
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
 	// Replication configuration
 	Replication StorageReplicationOutput `pulumi:"replication"`
-	// Service name
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Versioning configuration
 	Versioning StorageVersioningOutput `pulumi:"versioning"`
 	// Container virtual host
@@ -85,9 +85,6 @@ func NewStorage(ctx *pulumi.Context,
 
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Storage
@@ -142,7 +139,7 @@ type storageState struct {
 	RegionName *string `pulumi:"regionName"`
 	// Replication configuration
 	Replication *StorageReplication `pulumi:"replication"`
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Versioning configuration
 	Versioning *StorageVersioning `pulumi:"versioning"`
@@ -181,7 +178,7 @@ type StorageState struct {
 	RegionName pulumi.StringPtrInput
 	// Replication configuration
 	Replication StorageReplicationPtrInput
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Versioning configuration
 	Versioning StorageVersioningPtrInput
@@ -214,8 +211,8 @@ type storageArgs struct {
 	RegionName string `pulumi:"regionName"`
 	// Replication configuration
 	Replication *StorageReplication `pulumi:"replication"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 	// Versioning configuration
 	Versioning *StorageVersioning `pulumi:"versioning"`
 }
@@ -242,8 +239,8 @@ type StorageArgs struct {
 	RegionName pulumi.StringInput
 	// Replication configuration
 	Replication StorageReplicationPtrInput
-	// Service name
-	ServiceName pulumi.StringInput
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 	// Versioning configuration
 	Versioning StorageVersioningPtrInput
 }
@@ -410,9 +407,9 @@ func (o StorageOutput) Replication() StorageReplicationOutput {
 	return o.ApplyT(func(v *Storage) StorageReplicationOutput { return v.Replication }).(StorageReplicationOutput)
 }
 
-// Service name
-func (o StorageOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Storage) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o StorageOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Storage) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Versioning configuration

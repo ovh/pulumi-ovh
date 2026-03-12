@@ -55,6 +55,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A DBaaS Logs Opensearch output index can be imported using the `service_name` and `id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex index service_name/id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex")
 public class LogsOutputOpenSearchIndex extends com.pulumi.resources.CustomResource {

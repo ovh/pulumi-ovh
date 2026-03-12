@@ -70,7 +70,7 @@ namespace Pulumi.Ovh.CloudProject
         /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
 
         /// <summary>
@@ -140,8 +140,8 @@ namespace Pulumi.Ovh.CloudProject
         /// <summary>
         /// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public AlertingArgs()
         {

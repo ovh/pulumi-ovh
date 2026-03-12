@@ -54,8 +54,8 @@ type CloudProjectSshKey struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// SSH key regions
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
-	// Service name
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 }
 
 // NewCloudProjectSshKey registers a new resource with the given unique name, arguments, and options.
@@ -67,9 +67,6 @@ func NewCloudProjectSshKey(ctx *pulumi.Context,
 
 	if args.PublicKey == nil {
 		return nil, errors.New("invalid value for required argument 'PublicKey'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudProjectSshKey
@@ -104,7 +101,7 @@ type cloudProjectSshKeyState struct {
 	Region *string `pulumi:"region"`
 	// SSH key regions
 	Regions []string `pulumi:"regions"`
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -119,7 +116,7 @@ type CloudProjectSshKeyState struct {
 	Region pulumi.StringPtrInput
 	// SSH key regions
 	Regions pulumi.StringArrayInput
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -134,8 +131,8 @@ type cloudProjectSshKeyArgs struct {
 	PublicKey string `pulumi:"publicKey"`
 	// Region to create SSH key
 	Region *string `pulumi:"region"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a CloudProjectSshKey resource.
@@ -146,8 +143,8 @@ type CloudProjectSshKeyArgs struct {
 	PublicKey pulumi.StringInput
 	// Region to create SSH key
 	Region pulumi.StringPtrInput
-	// Service name
-	ServiceName pulumi.StringInput
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 }
 
 func (CloudProjectSshKeyArgs) ElementType() reflect.Type {
@@ -262,9 +259,9 @@ func (o CloudProjectSshKeyOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CloudProjectSshKey) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
-// Service name
-func (o CloudProjectSshKeyOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudProjectSshKey) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o CloudProjectSshKeyOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudProjectSshKey) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 type CloudProjectSshKeyArrayOutput struct{ *pulumi.OutputState }

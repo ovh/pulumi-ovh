@@ -19,6 +19,16 @@ import * as utilities from "../utilities";
  *     suffix: "index",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A DBaaS Logs Opensearch output index can be imported using the `service_name` and `id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex index service_name/id
+ * ```
  */
 export class LogsOutputOpenSearchIndex extends pulumi.CustomResource {
     /**

@@ -81,10 +81,10 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> RegionName { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
         /// Details about components status
@@ -158,10 +158,10 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public ProjectRegionArgs()
         {
@@ -232,7 +232,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? RegionName { get; set; }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

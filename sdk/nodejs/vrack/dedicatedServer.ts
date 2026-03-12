@@ -20,6 +20,16 @@ import * as utilities from "../utilities";
  *     serverId: "67890",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A vRack dedicated server attachment can be imported using the `service_name` and `server_id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Vrack/dedicatedServer:DedicatedServer vds service_name/server_id
+ * ```
  */
 export class DedicatedServer extends pulumi.CustomResource {
     /**

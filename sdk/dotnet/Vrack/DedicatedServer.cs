@@ -32,6 +32,16 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A vRack dedicated server attachment can be imported using the `service_name` and `server_id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Vrack/dedicatedServer:DedicatedServer vds service_name/server_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServer:DedicatedServer")]
     public partial class DedicatedServer : global::Pulumi.CustomResource

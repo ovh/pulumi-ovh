@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Create and manage snapshots for an instance in a public cloud project.
  *
+ * ## Example Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -16,6 +18,16 @@ import * as utilities from "../utilities";
  *     instanceId: "<instance ID>",
  *     name: "SnapshotExample",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * A cloud project instance snapshot can be imported using the `service_name` and `snapshot_id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/instanceSnapshot:InstanceSnapshot my_snapshot service_name/snapshot_id
  * ```
  */
 export class InstanceSnapshot extends pulumi.CustomResource {
@@ -79,9 +91,9 @@ export class InstanceSnapshot extends pulumi.CustomResource {
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * Image size (in GiB)
      */
@@ -139,9 +151,6 @@ export class InstanceSnapshot extends pulumi.CustomResource {
             const args = argsOrState as InstanceSnapshotArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -201,7 +210,7 @@ export interface InstanceSnapshotState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -243,7 +252,7 @@ export interface InstanceSnapshotArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

@@ -23,6 +23,16 @@ import * as utilities from "../utilities";
  *     interfaceId: server.then(server => server.enabledVrackVnis?.[0]),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A vRack dedicated server interface attachment can be imported using the `service_name` and `interface_id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface vdsi service_name/interface_id
+ * ```
  */
 export class DedicatedServerInterface extends pulumi.CustomResource {
     /**

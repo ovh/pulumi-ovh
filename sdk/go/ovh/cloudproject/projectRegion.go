@@ -57,8 +57,8 @@ type ProjectRegion struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Region name
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
-	// Service name
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Details about components status
 	Services ProjectRegionServiceArrayOutput `pulumi:"services"`
 	// Openstack region status
@@ -76,9 +76,6 @@ func NewProjectRegion(ctx *pulumi.Context,
 
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectRegion
@@ -119,7 +116,7 @@ type projectRegionState struct {
 	Region *string `pulumi:"region"`
 	// Region name
 	RegionName *string `pulumi:"regionName"`
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Details about components status
 	Services []ProjectRegionService `pulumi:"services"`
@@ -146,7 +143,7 @@ type ProjectRegionState struct {
 	Region pulumi.StringPtrInput
 	// Region name
 	RegionName pulumi.StringPtrInput
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Details about components status
 	Services ProjectRegionServiceArrayInput
@@ -163,16 +160,16 @@ func (ProjectRegionState) ElementType() reflect.Type {
 type projectRegionArgs struct {
 	// Region to add to your project
 	Region string `pulumi:"region"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a ProjectRegion resource.
 type ProjectRegionArgs struct {
 	// Region to add to your project
 	Region pulumi.StringInput
-	// Service name
-	ServiceName pulumi.StringInput
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 }
 
 func (ProjectRegionArgs) ElementType() reflect.Type {
@@ -302,9 +299,9 @@ func (o ProjectRegionOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectRegion) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// Service name
-func (o ProjectRegionOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProjectRegion) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o ProjectRegionOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProjectRegion) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Details about components status

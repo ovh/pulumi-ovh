@@ -218,6 +218,16 @@ class ContainerRegistryUser(pulumi.CustomResource):
             login="foobar")
         ```
 
+        ## Import
+
+        OVHcloud Managed Private Registry user can be imported using the `service_name`, `registry_id` and `id` of the user, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/containerRegistryUser:ContainerRegistryUser my_user service_name/registry_id/user_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] email: User email
@@ -247,6 +257,16 @@ class ContainerRegistryUser(pulumi.CustomResource):
             registry_id=registry_ovh_cloud_project_containerregistry["id"],
             email="foo@bar.com",
             login="foobar")
+        ```
+
+        ## Import
+
+        OVHcloud Managed Private Registry user can be imported using the `service_name`, `registry_id` and `id` of the user, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/containerRegistryUser:ContainerRegistryUser my_user service_name/registry_id/user_id
         ```
 
         :param str resource_name: The name of the resource.

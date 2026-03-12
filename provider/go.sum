@@ -1498,6 +1498,8 @@ github.com/cloudflare/circl v1.3.7/go.mod h1:sRTcRWXGLrKw6yIGJ+l7amYJFfAXbZG0kBS
 github.com/cloudflare/circl v1.6.0/go.mod h1:uddAzsPgqdMAYatqJ0lsjX1oECcQLIlRpzZh3pJrofs=
 github.com/cloudflare/circl v1.6.1 h1:zqIqSPIndyBh1bjLVVDHMPpVKqp8Su/V+6MeDzzQBQ0=
 github.com/cloudflare/circl v1.6.1/go.mod h1:uddAzsPgqdMAYatqJ0lsjX1oECcQLIlRpzZh3pJrofs=
+github.com/cloudflare/circl v1.6.3 h1:9GPOhQGF9MCYUeXyMYlqTR6a5gTrgR/fBLXvUgtVcg8=
+github.com/cloudflare/circl v1.6.3/go.mod h1:2eXP6Qfat4O/Yhh8BznvKnJ+uzEoTQ6jVKJRn81BiS4=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
 github.com/cncf/udpa/go v0.0.0-20201120205902-5459f2c99403/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
@@ -2143,6 +2145,8 @@ github.com/ovh/terraform-provider-ovh/v2 v2.10.0 h1:gV6WdeEMZwHO/Ceu306mv4zFG1rw
 github.com/ovh/terraform-provider-ovh/v2 v2.10.0/go.mod h1:tpUCaMqmSIVvTWRFpOo7Ux2rbHVnLCltgFE6h/teHX4=
 github.com/ovh/terraform-provider-ovh/v2 v2.11.0 h1:gzmvNCJ/jnes3LXE5O/6oCjpNHqBfGHa9gCWlj/cUF4=
 github.com/ovh/terraform-provider-ovh/v2 v2.11.0/go.mod h1:bsLchS5uERurzoxfCW3YZxDMblvYKxWu9hj7BDUf2JQ=
+github.com/ovh/terraform-provider-ovh/v2 v2.12.0 h1:QrbAKnNHwps5JxGvJUsklFk+zi03mUXYKnM7QpUWr+A=
+github.com/ovh/terraform-provider-ovh/v2 v2.12.0/go.mod h1:PkMa+JTZWWjwHjwhjlULo219gQ6OhBJNgQxjtycz3QE=
 github.com/peterhellberg/duration v0.0.2 h1:J/ELSSpXCuHInfYJ/hGVYe0enoGsD8buoRzbsdQJW5o=
 github.com/peterhellberg/duration v0.0.2/go.mod h1:n3Pkw/vId7ZwR2ITRQlLeIjETlGEtUa7zQw49dED6ew=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=

@@ -33,6 +33,16 @@ namespace Pulumi.Ovh.Me
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An identity user can be imported using the `login` E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Me/identityUser:IdentityUser my_user login
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Me/identityUser:IdentityUser")]
     public partial class IdentityUser : global::Pulumi.CustomResource

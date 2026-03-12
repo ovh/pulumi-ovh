@@ -57,12 +57,12 @@ namespace Pulumi.Ovh.CloudProjectDatabase
     /// 
     /// ## Import
     /// 
-    /// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+    /// OVHcloud Managed database cluster integrations can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the integration, separated by "/" E.g.,
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+    /// $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_integration service_name/engine/cluster_id/id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProjectDatabase/integration:Integration")]
@@ -81,7 +81,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> DestinationServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> DestinationServiceId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? DestinationServiceId { get; set; }
 
         /// <summary>
-        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        /// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

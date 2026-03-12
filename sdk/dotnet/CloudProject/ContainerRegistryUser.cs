@@ -38,6 +38,16 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OVHcloud Managed Private Registry user can be imported using the `service_name`, `registry_id` and `id` of the user, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/containerRegistryUser:ContainerRegistryUser my_user service_name/registry_id/user_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/containerRegistryUser:ContainerRegistryUser")]
     public partial class ContainerRegistryUser : global::Pulumi.CustomResource

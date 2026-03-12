@@ -7,10 +7,13 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .cloud_project_containerregistry_iam import *
+from .cloud_project_database_clickhouse_user import *
 from .cloud_project_database_valkey_user import *
 from .cloud_project_ssh_key import *
+from .cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .cloud_project_storage_replication_job import *
 from .domain_zone_dynhost_record import *
+from .get_cloud_project_database_clickhouse_user import *
 from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
 from .get_cloud_project_gateway import *
@@ -18,6 +21,7 @@ from .get_cloud_project_rancher_capabilities_plan import *
 from .get_cloud_project_rancher_capabilities_version import *
 from .get_cloud_project_ssh_key import *
 from .get_cloud_project_ssh_keys import *
+from .get_cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .get_dbaas_logs_output_graylog_stream_url import *
 from .get_dedicated_server_orderable_bandwidth import *
 from .get_dedicated_server_orderable_bandwidth_vrack import *
@@ -46,6 +50,7 @@ from .ovhcloud_connect_pop_config import *
 from .ovhcloud_connect_pop_datacenter_config import *
 from .ovhcloud_connect_pop_datacenter_extra_config import *
 from .provider import *
+from .storage_efs import *
 from .storage_efs_share import *
 from .storage_efs_share_acl import *
 from .storage_efs_share_snapshot import *
@@ -1168,6 +1173,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudProjectDatabaseClickhouseUser",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser": "CloudProjectDatabaseClickhouseUser"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudProjectDatabaseValkeyUser",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1180,6 +1193,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudProjectSshKey:CloudProjectSshKey": "CloudProjectSshKey"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudProjectStorageObjectBucketLifecycleConfiguration",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": "CloudProjectStorageObjectBucketLifecycleConfiguration"
   }
  },
  {
@@ -1228,6 +1249,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig": "OvhcloudConnectPopDatacenterExtraConfig"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/storageEfs",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/storageEfs:StorageEfs": "StorageEfs"
   }
  },
  {

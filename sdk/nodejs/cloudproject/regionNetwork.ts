@@ -50,9 +50,9 @@ export class RegionNetwork extends pulumi.CustomResource {
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * The id of the public cloud project
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * Parameters to create a subnet
      */
@@ -91,9 +91,6 @@ export class RegionNetwork extends pulumi.CustomResource {
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
-            }
             if ((!args || args.subnet === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnet'");
             }
@@ -127,7 +124,7 @@ export interface RegionNetworkState {
      */
     regionName?: pulumi.Input<string>;
     /**
-     * The id of the public cloud project
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -157,9 +154,9 @@ export interface RegionNetworkArgs {
      */
     regionName: pulumi.Input<string>;
     /**
-     * The id of the public cloud project
+     * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Parameters to create a subnet
      */

@@ -498,6 +498,16 @@ class Policy(pulumi.CustomResource):
             expired_at="2026-12-31T23:59:59Z")
         ```
 
+        ## Import
+
+        An IAM policy can be imported using the `id` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Iam/policy:Policy manager policy_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allows: List of actions allowed on resources by identities
@@ -580,6 +590,16 @@ class Policy(pulumi.CustomResource):
                 ],
             },
             expired_at="2026-12-31T23:59:59Z")
+        ```
+
+        ## Import
+
+        An IAM policy can be imported using the `id` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Iam/policy:Policy manager policy_id
         ```
 
         :param str resource_name: The name of the resource.

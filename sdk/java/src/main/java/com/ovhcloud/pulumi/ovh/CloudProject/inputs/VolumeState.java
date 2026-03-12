@@ -184,14 +184,14 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * @return Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -587,7 +587,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Required. The id of the public cloud project. **Changing this value recreates the resource.**
+         * @param serviceName Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -598,7 +598,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Required. The id of the public cloud project. **Changing this value recreates the resource.**
+         * @param serviceName Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

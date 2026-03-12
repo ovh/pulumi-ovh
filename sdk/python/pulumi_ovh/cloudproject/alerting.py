@@ -24,7 +24,7 @@ class AlertingArgs:
                  delay: pulumi.Input[_builtins.float],
                  email: pulumi.Input[_builtins.str],
                  monthly_threshold: pulumi.Input[_builtins.float],
-                 service_name: pulumi.Input[_builtins.str]):
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alerting resource.
         :param pulumi.Input[_builtins.float] delay: Delay between two alerts in seconds
@@ -35,7 +35,8 @@ class AlertingArgs:
         pulumi.set(__self__, "delay", delay)
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "monthly_threshold", monthly_threshold)
-        pulumi.set(__self__, "service_name", service_name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter
@@ -75,14 +76,14 @@ class AlertingArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
@@ -283,8 +284,6 @@ class Alerting(pulumi.CustomResource):
             if monthly_threshold is None and not opts.urn:
                 raise TypeError("Missing required property 'monthly_threshold'")
             __props__.__dict__["monthly_threshold"] = monthly_threshold
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["formatted_monthly_threshold"] = None
@@ -372,7 +371,7 @@ class Alerting(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """

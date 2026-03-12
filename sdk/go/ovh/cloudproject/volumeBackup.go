@@ -77,8 +77,8 @@ type VolumeBackup struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Region name
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
-	// Service name
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Size of the backup in GiB
 	Size pulumi.Float64Output `pulumi:"size"`
 	// Staus of the backup
@@ -96,9 +96,6 @@ func NewVolumeBackup(ctx *pulumi.Context,
 
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	if args.VolumeId == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeId'")
@@ -134,7 +131,7 @@ type volumeBackupState struct {
 	Region *string `pulumi:"region"`
 	// Region name
 	RegionName *string `pulumi:"regionName"`
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Size of the backup in GiB
 	Size *float64 `pulumi:"size"`
@@ -153,7 +150,7 @@ type VolumeBackupState struct {
 	Region pulumi.StringPtrInput
 	// Region name
 	RegionName pulumi.StringPtrInput
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Size of the backup in GiB
 	Size pulumi.Float64PtrInput
@@ -172,8 +169,8 @@ type volumeBackupArgs struct {
 	Name *string `pulumi:"name"`
 	// Region name
 	RegionName string `pulumi:"regionName"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 	// ID of the volume to backup
 	VolumeId string `pulumi:"volumeId"`
 }
@@ -184,8 +181,8 @@ type VolumeBackupArgs struct {
 	Name pulumi.StringPtrInput
 	// Region name
 	RegionName pulumi.StringInput
-	// Service name
-	ServiceName pulumi.StringInput
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 	// ID of the volume to backup
 	VolumeId pulumi.StringInput
 }
@@ -297,9 +294,9 @@ func (o VolumeBackupOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeBackup) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// Service name
-func (o VolumeBackupOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *VolumeBackup) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o VolumeBackupOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeBackup) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Size of the backup in GiB

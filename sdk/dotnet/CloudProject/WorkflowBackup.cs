@@ -35,6 +35,16 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A cloud project workflow backup can be imported using the `id` (workflow ID) E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/workflowBackup:WorkflowBackup my_workflow id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/workflowBackup:WorkflowBackup")]
     public partial class WorkflowBackup : global::Pulumi.CustomResource
@@ -45,6 +55,9 @@ namespace Pulumi.Ovh.CloudProject
         [Output("backupName")]
         public Output<string> BackupName { get; private set; } = null!;
 
+        /// <summary>
+        /// The creation date of the workflow.
+        /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -56,6 +69,9 @@ namespace Pulumi.Ovh.CloudProject
         [Output("cron")]
         public Output<string> Cron { get; private set; } = null!;
 
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
@@ -150,6 +166,9 @@ namespace Pulumi.Ovh.CloudProject
         [Input("cron", required: true)]
         public Input<string> Cron { get; set; } = null!;
 
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
@@ -197,6 +216,9 @@ namespace Pulumi.Ovh.CloudProject
         [Input("backupName")]
         public Input<string>? BackupName { get; set; }
 
+        /// <summary>
+        /// The creation date of the workflow.
+        /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -208,6 +230,9 @@ namespace Pulumi.Ovh.CloudProject
         [Input("cron")]
         public Input<string>? Cron { get; set; }
 
+        /// <summary>
+        /// See Argument Reference above.
+        /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 

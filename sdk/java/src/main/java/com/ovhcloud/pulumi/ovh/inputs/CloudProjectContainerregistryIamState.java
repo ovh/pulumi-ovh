@@ -31,9 +31,17 @@ public final class CloudProjectContainerregistryIamState extends com.pulumi.reso
         return Optional.ofNullable(this.deleteUsers);
     }
 
+    /**
+     * Whether IAM is enabled for the registry.
+     * 
+     */
     @Import(name="iamEnabled")
     private @Nullable Output<Boolean> iamEnabled;
 
+    /**
+     * @return Whether IAM is enabled for the registry.
+     * 
+     */
     public Optional<Output<Boolean>> iamEnabled() {
         return Optional.ofNullable(this.iamEnabled);
     }
@@ -116,11 +124,23 @@ public final class CloudProjectContainerregistryIamState extends com.pulumi.reso
             return deleteUsers(Output.of(deleteUsers));
         }
 
+        /**
+         * @param iamEnabled Whether IAM is enabled for the registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iamEnabled(@Nullable Output<Boolean> iamEnabled) {
             $.iamEnabled = iamEnabled;
             return this;
         }
 
+        /**
+         * @param iamEnabled Whether IAM is enabled for the registry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder iamEnabled(Boolean iamEnabled) {
             return iamEnabled(Output.of(iamEnabled));
         }

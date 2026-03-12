@@ -272,6 +272,16 @@ class IdentityUserToken(pulumi.CustomResource):
             expires_at="2030-01-01T00:00:00Z")
         ```
 
+        ## Import
+
+        A user identity token can be imported using the `user_login` and `name`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Me/identityUserToken:IdentityUserToken token user_login/token_name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Token description.
@@ -306,6 +316,16 @@ class IdentityUserToken(pulumi.CustomResource):
             name="token_name",
             description="Token description",
             expires_at="2030-01-01T00:00:00Z")
+        ```
+
+        ## Import
+
+        A user identity token can be imported using the `user_login` and `name`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Me/identityUserToken:IdentityUserToken token user_login/token_name
         ```
 
         :param str resource_name: The name of the resource.

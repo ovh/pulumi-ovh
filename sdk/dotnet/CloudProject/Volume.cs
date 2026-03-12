@@ -127,10 +127,10 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        /// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
         /// Size (GB) of the volume
@@ -252,10 +252,10 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> RegionName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        /// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// Size (GB) of the volume
@@ -362,7 +362,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Required. The id of the public cloud project. **Changing this value recreates the resource.**
+        /// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

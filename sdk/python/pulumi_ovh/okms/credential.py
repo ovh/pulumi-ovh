@@ -367,6 +367,16 @@ class Credential(pulumi.CustomResource):
         """
         Creates a credential for an OVHcloud KMS.
 
+        ## Import
+
+        An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Okms/credential:Credential cred okms_id/credential_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_type: (String) Type of certificate key (`ECDSA` or `RSA`).
@@ -385,6 +395,16 @@ class Credential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a credential for an OVHcloud KMS.
+
+        ## Import
+
+        An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Okms/credential:Credential cred okms_id/credential_id
+        ```
 
         :param str resource_name: The name of the resource.
         :param CredentialArgs args: The arguments to use to populate this resource's properties.

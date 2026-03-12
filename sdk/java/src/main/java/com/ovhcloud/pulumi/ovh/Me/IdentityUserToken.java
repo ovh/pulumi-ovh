@@ -67,6 +67,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A user identity token can be imported using the `user_login` and `name`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Me/identityUserToken:IdentityUserToken token user_login/token_name
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Me/identityUserToken:IdentityUserToken")
 public class IdentityUserToken extends com.pulumi.resources.CustomResource {

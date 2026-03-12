@@ -612,6 +612,16 @@ class LogsInput(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        DBaaS Logs input can be imported using the `service_name` and `id` of the input, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsInput:LogsInput my_input service_name/input_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_networks: List of IP blocks
@@ -668,6 +678,16 @@ class LogsInput(pulumi.CustomResource):
         \"\"\",
                 },
             })
+        ```
+
+        ## Import
+
+        DBaaS Logs input can be imported using the `service_name` and `id` of the input, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsInput:LogsInput my_input service_name/input_id
         ```
 
         :param str resource_name: The name of the resource.

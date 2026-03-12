@@ -102,6 +102,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A vRack IP block attachment can be imported using the `service_name` and `block`, separated by "," E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Vrack/ipAddress:IpAddress vrack_block service_name,ip_block
+// ```
 type IpAddress struct {
 	pulumi.CustomResourceState
 

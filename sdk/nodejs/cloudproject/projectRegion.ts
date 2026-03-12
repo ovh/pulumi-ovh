@@ -80,9 +80,9 @@ export class ProjectRegion extends pulumi.CustomResource {
      */
     public /*out*/ readonly regionName!: pulumi.Output<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * Details about components status
      */
@@ -125,9 +125,6 @@ export class ProjectRegion extends pulumi.CustomResource {
             const args = argsOrState as ProjectRegionArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -184,7 +181,7 @@ export interface ProjectRegionState {
      */
     regionName?: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -210,7 +207,7 @@ export interface ProjectRegionArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

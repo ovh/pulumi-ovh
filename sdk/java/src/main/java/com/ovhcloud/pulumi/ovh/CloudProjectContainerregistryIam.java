@@ -83,9 +83,17 @@ public class CloudProjectContainerregistryIam extends com.pulumi.resources.Custo
     public Output<Optional<Boolean>> deleteUsers() {
         return Codegen.optional(this.deleteUsers);
     }
+    /**
+     * Whether IAM is enabled for the registry.
+     * 
+     */
     @Export(name="iamEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> iamEnabled;
 
+    /**
+     * @return Whether IAM is enabled for the registry.
+     * 
+     */
     public Output<Boolean> iamEnabled() {
         return this.iamEnabled;
     }

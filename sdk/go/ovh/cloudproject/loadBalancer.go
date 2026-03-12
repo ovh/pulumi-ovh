@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
+// Create a load balancer in a public cloud project.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
@@ -38,8 +38,8 @@ type LoadBalancer struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Region name
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
-	// Service name
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// UTC date and timestamp when the resource was created
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// IP address of the Virtual IP
@@ -65,9 +65,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	}
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LoadBalancer
@@ -114,7 +111,7 @@ type loadBalancerState struct {
 	Region *string `pulumi:"region"`
 	// Region name
 	RegionName *string `pulumi:"regionName"`
-	// Service name
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// UTC date and timestamp when the resource was created
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -149,7 +146,7 @@ type LoadBalancerState struct {
 	Region pulumi.StringPtrInput
 	// Region name
 	RegionName pulumi.StringPtrInput
-	// Service name
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// UTC date and timestamp when the resource was created
 	UpdatedAt pulumi.StringPtrInput
@@ -178,8 +175,8 @@ type loadBalancerArgs struct {
 	Network LoadBalancerNetwork `pulumi:"network"`
 	// Region name
 	RegionName string `pulumi:"regionName"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
@@ -196,8 +193,8 @@ type LoadBalancerArgs struct {
 	Network LoadBalancerNetworkInput
 	// Region name
 	RegionName pulumi.StringInput
-	// Service name
-	ServiceName pulumi.StringInput
+	// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 }
 
 func (LoadBalancerArgs) ElementType() reflect.Type {
@@ -342,9 +339,9 @@ func (o LoadBalancerOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// Service name
-func (o LoadBalancerOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o LoadBalancerOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // UTC date and timestamp when the resource was created

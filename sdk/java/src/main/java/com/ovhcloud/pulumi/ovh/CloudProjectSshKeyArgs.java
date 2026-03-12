@@ -62,18 +62,18 @@ public final class CloudProjectSshKeyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
-     * @return Service name
+     * @return Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private CloudProjectSshKeyArgs() {}
@@ -167,18 +167,18 @@ public final class CloudProjectSshKeyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -190,9 +190,6 @@ public final class CloudProjectSshKeyArgs extends com.pulumi.resources.ResourceA
         public CloudProjectSshKeyArgs build() {
             if ($.publicKey == null) {
                 throw new MissingRequiredPropertyException("CloudProjectSshKeyArgs", "publicKey");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("CloudProjectSshKeyArgs", "serviceName");
             }
             return $;
         }

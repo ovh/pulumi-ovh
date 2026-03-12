@@ -14,6 +14,8 @@ import (
 
 // Create and manage snapshots for an instance in a public cloud project.
 //
+// ## Example Usage
+//
 // ```go
 // package main
 //
@@ -39,6 +41,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A cloud project instance snapshot can be imported using the `service_name` and `snapshot_id`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/instanceSnapshot:InstanceSnapshot my_snapshot service_name/snapshot_id
+// ```
 type InstanceSnapshot struct {
 	pulumi.CustomResourceState
 
@@ -58,8 +70,8 @@ type InstanceSnapshot struct {
 	PlanCode pulumi.StringOutput `pulumi:"planCode"`
 	// Image region
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Service name
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Image size (in GiB)
 	Size pulumi.Float64Output `pulumi:"size"`
 	// Image status
@@ -83,9 +95,6 @@ func NewInstanceSnapshot(ctx *pulumi.Context,
 
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceSnapshot
@@ -126,7 +135,7 @@ type instanceSnapshotState struct {
 	PlanCode *string `pulumi:"planCode"`
 	// Image region
 	Region *string `pulumi:"region"`
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Image size (in GiB)
 	Size *float64 `pulumi:"size"`
@@ -159,7 +168,7 @@ type InstanceSnapshotState struct {
 	PlanCode pulumi.StringPtrInput
 	// Image region
 	Region pulumi.StringPtrInput
-	// Service name
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Image size (in GiB)
 	Size pulumi.Float64PtrInput
@@ -184,8 +193,8 @@ type instanceSnapshotArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Snapshot name
 	Name *string `pulumi:"name"`
-	// Service name
-	ServiceName string `pulumi:"serviceName"`
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a InstanceSnapshot resource.
@@ -194,8 +203,8 @@ type InstanceSnapshotArgs struct {
 	InstanceId pulumi.StringInput
 	// Snapshot name
 	Name pulumi.StringPtrInput
-	// Service name
-	ServiceName pulumi.StringInput
+	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 }
 
 func (InstanceSnapshotArgs) ElementType() reflect.Type {
@@ -325,9 +334,9 @@ func (o InstanceSnapshotOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceSnapshot) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Service name
-func (o InstanceSnapshotOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceSnapshot) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o InstanceSnapshotOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceSnapshot) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Image size (in GiB)

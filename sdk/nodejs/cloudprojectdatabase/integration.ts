@@ -41,12 +41,12 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+ * OVHcloud Managed database cluster integrations can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the integration, separated by "/" E.g.,
  *
  * bash
  *
  * ```sh
- * $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_integration service_name/engine/cluster_id/id
  * ```
  */
 export class Integration extends pulumi.CustomResource {
@@ -86,7 +86,7 @@ export class Integration extends pulumi.CustomResource {
      */
     public readonly destinationServiceId!: pulumi.Output<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export interface IntegrationState {
      */
     destinationServiceId?: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface IntegrationArgs {
      */
     destinationServiceId: pulumi.Input<string>;
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
      */
     engine: pulumi.Input<string>;
     /**

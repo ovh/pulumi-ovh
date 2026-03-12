@@ -16,6 +16,7 @@ import (
 //
 // With this resource you can create a database for the following database engine:
 //
+// * `clickhouse`
 // * `mysql`
 // * `postgresql`
 //

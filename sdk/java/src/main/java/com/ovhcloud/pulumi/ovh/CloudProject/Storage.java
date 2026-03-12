@@ -261,18 +261,18 @@ public class Storage extends com.pulumi.resources.CustomResource {
         return this.replication;
     }
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
-    private Output<String> serviceName;
+    private Output</* @Nullable */ String> serviceName;
 
     /**
-     * @return Service name
+     * @return Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Output<Optional<String>> serviceName() {
+        return Codegen.optional(this.serviceName);
     }
     /**
      * Versioning configuration

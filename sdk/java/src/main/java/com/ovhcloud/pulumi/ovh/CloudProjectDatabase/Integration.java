@@ -80,12 +80,12 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * OVHcloud Managed database cluster integrations can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the integration, separated by &#34;/&#34; E.g.,
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+ * $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_integration service_name/engine/cluster_id/id
  * ```
  * 
  */
@@ -120,14 +120,14 @@ public class Integration extends com.pulumi.resources.CustomResource {
         return this.destinationServiceId;
     }
     /**
-     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+     * The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
      * 
      */
     @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
-     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+     * @return The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
      * 
      */
     public Output<String> engine() {

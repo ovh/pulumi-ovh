@@ -74,7 +74,7 @@ export class Alerting extends pulumi.CustomResource {
     /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Alerting resource with the given unique name, arguments, and options.
@@ -105,9 +105,6 @@ export class Alerting extends pulumi.CustomResource {
             }
             if ((!args || args.monthlyThreshold === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'monthlyThreshold'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["delay"] = args ? args.delay : undefined;
             resourceInputs["email"] = args ? args.email : undefined;
@@ -170,5 +167,5 @@ export interface AlertingArgs {
     /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

@@ -229,6 +229,16 @@ class IpAddress(pulumi.CustomResource):
             block=ipblock_ip_service.ip)
         ```
 
+        ## Import
+
+        A vRack IP block attachment can be imported using the `service_name` and `block`, separated by "," E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/ipAddress:IpAddress vrack_block service_name,ip_block
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] block: Your IP block.
@@ -284,6 +294,16 @@ class IpAddress(pulumi.CustomResource):
         vrack_block = ovh.vrack.IpAddress("vrack_block",
             service_name=vrack_vrack.service_name,
             block=ipblock_ip_service.ip)
+        ```
+
+        ## Import
+
+        A vRack IP block attachment can be imported using the `service_name` and `block`, separated by "," E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/ipAddress:IpAddress vrack_block service_name,ip_block
         ```
 
         :param str resource_name: The name of the resource.

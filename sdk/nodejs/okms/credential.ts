@@ -6,6 +6,16 @@ import * as utilities from "../utilities";
 
 /**
  * Creates a credential for an OVHcloud KMS.
+ *
+ * ## Import
+ *
+ * An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Okms/credential:Credential cred okms_id/credential_id
+ * ```
  */
 export class Credential extends pulumi.CustomResource {
     /**

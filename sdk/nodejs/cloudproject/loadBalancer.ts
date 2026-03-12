@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Create a load balancer in a public cloud project.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -183,9 +185,9 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * Service name
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * UTC date and timestamp when the resource was created
      */
@@ -242,9 +244,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             }
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["flavorId"] = args ? args.flavorId : undefined;
@@ -317,7 +316,7 @@ export interface LoadBalancerState {
      */
     regionName?: pulumi.Input<string>;
     /**
-     * Service name
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -367,7 +366,7 @@ export interface LoadBalancerArgs {
      */
     regionName: pulumi.Input<string>;
     /**
-     * Service name
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

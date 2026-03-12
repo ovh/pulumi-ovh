@@ -31,6 +31,16 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A DBaaS Logs Opensearch output index can be imported using the `service_name` and `id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex index service_name/id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex")]
     public partial class LogsOutputOpenSearchIndex : global::Pulumi.CustomResource

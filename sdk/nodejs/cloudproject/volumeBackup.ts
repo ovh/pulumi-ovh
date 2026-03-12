@@ -90,9 +90,9 @@ export class VolumeBackup extends pulumi.CustomResource {
      */
     public readonly regionName!: pulumi.Output<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * Size of the backup in GiB
      */
@@ -132,9 +132,6 @@ export class VolumeBackup extends pulumi.CustomResource {
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
-            }
             if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
@@ -173,7 +170,7 @@ export interface VolumeBackupState {
      */
     regionName?: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -203,9 +200,9 @@ export interface VolumeBackupArgs {
      */
     regionName: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * ID of the volume to backup
      */

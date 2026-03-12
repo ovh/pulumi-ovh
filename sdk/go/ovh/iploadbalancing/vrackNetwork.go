@@ -67,6 +67,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An IP Loadbalancing vRack network can be imported using the `service_name` and `vrack_network_id`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:IpLoadBalancing/vrackNetwork:VrackNetwork network service_name/vrack_network_id
+// ```
 type VrackNetwork struct {
 	pulumi.CustomResourceState
 

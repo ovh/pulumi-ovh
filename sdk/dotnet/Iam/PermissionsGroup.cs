@@ -11,6 +11,16 @@ namespace Pulumi.Ovh.Iam
 {
     /// <summary>
     /// Create am IAM permissions group.
+    /// 
+    /// ## Import
+    /// 
+    /// An IAM permissions group can be imported using the `id` E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Iam/permissionsGroup:PermissionsGroup read_vps permissions_group_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Iam/permissionsGroup:PermissionsGroup")]
     public partial class PermissionsGroup : global::Pulumi.CustomResource

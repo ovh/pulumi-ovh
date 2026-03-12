@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			efs, err := ovh.GetStorageEfs(ctx, &ovh.GetStorageEfsArgs{
+//			efs, err := ovh.LookupStorageEfs(ctx, &ovh.LookupStorageEfsArgs{
 //				ServiceName: "XXX",
 //			}, nil)
 //			if err != nil {

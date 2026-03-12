@@ -19,6 +19,8 @@ type Vps struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// Custom display name
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+	DoNotSendPassword pulumi.BoolOutput `pulumi:"doNotSendPassword"`
 	// IAM resource information
 	Iam VpsIamOutput `pulumi:"iam"`
 	// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
@@ -92,6 +94,8 @@ type vpsState struct {
 	Cluster *string `pulumi:"cluster"`
 	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
+	// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+	DoNotSendPassword *bool `pulumi:"doNotSendPassword"`
 	// IAM resource information
 	Iam *VpsIam `pulumi:"iam"`
 	// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
@@ -136,6 +140,8 @@ type VpsState struct {
 	Cluster pulumi.StringPtrInput
 	// Custom display name
 	DisplayName pulumi.StringPtrInput
+	// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+	DoNotSendPassword pulumi.BoolPtrInput
 	// IAM resource information
 	Iam VpsIamPtrInput
 	// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
@@ -182,6 +188,8 @@ func (VpsState) ElementType() reflect.Type {
 type vpsArgs struct {
 	// Custom display name
 	DisplayName *string `pulumi:"displayName"`
+	// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+	DoNotSendPassword *bool `pulumi:"doNotSendPassword"`
 	// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId *string `pulumi:"imageId"`
 	// KVM keyboard layout on VPS Cloud
@@ -219,6 +227,8 @@ type vpsArgs struct {
 type VpsArgs struct {
 	// Custom display name
 	DisplayName pulumi.StringPtrInput
+	// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+	DoNotSendPassword pulumi.BoolPtrInput
 	// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
 	ImageId pulumi.StringPtrInput
 	// KVM keyboard layout on VPS Cloud
@@ -347,6 +357,11 @@ func (o VpsOutput) Cluster() pulumi.StringOutput {
 // Custom display name
 func (o VpsOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vps) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+func (o VpsOutput) DoNotSendPassword() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Vps) pulumi.BoolOutput { return v.DoNotSendPassword }).(pulumi.BoolOutput)
 }
 
 // IAM resource information

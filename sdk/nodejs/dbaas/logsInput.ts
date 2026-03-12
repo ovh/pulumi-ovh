@@ -46,6 +46,16 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * DBaaS Logs input can be imported using the `service_name` and `id` of the input, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsInput:LogsInput my_input service_name/input_id
+ * ```
  */
 export class LogsInput extends pulumi.CustomResource {
     /**

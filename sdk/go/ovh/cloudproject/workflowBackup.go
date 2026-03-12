@@ -45,16 +45,28 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A cloud project workflow backup can be imported using the `id` (workflow ID) E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/workflowBackup:WorkflowBackup my_workflow id
+// ```
 type WorkflowBackup struct {
 	pulumi.CustomResourceState
 
 	// The name of the backup files that are created. If empty, the `name` attribute is used.
 	BackupName pulumi.StringOutput `pulumi:"backupName"`
-	CreatedAt  pulumi.StringOutput `pulumi:"createdAt"`
+	// The creation date of the workflow.
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The cron periodicity at which the backup workflow is scheduled
 	//
 	// * `instanceId` the id of the instance to back up
-	Cron       pulumi.StringOutput `pulumi:"cron"`
+	Cron pulumi.StringOutput `pulumi:"cron"`
+	// See Argument Reference above.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount pulumi.IntPtrOutput `pulumi:"maxExecutionCount"`
@@ -112,11 +124,13 @@ func GetWorkflowBackup(ctx *pulumi.Context,
 type workflowBackupState struct {
 	// The name of the backup files that are created. If empty, the `name` attribute is used.
 	BackupName *string `pulumi:"backupName"`
-	CreatedAt  *string `pulumi:"createdAt"`
+	// The creation date of the workflow.
+	CreatedAt *string `pulumi:"createdAt"`
 	// The cron periodicity at which the backup workflow is scheduled
 	//
 	// * `instanceId` the id of the instance to back up
-	Cron       *string `pulumi:"cron"`
+	Cron *string `pulumi:"cron"`
+	// See Argument Reference above.
 	InstanceId *string `pulumi:"instanceId"`
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount *int `pulumi:"maxExecutionCount"`
@@ -133,11 +147,13 @@ type workflowBackupState struct {
 type WorkflowBackupState struct {
 	// The name of the backup files that are created. If empty, the `name` attribute is used.
 	BackupName pulumi.StringPtrInput
-	CreatedAt  pulumi.StringPtrInput
+	// The creation date of the workflow.
+	CreatedAt pulumi.StringPtrInput
 	// The cron periodicity at which the backup workflow is scheduled
 	//
 	// * `instanceId` the id of the instance to back up
-	Cron       pulumi.StringPtrInput
+	Cron pulumi.StringPtrInput
+	// See Argument Reference above.
 	InstanceId pulumi.StringPtrInput
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount pulumi.IntPtrInput
@@ -161,7 +177,8 @@ type workflowBackupArgs struct {
 	// The cron periodicity at which the backup workflow is scheduled
 	//
 	// * `instanceId` the id of the instance to back up
-	Cron       string `pulumi:"cron"`
+	Cron string `pulumi:"cron"`
+	// See Argument Reference above.
 	InstanceId string `pulumi:"instanceId"`
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount *int `pulumi:"maxExecutionCount"`
@@ -182,7 +199,8 @@ type WorkflowBackupArgs struct {
 	// The cron periodicity at which the backup workflow is scheduled
 	//
 	// * `instanceId` the id of the instance to back up
-	Cron       pulumi.StringInput
+	Cron pulumi.StringInput
+	// See Argument Reference above.
 	InstanceId pulumi.StringInput
 	// The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
 	MaxExecutionCount pulumi.IntPtrInput
@@ -288,6 +306,7 @@ func (o WorkflowBackupOutput) BackupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.BackupName }).(pulumi.StringOutput)
 }
 
+// The creation date of the workflow.
 func (o WorkflowBackupOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -299,6 +318,7 @@ func (o WorkflowBackupOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.Cron }).(pulumi.StringOutput)
 }
 
+// See Argument Reference above.
 func (o WorkflowBackupOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkflowBackup) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

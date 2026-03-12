@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,6 +40,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A cloud project failover IP attachment can be imported using the `id` (failover IP block ID) E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/failoverIpAttach:FailoverIpAttach my_ip id
+// ```
 type FailoverIpAttach struct {
 	pulumi.CustomResourceState
 
@@ -71,12 +80,9 @@ type FailoverIpAttach struct {
 func NewFailoverIpAttach(ctx *pulumi.Context,
 	name string, args *FailoverIpAttachArgs, opts ...pulumi.ResourceOption) (*FailoverIpAttach, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &FailoverIpAttachArgs{}
 	}
 
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FailoverIpAttach
 	err := ctx.RegisterResource("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, args, &resource, opts...)
@@ -164,7 +170,7 @@ type failoverIpAttachArgs struct {
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo *string `pulumi:"routedTo"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a FailoverIpAttach resource.
@@ -181,7 +187,7 @@ type FailoverIpAttachArgs struct {
 	// The GUID of an instance to which the failover IP address is be attached
 	RoutedTo pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 }
 
 func (FailoverIpAttachArgs) ElementType() reflect.Type {

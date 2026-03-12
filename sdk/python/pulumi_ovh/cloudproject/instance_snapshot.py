@@ -20,18 +20,19 @@ __all__ = ['InstanceSnapshotArgs', 'InstanceSnapshot']
 class InstanceSnapshotArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceSnapshot resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
-        :param pulumi.Input[_builtins.str] service_name: Service name
         :param pulumi.Input[_builtins.str] name: Snapshot name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "service_name", service_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -46,18 +47,6 @@ class InstanceSnapshotArgs:
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service name
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -68,6 +57,18 @@ class InstanceSnapshotArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
 
 
 @pulumi.input_type
@@ -98,7 +99,7 @@ class _InstanceSnapshotState:
         :param pulumi.Input[_builtins.str] name: Snapshot name
         :param pulumi.Input[_builtins.str] plan_code: Order plan code
         :param pulumi.Input[_builtins.str] region: Image region
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.float] size: Image size (in GiB)
         :param pulumi.Input[_builtins.str] status: Image status
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags about the image
@@ -237,7 +238,7 @@ class _InstanceSnapshotState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service name
+        Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -331,6 +332,8 @@ class InstanceSnapshot(pulumi.CustomResource):
         """
         Create and manage snapshots for an instance in a public cloud project.
 
+        ## Example Usage
+
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -341,11 +344,21 @@ class InstanceSnapshot(pulumi.CustomResource):
             name="SnapshotExample")
         ```
 
+        ## Import
+
+        A cloud project instance snapshot can be imported using the `service_name` and `snapshot_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/instanceSnapshot:InstanceSnapshot my_snapshot service_name/snapshot_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Snapshot name
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -356,6 +369,8 @@ class InstanceSnapshot(pulumi.CustomResource):
         """
         Create and manage snapshots for an instance in a public cloud project.
 
+        ## Example Usage
+
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -364,6 +379,16 @@ class InstanceSnapshot(pulumi.CustomResource):
             service_name="<public cloud project ID>",
             instance_id="<instance ID>",
             name="SnapshotExample")
+        ```
+
+        ## Import
+
+        A cloud project instance snapshot can be imported using the `service_name` and `snapshot_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/instanceSnapshot:InstanceSnapshot my_snapshot service_name/snapshot_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -397,8 +422,6 @@ class InstanceSnapshot(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["flavor_type"] = None
@@ -452,7 +475,7 @@ class InstanceSnapshot(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Snapshot name
         :param pulumi.Input[_builtins.str] plan_code: Order plan code
         :param pulumi.Input[_builtins.str] region: Image region
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.float] size: Image size (in GiB)
         :param pulumi.Input[_builtins.str] status: Image status
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: Tags about the image
@@ -547,9 +570,9 @@ class InstanceSnapshot(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Service name
+        Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

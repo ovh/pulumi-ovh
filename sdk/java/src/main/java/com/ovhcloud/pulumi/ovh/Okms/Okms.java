@@ -52,6 +52,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * An OVHcloud KMS can be imported using the `id` E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Okms/okms:Okms new_kms id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Okms/okms:Okms")
 public class Okms extends com.pulumi.resources.CustomResource {

@@ -110,18 +110,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service name
+     * ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
-     * @return Service name
+     * @return ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private LoadBalancerArgs() {}
@@ -291,18 +291,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -320,9 +320,6 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.regionName == null) {
                 throw new MissingRequiredPropertyException("LoadBalancerArgs", "regionName");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("LoadBalancerArgs", "serviceName");
             }
             return $;
         }

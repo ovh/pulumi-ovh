@@ -81,6 +81,7 @@ class _CloudProjectContainerregistryIamState:
         """
         Input properties used for looking up and filtering CloudProjectContainerregistryIam resources.
         :param pulumi.Input[_builtins.bool] delete_users: Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.bool] iam_enabled: Whether IAM is enabled for the registry.
         :param pulumi.Input[_builtins.str] registry_id: The ID of the Managed Private Registry. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
@@ -108,6 +109,9 @@ class _CloudProjectContainerregistryIamState:
     @_builtins.property
     @pulumi.getter(name="iamEnabled")
     def iam_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether IAM is enabled for the registry.
+        """
         return pulumi.get(self, "iam_enabled")
 
     @iam_enabled.setter
@@ -268,6 +272,7 @@ class CloudProjectContainerregistryIam(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] delete_users: Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.bool] iam_enabled: Whether IAM is enabled for the registry.
         :param pulumi.Input[_builtins.str] registry_id: The ID of the Managed Private Registry. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] service_name: The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
         """
@@ -292,6 +297,9 @@ class CloudProjectContainerregistryIam(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="iamEnabled")
     def iam_enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether IAM is enabled for the registry.
+        """
         return pulumi.get(self, "iam_enabled")
 
     @_builtins.property

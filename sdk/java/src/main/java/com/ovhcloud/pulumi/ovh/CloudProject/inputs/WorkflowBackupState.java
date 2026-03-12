@@ -31,9 +31,17 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.backupName);
     }
 
+    /**
+     * The creation date of the workflow.
+     * 
+     */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
+    /**
+     * @return The creation date of the workflow.
+     * 
+     */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
@@ -57,9 +65,17 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.cron);
     }
 
+    /**
+     * See Argument Reference above.
+     * 
+     */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
     }
@@ -192,11 +208,23 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
             return backupName(Output.of(backupName));
         }
 
+        /**
+         * @param createdAt The creation date of the workflow.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(@Nullable Output<String> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt The creation date of the workflow.
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
         }
@@ -226,11 +254,23 @@ public final class WorkflowBackupState extends com.pulumi.resources.ResourceArgs
             return cron(Output.of(cron));
         }
 
+        /**
+         * @param instanceId See Argument Reference above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(@Nullable Output<String> instanceId) {
             $.instanceId = instanceId;
             return this;
         }
 
+        /**
+         * @param instanceId See Argument Reference above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
         }

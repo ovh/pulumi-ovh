@@ -108,6 +108,15 @@
                     }
                 }
             },
+            "ovh_cloud_project_database_clickhouse_user": {
+                "current": "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser",
+                "majorVersion": 2,
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_project_database_database": {
                 "current": "ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance",
                 "majorVersion": 2
@@ -629,6 +638,25 @@
                         "fields": {
                             "rules": {
                                 "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_project_storage_object_bucket_lifecycle_configuration": {
+                "current": "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration",
+                "majorVersion": 2,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "noncurrent_version_transitions": {
+                                    "maxItemsOne": false
+                                },
+                                "transitions": {
+                                    "maxItemsOne": false
+                                }
                             }
                         }
                     }
@@ -1487,6 +1515,39 @@
                 "current": "ovh:SavingsPlan/savingsPlan:SavingsPlan",
                 "majorVersion": 2
             },
+            "ovh_storage_efs": {
+                "current": "ovh:index/storageEfs:StorageEfs",
+                "majorVersion": 2,
+                "fields": {
+                    "order": {
+                        "fields": {
+                            "details": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "plan": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "plan_option": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "configuration": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_storage_efs_share": {
                 "current": "ovh:index/storageEfsShare:StorageEfsShare",
                 "majorVersion": 2
@@ -1838,6 +1899,15 @@
             "ovh_cloud_project_database_certificates": {
                 "current": "ovh:CloudProjectDatabase/getCertificates:getCertificates",
                 "majorVersion": 2
+            },
+            "ovh_cloud_project_database_clickhouse_user": {
+                "current": "ovh:index/getCloudProjectDatabaseClickhouseUser:getCloudProjectDatabaseClickhouseUser",
+                "majorVersion": 2,
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_cloud_project_database_database": {
                 "current": "ovh:CloudProjectDatabase/getDatabaseInstance:getDatabaseInstance",
@@ -2548,6 +2618,25 @@
             "ovh_cloud_project_storage_object": {
                 "current": "ovh:CloudProject/getStorageObject:getStorageObject",
                 "majorVersion": 2
+            },
+            "ovh_cloud_project_storage_object_bucket_lifecycle_configuration": {
+                "current": "ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration",
+                "majorVersion": 2,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "noncurrent_version_transitions": {
+                                    "maxItemsOne": false
+                                },
+                                "transitions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "ovh_cloud_project_storage_objects": {
                 "current": "ovh:CloudProject/getStorageObjects:getStorageObjects",
@@ -3794,14 +3883,17 @@
             "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": 1,
             "ovh:Vrack/vrackservices:Vrackservices": 0,
             "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
+            "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser": 0,
             "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
+            "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
             "ovh:index/iamResourceTags:IamResourceTags": 0,
             "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": 1,
             "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig": 1,
             "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig": 1,
+            "ovh:index/storageEfs:StorageEfs": 1,
             "ovh:index/storageEfsShare:StorageEfsShare": 1,
             "ovh:index/storageEfsShareAcl:StorageEfsShareAcl": 1,
             "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot": 1,
@@ -3951,6 +4043,7 @@
             "ovh:Vps/getVps:getVps": 0,
             "ovh:Vps/getVpss:getVpss": 0,
             "ovh:Vrack/getVracks:getVracks": 0,
+            "ovh:index/getCloudProjectDatabaseClickhouseUser:getCloudProjectDatabaseClickhouseUser": 0,
             "ovh:index/getCloudProjectDatabaseValkeyUser:getCloudProjectDatabaseValkeyUser": 0,
             "ovh:index/getCloudProjectFlavor:getCloudProjectFlavor": 1,
             "ovh:index/getCloudProjectGateway:getCloudProjectGateway": 1,
@@ -3958,6 +4051,7 @@
             "ovh:index/getCloudProjectRancherCapabilitiesVersion:getCloudProjectRancherCapabilitiesVersion": 1,
             "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey": 1,
             "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys": 1,
+            "ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
             "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": 0,
             "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack": 0,

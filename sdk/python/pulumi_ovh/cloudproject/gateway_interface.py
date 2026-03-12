@@ -20,21 +20,22 @@ __all__ = ['GatewayInterfaceInitArgs', 'GatewayInterface']
 class GatewayInterfaceInitArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.str],
-                 interface_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 interface_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GatewayInterface resource.
         :param pulumi.Input[_builtins.str] region: Region of the gateway
-        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project
         :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet to add
         :param pulumi.Input[_builtins.str] interface_id: ID of the interface
+        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "subnet_id", subnet_id)
         if interface_id is not None:
             pulumi.set(__self__, "interface_id", interface_id)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter
@@ -47,18 +48,6 @@ class GatewayInterfaceInitArgs:
     @region.setter
     def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        ID of the cloud project
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
@@ -84,6 +73,18 @@ class GatewayInterfaceInitArgs:
     def interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "interface_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
+
 
 @pulumi.input_type
 class _GatewayInterfaceState:
@@ -100,7 +101,7 @@ class _GatewayInterfaceState:
         :param pulumi.Input[_builtins.str] ip: IP of the interface
         :param pulumi.Input[_builtins.str] network_id: Network ID of the interface
         :param pulumi.Input[_builtins.str] region: Region of the gateway
-        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project
+        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet to add
         """
         if interface_id is not None:
@@ -168,7 +169,7 @@ class _GatewayInterfaceState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of the cloud project
+        ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -210,14 +211,14 @@ class GatewayInterface(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+        $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface interface service_name/region/id/interface_id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] interface_id: ID of the interface
         :param pulumi.Input[_builtins.str] region: Region of the gateway
-        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project
+        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet to add
         """
         ...
@@ -236,7 +237,7 @@ class GatewayInterface(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+        $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface interface service_name/region/id/interface_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -271,8 +272,6 @@ class GatewayInterface(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             if subnet_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subnet_id'")
@@ -306,7 +305,7 @@ class GatewayInterface(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ip: IP of the interface
         :param pulumi.Input[_builtins.str] network_id: Network ID of the interface
         :param pulumi.Input[_builtins.str] region: Region of the gateway
-        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project
+        :param pulumi.Input[_builtins.str] service_name: ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet to add
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -355,9 +354,9 @@ class GatewayInterface(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        ID of the cloud project
+        ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

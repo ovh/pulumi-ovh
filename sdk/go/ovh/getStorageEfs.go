@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ovh.GetStorageEfs(ctx, &ovh.GetStorageEfsArgs{
+//			_, err := ovh.LookupStorageEfs(ctx, &ovh.LookupStorageEfsArgs{
 //				ServiceName: "XXX",
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetStorageEfs(ctx *pulumi.Context, args *GetStorageEfsArgs, opts ...pulumi.InvokeOption) (*GetStorageEfsResult, error) {
+func LookupStorageEfs(ctx *pulumi.Context, args *LookupStorageEfsArgs, opts ...pulumi.InvokeOption) (*LookupStorageEfsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetStorageEfsResult
+	var rv LookupStorageEfsResult
 	err := ctx.Invoke("ovh:index/getStorageEfs:getStorageEfs", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,13 +49,13 @@ func GetStorageEfs(ctx *pulumi.Context, args *GetStorageEfsArgs, opts ...pulumi.
 }
 
 // A collection of arguments for invoking getStorageEfs.
-type GetStorageEfsArgs struct {
+type LookupStorageEfsArgs struct {
 	// Service name
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getStorageEfs.
-type GetStorageEfsResult struct {
+type LookupStorageEfsResult struct {
 	// Service creation date
 	CreatedAt string `pulumi:"createdAt"`
 	// IAM resource metadata
@@ -78,90 +78,90 @@ type GetStorageEfsResult struct {
 	Status string `pulumi:"status"`
 }
 
-func GetStorageEfsOutput(ctx *pulumi.Context, args GetStorageEfsOutputArgs, opts ...pulumi.InvokeOption) GetStorageEfsResultOutput {
+func LookupStorageEfsOutput(ctx *pulumi.Context, args LookupStorageEfsOutputArgs, opts ...pulumi.InvokeOption) LookupStorageEfsResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetStorageEfsResultOutput, error) {
-			args := v.(GetStorageEfsArgs)
+		ApplyT(func(v interface{}) (LookupStorageEfsResultOutput, error) {
+			args := v.(LookupStorageEfsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("ovh:index/getStorageEfs:getStorageEfs", args, GetStorageEfsResultOutput{}, options).(GetStorageEfsResultOutput), nil
-		}).(GetStorageEfsResultOutput)
+			return ctx.InvokeOutput("ovh:index/getStorageEfs:getStorageEfs", args, LookupStorageEfsResultOutput{}, options).(LookupStorageEfsResultOutput), nil
+		}).(LookupStorageEfsResultOutput)
 }
 
 // A collection of arguments for invoking getStorageEfs.
-type GetStorageEfsOutputArgs struct {
+type LookupStorageEfsOutputArgs struct {
 	// Service name
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
-func (GetStorageEfsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStorageEfsArgs)(nil)).Elem()
+func (LookupStorageEfsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStorageEfsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getStorageEfs.
-type GetStorageEfsResultOutput struct{ *pulumi.OutputState }
+type LookupStorageEfsResultOutput struct{ *pulumi.OutputState }
 
-func (GetStorageEfsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStorageEfsResult)(nil)).Elem()
+func (LookupStorageEfsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupStorageEfsResult)(nil)).Elem()
 }
 
-func (o GetStorageEfsResultOutput) ToGetStorageEfsResultOutput() GetStorageEfsResultOutput {
+func (o LookupStorageEfsResultOutput) ToLookupStorageEfsResultOutput() LookupStorageEfsResultOutput {
 	return o
 }
 
-func (o GetStorageEfsResultOutput) ToGetStorageEfsResultOutputWithContext(ctx context.Context) GetStorageEfsResultOutput {
+func (o LookupStorageEfsResultOutput) ToLookupStorageEfsResultOutputWithContext(ctx context.Context) LookupStorageEfsResultOutput {
 	return o
 }
 
 // Service creation date
-func (o GetStorageEfsResultOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // IAM resource metadata
-func (o GetStorageEfsResultOutput) Iam() GetStorageEfsIamOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) GetStorageEfsIam { return v.Iam }).(GetStorageEfsIamOutput)
+func (o LookupStorageEfsResultOutput) Iam() GetStorageEfsIamOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) GetStorageEfsIam { return v.Iam }).(GetStorageEfsIamOutput)
 }
 
 // Service ID
-func (o GetStorageEfsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Service name
-func (o GetStorageEfsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Service performance level
-func (o GetStorageEfsResultOutput) PerformanceLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.PerformanceLevel }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) PerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
 // Product name
-func (o GetStorageEfsResultOutput) Product() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.Product }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.Product }).(pulumi.StringOutput)
 }
 
 // Service quota
-func (o GetStorageEfsResultOutput) Quota() pulumi.Float64Output {
-	return o.ApplyT(func(v GetStorageEfsResult) float64 { return v.Quota }).(pulumi.Float64Output)
+func (o LookupStorageEfsResultOutput) Quota() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupStorageEfsResult) float64 { return v.Quota }).(pulumi.Float64Output)
 }
 
 // Service region
-func (o GetStorageEfsResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.Region }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Service name
-func (o GetStorageEfsResultOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.ServiceName }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) ServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
 // Service status
-func (o GetStorageEfsResultOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsResult) string { return v.Status }).(pulumi.StringOutput)
+func (o LookupStorageEfsResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageEfsResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetStorageEfsResultOutput{})
+	pulumi.RegisterOutputType(LookupStorageEfsResultOutput{})
 }

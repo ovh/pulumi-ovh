@@ -120,9 +120,9 @@ export class Storage extends pulumi.CustomResource {
      */
     public readonly replication!: pulumi.Output<outputs.CloudProject.StorageReplication>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * Versioning configuration
      */
@@ -167,9 +167,6 @@ export class Storage extends pulumi.CustomResource {
             const args = argsOrState as StorageArgs | undefined;
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["hideObjects"] = args ? args.hideObjects : undefined;
@@ -260,7 +257,7 @@ export interface StorageState {
      */
     replication?: pulumi.Input<inputs.CloudProject.StorageReplication>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -318,9 +315,9 @@ export interface StorageArgs {
      */
     replication?: pulumi.Input<inputs.CloudProject.StorageReplication>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Versioning configuration
      */

@@ -71,7 +71,7 @@ def get_apio_auth2_clients(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     import pulumi
     import pulumi_ovh as ovh
 
-    my_oauth2_clients = ovh.Me.get_apio_auth2_client()
+    my_oauth2_clients = ovh.Me.get_apio_auth2_clients()
     ```
     """
     __args__ = dict()
@@ -91,7 +91,7 @@ def get_apio_auth2_clients_output(opts: Optional[Union[pulumi.InvokeOptions, pul
     import pulumi
     import pulumi_ovh as ovh
 
-    my_oauth2_clients = ovh.Me.get_apio_auth2_client()
+    my_oauth2_clients = ovh.Me.get_apio_auth2_clients()
     ```
     """
     __args__ = dict()

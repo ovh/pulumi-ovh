@@ -92,6 +92,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * DBaaS Logs input can be imported using the `service_name` and `id` of the input, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Dbaas/logsInput:LogsInput my_input service_name/input_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Dbaas/logsInput:LogsInput")
 public class LogsInput extends com.pulumi.resources.CustomResource {

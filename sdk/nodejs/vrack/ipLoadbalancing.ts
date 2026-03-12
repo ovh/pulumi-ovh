@@ -18,6 +18,16 @@ import * as utilities from "../utilities";
  *     LoadbalancingId: "yyy",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A vRack IP Load Balancing attachment can be imported using the `service_name` and `ip_loadbalancing`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Vrack/ipLoadbalancing:IpLoadbalancing viplb service_name/ip_loadbalancing
+ * ```
  */
 export class IpLoadbalancing extends pulumi.CustomResource {
     /**

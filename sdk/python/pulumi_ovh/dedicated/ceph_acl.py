@@ -167,6 +167,16 @@ class CephAcl(pulumi.CustomResource):
             netmask="255.255.255.255")
         ```
 
+        ## Import
+
+        A dedicated CEPH ACL can be imported using the `service_name` and `acl_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dedicated/cephAcl:CephAcl my_acl service_name/acl_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] netmask: The network mask to apply
@@ -193,6 +203,16 @@ class CephAcl(pulumi.CustomResource):
             service_name=my_ceph.id,
             network="1.2.3.4",
             netmask="255.255.255.255")
+        ```
+
+        ## Import
+
+        A dedicated CEPH ACL can be imported using the `service_name` and `acl_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dedicated/cephAcl:CephAcl my_acl service_name/acl_id
         ```
 
         :param str resource_name: The name of the resource.

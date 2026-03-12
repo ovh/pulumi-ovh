@@ -93,18 +93,18 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
-     * @return Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * @return Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -306,18 +306,18 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Required. The id of the public cloud project. **Changing this value recreates the resource.**
+         * @param serviceName Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
         /**
-         * @param serviceName Required. The id of the public cloud project. **Changing this value recreates the resource.**
+         * @param serviceName Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -413,9 +413,6 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         public VolumeArgs build() {
             if ($.regionName == null) {
                 throw new MissingRequiredPropertyException("VolumeArgs", "regionName");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("VolumeArgs", "serviceName");
             }
             return $;
         }

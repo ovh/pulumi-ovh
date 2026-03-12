@@ -12,7 +12,9 @@ namespace Pulumi.Ovh.Ip
     /// <summary>
     /// Moves a given IP to a different service, or inversely, parks it if empty service is given
     /// 
-    /// ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
+    /// ## Example Usage
+    /// 
+    /// ### Move IP `1.2.3.4` to service loadbalancer-XXXXX
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -34,7 +36,7 @@ namespace Pulumi.Ovh.Ip
     /// });
     /// ```
     /// 
-    /// ## Park IP/Detach IP `1.2.3.4` from any service
+    /// ### Park IP/Detach IP `1.2.3.4` from any service
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

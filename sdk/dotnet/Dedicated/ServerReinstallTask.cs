@@ -25,7 +25,7 @@ namespace Pulumi.Ovh.Dedicated
         public Output<string> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Available attributes and their types are OS-dependant. Example: `hostname`.
+        /// Available attributes and their types are OS-dependent. Example: `hostname`.
         /// 
         /// &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         /// </summary>
@@ -140,7 +140,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<int>? BootidOnDestroy { get; set; }
 
         /// <summary>
-        /// Available attributes and their types are OS-dependant. Example: `hostname`.
+        /// Available attributes and their types are OS-dependent. Example: `hostname`.
         /// 
         /// &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         /// </summary>
@@ -204,7 +204,7 @@ namespace Pulumi.Ovh.Dedicated
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Available attributes and their types are OS-dependant. Example: `hostname`.
+        /// Available attributes and their types are OS-dependent. Example: `hostname`.
         /// 
         /// &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
         /// </summary>

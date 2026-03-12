@@ -112,7 +112,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public string ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+        /// The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
         /// </summary>
         [Input("engine", required: true)]
         public string Engine { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+        /// The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;

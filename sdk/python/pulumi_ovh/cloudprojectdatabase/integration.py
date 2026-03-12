@@ -30,7 +30,7 @@ class IntegrationArgs:
         The set of arguments for constructing a Integration resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         :param pulumi.Input[_builtins.str] source_service_id: ID of the source service.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Parameters for the integration.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -80,7 +80,7 @@ class IntegrationArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[_builtins.str]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         """
         return pulumi.get(self, "engine")
 
@@ -157,7 +157,7 @@ class _IntegrationState:
         Input properties used for looking up and filtering Integration resources.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Parameters for the integration.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] source_service_id: ID of the source service.
@@ -214,7 +214,7 @@ class _IntegrationState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         """
         return pulumi.get(self, "engine")
 
@@ -334,19 +334,19 @@ class Integration(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+        OVHcloud Managed database cluster integrations can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the integration, separated by "/" E.g.,
 
         bash
 
         ```sh
-        $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+        $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_integration service_name/engine/cluster_id/id
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Parameters for the integration.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] source_service_id: ID of the source service.
@@ -395,12 +395,12 @@ class Integration(pulumi.CustomResource):
 
         ## Import
 
-        OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+        OVHcloud Managed database cluster integrations can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the integration, separated by "/" E.g.,
 
         bash
 
         ```sh
-        $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+        $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_integration service_name/engine/cluster_id/id
         ```
 
         :param str resource_name: The name of the resource.
@@ -477,7 +477,7 @@ class Integration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.str] destination_service_id: ID of the destination service.
-        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        :param pulumi.Input[_builtins.str] engine: The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] parameters: Parameters for the integration.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] source_service_id: ID of the source service.
@@ -523,7 +523,7 @@ class Integration(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[_builtins.str]:
         """
-        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+        The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
         """
         return pulumi.get(self, "engine")
 

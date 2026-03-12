@@ -91,8 +91,8 @@ type Volume struct {
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
 	// Id of the resource
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Required. The id of the public cloud project. **Changing this value recreates the resource.**
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Size (GB) of the volume
 	Size pulumi.Float64Output `pulumi:"size"`
 	// Snapshot ID
@@ -118,9 +118,6 @@ func NewVolume(ctx *pulumi.Context,
 
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Volume
@@ -167,7 +164,7 @@ type volumeState struct {
 	Regions []string `pulumi:"regions"`
 	// Id of the resource
 	ResourceId *string `pulumi:"resourceId"`
-	// Required. The id of the public cloud project. **Changing this value recreates the resource.**
+	// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName *string `pulumi:"serviceName"`
 	// Size (GB) of the volume
 	Size *float64 `pulumi:"size"`
@@ -208,7 +205,7 @@ type VolumeState struct {
 	Regions pulumi.StringArrayInput
 	// Id of the resource
 	ResourceId pulumi.StringPtrInput
-	// Required. The id of the public cloud project. **Changing this value recreates the resource.**
+	// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
 	ServiceName pulumi.StringPtrInput
 	// Size (GB) of the volume
 	Size pulumi.Float64PtrInput
@@ -241,8 +238,8 @@ type volumeArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
 	RegionName string `pulumi:"regionName"`
-	// Required. The id of the public cloud project. **Changing this value recreates the resource.**
-	ServiceName string `pulumi:"serviceName"`
+	// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName *string `pulumi:"serviceName"`
 	// Size (GB) of the volume
 	Size *float64 `pulumi:"size"`
 	// Snapshot ID
@@ -265,8 +262,8 @@ type VolumeArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
 	RegionName pulumi.StringInput
-	// Required. The id of the public cloud project. **Changing this value recreates the resource.**
-	ServiceName pulumi.StringInput
+	// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+	ServiceName pulumi.StringPtrInput
 	// Size (GB) of the volume
 	Size pulumi.Float64PtrInput
 	// Snapshot ID
@@ -419,9 +416,9 @@ func (o VolumeOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Required. The id of the public cloud project. **Changing this value recreates the resource.**
-func (o VolumeOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
+func (o VolumeOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Size (GB) of the volume
