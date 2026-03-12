@@ -76,14 +76,14 @@ public final class GatewayInterfaceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ID of the cloud project
+     * ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return ID of the cloud project
+     * @return ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -219,7 +219,7 @@ public final class GatewayInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceName ID of the cloud project
+         * @param serviceName ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GatewayInterfaceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceName ID of the cloud project
+         * @param serviceName ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

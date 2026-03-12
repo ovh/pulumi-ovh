@@ -63,6 +63,9 @@ export class CloudProjectContainerregistryIam extends pulumi.CustomResource {
      * Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
      */
     public readonly deleteUsers!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether IAM is enabled for the registry.
+     */
     public /*out*/ readonly iamEnabled!: pulumi.Output<boolean>;
     /**
      * The ID of the Managed Private Registry. **Changing this value recreates the resource.**
@@ -113,6 +116,9 @@ export interface CloudProjectContainerregistryIamState {
      * Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
      */
     deleteUsers?: pulumi.Input<boolean>;
+    /**
+     * Whether IAM is enabled for the registry.
+     */
     iamEnabled?: pulumi.Input<boolean>;
     /**
      * The ID of the Managed Private Registry. **Changing this value recreates the resource.**

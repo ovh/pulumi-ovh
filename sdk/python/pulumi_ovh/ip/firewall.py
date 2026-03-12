@@ -167,6 +167,16 @@ class Firewall(pulumi.CustomResource):
             enabled=True)
         ```
 
+        ## Import
+
+        An IP firewall can be imported using the `ip` and `ip_on_firewall`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/firewall:Firewall my_firewall 1.2.3.4/32/1.2.3.4
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Whether firewall should be enabled
@@ -192,6 +202,16 @@ class Firewall(pulumi.CustomResource):
             ip="XXXXXX",
             ip_on_firewall="XXXXXX",
             enabled=True)
+        ```
+
+        ## Import
+
+        An IP firewall can be imported using the `ip` and `ip_on_firewall`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Ip/firewall:Firewall my_firewall 1.2.3.4/32/1.2.3.4
         ```
 
         :param str resource_name: The name of the resource.

@@ -29,6 +29,16 @@ namespace Pulumi.Ovh.Okms
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An OVHcloud KMS can be imported using the `id` E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Okms/okms:Okms new_kms id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Okms/okms:Okms")]
     public partial class Okms : global::Pulumi.CustomResource

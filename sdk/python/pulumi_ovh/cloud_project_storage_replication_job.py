@@ -21,7 +21,7 @@ class CloudProjectStorageReplicationJobArgs:
     def __init__(__self__, *,
                  container_name: pulumi.Input[_builtins.str],
                  region_name: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str]):
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudProjectStorageReplicationJob resource.
         :param pulumi.Input[_builtins.str] container_name: Name of the storage container
@@ -30,7 +30,8 @@ class CloudProjectStorageReplicationJobArgs:
         """
         pulumi.set(__self__, "container_name", container_name)
         pulumi.set(__self__, "region_name", region_name)
-        pulumi.set(__self__, "service_name", service_name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter(name="containerName")
@@ -58,14 +59,14 @@ class CloudProjectStorageReplicationJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
@@ -206,8 +207,6 @@ class CloudProjectStorageReplicationJob(pulumi.CustomResource):
             if region_name is None and not opts.urn:
                 raise TypeError("Missing required property 'region_name'")
             __props__.__dict__["region_name"] = region_name
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
         super(CloudProjectStorageReplicationJob, __self__).__init__(
             'ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob',
@@ -260,7 +259,7 @@ class CloudProjectStorageReplicationJob(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """

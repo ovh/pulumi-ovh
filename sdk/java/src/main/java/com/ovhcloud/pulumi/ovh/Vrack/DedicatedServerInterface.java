@@ -60,6 +60,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A vRack dedicated server interface attachment can be imported using the `service_name` and `interface_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface vdsi service_name/interface_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface")
 public class DedicatedServerInterface extends com.pulumi.resources.CustomResource {

@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -23,7 +24,7 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+ * $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface interface service_name/region/id/interface_id
  * ```
  * 
  */
@@ -86,18 +87,18 @@ public class GatewayInterface extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * ID of the cloud project
+     * ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
-    private Output<String> serviceName;
+    private Output</* @Nullable */ String> serviceName;
 
     /**
-     * @return ID of the cloud project
+     * @return ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Output<Optional<String>> serviceName() {
+        return Codegen.optional(this.serviceName);
     }
     /**
      * ID of the subnet to add

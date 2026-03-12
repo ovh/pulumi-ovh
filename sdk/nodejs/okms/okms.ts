@@ -19,6 +19,16 @@ import * as utilities from "../utilities";
  *     displayName: "terraformed KMS",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * An OVHcloud KMS can be imported using the `id` E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Okms/okms:Okms new_kms id
+ * ```
  */
 export class Okms extends pulumi.CustomResource {
     /**

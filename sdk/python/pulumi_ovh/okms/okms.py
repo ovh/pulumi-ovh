@@ -231,6 +231,16 @@ class Okms(pulumi.CustomResource):
             display_name="terraformed KMS")
         ```
 
+        ## Import
+
+        An OVHcloud KMS can be imported using the `id` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Okms/okms:Okms new_kms id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: (String) Resource display name
@@ -254,6 +264,16 @@ class Okms(pulumi.CustomResource):
             ovh_subsidiary="FR",
             region="eu-west-rbx",
             display_name="terraformed KMS")
+        ```
+
+        ## Import
+
+        An OVHcloud KMS can be imported using the `id` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Okms/okms:Okms new_kms id
         ```
 
         :param str resource_name: The name of the resource.

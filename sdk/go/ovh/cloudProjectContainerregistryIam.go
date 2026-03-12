@@ -57,7 +57,8 @@ type CloudProjectContainerregistryIam struct {
 
 	// Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
 	DeleteUsers pulumi.BoolPtrOutput `pulumi:"deleteUsers"`
-	IamEnabled  pulumi.BoolOutput    `pulumi:"iamEnabled"`
+	// Whether IAM is enabled for the registry.
+	IamEnabled pulumi.BoolOutput `pulumi:"iamEnabled"`
 	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
 	RegistryId pulumi.StringOutput `pulumi:"registryId"`
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -99,7 +100,8 @@ func GetCloudProjectContainerregistryIam(ctx *pulumi.Context,
 type cloudProjectContainerregistryIamState struct {
 	// Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
 	DeleteUsers *bool `pulumi:"deleteUsers"`
-	IamEnabled  *bool `pulumi:"iamEnabled"`
+	// Whether IAM is enabled for the registry.
+	IamEnabled *bool `pulumi:"iamEnabled"`
 	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
 	RegistryId *string `pulumi:"registryId"`
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -109,7 +111,8 @@ type cloudProjectContainerregistryIamState struct {
 type CloudProjectContainerregistryIamState struct {
 	// Delete existing users from Harbor. IAM can't be enabled if there is at least one user already created. This parameter is only used at IAM configuration creation. **Changing this value recreates the resource.**
 	DeleteUsers pulumi.BoolPtrInput
-	IamEnabled  pulumi.BoolPtrInput
+	// Whether IAM is enabled for the registry.
+	IamEnabled pulumi.BoolPtrInput
 	// The ID of the Managed Private Registry. **Changing this value recreates the resource.**
 	RegistryId pulumi.StringPtrInput
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -231,6 +234,7 @@ func (o CloudProjectContainerregistryIamOutput) DeleteUsers() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v *CloudProjectContainerregistryIam) pulumi.BoolPtrOutput { return v.DeleteUsers }).(pulumi.BoolPtrOutput)
 }
 
+// Whether IAM is enabled for the registry.
 func (o CloudProjectContainerregistryIamOutput) IamEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CloudProjectContainerregistryIam) pulumi.BoolOutput { return v.IamEnabled }).(pulumi.BoolOutput)
 }

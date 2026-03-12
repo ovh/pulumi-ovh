@@ -47,18 +47,18 @@ public final class InstanceSnapshotArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
-     * @return Service name
+     * @return Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private InstanceSnapshotArgs() {}
@@ -130,18 +130,18 @@ public final class InstanceSnapshotArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -153,9 +153,6 @@ public final class InstanceSnapshotArgs extends com.pulumi.resources.ResourceArg
         public InstanceSnapshotArgs build() {
             if ($.instanceId == null) {
                 throw new MissingRequiredPropertyException("InstanceSnapshotArgs", "instanceId");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("InstanceSnapshotArgs", "serviceName");
             }
             return $;
         }

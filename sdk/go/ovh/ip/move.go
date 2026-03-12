@@ -14,7 +14,9 @@ import (
 
 // Moves a given IP to a different service, or inversely, parks it if empty service is given
 //
-// ## Move IP `1.2.3.4` to service loadbalancer-XXXXX
+// ## Example Usage
+//
+// ### Move IP `1.2.3.4` to service loadbalancer-XXXXX
 //
 // ```go
 // package main
@@ -43,7 +45,7 @@ import (
 //
 // ```
 //
-// ## Park IP/Detach IP `1.2.3.4` from any service
+// ### Park IP/Detach IP `1.2.3.4` from any service
 //
 // ```go
 // package main

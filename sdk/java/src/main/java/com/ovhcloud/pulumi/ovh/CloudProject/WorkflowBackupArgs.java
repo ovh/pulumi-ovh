@@ -51,9 +51,17 @@ public final class WorkflowBackupArgs extends com.pulumi.resources.ResourceArgs 
         return this.cron;
     }
 
+    /**
+     * See Argument Reference above.
+     * 
+     */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
+    /**
+     * @return See Argument Reference above.
+     * 
+     */
     public Output<String> instanceId() {
         return this.instanceId;
     }
@@ -210,11 +218,23 @@ public final class WorkflowBackupArgs extends com.pulumi.resources.ResourceArgs 
             return cron(Output.of(cron));
         }
 
+        /**
+         * @param instanceId See Argument Reference above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(Output<String> instanceId) {
             $.instanceId = instanceId;
             return this;
         }
 
+        /**
+         * @param instanceId See Argument Reference above.
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
         }

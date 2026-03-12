@@ -21,7 +21,7 @@ import (
 // bash
 //
 // ```sh
-// $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+// $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface interface service_name/region/id/interface_id
 // ```
 type GatewayInterface struct {
 	pulumi.CustomResourceState
@@ -34,8 +34,8 @@ type GatewayInterface struct {
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// Region of the gateway
 	Region pulumi.StringOutput `pulumi:"region"`
-	// ID of the cloud project
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// ID of the subnet to add
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 }
@@ -49,9 +49,6 @@ func NewGatewayInterface(ctx *pulumi.Context,
 
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	if args.SubnetId == nil {
 		return nil, errors.New("invalid value for required argument 'SubnetId'")
@@ -87,7 +84,7 @@ type gatewayInterfaceState struct {
 	NetworkId *string `pulumi:"networkId"`
 	// Region of the gateway
 	Region *string `pulumi:"region"`
-	// ID of the cloud project
+	// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// ID of the subnet to add
 	SubnetId *string `pulumi:"subnetId"`
@@ -102,7 +99,7 @@ type GatewayInterfaceState struct {
 	NetworkId pulumi.StringPtrInput
 	// Region of the gateway
 	Region pulumi.StringPtrInput
-	// ID of the cloud project
+	// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// ID of the subnet to add
 	SubnetId pulumi.StringPtrInput
@@ -117,8 +114,8 @@ type gatewayInterfaceArgs struct {
 	InterfaceId *string `pulumi:"interfaceId"`
 	// Region of the gateway
 	Region string `pulumi:"region"`
-	// ID of the cloud project
-	ServiceName string `pulumi:"serviceName"`
+	// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 	// ID of the subnet to add
 	SubnetId string `pulumi:"subnetId"`
 }
@@ -129,8 +126,8 @@ type GatewayInterfaceArgs struct {
 	InterfaceId pulumi.StringPtrInput
 	// Region of the gateway
 	Region pulumi.StringInput
-	// ID of the cloud project
-	ServiceName pulumi.StringInput
+	// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 	// ID of the subnet to add
 	SubnetId pulumi.StringInput
 }
@@ -242,9 +239,9 @@ func (o GatewayInterfaceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// ID of the cloud project
-func (o GatewayInterfaceOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *GatewayInterface) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o GatewayInterfaceOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayInterface) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // ID of the subnet to add

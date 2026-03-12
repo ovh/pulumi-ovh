@@ -62,6 +62,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * OVHcloud Managed Private Registry user can be imported using the `service_name`, `registry_id` and `id` of the user, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:CloudProject/containerRegistryUser:ContainerRegistryUser my_user service_name/registry_id/user_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:CloudProject/containerRegistryUser:ContainerRegistryUser")
 public class ContainerRegistryUser extends com.pulumi.resources.CustomResource {

@@ -5,7 +5,6 @@ package com.ovhcloud.pulumi.ovh.CloudProject;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -97,15 +96,15 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     private FailoverIpAttachArgs() {}
@@ -250,7 +249,7 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -266,9 +265,6 @@ public final class FailoverIpAttachArgs extends com.pulumi.resources.ResourceArg
         }
 
         public FailoverIpAttachArgs build() {
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("FailoverIpAttachArgs", "serviceName");
-            }
             return $;
         }
     }

@@ -24,30 +24,31 @@ class LoadBalancerArgs:
                  flavor_id: pulumi.Input[_builtins.str],
                  network: pulumi.Input['LoadBalancerNetworkArgs'],
                  region_name: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  listeners: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
         :param pulumi.Input[_builtins.str] flavor_id: Loadbalancer flavor id
         :param pulumi.Input['LoadBalancerNetworkArgs'] network: Network information to create the loadbalancer
         :param pulumi.Input[_builtins.str] region_name: Region name
-        :param pulumi.Input[_builtins.str] service_name: Service name
         :param pulumi.Input[_builtins.str] description: Description of the loadbalancer
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerListenerArgs']]] listeners: Listeners to create with the loadbalancer
         :param pulumi.Input[_builtins.str] name: Name of the resource
+        :param pulumi.Input[_builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "flavor_id", flavor_id)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "region_name", region_name)
-        pulumi.set(__self__, "service_name", service_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if listeners is not None:
             pulumi.set(__self__, "listeners", listeners)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter(name="flavorId")
@@ -86,18 +87,6 @@ class LoadBalancerArgs:
         pulumi.set(self, "region_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service name
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
-
-    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -133,6 +122,18 @@ class LoadBalancerArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
+
 
 @pulumi.input_type
 class _LoadBalancerState:
@@ -166,7 +167,7 @@ class _LoadBalancerState:
         :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the resource
         :param pulumi.Input[_builtins.str] region: Region of the resource
         :param pulumi.Input[_builtins.str] region_name: Region name
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] updated_at: UTC date and timestamp when the resource was created
         :param pulumi.Input[_builtins.str] vip_address: IP address of the Virtual IP
         :param pulumi.Input[_builtins.str] vip_network_id: Openstack ID of the network for the Virtual IP
@@ -341,7 +342,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service name
+        ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -413,6 +414,8 @@ class LoadBalancer(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Create a load balancer in a public cloud project.
+
         ## Example Usage
 
         ```python
@@ -520,7 +523,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Name of the resource
         :param pulumi.Input[Union['LoadBalancerNetworkArgs', 'LoadBalancerNetworkArgsDict']] network: Network information to create the loadbalancer
         :param pulumi.Input[_builtins.str] region_name: Region name
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -529,6 +532,8 @@ class LoadBalancer(pulumi.CustomResource):
                  args: LoadBalancerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Create a load balancer in a public cloud project.
+
         ## Example Usage
 
         ```python
@@ -671,8 +676,6 @@ class LoadBalancer(pulumi.CustomResource):
             if region_name is None and not opts.urn:
                 raise TypeError("Missing required property 'region_name'")
             __props__.__dict__["region_name"] = region_name
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["created_at"] = None
             __props__.__dict__["floating_ip"] = None
@@ -727,7 +730,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the resource
         :param pulumi.Input[_builtins.str] region: Region of the resource
         :param pulumi.Input[_builtins.str] region_name: Region name
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] updated_at: UTC date and timestamp when the resource was created
         :param pulumi.Input[_builtins.str] vip_address: IP address of the Virtual IP
         :param pulumi.Input[_builtins.str] vip_network_id: Openstack ID of the network for the Virtual IP
@@ -845,9 +848,9 @@ class LoadBalancer(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Service name
+        ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
+ * const myOauth2Clients = ovh.Me.getAPIOAuth2Clients({});
  * ```
  */
 export function getAPIOAuth2Clients(opts?: pulumi.InvokeOptions): Promise<GetAPIOAuth2ClientsResult> {
@@ -44,7 +44,7 @@ export interface GetAPIOAuth2ClientsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const myOauth2Clients = ovh.Me.getAPIOAuth2Client({});
+ * const myOauth2Clients = ovh.Me.getAPIOAuth2Clients({});
  * ```
  */
 export function getAPIOAuth2ClientsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAPIOAuth2ClientsResult> {

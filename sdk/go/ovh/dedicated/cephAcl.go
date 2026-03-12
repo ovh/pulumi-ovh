@@ -47,6 +47,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A dedicated CEPH ACL can be imported using the `service_name` and `acl_id`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Dedicated/cephAcl:CephAcl my_acl service_name/acl_id
+// ```
 type CephAcl struct {
 	pulumi.CustomResourceState
 

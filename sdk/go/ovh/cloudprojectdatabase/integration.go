@@ -69,12 +69,12 @@ import (
 //
 // ## Import
 //
-// OVHcloud Managed database clusters users can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the user, separated by "/" E.g.,
+// OVHcloud Managed database cluster integrations can be imported using the `service_name`, `engine`, `cluster_id` and `id` of the integration, separated by "/" E.g.,
 //
 // bash
 //
 // ```sh
-// $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_user service_name/engine/cluster_id/id
+// $ pulumi import ovh:CloudProjectDatabase/integration:Integration my_integration service_name/engine/cluster_id/id
 // ```
 type Integration struct {
 	pulumi.CustomResourceState
@@ -83,7 +83,7 @@ type Integration struct {
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// ID of the destination service.
 	DestinationServiceId pulumi.StringOutput `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// Parameters for the integration.
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
@@ -148,7 +148,7 @@ type integrationState struct {
 	ClusterId *string `pulumi:"clusterId"`
 	// ID of the destination service.
 	DestinationServiceId *string `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
 	Engine *string `pulumi:"engine"`
 	// Parameters for the integration.
 	Parameters map[string]string `pulumi:"parameters"`
@@ -172,7 +172,7 @@ type IntegrationState struct {
 	ClusterId pulumi.StringPtrInput
 	// ID of the destination service.
 	DestinationServiceId pulumi.StringPtrInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
 	Engine pulumi.StringPtrInput
 	// Parameters for the integration.
 	Parameters pulumi.StringMapInput
@@ -200,7 +200,7 @@ type integrationArgs struct {
 	ClusterId string `pulumi:"clusterId"`
 	// ID of the destination service.
 	DestinationServiceId string `pulumi:"destinationServiceId"`
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
 	Engine string `pulumi:"engine"`
 	// Parameters for the integration.
 	Parameters map[string]string `pulumi:"parameters"`
@@ -223,7 +223,7 @@ type IntegrationArgs struct {
 	ClusterId pulumi.StringInput
 	// ID of the destination service.
 	DestinationServiceId pulumi.StringInput
-	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+	// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
 	Engine pulumi.StringInput
 	// Parameters for the integration.
 	Parameters pulumi.StringMapInput
@@ -337,7 +337,7 @@ func (o IntegrationOutput) DestinationServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.DestinationServiceId }).(pulumi.StringOutput)
 }
 
-// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`.
+// The engine of the database cluster you want to add. You can find the complete list of available engine in the [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`.
 func (o IntegrationOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }

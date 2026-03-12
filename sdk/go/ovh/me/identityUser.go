@@ -43,6 +43,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An identity user can be imported using the `login` E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Me/identityUser:IdentityUser my_user login
+// ```
 type IdentityUser struct {
 	pulumi.CustomResourceState
 

@@ -81,6 +81,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * An IP Loadbalancing vRack network can be imported using the `service_name` and `vrack_network_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/vrackNetwork:VrackNetwork network service_name/vrack_network_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:IpLoadBalancing/vrackNetwork:VrackNetwork")
 public class VrackNetwork extends com.pulumi.resources.CustomResource {

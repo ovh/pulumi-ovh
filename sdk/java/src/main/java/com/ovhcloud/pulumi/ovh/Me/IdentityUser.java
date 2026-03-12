@@ -57,6 +57,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * An identity user can be imported using the `login` E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Me/identityUser:IdentityUser my_user login
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Me/identityUser:IdentityUser")
 public class IdentityUser extends com.pulumi.resources.CustomResource {

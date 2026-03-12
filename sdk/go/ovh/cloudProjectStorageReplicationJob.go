@@ -47,7 +47,7 @@ type CloudProjectStorageReplicationJob struct {
 	// Region name of the storage container
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 }
 
 // NewCloudProjectStorageReplicationJob registers a new resource with the given unique name, arguments, and options.
@@ -62,9 +62,6 @@ func NewCloudProjectStorageReplicationJob(ctx *pulumi.Context,
 	}
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudProjectStorageReplicationJob
@@ -116,7 +113,7 @@ type cloudProjectStorageReplicationJobArgs struct {
 	// Region name of the storage container
 	RegionName string `pulumi:"regionName"`
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a CloudProjectStorageReplicationJob resource.
@@ -126,7 +123,7 @@ type CloudProjectStorageReplicationJobArgs struct {
 	// Region name of the storage container
 	RegionName pulumi.StringInput
 	// The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 }
 
 func (CloudProjectStorageReplicationJobArgs) ElementType() reflect.Type {
@@ -227,8 +224,8 @@ func (o CloudProjectStorageReplicationJobOutput) RegionName() pulumi.StringOutpu
 }
 
 // The ID of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-func (o CloudProjectStorageReplicationJobOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *CloudProjectStorageReplicationJob) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+func (o CloudProjectStorageReplicationJobOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudProjectStorageReplicationJob) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 type CloudProjectStorageReplicationJobArrayOutput struct{ *pulumi.OutputState }

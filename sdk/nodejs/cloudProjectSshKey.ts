@@ -69,9 +69,9 @@ export class CloudProjectSshKey extends pulumi.CustomResource {
      */
     public /*out*/ readonly regions!: pulumi.Output<string[]>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CloudProjectSshKey resource with the given unique name, arguments, and options.
@@ -96,9 +96,6 @@ export class CloudProjectSshKey extends pulumi.CustomResource {
             const args = argsOrState as CloudProjectSshKeyArgs | undefined;
             if ((!args || args.publicKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicKey'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
@@ -137,7 +134,7 @@ export interface CloudProjectSshKeyState {
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -159,7 +156,7 @@ export interface CloudProjectSshKeyArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

@@ -56,7 +56,7 @@ type Alerting struct {
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64Output `pulumi:"monthlyThreshold"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 }
 
 // NewAlerting registers a new resource with the given unique name, arguments, and options.
@@ -74,9 +74,6 @@ func NewAlerting(ctx *pulumi.Context,
 	}
 	if args.MonthlyThreshold == nil {
 		return nil, errors.New("invalid value for required argument 'MonthlyThreshold'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Alerting
@@ -142,7 +139,7 @@ type alertingArgs struct {
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold float64 `pulumi:"monthlyThreshold"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a Alerting resource.
@@ -154,7 +151,7 @@ type AlertingArgs struct {
 	// Monthly threshold for this alerting in currency
 	MonthlyThreshold pulumi.Float64Input
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 }
 
 func (AlertingArgs) ElementType() reflect.Type {
@@ -270,8 +267,8 @@ func (o AlertingOutput) MonthlyThreshold() pulumi.Float64Output {
 }
 
 // The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-func (o AlertingOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Alerting) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+func (o AlertingOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Alerting) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 type AlertingArrayOutput struct{ *pulumi.OutputState }

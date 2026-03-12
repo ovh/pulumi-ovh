@@ -13,10 +13,13 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Create and manage snapshots for an instance in a public cloud project.
+ * 
+ * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -52,6 +55,16 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * A cloud project instance snapshot can be imported using the `service_name` and `snapshot_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:CloudProject/instanceSnapshot:InstanceSnapshot my_snapshot service_name/snapshot_id
+ * ```
  * 
  */
 @ResourceType(type="ovh:CloudProject/instanceSnapshot:InstanceSnapshot")
@@ -169,18 +182,18 @@ public class InstanceSnapshot extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
-    private Output<String> serviceName;
+    private Output</* @Nullable */ String> serviceName;
 
     /**
-     * @return Service name
+     * @return Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Output<Optional<String>> serviceName() {
+        return Codegen.optional(this.serviceName);
     }
     /**
      * Image size (in GiB)

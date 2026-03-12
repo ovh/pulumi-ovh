@@ -39,6 +39,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An OVHcloud KMS can be imported using the `id` E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Okms/okms:Okms new_kms id
+// ```
 type Okms struct {
 	pulumi.CustomResourceState
 

@@ -20,22 +20,23 @@ __all__ = ['CloudProjectSshKeyArgs', 'CloudProjectSshKey']
 class CloudProjectSshKeyArgs:
     def __init__(__self__, *,
                  public_key: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudProjectSshKey resource.
         :param pulumi.Input[_builtins.str] public_key: SSH public key
-        :param pulumi.Input[_builtins.str] service_name: Service name
         :param pulumi.Input[_builtins.str] name: SSH key name
         :param pulumi.Input[_builtins.str] region: Region to create SSH key
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         pulumi.set(__self__, "public_key", public_key)
-        pulumi.set(__self__, "service_name", service_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -48,18 +49,6 @@ class CloudProjectSshKeyArgs:
     @public_key.setter
     def public_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "public_key", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service name
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -85,6 +74,18 @@ class CloudProjectSshKeyArgs:
     def region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
+
 
 @pulumi.input_type
 class _CloudProjectSshKeyState:
@@ -102,7 +103,7 @@ class _CloudProjectSshKeyState:
         :param pulumi.Input[_builtins.str] public_key: SSH public key
         :param pulumi.Input[_builtins.str] region: Region to create SSH key
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: SSH key regions
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         if finger_print is not None:
             pulumi.set(__self__, "finger_print", finger_print)
@@ -181,7 +182,7 @@ class _CloudProjectSshKeyState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service name
+        Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 
@@ -221,7 +222,7 @@ class CloudProjectSshKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: SSH key name
         :param pulumi.Input[_builtins.str] public_key: SSH public key
         :param pulumi.Input[_builtins.str] region: Region to create SSH key
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
     @overload
@@ -277,8 +278,6 @@ class CloudProjectSshKey(pulumi.CustomResource):
                 raise TypeError("Missing required property 'public_key'")
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["region"] = region
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["finger_print"] = None
             __props__.__dict__["regions"] = None
@@ -310,7 +309,7 @@ class CloudProjectSshKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] public_key: SSH public key
         :param pulumi.Input[_builtins.str] region: Region to create SSH key
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: SSH key regions
-        :param pulumi.Input[_builtins.str] service_name: Service name
+        :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -366,9 +365,9 @@ class CloudProjectSshKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Output[_builtins.str]:
+    def service_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Service name
+        Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
 

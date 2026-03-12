@@ -118,7 +118,7 @@ def get_database_integrations(cluster_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str cluster_id: Cluster ID
-    :param _builtins.str engine: The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+    :param _builtins.str engine: The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
     :param _builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
@@ -155,7 +155,7 @@ def get_database_integrations_output(cluster_id: Optional[pulumi.Input[_builtins
 
 
     :param _builtins.str cluster_id: Cluster ID
-    :param _builtins.str engine: The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+    :param _builtins.str engine: The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
     :param _builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()

@@ -256,7 +256,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -270,8 +269,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -297,7 +295,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -311,8 +308,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -338,7 +334,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -352,8 +347,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -379,7 +373,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -393,8 +386,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -420,7 +412,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -434,8 +425,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -461,7 +451,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -475,8 +464,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -502,7 +490,6 @@ public final class MeFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.ovh.Me.MeFunctions;
-     * import com.pulumi.ovh.Me.inputs.GetAPIOAuth2ClientArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -516,8 +503,7 @@ public final class MeFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Client(GetAPIOAuth2ClientArgs.builder()
-     *             .build());
+     *         final var myOauth2Clients = MeFunctions.getAPIOAuth2Clients(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }

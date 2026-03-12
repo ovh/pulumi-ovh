@@ -19,7 +19,7 @@ namespace Pulumi.Ovh.CloudProject
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+    /// $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface interface service_name/region/id/interface_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/gatewayInterface:GatewayInterface")]
@@ -50,10 +50,10 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the cloud project
+        /// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
         /// ID of the subnet to add
@@ -121,10 +121,10 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// ID of the cloud project
+        /// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// ID of the subnet to add
@@ -165,7 +165,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// ID of the cloud project
+        /// ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

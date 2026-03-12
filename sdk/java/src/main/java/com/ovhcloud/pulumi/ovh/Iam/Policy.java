@@ -112,6 +112,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * An IAM policy can be imported using the `id` E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Iam/policy:Policy manager policy_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Iam/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {

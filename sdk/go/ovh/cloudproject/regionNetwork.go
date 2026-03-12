@@ -22,8 +22,8 @@ type RegionNetwork struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Network region
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
-	// The id of the public cloud project
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
 	// Parameters to create a subnet
 	Subnet RegionNetworkSubnetOutput `pulumi:"subnet"`
 	// Network visibility
@@ -41,9 +41,6 @@ func NewRegionNetwork(ctx *pulumi.Context,
 
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	if args.Subnet == nil {
 		return nil, errors.New("invalid value for required argument 'Subnet'")
@@ -77,7 +74,7 @@ type regionNetworkState struct {
 	Region *string `pulumi:"region"`
 	// Network region
 	RegionName *string `pulumi:"regionName"`
-	// The id of the public cloud project
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
 	// Parameters to create a subnet
 	Subnet *RegionNetworkSubnet `pulumi:"subnet"`
@@ -94,7 +91,7 @@ type RegionNetworkState struct {
 	Region pulumi.StringPtrInput
 	// Network region
 	RegionName pulumi.StringPtrInput
-	// The id of the public cloud project
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
 	// Parameters to create a subnet
 	Subnet RegionNetworkSubnetPtrInput
@@ -113,8 +110,8 @@ type regionNetworkArgs struct {
 	Name *string `pulumi:"name"`
 	// Network region
 	RegionName string `pulumi:"regionName"`
-	// The id of the public cloud project
-	ServiceName string `pulumi:"serviceName"`
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName *string `pulumi:"serviceName"`
 	// Parameters to create a subnet
 	Subnet RegionNetworkSubnet `pulumi:"subnet"`
 	// VLAN ID, between 1 and 4000
@@ -127,8 +124,8 @@ type RegionNetworkArgs struct {
 	Name pulumi.StringPtrInput
 	// Network region
 	RegionName pulumi.StringInput
-	// The id of the public cloud project
-	ServiceName pulumi.StringInput
+	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+	ServiceName pulumi.StringPtrInput
 	// Parameters to create a subnet
 	Subnet RegionNetworkSubnetInput
 	// VLAN ID, between 1 and 4000
@@ -237,9 +234,9 @@ func (o RegionNetworkOutput) RegionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.RegionName }).(pulumi.StringOutput)
 }
 
-// The id of the public cloud project
-func (o RegionNetworkOutput) ServiceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *RegionNetwork) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
+// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+func (o RegionNetworkOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionNetwork) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
 }
 
 // Parameters to create a subnet

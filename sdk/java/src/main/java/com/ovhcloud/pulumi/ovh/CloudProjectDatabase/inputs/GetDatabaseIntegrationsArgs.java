@@ -30,14 +30,14 @@ public final class GetDatabaseIntegrationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+     * The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
      * 
      */
     @Import(name="engine", required=true)
     private Output<String> engine;
 
     /**
-     * @return The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+     * @return The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
      * 
      */
     public Output<String> engine() {
@@ -107,7 +107,7 @@ public final class GetDatabaseIntegrationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param engine The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+         * @param engine The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GetDatabaseIntegrationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param engine The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available exept `mongodb`
+         * @param engine The engine of the database cluster you want to list integrations. To get a full list of available engine visit: [public documentation](https://docs.ovh.com/gb/en/publiccloud/databases). All engines available except `mongodb`
          * 
          * @return builder
          * 

@@ -28,6 +28,12 @@ namespace Pulumi.Ovh.Vps
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+        /// </summary>
+        [Output("doNotSendPassword")]
+        public Output<bool> DoNotSendPassword { get; private set; } = null!;
+
+        /// <summary>
         /// IAM resource information
         /// </summary>
         [Output("iam")]
@@ -192,6 +198,12 @@ namespace Pulumi.Ovh.Vps
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+        /// </summary>
+        [Input("doNotSendPassword")]
+        public Input<bool>? DoNotSendPassword { get; set; }
+
+        /// <summary>
         /// Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
         /// </summary>
         [Input("imageId")]
@@ -321,6 +333,12 @@ namespace Pulumi.Ovh.Vps
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+        /// </summary>
+        [Input("doNotSendPassword")]
+        public Input<bool>? DoNotSendPassword { get; set; }
 
         /// <summary>
         /// IAM resource information

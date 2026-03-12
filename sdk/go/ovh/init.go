@@ -23,10 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam":
 		r = &CloudProjectContainerregistryIam{}
+	case "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser":
+		r = &CloudProjectDatabaseClickhouseUser{}
 	case "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser":
 		r = &CloudProjectDatabaseValkeyUser{}
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
+	case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
+		r = &CloudProjectStorageObjectBucketLifecycleConfiguration{}
 	case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
 		r = &CloudProjectStorageReplicationJob{}
 	case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
@@ -39,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OvhcloudConnectPopDatacenterConfig{}
 	case "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig":
 		r = &OvhcloudConnectPopDatacenterExtraConfig{}
+	case "ovh:index/storageEfs:StorageEfs":
+		r = &StorageEfs{}
 	case "ovh:index/storageEfsShare:StorageEfsShare":
 		r = &StorageEfsShare{}
 	case "ovh:index/storageEfsShareAcl:StorageEfsShareAcl":
@@ -87,12 +93,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudProjectDatabaseClickhouseUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudProjectDatabaseValkeyUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudProjectSshKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudProjectStorageObjectBucketLifecycleConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -123,6 +139,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/ovhcloudConnectPopDatacenterExtraConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/storageEfs",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

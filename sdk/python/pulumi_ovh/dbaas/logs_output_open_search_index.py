@@ -310,6 +310,16 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
             suffix="index")
         ```
 
+        ## Import
+
+        A DBaaS Logs Opensearch output index can be imported using the `service_name` and `id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex index service_name/id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Index description
@@ -336,6 +346,16 @@ class LogsOutputOpenSearchIndex(pulumi.CustomResource):
             service_name="....",
             description="my opensearch index",
             suffix="index")
+        ```
+
+        ## Import
+
+        A DBaaS Logs Opensearch output index can be imported using the `service_name` and `id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Dbaas/logsOutputOpenSearchIndex:LogsOutputOpenSearchIndex index service_name/id
         ```
 
         :param str resource_name: The name of the resource.

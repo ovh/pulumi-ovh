@@ -37,6 +37,21 @@ public final class VpsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     * 
+     */
+    @Import(name="doNotSendPassword")
+    private @Nullable Output<Boolean> doNotSendPassword;
+
+    /**
+     * @return Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     * 
+     */
+    public Optional<Output<Boolean>> doNotSendPassword() {
+        return Optional.ofNullable(this.doNotSendPassword);
+    }
+
+    /**
      * Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&amp;branch=v1#get-/vps/-serviceName-/images/available)
      * 
      */
@@ -272,6 +287,7 @@ public final class VpsArgs extends com.pulumi.resources.ResourceArgs {
 
     private VpsArgs(VpsArgs $) {
         this.displayName = $.displayName;
+        this.doNotSendPassword = $.doNotSendPassword;
         this.imageId = $.imageId;
         this.keymap = $.keymap;
         this.memoryLimit = $.memoryLimit;
@@ -327,6 +343,27 @@ public final class VpsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param doNotSendPassword Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder doNotSendPassword(@Nullable Output<Boolean> doNotSendPassword) {
+            $.doNotSendPassword = doNotSendPassword;
+            return this;
+        }
+
+        /**
+         * @param doNotSendPassword Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder doNotSendPassword(Boolean doNotSendPassword) {
+            return doNotSendPassword(Output.of(doNotSendPassword));
         }
 
         /**

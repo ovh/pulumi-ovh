@@ -35,6 +35,16 @@ import * as utilities from "../utilities";
  *     zone: iplb.then(iplb => iplb.zones?.[0]),
  * });
  * ```
+ *
+ * ## Import
+ *
+ * An IP Loadbalancing vRack network can be imported using the `service_name` and `vrack_network_id`, separated by "/" E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:IpLoadBalancing/vrackNetwork:VrackNetwork network service_name/vrack_network_id
+ * ```
  */
 export class VrackNetwork extends pulumi.CustomResource {
     /**

@@ -6,6 +6,16 @@ import * as utilities from "../utilities";
 
 /**
  * Create am IAM permissions group.
+ *
+ * ## Import
+ *
+ * An IAM permissions group can be imported using the `id` E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:Iam/permissionsGroup:PermissionsGroup read_vps permissions_group_id
+ * ```
  */
 export class PermissionsGroup extends pulumi.CustomResource {
     /**

@@ -117,6 +117,16 @@ class IpLoadbalancing(pulumi.CustomResource):
             loadbalancing_id="yyy")
         ```
 
+        ## Import
+
+        A vRack IP Load Balancing attachment can be imported using the `service_name` and `ip_loadbalancing`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/ipLoadbalancing:IpLoadbalancing viplb service_name/ip_loadbalancing
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] loadbalancing_id: The id of the IP Load Balancing.
@@ -140,6 +150,16 @@ class IpLoadbalancing(pulumi.CustomResource):
         viplb = ovh.vrack.IpLoadbalancing("viplb",
             service_name="xxx",
             loadbalancing_id="yyy")
+        ```
+
+        ## Import
+
+        A vRack IP Load Balancing attachment can be imported using the `service_name` and `ip_loadbalancing`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/ipLoadbalancing:IpLoadbalancing viplb service_name/ip_loadbalancing
         ```
 
         :param str resource_name: The name of the resource.

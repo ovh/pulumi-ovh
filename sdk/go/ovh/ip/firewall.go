@@ -41,6 +41,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An IP firewall can be imported using the `ip` and `ip_on_firewall`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Ip/firewall:Firewall my_firewall 1.2.3.4/32/1.2.3.4
+// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 

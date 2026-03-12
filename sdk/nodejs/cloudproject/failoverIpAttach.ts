@@ -19,6 +19,16 @@ import * as utilities from "../utilities";
  *     routedTo: "XXXXXX",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A cloud project failover IP attachment can be imported using the `id` (failover IP block ID) E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/failoverIpAttach:FailoverIpAttach my_ip id
+ * ```
  */
 export class FailoverIpAttach extends pulumi.CustomResource {
     /**
@@ -95,7 +105,7 @@ export class FailoverIpAttach extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FailoverIpAttachArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: FailoverIpAttachArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FailoverIpAttachArgs | FailoverIpAttachState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -112,9 +122,6 @@ export class FailoverIpAttach extends pulumi.CustomResource {
             resourceInputs["subType"] = state ? state.subType : undefined;
         } else {
             const args = argsOrState as FailoverIpAttachArgs | undefined;
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
-            }
             resourceInputs["block"] = args ? args.block : undefined;
             resourceInputs["continentCode"] = args ? args.continentCode : undefined;
             resourceInputs["geoLoc"] = args ? args.geoLoc : undefined;
@@ -203,5 +210,5 @@ export interface FailoverIpAttachArgs {
     /**
      * The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
 }

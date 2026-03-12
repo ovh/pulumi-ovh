@@ -52,6 +52,16 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// A user identity token can be imported using the `user_login` and `name`, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:Me/identityUserToken:IdentityUserToken token user_login/token_name
+// ```
 type IdentityUserToken struct {
 	pulumi.CustomResourceState
 

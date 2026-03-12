@@ -46,6 +46,10 @@ export class Vps extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     */
+    public readonly doNotSendPassword!: pulumi.Output<boolean>;
+    /**
      * IAM resource information
      */
     public /*out*/ readonly iam!: pulumi.Output<outputs.Vps.VpsIam>;
@@ -134,6 +138,7 @@ export class Vps extends pulumi.CustomResource {
             const state = argsOrState as VpsState | undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["doNotSendPassword"] = state ? state.doNotSendPassword : undefined;
             resourceInputs["iam"] = state ? state.iam : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["keymap"] = state ? state.keymap : undefined;
@@ -156,6 +161,7 @@ export class Vps extends pulumi.CustomResource {
         } else {
             const args = argsOrState as VpsArgs | undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["doNotSendPassword"] = args ? args.doNotSendPassword : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["keymap"] = args ? args.keymap : undefined;
             resourceInputs["memoryLimit"] = args ? args.memoryLimit : undefined;
@@ -194,6 +200,10 @@ export interface VpsState {
      * Custom display name
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     */
+    doNotSendPassword?: pulumi.Input<boolean>;
     /**
      * IAM resource information
      */
@@ -277,6 +287,10 @@ export interface VpsArgs {
      * Custom display name
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     */
+    doNotSendPassword?: pulumi.Input<boolean>;
     /**
      * Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `publicSshKey`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
      */

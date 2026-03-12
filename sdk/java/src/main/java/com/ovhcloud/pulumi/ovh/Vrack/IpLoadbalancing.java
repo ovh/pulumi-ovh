@@ -52,6 +52,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A vRack IP Load Balancing attachment can be imported using the `service_name` and `ip_loadbalancing`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Vrack/ipLoadbalancing:IpLoadbalancing viplb service_name/ip_loadbalancing
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Vrack/ipLoadbalancing:IpLoadbalancing")
 public class IpLoadbalancing extends com.pulumi.resources.CustomResource {

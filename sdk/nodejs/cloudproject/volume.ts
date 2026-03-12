@@ -120,9 +120,9 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceId!: pulumi.Output<string>;
     /**
-     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * Size (GB) of the volume
      */
@@ -188,9 +188,6 @@ export class Volume extends pulumi.CustomResource {
             const args = argsOrState as VolumeArgs | undefined;
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
@@ -266,7 +263,7 @@ export interface VolumeState {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -324,9 +321,9 @@ export interface VolumeArgs {
      */
     regionName: pulumi.Input<string>;
     /**
-     * Required. The id of the public cloud project. **Changing this value recreates the resource.**
+     * Optional. The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Size (GB) of the volume
      */

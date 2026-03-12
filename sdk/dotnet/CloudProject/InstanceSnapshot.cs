@@ -12,6 +12,8 @@ namespace Pulumi.Ovh.CloudProject
     /// <summary>
     /// Create and manage snapshots for an instance in a public cloud project.
     /// 
+    /// ## Example Usage
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,6 +30,16 @@ namespace Pulumi.Ovh.CloudProject
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A cloud project instance snapshot can be imported using the `service_name` and `snapshot_id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:CloudProject/instanceSnapshot:InstanceSnapshot my_snapshot service_name/snapshot_id
     /// ```
     /// </summary>
     [OvhResourceType("ovh:CloudProject/instanceSnapshot:InstanceSnapshot")]
@@ -82,10 +94,10 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
         /// Image size (in GiB)
@@ -183,10 +195,10 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public InstanceSnapshotArgs()
         {
@@ -245,7 +257,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

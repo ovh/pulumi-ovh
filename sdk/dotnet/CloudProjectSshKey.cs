@@ -66,10 +66,10 @@ namespace Pulumi.Ovh
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
 
         /// <summary>
@@ -137,10 +137,10 @@ namespace Pulumi.Ovh
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         public CloudProjectSshKeyArgs()
         {
@@ -187,7 +187,7 @@ namespace Pulumi.Ovh
         }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

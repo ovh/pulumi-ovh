@@ -22,6 +22,7 @@ __all__ = ['VpsArgs', 'Vps']
 class VpsArgs:
     def __init__(__self__, *,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 do_not_send_password: Optional[pulumi.Input[_builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  keymap: Optional[pulumi.Input[_builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[_builtins.float]] = None,
@@ -41,6 +42,7 @@ class VpsArgs:
         """
         The set of arguments for constructing a Vps resource.
         :param pulumi.Input[_builtins.str] display_name: Custom display name
+        :param pulumi.Input[_builtins.bool] do_not_send_password: Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
         :param pulumi.Input[_builtins.str] image_id: Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[_builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[_builtins.float] memory_limit: RAM of this VPS
@@ -59,6 +61,8 @@ class VpsArgs:
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if do_not_send_password is not None:
+            pulumi.set(__self__, "do_not_send_password", do_not_send_password)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if keymap is not None:
@@ -103,6 +107,18 @@ class VpsArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="doNotSendPassword")
+    def do_not_send_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+        """
+        return pulumi.get(self, "do_not_send_password")
+
+    @do_not_send_password.setter
+    def do_not_send_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "do_not_send_password", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
@@ -299,6 +315,7 @@ class _VpsState:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 do_not_send_password: Optional[pulumi.Input[_builtins.bool]] = None,
                  iam: Optional[pulumi.Input['VpsIamArgs']] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  keymap: Optional[pulumi.Input[_builtins.str]] = None,
@@ -322,6 +339,7 @@ class _VpsState:
         Input properties used for looking up and filtering Vps resources.
         :param pulumi.Input[_builtins.str] cluster: VPS cluster
         :param pulumi.Input[_builtins.str] display_name: Custom display name
+        :param pulumi.Input[_builtins.bool] do_not_send_password: Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
         :param pulumi.Input['VpsIamArgs'] iam: IAM resource information
         :param pulumi.Input[_builtins.str] image_id: Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[_builtins.str] keymap: KVM keyboard layout on VPS Cloud
@@ -345,6 +363,8 @@ class _VpsState:
             pulumi.set(__self__, "cluster", cluster)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if do_not_send_password is not None:
+            pulumi.set(__self__, "do_not_send_password", do_not_send_password)
         if iam is not None:
             pulumi.set(__self__, "iam", iam)
         if image_id is not None:
@@ -407,6 +427,18 @@ class _VpsState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="doNotSendPassword")
+    def do_not_send_password(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+        """
+        return pulumi.get(self, "do_not_send_password")
+
+    @do_not_send_password.setter
+    def do_not_send_password(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "do_not_send_password", value)
 
     @_builtins.property
     @pulumi.getter
@@ -641,6 +673,7 @@ class Vps(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 do_not_send_password: Optional[pulumi.Input[_builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  keymap: Optional[pulumi.Input[_builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[_builtins.float]] = None,
@@ -664,6 +697,7 @@ class Vps(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Custom display name
+        :param pulumi.Input[_builtins.bool] do_not_send_password: Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
         :param pulumi.Input[_builtins.str] image_id: Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[_builtins.str] keymap: KVM keyboard layout on VPS Cloud
         :param pulumi.Input[_builtins.float] memory_limit: RAM of this VPS
@@ -705,6 +739,7 @@ class Vps(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 do_not_send_password: Optional[pulumi.Input[_builtins.bool]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  keymap: Optional[pulumi.Input[_builtins.str]] = None,
                  memory_limit: Optional[pulumi.Input[_builtins.float]] = None,
@@ -731,6 +766,7 @@ class Vps(pulumi.CustomResource):
             __props__ = VpsArgs.__new__(VpsArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["do_not_send_password"] = do_not_send_password
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["keymap"] = keymap
             __props__.__dict__["memory_limit"] = memory_limit
@@ -763,6 +799,7 @@ class Vps(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
+            do_not_send_password: Optional[pulumi.Input[_builtins.bool]] = None,
             iam: Optional[pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']]] = None,
             image_id: Optional[pulumi.Input[_builtins.str]] = None,
             keymap: Optional[pulumi.Input[_builtins.str]] = None,
@@ -791,6 +828,7 @@ class Vps(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster: VPS cluster
         :param pulumi.Input[_builtins.str] display_name: Custom display name
+        :param pulumi.Input[_builtins.bool] do_not_send_password: Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
         :param pulumi.Input[Union['VpsIamArgs', 'VpsIamArgsDict']] iam: IAM resource information
         :param pulumi.Input[_builtins.str] image_id: Id of the image to install on the VPS. This attribute is useful to trigger a VPS reinstallation, and during VPS creation if you want to configure a `public_ssh_key`. The available values can be found using this [API call](https://eu.api.ovh.com/console/?section=%2Fvps&branch=v1#get-/vps/-serviceName-/images/available)
         :param pulumi.Input[_builtins.str] keymap: KVM keyboard layout on VPS Cloud
@@ -816,6 +854,7 @@ class Vps(pulumi.CustomResource):
 
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["do_not_send_password"] = do_not_send_password
         __props__.__dict__["iam"] = iam
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["keymap"] = keymap
@@ -852,6 +891,14 @@ class Vps(pulumi.CustomResource):
         Custom display name
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="doNotSendPassword")
+    def do_not_send_password(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+        """
+        return pulumi.get(self, "do_not_send_password")
 
     @_builtins.property
     @pulumi.getter

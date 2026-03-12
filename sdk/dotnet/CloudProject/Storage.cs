@@ -128,10 +128,10 @@ namespace Pulumi.Ovh.CloudProject
         public Output<Outputs.StorageReplication> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Output("serviceName")]
-        public Output<string> ServiceName { get; private set; } = null!;
+        public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
         /// Versioning configuration
@@ -253,10 +253,10 @@ namespace Pulumi.Ovh.CloudProject
         public Input<Inputs.StorageReplicationArgs>? Replication { get; set; }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// Versioning configuration
@@ -369,7 +369,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<Inputs.StorageReplicationGetArgs>? Replication { get; set; }
 
         /// <summary>
-        /// Service name
+        /// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

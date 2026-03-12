@@ -4,6 +4,8 @@
 package com.ovhcloud.pulumi.ovh;
 
 import com.ovhcloud.pulumi.ovh.Utilities;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseValkeyUserArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseValkeyUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectFlavorArgs;
@@ -18,6 +20,8 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeyArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeyPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
@@ -56,6 +60,7 @@ import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesPlainArgs;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectDatabaseClickhouseUserResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectDatabaseValkeyUserResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectFlavorResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectGatewayResult;
@@ -63,6 +68,7 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesPlanRes
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesVersionResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeysResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsOutputGraylogStreamUrlResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthVrackResult;
@@ -95,6 +101,231 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class OvhFunctions {
+    /**
+     * Use this data source to get information about a user of a clickhouse cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var chUser = OvhFunctions.getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("chUserRoles", chUser.roles());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectDatabaseClickhouseUserResult> getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs args) {
+        return getCloudProjectDatabaseClickhouseUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a user of a clickhouse cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var chUser = OvhFunctions.getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("chUserRoles", chUser.roles());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudProjectDatabaseClickhouseUserResult> getCloudProjectDatabaseClickhouseUserPlain(GetCloudProjectDatabaseClickhouseUserPlainArgs args) {
+        return getCloudProjectDatabaseClickhouseUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a user of a clickhouse cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var chUser = OvhFunctions.getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("chUserRoles", chUser.roles());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectDatabaseClickhouseUserResult> getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudProjectDatabaseClickhouseUser:getCloudProjectDatabaseClickhouseUser", TypeShape.of(GetCloudProjectDatabaseClickhouseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a user of a clickhouse cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var chUser = OvhFunctions.getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("chUserRoles", chUser.roles());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectDatabaseClickhouseUserResult> getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudProjectDatabaseClickhouseUser:getCloudProjectDatabaseClickhouseUser", TypeShape.of(GetCloudProjectDatabaseClickhouseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a user of a clickhouse cluster associated with a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var chUser = OvhFunctions.getCloudProjectDatabaseClickhouseUser(GetCloudProjectDatabaseClickhouseUserArgs.builder()
+     *             .serviceName("XXX")
+     *             .clusterId("YYY")
+     *             .name("ZZZ")
+     *             .build());
+     * 
+     *         ctx.export("chUserRoles", chUser.roles());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudProjectDatabaseClickhouseUserResult> getCloudProjectDatabaseClickhouseUserPlain(GetCloudProjectDatabaseClickhouseUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectDatabaseClickhouseUser:getCloudProjectDatabaseClickhouseUser", TypeShape.of(GetCloudProjectDatabaseClickhouseUserResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to get information about a user of a valkey cluster associated with a public cloud project.
      * 
@@ -1609,6 +1840,226 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudProjectSshKeysResult> getCloudProjectSshKeysPlain(GetCloudProjectSshKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys", TypeShape.of(GetCloudProjectSshKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get lifecycle configuration of a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lifecycle = OvhFunctions.getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .containerName("my-bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectStorageObjectBucketLifecycleConfigurationResult> getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs args) {
+        return getCloudProjectStorageObjectBucketLifecycleConfiguration(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get lifecycle configuration of a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lifecycle = OvhFunctions.getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .containerName("my-bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudProjectStorageObjectBucketLifecycleConfigurationResult> getCloudProjectStorageObjectBucketLifecycleConfigurationPlain(GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs args) {
+        return getCloudProjectStorageObjectBucketLifecycleConfigurationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get lifecycle configuration of a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lifecycle = OvhFunctions.getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .containerName("my-bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectStorageObjectBucketLifecycleConfigurationResult> getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration", TypeShape.of(GetCloudProjectStorageObjectBucketLifecycleConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get lifecycle configuration of a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lifecycle = OvhFunctions.getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .containerName("my-bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectStorageObjectBucketLifecycleConfigurationResult> getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration", TypeShape.of(GetCloudProjectStorageObjectBucketLifecycleConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get lifecycle configuration of a S3™* compatible storage container. \* S3 is a trademark filed by Amazon Technologies,Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies,Inc.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lifecycle = OvhFunctions.getCloudProjectStorageObjectBucketLifecycleConfiguration(GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .regionName("GRA")
+     *             .containerName("my-bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudProjectStorageObjectBucketLifecycleConfigurationResult> getCloudProjectStorageObjectBucketLifecycleConfigurationPlain(GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration", TypeShape.of(GetCloudProjectStorageObjectBucketLifecycleConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve the list of URLs for a DBaas logs output Graylog stream.

@@ -54,6 +54,21 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     * 
+     */
+    @Import(name="doNotSendPassword")
+    private @Nullable Output<Boolean> doNotSendPassword;
+
+    /**
+     * @return Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     * 
+     */
+    public Optional<Output<Boolean>> doNotSendPassword() {
+        return Optional.ofNullable(this.doNotSendPassword);
+    }
+
+    /**
      * IAM resource information
      * 
      */
@@ -335,6 +350,7 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
     private VpsState(VpsState $) {
         this.cluster = $.cluster;
         this.displayName = $.displayName;
+        this.doNotSendPassword = $.doNotSendPassword;
         this.iam = $.iam;
         this.imageId = $.imageId;
         this.keymap = $.keymap;
@@ -414,6 +430,27 @@ public final class VpsState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param doNotSendPassword Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder doNotSendPassword(@Nullable Output<Boolean> doNotSendPassword) {
+            $.doNotSendPassword = doNotSendPassword;
+            return this;
+        }
+
+        /**
+         * @param doNotSendPassword Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+         * 
+         * @return builder
+         * 
+         */
+        public Builder doNotSendPassword(Boolean doNotSendPassword) {
+            return doNotSendPassword(Output.of(doNotSendPassword));
         }
 
         /**

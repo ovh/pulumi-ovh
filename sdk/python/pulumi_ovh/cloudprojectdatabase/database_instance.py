@@ -190,6 +190,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         With this resource you can create a database for the following database engine:
 
+        * `clickhouse`
         * `mysql`
         * `postgresql`
 
@@ -237,6 +238,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         With this resource you can create a database for the following database engine:
 
+        * `clickhouse`
         * `mysql`
         * `postgresql`
 

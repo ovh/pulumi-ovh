@@ -249,14 +249,14 @@ public final class StorageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service name
+     * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Service name
+     * @return Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -660,7 +660,7 @@ public final class StorageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class StorageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Service name
+         * @param serviceName Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
          * 
          * @return builder
          * 

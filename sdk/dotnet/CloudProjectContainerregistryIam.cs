@@ -55,6 +55,9 @@ namespace Pulumi.Ovh
         [Output("deleteUsers")]
         public Output<bool?> DeleteUsers { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether IAM is enabled for the registry.
+        /// </summary>
         [Output("iamEnabled")]
         public Output<bool> IamEnabled { get; private set; } = null!;
 
@@ -149,6 +152,9 @@ namespace Pulumi.Ovh
         [Input("deleteUsers")]
         public Input<bool>? DeleteUsers { get; set; }
 
+        /// <summary>
+        /// Whether IAM is enabled for the registry.
+        /// </summary>
         [Input("iamEnabled")]
         public Input<bool>? IamEnabled { get; set; }
 

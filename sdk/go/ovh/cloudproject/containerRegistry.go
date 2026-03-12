@@ -52,6 +52,16 @@ import (
 // ```
 //
 // > **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
+//
+// ## Import
+//
+// OVHcloud Managed Private Registry can be imported using the `service_name` and `id` of the registry, separated by "/" E.g.,
+//
+// bash
+//
+// ```sh
+// $ pulumi import ovh:CloudProject/containerRegistry:ContainerRegistry my_registry service_name/registry_id
+// ```
 type ContainerRegistry struct {
 	pulumi.CustomResourceState
 

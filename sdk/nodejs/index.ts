@@ -10,6 +10,11 @@ export type CloudProjectContainerregistryIam = import("./cloudProjectContainerre
 export const CloudProjectContainerregistryIam: typeof import("./cloudProjectContainerregistryIam").CloudProjectContainerregistryIam = null as any;
 utilities.lazyLoad(exports, ["CloudProjectContainerregistryIam"], () => require("./cloudProjectContainerregistryIam"));
 
+export { CloudProjectDatabaseClickhouseUserArgs, CloudProjectDatabaseClickhouseUserState } from "./cloudProjectDatabaseClickhouseUser";
+export type CloudProjectDatabaseClickhouseUser = import("./cloudProjectDatabaseClickhouseUser").CloudProjectDatabaseClickhouseUser;
+export const CloudProjectDatabaseClickhouseUser: typeof import("./cloudProjectDatabaseClickhouseUser").CloudProjectDatabaseClickhouseUser = null as any;
+utilities.lazyLoad(exports, ["CloudProjectDatabaseClickhouseUser"], () => require("./cloudProjectDatabaseClickhouseUser"));
+
 export { CloudProjectDatabaseValkeyUserArgs, CloudProjectDatabaseValkeyUserState } from "./cloudProjectDatabaseValkeyUser";
 export type CloudProjectDatabaseValkeyUser = import("./cloudProjectDatabaseValkeyUser").CloudProjectDatabaseValkeyUser;
 export const CloudProjectDatabaseValkeyUser: typeof import("./cloudProjectDatabaseValkeyUser").CloudProjectDatabaseValkeyUser = null as any;
@@ -20,6 +25,11 @@ export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshK
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
 utilities.lazyLoad(exports, ["CloudProjectSshKey"], () => require("./cloudProjectSshKey"));
 
+export { CloudProjectStorageObjectBucketLifecycleConfigurationArgs, CloudProjectStorageObjectBucketLifecycleConfigurationState } from "./cloudProjectStorageObjectBucketLifecycleConfiguration";
+export type CloudProjectStorageObjectBucketLifecycleConfiguration = import("./cloudProjectStorageObjectBucketLifecycleConfiguration").CloudProjectStorageObjectBucketLifecycleConfiguration;
+export const CloudProjectStorageObjectBucketLifecycleConfiguration: typeof import("./cloudProjectStorageObjectBucketLifecycleConfiguration").CloudProjectStorageObjectBucketLifecycleConfiguration = null as any;
+utilities.lazyLoad(exports, ["CloudProjectStorageObjectBucketLifecycleConfiguration"], () => require("./cloudProjectStorageObjectBucketLifecycleConfiguration"));
+
 export { CloudProjectStorageReplicationJobArgs, CloudProjectStorageReplicationJobState } from "./cloudProjectStorageReplicationJob";
 export type CloudProjectStorageReplicationJob = import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob;
 export const CloudProjectStorageReplicationJob: typeof import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob = null as any;
@@ -29,6 +39,11 @@ export { DomainZoneDynhostRecordArgs, DomainZoneDynhostRecordState } from "./dom
 export type DomainZoneDynhostRecord = import("./domainZoneDynhostRecord").DomainZoneDynhostRecord;
 export const DomainZoneDynhostRecord: typeof import("./domainZoneDynhostRecord").DomainZoneDynhostRecord = null as any;
 utilities.lazyLoad(exports, ["DomainZoneDynhostRecord"], () => require("./domainZoneDynhostRecord"));
+
+export { GetCloudProjectDatabaseClickhouseUserArgs, GetCloudProjectDatabaseClickhouseUserResult, GetCloudProjectDatabaseClickhouseUserOutputArgs } from "./getCloudProjectDatabaseClickhouseUser";
+export const getCloudProjectDatabaseClickhouseUser: typeof import("./getCloudProjectDatabaseClickhouseUser").getCloudProjectDatabaseClickhouseUser = null as any;
+export const getCloudProjectDatabaseClickhouseUserOutput: typeof import("./getCloudProjectDatabaseClickhouseUser").getCloudProjectDatabaseClickhouseUserOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectDatabaseClickhouseUser","getCloudProjectDatabaseClickhouseUserOutput"], () => require("./getCloudProjectDatabaseClickhouseUser"));
 
 export { GetCloudProjectDatabaseValkeyUserArgs, GetCloudProjectDatabaseValkeyUserResult, GetCloudProjectDatabaseValkeyUserOutputArgs } from "./getCloudProjectDatabaseValkeyUser";
 export const getCloudProjectDatabaseValkeyUser: typeof import("./getCloudProjectDatabaseValkeyUser").getCloudProjectDatabaseValkeyUser = null as any;
@@ -64,6 +79,11 @@ export { GetCloudProjectSshKeysArgs, GetCloudProjectSshKeysResult, GetCloudProje
 export const getCloudProjectSshKeys: typeof import("./getCloudProjectSshKeys").getCloudProjectSshKeys = null as any;
 export const getCloudProjectSshKeysOutput: typeof import("./getCloudProjectSshKeys").getCloudProjectSshKeysOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudProjectSshKeys","getCloudProjectSshKeysOutput"], () => require("./getCloudProjectSshKeys"));
+
+export { GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs, GetCloudProjectStorageObjectBucketLifecycleConfigurationResult, GetCloudProjectStorageObjectBucketLifecycleConfigurationOutputArgs } from "./getCloudProjectStorageObjectBucketLifecycleConfiguration";
+export const getCloudProjectStorageObjectBucketLifecycleConfiguration: typeof import("./getCloudProjectStorageObjectBucketLifecycleConfiguration").getCloudProjectStorageObjectBucketLifecycleConfiguration = null as any;
+export const getCloudProjectStorageObjectBucketLifecycleConfigurationOutput: typeof import("./getCloudProjectStorageObjectBucketLifecycleConfiguration").getCloudProjectStorageObjectBucketLifecycleConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectStorageObjectBucketLifecycleConfiguration","getCloudProjectStorageObjectBucketLifecycleConfigurationOutput"], () => require("./getCloudProjectStorageObjectBucketLifecycleConfiguration"));
 
 export { GetDbaasLogsOutputGraylogStreamUrlArgs, GetDbaasLogsOutputGraylogStreamUrlResult, GetDbaasLogsOutputGraylogStreamUrlOutputArgs } from "./getDbaasLogsOutputGraylogStreamUrl";
 export const getDbaasLogsOutputGraylogStreamUrl: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrl = null as any;
@@ -203,6 +223,11 @@ utilities.lazyLoad(exports, ["OvhcloudConnectPopDatacenterExtraConfig"], () => r
 export * from "./provider";
 import { Provider } from "./provider";
 
+export { StorageEfsArgs, StorageEfsState } from "./storageEfs";
+export type StorageEfs = import("./storageEfs").StorageEfs;
+export const StorageEfs: typeof import("./storageEfs").StorageEfs = null as any;
+utilities.lazyLoad(exports, ["StorageEfs"], () => require("./storageEfs"));
+
 export { StorageEfsShareArgs, StorageEfsShareState } from "./storageEfsShare";
 export type StorageEfsShare = import("./storageEfsShare").StorageEfsShare;
 export const StorageEfsShare: typeof import("./storageEfsShare").StorageEfsShare = null as any;
@@ -280,10 +305,14 @@ const _module = {
         switch (type) {
             case "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam":
                 return new CloudProjectContainerregistryIam(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser":
+                return new CloudProjectDatabaseClickhouseUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser":
                 return new CloudProjectDatabaseValkeyUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
+                return new CloudProjectStorageObjectBucketLifecycleConfiguration(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
                 return new CloudProjectStorageReplicationJob(name, <any>undefined, { urn })
             case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
@@ -296,6 +325,8 @@ const _module = {
                 return new OvhcloudConnectPopDatacenterConfig(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopDatacenterExtraConfig:OvhcloudConnectPopDatacenterExtraConfig":
                 return new OvhcloudConnectPopDatacenterExtraConfig(name, <any>undefined, { urn })
+            case "ovh:index/storageEfs:StorageEfs":
+                return new StorageEfs(name, <any>undefined, { urn })
             case "ovh:index/storageEfsShare:StorageEfsShare":
                 return new StorageEfsShare(name, <any>undefined, { urn })
             case "ovh:index/storageEfsShareAcl:StorageEfsShareAcl":
@@ -312,14 +343,17 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseClickhouseUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageObjectBucketLifecycleConfiguration", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageReplicationJob", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/iamResourceTags", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterExtraConfig", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/storageEfs", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShare", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareSnapshot", _module)

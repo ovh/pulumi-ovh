@@ -298,6 +298,16 @@ class IdentityUser(pulumi.CustomResource):
             password="super-s3cr3t!password")
         ```
 
+        ## Import
+
+        An identity user can be imported using the `login` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Me/identityUser:IdentityUser my_user login
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: User description.
@@ -327,6 +337,16 @@ class IdentityUser(pulumi.CustomResource):
             group="DEFAULT",
             login="my_login",
             password="super-s3cr3t!password")
+        ```
+
+        ## Import
+
+        An identity user can be imported using the `login` E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Me/identityUser:IdentityUser my_user login
         ```
 
         :param str resource_name: The name of the resource.

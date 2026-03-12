@@ -277,6 +277,16 @@ class VrackNetwork(pulumi.CustomResource):
             zone=iplb.zones[0])
         ```
 
+        ## Import
+
+        An IP Loadbalancing vRack network can be imported using the `service_name` and `vrack_network_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/vrackNetwork:VrackNetwork network service_name/vrack_network_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human readable name for your vrack network
@@ -317,6 +327,16 @@ class VrackNetwork(pulumi.CustomResource):
             port=80,
             vrack_network_id=network.vrack_network_id,
             zone=iplb.zones[0])
+        ```
+
+        ## Import
+
+        An IP Loadbalancing vRack network can be imported using the `service_name` and `vrack_network_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:IpLoadBalancing/vrackNetwork:VrackNetwork network service_name/vrack_network_id
         ```
 
         :param str resource_name: The name of the resource.

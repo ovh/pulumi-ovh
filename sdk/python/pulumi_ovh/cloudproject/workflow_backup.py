@@ -32,6 +32,7 @@ class WorkflowBackupArgs:
         :param pulumi.Input[_builtins.str] cron: The cron periodicity at which the backup workflow is scheduled
                
                * `instanceId` the id of the instance to back up
+        :param pulumi.Input[_builtins.str] instance_id: See Argument Reference above.
         :param pulumi.Input[_builtins.str] region_name: The name of the openstack region.
         :param pulumi.Input[_builtins.int] rotation: The number of backup that are retained.
         :param pulumi.Input[_builtins.str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
@@ -69,6 +70,9 @@ class WorkflowBackupArgs:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -163,9 +167,11 @@ class _WorkflowBackupState:
         """
         Input properties used for looking up and filtering WorkflowBackup resources.
         :param pulumi.Input[_builtins.str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
+        :param pulumi.Input[_builtins.str] created_at: The creation date of the workflow.
         :param pulumi.Input[_builtins.str] cron: The cron periodicity at which the backup workflow is scheduled
                
                * `instanceId` the id of the instance to back up
+        :param pulumi.Input[_builtins.str] instance_id: See Argument Reference above.
         :param pulumi.Input[_builtins.int] max_execution_count: The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
         :param pulumi.Input[_builtins.str] name: The worflow name that is used in the UI
         :param pulumi.Input[_builtins.str] region_name: The name of the openstack region.
@@ -206,6 +212,9 @@ class _WorkflowBackupState:
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The creation date of the workflow.
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -229,6 +238,9 @@ class _WorkflowBackupState:
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
@@ -330,12 +342,23 @@ class WorkflowBackup(pulumi.CustomResource):
             rotation=7)
         ```
 
+        ## Import
+
+        A cloud project workflow backup can be imported using the `id` (workflow ID) E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/workflowBackup:WorkflowBackup my_workflow id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
         :param pulumi.Input[_builtins.str] cron: The cron periodicity at which the backup workflow is scheduled
                
                * `instanceId` the id of the instance to back up
+        :param pulumi.Input[_builtins.str] instance_id: See Argument Reference above.
         :param pulumi.Input[_builtins.int] max_execution_count: The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
         :param pulumi.Input[_builtins.str] name: The worflow name that is used in the UI
         :param pulumi.Input[_builtins.str] region_name: The name of the openstack region.
@@ -365,6 +388,16 @@ class WorkflowBackup(pulumi.CustomResource):
             max_execution_count=0,
             name="Backup workflow for instance",
             rotation=7)
+        ```
+
+        ## Import
+
+        A cloud project workflow backup can be imported using the `id` (workflow ID) E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/workflowBackup:WorkflowBackup my_workflow id
         ```
 
         :param str resource_name: The name of the resource.
@@ -443,9 +476,11 @@ class WorkflowBackup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_name: The name of the backup files that are created. If empty, the `name` attribute is used.
+        :param pulumi.Input[_builtins.str] created_at: The creation date of the workflow.
         :param pulumi.Input[_builtins.str] cron: The cron periodicity at which the backup workflow is scheduled
                
                * `instanceId` the id of the instance to back up
+        :param pulumi.Input[_builtins.str] instance_id: See Argument Reference above.
         :param pulumi.Input[_builtins.int] max_execution_count: The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
         :param pulumi.Input[_builtins.str] name: The worflow name that is used in the UI
         :param pulumi.Input[_builtins.str] region_name: The name of the openstack region.
@@ -478,6 +513,9 @@ class WorkflowBackup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
+        """
+        The creation date of the workflow.
+        """
         return pulumi.get(self, "created_at")
 
     @_builtins.property
@@ -493,6 +531,9 @@ class WorkflowBackup(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        See Argument Reference above.
+        """
         return pulumi.get(self, "instance_id")
 
     @_builtins.property

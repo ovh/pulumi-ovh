@@ -156,6 +156,16 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
             }])
         ```
 
+        ## Import
+
+        OVHcloud Managed Private Registry IP restrictions of registry type can be imported using the `service_name` and `registry_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry my_ip_restrictions service_name/registry_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]] ip_restrictions: IP restrictions applied on artifact manager component.
@@ -186,6 +196,16 @@ class ContainerRegistryIPRestrictionsRegistry(pulumi.CustomResource):
                 "ip_block": "xxx.xxx.xxx.xxx/xx",
                 "description": "xxxxxxx",
             }])
+        ```
+
+        ## Import
+
+        OVHcloud Managed Private Registry IP restrictions of registry type can be imported using the `service_name` and `registry_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:CloudProject/containerRegistryIPRestrictionsRegistry:ContainerRegistryIPRestrictionsRegistry my_ip_restrictions service_name/registry_id
         ```
 
         :param str resource_name: The name of the resource.

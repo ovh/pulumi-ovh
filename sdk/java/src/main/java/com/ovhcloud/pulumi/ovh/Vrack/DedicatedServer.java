@@ -54,6 +54,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A vRack dedicated server attachment can be imported using the `service_name` and `server_id`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Vrack/dedicatedServer:DedicatedServer vds service_name/server_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Vrack/dedicatedServer:DedicatedServer")
 public class DedicatedServer extends com.pulumi.resources.CustomResource {

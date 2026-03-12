@@ -54,6 +54,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * An IP firewall can be imported using the `ip` and `ip_on_firewall`, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:Ip/firewall:Firewall my_firewall 1.2.3.4/32/1.2.3.4
+ * ```
+ * 
  */
 @ResourceType(type="ovh:Ip/firewall:Firewall")
 public class Firewall extends com.pulumi.resources.CustomResource {

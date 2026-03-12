@@ -121,6 +121,16 @@ class DedicatedServerInterface(pulumi.CustomResource):
             interface_id=server.enabled_vrack_vnis[0])
         ```
 
+        ## Import
+
+        A vRack dedicated server interface attachment can be imported using the `service_name` and `interface_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface vdsi service_name/interface_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] interface_id: The id of dedicated server network interface.
@@ -147,6 +157,16 @@ class DedicatedServerInterface(pulumi.CustomResource):
         vdsi = ovh.vrack.DedicatedServerInterface("vdsi",
             service_name="pn-xxxxxxx",
             interface_id=server.enabled_vrack_vnis[0])
+        ```
+
+        ## Import
+
+        A vRack dedicated server interface attachment can be imported using the `service_name` and `interface_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface vdsi service_name/interface_id
         ```
 
         :param str resource_name: The name of the resource.

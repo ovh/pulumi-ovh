@@ -80,6 +80,20 @@ public class Vps extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
+     * Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     * 
+     */
+    @Export(name="doNotSendPassword", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> doNotSendPassword;
+
+    /**
+     * @return Indicates if default password should be set and sent by email. Default false: a password is set and an email is sent
+     * 
+     */
+    public Output<Boolean> doNotSendPassword() {
+        return this.doNotSendPassword;
+    }
+    /**
      * IAM resource information
      * 
      */

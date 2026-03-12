@@ -54,6 +54,16 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * A cloud project failover IP attachment can be imported using the `id` (failover IP block ID) E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:CloudProject/failoverIpAttach:FailoverIpAttach my_ip id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:CloudProject/failoverIpAttach:FailoverIpAttach")
 public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
@@ -202,7 +212,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FailoverIpAttach(java.lang.String name, FailoverIpAttachArgs args) {
+    public FailoverIpAttach(java.lang.String name, @Nullable FailoverIpAttachArgs args) {
         this(name, args, null);
     }
     /**
@@ -211,7 +221,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FailoverIpAttach(java.lang.String name, FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public FailoverIpAttach(java.lang.String name, @Nullable FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -219,7 +229,7 @@ public class FailoverIpAttach extends com.pulumi.resources.CustomResource {
         super("ovh:CloudProject/failoverIpAttach:FailoverIpAttach", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static FailoverIpAttachArgs makeArgs(FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static FailoverIpAttachArgs makeArgs(@Nullable FailoverIpAttachArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

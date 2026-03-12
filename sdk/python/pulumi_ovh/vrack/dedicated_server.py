@@ -120,6 +120,16 @@ class DedicatedServer(pulumi.CustomResource):
             server_id="67890")
         ```
 
+        ## Import
+
+        A vRack dedicated server attachment can be imported using the `service_name` and `server_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/dedicatedServer:DedicatedServer vds service_name/server_id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] server_id: The id of the dedicated server.
@@ -145,6 +155,16 @@ class DedicatedServer(pulumi.CustomResource):
         vds = ovh.vrack.DedicatedServer("vds",
             service_name="XXXX",
             server_id="67890")
+        ```
+
+        ## Import
+
+        A vRack dedicated server attachment can be imported using the `service_name` and `server_id`, separated by "/" E.g.,
+
+        bash
+
+        ```sh
+        $ pulumi import ovh:Vrack/dedicatedServer:DedicatedServer vds service_name/server_id
         ```
 
         :param str resource_name: The name of the resource.

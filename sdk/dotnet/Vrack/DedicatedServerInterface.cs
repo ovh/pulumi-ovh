@@ -37,6 +37,16 @@ namespace Pulumi.Ovh.Vrack
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A vRack dedicated server interface attachment can be imported using the `service_name` and `interface_id`, separated by "/" E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface vdsi service_name/interface_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Vrack/dedicatedServerInterface:DedicatedServerInterface")]
     public partial class DedicatedServerInterface : global::Pulumi.CustomResource

@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * bash
  *
  * ```sh
- * $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface gateway service_name/region/id/interface_id
+ * $ pulumi import ovh:CloudProject/gatewayInterface:GatewayInterface interface service_name/region/id/interface_id
  * ```
  */
 export class GatewayInterface extends pulumi.CustomResource {
@@ -62,9 +62,9 @@ export class GatewayInterface extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * ID of the cloud project
+     * ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    public readonly serviceName!: pulumi.Output<string>;
+    public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
      * ID of the subnet to add
      */
@@ -93,9 +93,6 @@ export class GatewayInterface extends pulumi.CustomResource {
             const args = argsOrState as GatewayInterfaceArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             if ((!args || args.subnetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetId'");
@@ -133,7 +130,7 @@ export interface GatewayInterfaceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * ID of the cloud project
+     * ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -155,9 +152,9 @@ export interface GatewayInterfaceArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * ID of the cloud project
+     * ID of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * ID of the subnet to add
      */

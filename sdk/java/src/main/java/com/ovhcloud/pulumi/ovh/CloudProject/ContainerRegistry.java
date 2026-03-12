@@ -68,6 +68,16 @@ import javax.annotation.Nullable;
  * 
  * &gt; **WARNING** You can update and migrate to a higher plan at any time but not the contrary.
  * 
+ * ## Import
+ * 
+ * OVHcloud Managed Private Registry can be imported using the `service_name` and `id` of the registry, separated by &#34;/&#34; E.g.,
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import ovh:CloudProject/containerRegistry:ContainerRegistry my_registry service_name/registry_id
+ * ```
+ * 
  */
 @ResourceType(type="ovh:CloudProject/containerRegistry:ContainerRegistry")
 public class ContainerRegistry extends com.pulumi.resources.CustomResource {

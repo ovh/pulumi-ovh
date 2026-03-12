@@ -23,6 +23,16 @@ import * as utilities from "../utilities";
  *     rotation: 7,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * A cloud project workflow backup can be imported using the `id` (workflow ID) E.g.,
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import ovh:CloudProject/workflowBackup:WorkflowBackup my_workflow id
+ * ```
  */
 export class WorkflowBackup extends pulumi.CustomResource {
     /**
@@ -56,6 +66,9 @@ export class WorkflowBackup extends pulumi.CustomResource {
      * The name of the backup files that are created. If empty, the `name` attribute is used.
      */
     public readonly backupName!: pulumi.Output<string>;
+    /**
+     * The creation date of the workflow.
+     */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * The cron periodicity at which the backup workflow is scheduled
@@ -63,6 +76,9 @@ export class WorkflowBackup extends pulumi.CustomResource {
      * * `instanceId` the id of the instance to back up
      */
     public readonly cron!: pulumi.Output<string>;
+    /**
+     * See Argument Reference above.
+     */
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -144,6 +160,9 @@ export interface WorkflowBackupState {
      * The name of the backup files that are created. If empty, the `name` attribute is used.
      */
     backupName?: pulumi.Input<string>;
+    /**
+     * The creation date of the workflow.
+     */
     createdAt?: pulumi.Input<string>;
     /**
      * The cron periodicity at which the backup workflow is scheduled
@@ -151,6 +170,9 @@ export interface WorkflowBackupState {
      * * `instanceId` the id of the instance to back up
      */
     cron?: pulumi.Input<string>;
+    /**
+     * See Argument Reference above.
+     */
     instanceId?: pulumi.Input<string>;
     /**
      * The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion
@@ -188,6 +210,9 @@ export interface WorkflowBackupArgs {
      * * `instanceId` the id of the instance to back up
      */
     cron: pulumi.Input<string>;
+    /**
+     * See Argument Reference above.
+     */
     instanceId: pulumi.Input<string>;
     /**
      * The number of times the worflow is run. Default value is `0` which means that the workflow will be scheduled continously until its deletion

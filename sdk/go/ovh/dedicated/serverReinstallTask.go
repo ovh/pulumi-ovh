@@ -19,7 +19,7 @@ type ServerReinstallTask struct {
 	BootidOnDestroy pulumi.IntPtrOutput `pulumi:"bootidOnDestroy"`
 	// Details of this task. (should be `Install asked`)
 	Comment pulumi.StringOutput `pulumi:"comment"`
-	// Available attributes and their types are OS-dependant. Example: `hostname`.
+	// Available attributes and their types are OS-dependent. Example: `hostname`.
 	//
 	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations ServerReinstallTaskCustomizationsPtrOutput `pulumi:"customizations"`
@@ -83,7 +83,7 @@ type serverReinstallTaskState struct {
 	BootidOnDestroy *int `pulumi:"bootidOnDestroy"`
 	// Details of this task. (should be `Install asked`)
 	Comment *string `pulumi:"comment"`
-	// Available attributes and their types are OS-dependant. Example: `hostname`.
+	// Available attributes and their types are OS-dependent. Example: `hostname`.
 	//
 	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations *ServerReinstallTaskCustomizations `pulumi:"customizations"`
@@ -112,7 +112,7 @@ type ServerReinstallTaskState struct {
 	BootidOnDestroy pulumi.IntPtrInput
 	// Details of this task. (should be `Install asked`)
 	Comment pulumi.StringPtrInput
-	// Available attributes and their types are OS-dependant. Example: `hostname`.
+	// Available attributes and their types are OS-dependent. Example: `hostname`.
 	//
 	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations ServerReinstallTaskCustomizationsPtrInput
@@ -143,7 +143,7 @@ func (ServerReinstallTaskState) ElementType() reflect.Type {
 type serverReinstallTaskArgs struct {
 	// If set, reboot the server on the specified boot id during destroy phase.
 	BootidOnDestroy *int `pulumi:"bootidOnDestroy"`
-	// Available attributes and their types are OS-dependant. Example: `hostname`.
+	// Available attributes and their types are OS-dependent. Example: `hostname`.
 	//
 	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations *ServerReinstallTaskCustomizations `pulumi:"customizations"`
@@ -161,7 +161,7 @@ type serverReinstallTaskArgs struct {
 type ServerReinstallTaskArgs struct {
 	// If set, reboot the server on the specified boot id during destroy phase.
 	BootidOnDestroy pulumi.IntPtrInput
-	// Available attributes and their types are OS-dependant. Example: `hostname`.
+	// Available attributes and their types are OS-dependent. Example: `hostname`.
 	//
 	// > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 	Customizations ServerReinstallTaskCustomizationsPtrInput
@@ -272,7 +272,7 @@ func (o ServerReinstallTaskOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerReinstallTask) pulumi.StringOutput { return v.Comment }).(pulumi.StringOutput)
 }
 
-// Available attributes and their types are OS-dependant. Example: `hostname`.
+// Available attributes and their types are OS-dependent. Example: `hostname`.
 //
 // > **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
 func (o ServerReinstallTaskOutput) Customizations() ServerReinstallTaskCustomizationsPtrOutput {

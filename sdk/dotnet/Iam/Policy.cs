@@ -124,6 +124,16 @@ namespace Pulumi.Ovh.Iam
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An IAM policy can be imported using the `id` E.g.,
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import ovh:Iam/policy:Policy manager policy_id
+    /// ```
     /// </summary>
     [OvhResourceType("ovh:Iam/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource

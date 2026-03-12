@@ -51,7 +51,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Available attributes and their types are OS-dependant. Example: `hostname`.
+     * Available attributes and their types are OS-dependent. Example: `hostname`.
      * 
      * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      * 
@@ -60,7 +60,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
     private @Nullable Output<ServerReinstallTaskCustomizationsArgs> customizations;
 
     /**
-     * @return Available attributes and their types are OS-dependant. Example: `hostname`.
+     * @return Available attributes and their types are OS-dependent. Example: `hostname`.
      * 
      * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
      * 
@@ -282,7 +282,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customizations Available attributes and their types are OS-dependant. Example: `hostname`.
+         * @param customizations Available attributes and their types are OS-dependent. Example: `hostname`.
          * 
          * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
          * 
@@ -295,7 +295,7 @@ public final class ServerReinstallTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param customizations Available attributes and their types are OS-dependant. Example: `hostname`.
+         * @param customizations Available attributes and their types are OS-dependent. Example: `hostname`.
          * 
          * &gt; **WARNING** Some customizations may be required on some Operating Systems. [Check how to list the available and required customization(s) for your operating system](https://help.ovhcloud.com/csm/en-dedicated-servers-api-os-installation?id=kb_article_view&amp;sysparm_article=KB0061951#os-inputs) (do not forget to adapt camel case customization name to snake case parameter).
          * 
