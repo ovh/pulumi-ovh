@@ -2,8 +2,6 @@ name: Test Maven central credentials
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
 
 jobs:
   ossrh-auth-check:
