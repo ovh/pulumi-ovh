@@ -18,6 +18,7 @@ $ pulumi import ovh:CloudProject/kube:Kube my_kube_cluster_name <service_name>/x
 ## Managed Private Registry
 
 1. [Create an OVHcloud MPR in Golang/Go](./registry/ovh-registry-go/)
+1. [Create an OVHcloud MPR in Typescript](./registry/ovh-registry-typescript/)
 
 ## Managed Databases
 
