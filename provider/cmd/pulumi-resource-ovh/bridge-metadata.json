@@ -245,6 +245,10 @@
                 "current": "ovh:CloudProject/failoverIpAttach:FailoverIpAttach",
                 "majorVersion": 2
             },
+            "ovh_cloud_project_file_storage_share": {
+                "current": "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare",
+                "majorVersion": 2
+            },
             "ovh_cloud_project_gateway": {
                 "current": "ovh:CloudProject/gateway:Gateway",
                 "majorVersion": 2,
@@ -434,6 +438,9 @@
                 "current": "ovh:CloudProject/kubeNodePool:KubeNodePool",
                 "majorVersion": 2,
                 "fields": {
+                    "attach_floating_ips": {
+                        "maxItemsOne": true
+                    },
                     "availability_zones": {
                         "maxItemsOne": false
                     },
@@ -2340,6 +2347,9 @@
                 "current": "ovh:CloudProject/getKubeNodePool:getKubeNodePool",
                 "majorVersion": 2,
                 "fields": {
+                    "attach_floating_ips": {
+                        "maxItemsOne": true
+                    },
                     "availability_zones": {
                         "maxItemsOne": false
                     },
@@ -3885,6 +3895,7 @@
             "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
             "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser": 0,
             "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
+            "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare": 1,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
             "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,

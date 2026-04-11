@@ -12,6 +12,7 @@ import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,6 +35,21 @@ public final class PrivateDatabaseState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> DatabaseURN() {
         return Optional.ofNullable(this.DatabaseURN);
+    }
+
+    /**
+     * Advanced configuration key / value.
+     * 
+     */
+    @Import(name="advancedConfiguration")
+    private @Nullable Output<Map<String,String>> advancedConfiguration;
+
+    /**
+     * @return Advanced configuration key / value.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> advancedConfiguration() {
+        return Optional.ofNullable(this.advancedConfiguration);
     }
 
     /**
@@ -408,6 +424,7 @@ public final class PrivateDatabaseState extends com.pulumi.resources.ResourceArg
 
     private PrivateDatabaseState(PrivateDatabaseState $) {
         this.DatabaseURN = $.DatabaseURN;
+        this.advancedConfiguration = $.advancedConfiguration;
         this.cpu = $.cpu;
         this.datacenter = $.datacenter;
         this.displayName = $.displayName;
@@ -471,6 +488,27 @@ public final class PrivateDatabaseState extends com.pulumi.resources.ResourceArg
          */
         public Builder DatabaseURN(String DatabaseURN) {
             return DatabaseURN(Output.of(DatabaseURN));
+        }
+
+        /**
+         * @param advancedConfiguration Advanced configuration key / value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedConfiguration(@Nullable Output<Map<String,String>> advancedConfiguration) {
+            $.advancedConfiguration = advancedConfiguration;
+            return this;
+        }
+
+        /**
+         * @param advancedConfiguration Advanced configuration key / value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedConfiguration(Map<String,String> advancedConfiguration) {
+            return advancedConfiguration(Output.of(advancedConfiguration));
         }
 
         /**

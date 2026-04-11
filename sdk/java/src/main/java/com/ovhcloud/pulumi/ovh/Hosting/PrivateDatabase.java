@@ -17,6 +17,7 @@ import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -130,6 +131,20 @@ public class PrivateDatabase extends com.pulumi.resources.CustomResource {
      */
     public Output<String> DatabaseURN() {
         return this.DatabaseURN;
+    }
+    /**
+     * Advanced configuration key / value.
+     * 
+     */
+    @Export(name="advancedConfiguration", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> advancedConfiguration;
+
+    /**
+     * @return Advanced configuration key / value.
+     * 
+     */
+    public Output<Map<String,String>> advancedConfiguration() {
+        return this.advancedConfiguration;
     }
     /**
      * Number of CPU on your private database

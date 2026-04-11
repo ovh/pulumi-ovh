@@ -4812,6 +4812,147 @@ func (o KubeKubeconfigAttributeArrayOutput) Index(i pulumi.IntInput) KubeKubecon
 	}).(KubeKubeconfigAttributeOutput)
 }
 
+type KubeNodePoolAttachFloatingIps struct {
+	// Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// KubeNodePoolAttachFloatingIpsInput is an input type that accepts KubeNodePoolAttachFloatingIpsArgs and KubeNodePoolAttachFloatingIpsOutput values.
+// You can construct a concrete instance of `KubeNodePoolAttachFloatingIpsInput` via:
+//
+//	KubeNodePoolAttachFloatingIpsArgs{...}
+type KubeNodePoolAttachFloatingIpsInput interface {
+	pulumi.Input
+
+	ToKubeNodePoolAttachFloatingIpsOutput() KubeNodePoolAttachFloatingIpsOutput
+	ToKubeNodePoolAttachFloatingIpsOutputWithContext(context.Context) KubeNodePoolAttachFloatingIpsOutput
+}
+
+type KubeNodePoolAttachFloatingIpsArgs struct {
+	// Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (KubeNodePoolAttachFloatingIpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (i KubeNodePoolAttachFloatingIpsArgs) ToKubeNodePoolAttachFloatingIpsOutput() KubeNodePoolAttachFloatingIpsOutput {
+	return i.ToKubeNodePoolAttachFloatingIpsOutputWithContext(context.Background())
+}
+
+func (i KubeNodePoolAttachFloatingIpsArgs) ToKubeNodePoolAttachFloatingIpsOutputWithContext(ctx context.Context) KubeNodePoolAttachFloatingIpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeNodePoolAttachFloatingIpsOutput)
+}
+
+func (i KubeNodePoolAttachFloatingIpsArgs) ToKubeNodePoolAttachFloatingIpsPtrOutput() KubeNodePoolAttachFloatingIpsPtrOutput {
+	return i.ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Background())
+}
+
+func (i KubeNodePoolAttachFloatingIpsArgs) ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) KubeNodePoolAttachFloatingIpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeNodePoolAttachFloatingIpsOutput).ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx)
+}
+
+// KubeNodePoolAttachFloatingIpsPtrInput is an input type that accepts KubeNodePoolAttachFloatingIpsArgs, KubeNodePoolAttachFloatingIpsPtr and KubeNodePoolAttachFloatingIpsPtrOutput values.
+// You can construct a concrete instance of `KubeNodePoolAttachFloatingIpsPtrInput` via:
+//
+//	        KubeNodePoolAttachFloatingIpsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeNodePoolAttachFloatingIpsPtrInput interface {
+	pulumi.Input
+
+	ToKubeNodePoolAttachFloatingIpsPtrOutput() KubeNodePoolAttachFloatingIpsPtrOutput
+	ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Context) KubeNodePoolAttachFloatingIpsPtrOutput
+}
+
+type kubeNodePoolAttachFloatingIpsPtrType KubeNodePoolAttachFloatingIpsArgs
+
+func KubeNodePoolAttachFloatingIpsPtr(v *KubeNodePoolAttachFloatingIpsArgs) KubeNodePoolAttachFloatingIpsPtrInput {
+	return (*kubeNodePoolAttachFloatingIpsPtrType)(v)
+}
+
+func (*kubeNodePoolAttachFloatingIpsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (i *kubeNodePoolAttachFloatingIpsPtrType) ToKubeNodePoolAttachFloatingIpsPtrOutput() KubeNodePoolAttachFloatingIpsPtrOutput {
+	return i.ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeNodePoolAttachFloatingIpsPtrType) ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) KubeNodePoolAttachFloatingIpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeNodePoolAttachFloatingIpsPtrOutput)
+}
+
+type KubeNodePoolAttachFloatingIpsOutput struct{ *pulumi.OutputState }
+
+func (KubeNodePoolAttachFloatingIpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (o KubeNodePoolAttachFloatingIpsOutput) ToKubeNodePoolAttachFloatingIpsOutput() KubeNodePoolAttachFloatingIpsOutput {
+	return o
+}
+
+func (o KubeNodePoolAttachFloatingIpsOutput) ToKubeNodePoolAttachFloatingIpsOutputWithContext(ctx context.Context) KubeNodePoolAttachFloatingIpsOutput {
+	return o
+}
+
+func (o KubeNodePoolAttachFloatingIpsOutput) ToKubeNodePoolAttachFloatingIpsPtrOutput() KubeNodePoolAttachFloatingIpsPtrOutput {
+	return o.ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Background())
+}
+
+func (o KubeNodePoolAttachFloatingIpsOutput) ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) KubeNodePoolAttachFloatingIpsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeNodePoolAttachFloatingIps) *KubeNodePoolAttachFloatingIps {
+		return &v
+	}).(KubeNodePoolAttachFloatingIpsPtrOutput)
+}
+
+// Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+func (o KubeNodePoolAttachFloatingIpsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubeNodePoolAttachFloatingIps) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type KubeNodePoolAttachFloatingIpsPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeNodePoolAttachFloatingIpsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (o KubeNodePoolAttachFloatingIpsPtrOutput) ToKubeNodePoolAttachFloatingIpsPtrOutput() KubeNodePoolAttachFloatingIpsPtrOutput {
+	return o
+}
+
+func (o KubeNodePoolAttachFloatingIpsPtrOutput) ToKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) KubeNodePoolAttachFloatingIpsPtrOutput {
+	return o
+}
+
+func (o KubeNodePoolAttachFloatingIpsPtrOutput) Elem() KubeNodePoolAttachFloatingIpsOutput {
+	return o.ApplyT(func(v *KubeNodePoolAttachFloatingIps) KubeNodePoolAttachFloatingIps {
+		if v != nil {
+			return *v
+		}
+		var ret KubeNodePoolAttachFloatingIps
+		return ret
+	}).(KubeNodePoolAttachFloatingIpsOutput)
+}
+
+// Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+func (o KubeNodePoolAttachFloatingIpsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubeNodePoolAttachFloatingIps) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type KubeNodePoolTemplate struct {
 	// metadata
 	Metadata KubeNodePoolTemplateMetadata `pulumi:"metadata"`
@@ -15989,6 +16130,143 @@ func (o GetKubeKubeconfigAttributeArrayOutput) Index(i pulumi.IntInput) GetKubeK
 	}).(GetKubeKubeconfigAttributeOutput)
 }
 
+type GetKubeNodePoolAttachFloatingIps struct {
+	// Whether floating IPs attachment is enabled on nodes of this pool.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubeNodePoolAttachFloatingIpsInput is an input type that accepts GetKubeNodePoolAttachFloatingIpsArgs and GetKubeNodePoolAttachFloatingIpsOutput values.
+// You can construct a concrete instance of `GetKubeNodePoolAttachFloatingIpsInput` via:
+//
+//	GetKubeNodePoolAttachFloatingIpsArgs{...}
+type GetKubeNodePoolAttachFloatingIpsInput interface {
+	pulumi.Input
+
+	ToGetKubeNodePoolAttachFloatingIpsOutput() GetKubeNodePoolAttachFloatingIpsOutput
+	ToGetKubeNodePoolAttachFloatingIpsOutputWithContext(context.Context) GetKubeNodePoolAttachFloatingIpsOutput
+}
+
+type GetKubeNodePoolAttachFloatingIpsArgs struct {
+	// Whether floating IPs attachment is enabled on nodes of this pool.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubeNodePoolAttachFloatingIpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (i GetKubeNodePoolAttachFloatingIpsArgs) ToGetKubeNodePoolAttachFloatingIpsOutput() GetKubeNodePoolAttachFloatingIpsOutput {
+	return i.ToGetKubeNodePoolAttachFloatingIpsOutputWithContext(context.Background())
+}
+
+func (i GetKubeNodePoolAttachFloatingIpsArgs) ToGetKubeNodePoolAttachFloatingIpsOutputWithContext(ctx context.Context) GetKubeNodePoolAttachFloatingIpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeNodePoolAttachFloatingIpsOutput)
+}
+
+func (i GetKubeNodePoolAttachFloatingIpsArgs) ToGetKubeNodePoolAttachFloatingIpsPtrOutput() GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return i.ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeNodePoolAttachFloatingIpsArgs) ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeNodePoolAttachFloatingIpsOutput).ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx)
+}
+
+// GetKubeNodePoolAttachFloatingIpsPtrInput is an input type that accepts GetKubeNodePoolAttachFloatingIpsArgs, GetKubeNodePoolAttachFloatingIpsPtr and GetKubeNodePoolAttachFloatingIpsPtrOutput values.
+// You can construct a concrete instance of `GetKubeNodePoolAttachFloatingIpsPtrInput` via:
+//
+//	        GetKubeNodePoolAttachFloatingIpsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeNodePoolAttachFloatingIpsPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeNodePoolAttachFloatingIpsPtrOutput() GetKubeNodePoolAttachFloatingIpsPtrOutput
+	ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Context) GetKubeNodePoolAttachFloatingIpsPtrOutput
+}
+
+type getKubeNodePoolAttachFloatingIpsPtrType GetKubeNodePoolAttachFloatingIpsArgs
+
+func GetKubeNodePoolAttachFloatingIpsPtr(v *GetKubeNodePoolAttachFloatingIpsArgs) GetKubeNodePoolAttachFloatingIpsPtrInput {
+	return (*getKubeNodePoolAttachFloatingIpsPtrType)(v)
+}
+
+func (*getKubeNodePoolAttachFloatingIpsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (i *getKubeNodePoolAttachFloatingIpsPtrType) ToGetKubeNodePoolAttachFloatingIpsPtrOutput() GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return i.ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeNodePoolAttachFloatingIpsPtrType) ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeNodePoolAttachFloatingIpsPtrOutput)
+}
+
+type GetKubeNodePoolAttachFloatingIpsOutput struct{ *pulumi.OutputState }
+
+func (GetKubeNodePoolAttachFloatingIpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsOutput) ToGetKubeNodePoolAttachFloatingIpsOutput() GetKubeNodePoolAttachFloatingIpsOutput {
+	return o
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsOutput) ToGetKubeNodePoolAttachFloatingIpsOutputWithContext(ctx context.Context) GetKubeNodePoolAttachFloatingIpsOutput {
+	return o
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsOutput) ToGetKubeNodePoolAttachFloatingIpsPtrOutput() GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return o.ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsOutput) ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeNodePoolAttachFloatingIps) *GetKubeNodePoolAttachFloatingIps {
+		return &v
+	}).(GetKubeNodePoolAttachFloatingIpsPtrOutput)
+}
+
+// Whether floating IPs attachment is enabled on nodes of this pool.
+func (o GetKubeNodePoolAttachFloatingIpsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubeNodePoolAttachFloatingIps) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubeNodePoolAttachFloatingIpsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeNodePoolAttachFloatingIpsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeNodePoolAttachFloatingIps)(nil)).Elem()
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsPtrOutput) ToGetKubeNodePoolAttachFloatingIpsPtrOutput() GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return o
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsPtrOutput) ToGetKubeNodePoolAttachFloatingIpsPtrOutputWithContext(ctx context.Context) GetKubeNodePoolAttachFloatingIpsPtrOutput {
+	return o
+}
+
+func (o GetKubeNodePoolAttachFloatingIpsPtrOutput) Elem() GetKubeNodePoolAttachFloatingIpsOutput {
+	return o.ApplyT(func(v *GetKubeNodePoolAttachFloatingIps) GetKubeNodePoolAttachFloatingIps {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeNodePoolAttachFloatingIps
+		return ret
+	}).(GetKubeNodePoolAttachFloatingIpsOutput)
+}
+
+// Whether floating IPs attachment is enabled on nodes of this pool.
+func (o GetKubeNodePoolAttachFloatingIpsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubeNodePoolAttachFloatingIps) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetKubeNodePoolNodesNode struct {
 	// Creation date.
 	CreatedAt string `pulumi:"createdAt"`
@@ -21315,6 +21593,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyIpvsPtrInput)(nil)).Elem(), KubeCustomizationKubeProxyIpvsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeKubeconfigAttributeInput)(nil)).Elem(), KubeKubeconfigAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeKubeconfigAttributeArrayInput)(nil)).Elem(), KubeKubeconfigAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolAttachFloatingIpsInput)(nil)).Elem(), KubeNodePoolAttachFloatingIpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolAttachFloatingIpsPtrInput)(nil)).Elem(), KubeNodePoolAttachFloatingIpsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolTemplateInput)(nil)).Elem(), KubeNodePoolTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolTemplatePtrInput)(nil)).Elem(), KubeNodePoolTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolTemplateMetadataInput)(nil)).Elem(), KubeNodePoolTemplateMetadataArgs{})
@@ -21467,6 +21747,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIpvsPtrInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIpvsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeKubeconfigAttributeInput)(nil)).Elem(), GetKubeKubeconfigAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeKubeconfigAttributeArrayInput)(nil)).Elem(), GetKubeKubeconfigAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolAttachFloatingIpsInput)(nil)).Elem(), GetKubeNodePoolAttachFloatingIpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolAttachFloatingIpsPtrInput)(nil)).Elem(), GetKubeNodePoolAttachFloatingIpsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolNodesNodeInput)(nil)).Elem(), GetKubeNodePoolNodesNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolNodesNodeArrayInput)(nil)).Elem(), GetKubeNodePoolNodesNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolTemplateInput)(nil)).Elem(), GetKubeNodePoolTemplateArgs{})
@@ -21611,6 +21893,8 @@ func init() {
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyIpvsPtrOutput{})
 	pulumi.RegisterOutputType(KubeKubeconfigAttributeOutput{})
 	pulumi.RegisterOutputType(KubeKubeconfigAttributeArrayOutput{})
+	pulumi.RegisterOutputType(KubeNodePoolAttachFloatingIpsOutput{})
+	pulumi.RegisterOutputType(KubeNodePoolAttachFloatingIpsPtrOutput{})
 	pulumi.RegisterOutputType(KubeNodePoolTemplateOutput{})
 	pulumi.RegisterOutputType(KubeNodePoolTemplatePtrOutput{})
 	pulumi.RegisterOutputType(KubeNodePoolTemplateMetadataOutput{})
@@ -21763,6 +22047,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIpvsPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeKubeconfigAttributeOutput{})
 	pulumi.RegisterOutputType(GetKubeKubeconfigAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetKubeNodePoolAttachFloatingIpsOutput{})
+	pulumi.RegisterOutputType(GetKubeNodePoolAttachFloatingIpsPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolNodesNodeOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolNodesNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolTemplateOutput{})

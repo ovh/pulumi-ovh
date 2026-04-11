@@ -8,6 +8,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.ProjectPlanArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.ProjectPlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -39,6 +40,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> access() {
         return Optional.ofNullable(this.access);
+    }
+
+    /**
+     * Prevent the cloud project from being destroyed. Defaults to false.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Prevent the cloud project from being destroyed. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -189,6 +205,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState(ProjectState $) {
         this.ProjectURN = $.ProjectURN;
         this.access = $.access;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
@@ -246,6 +263,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         public Builder access(String access) {
             return access(Output.of(access));
+        }
+
+        /**
+         * @param deletionProtection Prevent the cloud project from being destroyed. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Prevent the cloud project from being destroyed. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

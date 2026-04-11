@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolAttachFloatingIpsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolTemplateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class GetKubeNodePoolArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubeNodePoolArgs Empty = new GetKubeNodePoolArgs();
+
+    /**
+     * Floating IPs attachment configuration for pool nodes.
+     * 
+     */
+    @Import(name="attachFloatingIps")
+    private @Nullable Output<GetKubeNodePoolAttachFloatingIpsArgs> attachFloatingIps;
+
+    /**
+     * @return Floating IPs attachment configuration for pool nodes.
+     * 
+     */
+    public Optional<Output<GetKubeNodePoolAttachFloatingIpsArgs>> attachFloatingIps() {
+        return Optional.ofNullable(this.attachFloatingIps);
+    }
 
     /**
      * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
@@ -88,6 +104,7 @@ public final class GetKubeNodePoolArgs extends com.pulumi.resources.InvokeArgs {
     private GetKubeNodePoolArgs() {}
 
     private GetKubeNodePoolArgs(GetKubeNodePoolArgs $) {
+        this.attachFloatingIps = $.attachFloatingIps;
         this.availabilityZones = $.availabilityZones;
         this.kubeId = $.kubeId;
         this.name = $.name;
@@ -111,6 +128,27 @@ public final class GetKubeNodePoolArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetKubeNodePoolArgs defaults) {
             $ = new GetKubeNodePoolArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachFloatingIps Floating IPs attachment configuration for pool nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachFloatingIps(@Nullable Output<GetKubeNodePoolAttachFloatingIpsArgs> attachFloatingIps) {
+            $.attachFloatingIps = attachFloatingIps;
+            return this;
+        }
+
+        /**
+         * @param attachFloatingIps Floating IPs attachment configuration for pool nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachFloatingIps(GetKubeNodePoolAttachFloatingIpsArgs attachFloatingIps) {
+            return attachFloatingIps(Output.of(attachFloatingIps));
         }
 
         /**

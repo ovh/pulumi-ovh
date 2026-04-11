@@ -50,6 +50,7 @@ __all__ = [
     'KubeCustomizationKubeProxyIptables',
     'KubeCustomizationKubeProxyIpvs',
     'KubeKubeconfigAttribute',
+    'KubeNodePoolAttachFloatingIps',
     'KubeNodePoolTemplate',
     'KubeNodePoolTemplateMetadata',
     'KubeNodePoolTemplateSpec',
@@ -127,6 +128,7 @@ __all__ = [
     'GetKubeCustomizationKubeProxyIptablesResult',
     'GetKubeCustomizationKubeProxyIpvsResult',
     'GetKubeKubeconfigAttributeResult',
+    'GetKubeNodePoolAttachFloatingIpsResult',
     'GetKubeNodePoolNodesNodeResult',
     'GetKubeNodePoolTemplateResult',
     'GetKubeNodePoolTemplateMetadataResult',
@@ -1808,6 +1810,27 @@ class KubeKubeconfigAttribute(dict):
         The kubernetes API server URL.
         """
         return pulumi.get(self, "host")
+
+
+@pulumi.output_type
+class KubeNodePoolAttachFloatingIps(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -6039,6 +6062,24 @@ class GetKubeKubeconfigAttributeResult(dict):
         Kubernetes API server endpoint.
         """
         return pulumi.get(self, "host")
+
+
+@pulumi.output_type
+class GetKubeNodePoolAttachFloatingIpsResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether floating IPs attachment is enabled on nodes of this pool.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether floating IPs attachment is enabled on nodes of this pool.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

@@ -83,6 +83,8 @@ __all__ = [
     'KubeCustomizationKubeProxyIpvsArgsDict',
     'KubeKubeconfigAttributeArgs',
     'KubeKubeconfigAttributeArgsDict',
+    'KubeNodePoolAttachFloatingIpsArgs',
+    'KubeNodePoolAttachFloatingIpsArgsDict',
     'KubeNodePoolTemplateArgs',
     'KubeNodePoolTemplateArgsDict',
     'KubeNodePoolTemplateMetadataArgs',
@@ -197,6 +199,8 @@ __all__ = [
     'GetKubeCustomizationKubeProxyIptablesArgsDict',
     'GetKubeCustomizationKubeProxyIpvsArgs',
     'GetKubeCustomizationKubeProxyIpvsArgsDict',
+    'GetKubeNodePoolAttachFloatingIpsArgs',
+    'GetKubeNodePoolAttachFloatingIpsArgsDict',
     'GetKubeNodePoolTemplateArgs',
     'GetKubeNodePoolTemplateArgsDict',
     'GetKubeNodePoolTemplateMetadataArgs',
@@ -2353,6 +2357,41 @@ class KubeKubeconfigAttributeArgs:
     @host.setter
     def host(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "host", value)
+
+
+if not MYPY:
+    class KubeNodePoolAttachFloatingIpsArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+elif False:
+    KubeNodePoolAttachFloatingIpsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeNodePoolAttachFloatingIpsArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -6671,6 +6710,37 @@ class GetKubeCustomizationKubeProxyIpvsArgs:
     @udp_timeout.setter
     def udp_timeout(self, value: Optional[_builtins.str]):
         pulumi.set(self, "udp_timeout", value)
+
+
+if not MYPY:
+    class GetKubeNodePoolAttachFloatingIpsArgsDict(TypedDict):
+        enabled: _builtins.bool
+        """
+        Whether floating IPs attachment is enabled on nodes of this pool.
+        """
+elif False:
+    GetKubeNodePoolAttachFloatingIpsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeNodePoolAttachFloatingIpsArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether floating IPs attachment is enabled on nodes of this pool.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether floating IPs attachment is enabled on nodes of this pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

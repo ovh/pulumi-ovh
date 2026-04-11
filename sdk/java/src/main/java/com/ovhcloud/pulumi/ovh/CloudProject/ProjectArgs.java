@@ -8,6 +8,7 @@ import com.ovhcloud.pulumi.ovh.CloudProject.inputs.ProjectPlanArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.ProjectPlanOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ProjectArgs Empty = new ProjectArgs();
+
+    /**
+     * Prevent the cloud project from being destroyed. Defaults to false.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Prevent the cloud project from being destroyed. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
 
     /**
      * A description associated with the user.
@@ -120,6 +136,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     private ProjectArgs() {}
 
     private ProjectArgs(ProjectArgs $) {
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
@@ -144,6 +161,27 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProjectArgs defaults) {
             $ = new ProjectArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionProtection Prevent the cloud project from being destroyed. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Prevent the cloud project from being destroyed. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

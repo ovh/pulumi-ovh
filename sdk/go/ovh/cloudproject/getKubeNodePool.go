@@ -53,6 +53,8 @@ func LookupKubeNodePool(ctx *pulumi.Context, args *LookupKubeNodePoolArgs, opts 
 
 // A collection of arguments for invoking getKubeNodePool.
 type LookupKubeNodePoolArgs struct {
+	// Floating IPs attachment configuration for pool nodes.
+	AttachFloatingIps *GetKubeNodePoolAttachFloatingIps `pulumi:"attachFloatingIps"`
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// The id of the managed kubernetes cluster.
@@ -68,6 +70,8 @@ type LookupKubeNodePoolArgs struct {
 type LookupKubeNodePoolResult struct {
 	// (Optional) should the pool use the anti-affinity feature. Default to `false`.
 	AntiAffinity bool `pulumi:"antiAffinity"`
+	// Floating IPs attachment configuration for pool nodes.
+	AttachFloatingIps GetKubeNodePoolAttachFloatingIps `pulumi:"attachFloatingIps"`
 	// (Optional) Enable auto-scaling for the pool. Default to `false`.
 	Autoscale bool `pulumi:"autoscale"`
 	// (Optional) scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
@@ -128,6 +132,8 @@ func LookupKubeNodePoolOutput(ctx *pulumi.Context, args LookupKubeNodePoolOutput
 
 // A collection of arguments for invoking getKubeNodePool.
 type LookupKubeNodePoolOutputArgs struct {
+	// Floating IPs attachment configuration for pool nodes.
+	AttachFloatingIps GetKubeNodePoolAttachFloatingIpsPtrInput `pulumi:"attachFloatingIps"`
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// The id of the managed kubernetes cluster.
@@ -161,6 +167,11 @@ func (o LookupKubeNodePoolResultOutput) ToLookupKubeNodePoolResultOutputWithCont
 // (Optional) should the pool use the anti-affinity feature. Default to `false`.
 func (o LookupKubeNodePoolResultOutput) AntiAffinity() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKubeNodePoolResult) bool { return v.AntiAffinity }).(pulumi.BoolOutput)
+}
+
+// Floating IPs attachment configuration for pool nodes.
+func (o LookupKubeNodePoolResultOutput) AttachFloatingIps() GetKubeNodePoolAttachFloatingIpsOutput {
+	return o.ApplyT(func(v LookupKubeNodePoolResult) GetKubeNodePoolAttachFloatingIps { return v.AttachFloatingIps }).(GetKubeNodePoolAttachFloatingIpsOutput)
 }
 
 // (Optional) Enable auto-scaling for the pool. Default to `false`.

@@ -69,6 +69,9 @@ import (
 //				AvailabilityZones: pulumi.StringArray{
 //					pulumi.String("eu-west-par-a"),
 //				},
+//				AttachFloatingIps: &cloudproject.KubeNodePoolAttachFloatingIpsArgs{
+//					Enabled: pulumi.Bool(false),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -146,6 +149,8 @@ type KubeNodePool struct {
 
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity pulumi.BoolOutput `pulumi:"antiAffinity"`
+	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	AttachFloatingIps KubeNodePoolAttachFloatingIpsOutput `pulumi:"attachFloatingIps"`
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale pulumi.BoolOutput `pulumi:"autoscale"`
 	// scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
@@ -153,7 +158,6 @@ type KubeNodePool struct {
 	// scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
 	AutoscalingScaleDownUnreadyTimeSeconds pulumi.IntOutput `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64Output `pulumi:"autoscalingScaleDownUtilizationThreshold"`
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
@@ -233,6 +237,8 @@ func GetKubeNodePool(ctx *pulumi.Context,
 type kubeNodePoolState struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity *bool `pulumi:"antiAffinity"`
+	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	AttachFloatingIps *KubeNodePoolAttachFloatingIps `pulumi:"attachFloatingIps"`
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale *bool `pulumi:"autoscale"`
 	// scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
@@ -240,7 +246,6 @@ type kubeNodePoolState struct {
 	// scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
 	AutoscalingScaleDownUnreadyTimeSeconds *int `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold *float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
@@ -285,6 +290,8 @@ type kubeNodePoolState struct {
 type KubeNodePoolState struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity pulumi.BoolPtrInput
+	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	AttachFloatingIps KubeNodePoolAttachFloatingIpsPtrInput
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale pulumi.BoolPtrInput
 	// scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
@@ -292,7 +299,6 @@ type KubeNodePoolState struct {
 	// scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
 	AutoscalingScaleDownUnreadyTimeSeconds pulumi.IntPtrInput
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64PtrInput
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones pulumi.StringArrayInput
@@ -341,6 +347,8 @@ func (KubeNodePoolState) ElementType() reflect.Type {
 type kubeNodePoolArgs struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity *bool `pulumi:"antiAffinity"`
+	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	AttachFloatingIps *KubeNodePoolAttachFloatingIps `pulumi:"attachFloatingIps"`
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale *bool `pulumi:"autoscale"`
 	// scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
@@ -348,7 +356,6 @@ type kubeNodePoolArgs struct {
 	// scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
 	AutoscalingScaleDownUnreadyTimeSeconds *int `pulumi:"autoscalingScaleDownUnreadyTimeSeconds"`
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold *float64 `pulumi:"autoscalingScaleDownUtilizationThreshold"`
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
@@ -376,6 +383,8 @@ type kubeNodePoolArgs struct {
 type KubeNodePoolArgs struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity pulumi.BoolPtrInput
+	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	AttachFloatingIps KubeNodePoolAttachFloatingIpsPtrInput
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale pulumi.BoolPtrInput
 	// scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
@@ -383,7 +392,6 @@ type KubeNodePoolArgs struct {
 	// scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
 	AutoscalingScaleDownUnreadyTimeSeconds pulumi.IntPtrInput
 	// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-	// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 	AutoscalingScaleDownUtilizationThreshold pulumi.Float64PtrInput
 	// list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
 	AvailabilityZones pulumi.StringArrayInput
@@ -499,6 +507,11 @@ func (o KubeNodePoolOutput) AntiAffinity() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.BoolOutput { return v.AntiAffinity }).(pulumi.BoolOutput)
 }
 
+// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+func (o KubeNodePoolOutput) AttachFloatingIps() KubeNodePoolAttachFloatingIpsOutput {
+	return o.ApplyT(func(v *KubeNodePool) KubeNodePoolAttachFloatingIpsOutput { return v.AttachFloatingIps }).(KubeNodePoolAttachFloatingIpsOutput)
+}
+
 // Enable auto-scaling for the pool. Default to `false`.
 func (o KubeNodePoolOutput) Autoscale() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.BoolOutput { return v.Autoscale }).(pulumi.BoolOutput)
@@ -515,7 +528,6 @@ func (o KubeNodePoolOutput) AutoscalingScaleDownUnreadyTimeSeconds() pulumi.IntO
 }
 
 // scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-// * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
 func (o KubeNodePoolOutput) AutoscalingScaleDownUtilizationThreshold() pulumi.Float64Output {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.Float64Output { return v.AutoscalingScaleDownUtilizationThreshold }).(pulumi.Float64Output)
 }

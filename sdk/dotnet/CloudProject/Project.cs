@@ -49,6 +49,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Access { get; private set; } = null!;
 
         /// <summary>
+        /// Prevent the cloud project from being destroyed. Defaults to false.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// A description associated with the user.
         /// </summary>
         [Output("description")]
@@ -150,6 +156,12 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Prevent the cloud project from being destroyed. Defaults to false.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// A description associated with the user.
         /// </summary>
         [Input("description")]
@@ -213,6 +225,12 @@ namespace Pulumi.Ovh.CloudProject
 
         [Input("access")]
         public Input<string>? Access { get; set; }
+
+        /// <summary>
+        /// Prevent the cloud project from being destroyed. Defaults to false.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// A description associated with the user.

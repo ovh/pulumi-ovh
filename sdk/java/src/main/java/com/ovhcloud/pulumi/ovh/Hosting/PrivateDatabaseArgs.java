@@ -10,6 +10,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,21 @@ import javax.annotation.Nullable;
 public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PrivateDatabaseArgs Empty = new PrivateDatabaseArgs();
+
+    /**
+     * Advanced configuration key / value.
+     * 
+     */
+    @Import(name="advancedConfiguration")
+    private @Nullable Output<Map<String,String>> advancedConfiguration;
+
+    /**
+     * @return Advanced configuration key / value.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> advancedConfiguration() {
+        return Optional.ofNullable(this.advancedConfiguration);
+    }
 
     /**
      * Name displayed in customer panel for your private database
@@ -135,6 +151,7 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
     private PrivateDatabaseArgs() {}
 
     private PrivateDatabaseArgs(PrivateDatabaseArgs $) {
+        this.advancedConfiguration = $.advancedConfiguration;
         this.displayName = $.displayName;
         this.orders = $.orders;
         this.ovhSubsidiary = $.ovhSubsidiary;
@@ -160,6 +177,27 @@ public final class PrivateDatabaseArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(PrivateDatabaseArgs defaults) {
             $ = new PrivateDatabaseArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedConfiguration Advanced configuration key / value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedConfiguration(@Nullable Output<Map<String,String>> advancedConfiguration) {
+            $.advancedConfiguration = advancedConfiguration;
+            return this;
+        }
+
+        /**
+         * @param advancedConfiguration Advanced configuration key / value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedConfiguration(Map<String,String> advancedConfiguration) {
+            return advancedConfiguration(Output.of(advancedConfiguration));
         }
 
         /**

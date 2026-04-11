@@ -961,6 +961,22 @@
                 }
             }
         },
+        "ovh:CloudProject/KubeNodePoolAttachFloatingIps:KubeNodePoolAttachFloatingIps": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.\n* `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
+                    ]
+                }
+            }
+        },
         "ovh:CloudProject/KubeNodePoolTemplate:KubeNodePoolTemplate": {
             "properties": {
                 "metadata": {
@@ -3107,6 +3123,23 @@
                 "clientKey",
                 "clusterCaCertificate",
                 "host"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:CloudProject/getKubeNodePoolAttachFloatingIps:getKubeNodePoolAttachFloatingIps": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether floating IPs attachment is enabled on nodes of this pool.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
@@ -15146,11 +15179,15 @@
             }
         },
         "ovh:CloudProject/kubeNodePool:KubeNodePool": {
-            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\nCreate a simple node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst nodePool = new ovh.cloudproject.KubeNodePool(\"node_pool\", {\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name: \"my-pool-1\",\n    flavorName: \"b3-8\",\n    desiredNodes: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool = ovh.cloudproject.KubeNodePool(\"node_pool\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name=\"my-pool-1\",\n    flavor_name=\"b3-8\",\n    desired_nodes=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePool = new Ovh.CloudProject.KubeNodePool(\"node_pool\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Name = \"my-pool-1\",\n        FlavorName = \"b3-8\",\n        DesiredNodes = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewKubeNodePool(ctx, \"node_pool\", \u0026cloudproject.KubeNodePoolArgs{\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tName:         pulumi.String(\"my-pool-1\"),\n\t\t\tFlavorName:   pulumi.String(\"b3-8\"),\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePool = new KubeNodePool(\"nodePool\", KubeNodePoolArgs.builder()\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .name(\"my-pool-1\")\n            .flavorName(\"b3-8\")\n            .desiredNodes(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePool:\n    type: ovh:CloudProject:KubeNodePool\n    name: node_pool\n    properties:\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      name: my-pool-1\n      flavorName: b3-8\n      desiredNodes: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst nodePoolMultiZones = new ovh.cloudproject.KubeNodePool(\"node_pool_multi_zones\", {\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name: \"my-pool-zone-a\",\n    flavorName: \"b3-8\",\n    desiredNodes: 3,\n    availabilityZones: [\"eu-west-par-a\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool_multi_zones = ovh.cloudproject.KubeNodePool(\"node_pool_multi_zones\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name=\"my-pool-zone-a\",\n    flavor_name=\"b3-8\",\n    desired_nodes=3,\n    availability_zones=[\"eu-west-par-a\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePoolMultiZones = new Ovh.CloudProject.KubeNodePool(\"node_pool_multi_zones\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Name = \"my-pool-zone-a\",\n        FlavorName = \"b3-8\",\n        DesiredNodes = 3,\n        AvailabilityZones = new[]\n        {\n            \"eu-west-par-a\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewKubeNodePool(ctx, \"node_pool_multi_zones\", \u0026cloudproject.KubeNodePoolArgs{\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tName:         pulumi.String(\"my-pool-zone-a\"),\n\t\t\tFlavorName:   pulumi.String(\"b3-8\"),\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tAvailabilityZones: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"eu-west-par-a\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePoolMultiZones = new KubeNodePool(\"nodePoolMultiZones\", KubeNodePoolArgs.builder()\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .name(\"my-pool-zone-a\")\n            .flavorName(\"b3-8\")\n            .desiredNodes(3)\n            .availabilityZones(\"eu-west-par-a\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePoolMultiZones:\n    type: ovh:CloudProject:KubeNodePool\n    name: node_pool_multi_zones\n    properties:\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      name: my-pool-zone-a\n      flavorName: b3-8\n      desiredNodes: 3\n      availabilityZones: # Currently, only one zone is supported\n        - eu-west-par-a\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst pool = new ovh.cloudproject.KubeNodePool(\"pool\", {\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name: \"my-pool\",\n    flavorName: \"b3-8\",\n    desiredNodes: 3,\n    template: {\n        metadata: {\n            annotations: {\n                k1: \"v1\",\n                k2: \"v2\",\n            },\n            finalizers: [],\n            labels: {\n                k3: \"v3\",\n                k4: \"v4\",\n            },\n        },\n        spec: {\n            unschedulable: false,\n            taints: [{\n                effect: \"PreferNoSchedule\",\n                key: \"k\",\n                value: \"v\",\n            }],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\npool = ovh.cloudproject.KubeNodePool(\"pool\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name=\"my-pool\",\n    flavor_name=\"b3-8\",\n    desired_nodes=3,\n    template={\n        \"metadata\": {\n            \"annotations\": {\n                \"k1\": \"v1\",\n                \"k2\": \"v2\",\n            },\n            \"finalizers\": [],\n            \"labels\": {\n                \"k3\": \"v3\",\n                \"k4\": \"v4\",\n            },\n        },\n        \"spec\": {\n            \"unschedulable\": False,\n            \"taints\": [{\n                \"effect\": \"PreferNoSchedule\",\n                \"key\": \"k\",\n                \"value\": \"v\",\n            }],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pool = new Ovh.CloudProject.KubeNodePool(\"pool\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Name = \"my-pool\",\n        FlavorName = \"b3-8\",\n        DesiredNodes = 3,\n        Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs\n        {\n            Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs\n            {\n                Annotations = \n                {\n                    { \"k1\", \"v1\" },\n                    { \"k2\", \"v2\" },\n                },\n                Finalizers = new() { },\n                Labels = \n                {\n                    { \"k3\", \"v3\" },\n                    { \"k4\", \"v4\" },\n                },\n            },\n            Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs\n            {\n                Unschedulable = false,\n                Taints = new[]\n                {\n                    \n                    {\n                        { \"effect\", \"PreferNoSchedule\" },\n                        { \"key\", \"k\" },\n                        { \"value\", \"v\" },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewKubeNodePool(ctx, \"pool\", \u0026cloudproject.KubeNodePoolArgs{\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tName:         pulumi.String(\"my-pool\"),\n\t\t\tFlavorName:   pulumi.String(\"b3-8\"),\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tTemplate: \u0026cloudproject.KubeNodePoolTemplateArgs{\n\t\t\t\tMetadata: \u0026cloudproject.KubeNodePoolTemplateMetadataArgs{\n\t\t\t\t\tAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t\t\t},\n\t\t\t\t\tFinalizers: pulumi.StringArray{},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k3\": pulumi.String(\"v3\"),\n\t\t\t\t\t\t\"k4\": pulumi.String(\"v4\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSpec: \u0026cloudproject.KubeNodePoolTemplateSpecArgs{\n\t\t\t\t\tUnschedulable: pulumi.Bool(false),\n\t\t\t\t\tTaints: pulumi.StringMapArray{\n\t\t\t\t\t\tpulumi.StringMap{\n\t\t\t\t\t\t\t\"effect\": pulumi.String(\"PreferNoSchedule\"),\n\t\t\t\t\t\t\t\"key\":    pulumi.String(\"k\"),\n\t\t\t\t\t\t\t\"value\":  pulumi.String(\"v\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pool = new KubeNodePool(\"pool\", KubeNodePoolArgs.builder()\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .name(\"my-pool\")\n            .flavorName(\"b3-8\")\n            .desiredNodes(3)\n            .template(KubeNodePoolTemplateArgs.builder()\n                .metadata(KubeNodePoolTemplateMetadataArgs.builder()\n                    .annotations(Map.ofEntries(\n                        Map.entry(\"k1\", \"v1\"),\n                        Map.entry(\"k2\", \"v2\")\n                    ))\n                    .finalizers()\n                    .labels(Map.ofEntries(\n                        Map.entry(\"k3\", \"v3\"),\n                        Map.entry(\"k4\", \"v4\")\n                    ))\n                    .build())\n                .spec(KubeNodePoolTemplateSpecArgs.builder()\n                    .unschedulable(false)\n                    .taints(Map.ofEntries(\n                        Map.entry(\"effect\", \"PreferNoSchedule\"),\n                        Map.entry(\"key\", \"k\"),\n                        Map.entry(\"value\", \"v\")\n                    ))\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      name: my-pool\n      flavorName: b3-8\n      desiredNodes: 3\n      template:\n        metadata:\n          annotations:\n            k1: v1\n            k2: v2\n          finalizers: []\n          labels:\n            k3: v3\n            k4: v4\n        spec:\n          unschedulable: false\n          taints:\n            - effect: PreferNoSchedule\n              key: k\n              value: v\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid\n```\n\n",
+            "description": "Creates a nodepool in a OVHcloud Managed Kubernetes Service cluster.\n\n## Example Usage\n\nCreate a simple node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst nodePool = new ovh.cloudproject.KubeNodePool(\"node_pool\", {\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name: \"my-pool-1\",\n    flavorName: \"b3-8\",\n    desiredNodes: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool = ovh.cloudproject.KubeNodePool(\"node_pool\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name=\"my-pool-1\",\n    flavor_name=\"b3-8\",\n    desired_nodes=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePool = new Ovh.CloudProject.KubeNodePool(\"node_pool\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Name = \"my-pool-1\",\n        FlavorName = \"b3-8\",\n        DesiredNodes = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewKubeNodePool(ctx, \"node_pool\", \u0026cloudproject.KubeNodePoolArgs{\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tName:         pulumi.String(\"my-pool-1\"),\n\t\t\tFlavorName:   pulumi.String(\"b3-8\"),\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePool = new KubeNodePool(\"nodePool\", KubeNodePoolArgs.builder()\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .name(\"my-pool-1\")\n            .flavorName(\"b3-8\")\n            .desiredNodes(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePool:\n    type: ovh:CloudProject:KubeNodePool\n    name: node_pool\n    properties:\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      name: my-pool-1\n      flavorName: b3-8\n      desiredNodes: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate a node pool on a specific availability zones for Kubernetes cluster (with multi-zones support):\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst nodePoolMultiZones = new ovh.cloudproject.KubeNodePool(\"node_pool_multi_zones\", {\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name: \"my-pool-zone-a\",\n    flavorName: \"b3-8\",\n    desiredNodes: 3,\n    availabilityZones: [\"eu-west-par-a\"],\n    attachFloatingIps: {\n        enabled: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnode_pool_multi_zones = ovh.cloudproject.KubeNodePool(\"node_pool_multi_zones\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name=\"my-pool-zone-a\",\n    flavor_name=\"b3-8\",\n    desired_nodes=3,\n    availability_zones=[\"eu-west-par-a\"],\n    attach_floating_ips={\n        \"enabled\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var nodePoolMultiZones = new Ovh.CloudProject.KubeNodePool(\"node_pool_multi_zones\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Name = \"my-pool-zone-a\",\n        FlavorName = \"b3-8\",\n        DesiredNodes = 3,\n        AvailabilityZones = new[]\n        {\n            \"eu-west-par-a\",\n        },\n        AttachFloatingIps = new Ovh.CloudProject.Inputs.KubeNodePoolAttachFloatingIpsArgs\n        {\n            Enabled = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewKubeNodePool(ctx, \"node_pool_multi_zones\", \u0026cloudproject.KubeNodePoolArgs{\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tName:         pulumi.String(\"my-pool-zone-a\"),\n\t\t\tFlavorName:   pulumi.String(\"b3-8\"),\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tAvailabilityZones: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"eu-west-par-a\"),\n\t\t\t},\n\t\t\tAttachFloatingIps: \u0026cloudproject.KubeNodePoolAttachFloatingIpsArgs{\n\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolAttachFloatingIpsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var nodePoolMultiZones = new KubeNodePool(\"nodePoolMultiZones\", KubeNodePoolArgs.builder()\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .name(\"my-pool-zone-a\")\n            .flavorName(\"b3-8\")\n            .desiredNodes(3)\n            .availabilityZones(\"eu-west-par-a\")\n            .attachFloatingIps(KubeNodePoolAttachFloatingIpsArgs.builder()\n                .enabled(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  nodePoolMultiZones:\n    type: ovh:CloudProject:KubeNodePool\n    name: node_pool_multi_zones\n    properties:\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      name: my-pool-zone-a\n      flavorName: b3-8\n      desiredNodes: 3\n      availabilityZones: # Currently, only one zone is supported\n        - eu-west-par-a\n      attachFloatingIps:\n        enabled: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nCreate an advanced node pool in your Kubernetes cluster:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst pool = new ovh.cloudproject.KubeNodePool(\"pool\", {\n    serviceName: \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kubeId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name: \"my-pool\",\n    flavorName: \"b3-8\",\n    desiredNodes: 3,\n    template: {\n        metadata: {\n            annotations: {\n                k1: \"v1\",\n                k2: \"v2\",\n            },\n            finalizers: [],\n            labels: {\n                k3: \"v3\",\n                k4: \"v4\",\n            },\n        },\n        spec: {\n            unschedulable: false,\n            taints: [{\n                effect: \"PreferNoSchedule\",\n                key: \"k\",\n                value: \"v\",\n            }],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\npool = ovh.cloudproject.KubeNodePool(\"pool\",\n    service_name=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n    kube_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    name=\"my-pool\",\n    flavor_name=\"b3-8\",\n    desired_nodes=3,\n    template={\n        \"metadata\": {\n            \"annotations\": {\n                \"k1\": \"v1\",\n                \"k2\": \"v2\",\n            },\n            \"finalizers\": [],\n            \"labels\": {\n                \"k3\": \"v3\",\n                \"k4\": \"v4\",\n            },\n        },\n        \"spec\": {\n            \"unschedulable\": False,\n            \"taints\": [{\n                \"effect\": \"PreferNoSchedule\",\n                \"key\": \"k\",\n                \"value\": \"v\",\n            }],\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var pool = new Ovh.CloudProject.KubeNodePool(\"pool\", new()\n    {\n        ServiceName = \"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\n        KubeId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        Name = \"my-pool\",\n        FlavorName = \"b3-8\",\n        DesiredNodes = 3,\n        Template = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateArgs\n        {\n            Metadata = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateMetadataArgs\n            {\n                Annotations = \n                {\n                    { \"k1\", \"v1\" },\n                    { \"k2\", \"v2\" },\n                },\n                Finalizers = new() { },\n                Labels = \n                {\n                    { \"k3\", \"v3\" },\n                    { \"k4\", \"v4\" },\n                },\n            },\n            Spec = new Ovh.CloudProject.Inputs.KubeNodePoolTemplateSpecArgs\n            {\n                Unschedulable = false,\n                Taints = new[]\n                {\n                    \n                    {\n                        { \"effect\", \"PreferNoSchedule\" },\n                        { \"key\", \"k\" },\n                        { \"value\", \"v\" },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudproject.NewKubeNodePool(ctx, \"pool\", \u0026cloudproject.KubeNodePoolArgs{\n\t\t\tServiceName:  pulumi.String(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"),\n\t\t\tKubeId:       pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tName:         pulumi.String(\"my-pool\"),\n\t\t\tFlavorName:   pulumi.String(\"b3-8\"),\n\t\t\tDesiredNodes: pulumi.Int(3),\n\t\t\tTemplate: \u0026cloudproject.KubeNodePoolTemplateArgs{\n\t\t\t\tMetadata: \u0026cloudproject.KubeNodePoolTemplateMetadataArgs{\n\t\t\t\t\tAnnotations: pulumi.StringMap{\n\t\t\t\t\t\t\"k1\": pulumi.String(\"v1\"),\n\t\t\t\t\t\t\"k2\": pulumi.String(\"v2\"),\n\t\t\t\t\t},\n\t\t\t\t\tFinalizers: pulumi.StringArray{},\n\t\t\t\t\tLabels: pulumi.StringMap{\n\t\t\t\t\t\t\"k3\": pulumi.String(\"v3\"),\n\t\t\t\t\t\t\"k4\": pulumi.String(\"v4\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSpec: \u0026cloudproject.KubeNodePoolTemplateSpecArgs{\n\t\t\t\t\tUnschedulable: pulumi.Bool(false),\n\t\t\t\t\tTaints: pulumi.StringMapArray{\n\t\t\t\t\t\tpulumi.StringMap{\n\t\t\t\t\t\t\t\"effect\": pulumi.String(\"PreferNoSchedule\"),\n\t\t\t\t\t\t\t\"key\":    pulumi.String(\"k\"),\n\t\t\t\t\t\t\t\"value\":  pulumi.String(\"v\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;\nimport com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateMetadataArgs;\nimport com.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var pool = new KubeNodePool(\"pool\", KubeNodePoolArgs.builder()\n            .serviceName(\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\")\n            .kubeId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .name(\"my-pool\")\n            .flavorName(\"b3-8\")\n            .desiredNodes(3)\n            .template(KubeNodePoolTemplateArgs.builder()\n                .metadata(KubeNodePoolTemplateMetadataArgs.builder()\n                    .annotations(Map.ofEntries(\n                        Map.entry(\"k1\", \"v1\"),\n                        Map.entry(\"k2\", \"v2\")\n                    ))\n                    .finalizers()\n                    .labels(Map.ofEntries(\n                        Map.entry(\"k3\", \"v3\"),\n                        Map.entry(\"k4\", \"v4\")\n                    ))\n                    .build())\n                .spec(KubeNodePoolTemplateSpecArgs.builder()\n                    .unschedulable(false)\n                    .taints(Map.ofEntries(\n                        Map.entry(\"effect\", \"PreferNoSchedule\"),\n                        Map.entry(\"key\", \"k\"),\n                        Map.entry(\"value\", \"v\")\n                    ))\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  pool:\n    type: ovh:CloudProject:KubeNodePool\n    properties:\n      serviceName: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n      kubeId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      name: my-pool\n      flavorName: b3-8\n      desiredNodes: 3\n      template:\n        metadata:\n          annotations:\n            k1: v1\n            k2: v2\n          finalizers: []\n          labels:\n            k3: v3\n            k4: v4\n        spec:\n          unschedulable: false\n          taints:\n            - effect: PreferNoSchedule\n              key: k\n              value: v\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOVHcloud Managed Kubernetes Service cluster node pool can be imported using the `service_name`, the `id` of the cluster, and the `id` of the nodepool separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:CloudProject/kubeNodePool:KubeNodePool pool service_name/kube_id/poolid\n```\n\n",
             "properties": {
                 "antiAffinity": {
                     "type": "boolean",
                     "description": "should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**\n"
+                },
+                "attachFloatingIps": {
+                    "$ref": "#/types/ovh:CloudProject/KubeNodePoolAttachFloatingIps:KubeNodePoolAttachFloatingIps",
+                    "description": "Configuration for floating IP attachment on pool nodes. (only available on Standard plan)\n"
                 },
                 "autoscale": {
                     "type": "boolean",
@@ -15166,7 +15203,7 @@
                 },
                 "autoscalingScaleDownUtilizationThreshold": {
                     "type": "number",
-                    "description": "scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down\n* `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:\n"
+                    "description": "scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down\n"
                 },
                 "availabilityZones": {
                     "type": "array",
@@ -15250,6 +15287,7 @@
             },
             "required": [
                 "antiAffinity",
+                "attachFloatingIps",
                 "autoscale",
                 "autoscalingScaleDownUnneededTimeSeconds",
                 "autoscalingScaleDownUnreadyTimeSeconds",
@@ -15278,6 +15316,10 @@
                     "description": "should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**\n",
                     "willReplaceOnChanges": true
                 },
+                "attachFloatingIps": {
+                    "$ref": "#/types/ovh:CloudProject/KubeNodePoolAttachFloatingIps:KubeNodePoolAttachFloatingIps",
+                    "description": "Configuration for floating IP attachment on pool nodes. (only available on Standard plan)\n"
+                },
                 "autoscale": {
                     "type": "boolean",
                     "description": "Enable auto-scaling for the pool. Default to `false`.\n"
@@ -15292,7 +15334,7 @@
                 },
                 "autoscalingScaleDownUtilizationThreshold": {
                     "type": "number",
-                    "description": "scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down\n* `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:\n"
+                    "description": "scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down\n"
                 },
                 "availabilityZones": {
                     "type": "array",
@@ -15356,6 +15398,10 @@
                         "description": "should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**\n",
                         "willReplaceOnChanges": true
                     },
+                    "attachFloatingIps": {
+                        "$ref": "#/types/ovh:CloudProject/KubeNodePoolAttachFloatingIps:KubeNodePoolAttachFloatingIps",
+                        "description": "Configuration for floating IP attachment on pool nodes. (only available on Standard plan)\n"
+                    },
                     "autoscale": {
                         "type": "boolean",
                         "description": "Enable auto-scaling for the pool. Default to `false`.\n"
@@ -15370,7 +15416,7 @@
                     },
                     "autoscalingScaleDownUtilizationThreshold": {
                         "type": "number",
-                        "description": "scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down\n* `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:\n"
+                        "description": "scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down\n"
                     },
                     "availabilityZones": {
                         "type": "array",
@@ -16396,6 +16442,10 @@
                 "access": {
                     "type": "string"
                 },
+                "deletionProtection": {
+                    "type": "boolean",
+                    "description": "Prevent the cloud project from being destroyed. Defaults to false.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "A description associated with the user.\n"
@@ -16452,6 +16502,10 @@
                 "ProjectURN"
             ],
             "inputProperties": {
+                "deletionProtection": {
+                    "type": "boolean",
+                    "description": "Prevent the cloud project from being destroyed. Defaults to false.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "A description associated with the user.\n"
@@ -16497,6 +16551,10 @@
                     },
                     "access": {
                         "type": "string"
+                    },
+                    "deletionProtection": {
+                        "type": "boolean",
+                        "description": "Prevent the cloud project from being destroyed. Defaults to false.\n"
                     },
                     "description": {
                         "type": "string",
@@ -24001,6 +24059,13 @@
                     "type": "string",
                     "description": "URN of the private database, used when writing IAM policies\n"
                 },
+                "advancedConfiguration": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Advanced configuration key / value.\n"
+                },
                 "cpu": {
                     "type": "integer",
                     "description": "Number of CPU on your private database\n"
@@ -24106,6 +24171,7 @@
                 }
             },
             "required": [
+                "advancedConfiguration",
                 "cpu",
                 "datacenter",
                 "displayName",
@@ -24131,6 +24197,13 @@
                 "versionNumber"
             ],
             "inputProperties": {
+                "advancedConfiguration": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Advanced configuration key / value.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "Name displayed in customer panel for your private database\n"
@@ -24177,6 +24250,13 @@
                     "DatabaseURN": {
                         "type": "string",
                         "description": "URN of the private database, used when writing IAM policies\n"
+                    },
+                    "advancedConfiguration": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Advanced configuration key / value.\n"
                     },
                     "cpu": {
                         "type": "integer",
@@ -30864,6 +30944,202 @@
                 "type": "object"
             }
         },
+        "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare": {
+            "description": "Creates a file storage share in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudProjectFileStorageShare(\"share\", {\n    serviceName: \"xxxxxxxxxx\",\n    regionName: \"GRA11\",\n    name: \"my_share\",\n    description: \"My file storage share\",\n    size: 150,\n    type: \"standard-1az\",\n    networkId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    subnetId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudProjectFileStorageShare(\"share\",\n    service_name=\"xxxxxxxxxx\",\n    region_name=\"GRA11\",\n    name=\"my_share\",\n    description=\"My file storage share\",\n    size=150,\n    type=\"standard-1az\",\n    network_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    subnet_id=\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudProjectFileStorageShare(\"share\", new()\n    {\n        ServiceName = \"xxxxxxxxxx\",\n        RegionName = \"GRA11\",\n        Name = \"my_share\",\n        Description = \"My file storage share\",\n        Size = 150,\n        Type = \"standard-1az\",\n        NetworkId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        SubnetId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudProjectFileStorageShare(ctx, \"share\", \u0026ovh.CloudProjectFileStorageShareArgs{\n\t\t\tServiceName: pulumi.String(\"xxxxxxxxxx\"),\n\t\t\tRegionName:  pulumi.String(\"GRA11\"),\n\t\t\tName:        pulumi.String(\"my_share\"),\n\t\t\tDescription: pulumi.String(\"My file storage share\"),\n\t\t\tSize:        pulumi.Float64(150),\n\t\t\tType:        pulumi.String(\"standard-1az\"),\n\t\t\tNetworkId:   pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\tSubnetId:    pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProjectFileStorageShare;\nimport com.ovhcloud.pulumi.ovh.CloudProjectFileStorageShareArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudProjectFileStorageShare(\"share\", CloudProjectFileStorageShareArgs.builder()\n            .serviceName(\"xxxxxxxxxx\")\n            .regionName(\"GRA11\")\n            .name(\"my_share\")\n            .description(\"My file storage share\")\n            .size(150.0)\n            .type(\"standard-1az\")\n            .networkId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .subnetId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudProjectFileStorageShare\n    properties:\n      serviceName: xxxxxxxxxx\n      regionName: GRA11\n      name: my_share\n      description: My file storage share\n      size: 150\n      type: standard-1az\n      networkId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n      subnetId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA file storage share can be imported using the `service_name`, `region_name`, and `share_id` separated by `/`:\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare share service_name/region_name/share_id\n```\n\n",
+            "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone of the share (required in 3AZ regions).\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Share creation date.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Share description.\n"
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Whether the share is public.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Share name.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "Private network ID.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Share protocol (e.g. `NFS`).\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "The region in which the share will be created.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The ID of the public cloud project.\n"
+                },
+                "shareNetworkId": {
+                    "type": "string",
+                    "description": "Share network ID.\n"
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Share size in Gigabytes.\n"
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "description": "Snapshot ID used to create the share.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Share status.\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Subnet ID.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Share type. Currently only `standard-1az` is supported.\n"
+                }
+            },
+            "required": [
+                "availabilityZone",
+                "createdAt",
+                "description",
+                "isPublic",
+                "name",
+                "networkId",
+                "protocol",
+                "regionName",
+                "serviceName",
+                "shareNetworkId",
+                "size",
+                "snapshotId",
+                "status",
+                "subnetId",
+                "type"
+            ],
+            "inputProperties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone of the share (required in 3AZ regions).\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Share description.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Share name.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "Private network ID.\n"
+                },
+                "regionName": {
+                    "type": "string",
+                    "description": "The region in which the share will be created.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The ID of the public cloud project.\n"
+                },
+                "size": {
+                    "type": "number",
+                    "description": "Share size in Gigabytes.\n"
+                },
+                "snapshotId": {
+                    "type": "string",
+                    "description": "Snapshot ID used to create the share.\n"
+                },
+                "subnetId": {
+                    "type": "string",
+                    "description": "Subnet ID.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Share type. Currently only `standard-1az` is supported.\n"
+                }
+            },
+            "requiredInputs": [
+                "networkId",
+                "regionName",
+                "serviceName",
+                "subnetId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CloudProjectFileStorageShare resources.\n",
+                "properties": {
+                    "availabilityZone": {
+                        "type": "string",
+                        "description": "Availability zone of the share (required in 3AZ regions).\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Share creation date.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Share description.\n"
+                    },
+                    "isPublic": {
+                        "type": "boolean",
+                        "description": "Whether the share is public.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Share name.\n"
+                    },
+                    "networkId": {
+                        "type": "string",
+                        "description": "Private network ID.\n"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "Share protocol (e.g. `NFS`).\n"
+                    },
+                    "regionName": {
+                        "type": "string",
+                        "description": "The region in which the share will be created.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The ID of the public cloud project.\n"
+                    },
+                    "shareNetworkId": {
+                        "type": "string",
+                        "description": "Share network ID.\n"
+                    },
+                    "size": {
+                        "type": "number",
+                        "description": "Share size in Gigabytes.\n"
+                    },
+                    "snapshotId": {
+                        "type": "string",
+                        "description": "Snapshot ID used to create the share.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Share status.\n"
+                    },
+                    "subnetId": {
+                        "type": "string",
+                        "description": "Subnet ID.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Share type. Currently only `standard-1az` is supported.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "ovh:index/cloudProjectSshKey:CloudProjectSshKey": {
             "description": "Create a SSH key in the given public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst key = new ovh.CloudProjectSshKey(\"key\", {\n    serviceName: \"\u003cpublic cloud project ID\u003e\",\n    publicKey: \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9xPpdqP3sx2H+gcBm65tJEaUbuifQ1uGkgrWtNY0PRKNNPdy+3yoVOtxk6Vjo4YZ0EU/JhmQfnrK7X7Q5vhqYxmozi0LiTRt0BxgqHJ+4hWTWMIOgr+C2jLx7ZsCReRk+fy5AHr6h0PHQEuXVLXeUy/TDyuY2JPtUZ5jcqvLYgQ== my-key\",\n    name: \"new_key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkey = ovh.CloudProjectSshKey(\"key\",\n    service_name=\"\u003cpublic cloud project ID\u003e\",\n    public_key=\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9xPpdqP3sx2H+gcBm65tJEaUbuifQ1uGkgrWtNY0PRKNNPdy+3yoVOtxk6Vjo4YZ0EU/JhmQfnrK7X7Q5vhqYxmozi0LiTRt0BxgqHJ+4hWTWMIOgr+C2jLx7ZsCReRk+fy5AHr6h0PHQEuXVLXeUy/TDyuY2JPtUZ5jcqvLYgQ== my-key\",\n    name=\"new_key\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var key = new Ovh.CloudProjectSshKey(\"key\", new()\n    {\n        ServiceName = \"\u003cpublic cloud project ID\u003e\",\n        PublicKey = \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9xPpdqP3sx2H+gcBm65tJEaUbuifQ1uGkgrWtNY0PRKNNPdy+3yoVOtxk6Vjo4YZ0EU/JhmQfnrK7X7Q5vhqYxmozi0LiTRt0BxgqHJ+4hWTWMIOgr+C2jLx7ZsCReRk+fy5AHr6h0PHQEuXVLXeUy/TDyuY2JPtUZ5jcqvLYgQ== my-key\",\n        Name = \"new_key\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudProjectSshKey(ctx, \"key\", \u0026ovh.CloudProjectSshKeyArgs{\n\t\t\tServiceName: pulumi.String(\"\u003cpublic cloud project ID\u003e\"),\n\t\t\tPublicKey:   pulumi.String(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9xPpdqP3sx2H+gcBm65tJEaUbuifQ1uGkgrWtNY0PRKNNPdy+3yoVOtxk6Vjo4YZ0EU/JhmQfnrK7X7Q5vhqYxmozi0LiTRt0BxgqHJ+4hWTWMIOgr+C2jLx7ZsCReRk+fy5AHr6h0PHQEuXVLXeUy/TDyuY2JPtUZ5jcqvLYgQ== my-key\"),\n\t\t\tName:        pulumi.String(\"new_key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudProjectSshKey;\nimport com.ovhcloud.pulumi.ovh.CloudProjectSshKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var key = new CloudProjectSshKey(\"key\", CloudProjectSshKeyArgs.builder()\n            .serviceName(\"\u003cpublic cloud project ID\u003e\")\n            .publicKey(\"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9xPpdqP3sx2H+gcBm65tJEaUbuifQ1uGkgrWtNY0PRKNNPdy+3yoVOtxk6Vjo4YZ0EU/JhmQfnrK7X7Q5vhqYxmozi0LiTRt0BxgqHJ+4hWTWMIOgr+C2jLx7ZsCReRk+fy5AHr6h0PHQEuXVLXeUy/TDyuY2JPtUZ5jcqvLYgQ== my-key\")\n            .name(\"new_key\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  key:\n    type: ovh:CloudProjectSshKey\n    properties:\n      serviceName: \u003cpublic cloud project ID\u003e\n      publicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQC9xPpdqP3sx2H+gcBm65tJEaUbuifQ1uGkgrWtNY0PRKNNPdy+3yoVOtxk6Vjo4YZ0EU/JhmQfnrK7X7Q5vhqYxmozi0LiTRt0BxgqHJ+4hWTWMIOgr+C2jLx7ZsCReRk+fy5AHr6h0PHQEuXVLXeUy/TDyuY2JPtUZ5jcqvLYgQ== my-key\n      name: new_key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "properties": {
@@ -33808,6 +34084,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getKubeNodePool.\n",
                 "properties": {
+                    "attachFloatingIps": {
+                        "$ref": "#/types/ovh:CloudProject/getKubeNodePoolAttachFloatingIps:getKubeNodePoolAttachFloatingIps",
+                        "description": "Floating IPs attachment configuration for pool nodes.\n"
+                    },
                     "availabilityZones": {
                         "type": "array",
                         "items": {
@@ -33844,6 +34124,10 @@
                     "antiAffinity": {
                         "description": "(Optional) should the pool use the anti-affinity feature. Default to `false`.\n",
                         "type": "boolean"
+                    },
+                    "attachFloatingIps": {
+                        "$ref": "#/types/ovh:CloudProject/getKubeNodePoolAttachFloatingIps:getKubeNodePoolAttachFloatingIps",
+                        "description": "Floating IPs attachment configuration for pool nodes.\n"
                     },
                     "autoscale": {
                         "description": "(Optional) Enable auto-scaling for the pool. Default to `false`.\n",
@@ -33946,6 +34230,7 @@
                 },
                 "required": [
                     "antiAffinity",
+                    "attachFloatingIps",
                     "autoscale",
                     "autoscalingScaleDownUnneededTimeSeconds",
                     "autoscalingScaleDownUnreadyTimeSeconds",

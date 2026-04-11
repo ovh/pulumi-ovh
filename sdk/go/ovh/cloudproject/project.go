@@ -42,6 +42,8 @@ type Project struct {
 	// The URN of the cloud project
 	ProjectURN pulumi.StringOutput `pulumi:"ProjectURN"`
 	Access     pulumi.StringOutput `pulumi:"access"`
+	// Prevent the cloud project from being destroyed. Defaults to false.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// A description associated with the user.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
@@ -97,6 +99,8 @@ type projectState struct {
 	// The URN of the cloud project
 	ProjectURN *string `pulumi:"ProjectURN"`
 	Access     *string `pulumi:"access"`
+	// Prevent the cloud project from being destroyed. Defaults to false.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
@@ -123,6 +127,8 @@ type ProjectState struct {
 	// The URN of the cloud project
 	ProjectURN pulumi.StringPtrInput
 	Access     pulumi.StringPtrInput
+	// Prevent the cloud project from being destroyed. Defaults to false.
+	DeletionProtection pulumi.BoolPtrInput
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
 	// Details about the order that was used to create the public cloud project
@@ -150,6 +156,8 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// Prevent the cloud project from being destroyed. Defaults to false.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A description associated with the user.
 	Description *string `pulumi:"description"`
 	// Details about the order that was used to create the public cloud project
@@ -168,6 +176,8 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Prevent the cloud project from being destroyed. Defaults to false.
+	DeletionProtection pulumi.BoolPtrInput
 	// A description associated with the user.
 	Description pulumi.StringPtrInput
 	// Details about the order that was used to create the public cloud project
@@ -278,6 +288,11 @@ func (o ProjectOutput) ProjectURN() pulumi.StringOutput {
 
 func (o ProjectOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Access }).(pulumi.StringOutput)
+}
+
+// Prevent the cloud project from being destroyed. Defaults to false.
+func (o ProjectOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // A description associated with the user.

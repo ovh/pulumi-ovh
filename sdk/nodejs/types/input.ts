@@ -795,6 +795,20 @@ export namespace CloudProject {
         udpTimeout?: pulumi.Input<string>;
     }
 
+    export interface GetKubeNodePoolAttachFloatingIps {
+        /**
+         * Whether floating IPs attachment is enabled on nodes of this pool.
+         */
+        enabled?: boolean;
+    }
+
+    export interface GetKubeNodePoolAttachFloatingIpsArgs {
+        /**
+         * Whether floating IPs attachment is enabled on nodes of this pool.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
     export interface GetKubeNodePoolTemplate {
         /**
          * metadata
@@ -1150,6 +1164,14 @@ export namespace CloudProject {
          * The kubernetes API server URL.
          */
         host?: pulumi.Input<string>;
+    }
+
+    export interface KubeNodePoolAttachFloatingIps {
+        /**
+         * Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+         * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+         */
+        enabled?: pulumi.Input<boolean>;
     }
 
     export interface KubeNodePoolTemplate {

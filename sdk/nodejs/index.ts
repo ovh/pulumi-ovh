@@ -20,6 +20,11 @@ export type CloudProjectDatabaseValkeyUser = import("./cloudProjectDatabaseValke
 export const CloudProjectDatabaseValkeyUser: typeof import("./cloudProjectDatabaseValkeyUser").CloudProjectDatabaseValkeyUser = null as any;
 utilities.lazyLoad(exports, ["CloudProjectDatabaseValkeyUser"], () => require("./cloudProjectDatabaseValkeyUser"));
 
+export { CloudProjectFileStorageShareArgs, CloudProjectFileStorageShareState } from "./cloudProjectFileStorageShare";
+export type CloudProjectFileStorageShare = import("./cloudProjectFileStorageShare").CloudProjectFileStorageShare;
+export const CloudProjectFileStorageShare: typeof import("./cloudProjectFileStorageShare").CloudProjectFileStorageShare = null as any;
+utilities.lazyLoad(exports, ["CloudProjectFileStorageShare"], () => require("./cloudProjectFileStorageShare"));
+
 export { CloudProjectSshKeyArgs, CloudProjectSshKeyState } from "./cloudProjectSshKey";
 export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshKey;
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
@@ -309,6 +314,8 @@ const _module = {
                 return new CloudProjectDatabaseClickhouseUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser":
                 return new CloudProjectDatabaseValkeyUser(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare":
+                return new CloudProjectFileStorageShare(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
@@ -345,6 +352,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseClickhouseUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectFileStorageShare", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageObjectBucketLifecycleConfiguration", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageReplicationJob", _module)

@@ -24,6 +24,7 @@ class KubeNodePoolArgs:
                  flavor_name: pulumi.Input[_builtins.str],
                  kube_id: pulumi.Input[_builtins.str],
                  anti_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 attach_floating_ips: Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']] = None,
                  autoscale: Optional[pulumi.Input[_builtins.bool]] = None,
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -41,11 +42,11 @@ class KubeNodePoolArgs:
         :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        :param pulumi.Input['KubeNodePoolAttachFloatingIpsArgs'] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[_builtins.int] desired_nodes: number of nodes to start.
         :param pulumi.Input[_builtins.int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
@@ -59,6 +60,8 @@ class KubeNodePoolArgs:
         pulumi.set(__self__, "kube_id", kube_id)
         if anti_affinity is not None:
             pulumi.set(__self__, "anti_affinity", anti_affinity)
+        if attach_floating_ips is not None:
+            pulumi.set(__self__, "attach_floating_ips", attach_floating_ips)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autoscaling_scale_down_unneeded_time_seconds is not None:
@@ -121,6 +124,18 @@ class KubeNodePoolArgs:
         pulumi.set(self, "anti_affinity", value)
 
     @_builtins.property
+    @pulumi.getter(name="attachFloatingIps")
+    def attach_floating_ips(self) -> Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']]:
+        """
+        Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        """
+        return pulumi.get(self, "attach_floating_ips")
+
+    @attach_floating_ips.setter
+    def attach_floating_ips(self, value: Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']]):
+        pulumi.set(self, "attach_floating_ips", value)
+
+    @_builtins.property
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -161,7 +176,6 @@ class KubeNodePoolArgs:
     def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
         scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
@@ -270,6 +284,7 @@ class KubeNodePoolArgs:
 class _KubeNodePoolState:
     def __init__(__self__, *,
                  anti_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 attach_floating_ips: Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']] = None,
                  autoscale: Optional[pulumi.Input[_builtins.bool]] = None,
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -296,11 +311,11 @@ class _KubeNodePoolState:
         """
         Input properties used for looking up and filtering KubeNodePool resources.
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        :param pulumi.Input['KubeNodePoolAttachFloatingIpsArgs'] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[_builtins.int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[_builtins.str] created_at: Creation date
@@ -323,6 +338,8 @@ class _KubeNodePoolState:
         """
         if anti_affinity is not None:
             pulumi.set(__self__, "anti_affinity", anti_affinity)
+        if attach_floating_ips is not None:
+            pulumi.set(__self__, "attach_floating_ips", attach_floating_ips)
         if autoscale is not None:
             pulumi.set(__self__, "autoscale", autoscale)
         if autoscaling_scale_down_unneeded_time_seconds is not None:
@@ -383,6 +400,18 @@ class _KubeNodePoolState:
         pulumi.set(self, "anti_affinity", value)
 
     @_builtins.property
+    @pulumi.getter(name="attachFloatingIps")
+    def attach_floating_ips(self) -> Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']]:
+        """
+        Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        """
+        return pulumi.get(self, "attach_floating_ips")
+
+    @attach_floating_ips.setter
+    def attach_floating_ips(self, value: Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']]):
+        pulumi.set(self, "attach_floating_ips", value)
+
+    @_builtins.property
     @pulumi.getter
     def autoscale(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -423,7 +452,6 @@ class _KubeNodePoolState:
     def autoscaling_scale_down_utilization_threshold(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
         scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 
@@ -667,6 +695,7 @@ class KubeNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 attach_floating_ips: Optional[pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']]] = None,
                  autoscale: Optional[pulumi.Input[_builtins.bool]] = None,
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -713,7 +742,10 @@ class KubeNodePool(pulumi.CustomResource):
             name="my-pool-zone-a",
             flavor_name="b3-8",
             desired_nodes=3,
-            availability_zones=["eu-west-par-a"])
+            availability_zones=["eu-west-par-a"],
+            attach_floating_ips={
+                "enabled": False,
+            })
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -764,11 +796,11 @@ class KubeNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        :param pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[_builtins.int] desired_nodes: number of nodes to start.
         :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
@@ -817,7 +849,10 @@ class KubeNodePool(pulumi.CustomResource):
             name="my-pool-zone-a",
             flavor_name="b3-8",
             desired_nodes=3,
-            availability_zones=["eu-west-par-a"])
+            availability_zones=["eu-west-par-a"],
+            attach_floating_ips={
+                "enabled": False,
+            })
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -881,6 +916,7 @@ class KubeNodePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  anti_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
+                 attach_floating_ips: Optional[pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']]] = None,
                  autoscale: Optional[pulumi.Input[_builtins.bool]] = None,
                  autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -905,6 +941,7 @@ class KubeNodePool(pulumi.CustomResource):
             __props__ = KubeNodePoolArgs.__new__(KubeNodePoolArgs)
 
             __props__.__dict__["anti_affinity"] = anti_affinity
+            __props__.__dict__["attach_floating_ips"] = attach_floating_ips
             __props__.__dict__["autoscale"] = autoscale
             __props__.__dict__["autoscaling_scale_down_unneeded_time_seconds"] = autoscaling_scale_down_unneeded_time_seconds
             __props__.__dict__["autoscaling_scale_down_unready_time_seconds"] = autoscaling_scale_down_unready_time_seconds
@@ -943,6 +980,7 @@ class KubeNodePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             anti_affinity: Optional[pulumi.Input[_builtins.bool]] = None,
+            attach_floating_ips: Optional[pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']]] = None,
             autoscale: Optional[pulumi.Input[_builtins.bool]] = None,
             autoscaling_scale_down_unneeded_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
             autoscaling_scale_down_unready_time_seconds: Optional[pulumi.Input[_builtins.int]] = None,
@@ -974,11 +1012,11 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
+        :param pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-               * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[_builtins.int] available_nodes: Number of nodes which are actually ready in the pool
         :param pulumi.Input[_builtins.str] created_at: Creation date
@@ -1004,6 +1042,7 @@ class KubeNodePool(pulumi.CustomResource):
         __props__ = _KubeNodePoolState.__new__(_KubeNodePoolState)
 
         __props__.__dict__["anti_affinity"] = anti_affinity
+        __props__.__dict__["attach_floating_ips"] = attach_floating_ips
         __props__.__dict__["autoscale"] = autoscale
         __props__.__dict__["autoscaling_scale_down_unneeded_time_seconds"] = autoscaling_scale_down_unneeded_time_seconds
         __props__.__dict__["autoscaling_scale_down_unready_time_seconds"] = autoscaling_scale_down_unready_time_seconds
@@ -1038,6 +1077,14 @@ class KubeNodePool(pulumi.CustomResource):
         return pulumi.get(self, "anti_affinity")
 
     @_builtins.property
+    @pulumi.getter(name="attachFloatingIps")
+    def attach_floating_ips(self) -> pulumi.Output['outputs.KubeNodePoolAttachFloatingIps']:
+        """
+        Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        """
+        return pulumi.get(self, "attach_floating_ips")
+
+    @_builtins.property
     @pulumi.getter
     def autoscale(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -1066,7 +1113,6 @@ class KubeNodePool(pulumi.CustomResource):
     def autoscaling_scale_down_utilization_threshold(self) -> pulumi.Output[_builtins.float]:
         """
         scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         """
         return pulumi.get(self, "autoscaling_scale_down_utilization_threshold")
 

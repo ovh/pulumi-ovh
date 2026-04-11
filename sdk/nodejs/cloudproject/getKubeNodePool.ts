@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
 export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeOptions): Promise<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
+        "attachFloatingIps": args.attachFloatingIps,
         "availabilityZones": args.availabilityZones,
         "kubeId": args.kubeId,
         "name": args.name,
@@ -38,6 +39,10 @@ export function getKubeNodePool(args: GetKubeNodePoolArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getKubeNodePool.
  */
 export interface GetKubeNodePoolArgs {
+    /**
+     * Floating IPs attachment configuration for pool nodes.
+     */
+    attachFloatingIps?: inputs.CloudProject.GetKubeNodePoolAttachFloatingIps;
     /**
      * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
      */
@@ -65,6 +70,10 @@ export interface GetKubeNodePoolResult {
      * (Optional) should the pool use the anti-affinity feature. Default to `false`.
      */
     readonly antiAffinity: boolean;
+    /**
+     * Floating IPs attachment configuration for pool nodes.
+     */
+    readonly attachFloatingIps: outputs.CloudProject.GetKubeNodePoolAttachFloatingIps;
     /**
      * (Optional) Enable auto-scaling for the pool. Default to `false`.
      */
@@ -179,6 +188,7 @@ export interface GetKubeNodePoolResult {
 export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubeNodePoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKubeNodePool:getKubeNodePool", {
+        "attachFloatingIps": args.attachFloatingIps,
         "availabilityZones": args.availabilityZones,
         "kubeId": args.kubeId,
         "name": args.name,
@@ -191,6 +201,10 @@ export function getKubeNodePoolOutput(args: GetKubeNodePoolOutputArgs, opts?: pu
  * A collection of arguments for invoking getKubeNodePool.
  */
 export interface GetKubeNodePoolOutputArgs {
+    /**
+     * Floating IPs attachment configuration for pool nodes.
+     */
+    attachFloatingIps?: pulumi.Input<inputs.CloudProject.GetKubeNodePoolAttachFloatingIpsArgs>;
     /**
      * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
      */
