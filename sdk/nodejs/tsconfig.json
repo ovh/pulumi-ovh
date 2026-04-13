@@ -19,6 +19,7 @@
         "cloudProjectContainerregistryIam.ts",
         "cloudProjectDatabaseClickhouseUser.ts",
         "cloudProjectDatabaseValkeyUser.ts",
+        "cloudProjectFileStorageShare.ts",
         "cloudProjectSshKey.ts",
         "cloudProjectStorageObjectBucketLifecycleConfiguration.ts",
         "cloudProjectStorageReplicationJob.ts",

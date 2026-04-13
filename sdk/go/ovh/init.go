@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectDatabaseClickhouseUser{}
 	case "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser":
 		r = &CloudProjectDatabaseValkeyUser{}
+	case "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare":
+		r = &CloudProjectFileStorageShare{}
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
 	case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
@@ -99,6 +101,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudProjectDatabaseValkeyUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudProjectFileStorageShare",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

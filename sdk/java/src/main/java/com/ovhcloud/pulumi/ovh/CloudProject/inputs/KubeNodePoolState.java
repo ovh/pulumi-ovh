@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeNodePoolAttachFloatingIpsArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeNodePoolTemplateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -33,6 +34,21 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> antiAffinity() {
         return Optional.ofNullable(this.antiAffinity);
+    }
+
+    /**
+     * Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+     * 
+     */
+    @Import(name="attachFloatingIps")
+    private @Nullable Output<KubeNodePoolAttachFloatingIpsArgs> attachFloatingIps;
+
+    /**
+     * @return Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+     * 
+     */
+    public Optional<Output<KubeNodePoolAttachFloatingIpsArgs>> attachFloatingIps() {
+        return Optional.ofNullable(this.attachFloatingIps);
     }
 
     /**
@@ -82,7 +98,6 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
     @Import(name="autoscalingScaleDownUtilizationThreshold")
@@ -90,7 +105,6 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-     * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
      * 
      */
     public Optional<Output<Double>> autoscalingScaleDownUtilizationThreshold() {
@@ -386,6 +400,7 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
     private KubeNodePoolState(KubeNodePoolState $) {
         this.antiAffinity = $.antiAffinity;
+        this.attachFloatingIps = $.attachFloatingIps;
         this.autoscale = $.autoscale;
         this.autoscalingScaleDownUnneededTimeSeconds = $.autoscalingScaleDownUnneededTimeSeconds;
         this.autoscalingScaleDownUnreadyTimeSeconds = $.autoscalingScaleDownUnreadyTimeSeconds;
@@ -448,6 +463,27 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder antiAffinity(Boolean antiAffinity) {
             return antiAffinity(Output.of(antiAffinity));
+        }
+
+        /**
+         * @param attachFloatingIps Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachFloatingIps(@Nullable Output<KubeNodePoolAttachFloatingIpsArgs> attachFloatingIps) {
+            $.attachFloatingIps = attachFloatingIps;
+            return this;
+        }
+
+        /**
+         * @param attachFloatingIps Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachFloatingIps(KubeNodePoolAttachFloatingIpsArgs attachFloatingIps) {
+            return attachFloatingIps(Output.of(attachFloatingIps));
         }
 
         /**
@@ -515,7 +551,6 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-         * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
          * 
          * @return builder
          * 
@@ -527,7 +562,6 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param autoscalingScaleDownUtilizationThreshold scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-         * * ` template  ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
          * 
          * @return builder
          * 

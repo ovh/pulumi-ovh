@@ -2179,6 +2179,13 @@ export namespace CloudProject {
         host: string;
     }
 
+    export interface GetKubeNodePoolAttachFloatingIps {
+        /**
+         * Whether floating IPs attachment is enabled on nodes of this pool.
+         */
+        enabled: boolean;
+    }
+
     export interface GetKubeNodePoolNodesNode {
         /**
          * Creation date.
@@ -3380,6 +3387,14 @@ export namespace CloudProject {
          * The kubernetes API server URL.
          */
         host: string;
+    }
+
+    export interface KubeNodePoolAttachFloatingIps {
+        /**
+         * Enable or disable floating IPs attachment on nodes of this pool. Default to `false`.
+         * * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
+         */
+        enabled: boolean;
     }
 
     export interface KubeNodePoolTemplate {

@@ -21,6 +21,7 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -29,6 +30,7 @@ class ProjectArgs:
                  plan_options: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]]] = None):
         """
         The set of arguments for constructing a Project resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Prevent the cloud project from being destroyed. Defaults to false.
         :param pulumi.Input[_builtins.str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[_builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -36,6 +38,8 @@ class ProjectArgs:
         :param pulumi.Input['ProjectPlanArgs'] plan: Product Plan to order
         :param pulumi.Input[Sequence[pulumi.Input['ProjectPlanOptionArgs']]] plan_options: Product Plan to order
         """
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if orders is not None:
@@ -51,6 +55,18 @@ class ProjectArgs:
             pulumi.set(__self__, "plan", plan)
         if plan_options is not None:
             pulumi.set(__self__, "plan_options", plan_options)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent the cloud project from being destroyed. Defaults to false.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
@@ -131,6 +147,7 @@ class _ProjectState:
     def __init__(__self__, *,
                  project_urn: Optional[pulumi.Input[_builtins.str]] = None,
                  access: Optional[pulumi.Input[_builtins.str]] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -143,6 +160,7 @@ class _ProjectState:
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[_builtins.str] project_urn: The URN of the cloud project
+        :param pulumi.Input[_builtins.bool] deletion_protection: Prevent the cloud project from being destroyed. Defaults to false.
         :param pulumi.Input[_builtins.str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input['ProjectOrderArgs']]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[_builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -157,6 +175,8 @@ class _ProjectState:
             pulumi.set(__self__, "project_urn", project_urn)
         if access is not None:
             pulumi.set(__self__, "access", access)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if orders is not None:
@@ -199,6 +219,18 @@ class _ProjectState:
     @access.setter
     def access(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "access", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Prevent the cloud project from being destroyed. Defaults to false.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
@@ -316,6 +348,7 @@ class Project(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -352,6 +385,7 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] deletion_protection: Prevent the cloud project from being destroyed. Defaults to false.
         :param pulumi.Input[_builtins.str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[_builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -407,6 +441,7 @@ class Project(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -422,6 +457,7 @@ class Project(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProjectArgs.__new__(ProjectArgs)
 
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["orders"] = orders
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -445,6 +481,7 @@ class Project(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             project_urn: Optional[pulumi.Input[_builtins.str]] = None,
             access: Optional[pulumi.Input[_builtins.str]] = None,
+            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]]] = None,
             ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -462,6 +499,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_urn: The URN of the cloud project
+        :param pulumi.Input[_builtins.bool] deletion_protection: Prevent the cloud project from being destroyed. Defaults to false.
         :param pulumi.Input[_builtins.str] description: A description associated with the user.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProjectOrderArgs', 'ProjectOrderArgsDict']]]] orders: Details about the order that was used to create the public cloud project
         :param pulumi.Input[_builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -478,6 +516,7 @@ class Project(pulumi.CustomResource):
 
         __props__.__dict__["project_urn"] = project_urn
         __props__.__dict__["access"] = access
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["orders"] = orders
         __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -501,6 +540,14 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def access(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "access")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Prevent the cloud project from being destroyed. Defaults to false.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @_builtins.property
     @pulumi.getter

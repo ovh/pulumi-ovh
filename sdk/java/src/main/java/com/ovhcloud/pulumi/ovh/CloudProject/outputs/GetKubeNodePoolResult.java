@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeNodePoolAttachFloatingIps;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeNodePoolTemplate;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -22,6 +23,11 @@ public final class GetKubeNodePoolResult {
      * 
      */
     private Boolean antiAffinity;
+    /**
+     * @return Floating IPs attachment configuration for pool nodes.
+     * 
+     */
+    private GetKubeNodePoolAttachFloatingIps attachFloatingIps;
     /**
      * @return (Optional) Enable auto-scaling for the pool. Default to `false`.
      * 
@@ -146,6 +152,13 @@ public final class GetKubeNodePoolResult {
      */
     public Boolean antiAffinity() {
         return this.antiAffinity;
+    }
+    /**
+     * @return Floating IPs attachment configuration for pool nodes.
+     * 
+     */
+    public GetKubeNodePoolAttachFloatingIps attachFloatingIps() {
+        return this.attachFloatingIps;
     }
     /**
      * @return (Optional) Enable auto-scaling for the pool. Default to `false`.
@@ -322,6 +335,7 @@ public final class GetKubeNodePoolResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean antiAffinity;
+        private GetKubeNodePoolAttachFloatingIps attachFloatingIps;
         private Boolean autoscale;
         private Integer autoscalingScaleDownUnneededTimeSeconds;
         private Integer autoscalingScaleDownUnreadyTimeSeconds;
@@ -350,6 +364,7 @@ public final class GetKubeNodePoolResult {
         public Builder(GetKubeNodePoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.antiAffinity = defaults.antiAffinity;
+    	      this.attachFloatingIps = defaults.attachFloatingIps;
     	      this.autoscale = defaults.autoscale;
     	      this.autoscalingScaleDownUnneededTimeSeconds = defaults.autoscalingScaleDownUnneededTimeSeconds;
     	      this.autoscalingScaleDownUnreadyTimeSeconds = defaults.autoscalingScaleDownUnreadyTimeSeconds;
@@ -382,6 +397,14 @@ public final class GetKubeNodePoolResult {
               throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "antiAffinity");
             }
             this.antiAffinity = antiAffinity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder attachFloatingIps(GetKubeNodePoolAttachFloatingIps attachFloatingIps) {
+            if (attachFloatingIps == null) {
+              throw new MissingRequiredPropertyException("GetKubeNodePoolResult", "attachFloatingIps");
+            }
+            this.attachFloatingIps = attachFloatingIps;
             return this;
         }
         @CustomType.Setter
@@ -578,6 +601,7 @@ public final class GetKubeNodePoolResult {
         public GetKubeNodePoolResult build() {
             final var _resultValue = new GetKubeNodePoolResult();
             _resultValue.antiAffinity = antiAffinity;
+            _resultValue.attachFloatingIps = attachFloatingIps;
             _resultValue.autoscale = autoscale;
             _resultValue.autoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
             _resultValue.autoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;

@@ -57,6 +57,10 @@ namespace Pulumi.Ovh.CloudProject
     ///         {
     ///             "eu-west-par-a",
     ///         },
+    ///         AttachFloatingIps = new Ovh.CloudProject.Inputs.KubeNodePoolAttachFloatingIpsArgs
+    ///         {
+    ///             Enabled = false,
+    ///         },
     ///     });
     /// 
     /// });
@@ -134,6 +138,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<bool> AntiAffinity { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        /// </summary>
+        [Output("attachFloatingIps")]
+        public Output<Outputs.KubeNodePoolAttachFloatingIps> AttachFloatingIps { get; private set; } = null!;
+
+        /// <summary>
         /// Enable auto-scaling for the pool. Default to `false`.
         /// </summary>
         [Output("autoscale")]
@@ -153,7 +163,6 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        /// * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         /// </summary>
         [Output("autoscalingScaleDownUtilizationThreshold")]
         public Output<double> AutoscalingScaleDownUtilizationThreshold { get; private set; } = null!;
@@ -326,6 +335,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? AntiAffinity { get; set; }
 
         /// <summary>
+        /// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        /// </summary>
+        [Input("attachFloatingIps")]
+        public Input<Inputs.KubeNodePoolAttachFloatingIpsArgs>? AttachFloatingIps { get; set; }
+
+        /// <summary>
         /// Enable auto-scaling for the pool. Default to `false`.
         /// </summary>
         [Input("autoscale")]
@@ -345,7 +360,6 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        /// * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         /// </summary>
         [Input("autoscalingScaleDownUtilizationThreshold")]
         public Input<double>? AutoscalingScaleDownUtilizationThreshold { get; set; }
@@ -431,6 +445,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? AntiAffinity { get; set; }
 
         /// <summary>
+        /// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        /// </summary>
+        [Input("attachFloatingIps")]
+        public Input<Inputs.KubeNodePoolAttachFloatingIpsGetArgs>? AttachFloatingIps { get; set; }
+
+        /// <summary>
         /// Enable auto-scaling for the pool. Default to `false`.
         /// </summary>
         [Input("autoscale")]
@@ -450,7 +470,6 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
-        /// * `template ` - (Optional) Managed Kubernetes nodepool template, which is a complex object constituted by two main nested objects:
         /// </summary>
         [Input("autoscalingScaleDownUtilizationThreshold")]
         public Input<double>? AutoscalingScaleDownUtilizationThreshold { get; set; }

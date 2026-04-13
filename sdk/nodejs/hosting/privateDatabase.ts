@@ -102,6 +102,10 @@ export class PrivateDatabase extends pulumi.CustomResource {
      */
     public /*out*/ readonly DatabaseURN!: pulumi.Output<string>;
     /**
+     * Advanced configuration key / value.
+     */
+    public readonly advancedConfiguration!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Number of CPU on your private database
      */
     public /*out*/ readonly cpu!: pulumi.Output<number>;
@@ -214,6 +218,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PrivateDatabaseState | undefined;
             resourceInputs["DatabaseURN"] = state ? state.DatabaseURN : undefined;
+            resourceInputs["advancedConfiguration"] = state ? state.advancedConfiguration : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["datacenter"] = state ? state.datacenter : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -240,6 +245,7 @@ export class PrivateDatabase extends pulumi.CustomResource {
             resourceInputs["versionNumber"] = state ? state.versionNumber : undefined;
         } else {
             const args = argsOrState as PrivateDatabaseArgs | undefined;
+            resourceInputs["advancedConfiguration"] = args ? args.advancedConfiguration : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -279,6 +285,10 @@ export interface PrivateDatabaseState {
      * URN of the private database, used when writing IAM policies
      */
     DatabaseURN?: pulumi.Input<string>;
+    /**
+     * Advanced configuration key / value.
+     */
+    advancedConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Number of CPU on your private database
      */
@@ -383,6 +393,10 @@ export interface PrivateDatabaseState {
  * The set of arguments for constructing a PrivateDatabase resource.
  */
 export interface PrivateDatabaseArgs {
+    /**
+     * Advanced configuration key / value.
+     */
+    advancedConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Name displayed in customer panel for your private database
      */

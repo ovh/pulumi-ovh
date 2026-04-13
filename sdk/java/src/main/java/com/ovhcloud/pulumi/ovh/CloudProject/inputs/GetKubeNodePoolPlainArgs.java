@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolAttachFloatingIps;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.GetKubeNodePoolTemplate;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class GetKubeNodePoolPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubeNodePoolPlainArgs Empty = new GetKubeNodePoolPlainArgs();
+
+    /**
+     * Floating IPs attachment configuration for pool nodes.
+     * 
+     */
+    @Import(name="attachFloatingIps")
+    private @Nullable GetKubeNodePoolAttachFloatingIps attachFloatingIps;
+
+    /**
+     * @return Floating IPs attachment configuration for pool nodes.
+     * 
+     */
+    public Optional<GetKubeNodePoolAttachFloatingIps> attachFloatingIps() {
+        return Optional.ofNullable(this.attachFloatingIps);
+    }
 
     /**
      * list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
@@ -87,6 +103,7 @@ public final class GetKubeNodePoolPlainArgs extends com.pulumi.resources.InvokeA
     private GetKubeNodePoolPlainArgs() {}
 
     private GetKubeNodePoolPlainArgs(GetKubeNodePoolPlainArgs $) {
+        this.attachFloatingIps = $.attachFloatingIps;
         this.availabilityZones = $.availabilityZones;
         this.kubeId = $.kubeId;
         this.name = $.name;
@@ -110,6 +127,17 @@ public final class GetKubeNodePoolPlainArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetKubeNodePoolPlainArgs defaults) {
             $ = new GetKubeNodePoolPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param attachFloatingIps Floating IPs attachment configuration for pool nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder attachFloatingIps(@Nullable GetKubeNodePoolAttachFloatingIps attachFloatingIps) {
+            $.attachFloatingIps = attachFloatingIps;
+            return this;
         }
 
         /**

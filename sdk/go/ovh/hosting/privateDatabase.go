@@ -103,6 +103,8 @@ type PrivateDatabase struct {
 
 	// URN of the private database, used when writing IAM policies
 	DatabaseURN pulumi.StringOutput `pulumi:"DatabaseURN"`
+	// Advanced configuration key / value.
+	AdvancedConfiguration pulumi.StringMapOutput `pulumi:"advancedConfiguration"`
 	// Number of CPU on your private database
 	Cpu pulumi.IntOutput `pulumi:"cpu"`
 	// Datacenter where this private database is located
@@ -187,6 +189,8 @@ func GetPrivateDatabase(ctx *pulumi.Context,
 type privateDatabaseState struct {
 	// URN of the private database, used when writing IAM policies
 	DatabaseURN *string `pulumi:"DatabaseURN"`
+	// Advanced configuration key / value.
+	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
 	// Number of CPU on your private database
 	Cpu *int `pulumi:"cpu"`
 	// Datacenter where this private database is located
@@ -242,6 +246,8 @@ type privateDatabaseState struct {
 type PrivateDatabaseState struct {
 	// URN of the private database, used when writing IAM policies
 	DatabaseURN pulumi.StringPtrInput
+	// Advanced configuration key / value.
+	AdvancedConfiguration pulumi.StringMapInput
 	// Number of CPU on your private database
 	Cpu pulumi.IntPtrInput
 	// Datacenter where this private database is located
@@ -299,6 +305,8 @@ func (PrivateDatabaseState) ElementType() reflect.Type {
 }
 
 type privateDatabaseArgs struct {
+	// Advanced configuration key / value.
+	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
 	// Name displayed in customer panel for your private database
 	DisplayName *string `pulumi:"displayName"`
 	// Details about your Order
@@ -319,6 +327,8 @@ type privateDatabaseArgs struct {
 
 // The set of arguments for constructing a PrivateDatabase resource.
 type PrivateDatabaseArgs struct {
+	// Advanced configuration key / value.
+	AdvancedConfiguration pulumi.StringMapInput
 	// Name displayed in customer panel for your private database
 	DisplayName pulumi.StringPtrInput
 	// Details about your Order
@@ -427,6 +437,11 @@ func (o PrivateDatabaseOutput) ToPrivateDatabaseOutputWithContext(ctx context.Co
 // URN of the private database, used when writing IAM policies
 func (o PrivateDatabaseOutput) DatabaseURN() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringOutput { return v.DatabaseURN }).(pulumi.StringOutput)
+}
+
+// Advanced configuration key / value.
+func (o PrivateDatabaseOutput) AdvancedConfiguration() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateDatabase) pulumi.StringMapOutput { return v.AdvancedConfiguration }).(pulumi.StringMapOutput)
 }
 
 // Number of CPU on your private database

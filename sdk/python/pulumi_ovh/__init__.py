@@ -9,6 +9,7 @@ import typing
 from .cloud_project_containerregistry_iam import *
 from .cloud_project_database_clickhouse_user import *
 from .cloud_project_database_valkey_user import *
+from .cloud_project_file_storage_share import *
 from .cloud_project_ssh_key import *
 from .cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .cloud_project_storage_replication_job import *
@@ -1185,6 +1186,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": "CloudProjectDatabaseValkeyUser"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudProjectFileStorageShare",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare": "CloudProjectFileStorageShare"
   }
  },
  {

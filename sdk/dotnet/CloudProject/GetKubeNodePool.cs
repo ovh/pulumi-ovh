@@ -105,6 +105,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetKubeNodePoolArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Floating IPs attachment configuration for pool nodes.
+        /// </summary>
+        [Input("attachFloatingIps")]
+        public Inputs.GetKubeNodePoolAttachFloatingIpsArgs? AttachFloatingIps { get; set; }
+
         [Input("availabilityZones")]
         private List<string>? _availabilityZones;
 
@@ -146,6 +152,12 @@ namespace Pulumi.Ovh.CloudProject
 
     public sealed class GetKubeNodePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Floating IPs attachment configuration for pool nodes.
+        /// </summary>
+        [Input("attachFloatingIps")]
+        public Input<Inputs.GetKubeNodePoolAttachFloatingIpsInputArgs>? AttachFloatingIps { get; set; }
+
         [Input("availabilityZones")]
         private InputList<string>? _availabilityZones;
 
@@ -193,6 +205,10 @@ namespace Pulumi.Ovh.CloudProject
         /// (Optional) should the pool use the anti-affinity feature. Default to `false`.
         /// </summary>
         public readonly bool AntiAffinity;
+        /// <summary>
+        /// Floating IPs attachment configuration for pool nodes.
+        /// </summary>
+        public readonly Outputs.GetKubeNodePoolAttachFloatingIpsResult AttachFloatingIps;
         /// <summary>
         /// (Optional) Enable auto-scaling for the pool. Default to `false`.
         /// </summary>
@@ -291,6 +307,8 @@ namespace Pulumi.Ovh.CloudProject
         private GetKubeNodePoolResult(
             bool antiAffinity,
 
+            Outputs.GetKubeNodePoolAttachFloatingIpsResult attachFloatingIps,
+
             bool autoscale,
 
             int autoscalingScaleDownUnneededTimeSeconds,
@@ -340,6 +358,7 @@ namespace Pulumi.Ovh.CloudProject
             string updatedAt)
         {
             AntiAffinity = antiAffinity;
+            AttachFloatingIps = attachFloatingIps;
             Autoscale = autoscale;
             AutoscalingScaleDownUnneededTimeSeconds = autoscalingScaleDownUnneededTimeSeconds;
             AutoscalingScaleDownUnreadyTimeSeconds = autoscalingScaleDownUnreadyTimeSeconds;

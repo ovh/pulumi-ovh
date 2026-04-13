@@ -21,6 +21,7 @@ __all__ = ['PrivateDatabaseArgs', 'PrivateDatabase']
 @pulumi.input_type
 class PrivateDatabaseArgs:
     def __init__(__self__, *,
+                 advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -30,6 +31,7 @@ class PrivateDatabaseArgs:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrivateDatabase resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[_builtins.str] display_name: Name displayed in customer panel for your private database
         :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabaseOrderArgs']]] orders: Details about your Order
         :param pulumi.Input[_builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -38,6 +40,8 @@ class PrivateDatabaseArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PrivateDatabasePlanOptionArgs']]] plan_options: Product Plan to order
         :param pulumi.Input[_builtins.str] service_name: Service name
         """
+        if advanced_configuration is not None:
+            pulumi.set(__self__, "advanced_configuration", advanced_configuration)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if orders is not None:
@@ -55,6 +59,18 @@ class PrivateDatabaseArgs:
             pulumi.set(__self__, "plan_options", plan_options)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedConfiguration")
+    def advanced_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Advanced configuration key / value.
+        """
+        return pulumi.get(self, "advanced_configuration")
+
+    @advanced_configuration.setter
+    def advanced_configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "advanced_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -146,6 +162,7 @@ class PrivateDatabaseArgs:
 class _PrivateDatabaseState:
     def __init__(__self__, *,
                  database_urn: Optional[pulumi.Input[_builtins.str]] = None,
+                 advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  cpu: Optional[pulumi.Input[_builtins.int]] = None,
                  datacenter: Optional[pulumi.Input[_builtins.str]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -173,6 +190,7 @@ class _PrivateDatabaseState:
         """
         Input properties used for looking up and filtering PrivateDatabase resources.
         :param pulumi.Input[_builtins.str] database_urn: URN of the private database, used when writing IAM policies
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[_builtins.int] cpu: Number of CPU on your private database
         :param pulumi.Input[_builtins.str] datacenter: Datacenter where this private database is located
         :param pulumi.Input[_builtins.str] display_name: Name displayed in customer panel for your private database
@@ -200,6 +218,8 @@ class _PrivateDatabaseState:
         """
         if database_urn is not None:
             pulumi.set(__self__, "database_urn", database_urn)
+        if advanced_configuration is not None:
+            pulumi.set(__self__, "advanced_configuration", advanced_configuration)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if datacenter is not None:
@@ -263,6 +283,18 @@ class _PrivateDatabaseState:
     @database_urn.setter
     def database_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "database_urn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="advancedConfiguration")
+    def advanced_configuration(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Advanced configuration key / value.
+        """
+        return pulumi.get(self, "advanced_configuration")
+
+    @advanced_configuration.setter
+    def advanced_configuration(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "advanced_configuration", value)
 
     @_builtins.property
     @pulumi.getter
@@ -560,6 +592,7 @@ class PrivateDatabase(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -628,6 +661,7 @@ class PrivateDatabase(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[_builtins.str] display_name: Name displayed in customer panel for your private database
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]] orders: Details about your Order
         :param pulumi.Input[_builtins.str] ovh_subsidiary: OVHcloud Subsidiary. Country of OVHcloud legal entity you'll be billed by. List of supported subsidiaries available on API at [/1.0/me.json under `models.nichandle.OvhSubsidiaryEnum`](https://eu.api.ovh.com/1.0/me.json)
@@ -715,6 +749,7 @@ class PrivateDatabase(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
                  orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrivateDatabaseOrderArgs', 'PrivateDatabaseOrderArgsDict']]]]] = None,
                  ovh_subsidiary: Optional[pulumi.Input[_builtins.str]] = None,
@@ -731,6 +766,7 @@ class PrivateDatabase(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PrivateDatabaseArgs.__new__(PrivateDatabaseArgs)
 
+            __props__.__dict__["advanced_configuration"] = advanced_configuration
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["orders"] = orders
             __props__.__dict__["ovh_subsidiary"] = ovh_subsidiary
@@ -767,6 +803,7 @@ class PrivateDatabase(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             database_urn: Optional[pulumi.Input[_builtins.str]] = None,
+            advanced_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             cpu: Optional[pulumi.Input[_builtins.int]] = None,
             datacenter: Optional[pulumi.Input[_builtins.str]] = None,
             display_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -799,6 +836,7 @@ class PrivateDatabase(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] database_urn: URN of the private database, used when writing IAM policies
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[_builtins.int] cpu: Number of CPU on your private database
         :param pulumi.Input[_builtins.str] datacenter: Datacenter where this private database is located
         :param pulumi.Input[_builtins.str] display_name: Name displayed in customer panel for your private database
@@ -829,6 +867,7 @@ class PrivateDatabase(pulumi.CustomResource):
         __props__ = _PrivateDatabaseState.__new__(_PrivateDatabaseState)
 
         __props__.__dict__["database_urn"] = database_urn
+        __props__.__dict__["advanced_configuration"] = advanced_configuration
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["datacenter"] = datacenter
         __props__.__dict__["display_name"] = display_name
@@ -862,6 +901,14 @@ class PrivateDatabase(pulumi.CustomResource):
         URN of the private database, used when writing IAM policies
         """
         return pulumi.get(self, "database_urn")
+
+    @_builtins.property
+    @pulumi.getter(name="advancedConfiguration")
+    def advanced_configuration(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        Advanced configuration key / value.
+        """
+        return pulumi.get(self, "advanced_configuration")
 
     @_builtins.property
     @pulumi.getter

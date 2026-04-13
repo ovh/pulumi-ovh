@@ -101,6 +101,12 @@ namespace Pulumi.Ovh.Hosting
         public Output<string> DatabaseURN { get; private set; } = null!;
 
         /// <summary>
+        /// Advanced configuration key / value.
+        /// </summary>
+        [Output("advancedConfiguration")]
+        public Output<ImmutableDictionary<string, string>> AdvancedConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Number of CPU on your private database
         /// </summary>
         [Output("cpu")]
@@ -291,6 +297,18 @@ namespace Pulumi.Ovh.Hosting
 
     public sealed class PrivateDatabaseArgs : global::Pulumi.ResourceArgs
     {
+        [Input("advancedConfiguration")]
+        private InputMap<string>? _advancedConfiguration;
+
+        /// <summary>
+        /// Advanced configuration key / value.
+        /// </summary>
+        public InputMap<string> AdvancedConfiguration
+        {
+            get => _advancedConfiguration ?? (_advancedConfiguration = new InputMap<string>());
+            set => _advancedConfiguration = value;
+        }
+
         /// <summary>
         /// Name displayed in customer panel for your private database
         /// </summary>
@@ -358,6 +376,18 @@ namespace Pulumi.Ovh.Hosting
         /// </summary>
         [Input("DatabaseURN")]
         public Input<string>? DatabaseURN { get; set; }
+
+        [Input("advancedConfiguration")]
+        private InputMap<string>? _advancedConfiguration;
+
+        /// <summary>
+        /// Advanced configuration key / value.
+        /// </summary>
+        public InputMap<string> AdvancedConfiguration
+        {
+            get => _advancedConfiguration ?? (_advancedConfiguration = new InputMap<string>());
+            set => _advancedConfiguration = value;
+        }
 
         /// <summary>
         /// Number of CPU on your private database

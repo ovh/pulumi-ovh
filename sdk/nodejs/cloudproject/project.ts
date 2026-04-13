@@ -67,6 +67,10 @@ export class Project extends pulumi.CustomResource {
     public /*out*/ readonly ProjectURN!: pulumi.Output<string>;
     public /*out*/ readonly access!: pulumi.Output<string>;
     /**
+     * Prevent the cloud project from being destroyed. Defaults to false.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * A description associated with the user.
      */
     public readonly description!: pulumi.Output<string>;
@@ -120,6 +124,7 @@ export class Project extends pulumi.CustomResource {
             const state = argsOrState as ProjectState | undefined;
             resourceInputs["ProjectURN"] = state ? state.ProjectURN : undefined;
             resourceInputs["access"] = state ? state.access : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["orders"] = state ? state.orders : undefined;
             resourceInputs["ovhSubsidiary"] = state ? state.ovhSubsidiary : undefined;
@@ -131,6 +136,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["orders"] = args ? args.orders : undefined;
             resourceInputs["ovhSubsidiary"] = args ? args.ovhSubsidiary : undefined;
@@ -157,6 +163,10 @@ export interface ProjectState {
      */
     ProjectURN?: pulumi.Input<string>;
     access?: pulumi.Input<string>;
+    /**
+     * Prevent the cloud project from being destroyed. Defaults to false.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * A description associated with the user.
      */
@@ -201,6 +211,10 @@ export interface ProjectState {
  * The set of arguments for constructing a Project resource.
  */
 export interface ProjectArgs {
+    /**
+     * Prevent the cloud project from being destroyed. Defaults to false.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * A description associated with the user.
      */

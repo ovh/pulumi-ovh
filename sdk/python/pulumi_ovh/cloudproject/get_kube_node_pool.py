@@ -28,10 +28,13 @@ class GetKubeNodePoolResult:
     """
     A collection of values returned by getKubeNodePool.
     """
-    def __init__(__self__, anti_affinity=None, autoscale=None, autoscaling_scale_down_unneeded_time_seconds=None, autoscaling_scale_down_unready_time_seconds=None, autoscaling_scale_down_utilization_threshold=None, availability_zones=None, available_nodes=None, created_at=None, current_nodes=None, desired_nodes=None, flavor=None, flavor_name=None, id=None, kube_id=None, max_nodes=None, min_nodes=None, monthly_billed=None, name=None, project_id=None, service_name=None, size_status=None, status=None, template=None, up_to_date_nodes=None, updated_at=None):
+    def __init__(__self__, anti_affinity=None, attach_floating_ips=None, autoscale=None, autoscaling_scale_down_unneeded_time_seconds=None, autoscaling_scale_down_unready_time_seconds=None, autoscaling_scale_down_utilization_threshold=None, availability_zones=None, available_nodes=None, created_at=None, current_nodes=None, desired_nodes=None, flavor=None, flavor_name=None, id=None, kube_id=None, max_nodes=None, min_nodes=None, monthly_billed=None, name=None, project_id=None, service_name=None, size_status=None, status=None, template=None, up_to_date_nodes=None, updated_at=None):
         if anti_affinity and not isinstance(anti_affinity, bool):
             raise TypeError("Expected argument 'anti_affinity' to be a bool")
         pulumi.set(__self__, "anti_affinity", anti_affinity)
+        if attach_floating_ips and not isinstance(attach_floating_ips, dict):
+            raise TypeError("Expected argument 'attach_floating_ips' to be a dict")
+        pulumi.set(__self__, "attach_floating_ips", attach_floating_ips)
         if autoscale and not isinstance(autoscale, bool):
             raise TypeError("Expected argument 'autoscale' to be a bool")
         pulumi.set(__self__, "autoscale", autoscale)
@@ -112,6 +115,14 @@ class GetKubeNodePoolResult:
         (Optional) should the pool use the anti-affinity feature. Default to `false`.
         """
         return pulumi.get(self, "anti_affinity")
+
+    @_builtins.property
+    @pulumi.getter(name="attachFloatingIps")
+    def attach_floating_ips(self) -> 'outputs.GetKubeNodePoolAttachFloatingIpsResult':
+        """
+        Floating IPs attachment configuration for pool nodes.
+        """
+        return pulumi.get(self, "attach_floating_ips")
 
     @_builtins.property
     @pulumi.getter
@@ -310,6 +321,7 @@ class AwaitableGetKubeNodePoolResult(GetKubeNodePoolResult):
             yield self
         return GetKubeNodePoolResult(
             anti_affinity=self.anti_affinity,
+            attach_floating_ips=self.attach_floating_ips,
             autoscale=self.autoscale,
             autoscaling_scale_down_unneeded_time_seconds=self.autoscaling_scale_down_unneeded_time_seconds,
             autoscaling_scale_down_unready_time_seconds=self.autoscaling_scale_down_unready_time_seconds,
@@ -336,7 +348,8 @@ class AwaitableGetKubeNodePoolResult(GetKubeNodePoolResult):
             updated_at=self.updated_at)
 
 
-def get_kube_node_pool(availability_zones: Optional[Sequence[_builtins.str]] = None,
+def get_kube_node_pool(attach_floating_ips: Optional[Union['GetKubeNodePoolAttachFloatingIpsArgs', 'GetKubeNodePoolAttachFloatingIpsArgsDict']] = None,
+                       availability_zones: Optional[Sequence[_builtins.str]] = None,
                        kube_id: Optional[_builtins.str] = None,
                        name: Optional[_builtins.str] = None,
                        service_name: Optional[_builtins.str] = None,
@@ -358,12 +371,14 @@ def get_kube_node_pool(availability_zones: Optional[Sequence[_builtins.str]] = N
     ```
 
 
+    :param Union['GetKubeNodePoolAttachFloatingIpsArgs', 'GetKubeNodePoolAttachFloatingIpsArgsDict'] attach_floating_ips: Floating IPs attachment configuration for pool nodes.
     :param Sequence[_builtins.str] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
     :param _builtins.str kube_id: The id of the managed kubernetes cluster.
     :param _builtins.str name: The name of the node pool.
     :param _builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
+    __args__['attachFloatingIps'] = attach_floating_ips
     __args__['availabilityZones'] = availability_zones
     __args__['kubeId'] = kube_id
     __args__['name'] = name
@@ -374,6 +389,7 @@ def get_kube_node_pool(availability_zones: Optional[Sequence[_builtins.str]] = N
 
     return AwaitableGetKubeNodePoolResult(
         anti_affinity=pulumi.get(__ret__, 'anti_affinity'),
+        attach_floating_ips=pulumi.get(__ret__, 'attach_floating_ips'),
         autoscale=pulumi.get(__ret__, 'autoscale'),
         autoscaling_scale_down_unneeded_time_seconds=pulumi.get(__ret__, 'autoscaling_scale_down_unneeded_time_seconds'),
         autoscaling_scale_down_unready_time_seconds=pulumi.get(__ret__, 'autoscaling_scale_down_unready_time_seconds'),
@@ -398,7 +414,8 @@ def get_kube_node_pool(availability_zones: Optional[Sequence[_builtins.str]] = N
         template=pulumi.get(__ret__, 'template'),
         up_to_date_nodes=pulumi.get(__ret__, 'up_to_date_nodes'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_kube_node_pool_output(availability_zones: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_kube_node_pool_output(attach_floating_ips: Optional[pulumi.Input[Optional[Union['GetKubeNodePoolAttachFloatingIpsArgs', 'GetKubeNodePoolAttachFloatingIpsArgsDict']]]] = None,
+                              availability_zones: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                               kube_id: Optional[pulumi.Input[_builtins.str]] = None,
                               name: Optional[pulumi.Input[_builtins.str]] = None,
                               service_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -420,12 +437,14 @@ def get_kube_node_pool_output(availability_zones: Optional[pulumi.Input[Optional
     ```
 
 
+    :param Union['GetKubeNodePoolAttachFloatingIpsArgs', 'GetKubeNodePoolAttachFloatingIpsArgsDict'] attach_floating_ips: Floating IPs attachment configuration for pool nodes.
     :param Sequence[_builtins.str] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
     :param _builtins.str kube_id: The id of the managed kubernetes cluster.
     :param _builtins.str name: The name of the node pool.
     :param _builtins.str service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
     """
     __args__ = dict()
+    __args__['attachFloatingIps'] = attach_floating_ips
     __args__['availabilityZones'] = availability_zones
     __args__['kubeId'] = kube_id
     __args__['name'] = name
@@ -435,6 +454,7 @@ def get_kube_node_pool_output(availability_zones: Optional[pulumi.Input[Optional
     __ret__ = pulumi.runtime.invoke_output('ovh:CloudProject/getKubeNodePool:getKubeNodePool', __args__, opts=opts, typ=GetKubeNodePoolResult)
     return __ret__.apply(lambda __response__: GetKubeNodePoolResult(
         anti_affinity=pulumi.get(__response__, 'anti_affinity'),
+        attach_floating_ips=pulumi.get(__response__, 'attach_floating_ips'),
         autoscale=pulumi.get(__response__, 'autoscale'),
         autoscaling_scale_down_unneeded_time_seconds=pulumi.get(__response__, 'autoscaling_scale_down_unneeded_time_seconds'),
         autoscaling_scale_down_unready_time_seconds=pulumi.get(__response__, 'autoscaling_scale_down_unready_time_seconds'),
