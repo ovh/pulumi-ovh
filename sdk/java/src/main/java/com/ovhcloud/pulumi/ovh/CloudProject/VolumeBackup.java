@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE** Prefer using the new `ovh.CloudStorageBlockVolumeBackup` resource instead.
+ * 
  * Manage backups for the given volume in a public cloud project.
  * 
  * ## Example Usage

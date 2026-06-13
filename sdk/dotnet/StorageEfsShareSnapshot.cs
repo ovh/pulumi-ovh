@@ -64,6 +64,32 @@ namespace Pulumi.Ovh
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An EFS share snapshot can be imported using its `service_name`, `share_id` and `id` fields.
+    /// 
+    /// Using the following configuration:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_storage_efs_share_snapshot.snapshot
+    /// 
+    ///   id = "&lt;service_name&gt;/&lt;share_id&gt;/&lt;id&gt;"
+    /// 
+    /// }
+    /// 
+    /// You can then run:
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=snapshot.tf
+    /// 
+    /// $ pulumi up
+    /// 
+    /// The file `snapshot.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
     /// </summary>
     [OvhResourceType("ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot")]
     public partial class StorageEfsShareSnapshot : global::Pulumi.CustomResource

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE** Prefer using the new `CloudStorageBlockVolumeBackup` resource instead.
+//
 // Manage backups for the given volume in a public cloud project.
 //
 // ## Example Usage

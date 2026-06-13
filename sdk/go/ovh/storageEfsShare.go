@@ -49,6 +49,32 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// An EFS share can be imported using its `service_name` and `id` fields.
+//
+// Using the following configuration:
+//
+// terraform
+//
+// import {
+//
+//	to = ovh_storage_efs_share.share
+//
+//	id = "<service_name>/<id>"
+//
+// }
+//
+// You can then run:
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=share.tf
+//
+// $ pulumi up
+//
+// The file `share.tf` will then contain the imported resource's configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
 type StorageEfsShare struct {
 	pulumi.CustomResourceState
 

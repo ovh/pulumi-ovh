@@ -29,6 +29,26 @@ __all__ = [
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgsDict',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgsDict',
+    'CloudStorageBlockVolumeBackupCurrentStateArgs',
+    'CloudStorageBlockVolumeBackupCurrentStateArgsDict',
+    'CloudStorageBlockVolumeBackupCurrentStateLocationArgs',
+    'CloudStorageBlockVolumeBackupCurrentStateLocationArgsDict',
+    'CloudStorageBlockVolumeCreateFromArgs',
+    'CloudStorageBlockVolumeCreateFromArgsDict',
+    'CloudStorageBlockVolumeCurrentStateArgs',
+    'CloudStorageBlockVolumeCurrentStateArgsDict',
+    'CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs',
+    'CloudStorageBlockVolumeCurrentStateAttachedInstanceArgsDict',
+    'CloudStorageBlockVolumeCurrentStateEncryptionArgs',
+    'CloudStorageBlockVolumeCurrentStateEncryptionArgsDict',
+    'CloudStorageBlockVolumeCurrentStateLocationArgs',
+    'CloudStorageBlockVolumeCurrentStateLocationArgsDict',
+    'CloudStorageBlockVolumeEncryptionArgs',
+    'CloudStorageBlockVolumeEncryptionArgsDict',
+    'CloudStorageBlockVolumeSnapshotCurrentStateArgs',
+    'CloudStorageBlockVolumeSnapshotCurrentStateArgsDict',
+    'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs',
+    'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict',
     'StorageEfsIamArgs',
     'StorageEfsIamArgsDict',
     'StorageEfsOrderArgs',
@@ -43,6 +63,8 @@ __all__ = [
     'StorageEfsPlanOptionArgsDict',
     'StorageEfsPlanOptionConfigurationArgs',
     'StorageEfsPlanOptionConfigurationArgsDict',
+    'VrackPublicRoutingPriorityAvailabilityZoneArgs',
+    'VrackPublicRoutingPriorityAvailabilityZoneArgsDict',
     'VrackservicesCurrentStateArgs',
     'VrackservicesCurrentStateArgsDict',
     'VrackservicesCurrentStateSubnetArgs',
@@ -644,6 +666,666 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs:
 
 
 if not MYPY:
+    class CloudStorageBlockVolumeBackupCurrentStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A description for the backup.
+        """
+        location: NotRequired[pulumi.Input['CloudStorageBlockVolumeBackupCurrentStateLocationArgsDict']]
+        """
+        Current location:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the backup.
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Size of the backup in GB.
+        """
+        volume_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the volume to back up. Changing this value recreates the resource.
+        """
+elif False:
+    CloudStorageBlockVolumeBackupCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeBackupCurrentStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudStorageBlockVolumeBackupCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: A description for the backup.
+        :param pulumi.Input['CloudStorageBlockVolumeBackupCurrentStateLocationArgs'] location: Current location:
+        :param pulumi.Input[_builtins.str] name: The name of the backup.
+        :param pulumi.Input[_builtins.int] size: Size of the backup in GB.
+        :param pulumi.Input[_builtins.str] volume_id: The ID of the volume to back up. Changing this value recreates the resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A description for the backup.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageBlockVolumeBackupCurrentStateLocationArgs']]:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageBlockVolumeBackupCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the backup.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Size of the backup in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the volume to back up. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "volume_id", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeBackupCurrentStateLocationArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The region where the backup will be created. Changing this value recreates the resource.
+        """
+elif False:
+    CloudStorageBlockVolumeBackupCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeBackupCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: The region where the backup will be created. Changing this value recreates the resource.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region where the backup will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeCreateFromArgsDict(TypedDict):
+        backup_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier of a backup to restore the volume from.
+        """
+        image_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+        """
+        snapshot_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier of a snapshot to create the volume from.
+        """
+elif False:
+    CloudStorageBlockVolumeCreateFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeCreateFromArgs:
+    def __init__(__self__, *,
+                 backup_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] backup_id: Identifier of a backup to restore the volume from.
+        :param pulumi.Input[_builtins.str] image_id: UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+        :param pulumi.Input[_builtins.str] snapshot_id: Identifier of a snapshot to create the volume from.
+        """
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of a backup to restore the volume from.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "backup_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+        """
+        return pulumi.get(self, "image_id")
+
+    @image_id.setter
+    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "image_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of a snapshot to create the volume from.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeCurrentStateArgsDict(TypedDict):
+        attached_instances: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgsDict']]]]
+        """
+        Instances currently attached to this volume
+        """
+        bootable: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the volume is bootable.
+        """
+        encryption: NotRequired[pulumi.Input['CloudStorageBlockVolumeCurrentStateEncryptionArgsDict']]
+        """
+        Encryption configuration for the volume.
+        """
+        location: NotRequired[pulumi.Input['CloudStorageBlockVolumeCurrentStateLocationArgsDict']]
+        """
+        Current location:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Volume name.
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Size of the volume in GB.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        """
+        volume_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+        """
+elif False:
+    CloudStorageBlockVolumeCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeCurrentStateArgs:
+    def __init__(__self__, *,
+                 attached_instances: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs']]]] = None,
+                 bootable: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption: Optional[pulumi.Input['CloudStorageBlockVolumeCurrentStateEncryptionArgs']] = None,
+                 location: Optional[pulumi.Input['CloudStorageBlockVolumeCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs']]] attached_instances: Instances currently attached to this volume
+        :param pulumi.Input[_builtins.bool] bootable: Whether the volume is bootable.
+        :param pulumi.Input['CloudStorageBlockVolumeCurrentStateEncryptionArgs'] encryption: Encryption configuration for the volume.
+        :param pulumi.Input['CloudStorageBlockVolumeCurrentStateLocationArgs'] location: Current location:
+        :param pulumi.Input[_builtins.str] name: Volume name.
+        :param pulumi.Input[_builtins.int] size: Size of the volume in GB.
+        :param pulumi.Input[_builtins.str] status: Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        :param pulumi.Input[_builtins.str] volume_type: Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+        """
+        if attached_instances is not None:
+            pulumi.set(__self__, "attached_instances", attached_instances)
+        if bootable is not None:
+            pulumi.set(__self__, "bootable", bootable)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedInstances")
+    def attached_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs']]]]:
+        """
+        Instances currently attached to this volume
+        """
+        return pulumi.get(self, "attached_instances")
+
+    @attached_instances.setter
+    def attached_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs']]]]):
+        pulumi.set(self, "attached_instances", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def bootable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the volume is bootable.
+        """
+        return pulumi.get(self, "bootable")
+
+    @bootable.setter
+    def bootable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "bootable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['CloudStorageBlockVolumeCurrentStateEncryptionArgs']]:
+        """
+        Encryption configuration for the volume.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['CloudStorageBlockVolumeCurrentStateEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageBlockVolumeCurrentStateLocationArgs']]:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageBlockVolumeCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Volume name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Size of the volume in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+        """
+        return pulumi.get(self, "volume_type")
+
+    @volume_type.setter
+    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "volume_type", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeCurrentStateAttachedInstanceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Volume ID.
+        """
+elif False:
+    CloudStorageBlockVolumeCurrentStateAttachedInstanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Volume ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Volume ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeCurrentStateEncryptionArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+elif False:
+    CloudStorageBlockVolumeCurrentStateEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeCurrentStateEncryptionArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the volume is encrypted at rest with LUKS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeCurrentStateLocationArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the volume will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudStorageBlockVolumeCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the volume will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeEncryptionArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+elif False:
+    CloudStorageBlockVolumeEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeEncryptionArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the volume is encrypted at rest with LUKS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeSnapshotCurrentStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A description for the snapshot.
+        """
+        location: NotRequired[pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict']]
+        """
+        Current location:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the snapshot.
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Size of the snapshot in GB.
+        """
+        volume_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The ID of the volume to snapshot. Changing this value recreates the resource.
+        """
+elif False:
+    CloudStorageBlockVolumeSnapshotCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeSnapshotCurrentStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None,
+                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: A description for the snapshot.
+        :param pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs'] location: Current location:
+        :param pulumi.Input[_builtins.str] name: The name of the snapshot.
+        :param pulumi.Input[_builtins.int] size: Size of the snapshot in GB.
+        :param pulumi.Input[_builtins.str] volume_id: The ID of the volume to snapshot. Changing this value recreates the resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A description for the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs']]:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The ID of the volume to snapshot. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "volume_id", value)
+
+
+if not MYPY:
+    class CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+elif False:
+    CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
     class StorageEfsIamArgsDict(TypedDict):
         display_name: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -1202,6 +1884,58 @@ class StorageEfsPlanOptionConfigurationArgs:
     @value.setter
     def value(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class VrackPublicRoutingPriorityAvailabilityZoneArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone name
+        """
+        priority: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Unique priority value [1..3]
+        """
+elif False:
+    VrackPublicRoutingPriorityAvailabilityZoneArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VrackPublicRoutingPriorityAvailabilityZoneArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Availability zone name
+        :param pulumi.Input[_builtins.float] priority: Unique priority value [1..3]
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone name
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Unique priority value [1..3]
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "priority", value)
 
 
 if not MYPY:

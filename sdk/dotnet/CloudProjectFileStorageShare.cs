@@ -105,7 +105,7 @@ namespace Pulumi.Ovh
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Share network ID.
+        /// ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         /// </summary>
         [Output("shareNetworkId")]
         public Output<string> ShareNetworkId { get; private set; } = null!;
@@ -208,8 +208,8 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Private network ID.
         /// </summary>
-        [Input("networkId", required: true)]
-        public Input<string> NetworkId { get; set; } = null!;
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
 
         /// <summary>
         /// The region in which the share will be created.
@@ -222,6 +222,12 @@ namespace Pulumi.Ovh
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
+
+        /// <summary>
+        /// ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
+        /// </summary>
+        [Input("shareNetworkId")]
+        public Input<string>? ShareNetworkId { get; set; }
 
         /// <summary>
         /// Share size in Gigabytes.
@@ -238,8 +244,8 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Subnet ID.
         /// </summary>
-        [Input("subnetId", required: true)]
-        public Input<string> SubnetId { get; set; } = null!;
+        [Input("subnetId")]
+        public Input<string>? SubnetId { get; set; }
 
         /// <summary>
         /// Share type. Currently only `standard-1az` is supported.
@@ -310,7 +316,7 @@ namespace Pulumi.Ovh
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Share network ID.
+        /// ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         /// </summary>
         [Input("shareNetworkId")]
         public Input<string>? ShareNetworkId { get; set; }

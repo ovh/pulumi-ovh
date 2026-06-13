@@ -72,6 +72,32 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * An EFS share ACL can be imported using its `service_name`, `share_id` and `id` fields.
+ * 
+ * Using the following configuration:
+ * 
+ * terraform
+ * 
+ * import {
+ * 
+ *   to = ovh_storage_efs_share_acl.acl
+ * 
+ *   id = &#34;&lt;service_name&gt;/&lt;share_id&gt;/&lt;id&gt;&#34;
+ * 
+ * }
+ * 
+ * You can then run:
+ * 
+ * bash
+ * 
+ * $ pulumi preview -generate-config-out=acl.tf
+ * 
+ * $ pulumi up
+ * 
+ * The file `acl.tf` will then contain the imported resource&#39;s configuration, that can be copied next to the `import` block above. See https://developer.hashicorp.com/terraform/language/import/generating-configuration for more details.
+ * 
  */
 @ResourceType(type="ovh:index/storageEfsShareAcl:StorageEfsShareAcl")
 public class StorageEfsShareAcl extends com.pulumi.resources.CustomResource {

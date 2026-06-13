@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * }));
  * const vrackVrack = new ovh.vrack.Vrack("vrack", {
  *     ovhSubsidiary: myCart.then(myCart => myCart.ovhSubsidiary),
- *     name: "my-vrack",
+ *     name: "my_vrack",
  *     description: "my vrack",
  *     plan: {
  *         duration: vrack.then(vrack => vrack.selectedPrices?.[0]?.duration),

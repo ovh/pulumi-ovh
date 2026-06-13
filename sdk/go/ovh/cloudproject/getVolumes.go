@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get all the volume from a region of a public cloud project
+// > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+//
+// # Get all the volume from a region of a public cloud project
 //
 // ## Example Usage
 //

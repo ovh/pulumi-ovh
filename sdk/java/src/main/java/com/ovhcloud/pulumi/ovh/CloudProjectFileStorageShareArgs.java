@@ -66,15 +66,15 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
      * Private network ID.
      * 
      */
-    @Import(name="networkId", required=true)
-    private Output<String> networkId;
+    @Import(name="networkId")
+    private @Nullable Output<String> networkId;
 
     /**
      * @return Private network ID.
      * 
      */
-    public Output<String> networkId() {
-        return this.networkId;
+    public Optional<Output<String>> networkId() {
+        return Optional.ofNullable(this.networkId);
     }
 
     /**
@@ -105,6 +105,21 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
      */
     public Output<String> serviceName() {
         return this.serviceName;
+    }
+
+    /**
+     * ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
+     * 
+     */
+    @Import(name="shareNetworkId")
+    private @Nullable Output<String> shareNetworkId;
+
+    /**
+     * @return ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
+     * 
+     */
+    public Optional<Output<String>> shareNetworkId() {
+        return Optional.ofNullable(this.shareNetworkId);
     }
 
     /**
@@ -141,15 +156,15 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
      * Subnet ID.
      * 
      */
-    @Import(name="subnetId", required=true)
-    private Output<String> subnetId;
+    @Import(name="subnetId")
+    private @Nullable Output<String> subnetId;
 
     /**
      * @return Subnet ID.
      * 
      */
-    public Output<String> subnetId() {
-        return this.subnetId;
+    public Optional<Output<String>> subnetId() {
+        return Optional.ofNullable(this.subnetId);
     }
 
     /**
@@ -176,6 +191,7 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
         this.networkId = $.networkId;
         this.regionName = $.regionName;
         this.serviceName = $.serviceName;
+        this.shareNetworkId = $.shareNetworkId;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
         this.subnetId = $.subnetId;
@@ -269,7 +285,7 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder networkId(Output<String> networkId) {
+        public Builder networkId(@Nullable Output<String> networkId) {
             $.networkId = networkId;
             return this;
         }
@@ -327,6 +343,27 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
         }
 
         /**
+         * @param shareNetworkId ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shareNetworkId(@Nullable Output<String> shareNetworkId) {
+            $.shareNetworkId = shareNetworkId;
+            return this;
+        }
+
+        /**
+         * @param shareNetworkId ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shareNetworkId(String shareNetworkId) {
+            return shareNetworkId(Output.of(shareNetworkId));
+        }
+
+        /**
          * @param size Share size in Gigabytes.
          * 
          * @return builder
@@ -374,7 +411,7 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder subnetId(Output<String> subnetId) {
+        public Builder subnetId(@Nullable Output<String> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
@@ -411,17 +448,11 @@ public final class CloudProjectFileStorageShareArgs extends com.pulumi.resources
         }
 
         public CloudProjectFileStorageShareArgs build() {
-            if ($.networkId == null) {
-                throw new MissingRequiredPropertyException("CloudProjectFileStorageShareArgs", "networkId");
-            }
             if ($.regionName == null) {
                 throw new MissingRequiredPropertyException("CloudProjectFileStorageShareArgs", "regionName");
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("CloudProjectFileStorageShareArgs", "serviceName");
-            }
-            if ($.subnetId == null) {
-                throw new MissingRequiredPropertyException("CloudProjectFileStorageShareArgs", "subnetId");
             }
             return $;
         }

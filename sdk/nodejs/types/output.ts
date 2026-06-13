@@ -122,6 +122,144 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransi
     storageClass: string;
 }
 
+export interface CloudStorageBlockVolumeBackupCurrentState {
+    /**
+     * A description for the backup.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.CloudStorageBlockVolumeBackupCurrentStateLocation;
+    /**
+     * The name of the backup.
+     */
+    name: string;
+    /**
+     * Size of the backup in GB.
+     */
+    size: number;
+    /**
+     * The ID of the volume to back up. Changing this value recreates the resource.
+     */
+    volumeId: string;
+}
+
+export interface CloudStorageBlockVolumeBackupCurrentStateLocation {
+    /**
+     * The region where the backup will be created. Changing this value recreates the resource.
+     */
+    region: string;
+}
+
+export interface CloudStorageBlockVolumeCreateFrom {
+    /**
+     * Identifier of a backup to restore the volume from.
+     */
+    backupId?: string;
+    /**
+     * UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+     */
+    imageId?: string;
+    /**
+     * Identifier of a snapshot to create the volume from.
+     */
+    snapshotId?: string;
+}
+
+export interface CloudStorageBlockVolumeCurrentState {
+    /**
+     * Instances currently attached to this volume
+     */
+    attachedInstances: outputs.CloudStorageBlockVolumeCurrentStateAttachedInstance[];
+    /**
+     * Whether the volume is bootable.
+     */
+    bootable: boolean;
+    /**
+     * Encryption configuration for the volume.
+     */
+    encryption: outputs.CloudStorageBlockVolumeCurrentStateEncryption;
+    /**
+     * Current location:
+     */
+    location: outputs.CloudStorageBlockVolumeCurrentStateLocation;
+    /**
+     * Volume name.
+     */
+    name: string;
+    /**
+     * Size of the volume in GB.
+     */
+    size: number;
+    /**
+     * Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+     */
+    status: string;
+    /**
+     * Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+     */
+    volumeType: string;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateAttachedInstance {
+    /**
+     * Volume ID.
+     */
+    id: string;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateEncryption {
+    /**
+     * Whether the volume is encrypted at rest with LUKS.
+     */
+    enabled: boolean;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateLocation {
+    /**
+     * Region where the volume will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudStorageBlockVolumeEncryption {
+    /**
+     * Whether the volume is encrypted at rest with LUKS.
+     */
+    enabled: boolean;
+}
+
+export interface CloudStorageBlockVolumeSnapshotCurrentState {
+    /**
+     * A description for the snapshot.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.CloudStorageBlockVolumeSnapshotCurrentStateLocation;
+    /**
+     * The name of the snapshot.
+     */
+    name: string;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size: number;
+    /**
+     * The ID of the volume to snapshot. Changing this value recreates the resource.
+     */
+    volumeId: string;
+}
+
+export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+    /**
+     * The region where the snapshot will be created. Changing this value recreates the resource.
+     */
+    region: string;
+}
+
 export interface GetCloudProjectFlavorCapability {
     /**
      * Is the capability enabled
@@ -361,6 +499,181 @@ export interface GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTra
      * The storage class to which you want the object to transition.
      */
     storageClass: string;
+}
+
+export interface GetCloudStorageBlockVolumeAttachedInstance {
+    /**
+     * The ID of the volume.
+     */
+    id: string;
+}
+
+export interface GetCloudStorageBlockVolumeBackupLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageBlockVolumeBackupsBackup {
+    /**
+     * Backup description.
+     */
+    description: string;
+    /**
+     * Backup ID.
+     */
+    id: string;
+    /**
+     * Location of the backup:
+     */
+    location: outputs.GetCloudStorageBlockVolumeBackupsBackupLocation;
+    /**
+     * Backup name.
+     */
+    name: string;
+    /**
+     * Backup readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Size of the backup in GB.
+     */
+    size: number;
+    /**
+     * The ID of the volume whose backups to list.
+     */
+    volumeId: string;
+}
+
+export interface GetCloudStorageBlockVolumeBackupsBackupLocation {
+    /**
+     * The region where the backups reside.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageBlockVolumeEncryption {
+    /**
+     * Whether the volume is encrypted at rest with LUKS.
+     */
+    enabled: boolean;
+}
+
+export interface GetCloudStorageBlockVolumeLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageBlockVolumeSnapshotLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageBlockVolumeSnapshotsSnapshot {
+    /**
+     * Snapshot description.
+     */
+    description: string;
+    /**
+     * Snapshot ID.
+     */
+    id: string;
+    /**
+     * Location of the snapshot:
+     */
+    location: outputs.GetCloudStorageBlockVolumeSnapshotsSnapshotLocation;
+    /**
+     * Snapshot name.
+     */
+    name: string;
+    /**
+     * Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size: number;
+    /**
+     * The ID of the volume whose snapshots to list.
+     */
+    volumeId: string;
+}
+
+export interface GetCloudStorageBlockVolumeSnapshotsSnapshotLocation {
+    /**
+     * The region where the snapshots reside.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageBlockVolumesVolume {
+    /**
+     * Instances the volume is attached to:
+     */
+    attachedInstances: outputs.GetCloudStorageBlockVolumesVolumeAttachedInstance[];
+    /**
+     * Whether the volume is bootable.
+     */
+    bootable: boolean;
+    /**
+     * Encryption configuration of the volume:
+     */
+    encryption: outputs.GetCloudStorageBlockVolumesVolumeEncryption;
+    /**
+     * Instance ID.
+     */
+    id: string;
+    /**
+     * Location of the volume:
+     */
+    location: outputs.GetCloudStorageBlockVolumesVolumeLocation;
+    /**
+     * Volume name.
+     */
+    name: string;
+    /**
+     * Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Size of the volume in GB.
+     */
+    size: number;
+    /**
+     * Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+     */
+    status: string;
+    /**
+     * Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`).
+     */
+    volumeType: string;
+}
+
+export interface GetCloudStorageBlockVolumesVolumeAttachedInstance {
+    /**
+     * Instance ID.
+     */
+    id: string;
+}
+
+export interface GetCloudStorageBlockVolumesVolumeEncryption {
+    /**
+     * Whether the volume is encrypted at rest with LUKS.
+     */
+    enabled: boolean;
+}
+
+export interface GetCloudStorageBlockVolumesVolumeLocation {
+    /**
+     * The region where the volumes reside.
+     */
+    region: string;
 }
 
 export interface GetDbaasLogsOutputGraylogStreamUrlUrl {
@@ -685,6 +998,25 @@ export interface GetStorageEfsShareAccessPathsAccessPath {
      * Is this the preferred access path?
      */
     preferred: boolean;
+}
+
+export interface GetVrackIam {
+    /**
+     * Resource display name
+     */
+    displayName: string;
+    /**
+     * (String) Unique identifier of the resource
+     */
+    id: string;
+    /**
+     * Resource tags. Tags that were internally computed are prefixed with ovh:
+     */
+    tags: {[key: string]: string};
+    /**
+     * (String) Unique resource name used in policies
+     */
+    urn: string;
 }
 
 export interface GetVrackservicesCurrentState {
@@ -1161,6 +1493,17 @@ export interface StorageEfsPlanOptionConfiguration {
      * Value or resource URL on API.OVH.COM of your configuration item
      */
     value: string;
+}
+
+export interface VrackPublicRoutingPriorityAvailabilityZone {
+    /**
+     * Availability zone name
+     */
+    name: string;
+    /**
+     * Unique priority value [1..3]
+     */
+    priority: number;
 }
 
 export interface VrackservicesCurrentState {

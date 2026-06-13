@@ -249,6 +249,10 @@
                 "current": "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare",
                 "majorVersion": 2
             },
+            "ovh_cloud_project_file_storage_share_network": {
+                "current": "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork",
+                "majorVersion": 2
+            },
             "ovh_cloud_project_gateway": {
                 "current": "ovh:CloudProject/gateway:Gateway",
                 "majorVersion": 2,
@@ -720,6 +724,27 @@
                 "current": "ovh:CloudProject/workflowBackup:WorkflowBackup",
                 "majorVersion": 2
             },
+            "ovh_cloud_storage_block_volume": {
+                "current": "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "attached_instances": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_storage_block_volume_backup": {
+                "current": "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_block_volume_snapshot": {
+                "current": "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot",
+                "majorVersion": 2
+            },
             "ovh_dbaas_logs_cluster": {
                 "current": "ovh:Dbaas/logsCluster:LogsCluster",
                 "majorVersion": 2,
@@ -743,6 +768,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "ovh_dbaas_logs_encryption_key": {
+                "current": "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey",
+                "majorVersion": 2
             },
             "ovh_dbaas_logs_input": {
                 "current": "ovh:Dbaas/logsInput:LogsInput",
@@ -1082,6 +1111,10 @@
             },
             "ovh_domain_zone_redirection": {
                 "current": "ovh:Domain/zoneRedirection:ZoneRedirection",
+                "majorVersion": 2
+            },
+            "ovh_email_domain_account": {
+                "current": "ovh:index/emailDomainAccount:EmailDomainAccount",
                 "majorVersion": 2
             },
             "ovh_hosting_privatedatabase": {
@@ -1693,6 +1726,15 @@
             "ovh_vrack_ovhcloudconnect": {
                 "current": "ovh:Vrack/oVHcloudConnect:OVHcloudConnect",
                 "majorVersion": 2
+            },
+            "ovh_vrack_public_routing_priority": {
+                "current": "ovh:index/vrackPublicRoutingPriority:VrackPublicRoutingPriority",
+                "majorVersion": 2,
+                "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_vrack_vrackservices": {
                 "current": "ovh:Vrack/vrackservices:Vrackservices",
@@ -2762,6 +2804,57 @@
                     }
                 }
             },
+            "ovh_cloud_storage_block_volume": {
+                "current": "ovh:index/getCloudStorageBlockVolume:getCloudStorageBlockVolume",
+                "majorVersion": 2,
+                "fields": {
+                    "attached_instances": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_storage_block_volume_backup": {
+                "current": "ovh:index/getCloudStorageBlockVolumeBackup:getCloudStorageBlockVolumeBackup",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_block_volume_backups": {
+                "current": "ovh:index/getCloudStorageBlockVolumeBackups:getCloudStorageBlockVolumeBackups",
+                "majorVersion": 2,
+                "fields": {
+                    "backups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_storage_block_volume_snapshot": {
+                "current": "ovh:index/getCloudStorageBlockVolumeSnapshot:getCloudStorageBlockVolumeSnapshot",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_block_volume_snapshots": {
+                "current": "ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots",
+                "majorVersion": 2,
+                "fields": {
+                    "snapshots": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_storage_block_volumes": {
+                "current": "ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes",
+                "majorVersion": 2,
+                "fields": {
+                    "volumes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "attached_instances": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_dbaas_logs_cluster": {
                 "current": "ovh:Dbaas/getLogsCluster:getLogsCluster",
                 "majorVersion": 2,
@@ -2789,6 +2882,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "ovh_dbaas_logs_encryption_key": {
+                "current": "ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey",
+                "majorVersion": 2
             },
             "ovh_dbaas_logs_input_engine": {
                 "current": "ovh:Dbaas/getLogsInputEngine:getLogsInputEngine",
@@ -3049,6 +3146,19 @@
                 "majorVersion": 2,
                 "fields": {
                     "ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_email_domain_account": {
+                "current": "ovh:index/getEmailDomainAccount:getEmailDomainAccount",
+                "majorVersion": 2
+            },
+            "ovh_email_domain_accounts": {
+                "current": "ovh:index/getEmailDomainAccounts:getEmailDomainAccounts",
+                "majorVersion": 2,
+                "fields": {
+                    "accounts": {
                         "maxItemsOne": false
                     }
                 }
@@ -3653,6 +3763,10 @@
                     }
                 }
             },
+            "ovh_vrack": {
+                "current": "ovh:index/getVrack:getVrack",
+                "majorVersion": 2
+            },
             "ovh_vracks": {
                 "current": "ovh:Vrack/getVracks:getVracks",
                 "majorVersion": 2,
@@ -3896,10 +4010,16 @@
             "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser": 0,
             "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
             "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare": 1,
+            "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork": 1,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
             "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,
+            "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": 1,
+            "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": 1,
+            "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": 1,
+            "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
+            "ovh:index/emailDomainAccount:EmailDomainAccount": 1,
             "ovh:index/iamResourceTags:IamResourceTags": 0,
             "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": 1,
             "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig": 1,
@@ -3909,6 +4029,7 @@
             "ovh:index/storageEfsShareAcl:StorageEfsShareAcl": 1,
             "ovh:index/storageEfsShareSnapshot:StorageEfsShareSnapshot": 1,
             "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": 1,
+            "ovh:index/vrackPublicRoutingPriority:VrackPublicRoutingPriority": 1,
             "ovh:index/vrackservices:Vrackservices": 1
         },
         "functions": {
@@ -4063,11 +4184,20 @@
             "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey": 1,
             "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys": 1,
             "ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration": 1,
+            "ovh:index/getCloudStorageBlockVolume:getCloudStorageBlockVolume": 1,
+            "ovh:index/getCloudStorageBlockVolumeBackup:getCloudStorageBlockVolumeBackup": 1,
+            "ovh:index/getCloudStorageBlockVolumeBackups:getCloudStorageBlockVolumeBackups": 1,
+            "ovh:index/getCloudStorageBlockVolumeSnapshot:getCloudStorageBlockVolumeSnapshot": 1,
+            "ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots": 1,
+            "ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes": 1,
+            "ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey": 1,
             "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
             "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": 0,
             "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack": 0,
             "ovh:index/getDomainZoneRecord:getDomainZoneRecord": 1,
             "ovh:index/getDomainZoneRecords:getDomainZoneRecords": 1,
+            "ovh:index/getEmailDomainAccount:getEmailDomainAccount": 1,
+            "ovh:index/getEmailDomainAccounts:getEmailDomainAccounts": 1,
             "ovh:index/getInstallationTemplate:getInstallationTemplate": 0,
             "ovh:index/getInstallationTemplates:getInstallationTemplates": 0,
             "ovh:index/getIploadbalancingNatIps:getIploadbalancingNatIps": 1,
@@ -4083,6 +4213,7 @@
             "ovh:index/getStorageEfs:getStorageEfs": 1,
             "ovh:index/getStorageEfsShareAccessPath:getStorageEfsShareAccessPath": 1,
             "ovh:index/getStorageEfsShareAccessPaths:getStorageEfsShareAccessPaths": 1,
+            "ovh:index/getVrack:getVrack": 1,
             "ovh:index/getVrackNetworks:getVrackNetworks": 0,
             "ovh:index/getVrackservices:getVrackservices": 1,
             "ovh:index/getVrackservicess:getVrackservicess": 1

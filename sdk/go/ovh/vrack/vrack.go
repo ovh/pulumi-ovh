@@ -48,7 +48,7 @@ import (
 //			}
 //			_, err = vrack.NewVrack(ctx, "vrack", &vrack.VrackArgs{
 //				OvhSubsidiary: pulumi.String(myCart.OvhSubsidiary),
-//				Name:          pulumi.String("my-vrack"),
+//				Name:          pulumi.String("my_vrack"),
 //				Description:   pulumi.String("my vrack"),
 //				Plan: &vrack.VrackPlanArgs{
 //					Duration:    pulumi.String(vrack.SelectedPrices[0].Duration),

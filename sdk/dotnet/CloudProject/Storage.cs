@@ -134,6 +134,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string?> ServiceName { get; private set; } = null!;
 
         /// <summary>
+        /// Container tags
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Versioning configuration
         /// </summary>
         [Output("versioning")]
@@ -258,6 +264,18 @@ namespace Pulumi.Ovh.CloudProject
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Container tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Versioning configuration
         /// </summary>
@@ -373,6 +391,18 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// Container tags
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Versioning configuration

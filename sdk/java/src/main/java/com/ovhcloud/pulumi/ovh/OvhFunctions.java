@@ -22,6 +22,20 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumePlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumesPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
@@ -32,6 +46,10 @@ import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDomainZoneRecordsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetEmailDomainAccountArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetEmailDomainAccountPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetEmailDomainAccountsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetEmailDomainAccountsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplateArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetInstallationTemplatePlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetIploadbalancingNatIpsArgs;
@@ -56,8 +74,10 @@ import com.ovhcloud.pulumi.ovh.inputs.GetStorageEfsShareAccessPathArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetStorageEfsShareAccessPathPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetStorageEfsShareAccessPathsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetStorageEfsShareAccessPathsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetVrackArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetVrackPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesPlainArgs;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectDatabaseClickhouseUserResult;
@@ -69,11 +89,20 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesVersion
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeysResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeBackupResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeBackupsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeSnapshotResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeSnapshotsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsEncryptionKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsOutputGraylogStreamUrlResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthVrackResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetEmailDomainAccountResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetEmailDomainAccountsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplateResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetInstallationTemplatesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetIploadbalancingNatIpsResult;
@@ -90,6 +119,7 @@ import com.ovhcloud.pulumi.ovh.outputs.GetStorageEfsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetStorageEfsShareAccessPathResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetStorageEfsShareAccessPathsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetVrackNetworksResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetVrackResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetVrackservicesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetVrackservicessResult;
 import com.pulumi.core.Output;
@@ -2062,6 +2092,1711 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration", TypeShape.of(GetCloudProjectStorageObjectBucketLifecycleConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = OvhFunctions.getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeResult> getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs args) {
+        return getCloudStorageBlockVolume(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = OvhFunctions.getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeResult> getCloudStorageBlockVolumePlain(GetCloudStorageBlockVolumePlainArgs args) {
+        return getCloudStorageBlockVolumePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = OvhFunctions.getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeResult> getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolume:getCloudStorageBlockVolume", TypeShape.of(GetCloudStorageBlockVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = OvhFunctions.getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeResult> getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolume:getCloudStorageBlockVolume", TypeShape.of(GetCloudStorageBlockVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volume = OvhFunctions.getCloudStorageBlockVolume(GetCloudStorageBlockVolumeArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeResult> getCloudStorageBlockVolumePlain(GetCloudStorageBlockVolumePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolume:getCloudStorageBlockVolume", TypeShape.of(GetCloudStorageBlockVolumeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a backup of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backup = OvhFunctions.getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeBackupResult> getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs args) {
+        return getCloudStorageBlockVolumeBackup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a backup of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backup = OvhFunctions.getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeBackupResult> getCloudStorageBlockVolumeBackupPlain(GetCloudStorageBlockVolumeBackupPlainArgs args) {
+        return getCloudStorageBlockVolumeBackupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a backup of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backup = OvhFunctions.getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeBackupResult> getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeBackup:getCloudStorageBlockVolumeBackup", TypeShape.of(GetCloudStorageBlockVolumeBackupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a backup of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backup = OvhFunctions.getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeBackupResult> getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeBackup:getCloudStorageBlockVolumeBackup", TypeShape.of(GetCloudStorageBlockVolumeBackupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a backup of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backup = OvhFunctions.getCloudStorageBlockVolumeBackup(GetCloudStorageBlockVolumeBackupArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeBackupResult> getCloudStorageBlockVolumeBackupPlain(GetCloudStorageBlockVolumeBackupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolumeBackup:getCloudStorageBlockVolumeBackup", TypeShape.of(GetCloudStorageBlockVolumeBackupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the backups of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backups = OvhFunctions.getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeBackupsResult> getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs args) {
+        return getCloudStorageBlockVolumeBackups(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the backups of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backups = OvhFunctions.getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeBackupsResult> getCloudStorageBlockVolumeBackupsPlain(GetCloudStorageBlockVolumeBackupsPlainArgs args) {
+        return getCloudStorageBlockVolumeBackupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the backups of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backups = OvhFunctions.getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeBackupsResult> getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeBackups:getCloudStorageBlockVolumeBackups", TypeShape.of(GetCloudStorageBlockVolumeBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the backups of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backups = OvhFunctions.getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeBackupsResult> getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeBackups:getCloudStorageBlockVolumeBackups", TypeShape.of(GetCloudStorageBlockVolumeBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the backups of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backups = OvhFunctions.getCloudStorageBlockVolumeBackups(GetCloudStorageBlockVolumeBackupsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeBackupsResult> getCloudStorageBlockVolumeBackupsPlain(GetCloudStorageBlockVolumeBackupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolumeBackups:getCloudStorageBlockVolumeBackups", TypeShape.of(GetCloudStorageBlockVolumeBackupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a snapshot of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeSnapshotResult> getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs args) {
+        return getCloudStorageBlockVolumeSnapshot(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a snapshot of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeSnapshotResult> getCloudStorageBlockVolumeSnapshotPlain(GetCloudStorageBlockVolumeSnapshotPlainArgs args) {
+        return getCloudStorageBlockVolumeSnapshotPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a snapshot of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeSnapshotResult> getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeSnapshot:getCloudStorageBlockVolumeSnapshot", TypeShape.of(GetCloudStorageBlockVolumeSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a snapshot of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeSnapshotResult> getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeSnapshot:getCloudStorageBlockVolumeSnapshot", TypeShape.of(GetCloudStorageBlockVolumeSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a snapshot of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageBlockVolumeSnapshot(GetCloudStorageBlockVolumeSnapshotArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeSnapshotResult> getCloudStorageBlockVolumeSnapshotPlain(GetCloudStorageBlockVolumeSnapshotPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolumeSnapshot:getCloudStorageBlockVolumeSnapshot", TypeShape.of(GetCloudStorageBlockVolumeSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the snapshots of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeSnapshotsResult> getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs args) {
+        return getCloudStorageBlockVolumeSnapshots(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the snapshots of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeSnapshotsResult> getCloudStorageBlockVolumeSnapshotsPlain(GetCloudStorageBlockVolumeSnapshotsPlainArgs args) {
+        return getCloudStorageBlockVolumeSnapshotsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the snapshots of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeSnapshotsResult> getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots", TypeShape.of(GetCloudStorageBlockVolumeSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the snapshots of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumeSnapshotsResult> getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots", TypeShape.of(GetCloudStorageBlockVolumeSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the snapshots of a block storage volume in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageBlockVolumeSnapshots(GetCloudStorageBlockVolumeSnapshotsArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .volumeId(volume.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumeSnapshotsResult> getCloudStorageBlockVolumeSnapshotsPlain(GetCloudStorageBlockVolumeSnapshotsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots", TypeShape.of(GetCloudStorageBlockVolumeSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the block storage volumes of a region in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volumes = OvhFunctions.getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumesResult> getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs args) {
+        return getCloudStorageBlockVolumes(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the block storage volumes of a region in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volumes = OvhFunctions.getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumesResult> getCloudStorageBlockVolumesPlain(GetCloudStorageBlockVolumesPlainArgs args) {
+        return getCloudStorageBlockVolumesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the block storage volumes of a region in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volumes = OvhFunctions.getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumesResult> getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes", TypeShape.of(GetCloudStorageBlockVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the block storage volumes of a region in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volumes = OvhFunctions.getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageBlockVolumesResult> getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes", TypeShape.of(GetCloudStorageBlockVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the block storage volumes of a region in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var volumes = OvhFunctions.getCloudStorageBlockVolumes(GetCloudStorageBlockVolumesArgs.builder()
+     *             .serviceName("xxxxxxxxx")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageBlockVolumesResult> getCloudStorageBlockVolumesPlain(GetCloudStorageBlockVolumesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes", TypeShape.of(GetCloudStorageBlockVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaaS Logs encryption key.
+     * 
+     * ## Example Usage
+     * 
+     * ### By title
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my-encryption-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### By encryption key ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .encryptionKeyId("dc145bc2-eb01-4efe-a802-XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbaasLogsEncryptionKeyResult> getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs args) {
+        return getDbaasLogsEncryptionKey(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a DBaaS Logs encryption key.
+     * 
+     * ## Example Usage
+     * 
+     * ### By title
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my-encryption-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### By encryption key ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .encryptionKeyId("dc145bc2-eb01-4efe-a802-XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDbaasLogsEncryptionKeyResult> getDbaasLogsEncryptionKeyPlain(GetDbaasLogsEncryptionKeyPlainArgs args) {
+        return getDbaasLogsEncryptionKeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a DBaaS Logs encryption key.
+     * 
+     * ## Example Usage
+     * 
+     * ### By title
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my-encryption-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### By encryption key ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .encryptionKeyId("dc145bc2-eb01-4efe-a802-XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbaasLogsEncryptionKeyResult> getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey", TypeShape.of(GetDbaasLogsEncryptionKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaaS Logs encryption key.
+     * 
+     * ## Example Usage
+     * 
+     * ### By title
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my-encryption-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### By encryption key ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .encryptionKeyId("dc145bc2-eb01-4efe-a802-XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDbaasLogsEncryptionKeyResult> getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey", TypeShape.of(GetDbaasLogsEncryptionKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a DBaaS Logs encryption key.
+     * 
+     * ## Example Usage
+     * 
+     * ### By title
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .title("my-encryption-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### By encryption key ID
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()
+     *             .serviceName("ldp-xx-xxxxx")
+     *             .encryptionKeyId("dc145bc2-eb01-4efe-a802-XXXXXX")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDbaasLogsEncryptionKeyResult> getDbaasLogsEncryptionKeyPlain(GetDbaasLogsEncryptionKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey", TypeShape.of(GetDbaasLogsEncryptionKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to retrieve the list of URLs for a DBaas logs output Graylog stream.
      * 
      * ## Example Usage
@@ -3120,6 +4855,431 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetDomainZoneRecordsResult> getDomainZoneRecordsPlain(GetDomainZoneRecordsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getDomainZoneRecords:getDomainZoneRecords", TypeShape.of(GetDomainZoneRecordsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the properties of an email account for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = OvhFunctions.getEmailDomainAccount(GetEmailDomainAccountArgs.builder()
+     *             .domain("example.com")
+     *             .accountName("myaccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEmailDomainAccountResult> getEmailDomainAccount(GetEmailDomainAccountArgs args) {
+        return getEmailDomainAccount(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the properties of an email account for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = OvhFunctions.getEmailDomainAccount(GetEmailDomainAccountArgs.builder()
+     *             .domain("example.com")
+     *             .accountName("myaccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEmailDomainAccountResult> getEmailDomainAccountPlain(GetEmailDomainAccountPlainArgs args) {
+        return getEmailDomainAccountPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the properties of an email account for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = OvhFunctions.getEmailDomainAccount(GetEmailDomainAccountArgs.builder()
+     *             .domain("example.com")
+     *             .accountName("myaccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEmailDomainAccountResult> getEmailDomainAccount(GetEmailDomainAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getEmailDomainAccount:getEmailDomainAccount", TypeShape.of(GetEmailDomainAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the properties of an email account for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = OvhFunctions.getEmailDomainAccount(GetEmailDomainAccountArgs.builder()
+     *             .domain("example.com")
+     *             .accountName("myaccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEmailDomainAccountResult> getEmailDomainAccount(GetEmailDomainAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getEmailDomainAccount:getEmailDomainAccount", TypeShape.of(GetEmailDomainAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the properties of an email account for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var account = OvhFunctions.getEmailDomainAccount(GetEmailDomainAccountArgs.builder()
+     *             .domain("example.com")
+     *             .accountName("myaccount")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEmailDomainAccountResult> getEmailDomainAccountPlain(GetEmailDomainAccountPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getEmailDomainAccount:getEmailDomainAccount", TypeShape.of(GetEmailDomainAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List email accounts for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accounts = OvhFunctions.getEmailDomainAccounts(GetEmailDomainAccountsArgs.builder()
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEmailDomainAccountsResult> getEmailDomainAccounts(GetEmailDomainAccountsArgs args) {
+        return getEmailDomainAccounts(args, InvokeOptions.Empty);
+    }
+    /**
+     * List email accounts for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accounts = OvhFunctions.getEmailDomainAccounts(GetEmailDomainAccountsArgs.builder()
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEmailDomainAccountsResult> getEmailDomainAccountsPlain(GetEmailDomainAccountsPlainArgs args) {
+        return getEmailDomainAccountsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List email accounts for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accounts = OvhFunctions.getEmailDomainAccounts(GetEmailDomainAccountsArgs.builder()
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEmailDomainAccountsResult> getEmailDomainAccounts(GetEmailDomainAccountsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getEmailDomainAccounts:getEmailDomainAccounts", TypeShape.of(GetEmailDomainAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List email accounts for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accounts = OvhFunctions.getEmailDomainAccounts(GetEmailDomainAccountsArgs.builder()
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEmailDomainAccountsResult> getEmailDomainAccounts(GetEmailDomainAccountsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getEmailDomainAccounts:getEmailDomainAccounts", TypeShape.of(GetEmailDomainAccountsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List email accounts for a given domain.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetEmailDomainAccountsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var accounts = OvhFunctions.getEmailDomainAccounts(GetEmailDomainAccountsArgs.builder()
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEmailDomainAccountsResult> getEmailDomainAccountsPlain(GetEmailDomainAccountsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getEmailDomainAccounts:getEmailDomainAccounts", TypeShape.of(GetEmailDomainAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a specific OVH dedicated server installation template.
@@ -6559,6 +8719,216 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetStorageEfsShareAccessPathsResult> getStorageEfsShareAccessPathsPlain(GetStorageEfsShareAccessPathsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getStorageEfsShareAccessPaths:getStorageEfsShareAccessPaths", TypeShape.of(GetStorageEfsShareAccessPathsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Vrack information.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVrack = OvhFunctions.getVrack(GetVrackArgs.builder()
+     *             .serviceName("pn-000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVrackResult> getVrack(GetVrackArgs args) {
+        return getVrack(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get Vrack information.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVrack = OvhFunctions.getVrack(GetVrackArgs.builder()
+     *             .serviceName("pn-000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVrackResult> getVrackPlain(GetVrackPlainArgs args) {
+        return getVrackPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get Vrack information.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVrack = OvhFunctions.getVrack(GetVrackArgs.builder()
+     *             .serviceName("pn-000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVrackResult> getVrack(GetVrackArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrack:getVrack", TypeShape.of(GetVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Vrack information.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVrack = OvhFunctions.getVrack(GetVrackArgs.builder()
+     *             .serviceName("pn-000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVrackResult> getVrack(GetVrackArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getVrack:getVrack", TypeShape.of(GetVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Vrack information.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myVrack = OvhFunctions.getVrack(GetVrackArgs.builder()
+     *             .serviceName("pn-000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVrackResult> getVrackPlain(GetVrackPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getVrack:getVrack", TypeShape.of(GetVrackResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of Vrack network ids available for your IPLoadbalancer associated with your OVHcloud account.

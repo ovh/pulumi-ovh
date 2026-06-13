@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *         var vrackVrack = new Vrack("vrackVrack", VrackArgs.builder()
  *             .ovhSubsidiary(myCart.ovhSubsidiary())
- *             .name("my-vrack")
+ *             .name("my_vrack")
  *             .description("my vrack")
  *             .plan(VrackPlanArgs.builder()
  *                 .duration(vrack.selectedPrices()[0].duration())

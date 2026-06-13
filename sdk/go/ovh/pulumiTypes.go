@@ -1099,6 +1099,1669 @@ func (o CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArray
 	}).(CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput)
 }
 
+type CloudStorageBlockVolumeBackupCurrentState struct {
+	// A description for the backup.
+	Description *string `pulumi:"description"`
+	// Current location:
+	Location *CloudStorageBlockVolumeBackupCurrentStateLocation `pulumi:"location"`
+	// The name of the backup.
+	Name *string `pulumi:"name"`
+	// Size of the backup in GB.
+	Size *int `pulumi:"size"`
+	// The ID of the volume to back up. Changing this value recreates the resource.
+	VolumeId *string `pulumi:"volumeId"`
+}
+
+// CloudStorageBlockVolumeBackupCurrentStateInput is an input type that accepts CloudStorageBlockVolumeBackupCurrentStateArgs and CloudStorageBlockVolumeBackupCurrentStateOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeBackupCurrentStateInput` via:
+//
+//	CloudStorageBlockVolumeBackupCurrentStateArgs{...}
+type CloudStorageBlockVolumeBackupCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeBackupCurrentStateOutput() CloudStorageBlockVolumeBackupCurrentStateOutput
+	ToCloudStorageBlockVolumeBackupCurrentStateOutputWithContext(context.Context) CloudStorageBlockVolumeBackupCurrentStateOutput
+}
+
+type CloudStorageBlockVolumeBackupCurrentStateArgs struct {
+	// A description for the backup.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Current location:
+	Location CloudStorageBlockVolumeBackupCurrentStateLocationPtrInput `pulumi:"location"`
+	// The name of the backup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Size of the backup in GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The ID of the volume to back up. Changing this value recreates the resource.
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+}
+
+func (CloudStorageBlockVolumeBackupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentState)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateArgs) ToCloudStorageBlockVolumeBackupCurrentStateOutput() CloudStorageBlockVolumeBackupCurrentStateOutput {
+	return i.ToCloudStorageBlockVolumeBackupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateArgs) ToCloudStorageBlockVolumeBackupCurrentStateOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeBackupCurrentStateOutput)
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateArgs) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutput() CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return i.ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateArgs) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeBackupCurrentStateOutput).ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeBackupCurrentStatePtrInput is an input type that accepts CloudStorageBlockVolumeBackupCurrentStateArgs, CloudStorageBlockVolumeBackupCurrentStatePtr and CloudStorageBlockVolumeBackupCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeBackupCurrentStatePtrInput` via:
+//
+//	        CloudStorageBlockVolumeBackupCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeBackupCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeBackupCurrentStatePtrOutput() CloudStorageBlockVolumeBackupCurrentStatePtrOutput
+	ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(context.Context) CloudStorageBlockVolumeBackupCurrentStatePtrOutput
+}
+
+type cloudStorageBlockVolumeBackupCurrentStatePtrType CloudStorageBlockVolumeBackupCurrentStateArgs
+
+func CloudStorageBlockVolumeBackupCurrentStatePtr(v *CloudStorageBlockVolumeBackupCurrentStateArgs) CloudStorageBlockVolumeBackupCurrentStatePtrInput {
+	return (*cloudStorageBlockVolumeBackupCurrentStatePtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeBackupCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeBackupCurrentState)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeBackupCurrentStatePtrType) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutput() CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return i.ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeBackupCurrentStatePtrType) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeBackupCurrentStatePtrOutput)
+}
+
+type CloudStorageBlockVolumeBackupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeBackupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) ToCloudStorageBlockVolumeBackupCurrentStateOutput() CloudStorageBlockVolumeBackupCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) ToCloudStorageBlockVolumeBackupCurrentStateOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutput() CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return o.ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeBackupCurrentState) *CloudStorageBlockVolumeBackupCurrentState {
+		return &v
+	}).(CloudStorageBlockVolumeBackupCurrentStatePtrOutput)
+}
+
+// A description for the backup.
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeBackupCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Current location:
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) Location() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeBackupCurrentState) *CloudStorageBlockVolumeBackupCurrentStateLocation {
+		return v.Location
+	}).(CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput)
+}
+
+// The name of the backup.
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeBackupCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Size of the backup in GB.
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeBackupCurrentState) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the volume to back up. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeBackupCurrentStateOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeBackupCurrentState) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeBackupCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeBackupCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeBackupCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutput() CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) ToCloudStorageBlockVolumeBackupCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) Elem() CloudStorageBlockVolumeBackupCurrentStateOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentState) CloudStorageBlockVolumeBackupCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeBackupCurrentState
+		return ret
+	}).(CloudStorageBlockVolumeBackupCurrentStateOutput)
+}
+
+// A description for the backup.
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current location:
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) Location() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentState) *CloudStorageBlockVolumeBackupCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput)
+}
+
+// The name of the backup.
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the backup in GB.
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the volume to back up. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeBackupCurrentStatePtrOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeBackupCurrentStateLocation struct {
+	// The region where the backup will be created. Changing this value recreates the resource.
+	Region *string `pulumi:"region"`
+}
+
+// CloudStorageBlockVolumeBackupCurrentStateLocationInput is an input type that accepts CloudStorageBlockVolumeBackupCurrentStateLocationArgs and CloudStorageBlockVolumeBackupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeBackupCurrentStateLocationInput` via:
+//
+//	CloudStorageBlockVolumeBackupCurrentStateLocationArgs{...}
+type CloudStorageBlockVolumeBackupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeBackupCurrentStateLocationOutput() CloudStorageBlockVolumeBackupCurrentStateLocationOutput
+	ToCloudStorageBlockVolumeBackupCurrentStateLocationOutputWithContext(context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationOutput
+}
+
+type CloudStorageBlockVolumeBackupCurrentStateLocationArgs struct {
+	// The region where the backup will be created. Changing this value recreates the resource.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudStorageBlockVolumeBackupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateLocationArgs) ToCloudStorageBlockVolumeBackupCurrentStateLocationOutput() CloudStorageBlockVolumeBackupCurrentStateLocationOutput {
+	return i.ToCloudStorageBlockVolumeBackupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateLocationArgs) ToCloudStorageBlockVolumeBackupCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeBackupCurrentStateLocationOutput)
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateLocationArgs) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeBackupCurrentStateLocationArgs) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeBackupCurrentStateLocationOutput).ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeBackupCurrentStateLocationPtrInput is an input type that accepts CloudStorageBlockVolumeBackupCurrentStateLocationArgs, CloudStorageBlockVolumeBackupCurrentStateLocationPtr and CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeBackupCurrentStateLocationPtrInput` via:
+//
+//	        CloudStorageBlockVolumeBackupCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeBackupCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput
+	ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput
+}
+
+type cloudStorageBlockVolumeBackupCurrentStateLocationPtrType CloudStorageBlockVolumeBackupCurrentStateLocationArgs
+
+func CloudStorageBlockVolumeBackupCurrentStateLocationPtr(v *CloudStorageBlockVolumeBackupCurrentStateLocationArgs) CloudStorageBlockVolumeBackupCurrentStateLocationPtrInput {
+	return (*cloudStorageBlockVolumeBackupCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeBackupCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeBackupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeBackupCurrentStateLocationPtrType) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeBackupCurrentStateLocationPtrType) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput)
+}
+
+type CloudStorageBlockVolumeBackupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeBackupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationOutput) ToCloudStorageBlockVolumeBackupCurrentStateLocationOutput() CloudStorageBlockVolumeBackupCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationOutput) ToCloudStorageBlockVolumeBackupCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationOutput) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return o.ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationOutput) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeBackupCurrentStateLocation) *CloudStorageBlockVolumeBackupCurrentStateLocation {
+		return &v
+	}).(CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput)
+}
+
+// The region where the backup will be created. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeBackupCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeBackupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput() CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput) ToCloudStorageBlockVolumeBackupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput) Elem() CloudStorageBlockVolumeBackupCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentStateLocation) CloudStorageBlockVolumeBackupCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeBackupCurrentStateLocation
+		return ret
+	}).(CloudStorageBlockVolumeBackupCurrentStateLocationOutput)
+}
+
+// The region where the backup will be created. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeBackupCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCreateFrom struct {
+	// Identifier of a backup to restore the volume from.
+	BackupId *string `pulumi:"backupId"`
+	// UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+	ImageId *string `pulumi:"imageId"`
+	// Identifier of a snapshot to create the volume from.
+	SnapshotId *string `pulumi:"snapshotId"`
+}
+
+// CloudStorageBlockVolumeCreateFromInput is an input type that accepts CloudStorageBlockVolumeCreateFromArgs and CloudStorageBlockVolumeCreateFromOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCreateFromInput` via:
+//
+//	CloudStorageBlockVolumeCreateFromArgs{...}
+type CloudStorageBlockVolumeCreateFromInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCreateFromOutput() CloudStorageBlockVolumeCreateFromOutput
+	ToCloudStorageBlockVolumeCreateFromOutputWithContext(context.Context) CloudStorageBlockVolumeCreateFromOutput
+}
+
+type CloudStorageBlockVolumeCreateFromArgs struct {
+	// Identifier of a backup to restore the volume from.
+	BackupId pulumi.StringPtrInput `pulumi:"backupId"`
+	// UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
+	// Identifier of a snapshot to create the volume from.
+	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
+}
+
+func (CloudStorageBlockVolumeCreateFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCreateFrom)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeCreateFromArgs) ToCloudStorageBlockVolumeCreateFromOutput() CloudStorageBlockVolumeCreateFromOutput {
+	return i.ToCloudStorageBlockVolumeCreateFromOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCreateFromArgs) ToCloudStorageBlockVolumeCreateFromOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCreateFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCreateFromOutput)
+}
+
+func (i CloudStorageBlockVolumeCreateFromArgs) ToCloudStorageBlockVolumeCreateFromPtrOutput() CloudStorageBlockVolumeCreateFromPtrOutput {
+	return i.ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCreateFromArgs) ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCreateFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCreateFromOutput).ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeCreateFromPtrInput is an input type that accepts CloudStorageBlockVolumeCreateFromArgs, CloudStorageBlockVolumeCreateFromPtr and CloudStorageBlockVolumeCreateFromPtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCreateFromPtrInput` via:
+//
+//	        CloudStorageBlockVolumeCreateFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeCreateFromPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCreateFromPtrOutput() CloudStorageBlockVolumeCreateFromPtrOutput
+	ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(context.Context) CloudStorageBlockVolumeCreateFromPtrOutput
+}
+
+type cloudStorageBlockVolumeCreateFromPtrType CloudStorageBlockVolumeCreateFromArgs
+
+func CloudStorageBlockVolumeCreateFromPtr(v *CloudStorageBlockVolumeCreateFromArgs) CloudStorageBlockVolumeCreateFromPtrInput {
+	return (*cloudStorageBlockVolumeCreateFromPtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeCreateFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCreateFrom)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeCreateFromPtrType) ToCloudStorageBlockVolumeCreateFromPtrOutput() CloudStorageBlockVolumeCreateFromPtrOutput {
+	return i.ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeCreateFromPtrType) ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCreateFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCreateFromPtrOutput)
+}
+
+type CloudStorageBlockVolumeCreateFromOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCreateFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCreateFrom)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCreateFromOutput) ToCloudStorageBlockVolumeCreateFromOutput() CloudStorageBlockVolumeCreateFromOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCreateFromOutput) ToCloudStorageBlockVolumeCreateFromOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCreateFromOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCreateFromOutput) ToCloudStorageBlockVolumeCreateFromPtrOutput() CloudStorageBlockVolumeCreateFromPtrOutput {
+	return o.ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeCreateFromOutput) ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCreateFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeCreateFrom) *CloudStorageBlockVolumeCreateFrom {
+		return &v
+	}).(CloudStorageBlockVolumeCreateFromPtrOutput)
+}
+
+// Identifier of a backup to restore the volume from.
+func (o CloudStorageBlockVolumeCreateFromOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCreateFrom) *string { return v.BackupId }).(pulumi.StringPtrOutput)
+}
+
+// UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+func (o CloudStorageBlockVolumeCreateFromOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCreateFrom) *string { return v.ImageId }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of a snapshot to create the volume from.
+func (o CloudStorageBlockVolumeCreateFromOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCreateFrom) *string { return v.SnapshotId }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCreateFromPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCreateFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCreateFrom)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCreateFromPtrOutput) ToCloudStorageBlockVolumeCreateFromPtrOutput() CloudStorageBlockVolumeCreateFromPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCreateFromPtrOutput) ToCloudStorageBlockVolumeCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCreateFromPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCreateFromPtrOutput) Elem() CloudStorageBlockVolumeCreateFromOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCreateFrom) CloudStorageBlockVolumeCreateFrom {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeCreateFrom
+		return ret
+	}).(CloudStorageBlockVolumeCreateFromOutput)
+}
+
+// Identifier of a backup to restore the volume from.
+func (o CloudStorageBlockVolumeCreateFromPtrOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCreateFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+func (o CloudStorageBlockVolumeCreateFromPtrOutput) ImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCreateFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier of a snapshot to create the volume from.
+func (o CloudStorageBlockVolumeCreateFromPtrOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCreateFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentState struct {
+	// Instances currently attached to this volume
+	AttachedInstances []CloudStorageBlockVolumeCurrentStateAttachedInstance `pulumi:"attachedInstances"`
+	// Whether the volume is bootable.
+	Bootable *bool `pulumi:"bootable"`
+	// Encryption configuration for the volume.
+	Encryption *CloudStorageBlockVolumeCurrentStateEncryption `pulumi:"encryption"`
+	// Current location:
+	Location *CloudStorageBlockVolumeCurrentStateLocation `pulumi:"location"`
+	// Volume name.
+	Name *string `pulumi:"name"`
+	// Size of the volume in GB.
+	Size *int `pulumi:"size"`
+	// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+	Status *string `pulumi:"status"`
+	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+	VolumeType *string `pulumi:"volumeType"`
+}
+
+// CloudStorageBlockVolumeCurrentStateInput is an input type that accepts CloudStorageBlockVolumeCurrentStateArgs and CloudStorageBlockVolumeCurrentStateOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateInput` via:
+//
+//	CloudStorageBlockVolumeCurrentStateArgs{...}
+type CloudStorageBlockVolumeCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateOutput() CloudStorageBlockVolumeCurrentStateOutput
+	ToCloudStorageBlockVolumeCurrentStateOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateOutput
+}
+
+type CloudStorageBlockVolumeCurrentStateArgs struct {
+	// Instances currently attached to this volume
+	AttachedInstances CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayInput `pulumi:"attachedInstances"`
+	// Whether the volume is bootable.
+	Bootable pulumi.BoolPtrInput `pulumi:"bootable"`
+	// Encryption configuration for the volume.
+	Encryption CloudStorageBlockVolumeCurrentStateEncryptionPtrInput `pulumi:"encryption"`
+	// Current location:
+	Location CloudStorageBlockVolumeCurrentStateLocationPtrInput `pulumi:"location"`
+	// Volume name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Size of the volume in GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
+}
+
+func (CloudStorageBlockVolumeCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentState)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeCurrentStateArgs) ToCloudStorageBlockVolumeCurrentStateOutput() CloudStorageBlockVolumeCurrentStateOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateArgs) ToCloudStorageBlockVolumeCurrentStateOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateOutput)
+}
+
+func (i CloudStorageBlockVolumeCurrentStateArgs) ToCloudStorageBlockVolumeCurrentStatePtrOutput() CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateArgs) ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateOutput).ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeCurrentStatePtrInput is an input type that accepts CloudStorageBlockVolumeCurrentStateArgs, CloudStorageBlockVolumeCurrentStatePtr and CloudStorageBlockVolumeCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStatePtrInput` via:
+//
+//	        CloudStorageBlockVolumeCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStatePtrOutput() CloudStorageBlockVolumeCurrentStatePtrOutput
+	ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStatePtrOutput
+}
+
+type cloudStorageBlockVolumeCurrentStatePtrType CloudStorageBlockVolumeCurrentStateArgs
+
+func CloudStorageBlockVolumeCurrentStatePtr(v *CloudStorageBlockVolumeCurrentStateArgs) CloudStorageBlockVolumeCurrentStatePtrInput {
+	return (*cloudStorageBlockVolumeCurrentStatePtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCurrentState)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeCurrentStatePtrType) ToCloudStorageBlockVolumeCurrentStatePtrOutput() CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeCurrentStatePtrType) ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStatePtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateOutput) ToCloudStorageBlockVolumeCurrentStateOutput() CloudStorageBlockVolumeCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateOutput) ToCloudStorageBlockVolumeCurrentStateOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateOutput) ToCloudStorageBlockVolumeCurrentStatePtrOutput() CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return o.ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeCurrentStateOutput) ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeCurrentState) *CloudStorageBlockVolumeCurrentState {
+		return &v
+	}).(CloudStorageBlockVolumeCurrentStatePtrOutput)
+}
+
+// Instances currently attached to this volume
+func (o CloudStorageBlockVolumeCurrentStateOutput) AttachedInstances() CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) []CloudStorageBlockVolumeCurrentStateAttachedInstance {
+		return v.AttachedInstances
+	}).(CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput)
+}
+
+// Whether the volume is bootable.
+func (o CloudStorageBlockVolumeCurrentStateOutput) Bootable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *bool { return v.Bootable }).(pulumi.BoolPtrOutput)
+}
+
+// Encryption configuration for the volume.
+func (o CloudStorageBlockVolumeCurrentStateOutput) Encryption() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *CloudStorageBlockVolumeCurrentStateEncryption {
+		return v.Encryption
+	}).(CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput)
+}
+
+// Current location:
+func (o CloudStorageBlockVolumeCurrentStateOutput) Location() CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *CloudStorageBlockVolumeCurrentStateLocation {
+		return v.Location
+	}).(CloudStorageBlockVolumeCurrentStateLocationPtrOutput)
+}
+
+// Volume name.
+func (o CloudStorageBlockVolumeCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Size of the volume in GB.
+func (o CloudStorageBlockVolumeCurrentStateOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+func (o CloudStorageBlockVolumeCurrentStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+func (o CloudStorageBlockVolumeCurrentStateOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentState) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) ToCloudStorageBlockVolumeCurrentStatePtrOutput() CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) ToCloudStorageBlockVolumeCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Elem() CloudStorageBlockVolumeCurrentStateOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) CloudStorageBlockVolumeCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeCurrentState
+		return ret
+	}).(CloudStorageBlockVolumeCurrentStateOutput)
+}
+
+// Instances currently attached to this volume
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) AttachedInstances() CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) []CloudStorageBlockVolumeCurrentStateAttachedInstance {
+		if v == nil {
+			return nil
+		}
+		return v.AttachedInstances
+	}).(CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput)
+}
+
+// Whether the volume is bootable.
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Bootable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Bootable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Encryption configuration for the volume.
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Encryption() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *CloudStorageBlockVolumeCurrentStateEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput)
+}
+
+// Current location:
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Location() CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *CloudStorageBlockVolumeCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudStorageBlockVolumeCurrentStateLocationPtrOutput)
+}
+
+// Volume name.
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the volume in GB.
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+func (o CloudStorageBlockVolumeCurrentStatePtrOutput) VolumeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateAttachedInstance struct {
+	// Volume ID.
+	Id *string `pulumi:"id"`
+}
+
+// CloudStorageBlockVolumeCurrentStateAttachedInstanceInput is an input type that accepts CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs and CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateAttachedInstanceInput` via:
+//
+//	CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs{...}
+type CloudStorageBlockVolumeCurrentStateAttachedInstanceInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutput() CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput
+	ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput
+}
+
+type CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs struct {
+	// Volume ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateAttachedInstance)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutput() CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput)
+}
+
+// CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayInput is an input type that accepts CloudStorageBlockVolumeCurrentStateAttachedInstanceArray and CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayInput` via:
+//
+//	CloudStorageBlockVolumeCurrentStateAttachedInstanceArray{ CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs{...} }
+type CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput() CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput
+	ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput
+}
+
+type CloudStorageBlockVolumeCurrentStateAttachedInstanceArray []CloudStorageBlockVolumeCurrentStateAttachedInstanceInput
+
+func (CloudStorageBlockVolumeCurrentStateAttachedInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudStorageBlockVolumeCurrentStateAttachedInstance)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeCurrentStateAttachedInstanceArray) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput() CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateAttachedInstanceArray) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateAttachedInstance)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutput() CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput {
+	return o
+}
+
+// Volume ID.
+func (o CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateAttachedInstance) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudStorageBlockVolumeCurrentStateAttachedInstance)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput() CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput) ToCloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput) Index(i pulumi.IntInput) CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudStorageBlockVolumeCurrentStateAttachedInstance {
+		return vs[0].([]CloudStorageBlockVolumeCurrentStateAttachedInstance)[vs[1].(int)]
+	}).(CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateEncryption struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// CloudStorageBlockVolumeCurrentStateEncryptionInput is an input type that accepts CloudStorageBlockVolumeCurrentStateEncryptionArgs and CloudStorageBlockVolumeCurrentStateEncryptionOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateEncryptionInput` via:
+//
+//	CloudStorageBlockVolumeCurrentStateEncryptionArgs{...}
+type CloudStorageBlockVolumeCurrentStateEncryptionInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateEncryptionOutput() CloudStorageBlockVolumeCurrentStateEncryptionOutput
+	ToCloudStorageBlockVolumeCurrentStateEncryptionOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateEncryptionOutput
+}
+
+type CloudStorageBlockVolumeCurrentStateEncryptionArgs struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (CloudStorageBlockVolumeCurrentStateEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateEncryption)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeCurrentStateEncryptionArgs) ToCloudStorageBlockVolumeCurrentStateEncryptionOutput() CloudStorageBlockVolumeCurrentStateEncryptionOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateEncryptionOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateEncryptionArgs) ToCloudStorageBlockVolumeCurrentStateEncryptionOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateEncryptionOutput)
+}
+
+func (i CloudStorageBlockVolumeCurrentStateEncryptionArgs) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutput() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateEncryptionArgs) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateEncryptionOutput).ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeCurrentStateEncryptionPtrInput is an input type that accepts CloudStorageBlockVolumeCurrentStateEncryptionArgs, CloudStorageBlockVolumeCurrentStateEncryptionPtr and CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateEncryptionPtrInput` via:
+//
+//	        CloudStorageBlockVolumeCurrentStateEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeCurrentStateEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutput() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput
+	ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput
+}
+
+type cloudStorageBlockVolumeCurrentStateEncryptionPtrType CloudStorageBlockVolumeCurrentStateEncryptionArgs
+
+func CloudStorageBlockVolumeCurrentStateEncryptionPtr(v *CloudStorageBlockVolumeCurrentStateEncryptionArgs) CloudStorageBlockVolumeCurrentStateEncryptionPtrInput {
+	return (*cloudStorageBlockVolumeCurrentStateEncryptionPtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeCurrentStateEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCurrentStateEncryption)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeCurrentStateEncryptionPtrType) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutput() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeCurrentStateEncryptionPtrType) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateEncryptionOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionOutput) ToCloudStorageBlockVolumeCurrentStateEncryptionOutput() CloudStorageBlockVolumeCurrentStateEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionOutput) ToCloudStorageBlockVolumeCurrentStateEncryptionOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionOutput) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutput() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return o.ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionOutput) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeCurrentStateEncryption) *CloudStorageBlockVolumeCurrentStateEncryption {
+		return &v
+	}).(CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput)
+}
+
+// Whether the volume is encrypted at rest with LUKS.
+func (o CloudStorageBlockVolumeCurrentStateEncryptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateEncryption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCurrentStateEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutput() CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) ToCloudStorageBlockVolumeCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) Elem() CloudStorageBlockVolumeCurrentStateEncryptionOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentStateEncryption) CloudStorageBlockVolumeCurrentStateEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeCurrentStateEncryption
+		return ret
+	}).(CloudStorageBlockVolumeCurrentStateEncryptionOutput)
+}
+
+// Whether the volume is encrypted at rest with LUKS.
+func (o CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentStateEncryption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateLocation struct {
+	// Region where the volume will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudStorageBlockVolumeCurrentStateLocationInput is an input type that accepts CloudStorageBlockVolumeCurrentStateLocationArgs and CloudStorageBlockVolumeCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateLocationInput` via:
+//
+//	CloudStorageBlockVolumeCurrentStateLocationArgs{...}
+type CloudStorageBlockVolumeCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateLocationOutput() CloudStorageBlockVolumeCurrentStateLocationOutput
+	ToCloudStorageBlockVolumeCurrentStateLocationOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateLocationOutput
+}
+
+type CloudStorageBlockVolumeCurrentStateLocationArgs struct {
+	// Region where the volume will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudStorageBlockVolumeCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeCurrentStateLocationArgs) ToCloudStorageBlockVolumeCurrentStateLocationOutput() CloudStorageBlockVolumeCurrentStateLocationOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateLocationArgs) ToCloudStorageBlockVolumeCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateLocationOutput)
+}
+
+func (i CloudStorageBlockVolumeCurrentStateLocationArgs) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutput() CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeCurrentStateLocationArgs) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateLocationOutput).ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeCurrentStateLocationPtrInput is an input type that accepts CloudStorageBlockVolumeCurrentStateLocationArgs, CloudStorageBlockVolumeCurrentStateLocationPtr and CloudStorageBlockVolumeCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeCurrentStateLocationPtrInput` via:
+//
+//	        CloudStorageBlockVolumeCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeCurrentStateLocationPtrOutput() CloudStorageBlockVolumeCurrentStateLocationPtrOutput
+	ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(context.Context) CloudStorageBlockVolumeCurrentStateLocationPtrOutput
+}
+
+type cloudStorageBlockVolumeCurrentStateLocationPtrType CloudStorageBlockVolumeCurrentStateLocationArgs
+
+func CloudStorageBlockVolumeCurrentStateLocationPtr(v *CloudStorageBlockVolumeCurrentStateLocationArgs) CloudStorageBlockVolumeCurrentStateLocationPtrInput {
+	return (*cloudStorageBlockVolumeCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeCurrentStateLocationPtrType) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutput() CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeCurrentStateLocationPtrType) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeCurrentStateLocationPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) ToCloudStorageBlockVolumeCurrentStateLocationOutput() CloudStorageBlockVolumeCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) ToCloudStorageBlockVolumeCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutput() CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return o.ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeCurrentStateLocation) *CloudStorageBlockVolumeCurrentStateLocation {
+		return &v
+	}).(CloudStorageBlockVolumeCurrentStateLocationPtrOutput)
+}
+
+// Region where the volume will be created. **Changing this value recreates the resource.**
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutput() CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) ToCloudStorageBlockVolumeCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) Elem() CloudStorageBlockVolumeCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentStateLocation) CloudStorageBlockVolumeCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeCurrentStateLocation
+		return ret
+	}).(CloudStorageBlockVolumeCurrentStateLocationOutput)
+}
+
+// Region where the volume will be created. **Changing this value recreates the resource.**
+func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeEncryption struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// CloudStorageBlockVolumeEncryptionInput is an input type that accepts CloudStorageBlockVolumeEncryptionArgs and CloudStorageBlockVolumeEncryptionOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeEncryptionInput` via:
+//
+//	CloudStorageBlockVolumeEncryptionArgs{...}
+type CloudStorageBlockVolumeEncryptionInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeEncryptionOutput() CloudStorageBlockVolumeEncryptionOutput
+	ToCloudStorageBlockVolumeEncryptionOutputWithContext(context.Context) CloudStorageBlockVolumeEncryptionOutput
+}
+
+type CloudStorageBlockVolumeEncryptionArgs struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (CloudStorageBlockVolumeEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeEncryption)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeEncryptionArgs) ToCloudStorageBlockVolumeEncryptionOutput() CloudStorageBlockVolumeEncryptionOutput {
+	return i.ToCloudStorageBlockVolumeEncryptionOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeEncryptionArgs) ToCloudStorageBlockVolumeEncryptionOutputWithContext(ctx context.Context) CloudStorageBlockVolumeEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeEncryptionOutput)
+}
+
+func (i CloudStorageBlockVolumeEncryptionArgs) ToCloudStorageBlockVolumeEncryptionPtrOutput() CloudStorageBlockVolumeEncryptionPtrOutput {
+	return i.ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeEncryptionArgs) ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeEncryptionOutput).ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeEncryptionPtrInput is an input type that accepts CloudStorageBlockVolumeEncryptionArgs, CloudStorageBlockVolumeEncryptionPtr and CloudStorageBlockVolumeEncryptionPtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeEncryptionPtrInput` via:
+//
+//	        CloudStorageBlockVolumeEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeEncryptionPtrOutput() CloudStorageBlockVolumeEncryptionPtrOutput
+	ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(context.Context) CloudStorageBlockVolumeEncryptionPtrOutput
+}
+
+type cloudStorageBlockVolumeEncryptionPtrType CloudStorageBlockVolumeEncryptionArgs
+
+func CloudStorageBlockVolumeEncryptionPtr(v *CloudStorageBlockVolumeEncryptionArgs) CloudStorageBlockVolumeEncryptionPtrInput {
+	return (*cloudStorageBlockVolumeEncryptionPtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeEncryption)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeEncryptionPtrType) ToCloudStorageBlockVolumeEncryptionPtrOutput() CloudStorageBlockVolumeEncryptionPtrOutput {
+	return i.ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeEncryptionPtrType) ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeEncryptionPtrOutput)
+}
+
+type CloudStorageBlockVolumeEncryptionOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeEncryptionOutput) ToCloudStorageBlockVolumeEncryptionOutput() CloudStorageBlockVolumeEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeEncryptionOutput) ToCloudStorageBlockVolumeEncryptionOutputWithContext(ctx context.Context) CloudStorageBlockVolumeEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeEncryptionOutput) ToCloudStorageBlockVolumeEncryptionPtrOutput() CloudStorageBlockVolumeEncryptionPtrOutput {
+	return o.ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeEncryptionOutput) ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeEncryption) *CloudStorageBlockVolumeEncryption {
+		return &v
+	}).(CloudStorageBlockVolumeEncryptionPtrOutput)
+}
+
+// Whether the volume is encrypted at rest with LUKS.
+func (o CloudStorageBlockVolumeEncryptionOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeEncryption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CloudStorageBlockVolumeEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeEncryptionPtrOutput) ToCloudStorageBlockVolumeEncryptionPtrOutput() CloudStorageBlockVolumeEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeEncryptionPtrOutput) ToCloudStorageBlockVolumeEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeEncryptionPtrOutput) Elem() CloudStorageBlockVolumeEncryptionOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeEncryption) CloudStorageBlockVolumeEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeEncryption
+		return ret
+	}).(CloudStorageBlockVolumeEncryptionOutput)
+}
+
+// Whether the volume is encrypted at rest with LUKS.
+func (o CloudStorageBlockVolumeEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeEncryption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentState struct {
+	// A description for the snapshot.
+	Description *string `pulumi:"description"`
+	// Current location:
+	Location *CloudStorageBlockVolumeSnapshotCurrentStateLocation `pulumi:"location"`
+	// The name of the snapshot.
+	Name *string `pulumi:"name"`
+	// Size of the snapshot in GB.
+	Size *int `pulumi:"size"`
+	// The ID of the volume to snapshot. Changing this value recreates the resource.
+	VolumeId *string `pulumi:"volumeId"`
+}
+
+// CloudStorageBlockVolumeSnapshotCurrentStateInput is an input type that accepts CloudStorageBlockVolumeSnapshotCurrentStateArgs and CloudStorageBlockVolumeSnapshotCurrentStateOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeSnapshotCurrentStateInput` via:
+//
+//	CloudStorageBlockVolumeSnapshotCurrentStateArgs{...}
+type CloudStorageBlockVolumeSnapshotCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeSnapshotCurrentStateOutput() CloudStorageBlockVolumeSnapshotCurrentStateOutput
+	ToCloudStorageBlockVolumeSnapshotCurrentStateOutputWithContext(context.Context) CloudStorageBlockVolumeSnapshotCurrentStateOutput
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStateArgs struct {
+	// A description for the snapshot.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Current location:
+	Location CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput `pulumi:"location"`
+	// The name of the snapshot.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Size of the snapshot in GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The ID of the volume to snapshot. Changing this value recreates the resource.
+	VolumeId pulumi.StringPtrInput `pulumi:"volumeId"`
+}
+
+func (CloudStorageBlockVolumeSnapshotCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentState)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateArgs) ToCloudStorageBlockVolumeSnapshotCurrentStateOutput() CloudStorageBlockVolumeSnapshotCurrentStateOutput {
+	return i.ToCloudStorageBlockVolumeSnapshotCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateArgs) ToCloudStorageBlockVolumeSnapshotCurrentStateOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeSnapshotCurrentStateOutput)
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateArgs) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutput() CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return i.ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateArgs) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeSnapshotCurrentStateOutput).ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeSnapshotCurrentStatePtrInput is an input type that accepts CloudStorageBlockVolumeSnapshotCurrentStateArgs, CloudStorageBlockVolumeSnapshotCurrentStatePtr and CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeSnapshotCurrentStatePtrInput` via:
+//
+//	        CloudStorageBlockVolumeSnapshotCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeSnapshotCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutput() CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput
+	ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(context.Context) CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput
+}
+
+type cloudStorageBlockVolumeSnapshotCurrentStatePtrType CloudStorageBlockVolumeSnapshotCurrentStateArgs
+
+func CloudStorageBlockVolumeSnapshotCurrentStatePtr(v *CloudStorageBlockVolumeSnapshotCurrentStateArgs) CloudStorageBlockVolumeSnapshotCurrentStatePtrInput {
+	return (*cloudStorageBlockVolumeSnapshotCurrentStatePtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeSnapshotCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeSnapshotCurrentState)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeSnapshotCurrentStatePtrType) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutput() CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return i.ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeSnapshotCurrentStatePtrType) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput)
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeSnapshotCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateOutput() CloudStorageBlockVolumeSnapshotCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutput() CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return o.ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeSnapshotCurrentState) *CloudStorageBlockVolumeSnapshotCurrentState {
+		return &v
+	}).(CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput)
+}
+
+// A description for the snapshot.
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeSnapshotCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Current location:
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) Location() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeSnapshotCurrentState) *CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+		return v.Location
+	}).(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput)
+}
+
+// The name of the snapshot.
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeSnapshotCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Size of the snapshot in GB.
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeSnapshotCurrentState) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the volume to snapshot. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeSnapshotCurrentStateOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeSnapshotCurrentState) *string { return v.VolumeId }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeSnapshotCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutput() CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) ToCloudStorageBlockVolumeSnapshotCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) Elem() CloudStorageBlockVolumeSnapshotCurrentStateOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentState) CloudStorageBlockVolumeSnapshotCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeSnapshotCurrentState
+		return ret
+	}).(CloudStorageBlockVolumeSnapshotCurrentStateOutput)
+}
+
+// A description for the snapshot.
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current location:
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) Location() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentState) *CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput)
+}
+
+// The name of the snapshot.
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the snapshot in GB.
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the volume to snapshot. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput) VolumeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStateLocation struct {
+	// The region where the snapshot will be created. Changing this value recreates the resource.
+	Region *string `pulumi:"region"`
+}
+
+// CloudStorageBlockVolumeSnapshotCurrentStateLocationInput is an input type that accepts CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs and CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeSnapshotCurrentStateLocationInput` via:
+//
+//	CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{...}
+type CloudStorageBlockVolumeSnapshotCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput
+	ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutputWithContext(context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs struct {
+	// The region where the snapshot will be created. Changing this value recreates the resource.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput {
+	return i.ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput)
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput).ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput is an input type that accepts CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs, CloudStorageBlockVolumeSnapshotCurrentStateLocationPtr and CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput` via:
+//
+//	        CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput
+	ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput
+}
+
+type cloudStorageBlockVolumeSnapshotCurrentStateLocationPtrType CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs
+
+func CloudStorageBlockVolumeSnapshotCurrentStateLocationPtr(v *CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs) CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput {
+	return (*cloudStorageBlockVolumeSnapshotCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudStorageBlockVolumeSnapshotCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeSnapshotCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudStorageBlockVolumeSnapshotCurrentStateLocationPtrType) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageBlockVolumeSnapshotCurrentStateLocationPtrType) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput)
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return o.ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageBlockVolumeSnapshotCurrentStateLocation) *CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+		return &v
+	}).(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput)
+}
+
+// The region where the snapshot will be created. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeSnapshotCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageBlockVolumeSnapshotCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput() CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) ToCloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) Elem() CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentStateLocation) CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageBlockVolumeSnapshotCurrentStateLocation
+		return ret
+	}).(CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput)
+}
+
+// The region where the snapshot will be created. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshotCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
 type StorageEfsIam struct {
 	// Resource display name
 	DisplayName *string `pulumi:"displayName"`
@@ -2071,6 +3734,112 @@ func (o StorageEfsPlanOptionConfigurationArrayOutput) Index(i pulumi.IntInput) S
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageEfsPlanOptionConfiguration {
 		return vs[0].([]StorageEfsPlanOptionConfiguration)[vs[1].(int)]
 	}).(StorageEfsPlanOptionConfigurationOutput)
+}
+
+type VrackPublicRoutingPriorityAvailabilityZone struct {
+	// Availability zone name
+	Name *string `pulumi:"name"`
+	// Unique priority value [1..3]
+	Priority *float64 `pulumi:"priority"`
+}
+
+// VrackPublicRoutingPriorityAvailabilityZoneInput is an input type that accepts VrackPublicRoutingPriorityAvailabilityZoneArgs and VrackPublicRoutingPriorityAvailabilityZoneOutput values.
+// You can construct a concrete instance of `VrackPublicRoutingPriorityAvailabilityZoneInput` via:
+//
+//	VrackPublicRoutingPriorityAvailabilityZoneArgs{...}
+type VrackPublicRoutingPriorityAvailabilityZoneInput interface {
+	pulumi.Input
+
+	ToVrackPublicRoutingPriorityAvailabilityZoneOutput() VrackPublicRoutingPriorityAvailabilityZoneOutput
+	ToVrackPublicRoutingPriorityAvailabilityZoneOutputWithContext(context.Context) VrackPublicRoutingPriorityAvailabilityZoneOutput
+}
+
+type VrackPublicRoutingPriorityAvailabilityZoneArgs struct {
+	// Availability zone name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique priority value [1..3]
+	Priority pulumi.Float64PtrInput `pulumi:"priority"`
+}
+
+func (VrackPublicRoutingPriorityAvailabilityZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackPublicRoutingPriorityAvailabilityZone)(nil)).Elem()
+}
+
+func (i VrackPublicRoutingPriorityAvailabilityZoneArgs) ToVrackPublicRoutingPriorityAvailabilityZoneOutput() VrackPublicRoutingPriorityAvailabilityZoneOutput {
+	return i.ToVrackPublicRoutingPriorityAvailabilityZoneOutputWithContext(context.Background())
+}
+
+func (i VrackPublicRoutingPriorityAvailabilityZoneArgs) ToVrackPublicRoutingPriorityAvailabilityZoneOutputWithContext(ctx context.Context) VrackPublicRoutingPriorityAvailabilityZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackPublicRoutingPriorityAvailabilityZoneOutput)
+}
+
+// VrackPublicRoutingPriorityAvailabilityZoneArrayInput is an input type that accepts VrackPublicRoutingPriorityAvailabilityZoneArray and VrackPublicRoutingPriorityAvailabilityZoneArrayOutput values.
+// You can construct a concrete instance of `VrackPublicRoutingPriorityAvailabilityZoneArrayInput` via:
+//
+//	VrackPublicRoutingPriorityAvailabilityZoneArray{ VrackPublicRoutingPriorityAvailabilityZoneArgs{...} }
+type VrackPublicRoutingPriorityAvailabilityZoneArrayInput interface {
+	pulumi.Input
+
+	ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutput() VrackPublicRoutingPriorityAvailabilityZoneArrayOutput
+	ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutputWithContext(context.Context) VrackPublicRoutingPriorityAvailabilityZoneArrayOutput
+}
+
+type VrackPublicRoutingPriorityAvailabilityZoneArray []VrackPublicRoutingPriorityAvailabilityZoneInput
+
+func (VrackPublicRoutingPriorityAvailabilityZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackPublicRoutingPriorityAvailabilityZone)(nil)).Elem()
+}
+
+func (i VrackPublicRoutingPriorityAvailabilityZoneArray) ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutput() VrackPublicRoutingPriorityAvailabilityZoneArrayOutput {
+	return i.ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutputWithContext(context.Background())
+}
+
+func (i VrackPublicRoutingPriorityAvailabilityZoneArray) ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutputWithContext(ctx context.Context) VrackPublicRoutingPriorityAvailabilityZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VrackPublicRoutingPriorityAvailabilityZoneArrayOutput)
+}
+
+type VrackPublicRoutingPriorityAvailabilityZoneOutput struct{ *pulumi.OutputState }
+
+func (VrackPublicRoutingPriorityAvailabilityZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VrackPublicRoutingPriorityAvailabilityZone)(nil)).Elem()
+}
+
+func (o VrackPublicRoutingPriorityAvailabilityZoneOutput) ToVrackPublicRoutingPriorityAvailabilityZoneOutput() VrackPublicRoutingPriorityAvailabilityZoneOutput {
+	return o
+}
+
+func (o VrackPublicRoutingPriorityAvailabilityZoneOutput) ToVrackPublicRoutingPriorityAvailabilityZoneOutputWithContext(ctx context.Context) VrackPublicRoutingPriorityAvailabilityZoneOutput {
+	return o
+}
+
+// Availability zone name
+func (o VrackPublicRoutingPriorityAvailabilityZoneOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VrackPublicRoutingPriorityAvailabilityZone) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Unique priority value [1..3]
+func (o VrackPublicRoutingPriorityAvailabilityZoneOutput) Priority() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VrackPublicRoutingPriorityAvailabilityZone) *float64 { return v.Priority }).(pulumi.Float64PtrOutput)
+}
+
+type VrackPublicRoutingPriorityAvailabilityZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (VrackPublicRoutingPriorityAvailabilityZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VrackPublicRoutingPriorityAvailabilityZone)(nil)).Elem()
+}
+
+func (o VrackPublicRoutingPriorityAvailabilityZoneArrayOutput) ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutput() VrackPublicRoutingPriorityAvailabilityZoneArrayOutput {
+	return o
+}
+
+func (o VrackPublicRoutingPriorityAvailabilityZoneArrayOutput) ToVrackPublicRoutingPriorityAvailabilityZoneArrayOutputWithContext(ctx context.Context) VrackPublicRoutingPriorityAvailabilityZoneArrayOutput {
+	return o
+}
+
+func (o VrackPublicRoutingPriorityAvailabilityZoneArrayOutput) Index(i pulumi.IntInput) VrackPublicRoutingPriorityAvailabilityZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VrackPublicRoutingPriorityAvailabilityZone {
+		return vs[0].([]VrackPublicRoutingPriorityAvailabilityZone)[vs[1].(int)]
+	}).(VrackPublicRoutingPriorityAvailabilityZoneOutput)
 }
 
 type VrackservicesCurrentState struct {
@@ -5839,6 +7608,1104 @@ func (o GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionAr
 	}).(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput)
 }
 
+type GetCloudStorageBlockVolumeAttachedInstance struct {
+	// The ID of the volume.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudStorageBlockVolumeAttachedInstanceInput is an input type that accepts GetCloudStorageBlockVolumeAttachedInstanceArgs and GetCloudStorageBlockVolumeAttachedInstanceOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeAttachedInstanceInput` via:
+//
+//	GetCloudStorageBlockVolumeAttachedInstanceArgs{...}
+type GetCloudStorageBlockVolumeAttachedInstanceInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeAttachedInstanceOutput() GetCloudStorageBlockVolumeAttachedInstanceOutput
+	ToGetCloudStorageBlockVolumeAttachedInstanceOutputWithContext(context.Context) GetCloudStorageBlockVolumeAttachedInstanceOutput
+}
+
+type GetCloudStorageBlockVolumeAttachedInstanceArgs struct {
+	// The ID of the volume.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudStorageBlockVolumeAttachedInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeAttachedInstanceArgs) ToGetCloudStorageBlockVolumeAttachedInstanceOutput() GetCloudStorageBlockVolumeAttachedInstanceOutput {
+	return i.ToGetCloudStorageBlockVolumeAttachedInstanceOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeAttachedInstanceArgs) ToGetCloudStorageBlockVolumeAttachedInstanceOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeAttachedInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeAttachedInstanceOutput)
+}
+
+// GetCloudStorageBlockVolumeAttachedInstanceArrayInput is an input type that accepts GetCloudStorageBlockVolumeAttachedInstanceArray and GetCloudStorageBlockVolumeAttachedInstanceArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeAttachedInstanceArrayInput` via:
+//
+//	GetCloudStorageBlockVolumeAttachedInstanceArray{ GetCloudStorageBlockVolumeAttachedInstanceArgs{...} }
+type GetCloudStorageBlockVolumeAttachedInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutput() GetCloudStorageBlockVolumeAttachedInstanceArrayOutput
+	ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutputWithContext(context.Context) GetCloudStorageBlockVolumeAttachedInstanceArrayOutput
+}
+
+type GetCloudStorageBlockVolumeAttachedInstanceArray []GetCloudStorageBlockVolumeAttachedInstanceInput
+
+func (GetCloudStorageBlockVolumeAttachedInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeAttachedInstanceArray) ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutput() GetCloudStorageBlockVolumeAttachedInstanceArrayOutput {
+	return i.ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeAttachedInstanceArray) ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeAttachedInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeAttachedInstanceArrayOutput)
+}
+
+type GetCloudStorageBlockVolumeAttachedInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeAttachedInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeAttachedInstanceOutput) ToGetCloudStorageBlockVolumeAttachedInstanceOutput() GetCloudStorageBlockVolumeAttachedInstanceOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeAttachedInstanceOutput) ToGetCloudStorageBlockVolumeAttachedInstanceOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeAttachedInstanceOutput {
+	return o
+}
+
+// The ID of the volume.
+func (o GetCloudStorageBlockVolumeAttachedInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeAttachedInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeAttachedInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeAttachedInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeAttachedInstanceArrayOutput) ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutput() GetCloudStorageBlockVolumeAttachedInstanceArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeAttachedInstanceArrayOutput) ToGetCloudStorageBlockVolumeAttachedInstanceArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeAttachedInstanceArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeAttachedInstanceArrayOutput) Index(i pulumi.IntInput) GetCloudStorageBlockVolumeAttachedInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageBlockVolumeAttachedInstance {
+		return vs[0].([]GetCloudStorageBlockVolumeAttachedInstance)[vs[1].(int)]
+	}).(GetCloudStorageBlockVolumeAttachedInstanceOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageBlockVolumeBackupLocationInput is an input type that accepts GetCloudStorageBlockVolumeBackupLocationArgs and GetCloudStorageBlockVolumeBackupLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeBackupLocationInput` via:
+//
+//	GetCloudStorageBlockVolumeBackupLocationArgs{...}
+type GetCloudStorageBlockVolumeBackupLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeBackupLocationOutput() GetCloudStorageBlockVolumeBackupLocationOutput
+	ToGetCloudStorageBlockVolumeBackupLocationOutputWithContext(context.Context) GetCloudStorageBlockVolumeBackupLocationOutput
+}
+
+type GetCloudStorageBlockVolumeBackupLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageBlockVolumeBackupLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeBackupLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeBackupLocationArgs) ToGetCloudStorageBlockVolumeBackupLocationOutput() GetCloudStorageBlockVolumeBackupLocationOutput {
+	return i.ToGetCloudStorageBlockVolumeBackupLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeBackupLocationArgs) ToGetCloudStorageBlockVolumeBackupLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeBackupLocationOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeBackupLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeBackupLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeBackupLocationOutput) ToGetCloudStorageBlockVolumeBackupLocationOutput() GetCloudStorageBlockVolumeBackupLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeBackupLocationOutput) ToGetCloudStorageBlockVolumeBackupLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudStorageBlockVolumeBackupLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupsBackup struct {
+	// Backup description.
+	Description string `pulumi:"description"`
+	// Backup ID.
+	Id string `pulumi:"id"`
+	// Location of the backup:
+	Location GetCloudStorageBlockVolumeBackupsBackupLocation `pulumi:"location"`
+	// Backup name.
+	Name string `pulumi:"name"`
+	// Backup readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Size of the backup in GB.
+	Size int `pulumi:"size"`
+	// The ID of the volume whose backups to list.
+	VolumeId string `pulumi:"volumeId"`
+}
+
+// GetCloudStorageBlockVolumeBackupsBackupInput is an input type that accepts GetCloudStorageBlockVolumeBackupsBackupArgs and GetCloudStorageBlockVolumeBackupsBackupOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeBackupsBackupInput` via:
+//
+//	GetCloudStorageBlockVolumeBackupsBackupArgs{...}
+type GetCloudStorageBlockVolumeBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeBackupsBackupOutput() GetCloudStorageBlockVolumeBackupsBackupOutput
+	ToGetCloudStorageBlockVolumeBackupsBackupOutputWithContext(context.Context) GetCloudStorageBlockVolumeBackupsBackupOutput
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupArgs struct {
+	// Backup description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Backup ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location of the backup:
+	Location GetCloudStorageBlockVolumeBackupsBackupLocationInput `pulumi:"location"`
+	// Backup name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Backup readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Size of the backup in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The ID of the volume whose backups to list.
+	VolumeId pulumi.StringInput `pulumi:"volumeId"`
+}
+
+func (GetCloudStorageBlockVolumeBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackup)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeBackupsBackupArgs) ToGetCloudStorageBlockVolumeBackupsBackupOutput() GetCloudStorageBlockVolumeBackupsBackupOutput {
+	return i.ToGetCloudStorageBlockVolumeBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeBackupsBackupArgs) ToGetCloudStorageBlockVolumeBackupsBackupOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeBackupsBackupOutput)
+}
+
+// GetCloudStorageBlockVolumeBackupsBackupArrayInput is an input type that accepts GetCloudStorageBlockVolumeBackupsBackupArray and GetCloudStorageBlockVolumeBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeBackupsBackupArrayInput` via:
+//
+//	GetCloudStorageBlockVolumeBackupsBackupArray{ GetCloudStorageBlockVolumeBackupsBackupArgs{...} }
+type GetCloudStorageBlockVolumeBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeBackupsBackupArrayOutput() GetCloudStorageBlockVolumeBackupsBackupArrayOutput
+	ToGetCloudStorageBlockVolumeBackupsBackupArrayOutputWithContext(context.Context) GetCloudStorageBlockVolumeBackupsBackupArrayOutput
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupArray []GetCloudStorageBlockVolumeBackupsBackupInput
+
+func (GetCloudStorageBlockVolumeBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumeBackupsBackup)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeBackupsBackupArray) ToGetCloudStorageBlockVolumeBackupsBackupArrayOutput() GetCloudStorageBlockVolumeBackupsBackupArrayOutput {
+	return i.ToGetCloudStorageBlockVolumeBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeBackupsBackupArray) ToGetCloudStorageBlockVolumeBackupsBackupArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeBackupsBackupArrayOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackup)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) ToGetCloudStorageBlockVolumeBackupsBackupOutput() GetCloudStorageBlockVolumeBackupsBackupOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) ToGetCloudStorageBlockVolumeBackupsBackupOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupsBackupOutput {
+	return o
+}
+
+// Backup description.
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Backup ID.
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location of the backup:
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) Location() GetCloudStorageBlockVolumeBackupsBackupLocationOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) GetCloudStorageBlockVolumeBackupsBackupLocation {
+		return v.Location
+	}).(GetCloudStorageBlockVolumeBackupsBackupLocationOutput)
+}
+
+// Backup name.
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Backup readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Size of the backup in GB.
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The ID of the volume whose backups to list.
+func (o GetCloudStorageBlockVolumeBackupsBackupOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackup) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumeBackupsBackup)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupArrayOutput) ToGetCloudStorageBlockVolumeBackupsBackupArrayOutput() GetCloudStorageBlockVolumeBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupArrayOutput) ToGetCloudStorageBlockVolumeBackupsBackupArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetCloudStorageBlockVolumeBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageBlockVolumeBackupsBackup {
+		return vs[0].([]GetCloudStorageBlockVolumeBackupsBackup)[vs[1].(int)]
+	}).(GetCloudStorageBlockVolumeBackupsBackupOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupLocation struct {
+	// The region where the backups reside.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageBlockVolumeBackupsBackupLocationInput is an input type that accepts GetCloudStorageBlockVolumeBackupsBackupLocationArgs and GetCloudStorageBlockVolumeBackupsBackupLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeBackupsBackupLocationInput` via:
+//
+//	GetCloudStorageBlockVolumeBackupsBackupLocationArgs{...}
+type GetCloudStorageBlockVolumeBackupsBackupLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeBackupsBackupLocationOutput() GetCloudStorageBlockVolumeBackupsBackupLocationOutput
+	ToGetCloudStorageBlockVolumeBackupsBackupLocationOutputWithContext(context.Context) GetCloudStorageBlockVolumeBackupsBackupLocationOutput
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupLocationArgs struct {
+	// The region where the backups reside.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageBlockVolumeBackupsBackupLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackupLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeBackupsBackupLocationArgs) ToGetCloudStorageBlockVolumeBackupsBackupLocationOutput() GetCloudStorageBlockVolumeBackupsBackupLocationOutput {
+	return i.ToGetCloudStorageBlockVolumeBackupsBackupLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeBackupsBackupLocationArgs) ToGetCloudStorageBlockVolumeBackupsBackupLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupsBackupLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeBackupsBackupLocationOutput)
+}
+
+type GetCloudStorageBlockVolumeBackupsBackupLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeBackupsBackupLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackupLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupLocationOutput) ToGetCloudStorageBlockVolumeBackupsBackupLocationOutput() GetCloudStorageBlockVolumeBackupsBackupLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeBackupsBackupLocationOutput) ToGetCloudStorageBlockVolumeBackupsBackupLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeBackupsBackupLocationOutput {
+	return o
+}
+
+// The region where the backups reside.
+func (o GetCloudStorageBlockVolumeBackupsBackupLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeBackupsBackupLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeEncryption struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetCloudStorageBlockVolumeEncryptionInput is an input type that accepts GetCloudStorageBlockVolumeEncryptionArgs and GetCloudStorageBlockVolumeEncryptionOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeEncryptionInput` via:
+//
+//	GetCloudStorageBlockVolumeEncryptionArgs{...}
+type GetCloudStorageBlockVolumeEncryptionInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeEncryptionOutput() GetCloudStorageBlockVolumeEncryptionOutput
+	ToGetCloudStorageBlockVolumeEncryptionOutputWithContext(context.Context) GetCloudStorageBlockVolumeEncryptionOutput
+}
+
+type GetCloudStorageBlockVolumeEncryptionArgs struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetCloudStorageBlockVolumeEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeEncryption)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeEncryptionArgs) ToGetCloudStorageBlockVolumeEncryptionOutput() GetCloudStorageBlockVolumeEncryptionOutput {
+	return i.ToGetCloudStorageBlockVolumeEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeEncryptionArgs) ToGetCloudStorageBlockVolumeEncryptionOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeEncryptionOutput)
+}
+
+type GetCloudStorageBlockVolumeEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeEncryption)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeEncryptionOutput) ToGetCloudStorageBlockVolumeEncryptionOutput() GetCloudStorageBlockVolumeEncryptionOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeEncryptionOutput) ToGetCloudStorageBlockVolumeEncryptionOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeEncryptionOutput {
+	return o
+}
+
+// Whether the volume is encrypted at rest with LUKS.
+func (o GetCloudStorageBlockVolumeEncryptionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetCloudStorageBlockVolumeLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageBlockVolumeLocationInput is an input type that accepts GetCloudStorageBlockVolumeLocationArgs and GetCloudStorageBlockVolumeLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeLocationInput` via:
+//
+//	GetCloudStorageBlockVolumeLocationArgs{...}
+type GetCloudStorageBlockVolumeLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeLocationOutput() GetCloudStorageBlockVolumeLocationOutput
+	ToGetCloudStorageBlockVolumeLocationOutputWithContext(context.Context) GetCloudStorageBlockVolumeLocationOutput
+}
+
+type GetCloudStorageBlockVolumeLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageBlockVolumeLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeLocationArgs) ToGetCloudStorageBlockVolumeLocationOutput() GetCloudStorageBlockVolumeLocationOutput {
+	return i.ToGetCloudStorageBlockVolumeLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeLocationArgs) ToGetCloudStorageBlockVolumeLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeLocationOutput)
+}
+
+type GetCloudStorageBlockVolumeLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeLocationOutput) ToGetCloudStorageBlockVolumeLocationOutput() GetCloudStorageBlockVolumeLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeLocationOutput) ToGetCloudStorageBlockVolumeLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudStorageBlockVolumeLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageBlockVolumeSnapshotLocationInput is an input type that accepts GetCloudStorageBlockVolumeSnapshotLocationArgs and GetCloudStorageBlockVolumeSnapshotLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeSnapshotLocationInput` via:
+//
+//	GetCloudStorageBlockVolumeSnapshotLocationArgs{...}
+type GetCloudStorageBlockVolumeSnapshotLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeSnapshotLocationOutput() GetCloudStorageBlockVolumeSnapshotLocationOutput
+	ToGetCloudStorageBlockVolumeSnapshotLocationOutputWithContext(context.Context) GetCloudStorageBlockVolumeSnapshotLocationOutput
+}
+
+type GetCloudStorageBlockVolumeSnapshotLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageBlockVolumeSnapshotLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotLocationArgs) ToGetCloudStorageBlockVolumeSnapshotLocationOutput() GetCloudStorageBlockVolumeSnapshotLocationOutput {
+	return i.ToGetCloudStorageBlockVolumeSnapshotLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotLocationArgs) ToGetCloudStorageBlockVolumeSnapshotLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeSnapshotLocationOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeSnapshotLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotLocationOutput) ToGetCloudStorageBlockVolumeSnapshotLocationOutput() GetCloudStorageBlockVolumeSnapshotLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotLocationOutput) ToGetCloudStorageBlockVolumeSnapshotLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudStorageBlockVolumeSnapshotLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshot struct {
+	// Snapshot description.
+	Description string `pulumi:"description"`
+	// Snapshot ID.
+	Id string `pulumi:"id"`
+	// Location of the snapshot:
+	Location GetCloudStorageBlockVolumeSnapshotsSnapshotLocation `pulumi:"location"`
+	// Snapshot name.
+	Name string `pulumi:"name"`
+	// Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Size of the snapshot in GB.
+	Size int `pulumi:"size"`
+	// The ID of the volume whose snapshots to list.
+	VolumeId string `pulumi:"volumeId"`
+}
+
+// GetCloudStorageBlockVolumeSnapshotsSnapshotInput is an input type that accepts GetCloudStorageBlockVolumeSnapshotsSnapshotArgs and GetCloudStorageBlockVolumeSnapshotsSnapshotOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeSnapshotsSnapshotInput` via:
+//
+//	GetCloudStorageBlockVolumeSnapshotsSnapshotArgs{...}
+type GetCloudStorageBlockVolumeSnapshotsSnapshotInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotOutput
+	ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutputWithContext(context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotOutput
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotArgs struct {
+	// Snapshot description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Snapshot ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location of the snapshot:
+	Location GetCloudStorageBlockVolumeSnapshotsSnapshotLocationInput `pulumi:"location"`
+	// Snapshot name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Size of the snapshot in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// The ID of the volume whose snapshots to list.
+	VolumeId pulumi.StringInput `pulumi:"volumeId"`
+}
+
+func (GetCloudStorageBlockVolumeSnapshotsSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotsSnapshotArgs) ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotOutput {
+	return i.ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotsSnapshotArgs) ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeSnapshotsSnapshotOutput)
+}
+
+// GetCloudStorageBlockVolumeSnapshotsSnapshotArrayInput is an input type that accepts GetCloudStorageBlockVolumeSnapshotsSnapshotArray and GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeSnapshotsSnapshotArrayInput` via:
+//
+//	GetCloudStorageBlockVolumeSnapshotsSnapshotArray{ GetCloudStorageBlockVolumeSnapshotsSnapshotArgs{...} }
+type GetCloudStorageBlockVolumeSnapshotsSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput
+	ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutputWithContext(context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotArray []GetCloudStorageBlockVolumeSnapshotsSnapshotInput
+
+func (GetCloudStorageBlockVolumeSnapshotsSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumeSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotsSnapshotArray) ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput {
+	return i.ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotsSnapshotArray) ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) ToGetCloudStorageBlockVolumeSnapshotsSnapshotOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotOutput {
+	return o
+}
+
+// Snapshot description.
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Snapshot ID.
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location of the snapshot:
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) Location() GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) GetCloudStorageBlockVolumeSnapshotsSnapshotLocation {
+		return v.Location
+	}).(GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput)
+}
+
+// Snapshot name.
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Size of the snapshot in GB.
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// The ID of the volume whose snapshots to list.
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotOutput) VolumeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshot) string { return v.VolumeId }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumeSnapshotsSnapshot)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput) ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput) ToGetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetCloudStorageBlockVolumeSnapshotsSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageBlockVolumeSnapshotsSnapshot {
+		return vs[0].([]GetCloudStorageBlockVolumeSnapshotsSnapshot)[vs[1].(int)]
+	}).(GetCloudStorageBlockVolumeSnapshotsSnapshotOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotLocation struct {
+	// The region where the snapshots reside.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageBlockVolumeSnapshotsSnapshotLocationInput is an input type that accepts GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs and GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumeSnapshotsSnapshotLocationInput` via:
+//
+//	GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs{...}
+type GetCloudStorageBlockVolumeSnapshotsSnapshotLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput
+	ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutputWithContext(context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs struct {
+	// The region where the snapshots reside.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshotLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs) ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput {
+	return i.ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs) ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput)
+}
+
+type GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshotLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput) ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput() GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput) ToGetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput {
+	return o
+}
+
+// The region where the snapshots reside.
+func (o GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumeSnapshotsSnapshotLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumesVolume struct {
+	// Instances the volume is attached to:
+	AttachedInstances []GetCloudStorageBlockVolumesVolumeAttachedInstance `pulumi:"attachedInstances"`
+	// Whether the volume is bootable.
+	Bootable bool `pulumi:"bootable"`
+	// Encryption configuration of the volume:
+	Encryption GetCloudStorageBlockVolumesVolumeEncryption `pulumi:"encryption"`
+	// Instance ID.
+	Id string `pulumi:"id"`
+	// Location of the volume:
+	Location GetCloudStorageBlockVolumesVolumeLocation `pulumi:"location"`
+	// Volume name.
+	Name string `pulumi:"name"`
+	// Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Size of the volume in GB.
+	Size int `pulumi:"size"`
+	// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+	Status string `pulumi:"status"`
+	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`).
+	VolumeType string `pulumi:"volumeType"`
+}
+
+// GetCloudStorageBlockVolumesVolumeInput is an input type that accepts GetCloudStorageBlockVolumesVolumeArgs and GetCloudStorageBlockVolumesVolumeOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumesVolumeInput` via:
+//
+//	GetCloudStorageBlockVolumesVolumeArgs{...}
+type GetCloudStorageBlockVolumesVolumeInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumesVolumeOutput() GetCloudStorageBlockVolumesVolumeOutput
+	ToGetCloudStorageBlockVolumesVolumeOutputWithContext(context.Context) GetCloudStorageBlockVolumesVolumeOutput
+}
+
+type GetCloudStorageBlockVolumesVolumeArgs struct {
+	// Instances the volume is attached to:
+	AttachedInstances GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput `pulumi:"attachedInstances"`
+	// Whether the volume is bootable.
+	Bootable pulumi.BoolInput `pulumi:"bootable"`
+	// Encryption configuration of the volume:
+	Encryption GetCloudStorageBlockVolumesVolumeEncryptionInput `pulumi:"encryption"`
+	// Instance ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location of the volume:
+	Location GetCloudStorageBlockVolumesVolumeLocationInput `pulumi:"location"`
+	// Volume name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Size of the volume in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+	Status pulumi.StringInput `pulumi:"status"`
+	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`).
+	VolumeType pulumi.StringInput `pulumi:"volumeType"`
+}
+
+func (GetCloudStorageBlockVolumesVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolume)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumesVolumeArgs) ToGetCloudStorageBlockVolumesVolumeOutput() GetCloudStorageBlockVolumesVolumeOutput {
+	return i.ToGetCloudStorageBlockVolumesVolumeOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumesVolumeArgs) ToGetCloudStorageBlockVolumesVolumeOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumesVolumeOutput)
+}
+
+// GetCloudStorageBlockVolumesVolumeArrayInput is an input type that accepts GetCloudStorageBlockVolumesVolumeArray and GetCloudStorageBlockVolumesVolumeArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumesVolumeArrayInput` via:
+//
+//	GetCloudStorageBlockVolumesVolumeArray{ GetCloudStorageBlockVolumesVolumeArgs{...} }
+type GetCloudStorageBlockVolumesVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumesVolumeArrayOutput() GetCloudStorageBlockVolumesVolumeArrayOutput
+	ToGetCloudStorageBlockVolumesVolumeArrayOutputWithContext(context.Context) GetCloudStorageBlockVolumesVolumeArrayOutput
+}
+
+type GetCloudStorageBlockVolumesVolumeArray []GetCloudStorageBlockVolumesVolumeInput
+
+func (GetCloudStorageBlockVolumesVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumesVolume)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumesVolumeArray) ToGetCloudStorageBlockVolumesVolumeArrayOutput() GetCloudStorageBlockVolumesVolumeArrayOutput {
+	return i.ToGetCloudStorageBlockVolumesVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumesVolumeArray) ToGetCloudStorageBlockVolumesVolumeArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumesVolumeArrayOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumesVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolume)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumesVolumeOutput) ToGetCloudStorageBlockVolumesVolumeOutput() GetCloudStorageBlockVolumesVolumeOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeOutput) ToGetCloudStorageBlockVolumesVolumeOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeOutput {
+	return o
+}
+
+// Instances the volume is attached to:
+func (o GetCloudStorageBlockVolumesVolumeOutput) AttachedInstances() GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) []GetCloudStorageBlockVolumesVolumeAttachedInstance {
+		return v.AttachedInstances
+	}).(GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput)
+}
+
+// Whether the volume is bootable.
+func (o GetCloudStorageBlockVolumesVolumeOutput) Bootable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) bool { return v.Bootable }).(pulumi.BoolOutput)
+}
+
+// Encryption configuration of the volume:
+func (o GetCloudStorageBlockVolumesVolumeOutput) Encryption() GetCloudStorageBlockVolumesVolumeEncryptionOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) GetCloudStorageBlockVolumesVolumeEncryption {
+		return v.Encryption
+	}).(GetCloudStorageBlockVolumesVolumeEncryptionOutput)
+}
+
+// Instance ID.
+func (o GetCloudStorageBlockVolumesVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location of the volume:
+func (o GetCloudStorageBlockVolumesVolumeOutput) Location() GetCloudStorageBlockVolumesVolumeLocationOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) GetCloudStorageBlockVolumesVolumeLocation { return v.Location }).(GetCloudStorageBlockVolumesVolumeLocationOutput)
+}
+
+// Volume name.
+func (o GetCloudStorageBlockVolumesVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudStorageBlockVolumesVolumeOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Size of the volume in GB.
+func (o GetCloudStorageBlockVolumesVolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+func (o GetCloudStorageBlockVolumesVolumeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`).
+func (o GetCloudStorageBlockVolumesVolumeOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolume) string { return v.VolumeType }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumesVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumesVolume)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumesVolumeArrayOutput) ToGetCloudStorageBlockVolumesVolumeArrayOutput() GetCloudStorageBlockVolumesVolumeArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeArrayOutput) ToGetCloudStorageBlockVolumesVolumeArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeArrayOutput) Index(i pulumi.IntInput) GetCloudStorageBlockVolumesVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageBlockVolumesVolume {
+		return vs[0].([]GetCloudStorageBlockVolumesVolume)[vs[1].(int)]
+	}).(GetCloudStorageBlockVolumesVolumeOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeAttachedInstance struct {
+	// Instance ID.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudStorageBlockVolumesVolumeAttachedInstanceInput is an input type that accepts GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs and GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumesVolumeAttachedInstanceInput` via:
+//
+//	GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs{...}
+type GetCloudStorageBlockVolumesVolumeAttachedInstanceInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutput() GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput
+	ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutputWithContext(context.Context) GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput
+}
+
+type GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs struct {
+	// Instance ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutput() GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput {
+	return i.ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput)
+}
+
+// GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput is an input type that accepts GetCloudStorageBlockVolumesVolumeAttachedInstanceArray and GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput` via:
+//
+//	GetCloudStorageBlockVolumesVolumeAttachedInstanceArray{ GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs{...} }
+type GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput() GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput
+	ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutputWithContext(context.Context) GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput
+}
+
+type GetCloudStorageBlockVolumesVolumeAttachedInstanceArray []GetCloudStorageBlockVolumesVolumeAttachedInstanceInput
+
+func (GetCloudStorageBlockVolumesVolumeAttachedInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumesVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumesVolumeAttachedInstanceArray) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput() GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput {
+	return i.ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumesVolumeAttachedInstanceArray) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutput() GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput {
+	return o
+}
+
+// Instance ID.
+func (o GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolumeAttachedInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageBlockVolumesVolumeAttachedInstance)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput() GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput) ToGetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput) Index(i pulumi.IntInput) GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageBlockVolumesVolumeAttachedInstance {
+		return vs[0].([]GetCloudStorageBlockVolumesVolumeAttachedInstance)[vs[1].(int)]
+	}).(GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeEncryption struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetCloudStorageBlockVolumesVolumeEncryptionInput is an input type that accepts GetCloudStorageBlockVolumesVolumeEncryptionArgs and GetCloudStorageBlockVolumesVolumeEncryptionOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumesVolumeEncryptionInput` via:
+//
+//	GetCloudStorageBlockVolumesVolumeEncryptionArgs{...}
+type GetCloudStorageBlockVolumesVolumeEncryptionInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumesVolumeEncryptionOutput() GetCloudStorageBlockVolumesVolumeEncryptionOutput
+	ToGetCloudStorageBlockVolumesVolumeEncryptionOutputWithContext(context.Context) GetCloudStorageBlockVolumesVolumeEncryptionOutput
+}
+
+type GetCloudStorageBlockVolumesVolumeEncryptionArgs struct {
+	// Whether the volume is encrypted at rest with LUKS.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetCloudStorageBlockVolumesVolumeEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeEncryption)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumesVolumeEncryptionArgs) ToGetCloudStorageBlockVolumesVolumeEncryptionOutput() GetCloudStorageBlockVolumesVolumeEncryptionOutput {
+	return i.ToGetCloudStorageBlockVolumesVolumeEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumesVolumeEncryptionArgs) ToGetCloudStorageBlockVolumesVolumeEncryptionOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumesVolumeEncryptionOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumesVolumeEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeEncryption)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumesVolumeEncryptionOutput) ToGetCloudStorageBlockVolumesVolumeEncryptionOutput() GetCloudStorageBlockVolumesVolumeEncryptionOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeEncryptionOutput) ToGetCloudStorageBlockVolumesVolumeEncryptionOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeEncryptionOutput {
+	return o
+}
+
+// Whether the volume is encrypted at rest with LUKS.
+func (o GetCloudStorageBlockVolumesVolumeEncryptionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolumeEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeLocation struct {
+	// The region where the volumes reside.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageBlockVolumesVolumeLocationInput is an input type that accepts GetCloudStorageBlockVolumesVolumeLocationArgs and GetCloudStorageBlockVolumesVolumeLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageBlockVolumesVolumeLocationInput` via:
+//
+//	GetCloudStorageBlockVolumesVolumeLocationArgs{...}
+type GetCloudStorageBlockVolumesVolumeLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageBlockVolumesVolumeLocationOutput() GetCloudStorageBlockVolumesVolumeLocationOutput
+	ToGetCloudStorageBlockVolumesVolumeLocationOutputWithContext(context.Context) GetCloudStorageBlockVolumesVolumeLocationOutput
+}
+
+type GetCloudStorageBlockVolumesVolumeLocationArgs struct {
+	// The region where the volumes reside.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageBlockVolumesVolumeLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageBlockVolumesVolumeLocationArgs) ToGetCloudStorageBlockVolumesVolumeLocationOutput() GetCloudStorageBlockVolumesVolumeLocationOutput {
+	return i.ToGetCloudStorageBlockVolumesVolumeLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageBlockVolumesVolumeLocationArgs) ToGetCloudStorageBlockVolumesVolumeLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageBlockVolumesVolumeLocationOutput)
+}
+
+type GetCloudStorageBlockVolumesVolumeLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageBlockVolumesVolumeLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageBlockVolumesVolumeLocationOutput) ToGetCloudStorageBlockVolumesVolumeLocationOutput() GetCloudStorageBlockVolumesVolumeLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageBlockVolumesVolumeLocationOutput) ToGetCloudStorageBlockVolumesVolumeLocationOutputWithContext(ctx context.Context) GetCloudStorageBlockVolumesVolumeLocationOutput {
+	return o
+}
+
+// The region where the volumes reside.
+func (o GetCloudStorageBlockVolumesVolumeLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolumeLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
 type GetDbaasLogsOutputGraylogStreamUrlUrl struct {
 	// URL address
 	Address string `pulumi:"address"`
@@ -7946,6 +10813,85 @@ func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageEfsShareAccessPathsAccessPath {
 		return vs[0].([]GetStorageEfsShareAccessPathsAccessPath)[vs[1].(int)]
 	}).(GetStorageEfsShareAccessPathsAccessPathOutput)
+}
+
+type GetVrackIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// (String) Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// (String) Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetVrackIamInput is an input type that accepts GetVrackIamArgs and GetVrackIamOutput values.
+// You can construct a concrete instance of `GetVrackIamInput` via:
+//
+//	GetVrackIamArgs{...}
+type GetVrackIamInput interface {
+	pulumi.Input
+
+	ToGetVrackIamOutput() GetVrackIamOutput
+	ToGetVrackIamOutputWithContext(context.Context) GetVrackIamOutput
+}
+
+type GetVrackIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// (String) Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// (String) Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetVrackIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackIam)(nil)).Elem()
+}
+
+func (i GetVrackIamArgs) ToGetVrackIamOutput() GetVrackIamOutput {
+	return i.ToGetVrackIamOutputWithContext(context.Background())
+}
+
+func (i GetVrackIamArgs) ToGetVrackIamOutputWithContext(ctx context.Context) GetVrackIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackIamOutput)
+}
+
+type GetVrackIamOutput struct{ *pulumi.OutputState }
+
+func (GetVrackIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackIam)(nil)).Elem()
+}
+
+func (o GetVrackIamOutput) ToGetVrackIamOutput() GetVrackIamOutput {
+	return o
+}
+
+func (o GetVrackIamOutput) ToGetVrackIamOutputWithContext(ctx context.Context) GetVrackIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetVrackIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// (String) Unique identifier of the resource
+func (o GetVrackIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetVrackIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVrackIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// (String) Unique resource name used in policies
+func (o GetVrackIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackIam) string { return v.Urn }).(pulumi.StringOutput)
 }
 
 type GetVrackservicesCurrentState struct {
@@ -10255,6 +13201,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStatePtrInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateLocationInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCreateFromInput)(nil)).Elem(), CloudStorageBlockVolumeCreateFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCreateFromPtrInput)(nil)).Elem(), CloudStorageBlockVolumeCreateFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStatePtrInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateAttachedInstanceInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateAttachedInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateEncryptionInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateEncryptionPtrInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateLocationInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageBlockVolumeCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeEncryptionInput)(nil)).Elem(), CloudStorageBlockVolumeEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeEncryptionPtrInput)(nil)).Elem(), CloudStorageBlockVolumeEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStatePtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsIamInput)(nil)).Elem(), StorageEfsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsIamPtrInput)(nil)).Elem(), StorageEfsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsOrderInput)(nil)).Elem(), StorageEfsOrderArgs{})
@@ -10269,6 +13235,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsPlanOptionArrayInput)(nil)).Elem(), StorageEfsPlanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsPlanOptionConfigurationInput)(nil)).Elem(), StorageEfsPlanOptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsPlanOptionConfigurationArrayInput)(nil)).Elem(), StorageEfsPlanOptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackPublicRoutingPriorityAvailabilityZoneInput)(nil)).Elem(), VrackPublicRoutingPriorityAvailabilityZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VrackPublicRoutingPriorityAvailabilityZoneArrayInput)(nil)).Elem(), VrackPublicRoutingPriorityAvailabilityZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateInput)(nil)).Elem(), VrackservicesCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStatePtrInput)(nil)).Elem(), VrackservicesCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesCurrentStateSubnetInput)(nil)).Elem(), VrackservicesCurrentStateSubnetArgs{})
@@ -10326,6 +13294,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionInput)(nil)).Elem(), GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayInput)(nil)).Elem(), GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeAttachedInstanceInput)(nil)).Elem(), GetCloudStorageBlockVolumeAttachedInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeAttachedInstanceArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumeAttachedInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeBackupLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumeBackupLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackupInput)(nil)).Elem(), GetCloudStorageBlockVolumeBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackupArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumeBackupsBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeBackupsBackupLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumeBackupsBackupLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeEncryptionInput)(nil)).Elem(), GetCloudStorageBlockVolumeEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumeLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumeSnapshotLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshotInput)(nil)).Elem(), GetCloudStorageBlockVolumeSnapshotsSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshotArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumeSnapshotsSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeSnapshotsSnapshotLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeAttachedInstanceInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeAttachedInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeEncryptionInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
@@ -10359,6 +13345,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsIamInput)(nil)).Elem(), GetStorageEfsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathArrayInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackIamInput)(nil)).Elem(), GetVrackIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateInput)(nil)).Elem(), GetVrackservicesCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArray{})
@@ -10409,6 +13396,26 @@ func init() {
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCreateFromOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCreateFromPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateAttachedInstanceOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateAttachedInstanceArrayOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateEncryptionOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeEncryptionOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput{})
 	pulumi.RegisterOutputType(StorageEfsIamOutput{})
 	pulumi.RegisterOutputType(StorageEfsIamPtrOutput{})
 	pulumi.RegisterOutputType(StorageEfsOrderOutput{})
@@ -10423,6 +13430,8 @@ func init() {
 	pulumi.RegisterOutputType(StorageEfsPlanOptionArrayOutput{})
 	pulumi.RegisterOutputType(StorageEfsPlanOptionConfigurationOutput{})
 	pulumi.RegisterOutputType(StorageEfsPlanOptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(VrackPublicRoutingPriorityAvailabilityZoneOutput{})
+	pulumi.RegisterOutputType(VrackPublicRoutingPriorityAvailabilityZoneArrayOutput{})
 	pulumi.RegisterOutputType(VrackservicesCurrentStateOutput{})
 	pulumi.RegisterOutputType(VrackservicesCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(VrackservicesCurrentStateSubnetOutput{})
@@ -10480,6 +13489,24 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeAttachedInstanceOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeAttachedInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeBackupLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeBackupsBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeBackupsBackupLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeEncryptionOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeSnapshotLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeSnapshotsSnapshotOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeSnapshotsSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeSnapshotsSnapshotLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeAttachedInstanceOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeEncryptionOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeLocationOutput{})
 	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlOutput{})
 	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput{})
 	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
@@ -10513,6 +13540,7 @@ func init() {
 	pulumi.RegisterOutputType(GetStorageEfsIamOutput{})
 	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathOutput{})
 	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackIamOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesCurrentStateOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetArrayOutput{})

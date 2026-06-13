@@ -38,7 +38,7 @@ namespace Pulumi.Ovh.Vrack
     ///     var vrackVrack = new Ovh.Vrack.Vrack("vrack", new()
     ///     {
     ///         OvhSubsidiary = myCart.Apply(getCartResult =&gt; getCartResult.OvhSubsidiary),
-    ///         Name = "my-vrack",
+    ///         Name = "my_vrack",
     ///         Description = "my vrack",
     ///         Plan = new Ovh.Vrack.Inputs.VrackPlanArgs
     ///         {

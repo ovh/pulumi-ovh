@@ -124,6 +124,10 @@ export class Storage extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string | undefined>;
     /**
+     * Container tags
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Versioning configuration
      */
     public readonly versioning!: pulumi.Output<outputs.CloudProject.StorageVersioning>;
@@ -161,6 +165,7 @@ export class Storage extends pulumi.CustomResource {
             resourceInputs["regionName"] = state ? state.regionName : undefined;
             resourceInputs["replication"] = state ? state.replication : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["versioning"] = state ? state.versioning : undefined;
             resourceInputs["virtualHost"] = state ? state.virtualHost : undefined;
         } else {
@@ -179,6 +184,7 @@ export class Storage extends pulumi.CustomResource {
             resourceInputs["regionName"] = args ? args.regionName : undefined;
             resourceInputs["replication"] = args ? args.replication : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["objects"] = undefined /*out*/;
@@ -261,6 +267,10 @@ export interface StorageState {
      */
     serviceName?: pulumi.Input<string>;
     /**
+     * Container tags
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Versioning configuration
      */
     versioning?: pulumi.Input<inputs.CloudProject.StorageVersioning>;
@@ -318,6 +328,10 @@ export interface StorageArgs {
      * Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
      */
     serviceName?: pulumi.Input<string>;
+    /**
+     * Container tags
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Versioning configuration
      */

@@ -100,9 +100,9 @@ export class CloudProjectFileStorageShare extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Share network ID.
+     * ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
      */
-    public /*out*/ readonly shareNetworkId!: pulumi.Output<string>;
+    public readonly shareNetworkId!: pulumi.Output<string>;
     /**
      * Share size in Gigabytes.
      */
@@ -154,17 +154,11 @@ export class CloudProjectFileStorageShare extends pulumi.CustomResource {
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as CloudProjectFileStorageShareArgs | undefined;
-            if ((!args || args.networkId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'networkId'");
-            }
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
             }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
-            }
-            if ((!args || args.subnetId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subnetId'");
             }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -172,6 +166,7 @@ export class CloudProjectFileStorageShare extends pulumi.CustomResource {
             resourceInputs["networkId"] = args ? args.networkId : undefined;
             resourceInputs["regionName"] = args ? args.regionName : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
+            resourceInputs["shareNetworkId"] = args ? args.shareNetworkId : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
             resourceInputs["subnetId"] = args ? args.subnetId : undefined;
@@ -179,7 +174,6 @@ export class CloudProjectFileStorageShare extends pulumi.CustomResource {
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["isPublic"] = undefined /*out*/;
             resourceInputs["protocol"] = undefined /*out*/;
-            resourceInputs["shareNetworkId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -228,7 +222,7 @@ export interface CloudProjectFileStorageShareState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Share network ID.
+     * ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
      */
     shareNetworkId?: pulumi.Input<string>;
     /**
@@ -272,7 +266,7 @@ export interface CloudProjectFileStorageShareArgs {
     /**
      * Private network ID.
      */
-    networkId: pulumi.Input<string>;
+    networkId?: pulumi.Input<string>;
     /**
      * The region in which the share will be created.
      */
@@ -281,6 +275,10 @@ export interface CloudProjectFileStorageShareArgs {
      * The ID of the public cloud project.
      */
     serviceName: pulumi.Input<string>;
+    /**
+     * ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
+     */
+    shareNetworkId?: pulumi.Input<string>;
     /**
      * Share size in Gigabytes.
      */
@@ -292,7 +290,7 @@ export interface CloudProjectFileStorageShareArgs {
     /**
      * Subnet ID.
      */
-    subnetId: pulumi.Input<string>;
+    subnetId?: pulumi.Input<string>;
     /**
      * Share type. Currently only `standard-1az` is supported.
      */

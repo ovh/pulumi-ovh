@@ -11519,6 +11519,8 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getVRack:getVRack", TypeShape.of(GetVRackResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get information about a volume in a public cloud project
      * 
      * ## Example Usage
@@ -11563,6 +11565,8 @@ public final class CloudProjectFunctions {
         return getVolume(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get information about a volume in a public cloud project
      * 
      * ## Example Usage
@@ -11607,6 +11611,8 @@ public final class CloudProjectFunctions {
         return getVolumePlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get information about a volume in a public cloud project
      * 
      * ## Example Usage
@@ -11651,6 +11657,8 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get information about a volume in a public cloud project
      * 
      * ## Example Usage
@@ -11695,6 +11703,8 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get information about a volume in a public cloud project
      * 
      * ## Example Usage
@@ -11739,6 +11749,8 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invokeAsync("ovh:CloudProject/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get all the volume from a region of a public cloud project
      * 
      * ## Example Usage
@@ -11782,6 +11794,8 @@ public final class CloudProjectFunctions {
         return getVolumes(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get all the volume from a region of a public cloud project
      * 
      * ## Example Usage
@@ -11825,6 +11839,8 @@ public final class CloudProjectFunctions {
         return getVolumesPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get all the volume from a region of a public cloud project
      * 
      * ## Example Usage
@@ -11868,6 +11884,8 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get all the volume from a region of a public cloud project
      * 
      * ## Example Usage
@@ -11911,6 +11929,8 @@ public final class CloudProjectFunctions {
         return Deployment.getInstance().invoke("ovh:CloudProject/getVolumes:getVolumes", TypeShape.of(GetVolumesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+     * 
      * Get all the volume from a region of a public cloud project
      * 
      * ## Example Usage

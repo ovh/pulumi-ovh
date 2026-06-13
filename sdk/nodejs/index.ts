@@ -25,6 +25,11 @@ export type CloudProjectFileStorageShare = import("./cloudProjectFileStorageShar
 export const CloudProjectFileStorageShare: typeof import("./cloudProjectFileStorageShare").CloudProjectFileStorageShare = null as any;
 utilities.lazyLoad(exports, ["CloudProjectFileStorageShare"], () => require("./cloudProjectFileStorageShare"));
 
+export { CloudProjectFileStorageShareNetworkArgs, CloudProjectFileStorageShareNetworkState } from "./cloudProjectFileStorageShareNetwork";
+export type CloudProjectFileStorageShareNetwork = import("./cloudProjectFileStorageShareNetwork").CloudProjectFileStorageShareNetwork;
+export const CloudProjectFileStorageShareNetwork: typeof import("./cloudProjectFileStorageShareNetwork").CloudProjectFileStorageShareNetwork = null as any;
+utilities.lazyLoad(exports, ["CloudProjectFileStorageShareNetwork"], () => require("./cloudProjectFileStorageShareNetwork"));
+
 export { CloudProjectSshKeyArgs, CloudProjectSshKeyState } from "./cloudProjectSshKey";
 export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshKey;
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
@@ -40,10 +45,35 @@ export type CloudProjectStorageReplicationJob = import("./cloudProjectStorageRep
 export const CloudProjectStorageReplicationJob: typeof import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob = null as any;
 utilities.lazyLoad(exports, ["CloudProjectStorageReplicationJob"], () => require("./cloudProjectStorageReplicationJob"));
 
+export { CloudStorageBlockVolumeArgs, CloudStorageBlockVolumeState } from "./cloudStorageBlockVolume";
+export type CloudStorageBlockVolume = import("./cloudStorageBlockVolume").CloudStorageBlockVolume;
+export const CloudStorageBlockVolume: typeof import("./cloudStorageBlockVolume").CloudStorageBlockVolume = null as any;
+utilities.lazyLoad(exports, ["CloudStorageBlockVolume"], () => require("./cloudStorageBlockVolume"));
+
+export { CloudStorageBlockVolumeBackupArgs, CloudStorageBlockVolumeBackupState } from "./cloudStorageBlockVolumeBackup";
+export type CloudStorageBlockVolumeBackup = import("./cloudStorageBlockVolumeBackup").CloudStorageBlockVolumeBackup;
+export const CloudStorageBlockVolumeBackup: typeof import("./cloudStorageBlockVolumeBackup").CloudStorageBlockVolumeBackup = null as any;
+utilities.lazyLoad(exports, ["CloudStorageBlockVolumeBackup"], () => require("./cloudStorageBlockVolumeBackup"));
+
+export { CloudStorageBlockVolumeSnapshotArgs, CloudStorageBlockVolumeSnapshotState } from "./cloudStorageBlockVolumeSnapshot";
+export type CloudStorageBlockVolumeSnapshot = import("./cloudStorageBlockVolumeSnapshot").CloudStorageBlockVolumeSnapshot;
+export const CloudStorageBlockVolumeSnapshot: typeof import("./cloudStorageBlockVolumeSnapshot").CloudStorageBlockVolumeSnapshot = null as any;
+utilities.lazyLoad(exports, ["CloudStorageBlockVolumeSnapshot"], () => require("./cloudStorageBlockVolumeSnapshot"));
+
+export { DbaasLogsEncryptionKeyArgs, DbaasLogsEncryptionKeyState } from "./dbaasLogsEncryptionKey";
+export type DbaasLogsEncryptionKey = import("./dbaasLogsEncryptionKey").DbaasLogsEncryptionKey;
+export const DbaasLogsEncryptionKey: typeof import("./dbaasLogsEncryptionKey").DbaasLogsEncryptionKey = null as any;
+utilities.lazyLoad(exports, ["DbaasLogsEncryptionKey"], () => require("./dbaasLogsEncryptionKey"));
+
 export { DomainZoneDynhostRecordArgs, DomainZoneDynhostRecordState } from "./domainZoneDynhostRecord";
 export type DomainZoneDynhostRecord = import("./domainZoneDynhostRecord").DomainZoneDynhostRecord;
 export const DomainZoneDynhostRecord: typeof import("./domainZoneDynhostRecord").DomainZoneDynhostRecord = null as any;
 utilities.lazyLoad(exports, ["DomainZoneDynhostRecord"], () => require("./domainZoneDynhostRecord"));
+
+export { EmailDomainAccountArgs, EmailDomainAccountState } from "./emailDomainAccount";
+export type EmailDomainAccount = import("./emailDomainAccount").EmailDomainAccount;
+export const EmailDomainAccount: typeof import("./emailDomainAccount").EmailDomainAccount = null as any;
+utilities.lazyLoad(exports, ["EmailDomainAccount"], () => require("./emailDomainAccount"));
 
 export { GetCloudProjectDatabaseClickhouseUserArgs, GetCloudProjectDatabaseClickhouseUserResult, GetCloudProjectDatabaseClickhouseUserOutputArgs } from "./getCloudProjectDatabaseClickhouseUser";
 export const getCloudProjectDatabaseClickhouseUser: typeof import("./getCloudProjectDatabaseClickhouseUser").getCloudProjectDatabaseClickhouseUser = null as any;
@@ -90,6 +120,41 @@ export const getCloudProjectStorageObjectBucketLifecycleConfiguration: typeof im
 export const getCloudProjectStorageObjectBucketLifecycleConfigurationOutput: typeof import("./getCloudProjectStorageObjectBucketLifecycleConfiguration").getCloudProjectStorageObjectBucketLifecycleConfigurationOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudProjectStorageObjectBucketLifecycleConfiguration","getCloudProjectStorageObjectBucketLifecycleConfigurationOutput"], () => require("./getCloudProjectStorageObjectBucketLifecycleConfiguration"));
 
+export { GetCloudStorageBlockVolumeArgs, GetCloudStorageBlockVolumeResult, GetCloudStorageBlockVolumeOutputArgs } from "./getCloudStorageBlockVolume";
+export const getCloudStorageBlockVolume: typeof import("./getCloudStorageBlockVolume").getCloudStorageBlockVolume = null as any;
+export const getCloudStorageBlockVolumeOutput: typeof import("./getCloudStorageBlockVolume").getCloudStorageBlockVolumeOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageBlockVolume","getCloudStorageBlockVolumeOutput"], () => require("./getCloudStorageBlockVolume"));
+
+export { GetCloudStorageBlockVolumeBackupArgs, GetCloudStorageBlockVolumeBackupResult, GetCloudStorageBlockVolumeBackupOutputArgs } from "./getCloudStorageBlockVolumeBackup";
+export const getCloudStorageBlockVolumeBackup: typeof import("./getCloudStorageBlockVolumeBackup").getCloudStorageBlockVolumeBackup = null as any;
+export const getCloudStorageBlockVolumeBackupOutput: typeof import("./getCloudStorageBlockVolumeBackup").getCloudStorageBlockVolumeBackupOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageBlockVolumeBackup","getCloudStorageBlockVolumeBackupOutput"], () => require("./getCloudStorageBlockVolumeBackup"));
+
+export { GetCloudStorageBlockVolumeBackupsArgs, GetCloudStorageBlockVolumeBackupsResult, GetCloudStorageBlockVolumeBackupsOutputArgs } from "./getCloudStorageBlockVolumeBackups";
+export const getCloudStorageBlockVolumeBackups: typeof import("./getCloudStorageBlockVolumeBackups").getCloudStorageBlockVolumeBackups = null as any;
+export const getCloudStorageBlockVolumeBackupsOutput: typeof import("./getCloudStorageBlockVolumeBackups").getCloudStorageBlockVolumeBackupsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageBlockVolumeBackups","getCloudStorageBlockVolumeBackupsOutput"], () => require("./getCloudStorageBlockVolumeBackups"));
+
+export { GetCloudStorageBlockVolumeSnapshotArgs, GetCloudStorageBlockVolumeSnapshotResult, GetCloudStorageBlockVolumeSnapshotOutputArgs } from "./getCloudStorageBlockVolumeSnapshot";
+export const getCloudStorageBlockVolumeSnapshot: typeof import("./getCloudStorageBlockVolumeSnapshot").getCloudStorageBlockVolumeSnapshot = null as any;
+export const getCloudStorageBlockVolumeSnapshotOutput: typeof import("./getCloudStorageBlockVolumeSnapshot").getCloudStorageBlockVolumeSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageBlockVolumeSnapshot","getCloudStorageBlockVolumeSnapshotOutput"], () => require("./getCloudStorageBlockVolumeSnapshot"));
+
+export { GetCloudStorageBlockVolumeSnapshotsArgs, GetCloudStorageBlockVolumeSnapshotsResult, GetCloudStorageBlockVolumeSnapshotsOutputArgs } from "./getCloudStorageBlockVolumeSnapshots";
+export const getCloudStorageBlockVolumeSnapshots: typeof import("./getCloudStorageBlockVolumeSnapshots").getCloudStorageBlockVolumeSnapshots = null as any;
+export const getCloudStorageBlockVolumeSnapshotsOutput: typeof import("./getCloudStorageBlockVolumeSnapshots").getCloudStorageBlockVolumeSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageBlockVolumeSnapshots","getCloudStorageBlockVolumeSnapshotsOutput"], () => require("./getCloudStorageBlockVolumeSnapshots"));
+
+export { GetCloudStorageBlockVolumesArgs, GetCloudStorageBlockVolumesResult, GetCloudStorageBlockVolumesOutputArgs } from "./getCloudStorageBlockVolumes";
+export const getCloudStorageBlockVolumes: typeof import("./getCloudStorageBlockVolumes").getCloudStorageBlockVolumes = null as any;
+export const getCloudStorageBlockVolumesOutput: typeof import("./getCloudStorageBlockVolumes").getCloudStorageBlockVolumesOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageBlockVolumes","getCloudStorageBlockVolumesOutput"], () => require("./getCloudStorageBlockVolumes"));
+
+export { GetDbaasLogsEncryptionKeyArgs, GetDbaasLogsEncryptionKeyResult, GetDbaasLogsEncryptionKeyOutputArgs } from "./getDbaasLogsEncryptionKey";
+export const getDbaasLogsEncryptionKey: typeof import("./getDbaasLogsEncryptionKey").getDbaasLogsEncryptionKey = null as any;
+export const getDbaasLogsEncryptionKeyOutput: typeof import("./getDbaasLogsEncryptionKey").getDbaasLogsEncryptionKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getDbaasLogsEncryptionKey","getDbaasLogsEncryptionKeyOutput"], () => require("./getDbaasLogsEncryptionKey"));
+
 export { GetDbaasLogsOutputGraylogStreamUrlArgs, GetDbaasLogsOutputGraylogStreamUrlResult, GetDbaasLogsOutputGraylogStreamUrlOutputArgs } from "./getDbaasLogsOutputGraylogStreamUrl";
 export const getDbaasLogsOutputGraylogStreamUrl: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrl = null as any;
 export const getDbaasLogsOutputGraylogStreamUrlOutput: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrlOutput = null as any;
@@ -114,6 +179,16 @@ export { GetDomainZoneRecordsArgs, GetDomainZoneRecordsResult, GetDomainZoneReco
 export const getDomainZoneRecords: typeof import("./getDomainZoneRecords").getDomainZoneRecords = null as any;
 export const getDomainZoneRecordsOutput: typeof import("./getDomainZoneRecords").getDomainZoneRecordsOutput = null as any;
 utilities.lazyLoad(exports, ["getDomainZoneRecords","getDomainZoneRecordsOutput"], () => require("./getDomainZoneRecords"));
+
+export { GetEmailDomainAccountArgs, GetEmailDomainAccountResult, GetEmailDomainAccountOutputArgs } from "./getEmailDomainAccount";
+export const getEmailDomainAccount: typeof import("./getEmailDomainAccount").getEmailDomainAccount = null as any;
+export const getEmailDomainAccountOutput: typeof import("./getEmailDomainAccount").getEmailDomainAccountOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailDomainAccount","getEmailDomainAccountOutput"], () => require("./getEmailDomainAccount"));
+
+export { GetEmailDomainAccountsArgs, GetEmailDomainAccountsResult, GetEmailDomainAccountsOutputArgs } from "./getEmailDomainAccounts";
+export const getEmailDomainAccounts: typeof import("./getEmailDomainAccounts").getEmailDomainAccounts = null as any;
+export const getEmailDomainAccountsOutput: typeof import("./getEmailDomainAccounts").getEmailDomainAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getEmailDomainAccounts","getEmailDomainAccountsOutput"], () => require("./getEmailDomainAccounts"));
 
 export { GetInstallationTemplateArgs, GetInstallationTemplateResult, GetInstallationTemplateOutputArgs } from "./getInstallationTemplate";
 export const getInstallationTemplate: typeof import("./getInstallationTemplate").getInstallationTemplate = null as any;
@@ -190,6 +265,11 @@ export const getStorageEfsShareAccessPaths: typeof import("./getStorageEfsShareA
 export const getStorageEfsShareAccessPathsOutput: typeof import("./getStorageEfsShareAccessPaths").getStorageEfsShareAccessPathsOutput = null as any;
 utilities.lazyLoad(exports, ["getStorageEfsShareAccessPaths","getStorageEfsShareAccessPathsOutput"], () => require("./getStorageEfsShareAccessPaths"));
 
+export { GetVrackArgs, GetVrackResult, GetVrackOutputArgs } from "./getVrack";
+export const getVrack: typeof import("./getVrack").getVrack = null as any;
+export const getVrackOutput: typeof import("./getVrack").getVrackOutput = null as any;
+utilities.lazyLoad(exports, ["getVrack","getVrackOutput"], () => require("./getVrack"));
+
 export { GetVrackNetworksArgs, GetVrackNetworksResult, GetVrackNetworksOutputArgs } from "./getVrackNetworks";
 export const getVrackNetworks: typeof import("./getVrackNetworks").getVrackNetworks = null as any;
 export const getVrackNetworksOutput: typeof import("./getVrackNetworks").getVrackNetworksOutput = null as any;
@@ -252,6 +332,11 @@ export { VrackIpv6RoutedSubrangeArgs, VrackIpv6RoutedSubrangeState } from "./vra
 export type VrackIpv6RoutedSubrange = import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange;
 export const VrackIpv6RoutedSubrange: typeof import("./vrackIpv6RoutedSubrange").VrackIpv6RoutedSubrange = null as any;
 utilities.lazyLoad(exports, ["VrackIpv6RoutedSubrange"], () => require("./vrackIpv6RoutedSubrange"));
+
+export { VrackPublicRoutingPriorityArgs, VrackPublicRoutingPriorityState } from "./vrackPublicRoutingPriority";
+export type VrackPublicRoutingPriority = import("./vrackPublicRoutingPriority").VrackPublicRoutingPriority;
+export const VrackPublicRoutingPriority: typeof import("./vrackPublicRoutingPriority").VrackPublicRoutingPriority = null as any;
+utilities.lazyLoad(exports, ["VrackPublicRoutingPriority"], () => require("./vrackPublicRoutingPriority"));
 
 export { VrackservicesArgs, VrackservicesState } from "./vrackservices";
 export type Vrackservices = import("./vrackservices").Vrackservices;
@@ -316,14 +401,26 @@ const _module = {
                 return new CloudProjectDatabaseValkeyUser(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare":
                 return new CloudProjectFileStorageShare(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork":
+                return new CloudProjectFileStorageShareNetwork(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
                 return new CloudProjectStorageObjectBucketLifecycleConfiguration(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
                 return new CloudProjectStorageReplicationJob(name, <any>undefined, { urn })
+            case "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume":
+                return new CloudStorageBlockVolume(name, <any>undefined, { urn })
+            case "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup":
+                return new CloudStorageBlockVolumeBackup(name, <any>undefined, { urn })
+            case "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot":
+                return new CloudStorageBlockVolumeSnapshot(name, <any>undefined, { urn })
+            case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
+                return new DbaasLogsEncryptionKey(name, <any>undefined, { urn })
             case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
                 return new DomainZoneDynhostRecord(name, <any>undefined, { urn })
+            case "ovh:index/emailDomainAccount:EmailDomainAccount":
+                return new EmailDomainAccount(name, <any>undefined, { urn })
             case "ovh:index/iamResourceTags:IamResourceTags":
                 return new IamResourceTags(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
@@ -342,6 +439,8 @@ const _module = {
                 return new StorageEfsShareSnapshot(name, <any>undefined, { urn })
             case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
                 return new VrackIpv6RoutedSubrange(name, <any>undefined, { urn })
+            case "ovh:index/vrackPublicRoutingPriority:VrackPublicRoutingPriority":
+                return new VrackPublicRoutingPriority(name, <any>undefined, { urn })
             case "ovh:index/vrackservices:Vrackservices":
                 return new Vrackservices(name, <any>undefined, { urn })
             default:
@@ -353,10 +452,16 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistr
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseClickhouseUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectFileStorageShare", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectFileStorageShareNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageObjectBucketLifecycleConfiguration", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageReplicationJob", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolume", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeBackup", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeSnapshot", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/dbaasLogsEncryptionKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/emailDomainAccount", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/iamResourceTags", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)
@@ -366,6 +471,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShare", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/storageEfsShareSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/vrackIpv6RoutedSubrange", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/vrackPublicRoutingPriority", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/vrackservices", _module)
 pulumi.runtime.registerResourcePackage("ovh", {
     version: utilities.getVersion(),

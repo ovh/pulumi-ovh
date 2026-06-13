@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+ *
  * Get all the volume from a region of a public cloud project
  *
  * ## Example Usage
@@ -62,6 +64,8 @@ export interface GetVolumesResult {
     readonly volumes: outputs.CloudProject.GetVolumesVolume[];
 }
 /**
+ * > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+ *
  * Get all the volume from a region of a public cloud project
  *
  * ## Example Usage

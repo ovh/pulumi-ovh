@@ -10,10 +10,16 @@ from .cloud_project_containerregistry_iam import *
 from .cloud_project_database_clickhouse_user import *
 from .cloud_project_database_valkey_user import *
 from .cloud_project_file_storage_share import *
+from .cloud_project_file_storage_share_network import *
 from .cloud_project_ssh_key import *
 from .cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .cloud_project_storage_replication_job import *
+from .cloud_storage_block_volume import *
+from .cloud_storage_block_volume_backup import *
+from .cloud_storage_block_volume_snapshot import *
+from .dbaas_logs_encryption_key import *
 from .domain_zone_dynhost_record import *
+from .email_domain_account import *
 from .get_cloud_project_database_clickhouse_user import *
 from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
@@ -23,11 +29,20 @@ from .get_cloud_project_rancher_capabilities_version import *
 from .get_cloud_project_ssh_key import *
 from .get_cloud_project_ssh_keys import *
 from .get_cloud_project_storage_object_bucket_lifecycle_configuration import *
+from .get_cloud_storage_block_volume import *
+from .get_cloud_storage_block_volume_backup import *
+from .get_cloud_storage_block_volume_backups import *
+from .get_cloud_storage_block_volume_snapshot import *
+from .get_cloud_storage_block_volume_snapshots import *
+from .get_cloud_storage_block_volumes import *
+from .get_dbaas_logs_encryption_key import *
 from .get_dbaas_logs_output_graylog_stream_url import *
 from .get_dedicated_server_orderable_bandwidth import *
 from .get_dedicated_server_orderable_bandwidth_vrack import *
 from .get_domain_zone_record import *
 from .get_domain_zone_records import *
+from .get_email_domain_account import *
+from .get_email_domain_accounts import *
 from .get_installation_template import *
 from .get_installation_templates import *
 from .get_iploadbalancing_nat_ips import *
@@ -43,6 +58,7 @@ from .get_servers import *
 from .get_storage_efs import *
 from .get_storage_efs_share_access_path import *
 from .get_storage_efs_share_access_paths import *
+from .get_vrack import *
 from .get_vrack_networks import *
 from .get_vrackservices import *
 from .get_vrackservicess import *
@@ -56,6 +72,7 @@ from .storage_efs_share import *
 from .storage_efs_share_acl import *
 from .storage_efs_share_snapshot import *
 from .vrack_ipv6_routed_subrange import *
+from .vrack_public_routing_priority import *
 from .vrackservices import *
 from ._inputs import *
 from . import outputs
@@ -1198,6 +1215,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudProjectFileStorageShareNetwork",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork": "CloudProjectFileStorageShareNetwork"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudProjectSshKey",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1222,10 +1247,50 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudStorageBlockVolume",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": "CloudStorageBlockVolume"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageBlockVolumeBackup",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": "CloudStorageBlockVolumeBackup"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageBlockVolumeSnapshot",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": "CloudStorageBlockVolumeSnapshot"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/dbaasLogsEncryptionKey",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": "DbaasLogsEncryptionKey"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/domainZoneDynhostRecord",
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": "DomainZoneDynhostRecord"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/emailDomainAccount",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/emailDomainAccount:EmailDomainAccount": "EmailDomainAccount"
   }
  },
  {
@@ -1298,6 +1363,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange": "VrackIpv6RoutedSubrange"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/vrackPublicRoutingPriority",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/vrackPublicRoutingPriority:VrackPublicRoutingPriority": "VrackPublicRoutingPriority"
   }
  },
  {

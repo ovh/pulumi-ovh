@@ -515,6 +515,8 @@ class Volume(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE** Prefer using the new `CloudStorageBlockVolume` resource instead.
+
         Create volume in a public cloud project.
 
         ## Example Usage
@@ -574,6 +576,8 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE** Prefer using the new `CloudStorageBlockVolume` resource instead.
+
         Create volume in a public cloud project.
 
         ## Example Usage

@@ -29,14 +29,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectDatabaseValkeyUser{}
 	case "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare":
 		r = &CloudProjectFileStorageShare{}
+	case "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork":
+		r = &CloudProjectFileStorageShareNetwork{}
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
 	case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
 		r = &CloudProjectStorageObjectBucketLifecycleConfiguration{}
 	case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
 		r = &CloudProjectStorageReplicationJob{}
+	case "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume":
+		r = &CloudStorageBlockVolume{}
+	case "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup":
+		r = &CloudStorageBlockVolumeBackup{}
+	case "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot":
+		r = &CloudStorageBlockVolumeSnapshot{}
+	case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
+		r = &DbaasLogsEncryptionKey{}
 	case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
 		r = &DomainZoneDynhostRecord{}
+	case "ovh:index/emailDomainAccount:EmailDomainAccount":
+		r = &EmailDomainAccount{}
 	case "ovh:index/iamResourceTags:IamResourceTags":
 		r = &IamResourceTags{}
 	case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
@@ -55,6 +67,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StorageEfsShareSnapshot{}
 	case "ovh:index/vrackIpv6RoutedSubrange:VrackIpv6RoutedSubrange":
 		r = &VrackIpv6RoutedSubrange{}
+	case "ovh:index/vrackPublicRoutingPriority:VrackPublicRoutingPriority":
+		r = &VrackPublicRoutingPriority{}
 	case "ovh:index/vrackservices:Vrackservices":
 		r = &Vrackservices{}
 	default:
@@ -110,6 +124,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudProjectFileStorageShareNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudProjectSshKey",
 		&module{version},
 	)
@@ -125,7 +144,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudStorageBlockVolume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageBlockVolumeBackup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageBlockVolumeSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/dbaasLogsEncryptionKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/domainZoneDynhostRecord",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/emailDomainAccount",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -171,6 +215,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/vrackIpv6RoutedSubrange",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/vrackPublicRoutingPriority",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -234,6 +234,8 @@ class VolumeBackup(pulumi.CustomResource):
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE** Prefer using the new `CloudStorageBlockVolumeBackup` resource instead.
+
         Manage backups for the given volume in a public cloud project.
 
         ## Example Usage
@@ -287,6 +289,8 @@ class VolumeBackup(pulumi.CustomResource):
                  args: VolumeBackupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE** Prefer using the new `CloudStorageBlockVolumeBackup` resource instead.
+
         Manage backups for the given volume in a public cloud project.
 
         ## Example Usage

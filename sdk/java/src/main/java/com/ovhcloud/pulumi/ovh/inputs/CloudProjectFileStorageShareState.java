@@ -153,14 +153,14 @@ public final class CloudProjectFileStorageShareState extends com.pulumi.resource
     }
 
     /**
-     * Share network ID.
+     * ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
      * 
      */
     @Import(name="shareNetworkId")
     private @Nullable Output<String> shareNetworkId;
 
     /**
-     * @return Share network ID.
+     * @return ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
      * 
      */
     public Optional<Output<String>> shareNetworkId() {
@@ -470,7 +470,7 @@ public final class CloudProjectFileStorageShareState extends com.pulumi.resource
         }
 
         /**
-         * @param shareNetworkId Share network ID.
+         * @param shareNetworkId ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class CloudProjectFileStorageShareState extends com.pulumi.resource
         }
 
         /**
-         * @param shareNetworkId Share network ID.
+         * @param shareNetworkId ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
          * 
          * @return builder
          * 

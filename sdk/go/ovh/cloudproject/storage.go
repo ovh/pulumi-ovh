@@ -70,6 +70,8 @@ type Storage struct {
 	Replication StorageReplicationOutput `pulumi:"replication"`
 	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrOutput `pulumi:"serviceName"`
+	// Container tags
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Versioning configuration
 	Versioning StorageVersioningOutput `pulumi:"versioning"`
 	// Container virtual host
@@ -141,6 +143,8 @@ type storageState struct {
 	Replication *StorageReplication `pulumi:"replication"`
 	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
+	// Container tags
+	Tags map[string]string `pulumi:"tags"`
 	// Versioning configuration
 	Versioning *StorageVersioning `pulumi:"versioning"`
 	// Container virtual host
@@ -180,6 +184,8 @@ type StorageState struct {
 	Replication StorageReplicationPtrInput
 	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
+	// Container tags
+	Tags pulumi.StringMapInput
 	// Versioning configuration
 	Versioning StorageVersioningPtrInput
 	// Container virtual host
@@ -213,6 +219,8 @@ type storageArgs struct {
 	Replication *StorageReplication `pulumi:"replication"`
 	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
+	// Container tags
+	Tags map[string]string `pulumi:"tags"`
 	// Versioning configuration
 	Versioning *StorageVersioning `pulumi:"versioning"`
 }
@@ -241,6 +249,8 @@ type StorageArgs struct {
 	Replication StorageReplicationPtrInput
 	// Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
+	// Container tags
+	Tags pulumi.StringMapInput
 	// Versioning configuration
 	Versioning StorageVersioningPtrInput
 }
@@ -410,6 +420,11 @@ func (o StorageOutput) Replication() StorageReplicationOutput {
 // Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 func (o StorageOutput) ServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Storage) pulumi.StringPtrOutput { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+// Container tags
+func (o StorageOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Storage) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // Versioning configuration

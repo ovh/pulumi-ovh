@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh.CloudStorageBlockVolume` resource instead.
+ *
  * Create volume in a public cloud project.
  *
  * ## Example Usage

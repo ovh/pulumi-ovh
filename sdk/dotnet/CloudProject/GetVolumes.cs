@@ -12,6 +12,8 @@ namespace Pulumi.Ovh.CloudProject
     public static class GetVolumes
     {
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+        /// 
         /// Get all the volume from a region of a public cloud project
         /// 
         /// ## Example Usage
@@ -37,6 +39,8 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumesResult>("ovh:CloudProject/getVolumes:getVolumes", args ?? new GetVolumesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+        /// 
         /// Get all the volume from a region of a public cloud project
         /// 
         /// ## Example Usage
@@ -62,6 +66,8 @@ namespace Pulumi.Ovh.CloudProject
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumesResult>("ovh:CloudProject/getVolumes:getVolumes", args ?? new GetVolumesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+        /// 
         /// Get all the volume from a region of a public cloud project
         /// 
         /// ## Example Usage

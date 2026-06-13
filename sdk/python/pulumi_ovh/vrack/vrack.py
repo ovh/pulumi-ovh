@@ -327,7 +327,7 @@ class Vrack(pulumi.CustomResource):
             plan_code="vrack")
         vrack_vrack = ovh.vrack.Vrack("vrack",
             ovh_subsidiary=my_cart.ovh_subsidiary,
-            name="my-vrack",
+            name="my_vrack",
             description="my vrack",
             plan={
                 "duration": vrack.selected_prices[0].duration,
@@ -391,7 +391,7 @@ class Vrack(pulumi.CustomResource):
             plan_code="vrack")
         vrack_vrack = ovh.vrack.Vrack("vrack",
             ovh_subsidiary=my_cart.ovh_subsidiary,
-            name="my-vrack",
+            name="my_vrack",
             description="my vrack",
             plan={
                 "duration": vrack.selected_prices[0].duration,

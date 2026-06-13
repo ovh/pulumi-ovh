@@ -19,57 +19,51 @@ __all__ = ['CloudProjectFileStorageShareArgs', 'CloudProjectFileStorageShare']
 @pulumi.input_type
 class CloudProjectFileStorageShareArgs:
     def __init__(__self__, *,
-                 network_id: pulumi.Input[_builtins.str],
                  region_name: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 subnet_id: pulumi.Input[_builtins.str],
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.float]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudProjectFileStorageShare resource.
-        :param pulumi.Input[_builtins.str] network_id: Private network ID.
         :param pulumi.Input[_builtins.str] region_name: The region in which the share will be created.
         :param pulumi.Input[_builtins.str] service_name: The ID of the public cloud project.
-        :param pulumi.Input[_builtins.str] subnet_id: Subnet ID.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone of the share (required in 3AZ regions).
         :param pulumi.Input[_builtins.str] description: Share description.
         :param pulumi.Input[_builtins.str] name: Share name.
+        :param pulumi.Input[_builtins.str] network_id: Private network ID.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         :param pulumi.Input[_builtins.float] size: Share size in Gigabytes.
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID used to create the share.
+        :param pulumi.Input[_builtins.str] subnet_id: Subnet ID.
         :param pulumi.Input[_builtins.str] type: Share type. Currently only `standard-1az` is supported.
         """
-        pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "region_name", region_name)
         pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "subnet_id", subnet_id)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+        if share_network_id is not None:
+            pulumi.set(__self__, "share_network_id", share_network_id)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
             pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
-
-    @_builtins.property
-    @pulumi.getter(name="networkId")
-    def network_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Private network ID.
-        """
-        return pulumi.get(self, "network_id")
-
-    @network_id.setter
-    def network_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "network_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionName")
@@ -94,18 +88,6 @@ class CloudProjectFileStorageShareArgs:
     @service_name.setter
     def service_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        Subnet ID.
-        """
-        return pulumi.get(self, "subnet_id")
-
-    @subnet_id.setter
-    def subnet_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -144,6 +126,30 @@ class CloudProjectFileStorageShareArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Private network ID.
+        """
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @share_network_id.setter
+    def share_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "share_network_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.float]]:
         """
@@ -166,6 +172,18 @@ class CloudProjectFileStorageShareArgs:
     @snapshot_id.setter
     def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -209,7 +227,7 @@ class _CloudProjectFileStorageShareState:
         :param pulumi.Input[_builtins.str] protocol: Share protocol (e.g. `NFS`).
         :param pulumi.Input[_builtins.str] region_name: The region in which the share will be created.
         :param pulumi.Input[_builtins.str] service_name: The ID of the public cloud project.
-        :param pulumi.Input[_builtins.str] share_network_id: Share network ID.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         :param pulumi.Input[_builtins.float] size: Share size in Gigabytes.
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID used to create the share.
         :param pulumi.Input[_builtins.str] status: Share status.
@@ -359,7 +377,7 @@ class _CloudProjectFileStorageShareState:
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Share network ID.
+        ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         """
         return pulumi.get(self, "share_network_id")
 
@@ -440,6 +458,7 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
                  network_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.float]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -483,6 +502,7 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_id: Private network ID.
         :param pulumi.Input[_builtins.str] region_name: The region in which the share will be created.
         :param pulumi.Input[_builtins.str] service_name: The ID of the public cloud project.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         :param pulumi.Input[_builtins.float] size: Share size in Gigabytes.
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID used to create the share.
         :param pulumi.Input[_builtins.str] subnet_id: Subnet ID.
@@ -545,6 +565,7 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
                  network_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.float]] = None,
                  snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -561,8 +582,6 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if network_id is None and not opts.urn:
-                raise TypeError("Missing required property 'network_id'")
             __props__.__dict__["network_id"] = network_id
             if region_name is None and not opts.urn:
                 raise TypeError("Missing required property 'region_name'")
@@ -570,16 +589,14 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["share_network_id"] = share_network_id
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot_id"] = snapshot_id
-            if subnet_id is None and not opts.urn:
-                raise TypeError("Missing required property 'subnet_id'")
             __props__.__dict__["subnet_id"] = subnet_id
             __props__.__dict__["type"] = type
             __props__.__dict__["created_at"] = None
             __props__.__dict__["is_public"] = None
             __props__.__dict__["protocol"] = None
-            __props__.__dict__["share_network_id"] = None
             __props__.__dict__["status"] = None
         super(CloudProjectFileStorageShare, __self__).__init__(
             'ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare',
@@ -622,7 +639,7 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] protocol: Share protocol (e.g. `NFS`).
         :param pulumi.Input[_builtins.str] region_name: The region in which the share will be created.
         :param pulumi.Input[_builtins.str] service_name: The ID of the public cloud project.
-        :param pulumi.Input[_builtins.str] share_network_id: Share network ID.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         :param pulumi.Input[_builtins.float] size: Share size in Gigabytes.
         :param pulumi.Input[_builtins.str] snapshot_id: Snapshot ID used to create the share.
         :param pulumi.Input[_builtins.str] status: Share status.
@@ -726,7 +743,7 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Share network ID.
+        ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
         """
         return pulumi.get(self, "share_network_id")
 

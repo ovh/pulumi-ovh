@@ -19,6 +19,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -273,6 +274,20 @@ public class Storage extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serviceName() {
         return Codegen.optional(this.serviceName);
+    }
+    /**
+     * Container tags
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> tags;
+
+    /**
+     * @return Container tags
+     * 
+     */
+    public Output<Map<String,String>> tags() {
+        return this.tags;
     }
     /**
      * Versioning configuration

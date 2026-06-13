@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.CloudProject
 {
     /// <summary>
+    /// &gt; **NOTE** Prefer using the new `ovh.CloudStorageBlockVolume` resource instead.
+    /// 
     /// Create volume in a public cloud project.
     /// 
     /// ## Example Usage

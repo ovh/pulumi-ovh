@@ -200,14 +200,14 @@ public class CloudProjectFileStorageShare extends com.pulumi.resources.CustomRes
         return this.serviceName;
     }
     /**
-     * Share network ID.
+     * ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
      * 
      */
     @Export(name="shareNetworkId", refs={String.class}, tree="[0]")
     private Output<String> shareNetworkId;
 
     /**
-     * @return Share network ID.
+     * @return ID of an existing share network. Exactly one of `share_network_id` or the pair (`network_id`, `subnet_id`) must be set.
      * 
      */
     public Output<String> shareNetworkId() {

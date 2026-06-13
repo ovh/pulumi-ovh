@@ -87,6 +87,8 @@ def get_volumes(region_name: Optional[_builtins.str] = None,
                 service_name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumesResult:
     """
+    > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+
     Get all the volume from a region of a public cloud project
 
     ## Example Usage
@@ -118,6 +120,8 @@ def get_volumes_output(region_name: Optional[pulumi.Input[_builtins.str]] = None
                        service_name: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumesResult]:
     """
+    > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+
     Get all the volume from a region of a public cloud project
 
     ## Example Usage

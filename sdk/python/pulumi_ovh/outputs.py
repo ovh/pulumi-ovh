@@ -23,6 +23,16 @@ __all__ = [
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionExpiration',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransition',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition',
+    'CloudStorageBlockVolumeBackupCurrentState',
+    'CloudStorageBlockVolumeBackupCurrentStateLocation',
+    'CloudStorageBlockVolumeCreateFrom',
+    'CloudStorageBlockVolumeCurrentState',
+    'CloudStorageBlockVolumeCurrentStateAttachedInstance',
+    'CloudStorageBlockVolumeCurrentStateEncryption',
+    'CloudStorageBlockVolumeCurrentStateLocation',
+    'CloudStorageBlockVolumeEncryption',
+    'CloudStorageBlockVolumeSnapshotCurrentState',
+    'CloudStorageBlockVolumeSnapshotCurrentStateLocation',
     'StorageEfsIam',
     'StorageEfsOrder',
     'StorageEfsOrderDetail',
@@ -30,6 +40,7 @@ __all__ = [
     'StorageEfsPlanConfiguration',
     'StorageEfsPlanOption',
     'StorageEfsPlanOptionConfiguration',
+    'VrackPublicRoutingPriorityAvailabilityZone',
     'VrackservicesCurrentState',
     'VrackservicesCurrentStateSubnet',
     'VrackservicesCurrentStateSubnetServiceEndpoint',
@@ -62,6 +73,19 @@ __all__ = [
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionExpirationResult',
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionResult',
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionResult',
+    'GetCloudStorageBlockVolumeAttachedInstanceResult',
+    'GetCloudStorageBlockVolumeBackupLocationResult',
+    'GetCloudStorageBlockVolumeBackupsBackupResult',
+    'GetCloudStorageBlockVolumeBackupsBackupLocationResult',
+    'GetCloudStorageBlockVolumeEncryptionResult',
+    'GetCloudStorageBlockVolumeLocationResult',
+    'GetCloudStorageBlockVolumeSnapshotLocationResult',
+    'GetCloudStorageBlockVolumeSnapshotsSnapshotResult',
+    'GetCloudStorageBlockVolumeSnapshotsSnapshotLocationResult',
+    'GetCloudStorageBlockVolumesVolumeResult',
+    'GetCloudStorageBlockVolumesVolumeAttachedInstanceResult',
+    'GetCloudStorageBlockVolumesVolumeEncryptionResult',
+    'GetCloudStorageBlockVolumesVolumeLocationResult',
     'GetDbaasLogsOutputGraylogStreamUrlUrlResult',
     'GetInstallationTemplateInputResult',
     'GetInstallationTemplateLicenseResult',
@@ -80,6 +104,7 @@ __all__ = [
     'GetServerVniResult',
     'GetStorageEfsIamResult',
     'GetStorageEfsShareAccessPathsAccessPathResult',
+    'GetVrackIamResult',
     'GetVrackservicesCurrentStateResult',
     'GetVrackservicesCurrentStateSubnetResult',
     'GetVrackservicesCurrentStateSubnetServiceEndpointResult',
@@ -572,6 +597,474 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition(dict):
 
 
 @pulumi.output_type
+class CloudStorageBlockVolumeBackupCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeBackupCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeBackupCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeBackupCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudStorageBlockVolumeBackupCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None,
+                 volume_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: A description for the backup.
+        :param 'CloudStorageBlockVolumeBackupCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: The name of the backup.
+        :param _builtins.int size: Size of the backup in GB.
+        :param _builtins.str volume_id: The ID of the volume to back up. Changing this value recreates the resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description for the backup.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageBlockVolumeBackupCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the backup.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the backup in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the volume to back up. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeBackupCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: The region where the backup will be created. Changing this value recreates the resource.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The region where the backup will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeCreateFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupId":
+            suggest = "backup_id"
+        elif key == "imageId":
+            suggest = "image_id"
+        elif key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeCreateFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeCreateFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeCreateFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_id: Optional[_builtins.str] = None,
+                 image_id: Optional[_builtins.str] = None,
+                 snapshot_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str backup_id: Identifier of a backup to restore the volume from.
+        :param _builtins.str image_id: UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+        :param _builtins.str snapshot_id: Identifier of a snapshot to create the volume from.
+        """
+        if backup_id is not None:
+            pulumi.set(__self__, "backup_id", backup_id)
+        if image_id is not None:
+            pulumi.set(__self__, "image_id", image_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of a backup to restore the volume from.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> Optional[_builtins.str]:
+        """
+        UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+        """
+        return pulumi.get(self, "image_id")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of a snapshot to create the volume from.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attachedInstances":
+            suggest = "attached_instances"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attached_instances: Optional[Sequence['outputs.CloudStorageBlockVolumeCurrentStateAttachedInstance']] = None,
+                 bootable: Optional[_builtins.bool] = None,
+                 encryption: Optional['outputs.CloudStorageBlockVolumeCurrentStateEncryption'] = None,
+                 location: Optional['outputs.CloudStorageBlockVolumeCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None,
+                 status: Optional[_builtins.str] = None,
+                 volume_type: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs'] attached_instances: Instances currently attached to this volume
+        :param _builtins.bool bootable: Whether the volume is bootable.
+        :param 'CloudStorageBlockVolumeCurrentStateEncryptionArgs' encryption: Encryption configuration for the volume.
+        :param 'CloudStorageBlockVolumeCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Volume name.
+        :param _builtins.int size: Size of the volume in GB.
+        :param _builtins.str status: Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        :param _builtins.str volume_type: Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+        """
+        if attached_instances is not None:
+            pulumi.set(__self__, "attached_instances", attached_instances)
+        if bootable is not None:
+            pulumi.set(__self__, "bootable", bootable)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if volume_type is not None:
+            pulumi.set(__self__, "volume_type", volume_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedInstances")
+    def attached_instances(self) -> Optional[Sequence['outputs.CloudStorageBlockVolumeCurrentStateAttachedInstance']]:
+        """
+        Instances currently attached to this volume
+        """
+        return pulumi.get(self, "attached_instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def bootable(self) -> Optional[_builtins.bool]:
+        """
+        Whether the volume is bootable.
+        """
+        return pulumi.get(self, "bootable")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional['outputs.CloudStorageBlockVolumeCurrentStateEncryption']:
+        """
+        Encryption configuration for the volume.
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageBlockVolumeCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Volume name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the volume in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> Optional[_builtins.str]:
+        """
+        Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+        """
+        return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeCurrentStateAttachedInstance(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Volume ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Volume ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeCurrentStateEncryption(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: Region where the volume will be created. **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the volume will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeEncryption(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeSnapshotCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "volumeId":
+            suggest = "volume_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeSnapshotCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeSnapshotCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeSnapshotCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudStorageBlockVolumeSnapshotCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None,
+                 volume_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: A description for the snapshot.
+        :param 'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: The name of the snapshot.
+        :param _builtins.int size: Size of the snapshot in GB.
+        :param _builtins.str volume_id: The ID of the volume to snapshot. Changing this value recreates the resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        A description for the snapshot.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageBlockVolumeSnapshotCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        The name of the snapshot.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the volume to snapshot. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeSnapshotCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
 class StorageEfsIam(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -996,6 +1489,37 @@ class StorageEfsPlanOptionConfiguration(dict):
         Value or resource URL on API.OVH.COM of your configuration item
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VrackPublicRoutingPriorityAvailabilityZone(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 priority: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str name: Availability zone name
+        :param _builtins.float priority: Unique priority value [1..3]
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Availability zone name
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[_builtins.float]:
+        """
+        Unique priority value [1..3]
+        """
+        return pulumi.get(self, "priority")
 
 
 @pulumi.output_type
@@ -2584,6 +3108,471 @@ class GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionResu
 
 
 @pulumi.output_type
+class GetCloudStorageBlockVolumeAttachedInstanceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: The ID of the volume.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the volume.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeBackupLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeBackupsBackupResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudStorageBlockVolumeBackupsBackupLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 size: _builtins.int,
+                 volume_id: _builtins.str):
+        """
+        :param _builtins.str description: Backup description.
+        :param _builtins.str id: Backup ID.
+        :param 'GetCloudStorageBlockVolumeBackupsBackupLocationArgs' location: Location of the backup:
+        :param _builtins.str name: Backup name.
+        :param _builtins.str resource_status: Backup readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.int size: Size of the backup in GB.
+        :param _builtins.str volume_id: The ID of the volume whose backups to list.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Backup description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Backup ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageBlockVolumeBackupsBackupLocationResult':
+        """
+        Location of the backup:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Backup name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Backup readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the backup in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> _builtins.str:
+        """
+        The ID of the volume whose backups to list.
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeBackupsBackupLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: The region where the backups reside.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region where the backups reside.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeEncryptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeSnapshotLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudStorageBlockVolumeSnapshotsSnapshotLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 size: _builtins.int,
+                 volume_id: _builtins.str):
+        """
+        :param _builtins.str description: Snapshot description.
+        :param _builtins.str id: Snapshot ID.
+        :param 'GetCloudStorageBlockVolumeSnapshotsSnapshotLocationArgs' location: Location of the snapshot:
+        :param _builtins.str name: Snapshot name.
+        :param _builtins.str resource_status: Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.int size: Size of the snapshot in GB.
+        :param _builtins.str volume_id: The ID of the volume whose snapshots to list.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Snapshot description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Snapshot ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageBlockVolumeSnapshotsSnapshotLocationResult':
+        """
+        Location of the snapshot:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> _builtins.str:
+        """
+        The ID of the volume whose snapshots to list.
+        """
+        return pulumi.get(self, "volume_id")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeSnapshotsSnapshotLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: The region where the snapshots reside.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region where the snapshots reside.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumesVolumeResult(dict):
+    def __init__(__self__, *,
+                 attached_instances: Sequence['outputs.GetCloudStorageBlockVolumesVolumeAttachedInstanceResult'],
+                 bootable: _builtins.bool,
+                 encryption: 'outputs.GetCloudStorageBlockVolumesVolumeEncryptionResult',
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudStorageBlockVolumesVolumeLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str,
+                 volume_type: _builtins.str):
+        """
+        :param Sequence['GetCloudStorageBlockVolumesVolumeAttachedInstanceArgs'] attached_instances: Instances the volume is attached to:
+        :param _builtins.bool bootable: Whether the volume is bootable.
+        :param 'GetCloudStorageBlockVolumesVolumeEncryptionArgs' encryption: Encryption configuration of the volume:
+        :param _builtins.str id: Instance ID.
+        :param 'GetCloudStorageBlockVolumesVolumeLocationArgs' location: Location of the volume:
+        :param _builtins.str name: Volume name.
+        :param _builtins.str resource_status: Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.int size: Size of the volume in GB.
+        :param _builtins.str status: Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        :param _builtins.str volume_type: Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`).
+        """
+        pulumi.set(__self__, "attached_instances", attached_instances)
+        pulumi.set(__self__, "bootable", bootable)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "volume_type", volume_type)
+
+    @_builtins.property
+    @pulumi.getter(name="attachedInstances")
+    def attached_instances(self) -> Sequence['outputs.GetCloudStorageBlockVolumesVolumeAttachedInstanceResult']:
+        """
+        Instances the volume is attached to:
+        """
+        return pulumi.get(self, "attached_instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def bootable(self) -> _builtins.bool:
+        """
+        Whether the volume is bootable.
+        """
+        return pulumi.get(self, "bootable")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageBlockVolumesVolumeEncryptionResult':
+        """
+        Encryption configuration of the volume:
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Instance ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageBlockVolumesVolumeLocationResult':
+        """
+        Location of the volume:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Volume name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the volume in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="volumeType")
+    def volume_type(self) -> _builtins.str:
+        """
+        Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`).
+        """
+        return pulumi.get(self, "volume_type")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumesVolumeAttachedInstanceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Instance ID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Instance ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumesVolumeEncryptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the volume is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumesVolumeLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: The region where the volumes reside.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region where the volumes reside.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
 class GetDbaasLogsOutputGraylogStreamUrlUrlResult(dict):
     def __init__(__self__, *,
                  address: _builtins.str,
@@ -3501,6 +4490,57 @@ class GetStorageEfsShareAccessPathsAccessPathResult(dict):
         Is this the preferred access path?
         """
         return pulumi.get(self, "preferred")
+
+
+@pulumi.output_type
+class GetVrackIamResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 id: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 urn: _builtins.str):
+        """
+        :param _builtins.str display_name: Resource display name
+        :param _builtins.str id: (String) Unique identifier of the resource
+        :param Mapping[str, _builtins.str] tags: Resource tags. Tags that were internally computed are prefixed with ovh:
+        :param _builtins.str urn: (String) Unique resource name used in policies
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "urn", urn)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Resource display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        (String) Unique identifier of the resource
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Resource tags. Tags that were internally computed are prefixed with ovh:
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def urn(self) -> _builtins.str:
+        """
+        (String) Unique resource name used in policies
+        """
+        return pulumi.get(self, "urn")
 
 
 @pulumi.output_type

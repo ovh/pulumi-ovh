@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE** Prefer using the new `ovh.CloudStorageBlockVolume` resource instead.
+ * 
  * Create volume in a public cloud project.
  * 
  * ## Example Usage

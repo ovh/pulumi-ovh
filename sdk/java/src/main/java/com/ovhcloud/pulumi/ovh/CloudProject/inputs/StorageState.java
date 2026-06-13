@@ -14,6 +14,7 @@ import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -264,6 +265,21 @@ public final class StorageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Container tags
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return Container tags
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * Versioning configuration
      * 
      */
@@ -312,6 +328,7 @@ public final class StorageState extends com.pulumi.resources.ResourceArgs {
         this.regionName = $.regionName;
         this.replication = $.replication;
         this.serviceName = $.serviceName;
+        this.tags = $.tags;
         this.versioning = $.versioning;
         this.virtualHost = $.virtualHost;
     }
@@ -678,6 +695,27 @@ public final class StorageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serviceName(String serviceName) {
             return serviceName(Output.of(serviceName));
+        }
+
+        /**
+         * @param tags Container tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags Container tags
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

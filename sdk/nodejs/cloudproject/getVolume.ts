@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+ *
  * Get information about a volume in a public cloud project
  *
  * ## Example Usage
@@ -74,6 +76,8 @@ export interface GetVolumeResult {
     readonly volumeId: string;
 }
 /**
+ * > **NOTE** Prefer using the new `ovh_cloud_storage_block_volume*` resources and data sources instead.
+ *
  * Get information about a volume in a public cloud project
  *
  * ## Example Usage

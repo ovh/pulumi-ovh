@@ -77,7 +77,7 @@ type CloudProjectFileStorageShare struct {
 	RegionName pulumi.StringOutput `pulumi:"regionName"`
 	// The ID of the public cloud project.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Share network ID.
+	// ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
 	ShareNetworkId pulumi.StringOutput `pulumi:"shareNetworkId"`
 	// Share size in Gigabytes.
 	Size pulumi.Float64Output `pulumi:"size"`
@@ -98,17 +98,11 @@ func NewCloudProjectFileStorageShare(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NetworkId == nil {
-		return nil, errors.New("invalid value for required argument 'NetworkId'")
-	}
 	if args.RegionName == nil {
 		return nil, errors.New("invalid value for required argument 'RegionName'")
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
-	if args.SubnetId == nil {
-		return nil, errors.New("invalid value for required argument 'SubnetId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudProjectFileStorageShare
@@ -151,7 +145,7 @@ type cloudProjectFileStorageShareState struct {
 	RegionName *string `pulumi:"regionName"`
 	// The ID of the public cloud project.
 	ServiceName *string `pulumi:"serviceName"`
-	// Share network ID.
+	// ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
 	ShareNetworkId *string `pulumi:"shareNetworkId"`
 	// Share size in Gigabytes.
 	Size *float64 `pulumi:"size"`
@@ -184,7 +178,7 @@ type CloudProjectFileStorageShareState struct {
 	RegionName pulumi.StringPtrInput
 	// The ID of the public cloud project.
 	ServiceName pulumi.StringPtrInput
-	// Share network ID.
+	// ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
 	ShareNetworkId pulumi.StringPtrInput
 	// Share size in Gigabytes.
 	Size pulumi.Float64PtrInput
@@ -210,17 +204,19 @@ type cloudProjectFileStorageShareArgs struct {
 	// Share name.
 	Name *string `pulumi:"name"`
 	// Private network ID.
-	NetworkId string `pulumi:"networkId"`
+	NetworkId *string `pulumi:"networkId"`
 	// The region in which the share will be created.
 	RegionName string `pulumi:"regionName"`
 	// The ID of the public cloud project.
 	ServiceName string `pulumi:"serviceName"`
+	// ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
+	ShareNetworkId *string `pulumi:"shareNetworkId"`
 	// Share size in Gigabytes.
 	Size *float64 `pulumi:"size"`
 	// Snapshot ID used to create the share.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// Subnet ID.
-	SubnetId string `pulumi:"subnetId"`
+	SubnetId *string `pulumi:"subnetId"`
 	// Share type. Currently only `standard-1az` is supported.
 	Type *string `pulumi:"type"`
 }
@@ -234,17 +230,19 @@ type CloudProjectFileStorageShareArgs struct {
 	// Share name.
 	Name pulumi.StringPtrInput
 	// Private network ID.
-	NetworkId pulumi.StringInput
+	NetworkId pulumi.StringPtrInput
 	// The region in which the share will be created.
 	RegionName pulumi.StringInput
 	// The ID of the public cloud project.
 	ServiceName pulumi.StringInput
+	// ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
+	ShareNetworkId pulumi.StringPtrInput
 	// Share size in Gigabytes.
 	Size pulumi.Float64PtrInput
 	// Snapshot ID used to create the share.
 	SnapshotId pulumi.StringPtrInput
 	// Subnet ID.
-	SubnetId pulumi.StringInput
+	SubnetId pulumi.StringPtrInput
 	// Share type. Currently only `standard-1az` is supported.
 	Type pulumi.StringPtrInput
 }
@@ -381,7 +379,7 @@ func (o CloudProjectFileStorageShareOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudProjectFileStorageShare) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Share network ID.
+// ID of an existing share network. Exactly one of `shareNetworkId` or the pair (`networkId`, `subnetId`) must be set.
 func (o CloudProjectFileStorageShareOutput) ShareNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudProjectFileStorageShare) pulumi.StringOutput { return v.ShareNetworkId }).(pulumi.StringOutput)
 }

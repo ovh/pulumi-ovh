@@ -122,6 +122,144 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransi
     storageClass: pulumi.Input<string>;
 }
 
+export interface CloudStorageBlockVolumeBackupCurrentState {
+    /**
+     * A description for the backup.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudStorageBlockVolumeBackupCurrentStateLocation>;
+    /**
+     * The name of the backup.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Size of the backup in GB.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * The ID of the volume to back up. Changing this value recreates the resource.
+     */
+    volumeId?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeBackupCurrentStateLocation {
+    /**
+     * The region where the backup will be created. Changing this value recreates the resource.
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeCreateFrom {
+    /**
+     * Identifier of a backup to restore the volume from.
+     */
+    backupId?: pulumi.Input<string>;
+    /**
+     * UUID of a Glance image to create the volume from. The resulting volume will be bootable.
+     */
+    imageId?: pulumi.Input<string>;
+    /**
+     * Identifier of a snapshot to create the volume from.
+     */
+    snapshotId?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeCurrentState {
+    /**
+     * Instances currently attached to this volume
+     */
+    attachedInstances?: pulumi.Input<pulumi.Input<inputs.CloudStorageBlockVolumeCurrentStateAttachedInstance>[]>;
+    /**
+     * Whether the volume is bootable.
+     */
+    bootable?: pulumi.Input<boolean>;
+    /**
+     * Encryption configuration for the volume.
+     */
+    encryption?: pulumi.Input<inputs.CloudStorageBlockVolumeCurrentStateEncryption>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudStorageBlockVolumeCurrentStateLocation>;
+    /**
+     * Volume name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Size of the volume in GB.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * Volume status (`AVAILABLE`, `IN_USE`, `CREATING`, `DELETING`, `ATTACHING`, `DETACHING`, `EXTENDING`, `ERROR`, `ERROR_DELETING`, `ERROR_BACKING_UP`, `ERROR_RESTORING`, `ERROR_EXTENDING`).
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
+     */
+    volumeType?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateAttachedInstance {
+    /**
+     * Volume ID.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateEncryption {
+    /**
+     * Whether the volume is encrypted at rest with LUKS.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateLocation {
+    /**
+     * Region where the volume will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeEncryption {
+    /**
+     * Whether the volume is encrypted at rest with LUKS.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface CloudStorageBlockVolumeSnapshotCurrentState {
+    /**
+     * A description for the snapshot.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudStorageBlockVolumeSnapshotCurrentStateLocation>;
+    /**
+     * The name of the snapshot.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * The ID of the volume to snapshot. Changing this value recreates the resource.
+     */
+    volumeId?: pulumi.Input<string>;
+}
+
+export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+    /**
+     * The region where the snapshot will be created. Changing this value recreates the resource.
+     */
+    region?: pulumi.Input<string>;
+}
+
 export interface StorageEfsIam {
     /**
      * Resource display name
@@ -223,6 +361,17 @@ export interface StorageEfsPlanOptionConfiguration {
      * Value or resource URL on API.OVH.COM of your configuration item
      */
     value: pulumi.Input<string>;
+}
+
+export interface VrackPublicRoutingPriorityAvailabilityZone {
+    /**
+     * Availability zone name
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Unique priority value [1..3]
+     */
+    priority?: pulumi.Input<number>;
 }
 
 export interface VrackservicesCurrentState {

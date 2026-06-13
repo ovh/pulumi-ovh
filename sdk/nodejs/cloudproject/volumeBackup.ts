@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh.CloudStorageBlockVolumeBackup` resource instead.
+ *
  * Manage backups for the given volume in a public cloud project.
  *
  * ## Example Usage

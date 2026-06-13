@@ -32,6 +32,7 @@ class StorageArgs:
                  prefix: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input['StorageReplicationArgs']] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  versioning: Optional[pulumi.Input['StorageVersioningArgs']] = None):
         """
         The set of arguments for constructing a Storage resource.
@@ -46,6 +47,7 @@ class StorageArgs:
         :param pulumi.Input[_builtins.str] prefix: List objects whose key begins with this prefix
         :param pulumi.Input['StorageReplicationArgs'] replication: Replication configuration
         :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Container tags
         :param pulumi.Input['StorageVersioningArgs'] versioning: Versioning configuration
         """
         pulumi.set(__self__, "region_name", region_name)
@@ -69,6 +71,8 @@ class StorageArgs:
             pulumi.set(__self__, "replication", replication)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
 
@@ -206,6 +210,18 @@ class StorageArgs:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Container tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['StorageVersioningArgs']]:
         """
         Versioning configuration
@@ -236,6 +252,7 @@ class _StorageState:
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input['StorageReplicationArgs']] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  versioning: Optional[pulumi.Input['StorageVersioningArgs']] = None,
                  virtual_host: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -256,6 +273,7 @@ class _StorageState:
         :param pulumi.Input[_builtins.str] region_name: Region name
         :param pulumi.Input['StorageReplicationArgs'] replication: Replication configuration
         :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Container tags
         :param pulumi.Input['StorageVersioningArgs'] versioning: Versioning configuration
         :param pulumi.Input[_builtins.str] virtual_host: Container virtual host
         """
@@ -291,6 +309,8 @@ class _StorageState:
             pulumi.set(__self__, "replication", replication)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
         if virtual_host is not None:
@@ -490,6 +510,18 @@ class _StorageState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Container tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['StorageVersioningArgs']]:
         """
         Versioning configuration
@@ -530,6 +562,7 @@ class Storage(pulumi.CustomResource):
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[Union['StorageReplicationArgs', 'StorageReplicationArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  versioning: Optional[pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']]] = None,
                  __props__=None):
         """
@@ -570,6 +603,7 @@ class Storage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_name: Region name
         :param pulumi.Input[Union['StorageReplicationArgs', 'StorageReplicationArgsDict']] replication: Replication configuration
         :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Container tags
         :param pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']] versioning: Versioning configuration
         """
         ...
@@ -629,6 +663,7 @@ class Storage(pulumi.CustomResource):
                  region_name: Optional[pulumi.Input[_builtins.str]] = None,
                  replication: Optional[pulumi.Input[Union['StorageReplicationArgs', 'StorageReplicationArgsDict']]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  versioning: Optional[pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -652,6 +687,7 @@ class Storage(pulumi.CustomResource):
             __props__.__dict__["region_name"] = region_name
             __props__.__dict__["replication"] = replication
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["created_at"] = None
             __props__.__dict__["objects"] = None
@@ -685,6 +721,7 @@ class Storage(pulumi.CustomResource):
             region_name: Optional[pulumi.Input[_builtins.str]] = None,
             replication: Optional[pulumi.Input[Union['StorageReplicationArgs', 'StorageReplicationArgsDict']]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             versioning: Optional[pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']]] = None,
             virtual_host: Optional[pulumi.Input[_builtins.str]] = None) -> 'Storage':
         """
@@ -710,6 +747,7 @@ class Storage(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region_name: Region name
         :param pulumi.Input[Union['StorageReplicationArgs', 'StorageReplicationArgsDict']] replication: Replication configuration
         :param pulumi.Input[_builtins.str] service_name: Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Container tags
         :param pulumi.Input[Union['StorageVersioningArgs', 'StorageVersioningArgsDict']] versioning: Versioning configuration
         :param pulumi.Input[_builtins.str] virtual_host: Container virtual host
         """
@@ -733,6 +771,7 @@ class Storage(pulumi.CustomResource):
         __props__.__dict__["region_name"] = region_name
         __props__.__dict__["replication"] = replication
         __props__.__dict__["service_name"] = service_name
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["versioning"] = versioning
         __props__.__dict__["virtual_host"] = virtual_host
         return Storage(resource_name, opts=opts, __props__=__props__)
@@ -864,6 +903,14 @@ class Storage(pulumi.CustomResource):
         Service name. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         return pulumi.get(self, "service_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
+        """
+        Container tags
+        """
+        return pulumi.get(self, "tags")
 
     @_builtins.property
     @pulumi.getter
