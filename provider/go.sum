@@ -2159,6 +2159,8 @@ github.com/ovh/terraform-provider-ovh/v2 v2.13.0 h1:PNkAFNv/+nRWA3LPMU0qUaaOHTPC
 github.com/ovh/terraform-provider-ovh/v2 v2.13.0/go.mod h1:qUdsMQ0+P83spdqkl7ap5bjuh4O9iK1U320j7FkhcA8=
 github.com/ovh/terraform-provider-ovh/v2 v2.14.0 h1:3vrigRSxjIiQrAbP2PsyweuDQVAsIr5E9mUW2zdSi70=
 github.com/ovh/terraform-provider-ovh/v2 v2.14.0/go.mod h1:qUdsMQ0+P83spdqkl7ap5bjuh4O9iK1U320j7FkhcA8=
+github.com/ovh/terraform-provider-ovh/v2 v2.15.0 h1:TV5k8trxyTZnzXSgYjAF9Zf6aw+5EyC5SVCEII86KyE=
+github.com/ovh/terraform-provider-ovh/v2 v2.15.0/go.mod h1:qUdsMQ0+P83spdqkl7ap5bjuh4O9iK1U320j7FkhcA8=
 github.com/peterhellberg/duration v0.0.2 h1:J/ELSSpXCuHInfYJ/hGVYe0enoGsD8buoRzbsdQJW5o=
 github.com/peterhellberg/duration v0.0.2/go.mod h1:n3Pkw/vId7ZwR2ITRQlLeIjETlGEtUa7zQw49dED6ew=
 github.com/pgavlin/fx v0.1.6 h1:r9jEg69DhNoCd3Xh0+5mIbdbS3PqWrVWujkY76MFRTU=
