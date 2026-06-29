@@ -88,7 +88,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetFlavorsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter flavors using the given name (strict equality, e.g. b2-7)
+        /// Filter flavors using the given name (strict equality, e.g. b3-8)
         /// </summary>
         [Input("nameFilter")]
         public string? NameFilter { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class GetFlavorsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter flavors using the given name (strict equality, e.g. b2-7)
+        /// Filter flavors using the given name (strict equality, e.g. b3-8)
         /// </summary>
         [Input("nameFilter")]
         public Input<string>? NameFilter { get; set; }
@@ -147,7 +147,7 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Filter flavors using the given name (strict equality, e.g. b2-7)
+        /// Filter flavors using the given name (strict equality, e.g. b3-8)
         /// </summary>
         public readonly string? NameFilter;
         /// <summary>

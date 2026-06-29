@@ -107,7 +107,7 @@ namespace Pulumi.Ovh
         /// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
         /// </summary>
         [Output("volumeType")]
-        public Output<string?> VolumeType { get; private set; } = null!;
+        public Output<string> VolumeType { get; private set; } = null!;
 
 
         /// <summary>
@@ -183,8 +183,8 @@ namespace Pulumi.Ovh
         /// <summary>
         /// Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// Size of the volume in GB.

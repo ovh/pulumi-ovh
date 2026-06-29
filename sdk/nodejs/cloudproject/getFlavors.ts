@@ -34,7 +34,7 @@ export function getFlavors(args: GetFlavorsArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetFlavorsArgs {
     /**
-     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     * Filter flavors using the given name (strict equality, e.g. b3-8)
      */
     nameFilter?: string;
     /**
@@ -57,7 +57,7 @@ export interface GetFlavorsResult {
      */
     readonly id: string;
     /**
-     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     * Filter flavors using the given name (strict equality, e.g. b3-8)
      */
     readonly nameFilter?: string;
     /**
@@ -97,7 +97,7 @@ export function getFlavorsOutput(args: GetFlavorsOutputArgs, opts?: pulumi.Invok
  */
 export interface GetFlavorsOutputArgs {
     /**
-     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     * Filter flavors using the given name (strict equality, e.g. b3-8)
      */
     nameFilter?: pulumi.Input<string>;
     /**

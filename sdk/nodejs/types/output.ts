@@ -5,6 +5,227 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudGatewayCurrentState {
+    /**
+     * Gateway description.
+     */
+    description: string;
+    /**
+     * External gateway configuration:
+     */
+    externalGateway: outputs.CloudGatewayCurrentStateExternalGateway;
+    /**
+     * External IP address assigned to the gateway.
+     */
+    externalIp: string;
+    /**
+     * Location details:
+     */
+    location: outputs.CloudGatewayCurrentStateLocation;
+    /**
+     * Gateway name.
+     */
+    name: string;
+    /**
+     * OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+     */
+    status: string;
+    /**
+     * Currently attached subnets:
+     */
+    subnets: outputs.CloudGatewayCurrentStateSubnet[];
+}
+
+export interface CloudGatewayCurrentStateExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: boolean;
+    /**
+     * External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+     */
+    model: string;
+}
+
+export interface CloudGatewayCurrentStateLocation {
+    /**
+     * Availability zone for the gateway. **Changing this value recreates the resource.**
+     */
+    availabilityZone: string;
+    /**
+     * Region where the gateway will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudGatewayCurrentStateSubnet {
+    /**
+     * Subnet ID.
+     */
+    id: string;
+}
+
+export interface CloudGatewayExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: boolean;
+    /**
+     * External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+     */
+    model?: string;
+}
+
+export interface CloudNetworkPrivateVrackCurrentState {
+    /**
+     * Network description. **Changing this value recreates the resource.**
+     */
+    description: string;
+    /**
+     * Location details:
+     */
+    location: outputs.CloudNetworkPrivateVrackCurrentStateLocation;
+    /**
+     * Network name.
+     */
+    name: string;
+    /**
+     * VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+     */
+    vlanId: number;
+}
+
+export interface CloudNetworkPrivateVrackCurrentStateLocation {
+    /**
+     * Region where the network will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end: string;
+    /**
+     * Start IP address of the pool.
+     */
+    start: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentState {
+    /**
+     * IP address allocation pools:
+     */
+    allocationPools: outputs.CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool[];
+    /**
+     * CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+     */
+    cidr: string;
+    /**
+     * Subnet description.
+     */
+    description: string;
+    /**
+     * Whether DHCP is enabled on the subnet.
+     */
+    dhcpEnabled: boolean;
+    /**
+     * List of DNS nameserver addresses.
+     */
+    dnsNameservers: string[];
+    /**
+     * Default gateway IP address.
+     */
+    gatewayIp: string;
+    /**
+     * Static host routes:
+     */
+    hostRoutes: outputs.CloudNetworkPrivateVrackSubnetCurrentStateHostRoute[];
+    /**
+     * Location details:
+     */
+    location: outputs.CloudNetworkPrivateVrackSubnetCurrentStateLocation;
+    /**
+     * Subnet name.
+     */
+    name: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end: string;
+    /**
+     * Start IP address of the pool.
+     */
+    start: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+    /**
+     * Destination CIDR.
+     */
+    destination: string;
+    /**
+     * Next hop IP address.
+     */
+    nextHop: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentStateLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Region where the subnet will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentTask {
+    /**
+     * Errors that occured on the task
+     */
+    errors: outputs.CloudNetworkPrivateVrackSubnetCurrentTaskError[];
+    /**
+     * Subnet ID.
+     */
+    id: string;
+    /**
+     * Link to the task details
+     */
+    link: string;
+    /**
+     * Current global status of the current task
+     */
+    status: string;
+    /**
+     * Type of the current task
+     */
+    type: string;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentTaskError {
+    /**
+     * Error description
+     */
+    message: string;
+}
+
+export interface CloudProjectKubeLogSubscriptionResource {
+    /**
+     * Name of the subscribed resource, where the logs come from.
+     */
+    name: string;
+    /**
+     * Type of the subscribed resource, where the logs come from.
+     */
+    type: string;
+}
+
 export interface CloudProjectStorageObjectBucketLifecycleConfigurationRule {
     /**
      * Configuration for aborting incomplete multipart uploads.
@@ -120,6 +341,155 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransi
      * The storage class to transition objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      */
     storageClass: string;
+}
+
+export interface CloudSecurityGroupCurrentState {
+    /**
+     * Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+     */
+    defaultRules: outputs.CloudSecurityGroupCurrentStateDefaultRule[];
+    /**
+     * Description of the security group.
+     */
+    description: string;
+    /**
+     * Location details:
+     */
+    location: outputs.CloudSecurityGroupCurrentStateLocation;
+    /**
+     * Name of the security group.
+     */
+    name: string;
+    /**
+     * User-specified security group rules with their IDs:
+     */
+    rules: outputs.CloudSecurityGroupCurrentStateRule[];
+}
+
+export interface CloudSecurityGroupCurrentStateDefaultRule {
+    /**
+     * Description of the security group.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ether type.
+     */
+    ethernetType: string;
+    /**
+     * Rule ID.
+     */
+    id: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface CloudSecurityGroupCurrentStateLocation {
+    /**
+     * Region where the security group will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudSecurityGroupCurrentStateRule {
+    /**
+     * Description of the security group.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ether type.
+     */
+    ethernetType: string;
+    /**
+     * Rule ID.
+     */
+    id: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface CloudSecurityGroupRule {
+    /**
+     * Description of the rule.
+     *
+     * > **NOTE:** When a security group is created, OpenStack automatically adds a
+     * default egress rule (allowing all outbound traffic). This default rule is **not**
+     * part of the managed `rule` set: it is never sent in your configuration and never
+     * appears under `rule`, so it will not show up as drift on subsequent plans. It is
+     * surfaced for information only under `current_state.default_rules`.
+     */
+    description?: string;
+    /**
+     * Direction of the rule (`INGRESS` or `EGRESS`).
+     */
+    direction: string;
+    /**
+     * Ether type (`IPV4` or `IPV6`).
+     */
+    ethernetType: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax?: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin?: number;
+    /**
+     * Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+     */
+    protocol?: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId?: string;
+    /**
+     * Remote IP prefix (CIDR notation).
+     */
+    remoteIpPrefix?: string;
 }
 
 export interface CloudStorageBlockVolumeBackupCurrentState {
@@ -260,6 +630,553 @@ export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     region: string;
 }
 
+export interface GetCloudGatewayCurrentState {
+    /**
+     * Gateway description.
+     */
+    description: string;
+    /**
+     * External gateway configuration:
+     */
+    externalGateway: outputs.GetCloudGatewayCurrentStateExternalGateway;
+    /**
+     * External IP address assigned to the gateway.
+     */
+    externalIp: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudGatewayCurrentStateLocation;
+    /**
+     * Gateway name.
+     */
+    name: string;
+    /**
+     * OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+     */
+    status: string;
+    /**
+     * Currently attached subnets:
+     */
+    subnets: outputs.GetCloudGatewayCurrentStateSubnet[];
+}
+
+export interface GetCloudGatewayCurrentStateExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: boolean;
+    /**
+     * External gateway sizing model.
+     */
+    model: string;
+}
+
+export interface GetCloudGatewayCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudGatewayCurrentStateSubnet {
+    /**
+     * Gateway ID.
+     */
+    id: string;
+}
+
+export interface GetCloudGatewayExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: boolean;
+    /**
+     * External gateway sizing model.
+     */
+    model: string;
+}
+
+export interface GetCloudGatewayLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudGatewaysGateway {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the gateway.
+     */
+    createdAt: string;
+    /**
+     * Current state of the gateway:
+     */
+    currentState: outputs.GetCloudGatewaysGatewayCurrentState;
+    /**
+     * Gateway description.
+     */
+    description: string;
+    /**
+     * External gateway configuration:
+     */
+    externalGateway: outputs.GetCloudGatewaysGatewayExternalGateway;
+    /**
+     * Subnet ID.
+     */
+    id: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudGatewaysGatewayLocation;
+    /**
+     * Gateway name.
+     */
+    name: string;
+    /**
+     * Gateway readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the gateway.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudGatewaysGatewayCurrentState {
+    /**
+     * Gateway description.
+     */
+    description: string;
+    /**
+     * External gateway configuration:
+     */
+    externalGateway: outputs.GetCloudGatewaysGatewayCurrentStateExternalGateway;
+    /**
+     * External IP address assigned to the gateway.
+     */
+    externalIp: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudGatewaysGatewayCurrentStateLocation;
+    /**
+     * Gateway name.
+     */
+    name: string;
+    /**
+     * OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+     */
+    status: string;
+    /**
+     * Currently attached subnets:
+     */
+    subnets: outputs.GetCloudGatewaysGatewayCurrentStateSubnet[];
+}
+
+export interface GetCloudGatewaysGatewayCurrentStateExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: boolean;
+    /**
+     * External gateway sizing model.
+     */
+    model: string;
+}
+
+export interface GetCloudGatewaysGatewayCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudGatewaysGatewayCurrentStateSubnet {
+    /**
+     * Subnet ID.
+     */
+    id: string;
+}
+
+export interface GetCloudGatewaysGatewayExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: boolean;
+    /**
+     * External gateway sizing model.
+     */
+    model: string;
+}
+
+export interface GetCloudGatewaysGatewayLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVrackCurrentState {
+    /**
+     * Network description.
+     */
+    description: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudNetworkPrivateVrackCurrentStateLocation;
+    /**
+     * Network name.
+     */
+    name: string;
+    /**
+     * VLAN ID of the network.
+     */
+    vlanId: number;
+}
+
+export interface GetCloudNetworkPrivateVrackCurrentStateLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVrackLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end: string;
+    /**
+     * Start IP address of the pool.
+     */
+    start: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetCurrentState {
+    /**
+     * IP address allocation pools:
+     */
+    allocationPools: outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool[];
+    /**
+     * CIDR address range.
+     */
+    cidr: string;
+    /**
+     * Subnet description.
+     */
+    description: string;
+    /**
+     * Whether DHCP is enabled.
+     */
+    dhcpEnabled: boolean;
+    /**
+     * Configured DNS nameservers.
+     */
+    dnsNameservers: string[];
+    /**
+     * Default gateway IP address.
+     */
+    gatewayIp: string;
+    /**
+     * Static host routes:
+     */
+    hostRoutes: outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute[];
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateLocation;
+    /**
+     * Subnet name.
+     */
+    name: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end: string;
+    /**
+     * Start IP address of the pool.
+     */
+    start: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+    /**
+     * Destination CIDR.
+     */
+    destination: string;
+    /**
+     * Next hop IP address.
+     */
+    nextHop: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetCurrentStateLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnet {
+    /**
+     * IP address allocation pools:
+     */
+    allocationPools: outputs.GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool[];
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * CIDR address range.
+     */
+    cidr: string;
+    /**
+     * Creation date of the subnet.
+     */
+    createdAt: string;
+    /**
+     * Current state of the subnet:
+     */
+    currentState: outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState;
+    /**
+     * Subnet description.
+     */
+    description: string;
+    /**
+     * Whether DHCP is enabled.
+     */
+    dhcpEnabled: boolean;
+    /**
+     * Configured DNS nameservers.
+     */
+    dnsNameservers: string[];
+    /**
+     * Default gateway IP address.
+     */
+    gatewayIp: string;
+    /**
+     * Subnet ID.
+     */
+    id: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudNetworkPrivateVrackSubnetsSubnetLocation;
+    /**
+     * Subnet name.
+     */
+    name: string;
+    /**
+     * Subnet readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the subnet.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end: string;
+    /**
+     * Start IP address of the pool.
+     */
+    start: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState {
+    /**
+     * IP address allocation pools:
+     */
+    allocationPools: outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool[];
+    /**
+     * CIDR address range.
+     */
+    cidr: string;
+    /**
+     * Subnet description.
+     */
+    description: string;
+    /**
+     * Whether DHCP is enabled.
+     */
+    dhcpEnabled: boolean;
+    /**
+     * Configured DNS nameservers.
+     */
+    dnsNameservers: string[];
+    /**
+     * Default gateway IP address.
+     */
+    gatewayIp: string;
+    /**
+     * Static host routes:
+     */
+    hostRoutes: outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute[];
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation;
+    /**
+     * Subnet name.
+     */
+    name: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end: string;
+    /**
+     * Start IP address of the pool.
+     */
+    start: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute {
+    /**
+     * Destination CIDR.
+     */
+    destination: string;
+    /**
+     * Next hop IP address.
+     */
+    nextHop: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVrackSubnetsSubnetLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVracksNetwork {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the network.
+     */
+    createdAt: string;
+    /**
+     * Current state of the network:
+     */
+    currentState: outputs.GetCloudNetworkPrivateVracksNetworkCurrentState;
+    /**
+     * Network description.
+     */
+    description: string;
+    /**
+     * Network ID.
+     */
+    id: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudNetworkPrivateVracksNetworkLocation;
+    /**
+     * Network name.
+     */
+    name: string;
+    /**
+     * Network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the network.
+     */
+    updatedAt: string;
+    /**
+     * VLAN ID of the network.
+     */
+    vlanId: number;
+}
+
+export interface GetCloudNetworkPrivateVracksNetworkCurrentState {
+    /**
+     * Network description.
+     */
+    description: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudNetworkPrivateVracksNetworkCurrentStateLocation;
+    /**
+     * Network name.
+     */
+    name: string;
+    /**
+     * VLAN ID of the network.
+     */
+    vlanId: number;
+}
+
+export interface GetCloudNetworkPrivateVracksNetworkCurrentStateLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudNetworkPrivateVracksNetworkLocation {
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
 export interface GetCloudProjectFlavorCapability {
     /**
      * Is the capability enabled
@@ -321,6 +1238,17 @@ export interface GetCloudProjectGatewayInterface {
      * Subnet ID of the interface
      */
     subnetId: string;
+}
+
+export interface GetCloudProjectKubeLogSubscriptionResource {
+    /**
+     * Name of the subscribed resource, where the logs come from.
+     */
+    name: string;
+    /**
+     * Type of the subscribed resource, where the logs come from.
+     */
+    type: string;
 }
 
 export interface GetCloudProjectRancherCapabilitiesPlanPlan {
@@ -499,6 +1427,399 @@ export interface GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTra
      * The storage class to which you want the object to transition.
      */
     storageClass: string;
+}
+
+export interface GetCloudRegionsRegion {
+    /**
+     * Availability zones available in the region.
+     */
+    availabilityZones: string[];
+    /**
+     * Continent code of the region.
+     */
+    continent: string;
+    /**
+     * Country code of the region.
+     */
+    country: string;
+    /**
+     * Display name of the datacenter hosting the region.
+     */
+    datacenterName: string;
+    /**
+     * Name of the region (e.g. `GRA11`).
+     */
+    name: string;
+    /**
+     * Available OpenStack services in the region.
+     */
+    services: string[];
+    /**
+     * Region status (`ENABLED`, `DISABLED` or `MAINTENANCE`).
+     */
+    status: string;
+}
+
+export interface GetCloudSecurityGroupCurrentState {
+    /**
+     * Default egress rules auto-created by OpenStack (same schema as `rules`).
+     */
+    defaultRules: outputs.GetCloudSecurityGroupCurrentStateDefaultRule[];
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudSecurityGroupCurrentStateLocation;
+    /**
+     * Name of the security group.
+     */
+    name: string;
+    /**
+     * User-specified security group rules with their IDs:
+     */
+    rules: outputs.GetCloudSecurityGroupCurrentStateRule[];
+}
+
+export interface GetCloudSecurityGroupCurrentStateDefaultRule {
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ethernet type.
+     */
+    ethernetType: string;
+    /**
+     * Security group ID.
+     */
+    id: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface GetCloudSecurityGroupCurrentStateLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudSecurityGroupCurrentStateRule {
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ethernet type.
+     */
+    ethernetType: string;
+    /**
+     * Security group ID.
+     */
+    id: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface GetCloudSecurityGroupLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudSecurityGroupRule {
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ethernet type.
+     */
+    ethernetType: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface GetCloudSecurityGroupsSecurityGroup {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the security group.
+     */
+    createdAt: string;
+    /**
+     * Current state of the security group:
+     */
+    currentState: outputs.GetCloudSecurityGroupsSecurityGroupCurrentState;
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Rule ID.
+     */
+    id: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudSecurityGroupsSecurityGroupLocation;
+    /**
+     * Name of the security group.
+     */
+    name: string;
+    /**
+     * Security group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * List of security group rules:
+     */
+    rules: outputs.GetCloudSecurityGroupsSecurityGroupRule[];
+    /**
+     * Last update date of the security group.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudSecurityGroupsSecurityGroupCurrentState {
+    /**
+     * Default egress rules auto-created by OpenStack (same schema as `rules`).
+     */
+    defaultRules: outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule[];
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateLocation;
+    /**
+     * Name of the security group.
+     */
+    name: string;
+    /**
+     * User-specified security group rules with their IDs:
+     */
+    rules: outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateRule[];
+}
+
+export interface GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule {
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ethernet type.
+     */
+    ethernetType: string;
+    /**
+     * Rule ID.
+     */
+    id: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface GetCloudSecurityGroupsSecurityGroupCurrentStateLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudSecurityGroupsSecurityGroupCurrentStateRule {
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ethernet type.
+     */
+    ethernetType: string;
+    /**
+     * Rule ID.
+     */
+    id: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface GetCloudSecurityGroupsSecurityGroupLocation {
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudSecurityGroupsSecurityGroupRule {
+    /**
+     * Description of the rule.
+     */
+    description: string;
+    /**
+     * Direction of the rule.
+     */
+    direction: string;
+    /**
+     * Ethernet type.
+     */
+    ethernetType: string;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax: number;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin: number;
+    /**
+     * Protocol.
+     */
+    protocol: string;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId: string;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix: string;
+}
+
+export interface GetCloudSshKeysSshKey {
+    /**
+     * Creation date of the SSH key (RFC 3339 format).
+     */
+    createdAt: string;
+    /**
+     * SSH key name.
+     */
+    name: string;
+    /**
+     * SSH public key content.
+     */
+    publicKey: string;
+    /**
+     * Last update date of the SSH key (RFC 3339 format).
+     */
+    updatedAt: string;
 }
 
 export interface GetCloudStorageBlockVolumeAttachedInstance {
@@ -2449,9 +3770,149 @@ export namespace CloudProject {
          */
         disableds: string[];
         /**
-         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         * Whether the Hubble UI is enabled.
          */
         enableds: string[];
+    }
+
+    export interface GetKubeCustomizationCilium {
+        /**
+         * Cilium cluster ID, between 1 and 255.
+         */
+        clusterId: number;
+        /**
+         * ClusterMesh feature configuration.
+         */
+        clusterMesh: outputs.CloudProject.GetKubeCustomizationCiliumClusterMesh;
+        /**
+         * Hubble observability stack configuration.
+         */
+        hubble: outputs.CloudProject.GetKubeCustomizationCiliumHubble;
+    }
+
+    export interface GetKubeCustomizationCiliumClusterMesh {
+        /**
+         * ClusterMesh API server exposure configuration.
+         */
+        apiServer: outputs.CloudProject.GetKubeCustomizationCiliumClusterMeshApiServer;
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetKubeCustomizationCiliumClusterMeshApiServer {
+        /**
+         * NodePort on which the ClusterMesh API server is exposed.
+         */
+        nodePort: number;
+        /**
+         * Service type used to expose the ClusterMesh API server.
+         */
+        serviceType: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubble {
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled: boolean;
+        /**
+         * Hubble Relay configuration.
+         */
+        relay: outputs.CloudProject.GetKubeCustomizationCiliumHubbleRelay;
+        /**
+         * Hubble UI configuration.
+         */
+        ui: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUi;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleRelay {
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUi {
+        /**
+         * Resource configuration for the Hubble UI backend.
+         */
+        backendResources: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResources;
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled: boolean;
+        /**
+         * Resource configuration for the Hubble UI frontend.
+         */
+        frontendResources: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResources;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResources {
+        /**
+         * Resource limits.
+         */
+        limits: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits;
+        /**
+         * Resource requests.
+         */
+        requests: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+        /**
+         * CPU request.
+         */
+        cpu: string;
+        /**
+         * Memory request.
+         */
+        memory: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+        /**
+         * CPU request.
+         */
+        cpu: string;
+        /**
+         * Memory request.
+         */
+        memory: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResources {
+        /**
+         * Resource limits.
+         */
+        limits: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits;
+        /**
+         * Resource requests.
+         */
+        requests: outputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+        /**
+         * CPU request.
+         */
+        cpu: string;
+        /**
+         * Memory request.
+         */
+        memory: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+        /**
+         * CPU request.
+         */
+        cpu: string;
+        /**
+         * Memory request.
+         */
+        memory: string;
     }
 
     export interface GetKubeCustomizationKubeProxy {
@@ -2501,6 +3962,17 @@ export namespace CloudProject {
          * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
          */
         udpTimeout?: string;
+    }
+
+    export interface GetKubeIpAllocationPolicy {
+        /**
+         * CIDR used for the cluster's pods.
+         */
+        podsIpv4Cidr: string;
+        /**
+         * CIDR used for the cluster's services.
+         */
+        servicesIpv4Cidr: string;
     }
 
     export interface GetKubeKubeconfigAttribute {
@@ -3664,6 +5136,146 @@ export namespace CloudProject {
         enableds: string[];
     }
 
+    export interface KubeCustomizationCilium {
+        /**
+         * Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+         */
+        clusterId: number;
+        /**
+         * ClusterMesh feature configuration.
+         */
+        clusterMesh: outputs.CloudProject.KubeCustomizationCiliumClusterMesh;
+        /**
+         * Hubble observability stack configuration.
+         */
+        hubble: outputs.CloudProject.KubeCustomizationCiliumHubble;
+    }
+
+    export interface KubeCustomizationCiliumClusterMesh {
+        /**
+         * Define how the ClusterMesh API server is exposed.
+         */
+        apiServer: outputs.CloudProject.KubeCustomizationCiliumClusterMeshApiServer;
+        /**
+         * Enable or disable the ClusterMesh feature.
+         */
+        enabled: boolean;
+    }
+
+    export interface KubeCustomizationCiliumClusterMeshApiServer {
+        /**
+         * NodePort on which the ClusterMesh API server is exposed. Only used when `serviceType` is `NodePort`.
+         */
+        nodePort: number;
+        /**
+         * Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+         */
+        serviceType: string;
+    }
+
+    export interface KubeCustomizationCiliumHubble {
+        /**
+         * Enable or disable Hubble.
+         */
+        enabled: boolean;
+        /**
+         * Hubble Relay configuration.
+         */
+        relay: outputs.CloudProject.KubeCustomizationCiliumHubbleRelay;
+        /**
+         * Hubble UI configuration.
+         */
+        ui: outputs.CloudProject.KubeCustomizationCiliumHubbleUi;
+    }
+
+    export interface KubeCustomizationCiliumHubbleRelay {
+        /**
+         * Enable or disable Hubble Relay.
+         */
+        enabled: boolean;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUi {
+        /**
+         * Resource requests and limits for the Hubble UI backend.
+         */
+        backendResources: outputs.CloudProject.KubeCustomizationCiliumHubbleUiBackendResources;
+        /**
+         * Enable or disable the Hubble UI.
+         */
+        enabled: boolean;
+        /**
+         * Resource requests and limits for the Hubble UI frontend.
+         */
+        frontendResources: outputs.CloudProject.KubeCustomizationCiliumHubbleUiFrontendResources;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiBackendResources {
+        /**
+         * Resource limits.
+         */
+        limits: outputs.CloudProject.KubeCustomizationCiliumHubbleUiBackendResourcesLimits;
+        /**
+         * Resource requests.
+         */
+        requests: outputs.CloudProject.KubeCustomizationCiliumHubbleUiBackendResourcesRequests;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+        /**
+         * CPU limit (e.g. `"500m"`).
+         */
+        cpu: string;
+        /**
+         * Memory limit (e.g. `"128Mi"`).
+         */
+        memory: string;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+        /**
+         * CPU request (e.g. `"500m"`).
+         */
+        cpu: string;
+        /**
+         * Memory request (e.g. `"128Mi"`).
+         */
+        memory: string;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiFrontendResources {
+        /**
+         * Resource limits.
+         */
+        limits: outputs.CloudProject.KubeCustomizationCiliumHubbleUiFrontendResourcesLimits;
+        /**
+         * Resource requests.
+         */
+        requests: outputs.CloudProject.KubeCustomizationCiliumHubbleUiFrontendResourcesRequests;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+        /**
+         * CPU limit (e.g. `"500m"`).
+         */
+        cpu: string;
+        /**
+         * Memory limit (e.g. `"128Mi"`).
+         */
+        memory: string;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+        /**
+         * CPU request (e.g. `"500m"`).
+         */
+        cpu: string;
+        /**
+         * Memory request (e.g. `"128Mi"`).
+         */
+        memory: string;
+    }
+
     export interface KubeCustomizationKubeProxy {
         /**
          * Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
@@ -3711,6 +5323,17 @@ export namespace CloudProject {
          * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
          */
         udpTimeout?: string;
+    }
+
+    export interface KubeIpAllocationPolicy {
+        /**
+         * CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+         */
+        podsIpv4Cidr: string;
+        /**
+         * CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+         */
+        servicesIpv4Cidr: string;
     }
 
     export interface KubeKubeconfigAttribute {
@@ -4549,6 +6172,28 @@ export namespace CloudProject {
          * list of permissions associated with the role
          */
         permissions: string[];
+    }
+
+    export interface VolumeEncryption {
+        /**
+         * Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+         */
+        encrypted: boolean;
+        /**
+         * Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+         */
+        kms: outputs.CloudProject.VolumeEncryptionKms;
+    }
+
+    export interface VolumeEncryptionKms {
+        /**
+         * OKMS domain ID holding the customer managed key.
+         */
+        domainId: string;
+        /**
+         * OKMS service key ID used to encrypt the volume.
+         */
+        serviceKeyId: string;
     }
 
     export interface VolumeSubOperation {

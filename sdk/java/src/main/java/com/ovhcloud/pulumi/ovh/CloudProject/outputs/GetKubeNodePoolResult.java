@@ -79,7 +79,7 @@ public final class GetKubeNodePoolResult {
      */
     private String flavor;
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     private String flavorName;
@@ -231,7 +231,7 @@ public final class GetKubeNodePoolResult {
         return this.flavor;
     }
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
      * 
      */
     public String flavorName() {

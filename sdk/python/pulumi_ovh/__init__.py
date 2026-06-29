@@ -6,29 +6,48 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .cloud_gateway import *
+from .cloud_network_private_vrack import *
+from .cloud_network_private_vrack_subnet import *
 from .cloud_project_containerregistry_iam import *
 from .cloud_project_database_clickhouse_user import *
 from .cloud_project_database_valkey_user import *
 from .cloud_project_file_storage_share import *
 from .cloud_project_file_storage_share_network import *
+from .cloud_project_kube_log_subscription import *
 from .cloud_project_ssh_key import *
 from .cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .cloud_project_storage_replication_job import *
+from .cloud_security_group import *
 from .cloud_storage_block_volume import *
 from .cloud_storage_block_volume_backup import *
 from .cloud_storage_block_volume_snapshot import *
+from .clous_ssh_key import *
 from .dbaas_logs_encryption_key import *
 from .domain_zone_dynhost_record import *
 from .email_domain_account import *
+from .get_cloud_gateway import *
+from .get_cloud_gateways import *
+from .get_cloud_network_private_vrack import *
+from .get_cloud_network_private_vrack_subnet import *
+from .get_cloud_network_private_vrack_subnets import *
+from .get_cloud_network_private_vracks import *
 from .get_cloud_project_database_clickhouse_user import *
 from .get_cloud_project_database_valkey_user import *
 from .get_cloud_project_flavor import *
 from .get_cloud_project_gateway import *
+from .get_cloud_project_kube_log_subscription import *
 from .get_cloud_project_rancher_capabilities_plan import *
 from .get_cloud_project_rancher_capabilities_version import *
 from .get_cloud_project_ssh_key import *
 from .get_cloud_project_ssh_keys import *
 from .get_cloud_project_storage_object_bucket_lifecycle_configuration import *
+from .get_cloud_region import *
+from .get_cloud_regions import *
+from .get_cloud_security_group import *
+from .get_cloud_security_groups import *
+from .get_cloud_ssh_key import *
+from .get_cloud_ssh_keys import *
 from .get_cloud_storage_block_volume import *
 from .get_cloud_storage_block_volume_backup import *
 from .get_cloud_storage_block_volume_backups import *
@@ -1183,6 +1202,30 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudGateway",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudGateway:CloudGateway": "CloudGateway"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudNetworkPrivateVrack",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack": "CloudNetworkPrivateVrack"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudNetworkPrivateVrackSubnet",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet": "CloudNetworkPrivateVrackSubnet"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudProjectContainerregistryIam",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1223,6 +1266,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudProjectKubeLogSubscription",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudProjectKubeLogSubscription:CloudProjectKubeLogSubscription": "CloudProjectKubeLogSubscription"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudProjectSshKey",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1247,6 +1298,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudSecurityGroup",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudSecurityGroup:CloudSecurityGroup": "CloudSecurityGroup"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudStorageBlockVolume",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1267,6 +1326,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": "CloudStorageBlockVolumeSnapshot"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/clousSSHKey",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/clousSSHKey:ClousSSHKey": "ClousSSHKey"
   }
  },
  {

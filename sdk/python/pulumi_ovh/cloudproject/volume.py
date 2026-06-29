@@ -22,7 +22,9 @@ __all__ = ['VolumeArgs', 'Volume']
 class VolumeArgs:
     def __init__(__self__, *,
                  region_name: pulumi.Input[_builtins.str],
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input['VolumeEncryptionArgs']] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -34,7 +36,9 @@ class VolumeArgs:
         """
         The set of arguments for constructing a Volume resource.
         :param pulumi.Input[_builtins.str] region_name: Required. A valid OVHcloud public cloud region name in which the volume will be available. Ex.: "GRA11". **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] availability_zone: Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: A description of the volume
+        :param pulumi.Input['VolumeEncryptionArgs'] encryption: Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] image_id: Image ID
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Name of the volume
@@ -45,8 +49,12 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] volume_id: Volume ID
         """
         pulumi.set(__self__, "region_name", region_name)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if instance_id is not None:
@@ -77,6 +85,18 @@ class VolumeArgs:
         pulumi.set(self, "region_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -87,6 +107,18 @@ class VolumeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['VolumeEncryptionArgs']]:
+        """
+        Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['VolumeEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
@@ -189,9 +221,11 @@ class VolumeArgs:
 class _VolumeState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[_builtins.str]] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  completed_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input['VolumeEncryptionArgs']] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -210,9 +244,11 @@ class _VolumeState:
         """
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[_builtins.str] action: The action of the operation
+        :param pulumi.Input[_builtins.str] availability_zone: Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] completed_at: The completed date of the operation
         :param pulumi.Input[_builtins.str] created_at: The creation date of the operation
         :param pulumi.Input[_builtins.str] description: A description of the volume
+        :param pulumi.Input['VolumeEncryptionArgs'] encryption: Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] image_id: Image ID
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Name of the volume
@@ -231,12 +267,16 @@ class _VolumeState:
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if completed_at is not None:
             pulumi.set(__self__, "completed_at", completed_at)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if instance_id is not None:
@@ -281,6 +321,18 @@ class _VolumeState:
         pulumi.set(self, "action", value)
 
     @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
     @pulumi.getter(name="completedAt")
     def completed_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -315,6 +367,18 @@ class _VolumeState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['VolumeEncryptionArgs']]:
+        """
+        Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['VolumeEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
@@ -503,7 +567,9 @@ class Volume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input[Union['VolumeEncryptionArgs', 'VolumeEncryptionArgsDict']]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -534,6 +600,45 @@ class Volume(pulumi.CustomResource):
             type="classic")
         ```
 
+        ### Encrypted volume with a customer managed key (CMK)
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        encrypted_volume = ovh.cloudproject.Volume("encrypted_volume",
+            region_name="xxx",
+            service_name="yyyyy",
+            description="Terraform encrypted volume",
+            name="encryptedVolume",
+            size=15,
+            type="classic",
+            encryption={
+                "encrypted": True,
+                "kms": {
+                    "domain_id": "<okms domain id>",
+                    "service_key_id": "<okms service key id>",
+                },
+            })
+        ```
+
+        Omit the `kms` block to encrypt the volume with OVH managed keys (OMK):
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        encrypted_volume = ovh.cloudproject.Volume("encrypted_volume",
+            region_name="xxx",
+            service_name="yyyyy",
+            name="encryptedVolume",
+            size=15,
+            type="classic",
+            encryption={
+                "encrypted": True,
+            })
+        ```
+
         ## Import
 
         The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
@@ -558,7 +663,9 @@ class Volume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] availability_zone: Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: A description of the volume
+        :param pulumi.Input[Union['VolumeEncryptionArgs', 'VolumeEncryptionArgsDict']] encryption: Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] image_id: Image ID
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Name of the volume
@@ -593,6 +700,45 @@ class Volume(pulumi.CustomResource):
             name="terrformName",
             size=15,
             type="classic")
+        ```
+
+        ### Encrypted volume with a customer managed key (CMK)
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        encrypted_volume = ovh.cloudproject.Volume("encrypted_volume",
+            region_name="xxx",
+            service_name="yyyyy",
+            description="Terraform encrypted volume",
+            name="encryptedVolume",
+            size=15,
+            type="classic",
+            encryption={
+                "encrypted": True,
+                "kms": {
+                    "domain_id": "<okms domain id>",
+                    "service_key_id": "<okms service key id>",
+                },
+            })
+        ```
+
+        Omit the `kms` block to encrypt the volume with OVH managed keys (OMK):
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        encrypted_volume = ovh.cloudproject.Volume("encrypted_volume",
+            region_name="xxx",
+            service_name="yyyyy",
+            name="encryptedVolume",
+            size=15,
+            type="classic",
+            encryption={
+                "encrypted": True,
+            })
         ```
 
         ## Import
@@ -632,7 +778,9 @@ class Volume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input[Union['VolumeEncryptionArgs', 'VolumeEncryptionArgsDict']]] = None,
                  image_id: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -651,7 +799,9 @@ class Volume(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = VolumeArgs.__new__(VolumeArgs)
 
+            __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
+            __props__.__dict__["encryption"] = encryption
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
@@ -683,9 +833,11 @@ class Volume(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[_builtins.str]] = None,
+            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             completed_at: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            encryption: Optional[pulumi.Input[Union['VolumeEncryptionArgs', 'VolumeEncryptionArgsDict']]] = None,
             image_id: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -709,9 +861,11 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] action: The action of the operation
+        :param pulumi.Input[_builtins.str] availability_zone: Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] completed_at: The completed date of the operation
         :param pulumi.Input[_builtins.str] created_at: The creation date of the operation
         :param pulumi.Input[_builtins.str] description: A description of the volume
+        :param pulumi.Input[Union['VolumeEncryptionArgs', 'VolumeEncryptionArgsDict']] encryption: Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] image_id: Image ID
         :param pulumi.Input[_builtins.str] instance_id: Instance ID
         :param pulumi.Input[_builtins.str] name: Name of the volume
@@ -733,9 +887,11 @@ class Volume(pulumi.CustomResource):
         __props__ = _VolumeState.__new__(_VolumeState)
 
         __props__.__dict__["action"] = action
+        __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["completed_at"] = completed_at
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
+        __props__.__dict__["encryption"] = encryption
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
@@ -762,6 +918,14 @@ class Volume(pulumi.CustomResource):
         return pulumi.get(self, "action")
 
     @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> pulumi.Output[_builtins.str]:
+        """
+        Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
     @pulumi.getter(name="completedAt")
     def completed_at(self) -> pulumi.Output[_builtins.str]:
         """
@@ -784,6 +948,14 @@ class Volume(pulumi.CustomResource):
         A description of the volume
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Output['outputs.VolumeEncryption']:
+        """
+        Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter(name="imageId")

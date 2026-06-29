@@ -250,7 +250,7 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string Flavor;
         /// <summary>
-        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
         /// </summary>
         public readonly string FlavorName;
         /// <summary>

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh.ClousSSHKey` resource instead.
+ *
  * Create a SSH key in the given public cloud project.
  *
  * ## Example Usage

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE** Prefer using the new `getCloudSshKeys` data source instead.
+//
 // Get SSH keys in a Public Cloud project.
 //
 // ## Example Usage

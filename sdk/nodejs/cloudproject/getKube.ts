@@ -28,8 +28,10 @@ export function getKube(args: GetKubeArgs, opts?: pulumi.InvokeOptions): Promise
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("ovh:CloudProject/getKube:getKube", {
         "customizationApiservers": args.customizationApiservers,
+        "customizationCilium": args.customizationCilium,
         "customizationKubeProxy": args.customizationKubeProxy,
         "customizations": args.customizations,
+        "ipAllocationPolicy": args.ipAllocationPolicy,
         "kubeId": args.kubeId,
         "kubeProxyMode": args.kubeProxyMode,
         "name": args.name,
@@ -50,6 +52,10 @@ export interface GetKubeArgs {
      */
     customizationApiservers?: inputs.CloudProject.GetKubeCustomizationApiserver[];
     /**
+     * Cilium CNI customization.
+     */
+    customizationCilium?: inputs.CloudProject.GetKubeCustomizationCilium;
+    /**
      * Kubernetes kube-proxy customization
      */
     customizationKubeProxy?: inputs.CloudProject.GetKubeCustomizationKubeProxy;
@@ -59,6 +65,10 @@ export interface GetKubeArgs {
      * @deprecated Use customizationApiserver instead
      */
     customizations?: inputs.CloudProject.GetKubeCustomization[];
+    /**
+     * IP allocation policy of the cluster.
+     */
+    ipAllocationPolicy?: inputs.CloudProject.GetKubeIpAllocationPolicy;
     /**
      * The id of the managed kubernetes cluster.
      */
@@ -106,6 +116,10 @@ export interface GetKubeResult {
      */
     readonly customizationApiservers: outputs.CloudProject.GetKubeCustomizationApiserver[];
     /**
+     * Cilium CNI customization.
+     */
+    readonly customizationCilium: outputs.CloudProject.GetKubeCustomizationCilium;
+    /**
      * Kubernetes kube-proxy customization
      */
     readonly customizationKubeProxy?: outputs.CloudProject.GetKubeCustomizationKubeProxy;
@@ -119,6 +133,10 @@ export interface GetKubeResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * IP allocation policy of the cluster.
+     */
+    readonly ipAllocationPolicy: outputs.CloudProject.GetKubeIpAllocationPolicy;
     /**
      * True if all nodes and control-plane are up-to-date.
      */
@@ -214,8 +232,10 @@ export function getKubeOutput(args: GetKubeOutputArgs, opts?: pulumi.InvokeOutpu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("ovh:CloudProject/getKube:getKube", {
         "customizationApiservers": args.customizationApiservers,
+        "customizationCilium": args.customizationCilium,
         "customizationKubeProxy": args.customizationKubeProxy,
         "customizations": args.customizations,
+        "ipAllocationPolicy": args.ipAllocationPolicy,
         "kubeId": args.kubeId,
         "kubeProxyMode": args.kubeProxyMode,
         "name": args.name,
@@ -236,6 +256,10 @@ export interface GetKubeOutputArgs {
      */
     customizationApiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.GetKubeCustomizationApiserverArgs>[]>;
     /**
+     * Cilium CNI customization.
+     */
+    customizationCilium?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumArgs>;
+    /**
      * Kubernetes kube-proxy customization
      */
     customizationKubeProxy?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationKubeProxyArgs>;
@@ -245,6 +269,10 @@ export interface GetKubeOutputArgs {
      * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.GetKubeCustomizationArgs>[]>;
+    /**
+     * IP allocation policy of the cluster.
+     */
+    ipAllocationPolicy?: pulumi.Input<inputs.CloudProject.GetKubeIpAllocationPolicyArgs>;
     /**
      * The id of the managed kubernetes cluster.
      */

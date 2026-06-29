@@ -69,9 +69,6 @@ import (
 //				AvailabilityZones: pulumi.StringArray{
 //					pulumi.String("eu-west-par-a"),
 //				},
-//				AttachFloatingIps: &cloudproject.KubeNodePoolAttachFloatingIpsArgs{
-//					Enabled: pulumi.Bool(false),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -149,7 +146,7 @@ type KubeNodePool struct {
 
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity pulumi.BoolOutput `pulumi:"antiAffinity"`
-	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	// Configuration for floating IP attachment on pool nodes.
 	AttachFloatingIps KubeNodePoolAttachFloatingIpsOutput `pulumi:"attachFloatingIps"`
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale pulumi.BoolOutput `pulumi:"autoscale"`
@@ -171,7 +168,7 @@ type KubeNodePool struct {
 	DesiredNodes pulumi.IntOutput `pulumi:"desiredNodes"`
 	// Flavor name
 	Flavor pulumi.StringOutput `pulumi:"flavor"`
-	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
 	FlavorName pulumi.StringOutput `pulumi:"flavorName"`
 	// The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
 	KubeId pulumi.StringOutput `pulumi:"kubeId"`
@@ -237,7 +234,7 @@ func GetKubeNodePool(ctx *pulumi.Context,
 type kubeNodePoolState struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity *bool `pulumi:"antiAffinity"`
-	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	// Configuration for floating IP attachment on pool nodes.
 	AttachFloatingIps *KubeNodePoolAttachFloatingIps `pulumi:"attachFloatingIps"`
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale *bool `pulumi:"autoscale"`
@@ -259,7 +256,7 @@ type kubeNodePoolState struct {
 	DesiredNodes *int `pulumi:"desiredNodes"`
 	// Flavor name
 	Flavor *string `pulumi:"flavor"`
-	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
 	FlavorName *string `pulumi:"flavorName"`
 	// The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
 	KubeId *string `pulumi:"kubeId"`
@@ -290,7 +287,7 @@ type kubeNodePoolState struct {
 type KubeNodePoolState struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity pulumi.BoolPtrInput
-	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	// Configuration for floating IP attachment on pool nodes.
 	AttachFloatingIps KubeNodePoolAttachFloatingIpsPtrInput
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale pulumi.BoolPtrInput
@@ -312,7 +309,7 @@ type KubeNodePoolState struct {
 	DesiredNodes pulumi.IntPtrInput
 	// Flavor name
 	Flavor pulumi.StringPtrInput
-	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
 	FlavorName pulumi.StringPtrInput
 	// The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
 	KubeId pulumi.StringPtrInput
@@ -347,7 +344,7 @@ func (KubeNodePoolState) ElementType() reflect.Type {
 type kubeNodePoolArgs struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity *bool `pulumi:"antiAffinity"`
-	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	// Configuration for floating IP attachment on pool nodes.
 	AttachFloatingIps *KubeNodePoolAttachFloatingIps `pulumi:"attachFloatingIps"`
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale *bool `pulumi:"autoscale"`
@@ -361,7 +358,7 @@ type kubeNodePoolArgs struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// number of nodes to start.
 	DesiredNodes *int `pulumi:"desiredNodes"`
-	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
 	FlavorName string `pulumi:"flavorName"`
 	// The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
 	KubeId string `pulumi:"kubeId"`
@@ -383,7 +380,7 @@ type kubeNodePoolArgs struct {
 type KubeNodePoolArgs struct {
 	// should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
 	AntiAffinity pulumi.BoolPtrInput
-	// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+	// Configuration for floating IP attachment on pool nodes.
 	AttachFloatingIps KubeNodePoolAttachFloatingIpsPtrInput
 	// Enable auto-scaling for the pool. Default to `false`.
 	Autoscale pulumi.BoolPtrInput
@@ -397,7 +394,7 @@ type KubeNodePoolArgs struct {
 	AvailabilityZones pulumi.StringArrayInput
 	// number of nodes to start.
 	DesiredNodes pulumi.IntPtrInput
-	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
 	FlavorName pulumi.StringInput
 	// The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
 	KubeId pulumi.StringInput
@@ -507,7 +504,7 @@ func (o KubeNodePoolOutput) AntiAffinity() pulumi.BoolOutput {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.BoolOutput { return v.AntiAffinity }).(pulumi.BoolOutput)
 }
 
-// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+// Configuration for floating IP attachment on pool nodes.
 func (o KubeNodePoolOutput) AttachFloatingIps() KubeNodePoolAttachFloatingIpsOutput {
 	return o.ApplyT(func(v *KubeNodePool) KubeNodePoolAttachFloatingIpsOutput { return v.AttachFloatingIps }).(KubeNodePoolAttachFloatingIpsOutput)
 }
@@ -562,7 +559,7 @@ func (o KubeNodePoolOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
 func (o KubeNodePoolOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeNodePool) pulumi.StringOutput { return v.FlavorName }).(pulumi.StringOutput)
 }

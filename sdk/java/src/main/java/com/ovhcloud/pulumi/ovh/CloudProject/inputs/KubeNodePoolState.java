@@ -37,14 +37,14 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+     * Configuration for floating IP attachment on pool nodes.
      * 
      */
     @Import(name="attachFloatingIps")
     private @Nullable Output<KubeNodePoolAttachFloatingIpsArgs> attachFloatingIps;
 
     /**
-     * @return Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+     * @return Configuration for floating IP attachment on pool nodes.
      * 
      */
     public Optional<Output<KubeNodePoolAttachFloatingIpsArgs>> attachFloatingIps() {
@@ -202,14 +202,14 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="flavorName")
     private @Nullable Output<String> flavorName;
 
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> flavorName() {
@@ -466,7 +466,7 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param attachFloatingIps Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+         * @param attachFloatingIps Configuration for floating IP attachment on pool nodes.
          * 
          * @return builder
          * 
@@ -477,7 +477,7 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param attachFloatingIps Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+         * @param attachFloatingIps Configuration for floating IP attachment on pool nodes.
          * 
          * @return builder
          * 
@@ -707,7 +707,7 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -718,7 +718,7 @@ public final class KubeNodePoolState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+         * @param flavorName a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

@@ -85,7 +85,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<bool?> EnableGatewayIp { get; private set; } = null!;
 
         /// <summary>
-        /// See Argument Reference above.
+        /// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
         /// </summary>
         [Output("gatewayIp")]
         public Output<string> GatewayIp { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? EnableGatewayIp { get; set; }
 
         /// <summary>
-        /// See Argument Reference above.
+        /// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? EnableGatewayIp { get; set; }
 
         /// <summary>
-        /// See Argument Reference above.
+        /// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
         /// </summary>
         [Input("gatewayIp")]
         public Input<string>? GatewayIp { get; set; }

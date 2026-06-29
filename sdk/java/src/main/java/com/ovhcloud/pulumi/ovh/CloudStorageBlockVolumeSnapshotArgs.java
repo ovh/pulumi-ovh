@@ -65,15 +65,15 @@ public final class CloudStorageBlockVolumeSnapshotArgs extends com.pulumi.resour
      * The id of the public cloud project. Changing this value recreates the resource.
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return The id of the public cloud project. Changing this value recreates the resource.
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -188,7 +188,7 @@ public final class CloudStorageBlockVolumeSnapshotArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -227,9 +227,6 @@ public final class CloudStorageBlockVolumeSnapshotArgs extends com.pulumi.resour
         public CloudStorageBlockVolumeSnapshotArgs build() {
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("CloudStorageBlockVolumeSnapshotArgs", "region");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("CloudStorageBlockVolumeSnapshotArgs", "serviceName");
             }
             if ($.volumeId == null) {
                 throw new MissingRequiredPropertyException("CloudStorageBlockVolumeSnapshotArgs", "volumeId");

@@ -56,12 +56,16 @@ func LookupKube(ctx *pulumi.Context, args *LookupKubeArgs, opts ...pulumi.Invoke
 type LookupKubeArgs struct {
 	// Kubernetes API server customization
 	CustomizationApiservers []GetKubeCustomizationApiserver `pulumi:"customizationApiservers"`
+	// Cilium CNI customization.
+	CustomizationCilium *GetKubeCustomizationCilium `pulumi:"customizationCilium"`
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy *GetKubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations []GetKubeCustomization `pulumi:"customizations"`
+	// IP allocation policy of the cluster.
+	IpAllocationPolicy *GetKubeIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// The id of the managed kubernetes cluster.
 	KubeId string `pulumi:"kubeId"`
 	// Selected mode for kube-proxy.
@@ -86,6 +90,8 @@ type LookupKubeResult struct {
 	ControlPlaneIsUpToDate bool `pulumi:"controlPlaneIsUpToDate"`
 	// Kubernetes API server customization
 	CustomizationApiservers []GetKubeCustomizationApiserver `pulumi:"customizationApiservers"`
+	// Cilium CNI customization.
+	CustomizationCilium GetKubeCustomizationCilium `pulumi:"customizationCilium"`
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy *GetKubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
@@ -94,6 +100,8 @@ type LookupKubeResult struct {
 	Customizations []GetKubeCustomization `pulumi:"customizations"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// IP allocation policy of the cluster.
+	IpAllocationPolicy GetKubeIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate bool `pulumi:"isUpToDate"`
 	// See Argument Reference above.
@@ -145,12 +153,16 @@ func LookupKubeOutput(ctx *pulumi.Context, args LookupKubeOutputArgs, opts ...pu
 type LookupKubeOutputArgs struct {
 	// Kubernetes API server customization
 	CustomizationApiservers GetKubeCustomizationApiserverArrayInput `pulumi:"customizationApiservers"`
+	// Cilium CNI customization.
+	CustomizationCilium GetKubeCustomizationCiliumPtrInput `pulumi:"customizationCilium"`
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy GetKubeCustomizationKubeProxyPtrInput `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations GetKubeCustomizationArrayInput `pulumi:"customizations"`
+	// IP allocation policy of the cluster.
+	IpAllocationPolicy GetKubeIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
 	// The id of the managed kubernetes cluster.
 	KubeId pulumi.StringInput `pulumi:"kubeId"`
 	// Selected mode for kube-proxy.
@@ -198,6 +210,11 @@ func (o LookupKubeResultOutput) CustomizationApiservers() GetKubeCustomizationAp
 	return o.ApplyT(func(v LookupKubeResult) []GetKubeCustomizationApiserver { return v.CustomizationApiservers }).(GetKubeCustomizationApiserverArrayOutput)
 }
 
+// Cilium CNI customization.
+func (o LookupKubeResultOutput) CustomizationCilium() GetKubeCustomizationCiliumOutput {
+	return o.ApplyT(func(v LookupKubeResult) GetKubeCustomizationCilium { return v.CustomizationCilium }).(GetKubeCustomizationCiliumOutput)
+}
+
 // Kubernetes kube-proxy customization
 func (o LookupKubeResultOutput) CustomizationKubeProxy() GetKubeCustomizationKubeProxyPtrOutput {
 	return o.ApplyT(func(v LookupKubeResult) *GetKubeCustomizationKubeProxy { return v.CustomizationKubeProxy }).(GetKubeCustomizationKubeProxyPtrOutput)
@@ -213,6 +230,11 @@ func (o LookupKubeResultOutput) Customizations() GetKubeCustomizationArrayOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupKubeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP allocation policy of the cluster.
+func (o LookupKubeResultOutput) IpAllocationPolicy() GetKubeIpAllocationPolicyOutput {
+	return o.ApplyT(func(v LookupKubeResult) GetKubeIpAllocationPolicy { return v.IpAllocationPolicy }).(GetKubeIpAllocationPolicyOutput)
 }
 
 // True if all nodes and control-plane are up-to-date.

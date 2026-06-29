@@ -99,7 +99,7 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
     /**
      * Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
      */
-    public readonly volumeType!: pulumi.Output<string | undefined>;
+    public readonly volumeType!: pulumi.Output<string>;
 
     /**
      * Create a CloudStorageBlockVolume resource with the given unique name, arguments, and options.
@@ -130,9 +130,6 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
             const args = argsOrState as CloudStorageBlockVolumeArgs | undefined;
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
-            }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
             }
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
@@ -232,7 +229,7 @@ export interface CloudStorageBlockVolumeArgs {
     /**
      * Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * Size of the volume in GB.
      */

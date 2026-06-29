@@ -28,7 +28,7 @@ namespace Pulumi.Ovh.CloudProject.Inputs
         private InputList<string>? _enableds;
 
         /// <summary>
-        /// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        /// Whether the Hubble UI is enabled.
         /// </summary>
         public InputList<string> Enableds
         {

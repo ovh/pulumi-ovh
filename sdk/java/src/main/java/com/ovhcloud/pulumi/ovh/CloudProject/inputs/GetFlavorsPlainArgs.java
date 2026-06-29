@@ -16,14 +16,14 @@ public final class GetFlavorsPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlavorsPlainArgs Empty = new GetFlavorsPlainArgs();
 
     /**
-     * Filter flavors using the given name (strict equality, e.g. b2-7)
+     * Filter flavors using the given name (strict equality, e.g. b3-8)
      * 
      */
     @Import(name="nameFilter")
     private @Nullable String nameFilter;
 
     /**
-     * @return Filter flavors using the given name (strict equality, e.g. b2-7)
+     * @return Filter flavors using the given name (strict equality, e.g. b3-8)
      * 
      */
     public Optional<String> nameFilter() {
@@ -87,7 +87,7 @@ public final class GetFlavorsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameFilter Filter flavors using the given name (strict equality, e.g. b2-7)
+         * @param nameFilter Filter flavors using the given name (strict equality, e.g. b3-8)
          * 
          * @return builder
          * 

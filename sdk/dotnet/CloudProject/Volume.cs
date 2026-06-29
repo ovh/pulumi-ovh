@@ -37,6 +37,64 @@ namespace Pulumi.Ovh.CloudProject
     /// });
     /// ```
     /// 
+    /// ### Encrypted volume with a customer managed key (CMK)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var encryptedVolume = new Ovh.CloudProject.Volume("encrypted_volume", new()
+    ///     {
+    ///         RegionName = "xxx",
+    ///         ServiceName = "yyyyy",
+    ///         Description = "Terraform encrypted volume",
+    ///         Name = "encryptedVolume",
+    ///         Size = 15,
+    ///         Type = "classic",
+    ///         Encryption = new Ovh.CloudProject.Inputs.VolumeEncryptionArgs
+    ///         {
+    ///             Encrypted = true,
+    ///             Kms = new Ovh.CloudProject.Inputs.VolumeEncryptionKmsArgs
+    ///             {
+    ///                 DomainId = "&lt;okms domain id&gt;",
+    ///                 ServiceKeyId = "&lt;okms service key id&gt;",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Omit the `kms` block to encrypt the volume with OVH managed keys (OMK):
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var encryptedVolume = new Ovh.CloudProject.Volume("encrypted_volume", new()
+    ///     {
+    ///         RegionName = "xxx",
+    ///         ServiceName = "yyyyy",
+    ///         Name = "encryptedVolume",
+    ///         Size = 15,
+    ///         Type = "classic",
+    ///         Encryption = new Ovh.CloudProject.Inputs.VolumeEncryptionArgs
+    ///         {
+    ///             Encrypted = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
@@ -69,6 +127,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+        /// </summary>
+        [Output("availabilityZone")]
+        public Output<string> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
         /// The completed date of the operation
         /// </summary>
         [Output("completedAt")]
@@ -85,6 +149,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+        /// </summary>
+        [Output("encryption")]
+        public Output<Outputs.VolumeEncryption> Encryption { get; private set; } = null!;
 
         /// <summary>
         /// Image ID
@@ -224,10 +294,22 @@ namespace Pulumi.Ovh.CloudProject
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// A description of the volume
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.VolumeEncryptionArgs>? Encryption { get; set; }
 
         /// <summary>
         /// Image ID
@@ -298,6 +380,12 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Action { get; set; }
 
         /// <summary>
+        /// Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// The completed date of the operation
         /// </summary>
         [Input("completedAt")]
@@ -314,6 +402,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.VolumeEncryptionGetArgs>? Encryption { get; set; }
 
         /// <summary>
         /// Image ID

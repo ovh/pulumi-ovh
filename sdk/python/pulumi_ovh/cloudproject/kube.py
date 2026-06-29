@@ -23,8 +23,10 @@ class KubeArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
                  customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgs']]]] = None,
+                 customization_cilium: Optional[pulumi.Input['KubeCustomizationCiliumArgs']] = None,
                  customization_kube_proxy: Optional[pulumi.Input['KubeCustomizationKubeProxyArgs']] = None,
                  customizations: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]]] = None,
+                 ip_allocation_policy: Optional[pulumi.Input['KubeIpAllocationPolicyArgs']] = None,
                  kube_proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancers_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -39,8 +41,10 @@ class KubeArgs:
         The set of arguments for constructing a Kube resource.
         :param pulumi.Input[_builtins.str] region: a valid OVHcloud public cloud region ID in which the kubernetes cluster will be available. Ex.: "GRA9". Defaults to all public cloud regions. **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgs']]] customization_apiservers: Kubernetes API server customization
+        :param pulumi.Input['KubeCustomizationCiliumArgs'] customization_cilium: Cilium CNI customization.
         :param pulumi.Input['KubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        :param pulumi.Input['KubeIpAllocationPolicyArgs'] ip_allocation_policy: IP allocation policy of the cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[_builtins.str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[_builtins.str] name: The name of the kubernetes cluster.
@@ -57,6 +61,8 @@ class KubeArgs:
         pulumi.set(__self__, "region", region)
         if customization_apiservers is not None:
             pulumi.set(__self__, "customization_apiservers", customization_apiservers)
+        if customization_cilium is not None:
+            pulumi.set(__self__, "customization_cilium", customization_cilium)
         if customization_kube_proxy is not None:
             pulumi.set(__self__, "customization_kube_proxy", customization_kube_proxy)
         if customizations is not None:
@@ -64,6 +70,8 @@ class KubeArgs:
             pulumi.log.warn("""customizations is deprecated: Use customization_apiserver instead""")
         if customizations is not None:
             pulumi.set(__self__, "customizations", customizations)
+        if ip_allocation_policy is not None:
+            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if kube_proxy_mode is not None:
             pulumi.set(__self__, "kube_proxy_mode", kube_proxy_mode)
         if load_balancers_subnet_id is not None:
@@ -110,6 +118,18 @@ class KubeArgs:
         pulumi.set(self, "customization_apiservers", value)
 
     @_builtins.property
+    @pulumi.getter(name="customizationCilium")
+    def customization_cilium(self) -> Optional[pulumi.Input['KubeCustomizationCiliumArgs']]:
+        """
+        Cilium CNI customization.
+        """
+        return pulumi.get(self, "customization_cilium")
+
+    @customization_cilium.setter
+    def customization_cilium(self, value: Optional[pulumi.Input['KubeCustomizationCiliumArgs']]):
+        pulumi.set(self, "customization_cilium", value)
+
+    @_builtins.property
     @pulumi.getter(name="customizationKubeProxy")
     def customization_kube_proxy(self) -> Optional[pulumi.Input['KubeCustomizationKubeProxyArgs']]:
         """
@@ -133,6 +153,18 @@ class KubeArgs:
     @customizations.setter
     def customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]]]):
         pulumi.set(self, "customizations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> Optional[pulumi.Input['KubeIpAllocationPolicyArgs']]:
+        """
+        IP allocation policy of the cluster. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "ip_allocation_policy")
+
+    @ip_allocation_policy.setter
+    def ip_allocation_policy(self, value: Optional[pulumi.Input['KubeIpAllocationPolicyArgs']]):
+        pulumi.set(self, "ip_allocation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeProxyMode")
@@ -262,8 +294,10 @@ class _KubeState:
     def __init__(__self__, *,
                  control_plane_is_up_to_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgs']]]] = None,
+                 customization_cilium: Optional[pulumi.Input['KubeCustomizationCiliumArgs']] = None,
                  customization_kube_proxy: Optional[pulumi.Input['KubeCustomizationKubeProxyArgs']] = None,
                  customizations: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]]] = None,
+                 ip_allocation_policy: Optional[pulumi.Input['KubeIpAllocationPolicyArgs']] = None,
                  is_up_to_date: Optional[pulumi.Input[_builtins.bool]] = None,
                  kube_proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
@@ -286,8 +320,10 @@ class _KubeState:
         Input properties used for looking up and filtering Kube resources.
         :param pulumi.Input[_builtins.bool] control_plane_is_up_to_date: True if control-plane is up-to-date.
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationApiserverArgs']]] customization_apiservers: Kubernetes API server customization
+        :param pulumi.Input['KubeCustomizationCiliumArgs'] customization_cilium: Cilium CNI customization.
         :param pulumi.Input['KubeCustomizationKubeProxyArgs'] customization_kube_proxy: Kubernetes kube-proxy customization
         :param pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        :param pulumi.Input['KubeIpAllocationPolicyArgs'] ip_allocation_policy: IP allocation policy of the cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.bool] is_up_to_date: True if all nodes and control-plane are up-to-date.
         :param pulumi.Input[_builtins.str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[_builtins.str] kubeconfig: The kubeconfig file. Use this file to connect to your kubernetes cluster.
@@ -313,6 +349,8 @@ class _KubeState:
             pulumi.set(__self__, "control_plane_is_up_to_date", control_plane_is_up_to_date)
         if customization_apiservers is not None:
             pulumi.set(__self__, "customization_apiservers", customization_apiservers)
+        if customization_cilium is not None:
+            pulumi.set(__self__, "customization_cilium", customization_cilium)
         if customization_kube_proxy is not None:
             pulumi.set(__self__, "customization_kube_proxy", customization_kube_proxy)
         if customizations is not None:
@@ -320,6 +358,8 @@ class _KubeState:
             pulumi.log.warn("""customizations is deprecated: Use customization_apiserver instead""")
         if customizations is not None:
             pulumi.set(__self__, "customizations", customizations)
+        if ip_allocation_policy is not None:
+            pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if is_up_to_date is not None:
             pulumi.set(__self__, "is_up_to_date", is_up_to_date)
         if kube_proxy_mode is not None:
@@ -382,6 +422,18 @@ class _KubeState:
         pulumi.set(self, "customization_apiservers", value)
 
     @_builtins.property
+    @pulumi.getter(name="customizationCilium")
+    def customization_cilium(self) -> Optional[pulumi.Input['KubeCustomizationCiliumArgs']]:
+        """
+        Cilium CNI customization.
+        """
+        return pulumi.get(self, "customization_cilium")
+
+    @customization_cilium.setter
+    def customization_cilium(self, value: Optional[pulumi.Input['KubeCustomizationCiliumArgs']]):
+        pulumi.set(self, "customization_cilium", value)
+
+    @_builtins.property
     @pulumi.getter(name="customizationKubeProxy")
     def customization_kube_proxy(self) -> Optional[pulumi.Input['KubeCustomizationKubeProxyArgs']]:
         """
@@ -405,6 +457,18 @@ class _KubeState:
     @customizations.setter
     def customizations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubeCustomizationArgs']]]]):
         pulumi.set(self, "customizations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> Optional[pulumi.Input['KubeIpAllocationPolicyArgs']]:
+        """
+        IP allocation policy of the cluster. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "ip_allocation_policy")
+
+    @ip_allocation_policy.setter
+    def ip_allocation_policy(self, value: Optional[pulumi.Input['KubeIpAllocationPolicyArgs']]):
+        pulumi.set(self, "ip_allocation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="isUpToDate")
@@ -632,8 +696,10 @@ class Kube(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]]] = None,
+                 customization_cilium: Optional[pulumi.Input[Union['KubeCustomizationCiliumArgs', 'KubeCustomizationCiliumArgsDict']]] = None,
                  customization_kube_proxy: Optional[pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']]] = None,
                  customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]]] = None,
+                 ip_allocation_policy: Optional[pulumi.Input[Union['KubeIpAllocationPolicyArgs', 'KubeIpAllocationPolicyArgsDict']]] = None,
                  kube_proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancers_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -660,8 +726,10 @@ class Kube(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]] customization_apiservers: Kubernetes API server customization
+        :param pulumi.Input[Union['KubeCustomizationCiliumArgs', 'KubeCustomizationCiliumArgsDict']] customization_cilium: Cilium CNI customization.
         :param pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']] customization_kube_proxy: Kubernetes kube-proxy customization
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        :param pulumi.Input[Union['KubeIpAllocationPolicyArgs', 'KubeIpAllocationPolicyArgsDict']] ip_allocation_policy: IP allocation policy of the cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[_builtins.str] load_balancers_subnet_id: Subnet ID to use for Public Load Balancers, this subnet must belong to  `private_network_id`. Defaults to the same subnet as the nodes (see `nodes_subnet_id`). Requires `private_network_id` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
         :param pulumi.Input[_builtins.str] name: The name of the kubernetes cluster.
@@ -709,8 +777,10 @@ class Kube(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]]] = None,
+                 customization_cilium: Optional[pulumi.Input[Union['KubeCustomizationCiliumArgs', 'KubeCustomizationCiliumArgsDict']]] = None,
                  customization_kube_proxy: Optional[pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']]] = None,
                  customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]]] = None,
+                 ip_allocation_policy: Optional[pulumi.Input[Union['KubeIpAllocationPolicyArgs', 'KubeIpAllocationPolicyArgsDict']]] = None,
                  kube_proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
                  load_balancers_subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -732,8 +802,10 @@ class Kube(pulumi.CustomResource):
             __props__ = KubeArgs.__new__(KubeArgs)
 
             __props__.__dict__["customization_apiservers"] = customization_apiservers
+            __props__.__dict__["customization_cilium"] = customization_cilium
             __props__.__dict__["customization_kube_proxy"] = customization_kube_proxy
             __props__.__dict__["customizations"] = customizations
+            __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["kube_proxy_mode"] = kube_proxy_mode
             __props__.__dict__["load_balancers_subnet_id"] = load_balancers_subnet_id
             __props__.__dict__["name"] = name
@@ -769,8 +841,10 @@ class Kube(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             control_plane_is_up_to_date: Optional[pulumi.Input[_builtins.bool]] = None,
             customization_apiservers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]]] = None,
+            customization_cilium: Optional[pulumi.Input[Union['KubeCustomizationCiliumArgs', 'KubeCustomizationCiliumArgsDict']]] = None,
             customization_kube_proxy: Optional[pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']]] = None,
             customizations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]]] = None,
+            ip_allocation_policy: Optional[pulumi.Input[Union['KubeIpAllocationPolicyArgs', 'KubeIpAllocationPolicyArgsDict']]] = None,
             is_up_to_date: Optional[pulumi.Input[_builtins.bool]] = None,
             kube_proxy_mode: Optional[pulumi.Input[_builtins.str]] = None,
             kubeconfig: Optional[pulumi.Input[_builtins.str]] = None,
@@ -798,8 +872,10 @@ class Kube(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] control_plane_is_up_to_date: True if control-plane is up-to-date.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationApiserverArgs', 'KubeCustomizationApiserverArgsDict']]]] customization_apiservers: Kubernetes API server customization
+        :param pulumi.Input[Union['KubeCustomizationCiliumArgs', 'KubeCustomizationCiliumArgsDict']] customization_cilium: Cilium CNI customization.
         :param pulumi.Input[Union['KubeCustomizationKubeProxyArgs', 'KubeCustomizationKubeProxyArgsDict']] customization_kube_proxy: Kubernetes kube-proxy customization
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubeCustomizationArgs', 'KubeCustomizationArgsDict']]]] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+        :param pulumi.Input[Union['KubeIpAllocationPolicyArgs', 'KubeIpAllocationPolicyArgsDict']] ip_allocation_policy: IP allocation policy of the cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.bool] is_up_to_date: True if all nodes and control-plane are up-to-date.
         :param pulumi.Input[_builtins.str] kube_proxy_mode: Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
         :param pulumi.Input[_builtins.str] kubeconfig: The kubeconfig file. Use this file to connect to your kubernetes cluster.
@@ -827,8 +903,10 @@ class Kube(pulumi.CustomResource):
 
         __props__.__dict__["control_plane_is_up_to_date"] = control_plane_is_up_to_date
         __props__.__dict__["customization_apiservers"] = customization_apiservers
+        __props__.__dict__["customization_cilium"] = customization_cilium
         __props__.__dict__["customization_kube_proxy"] = customization_kube_proxy
         __props__.__dict__["customizations"] = customizations
+        __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
         __props__.__dict__["is_up_to_date"] = is_up_to_date
         __props__.__dict__["kube_proxy_mode"] = kube_proxy_mode
         __props__.__dict__["kubeconfig"] = kubeconfig
@@ -866,6 +944,14 @@ class Kube(pulumi.CustomResource):
         return pulumi.get(self, "customization_apiservers")
 
     @_builtins.property
+    @pulumi.getter(name="customizationCilium")
+    def customization_cilium(self) -> pulumi.Output['outputs.KubeCustomizationCilium']:
+        """
+        Cilium CNI customization.
+        """
+        return pulumi.get(self, "customization_cilium")
+
+    @_builtins.property
     @pulumi.getter(name="customizationKubeProxy")
     def customization_kube_proxy(self) -> pulumi.Output[Optional['outputs.KubeCustomizationKubeProxy']]:
         """
@@ -881,6 +967,14 @@ class Kube(pulumi.CustomResource):
         **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
         """
         return pulumi.get(self, "customizations")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> pulumi.Output['outputs.KubeIpAllocationPolicy']:
+        """
+        IP allocation policy of the cluster. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "ip_allocation_policy")
 
     @_builtins.property
     @pulumi.getter(name="isUpToDate")

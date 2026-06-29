@@ -57,10 +57,6 @@ namespace Pulumi.Ovh.CloudProject
     ///         {
     ///             "eu-west-par-a",
     ///         },
-    ///         AttachFloatingIps = new Ovh.CloudProject.Inputs.KubeNodePoolAttachFloatingIpsArgs
-    ///         {
-    ///             Enabled = false,
-    ///         },
     ///     });
     /// 
     /// });
@@ -138,7 +134,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<bool> AntiAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        /// Configuration for floating IP attachment on pool nodes.
         /// </summary>
         [Output("attachFloatingIps")]
         public Output<Outputs.KubeNodePoolAttachFloatingIps> AttachFloatingIps { get; private set; } = null!;
@@ -204,7 +200,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<string> Flavor { get; private set; } = null!;
 
         /// <summary>
-        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         /// </summary>
         [Output("flavorName")]
         public Output<string> FlavorName { get; private set; } = null!;
@@ -335,7 +331,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? AntiAffinity { get; set; }
 
         /// <summary>
-        /// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        /// Configuration for floating IP attachment on pool nodes.
         /// </summary>
         [Input("attachFloatingIps")]
         public Input<Inputs.KubeNodePoolAttachFloatingIpsArgs>? AttachFloatingIps { get; set; }
@@ -383,7 +379,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<int>? DesiredNodes { get; set; }
 
         /// <summary>
-        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         /// </summary>
         [Input("flavorName", required: true)]
         public Input<string> FlavorName { get; set; } = null!;
@@ -445,7 +441,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? AntiAffinity { get; set; }
 
         /// <summary>
-        /// Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        /// Configuration for floating IP attachment on pool nodes.
         /// </summary>
         [Input("attachFloatingIps")]
         public Input<Inputs.KubeNodePoolAttachFloatingIpsGetArgs>? AttachFloatingIps { get; set; }
@@ -517,7 +513,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<string>? Flavor { get; set; }
 
         /// <summary>
-        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        /// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         /// </summary>
         [Input("flavorName")]
         public Input<string>? FlavorName { get; set; }

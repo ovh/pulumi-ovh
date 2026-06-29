@@ -22,24 +22,23 @@ __all__ = ['CloudStorageBlockVolumeArgs', 'CloudStorageBlockVolume']
 class CloudStorageBlockVolumeArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
                  create_from: Optional[pulumi.Input['CloudStorageBlockVolumeCreateFromArgs']] = None,
                  encryption: Optional[pulumi.Input['CloudStorageBlockVolumeEncryptionArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudStorageBlockVolume resource.
         :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] size: Size of the volume in GB.
         :param pulumi.Input['CloudStorageBlockVolumeCreateFromArgs'] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input['CloudStorageBlockVolumeEncryptionArgs'] encryption: Encryption configuration for the volume.
         :param pulumi.Input[_builtins.str] name: Volume name.
+        :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] volume_type: Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
         """
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "size", size)
         if create_from is not None:
             pulumi.set(__self__, "create_from", create_from)
@@ -47,6 +46,8 @@ class CloudStorageBlockVolumeArgs:
             pulumi.set(__self__, "encryption", encryption)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -61,18 +62,6 @@ class CloudStorageBlockVolumeArgs:
     @region.setter
     def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
@@ -121,6 +110,18 @@ class CloudStorageBlockVolumeArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
@@ -436,8 +437,6 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
@@ -598,7 +597,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def volume_type(self) -> pulumi.Output[_builtins.str]:
         """
         Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
         """

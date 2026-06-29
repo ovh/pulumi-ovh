@@ -87,6 +87,8 @@ def get_cloud_project_ssh_keys(region: Optional[_builtins.str] = None,
                                service_name: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudProjectSshKeysResult:
     """
+    > **NOTE** Prefer using the new `get_cloud_ssh_keys` data source instead.
+
     Get SSH keys in a Public Cloud project.
 
     ## Example Usage
@@ -117,6 +119,8 @@ def get_cloud_project_ssh_keys_output(region: Optional[pulumi.Input[Optional[_bu
                                       service_name: Optional[pulumi.Input[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudProjectSshKeysResult]:
     """
+    > **NOTE** Prefer using the new `get_cloud_ssh_keys` data source instead.
+
     Get SSH keys in a Public Cloud project.
 
     ## Example Usage

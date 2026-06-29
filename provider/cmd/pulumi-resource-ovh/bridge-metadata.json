@@ -1,6 +1,61 @@
 {
     "auto-aliasing": {
         "resources": {
+            "ovh_cloud_gateway": {
+                "current": "ovh:index/cloudGateway:CloudGateway",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "subnets": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "subnet_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_network_private_vrack": {
+                "current": "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack",
+                "majorVersion": 2
+            },
+            "ovh_cloud_network_private_vrack_subnet": {
+                "current": "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet",
+                "majorVersion": 2,
+                "fields": {
+                    "allocation_pools": {
+                        "maxItemsOne": false
+                    },
+                    "current_state": {
+                        "fields": {
+                            "allocation_pools": {
+                                "maxItemsOne": false
+                            },
+                            "dns_nameservers": {
+                                "maxItemsOne": false
+                            },
+                            "host_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "current_tasks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "dns_nameservers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_project": {
                 "current": "ovh:CloudProject/project:Project",
                 "majorVersion": 2,
@@ -405,6 +460,66 @@
                             }
                         }
                     },
+                    "customization_cilium": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cluster_mesh": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "api_server": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "hubble": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "relay": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ui": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "backend_resources": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "limits": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "requests": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "frontend_resources": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "limits": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "requests": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "customization_kube_proxy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -417,6 +532,9 @@
                                 }
                             }
                         }
+                    },
+                    "ip_allocation_policy": {
+                        "maxItemsOne": true
                     },
                     "kubeconfig_attributes": {
                         "maxItemsOne": false
@@ -434,6 +552,15 @@
                 "majorVersion": 2,
                 "fields": {
                     "ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_project_kube_log_subscription": {
+                "current": "ovh:index/cloudProjectKubeLogSubscription:CloudProjectKubeLogSubscription",
+                "majorVersion": 2,
+                "fields": {
+                    "resource": {
                         "maxItemsOne": false
                     }
                 }
@@ -722,6 +849,29 @@
             },
             "ovh_cloud_project_workflow_backup": {
                 "current": "ovh:CloudProject/workflowBackup:WorkflowBackup",
+                "majorVersion": 2
+            },
+            "ovh_cloud_security_group": {
+                "current": "ovh:index/cloudSecurityGroup:CloudSecurityGroup",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "default_rules": {
+                                "maxItemsOne": false
+                            },
+                            "rules": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "rule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_ssh_key": {
+                "current": "ovh:index/clousSSHKey:ClousSSHKey",
                 "majorVersion": 2
             },
             "ovh_cloud_storage_block_volume": {
@@ -1813,6 +1963,112 @@
             }
         },
         "datasources": {
+            "ovh_cloud_gateway": {
+                "current": "ovh:index/getCloudGateway:getCloudGateway",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "subnets": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "subnet_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_gateways": {
+                "current": "ovh:index/getCloudGateways:getCloudGateways",
+                "majorVersion": 2,
+                "fields": {
+                    "gateways": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "subnets": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_network_private_vrack": {
+                "current": "ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack",
+                "majorVersion": 2
+            },
+            "ovh_cloud_network_private_vrack_subnet": {
+                "current": "ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet",
+                "majorVersion": 2,
+                "fields": {
+                    "allocation_pools": {
+                        "maxItemsOne": false
+                    },
+                    "current_state": {
+                        "fields": {
+                            "allocation_pools": {
+                                "maxItemsOne": false
+                            },
+                            "dns_nameservers": {
+                                "maxItemsOne": false
+                            },
+                            "host_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "dns_nameservers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_network_private_vrack_subnets": {
+                "current": "ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets",
+                "majorVersion": 2,
+                "fields": {
+                    "subnets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allocation_pools": {
+                                    "maxItemsOne": false
+                                },
+                                "current_state": {
+                                    "fields": {
+                                        "allocation_pools": {
+                                            "maxItemsOne": false
+                                        },
+                                        "dns_nameservers": {
+                                            "maxItemsOne": false
+                                        },
+                                        "host_routes": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "dns_nameservers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_network_private_vracks": {
+                "current": "ovh:index/getCloudNetworkPrivateVracks:getCloudNetworkPrivateVracks",
+                "majorVersion": 2,
+                "fields": {
+                    "networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_project": {
                 "current": "ovh:Cloud/getProject:getProject",
                 "majorVersion": 2
@@ -2355,6 +2611,66 @@
                             }
                         }
                     },
+                    "customization_cilium": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cluster_mesh": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "api_server": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "hubble": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "relay": {
+                                                "maxItemsOne": true
+                                            },
+                                            "ui": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "backend_resources": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "limits": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "requests": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "frontend_resources": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "limits": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "requests": {
+                                                                        "maxItemsOne": true
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "customization_kube_proxy": {
                         "maxItemsOne": true,
                         "elem": {
@@ -2367,6 +2683,9 @@
                                 }
                             }
                         }
+                    },
+                    "ip_allocation_policy": {
+                        "maxItemsOne": true
                     },
                     "kubeconfig_attributes": {
                         "maxItemsOne": false
@@ -2381,6 +2700,15 @@
                 "majorVersion": 2,
                 "fields": {
                     "ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_project_kube_log_subscription": {
+                "current": "ovh:index/getCloudProjectKubeLogSubscription:getCloudProjectKubeLogSubscription",
+                "majorVersion": 2,
+                "fields": {
+                    "resource": {
                         "maxItemsOne": false
                     }
                 }
@@ -2800,6 +3128,95 @@
                 "majorVersion": 2,
                 "fields": {
                     "projects": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_region": {
+                "current": "ovh:index/getCloudRegion:getCloudRegion",
+                "majorVersion": 2,
+                "fields": {
+                    "availability_zones": {
+                        "maxItemsOne": false
+                    },
+                    "services": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_regions": {
+                "current": "ovh:index/getCloudRegions:getCloudRegions",
+                "majorVersion": 2,
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "availability_zones": {
+                                    "maxItemsOne": false
+                                },
+                                "services": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_security_group": {
+                "current": "ovh:index/getCloudSecurityGroup:getCloudSecurityGroup",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "default_rules": {
+                                "maxItemsOne": false
+                            },
+                            "rules": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "rule": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_security_groups": {
+                "current": "ovh:index/getCloudSecurityGroups:getCloudSecurityGroups",
+                "majorVersion": 2,
+                "fields": {
+                    "security_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "default_rules": {
+                                            "maxItemsOne": false
+                                        },
+                                        "rules": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "rule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_ssh_key": {
+                "current": "ovh:index/getCloudSshKey:getCloudSshKey",
+                "majorVersion": 2
+            },
+            "ovh_cloud_ssh_keys": {
+                "current": "ovh:index/getCloudSshKeys:getCloudSshKeys",
+                "majorVersion": 2,
+                "fields": {
+                    "ssh_keys": {
                         "maxItemsOne": false
                     }
                 }
@@ -4006,17 +4423,23 @@
             "ovh:Vrack/vrack:Vrack": 0,
             "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": 1,
             "ovh:Vrack/vrackservices:Vrackservices": 0,
+            "ovh:index/cloudGateway:CloudGateway": 1,
+            "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack": 1,
+            "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet": 1,
             "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
             "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser": 0,
             "ovh:index/cloudProjectDatabaseValkeyUser:CloudProjectDatabaseValkeyUser": 0,
             "ovh:index/cloudProjectFileStorageShare:CloudProjectFileStorageShare": 1,
             "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork": 1,
+            "ovh:index/cloudProjectKubeLogSubscription:CloudProjectKubeLogSubscription": 0,
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
             "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,
+            "ovh:index/cloudSecurityGroup:CloudSecurityGroup": 1,
             "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": 1,
             "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": 1,
             "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": 1,
+            "ovh:index/clousSSHKey:ClousSSHKey": 1,
             "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
             "ovh:index/emailDomainAccount:EmailDomainAccount": 1,
@@ -4175,15 +4598,28 @@
             "ovh:Vps/getVps:getVps": 0,
             "ovh:Vps/getVpss:getVpss": 0,
             "ovh:Vrack/getVracks:getVracks": 0,
+            "ovh:index/getCloudGateway:getCloudGateway": 1,
+            "ovh:index/getCloudGateways:getCloudGateways": 1,
+            "ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack": 1,
+            "ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet": 1,
+            "ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets": 1,
+            "ovh:index/getCloudNetworkPrivateVracks:getCloudNetworkPrivateVracks": 1,
             "ovh:index/getCloudProjectDatabaseClickhouseUser:getCloudProjectDatabaseClickhouseUser": 0,
             "ovh:index/getCloudProjectDatabaseValkeyUser:getCloudProjectDatabaseValkeyUser": 0,
             "ovh:index/getCloudProjectFlavor:getCloudProjectFlavor": 1,
             "ovh:index/getCloudProjectGateway:getCloudProjectGateway": 1,
+            "ovh:index/getCloudProjectKubeLogSubscription:getCloudProjectKubeLogSubscription": 0,
             "ovh:index/getCloudProjectRancherCapabilitiesPlan:getCloudProjectRancherCapabilitiesPlan": 1,
             "ovh:index/getCloudProjectRancherCapabilitiesVersion:getCloudProjectRancherCapabilitiesVersion": 1,
             "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey": 1,
             "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys": 1,
             "ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration": 1,
+            "ovh:index/getCloudRegion:getCloudRegion": 1,
+            "ovh:index/getCloudRegions:getCloudRegions": 1,
+            "ovh:index/getCloudSecurityGroup:getCloudSecurityGroup": 1,
+            "ovh:index/getCloudSecurityGroups:getCloudSecurityGroups": 1,
+            "ovh:index/getCloudSshKey:getCloudSshKey": 1,
+            "ovh:index/getCloudSshKeys:getCloudSshKeys": 1,
             "ovh:index/getCloudStorageBlockVolume:getCloudStorageBlockVolume": 1,
             "ovh:index/getCloudStorageBlockVolumeBackup:getCloudStorageBlockVolumeBackup": 1,
             "ovh:index/getCloudStorageBlockVolumeBackups:getCloudStorageBlockVolumeBackups": 1,

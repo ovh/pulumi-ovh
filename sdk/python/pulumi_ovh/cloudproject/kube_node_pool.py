@@ -39,10 +39,10 @@ class KubeNodePoolArgs:
                  template: Optional[pulumi.Input['KubeNodePoolTemplateArgs']] = None):
         """
         The set of arguments for constructing a KubeNodePool resource.
-        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input['KubeNodePoolAttachFloatingIpsArgs'] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        :param pulumi.Input['KubeNodePoolAttachFloatingIpsArgs'] attach_floating_ips: Configuration for floating IP attachment on pool nodes.
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
@@ -91,7 +91,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Input[_builtins.str]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "flavor_name")
 
@@ -127,7 +127,7 @@ class KubeNodePoolArgs:
     @pulumi.getter(name="attachFloatingIps")
     def attach_floating_ips(self) -> Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']]:
         """
-        Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        Configuration for floating IP attachment on pool nodes.
         """
         return pulumi.get(self, "attach_floating_ips")
 
@@ -311,7 +311,7 @@ class _KubeNodePoolState:
         """
         Input properties used for looking up and filtering KubeNodePool resources.
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input['KubeNodePoolAttachFloatingIpsArgs'] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        :param pulumi.Input['KubeNodePoolAttachFloatingIpsArgs'] attach_floating_ips: Configuration for floating IP attachment on pool nodes.
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
@@ -322,7 +322,7 @@ class _KubeNodePoolState:
         :param pulumi.Input[_builtins.int] current_nodes: Number of nodes present in the pool
         :param pulumi.Input[_builtins.int] desired_nodes: number of nodes to start.
         :param pulumi.Input[_builtins.str] flavor: Flavor name
-        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[_builtins.int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -403,7 +403,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="attachFloatingIps")
     def attach_floating_ips(self) -> Optional[pulumi.Input['KubeNodePoolAttachFloatingIpsArgs']]:
         """
-        Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        Configuration for floating IP attachment on pool nodes.
         """
         return pulumi.get(self, "attach_floating_ips")
 
@@ -535,7 +535,7 @@ class _KubeNodePoolState:
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "flavor_name")
 
@@ -742,10 +742,7 @@ class KubeNodePool(pulumi.CustomResource):
             name="my-pool-zone-a",
             flavor_name="b3-8",
             desired_nodes=3,
-            availability_zones=["eu-west-par-a"],
-            attach_floating_ips={
-                "enabled": False,
-            })
+            availability_zones=["eu-west-par-a"])
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -796,14 +793,14 @@ class KubeNodePool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        :param pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']] attach_floating_ips: Configuration for floating IP attachment on pool nodes.
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.float] autoscaling_scale_down_utilization_threshold: scaleDownUtilizationThreshold autoscaling parameter Node utilization level, defined as sum of requested resources divided by capacity, below which a node can be considered for scale down
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] availability_zones: list of availability zones to associate the pool - **mandatory for multi-zone** cluster - only one zone is supported at the moment.
         :param pulumi.Input[_builtins.int] desired_nodes: number of nodes to start.
-        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[_builtins.int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -849,10 +846,7 @@ class KubeNodePool(pulumi.CustomResource):
             name="my-pool-zone-a",
             flavor_name="b3-8",
             desired_nodes=3,
-            availability_zones=["eu-west-par-a"],
-            attach_floating_ips={
-                "enabled": False,
-            })
+            availability_zones=["eu-west-par-a"])
         ```
 
         Create an advanced node pool in your Kubernetes cluster:
@@ -1012,7 +1006,7 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] anti_affinity: should the pool use the anti-affinity feature. Default to `false`. **Changing this value recreates the resource.**
-        :param pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']] attach_floating_ips: Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        :param pulumi.Input[Union['KubeNodePoolAttachFloatingIpsArgs', 'KubeNodePoolAttachFloatingIpsArgsDict']] attach_floating_ips: Configuration for floating IP attachment on pool nodes.
         :param pulumi.Input[_builtins.bool] autoscale: Enable auto-scaling for the pool. Default to `false`.
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unneeded_time_seconds: scaleDownUnneededTimeSeconds autoscaling parameter How long a node should be unneeded before it is eligible for scale down
         :param pulumi.Input[_builtins.int] autoscaling_scale_down_unready_time_seconds: scaleDownUnreadyTimeSeconds autoscaling parameter How long an unready node should be unneeded before it is eligible for scale down
@@ -1023,7 +1017,7 @@ class KubeNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] current_nodes: Number of nodes present in the pool
         :param pulumi.Input[_builtins.int] desired_nodes: number of nodes to start.
         :param pulumi.Input[_builtins.str] flavor: Flavor name
-        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] flavor_name: a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] kube_id: The id of the managed kubernetes cluster. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] max_nodes: maximum number of nodes allowed in the pool. Setting `desired_nodes` over this value will raise an error.
         :param pulumi.Input[_builtins.int] min_nodes: minimum number of nodes allowed in the pool. Setting `desired_nodes` under this value will raise an error.
@@ -1080,7 +1074,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="attachFloatingIps")
     def attach_floating_ips(self) -> pulumi.Output['outputs.KubeNodePoolAttachFloatingIps']:
         """
-        Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+        Configuration for floating IP attachment on pool nodes.
         """
         return pulumi.get(self, "attach_floating_ips")
 
@@ -1168,7 +1162,7 @@ class KubeNodePool(pulumi.CustomResource):
     @pulumi.getter(name="flavorName")
     def flavor_name(self) -> pulumi.Output[_builtins.str]:
         """
-        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+        a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "flavor_name")
 

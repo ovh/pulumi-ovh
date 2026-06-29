@@ -76,7 +76,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePool;
  * import com.ovhcloud.pulumi.ovh.CloudProject.KubeNodePoolArgs;
- * import com.pulumi.ovh.CloudProject.inputs.KubeNodePoolAttachFloatingIpsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -97,9 +96,6 @@ import javax.annotation.Nullable;
  *             .flavorName("b3-8")
  *             .desiredNodes(3)
  *             .availabilityZones("eu-west-par-a")
- *             .attachFloatingIps(KubeNodePoolAttachFloatingIpsArgs.builder()
- *                 .enabled(false)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -199,14 +195,14 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
         return this.antiAffinity;
     }
     /**
-     * Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+     * Configuration for floating IP attachment on pool nodes.
      * 
      */
     @Export(name="attachFloatingIps", refs={KubeNodePoolAttachFloatingIps.class}, tree="[0]")
     private Output<KubeNodePoolAttachFloatingIps> attachFloatingIps;
 
     /**
-     * @return Configuration for floating IP attachment on pool nodes. (only available on Standard plan)
+     * @return Configuration for floating IP attachment on pool nodes.
      * 
      */
     public Output<KubeNodePoolAttachFloatingIps> attachFloatingIps() {
@@ -353,14 +349,14 @@ public class KubeNodePool extends com.pulumi.resources.CustomResource {
         return this.flavor;
     }
     /**
-     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+     * a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="flavorName", refs={String.class}, tree="[0]")
     private Output<String> flavorName;
 
     /**
-     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b2-7&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
+     * @return a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: &#34;b3-8&#34;. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> flavorName() {

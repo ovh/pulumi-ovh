@@ -175,8 +175,8 @@ namespace Pulumi.Ovh
         /// <summary>
         /// The id of the public cloud project. Changing this value recreates the resource.
         /// </summary>
-        [Input("serviceName", required: true)]
-        public Input<string> ServiceName { get; set; } = null!;
+        [Input("serviceName")]
+        public Input<string>? ServiceName { get; set; }
 
         /// <summary>
         /// The ID of the volume to snapshot. Changing this value recreates the resource.

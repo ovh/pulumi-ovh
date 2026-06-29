@@ -96,14 +96,14 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
     }
 
     /**
-     * See Argument Reference above.
+     * The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      * 
      */
     @Import(name="gatewayIp")
     private @Nullable Output<String> gatewayIp;
 
     /**
-     * @return See Argument Reference above.
+     * @return The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      * 
      */
     public Optional<Output<String>> gatewayIp() {
@@ -361,7 +361,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gatewayIp See Argument Reference above.
+         * @param gatewayIp The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class NetworkPrivateSubnetV2Args extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param gatewayIp See Argument Reference above.
+         * @param gatewayIp The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
          * 
          * @return builder
          * 

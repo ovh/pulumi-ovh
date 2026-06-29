@@ -15,6 +15,36 @@ else:
 from . import _utilities
 
 __all__ = [
+    'CloudGatewayCurrentStateArgs',
+    'CloudGatewayCurrentStateArgsDict',
+    'CloudGatewayCurrentStateExternalGatewayArgs',
+    'CloudGatewayCurrentStateExternalGatewayArgsDict',
+    'CloudGatewayCurrentStateLocationArgs',
+    'CloudGatewayCurrentStateLocationArgsDict',
+    'CloudGatewayCurrentStateSubnetArgs',
+    'CloudGatewayCurrentStateSubnetArgsDict',
+    'CloudGatewayExternalGatewayArgs',
+    'CloudGatewayExternalGatewayArgsDict',
+    'CloudNetworkPrivateVrackCurrentStateArgs',
+    'CloudNetworkPrivateVrackCurrentStateArgsDict',
+    'CloudNetworkPrivateVrackCurrentStateLocationArgs',
+    'CloudNetworkPrivateVrackCurrentStateLocationArgsDict',
+    'CloudNetworkPrivateVrackSubnetAllocationPoolArgs',
+    'CloudNetworkPrivateVrackSubnetAllocationPoolArgsDict',
+    'CloudNetworkPrivateVrackSubnetCurrentStateArgs',
+    'CloudNetworkPrivateVrackSubnetCurrentStateArgsDict',
+    'CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs',
+    'CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgsDict',
+    'CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs',
+    'CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgsDict',
+    'CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs',
+    'CloudNetworkPrivateVrackSubnetCurrentStateLocationArgsDict',
+    'CloudNetworkPrivateVrackSubnetCurrentTaskArgs',
+    'CloudNetworkPrivateVrackSubnetCurrentTaskArgsDict',
+    'CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs',
+    'CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgsDict',
+    'CloudProjectKubeLogSubscriptionResourceArgs',
+    'CloudProjectKubeLogSubscriptionResourceArgsDict',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleArgs',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleArgsDict',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs',
@@ -29,6 +59,16 @@ __all__ = [
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgsDict',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgsDict',
+    'CloudSecurityGroupCurrentStateArgs',
+    'CloudSecurityGroupCurrentStateArgsDict',
+    'CloudSecurityGroupCurrentStateDefaultRuleArgs',
+    'CloudSecurityGroupCurrentStateDefaultRuleArgsDict',
+    'CloudSecurityGroupCurrentStateLocationArgs',
+    'CloudSecurityGroupCurrentStateLocationArgsDict',
+    'CloudSecurityGroupCurrentStateRuleArgs',
+    'CloudSecurityGroupCurrentStateRuleArgsDict',
+    'CloudSecurityGroupRuleArgs',
+    'CloudSecurityGroupRuleArgsDict',
     'CloudStorageBlockVolumeBackupCurrentStateArgs',
     'CloudStorageBlockVolumeBackupCurrentStateArgsDict',
     'CloudStorageBlockVolumeBackupCurrentStateLocationArgs',
@@ -102,6 +142,1065 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class CloudGatewayCurrentStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Gateway description.
+        """
+        external_gateway: NotRequired[pulumi.Input['CloudGatewayCurrentStateExternalGatewayArgsDict']]
+        """
+        External gateway configuration:
+        """
+        external_ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        External IP address assigned to the gateway.
+        """
+        location: NotRequired[pulumi.Input['CloudGatewayCurrentStateLocationArgsDict']]
+        """
+        Location details:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Gateway name.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        """
+        subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudGatewayCurrentStateSubnetArgsDict']]]]
+        """
+        Currently attached subnets:
+        """
+elif False:
+    CloudGatewayCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudGatewayCurrentStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_gateway: Optional[pulumi.Input['CloudGatewayCurrentStateExternalGatewayArgs']] = None,
+                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudGatewayCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnets: Optional[pulumi.Input[Sequence[pulumi.Input['CloudGatewayCurrentStateSubnetArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Gateway description.
+        :param pulumi.Input['CloudGatewayCurrentStateExternalGatewayArgs'] external_gateway: External gateway configuration:
+        :param pulumi.Input[_builtins.str] external_ip: External IP address assigned to the gateway.
+        :param pulumi.Input['CloudGatewayCurrentStateLocationArgs'] location: Location details:
+        :param pulumi.Input[_builtins.str] name: Gateway name.
+        :param pulumi.Input[_builtins.str] status: OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        :param pulumi.Input[Sequence[pulumi.Input['CloudGatewayCurrentStateSubnetArgs']]] subnets: Currently attached subnets:
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if external_gateway is not None:
+            pulumi.set(__self__, "external_gateway", external_gateway)
+        if external_ip is not None:
+            pulumi.set(__self__, "external_ip", external_ip)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Gateway description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalGateway")
+    def external_gateway(self) -> Optional[pulumi.Input['CloudGatewayCurrentStateExternalGatewayArgs']]:
+        """
+        External gateway configuration:
+        """
+        return pulumi.get(self, "external_gateway")
+
+    @external_gateway.setter
+    def external_gateway(self, value: Optional[pulumi.Input['CloudGatewayCurrentStateExternalGatewayArgs']]):
+        pulumi.set(self, "external_gateway", value)
+
+    @_builtins.property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        External IP address assigned to the gateway.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @external_ip.setter
+    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "external_ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudGatewayCurrentStateLocationArgs']]:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudGatewayCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Gateway name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudGatewayCurrentStateSubnetArgs']]]]:
+        """
+        Currently attached subnets:
+        """
+        return pulumi.get(self, "subnets")
+
+    @subnets.setter
+    def subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudGatewayCurrentStateSubnetArgs']]]]):
+        pulumi.set(self, "subnets", value)
+
+
+if not MYPY:
+    class CloudGatewayCurrentStateExternalGatewayArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the external gateway is enabled.
+        """
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+elif False:
+    CloudGatewayCurrentStateExternalGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudGatewayCurrentStateExternalGatewayArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 model: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the external gateway is enabled.
+        :param pulumi.Input[_builtins.str] model: External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+
+if not MYPY:
+    class CloudGatewayCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone for the gateway. **Changing this value recreates the resource.**
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the gateway will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudGatewayCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudGatewayCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone for the gateway. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] region: Region where the gateway will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone for the gateway. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the gateway will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudGatewayCurrentStateSubnetArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Subnet ID.
+        """
+elif False:
+    CloudGatewayCurrentStateSubnetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudGatewayCurrentStateSubnetArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Subnet ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class CloudGatewayExternalGatewayArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Whether the external gateway is enabled.
+        """
+        model: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+elif False:
+    CloudGatewayExternalGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudGatewayExternalGatewayArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool],
+                 model: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the external gateway is enabled.
+        :param pulumi.Input[_builtins.str] model: External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        return pulumi.get(self, "model")
+
+    @model.setter
+    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "model", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackCurrentStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Network description. **Changing this value recreates the resource.**
+        """
+        location: NotRequired[pulumi.Input['CloudNetworkPrivateVrackCurrentStateLocationArgsDict']]
+        """
+        Location details:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Network name.
+        """
+        vlan_id: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+        """
+elif False:
+    CloudNetworkPrivateVrackCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackCurrentStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudNetworkPrivateVrackCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 vlan_id: Optional[pulumi.Input[_builtins.float]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Network description. **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudNetworkPrivateVrackCurrentStateLocationArgs'] location: Location details:
+        :param pulumi.Input[_builtins.str] name: Network name.
+        :param pulumi.Input[_builtins.float] vlan_id: VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if vlan_id is not None:
+            pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Network description. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudNetworkPrivateVrackCurrentStateLocationArgs']]:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudNetworkPrivateVrackCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Network name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+        """
+        return pulumi.get(self, "vlan_id")
+
+    @vlan_id.setter
+    def vlan_id(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "vlan_id", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackCurrentStateLocationArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the network will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudNetworkPrivateVrackCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: Region where the network will be created. **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the network will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetAllocationPoolArgsDict(TypedDict):
+        end: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        End IP address of the pool.
+        """
+        start: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Start IP address of the pool.
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetAllocationPoolArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetAllocationPoolArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[_builtins.str]] = None,
+                 start: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end: End IP address of the pool.
+        :param pulumi.Input[_builtins.str] start: Start IP address of the pool.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetCurrentStateArgsDict(TypedDict):
+        allocation_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgsDict']]]]
+        """
+        IP address allocation pools:
+        """
+        cidr: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Subnet description.
+        """
+        dhcp_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether DHCP is enabled on the subnet.
+        """
+        dns_nameservers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of DNS nameserver addresses.
+        """
+        gateway_ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Default gateway IP address.
+        """
+        host_routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgsDict']]]]
+        """
+        Static host routes:
+        """
+        location: NotRequired[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateLocationArgsDict']]
+        """
+        Location details:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Subnet name.
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetCurrentStateArgs:
+    def __init__(__self__, *,
+                 allocation_pools: Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs']]]] = None,
+                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dhcp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 dns_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 gateway_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_routes: Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs']]]] = None,
+                 location: Optional[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs']]] allocation_pools: IP address allocation pools:
+        :param pulumi.Input[_builtins.str] cidr: CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] description: Subnet description.
+        :param pulumi.Input[_builtins.bool] dhcp_enabled: Whether DHCP is enabled on the subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dns_nameservers: List of DNS nameserver addresses.
+        :param pulumi.Input[_builtins.str] gateway_ip: Default gateway IP address.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs']]] host_routes: Static host routes:
+        :param pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs'] location: Location details:
+        :param pulumi.Input[_builtins.str] name: Subnet name.
+        """
+        if allocation_pools is not None:
+            pulumi.set(__self__, "allocation_pools", allocation_pools)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dhcp_enabled is not None:
+            pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        if dns_nameservers is not None:
+            pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
+        if host_routes is not None:
+            pulumi.set(__self__, "host_routes", host_routes)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs']]]]:
+        """
+        IP address allocation pools:
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @allocation_pools.setter
+    def allocation_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs']]]]):
+        pulumi.set(self, "allocation_pools", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "cidr")
+
+    @cidr.setter
+    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cidr", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Subnet description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether DHCP is enabled on the subnet.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @dhcp_enabled.setter
+    def dhcp_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "dhcp_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dnsNameservers")
+    def dns_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of DNS nameserver addresses.
+        """
+        return pulumi.get(self, "dns_nameservers")
+
+    @dns_nameservers.setter
+    def dns_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "dns_nameservers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default gateway IP address.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @gateway_ip.setter
+    def gateway_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "gateway_ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs']]]]:
+        """
+        Static host routes:
+        """
+        return pulumi.get(self, "host_routes")
+
+    @host_routes.setter
+    def host_routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs']]]]):
+        pulumi.set(self, "host_routes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs']]:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Subnet name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgsDict(TypedDict):
+        end: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        End IP address of the pool.
+        """
+        start: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Start IP address of the pool.
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[_builtins.str]] = None,
+                 start: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] end: End IP address of the pool.
+        :param pulumi.Input[_builtins.str] start: Start IP address of the pool.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "end", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "start", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgsDict(TypedDict):
+        destination: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Destination CIDR.
+        """
+        next_hop: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Next hop IP address.
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs:
+    def __init__(__self__, *,
+                 destination: Optional[pulumi.Input[_builtins.str]] = None,
+                 next_hop: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] destination: Destination CIDR.
+        :param pulumi.Input[_builtins.str] next_hop: Next hop IP address.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Destination CIDR.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "destination", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Next hop IP address.
+        """
+        return pulumi.get(self, "next_hop")
+
+    @next_hop.setter
+    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "next_hop", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone within the region.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the subnet will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone within the region.
+        :param pulumi.Input[_builtins.str] region: Region where the subnet will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the subnet will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetCurrentTaskArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgsDict']]]]
+        """
+        Errors that occured on the task
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Subnet ID.
+        """
+        link: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Link to the task details
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Current global status of the current task
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the current task
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetCurrentTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetCurrentTaskArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs']]]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 link: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs']]] errors: Errors that occured on the task
+        :param pulumi.Input[_builtins.str] id: Subnet ID.
+        :param pulumi.Input[_builtins.str] link: Link to the task details
+        :param pulumi.Input[_builtins.str] status: Current global status of the current task
+        :param pulumi.Input[_builtins.str] type: Type of the current task
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs']]]]:
+        """
+        Errors that occured on the task
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @link.setter
+    def link(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "link", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Error description
+        """
+elif False:
+    CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs:
+    def __init__(__self__, *,
+                 message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message: Error description
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Error description
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class CloudProjectKubeLogSubscriptionResourceArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the subscribed resource, where the logs come from.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the subscribed resource, where the logs come from.
+        """
+elif False:
+    CloudProjectKubeLogSubscriptionResourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudProjectKubeLogSubscriptionResourceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the subscribed resource, where the logs come from.
+        :param pulumi.Input[_builtins.str] type: Type of the subscribed resource, where the logs come from.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the subscribed resource, where the logs come from.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the subscribed resource, where the logs come from.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
 
 if not MYPY:
     class CloudProjectStorageObjectBucketLifecycleConfigurationRuleArgsDict(TypedDict):
@@ -663,6 +1762,722 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs:
     @days.setter
     def days(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "days", value)
+
+
+if not MYPY:
+    class CloudSecurityGroupCurrentStateArgsDict(TypedDict):
+        default_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateDefaultRuleArgsDict']]]]
+        """
+        Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the security group.
+        """
+        location: NotRequired[pulumi.Input['CloudSecurityGroupCurrentStateLocationArgsDict']]
+        """
+        Location details:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the security group.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateRuleArgsDict']]]]
+        """
+        User-specified security group rules with their IDs:
+        """
+elif False:
+    CloudSecurityGroupCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudSecurityGroupCurrentStateArgs:
+    def __init__(__self__, *,
+                 default_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateDefaultRuleArgs']]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudSecurityGroupCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateDefaultRuleArgs']]] default_rules: Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+        :param pulumi.Input[_builtins.str] description: Description of the security group.
+        :param pulumi.Input['CloudSecurityGroupCurrentStateLocationArgs'] location: Location details:
+        :param pulumi.Input[_builtins.str] name: Name of the security group.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateRuleArgs']]] rules: User-specified security group rules with their IDs:
+        """
+        if default_rules is not None:
+            pulumi.set(__self__, "default_rules", default_rules)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRules")
+    def default_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateDefaultRuleArgs']]]]:
+        """
+        Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+        """
+        return pulumi.get(self, "default_rules")
+
+    @default_rules.setter
+    def default_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateDefaultRuleArgs']]]]):
+        pulumi.set(self, "default_rules", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the security group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudSecurityGroupCurrentStateLocationArgs']]:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudSecurityGroupCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the security group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateRuleArgs']]]]:
+        """
+        User-specified security group rules with their IDs:
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudSecurityGroupCurrentStateRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+if not MYPY:
+    class CloudSecurityGroupCurrentStateDefaultRuleArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the security group.
+        """
+        direction: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Direction of the rule.
+        """
+        ethernet_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Ether type.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Rule ID.
+        """
+        port_range_max: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum port number.
+        """
+        port_range_min: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minimum port number.
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Protocol.
+        """
+        remote_group_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Remote security group ID.
+        """
+        remote_ip_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Remote IP prefix.
+        """
+elif False:
+    CloudSecurityGroupCurrentStateDefaultRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudSecurityGroupCurrentStateDefaultRuleArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 direction: Optional[pulumi.Input[_builtins.str]] = None,
+                 ethernet_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 port_range_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 port_range_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 remote_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 remote_ip_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the security group.
+        :param pulumi.Input[_builtins.str] direction: Direction of the rule.
+        :param pulumi.Input[_builtins.str] ethernet_type: Ether type.
+        :param pulumi.Input[_builtins.str] id: Rule ID.
+        :param pulumi.Input[_builtins.int] port_range_max: Maximum port number.
+        :param pulumi.Input[_builtins.int] port_range_min: Minimum port number.
+        :param pulumi.Input[_builtins.str] protocol: Protocol.
+        :param pulumi.Input[_builtins.str] remote_group_id: Remote security group ID.
+        :param pulumi.Input[_builtins.str] remote_ip_prefix: Remote IP prefix.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ethernet_type is not None:
+            pulumi.set(__self__, "ethernet_type", ethernet_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if port_range_max is not None:
+            pulumi.set(__self__, "port_range_max", port_range_max)
+        if port_range_min is not None:
+            pulumi.set(__self__, "port_range_min", port_range_min)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if remote_group_id is not None:
+            pulumi.set(__self__, "remote_group_id", remote_group_id)
+        if remote_ip_prefix is not None:
+            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the security group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Ether type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @ethernet_type.setter
+    def ethernet_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ethernet_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @port_range_max.setter
+    def port_range_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port_range_max", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @port_range_min.setter
+    def port_range_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port_range_min", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @remote_group_id.setter
+    def remote_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remote_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+    @remote_ip_prefix.setter
+    def remote_ip_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remote_ip_prefix", value)
+
+
+if not MYPY:
+    class CloudSecurityGroupCurrentStateLocationArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the security group will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudSecurityGroupCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudSecurityGroupCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: Region where the security group will be created. **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the security group will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudSecurityGroupCurrentStateRuleArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the security group.
+        """
+        direction: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Direction of the rule.
+        """
+        ethernet_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Ether type.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Rule ID.
+        """
+        port_range_max: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum port number.
+        """
+        port_range_min: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minimum port number.
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Protocol.
+        """
+        remote_group_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Remote security group ID.
+        """
+        remote_ip_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Remote IP prefix.
+        """
+elif False:
+    CloudSecurityGroupCurrentStateRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudSecurityGroupCurrentStateRuleArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 direction: Optional[pulumi.Input[_builtins.str]] = None,
+                 ethernet_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 port_range_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 port_range_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 remote_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 remote_ip_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the security group.
+        :param pulumi.Input[_builtins.str] direction: Direction of the rule.
+        :param pulumi.Input[_builtins.str] ethernet_type: Ether type.
+        :param pulumi.Input[_builtins.str] id: Rule ID.
+        :param pulumi.Input[_builtins.int] port_range_max: Maximum port number.
+        :param pulumi.Input[_builtins.int] port_range_min: Minimum port number.
+        :param pulumi.Input[_builtins.str] protocol: Protocol.
+        :param pulumi.Input[_builtins.str] remote_group_id: Remote security group ID.
+        :param pulumi.Input[_builtins.str] remote_ip_prefix: Remote IP prefix.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ethernet_type is not None:
+            pulumi.set(__self__, "ethernet_type", ethernet_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if port_range_max is not None:
+            pulumi.set(__self__, "port_range_max", port_range_max)
+        if port_range_min is not None:
+            pulumi.set(__self__, "port_range_min", port_range_min)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if remote_group_id is not None:
+            pulumi.set(__self__, "remote_group_id", remote_group_id)
+        if remote_ip_prefix is not None:
+            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the security group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Ether type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @ethernet_type.setter
+    def ethernet_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ethernet_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @port_range_max.setter
+    def port_range_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port_range_max", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @port_range_min.setter
+    def port_range_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port_range_min", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @remote_group_id.setter
+    def remote_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remote_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+    @remote_ip_prefix.setter
+    def remote_ip_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remote_ip_prefix", value)
+
+
+if not MYPY:
+    class CloudSecurityGroupRuleArgsDict(TypedDict):
+        direction: pulumi.Input[_builtins.str]
+        """
+        Direction of the rule (`INGRESS` or `EGRESS`).
+        """
+        ethernet_type: pulumi.Input[_builtins.str]
+        """
+        Ether type (`IPV4` or `IPV6`).
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the rule.
+
+        > **NOTE:** When a security group is created, OpenStack automatically adds a
+        default egress rule (allowing all outbound traffic). This default rule is **not**
+        part of the managed `rule` set: it is never sent in your configuration and never
+        appears under `rule`, so it will not show up as drift on subsequent plans. It is
+        surfaced for information only under `current_state.default_rules`.
+        """
+        port_range_max: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum port number.
+        """
+        port_range_min: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minimum port number.
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+        """
+        remote_group_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Remote security group ID.
+        """
+        remote_ip_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Remote IP prefix (CIDR notation).
+        """
+elif False:
+    CloudSecurityGroupRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudSecurityGroupRuleArgs:
+    def __init__(__self__, *,
+                 direction: pulumi.Input[_builtins.str],
+                 ethernet_type: pulumi.Input[_builtins.str],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 port_range_max: Optional[pulumi.Input[_builtins.int]] = None,
+                 port_range_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 remote_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 remote_ip_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] direction: Direction of the rule (`INGRESS` or `EGRESS`).
+        :param pulumi.Input[_builtins.str] ethernet_type: Ether type (`IPV4` or `IPV6`).
+        :param pulumi.Input[_builtins.str] description: Description of the rule.
+               
+               > **NOTE:** When a security group is created, OpenStack automatically adds a
+               default egress rule (allowing all outbound traffic). This default rule is **not**
+               part of the managed `rule` set: it is never sent in your configuration and never
+               appears under `rule`, so it will not show up as drift on subsequent plans. It is
+               surfaced for information only under `current_state.default_rules`.
+        :param pulumi.Input[_builtins.int] port_range_max: Maximum port number.
+        :param pulumi.Input[_builtins.int] port_range_min: Minimum port number.
+        :param pulumi.Input[_builtins.str] protocol: Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+        :param pulumi.Input[_builtins.str] remote_group_id: Remote security group ID.
+        :param pulumi.Input[_builtins.str] remote_ip_prefix: Remote IP prefix (CIDR notation).
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if port_range_max is not None:
+            pulumi.set(__self__, "port_range_max", port_range_max)
+        if port_range_min is not None:
+            pulumi.set(__self__, "port_range_min", port_range_min)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if remote_group_id is not None:
+            pulumi.set(__self__, "remote_group_id", remote_group_id)
+        if remote_ip_prefix is not None:
+            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> pulumi.Input[_builtins.str]:
+        """
+        Direction of the rule (`INGRESS` or `EGRESS`).
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Ether type (`IPV4` or `IPV6`).
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @ethernet_type.setter
+    def ethernet_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ethernet_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the rule.
+
+        > **NOTE:** When a security group is created, OpenStack automatically adds a
+        default egress rule (allowing all outbound traffic). This default rule is **not**
+        part of the managed `rule` set: it is never sent in your configuration and never
+        appears under `rule`, so it will not show up as drift on subsequent plans. It is
+        surfaced for information only under `current_state.default_rules`.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @port_range_max.setter
+    def port_range_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port_range_max", value)
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @port_range_min.setter
+    def port_range_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port_range_min", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @remote_group_id.setter
+    def remote_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remote_group_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Remote IP prefix (CIDR notation).
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+    @remote_ip_prefix.setter
+    def remote_ip_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "remote_ip_prefix", value)
 
 
 if not MYPY:

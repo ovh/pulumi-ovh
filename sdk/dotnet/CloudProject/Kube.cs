@@ -36,6 +36,12 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<Outputs.KubeCustomizationApiserver>> CustomizationApiservers { get; private set; } = null!;
 
         /// <summary>
+        /// Cilium CNI customization.
+        /// </summary>
+        [Output("customizationCilium")]
+        public Output<Outputs.KubeCustomizationCilium> CustomizationCilium { get; private set; } = null!;
+
+        /// <summary>
         /// Kubernetes kube-proxy customization
         /// </summary>
         [Output("customizationKubeProxy")]
@@ -46,6 +52,12 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         [Output("customizations")]
         public Output<ImmutableArray<Outputs.KubeCustomization>> Customizations { get; private set; } = null!;
+
+        /// <summary>
+        /// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+        /// </summary>
+        [Output("ipAllocationPolicy")]
+        public Output<Outputs.KubeIpAllocationPolicy> IpAllocationPolicy { get; private set; } = null!;
 
         /// <summary>
         /// True if all nodes and control-plane are up-to-date.
@@ -222,6 +234,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Cilium CNI customization.
+        /// </summary>
+        [Input("customizationCilium")]
+        public Input<Inputs.KubeCustomizationCiliumArgs>? CustomizationCilium { get; set; }
+
+        /// <summary>
         /// Kubernetes kube-proxy customization
         /// </summary>
         [Input("customizationKubeProxy")]
@@ -239,6 +257,12 @@ namespace Pulumi.Ovh.CloudProject
             get => _customizations ?? (_customizations = new InputList<Inputs.KubeCustomizationArgs>());
             set => _customizations = value;
         }
+
+        /// <summary>
+        /// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("ipAllocationPolicy")]
+        public Input<Inputs.KubeIpAllocationPolicyArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
         /// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
@@ -335,6 +359,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Cilium CNI customization.
+        /// </summary>
+        [Input("customizationCilium")]
+        public Input<Inputs.KubeCustomizationCiliumGetArgs>? CustomizationCilium { get; set; }
+
+        /// <summary>
         /// Kubernetes kube-proxy customization
         /// </summary>
         [Input("customizationKubeProxy")]
@@ -352,6 +382,12 @@ namespace Pulumi.Ovh.CloudProject
             get => _customizations ?? (_customizations = new InputList<Inputs.KubeCustomizationGetArgs>());
             set => _customizations = value;
         }
+
+        /// <summary>
+        /// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("ipAllocationPolicy")]
+        public Input<Inputs.KubeIpAllocationPolicyGetArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
         /// True if all nodes and control-plane are up-to-date.

@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+ *
  * Get SSH keys in a Public Cloud project.
  *
  * ## Example Usage
@@ -61,6 +63,8 @@ export interface GetCloudProjectSshKeysResult {
     readonly sshKeys: outputs.GetCloudProjectSshKeysSshKey[];
 }
 /**
+ * > **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+ *
  * Get SSH keys in a Public Cloud project.
  *
  * ## Example Usage

@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { CloudGatewayArgs, CloudGatewayState } from "./cloudGateway";
+export type CloudGateway = import("./cloudGateway").CloudGateway;
+export const CloudGateway: typeof import("./cloudGateway").CloudGateway = null as any;
+utilities.lazyLoad(exports, ["CloudGateway"], () => require("./cloudGateway"));
+
+export { CloudNetworkPrivateVrackArgs, CloudNetworkPrivateVrackState } from "./cloudNetworkPrivateVrack";
+export type CloudNetworkPrivateVrack = import("./cloudNetworkPrivateVrack").CloudNetworkPrivateVrack;
+export const CloudNetworkPrivateVrack: typeof import("./cloudNetworkPrivateVrack").CloudNetworkPrivateVrack = null as any;
+utilities.lazyLoad(exports, ["CloudNetworkPrivateVrack"], () => require("./cloudNetworkPrivateVrack"));
+
+export { CloudNetworkPrivateVrackSubnetArgs, CloudNetworkPrivateVrackSubnetState } from "./cloudNetworkPrivateVrackSubnet";
+export type CloudNetworkPrivateVrackSubnet = import("./cloudNetworkPrivateVrackSubnet").CloudNetworkPrivateVrackSubnet;
+export const CloudNetworkPrivateVrackSubnet: typeof import("./cloudNetworkPrivateVrackSubnet").CloudNetworkPrivateVrackSubnet = null as any;
+utilities.lazyLoad(exports, ["CloudNetworkPrivateVrackSubnet"], () => require("./cloudNetworkPrivateVrackSubnet"));
+
 export { CloudProjectContainerregistryIamArgs, CloudProjectContainerregistryIamState } from "./cloudProjectContainerregistryIam";
 export type CloudProjectContainerregistryIam = import("./cloudProjectContainerregistryIam").CloudProjectContainerregistryIam;
 export const CloudProjectContainerregistryIam: typeof import("./cloudProjectContainerregistryIam").CloudProjectContainerregistryIam = null as any;
@@ -30,6 +45,11 @@ export type CloudProjectFileStorageShareNetwork = import("./cloudProjectFileStor
 export const CloudProjectFileStorageShareNetwork: typeof import("./cloudProjectFileStorageShareNetwork").CloudProjectFileStorageShareNetwork = null as any;
 utilities.lazyLoad(exports, ["CloudProjectFileStorageShareNetwork"], () => require("./cloudProjectFileStorageShareNetwork"));
 
+export { CloudProjectKubeLogSubscriptionArgs, CloudProjectKubeLogSubscriptionState } from "./cloudProjectKubeLogSubscription";
+export type CloudProjectKubeLogSubscription = import("./cloudProjectKubeLogSubscription").CloudProjectKubeLogSubscription;
+export const CloudProjectKubeLogSubscription: typeof import("./cloudProjectKubeLogSubscription").CloudProjectKubeLogSubscription = null as any;
+utilities.lazyLoad(exports, ["CloudProjectKubeLogSubscription"], () => require("./cloudProjectKubeLogSubscription"));
+
 export { CloudProjectSshKeyArgs, CloudProjectSshKeyState } from "./cloudProjectSshKey";
 export type CloudProjectSshKey = import("./cloudProjectSshKey").CloudProjectSshKey;
 export const CloudProjectSshKey: typeof import("./cloudProjectSshKey").CloudProjectSshKey = null as any;
@@ -44,6 +64,11 @@ export { CloudProjectStorageReplicationJobArgs, CloudProjectStorageReplicationJo
 export type CloudProjectStorageReplicationJob = import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob;
 export const CloudProjectStorageReplicationJob: typeof import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob = null as any;
 utilities.lazyLoad(exports, ["CloudProjectStorageReplicationJob"], () => require("./cloudProjectStorageReplicationJob"));
+
+export { CloudSecurityGroupArgs, CloudSecurityGroupState } from "./cloudSecurityGroup";
+export type CloudSecurityGroup = import("./cloudSecurityGroup").CloudSecurityGroup;
+export const CloudSecurityGroup: typeof import("./cloudSecurityGroup").CloudSecurityGroup = null as any;
+utilities.lazyLoad(exports, ["CloudSecurityGroup"], () => require("./cloudSecurityGroup"));
 
 export { CloudStorageBlockVolumeArgs, CloudStorageBlockVolumeState } from "./cloudStorageBlockVolume";
 export type CloudStorageBlockVolume = import("./cloudStorageBlockVolume").CloudStorageBlockVolume;
@@ -60,6 +85,11 @@ export type CloudStorageBlockVolumeSnapshot = import("./cloudStorageBlockVolumeS
 export const CloudStorageBlockVolumeSnapshot: typeof import("./cloudStorageBlockVolumeSnapshot").CloudStorageBlockVolumeSnapshot = null as any;
 utilities.lazyLoad(exports, ["CloudStorageBlockVolumeSnapshot"], () => require("./cloudStorageBlockVolumeSnapshot"));
 
+export { ClousSSHKeyArgs, ClousSSHKeyState } from "./clousSSHKey";
+export type ClousSSHKey = import("./clousSSHKey").ClousSSHKey;
+export const ClousSSHKey: typeof import("./clousSSHKey").ClousSSHKey = null as any;
+utilities.lazyLoad(exports, ["ClousSSHKey"], () => require("./clousSSHKey"));
+
 export { DbaasLogsEncryptionKeyArgs, DbaasLogsEncryptionKeyState } from "./dbaasLogsEncryptionKey";
 export type DbaasLogsEncryptionKey = import("./dbaasLogsEncryptionKey").DbaasLogsEncryptionKey;
 export const DbaasLogsEncryptionKey: typeof import("./dbaasLogsEncryptionKey").DbaasLogsEncryptionKey = null as any;
@@ -74,6 +104,36 @@ export { EmailDomainAccountArgs, EmailDomainAccountState } from "./emailDomainAc
 export type EmailDomainAccount = import("./emailDomainAccount").EmailDomainAccount;
 export const EmailDomainAccount: typeof import("./emailDomainAccount").EmailDomainAccount = null as any;
 utilities.lazyLoad(exports, ["EmailDomainAccount"], () => require("./emailDomainAccount"));
+
+export { GetCloudGatewayArgs, GetCloudGatewayResult, GetCloudGatewayOutputArgs } from "./getCloudGateway";
+export const getCloudGateway: typeof import("./getCloudGateway").getCloudGateway = null as any;
+export const getCloudGatewayOutput: typeof import("./getCloudGateway").getCloudGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudGateway","getCloudGatewayOutput"], () => require("./getCloudGateway"));
+
+export { GetCloudGatewaysArgs, GetCloudGatewaysResult, GetCloudGatewaysOutputArgs } from "./getCloudGateways";
+export const getCloudGateways: typeof import("./getCloudGateways").getCloudGateways = null as any;
+export const getCloudGatewaysOutput: typeof import("./getCloudGateways").getCloudGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudGateways","getCloudGatewaysOutput"], () => require("./getCloudGateways"));
+
+export { GetCloudNetworkPrivateVrackArgs, GetCloudNetworkPrivateVrackResult, GetCloudNetworkPrivateVrackOutputArgs } from "./getCloudNetworkPrivateVrack";
+export const getCloudNetworkPrivateVrack: typeof import("./getCloudNetworkPrivateVrack").getCloudNetworkPrivateVrack = null as any;
+export const getCloudNetworkPrivateVrackOutput: typeof import("./getCloudNetworkPrivateVrack").getCloudNetworkPrivateVrackOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudNetworkPrivateVrack","getCloudNetworkPrivateVrackOutput"], () => require("./getCloudNetworkPrivateVrack"));
+
+export { GetCloudNetworkPrivateVrackSubnetArgs, GetCloudNetworkPrivateVrackSubnetResult, GetCloudNetworkPrivateVrackSubnetOutputArgs } from "./getCloudNetworkPrivateVrackSubnet";
+export const getCloudNetworkPrivateVrackSubnet: typeof import("./getCloudNetworkPrivateVrackSubnet").getCloudNetworkPrivateVrackSubnet = null as any;
+export const getCloudNetworkPrivateVrackSubnetOutput: typeof import("./getCloudNetworkPrivateVrackSubnet").getCloudNetworkPrivateVrackSubnetOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudNetworkPrivateVrackSubnet","getCloudNetworkPrivateVrackSubnetOutput"], () => require("./getCloudNetworkPrivateVrackSubnet"));
+
+export { GetCloudNetworkPrivateVrackSubnetsArgs, GetCloudNetworkPrivateVrackSubnetsResult, GetCloudNetworkPrivateVrackSubnetsOutputArgs } from "./getCloudNetworkPrivateVrackSubnets";
+export const getCloudNetworkPrivateVrackSubnets: typeof import("./getCloudNetworkPrivateVrackSubnets").getCloudNetworkPrivateVrackSubnets = null as any;
+export const getCloudNetworkPrivateVrackSubnetsOutput: typeof import("./getCloudNetworkPrivateVrackSubnets").getCloudNetworkPrivateVrackSubnetsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudNetworkPrivateVrackSubnets","getCloudNetworkPrivateVrackSubnetsOutput"], () => require("./getCloudNetworkPrivateVrackSubnets"));
+
+export { GetCloudNetworkPrivateVracksArgs, GetCloudNetworkPrivateVracksResult, GetCloudNetworkPrivateVracksOutputArgs } from "./getCloudNetworkPrivateVracks";
+export const getCloudNetworkPrivateVracks: typeof import("./getCloudNetworkPrivateVracks").getCloudNetworkPrivateVracks = null as any;
+export const getCloudNetworkPrivateVracksOutput: typeof import("./getCloudNetworkPrivateVracks").getCloudNetworkPrivateVracksOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudNetworkPrivateVracks","getCloudNetworkPrivateVracksOutput"], () => require("./getCloudNetworkPrivateVracks"));
 
 export { GetCloudProjectDatabaseClickhouseUserArgs, GetCloudProjectDatabaseClickhouseUserResult, GetCloudProjectDatabaseClickhouseUserOutputArgs } from "./getCloudProjectDatabaseClickhouseUser";
 export const getCloudProjectDatabaseClickhouseUser: typeof import("./getCloudProjectDatabaseClickhouseUser").getCloudProjectDatabaseClickhouseUser = null as any;
@@ -94,6 +154,11 @@ export { GetCloudProjectGatewayArgs, GetCloudProjectGatewayResult, GetCloudProje
 export const getCloudProjectGateway: typeof import("./getCloudProjectGateway").getCloudProjectGateway = null as any;
 export const getCloudProjectGatewayOutput: typeof import("./getCloudProjectGateway").getCloudProjectGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudProjectGateway","getCloudProjectGatewayOutput"], () => require("./getCloudProjectGateway"));
+
+export { GetCloudProjectKubeLogSubscriptionArgs, GetCloudProjectKubeLogSubscriptionResult, GetCloudProjectKubeLogSubscriptionOutputArgs } from "./getCloudProjectKubeLogSubscription";
+export const getCloudProjectKubeLogSubscription: typeof import("./getCloudProjectKubeLogSubscription").getCloudProjectKubeLogSubscription = null as any;
+export const getCloudProjectKubeLogSubscriptionOutput: typeof import("./getCloudProjectKubeLogSubscription").getCloudProjectKubeLogSubscriptionOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudProjectKubeLogSubscription","getCloudProjectKubeLogSubscriptionOutput"], () => require("./getCloudProjectKubeLogSubscription"));
 
 export { GetCloudProjectRancherCapabilitiesPlanArgs, GetCloudProjectRancherCapabilitiesPlanResult, GetCloudProjectRancherCapabilitiesPlanOutputArgs } from "./getCloudProjectRancherCapabilitiesPlan";
 export const getCloudProjectRancherCapabilitiesPlan: typeof import("./getCloudProjectRancherCapabilitiesPlan").getCloudProjectRancherCapabilitiesPlan = null as any;
@@ -119,6 +184,36 @@ export { GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs, GetCloudP
 export const getCloudProjectStorageObjectBucketLifecycleConfiguration: typeof import("./getCloudProjectStorageObjectBucketLifecycleConfiguration").getCloudProjectStorageObjectBucketLifecycleConfiguration = null as any;
 export const getCloudProjectStorageObjectBucketLifecycleConfigurationOutput: typeof import("./getCloudProjectStorageObjectBucketLifecycleConfiguration").getCloudProjectStorageObjectBucketLifecycleConfigurationOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudProjectStorageObjectBucketLifecycleConfiguration","getCloudProjectStorageObjectBucketLifecycleConfigurationOutput"], () => require("./getCloudProjectStorageObjectBucketLifecycleConfiguration"));
+
+export { GetCloudRegionArgs, GetCloudRegionResult, GetCloudRegionOutputArgs } from "./getCloudRegion";
+export const getCloudRegion: typeof import("./getCloudRegion").getCloudRegion = null as any;
+export const getCloudRegionOutput: typeof import("./getCloudRegion").getCloudRegionOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudRegion","getCloudRegionOutput"], () => require("./getCloudRegion"));
+
+export { GetCloudRegionsArgs, GetCloudRegionsResult, GetCloudRegionsOutputArgs } from "./getCloudRegions";
+export const getCloudRegions: typeof import("./getCloudRegions").getCloudRegions = null as any;
+export const getCloudRegionsOutput: typeof import("./getCloudRegions").getCloudRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudRegions","getCloudRegionsOutput"], () => require("./getCloudRegions"));
+
+export { GetCloudSecurityGroupArgs, GetCloudSecurityGroupResult, GetCloudSecurityGroupOutputArgs } from "./getCloudSecurityGroup";
+export const getCloudSecurityGroup: typeof import("./getCloudSecurityGroup").getCloudSecurityGroup = null as any;
+export const getCloudSecurityGroupOutput: typeof import("./getCloudSecurityGroup").getCloudSecurityGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudSecurityGroup","getCloudSecurityGroupOutput"], () => require("./getCloudSecurityGroup"));
+
+export { GetCloudSecurityGroupsArgs, GetCloudSecurityGroupsResult, GetCloudSecurityGroupsOutputArgs } from "./getCloudSecurityGroups";
+export const getCloudSecurityGroups: typeof import("./getCloudSecurityGroups").getCloudSecurityGroups = null as any;
+export const getCloudSecurityGroupsOutput: typeof import("./getCloudSecurityGroups").getCloudSecurityGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudSecurityGroups","getCloudSecurityGroupsOutput"], () => require("./getCloudSecurityGroups"));
+
+export { GetCloudSshKeyArgs, GetCloudSshKeyResult, GetCloudSshKeyOutputArgs } from "./getCloudSshKey";
+export const getCloudSshKey: typeof import("./getCloudSshKey").getCloudSshKey = null as any;
+export const getCloudSshKeyOutput: typeof import("./getCloudSshKey").getCloudSshKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudSshKey","getCloudSshKeyOutput"], () => require("./getCloudSshKey"));
+
+export { GetCloudSshKeysArgs, GetCloudSshKeysResult, GetCloudSshKeysOutputArgs } from "./getCloudSshKeys";
+export const getCloudSshKeys: typeof import("./getCloudSshKeys").getCloudSshKeys = null as any;
+export const getCloudSshKeysOutput: typeof import("./getCloudSshKeys").getCloudSshKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudSshKeys","getCloudSshKeysOutput"], () => require("./getCloudSshKeys"));
 
 export { GetCloudStorageBlockVolumeArgs, GetCloudStorageBlockVolumeResult, GetCloudStorageBlockVolumeOutputArgs } from "./getCloudStorageBlockVolume";
 export const getCloudStorageBlockVolume: typeof import("./getCloudStorageBlockVolume").getCloudStorageBlockVolume = null as any;
@@ -393,6 +488,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "ovh:index/cloudGateway:CloudGateway":
+                return new CloudGateway(name, <any>undefined, { urn })
+            case "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack":
+                return new CloudNetworkPrivateVrack(name, <any>undefined, { urn })
+            case "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet":
+                return new CloudNetworkPrivateVrackSubnet(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam":
                 return new CloudProjectContainerregistryIam(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser":
@@ -403,18 +504,24 @@ const _module = {
                 return new CloudProjectFileStorageShare(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork":
                 return new CloudProjectFileStorageShareNetwork(name, <any>undefined, { urn })
+            case "ovh:index/cloudProjectKubeLogSubscription:CloudProjectKubeLogSubscription":
+                return new CloudProjectKubeLogSubscription(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
                 return new CloudProjectSshKey(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
                 return new CloudProjectStorageObjectBucketLifecycleConfiguration(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
                 return new CloudProjectStorageReplicationJob(name, <any>undefined, { urn })
+            case "ovh:index/cloudSecurityGroup:CloudSecurityGroup":
+                return new CloudSecurityGroup(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume":
                 return new CloudStorageBlockVolume(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup":
                 return new CloudStorageBlockVolumeBackup(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot":
                 return new CloudStorageBlockVolumeSnapshot(name, <any>undefined, { urn })
+            case "ovh:index/clousSSHKey:ClousSSHKey":
+                return new ClousSSHKey(name, <any>undefined, { urn })
             case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
                 return new DbaasLogsEncryptionKey(name, <any>undefined, { urn })
             case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
@@ -448,17 +555,23 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("ovh", "index/cloudGateway", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudNetworkPrivateVrack", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudNetworkPrivateVrackSubnet", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseClickhouseUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectDatabaseValkeyUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectFileStorageShare", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectFileStorageShareNetwork", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectKubeLogSubscription", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageObjectBucketLifecycleConfiguration", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageReplicationJob", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudSecurityGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolume", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeBackup", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeSnapshot", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/clousSSHKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/dbaasLogsEncryptionKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/emailDomainAccount", _module)

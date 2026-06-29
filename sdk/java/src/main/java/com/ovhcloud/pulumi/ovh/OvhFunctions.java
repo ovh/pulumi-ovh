@@ -4,6 +4,18 @@
 package com.ovhcloud.pulumi.ovh;
 
 import com.ovhcloud.pulumi.ovh.Utilities;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewayArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewayPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewaysArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewaysPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVracksArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVracksPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseClickhouseUserPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectDatabaseValkeyUserArgs;
@@ -12,6 +24,8 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectFlavorArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectFlavorPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectGatewayArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectGatewayPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectRancherCapabilitiesPlanArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectRancherCapabilitiesPlanPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectRancherCapabilitiesVersionArgs;
@@ -22,6 +36,18 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSecurityGroupArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSecurityGroupPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSecurityGroupsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSecurityGroupsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSshKeyArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSshKeyPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudSshKeysPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeBackupPlainArgs;
@@ -80,15 +106,28 @@ import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesPlainArgs;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudGatewayResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudGatewaysResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackSubnetResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackSubnetsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVracksResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectDatabaseClickhouseUserResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectDatabaseValkeyUserResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectFlavorResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectGatewayResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectKubeLogSubscriptionResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesPlanResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesVersionResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeysResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudRegionResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudRegionsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudSecurityGroupResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudSecurityGroupsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudSshKeyResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudSshKeysResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeBackupResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeBackupsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeResult;
@@ -131,6 +170,851 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class OvhFunctions {
+    /**
+     * Use this data source to retrieve information about a gateway in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = OvhFunctions.getCloudGateway(GetCloudGatewayArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<gateway ID>")
+     *             .build());
+     * 
+     *         ctx.export("gatewayName", gateway.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudGatewayResult> getCloudGateway(GetCloudGatewayArgs args) {
+        return getCloudGateway(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a gateway in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = OvhFunctions.getCloudGateway(GetCloudGatewayArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<gateway ID>")
+     *             .build());
+     * 
+     *         ctx.export("gatewayName", gateway.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudGatewayResult> getCloudGatewayPlain(GetCloudGatewayPlainArgs args) {
+        return getCloudGatewayPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a gateway in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = OvhFunctions.getCloudGateway(GetCloudGatewayArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<gateway ID>")
+     *             .build());
+     * 
+     *         ctx.export("gatewayName", gateway.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudGatewayResult> getCloudGateway(GetCloudGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudGateway:getCloudGateway", TypeShape.of(GetCloudGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a gateway in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = OvhFunctions.getCloudGateway(GetCloudGatewayArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<gateway ID>")
+     *             .build());
+     * 
+     *         ctx.export("gatewayName", gateway.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudGatewayResult> getCloudGateway(GetCloudGatewayArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudGateway:getCloudGateway", TypeShape.of(GetCloudGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a gateway in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gateway = OvhFunctions.getCloudGateway(GetCloudGatewayArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<gateway ID>")
+     *             .build());
+     * 
+     *         ctx.export("gatewayName", gateway.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudGatewayResult> getCloudGatewayPlain(GetCloudGatewayPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudGateway:getCloudGateway", TypeShape.of(GetCloudGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the gateways of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudGatewaysResult> getCloudGateways(GetCloudGatewaysArgs args) {
+        return getCloudGateways(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the gateways of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudGatewaysResult> getCloudGatewaysPlain(GetCloudGatewaysPlainArgs args) {
+        return getCloudGatewaysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the gateways of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudGatewaysResult> getCloudGateways(GetCloudGatewaysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudGateways:getCloudGateways", TypeShape.of(GetCloudGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the gateways of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudGatewaysResult> getCloudGateways(GetCloudGatewaysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudGateways:getCloudGateways", TypeShape.of(GetCloudGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the gateways of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudGatewaysResult> getCloudGatewaysPlain(GetCloudGatewaysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudGateways:getCloudGateways", TypeShape.of(GetCloudGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<network ID>")
+     *             .build());
+     * 
+     *         ctx.export("networkName", network.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackResult> getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs args) {
+        return getCloudNetworkPrivateVrack(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<network ID>")
+     *             .build());
+     * 
+     *         ctx.export("networkName", network.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVrackResult> getCloudNetworkPrivateVrackPlain(GetCloudNetworkPrivateVrackPlainArgs args) {
+        return getCloudNetworkPrivateVrackPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<network ID>")
+     *             .build());
+     * 
+     *         ctx.export("networkName", network.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackResult> getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack", TypeShape.of(GetCloudNetworkPrivateVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<network ID>")
+     *             .build());
+     * 
+     *         ctx.export("networkName", network.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackResult> getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack", TypeShape.of(GetCloudNetworkPrivateVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudNetworkPrivateVrack(GetCloudNetworkPrivateVrackArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<network ID>")
+     *             .build());
+     * 
+     *         ctx.export("networkName", network.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVrackResult> getCloudNetworkPrivateVrackPlain(GetCloudNetworkPrivateVrackPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack", TypeShape.of(GetCloudNetworkPrivateVrackResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a subnet in a private network (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnet = OvhFunctions.getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .networkId("<network ID>")
+     *             .id("<subnet ID>")
+     *             .build());
+     * 
+     *         ctx.export("subnetCidr", subnet.cidr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackSubnetResult> getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs args) {
+        return getCloudNetworkPrivateVrackSubnet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a subnet in a private network (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnet = OvhFunctions.getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .networkId("<network ID>")
+     *             .id("<subnet ID>")
+     *             .build());
+     * 
+     *         ctx.export("subnetCidr", subnet.cidr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVrackSubnetResult> getCloudNetworkPrivateVrackSubnetPlain(GetCloudNetworkPrivateVrackSubnetPlainArgs args) {
+        return getCloudNetworkPrivateVrackSubnetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a subnet in a private network (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnet = OvhFunctions.getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .networkId("<network ID>")
+     *             .id("<subnet ID>")
+     *             .build());
+     * 
+     *         ctx.export("subnetCidr", subnet.cidr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackSubnetResult> getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet", TypeShape.of(GetCloudNetworkPrivateVrackSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a subnet in a private network (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnet = OvhFunctions.getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .networkId("<network ID>")
+     *             .id("<subnet ID>")
+     *             .build());
+     * 
+     *         ctx.export("subnetCidr", subnet.cidr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackSubnetResult> getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet", TypeShape.of(GetCloudNetworkPrivateVrackSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a subnet in a private network (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var subnet = OvhFunctions.getCloudNetworkPrivateVrackSubnet(GetCloudNetworkPrivateVrackSubnetArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .networkId("<network ID>")
+     *             .id("<subnet ID>")
+     *             .build());
+     * 
+     *         ctx.export("subnetCidr", subnet.cidr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVrackSubnetResult> getCloudNetworkPrivateVrackSubnetPlain(GetCloudNetworkPrivateVrackSubnetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet", TypeShape.of(GetCloudNetworkPrivateVrackSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the subnets of a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackSubnetsResult> getCloudNetworkPrivateVrackSubnets(GetCloudNetworkPrivateVrackSubnetsArgs args) {
+        return getCloudNetworkPrivateVrackSubnets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the subnets of a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVrackSubnetsResult> getCloudNetworkPrivateVrackSubnetsPlain(GetCloudNetworkPrivateVrackSubnetsPlainArgs args) {
+        return getCloudNetworkPrivateVrackSubnetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the subnets of a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackSubnetsResult> getCloudNetworkPrivateVrackSubnets(GetCloudNetworkPrivateVrackSubnetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets", TypeShape.of(GetCloudNetworkPrivateVrackSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the subnets of a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVrackSubnetsResult> getCloudNetworkPrivateVrackSubnets(GetCloudNetworkPrivateVrackSubnetsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets", TypeShape.of(GetCloudNetworkPrivateVrackSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the subnets of a private network (vRack) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVrackSubnetsResult> getCloudNetworkPrivateVrackSubnetsPlain(GetCloudNetworkPrivateVrackSubnetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets", TypeShape.of(GetCloudNetworkPrivateVrackSubnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the private networks (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVracksResult> getCloudNetworkPrivateVracks(GetCloudNetworkPrivateVracksArgs args) {
+        return getCloudNetworkPrivateVracks(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the private networks (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVracksResult> getCloudNetworkPrivateVracksPlain(GetCloudNetworkPrivateVracksPlainArgs args) {
+        return getCloudNetworkPrivateVracksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the private networks (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVracksResult> getCloudNetworkPrivateVracks(GetCloudNetworkPrivateVracksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVracks:getCloudNetworkPrivateVracks", TypeShape.of(GetCloudNetworkPrivateVracksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the private networks (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudNetworkPrivateVracksResult> getCloudNetworkPrivateVracks(GetCloudNetworkPrivateVracksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudNetworkPrivateVracks:getCloudNetworkPrivateVracks", TypeShape.of(GetCloudNetworkPrivateVracksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the private networks (vRack) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudNetworkPrivateVracksResult> getCloudNetworkPrivateVracksPlain(GetCloudNetworkPrivateVracksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudNetworkPrivateVracks:getCloudNetworkPrivateVracks", TypeShape.of(GetCloudNetworkPrivateVracksResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to get information about a user of a clickhouse cluster associated with a public cloud project.
      * 
@@ -1017,6 +1901,231 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectGateway:getCloudProjectGateway", TypeShape.of(GetCloudProjectGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get a log subscription for a Managed Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = OvhFunctions.getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .subscriptionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .build());
+     * 
+     *         ctx.export("resource-name", sub.resources()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectKubeLogSubscriptionResult> getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs args) {
+        return getCloudProjectKubeLogSubscription(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a log subscription for a Managed Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = OvhFunctions.getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .subscriptionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .build());
+     * 
+     *         ctx.export("resource-name", sub.resources()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudProjectKubeLogSubscriptionResult> getCloudProjectKubeLogSubscriptionPlain(GetCloudProjectKubeLogSubscriptionPlainArgs args) {
+        return getCloudProjectKubeLogSubscriptionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get a log subscription for a Managed Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = OvhFunctions.getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .subscriptionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .build());
+     * 
+     *         ctx.export("resource-name", sub.resources()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectKubeLogSubscriptionResult> getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudProjectKubeLogSubscription:getCloudProjectKubeLogSubscription", TypeShape.of(GetCloudProjectKubeLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a log subscription for a Managed Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = OvhFunctions.getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .subscriptionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .build());
+     * 
+     *         ctx.export("resource-name", sub.resources()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudProjectKubeLogSubscriptionResult> getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudProjectKubeLogSubscription:getCloudProjectKubeLogSubscription", TypeShape.of(GetCloudProjectKubeLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a log subscription for a Managed Kubernetes cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudProjectKubeLogSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sub = OvhFunctions.getCloudProjectKubeLogSubscription(GetCloudProjectKubeLogSubscriptionArgs.builder()
+     *             .serviceName("XXXXXX")
+     *             .kubeId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+     *             .subscriptionId("yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy")
+     *             .build());
+     * 
+     *         ctx.export("resource-name", sub.resources()[0].name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudProjectKubeLogSubscriptionResult> getCloudProjectKubeLogSubscriptionPlain(GetCloudProjectKubeLogSubscriptionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectKubeLogSubscription:getCloudProjectKubeLogSubscription", TypeShape.of(GetCloudProjectKubeLogSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * List available and current plans for the given managed Rancher service
      * 
      * ## Example Usage
@@ -1447,6 +2556,8 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectRancherCapabilitiesVersion:getCloudProjectRancherCapabilitiesVersion", TypeShape.of(GetCloudProjectRancherCapabilitiesVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * 
      * Retrieve information about a SSH key.
      * 
      * ## Example Usage
@@ -1490,6 +2601,8 @@ public final class OvhFunctions {
         return getCloudProjectSshKey(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * 
      * Retrieve information about a SSH key.
      * 
      * ## Example Usage
@@ -1533,6 +2646,8 @@ public final class OvhFunctions {
         return getCloudProjectSshKeyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * 
      * Retrieve information about a SSH key.
      * 
      * ## Example Usage
@@ -1576,6 +2691,8 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", TypeShape.of(GetCloudProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * 
      * Retrieve information about a SSH key.
      * 
      * ## Example Usage
@@ -1619,6 +2736,8 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", TypeShape.of(GetCloudProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * 
      * Retrieve information about a SSH key.
      * 
      * ## Example Usage
@@ -1662,6 +2781,8 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", TypeShape.of(GetCloudProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+     * 
      * Get SSH keys in a Public Cloud project.
      * 
      * ## Example Usage
@@ -1704,6 +2825,8 @@ public final class OvhFunctions {
         return getCloudProjectSshKeys(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+     * 
      * Get SSH keys in a Public Cloud project.
      * 
      * ## Example Usage
@@ -1746,6 +2869,8 @@ public final class OvhFunctions {
         return getCloudProjectSshKeysPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+     * 
      * Get SSH keys in a Public Cloud project.
      * 
      * ## Example Usage
@@ -1788,6 +2913,8 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys", TypeShape.of(GetCloudProjectSshKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+     * 
      * Get SSH keys in a Public Cloud project.
      * 
      * ## Example Usage
@@ -1830,6 +2957,8 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys", TypeShape.of(GetCloudProjectSshKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+     * 
      * Get SSH keys in a Public Cloud project.
      * 
      * ## Example Usage
@@ -2090,6 +3219,1237 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudProjectStorageObjectBucketLifecycleConfigurationResult> getCloudProjectStorageObjectBucketLifecycleConfigurationPlain(GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration", TypeShape.of(GetCloudProjectStorageObjectBucketLifecycleConfigurationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a single region of a public cloud project, using the OVHcloud API v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var region = OvhFunctions.getCloudRegion(GetCloudRegionArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .name("GRA11")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudRegionResult> getCloudRegion(GetCloudRegionArgs args) {
+        return getCloudRegion(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a single region of a public cloud project, using the OVHcloud API v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var region = OvhFunctions.getCloudRegion(GetCloudRegionArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .name("GRA11")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudRegionResult> getCloudRegionPlain(GetCloudRegionPlainArgs args) {
+        return getCloudRegionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a single region of a public cloud project, using the OVHcloud API v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var region = OvhFunctions.getCloudRegion(GetCloudRegionArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .name("GRA11")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudRegionResult> getCloudRegion(GetCloudRegionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudRegion:getCloudRegion", TypeShape.of(GetCloudRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a single region of a public cloud project, using the OVHcloud API v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var region = OvhFunctions.getCloudRegion(GetCloudRegionArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .name("GRA11")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudRegionResult> getCloudRegion(GetCloudRegionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudRegion:getCloudRegion", TypeShape.of(GetCloudRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a single region of a public cloud project, using the OVHcloud API v2.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var region = OvhFunctions.getCloudRegion(GetCloudRegionArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .name("GRA11")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudRegionResult> getCloudRegionPlain(GetCloudRegionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudRegion:getCloudRegion", TypeShape.of(GetCloudRegionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the regions available for a public cloud project, using the OVHcloud API v2. All pages are fetched, so the full list of regions is returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regions = OvhFunctions.getCloudRegions(GetCloudRegionsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("regions", regions.regions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudRegionsResult> getCloudRegions(GetCloudRegionsArgs args) {
+        return getCloudRegions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the regions available for a public cloud project, using the OVHcloud API v2. All pages are fetched, so the full list of regions is returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regions = OvhFunctions.getCloudRegions(GetCloudRegionsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("regions", regions.regions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudRegionsResult> getCloudRegionsPlain(GetCloudRegionsPlainArgs args) {
+        return getCloudRegionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the regions available for a public cloud project, using the OVHcloud API v2. All pages are fetched, so the full list of regions is returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regions = OvhFunctions.getCloudRegions(GetCloudRegionsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("regions", regions.regions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudRegionsResult> getCloudRegions(GetCloudRegionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudRegions:getCloudRegions", TypeShape.of(GetCloudRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the regions available for a public cloud project, using the OVHcloud API v2. All pages are fetched, so the full list of regions is returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regions = OvhFunctions.getCloudRegions(GetCloudRegionsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("regions", regions.regions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudRegionsResult> getCloudRegions(GetCloudRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudRegions:getCloudRegions", TypeShape.of(GetCloudRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the regions available for a public cloud project, using the OVHcloud API v2. All pages are fetched, so the full list of regions is returned.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudRegionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regions = OvhFunctions.getCloudRegions(GetCloudRegionsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("regions", regions.regions());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudRegionsResult> getCloudRegionsPlain(GetCloudRegionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudRegions:getCloudRegions", TypeShape.of(GetCloudRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a security group in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSecurityGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = OvhFunctions.getCloudSecurityGroup(GetCloudSecurityGroupArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<security group ID>")
+     *             .build());
+     * 
+     *         ctx.export("securityGroupName", sg.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSecurityGroupResult> getCloudSecurityGroup(GetCloudSecurityGroupArgs args) {
+        return getCloudSecurityGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a security group in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSecurityGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = OvhFunctions.getCloudSecurityGroup(GetCloudSecurityGroupArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<security group ID>")
+     *             .build());
+     * 
+     *         ctx.export("securityGroupName", sg.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSecurityGroupResult> getCloudSecurityGroupPlain(GetCloudSecurityGroupPlainArgs args) {
+        return getCloudSecurityGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a security group in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSecurityGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = OvhFunctions.getCloudSecurityGroup(GetCloudSecurityGroupArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<security group ID>")
+     *             .build());
+     * 
+     *         ctx.export("securityGroupName", sg.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSecurityGroupResult> getCloudSecurityGroup(GetCloudSecurityGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSecurityGroup:getCloudSecurityGroup", TypeShape.of(GetCloudSecurityGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a security group in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSecurityGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = OvhFunctions.getCloudSecurityGroup(GetCloudSecurityGroupArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<security group ID>")
+     *             .build());
+     * 
+     *         ctx.export("securityGroupName", sg.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSecurityGroupResult> getCloudSecurityGroup(GetCloudSecurityGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSecurityGroup:getCloudSecurityGroup", TypeShape.of(GetCloudSecurityGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a security group in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSecurityGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var sg = OvhFunctions.getCloudSecurityGroup(GetCloudSecurityGroupArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<security group ID>")
+     *             .build());
+     * 
+     *         ctx.export("securityGroupName", sg.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSecurityGroupResult> getCloudSecurityGroupPlain(GetCloudSecurityGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudSecurityGroup:getCloudSecurityGroup", TypeShape.of(GetCloudSecurityGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the security groups of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSecurityGroupsResult> getCloudSecurityGroups(GetCloudSecurityGroupsArgs args) {
+        return getCloudSecurityGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the security groups of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSecurityGroupsResult> getCloudSecurityGroupsPlain(GetCloudSecurityGroupsPlainArgs args) {
+        return getCloudSecurityGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the security groups of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSecurityGroupsResult> getCloudSecurityGroups(GetCloudSecurityGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSecurityGroups:getCloudSecurityGroups", TypeShape.of(GetCloudSecurityGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the security groups of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSecurityGroupsResult> getCloudSecurityGroups(GetCloudSecurityGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSecurityGroups:getCloudSecurityGroups", TypeShape.of(GetCloudSecurityGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the security groups of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSecurityGroupsResult> getCloudSecurityGroupsPlain(GetCloudSecurityGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudSecurityGroups:getCloudSecurityGroups", TypeShape.of(GetCloudSecurityGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to retrieve information about a
+     * single SSH key of a Public Cloud project (API v2), looked up by its name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = OvhFunctions.getCloudSshKey(GetCloudSshKeyArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .name("my-deploy-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeyResult> getCloudSshKey(GetCloudSshKeyArgs args) {
+        return getCloudSshKey(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to retrieve information about a
+     * single SSH key of a Public Cloud project (API v2), looked up by its name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = OvhFunctions.getCloudSshKey(GetCloudSshKeyArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .name("my-deploy-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSshKeyResult> getCloudSshKeyPlain(GetCloudSshKeyPlainArgs args) {
+        return getCloudSshKeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to retrieve information about a
+     * single SSH key of a Public Cloud project (API v2), looked up by its name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = OvhFunctions.getCloudSshKey(GetCloudSshKeyArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .name("my-deploy-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeyResult> getCloudSshKey(GetCloudSshKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSshKey:getCloudSshKey", TypeShape.of(GetCloudSshKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to retrieve information about a
+     * single SSH key of a Public Cloud project (API v2), looked up by its name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = OvhFunctions.getCloudSshKey(GetCloudSshKeyArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .name("my-deploy-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeyResult> getCloudSshKey(GetCloudSshKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSshKey:getCloudSshKey", TypeShape.of(GetCloudSshKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to retrieve information about a
+     * single SSH key of a Public Cloud project (API v2), looked up by its name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKey = OvhFunctions.getCloudSshKey(GetCloudSshKeyArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .name("my-deploy-key")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSshKeyResult> getCloudSshKeyPlain(GetCloudSshKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudSshKey:getCloudSshKey", TypeShape.of(GetCloudSshKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeysResult> getCloudSshKeys() {
+        return getCloudSshKeys(GetCloudSshKeysArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSshKeysResult> getCloudSshKeysPlain() {
+        return getCloudSshKeysPlain(GetCloudSshKeysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeysResult> getCloudSshKeys(GetCloudSshKeysArgs args) {
+        return getCloudSshKeys(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSshKeysResult> getCloudSshKeysPlain(GetCloudSshKeysPlainArgs args) {
+        return getCloudSshKeysPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeysResult> getCloudSshKeys(GetCloudSshKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSshKeys:getCloudSshKeys", TypeShape.of(GetCloudSshKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudSshKeysResult> getCloudSshKeys(GetCloudSshKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudSshKeys:getCloudSshKeys", TypeShape.of(GetCloudSshKeysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * **This data source uses a Beta API.** Use this data source to list the SSH keys of a Public
+     * Cloud project (API v2).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudSshKeysArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeys = OvhFunctions.getCloudSshKeys(GetCloudSshKeysArgs.builder()
+     *             .serviceName("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudSshKeysResult> getCloudSshKeysPlain(GetCloudSshKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudSshKeys:getCloudSshKeys", TypeShape.of(GetCloudSshKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a block storage volume in a public cloud project.

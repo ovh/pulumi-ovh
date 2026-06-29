@@ -22,25 +22,26 @@ __all__ = ['CloudStorageBlockVolumeBackupArgs', 'CloudStorageBlockVolumeBackup']
 class CloudStorageBlockVolumeBackupArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
-                 service_name: pulumi.Input[_builtins.str],
                  volume_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudStorageBlockVolumeBackup resource.
         :param pulumi.Input[_builtins.str] region: The region where the backup will be created. Changing this value recreates the resource.
-        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume to back up. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] description: A description for the backup.
         :param pulumi.Input[_builtins.str] name: The name of the backup.
+        :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. Changing this value recreates the resource.
         """
         pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "volume_id", volume_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
 
     @_builtins.property
     @pulumi.getter
@@ -53,18 +54,6 @@ class CloudStorageBlockVolumeBackupArgs:
     @region.setter
     def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="serviceName")
-    def service_name(self) -> pulumi.Input[_builtins.str]:
-        """
-        The id of the public cloud project. Changing this value recreates the resource.
-        """
-        return pulumi.get(self, "service_name")
-
-    @service_name.setter
-    def service_name(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
@@ -101,6 +90,18 @@ class CloudStorageBlockVolumeBackupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The id of the public cloud project. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_name", value)
 
 
 @pulumi.input_type
@@ -385,8 +386,6 @@ class CloudStorageBlockVolumeBackup(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
-            if service_name is None and not opts.urn:
-                raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
             if volume_id is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_id'")

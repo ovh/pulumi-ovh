@@ -87,7 +87,7 @@ export class NetworkPrivateSubnetV2 extends pulumi.CustomResource {
      */
     public readonly enableGatewayIp!: pulumi.Output<boolean | undefined>;
     /**
-     * See Argument Reference above.
+     * The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      */
     public readonly gatewayIp!: pulumi.Output<string>;
     /**
@@ -194,7 +194,7 @@ export interface NetworkPrivateSubnetV2State {
      */
     enableGatewayIp?: pulumi.Input<boolean>;
     /**
-     * See Argument Reference above.
+     * The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      */
     gatewayIp?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface NetworkPrivateSubnetV2Args {
      */
     enableGatewayIp?: pulumi.Input<boolean>;
     /**
-     * See Argument Reference above.
+     * The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      */
     gatewayIp?: pulumi.Input<string>;
     /**

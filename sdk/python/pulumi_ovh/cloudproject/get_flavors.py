@@ -61,7 +61,7 @@ class GetFlavorsResult:
     @pulumi.getter(name="nameFilter")
     def name_filter(self) -> Optional[_builtins.str]:
         """
-        Filter flavors using the given name (strict equality, e.g. b2-7)
+        Filter flavors using the given name (strict equality, e.g. b3-8)
         """
         return pulumi.get(self, "name_filter")
 
@@ -112,7 +112,7 @@ def get_flavors(name_filter: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name_filter: Filter flavors using the given name (strict equality, e.g. b2-7)
+    :param _builtins.str name_filter: Filter flavors using the given name (strict equality, e.g. b3-8)
     :param _builtins.str region: Flavor region
     :param _builtins.str service_name: Service name
     """
@@ -146,7 +146,7 @@ def get_flavors_output(name_filter: Optional[pulumi.Input[Optional[_builtins.str
     ```
 
 
-    :param _builtins.str name_filter: Filter flavors using the given name (strict equality, e.g. b2-7)
+    :param _builtins.str name_filter: Filter flavors using the given name (strict equality, e.g. b3-8)
     :param _builtins.str region: Flavor region
     :param _builtins.str service_name: Service name
     """

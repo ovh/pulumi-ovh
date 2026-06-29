@@ -28,13 +28,16 @@ class GetKubeResult:
     """
     A collection of values returned by getKube.
     """
-    def __init__(__self__, control_plane_is_up_to_date=None, customization_apiservers=None, customization_kube_proxy=None, customizations=None, id=None, is_up_to_date=None, kube_id=None, kube_proxy_mode=None, kubeconfig=None, kubeconfig_attributes=None, load_balancers_subnet_id=None, name=None, next_upgrade_versions=None, nodes_subnet_id=None, nodes_url=None, plan=None, private_network_id=None, region=None, service_name=None, status=None, update_policy=None, url=None, version=None):
+    def __init__(__self__, control_plane_is_up_to_date=None, customization_apiservers=None, customization_cilium=None, customization_kube_proxy=None, customizations=None, id=None, ip_allocation_policy=None, is_up_to_date=None, kube_id=None, kube_proxy_mode=None, kubeconfig=None, kubeconfig_attributes=None, load_balancers_subnet_id=None, name=None, next_upgrade_versions=None, nodes_subnet_id=None, nodes_url=None, plan=None, private_network_id=None, region=None, service_name=None, status=None, update_policy=None, url=None, version=None):
         if control_plane_is_up_to_date and not isinstance(control_plane_is_up_to_date, bool):
             raise TypeError("Expected argument 'control_plane_is_up_to_date' to be a bool")
         pulumi.set(__self__, "control_plane_is_up_to_date", control_plane_is_up_to_date)
         if customization_apiservers and not isinstance(customization_apiservers, list):
             raise TypeError("Expected argument 'customization_apiservers' to be a list")
         pulumi.set(__self__, "customization_apiservers", customization_apiservers)
+        if customization_cilium and not isinstance(customization_cilium, dict):
+            raise TypeError("Expected argument 'customization_cilium' to be a dict")
+        pulumi.set(__self__, "customization_cilium", customization_cilium)
         if customization_kube_proxy and not isinstance(customization_kube_proxy, dict):
             raise TypeError("Expected argument 'customization_kube_proxy' to be a dict")
         pulumi.set(__self__, "customization_kube_proxy", customization_kube_proxy)
@@ -44,6 +47,9 @@ class GetKubeResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_allocation_policy and not isinstance(ip_allocation_policy, dict):
+            raise TypeError("Expected argument 'ip_allocation_policy' to be a dict")
+        pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
         if is_up_to_date and not isinstance(is_up_to_date, bool):
             raise TypeError("Expected argument 'is_up_to_date' to be a bool")
         pulumi.set(__self__, "is_up_to_date", is_up_to_date)
@@ -116,6 +122,14 @@ class GetKubeResult:
         return pulumi.get(self, "customization_apiservers")
 
     @_builtins.property
+    @pulumi.getter(name="customizationCilium")
+    def customization_cilium(self) -> 'outputs.GetKubeCustomizationCiliumResult':
+        """
+        Cilium CNI customization.
+        """
+        return pulumi.get(self, "customization_cilium")
+
+    @_builtins.property
     @pulumi.getter(name="customizationKubeProxy")
     def customization_kube_proxy(self) -> Optional['outputs.GetKubeCustomizationKubeProxyResult']:
         """
@@ -139,6 +153,14 @@ class GetKubeResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> 'outputs.GetKubeIpAllocationPolicyResult':
+        """
+        IP allocation policy of the cluster.
+        """
+        return pulumi.get(self, "ip_allocation_policy")
 
     @_builtins.property
     @pulumi.getter(name="isUpToDate")
@@ -293,9 +315,11 @@ class AwaitableGetKubeResult(GetKubeResult):
         return GetKubeResult(
             control_plane_is_up_to_date=self.control_plane_is_up_to_date,
             customization_apiservers=self.customization_apiservers,
+            customization_cilium=self.customization_cilium,
             customization_kube_proxy=self.customization_kube_proxy,
             customizations=self.customizations,
             id=self.id,
+            ip_allocation_policy=self.ip_allocation_policy,
             is_up_to_date=self.is_up_to_date,
             kube_id=self.kube_id,
             kube_proxy_mode=self.kube_proxy_mode,
@@ -317,8 +341,10 @@ class AwaitableGetKubeResult(GetKubeResult):
 
 
 def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']]] = None,
+             customization_cilium: Optional[Union['GetKubeCustomizationCiliumArgs', 'GetKubeCustomizationCiliumArgsDict']] = None,
              customization_kube_proxy: Optional[Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict']] = None,
              customizations: Optional[Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']]] = None,
+             ip_allocation_policy: Optional[Union['GetKubeIpAllocationPolicyArgs', 'GetKubeIpAllocationPolicyArgsDict']] = None,
              kube_id: Optional[_builtins.str] = None,
              kube_proxy_mode: Optional[_builtins.str] = None,
              name: Optional[_builtins.str] = None,
@@ -346,8 +372,10 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
 
 
     :param Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']] customization_apiservers: Kubernetes API server customization
+    :param Union['GetKubeCustomizationCiliumArgs', 'GetKubeCustomizationCiliumArgsDict'] customization_cilium: Cilium CNI customization.
     :param Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict'] customization_kube_proxy: Kubernetes kube-proxy customization
     :param Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+    :param Union['GetKubeIpAllocationPolicyArgs', 'GetKubeIpAllocationPolicyArgsDict'] ip_allocation_policy: IP allocation policy of the cluster.
     :param _builtins.str kube_id: The id of the managed kubernetes cluster.
     :param _builtins.str kube_proxy_mode: Selected mode for kube-proxy.
     :param _builtins.str name: The name of the managed kubernetes cluster.
@@ -359,8 +387,10 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
     """
     __args__ = dict()
     __args__['customizationApiservers'] = customization_apiservers
+    __args__['customizationCilium'] = customization_cilium
     __args__['customizationKubeProxy'] = customization_kube_proxy
     __args__['customizations'] = customizations
+    __args__['ipAllocationPolicy'] = ip_allocation_policy
     __args__['kubeId'] = kube_id
     __args__['kubeProxyMode'] = kube_proxy_mode
     __args__['name'] = name
@@ -375,9 +405,11 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
     return AwaitableGetKubeResult(
         control_plane_is_up_to_date=pulumi.get(__ret__, 'control_plane_is_up_to_date'),
         customization_apiservers=pulumi.get(__ret__, 'customization_apiservers'),
+        customization_cilium=pulumi.get(__ret__, 'customization_cilium'),
         customization_kube_proxy=pulumi.get(__ret__, 'customization_kube_proxy'),
         customizations=pulumi.get(__ret__, 'customizations'),
         id=pulumi.get(__ret__, 'id'),
+        ip_allocation_policy=pulumi.get(__ret__, 'ip_allocation_policy'),
         is_up_to_date=pulumi.get(__ret__, 'is_up_to_date'),
         kube_id=pulumi.get(__ret__, 'kube_id'),
         kube_proxy_mode=pulumi.get(__ret__, 'kube_proxy_mode'),
@@ -397,8 +429,10 @@ def get_kube(customization_apiservers: Optional[Sequence[Union['GetKubeCustomiza
         url=pulumi.get(__ret__, 'url'),
         version=pulumi.get(__ret__, 'version'))
 def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']]]]] = None,
+                    customization_cilium: Optional[pulumi.Input[Optional[Union['GetKubeCustomizationCiliumArgs', 'GetKubeCustomizationCiliumArgsDict']]]] = None,
                     customization_kube_proxy: Optional[pulumi.Input[Optional[Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict']]]] = None,
                     customizations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']]]]] = None,
+                    ip_allocation_policy: Optional[pulumi.Input[Optional[Union['GetKubeIpAllocationPolicyArgs', 'GetKubeIpAllocationPolicyArgsDict']]]] = None,
                     kube_id: Optional[pulumi.Input[_builtins.str]] = None,
                     kube_proxy_mode: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                     name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -426,8 +460,10 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
 
 
     :param Sequence[Union['GetKubeCustomizationApiserverArgs', 'GetKubeCustomizationApiserverArgsDict']] customization_apiservers: Kubernetes API server customization
+    :param Union['GetKubeCustomizationCiliumArgs', 'GetKubeCustomizationCiliumArgsDict'] customization_cilium: Cilium CNI customization.
     :param Union['GetKubeCustomizationKubeProxyArgs', 'GetKubeCustomizationKubeProxyArgsDict'] customization_kube_proxy: Kubernetes kube-proxy customization
     :param Sequence[Union['GetKubeCustomizationArgs', 'GetKubeCustomizationArgsDict']] customizations: **Deprecated** (Optional) Use `customization_apiserver` and `customization_kube_proxy` instead. Kubernetes cluster customization
+    :param Union['GetKubeIpAllocationPolicyArgs', 'GetKubeIpAllocationPolicyArgsDict'] ip_allocation_policy: IP allocation policy of the cluster.
     :param _builtins.str kube_id: The id of the managed kubernetes cluster.
     :param _builtins.str kube_proxy_mode: Selected mode for kube-proxy.
     :param _builtins.str name: The name of the managed kubernetes cluster.
@@ -439,8 +475,10 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     """
     __args__ = dict()
     __args__['customizationApiservers'] = customization_apiservers
+    __args__['customizationCilium'] = customization_cilium
     __args__['customizationKubeProxy'] = customization_kube_proxy
     __args__['customizations'] = customizations
+    __args__['ipAllocationPolicy'] = ip_allocation_policy
     __args__['kubeId'] = kube_id
     __args__['kubeProxyMode'] = kube_proxy_mode
     __args__['name'] = name
@@ -454,9 +492,11 @@ def get_kube_output(customization_apiservers: Optional[pulumi.Input[Optional[Seq
     return __ret__.apply(lambda __response__: GetKubeResult(
         control_plane_is_up_to_date=pulumi.get(__response__, 'control_plane_is_up_to_date'),
         customization_apiservers=pulumi.get(__response__, 'customization_apiservers'),
+        customization_cilium=pulumi.get(__response__, 'customization_cilium'),
         customization_kube_proxy=pulumi.get(__response__, 'customization_kube_proxy'),
         customizations=pulumi.get(__response__, 'customizations'),
         id=pulumi.get(__response__, 'id'),
+        ip_allocation_policy=pulumi.get(__response__, 'ip_allocation_policy'),
         is_up_to_date=pulumi.get(__response__, 'is_up_to_date'),
         kube_id=pulumi.get(__response__, 'kube_id'),
         kube_proxy_mode=pulumi.get(__response__, 'kube_proxy_mode'),

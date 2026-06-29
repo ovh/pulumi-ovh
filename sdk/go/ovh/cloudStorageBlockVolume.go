@@ -69,7 +69,7 @@ type CloudStorageBlockVolume struct {
 	// Last update date of the volume.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
-	VolumeType pulumi.StringPtrOutput `pulumi:"volumeType"`
+	VolumeType pulumi.StringOutput `pulumi:"volumeType"`
 }
 
 // NewCloudStorageBlockVolume registers a new resource with the given unique name, arguments, and options.
@@ -81,9 +81,6 @@ func NewCloudStorageBlockVolume(ctx *pulumi.Context,
 
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
-	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
@@ -178,7 +175,7 @@ type cloudStorageBlockVolumeArgs struct {
 	// Region where the volume will be created. **Changing this value recreates the resource.**
 	Region string `pulumi:"region"`
 	// Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 	// Size of the volume in GB.
 	Size int `pulumi:"size"`
 	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
@@ -196,7 +193,7 @@ type CloudStorageBlockVolumeArgs struct {
 	// Region where the volume will be created. **Changing this value recreates the resource.**
 	Region pulumi.StringInput
 	// Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 	// Size of the volume in GB.
 	Size pulumi.IntInput
 	// Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
@@ -346,8 +343,8 @@ func (o CloudStorageBlockVolumeOutput) UpdatedAt() pulumi.StringOutput {
 }
 
 // Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
-func (o CloudStorageBlockVolumeOutput) VolumeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudStorageBlockVolume) pulumi.StringPtrOutput { return v.VolumeType }).(pulumi.StringPtrOutput)
+func (o CloudStorageBlockVolumeOutput) VolumeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolume) pulumi.StringOutput { return v.VolumeType }).(pulumi.StringOutput)
 }
 
 type CloudStorageBlockVolumeArrayOutput struct{ *pulumi.OutputState }

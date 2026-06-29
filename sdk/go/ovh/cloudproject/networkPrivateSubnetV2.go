@@ -72,7 +72,7 @@ type NetworkPrivateSubnetV2 struct {
 	DnsNameservers pulumi.StringArrayOutput `pulumi:"dnsNameservers"`
 	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp pulumi.BoolPtrOutput `pulumi:"enableGatewayIp"`
-	// See Argument Reference above.
+	// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
 	GatewayIp pulumi.StringOutput `pulumi:"gatewayIp"`
 	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayOutput `pulumi:"hostRoutes"`
@@ -137,7 +137,7 @@ type networkPrivateSubnetV2State struct {
 	DnsNameservers []string `pulumi:"dnsNameservers"`
 	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp *bool `pulumi:"enableGatewayIp"`
-	// See Argument Reference above.
+	// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
 	GatewayIp *string `pulumi:"gatewayIp"`
 	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes []NetworkPrivateSubnetV2HostRoute `pulumi:"hostRoutes"`
@@ -164,7 +164,7 @@ type NetworkPrivateSubnetV2State struct {
 	DnsNameservers pulumi.StringArrayInput
 	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp pulumi.BoolPtrInput
-	// See Argument Reference above.
+	// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
 	GatewayIp pulumi.StringPtrInput
 	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayInput
@@ -195,7 +195,7 @@ type networkPrivateSubnetV2Args struct {
 	DnsNameservers []string `pulumi:"dnsNameservers"`
 	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp *bool `pulumi:"enableGatewayIp"`
-	// See Argument Reference above.
+	// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
 	GatewayIp *string `pulumi:"gatewayIp"`
 	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes []NetworkPrivateSubnetV2HostRoute `pulumi:"hostRoutes"`
@@ -223,7 +223,7 @@ type NetworkPrivateSubnetV2Args struct {
 	DnsNameservers pulumi.StringArrayInput
 	// Set to true if you want to set a default gateway IP. Changing this value recreates the resource. Defaults to true.
 	EnableGatewayIp pulumi.BoolPtrInput
-	// See Argument Reference above.
+	// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
 	GatewayIp pulumi.StringPtrInput
 	// List of custom host routes. Changing this value recreates the resource.
 	HostRoutes NetworkPrivateSubnetV2HostRouteArrayInput
@@ -353,7 +353,7 @@ func (o NetworkPrivateSubnetV2Output) EnableGatewayIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.BoolPtrOutput { return v.EnableGatewayIp }).(pulumi.BoolPtrOutput)
 }
 
-// See Argument Reference above.
+// The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
 func (o NetworkPrivateSubnetV2Output) GatewayIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkPrivateSubnetV2) pulumi.StringOutput { return v.GatewayIp }).(pulumi.StringOutput)
 }

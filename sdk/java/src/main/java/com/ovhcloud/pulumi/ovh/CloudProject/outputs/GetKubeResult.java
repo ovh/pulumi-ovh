@@ -5,7 +5,9 @@ package com.ovhcloud.pulumi.ovh.CloudProject.outputs;
 
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomization;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomizationApiserver;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomizationCilium;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeCustomizationKubeProxy;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeIpAllocationPolicy;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.GetKubeKubeconfigAttribute;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -29,6 +31,11 @@ public final class GetKubeResult {
      */
     private List<GetKubeCustomizationApiserver> customizationApiservers;
     /**
+     * @return Cilium CNI customization.
+     * 
+     */
+    private GetKubeCustomizationCilium customizationCilium;
+    /**
      * @return Kubernetes kube-proxy customization
      * 
      */
@@ -47,6 +54,11 @@ public final class GetKubeResult {
      * 
      */
     private String id;
+    /**
+     * @return IP allocation policy of the cluster.
+     * 
+     */
+    private GetKubeIpAllocationPolicy ipAllocationPolicy;
     /**
      * @return True if all nodes and control-plane are up-to-date.
      * 
@@ -154,6 +166,13 @@ public final class GetKubeResult {
         return this.customizationApiservers;
     }
     /**
+     * @return Cilium CNI customization.
+     * 
+     */
+    public GetKubeCustomizationCilium customizationCilium() {
+        return this.customizationCilium;
+    }
+    /**
      * @return Kubernetes kube-proxy customization
      * 
      */
@@ -177,6 +196,13 @@ public final class GetKubeResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return IP allocation policy of the cluster.
+     * 
+     */
+    public GetKubeIpAllocationPolicy ipAllocationPolicy() {
+        return this.ipAllocationPolicy;
     }
     /**
      * @return True if all nodes and control-plane are up-to-date.
@@ -316,9 +342,11 @@ public final class GetKubeResult {
     public static final class Builder {
         private Boolean controlPlaneIsUpToDate;
         private List<GetKubeCustomizationApiserver> customizationApiservers;
+        private GetKubeCustomizationCilium customizationCilium;
         private @Nullable GetKubeCustomizationKubeProxy customizationKubeProxy;
         private List<GetKubeCustomization> customizations;
         private String id;
+        private GetKubeIpAllocationPolicy ipAllocationPolicy;
         private Boolean isUpToDate;
         private String kubeId;
         private @Nullable String kubeProxyMode;
@@ -342,9 +370,11 @@ public final class GetKubeResult {
     	      Objects.requireNonNull(defaults);
     	      this.controlPlaneIsUpToDate = defaults.controlPlaneIsUpToDate;
     	      this.customizationApiservers = defaults.customizationApiservers;
+    	      this.customizationCilium = defaults.customizationCilium;
     	      this.customizationKubeProxy = defaults.customizationKubeProxy;
     	      this.customizations = defaults.customizations;
     	      this.id = defaults.id;
+    	      this.ipAllocationPolicy = defaults.ipAllocationPolicy;
     	      this.isUpToDate = defaults.isUpToDate;
     	      this.kubeId = defaults.kubeId;
     	      this.kubeProxyMode = defaults.kubeProxyMode;
@@ -385,6 +415,14 @@ public final class GetKubeResult {
             return customizationApiservers(List.of(customizationApiservers));
         }
         @CustomType.Setter
+        public Builder customizationCilium(GetKubeCustomizationCilium customizationCilium) {
+            if (customizationCilium == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "customizationCilium");
+            }
+            this.customizationCilium = customizationCilium;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customizationKubeProxy(@Nullable GetKubeCustomizationKubeProxy customizationKubeProxy) {
 
             this.customizationKubeProxy = customizationKubeProxy;
@@ -407,6 +445,14 @@ public final class GetKubeResult {
               throw new MissingRequiredPropertyException("GetKubeResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipAllocationPolicy(GetKubeIpAllocationPolicy ipAllocationPolicy) {
+            if (ipAllocationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetKubeResult", "ipAllocationPolicy");
+            }
+            this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
         @CustomType.Setter
@@ -551,9 +597,11 @@ public final class GetKubeResult {
             final var _resultValue = new GetKubeResult();
             _resultValue.controlPlaneIsUpToDate = controlPlaneIsUpToDate;
             _resultValue.customizationApiservers = customizationApiservers;
+            _resultValue.customizationCilium = customizationCilium;
             _resultValue.customizationKubeProxy = customizationKubeProxy;
             _resultValue.customizations = customizations;
             _resultValue.id = id;
+            _resultValue.ipAllocationPolicy = ipAllocationPolicy;
             _resultValue.isUpToDate = isUpToDate;
             _resultValue.kubeId = kubeId;
             _resultValue.kubeProxyMode = kubeProxyMode;

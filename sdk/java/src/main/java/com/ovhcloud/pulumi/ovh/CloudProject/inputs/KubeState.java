@@ -5,7 +5,9 @@ package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeCustomizationApiserverArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeCustomizationArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeCustomizationCiliumArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeCustomizationKubeProxyArgs;
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeIpAllocationPolicyArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeKubeconfigAttributeArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubePrivateNetworkConfigurationArgs;
 import com.pulumi.core.Output;
@@ -53,6 +55,21 @@ public final class KubeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Cilium CNI customization.
+     * 
+     */
+    @Import(name="customizationCilium")
+    private @Nullable Output<KubeCustomizationCiliumArgs> customizationCilium;
+
+    /**
+     * @return Cilium CNI customization.
+     * 
+     */
+    public Optional<Output<KubeCustomizationCiliumArgs>> customizationCilium() {
+        return Optional.ofNullable(this.customizationCilium);
+    }
+
+    /**
      * Kubernetes kube-proxy customization
      * 
      */
@@ -88,6 +105,21 @@ public final class KubeState extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* Use customization_apiserver instead */
     public Optional<Output<List<KubeCustomizationArgs>>> customizations() {
         return Optional.ofNullable(this.customizations);
+    }
+
+    /**
+     * IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     * 
+     */
+    @Import(name="ipAllocationPolicy")
+    private @Nullable Output<KubeIpAllocationPolicyArgs> ipAllocationPolicy;
+
+    /**
+     * @return IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     * 
+     */
+    public Optional<Output<KubeIpAllocationPolicyArgs>> ipAllocationPolicy() {
+        return Optional.ofNullable(this.ipAllocationPolicy);
     }
 
     /**
@@ -369,8 +401,10 @@ public final class KubeState extends com.pulumi.resources.ResourceArgs {
     private KubeState(KubeState $) {
         this.controlPlaneIsUpToDate = $.controlPlaneIsUpToDate;
         this.customizationApiservers = $.customizationApiservers;
+        this.customizationCilium = $.customizationCilium;
         this.customizationKubeProxy = $.customizationKubeProxy;
         this.customizations = $.customizations;
+        this.ipAllocationPolicy = $.ipAllocationPolicy;
         this.isUpToDate = $.isUpToDate;
         this.kubeProxyMode = $.kubeProxyMode;
         this.kubeconfig = $.kubeconfig;
@@ -462,6 +496,27 @@ public final class KubeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param customizationCilium Cilium CNI customization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizationCilium(@Nullable Output<KubeCustomizationCiliumArgs> customizationCilium) {
+            $.customizationCilium = customizationCilium;
+            return this;
+        }
+
+        /**
+         * @param customizationCilium Cilium CNI customization.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customizationCilium(KubeCustomizationCiliumArgs customizationCilium) {
+            return customizationCilium(Output.of(customizationCilium));
+        }
+
+        /**
          * @param customizationKubeProxy Kubernetes kube-proxy customization
          * 
          * @return builder
@@ -523,6 +578,27 @@ public final class KubeState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Use customization_apiserver instead */
         public Builder customizations(KubeCustomizationArgs... customizations) {
             return customizations(List.of(customizations));
+        }
+
+        /**
+         * @param ipAllocationPolicy IP allocation policy of the cluster. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllocationPolicy(@Nullable Output<KubeIpAllocationPolicyArgs> ipAllocationPolicy) {
+            $.ipAllocationPolicy = ipAllocationPolicy;
+            return this;
+        }
+
+        /**
+         * @param ipAllocationPolicy IP allocation policy of the cluster. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAllocationPolicy(KubeIpAllocationPolicyArgs ipAllocationPolicy) {
+            return ipAllocationPolicy(Output.of(ipAllocationPolicy));
         }
 
         /**

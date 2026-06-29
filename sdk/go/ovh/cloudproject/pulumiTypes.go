@@ -4144,6 +4144,1930 @@ func (o KubeCustomizationApiserverAdmissionpluginArrayOutput) Index(i pulumi.Int
 	}).(KubeCustomizationApiserverAdmissionpluginOutput)
 }
 
+type KubeCustomizationCilium struct {
+	// Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+	ClusterId *int `pulumi:"clusterId"`
+	// ClusterMesh feature configuration.
+	ClusterMesh *KubeCustomizationCiliumClusterMesh `pulumi:"clusterMesh"`
+	// Hubble observability stack configuration.
+	Hubble *KubeCustomizationCiliumHubble `pulumi:"hubble"`
+}
+
+// KubeCustomizationCiliumInput is an input type that accepts KubeCustomizationCiliumArgs and KubeCustomizationCiliumOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumInput` via:
+//
+//	KubeCustomizationCiliumArgs{...}
+type KubeCustomizationCiliumInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumOutput() KubeCustomizationCiliumOutput
+	ToKubeCustomizationCiliumOutputWithContext(context.Context) KubeCustomizationCiliumOutput
+}
+
+type KubeCustomizationCiliumArgs struct {
+	// Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+	ClusterId pulumi.IntPtrInput `pulumi:"clusterId"`
+	// ClusterMesh feature configuration.
+	ClusterMesh KubeCustomizationCiliumClusterMeshPtrInput `pulumi:"clusterMesh"`
+	// Hubble observability stack configuration.
+	Hubble KubeCustomizationCiliumHubblePtrInput `pulumi:"hubble"`
+}
+
+func (KubeCustomizationCiliumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCilium)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumArgs) ToKubeCustomizationCiliumOutput() KubeCustomizationCiliumOutput {
+	return i.ToKubeCustomizationCiliumOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumArgs) ToKubeCustomizationCiliumOutputWithContext(ctx context.Context) KubeCustomizationCiliumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumOutput)
+}
+
+func (i KubeCustomizationCiliumArgs) ToKubeCustomizationCiliumPtrOutput() KubeCustomizationCiliumPtrOutput {
+	return i.ToKubeCustomizationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumArgs) ToKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumOutput).ToKubeCustomizationCiliumPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumPtrInput is an input type that accepts KubeCustomizationCiliumArgs, KubeCustomizationCiliumPtr and KubeCustomizationCiliumPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumPtrInput` via:
+//
+//	        KubeCustomizationCiliumArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumPtrOutput() KubeCustomizationCiliumPtrOutput
+	ToKubeCustomizationCiliumPtrOutputWithContext(context.Context) KubeCustomizationCiliumPtrOutput
+}
+
+type kubeCustomizationCiliumPtrType KubeCustomizationCiliumArgs
+
+func KubeCustomizationCiliumPtr(v *KubeCustomizationCiliumArgs) KubeCustomizationCiliumPtrInput {
+	return (*kubeCustomizationCiliumPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCilium)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumPtrType) ToKubeCustomizationCiliumPtrOutput() KubeCustomizationCiliumPtrOutput {
+	return i.ToKubeCustomizationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumPtrType) ToKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumPtrOutput)
+}
+
+type KubeCustomizationCiliumOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCilium)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumOutput) ToKubeCustomizationCiliumOutput() KubeCustomizationCiliumOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumOutput) ToKubeCustomizationCiliumOutputWithContext(ctx context.Context) KubeCustomizationCiliumOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumOutput) ToKubeCustomizationCiliumPtrOutput() KubeCustomizationCiliumPtrOutput {
+	return o.ToKubeCustomizationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumOutput) ToKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCilium) *KubeCustomizationCilium {
+		return &v
+	}).(KubeCustomizationCiliumPtrOutput)
+}
+
+// Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+func (o KubeCustomizationCiliumOutput) ClusterId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCilium) *int { return v.ClusterId }).(pulumi.IntPtrOutput)
+}
+
+// ClusterMesh feature configuration.
+func (o KubeCustomizationCiliumOutput) ClusterMesh() KubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCilium) *KubeCustomizationCiliumClusterMesh { return v.ClusterMesh }).(KubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+// Hubble observability stack configuration.
+func (o KubeCustomizationCiliumOutput) Hubble() KubeCustomizationCiliumHubblePtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCilium) *KubeCustomizationCiliumHubble { return v.Hubble }).(KubeCustomizationCiliumHubblePtrOutput)
+}
+
+type KubeCustomizationCiliumPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCilium)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumPtrOutput) ToKubeCustomizationCiliumPtrOutput() KubeCustomizationCiliumPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumPtrOutput) ToKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumPtrOutput) Elem() KubeCustomizationCiliumOutput {
+	return o.ApplyT(func(v *KubeCustomizationCilium) KubeCustomizationCilium {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCilium
+		return ret
+	}).(KubeCustomizationCiliumOutput)
+}
+
+// Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+func (o KubeCustomizationCiliumPtrOutput) ClusterId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCilium) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterId
+	}).(pulumi.IntPtrOutput)
+}
+
+// ClusterMesh feature configuration.
+func (o KubeCustomizationCiliumPtrOutput) ClusterMesh() KubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCilium) *KubeCustomizationCiliumClusterMesh {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterMesh
+	}).(KubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+// Hubble observability stack configuration.
+func (o KubeCustomizationCiliumPtrOutput) Hubble() KubeCustomizationCiliumHubblePtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCilium) *KubeCustomizationCiliumHubble {
+		if v == nil {
+			return nil
+		}
+		return v.Hubble
+	}).(KubeCustomizationCiliumHubblePtrOutput)
+}
+
+type KubeCustomizationCiliumClusterMesh struct {
+	// Define how the ClusterMesh API server is exposed.
+	ApiServer *KubeCustomizationCiliumClusterMeshApiServer `pulumi:"apiServer"`
+	// Enable or disable the ClusterMesh feature.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// KubeCustomizationCiliumClusterMeshInput is an input type that accepts KubeCustomizationCiliumClusterMeshArgs and KubeCustomizationCiliumClusterMeshOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumClusterMeshInput` via:
+//
+//	KubeCustomizationCiliumClusterMeshArgs{...}
+type KubeCustomizationCiliumClusterMeshInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumClusterMeshOutput() KubeCustomizationCiliumClusterMeshOutput
+	ToKubeCustomizationCiliumClusterMeshOutputWithContext(context.Context) KubeCustomizationCiliumClusterMeshOutput
+}
+
+type KubeCustomizationCiliumClusterMeshArgs struct {
+	// Define how the ClusterMesh API server is exposed.
+	ApiServer KubeCustomizationCiliumClusterMeshApiServerPtrInput `pulumi:"apiServer"`
+	// Enable or disable the ClusterMesh feature.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (KubeCustomizationCiliumClusterMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumClusterMeshArgs) ToKubeCustomizationCiliumClusterMeshOutput() KubeCustomizationCiliumClusterMeshOutput {
+	return i.ToKubeCustomizationCiliumClusterMeshOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumClusterMeshArgs) ToKubeCustomizationCiliumClusterMeshOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumClusterMeshOutput)
+}
+
+func (i KubeCustomizationCiliumClusterMeshArgs) ToKubeCustomizationCiliumClusterMeshPtrOutput() KubeCustomizationCiliumClusterMeshPtrOutput {
+	return i.ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumClusterMeshArgs) ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumClusterMeshOutput).ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumClusterMeshPtrInput is an input type that accepts KubeCustomizationCiliumClusterMeshArgs, KubeCustomizationCiliumClusterMeshPtr and KubeCustomizationCiliumClusterMeshPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumClusterMeshPtrInput` via:
+//
+//	        KubeCustomizationCiliumClusterMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumClusterMeshPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumClusterMeshPtrOutput() KubeCustomizationCiliumClusterMeshPtrOutput
+	ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Context) KubeCustomizationCiliumClusterMeshPtrOutput
+}
+
+type kubeCustomizationCiliumClusterMeshPtrType KubeCustomizationCiliumClusterMeshArgs
+
+func KubeCustomizationCiliumClusterMeshPtr(v *KubeCustomizationCiliumClusterMeshArgs) KubeCustomizationCiliumClusterMeshPtrInput {
+	return (*kubeCustomizationCiliumClusterMeshPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumClusterMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumClusterMeshPtrType) ToKubeCustomizationCiliumClusterMeshPtrOutput() KubeCustomizationCiliumClusterMeshPtrOutput {
+	return i.ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumClusterMeshPtrType) ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+type KubeCustomizationCiliumClusterMeshOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumClusterMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumClusterMeshOutput) ToKubeCustomizationCiliumClusterMeshOutput() KubeCustomizationCiliumClusterMeshOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshOutput) ToKubeCustomizationCiliumClusterMeshOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshOutput) ToKubeCustomizationCiliumClusterMeshPtrOutput() KubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumClusterMeshOutput) ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumClusterMesh) *KubeCustomizationCiliumClusterMesh {
+		return &v
+	}).(KubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+// Define how the ClusterMesh API server is exposed.
+func (o KubeCustomizationCiliumClusterMeshOutput) ApiServer() KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumClusterMesh) *KubeCustomizationCiliumClusterMeshApiServer {
+		return v.ApiServer
+	}).(KubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+// Enable or disable the ClusterMesh feature.
+func (o KubeCustomizationCiliumClusterMeshOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumClusterMesh) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type KubeCustomizationCiliumClusterMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumClusterMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumClusterMeshPtrOutput) ToKubeCustomizationCiliumClusterMeshPtrOutput() KubeCustomizationCiliumClusterMeshPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshPtrOutput) ToKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshPtrOutput) Elem() KubeCustomizationCiliumClusterMeshOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumClusterMesh) KubeCustomizationCiliumClusterMesh {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumClusterMesh
+		return ret
+	}).(KubeCustomizationCiliumClusterMeshOutput)
+}
+
+// Define how the ClusterMesh API server is exposed.
+func (o KubeCustomizationCiliumClusterMeshPtrOutput) ApiServer() KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumClusterMesh) *KubeCustomizationCiliumClusterMeshApiServer {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServer
+	}).(KubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+// Enable or disable the ClusterMesh feature.
+func (o KubeCustomizationCiliumClusterMeshPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumClusterMesh) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type KubeCustomizationCiliumClusterMeshApiServer struct {
+	// NodePort on which the ClusterMesh API server is exposed. Only used when `serviceType` is `NodePort`.
+	NodePort *int `pulumi:"nodePort"`
+	// Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+	ServiceType *string `pulumi:"serviceType"`
+}
+
+// KubeCustomizationCiliumClusterMeshApiServerInput is an input type that accepts KubeCustomizationCiliumClusterMeshApiServerArgs and KubeCustomizationCiliumClusterMeshApiServerOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumClusterMeshApiServerInput` via:
+//
+//	KubeCustomizationCiliumClusterMeshApiServerArgs{...}
+type KubeCustomizationCiliumClusterMeshApiServerInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumClusterMeshApiServerOutput() KubeCustomizationCiliumClusterMeshApiServerOutput
+	ToKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(context.Context) KubeCustomizationCiliumClusterMeshApiServerOutput
+}
+
+type KubeCustomizationCiliumClusterMeshApiServerArgs struct {
+	// NodePort on which the ClusterMesh API server is exposed. Only used when `serviceType` is `NodePort`.
+	NodePort pulumi.IntPtrInput `pulumi:"nodePort"`
+	// Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
+}
+
+func (KubeCustomizationCiliumClusterMeshApiServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumClusterMeshApiServerArgs) ToKubeCustomizationCiliumClusterMeshApiServerOutput() KubeCustomizationCiliumClusterMeshApiServerOutput {
+	return i.ToKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumClusterMeshApiServerArgs) ToKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshApiServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumClusterMeshApiServerOutput)
+}
+
+func (i KubeCustomizationCiliumClusterMeshApiServerArgs) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutput() KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return i.ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumClusterMeshApiServerArgs) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumClusterMeshApiServerOutput).ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumClusterMeshApiServerPtrInput is an input type that accepts KubeCustomizationCiliumClusterMeshApiServerArgs, KubeCustomizationCiliumClusterMeshApiServerPtr and KubeCustomizationCiliumClusterMeshApiServerPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumClusterMeshApiServerPtrInput` via:
+//
+//	        KubeCustomizationCiliumClusterMeshApiServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumClusterMeshApiServerPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumClusterMeshApiServerPtrOutput() KubeCustomizationCiliumClusterMeshApiServerPtrOutput
+	ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Context) KubeCustomizationCiliumClusterMeshApiServerPtrOutput
+}
+
+type kubeCustomizationCiliumClusterMeshApiServerPtrType KubeCustomizationCiliumClusterMeshApiServerArgs
+
+func KubeCustomizationCiliumClusterMeshApiServerPtr(v *KubeCustomizationCiliumClusterMeshApiServerArgs) KubeCustomizationCiliumClusterMeshApiServerPtrInput {
+	return (*kubeCustomizationCiliumClusterMeshApiServerPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumClusterMeshApiServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumClusterMeshApiServerPtrType) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutput() KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return i.ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumClusterMeshApiServerPtrType) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+type KubeCustomizationCiliumClusterMeshApiServerOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumClusterMeshApiServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerOutput) ToKubeCustomizationCiliumClusterMeshApiServerOutput() KubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerOutput) ToKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerOutput) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutput() KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerOutput) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumClusterMeshApiServer) *KubeCustomizationCiliumClusterMeshApiServer {
+		return &v
+	}).(KubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+// NodePort on which the ClusterMesh API server is exposed. Only used when `serviceType` is `NodePort`.
+func (o KubeCustomizationCiliumClusterMeshApiServerOutput) NodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumClusterMeshApiServer) *int { return v.NodePort }).(pulumi.IntPtrOutput)
+}
+
+// Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+func (o KubeCustomizationCiliumClusterMeshApiServerOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumClusterMeshApiServer) *string { return v.ServiceType }).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumClusterMeshApiServerPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumClusterMeshApiServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerPtrOutput) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutput() KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerPtrOutput) ToKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumClusterMeshApiServerPtrOutput) Elem() KubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumClusterMeshApiServer) KubeCustomizationCiliumClusterMeshApiServer {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumClusterMeshApiServer
+		return ret
+	}).(KubeCustomizationCiliumClusterMeshApiServerOutput)
+}
+
+// NodePort on which the ClusterMesh API server is exposed. Only used when `serviceType` is `NodePort`.
+func (o KubeCustomizationCiliumClusterMeshApiServerPtrOutput) NodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumClusterMeshApiServer) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+func (o KubeCustomizationCiliumClusterMeshApiServerPtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumClusterMeshApiServer) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubble struct {
+	// Enable or disable Hubble.
+	Enabled *bool `pulumi:"enabled"`
+	// Hubble Relay configuration.
+	Relay *KubeCustomizationCiliumHubbleRelay `pulumi:"relay"`
+	// Hubble UI configuration.
+	Ui *KubeCustomizationCiliumHubbleUi `pulumi:"ui"`
+}
+
+// KubeCustomizationCiliumHubbleInput is an input type that accepts KubeCustomizationCiliumHubbleArgs and KubeCustomizationCiliumHubbleOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleInput` via:
+//
+//	KubeCustomizationCiliumHubbleArgs{...}
+type KubeCustomizationCiliumHubbleInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleOutput() KubeCustomizationCiliumHubbleOutput
+	ToKubeCustomizationCiliumHubbleOutputWithContext(context.Context) KubeCustomizationCiliumHubbleOutput
+}
+
+type KubeCustomizationCiliumHubbleArgs struct {
+	// Enable or disable Hubble.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Hubble Relay configuration.
+	Relay KubeCustomizationCiliumHubbleRelayPtrInput `pulumi:"relay"`
+	// Hubble UI configuration.
+	Ui KubeCustomizationCiliumHubbleUiPtrInput `pulumi:"ui"`
+}
+
+func (KubeCustomizationCiliumHubbleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleArgs) ToKubeCustomizationCiliumHubbleOutput() KubeCustomizationCiliumHubbleOutput {
+	return i.ToKubeCustomizationCiliumHubbleOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleArgs) ToKubeCustomizationCiliumHubbleOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleArgs) ToKubeCustomizationCiliumHubblePtrOutput() KubeCustomizationCiliumHubblePtrOutput {
+	return i.ToKubeCustomizationCiliumHubblePtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleArgs) ToKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubblePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleOutput).ToKubeCustomizationCiliumHubblePtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubblePtrInput is an input type that accepts KubeCustomizationCiliumHubbleArgs, KubeCustomizationCiliumHubblePtr and KubeCustomizationCiliumHubblePtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubblePtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubblePtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubblePtrOutput() KubeCustomizationCiliumHubblePtrOutput
+	ToKubeCustomizationCiliumHubblePtrOutputWithContext(context.Context) KubeCustomizationCiliumHubblePtrOutput
+}
+
+type kubeCustomizationCiliumHubblePtrType KubeCustomizationCiliumHubbleArgs
+
+func KubeCustomizationCiliumHubblePtr(v *KubeCustomizationCiliumHubbleArgs) KubeCustomizationCiliumHubblePtrInput {
+	return (*kubeCustomizationCiliumHubblePtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubblePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubblePtrType) ToKubeCustomizationCiliumHubblePtrOutput() KubeCustomizationCiliumHubblePtrOutput {
+	return i.ToKubeCustomizationCiliumHubblePtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubblePtrType) ToKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubblePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubblePtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleOutput) ToKubeCustomizationCiliumHubbleOutput() KubeCustomizationCiliumHubbleOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleOutput) ToKubeCustomizationCiliumHubbleOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleOutput) ToKubeCustomizationCiliumHubblePtrOutput() KubeCustomizationCiliumHubblePtrOutput {
+	return o.ToKubeCustomizationCiliumHubblePtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleOutput) ToKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubblePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubble) *KubeCustomizationCiliumHubble {
+		return &v
+	}).(KubeCustomizationCiliumHubblePtrOutput)
+}
+
+// Enable or disable Hubble.
+func (o KubeCustomizationCiliumHubbleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubble) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Hubble Relay configuration.
+func (o KubeCustomizationCiliumHubbleOutput) Relay() KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubble) *KubeCustomizationCiliumHubbleRelay { return v.Relay }).(KubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+// Hubble UI configuration.
+func (o KubeCustomizationCiliumHubbleOutput) Ui() KubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubble) *KubeCustomizationCiliumHubbleUi { return v.Ui }).(KubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+type KubeCustomizationCiliumHubblePtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubblePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubblePtrOutput) ToKubeCustomizationCiliumHubblePtrOutput() KubeCustomizationCiliumHubblePtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubblePtrOutput) ToKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubblePtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubblePtrOutput) Elem() KubeCustomizationCiliumHubbleOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubble) KubeCustomizationCiliumHubble {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubble
+		return ret
+	}).(KubeCustomizationCiliumHubbleOutput)
+}
+
+// Enable or disable Hubble.
+func (o KubeCustomizationCiliumHubblePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubble) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hubble Relay configuration.
+func (o KubeCustomizationCiliumHubblePtrOutput) Relay() KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubble) *KubeCustomizationCiliumHubbleRelay {
+		if v == nil {
+			return nil
+		}
+		return v.Relay
+	}).(KubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+// Hubble UI configuration.
+func (o KubeCustomizationCiliumHubblePtrOutput) Ui() KubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubble) *KubeCustomizationCiliumHubbleUi {
+		if v == nil {
+			return nil
+		}
+		return v.Ui
+	}).(KubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleRelay struct {
+	// Enable or disable Hubble Relay.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// KubeCustomizationCiliumHubbleRelayInput is an input type that accepts KubeCustomizationCiliumHubbleRelayArgs and KubeCustomizationCiliumHubbleRelayOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleRelayInput` via:
+//
+//	KubeCustomizationCiliumHubbleRelayArgs{...}
+type KubeCustomizationCiliumHubbleRelayInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleRelayOutput() KubeCustomizationCiliumHubbleRelayOutput
+	ToKubeCustomizationCiliumHubbleRelayOutputWithContext(context.Context) KubeCustomizationCiliumHubbleRelayOutput
+}
+
+type KubeCustomizationCiliumHubbleRelayArgs struct {
+	// Enable or disable Hubble Relay.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (KubeCustomizationCiliumHubbleRelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleRelayArgs) ToKubeCustomizationCiliumHubbleRelayOutput() KubeCustomizationCiliumHubbleRelayOutput {
+	return i.ToKubeCustomizationCiliumHubbleRelayOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleRelayArgs) ToKubeCustomizationCiliumHubbleRelayOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleRelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleRelayOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleRelayArgs) ToKubeCustomizationCiliumHubbleRelayPtrOutput() KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleRelayArgs) ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleRelayOutput).ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleRelayPtrInput is an input type that accepts KubeCustomizationCiliumHubbleRelayArgs, KubeCustomizationCiliumHubbleRelayPtr and KubeCustomizationCiliumHubbleRelayPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleRelayPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleRelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleRelayPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleRelayPtrOutput() KubeCustomizationCiliumHubbleRelayPtrOutput
+	ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleRelayPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleRelayPtrType KubeCustomizationCiliumHubbleRelayArgs
+
+func KubeCustomizationCiliumHubbleRelayPtr(v *KubeCustomizationCiliumHubbleRelayArgs) KubeCustomizationCiliumHubbleRelayPtrInput {
+	return (*kubeCustomizationCiliumHubbleRelayPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleRelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleRelayPtrType) ToKubeCustomizationCiliumHubbleRelayPtrOutput() KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleRelayPtrType) ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleRelayOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleRelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleRelayOutput) ToKubeCustomizationCiliumHubbleRelayOutput() KubeCustomizationCiliumHubbleRelayOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleRelayOutput) ToKubeCustomizationCiliumHubbleRelayOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleRelayOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleRelayOutput) ToKubeCustomizationCiliumHubbleRelayPtrOutput() KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleRelayOutput) ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleRelay) *KubeCustomizationCiliumHubbleRelay {
+		return &v
+	}).(KubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+// Enable or disable Hubble Relay.
+func (o KubeCustomizationCiliumHubbleRelayOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleRelay) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleRelayPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleRelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleRelayPtrOutput) ToKubeCustomizationCiliumHubbleRelayPtrOutput() KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleRelayPtrOutput) ToKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleRelayPtrOutput) Elem() KubeCustomizationCiliumHubbleRelayOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleRelay) KubeCustomizationCiliumHubbleRelay {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleRelay
+		return ret
+	}).(KubeCustomizationCiliumHubbleRelayOutput)
+}
+
+// Enable or disable Hubble Relay.
+func (o KubeCustomizationCiliumHubbleRelayPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleRelay) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUi struct {
+	// Resource requests and limits for the Hubble UI backend.
+	BackendResources *KubeCustomizationCiliumHubbleUiBackendResources `pulumi:"backendResources"`
+	// Enable or disable the Hubble UI.
+	Enabled *bool `pulumi:"enabled"`
+	// Resource requests and limits for the Hubble UI frontend.
+	FrontendResources *KubeCustomizationCiliumHubbleUiFrontendResources `pulumi:"frontendResources"`
+}
+
+// KubeCustomizationCiliumHubbleUiInput is an input type that accepts KubeCustomizationCiliumHubbleUiArgs and KubeCustomizationCiliumHubbleUiOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiArgs{...}
+type KubeCustomizationCiliumHubbleUiInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiOutput() KubeCustomizationCiliumHubbleUiOutput
+	ToKubeCustomizationCiliumHubbleUiOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiOutput
+}
+
+type KubeCustomizationCiliumHubbleUiArgs struct {
+	// Resource requests and limits for the Hubble UI backend.
+	BackendResources KubeCustomizationCiliumHubbleUiBackendResourcesPtrInput `pulumi:"backendResources"`
+	// Enable or disable the Hubble UI.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Resource requests and limits for the Hubble UI frontend.
+	FrontendResources KubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput `pulumi:"frontendResources"`
+}
+
+func (KubeCustomizationCiliumHubbleUiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiArgs) ToKubeCustomizationCiliumHubbleUiOutput() KubeCustomizationCiliumHubbleUiOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiArgs) ToKubeCustomizationCiliumHubbleUiOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiArgs) ToKubeCustomizationCiliumHubbleUiPtrOutput() KubeCustomizationCiliumHubbleUiPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiArgs) ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiOutput).ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiArgs, KubeCustomizationCiliumHubbleUiPtr and KubeCustomizationCiliumHubbleUiPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiPtrOutput() KubeCustomizationCiliumHubbleUiPtrOutput
+	ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiPtrType KubeCustomizationCiliumHubbleUiArgs
+
+func KubeCustomizationCiliumHubbleUiPtr(v *KubeCustomizationCiliumHubbleUiArgs) KubeCustomizationCiliumHubbleUiPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiPtrType) ToKubeCustomizationCiliumHubbleUiPtrOutput() KubeCustomizationCiliumHubbleUiPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiPtrType) ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiOutput) ToKubeCustomizationCiliumHubbleUiOutput() KubeCustomizationCiliumHubbleUiOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiOutput) ToKubeCustomizationCiliumHubbleUiOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiOutput) ToKubeCustomizationCiliumHubbleUiPtrOutput() KubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiOutput) ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUi) *KubeCustomizationCiliumHubbleUi {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+// Resource requests and limits for the Hubble UI backend.
+func (o KubeCustomizationCiliumHubbleUiOutput) BackendResources() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUi) *KubeCustomizationCiliumHubbleUiBackendResources {
+		return v.BackendResources
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+// Enable or disable the Hubble UI.
+func (o KubeCustomizationCiliumHubbleUiOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUi) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Resource requests and limits for the Hubble UI frontend.
+func (o KubeCustomizationCiliumHubbleUiOutput) FrontendResources() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUi) *KubeCustomizationCiliumHubbleUiFrontendResources {
+		return v.FrontendResources
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiPtrOutput) ToKubeCustomizationCiliumHubbleUiPtrOutput() KubeCustomizationCiliumHubbleUiPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiPtrOutput) ToKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiPtrOutput) Elem() KubeCustomizationCiliumHubbleUiOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUi) KubeCustomizationCiliumHubbleUi {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUi
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiOutput)
+}
+
+// Resource requests and limits for the Hubble UI backend.
+func (o KubeCustomizationCiliumHubbleUiPtrOutput) BackendResources() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUi) *KubeCustomizationCiliumHubbleUiBackendResources {
+		if v == nil {
+			return nil
+		}
+		return v.BackendResources
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+// Enable or disable the Hubble UI.
+func (o KubeCustomizationCiliumHubbleUiPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUi) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Resource requests and limits for the Hubble UI frontend.
+func (o KubeCustomizationCiliumHubbleUiPtrOutput) FrontendResources() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUi) *KubeCustomizationCiliumHubbleUiFrontendResources {
+		if v == nil {
+			return nil
+		}
+		return v.FrontendResources
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResources struct {
+	// Resource limits.
+	Limits *KubeCustomizationCiliumHubbleUiBackendResourcesLimits `pulumi:"limits"`
+	// Resource requests.
+	Requests *KubeCustomizationCiliumHubbleUiBackendResourcesRequests `pulumi:"requests"`
+}
+
+// KubeCustomizationCiliumHubbleUiBackendResourcesInput is an input type that accepts KubeCustomizationCiliumHubbleUiBackendResourcesArgs and KubeCustomizationCiliumHubbleUiBackendResourcesOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiBackendResourcesInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiBackendResourcesArgs{...}
+type KubeCustomizationCiliumHubbleUiBackendResourcesInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesOutput() KubeCustomizationCiliumHubbleUiBackendResourcesOutput
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesOutput
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesArgs struct {
+	// Resource limits.
+	Limits KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput `pulumi:"limits"`
+	// Resource requests.
+	Requests KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput `pulumi:"requests"`
+}
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesOutput() KubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesOutput).ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiBackendResourcesPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiBackendResourcesArgs, KubeCustomizationCiliumHubbleUiBackendResourcesPtr and KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiBackendResourcesPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiBackendResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiBackendResourcesPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiBackendResourcesPtrType KubeCustomizationCiliumHubbleUiBackendResourcesArgs
+
+func KubeCustomizationCiliumHubbleUiBackendResourcesPtr(v *KubeCustomizationCiliumHubbleUiBackendResourcesArgs) KubeCustomizationCiliumHubbleUiBackendResourcesPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiBackendResourcesPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiBackendResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiBackendResourcesPtrType) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiBackendResourcesPtrType) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesOutput() KubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUiBackendResources) *KubeCustomizationCiliumHubbleUiBackendResources {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+// Resource limits.
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesOutput) Limits() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiBackendResources) *KubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		return v.Limits
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+// Resource requests.
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesOutput) Requests() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiBackendResources) *KubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		return v.Requests
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) Elem() KubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResources) KubeCustomizationCiliumHubbleUiBackendResources {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUiBackendResources
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesOutput)
+}
+
+// Resource limits.
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) Limits() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResources) *KubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+// Resource requests.
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) Requests() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResources) *KubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesLimits struct {
+	// CPU limit (e.g. `"500m"`).
+	Cpu *string `pulumi:"cpu"`
+	// Memory limit (e.g. `"128Mi"`).
+	Memory *string `pulumi:"memory"`
+}
+
+// KubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput is an input type that accepts KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs and KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{...}
+type KubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs struct {
+	// CPU limit (e.g. `"500m"`).
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory limit (e.g. `"128Mi"`).
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput).ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs, KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtr and KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs
+
+func KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtr(v *KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUiBackendResourcesLimits) *KubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+// CPU limit (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiBackendResourcesLimits) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory limit (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiBackendResourcesLimits) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) Elem() KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResourcesLimits) KubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUiBackendResourcesLimits
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput)
+}
+
+// CPU limit (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory limit (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesRequests struct {
+	// CPU request (e.g. `"500m"`).
+	Cpu *string `pulumi:"cpu"`
+	// Memory request (e.g. `"128Mi"`).
+	Memory *string `pulumi:"memory"`
+}
+
+// KubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput is an input type that accepts KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs and KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{...}
+type KubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs struct {
+	// CPU request (e.g. `"500m"`).
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory request (e.g. `"128Mi"`).
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput).ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs, KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtr and KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput
+	ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs
+
+func KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtr(v *KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUiBackendResourcesRequests) *KubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+// CPU request (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiBackendResourcesRequests) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory request (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiBackendResourcesRequests) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) ToKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) Elem() KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResourcesRequests) KubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUiBackendResourcesRequests
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput)
+}
+
+// CPU request (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiBackendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResources struct {
+	// Resource limits.
+	Limits *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits `pulumi:"limits"`
+	// Resource requests.
+	Requests *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests `pulumi:"requests"`
+}
+
+// KubeCustomizationCiliumHubbleUiFrontendResourcesInput is an input type that accepts KubeCustomizationCiliumHubbleUiFrontendResourcesArgs and KubeCustomizationCiliumHubbleUiFrontendResourcesOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiFrontendResourcesInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiFrontendResourcesArgs{...}
+type KubeCustomizationCiliumHubbleUiFrontendResourcesInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesOutput
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesOutput
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesArgs struct {
+	// Resource limits.
+	Limits KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput `pulumi:"limits"`
+	// Resource requests.
+	Requests KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput `pulumi:"requests"`
+}
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesOutput).ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiFrontendResourcesArgs, KubeCustomizationCiliumHubbleUiFrontendResourcesPtr and KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiFrontendResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiFrontendResourcesPtrType KubeCustomizationCiliumHubbleUiFrontendResourcesArgs
+
+func KubeCustomizationCiliumHubbleUiFrontendResourcesPtr(v *KubeCustomizationCiliumHubbleUiFrontendResourcesArgs) KubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiFrontendResourcesPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiFrontendResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiFrontendResourcesPtrType) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiFrontendResourcesPtrType) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUiFrontendResources) *KubeCustomizationCiliumHubbleUiFrontendResources {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+// Resource limits.
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) Limits() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiFrontendResources) *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		return v.Limits
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+// Resource requests.
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesOutput) Requests() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiFrontendResources) *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		return v.Requests
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) Elem() KubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResources) KubeCustomizationCiliumHubbleUiFrontendResources {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUiFrontendResources
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesOutput)
+}
+
+// Resource limits.
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) Limits() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResources) *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+// Resource requests.
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) Requests() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResources) *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return v.Requests
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesLimits struct {
+	// CPU limit (e.g. `"500m"`).
+	Cpu *string `pulumi:"cpu"`
+	// Memory limit (e.g. `"128Mi"`).
+	Memory *string `pulumi:"memory"`
+}
+
+// KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput is an input type that accepts KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs and KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{...}
+type KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs struct {
+	// CPU limit (e.g. `"500m"`).
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory limit (e.g. `"128Mi"`).
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput).ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs, KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtr and KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs
+
+func KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtr(v *KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+// CPU limit (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory limit (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) Elem() KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits) KubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUiFrontendResourcesLimits
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput)
+}
+
+// CPU limit (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory limit (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesRequests struct {
+	// CPU request (e.g. `"500m"`).
+	Cpu *string `pulumi:"cpu"`
+	// Memory request (e.g. `"128Mi"`).
+	Memory *string `pulumi:"memory"`
+}
+
+// KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput is an input type that accepts KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs and KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput` via:
+//
+//	KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{...}
+type KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs struct {
+	// CPU request (e.g. `"500m"`).
+	Cpu pulumi.StringPtrInput `pulumi:"cpu"`
+	// Memory request (e.g. `"128Mi"`).
+	Memory pulumi.StringPtrInput `pulumi:"memory"`
+}
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput)
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput).ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput is an input type that accepts KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs, KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtr and KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput` via:
+//
+//	        KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput
+	ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput
+}
+
+type kubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs
+
+func KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtr(v *KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput {
+	return (*kubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType)(v)
+}
+
+func (*kubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (i *kubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return i.ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		return &v
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+// CPU request (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *string { return v.Cpu }).(pulumi.StringPtrOutput)
+}
+
+// Memory request (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *string { return v.Memory }).(pulumi.StringPtrOutput)
+}
+
+type KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) ToKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) Elem() KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests) KubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret KubeCustomizationCiliumHubbleUiFrontendResourcesRequests
+		return ret
+	}).(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput)
+}
+
+// CPU request (e.g. `"500m"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request (e.g. `"128Mi"`).
+func (o KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
 type KubeCustomizationKubeProxy struct {
 	// Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
 	Iptables *KubeCustomizationKubeProxyIptables `pulumi:"iptables"`
@@ -4685,6 +6609,162 @@ func (o KubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPtrOu
 			return nil
 		}
 		return v.UdpTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type KubeIpAllocationPolicy struct {
+	// CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+	PodsIpv4Cidr *string `pulumi:"podsIpv4Cidr"`
+	// CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+	ServicesIpv4Cidr *string `pulumi:"servicesIpv4Cidr"`
+}
+
+// KubeIpAllocationPolicyInput is an input type that accepts KubeIpAllocationPolicyArgs and KubeIpAllocationPolicyOutput values.
+// You can construct a concrete instance of `KubeIpAllocationPolicyInput` via:
+//
+//	KubeIpAllocationPolicyArgs{...}
+type KubeIpAllocationPolicyInput interface {
+	pulumi.Input
+
+	ToKubeIpAllocationPolicyOutput() KubeIpAllocationPolicyOutput
+	ToKubeIpAllocationPolicyOutputWithContext(context.Context) KubeIpAllocationPolicyOutput
+}
+
+type KubeIpAllocationPolicyArgs struct {
+	// CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+	PodsIpv4Cidr pulumi.StringPtrInput `pulumi:"podsIpv4Cidr"`
+	// CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+	ServicesIpv4Cidr pulumi.StringPtrInput `pulumi:"servicesIpv4Cidr"`
+}
+
+func (KubeIpAllocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i KubeIpAllocationPolicyArgs) ToKubeIpAllocationPolicyOutput() KubeIpAllocationPolicyOutput {
+	return i.ToKubeIpAllocationPolicyOutputWithContext(context.Background())
+}
+
+func (i KubeIpAllocationPolicyArgs) ToKubeIpAllocationPolicyOutputWithContext(ctx context.Context) KubeIpAllocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeIpAllocationPolicyOutput)
+}
+
+func (i KubeIpAllocationPolicyArgs) ToKubeIpAllocationPolicyPtrOutput() KubeIpAllocationPolicyPtrOutput {
+	return i.ToKubeIpAllocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i KubeIpAllocationPolicyArgs) ToKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) KubeIpAllocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeIpAllocationPolicyOutput).ToKubeIpAllocationPolicyPtrOutputWithContext(ctx)
+}
+
+// KubeIpAllocationPolicyPtrInput is an input type that accepts KubeIpAllocationPolicyArgs, KubeIpAllocationPolicyPtr and KubeIpAllocationPolicyPtrOutput values.
+// You can construct a concrete instance of `KubeIpAllocationPolicyPtrInput` via:
+//
+//	        KubeIpAllocationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubeIpAllocationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToKubeIpAllocationPolicyPtrOutput() KubeIpAllocationPolicyPtrOutput
+	ToKubeIpAllocationPolicyPtrOutputWithContext(context.Context) KubeIpAllocationPolicyPtrOutput
+}
+
+type kubeIpAllocationPolicyPtrType KubeIpAllocationPolicyArgs
+
+func KubeIpAllocationPolicyPtr(v *KubeIpAllocationPolicyArgs) KubeIpAllocationPolicyPtrInput {
+	return (*kubeIpAllocationPolicyPtrType)(v)
+}
+
+func (*kubeIpAllocationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i *kubeIpAllocationPolicyPtrType) ToKubeIpAllocationPolicyPtrOutput() KubeIpAllocationPolicyPtrOutput {
+	return i.ToKubeIpAllocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *kubeIpAllocationPolicyPtrType) ToKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) KubeIpAllocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubeIpAllocationPolicyPtrOutput)
+}
+
+type KubeIpAllocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (KubeIpAllocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o KubeIpAllocationPolicyOutput) ToKubeIpAllocationPolicyOutput() KubeIpAllocationPolicyOutput {
+	return o
+}
+
+func (o KubeIpAllocationPolicyOutput) ToKubeIpAllocationPolicyOutputWithContext(ctx context.Context) KubeIpAllocationPolicyOutput {
+	return o
+}
+
+func (o KubeIpAllocationPolicyOutput) ToKubeIpAllocationPolicyPtrOutput() KubeIpAllocationPolicyPtrOutput {
+	return o.ToKubeIpAllocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o KubeIpAllocationPolicyOutput) ToKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) KubeIpAllocationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubeIpAllocationPolicy) *KubeIpAllocationPolicy {
+		return &v
+	}).(KubeIpAllocationPolicyPtrOutput)
+}
+
+// CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+func (o KubeIpAllocationPolicyOutput) PodsIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeIpAllocationPolicy) *string { return v.PodsIpv4Cidr }).(pulumi.StringPtrOutput)
+}
+
+// CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+func (o KubeIpAllocationPolicyOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubeIpAllocationPolicy) *string { return v.ServicesIpv4Cidr }).(pulumi.StringPtrOutput)
+}
+
+type KubeIpAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (KubeIpAllocationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o KubeIpAllocationPolicyPtrOutput) ToKubeIpAllocationPolicyPtrOutput() KubeIpAllocationPolicyPtrOutput {
+	return o
+}
+
+func (o KubeIpAllocationPolicyPtrOutput) ToKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) KubeIpAllocationPolicyPtrOutput {
+	return o
+}
+
+func (o KubeIpAllocationPolicyPtrOutput) Elem() KubeIpAllocationPolicyOutput {
+	return o.ApplyT(func(v *KubeIpAllocationPolicy) KubeIpAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret KubeIpAllocationPolicy
+		return ret
+	}).(KubeIpAllocationPolicyOutput)
+}
+
+// CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+func (o KubeIpAllocationPolicyPtrOutput) PodsIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodsIpv4Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+func (o KubeIpAllocationPolicyPtrOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KubeIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicesIpv4Cidr
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12666,6 +14746,318 @@ func (o UserRoleArrayOutput) Index(i pulumi.IntInput) UserRoleOutput {
 	}).(UserRoleOutput)
 }
 
+type VolumeEncryption struct {
+	// Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+	Encrypted *bool `pulumi:"encrypted"`
+	// Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+	Kms *VolumeEncryptionKms `pulumi:"kms"`
+}
+
+// VolumeEncryptionInput is an input type that accepts VolumeEncryptionArgs and VolumeEncryptionOutput values.
+// You can construct a concrete instance of `VolumeEncryptionInput` via:
+//
+//	VolumeEncryptionArgs{...}
+type VolumeEncryptionInput interface {
+	pulumi.Input
+
+	ToVolumeEncryptionOutput() VolumeEncryptionOutput
+	ToVolumeEncryptionOutputWithContext(context.Context) VolumeEncryptionOutput
+}
+
+type VolumeEncryptionArgs struct {
+	// Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+	Kms VolumeEncryptionKmsPtrInput `pulumi:"kms"`
+}
+
+func (VolumeEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeEncryption)(nil)).Elem()
+}
+
+func (i VolumeEncryptionArgs) ToVolumeEncryptionOutput() VolumeEncryptionOutput {
+	return i.ToVolumeEncryptionOutputWithContext(context.Background())
+}
+
+func (i VolumeEncryptionArgs) ToVolumeEncryptionOutputWithContext(ctx context.Context) VolumeEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeEncryptionOutput)
+}
+
+func (i VolumeEncryptionArgs) ToVolumeEncryptionPtrOutput() VolumeEncryptionPtrOutput {
+	return i.ToVolumeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeEncryptionArgs) ToVolumeEncryptionPtrOutputWithContext(ctx context.Context) VolumeEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeEncryptionOutput).ToVolumeEncryptionPtrOutputWithContext(ctx)
+}
+
+// VolumeEncryptionPtrInput is an input type that accepts VolumeEncryptionArgs, VolumeEncryptionPtr and VolumeEncryptionPtrOutput values.
+// You can construct a concrete instance of `VolumeEncryptionPtrInput` via:
+//
+//	        VolumeEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToVolumeEncryptionPtrOutput() VolumeEncryptionPtrOutput
+	ToVolumeEncryptionPtrOutputWithContext(context.Context) VolumeEncryptionPtrOutput
+}
+
+type volumeEncryptionPtrType VolumeEncryptionArgs
+
+func VolumeEncryptionPtr(v *VolumeEncryptionArgs) VolumeEncryptionPtrInput {
+	return (*volumeEncryptionPtrType)(v)
+}
+
+func (*volumeEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeEncryption)(nil)).Elem()
+}
+
+func (i *volumeEncryptionPtrType) ToVolumeEncryptionPtrOutput() VolumeEncryptionPtrOutput {
+	return i.ToVolumeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeEncryptionPtrType) ToVolumeEncryptionPtrOutputWithContext(ctx context.Context) VolumeEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeEncryptionPtrOutput)
+}
+
+type VolumeEncryptionOutput struct{ *pulumi.OutputState }
+
+func (VolumeEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeEncryption)(nil)).Elem()
+}
+
+func (o VolumeEncryptionOutput) ToVolumeEncryptionOutput() VolumeEncryptionOutput {
+	return o
+}
+
+func (o VolumeEncryptionOutput) ToVolumeEncryptionOutputWithContext(ctx context.Context) VolumeEncryptionOutput {
+	return o
+}
+
+func (o VolumeEncryptionOutput) ToVolumeEncryptionPtrOutput() VolumeEncryptionPtrOutput {
+	return o.ToVolumeEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeEncryptionOutput) ToVolumeEncryptionPtrOutputWithContext(ctx context.Context) VolumeEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeEncryption) *VolumeEncryption {
+		return &v
+	}).(VolumeEncryptionPtrOutput)
+}
+
+// Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+func (o VolumeEncryptionOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VolumeEncryption) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+func (o VolumeEncryptionOutput) Kms() VolumeEncryptionKmsPtrOutput {
+	return o.ApplyT(func(v VolumeEncryption) *VolumeEncryptionKms { return v.Kms }).(VolumeEncryptionKmsPtrOutput)
+}
+
+type VolumeEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeEncryption)(nil)).Elem()
+}
+
+func (o VolumeEncryptionPtrOutput) ToVolumeEncryptionPtrOutput() VolumeEncryptionPtrOutput {
+	return o
+}
+
+func (o VolumeEncryptionPtrOutput) ToVolumeEncryptionPtrOutputWithContext(ctx context.Context) VolumeEncryptionPtrOutput {
+	return o
+}
+
+func (o VolumeEncryptionPtrOutput) Elem() VolumeEncryptionOutput {
+	return o.ApplyT(func(v *VolumeEncryption) VolumeEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeEncryption
+		return ret
+	}).(VolumeEncryptionOutput)
+}
+
+// Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+func (o VolumeEncryptionPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VolumeEncryption) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+func (o VolumeEncryptionPtrOutput) Kms() VolumeEncryptionKmsPtrOutput {
+	return o.ApplyT(func(v *VolumeEncryption) *VolumeEncryptionKms {
+		if v == nil {
+			return nil
+		}
+		return v.Kms
+	}).(VolumeEncryptionKmsPtrOutput)
+}
+
+type VolumeEncryptionKms struct {
+	// OKMS domain ID holding the customer managed key.
+	DomainId *string `pulumi:"domainId"`
+	// OKMS service key ID used to encrypt the volume.
+	ServiceKeyId *string `pulumi:"serviceKeyId"`
+}
+
+// VolumeEncryptionKmsInput is an input type that accepts VolumeEncryptionKmsArgs and VolumeEncryptionKmsOutput values.
+// You can construct a concrete instance of `VolumeEncryptionKmsInput` via:
+//
+//	VolumeEncryptionKmsArgs{...}
+type VolumeEncryptionKmsInput interface {
+	pulumi.Input
+
+	ToVolumeEncryptionKmsOutput() VolumeEncryptionKmsOutput
+	ToVolumeEncryptionKmsOutputWithContext(context.Context) VolumeEncryptionKmsOutput
+}
+
+type VolumeEncryptionKmsArgs struct {
+	// OKMS domain ID holding the customer managed key.
+	DomainId pulumi.StringPtrInput `pulumi:"domainId"`
+	// OKMS service key ID used to encrypt the volume.
+	ServiceKeyId pulumi.StringPtrInput `pulumi:"serviceKeyId"`
+}
+
+func (VolumeEncryptionKmsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeEncryptionKms)(nil)).Elem()
+}
+
+func (i VolumeEncryptionKmsArgs) ToVolumeEncryptionKmsOutput() VolumeEncryptionKmsOutput {
+	return i.ToVolumeEncryptionKmsOutputWithContext(context.Background())
+}
+
+func (i VolumeEncryptionKmsArgs) ToVolumeEncryptionKmsOutputWithContext(ctx context.Context) VolumeEncryptionKmsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeEncryptionKmsOutput)
+}
+
+func (i VolumeEncryptionKmsArgs) ToVolumeEncryptionKmsPtrOutput() VolumeEncryptionKmsPtrOutput {
+	return i.ToVolumeEncryptionKmsPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeEncryptionKmsArgs) ToVolumeEncryptionKmsPtrOutputWithContext(ctx context.Context) VolumeEncryptionKmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeEncryptionKmsOutput).ToVolumeEncryptionKmsPtrOutputWithContext(ctx)
+}
+
+// VolumeEncryptionKmsPtrInput is an input type that accepts VolumeEncryptionKmsArgs, VolumeEncryptionKmsPtr and VolumeEncryptionKmsPtrOutput values.
+// You can construct a concrete instance of `VolumeEncryptionKmsPtrInput` via:
+//
+//	        VolumeEncryptionKmsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeEncryptionKmsPtrInput interface {
+	pulumi.Input
+
+	ToVolumeEncryptionKmsPtrOutput() VolumeEncryptionKmsPtrOutput
+	ToVolumeEncryptionKmsPtrOutputWithContext(context.Context) VolumeEncryptionKmsPtrOutput
+}
+
+type volumeEncryptionKmsPtrType VolumeEncryptionKmsArgs
+
+func VolumeEncryptionKmsPtr(v *VolumeEncryptionKmsArgs) VolumeEncryptionKmsPtrInput {
+	return (*volumeEncryptionKmsPtrType)(v)
+}
+
+func (*volumeEncryptionKmsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeEncryptionKms)(nil)).Elem()
+}
+
+func (i *volumeEncryptionKmsPtrType) ToVolumeEncryptionKmsPtrOutput() VolumeEncryptionKmsPtrOutput {
+	return i.ToVolumeEncryptionKmsPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeEncryptionKmsPtrType) ToVolumeEncryptionKmsPtrOutputWithContext(ctx context.Context) VolumeEncryptionKmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeEncryptionKmsPtrOutput)
+}
+
+type VolumeEncryptionKmsOutput struct{ *pulumi.OutputState }
+
+func (VolumeEncryptionKmsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeEncryptionKms)(nil)).Elem()
+}
+
+func (o VolumeEncryptionKmsOutput) ToVolumeEncryptionKmsOutput() VolumeEncryptionKmsOutput {
+	return o
+}
+
+func (o VolumeEncryptionKmsOutput) ToVolumeEncryptionKmsOutputWithContext(ctx context.Context) VolumeEncryptionKmsOutput {
+	return o
+}
+
+func (o VolumeEncryptionKmsOutput) ToVolumeEncryptionKmsPtrOutput() VolumeEncryptionKmsPtrOutput {
+	return o.ToVolumeEncryptionKmsPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeEncryptionKmsOutput) ToVolumeEncryptionKmsPtrOutputWithContext(ctx context.Context) VolumeEncryptionKmsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeEncryptionKms) *VolumeEncryptionKms {
+		return &v
+	}).(VolumeEncryptionKmsPtrOutput)
+}
+
+// OKMS domain ID holding the customer managed key.
+func (o VolumeEncryptionKmsOutput) DomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeEncryptionKms) *string { return v.DomainId }).(pulumi.StringPtrOutput)
+}
+
+// OKMS service key ID used to encrypt the volume.
+func (o VolumeEncryptionKmsOutput) ServiceKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeEncryptionKms) *string { return v.ServiceKeyId }).(pulumi.StringPtrOutput)
+}
+
+type VolumeEncryptionKmsPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeEncryptionKmsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeEncryptionKms)(nil)).Elem()
+}
+
+func (o VolumeEncryptionKmsPtrOutput) ToVolumeEncryptionKmsPtrOutput() VolumeEncryptionKmsPtrOutput {
+	return o
+}
+
+func (o VolumeEncryptionKmsPtrOutput) ToVolumeEncryptionKmsPtrOutputWithContext(ctx context.Context) VolumeEncryptionKmsPtrOutput {
+	return o
+}
+
+func (o VolumeEncryptionKmsPtrOutput) Elem() VolumeEncryptionKmsOutput {
+	return o.ApplyT(func(v *VolumeEncryptionKms) VolumeEncryptionKms {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeEncryptionKms
+		return ret
+	}).(VolumeEncryptionKmsOutput)
+}
+
+// OKMS domain ID holding the customer managed key.
+func (o VolumeEncryptionKmsPtrOutput) DomainId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeEncryptionKms) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainId
+	}).(pulumi.StringPtrOutput)
+}
+
+// OKMS service key ID used to encrypt the volume.
+func (o VolumeEncryptionKmsPtrOutput) ServiceKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeEncryptionKms) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type VolumeSubOperation struct {
 	// Affected resource of the sub-operation
 	ResourceId *string `pulumi:"resourceId"`
@@ -15359,7 +17751,7 @@ func (o GetKubeCustomizationApiserverArrayOutput) Index(i pulumi.IntInput) GetKu
 type GetKubeCustomizationApiserverAdmissionplugin struct {
 	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds []string `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	// Whether the Hubble UI is enabled.
 	Enableds []string `pulumi:"enableds"`
 }
 
@@ -15377,7 +17769,7 @@ type GetKubeCustomizationApiserverAdmissionpluginInput interface {
 type GetKubeCustomizationApiserverAdmissionpluginArgs struct {
 	// Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
 	Disableds pulumi.StringArrayInput `pulumi:"disableds"`
-	// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+	// Whether the Hubble UI is enabled.
 	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
 }
 
@@ -15437,7 +17829,7 @@ func (o GetKubeCustomizationApiserverAdmissionpluginOutput) Disableds() pulumi.S
 	return o.ApplyT(func(v GetKubeCustomizationApiserverAdmissionplugin) []string { return v.Disableds }).(pulumi.StringArrayOutput)
 }
 
-// Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+// Whether the Hubble UI is enabled.
 func (o GetKubeCustomizationApiserverAdmissionpluginOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetKubeCustomizationApiserverAdmissionplugin) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
@@ -15460,6 +17852,1930 @@ func (o GetKubeCustomizationApiserverAdmissionpluginArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubeCustomizationApiserverAdmissionplugin {
 		return vs[0].([]GetKubeCustomizationApiserverAdmissionplugin)[vs[1].(int)]
 	}).(GetKubeCustomizationApiserverAdmissionpluginOutput)
+}
+
+type GetKubeCustomizationCilium struct {
+	// Cilium cluster ID, between 1 and 255.
+	ClusterId int `pulumi:"clusterId"`
+	// ClusterMesh feature configuration.
+	ClusterMesh GetKubeCustomizationCiliumClusterMesh `pulumi:"clusterMesh"`
+	// Hubble observability stack configuration.
+	Hubble GetKubeCustomizationCiliumHubble `pulumi:"hubble"`
+}
+
+// GetKubeCustomizationCiliumInput is an input type that accepts GetKubeCustomizationCiliumArgs and GetKubeCustomizationCiliumOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumInput` via:
+//
+//	GetKubeCustomizationCiliumArgs{...}
+type GetKubeCustomizationCiliumInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumOutput() GetKubeCustomizationCiliumOutput
+	ToGetKubeCustomizationCiliumOutputWithContext(context.Context) GetKubeCustomizationCiliumOutput
+}
+
+type GetKubeCustomizationCiliumArgs struct {
+	// Cilium cluster ID, between 1 and 255.
+	ClusterId pulumi.IntInput `pulumi:"clusterId"`
+	// ClusterMesh feature configuration.
+	ClusterMesh GetKubeCustomizationCiliumClusterMeshInput `pulumi:"clusterMesh"`
+	// Hubble observability stack configuration.
+	Hubble GetKubeCustomizationCiliumHubbleInput `pulumi:"hubble"`
+}
+
+func (GetKubeCustomizationCiliumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCilium)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumArgs) ToGetKubeCustomizationCiliumOutput() GetKubeCustomizationCiliumOutput {
+	return i.ToGetKubeCustomizationCiliumOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumArgs) ToGetKubeCustomizationCiliumOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumOutput)
+}
+
+func (i GetKubeCustomizationCiliumArgs) ToGetKubeCustomizationCiliumPtrOutput() GetKubeCustomizationCiliumPtrOutput {
+	return i.ToGetKubeCustomizationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumArgs) ToGetKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumOutput).ToGetKubeCustomizationCiliumPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumPtrInput is an input type that accepts GetKubeCustomizationCiliumArgs, GetKubeCustomizationCiliumPtr and GetKubeCustomizationCiliumPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumPtrOutput() GetKubeCustomizationCiliumPtrOutput
+	ToGetKubeCustomizationCiliumPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumPtrOutput
+}
+
+type getKubeCustomizationCiliumPtrType GetKubeCustomizationCiliumArgs
+
+func GetKubeCustomizationCiliumPtr(v *GetKubeCustomizationCiliumArgs) GetKubeCustomizationCiliumPtrInput {
+	return (*getKubeCustomizationCiliumPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCilium)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumPtrType) ToGetKubeCustomizationCiliumPtrOutput() GetKubeCustomizationCiliumPtrOutput {
+	return i.ToGetKubeCustomizationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumPtrType) ToGetKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumPtrOutput)
+}
+
+type GetKubeCustomizationCiliumOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCilium)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumOutput) ToGetKubeCustomizationCiliumOutput() GetKubeCustomizationCiliumOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumOutput) ToGetKubeCustomizationCiliumOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumOutput) ToGetKubeCustomizationCiliumPtrOutput() GetKubeCustomizationCiliumPtrOutput {
+	return o.ToGetKubeCustomizationCiliumPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumOutput) ToGetKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCilium) *GetKubeCustomizationCilium {
+		return &v
+	}).(GetKubeCustomizationCiliumPtrOutput)
+}
+
+// Cilium cluster ID, between 1 and 255.
+func (o GetKubeCustomizationCiliumOutput) ClusterId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCilium) int { return v.ClusterId }).(pulumi.IntOutput)
+}
+
+// ClusterMesh feature configuration.
+func (o GetKubeCustomizationCiliumOutput) ClusterMesh() GetKubeCustomizationCiliumClusterMeshOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCilium) GetKubeCustomizationCiliumClusterMesh { return v.ClusterMesh }).(GetKubeCustomizationCiliumClusterMeshOutput)
+}
+
+// Hubble observability stack configuration.
+func (o GetKubeCustomizationCiliumOutput) Hubble() GetKubeCustomizationCiliumHubbleOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCilium) GetKubeCustomizationCiliumHubble { return v.Hubble }).(GetKubeCustomizationCiliumHubbleOutput)
+}
+
+type GetKubeCustomizationCiliumPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCilium)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumPtrOutput) ToGetKubeCustomizationCiliumPtrOutput() GetKubeCustomizationCiliumPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumPtrOutput) ToGetKubeCustomizationCiliumPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumPtrOutput) Elem() GetKubeCustomizationCiliumOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCilium) GetKubeCustomizationCilium {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCilium
+		return ret
+	}).(GetKubeCustomizationCiliumOutput)
+}
+
+// Cilium cluster ID, between 1 and 255.
+func (o GetKubeCustomizationCiliumPtrOutput) ClusterId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCilium) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterId
+	}).(pulumi.IntPtrOutput)
+}
+
+// ClusterMesh feature configuration.
+func (o GetKubeCustomizationCiliumPtrOutput) ClusterMesh() GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCilium) *GetKubeCustomizationCiliumClusterMesh {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterMesh
+	}).(GetKubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+// Hubble observability stack configuration.
+func (o GetKubeCustomizationCiliumPtrOutput) Hubble() GetKubeCustomizationCiliumHubblePtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCilium) *GetKubeCustomizationCiliumHubble {
+		if v == nil {
+			return nil
+		}
+		return &v.Hubble
+	}).(GetKubeCustomizationCiliumHubblePtrOutput)
+}
+
+type GetKubeCustomizationCiliumClusterMesh struct {
+	// ClusterMesh API server exposure configuration.
+	ApiServer GetKubeCustomizationCiliumClusterMeshApiServer `pulumi:"apiServer"`
+	// Whether the Hubble UI is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubeCustomizationCiliumClusterMeshInput is an input type that accepts GetKubeCustomizationCiliumClusterMeshArgs and GetKubeCustomizationCiliumClusterMeshOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumClusterMeshInput` via:
+//
+//	GetKubeCustomizationCiliumClusterMeshArgs{...}
+type GetKubeCustomizationCiliumClusterMeshInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumClusterMeshOutput() GetKubeCustomizationCiliumClusterMeshOutput
+	ToGetKubeCustomizationCiliumClusterMeshOutputWithContext(context.Context) GetKubeCustomizationCiliumClusterMeshOutput
+}
+
+type GetKubeCustomizationCiliumClusterMeshArgs struct {
+	// ClusterMesh API server exposure configuration.
+	ApiServer GetKubeCustomizationCiliumClusterMeshApiServerInput `pulumi:"apiServer"`
+	// Whether the Hubble UI is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubeCustomizationCiliumClusterMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshArgs) ToGetKubeCustomizationCiliumClusterMeshOutput() GetKubeCustomizationCiliumClusterMeshOutput {
+	return i.ToGetKubeCustomizationCiliumClusterMeshOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshArgs) ToGetKubeCustomizationCiliumClusterMeshOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumClusterMeshOutput)
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshArgs) ToGetKubeCustomizationCiliumClusterMeshPtrOutput() GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return i.ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshArgs) ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumClusterMeshOutput).ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumClusterMeshPtrInput is an input type that accepts GetKubeCustomizationCiliumClusterMeshArgs, GetKubeCustomizationCiliumClusterMeshPtr and GetKubeCustomizationCiliumClusterMeshPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumClusterMeshPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumClusterMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumClusterMeshPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumClusterMeshPtrOutput() GetKubeCustomizationCiliumClusterMeshPtrOutput
+	ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumClusterMeshPtrOutput
+}
+
+type getKubeCustomizationCiliumClusterMeshPtrType GetKubeCustomizationCiliumClusterMeshArgs
+
+func GetKubeCustomizationCiliumClusterMeshPtr(v *GetKubeCustomizationCiliumClusterMeshArgs) GetKubeCustomizationCiliumClusterMeshPtrInput {
+	return (*getKubeCustomizationCiliumClusterMeshPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumClusterMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumClusterMeshPtrType) ToGetKubeCustomizationCiliumClusterMeshPtrOutput() GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return i.ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumClusterMeshPtrType) ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+type GetKubeCustomizationCiliumClusterMeshOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumClusterMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshOutput) ToGetKubeCustomizationCiliumClusterMeshOutput() GetKubeCustomizationCiliumClusterMeshOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshOutput) ToGetKubeCustomizationCiliumClusterMeshOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshOutput) ToGetKubeCustomizationCiliumClusterMeshPtrOutput() GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshOutput) ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumClusterMesh) *GetKubeCustomizationCiliumClusterMesh {
+		return &v
+	}).(GetKubeCustomizationCiliumClusterMeshPtrOutput)
+}
+
+// ClusterMesh API server exposure configuration.
+func (o GetKubeCustomizationCiliumClusterMeshOutput) ApiServer() GetKubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumClusterMesh) GetKubeCustomizationCiliumClusterMeshApiServer {
+		return v.ApiServer
+	}).(GetKubeCustomizationCiliumClusterMeshApiServerOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumClusterMeshOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumClusterMesh) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubeCustomizationCiliumClusterMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumClusterMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumClusterMesh)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshPtrOutput) ToGetKubeCustomizationCiliumClusterMeshPtrOutput() GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshPtrOutput) ToGetKubeCustomizationCiliumClusterMeshPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshPtrOutput) Elem() GetKubeCustomizationCiliumClusterMeshOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumClusterMesh) GetKubeCustomizationCiliumClusterMesh {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumClusterMesh
+		return ret
+	}).(GetKubeCustomizationCiliumClusterMeshOutput)
+}
+
+// ClusterMesh API server exposure configuration.
+func (o GetKubeCustomizationCiliumClusterMeshPtrOutput) ApiServer() GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumClusterMesh) *GetKubeCustomizationCiliumClusterMeshApiServer {
+		if v == nil {
+			return nil
+		}
+		return &v.ApiServer
+	}).(GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumClusterMeshPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumClusterMesh) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetKubeCustomizationCiliumClusterMeshApiServer struct {
+	// NodePort on which the ClusterMesh API server is exposed.
+	NodePort int `pulumi:"nodePort"`
+	// Service type used to expose the ClusterMesh API server.
+	ServiceType string `pulumi:"serviceType"`
+}
+
+// GetKubeCustomizationCiliumClusterMeshApiServerInput is an input type that accepts GetKubeCustomizationCiliumClusterMeshApiServerArgs and GetKubeCustomizationCiliumClusterMeshApiServerOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumClusterMeshApiServerInput` via:
+//
+//	GetKubeCustomizationCiliumClusterMeshApiServerArgs{...}
+type GetKubeCustomizationCiliumClusterMeshApiServerInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumClusterMeshApiServerOutput() GetKubeCustomizationCiliumClusterMeshApiServerOutput
+	ToGetKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(context.Context) GetKubeCustomizationCiliumClusterMeshApiServerOutput
+}
+
+type GetKubeCustomizationCiliumClusterMeshApiServerArgs struct {
+	// NodePort on which the ClusterMesh API server is exposed.
+	NodePort pulumi.IntInput `pulumi:"nodePort"`
+	// Service type used to expose the ClusterMesh API server.
+	ServiceType pulumi.StringInput `pulumi:"serviceType"`
+}
+
+func (GetKubeCustomizationCiliumClusterMeshApiServerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshApiServerArgs) ToGetKubeCustomizationCiliumClusterMeshApiServerOutput() GetKubeCustomizationCiliumClusterMeshApiServerOutput {
+	return i.ToGetKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshApiServerArgs) ToGetKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshApiServerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumClusterMeshApiServerOutput)
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshApiServerArgs) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutput() GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return i.ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumClusterMeshApiServerArgs) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumClusterMeshApiServerOutput).ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumClusterMeshApiServerPtrInput is an input type that accepts GetKubeCustomizationCiliumClusterMeshApiServerArgs, GetKubeCustomizationCiliumClusterMeshApiServerPtr and GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumClusterMeshApiServerPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumClusterMeshApiServerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumClusterMeshApiServerPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutput() GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput
+	ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput
+}
+
+type getKubeCustomizationCiliumClusterMeshApiServerPtrType GetKubeCustomizationCiliumClusterMeshApiServerArgs
+
+func GetKubeCustomizationCiliumClusterMeshApiServerPtr(v *GetKubeCustomizationCiliumClusterMeshApiServerArgs) GetKubeCustomizationCiliumClusterMeshApiServerPtrInput {
+	return (*getKubeCustomizationCiliumClusterMeshApiServerPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumClusterMeshApiServerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumClusterMeshApiServerPtrType) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutput() GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return i.ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumClusterMeshApiServerPtrType) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+type GetKubeCustomizationCiliumClusterMeshApiServerOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumClusterMeshApiServerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerOutput) ToGetKubeCustomizationCiliumClusterMeshApiServerOutput() GetKubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerOutput) ToGetKubeCustomizationCiliumClusterMeshApiServerOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerOutput) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutput() GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerOutput) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumClusterMeshApiServer) *GetKubeCustomizationCiliumClusterMeshApiServer {
+		return &v
+	}).(GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput)
+}
+
+// NodePort on which the ClusterMesh API server is exposed.
+func (o GetKubeCustomizationCiliumClusterMeshApiServerOutput) NodePort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumClusterMeshApiServer) int { return v.NodePort }).(pulumi.IntOutput)
+}
+
+// Service type used to expose the ClusterMesh API server.
+func (o GetKubeCustomizationCiliumClusterMeshApiServerOutput) ServiceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumClusterMeshApiServer) string { return v.ServiceType }).(pulumi.StringOutput)
+}
+
+type GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumClusterMeshApiServer)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutput() GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput) ToGetKubeCustomizationCiliumClusterMeshApiServerPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput) Elem() GetKubeCustomizationCiliumClusterMeshApiServerOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumClusterMeshApiServer) GetKubeCustomizationCiliumClusterMeshApiServer {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumClusterMeshApiServer
+		return ret
+	}).(GetKubeCustomizationCiliumClusterMeshApiServerOutput)
+}
+
+// NodePort on which the ClusterMesh API server is exposed.
+func (o GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput) NodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumClusterMeshApiServer) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service type used to expose the ClusterMesh API server.
+func (o GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput) ServiceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumClusterMeshApiServer) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceType
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubble struct {
+	// Whether the Hubble UI is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Hubble Relay configuration.
+	Relay GetKubeCustomizationCiliumHubbleRelay `pulumi:"relay"`
+	// Hubble UI configuration.
+	Ui GetKubeCustomizationCiliumHubbleUi `pulumi:"ui"`
+}
+
+// GetKubeCustomizationCiliumHubbleInput is an input type that accepts GetKubeCustomizationCiliumHubbleArgs and GetKubeCustomizationCiliumHubbleOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleArgs{...}
+type GetKubeCustomizationCiliumHubbleInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleOutput() GetKubeCustomizationCiliumHubbleOutput
+	ToGetKubeCustomizationCiliumHubbleOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleOutput
+}
+
+type GetKubeCustomizationCiliumHubbleArgs struct {
+	// Whether the Hubble UI is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Hubble Relay configuration.
+	Relay GetKubeCustomizationCiliumHubbleRelayInput `pulumi:"relay"`
+	// Hubble UI configuration.
+	Ui GetKubeCustomizationCiliumHubbleUiInput `pulumi:"ui"`
+}
+
+func (GetKubeCustomizationCiliumHubbleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleArgs) ToGetKubeCustomizationCiliumHubbleOutput() GetKubeCustomizationCiliumHubbleOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleArgs) ToGetKubeCustomizationCiliumHubbleOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleArgs) ToGetKubeCustomizationCiliumHubblePtrOutput() GetKubeCustomizationCiliumHubblePtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleArgs) ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubblePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleOutput).ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubblePtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleArgs, GetKubeCustomizationCiliumHubblePtr and GetKubeCustomizationCiliumHubblePtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubblePtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubblePtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubblePtrOutput() GetKubeCustomizationCiliumHubblePtrOutput
+	ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubblePtrOutput
+}
+
+type getKubeCustomizationCiliumHubblePtrType GetKubeCustomizationCiliumHubbleArgs
+
+func GetKubeCustomizationCiliumHubblePtr(v *GetKubeCustomizationCiliumHubbleArgs) GetKubeCustomizationCiliumHubblePtrInput {
+	return (*getKubeCustomizationCiliumHubblePtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubblePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubblePtrType) ToGetKubeCustomizationCiliumHubblePtrOutput() GetKubeCustomizationCiliumHubblePtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubblePtrType) ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubblePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubblePtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleOutput) ToGetKubeCustomizationCiliumHubbleOutput() GetKubeCustomizationCiliumHubbleOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleOutput) ToGetKubeCustomizationCiliumHubbleOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleOutput) ToGetKubeCustomizationCiliumHubblePtrOutput() GetKubeCustomizationCiliumHubblePtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleOutput) ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubblePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubble) *GetKubeCustomizationCiliumHubble {
+		return &v
+	}).(GetKubeCustomizationCiliumHubblePtrOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumHubbleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubble) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Hubble Relay configuration.
+func (o GetKubeCustomizationCiliumHubbleOutput) Relay() GetKubeCustomizationCiliumHubbleRelayOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubble) GetKubeCustomizationCiliumHubbleRelay { return v.Relay }).(GetKubeCustomizationCiliumHubbleRelayOutput)
+}
+
+// Hubble UI configuration.
+func (o GetKubeCustomizationCiliumHubbleOutput) Ui() GetKubeCustomizationCiliumHubbleUiOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubble) GetKubeCustomizationCiliumHubbleUi { return v.Ui }).(GetKubeCustomizationCiliumHubbleUiOutput)
+}
+
+type GetKubeCustomizationCiliumHubblePtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubblePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubble)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubblePtrOutput) ToGetKubeCustomizationCiliumHubblePtrOutput() GetKubeCustomizationCiliumHubblePtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubblePtrOutput) ToGetKubeCustomizationCiliumHubblePtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubblePtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubblePtrOutput) Elem() GetKubeCustomizationCiliumHubbleOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubble) GetKubeCustomizationCiliumHubble {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubble
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumHubblePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubble) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hubble Relay configuration.
+func (o GetKubeCustomizationCiliumHubblePtrOutput) Relay() GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubble) *GetKubeCustomizationCiliumHubbleRelay {
+		if v == nil {
+			return nil
+		}
+		return &v.Relay
+	}).(GetKubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+// Hubble UI configuration.
+func (o GetKubeCustomizationCiliumHubblePtrOutput) Ui() GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubble) *GetKubeCustomizationCiliumHubbleUi {
+		if v == nil {
+			return nil
+		}
+		return &v.Ui
+	}).(GetKubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleRelay struct {
+	// Whether the Hubble UI is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubeCustomizationCiliumHubbleRelayInput is an input type that accepts GetKubeCustomizationCiliumHubbleRelayArgs and GetKubeCustomizationCiliumHubbleRelayOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleRelayInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleRelayArgs{...}
+type GetKubeCustomizationCiliumHubbleRelayInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleRelayOutput() GetKubeCustomizationCiliumHubbleRelayOutput
+	ToGetKubeCustomizationCiliumHubbleRelayOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleRelayOutput
+}
+
+type GetKubeCustomizationCiliumHubbleRelayArgs struct {
+	// Whether the Hubble UI is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubeCustomizationCiliumHubbleRelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleRelayArgs) ToGetKubeCustomizationCiliumHubbleRelayOutput() GetKubeCustomizationCiliumHubbleRelayOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleRelayOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleRelayArgs) ToGetKubeCustomizationCiliumHubbleRelayOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleRelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleRelayOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleRelayArgs) ToGetKubeCustomizationCiliumHubbleRelayPtrOutput() GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleRelayArgs) ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleRelayOutput).ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleRelayPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleRelayArgs, GetKubeCustomizationCiliumHubbleRelayPtr and GetKubeCustomizationCiliumHubbleRelayPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleRelayPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleRelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleRelayPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleRelayPtrOutput() GetKubeCustomizationCiliumHubbleRelayPtrOutput
+	ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleRelayPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleRelayPtrType GetKubeCustomizationCiliumHubbleRelayArgs
+
+func GetKubeCustomizationCiliumHubbleRelayPtr(v *GetKubeCustomizationCiliumHubbleRelayArgs) GetKubeCustomizationCiliumHubbleRelayPtrInput {
+	return (*getKubeCustomizationCiliumHubbleRelayPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleRelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleRelayPtrType) ToGetKubeCustomizationCiliumHubbleRelayPtrOutput() GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleRelayPtrType) ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleRelayOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleRelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayOutput) ToGetKubeCustomizationCiliumHubbleRelayOutput() GetKubeCustomizationCiliumHubbleRelayOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayOutput) ToGetKubeCustomizationCiliumHubbleRelayOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleRelayOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayOutput) ToGetKubeCustomizationCiliumHubbleRelayPtrOutput() GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayOutput) ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleRelay) *GetKubeCustomizationCiliumHubbleRelay {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleRelayPtrOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumHubbleRelayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleRelay) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleRelayPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleRelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleRelay)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayPtrOutput) ToGetKubeCustomizationCiliumHubbleRelayPtrOutput() GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayPtrOutput) ToGetKubeCustomizationCiliumHubbleRelayPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleRelayPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleRelayPtrOutput) Elem() GetKubeCustomizationCiliumHubbleRelayOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleRelay) GetKubeCustomizationCiliumHubbleRelay {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleRelay
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleRelayOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumHubbleRelayPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleRelay) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUi struct {
+	// Resource configuration for the Hubble UI backend.
+	BackendResources GetKubeCustomizationCiliumHubbleUiBackendResources `pulumi:"backendResources"`
+	// Whether the Hubble UI is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Resource configuration for the Hubble UI frontend.
+	FrontendResources GetKubeCustomizationCiliumHubbleUiFrontendResources `pulumi:"frontendResources"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiArgs and GetKubeCustomizationCiliumHubbleUiOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiArgs{...}
+type GetKubeCustomizationCiliumHubbleUiInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiOutput() GetKubeCustomizationCiliumHubbleUiOutput
+	ToGetKubeCustomizationCiliumHubbleUiOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiArgs struct {
+	// Resource configuration for the Hubble UI backend.
+	BackendResources GetKubeCustomizationCiliumHubbleUiBackendResourcesInput `pulumi:"backendResources"`
+	// Whether the Hubble UI is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Resource configuration for the Hubble UI frontend.
+	FrontendResources GetKubeCustomizationCiliumHubbleUiFrontendResourcesInput `pulumi:"frontendResources"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiArgs) ToGetKubeCustomizationCiliumHubbleUiOutput() GetKubeCustomizationCiliumHubbleUiOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiArgs) ToGetKubeCustomizationCiliumHubbleUiOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiArgs) ToGetKubeCustomizationCiliumHubbleUiPtrOutput() GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiArgs) ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiOutput).ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiArgs, GetKubeCustomizationCiliumHubbleUiPtr and GetKubeCustomizationCiliumHubbleUiPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiPtrOutput() GetKubeCustomizationCiliumHubbleUiPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiPtrType GetKubeCustomizationCiliumHubbleUiArgs
+
+func GetKubeCustomizationCiliumHubbleUiPtr(v *GetKubeCustomizationCiliumHubbleUiArgs) GetKubeCustomizationCiliumHubbleUiPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiPtrType) ToGetKubeCustomizationCiliumHubbleUiPtrOutput() GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiPtrType) ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiOutput) ToGetKubeCustomizationCiliumHubbleUiOutput() GetKubeCustomizationCiliumHubbleUiOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiOutput) ToGetKubeCustomizationCiliumHubbleUiOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiOutput) ToGetKubeCustomizationCiliumHubbleUiPtrOutput() GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiOutput) ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUi) *GetKubeCustomizationCiliumHubbleUi {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiPtrOutput)
+}
+
+// Resource configuration for the Hubble UI backend.
+func (o GetKubeCustomizationCiliumHubbleUiOutput) BackendResources() GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUi) GetKubeCustomizationCiliumHubbleUiBackendResources {
+		return v.BackendResources
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumHubbleUiOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUi) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Resource configuration for the Hubble UI frontend.
+func (o GetKubeCustomizationCiliumHubbleUiOutput) FrontendResources() GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUi) GetKubeCustomizationCiliumHubbleUiFrontendResources {
+		return v.FrontendResources
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUi)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiPtrOutput) ToGetKubeCustomizationCiliumHubbleUiPtrOutput() GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiPtrOutput) ToGetKubeCustomizationCiliumHubbleUiPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUi) GetKubeCustomizationCiliumHubbleUi {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUi
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiOutput)
+}
+
+// Resource configuration for the Hubble UI backend.
+func (o GetKubeCustomizationCiliumHubbleUiPtrOutput) BackendResources() GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUi) *GetKubeCustomizationCiliumHubbleUiBackendResources {
+		if v == nil {
+			return nil
+		}
+		return &v.BackendResources
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+// Whether the Hubble UI is enabled.
+func (o GetKubeCustomizationCiliumHubbleUiPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUi) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Resource configuration for the Hubble UI frontend.
+func (o GetKubeCustomizationCiliumHubbleUiPtrOutput) FrontendResources() GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUi) *GetKubeCustomizationCiliumHubbleUiFrontendResources {
+		if v == nil {
+			return nil
+		}
+		return &v.FrontendResources
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResources struct {
+	// Resource limits.
+	Limits GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits `pulumi:"limits"`
+	// Resource requests.
+	Requests GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests `pulumi:"requests"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiBackendResourcesInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs and GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiBackendResourcesInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs{...}
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs struct {
+	// Resource limits.
+	Limits GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput `pulumi:"limits"`
+	// Resource requests.
+	Requests GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput `pulumi:"requests"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput).ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs, GetKubeCustomizationCiliumHubbleUiBackendResourcesPtr and GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiBackendResourcesPtrType GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs
+
+func GetKubeCustomizationCiliumHubbleUiBackendResourcesPtr(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs) GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiBackendResourcesPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiBackendResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiBackendResourcesPtrType) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiBackendResourcesPtrType) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUiBackendResources) *GetKubeCustomizationCiliumHubbleUiBackendResources {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput)
+}
+
+// Resource limits.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) Limits() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiBackendResources) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		return v.Limits
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput)
+}
+
+// Resource requests.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput) Requests() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiBackendResources) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		return v.Requests
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiBackendResources)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResources) GetKubeCustomizationCiliumHubbleUiBackendResources {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUiBackendResources
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput)
+}
+
+// Resource limits.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) Limits() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResources) *GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return &v.Limits
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+// Resource requests.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput) Requests() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResources) *GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return &v.Requests
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits struct {
+	// CPU request.
+	Cpu string `pulumi:"cpu"`
+	// Memory request.
+	Memory string `pulumi:"memory"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs and GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{...}
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs struct {
+	// CPU request.
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory request.
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput).ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs, GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtr and GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs
+
+func GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtr(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrType) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits) *GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits) GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests struct {
+	// CPU request.
+	Cpu string `pulumi:"cpu"`
+	// Memory request.
+	Memory string `pulumi:"memory"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs and GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{...}
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs struct {
+	// CPU request.
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory request.
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput).ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs, GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtr and GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs
+
+func GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtr(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrType) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests) *GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests) GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResources struct {
+	// Resource limits.
+	Limits GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits `pulumi:"limits"`
+	// Resource requests.
+	Requests GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests `pulumi:"requests"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiFrontendResourcesInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs and GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiFrontendResourcesInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs{...}
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs struct {
+	// Resource limits.
+	Limits GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput `pulumi:"limits"`
+	// Resource requests.
+	Requests GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput `pulumi:"requests"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput).ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs, GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtr and GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiFrontendResourcesPtrType GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs
+
+func GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtr(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs) GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiFrontendResourcesPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiFrontendResourcesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiFrontendResourcesPtrType) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiFrontendResourcesPtrType) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUiFrontendResources) *GetKubeCustomizationCiliumHubbleUiFrontendResources {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput)
+}
+
+// Resource limits.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) Limits() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiFrontendResources) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		return v.Limits
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput)
+}
+
+// Resource requests.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput) Requests() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiFrontendResources) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		return v.Requests
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiFrontendResources)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResources) GetKubeCustomizationCiliumHubbleUiFrontendResources {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUiFrontendResources
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput)
+}
+
+// Resource limits.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) Limits() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResources) *GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		if v == nil {
+			return nil
+		}
+		return &v.Limits
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+// Resource requests.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput) Requests() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResources) *GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		if v == nil {
+			return nil
+		}
+		return &v.Requests
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits struct {
+	// CPU request.
+	Cpu string `pulumi:"cpu"`
+	// Memory request.
+	Memory string `pulumi:"memory"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs and GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{...}
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs struct {
+	// CPU request.
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory request.
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput).ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs, GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtr and GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs
+
+func GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtr(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrType) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits) GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests struct {
+	// CPU request.
+	Cpu string `pulumi:"cpu"`
+	// Memory request.
+	Memory string `pulumi:"memory"`
+}
+
+// GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs and GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput` via:
+//
+//	GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{...}
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs struct {
+	// CPU request.
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory request.
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput)
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput).ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx)
+}
+
+// GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput is an input type that accepts GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs, GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtr and GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput values.
+// You can construct a concrete instance of `GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput` via:
+//
+//	        GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput
+	ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput
+}
+
+type getKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs
+
+func GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtr(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput {
+	return (*getKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType)(v)
+}
+
+func (*getKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return i.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrType) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		return &v
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests) string { return v.Cpu }).(pulumi.StringOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests) string { return v.Memory }).(pulumi.StringOutput)
+}
+
+type GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests)(nil)).Elem()
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) ToGetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutputWithContext(ctx context.Context) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput {
+	return o
+}
+
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) Elem() GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests) GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests
+		return ret
+	}).(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput)
+}
+
+// CPU request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) Cpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cpu
+	}).(pulumi.StringPtrOutput)
+}
+
+// Memory request.
+func (o GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput) Memory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetKubeCustomizationKubeProxy struct {
@@ -16003,6 +20319,162 @@ func (o GetKubeCustomizationKubeProxyIpvsPtrOutput) UdpTimeout() pulumi.StringPt
 			return nil
 		}
 		return v.UdpTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetKubeIpAllocationPolicy struct {
+	// CIDR used for the cluster's pods.
+	PodsIpv4Cidr string `pulumi:"podsIpv4Cidr"`
+	// CIDR used for the cluster's services.
+	ServicesIpv4Cidr string `pulumi:"servicesIpv4Cidr"`
+}
+
+// GetKubeIpAllocationPolicyInput is an input type that accepts GetKubeIpAllocationPolicyArgs and GetKubeIpAllocationPolicyOutput values.
+// You can construct a concrete instance of `GetKubeIpAllocationPolicyInput` via:
+//
+//	GetKubeIpAllocationPolicyArgs{...}
+type GetKubeIpAllocationPolicyInput interface {
+	pulumi.Input
+
+	ToGetKubeIpAllocationPolicyOutput() GetKubeIpAllocationPolicyOutput
+	ToGetKubeIpAllocationPolicyOutputWithContext(context.Context) GetKubeIpAllocationPolicyOutput
+}
+
+type GetKubeIpAllocationPolicyArgs struct {
+	// CIDR used for the cluster's pods.
+	PodsIpv4Cidr pulumi.StringInput `pulumi:"podsIpv4Cidr"`
+	// CIDR used for the cluster's services.
+	ServicesIpv4Cidr pulumi.StringInput `pulumi:"servicesIpv4Cidr"`
+}
+
+func (GetKubeIpAllocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i GetKubeIpAllocationPolicyArgs) ToGetKubeIpAllocationPolicyOutput() GetKubeIpAllocationPolicyOutput {
+	return i.ToGetKubeIpAllocationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetKubeIpAllocationPolicyArgs) ToGetKubeIpAllocationPolicyOutputWithContext(ctx context.Context) GetKubeIpAllocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeIpAllocationPolicyOutput)
+}
+
+func (i GetKubeIpAllocationPolicyArgs) ToGetKubeIpAllocationPolicyPtrOutput() GetKubeIpAllocationPolicyPtrOutput {
+	return i.ToGetKubeIpAllocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubeIpAllocationPolicyArgs) ToGetKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) GetKubeIpAllocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeIpAllocationPolicyOutput).ToGetKubeIpAllocationPolicyPtrOutputWithContext(ctx)
+}
+
+// GetKubeIpAllocationPolicyPtrInput is an input type that accepts GetKubeIpAllocationPolicyArgs, GetKubeIpAllocationPolicyPtr and GetKubeIpAllocationPolicyPtrOutput values.
+// You can construct a concrete instance of `GetKubeIpAllocationPolicyPtrInput` via:
+//
+//	        GetKubeIpAllocationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubeIpAllocationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGetKubeIpAllocationPolicyPtrOutput() GetKubeIpAllocationPolicyPtrOutput
+	ToGetKubeIpAllocationPolicyPtrOutputWithContext(context.Context) GetKubeIpAllocationPolicyPtrOutput
+}
+
+type getKubeIpAllocationPolicyPtrType GetKubeIpAllocationPolicyArgs
+
+func GetKubeIpAllocationPolicyPtr(v *GetKubeIpAllocationPolicyArgs) GetKubeIpAllocationPolicyPtrInput {
+	return (*getKubeIpAllocationPolicyPtrType)(v)
+}
+
+func (*getKubeIpAllocationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i *getKubeIpAllocationPolicyPtrType) ToGetKubeIpAllocationPolicyPtrOutput() GetKubeIpAllocationPolicyPtrOutput {
+	return i.ToGetKubeIpAllocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubeIpAllocationPolicyPtrType) ToGetKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) GetKubeIpAllocationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubeIpAllocationPolicyPtrOutput)
+}
+
+type GetKubeIpAllocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetKubeIpAllocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o GetKubeIpAllocationPolicyOutput) ToGetKubeIpAllocationPolicyOutput() GetKubeIpAllocationPolicyOutput {
+	return o
+}
+
+func (o GetKubeIpAllocationPolicyOutput) ToGetKubeIpAllocationPolicyOutputWithContext(ctx context.Context) GetKubeIpAllocationPolicyOutput {
+	return o
+}
+
+func (o GetKubeIpAllocationPolicyOutput) ToGetKubeIpAllocationPolicyPtrOutput() GetKubeIpAllocationPolicyPtrOutput {
+	return o.ToGetKubeIpAllocationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubeIpAllocationPolicyOutput) ToGetKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) GetKubeIpAllocationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubeIpAllocationPolicy) *GetKubeIpAllocationPolicy {
+		return &v
+	}).(GetKubeIpAllocationPolicyPtrOutput)
+}
+
+// CIDR used for the cluster's pods.
+func (o GetKubeIpAllocationPolicyOutput) PodsIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeIpAllocationPolicy) string { return v.PodsIpv4Cidr }).(pulumi.StringOutput)
+}
+
+// CIDR used for the cluster's services.
+func (o GetKubeIpAllocationPolicyOutput) ServicesIpv4Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKubeIpAllocationPolicy) string { return v.ServicesIpv4Cidr }).(pulumi.StringOutput)
+}
+
+type GetKubeIpAllocationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubeIpAllocationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubeIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o GetKubeIpAllocationPolicyPtrOutput) ToGetKubeIpAllocationPolicyPtrOutput() GetKubeIpAllocationPolicyPtrOutput {
+	return o
+}
+
+func (o GetKubeIpAllocationPolicyPtrOutput) ToGetKubeIpAllocationPolicyPtrOutputWithContext(ctx context.Context) GetKubeIpAllocationPolicyPtrOutput {
+	return o
+}
+
+func (o GetKubeIpAllocationPolicyPtrOutput) Elem() GetKubeIpAllocationPolicyOutput {
+	return o.ApplyT(func(v *GetKubeIpAllocationPolicy) GetKubeIpAllocationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubeIpAllocationPolicy
+		return ret
+	}).(GetKubeIpAllocationPolicyOutput)
+}
+
+// CIDR used for the cluster's pods.
+func (o GetKubeIpAllocationPolicyPtrOutput) PodsIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PodsIpv4Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR used for the cluster's services.
+func (o GetKubeIpAllocationPolicyPtrOutput) ServicesIpv4Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKubeIpAllocationPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServicesIpv4Cidr
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21585,12 +26057,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationApiserverArrayInput)(nil)).Elem(), KubeCustomizationApiserverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationApiserverAdmissionpluginInput)(nil)).Elem(), KubeCustomizationApiserverAdmissionpluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationApiserverAdmissionpluginArrayInput)(nil)).Elem(), KubeCustomizationApiserverAdmissionpluginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumInput)(nil)).Elem(), KubeCustomizationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumPtrInput)(nil)).Elem(), KubeCustomizationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumClusterMeshInput)(nil)).Elem(), KubeCustomizationCiliumClusterMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumClusterMeshPtrInput)(nil)).Elem(), KubeCustomizationCiliumClusterMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumClusterMeshApiServerInput)(nil)).Elem(), KubeCustomizationCiliumClusterMeshApiServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumClusterMeshApiServerPtrInput)(nil)).Elem(), KubeCustomizationCiliumClusterMeshApiServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleInput)(nil)).Elem(), KubeCustomizationCiliumHubbleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubblePtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleRelayInput)(nil)).Elem(), KubeCustomizationCiliumHubbleRelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleRelayPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleRelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiBackendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiBackendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiFrontendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiFrontendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput)(nil)).Elem(), KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyInput)(nil)).Elem(), KubeCustomizationKubeProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyPtrInput)(nil)).Elem(), KubeCustomizationKubeProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyIptablesInput)(nil)).Elem(), KubeCustomizationKubeProxyIptablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyIptablesPtrInput)(nil)).Elem(), KubeCustomizationKubeProxyIptablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyIpvsInput)(nil)).Elem(), KubeCustomizationKubeProxyIpvsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeCustomizationKubeProxyIpvsPtrInput)(nil)).Elem(), KubeCustomizationKubeProxyIpvsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeIpAllocationPolicyInput)(nil)).Elem(), KubeIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubeIpAllocationPolicyPtrInput)(nil)).Elem(), KubeIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeKubeconfigAttributeInput)(nil)).Elem(), KubeKubeconfigAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeKubeconfigAttributeArrayInput)(nil)).Elem(), KubeKubeconfigAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubeNodePoolAttachFloatingIpsInput)(nil)).Elem(), KubeNodePoolAttachFloatingIpsArgs{})
@@ -21695,6 +26193,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageVersioningPtrInput)(nil)).Elem(), StorageVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleInput)(nil)).Elem(), UserRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserRoleArrayInput)(nil)).Elem(), UserRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionInput)(nil)).Elem(), VolumeEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionPtrInput)(nil)).Elem(), VolumeEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionKmsInput)(nil)).Elem(), VolumeEncryptionKmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionKmsPtrInput)(nil)).Elem(), VolumeEncryptionKmsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSubOperationInput)(nil)).Elem(), VolumeSubOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSubOperationArrayInput)(nil)).Elem(), VolumeSubOperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCapabilitiesContainerFilterFeatureInput)(nil)).Elem(), GetCapabilitiesContainerFilterFeatureArgs{})
@@ -21739,12 +26241,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationApiserverArrayInput)(nil)).Elem(), GetKubeCustomizationApiserverArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationApiserverAdmissionpluginInput)(nil)).Elem(), GetKubeCustomizationApiserverAdmissionpluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationApiserverAdmissionpluginArrayInput)(nil)).Elem(), GetKubeCustomizationApiserverAdmissionpluginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumInput)(nil)).Elem(), GetKubeCustomizationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumClusterMeshInput)(nil)).Elem(), GetKubeCustomizationCiliumClusterMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumClusterMeshPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumClusterMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumClusterMeshApiServerInput)(nil)).Elem(), GetKubeCustomizationCiliumClusterMeshApiServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumClusterMeshApiServerPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumClusterMeshApiServerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubblePtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleRelayInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleRelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleRelayPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleRelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrInput)(nil)).Elem(), GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyInput)(nil)).Elem(), GetKubeCustomizationKubeProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyPtrInput)(nil)).Elem(), GetKubeCustomizationKubeProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIptablesInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIptablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIptablesPtrInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIptablesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIpvsInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIpvsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeCustomizationKubeProxyIpvsPtrInput)(nil)).Elem(), GetKubeCustomizationKubeProxyIpvsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeIpAllocationPolicyInput)(nil)).Elem(), GetKubeIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeIpAllocationPolicyPtrInput)(nil)).Elem(), GetKubeIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeKubeconfigAttributeInput)(nil)).Elem(), GetKubeKubeconfigAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeKubeconfigAttributeArrayInput)(nil)).Elem(), GetKubeKubeconfigAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubeNodePoolAttachFloatingIpsInput)(nil)).Elem(), GetKubeNodePoolAttachFloatingIpsArgs{})
@@ -21885,12 +26413,38 @@ func init() {
 	pulumi.RegisterOutputType(KubeCustomizationApiserverArrayOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationApiserverAdmissionpluginOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationApiserverAdmissionpluginArrayOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumClusterMeshOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumClusterMeshPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumClusterMeshApiServerOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumClusterMeshApiServerPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubblePtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleRelayOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleRelayPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiBackendResourcesOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiFrontendResourcesOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyPtrOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyIptablesOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyIptablesPtrOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyIpvsOutput{})
 	pulumi.RegisterOutputType(KubeCustomizationKubeProxyIpvsPtrOutput{})
+	pulumi.RegisterOutputType(KubeIpAllocationPolicyOutput{})
+	pulumi.RegisterOutputType(KubeIpAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(KubeKubeconfigAttributeOutput{})
 	pulumi.RegisterOutputType(KubeKubeconfigAttributeArrayOutput{})
 	pulumi.RegisterOutputType(KubeNodePoolAttachFloatingIpsOutput{})
@@ -21995,6 +26549,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageVersioningPtrOutput{})
 	pulumi.RegisterOutputType(UserRoleOutput{})
 	pulumi.RegisterOutputType(UserRoleArrayOutput{})
+	pulumi.RegisterOutputType(VolumeEncryptionOutput{})
+	pulumi.RegisterOutputType(VolumeEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(VolumeEncryptionKmsOutput{})
+	pulumi.RegisterOutputType(VolumeEncryptionKmsPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSubOperationOutput{})
 	pulumi.RegisterOutputType(VolumeSubOperationArrayOutput{})
 	pulumi.RegisterOutputType(GetCapabilitiesContainerFilterFeatureOutput{})
@@ -22039,12 +26597,38 @@ func init() {
 	pulumi.RegisterOutputType(GetKubeCustomizationApiserverArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationApiserverAdmissionpluginOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationApiserverAdmissionpluginArrayOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumClusterMeshOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumClusterMeshPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumClusterMeshApiServerOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumClusterMeshApiServerPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubblePtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleRelayOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleRelayPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiBackendResourcesOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiBackendResourcesPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiFrontendResourcesOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiFrontendResourcesPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsOutput{})
+	pulumi.RegisterOutputType(GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIptablesOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIptablesPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIpvsOutput{})
 	pulumi.RegisterOutputType(GetKubeCustomizationKubeProxyIpvsPtrOutput{})
+	pulumi.RegisterOutputType(GetKubeIpAllocationPolicyOutput{})
+	pulumi.RegisterOutputType(GetKubeIpAllocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetKubeKubeconfigAttributeOutput{})
 	pulumi.RegisterOutputType(GetKubeKubeconfigAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubeNodePoolAttachFloatingIpsOutput{})

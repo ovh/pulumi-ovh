@@ -88,9 +88,6 @@ func NewCloudStorageBlockVolumeSnapshot(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
-	if args.ServiceName == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceName'")
-	}
 	if args.VolumeId == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeId'")
 	}
@@ -174,7 +171,7 @@ type cloudStorageBlockVolumeSnapshotArgs struct {
 	// The region where the snapshot will be created. Changing this value recreates the resource.
 	Region string `pulumi:"region"`
 	// The id of the public cloud project. Changing this value recreates the resource.
-	ServiceName string `pulumi:"serviceName"`
+	ServiceName *string `pulumi:"serviceName"`
 	// The ID of the volume to snapshot. Changing this value recreates the resource.
 	VolumeId string `pulumi:"volumeId"`
 }
@@ -188,7 +185,7 @@ type CloudStorageBlockVolumeSnapshotArgs struct {
 	// The region where the snapshot will be created. Changing this value recreates the resource.
 	Region pulumi.StringInput
 	// The id of the public cloud project. Changing this value recreates the resource.
-	ServiceName pulumi.StringInput
+	ServiceName pulumi.StringPtrInput
 	// The ID of the volume to snapshot. Changing this value recreates the resource.
 	VolumeId pulumi.StringInput
 }

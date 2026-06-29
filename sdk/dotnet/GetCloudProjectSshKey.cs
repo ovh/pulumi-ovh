@@ -12,6 +12,8 @@ namespace Pulumi.Ovh
     public static class GetCloudProjectSshKey
     {
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+        /// 
         /// Retrieve information about a SSH key.
         /// 
         /// ## Example Usage
@@ -37,6 +39,8 @@ namespace Pulumi.Ovh
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudProjectSshKeyResult>("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", args ?? new GetCloudProjectSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+        /// 
         /// Retrieve information about a SSH key.
         /// 
         /// ## Example Usage
@@ -62,6 +66,8 @@ namespace Pulumi.Ovh
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudProjectSshKeyResult>("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", args ?? new GetCloudProjectSshKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+        /// 
         /// Retrieve information about a SSH key.
         /// 
         /// ## Example Usage

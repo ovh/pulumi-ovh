@@ -247,14 +247,14 @@ public class CloudStorageBlockVolume extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="volumeType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> volumeType;
+    private Output<String> volumeType;
 
     /**
      * @return Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
      * 
      */
-    public Output<Optional<String>> volumeType() {
-        return Codegen.optional(this.volumeType);
+    public Output<String> volumeType() {
+        return this.volumeType;
     }
 
     /**

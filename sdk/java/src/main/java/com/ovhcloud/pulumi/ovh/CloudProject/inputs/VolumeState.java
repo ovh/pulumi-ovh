@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.CloudProject.inputs;
 
+import com.ovhcloud.pulumi.ovh.CloudProject.inputs.VolumeEncryptionArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.VolumeSubOperationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -31,6 +32,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
+    }
+
+    /**
+     * Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
     }
 
     /**
@@ -76,6 +92,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     * 
+     */
+    @Import(name="encryption")
+    private @Nullable Output<VolumeEncryptionArgs> encryption;
+
+    /**
+     * @return Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     * 
+     */
+    public Optional<Output<VolumeEncryptionArgs>> encryption() {
+        return Optional.ofNullable(this.encryption);
     }
 
     /**
@@ -307,9 +338,11 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
 
     private VolumeState(VolumeState $) {
         this.action = $.action;
+        this.availabilityZone = $.availabilityZone;
         this.completedAt = $.completedAt;
         this.createdAt = $.createdAt;
         this.description = $.description;
+        this.encryption = $.encryption;
         this.imageId = $.imageId;
         this.instanceId = $.instanceId;
         this.name = $.name;
@@ -364,6 +397,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder action(String action) {
             return action(Output.of(action));
+        }
+
+        /**
+         * @param availabilityZone Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**
@@ -427,6 +481,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param encryption Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(@Nullable Output<VolumeEncryptionArgs> encryption) {
+            $.encryption = encryption;
+            return this;
+        }
+
+        /**
+         * @param encryption Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(VolumeEncryptionArgs encryption) {
+            return encryption(Output.of(encryption));
         }
 
         /**

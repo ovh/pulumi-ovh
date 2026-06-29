@@ -27,6 +27,47 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Encrypted volume with a customer managed key (CMK)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const encryptedVolume = new ovh.cloudproject.Volume("encrypted_volume", {
+ *     regionName: "xxx",
+ *     serviceName: "yyyyy",
+ *     description: "Terraform encrypted volume",
+ *     name: "encryptedVolume",
+ *     size: 15,
+ *     type: "classic",
+ *     encryption: {
+ *         encrypted: true,
+ *         kms: {
+ *             domainId: "<okms domain id>",
+ *             serviceKeyId: "<okms service key id>",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * Omit the `kms` block to encrypt the volume with OVH managed keys (OMK):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const encryptedVolume = new ovh.cloudproject.Volume("encrypted_volume", {
+ *     regionName: "xxx",
+ *     serviceName: "yyyyy",
+ *     name: "encryptedVolume",
+ *     size: 15,
+ *     type: "classic",
+ *     encryption: {
+ *         encrypted: true,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
@@ -82,6 +123,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly action!: pulumi.Output<string>;
     /**
+     * Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+     */
+    public readonly availabilityZone!: pulumi.Output<string>;
+    /**
      * The completed date of the operation
      */
     public /*out*/ readonly completedAt!: pulumi.Output<string>;
@@ -93,6 +138,10 @@ export class Volume extends pulumi.CustomResource {
      * A description of the volume
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     */
+    public readonly encryption!: pulumi.Output<outputs.CloudProject.VolumeEncryption>;
     /**
      * Image ID
      */
@@ -168,9 +217,11 @@ export class Volume extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["completedAt"] = state ? state.completedAt : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -191,7 +242,9 @@ export class Volume extends pulumi.CustomResource {
             if ((!args || args.regionName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'regionName'");
             }
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -225,6 +278,10 @@ export interface VolumeState {
      */
     action?: pulumi.Input<string>;
     /**
+     * Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
      * The completed date of the operation
      */
     completedAt?: pulumi.Input<string>;
@@ -236,6 +293,10 @@ export interface VolumeState {
      * A description of the volume
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     */
+    encryption?: pulumi.Input<inputs.CloudProject.VolumeEncryption>;
     /**
      * Image ID
      */
@@ -303,9 +364,17 @@ export interface VolumeState {
  */
 export interface VolumeArgs {
     /**
+     * Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
      * A description of the volume
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     */
+    encryption?: pulumi.Input<inputs.CloudProject.VolumeEncryption>;
     /**
      * Image ID
      */

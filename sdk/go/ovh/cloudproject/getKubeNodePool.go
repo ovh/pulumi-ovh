@@ -92,7 +92,7 @@ type LookupKubeNodePoolResult struct {
 	DesiredNodes int `pulumi:"desiredNodes"`
 	// Flavor name
 	Flavor string `pulumi:"flavor"`
-	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+	// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
 	FlavorName string `pulumi:"flavorName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -224,7 +224,7 @@ func (o LookupKubeNodePoolResultOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeNodePoolResult) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
-// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b2-7". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
+// a valid OVHcloud public cloud flavor ID in which the nodes will be started. Ex: "b3-8". Changing this value recreates the resource. You can find the list of flavor IDs: https://www.ovhcloud.com/fr/public-cloud/prices/
 func (o LookupKubeNodePoolResultOutput) FlavorName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubeNodePoolResult) string { return v.FlavorName }).(pulumi.StringOutput)
 }

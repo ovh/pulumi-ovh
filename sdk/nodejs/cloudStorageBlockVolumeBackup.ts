@@ -131,9 +131,6 @@ export class CloudStorageBlockVolumeBackup extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.serviceName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceName'");
-            }
             if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
@@ -218,7 +215,7 @@ export interface CloudStorageBlockVolumeBackupArgs {
     /**
      * The id of the public cloud project. Changing this value recreates the resource.
      */
-    serviceName: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string>;
     /**
      * The ID of the volume to back up. Changing this value recreates the resource.
      */

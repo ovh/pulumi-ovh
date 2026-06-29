@@ -47,6 +47,77 @@ import (
 //
 // ```
 //
+// ### Encrypted volume with a customer managed key (CMK)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewVolume(ctx, "encrypted_volume", &cloudproject.VolumeArgs{
+//				RegionName:  pulumi.String("xxx"),
+//				ServiceName: pulumi.String("yyyyy"),
+//				Description: pulumi.String("Terraform encrypted volume"),
+//				Name:        pulumi.String("encryptedVolume"),
+//				Size:        pulumi.Float64(15),
+//				Type:        pulumi.String("classic"),
+//				Encryption: &cloudproject.VolumeEncryptionArgs{
+//					Encrypted: pulumi.Bool(true),
+//					Kms: &cloudproject.VolumeEncryptionKmsArgs{
+//						DomainId:     pulumi.String("<okms domain id>"),
+//						ServiceKeyId: pulumi.String("<okms service key id>"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Omit the `kms` block to encrypt the volume with OVH managed keys (OMK):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewVolume(ctx, "encrypted_volume", &cloudproject.VolumeArgs{
+//				RegionName:  pulumi.String("xxx"),
+//				ServiceName: pulumi.String("yyyyy"),
+//				Name:        pulumi.String("encryptedVolume"),
+//				Size:        pulumi.Float64(15),
+//				Type:        pulumi.String("classic"),
+//				Encryption: &cloudproject.VolumeEncryptionArgs{
+//					Encrypted: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
@@ -73,12 +144,16 @@ type Volume struct {
 
 	// The action of the operation
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The completed date of the operation
 	CompletedAt pulumi.StringOutput `pulumi:"completedAt"`
 	// The creation date of the operation
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// A description of the volume
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+	Encryption VolumeEncryptionOutput `pulumi:"encryption"`
 	// Image ID
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// Instance ID
@@ -146,12 +221,16 @@ func GetVolume(ctx *pulumi.Context,
 type volumeState struct {
 	// The action of the operation
 	Action *string `pulumi:"action"`
+	// Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The completed date of the operation
 	CompletedAt *string `pulumi:"completedAt"`
 	// The creation date of the operation
 	CreatedAt *string `pulumi:"createdAt"`
 	// A description of the volume
 	Description *string `pulumi:"description"`
+	// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+	Encryption *VolumeEncryption `pulumi:"encryption"`
 	// Image ID
 	ImageId *string `pulumi:"imageId"`
 	// Instance ID
@@ -187,12 +266,16 @@ type volumeState struct {
 type VolumeState struct {
 	// The action of the operation
 	Action pulumi.StringPtrInput
+	// Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+	AvailabilityZone pulumi.StringPtrInput
 	// The completed date of the operation
 	CompletedAt pulumi.StringPtrInput
 	// The creation date of the operation
 	CreatedAt pulumi.StringPtrInput
 	// A description of the volume
 	Description pulumi.StringPtrInput
+	// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+	Encryption VolumeEncryptionPtrInput
 	// Image ID
 	ImageId pulumi.StringPtrInput
 	// Instance ID
@@ -230,8 +313,12 @@ func (VolumeState) ElementType() reflect.Type {
 }
 
 type volumeArgs struct {
+	// Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// A description of the volume
 	Description *string `pulumi:"description"`
+	// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+	Encryption *VolumeEncryption `pulumi:"encryption"`
 	// Image ID
 	ImageId *string `pulumi:"imageId"`
 	// Instance ID
@@ -254,8 +341,12 @@ type volumeArgs struct {
 
 // The set of arguments for constructing a Volume resource.
 type VolumeArgs struct {
+	// Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+	AvailabilityZone pulumi.StringPtrInput
 	// A description of the volume
 	Description pulumi.StringPtrInput
+	// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+	Encryption VolumeEncryptionPtrInput
 	// Image ID
 	ImageId pulumi.StringPtrInput
 	// Instance ID
@@ -368,6 +459,11 @@ func (o VolumeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// Optional. Availability zone in which the volume is created. Required when `regionName` is a 3AZ region. **Changing this value recreates the resource.**
+func (o VolumeOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
 // The completed date of the operation
 func (o VolumeOutput) CompletedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CompletedAt }).(pulumi.StringOutput)
@@ -381,6 +477,11 @@ func (o VolumeOutput) CreatedAt() pulumi.StringOutput {
 // A description of the volume
 func (o VolumeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+func (o VolumeOutput) Encryption() VolumeEncryptionOutput {
+	return o.ApplyT(func(v *Volume) VolumeEncryptionOutput { return v.Encryption }).(VolumeEncryptionOutput)
 }
 
 // Image ID

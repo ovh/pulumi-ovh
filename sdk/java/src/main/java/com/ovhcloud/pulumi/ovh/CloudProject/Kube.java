@@ -7,7 +7,9 @@ import com.ovhcloud.pulumi.ovh.CloudProject.KubeArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.KubeState;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubeCustomization;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubeCustomizationApiserver;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubeCustomizationCilium;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubeCustomizationKubeProxy;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubeIpAllocationPolicy;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubeKubeconfigAttribute;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.KubePrivateNetworkConfiguration;
 import com.ovhcloud.pulumi.ovh.Utilities;
@@ -64,6 +66,20 @@ public class Kube extends com.pulumi.resources.CustomResource {
         return this.customizationApiservers;
     }
     /**
+     * Cilium CNI customization.
+     * 
+     */
+    @Export(name="customizationCilium", refs={KubeCustomizationCilium.class}, tree="[0]")
+    private Output<KubeCustomizationCilium> customizationCilium;
+
+    /**
+     * @return Cilium CNI customization.
+     * 
+     */
+    public Output<KubeCustomizationCilium> customizationCilium() {
+        return this.customizationCilium;
+    }
+    /**
      * Kubernetes kube-proxy customization
      * 
      */
@@ -94,6 +110,20 @@ public class Kube extends com.pulumi.resources.CustomResource {
      */
     public Output<List<KubeCustomization>> customizations() {
         return this.customizations;
+    }
+    /**
+     * IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     * 
+     */
+    @Export(name="ipAllocationPolicy", refs={KubeIpAllocationPolicy.class}, tree="[0]")
+    private Output<KubeIpAllocationPolicy> ipAllocationPolicy;
+
+    /**
+     * @return IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     * 
+     */
+    public Output<KubeIpAllocationPolicy> ipAllocationPolicy() {
+        return this.ipAllocationPolicy;
     }
     /**
      * True if all nodes and control-plane are up-to-date.

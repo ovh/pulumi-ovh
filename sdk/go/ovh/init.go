@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:index/cloudGateway:CloudGateway":
+		r = &CloudGateway{}
+	case "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack":
+		r = &CloudNetworkPrivateVrack{}
+	case "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet":
+		r = &CloudNetworkPrivateVrackSubnet{}
 	case "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam":
 		r = &CloudProjectContainerregistryIam{}
 	case "ovh:index/cloudProjectDatabaseClickhouseUser:CloudProjectDatabaseClickhouseUser":
@@ -31,18 +37,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectFileStorageShare{}
 	case "ovh:index/cloudProjectFileStorageShareNetwork:CloudProjectFileStorageShareNetwork":
 		r = &CloudProjectFileStorageShareNetwork{}
+	case "ovh:index/cloudProjectKubeLogSubscription:CloudProjectKubeLogSubscription":
+		r = &CloudProjectKubeLogSubscription{}
 	case "ovh:index/cloudProjectSshKey:CloudProjectSshKey":
 		r = &CloudProjectSshKey{}
 	case "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration":
 		r = &CloudProjectStorageObjectBucketLifecycleConfiguration{}
 	case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
 		r = &CloudProjectStorageReplicationJob{}
+	case "ovh:index/cloudSecurityGroup:CloudSecurityGroup":
+		r = &CloudSecurityGroup{}
 	case "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume":
 		r = &CloudStorageBlockVolume{}
 	case "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup":
 		r = &CloudStorageBlockVolumeBackup{}
 	case "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot":
 		r = &CloudStorageBlockVolumeSnapshot{}
+	case "ovh:index/clousSSHKey:ClousSSHKey":
+		r = &ClousSSHKey{}
 	case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
 		r = &DbaasLogsEncryptionKey{}
 	case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
@@ -104,6 +116,21 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudNetworkPrivateVrack",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudNetworkPrivateVrackSubnet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudProjectContainerregistryIam",
 		&module{version},
 	)
@@ -129,6 +156,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudProjectKubeLogSubscription",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudProjectSshKey",
 		&module{version},
 	)
@@ -144,6 +176,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudSecurityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudStorageBlockVolume",
 		&module{version},
 	)
@@ -155,6 +192,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudStorageBlockVolumeSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/clousSSHKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -54,6 +54,10 @@ export class Kube extends pulumi.CustomResource {
      */
     public readonly customizationApiservers!: pulumi.Output<outputs.CloudProject.KubeCustomizationApiserver[]>;
     /**
+     * Cilium CNI customization.
+     */
+    public readonly customizationCilium!: pulumi.Output<outputs.CloudProject.KubeCustomizationCilium>;
+    /**
      * Kubernetes kube-proxy customization
      */
     public readonly customizationKubeProxy!: pulumi.Output<outputs.CloudProject.KubeCustomizationKubeProxy | undefined>;
@@ -63,6 +67,10 @@ export class Kube extends pulumi.CustomResource {
      * @deprecated Use customizationApiserver instead
      */
     public readonly customizations!: pulumi.Output<outputs.CloudProject.KubeCustomization[]>;
+    /**
+     * IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     */
+    public readonly ipAllocationPolicy!: pulumi.Output<outputs.CloudProject.KubeIpAllocationPolicy>;
     /**
      * True if all nodes and control-plane are up-to-date.
      */
@@ -153,8 +161,10 @@ export class Kube extends pulumi.CustomResource {
             const state = argsOrState as KubeState | undefined;
             resourceInputs["controlPlaneIsUpToDate"] = state ? state.controlPlaneIsUpToDate : undefined;
             resourceInputs["customizationApiservers"] = state ? state.customizationApiservers : undefined;
+            resourceInputs["customizationCilium"] = state ? state.customizationCilium : undefined;
             resourceInputs["customizationKubeProxy"] = state ? state.customizationKubeProxy : undefined;
             resourceInputs["customizations"] = state ? state.customizations : undefined;
+            resourceInputs["ipAllocationPolicy"] = state ? state.ipAllocationPolicy : undefined;
             resourceInputs["isUpToDate"] = state ? state.isUpToDate : undefined;
             resourceInputs["kubeProxyMode"] = state ? state.kubeProxyMode : undefined;
             resourceInputs["kubeconfig"] = state ? state.kubeconfig : undefined;
@@ -179,8 +189,10 @@ export class Kube extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["customizationApiservers"] = args ? args.customizationApiservers : undefined;
+            resourceInputs["customizationCilium"] = args ? args.customizationCilium : undefined;
             resourceInputs["customizationKubeProxy"] = args ? args.customizationKubeProxy : undefined;
             resourceInputs["customizations"] = args ? args.customizations : undefined;
+            resourceInputs["ipAllocationPolicy"] = args ? args.ipAllocationPolicy : undefined;
             resourceInputs["kubeProxyMode"] = args ? args.kubeProxyMode : undefined;
             resourceInputs["loadBalancersSubnetId"] = args ? args.loadBalancersSubnetId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -221,6 +233,10 @@ export interface KubeState {
      */
     customizationApiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserver>[]>;
     /**
+     * Cilium CNI customization.
+     */
+    customizationCilium?: pulumi.Input<inputs.CloudProject.KubeCustomizationCilium>;
+    /**
      * Kubernetes kube-proxy customization
      */
     customizationKubeProxy?: pulumi.Input<inputs.CloudProject.KubeCustomizationKubeProxy>;
@@ -230,6 +246,10 @@ export interface KubeState {
      * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomization>[]>;
+    /**
+     * IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     */
+    ipAllocationPolicy?: pulumi.Input<inputs.CloudProject.KubeIpAllocationPolicy>;
     /**
      * True if all nodes and control-plane are up-to-date.
      */
@@ -315,6 +335,10 @@ export interface KubeArgs {
      */
     customizationApiservers?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomizationApiserver>[]>;
     /**
+     * Cilium CNI customization.
+     */
+    customizationCilium?: pulumi.Input<inputs.CloudProject.KubeCustomizationCilium>;
+    /**
      * Kubernetes kube-proxy customization
      */
     customizationKubeProxy?: pulumi.Input<inputs.CloudProject.KubeCustomizationKubeProxy>;
@@ -324,6 +348,10 @@ export interface KubeArgs {
      * @deprecated Use customizationApiserver instead
      */
     customizations?: pulumi.Input<pulumi.Input<inputs.CloudProject.KubeCustomization>[]>;
+    /**
+     * IP allocation policy of the cluster. **Changing this value recreates the resource.**
+     */
+    ipAllocationPolicy?: pulumi.Input<inputs.CloudProject.KubeIpAllocationPolicy>;
     /**
      * Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
      */

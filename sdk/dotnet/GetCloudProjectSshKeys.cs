@@ -12,6 +12,8 @@ namespace Pulumi.Ovh
     public static class GetCloudProjectSshKeys
     {
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+        /// 
         /// Get SSH keys in a Public Cloud project.
         /// 
         /// ## Example Usage
@@ -36,6 +38,8 @@ namespace Pulumi.Ovh
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudProjectSshKeysResult>("ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys", args ?? new GetCloudProjectSshKeysArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+        /// 
         /// Get SSH keys in a Public Cloud project.
         /// 
         /// ## Example Usage
@@ -60,6 +64,8 @@ namespace Pulumi.Ovh
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudProjectSshKeysResult>("ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys", args ?? new GetCloudProjectSshKeysInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** Prefer using the new `ovh.getCloudSshKeys` data source instead.
+        /// 
         /// Get SSH keys in a Public Cloud project.
         /// 
         /// ## Example Usage

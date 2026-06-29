@@ -13,6 +13,2262 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CloudGatewayCurrentState struct {
+	// Gateway description.
+	Description *string `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway *CloudGatewayCurrentStateExternalGateway `pulumi:"externalGateway"`
+	// External IP address assigned to the gateway.
+	ExternalIp *string `pulumi:"externalIp"`
+	// Location details:
+	Location *CloudGatewayCurrentStateLocation `pulumi:"location"`
+	// Gateway name.
+	Name *string `pulumi:"name"`
+	// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+	Status *string `pulumi:"status"`
+	// Currently attached subnets:
+	Subnets []CloudGatewayCurrentStateSubnet `pulumi:"subnets"`
+}
+
+// CloudGatewayCurrentStateInput is an input type that accepts CloudGatewayCurrentStateArgs and CloudGatewayCurrentStateOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateInput` via:
+//
+//	CloudGatewayCurrentStateArgs{...}
+type CloudGatewayCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateOutput() CloudGatewayCurrentStateOutput
+	ToCloudGatewayCurrentStateOutputWithContext(context.Context) CloudGatewayCurrentStateOutput
+}
+
+type CloudGatewayCurrentStateArgs struct {
+	// Gateway description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway CloudGatewayCurrentStateExternalGatewayPtrInput `pulumi:"externalGateway"`
+	// External IP address assigned to the gateway.
+	ExternalIp pulumi.StringPtrInput `pulumi:"externalIp"`
+	// Location details:
+	Location CloudGatewayCurrentStateLocationPtrInput `pulumi:"location"`
+	// Gateway name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Currently attached subnets:
+	Subnets CloudGatewayCurrentStateSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (CloudGatewayCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentState)(nil)).Elem()
+}
+
+func (i CloudGatewayCurrentStateArgs) ToCloudGatewayCurrentStateOutput() CloudGatewayCurrentStateOutput {
+	return i.ToCloudGatewayCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateArgs) ToCloudGatewayCurrentStateOutputWithContext(ctx context.Context) CloudGatewayCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateOutput)
+}
+
+func (i CloudGatewayCurrentStateArgs) ToCloudGatewayCurrentStatePtrOutput() CloudGatewayCurrentStatePtrOutput {
+	return i.ToCloudGatewayCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateArgs) ToCloudGatewayCurrentStatePtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateOutput).ToCloudGatewayCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudGatewayCurrentStatePtrInput is an input type that accepts CloudGatewayCurrentStateArgs, CloudGatewayCurrentStatePtr and CloudGatewayCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStatePtrInput` via:
+//
+//	        CloudGatewayCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudGatewayCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStatePtrOutput() CloudGatewayCurrentStatePtrOutput
+	ToCloudGatewayCurrentStatePtrOutputWithContext(context.Context) CloudGatewayCurrentStatePtrOutput
+}
+
+type cloudGatewayCurrentStatePtrType CloudGatewayCurrentStateArgs
+
+func CloudGatewayCurrentStatePtr(v *CloudGatewayCurrentStateArgs) CloudGatewayCurrentStatePtrInput {
+	return (*cloudGatewayCurrentStatePtrType)(v)
+}
+
+func (*cloudGatewayCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayCurrentState)(nil)).Elem()
+}
+
+func (i *cloudGatewayCurrentStatePtrType) ToCloudGatewayCurrentStatePtrOutput() CloudGatewayCurrentStatePtrOutput {
+	return i.ToCloudGatewayCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudGatewayCurrentStatePtrType) ToCloudGatewayCurrentStatePtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStatePtrOutput)
+}
+
+type CloudGatewayCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentState)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateOutput) ToCloudGatewayCurrentStateOutput() CloudGatewayCurrentStateOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateOutput) ToCloudGatewayCurrentStateOutputWithContext(ctx context.Context) CloudGatewayCurrentStateOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateOutput) ToCloudGatewayCurrentStatePtrOutput() CloudGatewayCurrentStatePtrOutput {
+	return o.ToCloudGatewayCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudGatewayCurrentStateOutput) ToCloudGatewayCurrentStatePtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudGatewayCurrentState) *CloudGatewayCurrentState {
+		return &v
+	}).(CloudGatewayCurrentStatePtrOutput)
+}
+
+// Gateway description.
+func (o CloudGatewayCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// External gateway configuration:
+func (o CloudGatewayCurrentStateOutput) ExternalGateway() CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) *CloudGatewayCurrentStateExternalGateway { return v.ExternalGateway }).(CloudGatewayCurrentStateExternalGatewayPtrOutput)
+}
+
+// External IP address assigned to the gateway.
+func (o CloudGatewayCurrentStateOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) *string { return v.ExternalIp }).(pulumi.StringPtrOutput)
+}
+
+// Location details:
+func (o CloudGatewayCurrentStateOutput) Location() CloudGatewayCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) *CloudGatewayCurrentStateLocation { return v.Location }).(CloudGatewayCurrentStateLocationPtrOutput)
+}
+
+// Gateway name.
+func (o CloudGatewayCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+func (o CloudGatewayCurrentStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Currently attached subnets:
+func (o CloudGatewayCurrentStateOutput) Subnets() CloudGatewayCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentState) []CloudGatewayCurrentStateSubnet { return v.Subnets }).(CloudGatewayCurrentStateSubnetArrayOutput)
+}
+
+type CloudGatewayCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayCurrentState)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStatePtrOutput) ToCloudGatewayCurrentStatePtrOutput() CloudGatewayCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStatePtrOutput) ToCloudGatewayCurrentStatePtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStatePtrOutput) Elem() CloudGatewayCurrentStateOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) CloudGatewayCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudGatewayCurrentState
+		return ret
+	}).(CloudGatewayCurrentStateOutput)
+}
+
+// Gateway description.
+func (o CloudGatewayCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// External gateway configuration:
+func (o CloudGatewayCurrentStatePtrOutput) ExternalGateway() CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) *CloudGatewayCurrentStateExternalGateway {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalGateway
+	}).(CloudGatewayCurrentStateExternalGatewayPtrOutput)
+}
+
+// External IP address assigned to the gateway.
+func (o CloudGatewayCurrentStatePtrOutput) ExternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location details:
+func (o CloudGatewayCurrentStatePtrOutput) Location() CloudGatewayCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) *CloudGatewayCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudGatewayCurrentStateLocationPtrOutput)
+}
+
+// Gateway name.
+func (o CloudGatewayCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+func (o CloudGatewayCurrentStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Currently attached subnets:
+func (o CloudGatewayCurrentStatePtrOutput) Subnets() CloudGatewayCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentState) []CloudGatewayCurrentStateSubnet {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(CloudGatewayCurrentStateSubnetArrayOutput)
+}
+
+type CloudGatewayCurrentStateExternalGateway struct {
+	// Whether the external gateway is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+	Model *string `pulumi:"model"`
+}
+
+// CloudGatewayCurrentStateExternalGatewayInput is an input type that accepts CloudGatewayCurrentStateExternalGatewayArgs and CloudGatewayCurrentStateExternalGatewayOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateExternalGatewayInput` via:
+//
+//	CloudGatewayCurrentStateExternalGatewayArgs{...}
+type CloudGatewayCurrentStateExternalGatewayInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateExternalGatewayOutput() CloudGatewayCurrentStateExternalGatewayOutput
+	ToCloudGatewayCurrentStateExternalGatewayOutputWithContext(context.Context) CloudGatewayCurrentStateExternalGatewayOutput
+}
+
+type CloudGatewayCurrentStateExternalGatewayArgs struct {
+	// Whether the external gateway is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (CloudGatewayCurrentStateExternalGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (i CloudGatewayCurrentStateExternalGatewayArgs) ToCloudGatewayCurrentStateExternalGatewayOutput() CloudGatewayCurrentStateExternalGatewayOutput {
+	return i.ToCloudGatewayCurrentStateExternalGatewayOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateExternalGatewayArgs) ToCloudGatewayCurrentStateExternalGatewayOutputWithContext(ctx context.Context) CloudGatewayCurrentStateExternalGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateExternalGatewayOutput)
+}
+
+func (i CloudGatewayCurrentStateExternalGatewayArgs) ToCloudGatewayCurrentStateExternalGatewayPtrOutput() CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return i.ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateExternalGatewayArgs) ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateExternalGatewayOutput).ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(ctx)
+}
+
+// CloudGatewayCurrentStateExternalGatewayPtrInput is an input type that accepts CloudGatewayCurrentStateExternalGatewayArgs, CloudGatewayCurrentStateExternalGatewayPtr and CloudGatewayCurrentStateExternalGatewayPtrOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateExternalGatewayPtrInput` via:
+//
+//	        CloudGatewayCurrentStateExternalGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudGatewayCurrentStateExternalGatewayPtrInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateExternalGatewayPtrOutput() CloudGatewayCurrentStateExternalGatewayPtrOutput
+	ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(context.Context) CloudGatewayCurrentStateExternalGatewayPtrOutput
+}
+
+type cloudGatewayCurrentStateExternalGatewayPtrType CloudGatewayCurrentStateExternalGatewayArgs
+
+func CloudGatewayCurrentStateExternalGatewayPtr(v *CloudGatewayCurrentStateExternalGatewayArgs) CloudGatewayCurrentStateExternalGatewayPtrInput {
+	return (*cloudGatewayCurrentStateExternalGatewayPtrType)(v)
+}
+
+func (*cloudGatewayCurrentStateExternalGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (i *cloudGatewayCurrentStateExternalGatewayPtrType) ToCloudGatewayCurrentStateExternalGatewayPtrOutput() CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return i.ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudGatewayCurrentStateExternalGatewayPtrType) ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateExternalGatewayPtrOutput)
+}
+
+type CloudGatewayCurrentStateExternalGatewayOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateExternalGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayOutput) ToCloudGatewayCurrentStateExternalGatewayOutput() CloudGatewayCurrentStateExternalGatewayOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayOutput) ToCloudGatewayCurrentStateExternalGatewayOutputWithContext(ctx context.Context) CloudGatewayCurrentStateExternalGatewayOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayOutput) ToCloudGatewayCurrentStateExternalGatewayPtrOutput() CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return o.ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayOutput) ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudGatewayCurrentStateExternalGateway) *CloudGatewayCurrentStateExternalGateway {
+		return &v
+	}).(CloudGatewayCurrentStateExternalGatewayPtrOutput)
+}
+
+// Whether the external gateway is enabled.
+func (o CloudGatewayCurrentStateExternalGatewayOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentStateExternalGateway) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+func (o CloudGatewayCurrentStateExternalGatewayOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentStateExternalGateway) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+type CloudGatewayCurrentStateExternalGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateExternalGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayPtrOutput) ToCloudGatewayCurrentStateExternalGatewayPtrOutput() CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayPtrOutput) ToCloudGatewayCurrentStateExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateExternalGatewayPtrOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateExternalGatewayPtrOutput) Elem() CloudGatewayCurrentStateExternalGatewayOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentStateExternalGateway) CloudGatewayCurrentStateExternalGateway {
+		if v != nil {
+			return *v
+		}
+		var ret CloudGatewayCurrentStateExternalGateway
+		return ret
+	}).(CloudGatewayCurrentStateExternalGatewayOutput)
+}
+
+// Whether the external gateway is enabled.
+func (o CloudGatewayCurrentStateExternalGatewayPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentStateExternalGateway) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+func (o CloudGatewayCurrentStateExternalGatewayPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentStateExternalGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudGatewayCurrentStateLocation struct {
+	// Availability zone for the gateway. **Changing this value recreates the resource.**
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Region where the gateway will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudGatewayCurrentStateLocationInput is an input type that accepts CloudGatewayCurrentStateLocationArgs and CloudGatewayCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateLocationInput` via:
+//
+//	CloudGatewayCurrentStateLocationArgs{...}
+type CloudGatewayCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateLocationOutput() CloudGatewayCurrentStateLocationOutput
+	ToCloudGatewayCurrentStateLocationOutputWithContext(context.Context) CloudGatewayCurrentStateLocationOutput
+}
+
+type CloudGatewayCurrentStateLocationArgs struct {
+	// Availability zone for the gateway. **Changing this value recreates the resource.**
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Region where the gateway will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudGatewayCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudGatewayCurrentStateLocationArgs) ToCloudGatewayCurrentStateLocationOutput() CloudGatewayCurrentStateLocationOutput {
+	return i.ToCloudGatewayCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateLocationArgs) ToCloudGatewayCurrentStateLocationOutputWithContext(ctx context.Context) CloudGatewayCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateLocationOutput)
+}
+
+func (i CloudGatewayCurrentStateLocationArgs) ToCloudGatewayCurrentStateLocationPtrOutput() CloudGatewayCurrentStateLocationPtrOutput {
+	return i.ToCloudGatewayCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateLocationArgs) ToCloudGatewayCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateLocationOutput).ToCloudGatewayCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudGatewayCurrentStateLocationPtrInput is an input type that accepts CloudGatewayCurrentStateLocationArgs, CloudGatewayCurrentStateLocationPtr and CloudGatewayCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateLocationPtrInput` via:
+//
+//	        CloudGatewayCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudGatewayCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateLocationPtrOutput() CloudGatewayCurrentStateLocationPtrOutput
+	ToCloudGatewayCurrentStateLocationPtrOutputWithContext(context.Context) CloudGatewayCurrentStateLocationPtrOutput
+}
+
+type cloudGatewayCurrentStateLocationPtrType CloudGatewayCurrentStateLocationArgs
+
+func CloudGatewayCurrentStateLocationPtr(v *CloudGatewayCurrentStateLocationArgs) CloudGatewayCurrentStateLocationPtrInput {
+	return (*cloudGatewayCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudGatewayCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudGatewayCurrentStateLocationPtrType) ToCloudGatewayCurrentStateLocationPtrOutput() CloudGatewayCurrentStateLocationPtrOutput {
+	return i.ToCloudGatewayCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudGatewayCurrentStateLocationPtrType) ToCloudGatewayCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateLocationPtrOutput)
+}
+
+type CloudGatewayCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateLocationOutput) ToCloudGatewayCurrentStateLocationOutput() CloudGatewayCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateLocationOutput) ToCloudGatewayCurrentStateLocationOutputWithContext(ctx context.Context) CloudGatewayCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateLocationOutput) ToCloudGatewayCurrentStateLocationPtrOutput() CloudGatewayCurrentStateLocationPtrOutput {
+	return o.ToCloudGatewayCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudGatewayCurrentStateLocationOutput) ToCloudGatewayCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudGatewayCurrentStateLocation) *CloudGatewayCurrentStateLocation {
+		return &v
+	}).(CloudGatewayCurrentStateLocationPtrOutput)
+}
+
+// Availability zone for the gateway. **Changing this value recreates the resource.**
+func (o CloudGatewayCurrentStateLocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentStateLocation) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Region where the gateway will be created. **Changing this value recreates the resource.**
+func (o CloudGatewayCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudGatewayCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateLocationPtrOutput) ToCloudGatewayCurrentStateLocationPtrOutput() CloudGatewayCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateLocationPtrOutput) ToCloudGatewayCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudGatewayCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateLocationPtrOutput) Elem() CloudGatewayCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentStateLocation) CloudGatewayCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudGatewayCurrentStateLocation
+		return ret
+	}).(CloudGatewayCurrentStateLocationOutput)
+}
+
+// Availability zone for the gateway. **Changing this value recreates the resource.**
+func (o CloudGatewayCurrentStateLocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region where the gateway will be created. **Changing this value recreates the resource.**
+func (o CloudGatewayCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudGatewayCurrentStateSubnet struct {
+	// Subnet ID.
+	Id *string `pulumi:"id"`
+}
+
+// CloudGatewayCurrentStateSubnetInput is an input type that accepts CloudGatewayCurrentStateSubnetArgs and CloudGatewayCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateSubnetInput` via:
+//
+//	CloudGatewayCurrentStateSubnetArgs{...}
+type CloudGatewayCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateSubnetOutput() CloudGatewayCurrentStateSubnetOutput
+	ToCloudGatewayCurrentStateSubnetOutputWithContext(context.Context) CloudGatewayCurrentStateSubnetOutput
+}
+
+type CloudGatewayCurrentStateSubnetArgs struct {
+	// Subnet ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (CloudGatewayCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i CloudGatewayCurrentStateSubnetArgs) ToCloudGatewayCurrentStateSubnetOutput() CloudGatewayCurrentStateSubnetOutput {
+	return i.ToCloudGatewayCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateSubnetArgs) ToCloudGatewayCurrentStateSubnetOutputWithContext(ctx context.Context) CloudGatewayCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateSubnetOutput)
+}
+
+// CloudGatewayCurrentStateSubnetArrayInput is an input type that accepts CloudGatewayCurrentStateSubnetArray and CloudGatewayCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `CloudGatewayCurrentStateSubnetArrayInput` via:
+//
+//	CloudGatewayCurrentStateSubnetArray{ CloudGatewayCurrentStateSubnetArgs{...} }
+type CloudGatewayCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToCloudGatewayCurrentStateSubnetArrayOutput() CloudGatewayCurrentStateSubnetArrayOutput
+	ToCloudGatewayCurrentStateSubnetArrayOutputWithContext(context.Context) CloudGatewayCurrentStateSubnetArrayOutput
+}
+
+type CloudGatewayCurrentStateSubnetArray []CloudGatewayCurrentStateSubnetInput
+
+func (CloudGatewayCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i CloudGatewayCurrentStateSubnetArray) ToCloudGatewayCurrentStateSubnetArrayOutput() CloudGatewayCurrentStateSubnetArrayOutput {
+	return i.ToCloudGatewayCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayCurrentStateSubnetArray) ToCloudGatewayCurrentStateSubnetArrayOutputWithContext(ctx context.Context) CloudGatewayCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayCurrentStateSubnetArrayOutput)
+}
+
+type CloudGatewayCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateSubnetOutput) ToCloudGatewayCurrentStateSubnetOutput() CloudGatewayCurrentStateSubnetOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateSubnetOutput) ToCloudGatewayCurrentStateSubnetOutputWithContext(ctx context.Context) CloudGatewayCurrentStateSubnetOutput {
+	return o
+}
+
+// Subnet ID.
+func (o CloudGatewayCurrentStateSubnetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayCurrentStateSubnet) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type CloudGatewayCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o CloudGatewayCurrentStateSubnetArrayOutput) ToCloudGatewayCurrentStateSubnetArrayOutput() CloudGatewayCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateSubnetArrayOutput) ToCloudGatewayCurrentStateSubnetArrayOutputWithContext(ctx context.Context) CloudGatewayCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o CloudGatewayCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) CloudGatewayCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudGatewayCurrentStateSubnet {
+		return vs[0].([]CloudGatewayCurrentStateSubnet)[vs[1].(int)]
+	}).(CloudGatewayCurrentStateSubnetOutput)
+}
+
+type CloudGatewayExternalGateway struct {
+	// Whether the external gateway is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+	Model *string `pulumi:"model"`
+}
+
+// CloudGatewayExternalGatewayInput is an input type that accepts CloudGatewayExternalGatewayArgs and CloudGatewayExternalGatewayOutput values.
+// You can construct a concrete instance of `CloudGatewayExternalGatewayInput` via:
+//
+//	CloudGatewayExternalGatewayArgs{...}
+type CloudGatewayExternalGatewayInput interface {
+	pulumi.Input
+
+	ToCloudGatewayExternalGatewayOutput() CloudGatewayExternalGatewayOutput
+	ToCloudGatewayExternalGatewayOutputWithContext(context.Context) CloudGatewayExternalGatewayOutput
+}
+
+type CloudGatewayExternalGatewayArgs struct {
+	// Whether the external gateway is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (CloudGatewayExternalGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayExternalGateway)(nil)).Elem()
+}
+
+func (i CloudGatewayExternalGatewayArgs) ToCloudGatewayExternalGatewayOutput() CloudGatewayExternalGatewayOutput {
+	return i.ToCloudGatewayExternalGatewayOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayExternalGatewayArgs) ToCloudGatewayExternalGatewayOutputWithContext(ctx context.Context) CloudGatewayExternalGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayExternalGatewayOutput)
+}
+
+func (i CloudGatewayExternalGatewayArgs) ToCloudGatewayExternalGatewayPtrOutput() CloudGatewayExternalGatewayPtrOutput {
+	return i.ToCloudGatewayExternalGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i CloudGatewayExternalGatewayArgs) ToCloudGatewayExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayExternalGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayExternalGatewayOutput).ToCloudGatewayExternalGatewayPtrOutputWithContext(ctx)
+}
+
+// CloudGatewayExternalGatewayPtrInput is an input type that accepts CloudGatewayExternalGatewayArgs, CloudGatewayExternalGatewayPtr and CloudGatewayExternalGatewayPtrOutput values.
+// You can construct a concrete instance of `CloudGatewayExternalGatewayPtrInput` via:
+//
+//	        CloudGatewayExternalGatewayArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudGatewayExternalGatewayPtrInput interface {
+	pulumi.Input
+
+	ToCloudGatewayExternalGatewayPtrOutput() CloudGatewayExternalGatewayPtrOutput
+	ToCloudGatewayExternalGatewayPtrOutputWithContext(context.Context) CloudGatewayExternalGatewayPtrOutput
+}
+
+type cloudGatewayExternalGatewayPtrType CloudGatewayExternalGatewayArgs
+
+func CloudGatewayExternalGatewayPtr(v *CloudGatewayExternalGatewayArgs) CloudGatewayExternalGatewayPtrInput {
+	return (*cloudGatewayExternalGatewayPtrType)(v)
+}
+
+func (*cloudGatewayExternalGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayExternalGateway)(nil)).Elem()
+}
+
+func (i *cloudGatewayExternalGatewayPtrType) ToCloudGatewayExternalGatewayPtrOutput() CloudGatewayExternalGatewayPtrOutput {
+	return i.ToCloudGatewayExternalGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudGatewayExternalGatewayPtrType) ToCloudGatewayExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayExternalGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudGatewayExternalGatewayPtrOutput)
+}
+
+type CloudGatewayExternalGatewayOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayExternalGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudGatewayExternalGateway)(nil)).Elem()
+}
+
+func (o CloudGatewayExternalGatewayOutput) ToCloudGatewayExternalGatewayOutput() CloudGatewayExternalGatewayOutput {
+	return o
+}
+
+func (o CloudGatewayExternalGatewayOutput) ToCloudGatewayExternalGatewayOutputWithContext(ctx context.Context) CloudGatewayExternalGatewayOutput {
+	return o
+}
+
+func (o CloudGatewayExternalGatewayOutput) ToCloudGatewayExternalGatewayPtrOutput() CloudGatewayExternalGatewayPtrOutput {
+	return o.ToCloudGatewayExternalGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o CloudGatewayExternalGatewayOutput) ToCloudGatewayExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayExternalGatewayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudGatewayExternalGateway) *CloudGatewayExternalGateway {
+		return &v
+	}).(CloudGatewayExternalGatewayPtrOutput)
+}
+
+// Whether the external gateway is enabled.
+func (o CloudGatewayExternalGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudGatewayExternalGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+func (o CloudGatewayExternalGatewayOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudGatewayExternalGateway) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+type CloudGatewayExternalGatewayPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudGatewayExternalGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudGatewayExternalGateway)(nil)).Elem()
+}
+
+func (o CloudGatewayExternalGatewayPtrOutput) ToCloudGatewayExternalGatewayPtrOutput() CloudGatewayExternalGatewayPtrOutput {
+	return o
+}
+
+func (o CloudGatewayExternalGatewayPtrOutput) ToCloudGatewayExternalGatewayPtrOutputWithContext(ctx context.Context) CloudGatewayExternalGatewayPtrOutput {
+	return o
+}
+
+func (o CloudGatewayExternalGatewayPtrOutput) Elem() CloudGatewayExternalGatewayOutput {
+	return o.ApplyT(func(v *CloudGatewayExternalGateway) CloudGatewayExternalGateway {
+		if v != nil {
+			return *v
+		}
+		var ret CloudGatewayExternalGateway
+		return ret
+	}).(CloudGatewayExternalGatewayOutput)
+}
+
+// Whether the external gateway is enabled.
+func (o CloudGatewayExternalGatewayPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayExternalGateway) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+func (o CloudGatewayExternalGatewayPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudGatewayExternalGateway) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackCurrentState struct {
+	// Network description. **Changing this value recreates the resource.**
+	Description *string `pulumi:"description"`
+	// Location details:
+	Location *CloudNetworkPrivateVrackCurrentStateLocation `pulumi:"location"`
+	// Network name.
+	Name *string `pulumi:"name"`
+	// VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+	VlanId *float64 `pulumi:"vlanId"`
+}
+
+// CloudNetworkPrivateVrackCurrentStateInput is an input type that accepts CloudNetworkPrivateVrackCurrentStateArgs and CloudNetworkPrivateVrackCurrentStateOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackCurrentStateInput` via:
+//
+//	CloudNetworkPrivateVrackCurrentStateArgs{...}
+type CloudNetworkPrivateVrackCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackCurrentStateOutput() CloudNetworkPrivateVrackCurrentStateOutput
+	ToCloudNetworkPrivateVrackCurrentStateOutputWithContext(context.Context) CloudNetworkPrivateVrackCurrentStateOutput
+}
+
+type CloudNetworkPrivateVrackCurrentStateArgs struct {
+	// Network description. **Changing this value recreates the resource.**
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Location details:
+	Location CloudNetworkPrivateVrackCurrentStateLocationPtrInput `pulumi:"location"`
+	// Network name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+	VlanId pulumi.Float64PtrInput `pulumi:"vlanId"`
+}
+
+func (CloudNetworkPrivateVrackCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackCurrentState)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateArgs) ToCloudNetworkPrivateVrackCurrentStateOutput() CloudNetworkPrivateVrackCurrentStateOutput {
+	return i.ToCloudNetworkPrivateVrackCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateArgs) ToCloudNetworkPrivateVrackCurrentStateOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackCurrentStateOutput)
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateArgs) ToCloudNetworkPrivateVrackCurrentStatePtrOutput() CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return i.ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateArgs) ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackCurrentStateOutput).ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudNetworkPrivateVrackCurrentStatePtrInput is an input type that accepts CloudNetworkPrivateVrackCurrentStateArgs, CloudNetworkPrivateVrackCurrentStatePtr and CloudNetworkPrivateVrackCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackCurrentStatePtrInput` via:
+//
+//	        CloudNetworkPrivateVrackCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudNetworkPrivateVrackCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackCurrentStatePtrOutput() CloudNetworkPrivateVrackCurrentStatePtrOutput
+	ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(context.Context) CloudNetworkPrivateVrackCurrentStatePtrOutput
+}
+
+type cloudNetworkPrivateVrackCurrentStatePtrType CloudNetworkPrivateVrackCurrentStateArgs
+
+func CloudNetworkPrivateVrackCurrentStatePtr(v *CloudNetworkPrivateVrackCurrentStateArgs) CloudNetworkPrivateVrackCurrentStatePtrInput {
+	return (*cloudNetworkPrivateVrackCurrentStatePtrType)(v)
+}
+
+func (*cloudNetworkPrivateVrackCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackCurrentState)(nil)).Elem()
+}
+
+func (i *cloudNetworkPrivateVrackCurrentStatePtrType) ToCloudNetworkPrivateVrackCurrentStatePtrOutput() CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return i.ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudNetworkPrivateVrackCurrentStatePtrType) ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackCurrentStatePtrOutput)
+}
+
+type CloudNetworkPrivateVrackCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackCurrentState)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateOutput) ToCloudNetworkPrivateVrackCurrentStateOutput() CloudNetworkPrivateVrackCurrentStateOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateOutput) ToCloudNetworkPrivateVrackCurrentStateOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateOutput) ToCloudNetworkPrivateVrackCurrentStatePtrOutput() CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return o.ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateOutput) ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudNetworkPrivateVrackCurrentState) *CloudNetworkPrivateVrackCurrentState {
+		return &v
+	}).(CloudNetworkPrivateVrackCurrentStatePtrOutput)
+}
+
+// Network description. **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Location details:
+func (o CloudNetworkPrivateVrackCurrentStateOutput) Location() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackCurrentState) *CloudNetworkPrivateVrackCurrentStateLocation {
+		return v.Location
+	}).(CloudNetworkPrivateVrackCurrentStateLocationPtrOutput)
+}
+
+// Network name.
+func (o CloudNetworkPrivateVrackCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+func (o CloudNetworkPrivateVrackCurrentStateOutput) VlanId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackCurrentState) *float64 { return v.VlanId }).(pulumi.Float64PtrOutput)
+}
+
+type CloudNetworkPrivateVrackCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackCurrentState)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) ToCloudNetworkPrivateVrackCurrentStatePtrOutput() CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) ToCloudNetworkPrivateVrackCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) Elem() CloudNetworkPrivateVrackCurrentStateOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentState) CloudNetworkPrivateVrackCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudNetworkPrivateVrackCurrentState
+		return ret
+	}).(CloudNetworkPrivateVrackCurrentStateOutput)
+}
+
+// Network description. **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location details:
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) Location() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentState) *CloudNetworkPrivateVrackCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudNetworkPrivateVrackCurrentStateLocationPtrOutput)
+}
+
+// Network name.
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+func (o CloudNetworkPrivateVrackCurrentStatePtrOutput) VlanId() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentState) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.VlanId
+	}).(pulumi.Float64PtrOutput)
+}
+
+type CloudNetworkPrivateVrackCurrentStateLocation struct {
+	// Region where the network will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudNetworkPrivateVrackCurrentStateLocationInput is an input type that accepts CloudNetworkPrivateVrackCurrentStateLocationArgs and CloudNetworkPrivateVrackCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackCurrentStateLocationInput` via:
+//
+//	CloudNetworkPrivateVrackCurrentStateLocationArgs{...}
+type CloudNetworkPrivateVrackCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackCurrentStateLocationOutput() CloudNetworkPrivateVrackCurrentStateLocationOutput
+	ToCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(context.Context) CloudNetworkPrivateVrackCurrentStateLocationOutput
+}
+
+type CloudNetworkPrivateVrackCurrentStateLocationArgs struct {
+	// Region where the network will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudNetworkPrivateVrackCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateLocationArgs) ToCloudNetworkPrivateVrackCurrentStateLocationOutput() CloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return i.ToCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateLocationArgs) ToCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackCurrentStateLocationOutput)
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateLocationArgs) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return i.ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackCurrentStateLocationArgs) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackCurrentStateLocationOutput).ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudNetworkPrivateVrackCurrentStateLocationPtrInput is an input type that accepts CloudNetworkPrivateVrackCurrentStateLocationArgs, CloudNetworkPrivateVrackCurrentStateLocationPtr and CloudNetworkPrivateVrackCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackCurrentStateLocationPtrInput` via:
+//
+//	        CloudNetworkPrivateVrackCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudNetworkPrivateVrackCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput
+	ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(context.Context) CloudNetworkPrivateVrackCurrentStateLocationPtrOutput
+}
+
+type cloudNetworkPrivateVrackCurrentStateLocationPtrType CloudNetworkPrivateVrackCurrentStateLocationArgs
+
+func CloudNetworkPrivateVrackCurrentStateLocationPtr(v *CloudNetworkPrivateVrackCurrentStateLocationArgs) CloudNetworkPrivateVrackCurrentStateLocationPtrInput {
+	return (*cloudNetworkPrivateVrackCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudNetworkPrivateVrackCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudNetworkPrivateVrackCurrentStateLocationPtrType) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return i.ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudNetworkPrivateVrackCurrentStateLocationPtrType) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackCurrentStateLocationPtrOutput)
+}
+
+type CloudNetworkPrivateVrackCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationOutput) ToCloudNetworkPrivateVrackCurrentStateLocationOutput() CloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationOutput) ToCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationOutput) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return o.ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationOutput) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudNetworkPrivateVrackCurrentStateLocation) *CloudNetworkPrivateVrackCurrentStateLocation {
+		return &v
+	}).(CloudNetworkPrivateVrackCurrentStateLocationPtrOutput)
+}
+
+// Region where the network will be created. **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationPtrOutput) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationPtrOutput) ToCloudNetworkPrivateVrackCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackCurrentStateLocationPtrOutput) Elem() CloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentStateLocation) CloudNetworkPrivateVrackCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudNetworkPrivateVrackCurrentStateLocation
+		return ret
+	}).(CloudNetworkPrivateVrackCurrentStateLocationOutput)
+}
+
+// Region where the network will be created. **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetAllocationPool struct {
+	// End IP address of the pool.
+	End *string `pulumi:"end"`
+	// Start IP address of the pool.
+	Start *string `pulumi:"start"`
+}
+
+// CloudNetworkPrivateVrackSubnetAllocationPoolInput is an input type that accepts CloudNetworkPrivateVrackSubnetAllocationPoolArgs and CloudNetworkPrivateVrackSubnetAllocationPoolOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetAllocationPoolInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetAllocationPoolArgs{...}
+type CloudNetworkPrivateVrackSubnetAllocationPoolInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetAllocationPoolOutput() CloudNetworkPrivateVrackSubnetAllocationPoolOutput
+	ToCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetAllocationPoolOutput
+}
+
+type CloudNetworkPrivateVrackSubnetAllocationPoolArgs struct {
+	// End IP address of the pool.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Start IP address of the pool.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (CloudNetworkPrivateVrackSubnetAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetAllocationPoolArgs) ToCloudNetworkPrivateVrackSubnetAllocationPoolOutput() CloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetAllocationPoolArgs) ToCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetAllocationPoolOutput)
+}
+
+// CloudNetworkPrivateVrackSubnetAllocationPoolArrayInput is an input type that accepts CloudNetworkPrivateVrackSubnetAllocationPoolArray and CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetAllocationPoolArrayInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetAllocationPoolArray{ CloudNetworkPrivateVrackSubnetAllocationPoolArgs{...} }
+type CloudNetworkPrivateVrackSubnetAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput() CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput
+	ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput
+}
+
+type CloudNetworkPrivateVrackSubnetAllocationPoolArray []CloudNetworkPrivateVrackSubnetAllocationPoolInput
+
+func (CloudNetworkPrivateVrackSubnetAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetAllocationPoolArray) ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput() CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetAllocationPoolArray) ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolOutput) ToCloudNetworkPrivateVrackSubnetAllocationPoolOutput() CloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolOutput) ToCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return o
+}
+
+// End IP address of the pool.
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetAllocationPool) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// Start IP address of the pool.
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetAllocationPool) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput() CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) ToCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) CloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudNetworkPrivateVrackSubnetAllocationPool {
+		return vs[0].([]CloudNetworkPrivateVrackSubnetAllocationPool)[vs[1].(int)]
+	}).(CloudNetworkPrivateVrackSubnetAllocationPoolOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentState struct {
+	// IP address allocation pools:
+	AllocationPools []CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool `pulumi:"allocationPools"`
+	// CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+	Cidr *string `pulumi:"cidr"`
+	// Subnet description.
+	Description *string `pulumi:"description"`
+	// Whether DHCP is enabled on the subnet.
+	DhcpEnabled *bool `pulumi:"dhcpEnabled"`
+	// List of DNS nameserver addresses.
+	DnsNameservers []string `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp *string `pulumi:"gatewayIp"`
+	// Static host routes:
+	HostRoutes []CloudNetworkPrivateVrackSubnetCurrentStateHostRoute `pulumi:"hostRoutes"`
+	// Location details:
+	Location *CloudNetworkPrivateVrackSubnetCurrentStateLocation `pulumi:"location"`
+	// Subnet name.
+	Name *string `pulumi:"name"`
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateArgs and CloudNetworkPrivateVrackSubnetCurrentStateOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentStateArgs{...}
+type CloudNetworkPrivateVrackSubnetCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateOutput() CloudNetworkPrivateVrackSubnetCurrentStateOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateArgs struct {
+	// IP address allocation pools:
+	AllocationPools CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput `pulumi:"allocationPools"`
+	// CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
+	// Subnet description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Whether DHCP is enabled on the subnet.
+	DhcpEnabled pulumi.BoolPtrInput `pulumi:"dhcpEnabled"`
+	// List of DNS nameserver addresses.
+	DnsNameservers pulumi.StringArrayInput `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	// Static host routes:
+	HostRoutes CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput `pulumi:"hostRoutes"`
+	// Location details:
+	Location CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrInput `pulumi:"location"`
+	// Subnet name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentState)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateOutput() CloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateOutput)
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateArgs) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutput() CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateArgs) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateOutput).ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStatePtrInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateArgs, CloudNetworkPrivateVrackSubnetCurrentStatePtr and CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStatePtrInput` via:
+//
+//	        CloudNetworkPrivateVrackSubnetCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudNetworkPrivateVrackSubnetCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutput() CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput
+}
+
+type cloudNetworkPrivateVrackSubnetCurrentStatePtrType CloudNetworkPrivateVrackSubnetCurrentStateArgs
+
+func CloudNetworkPrivateVrackSubnetCurrentStatePtr(v *CloudNetworkPrivateVrackSubnetCurrentStateArgs) CloudNetworkPrivateVrackSubnetCurrentStatePtrInput {
+	return (*cloudNetworkPrivateVrackSubnetCurrentStatePtrType)(v)
+}
+
+func (*cloudNetworkPrivateVrackSubnetCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackSubnetCurrentState)(nil)).Elem()
+}
+
+func (i *cloudNetworkPrivateVrackSubnetCurrentStatePtrType) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutput() CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudNetworkPrivateVrackSubnetCurrentStatePtrType) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentState)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateOutput() CloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutput() CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return o.ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudNetworkPrivateVrackSubnetCurrentState) *CloudNetworkPrivateVrackSubnetCurrentState {
+		return &v
+	}).(CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput)
+}
+
+// IP address allocation pools:
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) AllocationPools() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) []CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+		return v.AllocationPools
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+// CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) *string { return v.Cidr }).(pulumi.StringPtrOutput)
+}
+
+// Subnet description.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether DHCP is enabled on the subnet.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) *bool { return v.DhcpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of DNS nameserver addresses.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) DnsNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) []string { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+// Default gateway IP address.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// Static host routes:
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) HostRoutes() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) []CloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+		return v.HostRoutes
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput)
+}
+
+// Location details:
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) Location() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) *CloudNetworkPrivateVrackSubnetCurrentStateLocation {
+		return v.Location
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput)
+}
+
+// Subnet name.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackSubnetCurrentState)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutput() CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) ToCloudNetworkPrivateVrackSubnetCurrentStatePtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) Elem() CloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) CloudNetworkPrivateVrackSubnetCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudNetworkPrivateVrackSubnetCurrentState
+		return ret
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateOutput)
+}
+
+// IP address allocation pools:
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) AllocationPools() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) []CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+		if v == nil {
+			return nil
+		}
+		return v.AllocationPools
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+// CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) Cidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet description.
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether DHCP is enabled on the subnet.
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) DhcpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of DNS nameserver addresses.
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) DnsNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsNameservers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Default gateway IP address.
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// Static host routes:
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) HostRoutes() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) []CloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+		if v == nil {
+			return nil
+		}
+		return v.HostRoutes
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput)
+}
+
+// Location details:
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) Location() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) *CloudNetworkPrivateVrackSubnetCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput)
+}
+
+// Subnet name.
+func (o CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool struct {
+	// End IP address of the pool.
+	End *string `pulumi:"end"`
+	// Start IP address of the pool.
+	Start *string `pulumi:"start"`
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs and CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs{...}
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs struct {
+	// End IP address of the pool.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Start IP address of the pool.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput)
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray and CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray{ CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs{...} }
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray []CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return o
+}
+
+// End IP address of the pool.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// Start IP address of the pool.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput() CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) Index(i pulumi.IntInput) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+		return vs[0].([]CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)[vs[1].(int)]
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRoute struct {
+	// Destination CIDR.
+	Destination *string `pulumi:"destination"`
+	// Next hop IP address.
+	NextHop *string `pulumi:"nextHop"`
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs and CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs{...}
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs struct {
+	// Destination CIDR.
+	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// Next hop IP address.
+	NextHop pulumi.StringPtrInput `pulumi:"nextHop"`
+}
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput)
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray and CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray{ CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs{...} }
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray []CloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return o
+}
+
+// Destination CIDR.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) Destination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentStateHostRoute) *string { return v.Destination }).(pulumi.StringPtrOutput)
+}
+
+// Next hop IP address.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) NextHop() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentStateHostRoute) *string { return v.NextHop }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput() CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) Index(i pulumi.IntInput) CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+		return vs[0].([]CloudNetworkPrivateVrackSubnetCurrentStateHostRoute)[vs[1].(int)]
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Region where the subnet will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateLocationInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs and CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateLocationInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs{...}
+type CloudNetworkPrivateVrackSubnetCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Region where the subnet will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput)
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput).ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs, CloudNetworkPrivateVrackSubnetCurrentStateLocationPtr and CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrInput` via:
+//
+//	        CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput
+}
+
+type cloudNetworkPrivateVrackSubnetCurrentStateLocationPtrType CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs
+
+func CloudNetworkPrivateVrackSubnetCurrentStateLocationPtr(v *CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrInput {
+	return (*cloudNetworkPrivateVrackSubnetCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudNetworkPrivateVrackSubnetCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudNetworkPrivateVrackSubnetCurrentStateLocationPtrType) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudNetworkPrivateVrackSubnetCurrentStateLocationPtrType) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return o.ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudNetworkPrivateVrackSubnetCurrentStateLocation) *CloudNetworkPrivateVrackSubnetCurrentStateLocation {
+		return &v
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput)
+}
+
+// Availability zone within the region.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentStateLocation) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Region where the subnet will be created. **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudNetworkPrivateVrackSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput() CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput) ToCloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput) Elem() CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentStateLocation) CloudNetworkPrivateVrackSubnetCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudNetworkPrivateVrackSubnetCurrentStateLocation
+		return ret
+	}).(CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput)
+}
+
+// Availability zone within the region.
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region where the subnet will be created. **Changing this value recreates the resource.**
+func (o CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudNetworkPrivateVrackSubnetCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTask struct {
+	// Errors that occured on the task
+	Errors []CloudNetworkPrivateVrackSubnetCurrentTaskError `pulumi:"errors"`
+	// Subnet ID.
+	Id *string `pulumi:"id"`
+	// Link to the task details
+	Link *string `pulumi:"link"`
+	// Current global status of the current task
+	Status *string `pulumi:"status"`
+	// Type of the current task
+	Type *string `pulumi:"type"`
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentTaskInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentTaskArgs and CloudNetworkPrivateVrackSubnetCurrentTaskOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentTaskInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentTaskArgs{...}
+type CloudNetworkPrivateVrackSubnetCurrentTaskInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskOutput() CloudNetworkPrivateVrackSubnetCurrentTaskOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskArgs struct {
+	// Errors that occured on the task
+	Errors CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayInput `pulumi:"errors"`
+	// Subnet ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringPtrInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTask)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskArgs) ToCloudNetworkPrivateVrackSubnetCurrentTaskOutput() CloudNetworkPrivateVrackSubnetCurrentTaskOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskArgs) ToCloudNetworkPrivateVrackSubnetCurrentTaskOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentTaskOutput)
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentTaskArrayInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentTaskArray and CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentTaskArrayInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentTaskArray{ CloudNetworkPrivateVrackSubnetCurrentTaskArgs{...} }
+type CloudNetworkPrivateVrackSubnetCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput() CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskArray []CloudNetworkPrivateVrackSubnetCurrentTaskInput
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentTask)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskArray) ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput() CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskArray) ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTask)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskOutput() CloudNetworkPrivateVrackSubnetCurrentTaskOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskOutput {
+	return o
+}
+
+// Errors that occured on the task
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) Errors() CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentTask) []CloudNetworkPrivateVrackSubnetCurrentTaskError {
+		return v.Errors
+	}).(CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput)
+}
+
+// Subnet ID.
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentTask) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Link to the task details
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentTask) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Current global status of the current task
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentTask) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Type of the current task
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentTask) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentTask)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput() CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput) Index(i pulumi.IntInput) CloudNetworkPrivateVrackSubnetCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudNetworkPrivateVrackSubnetCurrentTask {
+		return vs[0].([]CloudNetworkPrivateVrackSubnetCurrentTask)[vs[1].(int)]
+	}).(CloudNetworkPrivateVrackSubnetCurrentTaskOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskError struct {
+	// Error description
+	Message *string `pulumi:"message"`
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentTaskErrorInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs and CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentTaskErrorInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs{...}
+type CloudNetworkPrivateVrackSubnetCurrentTaskErrorInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput() CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs struct {
+	// Error description
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTaskError)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput() CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput)
+}
+
+// CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayInput is an input type that accepts CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray and CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput values.
+// You can construct a concrete instance of `CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayInput` via:
+//
+//	CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray{ CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs{...} }
+type CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayInput interface {
+	pulumi.Input
+
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput() CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput
+	ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutputWithContext(context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray []CloudNetworkPrivateVrackSubnetCurrentTaskErrorInput
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentTaskError)(nil)).Elem()
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput() CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput {
+	return i.ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutputWithContext(context.Background())
+}
+
+func (i CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTaskError)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput() CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput {
+	return o
+}
+
+// Error description
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudNetworkPrivateVrackSubnetCurrentTaskError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudNetworkPrivateVrackSubnetCurrentTaskError)(nil)).Elem()
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput() CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput) ToCloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutputWithContext(ctx context.Context) CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput {
+	return o
+}
+
+func (o CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput) Index(i pulumi.IntInput) CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudNetworkPrivateVrackSubnetCurrentTaskError {
+		return vs[0].([]CloudNetworkPrivateVrackSubnetCurrentTaskError)[vs[1].(int)]
+	}).(CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput)
+}
+
+type CloudProjectKubeLogSubscriptionResource struct {
+	// Name of the subscribed resource, where the logs come from.
+	Name *string `pulumi:"name"`
+	// Type of the subscribed resource, where the logs come from.
+	Type *string `pulumi:"type"`
+}
+
+// CloudProjectKubeLogSubscriptionResourceInput is an input type that accepts CloudProjectKubeLogSubscriptionResourceArgs and CloudProjectKubeLogSubscriptionResourceOutput values.
+// You can construct a concrete instance of `CloudProjectKubeLogSubscriptionResourceInput` via:
+//
+//	CloudProjectKubeLogSubscriptionResourceArgs{...}
+type CloudProjectKubeLogSubscriptionResourceInput interface {
+	pulumi.Input
+
+	ToCloudProjectKubeLogSubscriptionResourceOutput() CloudProjectKubeLogSubscriptionResourceOutput
+	ToCloudProjectKubeLogSubscriptionResourceOutputWithContext(context.Context) CloudProjectKubeLogSubscriptionResourceOutput
+}
+
+type CloudProjectKubeLogSubscriptionResourceArgs struct {
+	// Name of the subscribed resource, where the logs come from.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Type of the subscribed resource, where the logs come from.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CloudProjectKubeLogSubscriptionResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (i CloudProjectKubeLogSubscriptionResourceArgs) ToCloudProjectKubeLogSubscriptionResourceOutput() CloudProjectKubeLogSubscriptionResourceOutput {
+	return i.ToCloudProjectKubeLogSubscriptionResourceOutputWithContext(context.Background())
+}
+
+func (i CloudProjectKubeLogSubscriptionResourceArgs) ToCloudProjectKubeLogSubscriptionResourceOutputWithContext(ctx context.Context) CloudProjectKubeLogSubscriptionResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudProjectKubeLogSubscriptionResourceOutput)
+}
+
+// CloudProjectKubeLogSubscriptionResourceArrayInput is an input type that accepts CloudProjectKubeLogSubscriptionResourceArray and CloudProjectKubeLogSubscriptionResourceArrayOutput values.
+// You can construct a concrete instance of `CloudProjectKubeLogSubscriptionResourceArrayInput` via:
+//
+//	CloudProjectKubeLogSubscriptionResourceArray{ CloudProjectKubeLogSubscriptionResourceArgs{...} }
+type CloudProjectKubeLogSubscriptionResourceArrayInput interface {
+	pulumi.Input
+
+	ToCloudProjectKubeLogSubscriptionResourceArrayOutput() CloudProjectKubeLogSubscriptionResourceArrayOutput
+	ToCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(context.Context) CloudProjectKubeLogSubscriptionResourceArrayOutput
+}
+
+type CloudProjectKubeLogSubscriptionResourceArray []CloudProjectKubeLogSubscriptionResourceInput
+
+func (CloudProjectKubeLogSubscriptionResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (i CloudProjectKubeLogSubscriptionResourceArray) ToCloudProjectKubeLogSubscriptionResourceArrayOutput() CloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return i.ToCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(context.Background())
+}
+
+func (i CloudProjectKubeLogSubscriptionResourceArray) ToCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(ctx context.Context) CloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudProjectKubeLogSubscriptionResourceArrayOutput)
+}
+
+type CloudProjectKubeLogSubscriptionResourceOutput struct{ *pulumi.OutputState }
+
+func (CloudProjectKubeLogSubscriptionResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (o CloudProjectKubeLogSubscriptionResourceOutput) ToCloudProjectKubeLogSubscriptionResourceOutput() CloudProjectKubeLogSubscriptionResourceOutput {
+	return o
+}
+
+func (o CloudProjectKubeLogSubscriptionResourceOutput) ToCloudProjectKubeLogSubscriptionResourceOutputWithContext(ctx context.Context) CloudProjectKubeLogSubscriptionResourceOutput {
+	return o
+}
+
+// Name of the subscribed resource, where the logs come from.
+func (o CloudProjectKubeLogSubscriptionResourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudProjectKubeLogSubscriptionResource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Type of the subscribed resource, where the logs come from.
+func (o CloudProjectKubeLogSubscriptionResourceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudProjectKubeLogSubscriptionResource) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CloudProjectKubeLogSubscriptionResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudProjectKubeLogSubscriptionResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (o CloudProjectKubeLogSubscriptionResourceArrayOutput) ToCloudProjectKubeLogSubscriptionResourceArrayOutput() CloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return o
+}
+
+func (o CloudProjectKubeLogSubscriptionResourceArrayOutput) ToCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(ctx context.Context) CloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return o
+}
+
+func (o CloudProjectKubeLogSubscriptionResourceArrayOutput) Index(i pulumi.IntInput) CloudProjectKubeLogSubscriptionResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudProjectKubeLogSubscriptionResource {
+		return vs[0].([]CloudProjectKubeLogSubscriptionResource)[vs[1].(int)]
+	}).(CloudProjectKubeLogSubscriptionResourceOutput)
+}
+
 type CloudProjectStorageObjectBucketLifecycleConfigurationRule struct {
 	// Configuration for aborting incomplete multipart uploads.
 	AbortIncompleteMultipartUpload *CloudProjectStorageObjectBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload `pulumi:"abortIncompleteMultipartUpload"`
@@ -1097,6 +3353,874 @@ func (o CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition {
 		return vs[0].([]CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition)[vs[1].(int)]
 	}).(CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput)
+}
+
+type CloudSecurityGroupCurrentState struct {
+	// Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+	DefaultRules []CloudSecurityGroupCurrentStateDefaultRule `pulumi:"defaultRules"`
+	// Description of the security group.
+	Description *string `pulumi:"description"`
+	// Location details:
+	Location *CloudSecurityGroupCurrentStateLocation `pulumi:"location"`
+	// Name of the security group.
+	Name *string `pulumi:"name"`
+	// User-specified security group rules with their IDs:
+	Rules []CloudSecurityGroupCurrentStateRule `pulumi:"rules"`
+}
+
+// CloudSecurityGroupCurrentStateInput is an input type that accepts CloudSecurityGroupCurrentStateArgs and CloudSecurityGroupCurrentStateOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateInput` via:
+//
+//	CloudSecurityGroupCurrentStateArgs{...}
+type CloudSecurityGroupCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateOutput() CloudSecurityGroupCurrentStateOutput
+	ToCloudSecurityGroupCurrentStateOutputWithContext(context.Context) CloudSecurityGroupCurrentStateOutput
+}
+
+type CloudSecurityGroupCurrentStateArgs struct {
+	// Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+	DefaultRules CloudSecurityGroupCurrentStateDefaultRuleArrayInput `pulumi:"defaultRules"`
+	// Description of the security group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Location details:
+	Location CloudSecurityGroupCurrentStateLocationPtrInput `pulumi:"location"`
+	// Name of the security group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// User-specified security group rules with their IDs:
+	Rules CloudSecurityGroupCurrentStateRuleArrayInput `pulumi:"rules"`
+}
+
+func (CloudSecurityGroupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupCurrentStateArgs) ToCloudSecurityGroupCurrentStateOutput() CloudSecurityGroupCurrentStateOutput {
+	return i.ToCloudSecurityGroupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateArgs) ToCloudSecurityGroupCurrentStateOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateOutput)
+}
+
+func (i CloudSecurityGroupCurrentStateArgs) ToCloudSecurityGroupCurrentStatePtrOutput() CloudSecurityGroupCurrentStatePtrOutput {
+	return i.ToCloudSecurityGroupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateArgs) ToCloudSecurityGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateOutput).ToCloudSecurityGroupCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudSecurityGroupCurrentStatePtrInput is an input type that accepts CloudSecurityGroupCurrentStateArgs, CloudSecurityGroupCurrentStatePtr and CloudSecurityGroupCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStatePtrInput` via:
+//
+//	        CloudSecurityGroupCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudSecurityGroupCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStatePtrOutput() CloudSecurityGroupCurrentStatePtrOutput
+	ToCloudSecurityGroupCurrentStatePtrOutputWithContext(context.Context) CloudSecurityGroupCurrentStatePtrOutput
+}
+
+type cloudSecurityGroupCurrentStatePtrType CloudSecurityGroupCurrentStateArgs
+
+func CloudSecurityGroupCurrentStatePtr(v *CloudSecurityGroupCurrentStateArgs) CloudSecurityGroupCurrentStatePtrInput {
+	return (*cloudSecurityGroupCurrentStatePtrType)(v)
+}
+
+func (*cloudSecurityGroupCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (i *cloudSecurityGroupCurrentStatePtrType) ToCloudSecurityGroupCurrentStatePtrOutput() CloudSecurityGroupCurrentStatePtrOutput {
+	return i.ToCloudSecurityGroupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudSecurityGroupCurrentStatePtrType) ToCloudSecurityGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStatePtrOutput)
+}
+
+type CloudSecurityGroupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateOutput) ToCloudSecurityGroupCurrentStateOutput() CloudSecurityGroupCurrentStateOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateOutput) ToCloudSecurityGroupCurrentStateOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateOutput) ToCloudSecurityGroupCurrentStatePtrOutput() CloudSecurityGroupCurrentStatePtrOutput {
+	return o.ToCloudSecurityGroupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudSecurityGroupCurrentStateOutput) ToCloudSecurityGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSecurityGroupCurrentState) *CloudSecurityGroupCurrentState {
+		return &v
+	}).(CloudSecurityGroupCurrentStatePtrOutput)
+}
+
+// Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+func (o CloudSecurityGroupCurrentStateOutput) DefaultRules() CloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentState) []CloudSecurityGroupCurrentStateDefaultRule {
+		return v.DefaultRules
+	}).(CloudSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+// Description of the security group.
+func (o CloudSecurityGroupCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Location details:
+func (o CloudSecurityGroupCurrentStateOutput) Location() CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentState) *CloudSecurityGroupCurrentStateLocation { return v.Location }).(CloudSecurityGroupCurrentStateLocationPtrOutput)
+}
+
+// Name of the security group.
+func (o CloudSecurityGroupCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// User-specified security group rules with their IDs:
+func (o CloudSecurityGroupCurrentStateOutput) Rules() CloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentState) []CloudSecurityGroupCurrentStateRule { return v.Rules }).(CloudSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type CloudSecurityGroupCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStatePtrOutput) ToCloudSecurityGroupCurrentStatePtrOutput() CloudSecurityGroupCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStatePtrOutput) ToCloudSecurityGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStatePtrOutput) Elem() CloudSecurityGroupCurrentStateOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentState) CloudSecurityGroupCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSecurityGroupCurrentState
+		return ret
+	}).(CloudSecurityGroupCurrentStateOutput)
+}
+
+// Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+func (o CloudSecurityGroupCurrentStatePtrOutput) DefaultRules() CloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentState) []CloudSecurityGroupCurrentStateDefaultRule {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRules
+	}).(CloudSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+// Description of the security group.
+func (o CloudSecurityGroupCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location details:
+func (o CloudSecurityGroupCurrentStatePtrOutput) Location() CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentState) *CloudSecurityGroupCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudSecurityGroupCurrentStateLocationPtrOutput)
+}
+
+// Name of the security group.
+func (o CloudSecurityGroupCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-specified security group rules with their IDs:
+func (o CloudSecurityGroupCurrentStatePtrOutput) Rules() CloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentState) []CloudSecurityGroupCurrentStateRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(CloudSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type CloudSecurityGroupCurrentStateDefaultRule struct {
+	// Description of the security group.
+	Description *string `pulumi:"description"`
+	// Direction of the rule.
+	Direction *string `pulumi:"direction"`
+	// Ether type.
+	EthernetType *string `pulumi:"ethernetType"`
+	// Rule ID.
+	Id *string `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax *int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin *int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol *string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId *string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix *string `pulumi:"remoteIpPrefix"`
+}
+
+// CloudSecurityGroupCurrentStateDefaultRuleInput is an input type that accepts CloudSecurityGroupCurrentStateDefaultRuleArgs and CloudSecurityGroupCurrentStateDefaultRuleOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateDefaultRuleInput` via:
+//
+//	CloudSecurityGroupCurrentStateDefaultRuleArgs{...}
+type CloudSecurityGroupCurrentStateDefaultRuleInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateDefaultRuleOutput() CloudSecurityGroupCurrentStateDefaultRuleOutput
+	ToCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(context.Context) CloudSecurityGroupCurrentStateDefaultRuleOutput
+}
+
+type CloudSecurityGroupCurrentStateDefaultRuleArgs struct {
+	// Description of the security group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Ether type.
+	EthernetType pulumi.StringPtrInput `pulumi:"ethernetType"`
+	// Rule ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntPtrInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntPtrInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringPtrInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringPtrInput `pulumi:"remoteIpPrefix"`
+}
+
+func (CloudSecurityGroupCurrentStateDefaultRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupCurrentStateDefaultRuleArgs) ToCloudSecurityGroupCurrentStateDefaultRuleOutput() CloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return i.ToCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateDefaultRuleArgs) ToCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateDefaultRuleOutput)
+}
+
+// CloudSecurityGroupCurrentStateDefaultRuleArrayInput is an input type that accepts CloudSecurityGroupCurrentStateDefaultRuleArray and CloudSecurityGroupCurrentStateDefaultRuleArrayOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateDefaultRuleArrayInput` via:
+//
+//	CloudSecurityGroupCurrentStateDefaultRuleArray{ CloudSecurityGroupCurrentStateDefaultRuleArgs{...} }
+type CloudSecurityGroupCurrentStateDefaultRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutput() CloudSecurityGroupCurrentStateDefaultRuleArrayOutput
+	ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(context.Context) CloudSecurityGroupCurrentStateDefaultRuleArrayOutput
+}
+
+type CloudSecurityGroupCurrentStateDefaultRuleArray []CloudSecurityGroupCurrentStateDefaultRuleInput
+
+func (CloudSecurityGroupCurrentStateDefaultRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupCurrentStateDefaultRuleArray) ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutput() CloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return i.ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateDefaultRuleArray) ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+type CloudSecurityGroupCurrentStateDefaultRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateDefaultRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) ToCloudSecurityGroupCurrentStateDefaultRuleOutput() CloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) ToCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return o
+}
+
+// Description of the security group.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Direction of the rule.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Ether type.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) EthernetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.EthernetType }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Maximum port number.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) PortRangeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *int { return v.PortRangeMax }).(pulumi.IntPtrOutput)
+}
+
+// Minimum port number.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) PortRangeMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *int { return v.PortRangeMin }).(pulumi.IntPtrOutput)
+}
+
+// Protocol.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Remote security group ID.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) RemoteGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.RemoteGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Remote IP prefix.
+func (o CloudSecurityGroupCurrentStateDefaultRuleOutput) RemoteIpPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateDefaultRule) *string { return v.RemoteIpPrefix }).(pulumi.StringPtrOutput)
+}
+
+type CloudSecurityGroupCurrentStateDefaultRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateDefaultRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateDefaultRuleArrayOutput) ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutput() CloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateDefaultRuleArrayOutput) ToCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateDefaultRuleArrayOutput) Index(i pulumi.IntInput) CloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudSecurityGroupCurrentStateDefaultRule {
+		return vs[0].([]CloudSecurityGroupCurrentStateDefaultRule)[vs[1].(int)]
+	}).(CloudSecurityGroupCurrentStateDefaultRuleOutput)
+}
+
+type CloudSecurityGroupCurrentStateLocation struct {
+	// Region where the security group will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudSecurityGroupCurrentStateLocationInput is an input type that accepts CloudSecurityGroupCurrentStateLocationArgs and CloudSecurityGroupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateLocationInput` via:
+//
+//	CloudSecurityGroupCurrentStateLocationArgs{...}
+type CloudSecurityGroupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateLocationOutput() CloudSecurityGroupCurrentStateLocationOutput
+	ToCloudSecurityGroupCurrentStateLocationOutputWithContext(context.Context) CloudSecurityGroupCurrentStateLocationOutput
+}
+
+type CloudSecurityGroupCurrentStateLocationArgs struct {
+	// Region where the security group will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudSecurityGroupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupCurrentStateLocationArgs) ToCloudSecurityGroupCurrentStateLocationOutput() CloudSecurityGroupCurrentStateLocationOutput {
+	return i.ToCloudSecurityGroupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateLocationArgs) ToCloudSecurityGroupCurrentStateLocationOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateLocationOutput)
+}
+
+func (i CloudSecurityGroupCurrentStateLocationArgs) ToCloudSecurityGroupCurrentStateLocationPtrOutput() CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return i.ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateLocationArgs) ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateLocationOutput).ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudSecurityGroupCurrentStateLocationPtrInput is an input type that accepts CloudSecurityGroupCurrentStateLocationArgs, CloudSecurityGroupCurrentStateLocationPtr and CloudSecurityGroupCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateLocationPtrInput` via:
+//
+//	        CloudSecurityGroupCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudSecurityGroupCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateLocationPtrOutput() CloudSecurityGroupCurrentStateLocationPtrOutput
+	ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(context.Context) CloudSecurityGroupCurrentStateLocationPtrOutput
+}
+
+type cloudSecurityGroupCurrentStateLocationPtrType CloudSecurityGroupCurrentStateLocationArgs
+
+func CloudSecurityGroupCurrentStateLocationPtr(v *CloudSecurityGroupCurrentStateLocationArgs) CloudSecurityGroupCurrentStateLocationPtrInput {
+	return (*cloudSecurityGroupCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudSecurityGroupCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudSecurityGroupCurrentStateLocationPtrType) ToCloudSecurityGroupCurrentStateLocationPtrOutput() CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return i.ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudSecurityGroupCurrentStateLocationPtrType) ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateLocationPtrOutput)
+}
+
+type CloudSecurityGroupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateLocationOutput) ToCloudSecurityGroupCurrentStateLocationOutput() CloudSecurityGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateLocationOutput) ToCloudSecurityGroupCurrentStateLocationOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateLocationOutput) ToCloudSecurityGroupCurrentStateLocationPtrOutput() CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return o.ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSecurityGroupCurrentStateLocationOutput) ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSecurityGroupCurrentStateLocation) *CloudSecurityGroupCurrentStateLocation {
+		return &v
+	}).(CloudSecurityGroupCurrentStateLocationPtrOutput)
+}
+
+// Region where the security group will be created. **Changing this value recreates the resource.**
+func (o CloudSecurityGroupCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudSecurityGroupCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateLocationPtrOutput) ToCloudSecurityGroupCurrentStateLocationPtrOutput() CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateLocationPtrOutput) ToCloudSecurityGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateLocationPtrOutput) Elem() CloudSecurityGroupCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentStateLocation) CloudSecurityGroupCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSecurityGroupCurrentStateLocation
+		return ret
+	}).(CloudSecurityGroupCurrentStateLocationOutput)
+}
+
+// Region where the security group will be created. **Changing this value recreates the resource.**
+func (o CloudSecurityGroupCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSecurityGroupCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudSecurityGroupCurrentStateRule struct {
+	// Description of the security group.
+	Description *string `pulumi:"description"`
+	// Direction of the rule.
+	Direction *string `pulumi:"direction"`
+	// Ether type.
+	EthernetType *string `pulumi:"ethernetType"`
+	// Rule ID.
+	Id *string `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax *int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin *int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol *string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId *string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix *string `pulumi:"remoteIpPrefix"`
+}
+
+// CloudSecurityGroupCurrentStateRuleInput is an input type that accepts CloudSecurityGroupCurrentStateRuleArgs and CloudSecurityGroupCurrentStateRuleOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateRuleInput` via:
+//
+//	CloudSecurityGroupCurrentStateRuleArgs{...}
+type CloudSecurityGroupCurrentStateRuleInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateRuleOutput() CloudSecurityGroupCurrentStateRuleOutput
+	ToCloudSecurityGroupCurrentStateRuleOutputWithContext(context.Context) CloudSecurityGroupCurrentStateRuleOutput
+}
+
+type CloudSecurityGroupCurrentStateRuleArgs struct {
+	// Description of the security group.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Ether type.
+	EthernetType pulumi.StringPtrInput `pulumi:"ethernetType"`
+	// Rule ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntPtrInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntPtrInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringPtrInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringPtrInput `pulumi:"remoteIpPrefix"`
+}
+
+func (CloudSecurityGroupCurrentStateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupCurrentStateRuleArgs) ToCloudSecurityGroupCurrentStateRuleOutput() CloudSecurityGroupCurrentStateRuleOutput {
+	return i.ToCloudSecurityGroupCurrentStateRuleOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateRuleArgs) ToCloudSecurityGroupCurrentStateRuleOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateRuleOutput)
+}
+
+// CloudSecurityGroupCurrentStateRuleArrayInput is an input type that accepts CloudSecurityGroupCurrentStateRuleArray and CloudSecurityGroupCurrentStateRuleArrayOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupCurrentStateRuleArrayInput` via:
+//
+//	CloudSecurityGroupCurrentStateRuleArray{ CloudSecurityGroupCurrentStateRuleArgs{...} }
+type CloudSecurityGroupCurrentStateRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupCurrentStateRuleArrayOutput() CloudSecurityGroupCurrentStateRuleArrayOutput
+	ToCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(context.Context) CloudSecurityGroupCurrentStateRuleArrayOutput
+}
+
+type CloudSecurityGroupCurrentStateRuleArray []CloudSecurityGroupCurrentStateRuleInput
+
+func (CloudSecurityGroupCurrentStateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupCurrentStateRuleArray) ToCloudSecurityGroupCurrentStateRuleArrayOutput() CloudSecurityGroupCurrentStateRuleArrayOutput {
+	return i.ToCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupCurrentStateRuleArray) ToCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type CloudSecurityGroupCurrentStateRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateRuleOutput) ToCloudSecurityGroupCurrentStateRuleOutput() CloudSecurityGroupCurrentStateRuleOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateRuleOutput) ToCloudSecurityGroupCurrentStateRuleOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateRuleOutput {
+	return o
+}
+
+// Description of the security group.
+func (o CloudSecurityGroupCurrentStateRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Direction of the rule.
+func (o CloudSecurityGroupCurrentStateRuleOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Ether type.
+func (o CloudSecurityGroupCurrentStateRuleOutput) EthernetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.EthernetType }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o CloudSecurityGroupCurrentStateRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Maximum port number.
+func (o CloudSecurityGroupCurrentStateRuleOutput) PortRangeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *int { return v.PortRangeMax }).(pulumi.IntPtrOutput)
+}
+
+// Minimum port number.
+func (o CloudSecurityGroupCurrentStateRuleOutput) PortRangeMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *int { return v.PortRangeMin }).(pulumi.IntPtrOutput)
+}
+
+// Protocol.
+func (o CloudSecurityGroupCurrentStateRuleOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Remote security group ID.
+func (o CloudSecurityGroupCurrentStateRuleOutput) RemoteGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.RemoteGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Remote IP prefix.
+func (o CloudSecurityGroupCurrentStateRuleOutput) RemoteIpPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupCurrentStateRule) *string { return v.RemoteIpPrefix }).(pulumi.StringPtrOutput)
+}
+
+type CloudSecurityGroupCurrentStateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupCurrentStateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupCurrentStateRuleArrayOutput) ToCloudSecurityGroupCurrentStateRuleArrayOutput() CloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateRuleArrayOutput) ToCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(ctx context.Context) CloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o CloudSecurityGroupCurrentStateRuleArrayOutput) Index(i pulumi.IntInput) CloudSecurityGroupCurrentStateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudSecurityGroupCurrentStateRule {
+		return vs[0].([]CloudSecurityGroupCurrentStateRule)[vs[1].(int)]
+	}).(CloudSecurityGroupCurrentStateRuleOutput)
+}
+
+type CloudSecurityGroupRule struct {
+	// Description of the rule.
+	//
+	// > **NOTE:** When a security group is created, OpenStack automatically adds a
+	// default egress rule (allowing all outbound traffic). This default rule is **not**
+	// part of the managed `rule` set: it is never sent in your configuration and never
+	// appears under `rule`, so it will not show up as drift on subsequent plans. It is
+	// surfaced for information only under `current_state.default_rules`.
+	Description *string `pulumi:"description"`
+	// Direction of the rule (`INGRESS` or `EGRESS`).
+	Direction string `pulumi:"direction"`
+	// Ether type (`IPV4` or `IPV6`).
+	EthernetType string `pulumi:"ethernetType"`
+	// Maximum port number.
+	PortRangeMax *int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin *int `pulumi:"portRangeMin"`
+	// Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+	Protocol *string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId *string `pulumi:"remoteGroupId"`
+	// Remote IP prefix (CIDR notation).
+	RemoteIpPrefix *string `pulumi:"remoteIpPrefix"`
+}
+
+// CloudSecurityGroupRuleInput is an input type that accepts CloudSecurityGroupRuleArgs and CloudSecurityGroupRuleOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupRuleInput` via:
+//
+//	CloudSecurityGroupRuleArgs{...}
+type CloudSecurityGroupRuleInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupRuleOutput() CloudSecurityGroupRuleOutput
+	ToCloudSecurityGroupRuleOutputWithContext(context.Context) CloudSecurityGroupRuleOutput
+}
+
+type CloudSecurityGroupRuleArgs struct {
+	// Description of the rule.
+	//
+	// > **NOTE:** When a security group is created, OpenStack automatically adds a
+	// default egress rule (allowing all outbound traffic). This default rule is **not**
+	// part of the managed `rule` set: it is never sent in your configuration and never
+	// appears under `rule`, so it will not show up as drift on subsequent plans. It is
+	// surfaced for information only under `current_state.default_rules`.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Direction of the rule (`INGRESS` or `EGRESS`).
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ether type (`IPV4` or `IPV6`).
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntPtrInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntPtrInput `pulumi:"portRangeMin"`
+	// Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringPtrInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix (CIDR notation).
+	RemoteIpPrefix pulumi.StringPtrInput `pulumi:"remoteIpPrefix"`
+}
+
+func (CloudSecurityGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupRuleArgs) ToCloudSecurityGroupRuleOutput() CloudSecurityGroupRuleOutput {
+	return i.ToCloudSecurityGroupRuleOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupRuleArgs) ToCloudSecurityGroupRuleOutputWithContext(ctx context.Context) CloudSecurityGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupRuleOutput)
+}
+
+// CloudSecurityGroupRuleArrayInput is an input type that accepts CloudSecurityGroupRuleArray and CloudSecurityGroupRuleArrayOutput values.
+// You can construct a concrete instance of `CloudSecurityGroupRuleArrayInput` via:
+//
+//	CloudSecurityGroupRuleArray{ CloudSecurityGroupRuleArgs{...} }
+type CloudSecurityGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudSecurityGroupRuleArrayOutput() CloudSecurityGroupRuleArrayOutput
+	ToCloudSecurityGroupRuleArrayOutputWithContext(context.Context) CloudSecurityGroupRuleArrayOutput
+}
+
+type CloudSecurityGroupRuleArray []CloudSecurityGroupRuleInput
+
+func (CloudSecurityGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (i CloudSecurityGroupRuleArray) ToCloudSecurityGroupRuleArrayOutput() CloudSecurityGroupRuleArrayOutput {
+	return i.ToCloudSecurityGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudSecurityGroupRuleArray) ToCloudSecurityGroupRuleArrayOutputWithContext(ctx context.Context) CloudSecurityGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSecurityGroupRuleArrayOutput)
+}
+
+type CloudSecurityGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupRuleOutput) ToCloudSecurityGroupRuleOutput() CloudSecurityGroupRuleOutput {
+	return o
+}
+
+func (o CloudSecurityGroupRuleOutput) ToCloudSecurityGroupRuleOutputWithContext(ctx context.Context) CloudSecurityGroupRuleOutput {
+	return o
+}
+
+// Description of the rule.
+//
+// > **NOTE:** When a security group is created, OpenStack automatically adds a
+// default egress rule (allowing all outbound traffic). This default rule is **not**
+// part of the managed `rule` set: it is never sent in your configuration and never
+// appears under `rule`, so it will not show up as drift on subsequent plans. It is
+// surfaced for information only under `current_state.default_rules`.
+func (o CloudSecurityGroupRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Direction of the rule (`INGRESS` or `EGRESS`).
+func (o CloudSecurityGroupRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ether type (`IPV4` or `IPV6`).
+func (o CloudSecurityGroupRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o CloudSecurityGroupRuleOutput) PortRangeMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) *int { return v.PortRangeMax }).(pulumi.IntPtrOutput)
+}
+
+// Minimum port number.
+func (o CloudSecurityGroupRuleOutput) PortRangeMin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) *int { return v.PortRangeMin }).(pulumi.IntPtrOutput)
+}
+
+// Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+func (o CloudSecurityGroupRuleOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Remote security group ID.
+func (o CloudSecurityGroupRuleOutput) RemoteGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) *string { return v.RemoteGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Remote IP prefix (CIDR notation).
+func (o CloudSecurityGroupRuleOutput) RemoteIpPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSecurityGroupRule) *string { return v.RemoteIpPrefix }).(pulumi.StringPtrOutput)
+}
+
+type CloudSecurityGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudSecurityGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (o CloudSecurityGroupRuleArrayOutput) ToCloudSecurityGroupRuleArrayOutput() CloudSecurityGroupRuleArrayOutput {
+	return o
+}
+
+func (o CloudSecurityGroupRuleArrayOutput) ToCloudSecurityGroupRuleArrayOutputWithContext(ctx context.Context) CloudSecurityGroupRuleArrayOutput {
+	return o
+}
+
+func (o CloudSecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) CloudSecurityGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudSecurityGroupRule {
+		return vs[0].([]CloudSecurityGroupRule)[vs[1].(int)]
+	}).(CloudSecurityGroupRuleOutput)
 }
 
 type CloudStorageBlockVolumeBackupCurrentState struct {
@@ -6081,6 +9205,2962 @@ func (o VrackservicesTargetSpecSubnetServiceRangeOutput) Cidr() pulumi.StringOut
 	return o.ApplyT(func(v VrackservicesTargetSpecSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
+type GetCloudGatewayCurrentState struct {
+	// Gateway description.
+	Description string `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway GetCloudGatewayCurrentStateExternalGateway `pulumi:"externalGateway"`
+	// External IP address assigned to the gateway.
+	ExternalIp string `pulumi:"externalIp"`
+	// Location details:
+	Location GetCloudGatewayCurrentStateLocation `pulumi:"location"`
+	// Gateway name.
+	Name string `pulumi:"name"`
+	// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+	Status string `pulumi:"status"`
+	// Currently attached subnets:
+	Subnets []GetCloudGatewayCurrentStateSubnet `pulumi:"subnets"`
+}
+
+// GetCloudGatewayCurrentStateInput is an input type that accepts GetCloudGatewayCurrentStateArgs and GetCloudGatewayCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudGatewayCurrentStateInput` via:
+//
+//	GetCloudGatewayCurrentStateArgs{...}
+type GetCloudGatewayCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayCurrentStateOutput() GetCloudGatewayCurrentStateOutput
+	ToGetCloudGatewayCurrentStateOutputWithContext(context.Context) GetCloudGatewayCurrentStateOutput
+}
+
+type GetCloudGatewayCurrentStateArgs struct {
+	// Gateway description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway GetCloudGatewayCurrentStateExternalGatewayInput `pulumi:"externalGateway"`
+	// External IP address assigned to the gateway.
+	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
+	// Location details:
+	Location GetCloudGatewayCurrentStateLocationInput `pulumi:"location"`
+	// Gateway name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+	Status pulumi.StringInput `pulumi:"status"`
+	// Currently attached subnets:
+	Subnets GetCloudGatewayCurrentStateSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetCloudGatewayCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudGatewayCurrentStateArgs) ToGetCloudGatewayCurrentStateOutput() GetCloudGatewayCurrentStateOutput {
+	return i.ToGetCloudGatewayCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayCurrentStateArgs) ToGetCloudGatewayCurrentStateOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayCurrentStateOutput)
+}
+
+type GetCloudGatewayCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudGatewayCurrentStateOutput) ToGetCloudGatewayCurrentStateOutput() GetCloudGatewayCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudGatewayCurrentStateOutput) ToGetCloudGatewayCurrentStateOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateOutput {
+	return o
+}
+
+// Gateway description.
+func (o GetCloudGatewayCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// External gateway configuration:
+func (o GetCloudGatewayCurrentStateOutput) ExternalGateway() GetCloudGatewayCurrentStateExternalGatewayOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) GetCloudGatewayCurrentStateExternalGateway {
+		return v.ExternalGateway
+	}).(GetCloudGatewayCurrentStateExternalGatewayOutput)
+}
+
+// External IP address assigned to the gateway.
+func (o GetCloudGatewayCurrentStateOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudGatewayCurrentStateOutput) Location() GetCloudGatewayCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) GetCloudGatewayCurrentStateLocation { return v.Location }).(GetCloudGatewayCurrentStateLocationOutput)
+}
+
+// Gateway name.
+func (o GetCloudGatewayCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+func (o GetCloudGatewayCurrentStateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Currently attached subnets:
+func (o GetCloudGatewayCurrentStateOutput) Subnets() GetCloudGatewayCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentState) []GetCloudGatewayCurrentStateSubnet { return v.Subnets }).(GetCloudGatewayCurrentStateSubnetArrayOutput)
+}
+
+type GetCloudGatewayCurrentStateExternalGateway struct {
+	// Whether the external gateway is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model string `pulumi:"model"`
+}
+
+// GetCloudGatewayCurrentStateExternalGatewayInput is an input type that accepts GetCloudGatewayCurrentStateExternalGatewayArgs and GetCloudGatewayCurrentStateExternalGatewayOutput values.
+// You can construct a concrete instance of `GetCloudGatewayCurrentStateExternalGatewayInput` via:
+//
+//	GetCloudGatewayCurrentStateExternalGatewayArgs{...}
+type GetCloudGatewayCurrentStateExternalGatewayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayCurrentStateExternalGatewayOutput() GetCloudGatewayCurrentStateExternalGatewayOutput
+	ToGetCloudGatewayCurrentStateExternalGatewayOutputWithContext(context.Context) GetCloudGatewayCurrentStateExternalGatewayOutput
+}
+
+type GetCloudGatewayCurrentStateExternalGatewayArgs struct {
+	// Whether the external gateway is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model pulumi.StringInput `pulumi:"model"`
+}
+
+func (GetCloudGatewayCurrentStateExternalGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (i GetCloudGatewayCurrentStateExternalGatewayArgs) ToGetCloudGatewayCurrentStateExternalGatewayOutput() GetCloudGatewayCurrentStateExternalGatewayOutput {
+	return i.ToGetCloudGatewayCurrentStateExternalGatewayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayCurrentStateExternalGatewayArgs) ToGetCloudGatewayCurrentStateExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateExternalGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayCurrentStateExternalGatewayOutput)
+}
+
+type GetCloudGatewayCurrentStateExternalGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayCurrentStateExternalGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (o GetCloudGatewayCurrentStateExternalGatewayOutput) ToGetCloudGatewayCurrentStateExternalGatewayOutput() GetCloudGatewayCurrentStateExternalGatewayOutput {
+	return o
+}
+
+func (o GetCloudGatewayCurrentStateExternalGatewayOutput) ToGetCloudGatewayCurrentStateExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateExternalGatewayOutput {
+	return o
+}
+
+// Whether the external gateway is enabled.
+func (o GetCloudGatewayCurrentStateExternalGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentStateExternalGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// External gateway sizing model.
+func (o GetCloudGatewayCurrentStateExternalGatewayOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentStateExternalGateway) string { return v.Model }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewayCurrentStateLocation struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudGatewayCurrentStateLocationInput is an input type that accepts GetCloudGatewayCurrentStateLocationArgs and GetCloudGatewayCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudGatewayCurrentStateLocationInput` via:
+//
+//	GetCloudGatewayCurrentStateLocationArgs{...}
+type GetCloudGatewayCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayCurrentStateLocationOutput() GetCloudGatewayCurrentStateLocationOutput
+	ToGetCloudGatewayCurrentStateLocationOutputWithContext(context.Context) GetCloudGatewayCurrentStateLocationOutput
+}
+
+type GetCloudGatewayCurrentStateLocationArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudGatewayCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudGatewayCurrentStateLocationArgs) ToGetCloudGatewayCurrentStateLocationOutput() GetCloudGatewayCurrentStateLocationOutput {
+	return i.ToGetCloudGatewayCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayCurrentStateLocationArgs) ToGetCloudGatewayCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayCurrentStateLocationOutput)
+}
+
+type GetCloudGatewayCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudGatewayCurrentStateLocationOutput) ToGetCloudGatewayCurrentStateLocationOutput() GetCloudGatewayCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudGatewayCurrentStateLocationOutput) ToGetCloudGatewayCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateLocationOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudGatewayCurrentStateLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentStateLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudGatewayCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewayCurrentStateSubnet struct {
+	// Gateway ID.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudGatewayCurrentStateSubnetInput is an input type that accepts GetCloudGatewayCurrentStateSubnetArgs and GetCloudGatewayCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `GetCloudGatewayCurrentStateSubnetInput` via:
+//
+//	GetCloudGatewayCurrentStateSubnetArgs{...}
+type GetCloudGatewayCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayCurrentStateSubnetOutput() GetCloudGatewayCurrentStateSubnetOutput
+	ToGetCloudGatewayCurrentStateSubnetOutputWithContext(context.Context) GetCloudGatewayCurrentStateSubnetOutput
+}
+
+type GetCloudGatewayCurrentStateSubnetArgs struct {
+	// Gateway ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudGatewayCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetCloudGatewayCurrentStateSubnetArgs) ToGetCloudGatewayCurrentStateSubnetOutput() GetCloudGatewayCurrentStateSubnetOutput {
+	return i.ToGetCloudGatewayCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayCurrentStateSubnetArgs) ToGetCloudGatewayCurrentStateSubnetOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayCurrentStateSubnetOutput)
+}
+
+// GetCloudGatewayCurrentStateSubnetArrayInput is an input type that accepts GetCloudGatewayCurrentStateSubnetArray and GetCloudGatewayCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `GetCloudGatewayCurrentStateSubnetArrayInput` via:
+//
+//	GetCloudGatewayCurrentStateSubnetArray{ GetCloudGatewayCurrentStateSubnetArgs{...} }
+type GetCloudGatewayCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayCurrentStateSubnetArrayOutput() GetCloudGatewayCurrentStateSubnetArrayOutput
+	ToGetCloudGatewayCurrentStateSubnetArrayOutputWithContext(context.Context) GetCloudGatewayCurrentStateSubnetArrayOutput
+}
+
+type GetCloudGatewayCurrentStateSubnetArray []GetCloudGatewayCurrentStateSubnetInput
+
+func (GetCloudGatewayCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetCloudGatewayCurrentStateSubnetArray) ToGetCloudGatewayCurrentStateSubnetArrayOutput() GetCloudGatewayCurrentStateSubnetArrayOutput {
+	return i.ToGetCloudGatewayCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayCurrentStateSubnetArray) ToGetCloudGatewayCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayCurrentStateSubnetArrayOutput)
+}
+
+type GetCloudGatewayCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetCloudGatewayCurrentStateSubnetOutput) ToGetCloudGatewayCurrentStateSubnetOutput() GetCloudGatewayCurrentStateSubnetOutput {
+	return o
+}
+
+func (o GetCloudGatewayCurrentStateSubnetOutput) ToGetCloudGatewayCurrentStateSubnetOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateSubnetOutput {
+	return o
+}
+
+// Gateway ID.
+func (o GetCloudGatewayCurrentStateSubnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayCurrentStateSubnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewayCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetCloudGatewayCurrentStateSubnetArrayOutput) ToGetCloudGatewayCurrentStateSubnetArrayOutput() GetCloudGatewayCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetCloudGatewayCurrentStateSubnetArrayOutput) ToGetCloudGatewayCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetCloudGatewayCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetCloudGatewayCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetCloudGatewayCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudGatewayCurrentStateSubnet {
+		return vs[0].([]GetCloudGatewayCurrentStateSubnet)[vs[1].(int)]
+	}).(GetCloudGatewayCurrentStateSubnetOutput)
+}
+
+type GetCloudGatewayExternalGateway struct {
+	// Whether the external gateway is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model string `pulumi:"model"`
+}
+
+// GetCloudGatewayExternalGatewayInput is an input type that accepts GetCloudGatewayExternalGatewayArgs and GetCloudGatewayExternalGatewayOutput values.
+// You can construct a concrete instance of `GetCloudGatewayExternalGatewayInput` via:
+//
+//	GetCloudGatewayExternalGatewayArgs{...}
+type GetCloudGatewayExternalGatewayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayExternalGatewayOutput() GetCloudGatewayExternalGatewayOutput
+	ToGetCloudGatewayExternalGatewayOutputWithContext(context.Context) GetCloudGatewayExternalGatewayOutput
+}
+
+type GetCloudGatewayExternalGatewayArgs struct {
+	// Whether the external gateway is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model pulumi.StringInput `pulumi:"model"`
+}
+
+func (GetCloudGatewayExternalGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayExternalGateway)(nil)).Elem()
+}
+
+func (i GetCloudGatewayExternalGatewayArgs) ToGetCloudGatewayExternalGatewayOutput() GetCloudGatewayExternalGatewayOutput {
+	return i.ToGetCloudGatewayExternalGatewayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayExternalGatewayArgs) ToGetCloudGatewayExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewayExternalGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayExternalGatewayOutput)
+}
+
+type GetCloudGatewayExternalGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayExternalGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayExternalGateway)(nil)).Elem()
+}
+
+func (o GetCloudGatewayExternalGatewayOutput) ToGetCloudGatewayExternalGatewayOutput() GetCloudGatewayExternalGatewayOutput {
+	return o
+}
+
+func (o GetCloudGatewayExternalGatewayOutput) ToGetCloudGatewayExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewayExternalGatewayOutput {
+	return o
+}
+
+// Whether the external gateway is enabled.
+func (o GetCloudGatewayExternalGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudGatewayExternalGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// External gateway sizing model.
+func (o GetCloudGatewayExternalGatewayOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayExternalGateway) string { return v.Model }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewayLocation struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudGatewayLocationInput is an input type that accepts GetCloudGatewayLocationArgs and GetCloudGatewayLocationOutput values.
+// You can construct a concrete instance of `GetCloudGatewayLocationInput` via:
+//
+//	GetCloudGatewayLocationArgs{...}
+type GetCloudGatewayLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewayLocationOutput() GetCloudGatewayLocationOutput
+	ToGetCloudGatewayLocationOutputWithContext(context.Context) GetCloudGatewayLocationOutput
+}
+
+type GetCloudGatewayLocationArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudGatewayLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayLocation)(nil)).Elem()
+}
+
+func (i GetCloudGatewayLocationArgs) ToGetCloudGatewayLocationOutput() GetCloudGatewayLocationOutput {
+	return i.ToGetCloudGatewayLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewayLocationArgs) ToGetCloudGatewayLocationOutputWithContext(ctx context.Context) GetCloudGatewayLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewayLocationOutput)
+}
+
+type GetCloudGatewayLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewayLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewayLocation)(nil)).Elem()
+}
+
+func (o GetCloudGatewayLocationOutput) ToGetCloudGatewayLocationOutput() GetCloudGatewayLocationOutput {
+	return o
+}
+
+func (o GetCloudGatewayLocationOutput) ToGetCloudGatewayLocationOutputWithContext(ctx context.Context) GetCloudGatewayLocationOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudGatewayLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudGatewayLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewayLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewaysGateway struct {
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the gateway.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the gateway:
+	CurrentState GetCloudGatewaysGatewayCurrentState `pulumi:"currentState"`
+	// Gateway description.
+	Description string `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway GetCloudGatewaysGatewayExternalGateway `pulumi:"externalGateway"`
+	// Subnet ID.
+	Id string `pulumi:"id"`
+	// Location details:
+	Location GetCloudGatewaysGatewayLocation `pulumi:"location"`
+	// Gateway name.
+	Name string `pulumi:"name"`
+	// Gateway readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last update date of the gateway.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudGatewaysGatewayInput is an input type that accepts GetCloudGatewaysGatewayArgs and GetCloudGatewaysGatewayOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayInput` via:
+//
+//	GetCloudGatewaysGatewayArgs{...}
+type GetCloudGatewaysGatewayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayOutput() GetCloudGatewaysGatewayOutput
+	ToGetCloudGatewaysGatewayOutputWithContext(context.Context) GetCloudGatewaysGatewayOutput
+}
+
+type GetCloudGatewaysGatewayArgs struct {
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the gateway.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the gateway:
+	CurrentState GetCloudGatewaysGatewayCurrentStateInput `pulumi:"currentState"`
+	// Gateway description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway GetCloudGatewaysGatewayExternalGatewayInput `pulumi:"externalGateway"`
+	// Subnet ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location details:
+	Location GetCloudGatewaysGatewayLocationInput `pulumi:"location"`
+	// Gateway name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Gateway readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last update date of the gateway.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudGatewaysGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayArgs) ToGetCloudGatewaysGatewayOutput() GetCloudGatewaysGatewayOutput {
+	return i.ToGetCloudGatewaysGatewayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayArgs) ToGetCloudGatewaysGatewayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayOutput)
+}
+
+// GetCloudGatewaysGatewayArrayInput is an input type that accepts GetCloudGatewaysGatewayArray and GetCloudGatewaysGatewayArrayOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayArrayInput` via:
+//
+//	GetCloudGatewaysGatewayArray{ GetCloudGatewaysGatewayArgs{...} }
+type GetCloudGatewaysGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayArrayOutput() GetCloudGatewaysGatewayArrayOutput
+	ToGetCloudGatewaysGatewayArrayOutputWithContext(context.Context) GetCloudGatewaysGatewayArrayOutput
+}
+
+type GetCloudGatewaysGatewayArray []GetCloudGatewaysGatewayInput
+
+func (GetCloudGatewaysGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudGatewaysGateway)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayArray) ToGetCloudGatewaysGatewayArrayOutput() GetCloudGatewaysGatewayArrayOutput {
+	return i.ToGetCloudGatewaysGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayArray) ToGetCloudGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayArrayOutput)
+}
+
+type GetCloudGatewaysGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayOutput) ToGetCloudGatewaysGatewayOutput() GetCloudGatewaysGatewayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayOutput) ToGetCloudGatewaysGatewayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayOutput {
+	return o
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudGatewaysGatewayOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the gateway.
+func (o GetCloudGatewaysGatewayOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the gateway:
+func (o GetCloudGatewaysGatewayOutput) CurrentState() GetCloudGatewaysGatewayCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) GetCloudGatewaysGatewayCurrentState { return v.CurrentState }).(GetCloudGatewaysGatewayCurrentStateOutput)
+}
+
+// Gateway description.
+func (o GetCloudGatewaysGatewayOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// External gateway configuration:
+func (o GetCloudGatewaysGatewayOutput) ExternalGateway() GetCloudGatewaysGatewayExternalGatewayOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) GetCloudGatewaysGatewayExternalGateway { return v.ExternalGateway }).(GetCloudGatewaysGatewayExternalGatewayOutput)
+}
+
+// Subnet ID.
+func (o GetCloudGatewaysGatewayOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudGatewaysGatewayOutput) Location() GetCloudGatewaysGatewayLocationOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) GetCloudGatewaysGatewayLocation { return v.Location }).(GetCloudGatewaysGatewayLocationOutput)
+}
+
+// Gateway name.
+func (o GetCloudGatewaysGatewayOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Gateway readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudGatewaysGatewayOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last update date of the gateway.
+func (o GetCloudGatewaysGatewayOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGateway) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewaysGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudGatewaysGateway)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayArrayOutput) ToGetCloudGatewaysGatewayArrayOutput() GetCloudGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayArrayOutput) ToGetCloudGatewaysGatewayArrayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayArrayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetCloudGatewaysGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudGatewaysGateway {
+		return vs[0].([]GetCloudGatewaysGateway)[vs[1].(int)]
+	}).(GetCloudGatewaysGatewayOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentState struct {
+	// Gateway description.
+	Description string `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway GetCloudGatewaysGatewayCurrentStateExternalGateway `pulumi:"externalGateway"`
+	// External IP address assigned to the gateway.
+	ExternalIp string `pulumi:"externalIp"`
+	// Location details:
+	Location GetCloudGatewaysGatewayCurrentStateLocation `pulumi:"location"`
+	// Gateway name.
+	Name string `pulumi:"name"`
+	// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+	Status string `pulumi:"status"`
+	// Currently attached subnets:
+	Subnets []GetCloudGatewaysGatewayCurrentStateSubnet `pulumi:"subnets"`
+}
+
+// GetCloudGatewaysGatewayCurrentStateInput is an input type that accepts GetCloudGatewaysGatewayCurrentStateArgs and GetCloudGatewaysGatewayCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayCurrentStateInput` via:
+//
+//	GetCloudGatewaysGatewayCurrentStateArgs{...}
+type GetCloudGatewaysGatewayCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayCurrentStateOutput() GetCloudGatewaysGatewayCurrentStateOutput
+	ToGetCloudGatewaysGatewayCurrentStateOutputWithContext(context.Context) GetCloudGatewaysGatewayCurrentStateOutput
+}
+
+type GetCloudGatewaysGatewayCurrentStateArgs struct {
+	// Gateway description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// External gateway configuration:
+	ExternalGateway GetCloudGatewaysGatewayCurrentStateExternalGatewayInput `pulumi:"externalGateway"`
+	// External IP address assigned to the gateway.
+	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
+	// Location details:
+	Location GetCloudGatewaysGatewayCurrentStateLocationInput `pulumi:"location"`
+	// Gateway name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+	Status pulumi.StringInput `pulumi:"status"`
+	// Currently attached subnets:
+	Subnets GetCloudGatewaysGatewayCurrentStateSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetCloudGatewaysGatewayCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateArgs) ToGetCloudGatewaysGatewayCurrentStateOutput() GetCloudGatewaysGatewayCurrentStateOutput {
+	return i.ToGetCloudGatewaysGatewayCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateArgs) ToGetCloudGatewaysGatewayCurrentStateOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayCurrentStateOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateOutput) ToGetCloudGatewaysGatewayCurrentStateOutput() GetCloudGatewaysGatewayCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateOutput) ToGetCloudGatewaysGatewayCurrentStateOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateOutput {
+	return o
+}
+
+// Gateway description.
+func (o GetCloudGatewaysGatewayCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// External gateway configuration:
+func (o GetCloudGatewaysGatewayCurrentStateOutput) ExternalGateway() GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) GetCloudGatewaysGatewayCurrentStateExternalGateway {
+		return v.ExternalGateway
+	}).(GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput)
+}
+
+// External IP address assigned to the gateway.
+func (o GetCloudGatewaysGatewayCurrentStateOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudGatewaysGatewayCurrentStateOutput) Location() GetCloudGatewaysGatewayCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) GetCloudGatewaysGatewayCurrentStateLocation {
+		return v.Location
+	}).(GetCloudGatewaysGatewayCurrentStateLocationOutput)
+}
+
+// Gateway name.
+func (o GetCloudGatewaysGatewayCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+func (o GetCloudGatewaysGatewayCurrentStateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Currently attached subnets:
+func (o GetCloudGatewaysGatewayCurrentStateOutput) Subnets() GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentState) []GetCloudGatewaysGatewayCurrentStateSubnet {
+		return v.Subnets
+	}).(GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateExternalGateway struct {
+	// Whether the external gateway is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model string `pulumi:"model"`
+}
+
+// GetCloudGatewaysGatewayCurrentStateExternalGatewayInput is an input type that accepts GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs and GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayCurrentStateExternalGatewayInput` via:
+//
+//	GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs{...}
+type GetCloudGatewaysGatewayCurrentStateExternalGatewayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutput() GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput
+	ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutputWithContext(context.Context) GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput
+}
+
+type GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs struct {
+	// Whether the external gateway is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model pulumi.StringInput `pulumi:"model"`
+}
+
+func (GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs) ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutput() GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput {
+	return i.ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs) ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateExternalGateway)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput) ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutput() GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput) ToGetCloudGatewaysGatewayCurrentStateExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput {
+	return o
+}
+
+// Whether the external gateway is enabled.
+func (o GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentStateExternalGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// External gateway sizing model.
+func (o GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentStateExternalGateway) string { return v.Model }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateLocation struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudGatewaysGatewayCurrentStateLocationInput is an input type that accepts GetCloudGatewaysGatewayCurrentStateLocationArgs and GetCloudGatewaysGatewayCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayCurrentStateLocationInput` via:
+//
+//	GetCloudGatewaysGatewayCurrentStateLocationArgs{...}
+type GetCloudGatewaysGatewayCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayCurrentStateLocationOutput() GetCloudGatewaysGatewayCurrentStateLocationOutput
+	ToGetCloudGatewaysGatewayCurrentStateLocationOutputWithContext(context.Context) GetCloudGatewaysGatewayCurrentStateLocationOutput
+}
+
+type GetCloudGatewaysGatewayCurrentStateLocationArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudGatewaysGatewayCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateLocationArgs) ToGetCloudGatewaysGatewayCurrentStateLocationOutput() GetCloudGatewaysGatewayCurrentStateLocationOutput {
+	return i.ToGetCloudGatewaysGatewayCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateLocationArgs) ToGetCloudGatewaysGatewayCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayCurrentStateLocationOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateLocationOutput) ToGetCloudGatewaysGatewayCurrentStateLocationOutput() GetCloudGatewaysGatewayCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateLocationOutput) ToGetCloudGatewaysGatewayCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateLocationOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudGatewaysGatewayCurrentStateLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentStateLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudGatewaysGatewayCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateSubnet struct {
+	// Subnet ID.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudGatewaysGatewayCurrentStateSubnetInput is an input type that accepts GetCloudGatewaysGatewayCurrentStateSubnetArgs and GetCloudGatewaysGatewayCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayCurrentStateSubnetInput` via:
+//
+//	GetCloudGatewaysGatewayCurrentStateSubnetArgs{...}
+type GetCloudGatewaysGatewayCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayCurrentStateSubnetOutput() GetCloudGatewaysGatewayCurrentStateSubnetOutput
+	ToGetCloudGatewaysGatewayCurrentStateSubnetOutputWithContext(context.Context) GetCloudGatewaysGatewayCurrentStateSubnetOutput
+}
+
+type GetCloudGatewaysGatewayCurrentStateSubnetArgs struct {
+	// Subnet ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudGatewaysGatewayCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateSubnetArgs) ToGetCloudGatewaysGatewayCurrentStateSubnetOutput() GetCloudGatewaysGatewayCurrentStateSubnetOutput {
+	return i.ToGetCloudGatewaysGatewayCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateSubnetArgs) ToGetCloudGatewaysGatewayCurrentStateSubnetOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayCurrentStateSubnetOutput)
+}
+
+// GetCloudGatewaysGatewayCurrentStateSubnetArrayInput is an input type that accepts GetCloudGatewaysGatewayCurrentStateSubnetArray and GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayCurrentStateSubnetArrayInput` via:
+//
+//	GetCloudGatewaysGatewayCurrentStateSubnetArray{ GetCloudGatewaysGatewayCurrentStateSubnetArgs{...} }
+type GetCloudGatewaysGatewayCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutput() GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput
+	ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutputWithContext(context.Context) GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput
+}
+
+type GetCloudGatewaysGatewayCurrentStateSubnetArray []GetCloudGatewaysGatewayCurrentStateSubnetInput
+
+func (GetCloudGatewaysGatewayCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudGatewaysGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateSubnetArray) ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutput() GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput {
+	return i.ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayCurrentStateSubnetArray) ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateSubnetOutput) ToGetCloudGatewaysGatewayCurrentStateSubnetOutput() GetCloudGatewaysGatewayCurrentStateSubnetOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateSubnetOutput) ToGetCloudGatewaysGatewayCurrentStateSubnetOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateSubnetOutput {
+	return o
+}
+
+// Subnet ID.
+func (o GetCloudGatewaysGatewayCurrentStateSubnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayCurrentStateSubnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudGatewaysGatewayCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput) ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutput() GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput) ToGetCloudGatewaysGatewayCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetCloudGatewaysGatewayCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudGatewaysGatewayCurrentStateSubnet {
+		return vs[0].([]GetCloudGatewaysGatewayCurrentStateSubnet)[vs[1].(int)]
+	}).(GetCloudGatewaysGatewayCurrentStateSubnetOutput)
+}
+
+type GetCloudGatewaysGatewayExternalGateway struct {
+	// Whether the external gateway is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model string `pulumi:"model"`
+}
+
+// GetCloudGatewaysGatewayExternalGatewayInput is an input type that accepts GetCloudGatewaysGatewayExternalGatewayArgs and GetCloudGatewaysGatewayExternalGatewayOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayExternalGatewayInput` via:
+//
+//	GetCloudGatewaysGatewayExternalGatewayArgs{...}
+type GetCloudGatewaysGatewayExternalGatewayInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayExternalGatewayOutput() GetCloudGatewaysGatewayExternalGatewayOutput
+	ToGetCloudGatewaysGatewayExternalGatewayOutputWithContext(context.Context) GetCloudGatewaysGatewayExternalGatewayOutput
+}
+
+type GetCloudGatewaysGatewayExternalGatewayArgs struct {
+	// Whether the external gateway is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// External gateway sizing model.
+	Model pulumi.StringInput `pulumi:"model"`
+}
+
+func (GetCloudGatewaysGatewayExternalGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayExternalGateway)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayExternalGatewayArgs) ToGetCloudGatewaysGatewayExternalGatewayOutput() GetCloudGatewaysGatewayExternalGatewayOutput {
+	return i.ToGetCloudGatewaysGatewayExternalGatewayOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayExternalGatewayArgs) ToGetCloudGatewaysGatewayExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayExternalGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayExternalGatewayOutput)
+}
+
+type GetCloudGatewaysGatewayExternalGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayExternalGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayExternalGateway)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayExternalGatewayOutput) ToGetCloudGatewaysGatewayExternalGatewayOutput() GetCloudGatewaysGatewayExternalGatewayOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayExternalGatewayOutput) ToGetCloudGatewaysGatewayExternalGatewayOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayExternalGatewayOutput {
+	return o
+}
+
+// Whether the external gateway is enabled.
+func (o GetCloudGatewaysGatewayExternalGatewayOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayExternalGateway) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// External gateway sizing model.
+func (o GetCloudGatewaysGatewayExternalGatewayOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayExternalGateway) string { return v.Model }).(pulumi.StringOutput)
+}
+
+type GetCloudGatewaysGatewayLocation struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudGatewaysGatewayLocationInput is an input type that accepts GetCloudGatewaysGatewayLocationArgs and GetCloudGatewaysGatewayLocationOutput values.
+// You can construct a concrete instance of `GetCloudGatewaysGatewayLocationInput` via:
+//
+//	GetCloudGatewaysGatewayLocationArgs{...}
+type GetCloudGatewaysGatewayLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudGatewaysGatewayLocationOutput() GetCloudGatewaysGatewayLocationOutput
+	ToGetCloudGatewaysGatewayLocationOutputWithContext(context.Context) GetCloudGatewaysGatewayLocationOutput
+}
+
+type GetCloudGatewaysGatewayLocationArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudGatewaysGatewayLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayLocation)(nil)).Elem()
+}
+
+func (i GetCloudGatewaysGatewayLocationArgs) ToGetCloudGatewaysGatewayLocationOutput() GetCloudGatewaysGatewayLocationOutput {
+	return i.ToGetCloudGatewaysGatewayLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudGatewaysGatewayLocationArgs) ToGetCloudGatewaysGatewayLocationOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudGatewaysGatewayLocationOutput)
+}
+
+type GetCloudGatewaysGatewayLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudGatewaysGatewayLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudGatewaysGatewayLocation)(nil)).Elem()
+}
+
+func (o GetCloudGatewaysGatewayLocationOutput) ToGetCloudGatewaysGatewayLocationOutput() GetCloudGatewaysGatewayLocationOutput {
+	return o
+}
+
+func (o GetCloudGatewaysGatewayLocationOutput) ToGetCloudGatewaysGatewayLocationOutputWithContext(ctx context.Context) GetCloudGatewaysGatewayLocationOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudGatewaysGatewayLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudGatewaysGatewayLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudGatewaysGatewayLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackCurrentState struct {
+	// Network description.
+	Description string `pulumi:"description"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackCurrentStateLocation `pulumi:"location"`
+	// Network name.
+	Name string `pulumi:"name"`
+	// VLAN ID of the network.
+	VlanId float64 `pulumi:"vlanId"`
+}
+
+// GetCloudNetworkPrivateVrackCurrentStateInput is an input type that accepts GetCloudNetworkPrivateVrackCurrentStateArgs and GetCloudNetworkPrivateVrackCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackCurrentStateInput` via:
+//
+//	GetCloudNetworkPrivateVrackCurrentStateArgs{...}
+type GetCloudNetworkPrivateVrackCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackCurrentStateOutput() GetCloudNetworkPrivateVrackCurrentStateOutput
+	ToGetCloudNetworkPrivateVrackCurrentStateOutputWithContext(context.Context) GetCloudNetworkPrivateVrackCurrentStateOutput
+}
+
+type GetCloudNetworkPrivateVrackCurrentStateArgs struct {
+	// Network description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackCurrentStateLocationInput `pulumi:"location"`
+	// Network name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// VLAN ID of the network.
+	VlanId pulumi.Float64Input `pulumi:"vlanId"`
+}
+
+func (GetCloudNetworkPrivateVrackCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackCurrentStateArgs) ToGetCloudNetworkPrivateVrackCurrentStateOutput() GetCloudNetworkPrivateVrackCurrentStateOutput {
+	return i.ToGetCloudNetworkPrivateVrackCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackCurrentStateArgs) ToGetCloudNetworkPrivateVrackCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackCurrentStateOutput)
+}
+
+type GetCloudNetworkPrivateVrackCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackCurrentStateOutput) ToGetCloudNetworkPrivateVrackCurrentStateOutput() GetCloudNetworkPrivateVrackCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackCurrentStateOutput) ToGetCloudNetworkPrivateVrackCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackCurrentStateOutput {
+	return o
+}
+
+// Network description.
+func (o GetCloudNetworkPrivateVrackCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudNetworkPrivateVrackCurrentStateOutput) Location() GetCloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackCurrentState) GetCloudNetworkPrivateVrackCurrentStateLocation {
+		return v.Location
+	}).(GetCloudNetworkPrivateVrackCurrentStateLocationOutput)
+}
+
+// Network name.
+func (o GetCloudNetworkPrivateVrackCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// VLAN ID of the network.
+func (o GetCloudNetworkPrivateVrackCurrentStateOutput) VlanId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackCurrentState) float64 { return v.VlanId }).(pulumi.Float64Output)
+}
+
+type GetCloudNetworkPrivateVrackCurrentStateLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVrackCurrentStateLocationInput is an input type that accepts GetCloudNetworkPrivateVrackCurrentStateLocationArgs and GetCloudNetworkPrivateVrackCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackCurrentStateLocationInput` via:
+//
+//	GetCloudNetworkPrivateVrackCurrentStateLocationArgs{...}
+type GetCloudNetworkPrivateVrackCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackCurrentStateLocationOutput() GetCloudNetworkPrivateVrackCurrentStateLocationOutput
+	ToGetCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVrackCurrentStateLocationOutput
+}
+
+type GetCloudNetworkPrivateVrackCurrentStateLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVrackCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackCurrentStateLocationArgs) ToGetCloudNetworkPrivateVrackCurrentStateLocationOutput() GetCloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return i.ToGetCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackCurrentStateLocationArgs) ToGetCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackCurrentStateLocationOutput)
+}
+
+type GetCloudNetworkPrivateVrackCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackCurrentStateLocationOutput) ToGetCloudNetworkPrivateVrackCurrentStateLocationOutput() GetCloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackCurrentStateLocationOutput) ToGetCloudNetworkPrivateVrackCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackCurrentStateLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVrackCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVrackLocationInput is an input type that accepts GetCloudNetworkPrivateVrackLocationArgs and GetCloudNetworkPrivateVrackLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackLocationInput` via:
+//
+//	GetCloudNetworkPrivateVrackLocationArgs{...}
+type GetCloudNetworkPrivateVrackLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackLocationOutput() GetCloudNetworkPrivateVrackLocationOutput
+	ToGetCloudNetworkPrivateVrackLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVrackLocationOutput
+}
+
+type GetCloudNetworkPrivateVrackLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVrackLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackLocationArgs) ToGetCloudNetworkPrivateVrackLocationOutput() GetCloudNetworkPrivateVrackLocationOutput {
+	return i.ToGetCloudNetworkPrivateVrackLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackLocationArgs) ToGetCloudNetworkPrivateVrackLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackLocationOutput)
+}
+
+type GetCloudNetworkPrivateVrackLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackLocationOutput) ToGetCloudNetworkPrivateVrackLocationOutput() GetCloudNetworkPrivateVrackLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackLocationOutput) ToGetCloudNetworkPrivateVrackLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVrackLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetAllocationPool struct {
+	// End IP address of the pool.
+	End string `pulumi:"end"`
+	// Start IP address of the pool.
+	Start string `pulumi:"start"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetAllocationPoolInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs and GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetAllocationPoolInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs{...}
+type GetCloudNetworkPrivateVrackSubnetAllocationPoolInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput
+	ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs struct {
+	// End IP address of the pool.
+	End pulumi.StringInput `pulumi:"end"`
+	// Start IP address of the pool.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetAllocationPoolArray and GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetAllocationPoolArray{ GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetAllocationPoolArray []GetCloudNetworkPrivateVrackSubnetAllocationPoolInput
+
+func (GetCloudNetworkPrivateVrackSubnetAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return o
+}
+
+// End IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetAllocationPool) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Start IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetAllocationPool) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetAllocationPool {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetAllocationPool)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentState struct {
+	// IP address allocation pools:
+	AllocationPools []GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool `pulumi:"allocationPools"`
+	// CIDR address range.
+	Cidr string `pulumi:"cidr"`
+	// Subnet description.
+	Description string `pulumi:"description"`
+	// Whether DHCP is enabled.
+	DhcpEnabled bool `pulumi:"dhcpEnabled"`
+	// Configured DNS nameservers.
+	DnsNameservers []string `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp string `pulumi:"gatewayIp"`
+	// Static host routes:
+	HostRoutes []GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute `pulumi:"hostRoutes"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackSubnetCurrentStateLocation `pulumi:"location"`
+	// Subnet name.
+	Name string `pulumi:"name"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetCurrentStateInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetCurrentStateArgs and GetCloudNetworkPrivateVrackSubnetCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetCurrentStateInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetCurrentStateArgs{...}
+type GetCloudNetworkPrivateVrackSubnetCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateOutput
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateArgs struct {
+	// IP address allocation pools:
+	AllocationPools GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput `pulumi:"allocationPools"`
+	// CIDR address range.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Subnet description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether DHCP is enabled.
+	DhcpEnabled pulumi.BoolInput `pulumi:"dhcpEnabled"`
+	// Configured DNS nameservers.
+	DnsNameservers pulumi.StringArrayInput `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
+	// Static host routes:
+	HostRoutes GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput `pulumi:"hostRoutes"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackSubnetCurrentStateLocationInput `pulumi:"location"`
+	// Subnet name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetCurrentStateOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateOutput {
+	return o
+}
+
+// IP address allocation pools:
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) AllocationPools() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) []GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+		return v.AllocationPools
+	}).(GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+// CIDR address range.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Subnet description.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether DHCP is enabled.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) DhcpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) bool { return v.DhcpEnabled }).(pulumi.BoolOutput)
+}
+
+// Configured DNS nameservers.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) DnsNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) []string { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+// Default gateway IP address.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) string { return v.GatewayIp }).(pulumi.StringOutput)
+}
+
+// Static host routes:
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) HostRoutes() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) []GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+		return v.HostRoutes
+	}).(GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput)
+}
+
+// Location details:
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) Location() GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) GetCloudNetworkPrivateVrackSubnetCurrentStateLocation {
+		return v.Location
+	}).(GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput)
+}
+
+// Subnet name.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool struct {
+	// End IP address of the pool.
+	End string `pulumi:"end"`
+	// Start IP address of the pool.
+	Start string `pulumi:"start"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs and GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs{...}
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs struct {
+	// End IP address of the pool.
+	End pulumi.StringInput `pulumi:"end"`
+	// Start IP address of the pool.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray and GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray{ GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray []GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return o
+}
+
+// End IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Start IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPool)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute struct {
+	// Destination CIDR.
+	Destination string `pulumi:"destination"`
+	// Next hop IP address.
+	NextHop string `pulumi:"nextHop"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs and GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs{...}
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs struct {
+	// Destination CIDR.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Next hop IP address.
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray and GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray{ GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray []GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return o
+}
+
+// Destination CIDR.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Next hop IP address.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetCurrentStateHostRoute)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetCurrentStateLocationInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs and GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetCurrentStateLocationInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs{...}
+type GetCloudNetworkPrivateVrackSubnetCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput
+	ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs) ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput() GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) ToGetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetLocationInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetLocationArgs and GetCloudNetworkPrivateVrackSubnetLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetLocationInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetLocationArgs{...}
+type GetCloudNetworkPrivateVrackSubnetLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetLocationOutput() GetCloudNetworkPrivateVrackSubnetLocationOutput
+	ToGetCloudNetworkPrivateVrackSubnetLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetLocationOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetLocationArgs) ToGetCloudNetworkPrivateVrackSubnetLocationOutput() GetCloudNetworkPrivateVrackSubnetLocationOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetLocationArgs) ToGetCloudNetworkPrivateVrackSubnetLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetLocationOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetLocationOutput) ToGetCloudNetworkPrivateVrackSubnetLocationOutput() GetCloudNetworkPrivateVrackSubnetLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetLocationOutput) ToGetCloudNetworkPrivateVrackSubnetLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVrackSubnetLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnet struct {
+	// IP address allocation pools:
+	AllocationPools []GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool `pulumi:"allocationPools"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// CIDR address range.
+	Cidr string `pulumi:"cidr"`
+	// Creation date of the subnet.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the subnet:
+	CurrentState GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState `pulumi:"currentState"`
+	// Subnet description.
+	Description string `pulumi:"description"`
+	// Whether DHCP is enabled.
+	DhcpEnabled bool `pulumi:"dhcpEnabled"`
+	// Configured DNS nameservers.
+	DnsNameservers []string `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp string `pulumi:"gatewayIp"`
+	// Subnet ID.
+	Id string `pulumi:"id"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackSubnetsSubnetLocation `pulumi:"location"`
+	// Subnet name.
+	Name string `pulumi:"name"`
+	// Subnet readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last update date of the subnet.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetArgs and GetCloudNetworkPrivateVrackSubnetsSubnetOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetOutput() GetCloudNetworkPrivateVrackSubnetsSubnetOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetArgs struct {
+	// IP address allocation pools:
+	AllocationPools GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayInput `pulumi:"allocationPools"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// CIDR address range.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Creation date of the subnet.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the subnet:
+	CurrentState GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateInput `pulumi:"currentState"`
+	// Subnet description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether DHCP is enabled.
+	DhcpEnabled pulumi.BoolInput `pulumi:"dhcpEnabled"`
+	// Configured DNS nameservers.
+	DnsNameservers pulumi.StringArrayInput `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
+	// Subnet ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackSubnetsSubnetLocationInput `pulumi:"location"`
+	// Subnet name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Subnet readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last update date of the subnet.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnet)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetOutput() GetCloudNetworkPrivateVrackSubnetsSubnetOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetArray and GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetArray{ GetCloudNetworkPrivateVrackSubnetsSubnetArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetsSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetArray []GetCloudNetworkPrivateVrackSubnetsSubnetInput
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnet)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnet)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetOutput() GetCloudNetworkPrivateVrackSubnetsSubnetOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetOutput {
+	return o
+}
+
+// IP address allocation pools:
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) AllocationPools() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) []GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool {
+		return v.AllocationPools
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput)
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// CIDR address range.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Creation date of the subnet.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the subnet:
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) CurrentState() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState {
+		return v.CurrentState
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput)
+}
+
+// Subnet description.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether DHCP is enabled.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) DhcpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) bool { return v.DhcpEnabled }).(pulumi.BoolOutput)
+}
+
+// Configured DNS nameservers.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) DnsNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) []string { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+// Default gateway IP address.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.GatewayIp }).(pulumi.StringOutput)
+}
+
+// Subnet ID.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) Location() GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) GetCloudNetworkPrivateVrackSubnetsSubnetLocation {
+		return v.Location
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput)
+}
+
+// Subnet name.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Subnet readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last update date of the subnet.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnet) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnet)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetsSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetsSubnet {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetsSubnet)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool struct {
+	// End IP address of the pool.
+	End string `pulumi:"end"`
+	// Start IP address of the pool.
+	Start string `pulumi:"start"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs and GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs struct {
+	// End IP address of the pool.
+	End pulumi.StringInput `pulumi:"end"`
+	// Start IP address of the pool.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray and GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray{ GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray []GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolInput
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput {
+	return o
+}
+
+// End IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Start IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPool)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState struct {
+	// IP address allocation pools:
+	AllocationPools []GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool `pulumi:"allocationPools"`
+	// CIDR address range.
+	Cidr string `pulumi:"cidr"`
+	// Subnet description.
+	Description string `pulumi:"description"`
+	// Whether DHCP is enabled.
+	DhcpEnabled bool `pulumi:"dhcpEnabled"`
+	// Configured DNS nameservers.
+	DnsNameservers []string `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp string `pulumi:"gatewayIp"`
+	// Static host routes:
+	HostRoutes []GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute `pulumi:"hostRoutes"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation `pulumi:"location"`
+	// Subnet name.
+	Name string `pulumi:"name"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs and GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs struct {
+	// IP address allocation pools:
+	AllocationPools GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayInput `pulumi:"allocationPools"`
+	// CIDR address range.
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Subnet description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Whether DHCP is enabled.
+	DhcpEnabled pulumi.BoolInput `pulumi:"dhcpEnabled"`
+	// Configured DNS nameservers.
+	DnsNameservers pulumi.StringArrayInput `pulumi:"dnsNameservers"`
+	// Default gateway IP address.
+	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
+	// Static host routes:
+	HostRoutes GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayInput `pulumi:"hostRoutes"`
+	// Location details:
+	Location GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationInput `pulumi:"location"`
+	// Subnet name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput {
+	return o
+}
+
+// IP address allocation pools:
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) AllocationPools() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) []GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool {
+		return v.AllocationPools
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+// CIDR address range.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Subnet description.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Whether DHCP is enabled.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) DhcpEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) bool { return v.DhcpEnabled }).(pulumi.BoolOutput)
+}
+
+// Configured DNS nameservers.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) DnsNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) []string { return v.DnsNameservers }).(pulumi.StringArrayOutput)
+}
+
+// Default gateway IP address.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) string { return v.GatewayIp }).(pulumi.StringOutput)
+}
+
+// Static host routes:
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) HostRoutes() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) []GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute {
+		return v.HostRoutes
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput)
+}
+
+// Location details:
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) Location() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation {
+		return v.Location
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput)
+}
+
+// Subnet name.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool struct {
+	// End IP address of the pool.
+	End string `pulumi:"end"`
+	// Start IP address of the pool.
+	Start string `pulumi:"start"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs and GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs struct {
+	// End IP address of the pool.
+	End pulumi.StringInput `pulumi:"end"`
+	// Start IP address of the pool.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray and GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray{ GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray []GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolInput
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput {
+	return o
+}
+
+// End IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Start IP address of the pool.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPool)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute struct {
+	// Destination CIDR.
+	Destination string `pulumi:"destination"`
+	// Next hop IP address.
+	NextHop string `pulumi:"nextHop"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs and GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs struct {
+	// Destination CIDR.
+	Destination pulumi.StringInput `pulumi:"destination"`
+	// Next hop IP address.
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput)
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray and GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray{ GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs{...} }
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray []GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteInput
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput {
+	return o
+}
+
+// Destination CIDR.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute) string { return v.Destination }).(pulumi.StringOutput)
+}
+
+// Next hop IP address.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute {
+		return vs[0].([]GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRoute)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs and GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput() GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVrackSubnetsSubnetLocationInput is an input type that accepts GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs and GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVrackSubnetsSubnetLocationInput` via:
+//
+//	GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs{...}
+type GetCloudNetworkPrivateVrackSubnetsSubnetLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput() GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput
+	ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput() GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput {
+	return i.ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs) ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput)
+}
+
+type GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput() GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput) ToGetCloudNetworkPrivateVrackSubnetsSubnetLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVrackSubnetsSubnetLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetwork struct {
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the network.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the network:
+	CurrentState GetCloudNetworkPrivateVracksNetworkCurrentState `pulumi:"currentState"`
+	// Network description.
+	Description string `pulumi:"description"`
+	// Network ID.
+	Id string `pulumi:"id"`
+	// Location details:
+	Location GetCloudNetworkPrivateVracksNetworkLocation `pulumi:"location"`
+	// Network name.
+	Name string `pulumi:"name"`
+	// Network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last update date of the network.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// VLAN ID of the network.
+	VlanId float64 `pulumi:"vlanId"`
+}
+
+// GetCloudNetworkPrivateVracksNetworkInput is an input type that accepts GetCloudNetworkPrivateVracksNetworkArgs and GetCloudNetworkPrivateVracksNetworkOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVracksNetworkInput` via:
+//
+//	GetCloudNetworkPrivateVracksNetworkArgs{...}
+type GetCloudNetworkPrivateVracksNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVracksNetworkOutput() GetCloudNetworkPrivateVracksNetworkOutput
+	ToGetCloudNetworkPrivateVracksNetworkOutputWithContext(context.Context) GetCloudNetworkPrivateVracksNetworkOutput
+}
+
+type GetCloudNetworkPrivateVracksNetworkArgs struct {
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the network.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the network:
+	CurrentState GetCloudNetworkPrivateVracksNetworkCurrentStateInput `pulumi:"currentState"`
+	// Network description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Network ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location details:
+	Location GetCloudNetworkPrivateVracksNetworkLocationInput `pulumi:"location"`
+	// Network name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last update date of the network.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// VLAN ID of the network.
+	VlanId pulumi.Float64Input `pulumi:"vlanId"`
+}
+
+func (GetCloudNetworkPrivateVracksNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetwork)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkArgs) ToGetCloudNetworkPrivateVracksNetworkOutput() GetCloudNetworkPrivateVracksNetworkOutput {
+	return i.ToGetCloudNetworkPrivateVracksNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkArgs) ToGetCloudNetworkPrivateVracksNetworkOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVracksNetworkOutput)
+}
+
+// GetCloudNetworkPrivateVracksNetworkArrayInput is an input type that accepts GetCloudNetworkPrivateVracksNetworkArray and GetCloudNetworkPrivateVracksNetworkArrayOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVracksNetworkArrayInput` via:
+//
+//	GetCloudNetworkPrivateVracksNetworkArray{ GetCloudNetworkPrivateVracksNetworkArgs{...} }
+type GetCloudNetworkPrivateVracksNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVracksNetworkArrayOutput() GetCloudNetworkPrivateVracksNetworkArrayOutput
+	ToGetCloudNetworkPrivateVracksNetworkArrayOutputWithContext(context.Context) GetCloudNetworkPrivateVracksNetworkArrayOutput
+}
+
+type GetCloudNetworkPrivateVracksNetworkArray []GetCloudNetworkPrivateVracksNetworkInput
+
+func (GetCloudNetworkPrivateVracksNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVracksNetwork)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkArray) ToGetCloudNetworkPrivateVracksNetworkArrayOutput() GetCloudNetworkPrivateVracksNetworkArrayOutput {
+	return i.ToGetCloudNetworkPrivateVracksNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkArray) ToGetCloudNetworkPrivateVracksNetworkArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVracksNetworkArrayOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVracksNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetwork)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkOutput) ToGetCloudNetworkPrivateVracksNetworkOutput() GetCloudNetworkPrivateVracksNetworkOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkOutput) ToGetCloudNetworkPrivateVracksNetworkOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkOutput {
+	return o
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the network.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the network:
+func (o GetCloudNetworkPrivateVracksNetworkOutput) CurrentState() GetCloudNetworkPrivateVracksNetworkCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) GetCloudNetworkPrivateVracksNetworkCurrentState {
+		return v.CurrentState
+	}).(GetCloudNetworkPrivateVracksNetworkCurrentStateOutput)
+}
+
+// Network description.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Network ID.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudNetworkPrivateVracksNetworkOutput) Location() GetCloudNetworkPrivateVracksNetworkLocationOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) GetCloudNetworkPrivateVracksNetworkLocation {
+		return v.Location
+	}).(GetCloudNetworkPrivateVracksNetworkLocationOutput)
+}
+
+// Network name.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudNetworkPrivateVracksNetworkOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last update date of the network.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// VLAN ID of the network.
+func (o GetCloudNetworkPrivateVracksNetworkOutput) VlanId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetwork) float64 { return v.VlanId }).(pulumi.Float64Output)
+}
+
+type GetCloudNetworkPrivateVracksNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVracksNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudNetworkPrivateVracksNetwork)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkArrayOutput) ToGetCloudNetworkPrivateVracksNetworkArrayOutput() GetCloudNetworkPrivateVracksNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkArrayOutput) ToGetCloudNetworkPrivateVracksNetworkArrayOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkArrayOutput) Index(i pulumi.IntInput) GetCloudNetworkPrivateVracksNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudNetworkPrivateVracksNetwork {
+		return vs[0].([]GetCloudNetworkPrivateVracksNetwork)[vs[1].(int)]
+	}).(GetCloudNetworkPrivateVracksNetworkOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetworkCurrentState struct {
+	// Network description.
+	Description string `pulumi:"description"`
+	// Location details:
+	Location GetCloudNetworkPrivateVracksNetworkCurrentStateLocation `pulumi:"location"`
+	// Network name.
+	Name string `pulumi:"name"`
+	// VLAN ID of the network.
+	VlanId float64 `pulumi:"vlanId"`
+}
+
+// GetCloudNetworkPrivateVracksNetworkCurrentStateInput is an input type that accepts GetCloudNetworkPrivateVracksNetworkCurrentStateArgs and GetCloudNetworkPrivateVracksNetworkCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVracksNetworkCurrentStateInput` via:
+//
+//	GetCloudNetworkPrivateVracksNetworkCurrentStateArgs{...}
+type GetCloudNetworkPrivateVracksNetworkCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutput() GetCloudNetworkPrivateVracksNetworkCurrentStateOutput
+	ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutputWithContext(context.Context) GetCloudNetworkPrivateVracksNetworkCurrentStateOutput
+}
+
+type GetCloudNetworkPrivateVracksNetworkCurrentStateArgs struct {
+	// Network description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Location details:
+	Location GetCloudNetworkPrivateVracksNetworkCurrentStateLocationInput `pulumi:"location"`
+	// Network name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// VLAN ID of the network.
+	VlanId pulumi.Float64Input `pulumi:"vlanId"`
+}
+
+func (GetCloudNetworkPrivateVracksNetworkCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkCurrentStateArgs) ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutput() GetCloudNetworkPrivateVracksNetworkCurrentStateOutput {
+	return i.ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkCurrentStateArgs) ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVracksNetworkCurrentStateOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetworkCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutput() GetCloudNetworkPrivateVracksNetworkCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) ToGetCloudNetworkPrivateVracksNetworkCurrentStateOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkCurrentStateOutput {
+	return o
+}
+
+// Network description.
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetworkCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) Location() GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetworkCurrentState) GetCloudNetworkPrivateVracksNetworkCurrentStateLocation {
+		return v.Location
+	}).(GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput)
+}
+
+// Network name.
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetworkCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// VLAN ID of the network.
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateOutput) VlanId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetworkCurrentState) float64 { return v.VlanId }).(pulumi.Float64Output)
+}
+
+type GetCloudNetworkPrivateVracksNetworkCurrentStateLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVracksNetworkCurrentStateLocationInput is an input type that accepts GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs and GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVracksNetworkCurrentStateLocationInput` via:
+//
+//	GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs{...}
+type GetCloudNetworkPrivateVracksNetworkCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput() GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput
+	ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput
+}
+
+type GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs) ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput() GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput {
+	return i.ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs) ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput) ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput() GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput) ToGetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetworkCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetworkLocation struct {
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudNetworkPrivateVracksNetworkLocationInput is an input type that accepts GetCloudNetworkPrivateVracksNetworkLocationArgs and GetCloudNetworkPrivateVracksNetworkLocationOutput values.
+// You can construct a concrete instance of `GetCloudNetworkPrivateVracksNetworkLocationInput` via:
+//
+//	GetCloudNetworkPrivateVracksNetworkLocationArgs{...}
+type GetCloudNetworkPrivateVracksNetworkLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudNetworkPrivateVracksNetworkLocationOutput() GetCloudNetworkPrivateVracksNetworkLocationOutput
+	ToGetCloudNetworkPrivateVracksNetworkLocationOutputWithContext(context.Context) GetCloudNetworkPrivateVracksNetworkLocationOutput
+}
+
+type GetCloudNetworkPrivateVracksNetworkLocationArgs struct {
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudNetworkPrivateVracksNetworkLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkLocation)(nil)).Elem()
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkLocationArgs) ToGetCloudNetworkPrivateVracksNetworkLocationOutput() GetCloudNetworkPrivateVracksNetworkLocationOutput {
+	return i.ToGetCloudNetworkPrivateVracksNetworkLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudNetworkPrivateVracksNetworkLocationArgs) ToGetCloudNetworkPrivateVracksNetworkLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudNetworkPrivateVracksNetworkLocationOutput)
+}
+
+type GetCloudNetworkPrivateVracksNetworkLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudNetworkPrivateVracksNetworkLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkLocation)(nil)).Elem()
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkLocationOutput) ToGetCloudNetworkPrivateVracksNetworkLocationOutput() GetCloudNetworkPrivateVracksNetworkLocationOutput {
+	return o
+}
+
+func (o GetCloudNetworkPrivateVracksNetworkLocationOutput) ToGetCloudNetworkPrivateVracksNetworkLocationOutputWithContext(ctx context.Context) GetCloudNetworkPrivateVracksNetworkLocationOutput {
+	return o
+}
+
+// Region code.
+func (o GetCloudNetworkPrivateVracksNetworkLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudNetworkPrivateVracksNetworkLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
 type GetCloudProjectFlavorCapability struct {
 	// Is the capability enabled
 	Enabled bool `pulumi:"enabled"`
@@ -6539,6 +12619,112 @@ func (o GetCloudProjectGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectGatewayInterface {
 		return vs[0].([]GetCloudProjectGatewayInterface)[vs[1].(int)]
 	}).(GetCloudProjectGatewayInterfaceOutput)
+}
+
+type GetCloudProjectKubeLogSubscriptionResource struct {
+	// Name of the subscribed resource, where the logs come from.
+	Name string `pulumi:"name"`
+	// Type of the subscribed resource, where the logs come from.
+	Type string `pulumi:"type"`
+}
+
+// GetCloudProjectKubeLogSubscriptionResourceInput is an input type that accepts GetCloudProjectKubeLogSubscriptionResourceArgs and GetCloudProjectKubeLogSubscriptionResourceOutput values.
+// You can construct a concrete instance of `GetCloudProjectKubeLogSubscriptionResourceInput` via:
+//
+//	GetCloudProjectKubeLogSubscriptionResourceArgs{...}
+type GetCloudProjectKubeLogSubscriptionResourceInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectKubeLogSubscriptionResourceOutput() GetCloudProjectKubeLogSubscriptionResourceOutput
+	ToGetCloudProjectKubeLogSubscriptionResourceOutputWithContext(context.Context) GetCloudProjectKubeLogSubscriptionResourceOutput
+}
+
+type GetCloudProjectKubeLogSubscriptionResourceArgs struct {
+	// Name of the subscribed resource, where the logs come from.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Type of the subscribed resource, where the logs come from.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudProjectKubeLogSubscriptionResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (i GetCloudProjectKubeLogSubscriptionResourceArgs) ToGetCloudProjectKubeLogSubscriptionResourceOutput() GetCloudProjectKubeLogSubscriptionResourceOutput {
+	return i.ToGetCloudProjectKubeLogSubscriptionResourceOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectKubeLogSubscriptionResourceArgs) ToGetCloudProjectKubeLogSubscriptionResourceOutputWithContext(ctx context.Context) GetCloudProjectKubeLogSubscriptionResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectKubeLogSubscriptionResourceOutput)
+}
+
+// GetCloudProjectKubeLogSubscriptionResourceArrayInput is an input type that accepts GetCloudProjectKubeLogSubscriptionResourceArray and GetCloudProjectKubeLogSubscriptionResourceArrayOutput values.
+// You can construct a concrete instance of `GetCloudProjectKubeLogSubscriptionResourceArrayInput` via:
+//
+//	GetCloudProjectKubeLogSubscriptionResourceArray{ GetCloudProjectKubeLogSubscriptionResourceArgs{...} }
+type GetCloudProjectKubeLogSubscriptionResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudProjectKubeLogSubscriptionResourceArrayOutput() GetCloudProjectKubeLogSubscriptionResourceArrayOutput
+	ToGetCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(context.Context) GetCloudProjectKubeLogSubscriptionResourceArrayOutput
+}
+
+type GetCloudProjectKubeLogSubscriptionResourceArray []GetCloudProjectKubeLogSubscriptionResourceInput
+
+func (GetCloudProjectKubeLogSubscriptionResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (i GetCloudProjectKubeLogSubscriptionResourceArray) ToGetCloudProjectKubeLogSubscriptionResourceArrayOutput() GetCloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return i.ToGetCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudProjectKubeLogSubscriptionResourceArray) ToGetCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(ctx context.Context) GetCloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudProjectKubeLogSubscriptionResourceArrayOutput)
+}
+
+type GetCloudProjectKubeLogSubscriptionResourceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectKubeLogSubscriptionResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (o GetCloudProjectKubeLogSubscriptionResourceOutput) ToGetCloudProjectKubeLogSubscriptionResourceOutput() GetCloudProjectKubeLogSubscriptionResourceOutput {
+	return o
+}
+
+func (o GetCloudProjectKubeLogSubscriptionResourceOutput) ToGetCloudProjectKubeLogSubscriptionResourceOutputWithContext(ctx context.Context) GetCloudProjectKubeLogSubscriptionResourceOutput {
+	return o
+}
+
+// Name of the subscribed resource, where the logs come from.
+func (o GetCloudProjectKubeLogSubscriptionResourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectKubeLogSubscriptionResource) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Type of the subscribed resource, where the logs come from.
+func (o GetCloudProjectKubeLogSubscriptionResourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudProjectKubeLogSubscriptionResource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudProjectKubeLogSubscriptionResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudProjectKubeLogSubscriptionResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudProjectKubeLogSubscriptionResource)(nil)).Elem()
+}
+
+func (o GetCloudProjectKubeLogSubscriptionResourceArrayOutput) ToGetCloudProjectKubeLogSubscriptionResourceArrayOutput() GetCloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectKubeLogSubscriptionResourceArrayOutput) ToGetCloudProjectKubeLogSubscriptionResourceArrayOutputWithContext(ctx context.Context) GetCloudProjectKubeLogSubscriptionResourceArrayOutput {
+	return o
+}
+
+func (o GetCloudProjectKubeLogSubscriptionResourceArrayOutput) Index(i pulumi.IntInput) GetCloudProjectKubeLogSubscriptionResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectKubeLogSubscriptionResource {
+		return vs[0].([]GetCloudProjectKubeLogSubscriptionResource)[vs[1].(int)]
+	}).(GetCloudProjectKubeLogSubscriptionResourceOutput)
 }
 
 type GetCloudProjectRancherCapabilitiesPlanPlan struct {
@@ -7606,6 +13792,1851 @@ func (o GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionAr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition {
 		return vs[0].([]GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition)[vs[1].(int)]
 	}).(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput)
+}
+
+type GetCloudRegionsRegion struct {
+	// Availability zones available in the region.
+	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// Continent code of the region.
+	Continent string `pulumi:"continent"`
+	// Country code of the region.
+	Country string `pulumi:"country"`
+	// Display name of the datacenter hosting the region.
+	DatacenterName string `pulumi:"datacenterName"`
+	// Name of the region (e.g. `GRA11`).
+	Name string `pulumi:"name"`
+	// Available OpenStack services in the region.
+	Services []string `pulumi:"services"`
+	// Region status (`ENABLED`, `DISABLED` or `MAINTENANCE`).
+	Status string `pulumi:"status"`
+}
+
+// GetCloudRegionsRegionInput is an input type that accepts GetCloudRegionsRegionArgs and GetCloudRegionsRegionOutput values.
+// You can construct a concrete instance of `GetCloudRegionsRegionInput` via:
+//
+//	GetCloudRegionsRegionArgs{...}
+type GetCloudRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetCloudRegionsRegionOutput() GetCloudRegionsRegionOutput
+	ToGetCloudRegionsRegionOutputWithContext(context.Context) GetCloudRegionsRegionOutput
+}
+
+type GetCloudRegionsRegionArgs struct {
+	// Availability zones available in the region.
+	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
+	// Continent code of the region.
+	Continent pulumi.StringInput `pulumi:"continent"`
+	// Country code of the region.
+	Country pulumi.StringInput `pulumi:"country"`
+	// Display name of the datacenter hosting the region.
+	DatacenterName pulumi.StringInput `pulumi:"datacenterName"`
+	// Name of the region (e.g. `GRA11`).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Available OpenStack services in the region.
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// Region status (`ENABLED`, `DISABLED` or `MAINTENANCE`).
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRegionsRegion)(nil)).Elem()
+}
+
+func (i GetCloudRegionsRegionArgs) ToGetCloudRegionsRegionOutput() GetCloudRegionsRegionOutput {
+	return i.ToGetCloudRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetCloudRegionsRegionArgs) ToGetCloudRegionsRegionOutputWithContext(ctx context.Context) GetCloudRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRegionsRegionOutput)
+}
+
+// GetCloudRegionsRegionArrayInput is an input type that accepts GetCloudRegionsRegionArray and GetCloudRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetCloudRegionsRegionArrayInput` via:
+//
+//	GetCloudRegionsRegionArray{ GetCloudRegionsRegionArgs{...} }
+type GetCloudRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudRegionsRegionArrayOutput() GetCloudRegionsRegionArrayOutput
+	ToGetCloudRegionsRegionArrayOutputWithContext(context.Context) GetCloudRegionsRegionArrayOutput
+}
+
+type GetCloudRegionsRegionArray []GetCloudRegionsRegionInput
+
+func (GetCloudRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRegionsRegion)(nil)).Elem()
+}
+
+func (i GetCloudRegionsRegionArray) ToGetCloudRegionsRegionArrayOutput() GetCloudRegionsRegionArrayOutput {
+	return i.ToGetCloudRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudRegionsRegionArray) ToGetCloudRegionsRegionArrayOutputWithContext(ctx context.Context) GetCloudRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudRegionsRegionArrayOutput)
+}
+
+type GetCloudRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudRegionsRegion)(nil)).Elem()
+}
+
+func (o GetCloudRegionsRegionOutput) ToGetCloudRegionsRegionOutput() GetCloudRegionsRegionOutput {
+	return o
+}
+
+func (o GetCloudRegionsRegionOutput) ToGetCloudRegionsRegionOutputWithContext(ctx context.Context) GetCloudRegionsRegionOutput {
+	return o
+}
+
+// Availability zones available in the region.
+func (o GetCloudRegionsRegionOutput) AvailabilityZones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// Continent code of the region.
+func (o GetCloudRegionsRegionOutput) Continent() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) string { return v.Continent }).(pulumi.StringOutput)
+}
+
+// Country code of the region.
+func (o GetCloudRegionsRegionOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Display name of the datacenter hosting the region.
+func (o GetCloudRegionsRegionOutput) DatacenterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) string { return v.DatacenterName }).(pulumi.StringOutput)
+}
+
+// Name of the region (e.g. `GRA11`).
+func (o GetCloudRegionsRegionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Available OpenStack services in the region.
+func (o GetCloudRegionsRegionOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// Region status (`ENABLED`, `DISABLED` or `MAINTENANCE`).
+func (o GetCloudRegionsRegionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudRegionsRegion) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudRegionsRegion)(nil)).Elem()
+}
+
+func (o GetCloudRegionsRegionArrayOutput) ToGetCloudRegionsRegionArrayOutput() GetCloudRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetCloudRegionsRegionArrayOutput) ToGetCloudRegionsRegionArrayOutputWithContext(ctx context.Context) GetCloudRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetCloudRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetCloudRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudRegionsRegion {
+		return vs[0].([]GetCloudRegionsRegion)[vs[1].(int)]
+	}).(GetCloudRegionsRegionOutput)
+}
+
+type GetCloudSecurityGroupCurrentState struct {
+	// Default egress rules auto-created by OpenStack (same schema as `rules`).
+	DefaultRules []GetCloudSecurityGroupCurrentStateDefaultRule `pulumi:"defaultRules"`
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Location details:
+	Location GetCloudSecurityGroupCurrentStateLocation `pulumi:"location"`
+	// Name of the security group.
+	Name string `pulumi:"name"`
+	// User-specified security group rules with their IDs:
+	Rules []GetCloudSecurityGroupCurrentStateRule `pulumi:"rules"`
+}
+
+// GetCloudSecurityGroupCurrentStateInput is an input type that accepts GetCloudSecurityGroupCurrentStateArgs and GetCloudSecurityGroupCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupCurrentStateInput` via:
+//
+//	GetCloudSecurityGroupCurrentStateArgs{...}
+type GetCloudSecurityGroupCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupCurrentStateOutput() GetCloudSecurityGroupCurrentStateOutput
+	ToGetCloudSecurityGroupCurrentStateOutputWithContext(context.Context) GetCloudSecurityGroupCurrentStateOutput
+}
+
+type GetCloudSecurityGroupCurrentStateArgs struct {
+	// Default egress rules auto-created by OpenStack (same schema as `rules`).
+	DefaultRules GetCloudSecurityGroupCurrentStateDefaultRuleArrayInput `pulumi:"defaultRules"`
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Location details:
+	Location GetCloudSecurityGroupCurrentStateLocationInput `pulumi:"location"`
+	// Name of the security group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// User-specified security group rules with their IDs:
+	Rules GetCloudSecurityGroupCurrentStateRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetCloudSecurityGroupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupCurrentStateArgs) ToGetCloudSecurityGroupCurrentStateOutput() GetCloudSecurityGroupCurrentStateOutput {
+	return i.ToGetCloudSecurityGroupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupCurrentStateArgs) ToGetCloudSecurityGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupCurrentStateOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupCurrentStateOutput) ToGetCloudSecurityGroupCurrentStateOutput() GetCloudSecurityGroupCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateOutput) ToGetCloudSecurityGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateOutput {
+	return o
+}
+
+// Default egress rules auto-created by OpenStack (same schema as `rules`).
+func (o GetCloudSecurityGroupCurrentStateOutput) DefaultRules() GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentState) []GetCloudSecurityGroupCurrentStateDefaultRule {
+		return v.DefaultRules
+	}).(GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudSecurityGroupCurrentStateOutput) Location() GetCloudSecurityGroupCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentState) GetCloudSecurityGroupCurrentStateLocation { return v.Location }).(GetCloudSecurityGroupCurrentStateLocationOutput)
+}
+
+// Name of the security group.
+func (o GetCloudSecurityGroupCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// User-specified security group rules with their IDs:
+func (o GetCloudSecurityGroupCurrentStateOutput) Rules() GetCloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentState) []GetCloudSecurityGroupCurrentStateRule { return v.Rules }).(GetCloudSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateDefaultRule struct {
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Direction of the rule.
+	Direction string `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType string `pulumi:"ethernetType"`
+	// Security group ID.
+	Id string `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+}
+
+// GetCloudSecurityGroupCurrentStateDefaultRuleInput is an input type that accepts GetCloudSecurityGroupCurrentStateDefaultRuleArgs and GetCloudSecurityGroupCurrentStateDefaultRuleOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupCurrentStateDefaultRuleInput` via:
+//
+//	GetCloudSecurityGroupCurrentStateDefaultRuleArgs{...}
+type GetCloudSecurityGroupCurrentStateDefaultRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupCurrentStateDefaultRuleOutput() GetCloudSecurityGroupCurrentStateDefaultRuleOutput
+	ToGetCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(context.Context) GetCloudSecurityGroupCurrentStateDefaultRuleOutput
+}
+
+type GetCloudSecurityGroupCurrentStateDefaultRuleArgs struct {
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Security group ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+}
+
+func (GetCloudSecurityGroupCurrentStateDefaultRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupCurrentStateDefaultRuleArgs) ToGetCloudSecurityGroupCurrentStateDefaultRuleOutput() GetCloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return i.ToGetCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupCurrentStateDefaultRuleArgs) ToGetCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupCurrentStateDefaultRuleOutput)
+}
+
+// GetCloudSecurityGroupCurrentStateDefaultRuleArrayInput is an input type that accepts GetCloudSecurityGroupCurrentStateDefaultRuleArray and GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupCurrentStateDefaultRuleArrayInput` via:
+//
+//	GetCloudSecurityGroupCurrentStateDefaultRuleArray{ GetCloudSecurityGroupCurrentStateDefaultRuleArgs{...} }
+type GetCloudSecurityGroupCurrentStateDefaultRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput() GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput
+	ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(context.Context) GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput
+}
+
+type GetCloudSecurityGroupCurrentStateDefaultRuleArray []GetCloudSecurityGroupCurrentStateDefaultRuleInput
+
+func (GetCloudSecurityGroupCurrentStateDefaultRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupCurrentStateDefaultRuleArray) ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput() GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return i.ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupCurrentStateDefaultRuleArray) ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateDefaultRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupCurrentStateDefaultRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) ToGetCloudSecurityGroupCurrentStateDefaultRuleOutput() GetCloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) ToGetCloudSecurityGroupCurrentStateDefaultRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return o
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Direction of the rule.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ethernet type.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Security group ID.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) PortRangeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) int { return v.PortRangeMax }).(pulumi.IntOutput)
+}
+
+// Minimum port number.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) PortRangeMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) int { return v.PortRangeMin }).(pulumi.IntOutput)
+}
+
+// Protocol.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Remote security group ID.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) RemoteGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.RemoteGroupId }).(pulumi.StringOutput)
+}
+
+// Remote IP prefix.
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleOutput) RemoteIpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateDefaultRule) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput) ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput() GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput) ToGetCloudSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupCurrentStateDefaultRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupCurrentStateDefaultRule {
+		return vs[0].([]GetCloudSecurityGroupCurrentStateDefaultRule)[vs[1].(int)]
+	}).(GetCloudSecurityGroupCurrentStateDefaultRuleOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudSecurityGroupCurrentStateLocationInput is an input type that accepts GetCloudSecurityGroupCurrentStateLocationArgs and GetCloudSecurityGroupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupCurrentStateLocationInput` via:
+//
+//	GetCloudSecurityGroupCurrentStateLocationArgs{...}
+type GetCloudSecurityGroupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupCurrentStateLocationOutput() GetCloudSecurityGroupCurrentStateLocationOutput
+	ToGetCloudSecurityGroupCurrentStateLocationOutputWithContext(context.Context) GetCloudSecurityGroupCurrentStateLocationOutput
+}
+
+type GetCloudSecurityGroupCurrentStateLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudSecurityGroupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupCurrentStateLocationArgs) ToGetCloudSecurityGroupCurrentStateLocationOutput() GetCloudSecurityGroupCurrentStateLocationOutput {
+	return i.ToGetCloudSecurityGroupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupCurrentStateLocationArgs) ToGetCloudSecurityGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupCurrentStateLocationOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupCurrentStateLocationOutput) ToGetCloudSecurityGroupCurrentStateLocationOutput() GetCloudSecurityGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateLocationOutput) ToGetCloudSecurityGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudSecurityGroupCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateRule struct {
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Direction of the rule.
+	Direction string `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType string `pulumi:"ethernetType"`
+	// Security group ID.
+	Id string `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+}
+
+// GetCloudSecurityGroupCurrentStateRuleInput is an input type that accepts GetCloudSecurityGroupCurrentStateRuleArgs and GetCloudSecurityGroupCurrentStateRuleOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupCurrentStateRuleInput` via:
+//
+//	GetCloudSecurityGroupCurrentStateRuleArgs{...}
+type GetCloudSecurityGroupCurrentStateRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupCurrentStateRuleOutput() GetCloudSecurityGroupCurrentStateRuleOutput
+	ToGetCloudSecurityGroupCurrentStateRuleOutputWithContext(context.Context) GetCloudSecurityGroupCurrentStateRuleOutput
+}
+
+type GetCloudSecurityGroupCurrentStateRuleArgs struct {
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Security group ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+}
+
+func (GetCloudSecurityGroupCurrentStateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupCurrentStateRuleArgs) ToGetCloudSecurityGroupCurrentStateRuleOutput() GetCloudSecurityGroupCurrentStateRuleOutput {
+	return i.ToGetCloudSecurityGroupCurrentStateRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupCurrentStateRuleArgs) ToGetCloudSecurityGroupCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupCurrentStateRuleOutput)
+}
+
+// GetCloudSecurityGroupCurrentStateRuleArrayInput is an input type that accepts GetCloudSecurityGroupCurrentStateRuleArray and GetCloudSecurityGroupCurrentStateRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupCurrentStateRuleArrayInput` via:
+//
+//	GetCloudSecurityGroupCurrentStateRuleArray{ GetCloudSecurityGroupCurrentStateRuleArgs{...} }
+type GetCloudSecurityGroupCurrentStateRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupCurrentStateRuleArrayOutput() GetCloudSecurityGroupCurrentStateRuleArrayOutput
+	ToGetCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(context.Context) GetCloudSecurityGroupCurrentStateRuleArrayOutput
+}
+
+type GetCloudSecurityGroupCurrentStateRuleArray []GetCloudSecurityGroupCurrentStateRuleInput
+
+func (GetCloudSecurityGroupCurrentStateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupCurrentStateRuleArray) ToGetCloudSecurityGroupCurrentStateRuleArrayOutput() GetCloudSecurityGroupCurrentStateRuleArrayOutput {
+	return i.ToGetCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupCurrentStateRuleArray) ToGetCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupCurrentStateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) ToGetCloudSecurityGroupCurrentStateRuleOutput() GetCloudSecurityGroupCurrentStateRuleOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) ToGetCloudSecurityGroupCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateRuleOutput {
+	return o
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Direction of the rule.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ethernet type.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Security group ID.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) PortRangeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) int { return v.PortRangeMax }).(pulumi.IntOutput)
+}
+
+// Minimum port number.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) PortRangeMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) int { return v.PortRangeMin }).(pulumi.IntOutput)
+}
+
+// Protocol.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Remote security group ID.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) RemoteGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.RemoteGroupId }).(pulumi.StringOutput)
+}
+
+// Remote IP prefix.
+func (o GetCloudSecurityGroupCurrentStateRuleOutput) RemoteIpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupCurrentStateRule) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupCurrentStateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupCurrentStateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupCurrentStateRuleArrayOutput) ToGetCloudSecurityGroupCurrentStateRuleArrayOutput() GetCloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateRuleArrayOutput) ToGetCloudSecurityGroupCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupCurrentStateRuleArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupCurrentStateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupCurrentStateRule {
+		return vs[0].([]GetCloudSecurityGroupCurrentStateRule)[vs[1].(int)]
+	}).(GetCloudSecurityGroupCurrentStateRuleOutput)
+}
+
+type GetCloudSecurityGroupLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudSecurityGroupLocationInput is an input type that accepts GetCloudSecurityGroupLocationArgs and GetCloudSecurityGroupLocationOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupLocationInput` via:
+//
+//	GetCloudSecurityGroupLocationArgs{...}
+type GetCloudSecurityGroupLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupLocationOutput() GetCloudSecurityGroupLocationOutput
+	ToGetCloudSecurityGroupLocationOutputWithContext(context.Context) GetCloudSecurityGroupLocationOutput
+}
+
+type GetCloudSecurityGroupLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudSecurityGroupLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupLocation)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupLocationArgs) ToGetCloudSecurityGroupLocationOutput() GetCloudSecurityGroupLocationOutput {
+	return i.ToGetCloudSecurityGroupLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupLocationArgs) ToGetCloudSecurityGroupLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupLocationOutput)
+}
+
+type GetCloudSecurityGroupLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupLocation)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupLocationOutput) ToGetCloudSecurityGroupLocationOutput() GetCloudSecurityGroupLocationOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupLocationOutput) ToGetCloudSecurityGroupLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudSecurityGroupLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupRule struct {
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Direction of the rule.
+	Direction string `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType string `pulumi:"ethernetType"`
+	// Maximum port number.
+	PortRangeMax int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+}
+
+// GetCloudSecurityGroupRuleInput is an input type that accepts GetCloudSecurityGroupRuleArgs and GetCloudSecurityGroupRuleOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupRuleInput` via:
+//
+//	GetCloudSecurityGroupRuleArgs{...}
+type GetCloudSecurityGroupRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupRuleOutput() GetCloudSecurityGroupRuleOutput
+	ToGetCloudSecurityGroupRuleOutputWithContext(context.Context) GetCloudSecurityGroupRuleOutput
+}
+
+type GetCloudSecurityGroupRuleArgs struct {
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+}
+
+func (GetCloudSecurityGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupRuleArgs) ToGetCloudSecurityGroupRuleOutput() GetCloudSecurityGroupRuleOutput {
+	return i.ToGetCloudSecurityGroupRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupRuleArgs) ToGetCloudSecurityGroupRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupRuleOutput)
+}
+
+// GetCloudSecurityGroupRuleArrayInput is an input type that accepts GetCloudSecurityGroupRuleArray and GetCloudSecurityGroupRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupRuleArrayInput` via:
+//
+//	GetCloudSecurityGroupRuleArray{ GetCloudSecurityGroupRuleArgs{...} }
+type GetCloudSecurityGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupRuleArrayOutput() GetCloudSecurityGroupRuleArrayOutput
+	ToGetCloudSecurityGroupRuleArrayOutputWithContext(context.Context) GetCloudSecurityGroupRuleArrayOutput
+}
+
+type GetCloudSecurityGroupRuleArray []GetCloudSecurityGroupRuleInput
+
+func (GetCloudSecurityGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupRuleArray) ToGetCloudSecurityGroupRuleArrayOutput() GetCloudSecurityGroupRuleArrayOutput {
+	return i.ToGetCloudSecurityGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupRuleArray) ToGetCloudSecurityGroupRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupRuleOutput) ToGetCloudSecurityGroupRuleOutput() GetCloudSecurityGroupRuleOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupRuleOutput) ToGetCloudSecurityGroupRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupRuleOutput {
+	return o
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Direction of the rule.
+func (o GetCloudSecurityGroupRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ethernet type.
+func (o GetCloudSecurityGroupRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o GetCloudSecurityGroupRuleOutput) PortRangeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) int { return v.PortRangeMax }).(pulumi.IntOutput)
+}
+
+// Minimum port number.
+func (o GetCloudSecurityGroupRuleOutput) PortRangeMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) int { return v.PortRangeMin }).(pulumi.IntOutput)
+}
+
+// Protocol.
+func (o GetCloudSecurityGroupRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Remote security group ID.
+func (o GetCloudSecurityGroupRuleOutput) RemoteGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) string { return v.RemoteGroupId }).(pulumi.StringOutput)
+}
+
+// Remote IP prefix.
+func (o GetCloudSecurityGroupRuleOutput) RemoteIpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupRule) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupRuleArrayOutput) ToGetCloudSecurityGroupRuleArrayOutput() GetCloudSecurityGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupRuleArrayOutput) ToGetCloudSecurityGroupRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupRule {
+		return vs[0].([]GetCloudSecurityGroupRule)[vs[1].(int)]
+	}).(GetCloudSecurityGroupRuleOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroup struct {
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the security group.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the security group:
+	CurrentState GetCloudSecurityGroupsSecurityGroupCurrentState `pulumi:"currentState"`
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Rule ID.
+	Id string `pulumi:"id"`
+	// Location details:
+	Location GetCloudSecurityGroupsSecurityGroupLocation `pulumi:"location"`
+	// Name of the security group.
+	Name string `pulumi:"name"`
+	// Security group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// List of security group rules:
+	Rules []GetCloudSecurityGroupsSecurityGroupRule `pulumi:"rules"`
+	// Last update date of the security group.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupArgs and GetCloudSecurityGroupsSecurityGroupOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupArgs{...}
+type GetCloudSecurityGroupsSecurityGroupInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupOutput() GetCloudSecurityGroupsSecurityGroupOutput
+	ToGetCloudSecurityGroupsSecurityGroupOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupArgs struct {
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the security group.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the security group:
+	CurrentState GetCloudSecurityGroupsSecurityGroupCurrentStateInput `pulumi:"currentState"`
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Rule ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Location details:
+	Location GetCloudSecurityGroupsSecurityGroupLocationInput `pulumi:"location"`
+	// Name of the security group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Security group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// List of security group rules:
+	Rules GetCloudSecurityGroupsSecurityGroupRuleArrayInput `pulumi:"rules"`
+	// Last update date of the security group.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroup)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupArgs) ToGetCloudSecurityGroupsSecurityGroupOutput() GetCloudSecurityGroupsSecurityGroupOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupArgs) ToGetCloudSecurityGroupsSecurityGroupOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupOutput)
+}
+
+// GetCloudSecurityGroupsSecurityGroupArrayInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupArray and GetCloudSecurityGroupsSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupArrayInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupArray{ GetCloudSecurityGroupsSecurityGroupArgs{...} }
+type GetCloudSecurityGroupsSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupArrayOutput() GetCloudSecurityGroupsSecurityGroupArrayOutput
+	ToGetCloudSecurityGroupsSecurityGroupArrayOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupArrayOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupArray []GetCloudSecurityGroupsSecurityGroupInput
+
+func (GetCloudSecurityGroupsSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroup)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupArray) ToGetCloudSecurityGroupsSecurityGroupArrayOutput() GetCloudSecurityGroupsSecurityGroupArrayOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupArray) ToGetCloudSecurityGroupsSecurityGroupArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupArrayOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroup)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupOutput) ToGetCloudSecurityGroupsSecurityGroupOutput() GetCloudSecurityGroupsSecurityGroupOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupOutput) ToGetCloudSecurityGroupsSecurityGroupOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupOutput {
+	return o
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudSecurityGroupsSecurityGroupOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the security group.
+func (o GetCloudSecurityGroupsSecurityGroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the security group:
+func (o GetCloudSecurityGroupsSecurityGroupOutput) CurrentState() GetCloudSecurityGroupsSecurityGroupCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) GetCloudSecurityGroupsSecurityGroupCurrentState {
+		return v.CurrentState
+	}).(GetCloudSecurityGroupsSecurityGroupCurrentStateOutput)
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Rule ID.
+func (o GetCloudSecurityGroupsSecurityGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudSecurityGroupsSecurityGroupOutput) Location() GetCloudSecurityGroupsSecurityGroupLocationOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) GetCloudSecurityGroupsSecurityGroupLocation {
+		return v.Location
+	}).(GetCloudSecurityGroupsSecurityGroupLocationOutput)
+}
+
+// Name of the security group.
+func (o GetCloudSecurityGroupsSecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Security group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudSecurityGroupsSecurityGroupOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// List of security group rules:
+func (o GetCloudSecurityGroupsSecurityGroupOutput) Rules() GetCloudSecurityGroupsSecurityGroupRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) []GetCloudSecurityGroupsSecurityGroupRule { return v.Rules }).(GetCloudSecurityGroupsSecurityGroupRuleArrayOutput)
+}
+
+// Last update date of the security group.
+func (o GetCloudSecurityGroupsSecurityGroupOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroup) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroup)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupArrayOutput) ToGetCloudSecurityGroupsSecurityGroupArrayOutput() GetCloudSecurityGroupsSecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupArrayOutput) ToGetCloudSecurityGroupsSecurityGroupArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupsSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupsSecurityGroup {
+		return vs[0].([]GetCloudSecurityGroupsSecurityGroup)[vs[1].(int)]
+	}).(GetCloudSecurityGroupsSecurityGroupOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentState struct {
+	// Default egress rules auto-created by OpenStack (same schema as `rules`).
+	DefaultRules []GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule `pulumi:"defaultRules"`
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Location details:
+	Location GetCloudSecurityGroupsSecurityGroupCurrentStateLocation `pulumi:"location"`
+	// Name of the security group.
+	Name string `pulumi:"name"`
+	// User-specified security group rules with their IDs:
+	Rules []GetCloudSecurityGroupsSecurityGroupCurrentStateRule `pulumi:"rules"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupCurrentStateInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupCurrentStateArgs and GetCloudSecurityGroupsSecurityGroupCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupCurrentStateInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupCurrentStateArgs{...}
+type GetCloudSecurityGroupsSecurityGroupCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateOutput
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateArgs struct {
+	// Default egress rules auto-created by OpenStack (same schema as `rules`).
+	DefaultRules GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayInput `pulumi:"defaultRules"`
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Location details:
+	Location GetCloudSecurityGroupsSecurityGroupCurrentStateLocationInput `pulumi:"location"`
+	// Name of the security group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// User-specified security group rules with their IDs:
+	Rules GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupCurrentStateOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateOutput {
+	return o
+}
+
+// Default egress rules auto-created by OpenStack (same schema as `rules`).
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) DefaultRules() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentState) []GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule {
+		return v.DefaultRules
+	}).(GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Location details:
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) Location() GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentState) GetCloudSecurityGroupsSecurityGroupCurrentStateLocation {
+		return v.Location
+	}).(GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput)
+}
+
+// Name of the security group.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// User-specified security group rules with their IDs:
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateOutput) Rules() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentState) []GetCloudSecurityGroupsSecurityGroupCurrentStateRule {
+		return v.Rules
+	}).(GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule struct {
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Direction of the rule.
+	Direction string `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType string `pulumi:"ethernetType"`
+	// Rule ID.
+	Id string `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs and GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs{...}
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs struct {
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Rule ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput)
+}
+
+// GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray and GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray{ GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs{...} }
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray []GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleInput
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput {
+	return o
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Direction of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ethernet type.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Rule ID.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) PortRangeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) int { return v.PortRangeMax }).(pulumi.IntOutput)
+}
+
+// Minimum port number.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) PortRangeMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) int { return v.PortRangeMin }).(pulumi.IntOutput)
+}
+
+// Protocol.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Remote security group ID.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) RemoteGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.RemoteGroupId }).(pulumi.StringOutput)
+}
+
+// Remote IP prefix.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput) RemoteIpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule {
+		return vs[0].([]GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRule)[vs[1].(int)]
+	}).(GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupCurrentStateLocationInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs and GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupCurrentStateLocationInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs{...}
+type GetCloudSecurityGroupsSecurityGroupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRule struct {
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Direction of the rule.
+	Direction string `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType string `pulumi:"ethernetType"`
+	// Rule ID.
+	Id string `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupCurrentStateRuleInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs and GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupCurrentStateRuleInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs{...}
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs struct {
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Rule ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput)
+}
+
+// GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray and GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray{ GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs{...} }
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput
+	ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray []GetCloudSecurityGroupsSecurityGroupCurrentStateRuleInput
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput {
+	return o
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Direction of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ethernet type.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Rule ID.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) PortRangeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) int { return v.PortRangeMax }).(pulumi.IntOutput)
+}
+
+// Minimum port number.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) PortRangeMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) int { return v.PortRangeMin }).(pulumi.IntOutput)
+}
+
+// Protocol.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Remote security group ID.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) RemoteGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.RemoteGroupId }).(pulumi.StringOutput)
+}
+
+// Remote IP prefix.
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput) RemoteIpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupCurrentStateRule) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroupCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput) ToGetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupsSecurityGroupCurrentStateRule {
+		return vs[0].([]GetCloudSecurityGroupsSecurityGroupCurrentStateRule)[vs[1].(int)]
+	}).(GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupLocation struct {
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupLocationInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupLocationArgs and GetCloudSecurityGroupsSecurityGroupLocationOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupLocationInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupLocationArgs{...}
+type GetCloudSecurityGroupsSecurityGroupLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupLocationOutput() GetCloudSecurityGroupsSecurityGroupLocationOutput
+	ToGetCloudSecurityGroupsSecurityGroupLocationOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupLocationOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupLocationArgs struct {
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupLocation)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupLocationArgs) ToGetCloudSecurityGroupsSecurityGroupLocationOutput() GetCloudSecurityGroupsSecurityGroupLocationOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupLocationArgs) ToGetCloudSecurityGroupsSecurityGroupLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupLocationOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupLocation)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupLocationOutput) ToGetCloudSecurityGroupsSecurityGroupLocationOutput() GetCloudSecurityGroupsSecurityGroupLocationOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupLocationOutput) ToGetCloudSecurityGroupsSecurityGroupLocationOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupLocationOutput {
+	return o
+}
+
+// Region.
+func (o GetCloudSecurityGroupsSecurityGroupLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupRule struct {
+	// Description of the rule.
+	Description string `pulumi:"description"`
+	// Direction of the rule.
+	Direction string `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType string `pulumi:"ethernetType"`
+	// Maximum port number.
+	PortRangeMax int `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin int `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol string `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId string `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix string `pulumi:"remoteIpPrefix"`
+}
+
+// GetCloudSecurityGroupsSecurityGroupRuleInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupRuleArgs and GetCloudSecurityGroupsSecurityGroupRuleOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupRuleInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupRuleArgs{...}
+type GetCloudSecurityGroupsSecurityGroupRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupRuleOutput() GetCloudSecurityGroupsSecurityGroupRuleOutput
+	ToGetCloudSecurityGroupsSecurityGroupRuleOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupRuleOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupRuleArgs struct {
+	// Description of the rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Direction of the rule.
+	Direction pulumi.StringInput `pulumi:"direction"`
+	// Ethernet type.
+	EthernetType pulumi.StringInput `pulumi:"ethernetType"`
+	// Maximum port number.
+	PortRangeMax pulumi.IntInput `pulumi:"portRangeMax"`
+	// Minimum port number.
+	PortRangeMin pulumi.IntInput `pulumi:"portRangeMin"`
+	// Protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Remote security group ID.
+	RemoteGroupId pulumi.StringInput `pulumi:"remoteGroupId"`
+	// Remote IP prefix.
+	RemoteIpPrefix pulumi.StringInput `pulumi:"remoteIpPrefix"`
+}
+
+func (GetCloudSecurityGroupsSecurityGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupRuleArgs) ToGetCloudSecurityGroupsSecurityGroupRuleOutput() GetCloudSecurityGroupsSecurityGroupRuleOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupRuleArgs) ToGetCloudSecurityGroupsSecurityGroupRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupRuleOutput)
+}
+
+// GetCloudSecurityGroupsSecurityGroupRuleArrayInput is an input type that accepts GetCloudSecurityGroupsSecurityGroupRuleArray and GetCloudSecurityGroupsSecurityGroupRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudSecurityGroupsSecurityGroupRuleArrayInput` via:
+//
+//	GetCloudSecurityGroupsSecurityGroupRuleArray{ GetCloudSecurityGroupsSecurityGroupRuleArgs{...} }
+type GetCloudSecurityGroupsSecurityGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupRuleArrayOutput
+	ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutputWithContext(context.Context) GetCloudSecurityGroupsSecurityGroupRuleArrayOutput
+}
+
+type GetCloudSecurityGroupsSecurityGroupRuleArray []GetCloudSecurityGroupsSecurityGroupRuleInput
+
+func (GetCloudSecurityGroupsSecurityGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroupRule)(nil)).Elem()
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupRuleArray) ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupRuleArrayOutput {
+	return i.ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSecurityGroupsSecurityGroupRuleArray) ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSecurityGroupsSecurityGroupRuleArrayOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) ToGetCloudSecurityGroupsSecurityGroupRuleOutput() GetCloudSecurityGroupsSecurityGroupRuleOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) ToGetCloudSecurityGroupsSecurityGroupRuleOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupRuleOutput {
+	return o
+}
+
+// Description of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Direction of the rule.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Ethernet type.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) EthernetType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) string { return v.EthernetType }).(pulumi.StringOutput)
+}
+
+// Maximum port number.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) PortRangeMax() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) int { return v.PortRangeMax }).(pulumi.IntOutput)
+}
+
+// Minimum port number.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) PortRangeMin() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) int { return v.PortRangeMin }).(pulumi.IntOutput)
+}
+
+// Protocol.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Remote security group ID.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) RemoteGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) string { return v.RemoteGroupId }).(pulumi.StringOutput)
+}
+
+// Remote IP prefix.
+func (o GetCloudSecurityGroupsSecurityGroupRuleOutput) RemoteIpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSecurityGroupsSecurityGroupRule) string { return v.RemoteIpPrefix }).(pulumi.StringOutput)
+}
+
+type GetCloudSecurityGroupsSecurityGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSecurityGroupsSecurityGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSecurityGroupsSecurityGroupRule)(nil)).Elem()
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupRuleArrayOutput) ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutput() GetCloudSecurityGroupsSecurityGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupRuleArrayOutput) ToGetCloudSecurityGroupsSecurityGroupRuleArrayOutputWithContext(ctx context.Context) GetCloudSecurityGroupsSecurityGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudSecurityGroupsSecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) GetCloudSecurityGroupsSecurityGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSecurityGroupsSecurityGroupRule {
+		return vs[0].([]GetCloudSecurityGroupsSecurityGroupRule)[vs[1].(int)]
+	}).(GetCloudSecurityGroupsSecurityGroupRuleOutput)
+}
+
+type GetCloudSshKeysSshKey struct {
+	// Creation date of the SSH key (RFC 3339 format).
+	CreatedAt string `pulumi:"createdAt"`
+	// SSH key name.
+	Name string `pulumi:"name"`
+	// SSH public key content.
+	PublicKey string `pulumi:"publicKey"`
+	// Last update date of the SSH key (RFC 3339 format).
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudSshKeysSshKeyInput is an input type that accepts GetCloudSshKeysSshKeyArgs and GetCloudSshKeysSshKeyOutput values.
+// You can construct a concrete instance of `GetCloudSshKeysSshKeyInput` via:
+//
+//	GetCloudSshKeysSshKeyArgs{...}
+type GetCloudSshKeysSshKeyInput interface {
+	pulumi.Input
+
+	ToGetCloudSshKeysSshKeyOutput() GetCloudSshKeysSshKeyOutput
+	ToGetCloudSshKeysSshKeyOutputWithContext(context.Context) GetCloudSshKeysSshKeyOutput
+}
+
+type GetCloudSshKeysSshKeyArgs struct {
+	// Creation date of the SSH key (RFC 3339 format).
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// SSH key name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// SSH public key content.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+	// Last update date of the SSH key (RFC 3339 format).
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudSshKeysSshKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetCloudSshKeysSshKeyArgs) ToGetCloudSshKeysSshKeyOutput() GetCloudSshKeysSshKeyOutput {
+	return i.ToGetCloudSshKeysSshKeyOutputWithContext(context.Background())
+}
+
+func (i GetCloudSshKeysSshKeyArgs) ToGetCloudSshKeysSshKeyOutputWithContext(ctx context.Context) GetCloudSshKeysSshKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSshKeysSshKeyOutput)
+}
+
+// GetCloudSshKeysSshKeyArrayInput is an input type that accepts GetCloudSshKeysSshKeyArray and GetCloudSshKeysSshKeyArrayOutput values.
+// You can construct a concrete instance of `GetCloudSshKeysSshKeyArrayInput` via:
+//
+//	GetCloudSshKeysSshKeyArray{ GetCloudSshKeysSshKeyArgs{...} }
+type GetCloudSshKeysSshKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudSshKeysSshKeyArrayOutput() GetCloudSshKeysSshKeyArrayOutput
+	ToGetCloudSshKeysSshKeyArrayOutputWithContext(context.Context) GetCloudSshKeysSshKeyArrayOutput
+}
+
+type GetCloudSshKeysSshKeyArray []GetCloudSshKeysSshKeyInput
+
+func (GetCloudSshKeysSshKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetCloudSshKeysSshKeyArray) ToGetCloudSshKeysSshKeyArrayOutput() GetCloudSshKeysSshKeyArrayOutput {
+	return i.ToGetCloudSshKeysSshKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudSshKeysSshKeyArray) ToGetCloudSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetCloudSshKeysSshKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudSshKeysSshKeyArrayOutput)
+}
+
+type GetCloudSshKeysSshKeyOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSshKeysSshKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetCloudSshKeysSshKeyOutput) ToGetCloudSshKeysSshKeyOutput() GetCloudSshKeysSshKeyOutput {
+	return o
+}
+
+func (o GetCloudSshKeysSshKeyOutput) ToGetCloudSshKeysSshKeyOutputWithContext(ctx context.Context) GetCloudSshKeysSshKeyOutput {
+	return o
+}
+
+// Creation date of the SSH key (RFC 3339 format).
+func (o GetCloudSshKeysSshKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSshKeysSshKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// SSH key name.
+func (o GetCloudSshKeysSshKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSshKeysSshKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// SSH public key content.
+func (o GetCloudSshKeysSshKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSshKeysSshKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// Last update date of the SSH key (RFC 3339 format).
+func (o GetCloudSshKeysSshKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudSshKeysSshKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudSshKeysSshKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudSshKeysSshKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetCloudSshKeysSshKeyArrayOutput) ToGetCloudSshKeysSshKeyArrayOutput() GetCloudSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetCloudSshKeysSshKeyArrayOutput) ToGetCloudSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetCloudSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetCloudSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetCloudSshKeysSshKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudSshKeysSshKey {
+		return vs[0].([]GetCloudSshKeysSshKey)[vs[1].(int)]
+	}).(GetCloudSshKeysSshKeyOutput)
 }
 
 type GetCloudStorageBlockVolumeAttachedInstance struct {
@@ -13187,6 +21218,36 @@ func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) Cidr(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateInput)(nil)).Elem(), CloudGatewayCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStatePtrInput)(nil)).Elem(), CloudGatewayCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateExternalGatewayInput)(nil)).Elem(), CloudGatewayCurrentStateExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateExternalGatewayPtrInput)(nil)).Elem(), CloudGatewayCurrentStateExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateLocationInput)(nil)).Elem(), CloudGatewayCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateLocationPtrInput)(nil)).Elem(), CloudGatewayCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateSubnetInput)(nil)).Elem(), CloudGatewayCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateSubnetArrayInput)(nil)).Elem(), CloudGatewayCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayExternalGatewayInput)(nil)).Elem(), CloudGatewayExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayExternalGatewayPtrInput)(nil)).Elem(), CloudGatewayExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStatePtrInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateLocationInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateLocationPtrInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetAllocationPoolInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetAllocationPoolArrayInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStatePtrInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateLocationInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTaskInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTaskArrayInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTaskErrorInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayInput)(nil)).Elem(), CloudNetworkPrivateVrackSubnetCurrentTaskErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectKubeLogSubscriptionResourceInput)(nil)).Elem(), CloudProjectKubeLogSubscriptionResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectKubeLogSubscriptionResourceArrayInput)(nil)).Elem(), CloudProjectKubeLogSubscriptionResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleArrayInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadArgs{})
@@ -13201,6 +21262,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayInput)(nil)).Elem(), CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateInput)(nil)).Elem(), CloudSecurityGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStatePtrInput)(nil)).Elem(), CloudSecurityGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateDefaultRuleInput)(nil)).Elem(), CloudSecurityGroupCurrentStateDefaultRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateDefaultRuleArrayInput)(nil)).Elem(), CloudSecurityGroupCurrentStateDefaultRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateLocationInput)(nil)).Elem(), CloudSecurityGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateLocationPtrInput)(nil)).Elem(), CloudSecurityGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateRuleInput)(nil)).Elem(), CloudSecurityGroupCurrentStateRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupCurrentStateRuleArrayInput)(nil)).Elem(), CloudSecurityGroupCurrentStateRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupRuleInput)(nil)).Elem(), CloudSecurityGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSecurityGroupRuleArrayInput)(nil)).Elem(), CloudSecurityGroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStatePtrInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeBackupCurrentStateLocationInput)(nil)).Elem(), CloudStorageBlockVolumeBackupCurrentStateLocationArgs{})
@@ -13270,6 +21341,50 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), VrackservicesTargetSpecSubnetServiceEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), VrackservicesTargetSpecSubnetServiceEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VrackservicesTargetSpecSubnetServiceRangeInput)(nil)).Elem(), VrackservicesTargetSpecSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayCurrentStateInput)(nil)).Elem(), GetCloudGatewayCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayCurrentStateExternalGatewayInput)(nil)).Elem(), GetCloudGatewayCurrentStateExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayCurrentStateLocationInput)(nil)).Elem(), GetCloudGatewayCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayCurrentStateSubnetInput)(nil)).Elem(), GetCloudGatewayCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayCurrentStateSubnetArrayInput)(nil)).Elem(), GetCloudGatewayCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayExternalGatewayInput)(nil)).Elem(), GetCloudGatewayExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewayLocationInput)(nil)).Elem(), GetCloudGatewayLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayInput)(nil)).Elem(), GetCloudGatewaysGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayArrayInput)(nil)).Elem(), GetCloudGatewaysGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateInput)(nil)).Elem(), GetCloudGatewaysGatewayCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateExternalGatewayInput)(nil)).Elem(), GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateLocationInput)(nil)).Elem(), GetCloudGatewaysGatewayCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateSubnetInput)(nil)).Elem(), GetCloudGatewaysGatewayCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateSubnetArrayInput)(nil)).Elem(), GetCloudGatewaysGatewayCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayExternalGatewayInput)(nil)).Elem(), GetCloudGatewaysGatewayExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayLocationInput)(nil)).Elem(), GetCloudGatewaysGatewayLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentStateInput)(nil)).Elem(), GetCloudNetworkPrivateVrackCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentStateLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetAllocationPoolInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetCurrentStateLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackSubnetsSubnetLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkInput)(nil)).Elem(), GetCloudNetworkPrivateVracksNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkArrayInput)(nil)).Elem(), GetCloudNetworkPrivateVracksNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkCurrentStateInput)(nil)).Elem(), GetCloudNetworkPrivateVracksNetworkCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkCurrentStateLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVracksNetworkLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVracksNetworkLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorCapabilityArrayInput)(nil)).Elem(), GetCloudProjectFlavorCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectFlavorPlanCodesInput)(nil)).Elem(), GetCloudProjectFlavorPlanCodesArgs{})
@@ -13278,6 +21393,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayExternalInformationIpArrayInput)(nil)).Elem(), GetCloudProjectGatewayExternalInformationIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayInterfaceInput)(nil)).Elem(), GetCloudProjectGatewayInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectGatewayInterfaceArrayInput)(nil)).Elem(), GetCloudProjectGatewayInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectKubeLogSubscriptionResourceInput)(nil)).Elem(), GetCloudProjectKubeLogSubscriptionResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectKubeLogSubscriptionResourceArrayInput)(nil)).Elem(), GetCloudProjectKubeLogSubscriptionResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlanInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesPlanPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesPlanPlanArrayInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesPlanPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectRancherCapabilitiesVersionVersionInput)(nil)).Elem(), GetCloudProjectRancherCapabilitiesVersionVersionArgs{})
@@ -13294,6 +21411,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionInput)(nil)).Elem(), GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayInput)(nil)).Elem(), GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRegionsRegionInput)(nil)).Elem(), GetCloudRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudRegionsRegionArrayInput)(nil)).Elem(), GetCloudRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupCurrentStateInput)(nil)).Elem(), GetCloudSecurityGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupCurrentStateDefaultRuleInput)(nil)).Elem(), GetCloudSecurityGroupCurrentStateDefaultRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupCurrentStateDefaultRuleArrayInput)(nil)).Elem(), GetCloudSecurityGroupCurrentStateDefaultRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupCurrentStateLocationInput)(nil)).Elem(), GetCloudSecurityGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupCurrentStateRuleInput)(nil)).Elem(), GetCloudSecurityGroupCurrentStateRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupCurrentStateRuleArrayInput)(nil)).Elem(), GetCloudSecurityGroupCurrentStateRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupLocationInput)(nil)).Elem(), GetCloudSecurityGroupLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupRuleInput)(nil)).Elem(), GetCloudSecurityGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupRuleArrayInput)(nil)).Elem(), GetCloudSecurityGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupArrayInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateLocationInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateRuleInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupLocationInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupRuleInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSecurityGroupsSecurityGroupRuleArrayInput)(nil)).Elem(), GetCloudSecurityGroupsSecurityGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSshKeysSshKeyInput)(nil)).Elem(), GetCloudSshKeysSshKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudSshKeysSshKeyArrayInput)(nil)).Elem(), GetCloudSshKeysSshKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeAttachedInstanceInput)(nil)).Elem(), GetCloudStorageBlockVolumeAttachedInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeAttachedInstanceArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumeAttachedInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumeBackupLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumeBackupLocationArgs{})
@@ -13382,6 +21523,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateExternalGatewayOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateExternalGatewayPtrOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(CloudGatewayCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(CloudGatewayExternalGatewayOutput{})
+	pulumi.RegisterOutputType(CloudGatewayExternalGatewayPtrOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetAllocationPoolOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentTaskOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentTaskErrorOutput{})
+	pulumi.RegisterOutputType(CloudNetworkPrivateVrackSubnetCurrentTaskErrorArrayOutput{})
+	pulumi.RegisterOutputType(CloudProjectKubeLogSubscriptionResourceOutput{})
+	pulumi.RegisterOutputType(CloudProjectKubeLogSubscriptionResourceArrayOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleArrayOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadOutput{})
@@ -13396,6 +21567,16 @@ func init() {
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput{})
 	pulumi.RegisterOutputType(CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateDefaultRuleOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateDefaultRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateRuleOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupCurrentStateRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupRuleOutput{})
+	pulumi.RegisterOutputType(CloudSecurityGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeBackupCurrentStateLocationOutput{})
@@ -13465,6 +21646,50 @@ func init() {
 	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetServiceEndpointOutput{})
 	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetServiceEndpointArrayOutput{})
 	pulumi.RegisterOutputType(VrackservicesTargetSpecSubnetServiceRangeOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayCurrentStateExternalGatewayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayExternalGatewayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewayLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayCurrentStateExternalGatewayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayExternalGatewayOutput{})
+	pulumi.RegisterOutputType(GetCloudGatewaysGatewayLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetAllocationPoolOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackSubnetsSubnetLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVracksNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVracksNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVracksNetworkCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVracksNetworkCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudNetworkPrivateVracksNetworkLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectFlavorPlanCodesOutput{})
@@ -13473,6 +21698,8 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudProjectGatewayExternalInformationIpArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectGatewayInterfaceOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectGatewayInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectKubeLogSubscriptionResourceOutput{})
+	pulumi.RegisterOutputType(GetCloudProjectKubeLogSubscriptionResourceArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesPlanPlanOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesPlanPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectRancherCapabilitiesVersionVersionOutput{})
@@ -13489,6 +21716,30 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionOutput{})
 	pulumi.RegisterOutputType(GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetCloudRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupCurrentStateDefaultRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupCurrentStateDefaultRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupCurrentStateRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupCurrentStateRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupCurrentStateRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudSecurityGroupsSecurityGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudSshKeysSshKeyOutput{})
+	pulumi.RegisterOutputType(GetCloudSshKeysSshKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeAttachedInstanceOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeAttachedInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumeBackupLocationOutput{})

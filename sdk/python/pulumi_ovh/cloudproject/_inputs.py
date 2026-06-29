@@ -75,12 +75,38 @@ __all__ = [
     'KubeCustomizationApiserverArgsDict',
     'KubeCustomizationApiserverAdmissionpluginArgs',
     'KubeCustomizationApiserverAdmissionpluginArgsDict',
+    'KubeCustomizationCiliumArgs',
+    'KubeCustomizationCiliumArgsDict',
+    'KubeCustomizationCiliumClusterMeshArgs',
+    'KubeCustomizationCiliumClusterMeshArgsDict',
+    'KubeCustomizationCiliumClusterMeshApiServerArgs',
+    'KubeCustomizationCiliumClusterMeshApiServerArgsDict',
+    'KubeCustomizationCiliumHubbleArgs',
+    'KubeCustomizationCiliumHubbleArgsDict',
+    'KubeCustomizationCiliumHubbleRelayArgs',
+    'KubeCustomizationCiliumHubbleRelayArgsDict',
+    'KubeCustomizationCiliumHubbleUiArgs',
+    'KubeCustomizationCiliumHubbleUiArgsDict',
+    'KubeCustomizationCiliumHubbleUiBackendResourcesArgs',
+    'KubeCustomizationCiliumHubbleUiBackendResourcesArgsDict',
+    'KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs',
+    'KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict',
+    'KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs',
+    'KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict',
+    'KubeCustomizationCiliumHubbleUiFrontendResourcesArgs',
+    'KubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict',
+    'KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs',
+    'KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict',
+    'KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs',
+    'KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict',
     'KubeCustomizationKubeProxyArgs',
     'KubeCustomizationKubeProxyArgsDict',
     'KubeCustomizationKubeProxyIptablesArgs',
     'KubeCustomizationKubeProxyIptablesArgsDict',
     'KubeCustomizationKubeProxyIpvsArgs',
     'KubeCustomizationKubeProxyIpvsArgsDict',
+    'KubeIpAllocationPolicyArgs',
+    'KubeIpAllocationPolicyArgsDict',
     'KubeKubeconfigAttributeArgs',
     'KubeKubeconfigAttributeArgsDict',
     'KubeNodePoolAttachFloatingIpsArgs',
@@ -185,6 +211,10 @@ __all__ = [
     'StorageVersioningArgsDict',
     'UserRoleArgs',
     'UserRoleArgsDict',
+    'VolumeEncryptionArgs',
+    'VolumeEncryptionArgsDict',
+    'VolumeEncryptionKmsArgs',
+    'VolumeEncryptionKmsArgsDict',
     'VolumeSubOperationArgs',
     'VolumeSubOperationArgsDict',
     'GetKubeCustomizationArgs',
@@ -193,12 +223,38 @@ __all__ = [
     'GetKubeCustomizationApiserverArgsDict',
     'GetKubeCustomizationApiserverAdmissionpluginArgs',
     'GetKubeCustomizationApiserverAdmissionpluginArgsDict',
+    'GetKubeCustomizationCiliumArgs',
+    'GetKubeCustomizationCiliumArgsDict',
+    'GetKubeCustomizationCiliumClusterMeshArgs',
+    'GetKubeCustomizationCiliumClusterMeshArgsDict',
+    'GetKubeCustomizationCiliumClusterMeshApiServerArgs',
+    'GetKubeCustomizationCiliumClusterMeshApiServerArgsDict',
+    'GetKubeCustomizationCiliumHubbleArgs',
+    'GetKubeCustomizationCiliumHubbleArgsDict',
+    'GetKubeCustomizationCiliumHubbleRelayArgs',
+    'GetKubeCustomizationCiliumHubbleRelayArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiArgs',
+    'GetKubeCustomizationCiliumHubbleUiArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs',
+    'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs',
+    'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs',
+    'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs',
+    'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs',
+    'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict',
+    'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs',
+    'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict',
     'GetKubeCustomizationKubeProxyArgs',
     'GetKubeCustomizationKubeProxyArgsDict',
     'GetKubeCustomizationKubeProxyIptablesArgs',
     'GetKubeCustomizationKubeProxyIptablesArgsDict',
     'GetKubeCustomizationKubeProxyIpvsArgs',
     'GetKubeCustomizationKubeProxyIpvsArgsDict',
+    'GetKubeIpAllocationPolicyArgs',
+    'GetKubeIpAllocationPolicyArgsDict',
     'GetKubeNodePoolAttachFloatingIpsArgs',
     'GetKubeNodePoolAttachFloatingIpsArgsDict',
     'GetKubeNodePoolTemplateArgs',
@@ -2032,6 +2088,670 @@ class KubeCustomizationApiserverAdmissionpluginArgs:
 
 
 if not MYPY:
+    class KubeCustomizationCiliumArgsDict(TypedDict):
+        cluster_id: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+        """
+        cluster_mesh: NotRequired[pulumi.Input['KubeCustomizationCiliumClusterMeshArgsDict']]
+        """
+        ClusterMesh feature configuration.
+        """
+        hubble: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleArgsDict']]
+        """
+        Hubble observability stack configuration.
+        """
+elif False:
+    KubeCustomizationCiliumArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumArgs:
+    def __init__(__self__, *,
+                 cluster_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cluster_mesh: Optional[pulumi.Input['KubeCustomizationCiliumClusterMeshArgs']] = None,
+                 hubble: Optional[pulumi.Input['KubeCustomizationCiliumHubbleArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.int] cluster_id: Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+        :param pulumi.Input['KubeCustomizationCiliumClusterMeshArgs'] cluster_mesh: ClusterMesh feature configuration.
+        :param pulumi.Input['KubeCustomizationCiliumHubbleArgs'] hubble: Hubble observability stack configuration.
+        """
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if cluster_mesh is not None:
+            pulumi.set(__self__, "cluster_mesh", cluster_mesh)
+        if hubble is not None:
+            pulumi.set(__self__, "hubble", hubble)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterMesh")
+    def cluster_mesh(self) -> Optional[pulumi.Input['KubeCustomizationCiliumClusterMeshArgs']]:
+        """
+        ClusterMesh feature configuration.
+        """
+        return pulumi.get(self, "cluster_mesh")
+
+    @cluster_mesh.setter
+    def cluster_mesh(self, value: Optional[pulumi.Input['KubeCustomizationCiliumClusterMeshArgs']]):
+        pulumi.set(self, "cluster_mesh", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hubble(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleArgs']]:
+        """
+        Hubble observability stack configuration.
+        """
+        return pulumi.get(self, "hubble")
+
+    @hubble.setter
+    def hubble(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleArgs']]):
+        pulumi.set(self, "hubble", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumClusterMeshArgsDict(TypedDict):
+        api_server: NotRequired[pulumi.Input['KubeCustomizationCiliumClusterMeshApiServerArgsDict']]
+        """
+        Define how the ClusterMesh API server is exposed.
+        """
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable the ClusterMesh feature.
+        """
+elif False:
+    KubeCustomizationCiliumClusterMeshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumClusterMeshArgs:
+    def __init__(__self__, *,
+                 api_server: Optional[pulumi.Input['KubeCustomizationCiliumClusterMeshApiServerArgs']] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['KubeCustomizationCiliumClusterMeshApiServerArgs'] api_server: Define how the ClusterMesh API server is exposed.
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the ClusterMesh feature.
+        """
+        if api_server is not None:
+            pulumi.set(__self__, "api_server", api_server)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="apiServer")
+    def api_server(self) -> Optional[pulumi.Input['KubeCustomizationCiliumClusterMeshApiServerArgs']]:
+        """
+        Define how the ClusterMesh API server is exposed.
+        """
+        return pulumi.get(self, "api_server")
+
+    @api_server.setter
+    def api_server(self, value: Optional[pulumi.Input['KubeCustomizationCiliumClusterMeshApiServerArgs']]):
+        pulumi.set(self, "api_server", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable the ClusterMesh feature.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumClusterMeshApiServerArgsDict(TypedDict):
+        node_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        NodePort on which the ClusterMesh API server is exposed. Only used when `service_type` is `NodePort`.
+        """
+        service_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+        """
+elif False:
+    KubeCustomizationCiliumClusterMeshApiServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumClusterMeshApiServerArgs:
+    def __init__(__self__, *,
+                 node_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 service_type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] node_port: NodePort on which the ClusterMesh API server is exposed. Only used when `service_type` is `NodePort`.
+        :param pulumi.Input[_builtins.str] service_type: Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+        """
+        if node_port is not None:
+            pulumi.set(__self__, "node_port", node_port)
+        if service_type is not None:
+            pulumi.set(__self__, "service_type", service_type)
+
+    @_builtins.property
+    @pulumi.getter(name="nodePort")
+    def node_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        NodePort on which the ClusterMesh API server is exposed. Only used when `service_type` is `NodePort`.
+        """
+        return pulumi.get(self, "node_port")
+
+    @node_port.setter
+    def node_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "node_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_type", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable Hubble.
+        """
+        relay: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleRelayArgsDict']]
+        """
+        Hubble Relay configuration.
+        """
+        ui: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiArgsDict']]
+        """
+        Hubble UI configuration.
+        """
+elif False:
+    KubeCustomizationCiliumHubbleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 relay: Optional[pulumi.Input['KubeCustomizationCiliumHubbleRelayArgs']] = None,
+                 ui: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable Hubble.
+        :param pulumi.Input['KubeCustomizationCiliumHubbleRelayArgs'] relay: Hubble Relay configuration.
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiArgs'] ui: Hubble UI configuration.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if relay is not None:
+            pulumi.set(__self__, "relay", relay)
+        if ui is not None:
+            pulumi.set(__self__, "ui", ui)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable Hubble.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relay(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleRelayArgs']]:
+        """
+        Hubble Relay configuration.
+        """
+        return pulumi.get(self, "relay")
+
+    @relay.setter
+    def relay(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleRelayArgs']]):
+        pulumi.set(self, "relay", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ui(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiArgs']]:
+        """
+        Hubble UI configuration.
+        """
+        return pulumi.get(self, "ui")
+
+    @ui.setter
+    def ui(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiArgs']]):
+        pulumi.set(self, "ui", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleRelayArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable Hubble Relay.
+        """
+elif False:
+    KubeCustomizationCiliumHubbleRelayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleRelayArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable Hubble Relay.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable Hubble Relay.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiArgsDict(TypedDict):
+        backend_resources: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesArgsDict']]
+        """
+        Resource requests and limits for the Hubble UI backend.
+        """
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Enable or disable the Hubble UI.
+        """
+        frontend_resources: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict']]
+        """
+        Resource requests and limits for the Hubble UI frontend.
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiArgs:
+    def __init__(__self__, *,
+                 backend_resources: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesArgs']] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 frontend_resources: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesArgs']] = None):
+        """
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesArgs'] backend_resources: Resource requests and limits for the Hubble UI backend.
+        :param pulumi.Input[_builtins.bool] enabled: Enable or disable the Hubble UI.
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesArgs'] frontend_resources: Resource requests and limits for the Hubble UI frontend.
+        """
+        if backend_resources is not None:
+            pulumi.set(__self__, "backend_resources", backend_resources)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if frontend_resources is not None:
+            pulumi.set(__self__, "frontend_resources", frontend_resources)
+
+    @_builtins.property
+    @pulumi.getter(name="backendResources")
+    def backend_resources(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesArgs']]:
+        """
+        Resource requests and limits for the Hubble UI backend.
+        """
+        return pulumi.get(self, "backend_resources")
+
+    @backend_resources.setter
+    def backend_resources(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesArgs']]):
+        pulumi.set(self, "backend_resources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable or disable the Hubble UI.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="frontendResources")
+    def frontend_resources(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesArgs']]:
+        """
+        Resource requests and limits for the Hubble UI frontend.
+        """
+        return pulumi.get(self, "frontend_resources")
+
+    @frontend_resources.setter
+    def frontend_resources(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesArgs']]):
+        pulumi.set(self, "frontend_resources", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiBackendResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict']]
+        """
+        Resource limits.
+        """
+        requests: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict']]
+        """
+        Resource requests.
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiBackendResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiBackendResourcesArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs']] = None,
+                 requests: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs']] = None):
+        """
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs'] limits: Resource limits.
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs'] requests: Resource requests.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs']]:
+        """
+        Resource limits.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs']]):
+        pulumi.set(self, "limits", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs']]:
+        """
+        Resource requests.
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs']]):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CPU limit (e.g. `"500m"`).
+        """
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Memory limit (e.g. `"128Mi"`).
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cpu: CPU limit (e.g. `"500m"`).
+        :param pulumi.Input[_builtins.str] memory: Memory limit (e.g. `"128Mi"`).
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CPU limit (e.g. `"500m"`).
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory limit (e.g. `"128Mi"`).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CPU request (e.g. `"500m"`).
+        """
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Memory request (e.g. `"128Mi"`).
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cpu: CPU request (e.g. `"500m"`).
+        :param pulumi.Input[_builtins.str] memory: Memory request (e.g. `"128Mi"`).
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CPU request (e.g. `"500m"`).
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory request (e.g. `"128Mi"`).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict(TypedDict):
+        limits: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict']]
+        """
+        Resource limits.
+        """
+        requests: NotRequired[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict']]
+        """
+        Resource requests.
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiFrontendResourcesArgs:
+    def __init__(__self__, *,
+                 limits: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs']] = None,
+                 requests: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs']] = None):
+        """
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs'] limits: Resource limits.
+        :param pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs'] requests: Resource requests.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs']]:
+        """
+        Resource limits.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs']]):
+        pulumi.set(self, "limits", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs']]:
+        """
+        Resource requests.
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: Optional[pulumi.Input['KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs']]):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CPU limit (e.g. `"500m"`).
+        """
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Memory limit (e.g. `"128Mi"`).
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cpu: CPU limit (e.g. `"500m"`).
+        :param pulumi.Input[_builtins.str] memory: Memory limit (e.g. `"128Mi"`).
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CPU limit (e.g. `"500m"`).
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory limit (e.g. `"128Mi"`).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CPU request (e.g. `"500m"`).
+        """
+        memory: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Memory request (e.g. `"128Mi"`).
+        """
+elif False:
+    KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[_builtins.str]] = None,
+                 memory: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cpu: CPU request (e.g. `"500m"`).
+        :param pulumi.Input[_builtins.str] memory: Memory request (e.g. `"128Mi"`).
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CPU request (e.g. `"500m"`).
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Memory request (e.g. `"128Mi"`).
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
     class KubeCustomizationKubeProxyArgsDict(TypedDict):
         iptables: NotRequired[pulumi.Input['KubeCustomizationKubeProxyIptablesArgsDict']]
         """
@@ -2265,6 +2985,58 @@ class KubeCustomizationKubeProxyIpvsArgs:
     @udp_timeout.setter
     def udp_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "udp_timeout", value)
+
+
+if not MYPY:
+    class KubeIpAllocationPolicyArgsDict(TypedDict):
+        pods_ipv4_cidr: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+        """
+        services_ipv4_cidr: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+        """
+elif False:
+    KubeIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubeIpAllocationPolicyArgs:
+    def __init__(__self__, *,
+                 pods_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None,
+                 services_ipv4_cidr: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] pods_ipv4_cidr: CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] services_ipv4_cidr: CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+        """
+        if pods_ipv4_cidr is not None:
+            pulumi.set(__self__, "pods_ipv4_cidr", pods_ipv4_cidr)
+        if services_ipv4_cidr is not None:
+            pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
+
+    @_builtins.property
+    @pulumi.getter(name="podsIpv4Cidr")
+    def pods_ipv4_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "pods_ipv4_cidr")
+
+    @pods_ipv4_cidr.setter
+    def pods_ipv4_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "pods_ipv4_cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicesIpv4Cidr")
+    def services_ipv4_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "services_ipv4_cidr")
+
+    @services_ipv4_cidr.setter
+    def services_ipv4_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "services_ipv4_cidr", value)
 
 
 if not MYPY:
@@ -6309,6 +7081,110 @@ class UserRoleArgs:
 
 
 if not MYPY:
+    class VolumeEncryptionArgsDict(TypedDict):
+        encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+        """
+        kms: NotRequired[pulumi.Input['VolumeEncryptionKmsArgsDict']]
+        """
+        Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+        """
+elif False:
+    VolumeEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VolumeEncryptionArgs:
+    def __init__(__self__, *,
+                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 kms: Optional[pulumi.Input['VolumeEncryptionKmsArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.bool] encrypted: Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+        :param pulumi.Input['VolumeEncryptionKmsArgs'] kms: Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+        """
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms is not None:
+            pulumi.set(__self__, "kms", kms)
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kms(self) -> Optional[pulumi.Input['VolumeEncryptionKmsArgs']]:
+        """
+        Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+        """
+        return pulumi.get(self, "kms")
+
+    @kms.setter
+    def kms(self, value: Optional[pulumi.Input['VolumeEncryptionKmsArgs']]):
+        pulumi.set(self, "kms", value)
+
+
+if not MYPY:
+    class VolumeEncryptionKmsArgsDict(TypedDict):
+        domain_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        OKMS domain ID holding the customer managed key.
+        """
+        service_key_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        OKMS service key ID used to encrypt the volume.
+        """
+elif False:
+    VolumeEncryptionKmsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VolumeEncryptionKmsArgs:
+    def __init__(__self__, *,
+                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_key_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] domain_id: OKMS domain ID holding the customer managed key.
+        :param pulumi.Input[_builtins.str] service_key_id: OKMS service key ID used to encrypt the volume.
+        """
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if service_key_id is not None:
+            pulumi.set(__self__, "service_key_id", service_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OKMS domain ID holding the customer managed key.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "domain_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyId")
+    def service_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OKMS service key ID used to encrypt the volume.
+        """
+        return pulumi.get(self, "service_key_id")
+
+    @service_key_id.setter
+    def service_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_key_id", value)
+
+
+if not MYPY:
     class VolumeSubOperationArgsDict(TypedDict):
         resource_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -6434,7 +7310,7 @@ if not MYPY:
         """
         enableds: Sequence[_builtins.str]
         """
-        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        Whether the Hubble UI is enabled.
         """
 elif False:
     GetKubeCustomizationApiserverAdmissionpluginArgsDict: TypeAlias = Mapping[str, Any]
@@ -6446,7 +7322,7 @@ class GetKubeCustomizationApiserverAdmissionpluginArgs:
                  enableds: Sequence[_builtins.str]):
         """
         :param Sequence[_builtins.str] disableds: Array of admission plugins disabled, default is [] and only AlwaysPulImages can be disabled at this time.
-        :param Sequence[_builtins.str] enableds: Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        :param Sequence[_builtins.str] enableds: Whether the Hubble UI is enabled.
         """
         pulumi.set(__self__, "disableds", disableds)
         pulumi.set(__self__, "enableds", enableds)
@@ -6467,13 +7343,651 @@ class GetKubeCustomizationApiserverAdmissionpluginArgs:
     @pulumi.getter
     def enableds(self) -> Sequence[_builtins.str]:
         """
-        Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+        Whether the Hubble UI is enabled.
         """
         return pulumi.get(self, "enableds")
 
     @enableds.setter
     def enableds(self, value: Sequence[_builtins.str]):
         pulumi.set(self, "enableds", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumArgsDict(TypedDict):
+        cluster_id: _builtins.int
+        """
+        Cilium cluster ID, between 1 and 255.
+        """
+        cluster_mesh: 'GetKubeCustomizationCiliumClusterMeshArgsDict'
+        """
+        ClusterMesh feature configuration.
+        """
+        hubble: 'GetKubeCustomizationCiliumHubbleArgsDict'
+        """
+        Hubble observability stack configuration.
+        """
+elif False:
+    GetKubeCustomizationCiliumArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumArgs:
+    def __init__(__self__, *,
+                 cluster_id: _builtins.int,
+                 cluster_mesh: 'GetKubeCustomizationCiliumClusterMeshArgs',
+                 hubble: 'GetKubeCustomizationCiliumHubbleArgs'):
+        """
+        :param _builtins.int cluster_id: Cilium cluster ID, between 1 and 255.
+        :param 'GetKubeCustomizationCiliumClusterMeshArgs' cluster_mesh: ClusterMesh feature configuration.
+        :param 'GetKubeCustomizationCiliumHubbleArgs' hubble: Hubble observability stack configuration.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "cluster_mesh", cluster_mesh)
+        pulumi.set(__self__, "hubble", hubble)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> _builtins.int:
+        """
+        Cilium cluster ID, between 1 and 255.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: _builtins.int):
+        pulumi.set(self, "cluster_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterMesh")
+    def cluster_mesh(self) -> 'GetKubeCustomizationCiliumClusterMeshArgs':
+        """
+        ClusterMesh feature configuration.
+        """
+        return pulumi.get(self, "cluster_mesh")
+
+    @cluster_mesh.setter
+    def cluster_mesh(self, value: 'GetKubeCustomizationCiliumClusterMeshArgs'):
+        pulumi.set(self, "cluster_mesh", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hubble(self) -> 'GetKubeCustomizationCiliumHubbleArgs':
+        """
+        Hubble observability stack configuration.
+        """
+        return pulumi.get(self, "hubble")
+
+    @hubble.setter
+    def hubble(self, value: 'GetKubeCustomizationCiliumHubbleArgs'):
+        pulumi.set(self, "hubble", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumClusterMeshArgsDict(TypedDict):
+        api_server: 'GetKubeCustomizationCiliumClusterMeshApiServerArgsDict'
+        """
+        ClusterMesh API server exposure configuration.
+        """
+        enabled: _builtins.bool
+        """
+        Whether the Hubble UI is enabled.
+        """
+elif False:
+    GetKubeCustomizationCiliumClusterMeshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumClusterMeshArgs:
+    def __init__(__self__, *,
+                 api_server: 'GetKubeCustomizationCiliumClusterMeshApiServerArgs',
+                 enabled: _builtins.bool):
+        """
+        :param 'GetKubeCustomizationCiliumClusterMeshApiServerArgs' api_server: ClusterMesh API server exposure configuration.
+        :param _builtins.bool enabled: Whether the Hubble UI is enabled.
+        """
+        pulumi.set(__self__, "api_server", api_server)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="apiServer")
+    def api_server(self) -> 'GetKubeCustomizationCiliumClusterMeshApiServerArgs':
+        """
+        ClusterMesh API server exposure configuration.
+        """
+        return pulumi.get(self, "api_server")
+
+    @api_server.setter
+    def api_server(self, value: 'GetKubeCustomizationCiliumClusterMeshApiServerArgs'):
+        pulumi.set(self, "api_server", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Hubble UI is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumClusterMeshApiServerArgsDict(TypedDict):
+        node_port: _builtins.int
+        """
+        NodePort on which the ClusterMesh API server is exposed.
+        """
+        service_type: _builtins.str
+        """
+        Service type used to expose the ClusterMesh API server.
+        """
+elif False:
+    GetKubeCustomizationCiliumClusterMeshApiServerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumClusterMeshApiServerArgs:
+    def __init__(__self__, *,
+                 node_port: _builtins.int,
+                 service_type: _builtins.str):
+        """
+        :param _builtins.int node_port: NodePort on which the ClusterMesh API server is exposed.
+        :param _builtins.str service_type: Service type used to expose the ClusterMesh API server.
+        """
+        pulumi.set(__self__, "node_port", node_port)
+        pulumi.set(__self__, "service_type", service_type)
+
+    @_builtins.property
+    @pulumi.getter(name="nodePort")
+    def node_port(self) -> _builtins.int:
+        """
+        NodePort on which the ClusterMesh API server is exposed.
+        """
+        return pulumi.get(self, "node_port")
+
+    @node_port.setter
+    def node_port(self, value: _builtins.int):
+        pulumi.set(self, "node_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceType")
+    def service_type(self) -> _builtins.str:
+        """
+        Service type used to expose the ClusterMesh API server.
+        """
+        return pulumi.get(self, "service_type")
+
+    @service_type.setter
+    def service_type(self, value: _builtins.str):
+        pulumi.set(self, "service_type", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleArgsDict(TypedDict):
+        enabled: _builtins.bool
+        """
+        Whether the Hubble UI is enabled.
+        """
+        relay: 'GetKubeCustomizationCiliumHubbleRelayArgsDict'
+        """
+        Hubble Relay configuration.
+        """
+        ui: 'GetKubeCustomizationCiliumHubbleUiArgsDict'
+        """
+        Hubble UI configuration.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 relay: 'GetKubeCustomizationCiliumHubbleRelayArgs',
+                 ui: 'GetKubeCustomizationCiliumHubbleUiArgs'):
+        """
+        :param _builtins.bool enabled: Whether the Hubble UI is enabled.
+        :param 'GetKubeCustomizationCiliumHubbleRelayArgs' relay: Hubble Relay configuration.
+        :param 'GetKubeCustomizationCiliumHubbleUiArgs' ui: Hubble UI configuration.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "relay", relay)
+        pulumi.set(__self__, "ui", ui)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Hubble UI is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def relay(self) -> 'GetKubeCustomizationCiliumHubbleRelayArgs':
+        """
+        Hubble Relay configuration.
+        """
+        return pulumi.get(self, "relay")
+
+    @relay.setter
+    def relay(self, value: 'GetKubeCustomizationCiliumHubbleRelayArgs'):
+        pulumi.set(self, "relay", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ui(self) -> 'GetKubeCustomizationCiliumHubbleUiArgs':
+        """
+        Hubble UI configuration.
+        """
+        return pulumi.get(self, "ui")
+
+    @ui.setter
+    def ui(self, value: 'GetKubeCustomizationCiliumHubbleUiArgs'):
+        pulumi.set(self, "ui", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleRelayArgsDict(TypedDict):
+        enabled: _builtins.bool
+        """
+        Whether the Hubble UI is enabled.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleRelayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleRelayArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the Hubble UI is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Hubble UI is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiArgsDict(TypedDict):
+        backend_resources: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgsDict'
+        """
+        Resource configuration for the Hubble UI backend.
+        """
+        enabled: _builtins.bool
+        """
+        Whether the Hubble UI is enabled.
+        """
+        frontend_resources: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict'
+        """
+        Resource configuration for the Hubble UI frontend.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiArgs:
+    def __init__(__self__, *,
+                 backend_resources: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs',
+                 enabled: _builtins.bool,
+                 frontend_resources: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs'):
+        """
+        :param 'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs' backend_resources: Resource configuration for the Hubble UI backend.
+        :param _builtins.bool enabled: Whether the Hubble UI is enabled.
+        :param 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs' frontend_resources: Resource configuration for the Hubble UI frontend.
+        """
+        pulumi.set(__self__, "backend_resources", backend_resources)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "frontend_resources", frontend_resources)
+
+    @_builtins.property
+    @pulumi.getter(name="backendResources")
+    def backend_resources(self) -> 'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs':
+        """
+        Resource configuration for the Hubble UI backend.
+        """
+        return pulumi.get(self, "backend_resources")
+
+    @backend_resources.setter
+    def backend_resources(self, value: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs'):
+        pulumi.set(self, "backend_resources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Hubble UI is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="frontendResources")
+    def frontend_resources(self) -> 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs':
+        """
+        Resource configuration for the Hubble UI frontend.
+        """
+        return pulumi.get(self, "frontend_resources")
+
+    @frontend_resources.setter
+    def frontend_resources(self, value: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs'):
+        pulumi.set(self, "frontend_resources", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiBackendResourcesArgsDict(TypedDict):
+        limits: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict'
+        """
+        Resource limits.
+        """
+        requests: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict'
+        """
+        Resource requests.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiBackendResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs:
+    def __init__(__self__, *,
+                 limits: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs',
+                 requests: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs'):
+        """
+        :param 'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs' limits: Resource limits.
+        :param 'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs' requests: Resource requests.
+        """
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> 'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs':
+        """
+        Resource limits.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs'):
+        pulumi.set(self, "limits", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> 'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs':
+        """
+        Resource requests.
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: 'GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs'):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict(TypedDict):
+        cpu: _builtins.str
+        """
+        CPU request.
+        """
+        memory: _builtins.str
+        """
+        Memory request.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs:
+    def __init__(__self__, *,
+                 cpu: _builtins.str,
+                 memory: _builtins.str):
+        """
+        :param _builtins.str cpu: CPU request.
+        :param _builtins.str memory: Memory request.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.str:
+        """
+        CPU request.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: _builtins.str):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.str:
+        """
+        Memory request.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: _builtins.str):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict(TypedDict):
+        cpu: _builtins.str
+        """
+        CPU request.
+        """
+        memory: _builtins.str
+        """
+        Memory request.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs:
+    def __init__(__self__, *,
+                 cpu: _builtins.str,
+                 memory: _builtins.str):
+        """
+        :param _builtins.str cpu: CPU request.
+        :param _builtins.str memory: Memory request.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.str:
+        """
+        CPU request.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: _builtins.str):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.str:
+        """
+        Memory request.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: _builtins.str):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict(TypedDict):
+        limits: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict'
+        """
+        Resource limits.
+        """
+        requests: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict'
+        """
+        Resource requests.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs:
+    def __init__(__self__, *,
+                 limits: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs',
+                 requests: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs'):
+        """
+        :param 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs' limits: Resource limits.
+        :param 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs' requests: Resource requests.
+        """
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "requests", requests)
+
+    @_builtins.property
+    @pulumi.getter
+    def limits(self) -> 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs':
+        """
+        Resource limits.
+        """
+        return pulumi.get(self, "limits")
+
+    @limits.setter
+    def limits(self, value: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs'):
+        pulumi.set(self, "limits", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def requests(self) -> 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs':
+        """
+        Resource requests.
+        """
+        return pulumi.get(self, "requests")
+
+    @requests.setter
+    def requests(self, value: 'GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs'):
+        pulumi.set(self, "requests", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict(TypedDict):
+        cpu: _builtins.str
+        """
+        CPU request.
+        """
+        memory: _builtins.str
+        """
+        Memory request.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs:
+    def __init__(__self__, *,
+                 cpu: _builtins.str,
+                 memory: _builtins.str):
+        """
+        :param _builtins.str cpu: CPU request.
+        :param _builtins.str memory: Memory request.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.str:
+        """
+        CPU request.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: _builtins.str):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.str:
+        """
+        Memory request.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: _builtins.str):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict(TypedDict):
+        cpu: _builtins.str
+        """
+        CPU request.
+        """
+        memory: _builtins.str
+        """
+        Memory request.
+        """
+elif False:
+    GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs:
+    def __init__(__self__, *,
+                 cpu: _builtins.str,
+                 memory: _builtins.str):
+        """
+        :param _builtins.str cpu: CPU request.
+        :param _builtins.str memory: Memory request.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.str:
+        """
+        CPU request.
+        """
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: _builtins.str):
+        pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.str:
+        """
+        Memory request.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: _builtins.str):
+        pulumi.set(self, "memory", value)
 
 
 if not MYPY:
@@ -6710,6 +8224,56 @@ class GetKubeCustomizationKubeProxyIpvsArgs:
     @udp_timeout.setter
     def udp_timeout(self, value: Optional[_builtins.str]):
         pulumi.set(self, "udp_timeout", value)
+
+
+if not MYPY:
+    class GetKubeIpAllocationPolicyArgsDict(TypedDict):
+        pods_ipv4_cidr: _builtins.str
+        """
+        CIDR used for the cluster's pods.
+        """
+        services_ipv4_cidr: _builtins.str
+        """
+        CIDR used for the cluster's services.
+        """
+elif False:
+    GetKubeIpAllocationPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubeIpAllocationPolicyArgs:
+    def __init__(__self__, *,
+                 pods_ipv4_cidr: _builtins.str,
+                 services_ipv4_cidr: _builtins.str):
+        """
+        :param _builtins.str pods_ipv4_cidr: CIDR used for the cluster's pods.
+        :param _builtins.str services_ipv4_cidr: CIDR used for the cluster's services.
+        """
+        pulumi.set(__self__, "pods_ipv4_cidr", pods_ipv4_cidr)
+        pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
+
+    @_builtins.property
+    @pulumi.getter(name="podsIpv4Cidr")
+    def pods_ipv4_cidr(self) -> _builtins.str:
+        """
+        CIDR used for the cluster's pods.
+        """
+        return pulumi.get(self, "pods_ipv4_cidr")
+
+    @pods_ipv4_cidr.setter
+    def pods_ipv4_cidr(self, value: _builtins.str):
+        pulumi.set(self, "pods_ipv4_cidr", value)
+
+    @_builtins.property
+    @pulumi.getter(name="servicesIpv4Cidr")
+    def services_ipv4_cidr(self) -> _builtins.str:
+        """
+        CIDR used for the cluster's services.
+        """
+        return pulumi.get(self, "services_ipv4_cidr")
+
+    @services_ipv4_cidr.setter
+    def services_ipv4_cidr(self, value: _builtins.str):
+        pulumi.set(self, "services_ipv4_cidr", value)
 
 
 if not MYPY:

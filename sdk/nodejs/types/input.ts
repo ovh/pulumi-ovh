@@ -5,6 +5,227 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudGatewayCurrentState {
+    /**
+     * Gateway description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * External gateway configuration:
+     */
+    externalGateway?: pulumi.Input<inputs.CloudGatewayCurrentStateExternalGateway>;
+    /**
+     * External IP address assigned to the gateway.
+     */
+    externalIp?: pulumi.Input<string>;
+    /**
+     * Location details:
+     */
+    location?: pulumi.Input<inputs.CloudGatewayCurrentStateLocation>;
+    /**
+     * Gateway name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Currently attached subnets:
+     */
+    subnets?: pulumi.Input<pulumi.Input<inputs.CloudGatewayCurrentStateSubnet>[]>;
+}
+
+export interface CloudGatewayCurrentStateExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+     */
+    model?: pulumi.Input<string>;
+}
+
+export interface CloudGatewayCurrentStateLocation {
+    /**
+     * Availability zone for the gateway. **Changing this value recreates the resource.**
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the gateway will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudGatewayCurrentStateSubnet {
+    /**
+     * Subnet ID.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudGatewayExternalGateway {
+    /**
+     * Whether the external gateway is enabled.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+     */
+    model?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackCurrentState {
+    /**
+     * Network description. **Changing this value recreates the resource.**
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Location details:
+     */
+    location?: pulumi.Input<inputs.CloudNetworkPrivateVrackCurrentStateLocation>;
+    /**
+     * Network name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+     */
+    vlanId?: pulumi.Input<number>;
+}
+
+export interface CloudNetworkPrivateVrackCurrentStateLocation {
+    /**
+     * Region where the network will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end?: pulumi.Input<string>;
+    /**
+     * Start IP address of the pool.
+     */
+    start?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentState {
+    /**
+     * IP address allocation pools:
+     */
+    allocationPools?: pulumi.Input<pulumi.Input<inputs.CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool>[]>;
+    /**
+     * CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+     */
+    cidr?: pulumi.Input<string>;
+    /**
+     * Subnet description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Whether DHCP is enabled on the subnet.
+     */
+    dhcpEnabled?: pulumi.Input<boolean>;
+    /**
+     * List of DNS nameserver addresses.
+     */
+    dnsNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Default gateway IP address.
+     */
+    gatewayIp?: pulumi.Input<string>;
+    /**
+     * Static host routes:
+     */
+    hostRoutes?: pulumi.Input<pulumi.Input<inputs.CloudNetworkPrivateVrackSubnetCurrentStateHostRoute>[]>;
+    /**
+     * Location details:
+     */
+    location?: pulumi.Input<inputs.CloudNetworkPrivateVrackSubnetCurrentStateLocation>;
+    /**
+     * Subnet name.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool {
+    /**
+     * End IP address of the pool.
+     */
+    end?: pulumi.Input<string>;
+    /**
+     * Start IP address of the pool.
+     */
+    start?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentStateHostRoute {
+    /**
+     * Destination CIDR.
+     */
+    destination?: pulumi.Input<string>;
+    /**
+     * Next hop IP address.
+     */
+    nextHop?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentStateLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the subnet will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentTask {
+    /**
+     * Errors that occured on the task
+     */
+    errors?: pulumi.Input<pulumi.Input<inputs.CloudNetworkPrivateVrackSubnetCurrentTaskError>[]>;
+    /**
+     * Subnet ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Link to the task details
+     */
+    link?: pulumi.Input<string>;
+    /**
+     * Current global status of the current task
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Type of the current task
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CloudNetworkPrivateVrackSubnetCurrentTaskError {
+    /**
+     * Error description
+     */
+    message?: pulumi.Input<string>;
+}
+
+export interface CloudProjectKubeLogSubscriptionResource {
+    /**
+     * Name of the subscribed resource, where the logs come from.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Type of the subscribed resource, where the logs come from.
+     */
+    type?: pulumi.Input<string>;
+}
+
 export interface CloudProjectStorageObjectBucketLifecycleConfigurationRule {
     /**
      * Configuration for aborting incomplete multipart uploads.
@@ -120,6 +341,155 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransi
      * The storage class to transition objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      */
     storageClass: pulumi.Input<string>;
+}
+
+export interface CloudSecurityGroupCurrentState {
+    /**
+     * Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+     */
+    defaultRules?: pulumi.Input<pulumi.Input<inputs.CloudSecurityGroupCurrentStateDefaultRule>[]>;
+    /**
+     * Description of the security group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Location details:
+     */
+    location?: pulumi.Input<inputs.CloudSecurityGroupCurrentStateLocation>;
+    /**
+     * Name of the security group.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * User-specified security group rules with their IDs:
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.CloudSecurityGroupCurrentStateRule>[]>;
+}
+
+export interface CloudSecurityGroupCurrentStateDefaultRule {
+    /**
+     * Description of the security group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Direction of the rule.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Ether type.
+     */
+    ethernetType?: pulumi.Input<string>;
+    /**
+     * Rule ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax?: pulumi.Input<number>;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin?: pulumi.Input<number>;
+    /**
+     * Protocol.
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId?: pulumi.Input<string>;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix?: pulumi.Input<string>;
+}
+
+export interface CloudSecurityGroupCurrentStateLocation {
+    /**
+     * Region where the security group will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudSecurityGroupCurrentStateRule {
+    /**
+     * Description of the security group.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Direction of the rule.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Ether type.
+     */
+    ethernetType?: pulumi.Input<string>;
+    /**
+     * Rule ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax?: pulumi.Input<number>;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin?: pulumi.Input<number>;
+    /**
+     * Protocol.
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId?: pulumi.Input<string>;
+    /**
+     * Remote IP prefix.
+     */
+    remoteIpPrefix?: pulumi.Input<string>;
+}
+
+export interface CloudSecurityGroupRule {
+    /**
+     * Description of the rule.
+     *
+     * > **NOTE:** When a security group is created, OpenStack automatically adds a
+     * default egress rule (allowing all outbound traffic). This default rule is **not**
+     * part of the managed `rule` set: it is never sent in your configuration and never
+     * appears under `rule`, so it will not show up as drift on subsequent plans. It is
+     * surfaced for information only under `current_state.default_rules`.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Direction of the rule (`INGRESS` or `EGRESS`).
+     */
+    direction: pulumi.Input<string>;
+    /**
+     * Ether type (`IPV4` or `IPV6`).
+     */
+    ethernetType: pulumi.Input<string>;
+    /**
+     * Maximum port number.
+     */
+    portRangeMax?: pulumi.Input<number>;
+    /**
+     * Minimum port number.
+     */
+    portRangeMin?: pulumi.Input<number>;
+    /**
+     * Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Remote security group ID.
+     */
+    remoteGroupId?: pulumi.Input<string>;
+    /**
+     * Remote IP prefix (CIDR notation).
+     */
+    remoteIpPrefix?: pulumi.Input<string>;
 }
 
 export interface CloudStorageBlockVolumeBackupCurrentState {
@@ -830,7 +1200,7 @@ export namespace CloudProject {
          */
         disableds?: string[];
         /**
-         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         * Whether the Hubble UI is enabled.
          */
         enableds?: string[];
     }
@@ -841,9 +1211,289 @@ export namespace CloudProject {
          */
         disableds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Array of admission plugins enabled, default is ["NodeRestriction","AlwaysPulImages"] and only these admission plugins can be enabled at this time.
+         * Whether the Hubble UI is enabled.
          */
         enableds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GetKubeCustomizationCilium {
+        /**
+         * Cilium cluster ID, between 1 and 255.
+         */
+        clusterId?: number;
+        /**
+         * ClusterMesh feature configuration.
+         */
+        clusterMesh?: inputs.CloudProject.GetKubeCustomizationCiliumClusterMesh;
+        /**
+         * Hubble observability stack configuration.
+         */
+        hubble?: inputs.CloudProject.GetKubeCustomizationCiliumHubble;
+    }
+
+    export interface GetKubeCustomizationCiliumArgs {
+        /**
+         * Cilium cluster ID, between 1 and 255.
+         */
+        clusterId?: pulumi.Input<number>;
+        /**
+         * ClusterMesh feature configuration.
+         */
+        clusterMesh?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumClusterMeshArgs>;
+        /**
+         * Hubble observability stack configuration.
+         */
+        hubble?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleArgs>;
+    }
+
+    export interface GetKubeCustomizationCiliumClusterMesh {
+        /**
+         * ClusterMesh API server exposure configuration.
+         */
+        apiServer?: inputs.CloudProject.GetKubeCustomizationCiliumClusterMeshApiServer;
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: boolean;
+    }
+
+    export interface GetKubeCustomizationCiliumClusterMeshArgs {
+        /**
+         * ClusterMesh API server exposure configuration.
+         */
+        apiServer?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumClusterMeshApiServerArgs>;
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GetKubeCustomizationCiliumClusterMeshApiServer {
+        /**
+         * NodePort on which the ClusterMesh API server is exposed.
+         */
+        nodePort?: number;
+        /**
+         * Service type used to expose the ClusterMesh API server.
+         */
+        serviceType?: string;
+    }
+
+    export interface GetKubeCustomizationCiliumClusterMeshApiServerArgs {
+        /**
+         * NodePort on which the ClusterMesh API server is exposed.
+         */
+        nodePort?: pulumi.Input<number>;
+        /**
+         * Service type used to expose the ClusterMesh API server.
+         */
+        serviceType?: pulumi.Input<string>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubble {
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: boolean;
+        /**
+         * Hubble Relay configuration.
+         */
+        relay?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleRelay;
+        /**
+         * Hubble UI configuration.
+         */
+        ui?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUi;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleArgs {
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Hubble Relay configuration.
+         */
+        relay?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleRelayArgs>;
+        /**
+         * Hubble UI configuration.
+         */
+        ui?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiArgs>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleRelay {
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: boolean;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleRelayArgs {
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUi {
+        /**
+         * Resource configuration for the Hubble UI backend.
+         */
+        backendResources?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResources;
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: boolean;
+        /**
+         * Resource configuration for the Hubble UI frontend.
+         */
+        frontendResources?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResources;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiArgs {
+        /**
+         * Resource configuration for the Hubble UI backend.
+         */
+        backendResources?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs>;
+        /**
+         * Whether the Hubble UI is enabled.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Resource configuration for the Hubble UI frontend.
+         */
+        frontendResources?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResources {
+        /**
+         * Resource limits.
+         */
+        limits?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits;
+        /**
+         * Resource requests.
+         */
+        requests?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesArgs {
+        /**
+         * Resource limits.
+         */
+        limits?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs>;
+        /**
+         * Resource requests.
+         */
+        requests?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+        /**
+         * CPU request.
+         */
+        cpu?: string;
+        /**
+         * Memory request.
+         */
+        memory?: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesLimitsArgs {
+        /**
+         * CPU request.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+        /**
+         * CPU request.
+         */
+        cpu?: string;
+        /**
+         * Memory request.
+         */
+        memory?: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiBackendResourcesRequestsArgs {
+        /**
+         * CPU request.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResources {
+        /**
+         * Resource limits.
+         */
+        limits?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits;
+        /**
+         * Resource requests.
+         */
+        requests?: inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesArgs {
+        /**
+         * Resource limits.
+         */
+        limits?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs>;
+        /**
+         * Resource requests.
+         */
+        requests?: pulumi.Input<inputs.CloudProject.GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+        /**
+         * CPU request.
+         */
+        cpu?: string;
+        /**
+         * Memory request.
+         */
+        memory?: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesLimitsArgs {
+        /**
+         * CPU request.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+        /**
+         * CPU request.
+         */
+        cpu?: string;
+        /**
+         * Memory request.
+         */
+        memory?: string;
+    }
+
+    export interface GetKubeCustomizationCiliumHubbleUiFrontendResourcesRequestsArgs {
+        /**
+         * CPU request.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request.
+         */
+        memory?: pulumi.Input<string>;
     }
 
     export interface GetKubeCustomizationKubeProxy {
@@ -942,6 +1592,28 @@ export namespace CloudProject {
          * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration.
          */
         udpTimeout?: pulumi.Input<string>;
+    }
+
+    export interface GetKubeIpAllocationPolicy {
+        /**
+         * CIDR used for the cluster's pods.
+         */
+        podsIpv4Cidr?: string;
+        /**
+         * CIDR used for the cluster's services.
+         */
+        servicesIpv4Cidr?: string;
+    }
+
+    export interface GetKubeIpAllocationPolicyArgs {
+        /**
+         * CIDR used for the cluster's pods.
+         */
+        podsIpv4Cidr?: pulumi.Input<string>;
+        /**
+         * CIDR used for the cluster's services.
+         */
+        servicesIpv4Cidr?: pulumi.Input<string>;
     }
 
     export interface GetKubeNodePoolAttachFloatingIps {
@@ -1247,6 +1919,146 @@ export namespace CloudProject {
         enableds?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface KubeCustomizationCilium {
+        /**
+         * Cilium cluster ID, must be between 1 and 255. Required when using the ClusterMesh feature.
+         */
+        clusterId?: pulumi.Input<number>;
+        /**
+         * ClusterMesh feature configuration.
+         */
+        clusterMesh?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumClusterMesh>;
+        /**
+         * Hubble observability stack configuration.
+         */
+        hubble?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubble>;
+    }
+
+    export interface KubeCustomizationCiliumClusterMesh {
+        /**
+         * Define how the ClusterMesh API server is exposed.
+         */
+        apiServer?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumClusterMeshApiServer>;
+        /**
+         * Enable or disable the ClusterMesh feature.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface KubeCustomizationCiliumClusterMeshApiServer {
+        /**
+         * NodePort on which the ClusterMesh API server is exposed. Only used when `serviceType` is `NodePort`.
+         */
+        nodePort?: pulumi.Input<number>;
+        /**
+         * Service type used to expose the ClusterMesh API server (`NodePort` or `LoadBalancer`).
+         */
+        serviceType?: pulumi.Input<string>;
+    }
+
+    export interface KubeCustomizationCiliumHubble {
+        /**
+         * Enable or disable Hubble.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Hubble Relay configuration.
+         */
+        relay?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleRelay>;
+        /**
+         * Hubble UI configuration.
+         */
+        ui?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUi>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleRelay {
+        /**
+         * Enable or disable Hubble Relay.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUi {
+        /**
+         * Resource requests and limits for the Hubble UI backend.
+         */
+        backendResources?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUiBackendResources>;
+        /**
+         * Enable or disable the Hubble UI.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Resource requests and limits for the Hubble UI frontend.
+         */
+        frontendResources?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUiFrontendResources>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiBackendResources {
+        /**
+         * Resource limits.
+         */
+        limits?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUiBackendResourcesLimits>;
+        /**
+         * Resource requests.
+         */
+        requests?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUiBackendResourcesRequests>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiBackendResourcesLimits {
+        /**
+         * CPU limit (e.g. `"500m"`).
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory limit (e.g. `"128Mi"`).
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiBackendResourcesRequests {
+        /**
+         * CPU request (e.g. `"500m"`).
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request (e.g. `"128Mi"`).
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiFrontendResources {
+        /**
+         * Resource limits.
+         */
+        limits?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUiFrontendResourcesLimits>;
+        /**
+         * Resource requests.
+         */
+        requests?: pulumi.Input<inputs.CloudProject.KubeCustomizationCiliumHubbleUiFrontendResourcesRequests>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiFrontendResourcesLimits {
+        /**
+         * CPU limit (e.g. `"500m"`).
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory limit (e.g. `"128Mi"`).
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface KubeCustomizationCiliumHubbleUiFrontendResourcesRequests {
+        /**
+         * CPU request (e.g. `"500m"`).
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory request (e.g. `"128Mi"`).
+         */
+        memory?: pulumi.Input<string>;
+    }
+
     export interface KubeCustomizationKubeProxy {
         /**
          * Kubernetes cluster kube-proxy customization of iptables specific config (durations format is RFC3339 duration, e.g. `PT60S`)
@@ -1294,6 +2106,17 @@ export namespace CloudProject {
          * timeout value used for IPVS UDP packets in [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) duration (e.g. `PT60S`). The default value is `PT0S`, which preserves the current timeout value on the system.
          */
         udpTimeout?: pulumi.Input<string>;
+    }
+
+    export interface KubeIpAllocationPolicy {
+        /**
+         * CIDR for the cluster's pods (e.g. `"10.5.0.0/16"`). **Changing this value recreates the resource.**
+         */
+        podsIpv4Cidr?: pulumi.Input<string>;
+        /**
+         * CIDR for the cluster's services (e.g. `"10.6.0.0/16"`). **Changing this value recreates the resource.**
+         */
+        servicesIpv4Cidr?: pulumi.Input<string>;
     }
 
     export interface KubeKubeconfigAttribute {
@@ -2132,6 +2955,28 @@ export namespace CloudProject {
          * list of permissions associated with the role
          */
         permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface VolumeEncryption {
+        /**
+         * Whether the volume is encrypted. Setting this auto-derives a LUKS volume type.
+         */
+        encrypted?: pulumi.Input<boolean>;
+        /**
+         * Optional. Customer managed key (CMK) reference. Omit to use OVH managed keys (OMK).
+         */
+        kms?: pulumi.Input<inputs.CloudProject.VolumeEncryptionKms>;
+    }
+
+    export interface VolumeEncryptionKms {
+        /**
+         * OKMS domain ID holding the customer managed key.
+         */
+        domainId?: pulumi.Input<string>;
+        /**
+         * OKMS service key ID used to encrypt the volume.
+         */
+        serviceKeyId?: pulumi.Input<string>;
     }
 
     export interface VolumeSubOperation {

@@ -21,7 +21,7 @@ public final class GetFlavorsResult {
      */
     private String id;
     /**
-     * @return Filter flavors using the given name (strict equality, e.g. b2-7)
+     * @return Filter flavors using the given name (strict equality, e.g. b3-8)
      * 
      */
     private @Nullable String nameFilter;
@@ -48,7 +48,7 @@ public final class GetFlavorsResult {
         return this.id;
     }
     /**
-     * @return Filter flavors using the given name (strict equality, e.g. b2-7)
+     * @return Filter flavors using the given name (strict equality, e.g. b3-8)
      * 
      */
     public Optional<String> nameFilter() {

@@ -17,7 +17,7 @@ public final class GetKubeCustomizationApiserverAdmissionplugin {
      */
     private List<String> disableds;
     /**
-     * @return Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+     * @return Whether the Hubble UI is enabled.
      * 
      */
     private List<String> enableds;
@@ -31,7 +31,7 @@ public final class GetKubeCustomizationApiserverAdmissionplugin {
         return this.disableds;
     }
     /**
-     * @return Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+     * @return Whether the Hubble UI is enabled.
      * 
      */
     public List<String> enableds() {

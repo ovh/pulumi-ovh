@@ -148,14 +148,14 @@ public class NetworkPrivateSubnetV2 extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.enableGatewayIp);
     }
     /**
-     * See Argument Reference above.
+     * The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      * 
      */
     @Export(name="gatewayIp", refs={String.class}, tree="[0]")
     private Output<String> gatewayIp;
 
     /**
-     * @return See Argument Reference above.
+     * @return The IP of the gateway used by the subnet. If not provided, it is computed automatically. Changing this value recreates the resource.
      * 
      */
     public Output<String> gatewayIp() {

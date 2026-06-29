@@ -16,6 +16,21 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'CloudGatewayCurrentState',
+    'CloudGatewayCurrentStateExternalGateway',
+    'CloudGatewayCurrentStateLocation',
+    'CloudGatewayCurrentStateSubnet',
+    'CloudGatewayExternalGateway',
+    'CloudNetworkPrivateVrackCurrentState',
+    'CloudNetworkPrivateVrackCurrentStateLocation',
+    'CloudNetworkPrivateVrackSubnetAllocationPool',
+    'CloudNetworkPrivateVrackSubnetCurrentState',
+    'CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool',
+    'CloudNetworkPrivateVrackSubnetCurrentStateHostRoute',
+    'CloudNetworkPrivateVrackSubnetCurrentStateLocation',
+    'CloudNetworkPrivateVrackSubnetCurrentTask',
+    'CloudNetworkPrivateVrackSubnetCurrentTaskError',
+    'CloudProjectKubeLogSubscriptionResource',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRule',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleAbortIncompleteMultipartUpload',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleExpiration',
@@ -23,6 +38,11 @@ __all__ = [
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionExpiration',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransition',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition',
+    'CloudSecurityGroupCurrentState',
+    'CloudSecurityGroupCurrentStateDefaultRule',
+    'CloudSecurityGroupCurrentStateLocation',
+    'CloudSecurityGroupCurrentStateRule',
+    'CloudSecurityGroupRule',
     'CloudStorageBlockVolumeBackupCurrentState',
     'CloudStorageBlockVolumeBackupCurrentStateLocation',
     'CloudStorageBlockVolumeCreateFrom',
@@ -58,11 +78,45 @@ __all__ = [
     'VrackservicesTargetSpecSubnet',
     'VrackservicesTargetSpecSubnetServiceEndpoint',
     'VrackservicesTargetSpecSubnetServiceRange',
+    'GetCloudGatewayCurrentStateResult',
+    'GetCloudGatewayCurrentStateExternalGatewayResult',
+    'GetCloudGatewayCurrentStateLocationResult',
+    'GetCloudGatewayCurrentStateSubnetResult',
+    'GetCloudGatewayExternalGatewayResult',
+    'GetCloudGatewayLocationResult',
+    'GetCloudGatewaysGatewayResult',
+    'GetCloudGatewaysGatewayCurrentStateResult',
+    'GetCloudGatewaysGatewayCurrentStateExternalGatewayResult',
+    'GetCloudGatewaysGatewayCurrentStateLocationResult',
+    'GetCloudGatewaysGatewayCurrentStateSubnetResult',
+    'GetCloudGatewaysGatewayExternalGatewayResult',
+    'GetCloudGatewaysGatewayLocationResult',
+    'GetCloudNetworkPrivateVrackCurrentStateResult',
+    'GetCloudNetworkPrivateVrackCurrentStateLocationResult',
+    'GetCloudNetworkPrivateVrackLocationResult',
+    'GetCloudNetworkPrivateVrackSubnetAllocationPoolResult',
+    'GetCloudNetworkPrivateVrackSubnetCurrentStateResult',
+    'GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolResult',
+    'GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteResult',
+    'GetCloudNetworkPrivateVrackSubnetCurrentStateLocationResult',
+    'GetCloudNetworkPrivateVrackSubnetLocationResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationResult',
+    'GetCloudNetworkPrivateVrackSubnetsSubnetLocationResult',
+    'GetCloudNetworkPrivateVracksNetworkResult',
+    'GetCloudNetworkPrivateVracksNetworkCurrentStateResult',
+    'GetCloudNetworkPrivateVracksNetworkCurrentStateLocationResult',
+    'GetCloudNetworkPrivateVracksNetworkLocationResult',
     'GetCloudProjectFlavorCapabilityResult',
     'GetCloudProjectFlavorPlanCodesResult',
     'GetCloudProjectGatewayExternalInformationResult',
     'GetCloudProjectGatewayExternalInformationIpResult',
     'GetCloudProjectGatewayInterfaceResult',
+    'GetCloudProjectKubeLogSubscriptionResourceResult',
     'GetCloudProjectRancherCapabilitiesPlanPlanResult',
     'GetCloudProjectRancherCapabilitiesVersionVersionResult',
     'GetCloudProjectSshKeysSshKeyResult',
@@ -73,6 +127,21 @@ __all__ = [
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionExpirationResult',
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionResult',
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionResult',
+    'GetCloudRegionsRegionResult',
+    'GetCloudSecurityGroupCurrentStateResult',
+    'GetCloudSecurityGroupCurrentStateDefaultRuleResult',
+    'GetCloudSecurityGroupCurrentStateLocationResult',
+    'GetCloudSecurityGroupCurrentStateRuleResult',
+    'GetCloudSecurityGroupLocationResult',
+    'GetCloudSecurityGroupRuleResult',
+    'GetCloudSecurityGroupsSecurityGroupResult',
+    'GetCloudSecurityGroupsSecurityGroupCurrentStateResult',
+    'GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleResult',
+    'GetCloudSecurityGroupsSecurityGroupCurrentStateLocationResult',
+    'GetCloudSecurityGroupsSecurityGroupCurrentStateRuleResult',
+    'GetCloudSecurityGroupsSecurityGroupLocationResult',
+    'GetCloudSecurityGroupsSecurityGroupRuleResult',
+    'GetCloudSshKeysSshKeyResult',
     'GetCloudStorageBlockVolumeAttachedInstanceResult',
     'GetCloudStorageBlockVolumeBackupLocationResult',
     'GetCloudStorageBlockVolumeBackupsBackupResult',
@@ -129,6 +198,750 @@ __all__ = [
     'GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointResult',
     'GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeResult',
 ]
+
+@pulumi.output_type
+class CloudGatewayCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalGateway":
+            suggest = "external_gateway"
+        elif key == "externalIp":
+            suggest = "external_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudGatewayCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudGatewayCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudGatewayCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 external_gateway: Optional['outputs.CloudGatewayCurrentStateExternalGateway'] = None,
+                 external_ip: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudGatewayCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 subnets: Optional[Sequence['outputs.CloudGatewayCurrentStateSubnet']] = None):
+        """
+        :param _builtins.str description: Gateway description.
+        :param 'CloudGatewayCurrentStateExternalGatewayArgs' external_gateway: External gateway configuration:
+        :param _builtins.str external_ip: External IP address assigned to the gateway.
+        :param 'CloudGatewayCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Gateway name.
+        :param _builtins.str status: OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        :param Sequence['CloudGatewayCurrentStateSubnetArgs'] subnets: Currently attached subnets:
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if external_gateway is not None:
+            pulumi.set(__self__, "external_gateway", external_gateway)
+        if external_ip is not None:
+            pulumi.set(__self__, "external_ip", external_ip)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Gateway description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="externalGateway")
+    def external_gateway(self) -> Optional['outputs.CloudGatewayCurrentStateExternalGateway']:
+        """
+        External gateway configuration:
+        """
+        return pulumi.get(self, "external_gateway")
+
+    @_builtins.property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> Optional[_builtins.str]:
+        """
+        External IP address assigned to the gateway.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudGatewayCurrentStateLocation']:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Gateway name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional[Sequence['outputs.CloudGatewayCurrentStateSubnet']]:
+        """
+        Currently attached subnets:
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class CloudGatewayCurrentStateExternalGateway(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 model: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether the external gateway is enabled.
+        :param _builtins.str model: External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class CloudGatewayCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudGatewayCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudGatewayCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudGatewayCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone for the gateway. **Changing this value recreates the resource.**
+        :param _builtins.str region: Region where the gateway will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone for the gateway. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the gateway will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudGatewayCurrentStateSubnet(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Subnet ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudGatewayExternalGateway(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 model: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether the external gateway is enabled.
+        :param _builtins.str model: External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanId":
+            suggest = "vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudNetworkPrivateVrackCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudNetworkPrivateVrackCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudNetworkPrivateVrackCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudNetworkPrivateVrackCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 vlan_id: Optional[_builtins.float] = None):
+        """
+        :param _builtins.str description: Network description. **Changing this value recreates the resource.**
+        :param 'CloudNetworkPrivateVrackCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Network name.
+        :param _builtins.float vlan_id: VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if vlan_id is not None:
+            pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Network description. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudNetworkPrivateVrackCurrentStateLocation']:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> Optional[_builtins.float]:
+        """
+        VLAN ID of the network (0-4096). Assigned by the API if not set. **Changing this value recreates the resource.** Not supported in localzone regions.
+        """
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: Region where the network will be created. **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the network will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetAllocationPool(dict):
+    def __init__(__self__, *,
+                 end: Optional[_builtins.str] = None,
+                 start: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end: End IP address of the pool.
+        :param _builtins.str start: Start IP address of the pool.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.str]:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.str]:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allocationPools":
+            suggest = "allocation_pools"
+        elif key == "dhcpEnabled":
+            suggest = "dhcp_enabled"
+        elif key == "dnsNameservers":
+            suggest = "dns_nameservers"
+        elif key == "gatewayIp":
+            suggest = "gateway_ip"
+        elif key == "hostRoutes":
+            suggest = "host_routes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudNetworkPrivateVrackSubnetCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudNetworkPrivateVrackSubnetCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudNetworkPrivateVrackSubnetCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allocation_pools: Optional[Sequence['outputs.CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool']] = None,
+                 cidr: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 dhcp_enabled: Optional[_builtins.bool] = None,
+                 dns_nameservers: Optional[Sequence[_builtins.str]] = None,
+                 gateway_ip: Optional[_builtins.str] = None,
+                 host_routes: Optional[Sequence['outputs.CloudNetworkPrivateVrackSubnetCurrentStateHostRoute']] = None,
+                 location: Optional['outputs.CloudNetworkPrivateVrackSubnetCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs'] allocation_pools: IP address allocation pools:
+        :param _builtins.str cidr: CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+        :param _builtins.str description: Subnet description.
+        :param _builtins.bool dhcp_enabled: Whether DHCP is enabled on the subnet.
+        :param Sequence[_builtins.str] dns_nameservers: List of DNS nameserver addresses.
+        :param _builtins.str gateway_ip: Default gateway IP address.
+        :param Sequence['CloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs'] host_routes: Static host routes:
+        :param 'CloudNetworkPrivateVrackSubnetCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Subnet name.
+        """
+        if allocation_pools is not None:
+            pulumi.set(__self__, "allocation_pools", allocation_pools)
+        if cidr is not None:
+            pulumi.set(__self__, "cidr", cidr)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if dhcp_enabled is not None:
+            pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        if dns_nameservers is not None:
+            pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
+        if host_routes is not None:
+            pulumi.set(__self__, "host_routes", host_routes)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Optional[Sequence['outputs.CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool']]:
+        """
+        IP address allocation pools:
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> Optional[_builtins.str]:
+        """
+        CIDR address range for the subnet (e.g. `10.0.0.0/24`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Subnet description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether DHCP is enabled on the subnet.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsNameservers")
+    def dns_nameservers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of DNS nameserver addresses.
+        """
+        return pulumi.get(self, "dns_nameservers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[_builtins.str]:
+        """
+        Default gateway IP address.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Optional[Sequence['outputs.CloudNetworkPrivateVrackSubnetCurrentStateHostRoute']]:
+        """
+        Static host routes:
+        """
+        return pulumi.get(self, "host_routes")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudNetworkPrivateVrackSubnetCurrentStateLocation']:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Subnet name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetCurrentStateAllocationPool(dict):
+    def __init__(__self__, *,
+                 end: Optional[_builtins.str] = None,
+                 start: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end: End IP address of the pool.
+        :param _builtins.str start: Start IP address of the pool.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.str]:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.str]:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetCurrentStateHostRoute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextHop":
+            suggest = "next_hop"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudNetworkPrivateVrackSubnetCurrentStateHostRoute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudNetworkPrivateVrackSubnetCurrentStateHostRoute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudNetworkPrivateVrackSubnetCurrentStateHostRoute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destination: Optional[_builtins.str] = None,
+                 next_hop: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str destination: Destination CIDR.
+        :param _builtins.str next_hop: Next hop IP address.
+        """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if next_hop is not None:
+            pulumi.set(__self__, "next_hop", next_hop)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> Optional[_builtins.str]:
+        """
+        Destination CIDR.
+        """
+        return pulumi.get(self, "destination")
+
+    @_builtins.property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> Optional[_builtins.str]:
+        """
+        Next hop IP address.
+        """
+        return pulumi.get(self, "next_hop")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudNetworkPrivateVrackSubnetCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudNetworkPrivateVrackSubnetCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudNetworkPrivateVrackSubnetCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Region where the subnet will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the subnet will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetCurrentTask(dict):
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.CloudNetworkPrivateVrackSubnetCurrentTaskError']] = None,
+                 id: Optional[_builtins.str] = None,
+                 link: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CloudNetworkPrivateVrackSubnetCurrentTaskErrorArgs'] errors: Errors that occured on the task
+        :param _builtins.str id: Subnet ID.
+        :param _builtins.str link: Link to the task details
+        :param _builtins.str status: Current global status of the current task
+        :param _builtins.str type: Type of the current task
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.CloudNetworkPrivateVrackSubnetCurrentTaskError']]:
+        """
+        Errors that occured on the task
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> Optional[_builtins.str]:
+        """
+        Link to the task details
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Current global status of the current task
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the current task
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CloudNetworkPrivateVrackSubnetCurrentTaskError(dict):
+    def __init__(__self__, *,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str message: Error description
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Error description
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class CloudProjectKubeLogSubscriptionResource(dict):
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Name of the subscribed resource, where the logs come from.
+        :param _builtins.str type: Type of the subscribed resource, where the logs come from.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the subscribed resource, where the logs come from.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the subscribed resource, where the logs come from.
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class CloudProjectStorageObjectBucketLifecycleConfigurationRule(dict):
@@ -594,6 +1407,527 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition(dict):
         Number of days after creation before objects are transitioned. Mutually exclusive with `date`.
         """
         return pulumi.get(self, "days")
+
+
+@pulumi.output_type
+class CloudSecurityGroupCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRules":
+            suggest = "default_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSecurityGroupCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSecurityGroupCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSecurityGroupCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_rules: Optional[Sequence['outputs.CloudSecurityGroupCurrentStateDefaultRule']] = None,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudSecurityGroupCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 rules: Optional[Sequence['outputs.CloudSecurityGroupCurrentStateRule']] = None):
+        """
+        :param Sequence['CloudSecurityGroupCurrentStateDefaultRuleArgs'] default_rules: Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+        :param _builtins.str description: Description of the security group.
+        :param 'CloudSecurityGroupCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Name of the security group.
+        :param Sequence['CloudSecurityGroupCurrentStateRuleArgs'] rules: User-specified security group rules with their IDs:
+        """
+        if default_rules is not None:
+            pulumi.set(__self__, "default_rules", default_rules)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRules")
+    def default_rules(self) -> Optional[Sequence['outputs.CloudSecurityGroupCurrentStateDefaultRule']]:
+        """
+        Default egress rules auto-created by OpenStack (same schema as `rules`). These are not part of the managed `rule` set and are exposed for information only.
+        """
+        return pulumi.get(self, "default_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the security group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudSecurityGroupCurrentStateLocation']:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the security group.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.CloudSecurityGroupCurrentStateRule']]:
+        """
+        User-specified security group rules with their IDs:
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class CloudSecurityGroupCurrentStateDefaultRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ethernetType":
+            suggest = "ethernet_type"
+        elif key == "portRangeMax":
+            suggest = "port_range_max"
+        elif key == "portRangeMin":
+            suggest = "port_range_min"
+        elif key == "remoteGroupId":
+            suggest = "remote_group_id"
+        elif key == "remoteIpPrefix":
+            suggest = "remote_ip_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSecurityGroupCurrentStateDefaultRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSecurityGroupCurrentStateDefaultRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSecurityGroupCurrentStateDefaultRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 direction: Optional[_builtins.str] = None,
+                 ethernet_type: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 port_range_max: Optional[_builtins.int] = None,
+                 port_range_min: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 remote_group_id: Optional[_builtins.str] = None,
+                 remote_ip_prefix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Description of the security group.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ether type.
+        :param _builtins.str id: Rule ID.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ethernet_type is not None:
+            pulumi.set(__self__, "ethernet_type", ethernet_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if port_range_max is not None:
+            pulumi.set(__self__, "port_range_max", port_range_max)
+        if port_range_min is not None:
+            pulumi.set(__self__, "port_range_min", port_range_min)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if remote_group_id is not None:
+            pulumi.set(__self__, "remote_group_id", remote_group_id)
+        if remote_ip_prefix is not None:
+            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the security group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> Optional[_builtins.str]:
+        """
+        Ether type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> Optional[_builtins.int]:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> Optional[_builtins.int]:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> Optional[_builtins.str]:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> Optional[_builtins.str]:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class CloudSecurityGroupCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: Region where the security group will be created. **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the security group will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudSecurityGroupCurrentStateRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ethernetType":
+            suggest = "ethernet_type"
+        elif key == "portRangeMax":
+            suggest = "port_range_max"
+        elif key == "portRangeMin":
+            suggest = "port_range_min"
+        elif key == "remoteGroupId":
+            suggest = "remote_group_id"
+        elif key == "remoteIpPrefix":
+            suggest = "remote_ip_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSecurityGroupCurrentStateRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSecurityGroupCurrentStateRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSecurityGroupCurrentStateRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 direction: Optional[_builtins.str] = None,
+                 ethernet_type: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 port_range_max: Optional[_builtins.int] = None,
+                 port_range_min: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 remote_group_id: Optional[_builtins.str] = None,
+                 remote_ip_prefix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Description of the security group.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ether type.
+        :param _builtins.str id: Rule ID.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if ethernet_type is not None:
+            pulumi.set(__self__, "ethernet_type", ethernet_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if port_range_max is not None:
+            pulumi.set(__self__, "port_range_max", port_range_max)
+        if port_range_min is not None:
+            pulumi.set(__self__, "port_range_min", port_range_min)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if remote_group_id is not None:
+            pulumi.set(__self__, "remote_group_id", remote_group_id)
+        if remote_ip_prefix is not None:
+            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the security group.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> Optional[_builtins.str]:
+        """
+        Ether type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> Optional[_builtins.int]:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> Optional[_builtins.int]:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> Optional[_builtins.str]:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> Optional[_builtins.str]:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class CloudSecurityGroupRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ethernetType":
+            suggest = "ethernet_type"
+        elif key == "portRangeMax":
+            suggest = "port_range_max"
+        elif key == "portRangeMin":
+            suggest = "port_range_min"
+        elif key == "remoteGroupId":
+            suggest = "remote_group_id"
+        elif key == "remoteIpPrefix":
+            suggest = "remote_ip_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSecurityGroupRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSecurityGroupRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSecurityGroupRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 port_range_max: Optional[_builtins.int] = None,
+                 port_range_min: Optional[_builtins.int] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 remote_group_id: Optional[_builtins.str] = None,
+                 remote_ip_prefix: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str direction: Direction of the rule (`INGRESS` or `EGRESS`).
+        :param _builtins.str ethernet_type: Ether type (`IPV4` or `IPV6`).
+        :param _builtins.str description: Description of the rule.
+               
+               > **NOTE:** When a security group is created, OpenStack automatically adds a
+               default egress rule (allowing all outbound traffic). This default rule is **not**
+               part of the managed `rule` set: it is never sent in your configuration and never
+               appears under `rule`, so it will not show up as drift on subsequent plans. It is
+               surfaced for information only under `current_state.default_rules`.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix (CIDR notation).
+        """
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if port_range_max is not None:
+            pulumi.set(__self__, "port_range_max", port_range_max)
+        if port_range_min is not None:
+            pulumi.set(__self__, "port_range_min", port_range_min)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if remote_group_id is not None:
+            pulumi.set(__self__, "remote_group_id", remote_group_id)
+        if remote_ip_prefix is not None:
+            pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule (`INGRESS` or `EGRESS`).
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ether type (`IPV4` or `IPV6`).
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the rule.
+
+        > **NOTE:** When a security group is created, OpenStack automatically adds a
+        default egress rule (allowing all outbound traffic). This default rule is **not**
+        part of the managed `rule` set: it is never sent in your configuration and never
+        appears under `rule`, so it will not show up as drift on subsequent plans. It is
+        surfaced for information only under `current_state.default_rules`.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> Optional[_builtins.int]:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> Optional[_builtins.int]:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Protocol (`TCP`, `UDP`, `ICMP`, etc.).
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> Optional[_builtins.str]:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> Optional[_builtins.str]:
+        """
+        Remote IP prefix (CIDR notation).
+        """
+        return pulumi.get(self, "remote_ip_prefix")
 
 
 @pulumi.output_type
@@ -2464,6 +3798,1469 @@ class VrackservicesTargetSpecSubnetServiceRange(dict):
 
 
 @pulumi.output_type
+class GetCloudGatewayCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 external_gateway: 'outputs.GetCloudGatewayCurrentStateExternalGatewayResult',
+                 external_ip: _builtins.str,
+                 location: 'outputs.GetCloudGatewayCurrentStateLocationResult',
+                 name: _builtins.str,
+                 status: _builtins.str,
+                 subnets: Sequence['outputs.GetCloudGatewayCurrentStateSubnetResult']):
+        """
+        :param _builtins.str description: Gateway description.
+        :param 'GetCloudGatewayCurrentStateExternalGatewayArgs' external_gateway: External gateway configuration:
+        :param _builtins.str external_ip: External IP address assigned to the gateway.
+        :param 'GetCloudGatewayCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Gateway name.
+        :param _builtins.str status: OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        :param Sequence['GetCloudGatewayCurrentStateSubnetArgs'] subnets: Currently attached subnets:
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "external_gateway", external_gateway)
+        pulumi.set(__self__, "external_ip", external_ip)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Gateway description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="externalGateway")
+    def external_gateway(self) -> 'outputs.GetCloudGatewayCurrentStateExternalGatewayResult':
+        """
+        External gateway configuration:
+        """
+        return pulumi.get(self, "external_gateway")
+
+    @_builtins.property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> _builtins.str:
+        """
+        External IP address assigned to the gateway.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudGatewayCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Gateway name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetCloudGatewayCurrentStateSubnetResult']:
+        """
+        Currently attached subnets:
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetCloudGatewayCurrentStateExternalGatewayResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 model: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the external gateway is enabled.
+        :param _builtins.str model: External gateway sizing model.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> _builtins.str:
+        """
+        External gateway sizing model.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class GetCloudGatewayCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudGatewayCurrentStateSubnetResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Gateway ID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Gateway ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudGatewayExternalGatewayResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 model: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the external gateway is enabled.
+        :param _builtins.str model: External gateway sizing model.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> _builtins.str:
+        """
+        External gateway sizing model.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class GetCloudGatewayLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudGatewaysGatewayCurrentStateResult',
+                 description: _builtins.str,
+                 external_gateway: 'outputs.GetCloudGatewaysGatewayExternalGatewayResult',
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudGatewaysGatewayLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the gateway.
+        :param 'GetCloudGatewaysGatewayCurrentStateArgs' current_state: Current state of the gateway:
+        :param _builtins.str description: Gateway description.
+        :param 'GetCloudGatewaysGatewayExternalGatewayArgs' external_gateway: External gateway configuration:
+        :param _builtins.str id: Subnet ID.
+        :param 'GetCloudGatewaysGatewayLocationArgs' location: Location details:
+        :param _builtins.str name: Gateway name.
+        :param _builtins.str resource_status: Gateway readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the gateway.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "external_gateway", external_gateway)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the gateway.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudGatewaysGatewayCurrentStateResult':
+        """
+        Current state of the gateway:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Gateway description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="externalGateway")
+    def external_gateway(self) -> 'outputs.GetCloudGatewaysGatewayExternalGatewayResult':
+        """
+        External gateway configuration:
+        """
+        return pulumi.get(self, "external_gateway")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudGatewaysGatewayLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Gateway name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Gateway readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the gateway.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 external_gateway: 'outputs.GetCloudGatewaysGatewayCurrentStateExternalGatewayResult',
+                 external_ip: _builtins.str,
+                 location: 'outputs.GetCloudGatewaysGatewayCurrentStateLocationResult',
+                 name: _builtins.str,
+                 status: _builtins.str,
+                 subnets: Sequence['outputs.GetCloudGatewaysGatewayCurrentStateSubnetResult']):
+        """
+        :param _builtins.str description: Gateway description.
+        :param 'GetCloudGatewaysGatewayCurrentStateExternalGatewayArgs' external_gateway: External gateway configuration:
+        :param _builtins.str external_ip: External IP address assigned to the gateway.
+        :param 'GetCloudGatewaysGatewayCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Gateway name.
+        :param _builtins.str status: OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        :param Sequence['GetCloudGatewaysGatewayCurrentStateSubnetArgs'] subnets: Currently attached subnets:
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "external_gateway", external_gateway)
+        pulumi.set(__self__, "external_ip", external_ip)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Gateway description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="externalGateway")
+    def external_gateway(self) -> 'outputs.GetCloudGatewaysGatewayCurrentStateExternalGatewayResult':
+        """
+        External gateway configuration:
+        """
+        return pulumi.get(self, "external_gateway")
+
+    @_builtins.property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> _builtins.str:
+        """
+        External IP address assigned to the gateway.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudGatewaysGatewayCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Gateway name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        OpenStack router status (`ACTIVE`, `BUILD`, `DOWN`, `ERROR`).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetCloudGatewaysGatewayCurrentStateSubnetResult']:
+        """
+        Currently attached subnets:
+        """
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayCurrentStateExternalGatewayResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 model: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the external gateway is enabled.
+        :param _builtins.str model: External gateway sizing model.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> _builtins.str:
+        """
+        External gateway sizing model.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayCurrentStateSubnetResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Subnet ID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayExternalGatewayResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 model: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the external gateway is enabled.
+        :param _builtins.str model: External gateway sizing model.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "model", model)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the external gateway is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> _builtins.str:
+        """
+        External gateway sizing model.
+        """
+        return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class GetCloudGatewaysGatewayLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudNetworkPrivateVrackCurrentStateLocationResult',
+                 name: _builtins.str,
+                 vlan_id: _builtins.float):
+        """
+        :param _builtins.str description: Network description.
+        :param 'GetCloudNetworkPrivateVrackCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Network name.
+        :param _builtins.float vlan_id: VLAN ID of the network.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Network description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudNetworkPrivateVrackCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> _builtins.float:
+        """
+        VLAN ID of the network.
+        """
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetAllocationPoolResult(dict):
+    def __init__(__self__, *,
+                 end: _builtins.str,
+                 start: _builtins.str):
+        """
+        :param _builtins.str end: End IP address of the pool.
+        :param _builtins.str start: Start IP address of the pool.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.str:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.str:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 allocation_pools: Sequence['outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolResult'],
+                 cidr: _builtins.str,
+                 description: _builtins.str,
+                 dhcp_enabled: _builtins.bool,
+                 dns_nameservers: Sequence[_builtins.str],
+                 gateway_ip: _builtins.str,
+                 host_routes: Sequence['outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteResult'],
+                 location: 'outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateLocationResult',
+                 name: _builtins.str):
+        """
+        :param Sequence['GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolArgs'] allocation_pools: IP address allocation pools:
+        :param _builtins.str cidr: CIDR address range.
+        :param _builtins.str description: Subnet description.
+        :param _builtins.bool dhcp_enabled: Whether DHCP is enabled.
+        :param Sequence[_builtins.str] dns_nameservers: Configured DNS nameservers.
+        :param _builtins.str gateway_ip: Default gateway IP address.
+        :param Sequence['GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteArgs'] host_routes: Static host routes:
+        :param 'GetCloudNetworkPrivateVrackSubnetCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Subnet name.
+        """
+        pulumi.set(__self__, "allocation_pools", allocation_pools)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        pulumi.set(__self__, "gateway_ip", gateway_ip)
+        pulumi.set(__self__, "host_routes", host_routes)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Sequence['outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolResult']:
+        """
+        IP address allocation pools:
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        CIDR address range.
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Subnet description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> _builtins.bool:
+        """
+        Whether DHCP is enabled.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsNameservers")
+    def dns_nameservers(self) -> Sequence[_builtins.str]:
+        """
+        Configured DNS nameservers.
+        """
+        return pulumi.get(self, "dns_nameservers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> _builtins.str:
+        """
+        Default gateway IP address.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Sequence['outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteResult']:
+        """
+        Static host routes:
+        """
+        return pulumi.get(self, "host_routes")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudNetworkPrivateVrackSubnetCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Subnet name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetCurrentStateAllocationPoolResult(dict):
+    def __init__(__self__, *,
+                 end: _builtins.str,
+                 start: _builtins.str):
+        """
+        :param _builtins.str end: End IP address of the pool.
+        :param _builtins.str start: Start IP address of the pool.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.str:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.str:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetCurrentStateHostRouteResult(dict):
+    def __init__(__self__, *,
+                 destination: _builtins.str,
+                 next_hop: _builtins.str):
+        """
+        :param _builtins.str destination: Destination CIDR.
+        :param _builtins.str next_hop: Next hop IP address.
+        """
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "next_hop", next_hop)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> _builtins.str:
+        """
+        Destination CIDR.
+        """
+        return pulumi.get(self, "destination")
+
+    @_builtins.property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> _builtins.str:
+        """
+        Next hop IP address.
+        """
+        return pulumi.get(self, "next_hop")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetResult(dict):
+    def __init__(__self__, *,
+                 allocation_pools: Sequence['outputs.GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolResult'],
+                 checksum: _builtins.str,
+                 cidr: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateResult',
+                 description: _builtins.str,
+                 dhcp_enabled: _builtins.bool,
+                 dns_nameservers: Sequence[_builtins.str],
+                 gateway_ip: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudNetworkPrivateVrackSubnetsSubnetLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param Sequence['GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolArgs'] allocation_pools: IP address allocation pools:
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str cidr: CIDR address range.
+        :param _builtins.str created_at: Creation date of the subnet.
+        :param 'GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateArgs' current_state: Current state of the subnet:
+        :param _builtins.str description: Subnet description.
+        :param _builtins.bool dhcp_enabled: Whether DHCP is enabled.
+        :param Sequence[_builtins.str] dns_nameservers: Configured DNS nameservers.
+        :param _builtins.str gateway_ip: Default gateway IP address.
+        :param _builtins.str id: Subnet ID.
+        :param 'GetCloudNetworkPrivateVrackSubnetsSubnetLocationArgs' location: Location details:
+        :param _builtins.str name: Subnet name.
+        :param _builtins.str resource_status: Subnet readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the subnet.
+        """
+        pulumi.set(__self__, "allocation_pools", allocation_pools)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        pulumi.set(__self__, "gateway_ip", gateway_ip)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Sequence['outputs.GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolResult']:
+        """
+        IP address allocation pools:
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        CIDR address range.
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the subnet.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateResult':
+        """
+        Current state of the subnet:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Subnet description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> _builtins.bool:
+        """
+        Whether DHCP is enabled.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsNameservers")
+    def dns_nameservers(self) -> Sequence[_builtins.str]:
+        """
+        Configured DNS nameservers.
+        """
+        return pulumi.get(self, "dns_nameservers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> _builtins.str:
+        """
+        Default gateway IP address.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudNetworkPrivateVrackSubnetsSubnetLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Subnet name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Subnet readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the subnet.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetAllocationPoolResult(dict):
+    def __init__(__self__, *,
+                 end: _builtins.str,
+                 start: _builtins.str):
+        """
+        :param _builtins.str end: End IP address of the pool.
+        :param _builtins.str start: Start IP address of the pool.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.str:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.str:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 allocation_pools: Sequence['outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolResult'],
+                 cidr: _builtins.str,
+                 description: _builtins.str,
+                 dhcp_enabled: _builtins.bool,
+                 dns_nameservers: Sequence[_builtins.str],
+                 gateway_ip: _builtins.str,
+                 host_routes: Sequence['outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteResult'],
+                 location: 'outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationResult',
+                 name: _builtins.str):
+        """
+        :param Sequence['GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolArgs'] allocation_pools: IP address allocation pools:
+        :param _builtins.str cidr: CIDR address range.
+        :param _builtins.str description: Subnet description.
+        :param _builtins.bool dhcp_enabled: Whether DHCP is enabled.
+        :param Sequence[_builtins.str] dns_nameservers: Configured DNS nameservers.
+        :param _builtins.str gateway_ip: Default gateway IP address.
+        :param Sequence['GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteArgs'] host_routes: Static host routes:
+        :param 'GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Subnet name.
+        """
+        pulumi.set(__self__, "allocation_pools", allocation_pools)
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dhcp_enabled", dhcp_enabled)
+        pulumi.set(__self__, "dns_nameservers", dns_nameservers)
+        pulumi.set(__self__, "gateway_ip", gateway_ip)
+        pulumi.set(__self__, "host_routes", host_routes)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="allocationPools")
+    def allocation_pools(self) -> Sequence['outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolResult']:
+        """
+        IP address allocation pools:
+        """
+        return pulumi.get(self, "allocation_pools")
+
+    @_builtins.property
+    @pulumi.getter
+    def cidr(self) -> _builtins.str:
+        """
+        CIDR address range.
+        """
+        return pulumi.get(self, "cidr")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Subnet description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dhcpEnabled")
+    def dhcp_enabled(self) -> _builtins.bool:
+        """
+        Whether DHCP is enabled.
+        """
+        return pulumi.get(self, "dhcp_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsNameservers")
+    def dns_nameservers(self) -> Sequence[_builtins.str]:
+        """
+        Configured DNS nameservers.
+        """
+        return pulumi.get(self, "dns_nameservers")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> _builtins.str:
+        """
+        Default gateway IP address.
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @_builtins.property
+    @pulumi.getter(name="hostRoutes")
+    def host_routes(self) -> Sequence['outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteResult']:
+        """
+        Static host routes:
+        """
+        return pulumi.get(self, "host_routes")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Subnet name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateAllocationPoolResult(dict):
+    def __init__(__self__, *,
+                 end: _builtins.str,
+                 start: _builtins.str):
+        """
+        :param _builtins.str end: End IP address of the pool.
+        :param _builtins.str start: Start IP address of the pool.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> _builtins.str:
+        """
+        End IP address of the pool.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> _builtins.str:
+        """
+        Start IP address of the pool.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateHostRouteResult(dict):
+    def __init__(__self__, *,
+                 destination: _builtins.str,
+                 next_hop: _builtins.str):
+        """
+        :param _builtins.str destination: Destination CIDR.
+        :param _builtins.str next_hop: Next hop IP address.
+        """
+        pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "next_hop", next_hop)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> _builtins.str:
+        """
+        Destination CIDR.
+        """
+        return pulumi.get(self, "destination")
+
+    @_builtins.property
+    @pulumi.getter(name="nextHop")
+    def next_hop(self) -> _builtins.str:
+        """
+        Next hop IP address.
+        """
+        return pulumi.get(self, "next_hop")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVrackSubnetsSubnetLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVracksNetworkResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudNetworkPrivateVracksNetworkCurrentStateResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudNetworkPrivateVracksNetworkLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str,
+                 vlan_id: _builtins.float):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the network.
+        :param 'GetCloudNetworkPrivateVracksNetworkCurrentStateArgs' current_state: Current state of the network:
+        :param _builtins.str description: Network description.
+        :param _builtins.str id: Network ID.
+        :param 'GetCloudNetworkPrivateVracksNetworkLocationArgs' location: Location details:
+        :param _builtins.str name: Network name.
+        :param _builtins.str resource_status: Network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the network.
+        :param _builtins.float vlan_id: VLAN ID of the network.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the network.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudNetworkPrivateVracksNetworkCurrentStateResult':
+        """
+        Current state of the network:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Network description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Network ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudNetworkPrivateVracksNetworkLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the network.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> _builtins.float:
+        """
+        VLAN ID of the network.
+        """
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVracksNetworkCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudNetworkPrivateVracksNetworkCurrentStateLocationResult',
+                 name: _builtins.str,
+                 vlan_id: _builtins.float):
+        """
+        :param _builtins.str description: Network description.
+        :param 'GetCloudNetworkPrivateVracksNetworkCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Network name.
+        :param _builtins.float vlan_id: VLAN ID of the network.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Network description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudNetworkPrivateVracksNetworkCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> _builtins.float:
+        """
+        VLAN ID of the network.
+        """
+        return pulumi.get(self, "vlan_id")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVracksNetworkCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudNetworkPrivateVracksNetworkLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
 class GetCloudProjectFlavorCapabilityResult(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool,
@@ -2628,6 +5425,35 @@ class GetCloudProjectGatewayInterfaceResult(dict):
         Subnet ID of the interface
         """
         return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudProjectKubeLogSubscriptionResourceResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str name: Name of the subscribed resource, where the logs come from.
+        :param _builtins.str type: Type of the subscribed resource, where the logs come from.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the subscribed resource, where the logs come from.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the subscribed resource, where the logs come from.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -3105,6 +5931,1068 @@ class GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionResu
         The storage class to which you want the object to transition.
         """
         return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class GetCloudRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 availability_zones: Sequence[_builtins.str],
+                 continent: _builtins.str,
+                 country: _builtins.str,
+                 datacenter_name: _builtins.str,
+                 name: _builtins.str,
+                 services: Sequence[_builtins.str],
+                 status: _builtins.str):
+        """
+        :param Sequence[_builtins.str] availability_zones: Availability zones available in the region.
+        :param _builtins.str continent: Continent code of the region.
+        :param _builtins.str country: Country code of the region.
+        :param _builtins.str datacenter_name: Display name of the datacenter hosting the region.
+        :param _builtins.str name: Name of the region (e.g. `GRA11`).
+        :param Sequence[_builtins.str] services: Available OpenStack services in the region.
+        :param _builtins.str status: Region status (`ENABLED`, `DISABLED` or `MAINTENANCE`).
+        """
+        pulumi.set(__self__, "availability_zones", availability_zones)
+        pulumi.set(__self__, "continent", continent)
+        pulumi.set(__self__, "country", country)
+        pulumi.set(__self__, "datacenter_name", datacenter_name)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "services", services)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZones")
+    def availability_zones(self) -> Sequence[_builtins.str]:
+        """
+        Availability zones available in the region.
+        """
+        return pulumi.get(self, "availability_zones")
+
+    @_builtins.property
+    @pulumi.getter
+    def continent(self) -> _builtins.str:
+        """
+        Continent code of the region.
+        """
+        return pulumi.get(self, "continent")
+
+    @_builtins.property
+    @pulumi.getter
+    def country(self) -> _builtins.str:
+        """
+        Country code of the region.
+        """
+        return pulumi.get(self, "country")
+
+    @_builtins.property
+    @pulumi.getter(name="datacenterName")
+    def datacenter_name(self) -> _builtins.str:
+        """
+        Display name of the datacenter hosting the region.
+        """
+        return pulumi.get(self, "datacenter_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the region (e.g. `GRA11`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def services(self) -> Sequence[_builtins.str]:
+        """
+        Available OpenStack services in the region.
+        """
+        return pulumi.get(self, "services")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Region status (`ENABLED`, `DISABLED` or `MAINTENANCE`).
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 default_rules: Sequence['outputs.GetCloudSecurityGroupCurrentStateDefaultRuleResult'],
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudSecurityGroupCurrentStateLocationResult',
+                 name: _builtins.str,
+                 rules: Sequence['outputs.GetCloudSecurityGroupCurrentStateRuleResult']):
+        """
+        :param Sequence['GetCloudSecurityGroupCurrentStateDefaultRuleArgs'] default_rules: Default egress rules auto-created by OpenStack (same schema as `rules`).
+        :param _builtins.str description: Description of the rule.
+        :param 'GetCloudSecurityGroupCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Name of the security group.
+        :param Sequence['GetCloudSecurityGroupCurrentStateRuleArgs'] rules: User-specified security group rules with their IDs:
+        """
+        pulumi.set(__self__, "default_rules", default_rules)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRules")
+    def default_rules(self) -> Sequence['outputs.GetCloudSecurityGroupCurrentStateDefaultRuleResult']:
+        """
+        Default egress rules auto-created by OpenStack (same schema as `rules`).
+        """
+        return pulumi.get(self, "default_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudSecurityGroupCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the security group.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCloudSecurityGroupCurrentStateRuleResult']:
+        """
+        User-specified security group rules with their IDs:
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupCurrentStateDefaultRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 id: _builtins.str,
+                 port_range_max: _builtins.int,
+                 port_range_min: _builtins.int,
+                 protocol: _builtins.str,
+                 remote_group_id: _builtins.str,
+                 remote_ip_prefix: _builtins.str):
+        """
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ethernet type.
+        :param _builtins.str id: Security group ID.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "port_range_max", port_range_max)
+        pulumi.set(__self__, "port_range_min", port_range_min)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remote_group_id", remote_group_id)
+        pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ethernet type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Security group ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> _builtins.int:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> _builtins.int:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> _builtins.str:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> _builtins.str:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupCurrentStateRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 id: _builtins.str,
+                 port_range_max: _builtins.int,
+                 port_range_min: _builtins.int,
+                 protocol: _builtins.str,
+                 remote_group_id: _builtins.str,
+                 remote_ip_prefix: _builtins.str):
+        """
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ethernet type.
+        :param _builtins.str id: Security group ID.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "port_range_max", port_range_max)
+        pulumi.set(__self__, "port_range_min", port_range_min)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remote_group_id", remote_group_id)
+        pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ethernet type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Security group ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> _builtins.int:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> _builtins.int:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> _builtins.str:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> _builtins.str:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 port_range_max: _builtins.int,
+                 port_range_min: _builtins.int,
+                 protocol: _builtins.str,
+                 remote_group_id: _builtins.str,
+                 remote_ip_prefix: _builtins.str):
+        """
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ethernet type.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        pulumi.set(__self__, "port_range_max", port_range_max)
+        pulumi.set(__self__, "port_range_min", port_range_min)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remote_group_id", remote_group_id)
+        pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ethernet type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> _builtins.int:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> _builtins.int:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> _builtins.str:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> _builtins.str:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudSecurityGroupsSecurityGroupLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 rules: Sequence['outputs.GetCloudSecurityGroupsSecurityGroupRuleResult'],
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the security group.
+        :param 'GetCloudSecurityGroupsSecurityGroupCurrentStateArgs' current_state: Current state of the security group:
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str id: Rule ID.
+        :param 'GetCloudSecurityGroupsSecurityGroupLocationArgs' location: Location details:
+        :param _builtins.str name: Name of the security group.
+        :param _builtins.str resource_status: Security group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param Sequence['GetCloudSecurityGroupsSecurityGroupRuleArgs'] rules: List of security group rules:
+        :param _builtins.str updated_at: Last update date of the security group.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the security group.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateResult':
+        """
+        Current state of the security group:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudSecurityGroupsSecurityGroupLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the security group.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Security group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCloudSecurityGroupsSecurityGroupRuleResult']:
+        """
+        List of security group rules:
+        """
+        return pulumi.get(self, "rules")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the security group.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 default_rules: Sequence['outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleResult'],
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateLocationResult',
+                 name: _builtins.str,
+                 rules: Sequence['outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateRuleResult']):
+        """
+        :param Sequence['GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleArgs'] default_rules: Default egress rules auto-created by OpenStack (same schema as `rules`).
+        :param _builtins.str description: Description of the rule.
+        :param 'GetCloudSecurityGroupsSecurityGroupCurrentStateLocationArgs' location: Location details:
+        :param _builtins.str name: Name of the security group.
+        :param Sequence['GetCloudSecurityGroupsSecurityGroupCurrentStateRuleArgs'] rules: User-specified security group rules with their IDs:
+        """
+        pulumi.set(__self__, "default_rules", default_rules)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRules")
+    def default_rules(self) -> Sequence['outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleResult']:
+        """
+        Default egress rules auto-created by OpenStack (same schema as `rules`).
+        """
+        return pulumi.get(self, "default_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the security group.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCloudSecurityGroupsSecurityGroupCurrentStateRuleResult']:
+        """
+        User-specified security group rules with their IDs:
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupCurrentStateDefaultRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 id: _builtins.str,
+                 port_range_max: _builtins.int,
+                 port_range_min: _builtins.int,
+                 protocol: _builtins.str,
+                 remote_group_id: _builtins.str,
+                 remote_ip_prefix: _builtins.str):
+        """
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ethernet type.
+        :param _builtins.str id: Rule ID.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "port_range_max", port_range_max)
+        pulumi.set(__self__, "port_range_min", port_range_min)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remote_group_id", remote_group_id)
+        pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ethernet type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> _builtins.int:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> _builtins.int:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> _builtins.str:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> _builtins.str:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupCurrentStateRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 id: _builtins.str,
+                 port_range_max: _builtins.int,
+                 port_range_min: _builtins.int,
+                 protocol: _builtins.str,
+                 remote_group_id: _builtins.str,
+                 remote_ip_prefix: _builtins.str):
+        """
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ethernet type.
+        :param _builtins.str id: Rule ID.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "port_range_max", port_range_max)
+        pulumi.set(__self__, "port_range_min", port_range_min)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remote_group_id", remote_group_id)
+        pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ethernet type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> _builtins.int:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> _builtins.int:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> _builtins.str:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> _builtins.str:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudSecurityGroupsSecurityGroupRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 direction: _builtins.str,
+                 ethernet_type: _builtins.str,
+                 port_range_max: _builtins.int,
+                 port_range_min: _builtins.int,
+                 protocol: _builtins.str,
+                 remote_group_id: _builtins.str,
+                 remote_ip_prefix: _builtins.str):
+        """
+        :param _builtins.str description: Description of the rule.
+        :param _builtins.str direction: Direction of the rule.
+        :param _builtins.str ethernet_type: Ethernet type.
+        :param _builtins.int port_range_max: Maximum port number.
+        :param _builtins.int port_range_min: Minimum port number.
+        :param _builtins.str protocol: Protocol.
+        :param _builtins.str remote_group_id: Remote security group ID.
+        :param _builtins.str remote_ip_prefix: Remote IP prefix.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "direction", direction)
+        pulumi.set(__self__, "ethernet_type", ethernet_type)
+        pulumi.set(__self__, "port_range_max", port_range_max)
+        pulumi.set(__self__, "port_range_min", port_range_min)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remote_group_id", remote_group_id)
+        pulumi.set(__self__, "remote_ip_prefix", remote_ip_prefix)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> _builtins.str:
+        """
+        Direction of the rule.
+        """
+        return pulumi.get(self, "direction")
+
+    @_builtins.property
+    @pulumi.getter(name="ethernetType")
+    def ethernet_type(self) -> _builtins.str:
+        """
+        Ethernet type.
+        """
+        return pulumi.get(self, "ethernet_type")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMax")
+    def port_range_max(self) -> _builtins.int:
+        """
+        Maximum port number.
+        """
+        return pulumi.get(self, "port_range_max")
+
+    @_builtins.property
+    @pulumi.getter(name="portRangeMin")
+    def port_range_min(self) -> _builtins.int:
+        """
+        Minimum port number.
+        """
+        return pulumi.get(self, "port_range_min")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteGroupId")
+    def remote_group_id(self) -> _builtins.str:
+        """
+        Remote security group ID.
+        """
+        return pulumi.get(self, "remote_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteIpPrefix")
+    def remote_ip_prefix(self) -> _builtins.str:
+        """
+        Remote IP prefix.
+        """
+        return pulumi.get(self, "remote_ip_prefix")
+
+
+@pulumi.output_type
+class GetCloudSshKeysSshKeyResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 name: _builtins.str,
+                 public_key: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str created_at: Creation date of the SSH key (RFC 3339 format).
+        :param _builtins.str name: SSH key name.
+        :param _builtins.str public_key: SSH public key content.
+        :param _builtins.str updated_at: Last update date of the SSH key (RFC 3339 format).
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the SSH key (RFC 3339 format).
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        SSH key name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> _builtins.str:
+        """
+        SSH public key content.
+        """
+        return pulumi.get(self, "public_key")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the SSH key (RFC 3339 format).
+        """
+        return pulumi.get(self, "updated_at")
 
 
 @pulumi.output_type

@@ -83,15 +83,15 @@ public final class CloudStorageBlockVolumeArgs extends com.pulumi.resources.Reso
      * Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="serviceName", required=true)
-    private Output<String> serviceName;
+    @Import(name="serviceName")
+    private @Nullable Output<String> serviceName;
 
     /**
      * @return Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> serviceName() {
-        return this.serviceName;
+    public Optional<Output<String>> serviceName() {
+        return Optional.ofNullable(this.serviceName);
     }
 
     /**
@@ -244,7 +244,7 @@ public final class CloudStorageBlockVolumeArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder serviceName(Output<String> serviceName) {
+        public Builder serviceName(@Nullable Output<String> serviceName) {
             $.serviceName = serviceName;
             return this;
         }
@@ -304,9 +304,6 @@ public final class CloudStorageBlockVolumeArgs extends com.pulumi.resources.Reso
         public CloudStorageBlockVolumeArgs build() {
             if ($.region == null) {
                 throw new MissingRequiredPropertyException("CloudStorageBlockVolumeArgs", "region");
-            }
-            if ($.serviceName == null) {
-                throw new MissingRequiredPropertyException("CloudStorageBlockVolumeArgs", "serviceName");
             }
             if ($.size == null) {
                 throw new MissingRequiredPropertyException("CloudStorageBlockVolumeArgs", "size");

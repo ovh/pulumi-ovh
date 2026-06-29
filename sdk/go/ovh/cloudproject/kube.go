@@ -28,12 +28,16 @@ type Kube struct {
 	ControlPlaneIsUpToDate pulumi.BoolOutput `pulumi:"controlPlaneIsUpToDate"`
 	// Kubernetes API server customization
 	CustomizationApiservers KubeCustomizationApiserverArrayOutput `pulumi:"customizationApiservers"`
+	// Cilium CNI customization.
+	CustomizationCilium KubeCustomizationCiliumOutput `pulumi:"customizationCilium"`
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy KubeCustomizationKubeProxyPtrOutput `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayOutput `pulumi:"customizations"`
+	// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+	IpAllocationPolicy KubeIpAllocationPolicyOutput `pulumi:"ipAllocationPolicy"`
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate pulumi.BoolOutput `pulumi:"isUpToDate"`
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
@@ -116,12 +120,16 @@ type kubeState struct {
 	ControlPlaneIsUpToDate *bool `pulumi:"controlPlaneIsUpToDate"`
 	// Kubernetes API server customization
 	CustomizationApiservers []KubeCustomizationApiserver `pulumi:"customizationApiservers"`
+	// Cilium CNI customization.
+	CustomizationCilium *KubeCustomizationCilium `pulumi:"customizationCilium"`
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy *KubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations []KubeCustomization `pulumi:"customizations"`
+	// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+	IpAllocationPolicy *KubeIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate *bool `pulumi:"isUpToDate"`
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
@@ -167,12 +175,16 @@ type KubeState struct {
 	ControlPlaneIsUpToDate pulumi.BoolPtrInput
 	// Kubernetes API server customization
 	CustomizationApiservers KubeCustomizationApiserverArrayInput
+	// Cilium CNI customization.
+	CustomizationCilium KubeCustomizationCiliumPtrInput
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy KubeCustomizationKubeProxyPtrInput
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayInput
+	// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+	IpAllocationPolicy KubeIpAllocationPolicyPtrInput
 	// True if all nodes and control-plane are up-to-date.
 	IsUpToDate pulumi.BoolPtrInput
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
@@ -220,12 +232,16 @@ func (KubeState) ElementType() reflect.Type {
 type kubeArgs struct {
 	// Kubernetes API server customization
 	CustomizationApiservers []KubeCustomizationApiserver `pulumi:"customizationApiservers"`
+	// Cilium CNI customization.
+	CustomizationCilium *KubeCustomizationCilium `pulumi:"customizationCilium"`
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy *KubeCustomizationKubeProxy `pulumi:"customizationKubeProxy"`
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations []KubeCustomization `pulumi:"customizations"`
+	// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+	IpAllocationPolicy *KubeIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 	KubeProxyMode *string `pulumi:"kubeProxyMode"`
 	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
@@ -256,12 +272,16 @@ type kubeArgs struct {
 type KubeArgs struct {
 	// Kubernetes API server customization
 	CustomizationApiservers KubeCustomizationApiserverArrayInput
+	// Cilium CNI customization.
+	CustomizationCilium KubeCustomizationCiliumPtrInput
 	// Kubernetes kube-proxy customization
 	CustomizationKubeProxy KubeCustomizationKubeProxyPtrInput
 	// **Deprecated** (Optional) Use `customizationApiserver` and `customizationKubeProxy` instead. Kubernetes cluster customization
 	//
 	// Deprecated: Use customizationApiserver instead
 	Customizations KubeCustomizationArrayInput
+	// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+	IpAllocationPolicy KubeIpAllocationPolicyPtrInput
 	// Selected mode for kube-proxy. **Changing this value recreates the resource, including ETCD user data.** Defaults to `iptables`.
 	KubeProxyMode pulumi.StringPtrInput
 	// Subnet ID to use for Public Load Balancers, this subnet must belong to  `privateNetworkId`. Defaults to the same subnet as the nodes (see `nodesSubnetId`). Requires `privateNetworkId` to be defined. See more network requirements in the [documentation](https://help.ovhcloud.com/csm/fr-public-cloud-kubernetes-expose-applications-using-load-balancer?id=kb_article_view&sysparm_article=KB0062873) for more information.
@@ -385,6 +405,11 @@ func (o KubeOutput) CustomizationApiservers() KubeCustomizationApiserverArrayOut
 	return o.ApplyT(func(v *Kube) KubeCustomizationApiserverArrayOutput { return v.CustomizationApiservers }).(KubeCustomizationApiserverArrayOutput)
 }
 
+// Cilium CNI customization.
+func (o KubeOutput) CustomizationCilium() KubeCustomizationCiliumOutput {
+	return o.ApplyT(func(v *Kube) KubeCustomizationCiliumOutput { return v.CustomizationCilium }).(KubeCustomizationCiliumOutput)
+}
+
 // Kubernetes kube-proxy customization
 func (o KubeOutput) CustomizationKubeProxy() KubeCustomizationKubeProxyPtrOutput {
 	return o.ApplyT(func(v *Kube) KubeCustomizationKubeProxyPtrOutput { return v.CustomizationKubeProxy }).(KubeCustomizationKubeProxyPtrOutput)
@@ -395,6 +420,11 @@ func (o KubeOutput) CustomizationKubeProxy() KubeCustomizationKubeProxyPtrOutput
 // Deprecated: Use customizationApiserver instead
 func (o KubeOutput) Customizations() KubeCustomizationArrayOutput {
 	return o.ApplyT(func(v *Kube) KubeCustomizationArrayOutput { return v.Customizations }).(KubeCustomizationArrayOutput)
+}
+
+// IP allocation policy of the cluster. **Changing this value recreates the resource.**
+func (o KubeOutput) IpAllocationPolicy() KubeIpAllocationPolicyOutput {
+	return o.ApplyT(func(v *Kube) KubeIpAllocationPolicyOutput { return v.IpAllocationPolicy }).(KubeIpAllocationPolicyOutput)
 }
 
 // True if all nodes and control-plane are up-to-date.

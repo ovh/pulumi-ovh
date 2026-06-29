@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.CloudProject;
 
 import com.ovhcloud.pulumi.ovh.CloudProject.VolumeArgs;
 import com.ovhcloud.pulumi.ovh.CloudProject.inputs.VolumeState;
+import com.ovhcloud.pulumi.ovh.CloudProject.outputs.VolumeEncryption;
 import com.ovhcloud.pulumi.ovh.CloudProject.outputs.VolumeSubOperation;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.pulumi.core.Output;
@@ -62,6 +63,98 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Encrypted volume with a customer managed key (CMK)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Volume;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.VolumeArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.VolumeEncryptionArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.VolumeEncryptionKmsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var encryptedVolume = new Volume("encryptedVolume", VolumeArgs.builder()
+ *             .regionName("xxx")
+ *             .serviceName("yyyyy")
+ *             .description("Terraform encrypted volume")
+ *             .name("encryptedVolume")
+ *             .size(15.0)
+ *             .type("classic")
+ *             .encryption(VolumeEncryptionArgs.builder()
+ *                 .encrypted(true)
+ *                 .kms(VolumeEncryptionKmsArgs.builder()
+ *                     .domainId("<okms domain id>")
+ *                     .serviceKeyId("<okms service key id>")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * Omit the `kms` block to encrypt the volume with OVH managed keys (OMK):
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Volume;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.VolumeArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.VolumeEncryptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var encryptedVolume = new Volume("encryptedVolume", VolumeArgs.builder()
+ *             .regionName("xxx")
+ *             .serviceName("yyyyy")
+ *             .name("encryptedVolume")
+ *             .size(15.0)
+ *             .type("classic")
+ *             .encryption(VolumeEncryptionArgs.builder()
+ *                 .encrypted(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * The resource can be imported using the public cloud project ID, region and the volume ID, e.g.,
@@ -100,6 +193,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> action() {
         return this.action;
+    }
+    /**
+     * Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+     * 
+     */
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    private Output<String> availabilityZone;
+
+    /**
+     * @return Optional. Availability zone in which the volume is created. Required when `region_name` is a 3AZ region. **Changing this value recreates the resource.**
+     * 
+     */
+    public Output<String> availabilityZone() {
+        return this.availabilityZone;
     }
     /**
      * The completed date of the operation
@@ -142,6 +249,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     * 
+     */
+    @Export(name="encryption", refs={VolumeEncryption.class}, tree="[0]")
+    private Output<VolumeEncryption> encryption;
+
+    /**
+     * @return Optional. Volume encryption configuration. Customer managed keys (CMK) are only available in supported regions (3AZ). **Changing this value recreates the resource.**
+     * 
+     */
+    public Output<VolumeEncryption> encryption() {
+        return this.encryption;
     }
     /**
      * Image ID

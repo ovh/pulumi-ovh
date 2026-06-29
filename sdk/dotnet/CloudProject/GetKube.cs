@@ -121,6 +121,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Cilium CNI customization.
+        /// </summary>
+        [Input("customizationCilium")]
+        public Inputs.GetKubeCustomizationCiliumArgs? CustomizationCilium { get; set; }
+
+        /// <summary>
         /// Kubernetes kube-proxy customization
         /// </summary>
         [Input("customizationKubeProxy")]
@@ -138,6 +144,12 @@ namespace Pulumi.Ovh.CloudProject
             get => _customizations ?? (_customizations = new List<Inputs.GetKubeCustomizationArgs>());
             set => _customizations = value;
         }
+
+        /// <summary>
+        /// IP allocation policy of the cluster.
+        /// </summary>
+        [Input("ipAllocationPolicy")]
+        public Inputs.GetKubeIpAllocationPolicyArgs? IpAllocationPolicy { get; set; }
 
         /// <summary>
         /// The id of the managed kubernetes cluster.
@@ -208,6 +220,12 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
+        /// Cilium CNI customization.
+        /// </summary>
+        [Input("customizationCilium")]
+        public Input<Inputs.GetKubeCustomizationCiliumInputArgs>? CustomizationCilium { get; set; }
+
+        /// <summary>
         /// Kubernetes kube-proxy customization
         /// </summary>
         [Input("customizationKubeProxy")]
@@ -225,6 +243,12 @@ namespace Pulumi.Ovh.CloudProject
             get => _customizations ?? (_customizations = new InputList<Inputs.GetKubeCustomizationInputArgs>());
             set => _customizations = value;
         }
+
+        /// <summary>
+        /// IP allocation policy of the cluster.
+        /// </summary>
+        [Input("ipAllocationPolicy")]
+        public Input<Inputs.GetKubeIpAllocationPolicyInputArgs>? IpAllocationPolicy { get; set; }
 
         /// <summary>
         /// The id of the managed kubernetes cluster.
@@ -293,6 +317,10 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubeCustomizationApiserverResult> CustomizationApiservers;
         /// <summary>
+        /// Cilium CNI customization.
+        /// </summary>
+        public readonly Outputs.GetKubeCustomizationCiliumResult CustomizationCilium;
+        /// <summary>
         /// Kubernetes kube-proxy customization
         /// </summary>
         public readonly Outputs.GetKubeCustomizationKubeProxyResult? CustomizationKubeProxy;
@@ -304,6 +332,10 @@ namespace Pulumi.Ovh.CloudProject
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// IP allocation policy of the cluster.
+        /// </summary>
+        public readonly Outputs.GetKubeIpAllocationPolicyResult IpAllocationPolicy;
         /// <summary>
         /// True if all nodes and control-plane are up-to-date.
         /// </summary>
@@ -383,11 +415,15 @@ namespace Pulumi.Ovh.CloudProject
 
             ImmutableArray<Outputs.GetKubeCustomizationApiserverResult> customizationApiservers,
 
+            Outputs.GetKubeCustomizationCiliumResult customizationCilium,
+
             Outputs.GetKubeCustomizationKubeProxyResult? customizationKubeProxy,
 
             ImmutableArray<Outputs.GetKubeCustomizationResult> customizations,
 
             string id,
+
+            Outputs.GetKubeIpAllocationPolicyResult ipAllocationPolicy,
 
             bool isUpToDate,
 
@@ -427,9 +463,11 @@ namespace Pulumi.Ovh.CloudProject
         {
             ControlPlaneIsUpToDate = controlPlaneIsUpToDate;
             CustomizationApiservers = customizationApiservers;
+            CustomizationCilium = customizationCilium;
             CustomizationKubeProxy = customizationKubeProxy;
             Customizations = customizations;
             Id = id;
+            IpAllocationPolicy = ipAllocationPolicy;
             IsUpToDate = isUpToDate;
             KubeId = kubeId;
             KubeProxyMode = kubeProxyMode;

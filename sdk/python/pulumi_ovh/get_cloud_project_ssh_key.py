@@ -113,6 +113,8 @@ def get_cloud_project_ssh_key(id: Optional[_builtins.str] = None,
                               service_name: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCloudProjectSshKeyResult:
     """
+    > **NOTE** Prefer using the new `ClousSSHKey` data source instead.
+
     Retrieve information about a SSH key.
 
     ## Example Usage
@@ -146,6 +148,8 @@ def get_cloud_project_ssh_key_output(id: Optional[pulumi.Input[_builtins.str]] =
                                      service_name: Optional[pulumi.Input[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudProjectSshKeyResult]:
     """
+    > **NOTE** Prefer using the new `ClousSSHKey` data source instead.
+
     Retrieve information about a SSH key.
 
     ## Example Usage

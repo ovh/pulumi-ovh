@@ -31,14 +31,14 @@ public final class GetKubeCustomizationApiserverAdmissionpluginArgs extends com.
     }
 
     /**
-     * Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+     * Whether the Hubble UI is enabled.
      * 
      */
     @Import(name="enableds", required=true)
     private Output<List<String>> enableds;
 
     /**
-     * @return Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+     * @return Whether the Hubble UI is enabled.
      * 
      */
     public Output<List<String>> enableds() {
@@ -102,7 +102,7 @@ public final class GetKubeCustomizationApiserverAdmissionpluginArgs extends com.
         }
 
         /**
-         * @param enableds Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+         * @param enableds Whether the Hubble UI is enabled.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class GetKubeCustomizationApiserverAdmissionpluginArgs extends com.
         }
 
         /**
-         * @param enableds Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+         * @param enableds Whether the Hubble UI is enabled.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class GetKubeCustomizationApiserverAdmissionpluginArgs extends com.
         }
 
         /**
-         * @param enableds Array of admission plugins enabled, default is [&#34;NodeRestriction&#34;,&#34;AlwaysPulImages&#34;] and only these admission plugins can be enabled at this time.
+         * @param enableds Whether the Hubble UI is enabled.
          * 
          * @return builder
          * 
