@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` resource instead.
+ * &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` resource instead.
  * 
  * Create a SSH key in the given public cloud project.
  * 

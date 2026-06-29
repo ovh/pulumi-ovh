@@ -28,6 +28,7 @@
         "cloudProjectSshKey.ts",
         "cloudProjectStorageObjectBucketLifecycleConfiguration.ts",
         "cloudProjectStorageReplicationJob.ts",
+        "cloudSSHKey.ts",
         "cloudSecurityGroup.ts",
         "cloudStorageBlockVolume.ts",
         "cloudStorageBlockVolumeBackup.ts",

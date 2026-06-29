@@ -3,14 +3,16 @@
 
 package com.ovhcloud.pulumi.ovh;
 
-import com.ovhcloud.pulumi.ovh.ClousSSHKeyArgs;
+import com.ovhcloud.pulumi.ovh.CloudSSHKeyArgs;
 import com.ovhcloud.pulumi.ovh.Utilities;
-import com.ovhcloud.pulumi.ovh.inputs.ClousSSHKeyState;
+import com.ovhcloud.pulumi.ovh.inputs.CloudSSHKeyState;
+import com.pulumi.core.Alias;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -55,13 +57,9 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * @deprecated
- * ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey
- * 
  */
-@Deprecated /* ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey */
-@ResourceType(type="ovh:index/clousSSHKey:ClousSSHKey")
-public class ClousSSHKey extends com.pulumi.resources.CustomResource {
+@ResourceType(type="ovh:index/cloudSSHKey:CloudSSHKey")
+public class CloudSSHKey extends com.pulumi.resources.CustomResource {
     /**
      * Creation date of the SSH key (RFC 3339 format).
      * 
@@ -137,15 +135,15 @@ public class ClousSSHKey extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClousSSHKey(java.lang.String name) {
-        this(name, ClousSSHKeyArgs.Empty);
+    public CloudSSHKey(java.lang.String name) {
+        this(name, CloudSSHKeyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClousSSHKey(java.lang.String name, ClousSSHKeyArgs args) {
+    public CloudSSHKey(java.lang.String name, CloudSSHKeyArgs args) {
         this(name, args, null);
     }
     /**
@@ -154,25 +152,28 @@ public class ClousSSHKey extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClousSSHKey(java.lang.String name, ClousSSHKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:index/clousSSHKey:ClousSSHKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
+    public CloudSSHKey(java.lang.String name, CloudSSHKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:index/cloudSSHKey:CloudSSHKey", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ClousSSHKey(java.lang.String name, Output<java.lang.String> id, @Nullable ClousSSHKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("ovh:index/clousSSHKey:ClousSSHKey", name, state, makeResourceOptions(options, id), false);
+    private CloudSSHKey(java.lang.String name, Output<java.lang.String> id, @Nullable CloudSSHKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("ovh:index/cloudSSHKey:CloudSSHKey", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static ClousSSHKeyArgs makeArgs(ClousSSHKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static CloudSSHKeyArgs makeArgs(CloudSSHKeyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
-        return args == null ? ClousSSHKeyArgs.Empty : args;
+        return args == null ? CloudSSHKeyArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
+            .aliases(List.of(
+                Output.of(Alias.builder().type("ovh:index/clousSSHKey:ClousSSHKey").build())
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }
@@ -186,7 +187,7 @@ public class ClousSSHKey extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClousSSHKey get(java.lang.String name, Output<java.lang.String> id, @Nullable ClousSSHKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new ClousSSHKey(name, id, state, options);
+    public static CloudSSHKey get(java.lang.String name, Output<java.lang.String> id, @Nullable CloudSSHKeyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new CloudSSHKey(name, id, state, options);
     }
 }

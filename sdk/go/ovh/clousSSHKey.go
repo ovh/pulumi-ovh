@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ovh.NewClousSSHKey(ctx, "my_key", &ovh.ClousSSHKeyArgs{
+//			_, err := ovh.NewCloudSSHKey(ctx, "my_key", &ovh.CloudSSHKeyArgs{
 //				ServiceName: pulumi.String("aaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"),
 //				Name:        pulumi.String("my-deploy-key"),
 //				PublicKey:   pulumi.String("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExample user@host"),
@@ -43,6 +43,8 @@ import (
 //	}
 //
 // ```
+//
+// Deprecated: ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey
 type ClousSSHKey struct {
 	pulumi.CustomResourceState
 

@@ -871,7 +871,14 @@
                 }
             },
             "ovh_cloud_ssh_key": {
-                "current": "ovh:index/clousSSHKey:ClousSSHKey",
+                "current": "ovh:index/cloudSSHKey:CloudSSHKey",
+                "past": [
+                    {
+                        "name": "ovh:index/clousSSHKey:ClousSSHKey",
+                        "inCodegen": true,
+                        "majorVersion": 2
+                    }
+                ],
                 "majorVersion": 2
             },
             "ovh_cloud_storage_block_volume": {
@@ -4290,7 +4297,15 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "ovh_cloud_ssh_key": {
+                "aliases": [
+                    "ovh:index/clousSSHKey:ClousSSHKey"
+                ]
+            }
+        }
+    },
     "mux": {
         "resources": {
             "ovh:CloudProject/alerting:Alerting": 1,
@@ -4435,6 +4450,7 @@
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
             "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,
+            "ovh:index/cloudSSHKey:CloudSSHKey": 1,
             "ovh:index/cloudSecurityGroup:CloudSecurityGroup": 1,
             "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": 1,
             "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": 1,

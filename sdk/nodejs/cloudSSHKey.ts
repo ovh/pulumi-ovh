@@ -21,12 +21,10 @@ import * as utilities from "./utilities";
  *     publicKey: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExample user@host",
  * });
  * ```
- *
- * @deprecated ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey
  */
-export class ClousSSHKey extends pulumi.CustomResource {
+export class CloudSSHKey extends pulumi.CustomResource {
     /**
-     * Get an existing ClousSSHKey resource's state with the given name, ID, and optional extra
+     * Get an existing CloudSSHKey resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -34,23 +32,22 @@ export class ClousSSHKey extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClousSSHKeyState, opts?: pulumi.CustomResourceOptions): ClousSSHKey {
-        pulumi.log.warn("ClousSSHKey is deprecated: ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey")
-        return new ClousSSHKey(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CloudSSHKeyState, opts?: pulumi.CustomResourceOptions): CloudSSHKey {
+        return new CloudSSHKey(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'ovh:index/clousSSHKey:ClousSSHKey';
+    public static readonly __pulumiType = 'ovh:index/cloudSSHKey:CloudSSHKey';
 
     /**
-     * Returns true if the given object is an instance of ClousSSHKey.  This is designed to work even
+     * Returns true if the given object is an instance of CloudSSHKey.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ClousSSHKey {
+    public static isInstance(obj: any): obj is CloudSSHKey {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ClousSSHKey.__pulumiType;
+        return obj['__pulumiType'] === CloudSSHKey.__pulumiType;
     }
 
     /**
@@ -75,28 +72,25 @@ export class ClousSSHKey extends pulumi.CustomResource {
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
-     * Create a ClousSSHKey resource with the given unique name, arguments, and options.
+     * Create a CloudSSHKey resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    /** @deprecated ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey */
-    constructor(name: string, args: ClousSSHKeyArgs, opts?: pulumi.CustomResourceOptions)
-    /** @deprecated ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey */
-    constructor(name: string, argsOrState?: ClousSSHKeyArgs | ClousSSHKeyState, opts?: pulumi.CustomResourceOptions) {
-        pulumi.log.warn("ClousSSHKey is deprecated: ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey")
+    constructor(name: string, args: CloudSSHKeyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: CloudSSHKeyArgs | CloudSSHKeyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ClousSSHKeyState | undefined;
+            const state = argsOrState as CloudSSHKeyState | undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["publicKey"] = state ? state.publicKey : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
         } else {
-            const args = argsOrState as ClousSSHKeyArgs | undefined;
+            const args = argsOrState as CloudSSHKeyArgs | undefined;
             if ((!args || args.publicKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'publicKey'");
             }
@@ -107,14 +101,16 @@ export class ClousSSHKey extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ClousSSHKey.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "ovh:index/clousSSHKey:ClousSSHKey" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(CloudSSHKey.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ClousSSHKey resources.
+ * Input properties used for looking up and filtering CloudSSHKey resources.
  */
-export interface ClousSSHKeyState {
+export interface CloudSSHKeyState {
     /**
      * Creation date of the SSH key (RFC 3339 format).
      */
@@ -138,9 +134,9 @@ export interface ClousSSHKeyState {
 }
 
 /**
- * The set of arguments for constructing a ClousSSHKey resource.
+ * The set of arguments for constructing a CloudSSHKey resource.
  */
-export interface ClousSSHKeyArgs {
+export interface CloudSSHKeyArgs {
     /**
      * SSH key name. Must be unique within the project. Used as the resource identifier. **Changing this value recreates the resource.**
      */

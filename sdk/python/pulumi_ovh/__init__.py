@@ -19,6 +19,7 @@ from .cloud_project_ssh_key import *
 from .cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .cloud_project_storage_replication_job import *
 from .cloud_security_group import *
+from .cloud_ssh_key import *
 from .cloud_storage_block_volume import *
 from .cloud_storage_block_volume_backup import *
 from .cloud_storage_block_volume_snapshot import *
@@ -1294,6 +1295,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": "CloudProjectStorageReplicationJob"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudSSHKey",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudSSHKey:CloudSSHKey": "CloudSSHKey"
   }
  },
  {

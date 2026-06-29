@@ -14,16 +14,16 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
-__all__ = ['ClousSSHKeyArgs', 'ClousSSHKey']
+__all__ = ['CloudSSHKeyArgs', 'CloudSSHKey']
 
 @pulumi.input_type
-class ClousSSHKeyArgs:
+class CloudSSHKeyArgs:
     def __init__(__self__, *,
                  public_key: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        The set of arguments for constructing a ClousSSHKey resource.
+        The set of arguments for constructing a CloudSSHKey resource.
         :param pulumi.Input[_builtins.str] public_key: SSH public key content (e.g. the contents of `~/.ssh/id_ed25519.pub`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: SSH key name. Must be unique within the project. Used as the resource identifier. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**
@@ -72,7 +72,7 @@ class ClousSSHKeyArgs:
 
 
 @pulumi.input_type
-class _ClousSSHKeyState:
+class _CloudSSHKeyState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -80,7 +80,7 @@ class _ClousSSHKeyState:
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering ClousSSHKey resources.
+        Input properties used for looking up and filtering CloudSSHKey resources.
         :param pulumi.Input[_builtins.str] created_at: Creation date of the SSH key (RFC 3339 format).
         :param pulumi.Input[_builtins.str] name: SSH key name. Must be unique within the project. Used as the resource identifier. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] public_key: SSH public key content (e.g. the contents of `~/.ssh/id_ed25519.pub`). **Changing this value recreates the resource.**
@@ -159,13 +159,8 @@ class _ClousSSHKeyState:
         pulumi.set(self, "updated_at", value)
 
 
-warnings.warn("""ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey""", DeprecationWarning)
-
-
-@pulumi.type_token("ovh:index/clousSSHKey:ClousSSHKey")
-class ClousSSHKey(pulumi.CustomResource):
-    warnings.warn("""ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey""", DeprecationWarning)
-
+@pulumi.type_token("ovh:index/cloudSSHKey:CloudSSHKey")
+class CloudSSHKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -201,7 +196,7 @@ class ClousSSHKey(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClousSSHKeyArgs,
+                 args: CloudSSHKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         **This resource uses a Beta API.** Creates an SSH key in a Public Cloud project.
@@ -221,12 +216,12 @@ class ClousSSHKey(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ClousSSHKeyArgs args: The arguments to use to populate this resource's properties.
+        :param CloudSSHKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClousSSHKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CloudSSHKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -239,14 +234,13 @@ class ClousSSHKey(pulumi.CustomResource):
                  public_key: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
-        pulumi.log.warn("""ClousSSHKey is deprecated: ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClousSSHKeyArgs.__new__(ClousSSHKeyArgs)
+            __props__ = CloudSSHKeyArgs.__new__(CloudSSHKeyArgs)
 
             __props__.__dict__["name"] = name
             if public_key is None and not opts.urn:
@@ -255,8 +249,10 @@ class ClousSSHKey(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
-        super(ClousSSHKey, __self__).__init__(
-            'ovh:index/clousSSHKey:ClousSSHKey',
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="ovh:index/clousSSHKey:ClousSSHKey")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        super(CloudSSHKey, __self__).__init__(
+            'ovh:index/cloudSSHKey:CloudSSHKey',
             resource_name,
             __props__,
             opts)
@@ -269,9 +265,9 @@ class ClousSSHKey(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             public_key: Optional[pulumi.Input[_builtins.str]] = None,
             service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClousSSHKey':
+            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'CloudSSHKey':
         """
-        Get an existing ClousSSHKey resource's state with the given name, id, and optional extra
+        Get an existing CloudSSHKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -285,14 +281,14 @@ class ClousSSHKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _ClousSSHKeyState.__new__(_ClousSSHKeyState)
+        __props__ = _CloudSSHKeyState.__new__(_CloudSSHKeyState)
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["name"] = name
         __props__.__dict__["public_key"] = public_key
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["updated_at"] = updated_at
-        return ClousSSHKey(resource_name, opts=opts, __props__=__props__)
+        return CloudSSHKey(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")

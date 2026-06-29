@@ -297,7 +297,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: ovhResource(cloudProjectMod, "VolumeBackup"),
 			},
 			"ovh_cloud_ssh_key": {
-				Tok:       ovhResource(ovhMod, "ClousSSHKey"),
+				Tok:       ovhResource(ovhMod, "CloudSSHKey"),
 				ComputeID: delegateID("name"),
 			},
 			"ovh_dbaas_logs_input": {

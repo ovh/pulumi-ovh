@@ -2556,7 +2556,7 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectRancherCapabilitiesVersion:getCloudProjectRancherCapabilitiesVersion", TypeShape.of(GetCloudProjectRancherCapabilitiesVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
      * 
      * Retrieve information about a SSH key.
      * 
@@ -2601,7 +2601,7 @@ public final class OvhFunctions {
         return getCloudProjectSshKey(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
      * 
      * Retrieve information about a SSH key.
      * 
@@ -2646,7 +2646,7 @@ public final class OvhFunctions {
         return getCloudProjectSshKeyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
      * 
      * Retrieve information about a SSH key.
      * 
@@ -2691,7 +2691,7 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", TypeShape.of(GetCloudProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
      * 
      * Retrieve information about a SSH key.
      * 
@@ -2736,7 +2736,7 @@ public final class OvhFunctions {
         return Deployment.getInstance().invoke("ovh:index/getCloudProjectSshKey:getCloudProjectSshKey", TypeShape.of(GetCloudProjectSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+     * &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
      * 
      * Retrieve information about a SSH key.
      * 

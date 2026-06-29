@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE** Prefer using the new `ClousSSHKey` resource instead.
+// > **NOTE** Prefer using the new `CloudSSHKey` resource instead.
 //
 // Create a SSH key in the given public cloud project.
 //

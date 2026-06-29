@@ -203,7 +203,7 @@ class CloudProjectSshKey(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        > **NOTE** Prefer using the new `ClousSSHKey` resource instead.
+        > **NOTE** Prefer using the new `CloudSSHKey` resource instead.
 
         Create a SSH key in the given public cloud project.
 
@@ -233,7 +233,7 @@ class CloudProjectSshKey(pulumi.CustomResource):
                  args: CloudProjectSshKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE** Prefer using the new `ClousSSHKey` resource instead.
+        > **NOTE** Prefer using the new `CloudSSHKey` resource instead.
 
         Create a SSH key in the given public cloud project.
 

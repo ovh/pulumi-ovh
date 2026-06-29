@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **NOTE** Prefer using the new `ClousSSHKey` data source instead.
+// > **NOTE** Prefer using the new `CloudSSHKey` data source instead.
 //
 // Retrieve information about a SSH key.
 //

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * > **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+ * > **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
  *
  * Retrieve information about a SSH key.
  *
@@ -73,7 +73,7 @@ export interface GetCloudProjectSshKeyResult {
     readonly serviceName: string;
 }
 /**
- * > **NOTE** Prefer using the new `ovh.ClousSSHKey` data source instead.
+ * > **NOTE** Prefer using the new `ovh.CloudSSHKey` data source instead.
  *
  * Retrieve information about a SSH key.
  *

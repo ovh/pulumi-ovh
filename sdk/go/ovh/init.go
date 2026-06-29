@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectStorageObjectBucketLifecycleConfiguration{}
 	case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
 		r = &CloudProjectStorageReplicationJob{}
+	case "ovh:index/cloudSSHKey:CloudSSHKey":
+		r = &CloudSSHKey{}
 	case "ovh:index/cloudSecurityGroup:CloudSecurityGroup":
 		r = &CloudSecurityGroup{}
 	case "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume":
@@ -172,6 +174,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudProjectStorageReplicationJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudSSHKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

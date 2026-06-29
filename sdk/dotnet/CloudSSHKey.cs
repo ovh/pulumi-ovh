@@ -34,9 +34,8 @@ namespace Pulumi.Ovh
     /// });
     /// ```
     /// </summary>
-    [Obsolete(@"ovh.index/cloussshkey.ClousSSHKey has been deprecated in favor of ovh.index/cloudsshkey.CloudSSHKey")]
-    [OvhResourceType("ovh:index/clousSSHKey:ClousSSHKey")]
-    public partial class ClousSSHKey : global::Pulumi.CustomResource
+    [OvhResourceType("ovh:index/cloudSSHKey:CloudSSHKey")]
+    public partial class CloudSSHKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation date of the SSH key (RFC 3339 format).
@@ -70,19 +69,19 @@ namespace Pulumi.Ovh
 
 
         /// <summary>
-        /// Create a ClousSSHKey resource with the given unique name, arguments, and options.
+        /// Create a CloudSSHKey resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ClousSSHKey(string name, ClousSSHKeyArgs args, CustomResourceOptions? options = null)
-            : base("ovh:index/clousSSHKey:ClousSSHKey", name, args ?? new ClousSSHKeyArgs(), MakeResourceOptions(options, ""))
+        public CloudSSHKey(string name, CloudSSHKeyArgs args, CustomResourceOptions? options = null)
+            : base("ovh:index/cloudSSHKey:CloudSSHKey", name, args ?? new CloudSSHKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ClousSSHKey(string name, Input<string> id, ClousSSHKeyState? state = null, CustomResourceOptions? options = null)
-            : base("ovh:index/clousSSHKey:ClousSSHKey", name, state, MakeResourceOptions(options, id))
+        private CloudSSHKey(string name, Input<string> id, CloudSSHKeyState? state = null, CustomResourceOptions? options = null)
+            : base("ovh:index/cloudSSHKey:CloudSSHKey", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -92,6 +91,10 @@ namespace Pulumi.Ovh
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/ovh/pulumi-ovh",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "ovh:index/clousSSHKey:ClousSSHKey" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -99,7 +102,7 @@ namespace Pulumi.Ovh
             return merged;
         }
         /// <summary>
-        /// Get an existing ClousSSHKey resource's state with the given name, ID, and optional extra
+        /// Get an existing CloudSSHKey resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -107,13 +110,13 @@ namespace Pulumi.Ovh
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ClousSSHKey Get(string name, Input<string> id, ClousSSHKeyState? state = null, CustomResourceOptions? options = null)
+        public static CloudSSHKey Get(string name, Input<string> id, CloudSSHKeyState? state = null, CustomResourceOptions? options = null)
         {
-            return new ClousSSHKey(name, id, state, options);
+            return new CloudSSHKey(name, id, state, options);
         }
     }
 
-    public sealed class ClousSSHKeyArgs : global::Pulumi.ResourceArgs
+    public sealed class CloudSSHKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// SSH key name. Must be unique within the project. Used as the resource identifier. **Changing this value recreates the resource.**
@@ -133,13 +136,13 @@ namespace Pulumi.Ovh
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
-        public ClousSSHKeyArgs()
+        public CloudSSHKeyArgs()
         {
         }
-        public static new ClousSSHKeyArgs Empty => new ClousSSHKeyArgs();
+        public static new CloudSSHKeyArgs Empty => new CloudSSHKeyArgs();
     }
 
-    public sealed class ClousSSHKeyState : global::Pulumi.ResourceArgs
+    public sealed class CloudSSHKeyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation date of the SSH key (RFC 3339 format).
@@ -171,9 +174,9 @@ namespace Pulumi.Ovh
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 
-        public ClousSSHKeyState()
+        public CloudSSHKeyState()
         {
         }
-        public static new ClousSSHKeyState Empty => new ClousSSHKeyState();
+        public static new CloudSSHKeyState Empty => new CloudSSHKeyState();
     }
 }

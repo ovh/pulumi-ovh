@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh
 {
     /// <summary>
-    /// &gt; **NOTE** Prefer using the new `ovh.ClousSSHKey` resource instead.
+    /// &gt; **NOTE** Prefer using the new `ovh.CloudSSHKey` resource instead.
     /// 
     /// Create a SSH key in the given public cloud project.
     /// 

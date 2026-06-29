@@ -65,6 +65,11 @@ export type CloudProjectStorageReplicationJob = import("./cloudProjectStorageRep
 export const CloudProjectStorageReplicationJob: typeof import("./cloudProjectStorageReplicationJob").CloudProjectStorageReplicationJob = null as any;
 utilities.lazyLoad(exports, ["CloudProjectStorageReplicationJob"], () => require("./cloudProjectStorageReplicationJob"));
 
+export { CloudSSHKeyArgs, CloudSSHKeyState } from "./cloudSSHKey";
+export type CloudSSHKey = import("./cloudSSHKey").CloudSSHKey;
+export const CloudSSHKey: typeof import("./cloudSSHKey").CloudSSHKey = null as any;
+utilities.lazyLoad(exports, ["CloudSSHKey"], () => require("./cloudSSHKey"));
+
 export { CloudSecurityGroupArgs, CloudSecurityGroupState } from "./cloudSecurityGroup";
 export type CloudSecurityGroup = import("./cloudSecurityGroup").CloudSecurityGroup;
 export const CloudSecurityGroup: typeof import("./cloudSecurityGroup").CloudSecurityGroup = null as any;
@@ -512,6 +517,8 @@ const _module = {
                 return new CloudProjectStorageObjectBucketLifecycleConfiguration(name, <any>undefined, { urn })
             case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
                 return new CloudProjectStorageReplicationJob(name, <any>undefined, { urn })
+            case "ovh:index/cloudSSHKey:CloudSSHKey":
+                return new CloudSSHKey(name, <any>undefined, { urn })
             case "ovh:index/cloudSecurityGroup:CloudSecurityGroup":
                 return new CloudSecurityGroup(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume":
@@ -567,6 +574,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectKubeLogSubscript
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectSshKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageObjectBucketLifecycleConfiguration", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectStorageReplicationJob", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudSSHKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudSecurityGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolume", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeBackup", _module)
