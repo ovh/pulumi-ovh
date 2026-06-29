@@ -162,7 +162,7 @@ build_java::
 	echo "update rootProject in settings.gradle" && cd ./sdk/java && ${SED} -e 's/rootProject.name = .*/rootProject.name = "$(JAVA_GROUP_ID)"/g' settings.gradle
 
 	cd sdk/java/ && \
-		echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
+		printf "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > go.mod && \
 		gradle --console=plain build && gradle --console=plain javadoc
 .PHONY: generate_java build_java
 
