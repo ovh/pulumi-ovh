@@ -132,6 +132,9 @@ namespace Pulumi.Ovh.Dbaas
     [OutputType]
     public sealed class GetLogsOutputGraylogStreamResult
     {
+        /// <summary>
+        /// Indicates if the current user can create alert on the stream
+        /// </summary>
         public readonly bool CanAlert;
         /// <summary>
         /// Cold storage compression method
@@ -165,6 +168,10 @@ namespace Pulumi.Ovh.Dbaas
         /// Stream description
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Set of encryption key IDs used to encrypt stream archives
+        /// </summary>
+        public readonly ImmutableArray<string> EncryptionKeysIds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -202,7 +209,7 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         public readonly string ParentStreamId;
         /// <summary>
-        /// If set, pause indexing when maximum size is reach
+        /// If set, pause indexing when maximum size is reached
         /// </summary>
         public readonly bool PauseIndexingOnMaxSize;
         /// <summary>
@@ -248,6 +255,8 @@ namespace Pulumi.Ovh.Dbaas
 
             string description,
 
+            ImmutableArray<string> encryptionKeysIds,
+
             string id,
 
             bool indexingEnabled,
@@ -291,6 +300,7 @@ namespace Pulumi.Ovh.Dbaas
             ColdStorageTarget = coldStorageTarget;
             CreatedAt = createdAt;
             Description = description;
+            EncryptionKeysIds = encryptionKeysIds;
             Id = id;
             IndexingEnabled = indexingEnabled;
             IndexingMaxSize = indexingMaxSize;

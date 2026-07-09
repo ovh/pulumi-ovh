@@ -14,6 +14,8 @@ namespace Pulumi.Ovh.Dbaas
     /// 
     /// ## Example Usage
     /// 
+    /// ### Example 1 - Basic stream
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,7 +34,7 @@ namespace Pulumi.Ovh.Dbaas
     /// });
     /// ```
     /// 
-    /// To define the retention of the stream, you can use the following configuration:
+    /// ### Example 2 - Stream retention
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -86,7 +88,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> ColdStorageCompression { get; private set; } = null!;
 
         /// <summary>
-        /// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        /// ColdStorage content. One of "ALL", "GELF", "PLAIN"
         /// </summary>
         [Output("coldStorageContent")]
         public Output<string> ColdStorageContent { get; private set; } = null!;
@@ -128,6 +130,12 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Set of encryption key IDs used to encrypt stream archives
+        /// </summary>
+        [Output("encryptionKeysIds")]
+        public Output<ImmutableArray<string>> EncryptionKeysIds { get; private set; } = null!;
+
+        /// <summary>
         /// Enable ES indexing
         /// </summary>
         [Output("indexingEnabled")]
@@ -164,7 +172,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<int> NbAlertCondition { get; private set; } = null!;
 
         /// <summary>
-        /// Number of coldstored archivesr
+        /// Number of coldstored archives
         /// </summary>
         [Output("nbArchive")]
         public Output<int> NbArchive { get; private set; } = null!;
@@ -206,7 +214,7 @@ namespace Pulumi.Ovh.Dbaas
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// Stream last updater
+        /// Stream last update
         /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
@@ -281,7 +289,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? ColdStorageCompression { get; set; }
 
         /// <summary>
-        /// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        /// ColdStorage content. One of "ALL", "GELF", "PLAIN"
         /// </summary>
         [Input("coldStorageContent")]
         public Input<string>? ColdStorageContent { get; set; }
@@ -315,6 +323,18 @@ namespace Pulumi.Ovh.Dbaas
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
+
+        [Input("encryptionKeysIds")]
+        private InputList<string>? _encryptionKeysIds;
+
+        /// <summary>
+        /// Set of encryption key IDs used to encrypt stream archives
+        /// </summary>
+        public InputList<string> EncryptionKeysIds
+        {
+            get => _encryptionKeysIds ?? (_encryptionKeysIds = new InputList<string>());
+            set => _encryptionKeysIds = value;
+        }
 
         /// <summary>
         /// Enable ES indexing
@@ -391,7 +411,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? ColdStorageCompression { get; set; }
 
         /// <summary>
-        /// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        /// ColdStorage content. One of "ALL", "GELF", "PLAIN"
         /// </summary>
         [Input("coldStorageContent")]
         public Input<string>? ColdStorageContent { get; set; }
@@ -432,6 +452,18 @@ namespace Pulumi.Ovh.Dbaas
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("encryptionKeysIds")]
+        private InputList<string>? _encryptionKeysIds;
+
+        /// <summary>
+        /// Set of encryption key IDs used to encrypt stream archives
+        /// </summary>
+        public InputList<string> EncryptionKeysIds
+        {
+            get => _encryptionKeysIds ?? (_encryptionKeysIds = new InputList<string>());
+            set => _encryptionKeysIds = value;
+        }
+
         /// <summary>
         /// Enable ES indexing
         /// </summary>
@@ -469,7 +501,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<int>? NbAlertCondition { get; set; }
 
         /// <summary>
-        /// Number of coldstored archivesr
+        /// Number of coldstored archives
         /// </summary>
         [Input("nbArchive")]
         public Input<int>? NbArchive { get; set; }
@@ -511,7 +543,7 @@ namespace Pulumi.Ovh.Dbaas
         public Input<string>? Title { get; set; }
 
         /// <summary>
-        /// Stream last updater
+        /// Stream last update
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

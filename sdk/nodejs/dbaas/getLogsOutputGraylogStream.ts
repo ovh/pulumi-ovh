@@ -45,6 +45,9 @@ export interface GetLogsOutputGraylogStreamArgs {
  * A collection of values returned by getLogsOutputGraylogStream.
  */
 export interface GetLogsOutputGraylogStreamResult {
+    /**
+     * Indicates if the current user can create alert on the stream
+     */
     readonly canAlert: boolean;
     /**
      * Cold storage compression method
@@ -78,6 +81,10 @@ export interface GetLogsOutputGraylogStreamResult {
      * Stream description
      */
     readonly description: string;
+    /**
+     * Set of encryption key IDs used to encrypt stream archives
+     */
+    readonly encryptionKeysIds: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -115,7 +122,7 @@ export interface GetLogsOutputGraylogStreamResult {
      */
     readonly parentStreamId: string;
     /**
-     * If set, pause indexing when maximum size is reach
+     * If set, pause indexing when maximum size is reached
      */
     readonly pauseIndexingOnMaxSize: boolean;
     /**

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE** We recommend using the `getCloudFloatingIps` data source instead. Floating IPs can now also be managed directly with the `CloudFloatingIp` resource.
+//
 // Use this data source to get the floating IPs of a public cloud project.
 func GetFloatingIPs(ctx *pulumi.Context, args *GetFloatingIPsArgs, opts ...pulumi.InvokeOption) (*GetFloatingIPsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

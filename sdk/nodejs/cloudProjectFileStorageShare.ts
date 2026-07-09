@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **NOTE** Prefer using the new `ovh.CloudStorageFileShare` resource instead.
+ *
  * Creates a file storage share in a public cloud project.
  *
  * ## Example Usage

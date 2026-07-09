@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE** Prefer using the new `CloudStorageFileShare` resource instead.
+//
 // Creates a file storage share in a public cloud project.
 //
 // ## Example Usage

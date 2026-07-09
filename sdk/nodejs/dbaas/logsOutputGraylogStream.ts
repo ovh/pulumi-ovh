@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Example 1 - Basic stream
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * To define the retention of the stream, you can use the following configuration:
+ * ### Example 2 - Stream retention
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -86,7 +88,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly coldStorageCompression!: pulumi.Output<string>;
     /**
-     * ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+     * ColdStorage content. One of "ALL", "GELF", "PLAIN"
      */
     public readonly coldStorageContent!: pulumi.Output<string>;
     /**
@@ -114,6 +116,10 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Set of encryption key IDs used to encrypt stream archives
+     */
+    public readonly encryptionKeysIds!: pulumi.Output<string[] | undefined>;
+    /**
      * Enable ES indexing
      */
     public readonly indexingEnabled!: pulumi.Output<boolean>;
@@ -138,7 +144,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public /*out*/ readonly nbAlertCondition!: pulumi.Output<number>;
     /**
-     * Number of coldstored archivesr
+     * Number of coldstored archives
      */
     public /*out*/ readonly nbArchive!: pulumi.Output<number>;
     /**
@@ -166,7 +172,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
      */
     public readonly title!: pulumi.Output<string>;
     /**
-     * Stream last updater
+     * Stream last update
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
     /**
@@ -200,6 +206,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
             resourceInputs["coldStorageTarget"] = state ? state.coldStorageTarget : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryptionKeysIds"] = state ? state.encryptionKeysIds : undefined;
             resourceInputs["indexingEnabled"] = state ? state.indexingEnabled : undefined;
             resourceInputs["indexingMaxSize"] = state ? state.indexingMaxSize : undefined;
             resourceInputs["indexingNotifyEnabled"] = state ? state.indexingNotifyEnabled : undefined;
@@ -234,6 +241,7 @@ export class LogsOutputGraylogStream extends pulumi.CustomResource {
             resourceInputs["coldStorageRetention"] = args ? args.coldStorageRetention : undefined;
             resourceInputs["coldStorageTarget"] = args ? args.coldStorageTarget : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryptionKeysIds"] = args ? args.encryptionKeysIds : undefined;
             resourceInputs["indexingEnabled"] = args ? args.indexingEnabled : undefined;
             resourceInputs["indexingMaxSize"] = args ? args.indexingMaxSize : undefined;
             resourceInputs["indexingNotifyEnabled"] = args ? args.indexingNotifyEnabled : undefined;
@@ -273,7 +281,7 @@ export interface LogsOutputGraylogStreamState {
      */
     coldStorageCompression?: pulumi.Input<string>;
     /**
-     * ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+     * ColdStorage content. One of "ALL", "GELF", "PLAIN"
      */
     coldStorageContent?: pulumi.Input<string>;
     /**
@@ -301,6 +309,10 @@ export interface LogsOutputGraylogStreamState {
      */
     description?: pulumi.Input<string>;
     /**
+     * Set of encryption key IDs used to encrypt stream archives
+     */
+    encryptionKeysIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Enable ES indexing
      */
     indexingEnabled?: pulumi.Input<boolean>;
@@ -325,7 +337,7 @@ export interface LogsOutputGraylogStreamState {
      */
     nbAlertCondition?: pulumi.Input<number>;
     /**
-     * Number of coldstored archivesr
+     * Number of coldstored archives
      */
     nbArchive?: pulumi.Input<number>;
     /**
@@ -353,7 +365,7 @@ export interface LogsOutputGraylogStreamState {
      */
     title?: pulumi.Input<string>;
     /**
-     * Stream last updater
+     * Stream last update
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -375,7 +387,7 @@ export interface LogsOutputGraylogStreamArgs {
      */
     coldStorageCompression?: pulumi.Input<string>;
     /**
-     * ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+     * ColdStorage content. One of "ALL", "GELF", "PLAIN"
      */
     coldStorageContent?: pulumi.Input<string>;
     /**
@@ -398,6 +410,10 @@ export interface LogsOutputGraylogStreamArgs {
      * Stream description
      */
     description: pulumi.Input<string>;
+    /**
+     * Set of encryption key IDs used to encrypt stream archives
+     */
+    encryptionKeysIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enable ES indexing
      */

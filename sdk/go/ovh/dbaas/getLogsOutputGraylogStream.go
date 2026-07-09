@@ -59,6 +59,7 @@ type LookupLogsOutputGraylogStreamArgs struct {
 
 // A collection of values returned by getLogsOutputGraylogStream.
 type LookupLogsOutputGraylogStreamResult struct {
+	// Indicates if the current user can create alert on the stream
 	CanAlert bool `pulumi:"canAlert"`
 	// Cold storage compression method
 	ColdStorageCompression string `pulumi:"coldStorageCompression"`
@@ -76,6 +77,8 @@ type LookupLogsOutputGraylogStreamResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Stream description
 	Description string `pulumi:"description"`
+	// Set of encryption key IDs used to encrypt stream archives
+	EncryptionKeysIds []string `pulumi:"encryptionKeysIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Enable ES indexing
@@ -94,7 +97,7 @@ type LookupLogsOutputGraylogStreamResult struct {
 	NbArchive int `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId string `pulumi:"parentStreamId"`
-	// If set, pause indexing when maximum size is reach
+	// If set, pause indexing when maximum size is reached
 	PauseIndexingOnMaxSize bool `pulumi:"pauseIndexingOnMaxSize"`
 	// Retention ID
 	RetentionId string `pulumi:"retentionId"`
@@ -146,6 +149,7 @@ func (o LookupLogsOutputGraylogStreamResultOutput) ToLookupLogsOutputGraylogStre
 	return o
 }
 
+// Indicates if the current user can create alert on the stream
 func (o LookupLogsOutputGraylogStreamResultOutput) CanAlert() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) bool { return v.CanAlert }).(pulumi.BoolOutput)
 }
@@ -188,6 +192,11 @@ func (o LookupLogsOutputGraylogStreamResultOutput) CreatedAt() pulumi.StringOutp
 // Stream description
 func (o LookupLogsOutputGraylogStreamResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Set of encryption key IDs used to encrypt stream archives
+func (o LookupLogsOutputGraylogStreamResultOutput) EncryptionKeysIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) []string { return v.EncryptionKeysIds }).(pulumi.StringArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -235,7 +244,7 @@ func (o LookupLogsOutputGraylogStreamResultOutput) ParentStreamId() pulumi.Strin
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) string { return v.ParentStreamId }).(pulumi.StringOutput)
 }
 
-// If set, pause indexing when maximum size is reach
+// If set, pause indexing when maximum size is reached
 func (o LookupLogsOutputGraylogStreamResultOutput) PauseIndexingOnMaxSize() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsOutputGraylogStreamResult) bool { return v.PauseIndexingOnMaxSize }).(pulumi.BoolOutput)
 }

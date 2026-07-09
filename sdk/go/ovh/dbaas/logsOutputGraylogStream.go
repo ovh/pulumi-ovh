@@ -16,6 +16,8 @@ import (
 //
 // ## Example Usage
 //
+// ### Example 1 - Basic stream
+//
 // ```go
 // package main
 //
@@ -42,7 +44,7 @@ import (
 //
 // ```
 //
-// To define the retention of the stream, you can use the following configuration:
+// ### Example 2 - Stream retention
 //
 // ```go
 // package main
@@ -95,7 +97,7 @@ type LogsOutputGraylogStream struct {
 	CanAlert pulumi.BoolOutput `pulumi:"canAlert"`
 	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
 	ColdStorageCompression pulumi.StringOutput `pulumi:"coldStorageCompression"`
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content. One of "ALL", "GELF", "PLAIN"
 	ColdStorageContent pulumi.StringOutput `pulumi:"coldStorageContent"`
 	// Is Cold storage enabled?
 	ColdStorageEnabled pulumi.BoolOutput `pulumi:"coldStorageEnabled"`
@@ -109,6 +111,8 @@ type LogsOutputGraylogStream struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Stream description
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Set of encryption key IDs used to encrypt stream archives
+	EncryptionKeysIds pulumi.StringArrayOutput `pulumi:"encryptionKeysIds"`
 	// Enable ES indexing
 	IndexingEnabled pulumi.BoolOutput `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
@@ -121,7 +125,7 @@ type LogsOutputGraylogStream struct {
 	IsShareable pulumi.BoolOutput `pulumi:"isShareable"`
 	// Number of alert condition
 	NbAlertCondition pulumi.IntOutput `pulumi:"nbAlertCondition"`
-	// Number of coldstored archivesr
+	// Number of coldstored archives
 	NbArchive pulumi.IntOutput `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrOutput `pulumi:"parentStreamId"`
@@ -135,7 +139,7 @@ type LogsOutputGraylogStream struct {
 	StreamId pulumi.StringOutput `pulumi:"streamId"`
 	// Stream name
 	Title pulumi.StringOutput `pulumi:"title"`
-	// Stream last updater
+	// Stream last update
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// Enable Websocket
 	WebSocketEnabled pulumi.BoolOutput `pulumi:"webSocketEnabled"`
@@ -190,7 +194,7 @@ type logsOutputGraylogStreamState struct {
 	CanAlert *bool `pulumi:"canAlert"`
 	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
 	ColdStorageCompression *string `pulumi:"coldStorageCompression"`
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content. One of "ALL", "GELF", "PLAIN"
 	ColdStorageContent *string `pulumi:"coldStorageContent"`
 	// Is Cold storage enabled?
 	ColdStorageEnabled *bool `pulumi:"coldStorageEnabled"`
@@ -204,6 +208,8 @@ type logsOutputGraylogStreamState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Stream description
 	Description *string `pulumi:"description"`
+	// Set of encryption key IDs used to encrypt stream archives
+	EncryptionKeysIds []string `pulumi:"encryptionKeysIds"`
 	// Enable ES indexing
 	IndexingEnabled *bool `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
@@ -216,7 +222,7 @@ type logsOutputGraylogStreamState struct {
 	IsShareable *bool `pulumi:"isShareable"`
 	// Number of alert condition
 	NbAlertCondition *int `pulumi:"nbAlertCondition"`
-	// Number of coldstored archivesr
+	// Number of coldstored archives
 	NbArchive *int `pulumi:"nbArchive"`
 	// Parent stream ID
 	ParentStreamId *string `pulumi:"parentStreamId"`
@@ -230,7 +236,7 @@ type logsOutputGraylogStreamState struct {
 	StreamId *string `pulumi:"streamId"`
 	// Stream name
 	Title *string `pulumi:"title"`
-	// Stream last updater
+	// Stream last update
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// Enable Websocket
 	WebSocketEnabled *bool `pulumi:"webSocketEnabled"`
@@ -243,7 +249,7 @@ type LogsOutputGraylogStreamState struct {
 	CanAlert pulumi.BoolPtrInput
 	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
 	ColdStorageCompression pulumi.StringPtrInput
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content. One of "ALL", "GELF", "PLAIN"
 	ColdStorageContent pulumi.StringPtrInput
 	// Is Cold storage enabled?
 	ColdStorageEnabled pulumi.BoolPtrInput
@@ -257,6 +263,8 @@ type LogsOutputGraylogStreamState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Stream description
 	Description pulumi.StringPtrInput
+	// Set of encryption key IDs used to encrypt stream archives
+	EncryptionKeysIds pulumi.StringArrayInput
 	// Enable ES indexing
 	IndexingEnabled pulumi.BoolPtrInput
 	// Maximum indexing size (in GB)
@@ -269,7 +277,7 @@ type LogsOutputGraylogStreamState struct {
 	IsShareable pulumi.BoolPtrInput
 	// Number of alert condition
 	NbAlertCondition pulumi.IntPtrInput
-	// Number of coldstored archivesr
+	// Number of coldstored archives
 	NbArchive pulumi.IntPtrInput
 	// Parent stream ID
 	ParentStreamId pulumi.StringPtrInput
@@ -283,7 +291,7 @@ type LogsOutputGraylogStreamState struct {
 	StreamId pulumi.StringPtrInput
 	// Stream name
 	Title pulumi.StringPtrInput
-	// Stream last updater
+	// Stream last update
 	UpdatedAt pulumi.StringPtrInput
 	// Enable Websocket
 	WebSocketEnabled pulumi.BoolPtrInput
@@ -298,7 +306,7 @@ func (LogsOutputGraylogStreamState) ElementType() reflect.Type {
 type logsOutputGraylogStreamArgs struct {
 	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
 	ColdStorageCompression *string `pulumi:"coldStorageCompression"`
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content. One of "ALL", "GELF", "PLAIN"
 	ColdStorageContent *string `pulumi:"coldStorageContent"`
 	// Is Cold storage enabled?
 	ColdStorageEnabled *bool `pulumi:"coldStorageEnabled"`
@@ -310,6 +318,8 @@ type logsOutputGraylogStreamArgs struct {
 	ColdStorageTarget *string `pulumi:"coldStorageTarget"`
 	// Stream description
 	Description string `pulumi:"description"`
+	// Set of encryption key IDs used to encrypt stream archives
+	EncryptionKeysIds []string `pulumi:"encryptionKeysIds"`
 	// Enable ES indexing
 	IndexingEnabled *bool `pulumi:"indexingEnabled"`
 	// Maximum indexing size (in GB)
@@ -334,7 +344,7 @@ type logsOutputGraylogStreamArgs struct {
 type LogsOutputGraylogStreamArgs struct {
 	// Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
 	ColdStorageCompression pulumi.StringPtrInput
-	// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+	// ColdStorage content. One of "ALL", "GELF", "PLAIN"
 	ColdStorageContent pulumi.StringPtrInput
 	// Is Cold storage enabled?
 	ColdStorageEnabled pulumi.BoolPtrInput
@@ -346,6 +356,8 @@ type LogsOutputGraylogStreamArgs struct {
 	ColdStorageTarget pulumi.StringPtrInput
 	// Stream description
 	Description pulumi.StringInput
+	// Set of encryption key IDs used to encrypt stream archives
+	EncryptionKeysIds pulumi.StringArrayInput
 	// Enable ES indexing
 	IndexingEnabled pulumi.BoolPtrInput
 	// Maximum indexing size (in GB)
@@ -463,7 +475,7 @@ func (o LogsOutputGraylogStreamOutput) ColdStorageCompression() pulumi.StringOut
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.ColdStorageCompression }).(pulumi.StringOutput)
 }
 
-// ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+// ColdStorage content. One of "ALL", "GELF", "PLAIN"
 func (o LogsOutputGraylogStreamOutput) ColdStorageContent() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.ColdStorageContent }).(pulumi.StringOutput)
 }
@@ -498,6 +510,11 @@ func (o LogsOutputGraylogStreamOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
+// Set of encryption key IDs used to encrypt stream archives
+func (o LogsOutputGraylogStreamOutput) EncryptionKeysIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringArrayOutput { return v.EncryptionKeysIds }).(pulumi.StringArrayOutput)
+}
+
 // Enable ES indexing
 func (o LogsOutputGraylogStreamOutput) IndexingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.BoolOutput { return v.IndexingEnabled }).(pulumi.BoolOutput)
@@ -528,7 +545,7 @@ func (o LogsOutputGraylogStreamOutput) NbAlertCondition() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.IntOutput { return v.NbAlertCondition }).(pulumi.IntOutput)
 }
 
-// Number of coldstored archivesr
+// Number of coldstored archives
 func (o LogsOutputGraylogStreamOutput) NbArchive() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.IntOutput { return v.NbArchive }).(pulumi.IntOutput)
 }
@@ -563,7 +580,7 @@ func (o LogsOutputGraylogStreamOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }
 
-// Stream last updater
+// Stream last update
 func (o LogsOutputGraylogStreamOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsOutputGraylogStream) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

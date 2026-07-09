@@ -5,6 +5,96 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudFloatingIpCurrentState {
+    /**
+     * Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+     */
+    associatedResource: outputs.CloudFloatingIpCurrentStateAssociatedResource;
+    /**
+     * Description of the floating IP. This is the only argument that can be updated in place.
+     */
+    description: string;
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * IP address of the floating IP.
+     */
+    ip: string;
+    /**
+     * Location details:
+     */
+    location: outputs.CloudFloatingIpCurrentStateLocation;
+    /**
+     * External network the floating IP belongs to:
+     */
+    network: outputs.CloudFloatingIpCurrentStateNetwork;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+}
+
+export interface CloudFloatingIpCurrentStateAssociatedResource {
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface CloudFloatingIpCurrentStateLocation {
+    /**
+     * Availability zone for the floating IP. **Changing this value recreates the resource.**
+     */
+    availabilityZone: string;
+    /**
+     * Region where the floating IP will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudFloatingIpCurrentStateNetwork {
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+}
+
+export interface CloudFloatingIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.CloudFloatingIpCurrentTaskError[];
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface CloudFloatingIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
 export interface CloudGatewayCurrentState {
     /**
      * Gateway description.
@@ -74,6 +164,124 @@ export interface CloudGatewayExternalGateway {
      * External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
      */
     model?: string;
+}
+
+export interface CloudKeyManagerContainerCurrentState {
+    /**
+     * OpenStack reference URL for the container.
+     */
+    containerRef: string;
+    /**
+     * Location of the container:
+     */
+    location: outputs.CloudKeyManagerContainerCurrentStateLocation;
+    /**
+     * Name of the container.
+     */
+    name: string;
+    /**
+     * List of secret references in the container. Each element supports:
+     */
+    secretRefs: outputs.CloudKeyManagerContainerCurrentStateSecretRef[];
+    /**
+     * Status of the container. Possible values: `ACTIVE`, `ERROR`.
+     */
+    status: string;
+    /**
+     * Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+     */
+    type: string;
+}
+
+export interface CloudKeyManagerContainerCurrentStateLocation {
+    /**
+     * Availability zone where the container will be created.
+     */
+    availabilityZone: string;
+    /**
+     * Region where the container will be created.
+     */
+    region: string;
+}
+
+export interface CloudKeyManagerContainerCurrentStateSecretRef {
+    /**
+     * Name of the secret reference (e.g., `certificate`, `privateKey`, `publicKey`).
+     */
+    name: string;
+    /**
+     * ID of the referenced secret.
+     */
+    secretId: string;
+}
+
+export interface CloudKeyManagerContainerSecretRef {
+    /**
+     * Name of the secret reference (e.g., `certificate`, `privateKey`, `publicKey`).
+     */
+    name: string;
+    /**
+     * ID of the referenced secret.
+     */
+    secretId: string;
+}
+
+export interface CloudKeyManagerSecretCurrentState {
+    /**
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     */
+    algorithm: string;
+    /**
+     * Bit length of the secret (e.g., `256`).
+     */
+    bitLength: number;
+    /**
+     * Expiration date of the secret in RFC3339 format.
+     */
+    expiration: string;
+    /**
+     * Location of the secret:
+     */
+    location: outputs.CloudKeyManagerSecretCurrentStateLocation;
+    /**
+     * Key-value metadata for the secret. This is the only mutable field on a secret.
+     */
+    metadata: {[key: string]: string};
+    /**
+     * Mode of the secret algorithm (e.g., `CBC`).
+     */
+    mode: string;
+    /**
+     * Name of the secret.
+     */
+    name: string;
+    /**
+     * Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+     */
+    payloadContentType: string;
+    /**
+     * OpenStack reference URL for the secret.
+     */
+    secretRef: string;
+    /**
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     */
+    secretType: string;
+    /**
+     * Status of the secret (`ACTIVE`, `ERROR`).
+     */
+    status: string;
+}
+
+export interface CloudKeyManagerSecretCurrentStateLocation {
+    /**
+     * Availability zone where the secret will be created.
+     */
+    availabilityZone: string;
+    /**
+     * Region where the secret will be created.
+     */
+    region: string;
 }
 
 export interface CloudNetworkPrivateVrackCurrentState {
@@ -341,6 +549,368 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransi
      * The storage class to transition objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      */
     storageClass: string;
+}
+
+export interface CloudQuotaCurrentState {
+    /**
+     * — All quota profiles offered to the project, with
+     * their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+     * `keyManager`, `share`, `keypair`).
+     */
+    availableProfiles: outputs.CloudQuotaCurrentStateAvailableProfile[];
+    /**
+     * — When true, automatic
+     * quota upgrades are disabled for this project.
+     */
+    preventAutomaticQuotaUpgrade: boolean;
+    /**
+     * — Target quota profile per region:
+     */
+    regions: outputs.CloudQuotaCurrentStateRegion[];
+}
+
+export interface CloudQuotaCurrentStateAvailableProfile {
+    compute: outputs.CloudQuotaCurrentStateAvailableProfileCompute;
+    keyManager: outputs.CloudQuotaCurrentStateAvailableProfileKeyManager;
+    keypair: outputs.CloudQuotaCurrentStateAvailableProfileKeypair;
+    loadbalancer: outputs.CloudQuotaCurrentStateAvailableProfileLoadbalancer;
+    name: string;
+    network: outputs.CloudQuotaCurrentStateAvailableProfileNetwork;
+    share: outputs.CloudQuotaCurrentStateAvailableProfileShare;
+    volume: outputs.CloudQuotaCurrentStateAvailableProfileVolume;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileCompute {
+    cores: number;
+    instances: number;
+    memory: number;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileKeyManager {
+    containers: number;
+    secrets: number;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileKeypair {
+    keypairs: number;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileLoadbalancer {
+    healthMonitors: number;
+    l7Policies: number;
+    l7Rules: number;
+    listeners: number;
+    loadbalancers: number;
+    members: number;
+    pools: number;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileNetwork {
+    floatingIps: number;
+    gateways: number;
+    networks: number;
+    securityGroupRules: number;
+    securityGroups: number;
+    subnets: number;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileShare {
+    backupSizeTotal: number;
+    backups: number;
+    shares: number;
+    sizeTotal: number;
+    snapshots: number;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileVolume {
+    backupSizeTotal: number;
+    backups: number;
+    sizeTotal: number;
+    snapshots: number;
+    volumes: number;
+}
+
+export interface CloudQuotaCurrentStateRegion {
+    compute: outputs.CloudQuotaCurrentStateRegionCompute;
+    keyManager: outputs.CloudQuotaCurrentStateRegionKeyManager;
+    keypair: outputs.CloudQuotaCurrentStateRegionKeypair;
+    loadbalancer: outputs.CloudQuotaCurrentStateRegionLoadbalancer;
+    network: outputs.CloudQuotaCurrentStateRegionNetwork;
+    /**
+     * — Quota profile to apply. Available values
+     * are exposed live in `current_state.available_profiles`.
+     */
+    profile: string;
+    /**
+     * — Region where the profile applies
+     * (e.g. `GRA11`).
+     */
+    region: string;
+    share: outputs.CloudQuotaCurrentStateRegionShare;
+    volume: outputs.CloudQuotaCurrentStateRegionVolume;
+}
+
+export interface CloudQuotaCurrentStateRegionCompute {
+    cores: outputs.CloudQuotaCurrentStateRegionComputeCores;
+    instances: outputs.CloudQuotaCurrentStateRegionComputeInstances;
+    memory: outputs.CloudQuotaCurrentStateRegionComputeMemory;
+}
+
+export interface CloudQuotaCurrentStateRegionComputeCores {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionComputeInstances {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionComputeMemory {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionKeyManager {
+    containers: outputs.CloudQuotaCurrentStateRegionKeyManagerContainers;
+    secrets: outputs.CloudQuotaCurrentStateRegionKeyManagerSecrets;
+}
+
+export interface CloudQuotaCurrentStateRegionKeyManagerContainers {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionKeyManagerSecrets {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionKeypair {
+    keypairs: outputs.CloudQuotaCurrentStateRegionKeypairKeypairs;
+}
+
+export interface CloudQuotaCurrentStateRegionKeypairKeypairs {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancer {
+    healthMonitors: outputs.CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors;
+    l7Policies: outputs.CloudQuotaCurrentStateRegionLoadbalancerL7Policies;
+    l7Rules: outputs.CloudQuotaCurrentStateRegionLoadbalancerL7Rules;
+    listeners: outputs.CloudQuotaCurrentStateRegionLoadbalancerListeners;
+    loadbalancers: outputs.CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers;
+    members: outputs.CloudQuotaCurrentStateRegionLoadbalancerMembers;
+    pools: outputs.CloudQuotaCurrentStateRegionLoadbalancerPools;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerL7Policies {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerL7Rules {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerListeners {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerMembers {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerPools {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionNetwork {
+    floatingIps: outputs.CloudQuotaCurrentStateRegionNetworkFloatingIps;
+    gateways: outputs.CloudQuotaCurrentStateRegionNetworkGateways;
+    networks: outputs.CloudQuotaCurrentStateRegionNetworkNetworks;
+    securityGroupRules: outputs.CloudQuotaCurrentStateRegionNetworkSecurityGroupRules;
+    securityGroups: outputs.CloudQuotaCurrentStateRegionNetworkSecurityGroups;
+    subnets: outputs.CloudQuotaCurrentStateRegionNetworkSubnets;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkFloatingIps {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkGateways {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkNetworks {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkSecurityGroupRules {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkSecurityGroups {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkSubnets {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionShare {
+    backupSizeTotal: outputs.CloudQuotaCurrentStateRegionShareBackupSizeTotal;
+    backups: outputs.CloudQuotaCurrentStateRegionShareBackups;
+    perShareSize: outputs.CloudQuotaCurrentStateRegionSharePerShareSize;
+    shareNetworks: outputs.CloudQuotaCurrentStateRegionShareShareNetworks;
+    shares: outputs.CloudQuotaCurrentStateRegionShareShares;
+    sizeTotal: outputs.CloudQuotaCurrentStateRegionShareSizeTotal;
+    snapshotSizeTotal: outputs.CloudQuotaCurrentStateRegionShareSnapshotSizeTotal;
+    snapshots: outputs.CloudQuotaCurrentStateRegionShareSnapshots;
+}
+
+export interface CloudQuotaCurrentStateRegionShareBackupSizeTotal {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionShareBackups {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionSharePerShareSize {
+    limit: number;
+    unit: string;
+}
+
+export interface CloudQuotaCurrentStateRegionShareShareNetworks {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionShareShares {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionShareSizeTotal {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionShareSnapshotSizeTotal {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionShareSnapshots {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionVolume {
+    backupSizeTotal: outputs.CloudQuotaCurrentStateRegionVolumeBackupSizeTotal;
+    backups: outputs.CloudQuotaCurrentStateRegionVolumeBackups;
+    perVolumeSize: outputs.CloudQuotaCurrentStateRegionVolumePerVolumeSize;
+    sizeTotal: outputs.CloudQuotaCurrentStateRegionVolumeSizeTotal;
+    snapshots: outputs.CloudQuotaCurrentStateRegionVolumeSnapshots;
+    volumes: outputs.CloudQuotaCurrentStateRegionVolumeVolumes;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeBackupSizeTotal {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeBackups {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumePerVolumeSize {
+    limit: number;
+    unit: string;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeSizeTotal {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeSnapshots {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeVolumes {
+    limit: number;
+    unit: string;
+    used: number;
+}
+
+export interface CloudQuotaRegion {
+    /**
+     * — Quota profile to apply. Available values
+     * are exposed live in `current_state.available_profiles`.
+     */
+    profile: string;
+    /**
+     * — Region where the profile applies
+     * (e.g. `GRA11`).
+     */
+    region: string;
 }
 
 export interface CloudSecurityGroupCurrentState {
@@ -630,6 +1200,775 @@ export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     region: string;
 }
 
+export interface CloudStorageFileShareAccessRule {
+    /**
+     * Access level (`READ_WRITE`, `READ_ONLY`).
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR to grant access to.
+     */
+    accessTo: string;
+}
+
+export interface CloudStorageFileShareCurrentState {
+    /**
+     * Access rules for the file share. Each rule has:
+     */
+    accessRules: outputs.CloudStorageFileShareCurrentStateAccessRule[];
+    /**
+     * Action-availability flags derived from the file share status:
+     */
+    capabilities: outputs.CloudStorageFileShareCurrentStateCapability[];
+    /**
+     * File share description.
+     */
+    description: string;
+    /**
+     * Export locations for the file share:
+     */
+    exportLocations: outputs.CloudStorageFileShareCurrentStateExportLocation[];
+    /**
+     * Current location:
+     */
+    location: outputs.CloudStorageFileShareCurrentStateLocation;
+    /**
+     * File share name.
+     */
+    name: string;
+    /**
+     * File share protocol (`NFS`). **Changing this value recreates the resource.**
+     */
+    protocol: string;
+    /**
+     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     */
+    shareNetworkId: string;
+    /**
+     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     */
+    shareType: string;
+    /**
+     * Size of the file share in GB.
+     */
+    size: number;
+}
+
+export interface CloudStorageFileShareCurrentStateAccessRule {
+    /**
+     * Access level (`READ_WRITE`, `READ_ONLY`).
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR to grant access to.
+     */
+    accessTo: string;
+    /**
+     * Access rule creation date.
+     */
+    createdAt: string;
+    /**
+     * Access rule ID.
+     */
+    id: string;
+    /**
+     * Access rule state.
+     */
+    state: string;
+}
+
+export interface CloudStorageFileShareCurrentStateCapability {
+    /**
+     * Whether the capability is enabled.
+     */
+    enabled: boolean;
+    /**
+     * File share name.
+     */
+    name: string;
+    /**
+     * Reason why the capability is disabled, when applicable.
+     */
+    reason: string;
+}
+
+export interface CloudStorageFileShareCurrentStateExportLocation {
+    /**
+     * Export path.
+     */
+    path: string;
+    /**
+     * Whether this is the preferred export location.
+     */
+    preferred: boolean;
+}
+
+export interface CloudStorageFileShareCurrentStateLocation {
+    /**
+     * Availability zone where the file share will be created. **Changing this value recreates the resource.**
+     */
+    availabilityZone: string;
+    /**
+     * Region where the file share will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudStorageFileShareNetworkCurrentState {
+    /**
+     * Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.CloudStorageFileShareNetworkCurrentStateLocation;
+    /**
+     * Share network name. **Changing this value recreates the resource.**
+     */
+    name: string;
+    /**
+     * ID of the network backing the share network. **Changing this value recreates the resource.**
+     */
+    networkId: string;
+    /**
+     * ID of the subnet backing the share network. **Changing this value recreates the resource.**
+     */
+    subnetId: string;
+}
+
+export interface CloudStorageFileShareNetworkCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region where the share network will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudStorageFileShareSnapshotCurrentState {
+    /**
+     * Snapshot description.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.CloudStorageFileShareSnapshotCurrentStateLocation;
+    /**
+     * Snapshot name.
+     */
+    name: string;
+    /**
+     * ID of the file share to snapshot. **Changing this value recreates the resource.**
+     */
+    shareId: string;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size: number;
+}
+
+export interface CloudStorageFileShareSnapshotCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudAdditionalIpCurrentState {
+    /**
+     * Resource the additional IP is currently attached to. Null when the IP is not attached to any resource:
+     */
+    associatedResource: outputs.GetCloudAdditionalIpCurrentStateAssociatedResource;
+    /**
+     * IP address of the additional IP.
+     */
+    id: string;
+    /**
+     * IP address of the additional IP.
+     */
+    ip: string;
+    /**
+     * IP block the additional IP belongs to. May be null.
+     */
+    ipBlock: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudAdditionalIpCurrentStateLocation;
+}
+
+export interface GetCloudAdditionalIpCurrentStateAssociatedResource {
+    /**
+     * IP address of the additional IP.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudAdditionalIpCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudAdditionalIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.GetCloudAdditionalIpCurrentTaskError[];
+    /**
+     * IP address of the additional IP.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudAdditionalIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
+export interface GetCloudAdditionalIpsAdditionalIp {
+    /**
+     * Checksum field of the API envelope. Always empty for this read-only IP type.
+     */
+    checksum: string;
+    /**
+     * Current state of the additional IP:
+     */
+    currentState: outputs.GetCloudAdditionalIpsAdditionalIpCurrentState;
+    /**
+     * Ongoing asynchronous tasks related to the additional IP. Each element exports:
+     */
+    currentTasks: outputs.GetCloudAdditionalIpsAdditionalIpCurrentTask[];
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Additional IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UNKNOWN`, `UPDATING`).
+     */
+    resourceStatus: string;
+}
+
+export interface GetCloudAdditionalIpsAdditionalIpCurrentState {
+    /**
+     * Resource the additional IP is currently attached to. Null when the IP is not attached to any resource:
+     */
+    associatedResource: outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResource;
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * IP address of the additional IP.
+     */
+    ip: string;
+    /**
+     * IP block the additional IP belongs to. May be null.
+     */
+    ipBlock: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateLocation;
+}
+
+export interface GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResource {
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudAdditionalIpsAdditionalIpCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudAdditionalIpsAdditionalIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.GetCloudAdditionalIpsAdditionalIpCurrentTaskError[];
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudAdditionalIpsAdditionalIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
+export interface GetCloudExtNetIpCurrentState {
+    /**
+     * Resource the external network IP is currently attached to. Null when the IP is not attached to any resource:
+     */
+    associatedResource: outputs.GetCloudExtNetIpCurrentStateAssociatedResource;
+    /**
+     * IP address of the external network IP.
+     */
+    id: string;
+    /**
+     * IP address of the external network IP.
+     */
+    ip: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudExtNetIpCurrentStateLocation;
+}
+
+export interface GetCloudExtNetIpCurrentStateAssociatedResource {
+    /**
+     * IP address of the external network IP.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudExtNetIpCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudExtNetIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.GetCloudExtNetIpCurrentTaskError[];
+    /**
+     * IP address of the external network IP.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudExtNetIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
+export interface GetCloudExtNetIpsExtNetIp {
+    /**
+     * Checksum field of the API envelope. Always empty for this read-only IP type.
+     */
+    checksum: string;
+    /**
+     * Creation date of the external network IP.
+     */
+    createdAt: string;
+    /**
+     * Current state of the external network IP:
+     */
+    currentState: outputs.GetCloudExtNetIpsExtNetIpCurrentState;
+    /**
+     * Ongoing asynchronous tasks related to the external network IP. Each element exports:
+     */
+    currentTasks: outputs.GetCloudExtNetIpsExtNetIpCurrentTask[];
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * External network IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the external network IP.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudExtNetIpsExtNetIpCurrentState {
+    /**
+     * Resource the external network IP is currently attached to. Null when the IP is not attached to any resource:
+     */
+    associatedResource: outputs.GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResource;
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * IP address of the external network IP.
+     */
+    ip: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudExtNetIpsExtNetIpCurrentStateLocation;
+}
+
+export interface GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResource {
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudExtNetIpsExtNetIpCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudExtNetIpsExtNetIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.GetCloudExtNetIpsExtNetIpCurrentTaskError[];
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudExtNetIpsExtNetIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
+export interface GetCloudFloatingIpCurrentState {
+    /**
+     * Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+     */
+    associatedResource: outputs.GetCloudFloatingIpCurrentStateAssociatedResource;
+    /**
+     * Description of the floating IP.
+     */
+    description: string;
+    /**
+     * IP address of the floating IP.
+     */
+    id: string;
+    /**
+     * IP address of the floating IP.
+     */
+    ip: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudFloatingIpCurrentStateLocation;
+    /**
+     * External network the floating IP belongs to:
+     */
+    network: outputs.GetCloudFloatingIpCurrentStateNetwork;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+}
+
+export interface GetCloudFloatingIpCurrentStateAssociatedResource {
+    /**
+     * IP address of the floating IP.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudFloatingIpCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudFloatingIpCurrentStateNetwork {
+    /**
+     * IP address of the floating IP.
+     */
+    id: string;
+}
+
+export interface GetCloudFloatingIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.GetCloudFloatingIpCurrentTaskError[];
+    /**
+     * IP address of the floating IP.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudFloatingIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
+export interface GetCloudFloatingIpLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIp {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the floating IP.
+     */
+    createdAt: string;
+    /**
+     * Current state of the floating IP:
+     */
+    currentState: outputs.GetCloudFloatingIpsFloatingIpCurrentState;
+    /**
+     * Ongoing asynchronous tasks related to the floating IP. Each element exports:
+     */
+    currentTasks: outputs.GetCloudFloatingIpsFloatingIpCurrentTask[];
+    /**
+     * Description of the floating IP.
+     */
+    description: string;
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudFloatingIpsFloatingIpLocation;
+    /**
+     * Floating IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the floating IP.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpCurrentState {
+    /**
+     * Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+     */
+    associatedResource: outputs.GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResource;
+    /**
+     * Description of the floating IP.
+     */
+    description: string;
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * IP address of the floating IP.
+     */
+    ip: string;
+    /**
+     * Location details:
+     */
+    location: outputs.GetCloudFloatingIpsFloatingIpCurrentStateLocation;
+    /**
+     * External network the floating IP belongs to:
+     */
+    network: outputs.GetCloudFloatingIpsFloatingIpCurrentStateNetwork;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResource {
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpCurrentStateNetwork {
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors: outputs.GetCloudFloatingIpsFloatingIpCurrentTaskError[];
+    /**
+     * Identifier of the current task.
+     */
+    id: string;
+    /**
+     * Link to the task details.
+     */
+    link: string;
+    /**
+     * Current global status of the current task.
+     */
+    status: string;
+    /**
+     * Type of the current task.
+     */
+    type: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message: string;
+}
+
+export interface GetCloudFloatingIpsFloatingIpLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
 export interface GetCloudGatewayCurrentState {
     /**
      * Gateway description.
@@ -833,6 +2172,356 @@ export interface GetCloudGatewaysGatewayLocation {
     availabilityZone: string;
     /**
      * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerContainerConsumersConsumer {
+    /**
+     * Computed consumer identifier.
+     */
+    id: string;
+    /**
+     * UUID of the resource consuming the container.
+     */
+    resourceId: string;
+    /**
+     * Type of the resource consuming the container.
+     */
+    resourceType: string;
+    /**
+     * OpenStack service type of the consumer.
+     */
+    service: string;
+}
+
+export interface GetCloudKeyManagerContainerCurrentState {
+    /**
+     * OpenStack reference URL.
+     */
+    containerRef: string;
+    /**
+     * Location of the container:
+     */
+    location: outputs.GetCloudKeyManagerContainerCurrentStateLocation;
+    /**
+     * Name of the secret reference.
+     */
+    name: string;
+    /**
+     * List of secret references:
+     */
+    secretRefs: outputs.GetCloudKeyManagerContainerCurrentStateSecretRef[];
+    /**
+     * Status of the container. Possible values: `ACTIVE`, `ERROR`.
+     */
+    status: string;
+    /**
+     * Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+     */
+    type: string;
+}
+
+export interface GetCloudKeyManagerContainerCurrentStateLocation {
+    /**
+     * Availability zone of the container.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the container.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerContainerCurrentStateSecretRef {
+    /**
+     * Name of the secret reference.
+     */
+    name: string;
+    /**
+     * ID of the referenced secret.
+     */
+    secretId: string;
+}
+
+export interface GetCloudKeyManagerContainerLocation {
+    /**
+     * Availability zone of the container.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the container.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerContainersContainer {
+    /**
+     * Computed hash representing the current resource state.
+     */
+    checksum: string;
+    /**
+     * Creation date of the container.
+     */
+    createdAt: string;
+    /**
+     * Current state of the container as reported by OpenStack Barbican:
+     */
+    currentState: outputs.GetCloudKeyManagerContainersContainerCurrentState;
+    /**
+     * ID of the container.
+     */
+    id: string;
+    /**
+     * Location of the container:
+     */
+    location: outputs.GetCloudKeyManagerContainersContainerLocation;
+    /**
+     * Name of the secret reference.
+     */
+    name: string;
+    /**
+     * Container readiness status.
+     */
+    resourceStatus: string;
+    /**
+     * Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+     */
+    type: string;
+    /**
+     * Last update date of the container.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudKeyManagerContainersContainerCurrentState {
+    /**
+     * OpenStack reference URL for the container.
+     */
+    containerRef: string;
+    /**
+     * Location of the container:
+     */
+    location: outputs.GetCloudKeyManagerContainersContainerCurrentStateLocation;
+    /**
+     * Name of the secret reference.
+     */
+    name: string;
+    /**
+     * List of secret references:
+     */
+    secretRefs: outputs.GetCloudKeyManagerContainersContainerCurrentStateSecretRef[];
+    /**
+     * Status of the container. Possible values: `ACTIVE`, `ERROR`.
+     */
+    status: string;
+    /**
+     * Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+     */
+    type: string;
+}
+
+export interface GetCloudKeyManagerContainersContainerCurrentStateLocation {
+    /**
+     * Availability zone of the container.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the container.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerContainersContainerCurrentStateSecretRef {
+    /**
+     * Name of the secret reference.
+     */
+    name: string;
+    /**
+     * ID of the referenced secret.
+     */
+    secretId: string;
+}
+
+export interface GetCloudKeyManagerContainersContainerLocation {
+    /**
+     * Availability zone of the container.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the container.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerSecretConsumersConsumer {
+    /**
+     * Computed consumer identifier.
+     */
+    id: string;
+    /**
+     * UUID of the resource consuming the secret.
+     */
+    resourceId: string;
+    /**
+     * Type of the resource consuming the secret.
+     */
+    resourceType: string;
+    /**
+     * OpenStack service type of the consumer.
+     */
+    service: string;
+}
+
+export interface GetCloudKeyManagerSecretCurrentState {
+    /**
+     * Algorithm of the secret.
+     */
+    algorithm: string;
+    /**
+     * Bit length of the secret.
+     */
+    bitLength: number;
+    /**
+     * Expiration date.
+     */
+    expiration: string;
+    /**
+     * Location of the secret:
+     */
+    location: outputs.GetCloudKeyManagerSecretCurrentStateLocation;
+    /**
+     * Key-value metadata.
+     */
+    metadata: {[key: string]: string};
+    /**
+     * Mode of the secret algorithm.
+     */
+    mode: string;
+    /**
+     * Name of the secret.
+     */
+    name: string;
+    /**
+     * Content type of the payload.
+     */
+    payloadContentType: string;
+    /**
+     * OpenStack reference URL.
+     */
+    secretRef: string;
+    /**
+     * Type of the secret.
+     */
+    secretType: string;
+    /**
+     * Status of the secret.
+     */
+    status: string;
+}
+
+export interface GetCloudKeyManagerSecretCurrentStateLocation {
+    /**
+     * Availability zone of the secret.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the secret.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerSecretLocation {
+    /**
+     * Availability zone of the secret.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the secret.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerSecretsSecret {
+    /**
+     * Computed hash representing the current resource state.
+     */
+    checksum: string;
+    /**
+     * Creation date of the secret.
+     */
+    createdAt: string;
+    /**
+     * Current state of the secret as reported by OpenStack Barbican.
+     */
+    currentState: outputs.GetCloudKeyManagerSecretsSecretCurrentState;
+    /**
+     * ID of the secret.
+     */
+    id: string;
+    /**
+     * Location of the secret:
+     */
+    location: outputs.GetCloudKeyManagerSecretsSecretLocation;
+    /**
+     * Name of the secret.
+     */
+    name: string;
+    /**
+     * Secret readiness status.
+     */
+    resourceStatus: string;
+    /**
+     * Type of the secret.
+     */
+    secretType: string;
+    /**
+     * Last update date of the secret.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudKeyManagerSecretsSecretCurrentState {
+    algorithm: string;
+    bitLength: number;
+    expiration: string;
+    /**
+     * Location of the secret:
+     */
+    location: outputs.GetCloudKeyManagerSecretsSecretCurrentStateLocation;
+    metadata: {[key: string]: string};
+    mode: string;
+    /**
+     * Name of the secret.
+     */
+    name: string;
+    payloadContentType: string;
+    secretRef: string;
+    /**
+     * Type of the secret.
+     */
+    secretType: string;
+    status: string;
+}
+
+export interface GetCloudKeyManagerSecretsSecretCurrentStateLocation {
+    /**
+     * Availability zone of the secret.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the secret.
+     */
+    region: string;
+}
+
+export interface GetCloudKeyManagerSecretsSecretLocation {
+    /**
+     * Availability zone of the secret.
+     */
+    availabilityZone: string;
+    /**
+     * Region of the secret.
      */
     region: string;
 }
@@ -1429,6 +3118,708 @@ export interface GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTra
     storageClass: string;
 }
 
+export interface GetCloudPublicIpsPublicIp {
+    /**
+     * Public IP address.
+     */
+    ip: string;
+    /**
+     * Type of the public IP (`ADDITIONAL_IP`, `EXT_NET_IP`, `FLOATING_IP`).
+     */
+    type: string;
+}
+
+export interface GetCloudQuotaCurrentState {
+    /**
+     * List of available quota profiles with their caps:
+     */
+    availableProfiles: outputs.GetCloudQuotaCurrentStateAvailableProfile[];
+    /**
+     * When true, automatic quota upgrades are disabled for this project.
+     */
+    preventAutomaticQuotaUpgrade: boolean;
+    /**
+     * Per-region quota state:
+     */
+    regions: outputs.GetCloudQuotaCurrentStateRegion[];
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfile {
+    /**
+     * Compute usage: `cores`, `instances`, `memory`. Each entry exposes `limit`, `used`, `unit`.
+     */
+    compute: outputs.GetCloudQuotaCurrentStateAvailableProfileCompute;
+    /**
+     * Key manager usage: `containers`, `secrets`.
+     */
+    keyManager: outputs.GetCloudQuotaCurrentStateAvailableProfileKeyManager;
+    /**
+     * Keypair usage: `keypairs`.
+     */
+    keypair: outputs.GetCloudQuotaCurrentStateAvailableProfileKeypair;
+    /**
+     * Load balancer usage: `healthMonitors`, `l7Policies`, `l7Rules`, `listeners`, `loadbalancers`, `members`, `pools`.
+     */
+    loadbalancer: outputs.GetCloudQuotaCurrentStateAvailableProfileLoadbalancer;
+    /**
+     * Profile name.
+     */
+    name: string;
+    /**
+     * Networking usage: `floatingIps`, `gateways`, `networks`, `securityGroupRules`, `securityGroups`, `subnets`.
+     */
+    network: outputs.GetCloudQuotaCurrentStateAvailableProfileNetwork;
+    /**
+     * Shared file system usage: `backupSizeTotal`, `backups`, `shareNetworks`, `shares`, `sizeTotal`, `snapshotSizeTotal`, `snapshots` (each with `limit`, `used`, `unit`) and `perShareSize` (`limit`, `unit`).
+     */
+    share: outputs.GetCloudQuotaCurrentStateAvailableProfileShare;
+    /**
+     * Block storage usage: `backupSizeTotal`, `backups`, `sizeTotal`, `snapshots`, `volumes` (each with `limit`, `used`, `unit`) and `perVolumeSize` (`limit`, `unit`).
+     */
+    volume: outputs.GetCloudQuotaCurrentStateAvailableProfileVolume;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileCompute {
+    cores: number;
+    instances: number;
+    memory: number;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileKeyManager {
+    containers: number;
+    secrets: number;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileKeypair {
+    keypairs: number;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileLoadbalancer {
+    healthMonitors: number;
+    l7Policies: number;
+    l7Rules: number;
+    listeners: number;
+    loadbalancers: number;
+    members: number;
+    pools: number;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileNetwork {
+    floatingIps: number;
+    gateways: number;
+    networks: number;
+    securityGroupRules: number;
+    securityGroups: number;
+    subnets: number;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileShare {
+    backupSizeTotal: number;
+    backups: number;
+    shares: number;
+    sizeTotal: number;
+    snapshots: number;
+}
+
+export interface GetCloudQuotaCurrentStateAvailableProfileVolume {
+    backupSizeTotal: number;
+    backups: number;
+    sizeTotal: number;
+    snapshots: number;
+    volumes: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegion {
+    /**
+     * Compute usage: `cores`, `instances`, `memory`. Each entry exposes `limit`, `used`, `unit`.
+     */
+    compute: outputs.GetCloudQuotaCurrentStateRegionCompute;
+    /**
+     * Key manager usage: `containers`, `secrets`.
+     */
+    keyManager: outputs.GetCloudQuotaCurrentStateRegionKeyManager;
+    /**
+     * Keypair usage: `keypairs`.
+     */
+    keypair: outputs.GetCloudQuotaCurrentStateRegionKeypair;
+    /**
+     * Load balancer usage: `healthMonitors`, `l7Policies`, `l7Rules`, `listeners`, `loadbalancers`, `members`, `pools`.
+     */
+    loadbalancer: outputs.GetCloudQuotaCurrentStateRegionLoadbalancer;
+    /**
+     * Networking usage: `floatingIps`, `gateways`, `networks`, `securityGroupRules`, `securityGroups`, `subnets`.
+     */
+    network: outputs.GetCloudQuotaCurrentStateRegionNetwork;
+    /**
+     * Currently applied quota profile name in this region.
+     */
+    profile: string;
+    /**
+     * If set, restricts the per-region quota state to this single region. Otherwise all configured regions are returned.
+     */
+    region: string;
+    /**
+     * Shared file system usage: `backupSizeTotal`, `backups`, `shareNetworks`, `shares`, `sizeTotal`, `snapshotSizeTotal`, `snapshots` (each with `limit`, `used`, `unit`) and `perShareSize` (`limit`, `unit`).
+     */
+    share: outputs.GetCloudQuotaCurrentStateRegionShare;
+    /**
+     * Block storage usage: `backupSizeTotal`, `backups`, `sizeTotal`, `snapshots`, `volumes` (each with `limit`, `used`, `unit`) and `perVolumeSize` (`limit`, `unit`).
+     */
+    volume: outputs.GetCloudQuotaCurrentStateRegionVolume;
+}
+
+export interface GetCloudQuotaCurrentStateRegionCompute {
+    cores: outputs.GetCloudQuotaCurrentStateRegionComputeCores;
+    instances: outputs.GetCloudQuotaCurrentStateRegionComputeInstances;
+    memory: outputs.GetCloudQuotaCurrentStateRegionComputeMemory;
+}
+
+export interface GetCloudQuotaCurrentStateRegionComputeCores {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionComputeInstances {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionComputeMemory {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionKeyManager {
+    containers: outputs.GetCloudQuotaCurrentStateRegionKeyManagerContainers;
+    secrets: outputs.GetCloudQuotaCurrentStateRegionKeyManagerSecrets;
+}
+
+export interface GetCloudQuotaCurrentStateRegionKeyManagerContainers {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionKeyManagerSecrets {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionKeypair {
+    keypairs: outputs.GetCloudQuotaCurrentStateRegionKeypairKeypairs;
+}
+
+export interface GetCloudQuotaCurrentStateRegionKeypairKeypairs {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancer {
+    healthMonitors: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerHealthMonitors;
+    l7Policies: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerL7Policies;
+    l7Rules: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerL7Rules;
+    listeners: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerListeners;
+    loadbalancers: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerLoadbalancers;
+    members: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerMembers;
+    pools: outputs.GetCloudQuotaCurrentStateRegionLoadbalancerPools;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerHealthMonitors {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerL7Policies {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerL7Rules {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerListeners {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerLoadbalancers {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerMembers {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionLoadbalancerPools {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetwork {
+    floatingIps: outputs.GetCloudQuotaCurrentStateRegionNetworkFloatingIps;
+    gateways: outputs.GetCloudQuotaCurrentStateRegionNetworkGateways;
+    networks: outputs.GetCloudQuotaCurrentStateRegionNetworkNetworks;
+    securityGroupRules: outputs.GetCloudQuotaCurrentStateRegionNetworkSecurityGroupRules;
+    securityGroups: outputs.GetCloudQuotaCurrentStateRegionNetworkSecurityGroups;
+    subnets: outputs.GetCloudQuotaCurrentStateRegionNetworkSubnets;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetworkFloatingIps {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetworkGateways {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetworkNetworks {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetworkSecurityGroupRules {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetworkSecurityGroups {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionNetworkSubnets {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShare {
+    backupSizeTotal: outputs.GetCloudQuotaCurrentStateRegionShareBackupSizeTotal;
+    backups: outputs.GetCloudQuotaCurrentStateRegionShareBackups;
+    perShareSize: outputs.GetCloudQuotaCurrentStateRegionSharePerShareSize;
+    shareNetworks: outputs.GetCloudQuotaCurrentStateRegionShareShareNetworks;
+    shares: outputs.GetCloudQuotaCurrentStateRegionShareShares;
+    sizeTotal: outputs.GetCloudQuotaCurrentStateRegionShareSizeTotal;
+    snapshotSizeTotal: outputs.GetCloudQuotaCurrentStateRegionShareSnapshotSizeTotal;
+    snapshots: outputs.GetCloudQuotaCurrentStateRegionShareSnapshots;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareBackupSizeTotal {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareBackups {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionSharePerShareSize {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareShareNetworks {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareShares {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareSizeTotal {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareSnapshotSizeTotal {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionShareSnapshots {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolume {
+    backupSizeTotal: outputs.GetCloudQuotaCurrentStateRegionVolumeBackupSizeTotal;
+    backups: outputs.GetCloudQuotaCurrentStateRegionVolumeBackups;
+    perVolumeSize: outputs.GetCloudQuotaCurrentStateRegionVolumePerVolumeSize;
+    sizeTotal: outputs.GetCloudQuotaCurrentStateRegionVolumeSizeTotal;
+    snapshots: outputs.GetCloudQuotaCurrentStateRegionVolumeSnapshots;
+    volumes: outputs.GetCloudQuotaCurrentStateRegionVolumeVolumes;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolumeBackupSizeTotal {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolumeBackups {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolumePerVolumeSize {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolumeSizeTotal {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolumeSnapshots {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaCurrentStateRegionVolumeVolumes {
+    /**
+     * Maximum authorized value for this limit.
+     */
+    limit: number;
+    /**
+     * Unit of the limit value.
+     */
+    unit: string;
+    /**
+     * Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+     */
+    used: number;
+}
+
+export interface GetCloudQuotaRegion {
+    /**
+     * Currently applied quota profile name in this region.
+     */
+    profile: string;
+    /**
+     * If set, restricts the per-region quota state to this single region. Otherwise all configured regions are returned.
+     */
+    region: string;
+}
+
 export interface GetCloudRegionsRegion {
     /**
      * Availability zones available in the region.
@@ -1993,6 +4384,559 @@ export interface GetCloudStorageBlockVolumesVolumeEncryption {
 export interface GetCloudStorageBlockVolumesVolumeLocation {
     /**
      * The region where the volumes reside.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareAccessRule {
+    /**
+     * Access level.
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR.
+     */
+    accessTo: string;
+}
+
+export interface GetCloudStorageFileShareCurrentState {
+    /**
+     * Current access rules for the file share:
+     */
+    accessRules: outputs.GetCloudStorageFileShareCurrentStateAccessRule[];
+    /**
+     * Action-availability flags derived from the file share status:
+     */
+    capabilities: outputs.GetCloudStorageFileShareCurrentStateCapability[];
+    /**
+     * File share description.
+     */
+    description: string;
+    /**
+     * Export locations for the file share:
+     */
+    exportLocations: outputs.GetCloudStorageFileShareCurrentStateExportLocation[];
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileShareCurrentStateLocation;
+    /**
+     * Capability name.
+     */
+    name: string;
+    /**
+     * File share protocol.
+     */
+    protocol: string;
+    /**
+     * ID of the share network the file share is attached to.
+     */
+    shareNetworkId: string;
+    /**
+     * File share type.
+     */
+    shareType: string;
+    /**
+     * Size of the file share in GB.
+     */
+    size: number;
+}
+
+export interface GetCloudStorageFileShareCurrentStateAccessRule {
+    /**
+     * Access level.
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR.
+     */
+    accessTo: string;
+    /**
+     * Access rule creation date.
+     */
+    createdAt: string;
+    /**
+     * The ID of the file share.
+     */
+    id: string;
+    /**
+     * Access rule state.
+     */
+    state: string;
+}
+
+export interface GetCloudStorageFileShareCurrentStateCapability {
+    /**
+     * Whether the capability is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Capability name.
+     */
+    name: string;
+    /**
+     * Reason why the capability is disabled.
+     */
+    reason: string;
+}
+
+export interface GetCloudStorageFileShareCurrentStateExportLocation {
+    /**
+     * Export path.
+     */
+    path: string;
+    /**
+     * Whether this is the preferred export location.
+     */
+    preferred: boolean;
+}
+
+export interface GetCloudStorageFileShareCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareNetworkCurrentState {
+    /**
+     * Share network description.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileShareNetworkCurrentStateLocation;
+    /**
+     * Share network name.
+     */
+    name: string;
+    /**
+     * ID of the private network.
+     */
+    networkId: string;
+    /**
+     * ID of the subnet.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudStorageFileShareNetworkCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareNetworkLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareNetworksShareNetwork {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the share network.
+     */
+    createdAt: string;
+    /**
+     * Current state of the file storage share network:
+     */
+    currentState: outputs.GetCloudStorageFileShareNetworksShareNetworkCurrentState;
+    /**
+     * Share network description.
+     */
+    description: string;
+    /**
+     * Share network ID.
+     */
+    id: string;
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileShareNetworksShareNetworkLocation;
+    /**
+     * Share network name.
+     */
+    name: string;
+    /**
+     * ID of the private network.
+     */
+    networkId: string;
+    /**
+     * Share network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * ID of the subnet.
+     */
+    subnetId: string;
+    /**
+     * Last update date of the share network.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudStorageFileShareNetworksShareNetworkCurrentState {
+    /**
+     * Share network description.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocation;
+    /**
+     * Share network name.
+     */
+    name: string;
+    /**
+     * ID of the private network.
+     */
+    networkId: string;
+    /**
+     * ID of the subnet.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * If set, only share networks located in this region are returned.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareNetworksShareNetworkLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * If set, only share networks located in this region are returned.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareSnapshotCurrentState {
+    /**
+     * Snapshot description.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileShareSnapshotCurrentStateLocation;
+    /**
+     * Snapshot name.
+     */
+    name: string;
+    /**
+     * ID of the snapshotted file share.
+     */
+    shareId: string;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size: number;
+}
+
+export interface GetCloudStorageFileShareSnapshotCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileShareSnapshotsShareSnapshot {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the snapshot.
+     */
+    createdAt: string;
+    /**
+     * Current state of the file storage snapshot:
+     */
+    currentState: outputs.GetCloudStorageFileShareSnapshotsShareSnapshotCurrentState;
+    /**
+     * Snapshot description.
+     */
+    description: string;
+    /**
+     * Snapshot ID.
+     */
+    id: string;
+    /**
+     * Snapshot name.
+     */
+    name: string;
+    /**
+     * Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * ID of the snapshotted file share.
+     */
+    shareId: string;
+    /**
+     * Last update date of the snapshot.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudStorageFileShareSnapshotsShareSnapshotCurrentState {
+    /**
+     * Snapshot description.
+     */
+    description: string;
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocation;
+    /**
+     * Snapshot name.
+     */
+    name: string;
+    /**
+     * ID of the snapshotted file share.
+     */
+    shareId: string;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size: number;
+}
+
+export interface GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileSharesFileShare {
+    /**
+     * Current access rules for the file share:
+     */
+    accessRules: outputs.GetCloudStorageFileSharesFileShareAccessRule[];
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Access rule creation date.
+     */
+    createdAt: string;
+    /**
+     * Current state of the file storage share:
+     */
+    currentState: outputs.GetCloudStorageFileSharesFileShareCurrentState;
+    /**
+     * File share description.
+     */
+    description: string;
+    /**
+     * Access rule ID.
+     */
+    id: string;
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileSharesFileShareLocation;
+    /**
+     * Capability name.
+     */
+    name: string;
+    /**
+     * File share protocol.
+     */
+    protocol: string;
+    /**
+     * File share readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * ID of the share network the file share is attached to.
+     */
+    shareNetworkId: string;
+    /**
+     * File share type.
+     */
+    shareType: string;
+    /**
+     * Size of the file share in GB.
+     */
+    size: number;
+    /**
+     * Last update date of the file share.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudStorageFileSharesFileShareAccessRule {
+    /**
+     * Access level.
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR.
+     */
+    accessTo: string;
+}
+
+export interface GetCloudStorageFileSharesFileShareCurrentState {
+    /**
+     * Current access rules for the file share:
+     */
+    accessRules: outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRule[];
+    /**
+     * Action-availability flags derived from the file share status:
+     */
+    capabilities: outputs.GetCloudStorageFileSharesFileShareCurrentStateCapability[];
+    /**
+     * File share description.
+     */
+    description: string;
+    /**
+     * Export locations for the file share:
+     */
+    exportLocations: outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocation[];
+    /**
+     * Current location:
+     */
+    location: outputs.GetCloudStorageFileSharesFileShareCurrentStateLocation;
+    /**
+     * Capability name.
+     */
+    name: string;
+    /**
+     * File share protocol.
+     */
+    protocol: string;
+    /**
+     * ID of the share network the file share is attached to.
+     */
+    shareNetworkId: string;
+    /**
+     * File share type.
+     */
+    shareType: string;
+    /**
+     * Size of the file share in GB.
+     */
+    size: number;
+}
+
+export interface GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
+    /**
+     * Access level.
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR.
+     */
+    accessTo: string;
+    /**
+     * Access rule creation date.
+     */
+    createdAt: string;
+    /**
+     * Access rule ID.
+     */
+    id: string;
+    /**
+     * Access rule state.
+     */
+    state: string;
+}
+
+export interface GetCloudStorageFileSharesFileShareCurrentStateCapability {
+    /**
+     * Whether the capability is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Capability name.
+     */
+    name: string;
+    /**
+     * Reason why the capability is disabled.
+     */
+    reason: string;
+}
+
+export interface GetCloudStorageFileSharesFileShareCurrentStateExportLocation {
+    /**
+     * Export path.
+     */
+    path: string;
+    /**
+     * Whether this is the preferred export location.
+     */
+    preferred: boolean;
+}
+
+export interface GetCloudStorageFileSharesFileShareCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * If set, only file shares located in this region are returned.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageFileSharesFileShareLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * If set, only file shares located in this region are returned.
      */
     region: string;
 }
