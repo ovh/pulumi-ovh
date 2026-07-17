@@ -48,7 +48,7 @@ jobs:
       continue-on-error: true
       run: make prepare_local_workspace
     - name: golangci-lint
-      uses: golangci/golangci-lint-action@55c2c1448f86e01eaae002a5a3a9624417608d84 # v6
+      uses: golangci/golangci-lint-action@9fae48acfc02a90574d7c304a1758ef9895495fa # v7
       with:
         version: v2.4.0
         working-directory: provider
