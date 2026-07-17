@@ -28,29 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudproject.NewDatabase(ctx, "cassandradb", &cloudproject.DatabaseArgs{
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Description: pulumi.String("my-first-cassandra"),
-//				Engine:      pulumi.String("cassandra"),
-//				Version:     pulumi.String("4.0"),
-//				Plan:        pulumi.String("essential"),
-//				Nodes: cloudproject.DatabaseNodeArray{
-//					&cloudproject.DatabaseNodeArgs{
-//						Region: pulumi.String("BHS"),
-//					},
-//					&cloudproject.DatabaseNodeArgs{
-//						Region: pulumi.String("BHS"),
-//					},
-//					&cloudproject.DatabaseNodeArgs{
-//						Region: pulumi.String("BHS"),
-//					},
-//				},
-//				Flavor: pulumi.String("db1-4"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudproject.NewDatabase(ctx, "kafkadb", &cloudproject.DatabaseArgs{
+//			_, err := cloudproject.NewDatabase(ctx, "kafkadb", &cloudproject.DatabaseArgs{
 //				ServiceName:         pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
 //				Description:         pulumi.String("my-first-kafka"),
 //				Engine:              pulumi.String("kafka"),
@@ -70,22 +48,6 @@ import (
 //						Region: pulumi.String("DE"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudproject.NewDatabase(ctx, "m3db", &cloudproject.DatabaseArgs{
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Description: pulumi.String("my-first-m3db"),
-//				Engine:      pulumi.String("m3db"),
-//				Version:     pulumi.String("1.2"),
-//				Plan:        pulumi.String("essential"),
-//				Nodes: cloudproject.DatabaseNodeArray{
-//					&cloudproject.DatabaseNodeArgs{
-//						Region: pulumi.String("BHS"),
-//					},
-//				},
-//				Flavor: pulumi.String("db1-7"),
 //			})
 //			if err != nil {
 //				return err
@@ -165,22 +127,6 @@ import (
 //						Ip:          pulumi.String("178.97.7.0/24"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudproject.NewDatabase(ctx, "redisdb", &cloudproject.DatabaseArgs{
-//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
-//				Description: pulumi.String("my-first-redis"),
-//				Engine:      pulumi.String("redis"),
-//				Version:     pulumi.String("6.2"),
-//				Plan:        pulumi.String("essential"),
-//				Nodes: cloudproject.DatabaseNodeArray{
-//					&cloudproject.DatabaseNodeArgs{
-//						Region: pulumi.String("BHS"),
-//					},
-//				},
-//				Flavor: pulumi.String("db1-4"),
 //			})
 //			if err != nil {
 //				return err
@@ -326,7 +272,7 @@ type Database struct {
 	AdvancedConfiguration pulumi.StringMapOutput `pulumi:"advancedConfiguration"`
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions pulumi.StringArrayOutput `pulumi:"backupRegions"`
-	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+	// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -359,10 +305,9 @@ type Database struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrOutput `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// * MongoDB: Enum: "discovery", "production", "advanced".
-	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business".
+	// * Clickhouse: "production".
+	// * MongoDB: "discovery", "production", "advanced".
+	// * MySQL, PostgreSQL: "essential", "business", "enterprise".
 	// * Valkey: "essential", "business".
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -422,7 +367,7 @@ type databaseState struct {
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions []string `pulumi:"backupRegions"`
-	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+	// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
 	BackupTime *string `pulumi:"backupTime"`
 	// Date of the creation of the cluster.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -455,10 +400,9 @@ type databaseState struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// * MongoDB: Enum: "discovery", "production", "advanced".
-	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business".
+	// * Clickhouse: "production".
+	// * MongoDB: "discovery", "production", "advanced".
+	// * MySQL, PostgreSQL: "essential", "business", "enterprise".
 	// * Valkey: "essential", "business".
 	Plan *string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -474,7 +418,7 @@ type DatabaseState struct {
 	AdvancedConfiguration pulumi.StringMapInput
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions pulumi.StringArrayInput
-	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+	// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
 	BackupTime pulumi.StringPtrInput
 	// Date of the creation of the cluster.
 	CreatedAt pulumi.StringPtrInput
@@ -507,10 +451,9 @@ type DatabaseState struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
 	// Plan of the cluster.
-	// * MongoDB: Enum: "discovery", "production", "advanced".
-	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business".
+	// * Clickhouse: "production".
+	// * MongoDB: "discovery", "production", "advanced".
+	// * MySQL, PostgreSQL: "essential", "business", "enterprise".
 	// * Valkey: "essential", "business".
 	Plan pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -530,7 +473,7 @@ type databaseArgs struct {
 	AdvancedConfiguration map[string]string `pulumi:"advancedConfiguration"`
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions []string `pulumi:"backupRegions"`
-	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+	// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
 	BackupTime *string `pulumi:"backupTime"`
 	// Enable deletion protection
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -555,10 +498,9 @@ type databaseArgs struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled *bool `pulumi:"opensearchAclsEnabled"`
 	// Plan of the cluster.
-	// * MongoDB: Enum: "discovery", "production", "advanced".
-	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business".
+	// * Clickhouse: "production".
+	// * MongoDB: "discovery", "production", "advanced".
+	// * MySQL, PostgreSQL: "essential", "business", "enterprise".
 	// * Valkey: "essential", "business".
 	Plan string `pulumi:"plan"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -573,7 +515,7 @@ type DatabaseArgs struct {
 	AdvancedConfiguration pulumi.StringMapInput
 	// List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
 	BackupRegions pulumi.StringArrayInput
-	// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+	// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
 	BackupTime pulumi.StringPtrInput
 	// Enable deletion protection
 	DeletionProtection pulumi.BoolPtrInput
@@ -598,10 +540,9 @@ type DatabaseArgs struct {
 	// Defines whether the ACLs are enabled on an OpenSearch cluster
 	OpensearchAclsEnabled pulumi.BoolPtrInput
 	// Plan of the cluster.
-	// * MongoDB: Enum: "discovery", "production", "advanced".
-	// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-	// * M3 Aggregator: "business", "enterprise".
-	// * Redis: "essential", "business".
+	// * Clickhouse: "production".
+	// * MongoDB: "discovery", "production", "advanced".
+	// * MySQL, PostgreSQL: "essential", "business", "enterprise".
 	// * Valkey: "essential", "business".
 	Plan pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
@@ -707,7 +648,7 @@ func (o DatabaseOutput) BackupRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringArrayOutput { return v.BackupRegions }).(pulumi.StringArrayOutput)
 }
 
-// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
 func (o DatabaseOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
 }
@@ -788,10 +729,9 @@ func (o DatabaseOutput) OpensearchAclsEnabled() pulumi.BoolPtrOutput {
 }
 
 // Plan of the cluster.
-// * MongoDB: Enum: "discovery", "production", "advanced".
-// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-// * M3 Aggregator: "business", "enterprise".
-// * Redis: "essential", "business".
+// * Clickhouse: "production".
+// * MongoDB: "discovery", "production", "advanced".
+// * MySQL, PostgreSQL: "essential", "business", "enterprise".
 // * Valkey: "essential", "business".
 func (o DatabaseOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)

@@ -180,7 +180,7 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly ImmutableArray<string> Roles;
         /// <summary>
-        /// Current status of the user.
+        /// See Argument Reference above.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>

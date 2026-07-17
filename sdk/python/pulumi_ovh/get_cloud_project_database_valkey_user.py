@@ -126,7 +126,7 @@ class GetCloudProjectDatabaseValkeyUserResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> _builtins.str:
         """
-        Current status of the user.
+        See Argument Reference above.
         """
         return pulumi.get(self, "service_name")
 

@@ -73,7 +73,7 @@ type LookupPostgresSqlUserResult struct {
 	Name string `pulumi:"name"`
 	// Roles the user belongs to.
 	Roles []string `pulumi:"roles"`
-	// Current status of the user.
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status string `pulumi:"status"`
@@ -142,7 +142,7 @@ func (o LookupPostgresSqlUserResultOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
-// Current status of the user.
+// See Argument Reference above.
 func (o LookupPostgresSqlUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresSqlUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

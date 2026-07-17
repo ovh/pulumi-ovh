@@ -16,11 +16,23 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'CloudFloatingIpCurrentState',
+    'CloudFloatingIpCurrentStateAssociatedResource',
+    'CloudFloatingIpCurrentStateLocation',
+    'CloudFloatingIpCurrentStateNetwork',
+    'CloudFloatingIpCurrentTask',
+    'CloudFloatingIpCurrentTaskError',
     'CloudGatewayCurrentState',
     'CloudGatewayCurrentStateExternalGateway',
     'CloudGatewayCurrentStateLocation',
     'CloudGatewayCurrentStateSubnet',
     'CloudGatewayExternalGateway',
+    'CloudKeyManagerContainerCurrentState',
+    'CloudKeyManagerContainerCurrentStateLocation',
+    'CloudKeyManagerContainerCurrentStateSecretRef',
+    'CloudKeyManagerContainerSecretRef',
+    'CloudKeyManagerSecretCurrentState',
+    'CloudKeyManagerSecretCurrentStateLocation',
     'CloudNetworkPrivateVrackCurrentState',
     'CloudNetworkPrivateVrackCurrentStateLocation',
     'CloudNetworkPrivateVrackSubnetAllocationPool',
@@ -38,6 +50,57 @@ __all__ = [
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionExpiration',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransition',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition',
+    'CloudQuotaCurrentState',
+    'CloudQuotaCurrentStateAvailableProfile',
+    'CloudQuotaCurrentStateAvailableProfileCompute',
+    'CloudQuotaCurrentStateAvailableProfileKeyManager',
+    'CloudQuotaCurrentStateAvailableProfileKeypair',
+    'CloudQuotaCurrentStateAvailableProfileLoadbalancer',
+    'CloudQuotaCurrentStateAvailableProfileNetwork',
+    'CloudQuotaCurrentStateAvailableProfileShare',
+    'CloudQuotaCurrentStateAvailableProfileVolume',
+    'CloudQuotaCurrentStateRegion',
+    'CloudQuotaCurrentStateRegionCompute',
+    'CloudQuotaCurrentStateRegionComputeCores',
+    'CloudQuotaCurrentStateRegionComputeInstances',
+    'CloudQuotaCurrentStateRegionComputeMemory',
+    'CloudQuotaCurrentStateRegionKeyManager',
+    'CloudQuotaCurrentStateRegionKeyManagerContainers',
+    'CloudQuotaCurrentStateRegionKeyManagerSecrets',
+    'CloudQuotaCurrentStateRegionKeypair',
+    'CloudQuotaCurrentStateRegionKeypairKeypairs',
+    'CloudQuotaCurrentStateRegionLoadbalancer',
+    'CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors',
+    'CloudQuotaCurrentStateRegionLoadbalancerL7Policies',
+    'CloudQuotaCurrentStateRegionLoadbalancerL7Rules',
+    'CloudQuotaCurrentStateRegionLoadbalancerListeners',
+    'CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers',
+    'CloudQuotaCurrentStateRegionLoadbalancerMembers',
+    'CloudQuotaCurrentStateRegionLoadbalancerPools',
+    'CloudQuotaCurrentStateRegionNetwork',
+    'CloudQuotaCurrentStateRegionNetworkFloatingIps',
+    'CloudQuotaCurrentStateRegionNetworkGateways',
+    'CloudQuotaCurrentStateRegionNetworkNetworks',
+    'CloudQuotaCurrentStateRegionNetworkSecurityGroupRules',
+    'CloudQuotaCurrentStateRegionNetworkSecurityGroups',
+    'CloudQuotaCurrentStateRegionNetworkSubnets',
+    'CloudQuotaCurrentStateRegionShare',
+    'CloudQuotaCurrentStateRegionShareBackupSizeTotal',
+    'CloudQuotaCurrentStateRegionShareBackups',
+    'CloudQuotaCurrentStateRegionSharePerShareSize',
+    'CloudQuotaCurrentStateRegionShareShareNetworks',
+    'CloudQuotaCurrentStateRegionShareShares',
+    'CloudQuotaCurrentStateRegionShareSizeTotal',
+    'CloudQuotaCurrentStateRegionShareSnapshotSizeTotal',
+    'CloudQuotaCurrentStateRegionShareSnapshots',
+    'CloudQuotaCurrentStateRegionVolume',
+    'CloudQuotaCurrentStateRegionVolumeBackupSizeTotal',
+    'CloudQuotaCurrentStateRegionVolumeBackups',
+    'CloudQuotaCurrentStateRegionVolumePerVolumeSize',
+    'CloudQuotaCurrentStateRegionVolumeSizeTotal',
+    'CloudQuotaCurrentStateRegionVolumeSnapshots',
+    'CloudQuotaCurrentStateRegionVolumeVolumes',
+    'CloudQuotaRegion',
     'CloudSecurityGroupCurrentState',
     'CloudSecurityGroupCurrentStateDefaultRule',
     'CloudSecurityGroupCurrentStateLocation',
@@ -53,6 +116,16 @@ __all__ = [
     'CloudStorageBlockVolumeEncryption',
     'CloudStorageBlockVolumeSnapshotCurrentState',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocation',
+    'CloudStorageFileShareAccessRule',
+    'CloudStorageFileShareCurrentState',
+    'CloudStorageFileShareCurrentStateAccessRule',
+    'CloudStorageFileShareCurrentStateCapability',
+    'CloudStorageFileShareCurrentStateExportLocation',
+    'CloudStorageFileShareCurrentStateLocation',
+    'CloudStorageFileShareNetworkCurrentState',
+    'CloudStorageFileShareNetworkCurrentStateLocation',
+    'CloudStorageFileShareSnapshotCurrentState',
+    'CloudStorageFileShareSnapshotCurrentStateLocation',
     'StorageEfsIam',
     'StorageEfsOrder',
     'StorageEfsOrderDetail',
@@ -78,6 +151,43 @@ __all__ = [
     'VrackservicesTargetSpecSubnet',
     'VrackservicesTargetSpecSubnetServiceEndpoint',
     'VrackservicesTargetSpecSubnetServiceRange',
+    'GetCloudAdditionalIpCurrentStateResult',
+    'GetCloudAdditionalIpCurrentStateAssociatedResourceResult',
+    'GetCloudAdditionalIpCurrentStateLocationResult',
+    'GetCloudAdditionalIpCurrentTaskResult',
+    'GetCloudAdditionalIpCurrentTaskErrorResult',
+    'GetCloudAdditionalIpsAdditionalIpResult',
+    'GetCloudAdditionalIpsAdditionalIpCurrentStateResult',
+    'GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResourceResult',
+    'GetCloudAdditionalIpsAdditionalIpCurrentStateLocationResult',
+    'GetCloudAdditionalIpsAdditionalIpCurrentTaskResult',
+    'GetCloudAdditionalIpsAdditionalIpCurrentTaskErrorResult',
+    'GetCloudExtNetIpCurrentStateResult',
+    'GetCloudExtNetIpCurrentStateAssociatedResourceResult',
+    'GetCloudExtNetIpCurrentStateLocationResult',
+    'GetCloudExtNetIpCurrentTaskResult',
+    'GetCloudExtNetIpCurrentTaskErrorResult',
+    'GetCloudExtNetIpsExtNetIpResult',
+    'GetCloudExtNetIpsExtNetIpCurrentStateResult',
+    'GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResourceResult',
+    'GetCloudExtNetIpsExtNetIpCurrentStateLocationResult',
+    'GetCloudExtNetIpsExtNetIpCurrentTaskResult',
+    'GetCloudExtNetIpsExtNetIpCurrentTaskErrorResult',
+    'GetCloudFloatingIpCurrentStateResult',
+    'GetCloudFloatingIpCurrentStateAssociatedResourceResult',
+    'GetCloudFloatingIpCurrentStateLocationResult',
+    'GetCloudFloatingIpCurrentStateNetworkResult',
+    'GetCloudFloatingIpCurrentTaskResult',
+    'GetCloudFloatingIpCurrentTaskErrorResult',
+    'GetCloudFloatingIpLocationResult',
+    'GetCloudFloatingIpsFloatingIpResult',
+    'GetCloudFloatingIpsFloatingIpCurrentStateResult',
+    'GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResourceResult',
+    'GetCloudFloatingIpsFloatingIpCurrentStateLocationResult',
+    'GetCloudFloatingIpsFloatingIpCurrentStateNetworkResult',
+    'GetCloudFloatingIpsFloatingIpCurrentTaskResult',
+    'GetCloudFloatingIpsFloatingIpCurrentTaskErrorResult',
+    'GetCloudFloatingIpsFloatingIpLocationResult',
     'GetCloudGatewayCurrentStateResult',
     'GetCloudGatewayCurrentStateExternalGatewayResult',
     'GetCloudGatewayCurrentStateLocationResult',
@@ -91,6 +201,24 @@ __all__ = [
     'GetCloudGatewaysGatewayCurrentStateSubnetResult',
     'GetCloudGatewaysGatewayExternalGatewayResult',
     'GetCloudGatewaysGatewayLocationResult',
+    'GetCloudKeyManagerContainerConsumersConsumerResult',
+    'GetCloudKeyManagerContainerCurrentStateResult',
+    'GetCloudKeyManagerContainerCurrentStateLocationResult',
+    'GetCloudKeyManagerContainerCurrentStateSecretRefResult',
+    'GetCloudKeyManagerContainerLocationResult',
+    'GetCloudKeyManagerContainersContainerResult',
+    'GetCloudKeyManagerContainersContainerCurrentStateResult',
+    'GetCloudKeyManagerContainersContainerCurrentStateLocationResult',
+    'GetCloudKeyManagerContainersContainerCurrentStateSecretRefResult',
+    'GetCloudKeyManagerContainersContainerLocationResult',
+    'GetCloudKeyManagerSecretConsumersConsumerResult',
+    'GetCloudKeyManagerSecretCurrentStateResult',
+    'GetCloudKeyManagerSecretCurrentStateLocationResult',
+    'GetCloudKeyManagerSecretLocationResult',
+    'GetCloudKeyManagerSecretsSecretResult',
+    'GetCloudKeyManagerSecretsSecretCurrentStateResult',
+    'GetCloudKeyManagerSecretsSecretCurrentStateLocationResult',
+    'GetCloudKeyManagerSecretsSecretLocationResult',
     'GetCloudNetworkPrivateVrackCurrentStateResult',
     'GetCloudNetworkPrivateVrackCurrentStateLocationResult',
     'GetCloudNetworkPrivateVrackLocationResult',
@@ -127,6 +255,58 @@ __all__ = [
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionExpirationResult',
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionResult',
     'GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionResult',
+    'GetCloudPublicIpsPublicIpResult',
+    'GetCloudQuotaCurrentStateResult',
+    'GetCloudQuotaCurrentStateAvailableProfileResult',
+    'GetCloudQuotaCurrentStateAvailableProfileComputeResult',
+    'GetCloudQuotaCurrentStateAvailableProfileKeyManagerResult',
+    'GetCloudQuotaCurrentStateAvailableProfileKeypairResult',
+    'GetCloudQuotaCurrentStateAvailableProfileLoadbalancerResult',
+    'GetCloudQuotaCurrentStateAvailableProfileNetworkResult',
+    'GetCloudQuotaCurrentStateAvailableProfileShareResult',
+    'GetCloudQuotaCurrentStateAvailableProfileVolumeResult',
+    'GetCloudQuotaCurrentStateRegionResult',
+    'GetCloudQuotaCurrentStateRegionComputeResult',
+    'GetCloudQuotaCurrentStateRegionComputeCoresResult',
+    'GetCloudQuotaCurrentStateRegionComputeInstancesResult',
+    'GetCloudQuotaCurrentStateRegionComputeMemoryResult',
+    'GetCloudQuotaCurrentStateRegionKeyManagerResult',
+    'GetCloudQuotaCurrentStateRegionKeyManagerContainersResult',
+    'GetCloudQuotaCurrentStateRegionKeyManagerSecretsResult',
+    'GetCloudQuotaCurrentStateRegionKeypairResult',
+    'GetCloudQuotaCurrentStateRegionKeypairKeypairsResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerL7PoliciesResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerL7RulesResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerListenersResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerLoadbalancersResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerMembersResult',
+    'GetCloudQuotaCurrentStateRegionLoadbalancerPoolsResult',
+    'GetCloudQuotaCurrentStateRegionNetworkResult',
+    'GetCloudQuotaCurrentStateRegionNetworkFloatingIpsResult',
+    'GetCloudQuotaCurrentStateRegionNetworkGatewaysResult',
+    'GetCloudQuotaCurrentStateRegionNetworkNetworksResult',
+    'GetCloudQuotaCurrentStateRegionNetworkSecurityGroupRulesResult',
+    'GetCloudQuotaCurrentStateRegionNetworkSecurityGroupsResult',
+    'GetCloudQuotaCurrentStateRegionNetworkSubnetsResult',
+    'GetCloudQuotaCurrentStateRegionShareResult',
+    'GetCloudQuotaCurrentStateRegionShareBackupSizeTotalResult',
+    'GetCloudQuotaCurrentStateRegionShareBackupsResult',
+    'GetCloudQuotaCurrentStateRegionSharePerShareSizeResult',
+    'GetCloudQuotaCurrentStateRegionShareShareNetworksResult',
+    'GetCloudQuotaCurrentStateRegionShareSharesResult',
+    'GetCloudQuotaCurrentStateRegionShareSizeTotalResult',
+    'GetCloudQuotaCurrentStateRegionShareSnapshotSizeTotalResult',
+    'GetCloudQuotaCurrentStateRegionShareSnapshotsResult',
+    'GetCloudQuotaCurrentStateRegionVolumeResult',
+    'GetCloudQuotaCurrentStateRegionVolumeBackupSizeTotalResult',
+    'GetCloudQuotaCurrentStateRegionVolumeBackupsResult',
+    'GetCloudQuotaCurrentStateRegionVolumePerVolumeSizeResult',
+    'GetCloudQuotaCurrentStateRegionVolumeSizeTotalResult',
+    'GetCloudQuotaCurrentStateRegionVolumeSnapshotsResult',
+    'GetCloudQuotaCurrentStateRegionVolumeVolumesResult',
+    'GetCloudQuotaRegionResult',
     'GetCloudRegionsRegionResult',
     'GetCloudSecurityGroupCurrentStateResult',
     'GetCloudSecurityGroupCurrentStateDefaultRuleResult',
@@ -155,6 +335,33 @@ __all__ = [
     'GetCloudStorageBlockVolumesVolumeAttachedInstanceResult',
     'GetCloudStorageBlockVolumesVolumeEncryptionResult',
     'GetCloudStorageBlockVolumesVolumeLocationResult',
+    'GetCloudStorageFileShareAccessRuleResult',
+    'GetCloudStorageFileShareCurrentStateResult',
+    'GetCloudStorageFileShareCurrentStateAccessRuleResult',
+    'GetCloudStorageFileShareCurrentStateCapabilityResult',
+    'GetCloudStorageFileShareCurrentStateExportLocationResult',
+    'GetCloudStorageFileShareCurrentStateLocationResult',
+    'GetCloudStorageFileShareLocationResult',
+    'GetCloudStorageFileShareNetworkCurrentStateResult',
+    'GetCloudStorageFileShareNetworkCurrentStateLocationResult',
+    'GetCloudStorageFileShareNetworkLocationResult',
+    'GetCloudStorageFileShareNetworksShareNetworkResult',
+    'GetCloudStorageFileShareNetworksShareNetworkCurrentStateResult',
+    'GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocationResult',
+    'GetCloudStorageFileShareNetworksShareNetworkLocationResult',
+    'GetCloudStorageFileShareSnapshotCurrentStateResult',
+    'GetCloudStorageFileShareSnapshotCurrentStateLocationResult',
+    'GetCloudStorageFileShareSnapshotsShareSnapshotResult',
+    'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateResult',
+    'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult',
+    'GetCloudStorageFileSharesFileShareResult',
+    'GetCloudStorageFileSharesFileShareAccessRuleResult',
+    'GetCloudStorageFileSharesFileShareCurrentStateResult',
+    'GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult',
+    'GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult',
+    'GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult',
+    'GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
+    'GetCloudStorageFileSharesFileShareLocationResult',
     'GetDbaasLogsOutputGraylogStreamUrlUrlResult',
     'GetInstallationTemplateInputResult',
     'GetInstallationTemplateLicenseResult',
@@ -198,6 +405,298 @@ __all__ = [
     'GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointResult',
     'GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeResult',
 ]
+
+@pulumi.output_type
+class CloudFloatingIpCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "associatedResource":
+            suggest = "associated_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudFloatingIpCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudFloatingIpCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudFloatingIpCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 associated_resource: Optional['outputs.CloudFloatingIpCurrentStateAssociatedResource'] = None,
+                 description: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 ip: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudFloatingIpCurrentStateLocation'] = None,
+                 network: Optional['outputs.CloudFloatingIpCurrentStateNetwork'] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param 'CloudFloatingIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        :param _builtins.str description: Description of the floating IP. This is the only argument that can be updated in place.
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str ip: IP address of the floating IP.
+        :param 'CloudFloatingIpCurrentStateLocationArgs' location: Location details:
+        :param 'CloudFloatingIpCurrentStateNetworkArgs' network: External network the floating IP belongs to:
+        :param _builtins.str status: Current global status of the current task.
+        """
+        if associated_resource is not None:
+            pulumi.set(__self__, "associated_resource", associated_resource)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> Optional['outputs.CloudFloatingIpCurrentStateAssociatedResource']:
+        """
+        Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the floating IP. This is the only argument that can be updated in place.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudFloatingIpCurrentStateLocation']:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.CloudFloatingIpCurrentStateNetwork']:
+        """
+        External network the floating IP belongs to:
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CloudFloatingIpCurrentStateAssociatedResource(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CloudFloatingIpCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudFloatingIpCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudFloatingIpCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudFloatingIpCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone for the floating IP. **Changing this value recreates the resource.**
+        :param _builtins.str region: Region where the floating IP will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone for the floating IP. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the floating IP will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudFloatingIpCurrentStateNetwork(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Identifier of the current task.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudFloatingIpCurrentTask(dict):
+    def __init__(__self__, *,
+                 errors: Optional[Sequence['outputs.CloudFloatingIpCurrentTaskError']] = None,
+                 id: Optional[_builtins.str] = None,
+                 link: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CloudFloatingIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.CloudFloatingIpCurrentTaskError']]:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> Optional[_builtins.str]:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CloudFloatingIpCurrentTaskError(dict):
+    def __init__(__self__, *,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str message: Error description.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
 
 @pulumi.output_type
 class CloudGatewayCurrentState(dict):
@@ -435,6 +934,456 @@ class CloudGatewayExternalGateway(dict):
         External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
         """
         return pulumi.get(self, "model")
+
+
+@pulumi.output_type
+class CloudKeyManagerContainerCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerRef":
+            suggest = "container_ref"
+        elif key == "secretRefs":
+            suggest = "secret_refs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudKeyManagerContainerCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudKeyManagerContainerCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudKeyManagerContainerCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_ref: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudKeyManagerContainerCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 secret_refs: Optional[Sequence['outputs.CloudKeyManagerContainerCurrentStateSecretRef']] = None,
+                 status: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str container_ref: OpenStack reference URL for the container.
+        :param 'CloudKeyManagerContainerCurrentStateLocationArgs' location: Location of the container:
+        :param _builtins.str name: Name of the container.
+        :param Sequence['CloudKeyManagerContainerCurrentStateSecretRefArgs'] secret_refs: List of secret references in the container. Each element supports:
+        :param _builtins.str status: Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        :param _builtins.str type: Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        if container_ref is not None:
+            pulumi.set(__self__, "container_ref", container_ref)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_refs is not None:
+            pulumi.set(__self__, "secret_refs", secret_refs)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="containerRef")
+    def container_ref(self) -> Optional[_builtins.str]:
+        """
+        OpenStack reference URL for the container.
+        """
+        return pulumi.get(self, "container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudKeyManagerContainerCurrentStateLocation']:
+        """
+        Location of the container:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the container.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretRefs")
+    def secret_refs(self) -> Optional[Sequence['outputs.CloudKeyManagerContainerCurrentStateSecretRef']]:
+        """
+        List of secret references in the container. Each element supports:
+        """
+        return pulumi.get(self, "secret_refs")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CloudKeyManagerContainerCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudKeyManagerContainerCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudKeyManagerContainerCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudKeyManagerContainerCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone where the container will be created.
+        :param _builtins.str region: Region where the container will be created.
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone where the container will be created.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the container will be created.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudKeyManagerContainerCurrentStateSecretRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretId":
+            suggest = "secret_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudKeyManagerContainerCurrentStateSecretRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudKeyManagerContainerCurrentStateSecretRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudKeyManagerContainerCurrentStateSecretRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: Optional[_builtins.str] = None,
+                 secret_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        :param _builtins.str secret_id: ID of the referenced secret.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the referenced secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+
+@pulumi.output_type
+class CloudKeyManagerContainerSecretRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretId":
+            suggest = "secret_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudKeyManagerContainerSecretRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudKeyManagerContainerSecretRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudKeyManagerContainerSecretRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 secret_id: _builtins.str):
+        """
+        :param _builtins.str name: Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        :param _builtins.str secret_id: ID of the referenced secret.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> _builtins.str:
+        """
+        ID of the referenced secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+
+@pulumi.output_type
+class CloudKeyManagerSecretCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bitLength":
+            suggest = "bit_length"
+        elif key == "payloadContentType":
+            suggest = "payload_content_type"
+        elif key == "secretRef":
+            suggest = "secret_ref"
+        elif key == "secretType":
+            suggest = "secret_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudKeyManagerSecretCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudKeyManagerSecretCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudKeyManagerSecretCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 algorithm: Optional[_builtins.str] = None,
+                 bit_length: Optional[_builtins.int] = None,
+                 expiration: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudKeyManagerSecretCurrentStateLocation'] = None,
+                 metadata: Optional[Mapping[str, _builtins.str]] = None,
+                 mode: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 payload_content_type: Optional[_builtins.str] = None,
+                 secret_ref: Optional[_builtins.str] = None,
+                 secret_type: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param _builtins.int bit_length: Bit length of the secret (e.g., `256`).
+        :param _builtins.str expiration: Expiration date of the secret in RFC3339 format.
+        :param 'CloudKeyManagerSecretCurrentStateLocationArgs' location: Location of the secret:
+        :param Mapping[str, _builtins.str] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
+        :param _builtins.str mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param _builtins.str name: Name of the secret.
+        :param _builtins.str payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+        :param _builtins.str secret_ref: OpenStack reference URL for the secret.
+        :param _builtins.str secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param _builtins.str status: Status of the secret (`ACTIVE`, `ERROR`).
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if bit_length is not None:
+            pulumi.set(__self__, "bit_length", bit_length)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if payload_content_type is not None:
+            pulumi.set(__self__, "payload_content_type", payload_content_type)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[_builtins.str]:
+        """
+        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="bitLength")
+    def bit_length(self) -> Optional[_builtins.int]:
+        """
+        Bit length of the secret (e.g., `256`).
+        """
+        return pulumi.get(self, "bit_length")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> Optional[_builtins.str]:
+        """
+        Expiration date of the secret in RFC3339 format.
+        """
+        return pulumi.get(self, "expiration")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudKeyManagerSecretCurrentStateLocation']:
+        """
+        Location of the secret:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Key-value metadata for the secret. This is the only mutable field on a secret.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Mode of the secret algorithm (e.g., `CBC`).
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the secret.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="payloadContentType")
+    def payload_content_type(self) -> Optional[_builtins.str]:
+        """
+        Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+        """
+        return pulumi.get(self, "payload_content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[_builtins.str]:
+        """
+        OpenStack reference URL for the secret.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[_builtins.str]:
+        """
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Status of the secret (`ACTIVE`, `ERROR`).
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CloudKeyManagerSecretCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudKeyManagerSecretCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudKeyManagerSecretCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudKeyManagerSecretCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone where the secret will be created.
+        :param _builtins.str region: Region where the secret will be created.
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone where the secret will be created.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the secret will be created.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -1407,6 +2356,1976 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransition(dict):
         Number of days after creation before objects are transitioned. Mutually exclusive with `date`.
         """
         return pulumi.get(self, "days")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availableProfiles":
+            suggest = "available_profiles"
+        elif key == "preventAutomaticQuotaUpgrade":
+            suggest = "prevent_automatic_quota_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 available_profiles: Optional[Sequence['outputs.CloudQuotaCurrentStateAvailableProfile']] = None,
+                 prevent_automatic_quota_upgrade: Optional[_builtins.bool] = None,
+                 regions: Optional[Sequence['outputs.CloudQuotaCurrentStateRegion']] = None):
+        """
+        :param Sequence['CloudQuotaCurrentStateAvailableProfileArgs'] available_profiles: — All quota profiles offered to the project, with
+               their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+               `key_manager`, `share`, `keypair`).
+        :param _builtins.bool prevent_automatic_quota_upgrade: — When true, automatic
+               quota upgrades are disabled for this project.
+        :param Sequence['CloudQuotaCurrentStateRegionArgs'] regions: — Target quota profile per region:
+        """
+        if available_profiles is not None:
+            pulumi.set(__self__, "available_profiles", available_profiles)
+        if prevent_automatic_quota_upgrade is not None:
+            pulumi.set(__self__, "prevent_automatic_quota_upgrade", prevent_automatic_quota_upgrade)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="availableProfiles")
+    def available_profiles(self) -> Optional[Sequence['outputs.CloudQuotaCurrentStateAvailableProfile']]:
+        """
+        — All quota profiles offered to the project, with
+        their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+        `key_manager`, `share`, `keypair`).
+        """
+        return pulumi.get(self, "available_profiles")
+
+    @_builtins.property
+    @pulumi.getter(name="preventAutomaticQuotaUpgrade")
+    def prevent_automatic_quota_upgrade(self) -> Optional[_builtins.bool]:
+        """
+        — When true, automatic
+        quota upgrades are disabled for this project.
+        """
+        return pulumi.get(self, "prevent_automatic_quota_upgrade")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Optional[Sequence['outputs.CloudQuotaCurrentStateRegion']]:
+        """
+        — Target quota profile per region:
+        """
+        return pulumi.get(self, "regions")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyManager":
+            suggest = "key_manager"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateAvailableProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateAvailableProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateAvailableProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compute: Optional['outputs.CloudQuotaCurrentStateAvailableProfileCompute'] = None,
+                 key_manager: Optional['outputs.CloudQuotaCurrentStateAvailableProfileKeyManager'] = None,
+                 keypair: Optional['outputs.CloudQuotaCurrentStateAvailableProfileKeypair'] = None,
+                 loadbalancer: Optional['outputs.CloudQuotaCurrentStateAvailableProfileLoadbalancer'] = None,
+                 name: Optional[_builtins.str] = None,
+                 network: Optional['outputs.CloudQuotaCurrentStateAvailableProfileNetwork'] = None,
+                 share: Optional['outputs.CloudQuotaCurrentStateAvailableProfileShare'] = None,
+                 volume: Optional['outputs.CloudQuotaCurrentStateAvailableProfileVolume'] = None):
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+        if key_manager is not None:
+            pulumi.set(__self__, "key_manager", key_manager)
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+        if loadbalancer is not None:
+            pulumi.set(__self__, "loadbalancer", loadbalancer)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if share is not None:
+            pulumi.set(__self__, "share", share)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileCompute']:
+        return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter(name="keyManager")
+    def key_manager(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileKeyManager']:
+        return pulumi.get(self, "key_manager")
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileKeypair']:
+        return pulumi.get(self, "keypair")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancer(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileLoadbalancer']:
+        return pulumi.get(self, "loadbalancer")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileNetwork']:
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def share(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileShare']:
+        return pulumi.get(self, "share")
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> Optional['outputs.CloudQuotaCurrentStateAvailableProfileVolume']:
+        return pulumi.get(self, "volume")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileCompute(dict):
+    def __init__(__self__, *,
+                 cores: Optional[_builtins.int] = None,
+                 instances: Optional[_builtins.int] = None,
+                 memory: Optional[_builtins.int] = None):
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileKeyManager(dict):
+    def __init__(__self__, *,
+                 containers: Optional[_builtins.int] = None,
+                 secrets: Optional[_builtins.int] = None):
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "secrets")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileKeypair(dict):
+    def __init__(__self__, *,
+                 keypairs: Optional[_builtins.int] = None):
+        if keypairs is not None:
+            pulumi.set(__self__, "keypairs", keypairs)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypairs(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "keypairs")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileLoadbalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthMonitors":
+            suggest = "health_monitors"
+        elif key == "l7Policies":
+            suggest = "l7_policies"
+        elif key == "l7Rules":
+            suggest = "l7_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateAvailableProfileLoadbalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateAvailableProfileLoadbalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateAvailableProfileLoadbalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 health_monitors: Optional[_builtins.int] = None,
+                 l7_policies: Optional[_builtins.int] = None,
+                 l7_rules: Optional[_builtins.int] = None,
+                 listeners: Optional[_builtins.int] = None,
+                 loadbalancers: Optional[_builtins.int] = None,
+                 members: Optional[_builtins.int] = None,
+                 pools: Optional[_builtins.int] = None):
+        if health_monitors is not None:
+            pulumi.set(__self__, "health_monitors", health_monitors)
+        if l7_policies is not None:
+            pulumi.set(__self__, "l7_policies", l7_policies)
+        if l7_rules is not None:
+            pulumi.set(__self__, "l7_rules", l7_rules)
+        if listeners is not None:
+            pulumi.set(__self__, "listeners", listeners)
+        if loadbalancers is not None:
+            pulumi.set(__self__, "loadbalancers", loadbalancers)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if pools is not None:
+            pulumi.set(__self__, "pools", pools)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitors")
+    def health_monitors(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "health_monitors")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Policies")
+    def l7_policies(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "l7_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Rules")
+    def l7_rules(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "l7_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def listeners(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "listeners")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancers(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "loadbalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "pools")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "floatingIps":
+            suggest = "floating_ips"
+        elif key == "securityGroupRules":
+            suggest = "security_group_rules"
+        elif key == "securityGroups":
+            suggest = "security_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateAvailableProfileNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateAvailableProfileNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateAvailableProfileNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 floating_ips: Optional[_builtins.int] = None,
+                 gateways: Optional[_builtins.int] = None,
+                 networks: Optional[_builtins.int] = None,
+                 security_group_rules: Optional[_builtins.int] = None,
+                 security_groups: Optional[_builtins.int] = None,
+                 subnets: Optional[_builtins.int] = None):
+        if floating_ips is not None:
+            pulumi.set(__self__, "floating_ips", floating_ips)
+        if gateways is not None:
+            pulumi.set(__self__, "gateways", gateways)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if security_group_rules is not None:
+            pulumi.set(__self__, "security_group_rules", security_group_rules)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIps")
+    def floating_ips(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "floating_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateways(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "gateways")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupRules")
+    def security_group_rules(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "security_group_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileShare(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupSizeTotal":
+            suggest = "backup_size_total"
+        elif key == "sizeTotal":
+            suggest = "size_total"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateAvailableProfileShare. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateAvailableProfileShare.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateAvailableProfileShare.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_size_total: Optional[_builtins.int] = None,
+                 backups: Optional[_builtins.int] = None,
+                 shares: Optional[_builtins.int] = None,
+                 size_total: Optional[_builtins.int] = None,
+                 snapshots: Optional[_builtins.int] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if shares is not None:
+            pulumi.set(__self__, "shares", shares)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "snapshots")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateAvailableProfileVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupSizeTotal":
+            suggest = "backup_size_total"
+        elif key == "sizeTotal":
+            suggest = "size_total"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateAvailableProfileVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateAvailableProfileVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateAvailableProfileVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_size_total: Optional[_builtins.int] = None,
+                 backups: Optional[_builtins.int] = None,
+                 size_total: Optional[_builtins.int] = None,
+                 snapshots: Optional[_builtins.int] = None,
+                 volumes: Optional[_builtins.int] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "snapshots")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegion(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyManager":
+            suggest = "key_manager"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateRegion. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateRegion.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateRegion.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compute: Optional['outputs.CloudQuotaCurrentStateRegionCompute'] = None,
+                 key_manager: Optional['outputs.CloudQuotaCurrentStateRegionKeyManager'] = None,
+                 keypair: Optional['outputs.CloudQuotaCurrentStateRegionKeypair'] = None,
+                 loadbalancer: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancer'] = None,
+                 network: Optional['outputs.CloudQuotaCurrentStateRegionNetwork'] = None,
+                 profile: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 share: Optional['outputs.CloudQuotaCurrentStateRegionShare'] = None,
+                 volume: Optional['outputs.CloudQuotaCurrentStateRegionVolume'] = None):
+        """
+        :param _builtins.str profile: — Quota profile to apply. Available values
+               are exposed live in `current_state.available_profiles`.
+        :param _builtins.str region: — Region where the profile applies
+               (e.g. `GRA11`).
+        """
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+        if key_manager is not None:
+            pulumi.set(__self__, "key_manager", key_manager)
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+        if loadbalancer is not None:
+            pulumi.set(__self__, "loadbalancer", loadbalancer)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if share is not None:
+            pulumi.set(__self__, "share", share)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> Optional['outputs.CloudQuotaCurrentStateRegionCompute']:
+        return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter(name="keyManager")
+    def key_manager(self) -> Optional['outputs.CloudQuotaCurrentStateRegionKeyManager']:
+        return pulumi.get(self, "key_manager")
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> Optional['outputs.CloudQuotaCurrentStateRegionKeypair']:
+        return pulumi.get(self, "keypair")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancer(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancer']:
+        return pulumi.get(self, "loadbalancer")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetwork']:
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[_builtins.str]:
+        """
+        — Quota profile to apply. Available values
+        are exposed live in `current_state.available_profiles`.
+        """
+        return pulumi.get(self, "profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        — Region where the profile applies
+        (e.g. `GRA11`).
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def share(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShare']:
+        return pulumi.get(self, "share")
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolume']:
+        return pulumi.get(self, "volume")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionCompute(dict):
+    def __init__(__self__, *,
+                 cores: Optional['outputs.CloudQuotaCurrentStateRegionComputeCores'] = None,
+                 instances: Optional['outputs.CloudQuotaCurrentStateRegionComputeInstances'] = None,
+                 memory: Optional['outputs.CloudQuotaCurrentStateRegionComputeMemory'] = None):
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional['outputs.CloudQuotaCurrentStateRegionComputeCores']:
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> Optional['outputs.CloudQuotaCurrentStateRegionComputeInstances']:
+        return pulumi.get(self, "instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional['outputs.CloudQuotaCurrentStateRegionComputeMemory']:
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionComputeCores(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionComputeInstances(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionComputeMemory(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionKeyManager(dict):
+    def __init__(__self__, *,
+                 containers: Optional['outputs.CloudQuotaCurrentStateRegionKeyManagerContainers'] = None,
+                 secrets: Optional['outputs.CloudQuotaCurrentStateRegionKeyManagerSecrets'] = None):
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Optional['outputs.CloudQuotaCurrentStateRegionKeyManagerContainers']:
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional['outputs.CloudQuotaCurrentStateRegionKeyManagerSecrets']:
+        return pulumi.get(self, "secrets")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionKeyManagerContainers(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionKeyManagerSecrets(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionKeypair(dict):
+    def __init__(__self__, *,
+                 keypairs: Optional['outputs.CloudQuotaCurrentStateRegionKeypairKeypairs'] = None):
+        if keypairs is not None:
+            pulumi.set(__self__, "keypairs", keypairs)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypairs(self) -> Optional['outputs.CloudQuotaCurrentStateRegionKeypairKeypairs']:
+        return pulumi.get(self, "keypairs")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionKeypairKeypairs(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthMonitors":
+            suggest = "health_monitors"
+        elif key == "l7Policies":
+            suggest = "l7_policies"
+        elif key == "l7Rules":
+            suggest = "l7_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateRegionLoadbalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateRegionLoadbalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateRegionLoadbalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 health_monitors: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors'] = None,
+                 l7_policies: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerL7Policies'] = None,
+                 l7_rules: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerL7Rules'] = None,
+                 listeners: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerListeners'] = None,
+                 loadbalancers: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers'] = None,
+                 members: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerMembers'] = None,
+                 pools: Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerPools'] = None):
+        if health_monitors is not None:
+            pulumi.set(__self__, "health_monitors", health_monitors)
+        if l7_policies is not None:
+            pulumi.set(__self__, "l7_policies", l7_policies)
+        if l7_rules is not None:
+            pulumi.set(__self__, "l7_rules", l7_rules)
+        if listeners is not None:
+            pulumi.set(__self__, "listeners", listeners)
+        if loadbalancers is not None:
+            pulumi.set(__self__, "loadbalancers", loadbalancers)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if pools is not None:
+            pulumi.set(__self__, "pools", pools)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitors")
+    def health_monitors(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors']:
+        return pulumi.get(self, "health_monitors")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Policies")
+    def l7_policies(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerL7Policies']:
+        return pulumi.get(self, "l7_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Rules")
+    def l7_rules(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerL7Rules']:
+        return pulumi.get(self, "l7_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def listeners(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerListeners']:
+        return pulumi.get(self, "listeners")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancers(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers']:
+        return pulumi.get(self, "loadbalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerMembers']:
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> Optional['outputs.CloudQuotaCurrentStateRegionLoadbalancerPools']:
+        return pulumi.get(self, "pools")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerL7Policies(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerL7Rules(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerListeners(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerMembers(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionLoadbalancerPools(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "floatingIps":
+            suggest = "floating_ips"
+        elif key == "securityGroupRules":
+            suggest = "security_group_rules"
+        elif key == "securityGroups":
+            suggest = "security_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateRegionNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateRegionNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateRegionNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 floating_ips: Optional['outputs.CloudQuotaCurrentStateRegionNetworkFloatingIps'] = None,
+                 gateways: Optional['outputs.CloudQuotaCurrentStateRegionNetworkGateways'] = None,
+                 networks: Optional['outputs.CloudQuotaCurrentStateRegionNetworkNetworks'] = None,
+                 security_group_rules: Optional['outputs.CloudQuotaCurrentStateRegionNetworkSecurityGroupRules'] = None,
+                 security_groups: Optional['outputs.CloudQuotaCurrentStateRegionNetworkSecurityGroups'] = None,
+                 subnets: Optional['outputs.CloudQuotaCurrentStateRegionNetworkSubnets'] = None):
+        if floating_ips is not None:
+            pulumi.set(__self__, "floating_ips", floating_ips)
+        if gateways is not None:
+            pulumi.set(__self__, "gateways", gateways)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if security_group_rules is not None:
+            pulumi.set(__self__, "security_group_rules", security_group_rules)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIps")
+    def floating_ips(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetworkFloatingIps']:
+        return pulumi.get(self, "floating_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateways(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetworkGateways']:
+        return pulumi.get(self, "gateways")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetworkNetworks']:
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupRules")
+    def security_group_rules(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetworkSecurityGroupRules']:
+        return pulumi.get(self, "security_group_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetworkSecurityGroups']:
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional['outputs.CloudQuotaCurrentStateRegionNetworkSubnets']:
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetworkFloatingIps(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetworkGateways(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetworkNetworks(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetworkSecurityGroupRules(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetworkSecurityGroups(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionNetworkSubnets(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShare(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupSizeTotal":
+            suggest = "backup_size_total"
+        elif key == "perShareSize":
+            suggest = "per_share_size"
+        elif key == "shareNetworks":
+            suggest = "share_networks"
+        elif key == "sizeTotal":
+            suggest = "size_total"
+        elif key == "snapshotSizeTotal":
+            suggest = "snapshot_size_total"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateRegionShare. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateRegionShare.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateRegionShare.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_size_total: Optional['outputs.CloudQuotaCurrentStateRegionShareBackupSizeTotal'] = None,
+                 backups: Optional['outputs.CloudQuotaCurrentStateRegionShareBackups'] = None,
+                 per_share_size: Optional['outputs.CloudQuotaCurrentStateRegionSharePerShareSize'] = None,
+                 share_networks: Optional['outputs.CloudQuotaCurrentStateRegionShareShareNetworks'] = None,
+                 shares: Optional['outputs.CloudQuotaCurrentStateRegionShareShares'] = None,
+                 size_total: Optional['outputs.CloudQuotaCurrentStateRegionShareSizeTotal'] = None,
+                 snapshot_size_total: Optional['outputs.CloudQuotaCurrentStateRegionShareSnapshotSizeTotal'] = None,
+                 snapshots: Optional['outputs.CloudQuotaCurrentStateRegionShareSnapshots'] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if per_share_size is not None:
+            pulumi.set(__self__, "per_share_size", per_share_size)
+        if share_networks is not None:
+            pulumi.set(__self__, "share_networks", share_networks)
+        if shares is not None:
+            pulumi.set(__self__, "shares", shares)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshot_size_total is not None:
+            pulumi.set(__self__, "snapshot_size_total", snapshot_size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareBackupSizeTotal']:
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareBackups']:
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="perShareSize")
+    def per_share_size(self) -> Optional['outputs.CloudQuotaCurrentStateRegionSharePerShareSize']:
+        return pulumi.get(self, "per_share_size")
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworks")
+    def share_networks(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareShareNetworks']:
+        return pulumi.get(self, "share_networks")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareShares']:
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareSizeTotal']:
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotSizeTotal")
+    def snapshot_size_total(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareSnapshotSizeTotal']:
+        return pulumi.get(self, "snapshot_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional['outputs.CloudQuotaCurrentStateRegionShareSnapshots']:
+        return pulumi.get(self, "snapshots")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareBackupSizeTotal(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareBackups(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionSharePerShareSize(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareShareNetworks(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareShares(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareSizeTotal(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareSnapshotSizeTotal(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionShareSnapshots(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupSizeTotal":
+            suggest = "backup_size_total"
+        elif key == "perVolumeSize":
+            suggest = "per_volume_size"
+        elif key == "sizeTotal":
+            suggest = "size_total"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudQuotaCurrentStateRegionVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudQuotaCurrentStateRegionVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudQuotaCurrentStateRegionVolume.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_size_total: Optional['outputs.CloudQuotaCurrentStateRegionVolumeBackupSizeTotal'] = None,
+                 backups: Optional['outputs.CloudQuotaCurrentStateRegionVolumeBackups'] = None,
+                 per_volume_size: Optional['outputs.CloudQuotaCurrentStateRegionVolumePerVolumeSize'] = None,
+                 size_total: Optional['outputs.CloudQuotaCurrentStateRegionVolumeSizeTotal'] = None,
+                 snapshots: Optional['outputs.CloudQuotaCurrentStateRegionVolumeSnapshots'] = None,
+                 volumes: Optional['outputs.CloudQuotaCurrentStateRegionVolumeVolumes'] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if per_volume_size is not None:
+            pulumi.set(__self__, "per_volume_size", per_volume_size)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolumeBackupSizeTotal']:
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolumeBackups']:
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="perVolumeSize")
+    def per_volume_size(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolumePerVolumeSize']:
+        return pulumi.get(self, "per_volume_size")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolumeSizeTotal']:
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolumeSnapshots']:
+        return pulumi.get(self, "snapshots")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional['outputs.CloudQuotaCurrentStateRegionVolumeVolumes']:
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolumeBackupSizeTotal(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolumeBackups(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolumePerVolumeSize(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolumeSizeTotal(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolumeSnapshots(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaCurrentStateRegionVolumeVolumes(dict):
+    def __init__(__self__, *,
+                 limit: Optional[_builtins.int] = None,
+                 unit: Optional[_builtins.str] = None,
+                 used: Optional[_builtins.int] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[_builtins.int]:
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class CloudQuotaRegion(dict):
+    def __init__(__self__, *,
+                 profile: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str profile: — Quota profile to apply. Available values
+               are exposed live in `current_state.available_profiles`.
+        :param _builtins.str region: — Region where the profile applies
+               (e.g. `GRA11`).
+        """
+        pulumi.set(__self__, "profile", profile)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> _builtins.str:
+        """
+        — Quota profile to apply. Available values
+        are exposed live in `current_state.available_profiles`.
+        """
+        return pulumi.get(self, "profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        — Region where the profile applies
+        (e.g. `GRA11`).
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -2394,6 +5313,680 @@ class CloudStorageBlockVolumeSnapshotCurrentStateLocation(dict):
     def region(self) -> Optional[_builtins.str]:
         """
         The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageFileShareAccessRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessTo":
+            suggest = "access_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareAccessRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareAccessRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareAccessRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level (`READ_WRITE`, `READ_ONLY`).
+        :param _builtins.str access_to: IP address or CIDR to grant access to.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level (`READ_WRITE`, `READ_ONLY`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR to grant access to.
+        """
+        return pulumi.get(self, "access_to")
+
+
+@pulumi.output_type
+class CloudStorageFileShareCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessRules":
+            suggest = "access_rules"
+        elif key == "exportLocations":
+            suggest = "export_locations"
+        elif key == "shareNetworkId":
+            suggest = "share_network_id"
+        elif key == "shareType":
+            suggest = "share_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_rules: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateAccessRule']] = None,
+                 capabilities: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateCapability']] = None,
+                 description: Optional[_builtins.str] = None,
+                 export_locations: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateExportLocation']] = None,
+                 location: Optional['outputs.CloudStorageFileShareCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 share_network_id: Optional[_builtins.str] = None,
+                 share_type: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param Sequence['CloudStorageFileShareCurrentStateAccessRuleArgs'] access_rules: Access rules for the file share. Each rule has:
+        :param Sequence['CloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
+        :param _builtins.str description: File share description.
+        :param Sequence['CloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
+        :param 'CloudStorageFileShareCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: File share name.
+        :param _builtins.str protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
+        :param _builtins.str share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        :param _builtins.str share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        :param _builtins.int size: Size of the file share in GB.
+        """
+        if access_rules is not None:
+            pulumi.set(__self__, "access_rules", access_rules)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if export_locations is not None:
+            pulumi.set(__self__, "export_locations", export_locations)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if share_network_id is not None:
+            pulumi.set(__self__, "share_network_id", share_network_id)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRules")
+    def access_rules(self) -> Optional[Sequence['outputs.CloudStorageFileShareCurrentStateAccessRule']]:
+        """
+        Access rules for the file share. Each rule has:
+        """
+        return pulumi.get(self, "access_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[Sequence['outputs.CloudStorageFileShareCurrentStateCapability']]:
+        """
+        Action-availability flags derived from the file share status:
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        File share description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="exportLocations")
+    def export_locations(self) -> Optional[Sequence['outputs.CloudStorageFileShareCurrentStateExportLocation']]:
+        """
+        Export locations for the file share:
+        """
+        return pulumi.get(self, "export_locations")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageFileShareCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        File share name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        File share protocol (`NFS`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> Optional[_builtins.str]:
+        """
+        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[_builtins.str]:
+        """
+        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the file share in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class CloudStorageFileShareCurrentStateAccessRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessTo":
+            suggest = "access_to"
+        elif key == "createdAt":
+            suggest = "created_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareCurrentStateAccessRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareCurrentStateAccessRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareCurrentStateAccessRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[_builtins.str] = None,
+                 access_to: Optional[_builtins.str] = None,
+                 created_at: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_level: Access level (`READ_WRITE`, `READ_ONLY`).
+        :param _builtins.str access_to: IP address or CIDR to grant access to.
+        :param _builtins.str created_at: Access rule creation date.
+        :param _builtins.str id: Access rule ID.
+        :param _builtins.str state: Access rule state.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_to is not None:
+            pulumi.set(__self__, "access_to", access_to)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[_builtins.str]:
+        """
+        Access level (`READ_WRITE`, `READ_ONLY`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> Optional[_builtins.str]:
+        """
+        IP address or CIDR to grant access to.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        Access rule creation date.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Access rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        Access rule state.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class CloudStorageFileShareCurrentStateCapability(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 reason: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        :param _builtins.str name: File share name.
+        :param _builtins.str reason: Reason why the capability is disabled, when applicable.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        File share name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[_builtins.str]:
+        """
+        Reason why the capability is disabled, when applicable.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class CloudStorageFileShareCurrentStateExportLocation(dict):
+    def __init__(__self__, *,
+                 path: Optional[_builtins.str] = None,
+                 preferred: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str path: Export path.
+        :param _builtins.bool preferred: Whether this is the preferred export location.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if preferred is not None:
+            pulumi.set(__self__, "preferred", preferred)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        Export path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def preferred(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is the preferred export location.
+        """
+        return pulumi.get(self, "preferred")
+
+
+@pulumi.output_type
+class CloudStorageFileShareCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        :param _builtins.str region: Region where the file share will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the file share will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageFileShareNetworkCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkId":
+            suggest = "network_id"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareNetworkCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareNetworkCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareNetworkCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudStorageFileShareNetworkCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 network_id: Optional[_builtins.str] = None,
+                 subnet_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+        :param 'CloudStorageFileShareNetworkCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Share network name. **Changing this value recreates the resource.**
+        :param _builtins.str network_id: ID of the network backing the share network. **Changing this value recreates the resource.**
+        :param _builtins.str subnet_id: ID of the subnet backing the share network. **Changing this value recreates the resource.**
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageFileShareNetworkCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Share network name. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the network backing the share network. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the subnet backing the share network. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class CloudStorageFileShareNetworkCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareNetworkCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareNetworkCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareNetworkCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region where the share network will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the share network will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageFileShareSnapshotCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shareId":
+            suggest = "share_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareSnapshotCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareSnapshotCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareSnapshotCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 location: Optional['outputs.CloudStorageFileShareSnapshotCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 share_id: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str description: Snapshot description.
+        :param 'CloudStorageFileShareSnapshotCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Snapshot name.
+        :param _builtins.str share_id: ID of the file share to snapshot. **Changing this value recreates the resource.**
+        :param _builtins.int size: Size of the snapshot in GB.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if share_id is not None:
+            pulumi.set(__self__, "share_id", share_id)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Snapshot description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageFileShareSnapshotCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the file share to snapshot. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class CloudStorageFileShareSnapshotCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareSnapshotCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareSnapshotCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareSnapshotCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region.
         """
         return pulumi.get(self, "region")
 
@@ -3798,6 +7391,1574 @@ class VrackservicesTargetSpecSubnetServiceRange(dict):
 
 
 @pulumi.output_type
+class GetCloudAdditionalIpCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 associated_resource: 'outputs.GetCloudAdditionalIpCurrentStateAssociatedResourceResult',
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 ip_block: _builtins.str,
+                 location: 'outputs.GetCloudAdditionalIpCurrentStateLocationResult'):
+        """
+        :param 'GetCloudAdditionalIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the additional IP is currently attached to. Null when the IP is not attached to any resource:
+        :param _builtins.str id: IP address of the additional IP.
+        :param _builtins.str ip: IP address of the additional IP.
+        :param _builtins.str ip_block: IP block the additional IP belongs to. May be null.
+        :param 'GetCloudAdditionalIpCurrentStateLocationArgs' location: Location details:
+        """
+        pulumi.set(__self__, "associated_resource", associated_resource)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "ip_block", ip_block)
+        pulumi.set(__self__, "location", location)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> 'outputs.GetCloudAdditionalIpCurrentStateAssociatedResourceResult':
+        """
+        Resource the additional IP is currently attached to. Null when the IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the additional IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address of the additional IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlock")
+    def ip_block(self) -> _builtins.str:
+        """
+        IP block the additional IP belongs to. May be null.
+        """
+        return pulumi.get(self, "ip_block")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudAdditionalIpCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpCurrentStateAssociatedResourceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: IP address of the additional IP.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the additional IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.GetCloudAdditionalIpCurrentTaskErrorResult'],
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetCloudAdditionalIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: IP address of the additional IP.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetCloudAdditionalIpCurrentTaskErrorResult']:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the additional IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpCurrentTaskErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str):
+        """
+        :param _builtins.str message: Error description.
+        """
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpsAdditionalIpResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 current_state: 'outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateResult',
+                 current_tasks: Sequence['outputs.GetCloudAdditionalIpsAdditionalIpCurrentTaskResult'],
+                 id: _builtins.str,
+                 resource_status: _builtins.str):
+        """
+        :param _builtins.str checksum: Checksum field of the API envelope. Always empty for this read-only IP type.
+        :param 'GetCloudAdditionalIpsAdditionalIpCurrentStateArgs' current_state: Current state of the additional IP:
+        :param Sequence['GetCloudAdditionalIpsAdditionalIpCurrentTaskArgs'] current_tasks: Ongoing asynchronous tasks related to the additional IP. Each element exports:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str resource_status: Additional IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UNKNOWN`, `UPDATING`).
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "current_tasks", current_tasks)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_status", resource_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Checksum field of the API envelope. Always empty for this read-only IP type.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateResult':
+        """
+        Current state of the additional IP:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter(name="currentTasks")
+    def current_tasks(self) -> Sequence['outputs.GetCloudAdditionalIpsAdditionalIpCurrentTaskResult']:
+        """
+        Ongoing asynchronous tasks related to the additional IP. Each element exports:
+        """
+        return pulumi.get(self, "current_tasks")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Additional IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UNKNOWN`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpsAdditionalIpCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 associated_resource: 'outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResourceResult',
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 ip_block: _builtins.str,
+                 location: 'outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateLocationResult'):
+        """
+        :param 'GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the additional IP is currently attached to. Null when the IP is not attached to any resource:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str ip: IP address of the additional IP.
+        :param _builtins.str ip_block: IP block the additional IP belongs to. May be null.
+        :param 'GetCloudAdditionalIpsAdditionalIpCurrentStateLocationArgs' location: Location details:
+        """
+        pulumi.set(__self__, "associated_resource", associated_resource)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "ip_block", ip_block)
+        pulumi.set(__self__, "location", location)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> 'outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResourceResult':
+        """
+        Resource the additional IP is currently attached to. Null when the IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address of the additional IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="ipBlock")
+    def ip_block(self) -> _builtins.str:
+        """
+        IP block the additional IP belongs to. May be null.
+        """
+        return pulumi.get(self, "ip_block")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudAdditionalIpsAdditionalIpCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpsAdditionalIpCurrentStateAssociatedResourceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpsAdditionalIpCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpsAdditionalIpCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.GetCloudAdditionalIpsAdditionalIpCurrentTaskErrorResult'],
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetCloudAdditionalIpsAdditionalIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetCloudAdditionalIpsAdditionalIpCurrentTaskErrorResult']:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudAdditionalIpsAdditionalIpCurrentTaskErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str):
+        """
+        :param _builtins.str message: Error description.
+        """
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 associated_resource: 'outputs.GetCloudExtNetIpCurrentStateAssociatedResourceResult',
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 location: 'outputs.GetCloudExtNetIpCurrentStateLocationResult'):
+        """
+        :param 'GetCloudExtNetIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the external network IP is currently attached to. Null when the IP is not attached to any resource:
+        :param _builtins.str id: IP address of the external network IP.
+        :param _builtins.str ip: IP address of the external network IP.
+        :param 'GetCloudExtNetIpCurrentStateLocationArgs' location: Location details:
+        """
+        pulumi.set(__self__, "associated_resource", associated_resource)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "location", location)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> 'outputs.GetCloudExtNetIpCurrentStateAssociatedResourceResult':
+        """
+        Resource the external network IP is currently attached to. Null when the IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the external network IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address of the external network IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudExtNetIpCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpCurrentStateAssociatedResourceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: IP address of the external network IP.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the external network IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.GetCloudExtNetIpCurrentTaskErrorResult'],
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetCloudExtNetIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: IP address of the external network IP.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetCloudExtNetIpCurrentTaskErrorResult']:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the external network IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpCurrentTaskErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str):
+        """
+        :param _builtins.str message: Error description.
+        """
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpsExtNetIpResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudExtNetIpsExtNetIpCurrentStateResult',
+                 current_tasks: Sequence['outputs.GetCloudExtNetIpsExtNetIpCurrentTaskResult'],
+                 id: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Checksum field of the API envelope. Always empty for this read-only IP type.
+        :param _builtins.str created_at: Creation date of the external network IP.
+        :param 'GetCloudExtNetIpsExtNetIpCurrentStateArgs' current_state: Current state of the external network IP:
+        :param Sequence['GetCloudExtNetIpsExtNetIpCurrentTaskArgs'] current_tasks: Ongoing asynchronous tasks related to the external network IP. Each element exports:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str resource_status: External network IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the external network IP.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "current_tasks", current_tasks)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Checksum field of the API envelope. Always empty for this read-only IP type.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the external network IP.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudExtNetIpsExtNetIpCurrentStateResult':
+        """
+        Current state of the external network IP:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter(name="currentTasks")
+    def current_tasks(self) -> Sequence['outputs.GetCloudExtNetIpsExtNetIpCurrentTaskResult']:
+        """
+        Ongoing asynchronous tasks related to the external network IP. Each element exports:
+        """
+        return pulumi.get(self, "current_tasks")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        External network IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the external network IP.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpsExtNetIpCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 associated_resource: 'outputs.GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResourceResult',
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 location: 'outputs.GetCloudExtNetIpsExtNetIpCurrentStateLocationResult'):
+        """
+        :param 'GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the external network IP is currently attached to. Null when the IP is not attached to any resource:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str ip: IP address of the external network IP.
+        :param 'GetCloudExtNetIpsExtNetIpCurrentStateLocationArgs' location: Location details:
+        """
+        pulumi.set(__self__, "associated_resource", associated_resource)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "location", location)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> 'outputs.GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResourceResult':
+        """
+        Resource the external network IP is currently attached to. Null when the IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address of the external network IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudExtNetIpsExtNetIpCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpsExtNetIpCurrentStateAssociatedResourceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpsExtNetIpCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpsExtNetIpCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.GetCloudExtNetIpsExtNetIpCurrentTaskErrorResult'],
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetCloudExtNetIpsExtNetIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetCloudExtNetIpsExtNetIpCurrentTaskErrorResult']:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudExtNetIpsExtNetIpCurrentTaskErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str):
+        """
+        :param _builtins.str message: Error description.
+        """
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 associated_resource: 'outputs.GetCloudFloatingIpCurrentStateAssociatedResourceResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 location: 'outputs.GetCloudFloatingIpCurrentStateLocationResult',
+                 network: 'outputs.GetCloudFloatingIpCurrentStateNetworkResult',
+                 status: _builtins.str):
+        """
+        :param 'GetCloudFloatingIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        :param _builtins.str description: Description of the floating IP.
+        :param _builtins.str id: IP address of the floating IP.
+        :param _builtins.str ip: IP address of the floating IP.
+        :param 'GetCloudFloatingIpCurrentStateLocationArgs' location: Location details:
+        :param 'GetCloudFloatingIpCurrentStateNetworkArgs' network: External network the floating IP belongs to:
+        :param _builtins.str status: Current global status of the current task.
+        """
+        pulumi.set(__self__, "associated_resource", associated_resource)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> 'outputs.GetCloudFloatingIpCurrentStateAssociatedResourceResult':
+        """
+        Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the floating IP.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudFloatingIpCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudFloatingIpCurrentStateNetworkResult':
+        """
+        External network the floating IP belongs to:
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpCurrentStateAssociatedResourceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: IP address of the floating IP.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpCurrentStateNetworkResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: IP address of the floating IP.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.GetCloudFloatingIpCurrentTaskErrorResult'],
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetCloudFloatingIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: IP address of the floating IP.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetCloudFloatingIpCurrentTaskErrorResult']:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpCurrentTaskErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str):
+        """
+        :param _builtins.str message: Error description.
+        """
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateResult',
+                 current_tasks: Sequence['outputs.GetCloudFloatingIpsFloatingIpCurrentTaskResult'],
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudFloatingIpsFloatingIpLocationResult',
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the floating IP.
+        :param 'GetCloudFloatingIpsFloatingIpCurrentStateArgs' current_state: Current state of the floating IP:
+        :param Sequence['GetCloudFloatingIpsFloatingIpCurrentTaskArgs'] current_tasks: Ongoing asynchronous tasks related to the floating IP. Each element exports:
+        :param _builtins.str description: Description of the floating IP.
+        :param _builtins.str id: Identifier of the current task.
+        :param 'GetCloudFloatingIpsFloatingIpLocationArgs' location: Location details:
+        :param _builtins.str resource_status: Floating IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the floating IP.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "current_tasks", current_tasks)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the floating IP.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateResult':
+        """
+        Current state of the floating IP:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter(name="currentTasks")
+    def current_tasks(self) -> Sequence['outputs.GetCloudFloatingIpsFloatingIpCurrentTaskResult']:
+        """
+        Ongoing asynchronous tasks related to the floating IP. Each element exports:
+        """
+        return pulumi.get(self, "current_tasks")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the floating IP.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudFloatingIpsFloatingIpLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Floating IP readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the floating IP.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 associated_resource: 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResourceResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 location: 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateLocationResult',
+                 network: 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateNetworkResult',
+                 status: _builtins.str):
+        """
+        :param 'GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResourceArgs' associated_resource: Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        :param _builtins.str description: Description of the floating IP.
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str ip: IP address of the floating IP.
+        :param 'GetCloudFloatingIpsFloatingIpCurrentStateLocationArgs' location: Location details:
+        :param 'GetCloudFloatingIpsFloatingIpCurrentStateNetworkArgs' network: External network the floating IP belongs to:
+        :param _builtins.str status: Current global status of the current task.
+        """
+        pulumi.set(__self__, "associated_resource", associated_resource)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResourceResult':
+        """
+        Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Description of the floating IP.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateLocationResult':
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudFloatingIpsFloatingIpCurrentStateNetworkResult':
+        """
+        External network the floating IP belongs to:
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpCurrentStateAssociatedResourceResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpCurrentStateNetworkResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the current task.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpCurrentTaskResult(dict):
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.GetCloudFloatingIpsFloatingIpCurrentTaskErrorResult'],
+                 id: _builtins.str,
+                 link: _builtins.str,
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence['GetCloudFloatingIpsFloatingIpCurrentTaskErrorArgs'] errors: Errors that occurred on the task:
+        :param _builtins.str id: Identifier of the current task.
+        :param _builtins.str link: Link to the task details.
+        :param _builtins.str status: Current global status of the current task.
+        :param _builtins.str type: Type of the current task.
+        """
+        pulumi.set(__self__, "errors", errors)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "link", link)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.GetCloudFloatingIpsFloatingIpCurrentTaskErrorResult']:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> _builtins.str:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpCurrentTaskErrorResult(dict):
+    def __init__(__self__, *,
+                 message: _builtins.str):
+        """
+        :param _builtins.str message: Error description.
+        """
+        pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetCloudFloatingIpsFloatingIpLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
 class GetCloudGatewayCurrentStateResult(dict):
     def __init__(__self__, *,
                  description: _builtins.str,
@@ -4346,6 +9507,980 @@ class GetCloudGatewaysGatewayLocationResult(dict):
     def region(self) -> _builtins.str:
         """
         Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainerConsumersConsumerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 resource_id: _builtins.str,
+                 resource_type: _builtins.str,
+                 service: _builtins.str):
+        """
+        :param _builtins.str id: Computed consumer identifier.
+        :param _builtins.str resource_id: UUID of the resource consuming the container.
+        :param _builtins.str resource_type: Type of the resource consuming the container.
+        :param _builtins.str service: OpenStack service type of the consumer.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Computed consumer identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        UUID of the resource consuming the container.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        Type of the resource consuming the container.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        OpenStack service type of the consumer.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainerCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 container_ref: _builtins.str,
+                 location: 'outputs.GetCloudKeyManagerContainerCurrentStateLocationResult',
+                 name: _builtins.str,
+                 secret_refs: Sequence['outputs.GetCloudKeyManagerContainerCurrentStateSecretRefResult'],
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str container_ref: OpenStack reference URL.
+        :param 'GetCloudKeyManagerContainerCurrentStateLocationArgs' location: Location of the container:
+        :param _builtins.str name: Name of the secret reference.
+        :param Sequence['GetCloudKeyManagerContainerCurrentStateSecretRefArgs'] secret_refs: List of secret references:
+        :param _builtins.str status: Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        :param _builtins.str type: Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        pulumi.set(__self__, "container_ref", container_ref)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_refs", secret_refs)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="containerRef")
+    def container_ref(self) -> _builtins.str:
+        """
+        OpenStack reference URL.
+        """
+        return pulumi.get(self, "container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudKeyManagerContainerCurrentStateLocationResult':
+        """
+        Location of the container:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret reference.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretRefs")
+    def secret_refs(self) -> Sequence['outputs.GetCloudKeyManagerContainerCurrentStateSecretRefResult']:
+        """
+        List of secret references:
+        """
+        return pulumi.get(self, "secret_refs")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainerCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the container.
+        :param _builtins.str region: Region of the container.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the container.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the container.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainerCurrentStateSecretRefResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 secret_id: _builtins.str):
+        """
+        :param _builtins.str name: Name of the secret reference.
+        :param _builtins.str secret_id: ID of the referenced secret.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret reference.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> _builtins.str:
+        """
+        ID of the referenced secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainerLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the container.
+        :param _builtins.str region: Region of the container.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the container.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the container.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainersContainerResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudKeyManagerContainersContainerCurrentStateResult',
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudKeyManagerContainersContainerLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 type: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current resource state.
+        :param _builtins.str created_at: Creation date of the container.
+        :param 'GetCloudKeyManagerContainersContainerCurrentStateArgs' current_state: Current state of the container as reported by OpenStack Barbican:
+        :param _builtins.str id: ID of the container.
+        :param 'GetCloudKeyManagerContainersContainerLocationArgs' location: Location of the container:
+        :param _builtins.str name: Name of the secret reference.
+        :param _builtins.str resource_status: Container readiness status.
+        :param _builtins.str type: Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        :param _builtins.str updated_at: Last update date of the container.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current resource state.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the container.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudKeyManagerContainersContainerCurrentStateResult':
+        """
+        Current state of the container as reported by OpenStack Barbican:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the container.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudKeyManagerContainersContainerLocationResult':
+        """
+        Location of the container:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret reference.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Container readiness status.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the container.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainersContainerCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 container_ref: _builtins.str,
+                 location: 'outputs.GetCloudKeyManagerContainersContainerCurrentStateLocationResult',
+                 name: _builtins.str,
+                 secret_refs: Sequence['outputs.GetCloudKeyManagerContainersContainerCurrentStateSecretRefResult'],
+                 status: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str container_ref: OpenStack reference URL for the container.
+        :param 'GetCloudKeyManagerContainersContainerCurrentStateLocationArgs' location: Location of the container:
+        :param _builtins.str name: Name of the secret reference.
+        :param Sequence['GetCloudKeyManagerContainersContainerCurrentStateSecretRefArgs'] secret_refs: List of secret references:
+        :param _builtins.str status: Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        :param _builtins.str type: Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        pulumi.set(__self__, "container_ref", container_ref)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_refs", secret_refs)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="containerRef")
+    def container_ref(self) -> _builtins.str:
+        """
+        OpenStack reference URL for the container.
+        """
+        return pulumi.get(self, "container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudKeyManagerContainersContainerCurrentStateLocationResult':
+        """
+        Location of the container:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret reference.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretRefs")
+    def secret_refs(self) -> Sequence['outputs.GetCloudKeyManagerContainersContainerCurrentStateSecretRefResult']:
+        """
+        List of secret references:
+        """
+        return pulumi.get(self, "secret_refs")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainersContainerCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the container.
+        :param _builtins.str region: Region of the container.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the container.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the container.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainersContainerCurrentStateSecretRefResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 secret_id: _builtins.str):
+        """
+        :param _builtins.str name: Name of the secret reference.
+        :param _builtins.str secret_id: ID of the referenced secret.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret reference.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> _builtins.str:
+        """
+        ID of the referenced secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerContainersContainerLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the container.
+        :param _builtins.str region: Region of the container.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the container.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the container.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretConsumersConsumerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 resource_id: _builtins.str,
+                 resource_type: _builtins.str,
+                 service: _builtins.str):
+        """
+        :param _builtins.str id: Computed consumer identifier.
+        :param _builtins.str resource_id: UUID of the resource consuming the secret.
+        :param _builtins.str resource_type: Type of the resource consuming the secret.
+        :param _builtins.str service: OpenStack service type of the consumer.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "service", service)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Computed consumer identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> _builtins.str:
+        """
+        UUID of the resource consuming the secret.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> _builtins.str:
+        """
+        Type of the resource consuming the secret.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def service(self) -> _builtins.str:
+        """
+        OpenStack service type of the consumer.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 bit_length: _builtins.int,
+                 expiration: _builtins.str,
+                 location: 'outputs.GetCloudKeyManagerSecretCurrentStateLocationResult',
+                 metadata: Mapping[str, _builtins.str],
+                 mode: _builtins.str,
+                 name: _builtins.str,
+                 payload_content_type: _builtins.str,
+                 secret_ref: _builtins.str,
+                 secret_type: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str algorithm: Algorithm of the secret.
+        :param _builtins.int bit_length: Bit length of the secret.
+        :param _builtins.str expiration: Expiration date.
+        :param 'GetCloudKeyManagerSecretCurrentStateLocationArgs' location: Location of the secret:
+        :param Mapping[str, _builtins.str] metadata: Key-value metadata.
+        :param _builtins.str mode: Mode of the secret algorithm.
+        :param _builtins.str name: Name of the secret.
+        :param _builtins.str payload_content_type: Content type of the payload.
+        :param _builtins.str secret_ref: OpenStack reference URL.
+        :param _builtins.str secret_type: Type of the secret.
+        :param _builtins.str status: Status of the secret.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "bit_length", bit_length)
+        pulumi.set(__self__, "expiration", expiration)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "payload_content_type", payload_content_type)
+        pulumi.set(__self__, "secret_ref", secret_ref)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Algorithm of the secret.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="bitLength")
+    def bit_length(self) -> _builtins.int:
+        """
+        Bit length of the secret.
+        """
+        return pulumi.get(self, "bit_length")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> _builtins.str:
+        """
+        Expiration date.
+        """
+        return pulumi.get(self, "expiration")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudKeyManagerSecretCurrentStateLocationResult':
+        """
+        Location of the secret:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        """
+        Key-value metadata.
+        """
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Mode of the secret algorithm.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="payloadContentType")
+    def payload_content_type(self) -> _builtins.str:
+        """
+        Content type of the payload.
+        """
+        return pulumi.get(self, "payload_content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> _builtins.str:
+        """
+        OpenStack reference URL.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> _builtins.str:
+        """
+        Type of the secret.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of the secret.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the secret.
+        :param _builtins.str region: Region of the secret.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the secret.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the secret.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the secret.
+        :param _builtins.str region: Region of the secret.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the secret.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the secret.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretsSecretResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudKeyManagerSecretsSecretCurrentStateResult',
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudKeyManagerSecretsSecretLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 secret_type: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current resource state.
+        :param _builtins.str created_at: Creation date of the secret.
+        :param 'GetCloudKeyManagerSecretsSecretCurrentStateArgs' current_state: Current state of the secret as reported by OpenStack Barbican.
+        :param _builtins.str id: ID of the secret.
+        :param 'GetCloudKeyManagerSecretsSecretLocationArgs' location: Location of the secret:
+        :param _builtins.str name: Name of the secret.
+        :param _builtins.str resource_status: Secret readiness status.
+        :param _builtins.str secret_type: Type of the secret.
+        :param _builtins.str updated_at: Last update date of the secret.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current resource state.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the secret.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudKeyManagerSecretsSecretCurrentStateResult':
+        """
+        Current state of the secret as reported by OpenStack Barbican.
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the secret.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudKeyManagerSecretsSecretLocationResult':
+        """
+        Location of the secret:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Secret readiness status.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> _builtins.str:
+        """
+        Type of the secret.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the secret.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretsSecretCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 bit_length: _builtins.int,
+                 expiration: _builtins.str,
+                 location: 'outputs.GetCloudKeyManagerSecretsSecretCurrentStateLocationResult',
+                 metadata: Mapping[str, _builtins.str],
+                 mode: _builtins.str,
+                 name: _builtins.str,
+                 payload_content_type: _builtins.str,
+                 secret_ref: _builtins.str,
+                 secret_type: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param 'GetCloudKeyManagerSecretsSecretCurrentStateLocationArgs' location: Location of the secret:
+        :param _builtins.str name: Name of the secret.
+        :param _builtins.str secret_type: Type of the secret.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "bit_length", bit_length)
+        pulumi.set(__self__, "expiration", expiration)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "payload_content_type", payload_content_type)
+        pulumi.set(__self__, "secret_ref", secret_ref)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter(name="bitLength")
+    def bit_length(self) -> _builtins.int:
+        return pulumi.get(self, "bit_length")
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> _builtins.str:
+        return pulumi.get(self, "expiration")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudKeyManagerSecretsSecretCurrentStateLocationResult':
+        """
+        Location of the secret:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, _builtins.str]:
+        return pulumi.get(self, "metadata")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the secret.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="payloadContentType")
+    def payload_content_type(self) -> _builtins.str:
+        return pulumi.get(self, "payload_content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> _builtins.str:
+        return pulumi.get(self, "secret_ref")
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> _builtins.str:
+        """
+        Type of the secret.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretsSecretCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the secret.
+        :param _builtins.str region: Region of the secret.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the secret.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the secret.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudKeyManagerSecretsSecretLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone of the secret.
+        :param _builtins.str region: Region of the secret.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone of the secret.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region of the secret.
         """
         return pulumi.get(self, "region")
 
@@ -5934,6 +12069,2107 @@ class GetCloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionResu
 
 
 @pulumi.output_type
+class GetCloudPublicIpsPublicIpResult(dict):
+    def __init__(__self__, *,
+                 ip: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str ip: Public IP address.
+        :param _builtins.str type: Type of the public IP (`ADDITIONAL_IP`, `EXT_NET_IP`, `FLOATING_IP`).
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        Public IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the public IP (`ADDITIONAL_IP`, `EXT_NET_IP`, `FLOATING_IP`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 available_profiles: Sequence['outputs.GetCloudQuotaCurrentStateAvailableProfileResult'],
+                 prevent_automatic_quota_upgrade: _builtins.bool,
+                 regions: Sequence['outputs.GetCloudQuotaCurrentStateRegionResult']):
+        """
+        :param Sequence['GetCloudQuotaCurrentStateAvailableProfileArgs'] available_profiles: List of available quota profiles with their caps:
+        :param _builtins.bool prevent_automatic_quota_upgrade: When true, automatic quota upgrades are disabled for this project.
+        :param Sequence['GetCloudQuotaCurrentStateRegionArgs'] regions: Per-region quota state:
+        """
+        pulumi.set(__self__, "available_profiles", available_profiles)
+        pulumi.set(__self__, "prevent_automatic_quota_upgrade", prevent_automatic_quota_upgrade)
+        pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="availableProfiles")
+    def available_profiles(self) -> Sequence['outputs.GetCloudQuotaCurrentStateAvailableProfileResult']:
+        """
+        List of available quota profiles with their caps:
+        """
+        return pulumi.get(self, "available_profiles")
+
+    @_builtins.property
+    @pulumi.getter(name="preventAutomaticQuotaUpgrade")
+    def prevent_automatic_quota_upgrade(self) -> _builtins.bool:
+        """
+        When true, automatic quota upgrades are disabled for this project.
+        """
+        return pulumi.get(self, "prevent_automatic_quota_upgrade")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Sequence['outputs.GetCloudQuotaCurrentStateRegionResult']:
+        """
+        Per-region quota state:
+        """
+        return pulumi.get(self, "regions")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileResult(dict):
+    def __init__(__self__, *,
+                 compute: 'outputs.GetCloudQuotaCurrentStateAvailableProfileComputeResult',
+                 key_manager: 'outputs.GetCloudQuotaCurrentStateAvailableProfileKeyManagerResult',
+                 keypair: 'outputs.GetCloudQuotaCurrentStateAvailableProfileKeypairResult',
+                 loadbalancer: 'outputs.GetCloudQuotaCurrentStateAvailableProfileLoadbalancerResult',
+                 name: _builtins.str,
+                 network: 'outputs.GetCloudQuotaCurrentStateAvailableProfileNetworkResult',
+                 share: 'outputs.GetCloudQuotaCurrentStateAvailableProfileShareResult',
+                 volume: 'outputs.GetCloudQuotaCurrentStateAvailableProfileVolumeResult'):
+        """
+        :param 'GetCloudQuotaCurrentStateAvailableProfileComputeArgs' compute: Compute usage: `cores`, `instances`, `memory`. Each entry exposes `limit`, `used`, `unit`.
+        :param 'GetCloudQuotaCurrentStateAvailableProfileKeyManagerArgs' key_manager: Key manager usage: `containers`, `secrets`.
+        :param 'GetCloudQuotaCurrentStateAvailableProfileKeypairArgs' keypair: Keypair usage: `keypairs`.
+        :param 'GetCloudQuotaCurrentStateAvailableProfileLoadbalancerArgs' loadbalancer: Load balancer usage: `health_monitors`, `l7_policies`, `l7_rules`, `listeners`, `loadbalancers`, `members`, `pools`.
+        :param _builtins.str name: Profile name.
+        :param 'GetCloudQuotaCurrentStateAvailableProfileNetworkArgs' network: Networking usage: `floating_ips`, `gateways`, `networks`, `security_group_rules`, `security_groups`, `subnets`.
+        :param 'GetCloudQuotaCurrentStateAvailableProfileShareArgs' share: Shared file system usage: `backup_size_total`, `backups`, `share_networks`, `shares`, `size_total`, `snapshot_size_total`, `snapshots` (each with `limit`, `used`, `unit`) and `per_share_size` (`limit`, `unit`).
+        :param 'GetCloudQuotaCurrentStateAvailableProfileVolumeArgs' volume: Block storage usage: `backup_size_total`, `backups`, `size_total`, `snapshots`, `volumes` (each with `limit`, `used`, `unit`) and `per_volume_size` (`limit`, `unit`).
+        """
+        pulumi.set(__self__, "compute", compute)
+        pulumi.set(__self__, "key_manager", key_manager)
+        pulumi.set(__self__, "keypair", keypair)
+        pulumi.set(__self__, "loadbalancer", loadbalancer)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "share", share)
+        pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileComputeResult':
+        """
+        Compute usage: `cores`, `instances`, `memory`. Each entry exposes `limit`, `used`, `unit`.
+        """
+        return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter(name="keyManager")
+    def key_manager(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileKeyManagerResult':
+        """
+        Key manager usage: `containers`, `secrets`.
+        """
+        return pulumi.get(self, "key_manager")
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileKeypairResult':
+        """
+        Keypair usage: `keypairs`.
+        """
+        return pulumi.get(self, "keypair")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancer(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileLoadbalancerResult':
+        """
+        Load balancer usage: `health_monitors`, `l7_policies`, `l7_rules`, `listeners`, `loadbalancers`, `members`, `pools`.
+        """
+        return pulumi.get(self, "loadbalancer")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Profile name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileNetworkResult':
+        """
+        Networking usage: `floating_ips`, `gateways`, `networks`, `security_group_rules`, `security_groups`, `subnets`.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def share(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileShareResult':
+        """
+        Shared file system usage: `backup_size_total`, `backups`, `share_networks`, `shares`, `size_total`, `snapshot_size_total`, `snapshots` (each with `limit`, `used`, `unit`) and `per_share_size` (`limit`, `unit`).
+        """
+        return pulumi.get(self, "share")
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> 'outputs.GetCloudQuotaCurrentStateAvailableProfileVolumeResult':
+        """
+        Block storage usage: `backup_size_total`, `backups`, `size_total`, `snapshots`, `volumes` (each with `limit`, `used`, `unit`) and `per_volume_size` (`limit`, `unit`).
+        """
+        return pulumi.get(self, "volume")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileComputeResult(dict):
+    def __init__(__self__, *,
+                 cores: _builtins.int,
+                 instances: _builtins.int,
+                 memory: _builtins.int):
+        pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> _builtins.int:
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> _builtins.int:
+        return pulumi.get(self, "instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileKeyManagerResult(dict):
+    def __init__(__self__, *,
+                 containers: _builtins.int,
+                 secrets: _builtins.int):
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> _builtins.int:
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> _builtins.int:
+        return pulumi.get(self, "secrets")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileKeypairResult(dict):
+    def __init__(__self__, *,
+                 keypairs: _builtins.int):
+        pulumi.set(__self__, "keypairs", keypairs)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypairs(self) -> _builtins.int:
+        return pulumi.get(self, "keypairs")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileLoadbalancerResult(dict):
+    def __init__(__self__, *,
+                 health_monitors: _builtins.int,
+                 l7_policies: _builtins.int,
+                 l7_rules: _builtins.int,
+                 listeners: _builtins.int,
+                 loadbalancers: _builtins.int,
+                 members: _builtins.int,
+                 pools: _builtins.int):
+        pulumi.set(__self__, "health_monitors", health_monitors)
+        pulumi.set(__self__, "l7_policies", l7_policies)
+        pulumi.set(__self__, "l7_rules", l7_rules)
+        pulumi.set(__self__, "listeners", listeners)
+        pulumi.set(__self__, "loadbalancers", loadbalancers)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "pools", pools)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitors")
+    def health_monitors(self) -> _builtins.int:
+        return pulumi.get(self, "health_monitors")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Policies")
+    def l7_policies(self) -> _builtins.int:
+        return pulumi.get(self, "l7_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Rules")
+    def l7_rules(self) -> _builtins.int:
+        return pulumi.get(self, "l7_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def listeners(self) -> _builtins.int:
+        return pulumi.get(self, "listeners")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancers(self) -> _builtins.int:
+        return pulumi.get(self, "loadbalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> _builtins.int:
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> _builtins.int:
+        return pulumi.get(self, "pools")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileNetworkResult(dict):
+    def __init__(__self__, *,
+                 floating_ips: _builtins.int,
+                 gateways: _builtins.int,
+                 networks: _builtins.int,
+                 security_group_rules: _builtins.int,
+                 security_groups: _builtins.int,
+                 subnets: _builtins.int):
+        pulumi.set(__self__, "floating_ips", floating_ips)
+        pulumi.set(__self__, "gateways", gateways)
+        pulumi.set(__self__, "networks", networks)
+        pulumi.set(__self__, "security_group_rules", security_group_rules)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIps")
+    def floating_ips(self) -> _builtins.int:
+        return pulumi.get(self, "floating_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateways(self) -> _builtins.int:
+        return pulumi.get(self, "gateways")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> _builtins.int:
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupRules")
+    def security_group_rules(self) -> _builtins.int:
+        return pulumi.get(self, "security_group_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> _builtins.int:
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> _builtins.int:
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileShareResult(dict):
+    def __init__(__self__, *,
+                 backup_size_total: _builtins.int,
+                 backups: _builtins.int,
+                 shares: _builtins.int,
+                 size_total: _builtins.int,
+                 snapshots: _builtins.int):
+        pulumi.set(__self__, "backup_size_total", backup_size_total)
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "shares", shares)
+        pulumi.set(__self__, "size_total", size_total)
+        pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> _builtins.int:
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> _builtins.int:
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> _builtins.int:
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> _builtins.int:
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> _builtins.int:
+        return pulumi.get(self, "snapshots")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateAvailableProfileVolumeResult(dict):
+    def __init__(__self__, *,
+                 backup_size_total: _builtins.int,
+                 backups: _builtins.int,
+                 size_total: _builtins.int,
+                 snapshots: _builtins.int,
+                 volumes: _builtins.int):
+        pulumi.set(__self__, "backup_size_total", backup_size_total)
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "size_total", size_total)
+        pulumi.set(__self__, "snapshots", snapshots)
+        pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> _builtins.int:
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> _builtins.int:
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> _builtins.int:
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> _builtins.int:
+        return pulumi.get(self, "snapshots")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> _builtins.int:
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionResult(dict):
+    def __init__(__self__, *,
+                 compute: 'outputs.GetCloudQuotaCurrentStateRegionComputeResult',
+                 key_manager: 'outputs.GetCloudQuotaCurrentStateRegionKeyManagerResult',
+                 keypair: 'outputs.GetCloudQuotaCurrentStateRegionKeypairResult',
+                 loadbalancer: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerResult',
+                 network: 'outputs.GetCloudQuotaCurrentStateRegionNetworkResult',
+                 profile: _builtins.str,
+                 region: _builtins.str,
+                 share: 'outputs.GetCloudQuotaCurrentStateRegionShareResult',
+                 volume: 'outputs.GetCloudQuotaCurrentStateRegionVolumeResult'):
+        """
+        :param 'GetCloudQuotaCurrentStateRegionComputeArgs' compute: Compute usage: `cores`, `instances`, `memory`. Each entry exposes `limit`, `used`, `unit`.
+        :param 'GetCloudQuotaCurrentStateRegionKeyManagerArgs' key_manager: Key manager usage: `containers`, `secrets`.
+        :param 'GetCloudQuotaCurrentStateRegionKeypairArgs' keypair: Keypair usage: `keypairs`.
+        :param 'GetCloudQuotaCurrentStateRegionLoadbalancerArgs' loadbalancer: Load balancer usage: `health_monitors`, `l7_policies`, `l7_rules`, `listeners`, `loadbalancers`, `members`, `pools`.
+        :param 'GetCloudQuotaCurrentStateRegionNetworkArgs' network: Networking usage: `floating_ips`, `gateways`, `networks`, `security_group_rules`, `security_groups`, `subnets`.
+        :param _builtins.str profile: Currently applied quota profile name in this region.
+        :param _builtins.str region: If set, restricts the per-region quota state to this single region. Otherwise all configured regions are returned.
+        :param 'GetCloudQuotaCurrentStateRegionShareArgs' share: Shared file system usage: `backup_size_total`, `backups`, `share_networks`, `shares`, `size_total`, `snapshot_size_total`, `snapshots` (each with `limit`, `used`, `unit`) and `per_share_size` (`limit`, `unit`).
+        :param 'GetCloudQuotaCurrentStateRegionVolumeArgs' volume: Block storage usage: `backup_size_total`, `backups`, `size_total`, `snapshots`, `volumes` (each with `limit`, `used`, `unit`) and `per_volume_size` (`limit`, `unit`).
+        """
+        pulumi.set(__self__, "compute", compute)
+        pulumi.set(__self__, "key_manager", key_manager)
+        pulumi.set(__self__, "keypair", keypair)
+        pulumi.set(__self__, "loadbalancer", loadbalancer)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "profile", profile)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "share", share)
+        pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> 'outputs.GetCloudQuotaCurrentStateRegionComputeResult':
+        """
+        Compute usage: `cores`, `instances`, `memory`. Each entry exposes `limit`, `used`, `unit`.
+        """
+        return pulumi.get(self, "compute")
+
+    @_builtins.property
+    @pulumi.getter(name="keyManager")
+    def key_manager(self) -> 'outputs.GetCloudQuotaCurrentStateRegionKeyManagerResult':
+        """
+        Key manager usage: `containers`, `secrets`.
+        """
+        return pulumi.get(self, "key_manager")
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> 'outputs.GetCloudQuotaCurrentStateRegionKeypairResult':
+        """
+        Keypair usage: `keypairs`.
+        """
+        return pulumi.get(self, "keypair")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancer(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerResult':
+        """
+        Load balancer usage: `health_monitors`, `l7_policies`, `l7_rules`, `listeners`, `loadbalancers`, `members`, `pools`.
+        """
+        return pulumi.get(self, "loadbalancer")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkResult':
+        """
+        Networking usage: `floating_ips`, `gateways`, `networks`, `security_group_rules`, `security_groups`, `subnets`.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> _builtins.str:
+        """
+        Currently applied quota profile name in this region.
+        """
+        return pulumi.get(self, "profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, restricts the per-region quota state to this single region. Otherwise all configured regions are returned.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def share(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareResult':
+        """
+        Shared file system usage: `backup_size_total`, `backups`, `share_networks`, `shares`, `size_total`, `snapshot_size_total`, `snapshots` (each with `limit`, `used`, `unit`) and `per_share_size` (`limit`, `unit`).
+        """
+        return pulumi.get(self, "share")
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumeResult':
+        """
+        Block storage usage: `backup_size_total`, `backups`, `size_total`, `snapshots`, `volumes` (each with `limit`, `used`, `unit`) and `per_volume_size` (`limit`, `unit`).
+        """
+        return pulumi.get(self, "volume")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionComputeResult(dict):
+    def __init__(__self__, *,
+                 cores: 'outputs.GetCloudQuotaCurrentStateRegionComputeCoresResult',
+                 instances: 'outputs.GetCloudQuotaCurrentStateRegionComputeInstancesResult',
+                 memory: 'outputs.GetCloudQuotaCurrentStateRegionComputeMemoryResult'):
+        pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "instances", instances)
+        pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> 'outputs.GetCloudQuotaCurrentStateRegionComputeCoresResult':
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> 'outputs.GetCloudQuotaCurrentStateRegionComputeInstancesResult':
+        return pulumi.get(self, "instances")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> 'outputs.GetCloudQuotaCurrentStateRegionComputeMemoryResult':
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionComputeCoresResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionComputeInstancesResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionComputeMemoryResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionKeyManagerResult(dict):
+    def __init__(__self__, *,
+                 containers: 'outputs.GetCloudQuotaCurrentStateRegionKeyManagerContainersResult',
+                 secrets: 'outputs.GetCloudQuotaCurrentStateRegionKeyManagerSecretsResult'):
+        pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> 'outputs.GetCloudQuotaCurrentStateRegionKeyManagerContainersResult':
+        return pulumi.get(self, "containers")
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> 'outputs.GetCloudQuotaCurrentStateRegionKeyManagerSecretsResult':
+        return pulumi.get(self, "secrets")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionKeyManagerContainersResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionKeyManagerSecretsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionKeypairResult(dict):
+    def __init__(__self__, *,
+                 keypairs: 'outputs.GetCloudQuotaCurrentStateRegionKeypairKeypairsResult'):
+        pulumi.set(__self__, "keypairs", keypairs)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypairs(self) -> 'outputs.GetCloudQuotaCurrentStateRegionKeypairKeypairsResult':
+        return pulumi.get(self, "keypairs")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionKeypairKeypairsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerResult(dict):
+    def __init__(__self__, *,
+                 health_monitors: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsResult',
+                 l7_policies: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerL7PoliciesResult',
+                 l7_rules: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerL7RulesResult',
+                 listeners: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerListenersResult',
+                 loadbalancers: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerLoadbalancersResult',
+                 members: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerMembersResult',
+                 pools: 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerPoolsResult'):
+        pulumi.set(__self__, "health_monitors", health_monitors)
+        pulumi.set(__self__, "l7_policies", l7_policies)
+        pulumi.set(__self__, "l7_rules", l7_rules)
+        pulumi.set(__self__, "listeners", listeners)
+        pulumi.set(__self__, "loadbalancers", loadbalancers)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "pools", pools)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitors")
+    def health_monitors(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsResult':
+        return pulumi.get(self, "health_monitors")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Policies")
+    def l7_policies(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerL7PoliciesResult':
+        return pulumi.get(self, "l7_policies")
+
+    @_builtins.property
+    @pulumi.getter(name="l7Rules")
+    def l7_rules(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerL7RulesResult':
+        return pulumi.get(self, "l7_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def listeners(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerListenersResult':
+        return pulumi.get(self, "listeners")
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancers(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerLoadbalancersResult':
+        return pulumi.get(self, "loadbalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerMembersResult':
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> 'outputs.GetCloudQuotaCurrentStateRegionLoadbalancerPoolsResult':
+        return pulumi.get(self, "pools")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerL7PoliciesResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerL7RulesResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerListenersResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerLoadbalancersResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerMembersResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionLoadbalancerPoolsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkResult(dict):
+    def __init__(__self__, *,
+                 floating_ips: 'outputs.GetCloudQuotaCurrentStateRegionNetworkFloatingIpsResult',
+                 gateways: 'outputs.GetCloudQuotaCurrentStateRegionNetworkGatewaysResult',
+                 networks: 'outputs.GetCloudQuotaCurrentStateRegionNetworkNetworksResult',
+                 security_group_rules: 'outputs.GetCloudQuotaCurrentStateRegionNetworkSecurityGroupRulesResult',
+                 security_groups: 'outputs.GetCloudQuotaCurrentStateRegionNetworkSecurityGroupsResult',
+                 subnets: 'outputs.GetCloudQuotaCurrentStateRegionNetworkSubnetsResult'):
+        pulumi.set(__self__, "floating_ips", floating_ips)
+        pulumi.set(__self__, "gateways", gateways)
+        pulumi.set(__self__, "networks", networks)
+        pulumi.set(__self__, "security_group_rules", security_group_rules)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIps")
+    def floating_ips(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkFloatingIpsResult':
+        return pulumi.get(self, "floating_ips")
+
+    @_builtins.property
+    @pulumi.getter
+    def gateways(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkGatewaysResult':
+        return pulumi.get(self, "gateways")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkNetworksResult':
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupRules")
+    def security_group_rules(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkSecurityGroupRulesResult':
+        return pulumi.get(self, "security_group_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkSecurityGroupsResult':
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> 'outputs.GetCloudQuotaCurrentStateRegionNetworkSubnetsResult':
+        return pulumi.get(self, "subnets")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkFloatingIpsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkGatewaysResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkNetworksResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkSecurityGroupRulesResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkSecurityGroupsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionNetworkSubnetsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareResult(dict):
+    def __init__(__self__, *,
+                 backup_size_total: 'outputs.GetCloudQuotaCurrentStateRegionShareBackupSizeTotalResult',
+                 backups: 'outputs.GetCloudQuotaCurrentStateRegionShareBackupsResult',
+                 per_share_size: 'outputs.GetCloudQuotaCurrentStateRegionSharePerShareSizeResult',
+                 share_networks: 'outputs.GetCloudQuotaCurrentStateRegionShareShareNetworksResult',
+                 shares: 'outputs.GetCloudQuotaCurrentStateRegionShareSharesResult',
+                 size_total: 'outputs.GetCloudQuotaCurrentStateRegionShareSizeTotalResult',
+                 snapshot_size_total: 'outputs.GetCloudQuotaCurrentStateRegionShareSnapshotSizeTotalResult',
+                 snapshots: 'outputs.GetCloudQuotaCurrentStateRegionShareSnapshotsResult'):
+        pulumi.set(__self__, "backup_size_total", backup_size_total)
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "per_share_size", per_share_size)
+        pulumi.set(__self__, "share_networks", share_networks)
+        pulumi.set(__self__, "shares", shares)
+        pulumi.set(__self__, "size_total", size_total)
+        pulumi.set(__self__, "snapshot_size_total", snapshot_size_total)
+        pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareBackupSizeTotalResult':
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareBackupsResult':
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="perShareSize")
+    def per_share_size(self) -> 'outputs.GetCloudQuotaCurrentStateRegionSharePerShareSizeResult':
+        return pulumi.get(self, "per_share_size")
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworks")
+    def share_networks(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareShareNetworksResult':
+        return pulumi.get(self, "share_networks")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareSharesResult':
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareSizeTotalResult':
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotSizeTotal")
+    def snapshot_size_total(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareSnapshotSizeTotalResult':
+        return pulumi.get(self, "snapshot_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> 'outputs.GetCloudQuotaCurrentStateRegionShareSnapshotsResult':
+        return pulumi.get(self, "snapshots")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareBackupSizeTotalResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareBackupsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionSharePerShareSizeResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareShareNetworksResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareSharesResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareSizeTotalResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareSnapshotSizeTotalResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionShareSnapshotsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumeResult(dict):
+    def __init__(__self__, *,
+                 backup_size_total: 'outputs.GetCloudQuotaCurrentStateRegionVolumeBackupSizeTotalResult',
+                 backups: 'outputs.GetCloudQuotaCurrentStateRegionVolumeBackupsResult',
+                 per_volume_size: 'outputs.GetCloudQuotaCurrentStateRegionVolumePerVolumeSizeResult',
+                 size_total: 'outputs.GetCloudQuotaCurrentStateRegionVolumeSizeTotalResult',
+                 snapshots: 'outputs.GetCloudQuotaCurrentStateRegionVolumeSnapshotsResult',
+                 volumes: 'outputs.GetCloudQuotaCurrentStateRegionVolumeVolumesResult'):
+        pulumi.set(__self__, "backup_size_total", backup_size_total)
+        pulumi.set(__self__, "backups", backups)
+        pulumi.set(__self__, "per_volume_size", per_volume_size)
+        pulumi.set(__self__, "size_total", size_total)
+        pulumi.set(__self__, "snapshots", snapshots)
+        pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumeBackupSizeTotalResult':
+        return pulumi.get(self, "backup_size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumeBackupsResult':
+        return pulumi.get(self, "backups")
+
+    @_builtins.property
+    @pulumi.getter(name="perVolumeSize")
+    def per_volume_size(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumePerVolumeSizeResult':
+        return pulumi.get(self, "per_volume_size")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumeSizeTotalResult':
+        return pulumi.get(self, "size_total")
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumeSnapshotsResult':
+        return pulumi.get(self, "snapshots")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> 'outputs.GetCloudQuotaCurrentStateRegionVolumeVolumesResult':
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumeBackupSizeTotalResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumeBackupsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumePerVolumeSizeResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumeSizeTotalResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumeSnapshotsResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaCurrentStateRegionVolumeVolumesResult(dict):
+    def __init__(__self__, *,
+                 limit: _builtins.int,
+                 unit: _builtins.str,
+                 used: _builtins.int):
+        """
+        :param _builtins.int limit: Maximum authorized value for this limit.
+        :param _builtins.str unit: Unit of the limit value.
+        :param _builtins.int used: Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "unit", unit)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.int:
+        """
+        Maximum authorized value for this limit.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> _builtins.str:
+        """
+        Unit of the limit value.
+        """
+        return pulumi.get(self, "unit")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        Current usage reported by OpenStack. `null` when the underlying service does not expose usage.
+        """
+        return pulumi.get(self, "used")
+
+
+@pulumi.output_type
+class GetCloudQuotaRegionResult(dict):
+    def __init__(__self__, *,
+                 profile: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str profile: Currently applied quota profile name in this region.
+        :param _builtins.str region: If set, restricts the per-region quota state to this single region. Otherwise all configured regions are returned.
+        """
+        pulumi.set(__self__, "profile", profile)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> _builtins.str:
+        """
+        Currently applied quota profile name in this region.
+        """
+        return pulumi.get(self, "profile")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, restricts the per-region quota state to this single region. Otherwise all configured regions are returned.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
 class GetCloudRegionsRegionResult(dict):
     def __init__(__self__, *,
                  availability_zones: Sequence[_builtins.str],
@@ -7456,6 +15692,1493 @@ class GetCloudStorageBlockVolumesVolumeLocationResult(dict):
     def region(self) -> _builtins.str:
         """
         The region where the volumes reside.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareAccessRuleResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level.
+        :param _builtins.str access_to: IP address or CIDR.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR.
+        """
+        return pulumi.get(self, "access_to")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 access_rules: Sequence['outputs.GetCloudStorageFileShareCurrentStateAccessRuleResult'],
+                 capabilities: Sequence['outputs.GetCloudStorageFileShareCurrentStateCapabilityResult'],
+                 description: _builtins.str,
+                 export_locations: Sequence['outputs.GetCloudStorageFileShareCurrentStateExportLocationResult'],
+                 location: 'outputs.GetCloudStorageFileShareCurrentStateLocationResult',
+                 name: _builtins.str,
+                 protocol: _builtins.str,
+                 share_network_id: _builtins.str,
+                 share_type: _builtins.str,
+                 size: _builtins.int):
+        """
+        :param Sequence['GetCloudStorageFileShareCurrentStateAccessRuleArgs'] access_rules: Current access rules for the file share:
+        :param Sequence['GetCloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
+        :param _builtins.str description: File share description.
+        :param Sequence['GetCloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
+        :param 'GetCloudStorageFileShareCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Capability name.
+        :param _builtins.str protocol: File share protocol.
+        :param _builtins.str share_network_id: ID of the share network the file share is attached to.
+        :param _builtins.str share_type: File share type.
+        :param _builtins.int size: Size of the file share in GB.
+        """
+        pulumi.set(__self__, "access_rules", access_rules)
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "export_locations", export_locations)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "share_network_id", share_network_id)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRules")
+    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileShareCurrentStateAccessRuleResult']:
+        """
+        Current access rules for the file share:
+        """
+        return pulumi.get(self, "access_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence['outputs.GetCloudStorageFileShareCurrentStateCapabilityResult']:
+        """
+        Action-availability flags derived from the file share status:
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        File share description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="exportLocations")
+    def export_locations(self) -> Sequence['outputs.GetCloudStorageFileShareCurrentStateExportLocationResult']:
+        """
+        Export locations for the file share:
+        """
+        return pulumi.get(self, "export_locations")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileShareCurrentStateLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Capability name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        File share protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> _builtins.str:
+        """
+        ID of the share network the file share is attached to.
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> _builtins.str:
+        """
+        File share type.
+        """
+        return pulumi.get(self, "share_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the file share in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareCurrentStateAccessRuleResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 state: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level.
+        :param _builtins.str access_to: IP address or CIDR.
+        :param _builtins.str created_at: Access rule creation date.
+        :param _builtins.str id: The ID of the file share.
+        :param _builtins.str state: Access rule state.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Access rule creation date.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the file share.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Access rule state.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareCurrentStateCapabilityResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 name: _builtins.str,
+                 reason: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        :param _builtins.str name: Capability name.
+        :param _builtins.str reason: Reason why the capability is disabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Capability name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> _builtins.str:
+        """
+        Reason why the capability is disabled.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareCurrentStateExportLocationResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 preferred: _builtins.bool):
+        """
+        :param _builtins.str path: Export path.
+        :param _builtins.bool preferred: Whether this is the preferred export location.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "preferred", preferred)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Export path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def preferred(self) -> _builtins.bool:
+        """
+        Whether this is the preferred export location.
+        """
+        return pulumi.get(self, "preferred")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworkCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudStorageFileShareNetworkCurrentStateLocationResult',
+                 name: _builtins.str,
+                 network_id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str description: Share network description.
+        :param 'GetCloudStorageFileShareNetworkCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Share network name.
+        :param _builtins.str network_id: ID of the private network.
+        :param _builtins.str subnet_id: ID of the subnet.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Share network description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileShareNetworkCurrentStateLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Share network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> _builtins.str:
+        """
+        ID of the private network.
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworkCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworkLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworksShareNetworkResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudStorageFileShareNetworksShareNetworkCurrentStateResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudStorageFileShareNetworksShareNetworkLocationResult',
+                 name: _builtins.str,
+                 network_id: _builtins.str,
+                 resource_status: _builtins.str,
+                 subnet_id: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the share network.
+        :param 'GetCloudStorageFileShareNetworksShareNetworkCurrentStateArgs' current_state: Current state of the file storage share network:
+        :param _builtins.str description: Share network description.
+        :param _builtins.str id: Share network ID.
+        :param 'GetCloudStorageFileShareNetworksShareNetworkLocationArgs' location: Current location:
+        :param _builtins.str name: Share network name.
+        :param _builtins.str network_id: ID of the private network.
+        :param _builtins.str resource_status: Share network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str subnet_id: ID of the subnet.
+        :param _builtins.str updated_at: Last update date of the share network.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the share network.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudStorageFileShareNetworksShareNetworkCurrentStateResult':
+        """
+        Current state of the file storage share network:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Share network description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Share network ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileShareNetworksShareNetworkLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Share network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> _builtins.str:
+        """
+        ID of the private network.
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Share network readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the share network.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworksShareNetworkCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocationResult',
+                 name: _builtins.str,
+                 network_id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str description: Share network description.
+        :param 'GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Share network name.
+        :param _builtins.str network_id: ID of the private network.
+        :param _builtins.str subnet_id: ID of the subnet.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Share network description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Share network name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> _builtins.str:
+        """
+        ID of the private network.
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworksShareNetworkCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: If set, only share networks located in this region are returned.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, only share networks located in this region are returned.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareNetworksShareNetworkLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: If set, only share networks located in this region are returned.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, only share networks located in this region are returned.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareSnapshotCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudStorageFileShareSnapshotCurrentStateLocationResult',
+                 name: _builtins.str,
+                 share_id: _builtins.str,
+                 size: _builtins.int):
+        """
+        :param _builtins.str description: Snapshot description.
+        :param 'GetCloudStorageFileShareSnapshotCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Snapshot name.
+        :param _builtins.str share_id: ID of the snapshotted file share.
+        :param _builtins.int size: Size of the snapshot in GB.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "share_id", share_id)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Snapshot description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileShareSnapshotCurrentStateLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> _builtins.str:
+        """
+        ID of the snapshotted file share.
+        """
+        return pulumi.get(self, "share_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareSnapshotCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareSnapshotsShareSnapshotResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 share_id: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the snapshot.
+        :param 'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateArgs' current_state: Current state of the file storage snapshot:
+        :param _builtins.str description: Snapshot description.
+        :param _builtins.str id: Snapshot ID.
+        :param _builtins.str name: Snapshot name.
+        :param _builtins.str resource_status: Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str share_id: ID of the snapshotted file share.
+        :param _builtins.str updated_at: Last update date of the snapshot.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "share_id", share_id)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the snapshot.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateResult':
+        """
+        Current state of the file storage snapshot:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Snapshot description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Snapshot ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> _builtins.str:
+        """
+        ID of the snapshotted file share.
+        """
+        return pulumi.get(self, "share_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the snapshot.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 location: 'outputs.GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult',
+                 name: _builtins.str,
+                 share_id: _builtins.str,
+                 size: _builtins.int):
+        """
+        :param _builtins.str description: Snapshot description.
+        :param 'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Snapshot name.
+        :param _builtins.str share_id: ID of the snapshotted file share.
+        :param _builtins.int size: Size of the snapshot in GB.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "share_id", share_id)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Snapshot description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> _builtins.str:
+        """
+        ID of the snapshotted file share.
+        """
+        return pulumi.get(self, "share_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareResult(dict):
+    def __init__(__self__, *,
+                 access_rules: Sequence['outputs.GetCloudStorageFileSharesFileShareAccessRuleResult'],
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudStorageFileSharesFileShareLocationResult',
+                 name: _builtins.str,
+                 protocol: _builtins.str,
+                 resource_status: _builtins.str,
+                 share_network_id: _builtins.str,
+                 share_type: _builtins.str,
+                 size: _builtins.int,
+                 updated_at: _builtins.str):
+        """
+        :param Sequence['GetCloudStorageFileSharesFileShareAccessRuleArgs'] access_rules: Current access rules for the file share:
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Access rule creation date.
+        :param 'GetCloudStorageFileSharesFileShareCurrentStateArgs' current_state: Current state of the file storage share:
+        :param _builtins.str description: File share description.
+        :param _builtins.str id: Access rule ID.
+        :param 'GetCloudStorageFileSharesFileShareLocationArgs' location: Current location:
+        :param _builtins.str name: Capability name.
+        :param _builtins.str protocol: File share protocol.
+        :param _builtins.str resource_status: File share readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str share_network_id: ID of the share network the file share is attached to.
+        :param _builtins.str share_type: File share type.
+        :param _builtins.int size: Size of the file share in GB.
+        :param _builtins.str updated_at: Last update date of the file share.
+        """
+        pulumi.set(__self__, "access_rules", access_rules)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "share_network_id", share_network_id)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRules")
+    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareAccessRuleResult']:
+        """
+        Current access rules for the file share:
+        """
+        return pulumi.get(self, "access_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Access rule creation date.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudStorageFileSharesFileShareCurrentStateResult':
+        """
+        Current state of the file storage share:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        File share description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Access rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileSharesFileShareLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Capability name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        File share protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        File share readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> _builtins.str:
+        """
+        ID of the share network the file share is attached to.
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> _builtins.str:
+        """
+        File share type.
+        """
+        return pulumi.get(self, "share_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the file share in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the file share.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareAccessRuleResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level.
+        :param _builtins.str access_to: IP address or CIDR.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR.
+        """
+        return pulumi.get(self, "access_to")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 access_rules: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult'],
+                 capabilities: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult'],
+                 description: _builtins.str,
+                 export_locations: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult'],
+                 location: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
+                 name: _builtins.str,
+                 protocol: _builtins.str,
+                 share_network_id: _builtins.str,
+                 share_type: _builtins.str,
+                 size: _builtins.int):
+        """
+        :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs'] access_rules: Current access rules for the file share:
+        :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
+        :param _builtins.str description: File share description.
+        :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
+        :param 'GetCloudStorageFileSharesFileShareCurrentStateLocationArgs' location: Current location:
+        :param _builtins.str name: Capability name.
+        :param _builtins.str protocol: File share protocol.
+        :param _builtins.str share_network_id: ID of the share network the file share is attached to.
+        :param _builtins.str share_type: File share type.
+        :param _builtins.int size: Size of the file share in GB.
+        """
+        pulumi.set(__self__, "access_rules", access_rules)
+        pulumi.set(__self__, "capabilities", capabilities)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "export_locations", export_locations)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "share_network_id", share_network_id)
+        pulumi.set(__self__, "share_type", share_type)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRules")
+    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult']:
+        """
+        Current access rules for the file share:
+        """
+        return pulumi.get(self, "access_rules")
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult']:
+        """
+        Action-availability flags derived from the file share status:
+        """
+        return pulumi.get(self, "capabilities")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        File share description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="exportLocations")
+    def export_locations(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult']:
+        """
+        Export locations for the file share:
+        """
+        return pulumi.get(self, "export_locations")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageFileSharesFileShareCurrentStateLocationResult':
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Capability name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        File share protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> _builtins.str:
+        """
+        ID of the share network the file share is attached to.
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> _builtins.str:
+        """
+        File share type.
+        """
+        return pulumi.get(self, "share_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the file share in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 state: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level.
+        :param _builtins.str access_to: IP address or CIDR.
+        :param _builtins.str created_at: Access rule creation date.
+        :param _builtins.str id: Access rule ID.
+        :param _builtins.str state: Access rule state.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Access rule creation date.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Access rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Access rule state.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 name: _builtins.str,
+                 reason: _builtins.str):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        :param _builtins.str name: Capability name.
+        :param _builtins.str reason: Reason why the capability is disabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Capability name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> _builtins.str:
+        """
+        Reason why the capability is disabled.
+        """
+        return pulumi.get(self, "reason")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult(dict):
+    def __init__(__self__, *,
+                 path: _builtins.str,
+                 preferred: _builtins.bool):
+        """
+        :param _builtins.str path: Export path.
+        :param _builtins.bool preferred: Whether this is the preferred export location.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "preferred", preferred)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        Export path.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def preferred(self) -> _builtins.bool:
+        """
+        Whether this is the preferred export location.
+        """
+        return pulumi.get(self, "preferred")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: If set, only file shares located in this region are returned.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, only file shares located in this region are returned.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: If set, only file shares located in this region are returned.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, only file shares located in this region are returned.
         """
         return pulumi.get(self, "region")
 

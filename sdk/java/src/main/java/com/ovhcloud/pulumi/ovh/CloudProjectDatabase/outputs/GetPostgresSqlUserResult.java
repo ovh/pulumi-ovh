@@ -37,7 +37,7 @@ public final class GetPostgresSqlUserResult {
      */
     private List<String> roles;
     /**
-     * @return Current status of the user.
+     * @return See Argument Reference above.
      * 
      */
     private String serviceName;
@@ -84,7 +84,7 @@ public final class GetPostgresSqlUserResult {
         return this.roles;
     }
     /**
-     * @return Current status of the user.
+     * @return See Argument Reference above.
      * 
      */
     public String serviceName() {

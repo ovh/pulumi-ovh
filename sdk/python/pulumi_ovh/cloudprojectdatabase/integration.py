@@ -40,6 +40,8 @@ class IntegrationArgs:
                * `kafkaConnect`
                * `kafkaLogs`
                * `kafkaMirrorMaker`
+               * `opensearchLogs`
+               * `postgresqlMetrics`
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "destination_service_id", destination_service_id)
@@ -134,6 +136,8 @@ class IntegrationArgs:
         * `kafkaConnect`
         * `kafkaLogs`
         * `kafkaMirrorMaker`
+        * `opensearchLogs`
+        * `postgresqlMetrics`
         """
         return pulumi.get(self, "type")
 
@@ -168,6 +172,8 @@ class _IntegrationState:
                * `kafkaConnect`
                * `kafkaLogs`
                * `kafkaMirrorMaker`
+               * `opensearchLogs`
+               * `postgresqlMetrics`
         """
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
@@ -280,6 +286,8 @@ class _IntegrationState:
         * `kafkaConnect`
         * `kafkaLogs`
         * `kafkaMirrorMaker`
+        * `opensearchLogs`
+        * `postgresqlMetrics`
         """
         return pulumi.get(self, "type")
 
@@ -356,6 +364,8 @@ class Integration(pulumi.CustomResource):
                * `kafkaConnect`
                * `kafkaLogs`
                * `kafkaMirrorMaker`
+               * `opensearchLogs`
+               * `postgresqlMetrics`
         """
         ...
     @overload
@@ -488,6 +498,8 @@ class Integration(pulumi.CustomResource):
                * `kafkaConnect`
                * `kafkaLogs`
                * `kafkaMirrorMaker`
+               * `opensearchLogs`
+               * `postgresqlMetrics`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -569,6 +581,8 @@ class Integration(pulumi.CustomResource):
         * `kafkaConnect`
         * `kafkaLogs`
         * `kafkaMirrorMaker`
+        * `opensearchLogs`
+        * `postgresqlMetrics`
         """
         return pulumi.get(self, "type")
 

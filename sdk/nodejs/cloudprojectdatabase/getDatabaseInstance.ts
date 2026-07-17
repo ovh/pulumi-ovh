@@ -79,7 +79,7 @@ export interface GetDatabaseInstanceResult {
      */
     readonly name: string;
     /**
-     * Current status of the database.
+     * See Argument Reference above.
      */
     readonly serviceName: string;
 }

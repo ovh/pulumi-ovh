@@ -117,6 +117,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// * `kafkaConnect`
         /// * `kafkaLogs`
         /// * `kafkaMirrorMaker`
+        /// * `opensearchLogs`
+        /// * `postgresqlMetrics`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -217,6 +219,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// * `kafkaConnect`
         /// * `kafkaLogs`
         /// * `kafkaMirrorMaker`
+        /// * `opensearchLogs`
+        /// * `postgresqlMetrics`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -284,6 +288,8 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// * `kafkaConnect`
         /// * `kafkaLogs`
         /// * `kafkaMirrorMaker`
+        /// * `opensearchLogs`
+        /// * `postgresqlMetrics`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

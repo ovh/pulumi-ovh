@@ -5,6 +5,96 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CloudFloatingIpCurrentState {
+    /**
+     * Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+     */
+    associatedResource?: pulumi.Input<inputs.CloudFloatingIpCurrentStateAssociatedResource>;
+    /**
+     * Description of the floating IP. This is the only argument that can be updated in place.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Identifier of the current task.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * IP address of the floating IP.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * Location details:
+     */
+    location?: pulumi.Input<inputs.CloudFloatingIpCurrentStateLocation>;
+    /**
+     * External network the floating IP belongs to:
+     */
+    network?: pulumi.Input<inputs.CloudFloatingIpCurrentStateNetwork>;
+    /**
+     * Current global status of the current task.
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface CloudFloatingIpCurrentStateAssociatedResource {
+    /**
+     * Identifier of the current task.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Type of the current task.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CloudFloatingIpCurrentStateLocation {
+    /**
+     * Availability zone for the floating IP. **Changing this value recreates the resource.**
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the floating IP will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudFloatingIpCurrentStateNetwork {
+    /**
+     * Identifier of the current task.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudFloatingIpCurrentTask {
+    /**
+     * Errors that occurred on the task:
+     */
+    errors?: pulumi.Input<pulumi.Input<inputs.CloudFloatingIpCurrentTaskError>[]>;
+    /**
+     * Identifier of the current task.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Link to the task details.
+     */
+    link?: pulumi.Input<string>;
+    /**
+     * Current global status of the current task.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Type of the current task.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CloudFloatingIpCurrentTaskError {
+    /**
+     * Error description.
+     */
+    message?: pulumi.Input<string>;
+}
+
 export interface CloudGatewayCurrentState {
     /**
      * Gateway description.
@@ -74,6 +164,124 @@ export interface CloudGatewayExternalGateway {
      * External gateway sizing model (`S`, `M`, `L`, `XL`, `2XL`, `3XL`). Required when `enabled` is true.
      */
     model?: pulumi.Input<string>;
+}
+
+export interface CloudKeyManagerContainerCurrentState {
+    /**
+     * OpenStack reference URL for the container.
+     */
+    containerRef?: pulumi.Input<string>;
+    /**
+     * Location of the container:
+     */
+    location?: pulumi.Input<inputs.CloudKeyManagerContainerCurrentStateLocation>;
+    /**
+     * Name of the container.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * List of secret references in the container. Each element supports:
+     */
+    secretRefs?: pulumi.Input<pulumi.Input<inputs.CloudKeyManagerContainerCurrentStateSecretRef>[]>;
+    /**
+     * Status of the container. Possible values: `ACTIVE`, `ERROR`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CloudKeyManagerContainerCurrentStateLocation {
+    /**
+     * Availability zone where the container will be created.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the container will be created.
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudKeyManagerContainerCurrentStateSecretRef {
+    /**
+     * Name of the secret reference (e.g., `certificate`, `privateKey`, `publicKey`).
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of the referenced secret.
+     */
+    secretId?: pulumi.Input<string>;
+}
+
+export interface CloudKeyManagerContainerSecretRef {
+    /**
+     * Name of the secret reference (e.g., `certificate`, `privateKey`, `publicKey`).
+     */
+    name: pulumi.Input<string>;
+    /**
+     * ID of the referenced secret.
+     */
+    secretId: pulumi.Input<string>;
+}
+
+export interface CloudKeyManagerSecretCurrentState {
+    /**
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
+     * Bit length of the secret (e.g., `256`).
+     */
+    bitLength?: pulumi.Input<number>;
+    /**
+     * Expiration date of the secret in RFC3339 format.
+     */
+    expiration?: pulumi.Input<string>;
+    /**
+     * Location of the secret:
+     */
+    location?: pulumi.Input<inputs.CloudKeyManagerSecretCurrentStateLocation>;
+    /**
+     * Key-value metadata for the secret. This is the only mutable field on a secret.
+     */
+    metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Mode of the secret algorithm (e.g., `CBC`).
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Name of the secret.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+     */
+    payloadContentType?: pulumi.Input<string>;
+    /**
+     * OpenStack reference URL for the secret.
+     */
+    secretRef?: pulumi.Input<string>;
+    /**
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     */
+    secretType?: pulumi.Input<string>;
+    /**
+     * Status of the secret (`ACTIVE`, `ERROR`).
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface CloudKeyManagerSecretCurrentStateLocation {
+    /**
+     * Availability zone where the secret will be created.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the secret will be created.
+     */
+    region?: pulumi.Input<string>;
 }
 
 export interface CloudNetworkPrivateVrackCurrentState {
@@ -341,6 +549,368 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransi
      * The storage class to transition objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      */
     storageClass: pulumi.Input<string>;
+}
+
+export interface CloudQuotaCurrentState {
+    /**
+     * — All quota profiles offered to the project, with
+     * their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+     * `keyManager`, `share`, `keypair`).
+     */
+    availableProfiles?: pulumi.Input<pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfile>[]>;
+    /**
+     * — When true, automatic
+     * quota upgrades are disabled for this project.
+     */
+    preventAutomaticQuotaUpgrade?: pulumi.Input<boolean>;
+    /**
+     * — Target quota profile per region:
+     */
+    regions?: pulumi.Input<pulumi.Input<inputs.CloudQuotaCurrentStateRegion>[]>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfile {
+    compute?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileCompute>;
+    keyManager?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileKeyManager>;
+    keypair?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileKeypair>;
+    loadbalancer?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileLoadbalancer>;
+    name?: pulumi.Input<string>;
+    network?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileNetwork>;
+    share?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileShare>;
+    volume?: pulumi.Input<inputs.CloudQuotaCurrentStateAvailableProfileVolume>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileCompute {
+    cores?: pulumi.Input<number>;
+    instances?: pulumi.Input<number>;
+    memory?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileKeyManager {
+    containers?: pulumi.Input<number>;
+    secrets?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileKeypair {
+    keypairs?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileLoadbalancer {
+    healthMonitors?: pulumi.Input<number>;
+    l7Policies?: pulumi.Input<number>;
+    l7Rules?: pulumi.Input<number>;
+    listeners?: pulumi.Input<number>;
+    loadbalancers?: pulumi.Input<number>;
+    members?: pulumi.Input<number>;
+    pools?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileNetwork {
+    floatingIps?: pulumi.Input<number>;
+    gateways?: pulumi.Input<number>;
+    networks?: pulumi.Input<number>;
+    securityGroupRules?: pulumi.Input<number>;
+    securityGroups?: pulumi.Input<number>;
+    subnets?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileShare {
+    backupSizeTotal?: pulumi.Input<number>;
+    backups?: pulumi.Input<number>;
+    shares?: pulumi.Input<number>;
+    sizeTotal?: pulumi.Input<number>;
+    snapshots?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateAvailableProfileVolume {
+    backupSizeTotal?: pulumi.Input<number>;
+    backups?: pulumi.Input<number>;
+    sizeTotal?: pulumi.Input<number>;
+    snapshots?: pulumi.Input<number>;
+    volumes?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegion {
+    compute?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionCompute>;
+    keyManager?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionKeyManager>;
+    keypair?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionKeypair>;
+    loadbalancer?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancer>;
+    network?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetwork>;
+    /**
+     * — Quota profile to apply. Available values
+     * are exposed live in `current_state.available_profiles`.
+     */
+    profile?: pulumi.Input<string>;
+    /**
+     * — Region where the profile applies
+     * (e.g. `GRA11`).
+     */
+    region?: pulumi.Input<string>;
+    share?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShare>;
+    volume?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolume>;
+}
+
+export interface CloudQuotaCurrentStateRegionCompute {
+    cores?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionComputeCores>;
+    instances?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionComputeInstances>;
+    memory?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionComputeMemory>;
+}
+
+export interface CloudQuotaCurrentStateRegionComputeCores {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionComputeInstances {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionComputeMemory {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionKeyManager {
+    containers?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionKeyManagerContainers>;
+    secrets?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionKeyManagerSecrets>;
+}
+
+export interface CloudQuotaCurrentStateRegionKeyManagerContainers {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionKeyManagerSecrets {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionKeypair {
+    keypairs?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionKeypairKeypairs>;
+}
+
+export interface CloudQuotaCurrentStateRegionKeypairKeypairs {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancer {
+    healthMonitors?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors>;
+    l7Policies?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerL7Policies>;
+    l7Rules?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerL7Rules>;
+    listeners?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerListeners>;
+    loadbalancers?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers>;
+    members?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerMembers>;
+    pools?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionLoadbalancerPools>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerHealthMonitors {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerL7Policies {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerL7Rules {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerListeners {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerLoadbalancers {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerMembers {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionLoadbalancerPools {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetwork {
+    floatingIps?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetworkFloatingIps>;
+    gateways?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetworkGateways>;
+    networks?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetworkNetworks>;
+    securityGroupRules?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetworkSecurityGroupRules>;
+    securityGroups?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetworkSecurityGroups>;
+    subnets?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionNetworkSubnets>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkFloatingIps {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkGateways {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkNetworks {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkSecurityGroupRules {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkSecurityGroups {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionNetworkSubnets {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionShare {
+    backupSizeTotal?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareBackupSizeTotal>;
+    backups?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareBackups>;
+    perShareSize?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionSharePerShareSize>;
+    shareNetworks?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareShareNetworks>;
+    shares?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareShares>;
+    sizeTotal?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareSizeTotal>;
+    snapshotSizeTotal?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareSnapshotSizeTotal>;
+    snapshots?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionShareSnapshots>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareBackupSizeTotal {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareBackups {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionSharePerShareSize {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareShareNetworks {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareShares {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareSizeTotal {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareSnapshotSizeTotal {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionShareSnapshots {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolume {
+    backupSizeTotal?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolumeBackupSizeTotal>;
+    backups?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolumeBackups>;
+    perVolumeSize?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolumePerVolumeSize>;
+    sizeTotal?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolumeSizeTotal>;
+    snapshots?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolumeSnapshots>;
+    volumes?: pulumi.Input<inputs.CloudQuotaCurrentStateRegionVolumeVolumes>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeBackupSizeTotal {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeBackups {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumePerVolumeSize {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeSizeTotal {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeSnapshots {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaCurrentStateRegionVolumeVolumes {
+    limit?: pulumi.Input<number>;
+    unit?: pulumi.Input<string>;
+    used?: pulumi.Input<number>;
+}
+
+export interface CloudQuotaRegion {
+    /**
+     * — Quota profile to apply. Available values
+     * are exposed live in `current_state.available_profiles`.
+     */
+    profile: pulumi.Input<string>;
+    /**
+     * — Region where the profile applies
+     * (e.g. `GRA11`).
+     */
+    region: pulumi.Input<string>;
 }
 
 export interface CloudSecurityGroupCurrentState {
@@ -626,6 +1196,188 @@ export interface CloudStorageBlockVolumeSnapshotCurrentState {
 export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     /**
      * The region where the snapshot will be created. Changing this value recreates the resource.
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareAccessRule {
+    /**
+     * Access level (`READ_WRITE`, `READ_ONLY`).
+     */
+    accessLevel: pulumi.Input<string>;
+    /**
+     * IP address or CIDR to grant access to.
+     */
+    accessTo: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareCurrentState {
+    /**
+     * Access rules for the file share. Each rule has:
+     */
+    accessRules?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareCurrentStateAccessRule>[]>;
+    /**
+     * Action-availability flags derived from the file share status:
+     */
+    capabilities?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareCurrentStateCapability>[]>;
+    /**
+     * File share description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Export locations for the file share:
+     */
+    exportLocations?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareCurrentStateExportLocation>[]>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudStorageFileShareCurrentStateLocation>;
+    /**
+     * File share name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * File share protocol (`NFS`). **Changing this value recreates the resource.**
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     */
+    shareNetworkId?: pulumi.Input<string>;
+    /**
+     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     */
+    shareType?: pulumi.Input<string>;
+    /**
+     * Size of the file share in GB.
+     */
+    size?: pulumi.Input<number>;
+}
+
+export interface CloudStorageFileShareCurrentStateAccessRule {
+    /**
+     * Access level (`READ_WRITE`, `READ_ONLY`).
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * IP address or CIDR to grant access to.
+     */
+    accessTo?: pulumi.Input<string>;
+    /**
+     * Access rule creation date.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Access rule ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Access rule state.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareCurrentStateCapability {
+    /**
+     * Whether the capability is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * File share name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Reason why the capability is disabled, when applicable.
+     */
+    reason?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareCurrentStateExportLocation {
+    /**
+     * Export path.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Whether this is the preferred export location.
+     */
+    preferred?: pulumi.Input<boolean>;
+}
+
+export interface CloudStorageFileShareCurrentStateLocation {
+    /**
+     * Availability zone where the file share will be created. **Changing this value recreates the resource.**
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the file share will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareNetworkCurrentState {
+    /**
+     * Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudStorageFileShareNetworkCurrentStateLocation>;
+    /**
+     * Share network name. **Changing this value recreates the resource.**
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of the network backing the share network. **Changing this value recreates the resource.**
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * ID of the subnet backing the share network. **Changing this value recreates the resource.**
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareNetworkCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the share network will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareSnapshotCurrentState {
+    /**
+     * Snapshot description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudStorageFileShareSnapshotCurrentStateLocation>;
+    /**
+     * Snapshot name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * ID of the file share to snapshot. **Changing this value recreates the resource.**
+     */
+    shareId?: pulumi.Input<string>;
+    /**
+     * Size of the snapshot in GB.
+     */
+    size?: pulumi.Input<number>;
+}
+
+export interface CloudStorageFileShareSnapshotCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region.
      */
     region?: pulumi.Input<string>;
 }

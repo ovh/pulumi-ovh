@@ -4,10 +4,40 @@
 package com.ovhcloud.pulumi.ovh;
 
 import com.ovhcloud.pulumi.ovh.Utilities;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudAdditionalIpArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudAdditionalIpPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudAdditionalIpsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudAdditionalIpsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudExtNetIpArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudExtNetIpPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudExtNetIpsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudExtNetIpsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudFloatingIpArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudFloatingIpPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudFloatingIpsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudFloatingIpsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewayArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewayPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewaysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewaysPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumersArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumersPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainersArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainersPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumersArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumersPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
@@ -36,6 +66,10 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectSshKeysPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudPublicIpsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudQuotaArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudQuotaPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudRegionsArgs;
@@ -60,6 +94,18 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumesPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileSharePlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileSharesPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlArgs;
@@ -106,8 +152,23 @@ import com.ovhcloud.pulumi.ovh.inputs.GetVrackNetworksPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetVrackservicesPlainArgs;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudAdditionalIpResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudAdditionalIpsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudExtNetIpResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudExtNetIpsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudFloatingIpResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudFloatingIpsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudGatewayResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudGatewaysResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerConsumerResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerConsumersResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainersResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretConsumerResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretConsumersResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretPayloadResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackSubnetResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackSubnetsResult;
@@ -122,6 +183,8 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectRancherCapabilitiesVersion
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectSshKeysResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudProjectStorageObjectBucketLifecycleConfigurationResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudPublicIpsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudQuotaResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudRegionResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudRegionsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudSecurityGroupResult;
@@ -134,6 +197,12 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeSnapshotResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeSnapshotsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareNetworkResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareNetworksResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareSnapshotResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareSnapshotsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsEncryptionKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsOutputGraylogStreamUrlResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthResult;
@@ -170,6 +239,918 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class OvhFunctions {
+    /**
+     * Use this data source to retrieve information about an additional IP in a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudAdditionalIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudAdditionalIp(GetCloudAdditionalIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<additional IP address>")
+     *             .build());
+     * 
+     *         ctx.export("additionalIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpResult> getCloudAdditionalIp(GetCloudAdditionalIpArgs args) {
+        return getCloudAdditionalIp(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an additional IP in a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudAdditionalIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudAdditionalIp(GetCloudAdditionalIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<additional IP address>")
+     *             .build());
+     * 
+     *         ctx.export("additionalIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudAdditionalIpResult> getCloudAdditionalIpPlain(GetCloudAdditionalIpPlainArgs args) {
+        return getCloudAdditionalIpPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an additional IP in a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudAdditionalIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudAdditionalIp(GetCloudAdditionalIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<additional IP address>")
+     *             .build());
+     * 
+     *         ctx.export("additionalIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpResult> getCloudAdditionalIp(GetCloudAdditionalIpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudAdditionalIp:getCloudAdditionalIp", TypeShape.of(GetCloudAdditionalIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an additional IP in a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudAdditionalIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudAdditionalIp(GetCloudAdditionalIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<additional IP address>")
+     *             .build());
+     * 
+     *         ctx.export("additionalIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpResult> getCloudAdditionalIp(GetCloudAdditionalIpArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudAdditionalIp:getCloudAdditionalIp", TypeShape.of(GetCloudAdditionalIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an additional IP in a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudAdditionalIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudAdditionalIp(GetCloudAdditionalIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<additional IP address>")
+     *             .build());
+     * 
+     *         ctx.export("additionalIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudAdditionalIpResult> getCloudAdditionalIpPlain(GetCloudAdditionalIpPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudAdditionalIp:getCloudAdditionalIp", TypeShape.of(GetCloudAdditionalIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpsResult> getCloudAdditionalIps() {
+        return getCloudAdditionalIps(GetCloudAdditionalIpsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudAdditionalIpsResult> getCloudAdditionalIpsPlain() {
+        return getCloudAdditionalIpsPlain(GetCloudAdditionalIpsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpsResult> getCloudAdditionalIps(GetCloudAdditionalIpsArgs args) {
+        return getCloudAdditionalIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudAdditionalIpsResult> getCloudAdditionalIpsPlain(GetCloudAdditionalIpsPlainArgs args) {
+        return getCloudAdditionalIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpsResult> getCloudAdditionalIps(GetCloudAdditionalIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudAdditionalIps:getCloudAdditionalIps", TypeShape.of(GetCloudAdditionalIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudAdditionalIpsResult> getCloudAdditionalIps(GetCloudAdditionalIpsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudAdditionalIps:getCloudAdditionalIps", TypeShape.of(GetCloudAdditionalIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the additional IPs of a public cloud project. Additional IPs are created and deleted through the lifecycle of other products (typically instances they are attached to), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudAdditionalIpsResult> getCloudAdditionalIpsPlain(GetCloudAdditionalIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudAdditionalIps:getCloudAdditionalIps", TypeShape.of(GetCloudAdditionalIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an external network IP in a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudExtNetIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudExtNetIp(GetCloudExtNetIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<external network IP address>")
+     *             .build());
+     * 
+     *         ctx.export("extNetIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpResult> getCloudExtNetIp(GetCloudExtNetIpArgs args) {
+        return getCloudExtNetIp(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an external network IP in a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudExtNetIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudExtNetIp(GetCloudExtNetIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<external network IP address>")
+     *             .build());
+     * 
+     *         ctx.export("extNetIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudExtNetIpResult> getCloudExtNetIpPlain(GetCloudExtNetIpPlainArgs args) {
+        return getCloudExtNetIpPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an external network IP in a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudExtNetIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudExtNetIp(GetCloudExtNetIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<external network IP address>")
+     *             .build());
+     * 
+     *         ctx.export("extNetIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpResult> getCloudExtNetIp(GetCloudExtNetIpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudExtNetIp:getCloudExtNetIp", TypeShape.of(GetCloudExtNetIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an external network IP in a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudExtNetIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudExtNetIp(GetCloudExtNetIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<external network IP address>")
+     *             .build());
+     * 
+     *         ctx.export("extNetIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpResult> getCloudExtNetIp(GetCloudExtNetIpArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudExtNetIp:getCloudExtNetIp", TypeShape.of(GetCloudExtNetIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an external network IP in a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudExtNetIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudExtNetIp(GetCloudExtNetIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<external network IP address>")
+     *             .build());
+     * 
+     *         ctx.export("extNetIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudExtNetIpResult> getCloudExtNetIpPlain(GetCloudExtNetIpPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudExtNetIp:getCloudExtNetIp", TypeShape.of(GetCloudExtNetIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpsResult> getCloudExtNetIps() {
+        return getCloudExtNetIps(GetCloudExtNetIpsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudExtNetIpsResult> getCloudExtNetIpsPlain() {
+        return getCloudExtNetIpsPlain(GetCloudExtNetIpsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpsResult> getCloudExtNetIps(GetCloudExtNetIpsArgs args) {
+        return getCloudExtNetIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudExtNetIpsResult> getCloudExtNetIpsPlain(GetCloudExtNetIpsPlainArgs args) {
+        return getCloudExtNetIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpsResult> getCloudExtNetIps(GetCloudExtNetIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudExtNetIps:getCloudExtNetIps", TypeShape.of(GetCloudExtNetIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudExtNetIpsResult> getCloudExtNetIps(GetCloudExtNetIpsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudExtNetIps:getCloudExtNetIps", TypeShape.of(GetCloudExtNetIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the external network IPs of a public cloud project. External network IPs are created and deleted through the lifecycle of other products (typically instances attached to the public network), so this data source is a read-only view.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudExtNetIpsResult> getCloudExtNetIpsPlain(GetCloudExtNetIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudExtNetIps:getCloudExtNetIps", TypeShape.of(GetCloudExtNetIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a floating IP in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudFloatingIp(GetCloudFloatingIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<floating IP address>")
+     *             .build());
+     * 
+     *         ctx.export("floatingIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpResult> getCloudFloatingIp(GetCloudFloatingIpArgs args) {
+        return getCloudFloatingIp(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a floating IP in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudFloatingIp(GetCloudFloatingIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<floating IP address>")
+     *             .build());
+     * 
+     *         ctx.export("floatingIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudFloatingIpResult> getCloudFloatingIpPlain(GetCloudFloatingIpPlainArgs args) {
+        return getCloudFloatingIpPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a floating IP in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudFloatingIp(GetCloudFloatingIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<floating IP address>")
+     *             .build());
+     * 
+     *         ctx.export("floatingIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpResult> getCloudFloatingIp(GetCloudFloatingIpArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudFloatingIp:getCloudFloatingIp", TypeShape.of(GetCloudFloatingIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a floating IP in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudFloatingIp(GetCloudFloatingIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<floating IP address>")
+     *             .build());
+     * 
+     *         ctx.export("floatingIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpResult> getCloudFloatingIp(GetCloudFloatingIpArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudFloatingIp:getCloudFloatingIp", TypeShape.of(GetCloudFloatingIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a floating IP in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudFloatingIpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ip = OvhFunctions.getCloudFloatingIp(GetCloudFloatingIpArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<floating IP address>")
+     *             .build());
+     * 
+     *         ctx.export("floatingIpStatus", ip.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudFloatingIpResult> getCloudFloatingIpPlain(GetCloudFloatingIpPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudFloatingIp:getCloudFloatingIp", TypeShape.of(GetCloudFloatingIpResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpsResult> getCloudFloatingIps() {
+        return getCloudFloatingIps(GetCloudFloatingIpsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudFloatingIpsResult> getCloudFloatingIpsPlain() {
+        return getCloudFloatingIpsPlain(GetCloudFloatingIpsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpsResult> getCloudFloatingIps(GetCloudFloatingIpsArgs args) {
+        return getCloudFloatingIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudFloatingIpsResult> getCloudFloatingIpsPlain(GetCloudFloatingIpsPlainArgs args) {
+        return getCloudFloatingIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpsResult> getCloudFloatingIps(GetCloudFloatingIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudFloatingIps:getCloudFloatingIps", TypeShape.of(GetCloudFloatingIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudFloatingIpsResult> getCloudFloatingIps(GetCloudFloatingIpsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudFloatingIps:getCloudFloatingIps", TypeShape.of(GetCloudFloatingIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the floating IPs of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudFloatingIpsResult> getCloudFloatingIpsPlain(GetCloudFloatingIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudFloatingIps:getCloudFloatingIps", TypeShape.of(GetCloudFloatingIpsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Use this data source to retrieve information about a gateway in a public cloud project.
      * 
@@ -449,6 +1430,1346 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudGatewaysResult> getCloudGatewaysPlain(GetCloudGatewaysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudGateways:getCloudGateways", TypeShape.of(GetCloudGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single container in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var container = OvhFunctions.getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("containerName", container.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerResult> getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs args) {
+        return getCloudKeyManagerContainer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single container in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var container = OvhFunctions.getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("containerName", container.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainerResult> getCloudKeyManagerContainerPlain(GetCloudKeyManagerContainerPlainArgs args) {
+        return getCloudKeyManagerContainerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single container in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var container = OvhFunctions.getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("containerName", container.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerResult> getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer", TypeShape.of(GetCloudKeyManagerContainerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single container in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var container = OvhFunctions.getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("containerName", container.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerResult> getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer", TypeShape.of(GetCloudKeyManagerContainerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single container in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var container = OvhFunctions.getCloudKeyManagerContainer(GetCloudKeyManagerContainerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("containerName", container.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainerResult> getCloudKeyManagerContainerPlain(GetCloudKeyManagerContainerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer", TypeShape.of(GetCloudKeyManagerContainerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerConsumerResult> getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs args) {
+        return getCloudKeyManagerContainerConsumer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainerConsumerResult> getCloudKeyManagerContainerConsumerPlain(GetCloudKeyManagerContainerConsumerPlainArgs args) {
+        return getCloudKeyManagerContainerConsumerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerConsumerResult> getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer", TypeShape.of(GetCloudKeyManagerContainerConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerConsumerResult> getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer", TypeShape.of(GetCloudKeyManagerContainerConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerContainerConsumer(GetCloudKeyManagerContainerConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .containerId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainerConsumerResult> getCloudKeyManagerContainerConsumerPlain(GetCloudKeyManagerContainerConsumerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer", TypeShape.of(GetCloudKeyManagerContainerConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerConsumersResult> getCloudKeyManagerContainerConsumers(GetCloudKeyManagerContainerConsumersArgs args) {
+        return getCloudKeyManagerContainerConsumers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainerConsumersResult> getCloudKeyManagerContainerConsumersPlain(GetCloudKeyManagerContainerConsumersPlainArgs args) {
+        return getCloudKeyManagerContainerConsumersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerConsumersResult> getCloudKeyManagerContainerConsumers(GetCloudKeyManagerContainerConsumersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainerConsumers:getCloudKeyManagerContainerConsumers", TypeShape.of(GetCloudKeyManagerContainerConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainerConsumersResult> getCloudKeyManagerContainerConsumers(GetCloudKeyManagerContainerConsumersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainerConsumers:getCloudKeyManagerContainerConsumers", TypeShape.of(GetCloudKeyManagerContainerConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainerConsumersResult> getCloudKeyManagerContainerConsumersPlain(GetCloudKeyManagerContainerConsumersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerContainerConsumers:getCloudKeyManagerContainerConsumers", TypeShape.of(GetCloudKeyManagerContainerConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all containers in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainersResult> getCloudKeyManagerContainers(GetCloudKeyManagerContainersArgs args) {
+        return getCloudKeyManagerContainers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all containers in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainersResult> getCloudKeyManagerContainersPlain(GetCloudKeyManagerContainersPlainArgs args) {
+        return getCloudKeyManagerContainersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all containers in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainersResult> getCloudKeyManagerContainers(GetCloudKeyManagerContainersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainers:getCloudKeyManagerContainers", TypeShape.of(GetCloudKeyManagerContainersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all containers in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerContainersResult> getCloudKeyManagerContainers(GetCloudKeyManagerContainersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerContainers:getCloudKeyManagerContainers", TypeShape.of(GetCloudKeyManagerContainersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all containers in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerContainersResult> getCloudKeyManagerContainersPlain(GetCloudKeyManagerContainersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerContainers:getCloudKeyManagerContainers", TypeShape.of(GetCloudKeyManagerContainersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single secret in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secret = OvhFunctions.getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretName", secret.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretResult> getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs args) {
+        return getCloudKeyManagerSecret(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single secret in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secret = OvhFunctions.getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretName", secret.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretResult> getCloudKeyManagerSecretPlain(GetCloudKeyManagerSecretPlainArgs args) {
+        return getCloudKeyManagerSecretPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single secret in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secret = OvhFunctions.getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretName", secret.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretResult> getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecret:getCloudKeyManagerSecret", TypeShape.of(GetCloudKeyManagerSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single secret in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secret = OvhFunctions.getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretName", secret.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretResult> getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecret:getCloudKeyManagerSecret", TypeShape.of(GetCloudKeyManagerSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single secret in the Barbican Key Manager service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secret = OvhFunctions.getCloudKeyManagerSecret(GetCloudKeyManagerSecretArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretName", secret.name());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretResult> getCloudKeyManagerSecretPlain(GetCloudKeyManagerSecretPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerSecret:getCloudKeyManagerSecret", TypeShape.of(GetCloudKeyManagerSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretConsumerResult> getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs args) {
+        return getCloudKeyManagerSecretConsumer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretConsumerResult> getCloudKeyManagerSecretConsumerPlain(GetCloudKeyManagerSecretConsumerPlainArgs args) {
+        return getCloudKeyManagerSecretConsumerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretConsumerResult> getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecretConsumer:getCloudKeyManagerSecretConsumer", TypeShape.of(GetCloudKeyManagerSecretConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretConsumerResult> getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecretConsumer:getCloudKeyManagerSecretConsumer", TypeShape.of(GetCloudKeyManagerSecretConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a single consumer registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretConsumerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var consumer = OvhFunctions.getCloudKeyManagerSecretConsumer(GetCloudKeyManagerSecretConsumerArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .consumerId("Q09NUFVURTpJTlNUQU5DRToxMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTE")
+     *             .build());
+     * 
+     *         ctx.export("consumerService", consumer.service());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretConsumerResult> getCloudKeyManagerSecretConsumerPlain(GetCloudKeyManagerSecretConsumerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerSecretConsumer:getCloudKeyManagerSecretConsumer", TypeShape.of(GetCloudKeyManagerSecretConsumerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretConsumersResult> getCloudKeyManagerSecretConsumers(GetCloudKeyManagerSecretConsumersArgs args) {
+        return getCloudKeyManagerSecretConsumers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretConsumersResult> getCloudKeyManagerSecretConsumersPlain(GetCloudKeyManagerSecretConsumersPlainArgs args) {
+        return getCloudKeyManagerSecretConsumersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretConsumersResult> getCloudKeyManagerSecretConsumers(GetCloudKeyManagerSecretConsumersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecretConsumers:getCloudKeyManagerSecretConsumers", TypeShape.of(GetCloudKeyManagerSecretConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretConsumersResult> getCloudKeyManagerSecretConsumers(GetCloudKeyManagerSecretConsumersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecretConsumers:getCloudKeyManagerSecretConsumers", TypeShape.of(GetCloudKeyManagerSecretConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all consumers registered on a Barbican Key Manager secret.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretConsumersResult> getCloudKeyManagerSecretConsumersPlain(GetCloudKeyManagerSecretConsumersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerSecretConsumers:getCloudKeyManagerSecretConsumers", TypeShape.of(GetCloudKeyManagerSecretConsumersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var payload = OvhFunctions.getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretPayload", payload.payload());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretPayloadResult> getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs args) {
+        return getCloudKeyManagerSecretPayload(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var payload = OvhFunctions.getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretPayload", payload.payload());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretPayloadResult> getCloudKeyManagerSecretPayloadPlain(GetCloudKeyManagerSecretPayloadPlainArgs args) {
+        return getCloudKeyManagerSecretPayloadPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var payload = OvhFunctions.getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretPayload", payload.payload());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretPayloadResult> getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecretPayload:getCloudKeyManagerSecretPayload", TypeShape.of(GetCloudKeyManagerSecretPayloadResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var payload = OvhFunctions.getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretPayload", payload.payload());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretPayloadResult> getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecretPayload:getCloudKeyManagerSecretPayload", TypeShape.of(GetCloudKeyManagerSecretPayloadResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var payload = OvhFunctions.getCloudKeyManagerSecretPayload(GetCloudKeyManagerSecretPayloadArgs.builder()
+     *             .serviceName("Public cloud project ID")
+     *             .secretId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *         ctx.export("secretPayload", payload.payload());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretPayloadResult> getCloudKeyManagerSecretPayloadPlain(GetCloudKeyManagerSecretPayloadPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerSecretPayload:getCloudKeyManagerSecretPayload", TypeShape.of(GetCloudKeyManagerSecretPayloadResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all secrets in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretsResult> getCloudKeyManagerSecrets(GetCloudKeyManagerSecretsArgs args) {
+        return getCloudKeyManagerSecrets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all secrets in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretsResult> getCloudKeyManagerSecretsPlain(GetCloudKeyManagerSecretsPlainArgs args) {
+        return getCloudKeyManagerSecretsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all secrets in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretsResult> getCloudKeyManagerSecrets(GetCloudKeyManagerSecretsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets", TypeShape.of(GetCloudKeyManagerSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all secrets in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudKeyManagerSecretsResult> getCloudKeyManagerSecrets(GetCloudKeyManagerSecretsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets", TypeShape.of(GetCloudKeyManagerSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all secrets in the Barbican Key Manager service for a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudKeyManagerSecretsResult> getCloudKeyManagerSecretsPlain(GetCloudKeyManagerSecretsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets", TypeShape.of(GetCloudKeyManagerSecretsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a private network (vRack) in a public cloud project.
@@ -3221,6 +5542,342 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration", TypeShape.of(GetCloudProjectStorageObjectBucketLifecycleConfigurationResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudPublicIpsResult> getCloudPublicIps() {
+        return getCloudPublicIps(GetCloudPublicIpsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudPublicIpsResult> getCloudPublicIpsPlain() {
+        return getCloudPublicIpsPlain(GetCloudPublicIpsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudPublicIpsResult> getCloudPublicIps(GetCloudPublicIpsArgs args) {
+        return getCloudPublicIps(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudPublicIpsResult> getCloudPublicIpsPlain(GetCloudPublicIpsPlainArgs args) {
+        return getCloudPublicIpsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudPublicIpsResult> getCloudPublicIps(GetCloudPublicIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudPublicIps:getCloudPublicIps", TypeShape.of(GetCloudPublicIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudPublicIpsResult> getCloudPublicIps(GetCloudPublicIpsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudPublicIps:getCloudPublicIps", TypeShape.of(GetCloudPublicIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list all public IPs (additional, external network and floating IPs) of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudPublicIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = OvhFunctions.getCloudPublicIps(GetCloudPublicIpsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *         ctx.export("publicIps", all.publicIps());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudPublicIpsResult> getCloudPublicIpsPlain(GetCloudPublicIpsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudPublicIps:getCloudPublicIps", TypeShape.of(GetCloudPublicIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetch read-only quota information for a public cloud project: target quota profile per region, prevent-automatic-quota-upgrade flag, list of available profiles with their caps, and per-region applied profile + usage reported by OpenStack.
+     * 
+     */
+    public static Output<GetCloudQuotaResult> getCloudQuota(GetCloudQuotaArgs args) {
+        return getCloudQuota(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetch read-only quota information for a public cloud project: target quota profile per region, prevent-automatic-quota-upgrade flag, list of available profiles with their caps, and per-region applied profile + usage reported by OpenStack.
+     * 
+     */
+    public static CompletableFuture<GetCloudQuotaResult> getCloudQuotaPlain(GetCloudQuotaPlainArgs args) {
+        return getCloudQuotaPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Fetch read-only quota information for a public cloud project: target quota profile per region, prevent-automatic-quota-upgrade flag, list of available profiles with their caps, and per-region applied profile + usage reported by OpenStack.
+     * 
+     */
+    public static Output<GetCloudQuotaResult> getCloudQuota(GetCloudQuotaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudQuota:getCloudQuota", TypeShape.of(GetCloudQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetch read-only quota information for a public cloud project: target quota profile per region, prevent-automatic-quota-upgrade flag, list of available profiles with their caps, and per-region applied profile + usage reported by OpenStack.
+     * 
+     */
+    public static Output<GetCloudQuotaResult> getCloudQuota(GetCloudQuotaArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudQuota:getCloudQuota", TypeShape.of(GetCloudQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Fetch read-only quota information for a public cloud project: target quota profile per region, prevent-automatic-quota-upgrade flag, list of available profiles with their caps, and per-region applied profile + usage reported by OpenStack.
+     * 
+     */
+    public static CompletableFuture<GetCloudQuotaResult> getCloudQuotaPlain(GetCloudQuotaPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudQuota:getCloudQuota", TypeShape.of(GetCloudQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to retrieve information about a single region of a public cloud project, using the OVHcloud API v2.
      * 
      * ## Example Usage
@@ -5750,6 +8407,1641 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudStorageBlockVolumesResult> getCloudStorageBlockVolumesPlain(GetCloudStorageBlockVolumesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes", TypeShape.of(GetCloudStorageBlockVolumesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage share (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var share = OvhFunctions.getCloudStorageFileShare(GetCloudStorageFileShareArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareResult> getCloudStorageFileShare(GetCloudStorageFileShareArgs args) {
+        return getCloudStorageFileShare(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a file storage share (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var share = OvhFunctions.getCloudStorageFileShare(GetCloudStorageFileShareArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareResult> getCloudStorageFileSharePlain(GetCloudStorageFileSharePlainArgs args) {
+        return getCloudStorageFileSharePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a file storage share (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var share = OvhFunctions.getCloudStorageFileShare(GetCloudStorageFileShareArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareResult> getCloudStorageFileShare(GetCloudStorageFileShareArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShare:getCloudStorageFileShare", TypeShape.of(GetCloudStorageFileShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage share (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var share = OvhFunctions.getCloudStorageFileShare(GetCloudStorageFileShareArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareResult> getCloudStorageFileShare(GetCloudStorageFileShareArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShare:getCloudStorageFileShare", TypeShape.of(GetCloudStorageFileShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage share (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var share = OvhFunctions.getCloudStorageFileShare(GetCloudStorageFileShareArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareResult> getCloudStorageFileSharePlain(GetCloudStorageFileSharePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShare:getCloudStorageFileShare", TypeShape.of(GetCloudStorageFileShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage share network in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareNetworkResult> getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs args) {
+        return getCloudStorageFileShareNetwork(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a file storage share network in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareNetworkResult> getCloudStorageFileShareNetworkPlain(GetCloudStorageFileShareNetworkPlainArgs args) {
+        return getCloudStorageFileShareNetworkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a file storage share network in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareNetworkResult> getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareNetwork:getCloudStorageFileShareNetwork", TypeShape.of(GetCloudStorageFileShareNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage share network in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareNetworkResult> getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareNetwork:getCloudStorageFileShareNetwork", TypeShape.of(GetCloudStorageFileShareNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage share network in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var network = OvhFunctions.getCloudStorageFileShareNetwork(GetCloudStorageFileShareNetworkArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareNetworkResult> getCloudStorageFileShareNetworkPlain(GetCloudStorageFileShareNetworkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShareNetwork:getCloudStorageFileShareNetwork", TypeShape.of(GetCloudStorageFileShareNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage share networks in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the share networks by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareNetworksResult> getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs args) {
+        return getCloudStorageFileShareNetworks(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the file storage share networks in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the share networks by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareNetworksResult> getCloudStorageFileShareNetworksPlain(GetCloudStorageFileShareNetworksPlainArgs args) {
+        return getCloudStorageFileShareNetworksPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the file storage share networks in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the share networks by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareNetworksResult> getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareNetworks:getCloudStorageFileShareNetworks", TypeShape.of(GetCloudStorageFileShareNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage share networks in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the share networks by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareNetworksResult> getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareNetworks:getCloudStorageFileShareNetworks", TypeShape.of(GetCloudStorageFileShareNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage share networks in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the share networks by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareNetworksArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var networks = OvhFunctions.getCloudStorageFileShareNetworks(GetCloudStorageFileShareNetworksArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareNetworksResult> getCloudStorageFileShareNetworksPlain(GetCloudStorageFileShareNetworksPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShareNetworks:getCloudStorageFileShareNetworks", TypeShape.of(GetCloudStorageFileShareNetworksResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage snapshot (NFS share snapshot) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareSnapshotResult> getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs args) {
+        return getCloudStorageFileShareSnapshot(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a file storage snapshot (NFS share snapshot) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareSnapshotResult> getCloudStorageFileShareSnapshotPlain(GetCloudStorageFileShareSnapshotPlainArgs args) {
+        return getCloudStorageFileShareSnapshotPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a file storage snapshot (NFS share snapshot) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareSnapshotResult> getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot", TypeShape.of(GetCloudStorageFileShareSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage snapshot (NFS share snapshot) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareSnapshotResult> getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot", TypeShape.of(GetCloudStorageFileShareSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a file storage snapshot (NFS share snapshot) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudStorageFileShareSnapshot(GetCloudStorageFileShareSnapshotArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareSnapshotResult> getCloudStorageFileShareSnapshotPlain(GetCloudStorageFileShareSnapshotPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot", TypeShape.of(GetCloudStorageFileShareSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage snapshots (NFS share snapshots) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareSnapshotsResult> getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs args) {
+        return getCloudStorageFileShareSnapshots(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the file storage snapshots (NFS share snapshots) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareSnapshotsResult> getCloudStorageFileShareSnapshotsPlain(GetCloudStorageFileShareSnapshotsPlainArgs args) {
+        return getCloudStorageFileShareSnapshotsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the file storage snapshots (NFS share snapshots) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareSnapshotsResult> getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareSnapshots:getCloudStorageFileShareSnapshots", TypeShape.of(GetCloudStorageFileShareSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage snapshots (NFS share snapshots) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareSnapshotsResult> getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareSnapshots:getCloudStorageFileShareSnapshots", TypeShape.of(GetCloudStorageFileShareSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage snapshots (NFS share snapshots) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshots = OvhFunctions.getCloudStorageFileShareSnapshots(GetCloudStorageFileShareSnapshotsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareSnapshotsResult> getCloudStorageFileShareSnapshotsPlain(GetCloudStorageFileShareSnapshotsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShareSnapshots:getCloudStorageFileShareSnapshots", TypeShape.of(GetCloudStorageFileShareSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage shares (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the shares by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileSharesResult> getCloudStorageFileShares(GetCloudStorageFileSharesArgs args) {
+        return getCloudStorageFileShares(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the file storage shares (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the shares by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileSharesResult> getCloudStorageFileSharesPlain(GetCloudStorageFileSharesPlainArgs args) {
+        return getCloudStorageFileSharesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the file storage shares (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the shares by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileSharesResult> getCloudStorageFileShares(GetCloudStorageFileSharesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShares:getCloudStorageFileShares", TypeShape.of(GetCloudStorageFileSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage shares (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the shares by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileSharesResult> getCloudStorageFileShares(GetCloudStorageFileSharesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShares:getCloudStorageFileShares", TypeShape.of(GetCloudStorageFileSharesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the file storage shares (NFS) in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Filter the shares by region:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var shares = OvhFunctions.getCloudStorageFileShares(GetCloudStorageFileSharesArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .region("GRA9")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileSharesResult> getCloudStorageFileSharesPlain(GetCloudStorageFileSharesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShares:getCloudStorageFileShares", TypeShape.of(GetCloudStorageFileSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a DBaaS Logs encryption key.

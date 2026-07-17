@@ -65,11 +65,6 @@ export const getDatabases: typeof import("./getDatabases").getDatabases = null a
 export const getDatabasesOutput: typeof import("./getDatabases").getDatabasesOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabases","getDatabasesOutput"], () => require("./getDatabases"));
 
-export { GetIpRestrictionsArgs, GetIpRestrictionsResult, GetIpRestrictionsOutputArgs } from "./getIpRestrictions";
-export const getIpRestrictions: typeof import("./getIpRestrictions").getIpRestrictions = null as any;
-export const getIpRestrictionsOutput: typeof import("./getIpRestrictions").getIpRestrictionsOutput = null as any;
-utilities.lazyLoad(exports, ["getIpRestrictions","getIpRestrictionsOutput"], () => require("./getIpRestrictions"));
-
 export { GetKafkaAclArgs, GetKafkaAclResult, GetKafkaAclOutputArgs } from "./getKafkaAcl";
 export const getKafkaAcl: typeof import("./getKafkaAcl").getKafkaAcl = null as any;
 export const getKafkaAclOutput: typeof import("./getKafkaAcl").getKafkaAclOutput = null as any;
@@ -130,11 +125,6 @@ export type Integration = import("./integration").Integration;
 export const Integration: typeof import("./integration").Integration = null as any;
 utilities.lazyLoad(exports, ["Integration"], () => require("./integration"));
 
-export { IpRestrictionArgs, IpRestrictionState } from "./ipRestriction";
-export type IpRestriction = import("./ipRestriction").IpRestriction;
-export const IpRestriction: typeof import("./ipRestriction").IpRestriction = null as any;
-utilities.lazyLoad(exports, ["IpRestriction"], () => require("./ipRestriction"));
-
 export { KafkaAclArgs, KafkaAclState } from "./kafkaAcl";
 export type KafkaAcl = import("./kafkaAcl").KafkaAcl;
 export const KafkaAcl: typeof import("./kafkaAcl").KafkaAcl = null as any;
@@ -154,16 +144,6 @@ export { LogSubscriptionArgs, LogSubscriptionState } from "./logSubscription";
 export type LogSubscription = import("./logSubscription").LogSubscription;
 export const LogSubscription: typeof import("./logSubscription").LogSubscription = null as any;
 utilities.lazyLoad(exports, ["LogSubscription"], () => require("./logSubscription"));
-
-export { M3DbNamespaceArgs, M3DbNamespaceState } from "./m3dbNamespace";
-export type M3DbNamespace = import("./m3dbNamespace").M3DbNamespace;
-export const M3DbNamespace: typeof import("./m3dbNamespace").M3DbNamespace = null as any;
-utilities.lazyLoad(exports, ["M3DbNamespace"], () => require("./m3dbNamespace"));
-
-export { M3DbUserArgs, M3DbUserState } from "./m3dbUser";
-export type M3DbUser = import("./m3dbUser").M3DbUser;
-export const M3DbUser: typeof import("./m3dbUser").M3DbUser = null as any;
-utilities.lazyLoad(exports, ["M3DbUser"], () => require("./m3dbUser"));
 
 export { MongoDbPrometheusArgs, MongoDbPrometheusState } from "./mongoDbPrometheus";
 export type MongoDbPrometheus = import("./mongoDbPrometheus").MongoDbPrometheus;
@@ -200,11 +180,6 @@ export type Prometheus = import("./prometheus").Prometheus;
 export const Prometheus: typeof import("./prometheus").Prometheus = null as any;
 utilities.lazyLoad(exports, ["Prometheus"], () => require("./prometheus"));
 
-export { RedisUserArgs, RedisUserState } from "./redisUser";
-export type RedisUser = import("./redisUser").RedisUser;
-export const RedisUser: typeof import("./redisUser").RedisUser = null as any;
-utilities.lazyLoad(exports, ["RedisUser"], () => require("./redisUser"));
-
 export { UserArgs, UserState } from "./user";
 export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
@@ -219,8 +194,6 @@ const _module = {
                 return new DatabaseInstance(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/integration:Integration":
                 return new Integration(name, <any>undefined, { urn })
-            case "ovh:CloudProjectDatabase/ipRestriction:IpRestriction":
-                return new IpRestriction(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl":
                 return new KafkaAcl(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl":
@@ -229,10 +202,6 @@ const _module = {
                 return new KafkaTopic(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/logSubscription:LogSubscription":
                 return new LogSubscription(name, <any>undefined, { urn })
-            case "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace":
-                return new M3DbNamespace(name, <any>undefined, { urn })
-            case "ovh:CloudProjectDatabase/m3DbUser:M3DbUser":
-                return new M3DbUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus":
                 return new MongoDbPrometheus(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser":
@@ -247,8 +216,6 @@ const _module = {
                 return new PostgresSqlUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/prometheus:Prometheus":
                 return new Prometheus(name, <any>undefined, { urn })
-            case "ovh:CloudProjectDatabase/redisUser:RedisUser":
-                return new RedisUser(name, <any>undefined, { urn })
             case "ovh:CloudProjectDatabase/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
@@ -258,13 +225,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/databaseInstance", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/integration", _module)
-pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/ipRestriction", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaSchemaRegistryAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/kafkaTopic", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/logSubscription", _module)
-pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbNamespace", _module)
-pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/m3DbUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/mongoDbPrometheus", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/mongoDbUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchPattern", _module)
@@ -272,5 +236,4 @@ pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/opensearchUse
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlConnectionPool", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/postgresSqlUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/prometheus", _module)
-pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/redisUser", _module)
 pulumi.runtime.registerResourceModule("ovh", "CloudProjectDatabase/user", _module)

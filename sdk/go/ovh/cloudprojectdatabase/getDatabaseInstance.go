@@ -76,7 +76,7 @@ type LookupDatabaseInstanceResult struct {
 	Id string `pulumi:"id"`
 	// Name of the database.
 	Name string `pulumi:"name"`
-	// Current status of the database.
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -145,7 +145,7 @@ func (o LookupDatabaseInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Current status of the database.
+// See Argument Reference above.
 func (o LookupDatabaseInstanceResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

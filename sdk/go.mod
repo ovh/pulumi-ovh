@@ -1,8 +1,8 @@
 module github.com/ovh/pulumi-ovh/sdk/v2
 
-go 1.23.0
+go 1.25.0
 
-toolchain go1.23.9
+toolchain go1.25.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

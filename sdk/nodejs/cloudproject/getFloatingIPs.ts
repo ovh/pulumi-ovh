@@ -7,6 +7,8 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * > **NOTE** We recommend using the `ovh.getCloudFloatingIps` data source instead. Floating IPs can now also be managed directly with the `ovh.CloudFloatingIp` resource.
+ *
  * Use this data source to get the floating IPs of a public cloud project.
  */
 export function getFloatingIPs(args: GetFloatingIPsArgs, opts?: pulumi.InvokeOptions): Promise<GetFloatingIPsResult> {
@@ -47,6 +49,8 @@ export interface GetFloatingIPsResult {
     readonly serviceName: string;
 }
 /**
+ * > **NOTE** We recommend using the `ovh.getCloudFloatingIps` data source instead. Floating IPs can now also be managed directly with the `ovh.CloudFloatingIp` resource.
+ *
  * Use this data source to get the floating IPs of a public cloud project.
  */
 export function getFloatingIPsOutput(args: GetFloatingIPsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFloatingIPsResult> {

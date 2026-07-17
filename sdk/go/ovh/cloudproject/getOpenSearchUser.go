@@ -73,7 +73,7 @@ type GetOpenSearchUserResult struct {
 	Id string `pulumi:"id"`
 	// Name of the user.
 	Name string `pulumi:"name"`
-	// Current status of the user.
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status string `pulumi:"status"`
@@ -142,7 +142,7 @@ func (o GetOpenSearchUserResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Current status of the user.
+// See Argument Reference above.
 func (o GetOpenSearchUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

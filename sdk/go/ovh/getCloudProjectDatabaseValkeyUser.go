@@ -79,7 +79,7 @@ type LookupCloudProjectDatabaseValkeyUserResult struct {
 	Keys []string `pulumi:"keys"`
 	// See Argument Reference above.
 	Name string `pulumi:"name"`
-	// Current status of the user.
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
 	// Current status of the user.
 	Status string `pulumi:"status"`
@@ -163,7 +163,7 @@ func (o LookupCloudProjectDatabaseValkeyUserResultOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v LookupCloudProjectDatabaseValkeyUserResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Current status of the user.
+// See Argument Reference above.
 func (o LookupCloudProjectDatabaseValkeyUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudProjectDatabaseValkeyUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

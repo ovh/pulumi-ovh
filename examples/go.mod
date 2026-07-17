@@ -1,8 +1,8 @@
 module github.com/ovh/pulumi-ovh/examples
 
-go 1.23.0
+go 1.25.0
 
-toolchain go1.23.9
+toolchain go1.25.8
 
 require github.com/pulumi/pulumi/pkg/v3 v3.185.0
 

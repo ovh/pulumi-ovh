@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh
 {
     /// <summary>
+    /// &gt; **NOTE** Prefer using the new `ovh.CloudStorageFileShare` resource instead.
+    /// 
     /// Creates a file storage share in a public cloud project.
     /// 
     /// ## Example Usage

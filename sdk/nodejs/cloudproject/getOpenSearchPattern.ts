@@ -69,7 +69,7 @@ export interface GetOpenSearchPatternResult {
      */
     readonly pattern: string;
     /**
-     * Current status of the pattern.
+     * See Argument Reference above.
      */
     readonly serviceName: string;
 }

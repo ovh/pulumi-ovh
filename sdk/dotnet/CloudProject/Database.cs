@@ -22,31 +22,6 @@ namespace Pulumi.Ovh.CloudProject
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cassandradb = new Ovh.CloudProject.Database("cassandradb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-cassandra",
-    ///         Engine = "cassandra",
-    ///         Version = "4.0",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
-    ///     });
-    /// 
     ///     var kafkadb = new Ovh.CloudProject.Database("kafkadb", new()
     ///     {
     ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -72,23 +47,6 @@ namespace Pulumi.Ovh.CloudProject
     ///                 Region = "DE",
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var m3db = new Ovh.CloudProject.Database("m3db", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-m3db",
-    ///         Engine = "m3db",
-    ///         Version = "1.2",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-7",
     ///     });
     /// 
     ///     var mongodb = new Ovh.CloudProject.Database("mongodb", new()
@@ -176,23 +134,6 @@ namespace Pulumi.Ovh.CloudProject
     ///                 Ip = "178.97.7.0/24",
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var redisdb = new Ovh.CloudProject.Database("redisdb", new()
-    ///     {
-    ///         ServiceName = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-    ///         Description = "my-first-redis",
-    ///         Engine = "redis",
-    ///         Version = "6.2",
-    ///         Plan = "essential",
-    ///         Nodes = new[]
-    ///         {
-    ///             new Ovh.CloudProject.Inputs.DatabaseNodeArgs
-    ///             {
-    ///                 Region = "BHS",
-    ///             },
-    ///         },
-    ///         Flavor = "db1-4",
     ///     });
     /// 
     ///     var grafana = new Ovh.CloudProject.Database("grafana", new()
@@ -336,7 +277,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<ImmutableArray<string>> BackupRegions { get; private set; } = null!;
 
         /// <summary>
-        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        /// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
@@ -433,10 +374,9 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// Plan of the cluster.
-        /// * MongoDB: Enum: "discovery", "production", "advanced".
-        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business".
+        /// * Clickhouse: "production".
+        /// * MongoDB: "discovery", "production", "advanced".
+        /// * MySQL, PostgreSQL: "essential", "business", "enterprise".
         /// * Valkey: "essential", "business".
         /// </summary>
         [Output("plan")]
@@ -532,7 +472,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        /// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -617,10 +557,9 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// Plan of the cluster.
-        /// * MongoDB: Enum: "discovery", "production", "advanced".
-        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business".
+        /// * Clickhouse: "production".
+        /// * MongoDB: "discovery", "production", "advanced".
+        /// * MySQL, PostgreSQL: "essential", "business", "enterprise".
         /// * Valkey: "essential", "business".
         /// </summary>
         [Input("plan", required: true)]
@@ -671,7 +610,7 @@ namespace Pulumi.Ovh.CloudProject
         }
 
         /// <summary>
-        /// Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        /// Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -786,10 +725,9 @@ namespace Pulumi.Ovh.CloudProject
 
         /// <summary>
         /// Plan of the cluster.
-        /// * MongoDB: Enum: "discovery", "production", "advanced".
-        /// * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        /// * M3 Aggregator: "business", "enterprise".
-        /// * Redis: "essential", "business".
+        /// * Clickhouse: "production".
+        /// * MongoDB: "discovery", "production", "advanced".
+        /// * MySQL, PostgreSQL: "essential", "business", "enterprise".
         /// * Valkey: "essential", "business".
         /// </summary>
         [Input("plan")]

@@ -19,7 +19,7 @@ import (
 // bash
 //
 // ```sh
-// $ pulumi import ovh:index/iamResourceTags:IamResourceTags my_tags "urn:v1:eu:resource:cloudProject:1234567890abcdef"
+// $ pulumi import ovh:index/iamResourceTags:IamResourceTags my_tags "urn:v1:eu:resource:publicCloudProject:1234567890abcdef"
 // ```
 //
 // After importing, you should update your Terraform configuration to match the imported state. The import will bring in all tags currently applied to the resource, but only tags defined in your configuration will be managed by Terraform.

@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,14 +35,14 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+     * ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
      * 
      */
     @Import(name="coldStorageContent")
     private @Nullable Output<String> coldStorageContent;
 
     /**
-     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
      * 
      */
     public Optional<Output<String>> coldStorageContent() {
@@ -121,6 +122,21 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
      */
     public Output<String> description() {
         return this.description;
+    }
+
+    /**
+     * Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    @Import(name="encryptionKeysIds")
+    private @Nullable Output<List<String>> encryptionKeysIds;
+
+    /**
+     * @return Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    public Optional<Output<List<String>>> encryptionKeysIds() {
+        return Optional.ofNullable(this.encryptionKeysIds);
     }
 
     /**
@@ -268,6 +284,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         this.coldStorageRetention = $.coldStorageRetention;
         this.coldStorageTarget = $.coldStorageTarget;
         this.description = $.description;
+        this.encryptionKeysIds = $.encryptionKeysIds;
         this.indexingEnabled = $.indexingEnabled;
         this.indexingMaxSize = $.indexingMaxSize;
         this.indexingNotifyEnabled = $.indexingNotifyEnabled;
@@ -319,7 +336,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -330,7 +347,7 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -442,6 +459,37 @@ public final class LogsOutputGraylogStreamArgs extends com.pulumi.resources.Reso
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param encryptionKeysIds Set of encryption key IDs used to encrypt stream archives
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKeysIds(@Nullable Output<List<String>> encryptionKeysIds) {
+            $.encryptionKeysIds = encryptionKeysIds;
+            return this;
+        }
+
+        /**
+         * @param encryptionKeysIds Set of encryption key IDs used to encrypt stream archives
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKeysIds(List<String> encryptionKeysIds) {
+            return encryptionKeysIds(Output.of(encryptionKeysIds));
+        }
+
+        /**
+         * @param encryptionKeysIds Set of encryption key IDs used to encrypt stream archives
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKeysIds(String... encryptionKeysIds) {
+            return encryptionKeysIds(List.of(encryptionKeysIds));
         }
 
         /**

@@ -168,9 +168,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_database": {
 				Tok: ovhResource(cloudProjectDbMod, "DatabaseInstance"),
 			},
-			"ovh_cloud_project_database_ip_restriction": {
-				Tok: ovhResource(cloudProjectDbMod, "IpRestriction"),
-			},
 			"ovh_cloud_project_database_integration": {
 				Tok: ovhResource(cloudProjectDbMod, "Integration"),
 			},
@@ -195,12 +192,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_prometheus": {
 				Tok: ovhResource(cloudProjectDbMod, "Prometheus"),
 			},
-			"ovh_cloud_project_database_m3db_namespace": {
-				Tok: ovhResource(cloudProjectDbMod, "M3DbNamespace"),
-			},
-			"ovh_cloud_project_database_m3db_user": {
-				Tok: ovhResource(cloudProjectDbMod, "M3DbUser"),
-			},
 			"ovh_cloud_project_database_mongodb_prometheus": {
 				Tok: ovhResource(cloudProjectDbMod, "MongoDbPrometheus"),
 			},
@@ -212,9 +203,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_opensearch_user": {
 				Tok: ovhResource(cloudProjectDbMod, "OpensearchUser"),
-			},
-			"ovh_cloud_project_database_redis_user": {
-				Tok: ovhResource(cloudProjectDbMod, "RedisUser"),
 			},
 			"ovh_cloud_project_database_user": {
 				Tok: ovhResource(cloudProjectDbMod, "User"),
@@ -677,9 +665,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_database_certificates": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getCertificates"),
 			},
-			"ovh_cloud_project_database_ip_restrictions": {
-				Tok: ovhDataSource(cloudProjectDbMod, "getIpRestrictions"),
-			},
 			"ovh_cloud_project_database_kafka_acl": {
 				Tok: ovhDataSource(cloudProjectDbMod, "getKafkaAcl"),
 			},
@@ -752,15 +737,6 @@ func Provider() tfbridge.ProviderInfo {
 			"ovh_cloud_project_kube_oidc": {
 				Tok: ovhDataSource(cloudProjectMod, "getKubeOidc"),
 			},
-			"ovh_cloud_project_database_m3db_namespace": {
-				Tok: ovhDataSource(cloudProjectMod, "getM3dbNamespace"),
-			},
-			"ovh_cloud_project_database_m3db_namespaces": {
-				Tok: ovhDataSource(cloudProjectMod, "getM3dbNamespaces"),
-			},
-			"ovh_cloud_project_database_m3db_user": {
-				Tok: ovhDataSource(cloudProjectMod, "getM3dbUser"),
-			},
 			"ovh_cloud_project_database_mongodb_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getMongoDbUser"),
 			},
@@ -778,9 +754,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_cloud_project_database_opensearch_user": {
 				Tok: ovhDataSource(cloudProjectMod, "getOpenSearchUser"),
-			},
-			"ovh_cloud_project_database_redis_user": {
-				Tok: ovhDataSource(cloudProjectMod, "getRedisUser"),
 			},
 			"ovh_cloud_project_loadbalancer": {
 				Tok: ovhDataSource(cloudProjectMod, "getLoadBalancer"),

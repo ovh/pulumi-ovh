@@ -1,6 +1,22 @@
 {
     "auto-aliasing": {
         "resources": {
+            "ovh_cloud_floating_ip": {
+                "current": "ovh:index/cloudFloatingIp:CloudFloatingIp",
+                "majorVersion": 2,
+                "fields": {
+                    "current_tasks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_cloud_gateway": {
                 "current": "ovh:index/cloudGateway:CloudGateway",
                 "majorVersion": 2,
@@ -16,6 +32,34 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "ovh_cloud_key_manager_container": {
+                "current": "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "secret_refs": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "secret_refs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_key_manager_container_consumer": {
+                "current": "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer",
+                "majorVersion": 2
+            },
+            "ovh_cloud_key_manager_secret": {
+                "current": "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret",
+                "majorVersion": 2
+            },
+            "ovh_cloud_key_manager_secret_consumer": {
+                "current": "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer",
+                "majorVersion": 2
             },
             "ovh_cloud_network_private_vrack": {
                 "current": "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack",
@@ -180,10 +224,6 @@
                 "current": "ovh:CloudProjectDatabase/integration:Integration",
                 "majorVersion": 2
             },
-            "ovh_cloud_project_database_ip_restriction": {
-                "current": "ovh:CloudProjectDatabase/ipRestriction:IpRestriction",
-                "majorVersion": 2
-            },
             "ovh_cloud_project_database_kafka_acl": {
                 "current": "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl",
                 "majorVersion": 2
@@ -198,14 +238,6 @@
             },
             "ovh_cloud_project_database_log_subscription": {
                 "current": "ovh:CloudProjectDatabase/logSubscription:LogSubscription",
-                "majorVersion": 2
-            },
-            "ovh_cloud_project_database_m3db_namespace": {
-                "current": "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace",
-                "majorVersion": 2
-            },
-            "ovh_cloud_project_database_m3db_user": {
-                "current": "ovh:CloudProjectDatabase/m3DbUser:M3DbUser",
                 "majorVersion": 2
             },
             "ovh_cloud_project_database_mongodb_prometheus": {
@@ -252,24 +284,6 @@
                 "majorVersion": 2,
                 "fields": {
                     "targets": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "ovh_cloud_project_database_redis_user": {
-                "current": "ovh:CloudProjectDatabase/redisUser:RedisUser",
-                "majorVersion": 2,
-                "fields": {
-                    "categories": {
-                        "maxItemsOne": false
-                    },
-                    "channels": {
-                        "maxItemsOne": false
-                    },
-                    "commands": {
-                        "maxItemsOne": false
-                    },
-                    "keys": {
                         "maxItemsOne": false
                     }
                 }
@@ -851,6 +865,25 @@
                 "current": "ovh:CloudProject/workflowBackup:WorkflowBackup",
                 "majorVersion": 2
             },
+            "ovh_cloud_quota": {
+                "current": "ovh:index/cloudQuota:CloudQuota",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "available_profiles": {
+                                "maxItemsOne": false
+                            },
+                            "regions": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_security_group": {
                 "current": "ovh:index/cloudSecurityGroup:CloudSecurityGroup",
                 "majorVersion": 2,
@@ -900,6 +933,36 @@
             },
             "ovh_cloud_storage_block_volume_snapshot": {
                 "current": "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_file_share": {
+                "current": "ovh:index/cloudStorageFileShare:CloudStorageFileShare",
+                "majorVersion": 2,
+                "fields": {
+                    "access_rules": {
+                        "maxItemsOne": false
+                    },
+                    "current_state": {
+                        "fields": {
+                            "access_rules": {
+                                "maxItemsOne": false
+                            },
+                            "capabilities": {
+                                "maxItemsOne": false
+                            },
+                            "export_locations": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_storage_file_share_network": {
+                "current": "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_file_share_snapshot": {
+                "current": "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot",
                 "majorVersion": 2
             },
             "ovh_dbaas_logs_cluster": {
@@ -954,7 +1017,12 @@
             },
             "ovh_dbaas_logs_output_graylog_stream": {
                 "current": "ovh:Dbaas/logsOutputGraylogStream:LogsOutputGraylogStream",
-                "majorVersion": 2
+                "majorVersion": 2,
+                "fields": {
+                    "encryption_keys_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_dbaas_logs_output_opensearch_alias": {
                 "current": "ovh:Dbaas/logsOutputOpenSearchAlias:LogsOutputOpenSearchAlias",
@@ -1970,6 +2038,123 @@
             }
         },
         "datasources": {
+            "ovh_cloud_additional_ip": {
+                "current": "ovh:index/getCloudAdditionalIp:getCloudAdditionalIp",
+                "majorVersion": 2,
+                "fields": {
+                    "current_tasks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_additional_ips": {
+                "current": "ovh:index/getCloudAdditionalIps:getCloudAdditionalIps",
+                "majorVersion": 2,
+                "fields": {
+                    "additional_ips": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_tasks": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "errors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_ext_net_ip": {
+                "current": "ovh:index/getCloudExtNetIp:getCloudExtNetIp",
+                "majorVersion": 2,
+                "fields": {
+                    "current_tasks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_ext_net_ips": {
+                "current": "ovh:index/getCloudExtNetIps:getCloudExtNetIps",
+                "majorVersion": 2,
+                "fields": {
+                    "ext_net_ips": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_tasks": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "errors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_floating_ip": {
+                "current": "ovh:index/getCloudFloatingIp:getCloudFloatingIp",
+                "majorVersion": 2,
+                "fields": {
+                    "current_tasks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_floating_ips": {
+                "current": "ovh:index/getCloudFloatingIps:getCloudFloatingIps",
+                "majorVersion": 2,
+                "fields": {
+                    "floating_ips": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_tasks": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "errors": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_cloud_gateway": {
                 "current": "ovh:index/getCloudGateway:getCloudGateway",
                 "majorVersion": 2,
@@ -2003,6 +2188,82 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "ovh_cloud_key_manager_container": {
+                "current": "ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "secret_refs": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_key_manager_container_consumer": {
+                "current": "ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer",
+                "majorVersion": 2
+            },
+            "ovh_cloud_key_manager_container_consumers": {
+                "current": "ovh:index/getCloudKeyManagerContainerConsumers:getCloudKeyManagerContainerConsumers",
+                "majorVersion": 2,
+                "fields": {
+                    "consumers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_key_manager_containers": {
+                "current": "ovh:index/getCloudKeyManagerContainers:getCloudKeyManagerContainers",
+                "majorVersion": 2,
+                "fields": {
+                    "containers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "secret_refs": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_key_manager_secret": {
+                "current": "ovh:index/getCloudKeyManagerSecret:getCloudKeyManagerSecret",
+                "majorVersion": 2
+            },
+            "ovh_cloud_key_manager_secret_consumer": {
+                "current": "ovh:index/getCloudKeyManagerSecretConsumer:getCloudKeyManagerSecretConsumer",
+                "majorVersion": 2
+            },
+            "ovh_cloud_key_manager_secret_consumers": {
+                "current": "ovh:index/getCloudKeyManagerSecretConsumers:getCloudKeyManagerSecretConsumers",
+                "majorVersion": 2,
+                "fields": {
+                    "consumers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_key_manager_secret_payload": {
+                "current": "ovh:index/getCloudKeyManagerSecretPayload:getCloudKeyManagerSecretPayload",
+                "majorVersion": 2
+            },
+            "ovh_cloud_key_manager_secrets": {
+                "current": "ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets",
+                "majorVersion": 2,
+                "fields": {
+                    "secrets": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2247,15 +2508,6 @@
                     }
                 }
             },
-            "ovh_cloud_project_database_ip_restrictions": {
-                "current": "ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions",
-                "majorVersion": 2,
-                "fields": {
-                    "ips": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
             "ovh_cloud_project_database_kafka_acl": {
                 "current": "ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl",
                 "majorVersion": 2
@@ -2311,23 +2563,6 @@
                         "maxItemsOne": false
                     }
                 }
-            },
-            "ovh_cloud_project_database_m3db_namespace": {
-                "current": "ovh:CloudProject/getM3dbNamespace:getM3dbNamespace",
-                "majorVersion": 2
-            },
-            "ovh_cloud_project_database_m3db_namespaces": {
-                "current": "ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces",
-                "majorVersion": 2,
-                "fields": {
-                    "namespace_ids": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "ovh_cloud_project_database_m3db_user": {
-                "current": "ovh:CloudProject/getM3dbUser:getM3dbUser",
-                "majorVersion": 2
             },
             "ovh_cloud_project_database_mongodb_prometheus": {
                 "current": "ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus",
@@ -2391,24 +2626,6 @@
                 "majorVersion": 2,
                 "fields": {
                     "targets": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "ovh_cloud_project_database_redis_user": {
-                "current": "ovh:CloudProject/getRedisUser:getRedisUser",
-                "majorVersion": 2,
-                "fields": {
-                    "categories": {
-                        "maxItemsOne": false
-                    },
-                    "channels": {
-                        "maxItemsOne": false
-                    },
-                    "commands": {
-                        "maxItemsOne": false
-                    },
-                    "keys": {
                         "maxItemsOne": false
                     }
                 }
@@ -3139,6 +3356,34 @@
                     }
                 }
             },
+            "ovh_cloud_public_ips": {
+                "current": "ovh:index/getCloudPublicIps:getCloudPublicIps",
+                "majorVersion": 2,
+                "fields": {
+                    "public_ips": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_quota": {
+                "current": "ovh:index/getCloudQuota:getCloudQuota",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "available_profiles": {
+                                "maxItemsOne": false
+                            },
+                            "regions": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_cloud_region": {
                 "current": "ovh:index/getCloudRegion:getCloudRegion",
                 "majorVersion": 2,
@@ -3279,6 +3524,83 @@
                     }
                 }
             },
+            "ovh_cloud_storage_file_share": {
+                "current": "ovh:index/getCloudStorageFileShare:getCloudStorageFileShare",
+                "majorVersion": 2,
+                "fields": {
+                    "access_rules": {
+                        "maxItemsOne": false
+                    },
+                    "current_state": {
+                        "fields": {
+                            "access_rules": {
+                                "maxItemsOne": false
+                            },
+                            "capabilities": {
+                                "maxItemsOne": false
+                            },
+                            "export_locations": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_storage_file_share_network": {
+                "current": "ovh:index/getCloudStorageFileShareNetwork:getCloudStorageFileShareNetwork",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_file_share_networks": {
+                "current": "ovh:index/getCloudStorageFileShareNetworks:getCloudStorageFileShareNetworks",
+                "majorVersion": 2,
+                "fields": {
+                    "share_networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_storage_file_share_snapshot": {
+                "current": "ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_file_share_snapshots": {
+                "current": "ovh:index/getCloudStorageFileShareSnapshots:getCloudStorageFileShareSnapshots",
+                "majorVersion": 2,
+                "fields": {
+                    "share_snapshots": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_storage_file_shares": {
+                "current": "ovh:index/getCloudStorageFileShares:getCloudStorageFileShares",
+                "majorVersion": 2,
+                "fields": {
+                    "file_shares": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "access_rules": {
+                                    "maxItemsOne": false
+                                },
+                                "current_state": {
+                                    "fields": {
+                                        "access_rules": {
+                                            "maxItemsOne": false
+                                        },
+                                        "capabilities": {
+                                            "maxItemsOne": false
+                                        },
+                                        "export_locations": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_dbaas_logs_cluster": {
                 "current": "ovh:Dbaas/getLogsCluster:getLogsCluster",
                 "majorVersion": 2,
@@ -3317,7 +3639,12 @@
             },
             "ovh_dbaas_logs_output_graylog_stream": {
                 "current": "ovh:Dbaas/getLogsOutputGraylogStream:getLogsOutputGraylogStream",
-                "majorVersion": 2
+                "majorVersion": 2,
+                "fields": {
+                    "encryption_keys_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "ovh_dbaas_logs_output_graylog_stream_url": {
                 "current": "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl",
@@ -4343,13 +4670,10 @@
             "ovh:CloudProject/workflowBackup:WorkflowBackup": 0,
             "ovh:CloudProjectDatabase/databaseInstance:DatabaseInstance": 0,
             "ovh:CloudProjectDatabase/integration:Integration": 0,
-            "ovh:CloudProjectDatabase/ipRestriction:IpRestriction": 0,
             "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl": 0,
             "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl": 0,
             "ovh:CloudProjectDatabase/kafkaTopic:KafkaTopic": 0,
             "ovh:CloudProjectDatabase/logSubscription:LogSubscription": 0,
-            "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace": 0,
-            "ovh:CloudProjectDatabase/m3DbUser:M3DbUser": 0,
             "ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus": 0,
             "ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser": 0,
             "ovh:CloudProjectDatabase/opensearchPattern:OpensearchPattern": 0,
@@ -4357,7 +4681,6 @@
             "ovh:CloudProjectDatabase/postgresSqlConnectionPool:PostgresSqlConnectionPool": 0,
             "ovh:CloudProjectDatabase/postgresSqlUser:PostgresSqlUser": 0,
             "ovh:CloudProjectDatabase/prometheus:Prometheus": 0,
-            "ovh:CloudProjectDatabase/redisUser:RedisUser": 0,
             "ovh:CloudProjectDatabase/user:User": 0,
             "ovh:Dbaas/logsCluster:LogsCluster": 0,
             "ovh:Dbaas/logsInput:LogsInput": 0,
@@ -4438,7 +4761,12 @@
             "ovh:Vrack/vrack:Vrack": 0,
             "ovh:Vrack/vrackDedicatedCloud:VrackDedicatedCloud": 1,
             "ovh:Vrack/vrackservices:Vrackservices": 0,
+            "ovh:index/cloudFloatingIp:CloudFloatingIp": 1,
             "ovh:index/cloudGateway:CloudGateway": 1,
+            "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer": 1,
+            "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer": 1,
+            "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret": 1,
+            "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer": 1,
             "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack": 1,
             "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet": 1,
             "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
@@ -4450,11 +4778,15 @@
             "ovh:index/cloudProjectSshKey:CloudProjectSshKey": 1,
             "ovh:index/cloudProjectStorageObjectBucketLifecycleConfiguration:CloudProjectStorageObjectBucketLifecycleConfiguration": 1,
             "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob": 1,
+            "ovh:index/cloudQuota:CloudQuota": 1,
             "ovh:index/cloudSSHKey:CloudSSHKey": 1,
             "ovh:index/cloudSecurityGroup:CloudSecurityGroup": 1,
             "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": 1,
             "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": 1,
             "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": 1,
+            "ovh:index/cloudStorageFileShare:CloudStorageFileShare": 1,
+            "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork": 1,
+            "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": 1,
             "ovh:index/clousSSHKey:ClousSSHKey": 1,
             "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
@@ -4499,9 +4831,6 @@
             "ovh:CloudProject/getLoadBalancer:getLoadBalancer": 1,
             "ovh:CloudProject/getLoadBalancerFlavors:getLoadBalancerFlavors": 1,
             "ovh:CloudProject/getLoadBalancers:getLoadBalancers": 1,
-            "ovh:CloudProject/getM3dbNamespace:getM3dbNamespace": 0,
-            "ovh:CloudProject/getM3dbNamespaces:getM3dbNamespaces": 0,
-            "ovh:CloudProject/getM3dbUser:getM3dbUser": 0,
             "ovh:CloudProject/getMongoDbPrometheus:getMongoDbPrometheus": 0,
             "ovh:CloudProject/getMongoDbUser:getMongoDbUser": 0,
             "ovh:CloudProject/getNetworkPrivate:getNetworkPrivate": 1,
@@ -4514,7 +4843,6 @@
             "ovh:CloudProject/getRancher:getRancher": 1,
             "ovh:CloudProject/getRancherPlan:getRancherPlan": 1,
             "ovh:CloudProject/getRancherVersion:getRancherVersion": 1,
-            "ovh:CloudProject/getRedisUser:getRedisUser": 0,
             "ovh:CloudProject/getRegion:getRegion": 0,
             "ovh:CloudProject/getRegionLoadBalancerLogSubscription:getRegionLoadBalancerLogSubscription": 0,
             "ovh:CloudProject/getRegionLoadBalancerLogSubscriptions:getRegionLoadBalancerLogSubscriptions": 0,
@@ -4542,7 +4870,6 @@
             "ovh:CloudProjectDatabase/getDatabaseLogSubscriptions:getDatabaseLogSubscriptions": 0,
             "ovh:CloudProjectDatabase/getDatabasePostgreSQLConnectionPools:getDatabasePostgreSQLConnectionPools": 0,
             "ovh:CloudProjectDatabase/getDatabases:getDatabases": 0,
-            "ovh:CloudProjectDatabase/getIpRestrictions:getIpRestrictions": 1,
             "ovh:CloudProjectDatabase/getKafkaAcl:getKafkaAcl": 0,
             "ovh:CloudProjectDatabase/getKafkaAcls:getKafkaAcls": 0,
             "ovh:CloudProjectDatabase/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl": 0,
@@ -4614,8 +4941,23 @@
             "ovh:Vps/getVps:getVps": 0,
             "ovh:Vps/getVpss:getVpss": 0,
             "ovh:Vrack/getVracks:getVracks": 0,
+            "ovh:index/getCloudAdditionalIp:getCloudAdditionalIp": 1,
+            "ovh:index/getCloudAdditionalIps:getCloudAdditionalIps": 1,
+            "ovh:index/getCloudExtNetIp:getCloudExtNetIp": 1,
+            "ovh:index/getCloudExtNetIps:getCloudExtNetIps": 1,
+            "ovh:index/getCloudFloatingIp:getCloudFloatingIp": 1,
+            "ovh:index/getCloudFloatingIps:getCloudFloatingIps": 1,
             "ovh:index/getCloudGateway:getCloudGateway": 1,
             "ovh:index/getCloudGateways:getCloudGateways": 1,
+            "ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer": 1,
+            "ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer": 1,
+            "ovh:index/getCloudKeyManagerContainerConsumers:getCloudKeyManagerContainerConsumers": 1,
+            "ovh:index/getCloudKeyManagerContainers:getCloudKeyManagerContainers": 1,
+            "ovh:index/getCloudKeyManagerSecret:getCloudKeyManagerSecret": 1,
+            "ovh:index/getCloudKeyManagerSecretConsumer:getCloudKeyManagerSecretConsumer": 1,
+            "ovh:index/getCloudKeyManagerSecretConsumers:getCloudKeyManagerSecretConsumers": 1,
+            "ovh:index/getCloudKeyManagerSecretPayload:getCloudKeyManagerSecretPayload": 1,
+            "ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets": 1,
             "ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack": 1,
             "ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet": 1,
             "ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets": 1,
@@ -4630,6 +4972,8 @@
             "ovh:index/getCloudProjectSshKey:getCloudProjectSshKey": 1,
             "ovh:index/getCloudProjectSshKeys:getCloudProjectSshKeys": 1,
             "ovh:index/getCloudProjectStorageObjectBucketLifecycleConfiguration:getCloudProjectStorageObjectBucketLifecycleConfiguration": 1,
+            "ovh:index/getCloudPublicIps:getCloudPublicIps": 1,
+            "ovh:index/getCloudQuota:getCloudQuota": 1,
             "ovh:index/getCloudRegion:getCloudRegion": 1,
             "ovh:index/getCloudRegions:getCloudRegions": 1,
             "ovh:index/getCloudSecurityGroup:getCloudSecurityGroup": 1,
@@ -4642,6 +4986,12 @@
             "ovh:index/getCloudStorageBlockVolumeSnapshot:getCloudStorageBlockVolumeSnapshot": 1,
             "ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots": 1,
             "ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes": 1,
+            "ovh:index/getCloudStorageFileShare:getCloudStorageFileShare": 1,
+            "ovh:index/getCloudStorageFileShareNetwork:getCloudStorageFileShareNetwork": 1,
+            "ovh:index/getCloudStorageFileShareNetworks:getCloudStorageFileShareNetworks": 1,
+            "ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot": 1,
+            "ovh:index/getCloudStorageFileShareSnapshots:getCloudStorageFileShareSnapshots": 1,
+            "ovh:index/getCloudStorageFileShares:getCloudStorageFileShares": 1,
             "ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey": 1,
             "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
             "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": 0,

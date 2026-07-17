@@ -14,6 +14,8 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE** Prefer using the new `ovh.CloudStorageFileShareNetwork` resource instead.
+ * 
  * Creates a share network in a public cloud project.
  * 
  * ## Example Usage

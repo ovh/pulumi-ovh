@@ -21,8 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "ovh:index/cloudFloatingIp:CloudFloatingIp":
+		r = &CloudFloatingIp{}
 	case "ovh:index/cloudGateway:CloudGateway":
 		r = &CloudGateway{}
+	case "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer":
+		r = &CloudKeyManagerContainer{}
+	case "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer":
+		r = &CloudKeyManagerContainerConsumer{}
+	case "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret":
+		r = &CloudKeyManagerSecret{}
+	case "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer":
+		r = &CloudKeyManagerSecretConsumer{}
 	case "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack":
 		r = &CloudNetworkPrivateVrack{}
 	case "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet":
@@ -45,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudProjectStorageObjectBucketLifecycleConfiguration{}
 	case "ovh:index/cloudProjectStorageReplicationJob:CloudProjectStorageReplicationJob":
 		r = &CloudProjectStorageReplicationJob{}
+	case "ovh:index/cloudQuota:CloudQuota":
+		r = &CloudQuota{}
 	case "ovh:index/cloudSSHKey:CloudSSHKey":
 		r = &CloudSSHKey{}
 	case "ovh:index/cloudSecurityGroup:CloudSecurityGroup":
@@ -55,6 +67,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudStorageBlockVolumeBackup{}
 	case "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot":
 		r = &CloudStorageBlockVolumeSnapshot{}
+	case "ovh:index/cloudStorageFileShare:CloudStorageFileShare":
+		r = &CloudStorageFileShare{}
+	case "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork":
+		r = &CloudStorageFileShareNetwork{}
+	case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
+		r = &CloudStorageFileShareSnapshot{}
 	case "ovh:index/clousSSHKey:ClousSSHKey":
 		r = &ClousSSHKey{}
 	case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
@@ -118,7 +136,32 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudFloatingIp",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudKeyManagerContainer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudKeyManagerContainerConsumer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudKeyManagerSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudKeyManagerSecretConsumer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -178,6 +221,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
+		"index/cloudQuota",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
 		"index/cloudSSHKey",
 		&module{version},
 	)
@@ -199,6 +247,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudStorageBlockVolumeSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageFileShare",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageFileShareNetwork",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageFileShareSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

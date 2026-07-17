@@ -6,7 +6,12 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .cloud_floating_ip import *
 from .cloud_gateway import *
+from .cloud_key_manager_container import *
+from .cloud_key_manager_container_consumer import *
+from .cloud_key_manager_secret import *
+from .cloud_key_manager_secret_consumer import *
 from .cloud_network_private_vrack import *
 from .cloud_network_private_vrack_subnet import *
 from .cloud_project_containerregistry_iam import *
@@ -18,17 +23,36 @@ from .cloud_project_kube_log_subscription import *
 from .cloud_project_ssh_key import *
 from .cloud_project_storage_object_bucket_lifecycle_configuration import *
 from .cloud_project_storage_replication_job import *
+from .cloud_quota import *
 from .cloud_security_group import *
 from .cloud_ssh_key import *
 from .cloud_storage_block_volume import *
 from .cloud_storage_block_volume_backup import *
 from .cloud_storage_block_volume_snapshot import *
+from .cloud_storage_file_share import *
+from .cloud_storage_file_share_network import *
+from .cloud_storage_file_share_snapshot import *
 from .clous_ssh_key import *
 from .dbaas_logs_encryption_key import *
 from .domain_zone_dynhost_record import *
 from .email_domain_account import *
+from .get_cloud_additional_ip import *
+from .get_cloud_additional_ips import *
+from .get_cloud_ext_net_ip import *
+from .get_cloud_ext_net_ips import *
+from .get_cloud_floating_ip import *
+from .get_cloud_floating_ips import *
 from .get_cloud_gateway import *
 from .get_cloud_gateways import *
+from .get_cloud_key_manager_container import *
+from .get_cloud_key_manager_container_consumer import *
+from .get_cloud_key_manager_container_consumers import *
+from .get_cloud_key_manager_containers import *
+from .get_cloud_key_manager_secret import *
+from .get_cloud_key_manager_secret_consumer import *
+from .get_cloud_key_manager_secret_consumers import *
+from .get_cloud_key_manager_secret_payload import *
+from .get_cloud_key_manager_secrets import *
 from .get_cloud_network_private_vrack import *
 from .get_cloud_network_private_vrack_subnet import *
 from .get_cloud_network_private_vrack_subnets import *
@@ -43,6 +67,8 @@ from .get_cloud_project_rancher_capabilities_version import *
 from .get_cloud_project_ssh_key import *
 from .get_cloud_project_ssh_keys import *
 from .get_cloud_project_storage_object_bucket_lifecycle_configuration import *
+from .get_cloud_public_ips import *
+from .get_cloud_quota import *
 from .get_cloud_region import *
 from .get_cloud_regions import *
 from .get_cloud_security_group import *
@@ -55,6 +81,12 @@ from .get_cloud_storage_block_volume_backups import *
 from .get_cloud_storage_block_volume_snapshot import *
 from .get_cloud_storage_block_volume_snapshots import *
 from .get_cloud_storage_block_volumes import *
+from .get_cloud_storage_file_share import *
+from .get_cloud_storage_file_share_network import *
+from .get_cloud_storage_file_share_networks import *
+from .get_cloud_storage_file_share_snapshot import *
+from .get_cloud_storage_file_share_snapshots import *
+from .get_cloud_storage_file_shares import *
 from .get_dbaas_logs_encryption_key import *
 from .get_dbaas_logs_output_graylog_stream_url import *
 from .get_dedicated_server_orderable_bandwidth import *
@@ -443,14 +475,6 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
-  "mod": "CloudProjectDatabase/ipRestriction",
-  "fqn": "pulumi_ovh.cloudprojectdatabase",
-  "classes": {
-   "ovh:CloudProjectDatabase/ipRestriction:IpRestriction": "IpRestriction"
-  }
- },
- {
-  "pkg": "ovh",
   "mod": "CloudProjectDatabase/kafkaAcl",
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
@@ -479,22 +503,6 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/logSubscription:LogSubscription": "LogSubscription"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "CloudProjectDatabase/m3DbNamespace",
-  "fqn": "pulumi_ovh.cloudprojectdatabase",
-  "classes": {
-   "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace": "M3DbNamespace"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "CloudProjectDatabase/m3DbUser",
-  "fqn": "pulumi_ovh.cloudprojectdatabase",
-  "classes": {
-   "ovh:CloudProjectDatabase/m3DbUser:M3DbUser": "M3DbUser"
   }
  },
  {
@@ -551,14 +559,6 @@ _utilities.register(
   "fqn": "pulumi_ovh.cloudprojectdatabase",
   "classes": {
    "ovh:CloudProjectDatabase/prometheus:Prometheus": "Prometheus"
-  }
- },
- {
-  "pkg": "ovh",
-  "mod": "CloudProjectDatabase/redisUser",
-  "fqn": "pulumi_ovh.cloudprojectdatabase",
-  "classes": {
-   "ovh:CloudProjectDatabase/redisUser:RedisUser": "RedisUser"
   }
  },
  {
@@ -1203,10 +1203,50 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudFloatingIp",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudFloatingIp:CloudFloatingIp": "CloudFloatingIp"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudGateway",
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudGateway:CloudGateway": "CloudGateway"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudKeyManagerContainer",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer": "CloudKeyManagerContainer"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudKeyManagerContainerConsumer",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer": "CloudKeyManagerContainerConsumer"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudKeyManagerSecret",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret": "CloudKeyManagerSecret"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudKeyManagerSecretConsumer",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer": "CloudKeyManagerSecretConsumer"
   }
  },
  {
@@ -1299,6 +1339,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudQuota",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudQuota:CloudQuota": "CloudQuota"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudSSHKey",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1335,6 +1383,30 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": "CloudStorageBlockVolumeSnapshot"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageFileShare",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageFileShare:CloudStorageFileShare": "CloudStorageFileShare"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageFileShareNetwork",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork": "CloudStorageFileShareNetwork"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageFileShareSnapshot",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": "CloudStorageFileShareSnapshot"
   }
  },
  {

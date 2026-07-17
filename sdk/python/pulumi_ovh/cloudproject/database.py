@@ -44,15 +44,14 @@ class DatabaseArgs:
         :param pulumi.Input[_builtins.str] flavor: A valid OVHcloud public cloud database flavor name in which the nodes will be started. Ex: "db1-7". Changing this value upgrade the nodes with the new flavor. You can find the list of flavor names: https://www.ovhcloud.com/fr/public-cloud/prices/
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.str] plan: Plan of the cluster.
-               * MongoDB: Enum: "discovery", "production", "advanced".
-               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-               * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business".
+               * Clickhouse: "production".
+               * MongoDB: "discovery", "production", "advanced".
+               * MySQL, PostgreSQL: "essential", "business", "enterprise".
                * Valkey: "essential", "business".
         :param pulumi.Input[_builtins.str] version: The version of the engine in which the service should be deployed
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
         :param pulumi.Input[_builtins.int] disk_size: The disk size (in GB) of the database service.
@@ -134,10 +133,9 @@ class DatabaseArgs:
     def plan(self) -> pulumi.Input[_builtins.str]:
         """
         Plan of the cluster.
-        * MongoDB: Enum: "discovery", "production", "advanced".
-        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        * M3 Aggregator: "business", "enterprise".
-        * Redis: "essential", "business".
+        * Clickhouse: "production".
+        * MongoDB: "discovery", "production", "advanced".
+        * MySQL, PostgreSQL: "essential", "business", "enterprise".
         * Valkey: "essential", "business".
         """
         return pulumi.get(self, "plan")
@@ -186,7 +184,7 @@ class DatabaseArgs:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         """
         return pulumi.get(self, "backup_time")
 
@@ -332,7 +330,7 @@ class _DatabaseState:
         Input properties used for looking up and filtering Database resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         :param pulumi.Input[_builtins.str] created_at: Date of the creation of the cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
@@ -349,10 +347,9 @@ class _DatabaseState:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[_builtins.str] plan: Plan of the cluster.
-               * MongoDB: Enum: "discovery", "production", "advanced".
-               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-               * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business".
+               * Clickhouse: "production".
+               * MongoDB: "discovery", "production", "advanced".
+               * MySQL, PostgreSQL: "essential", "business", "enterprise".
                * Valkey: "essential", "business".
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] status: Current status of the cluster.
@@ -431,7 +428,7 @@ class _DatabaseState:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         """
         return pulumi.get(self, "backup_time")
 
@@ -624,10 +621,9 @@ class _DatabaseState:
     def plan(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Plan of the cluster.
-        * MongoDB: Enum: "discovery", "production", "advanced".
-        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        * M3 Aggregator: "business", "enterprise".
-        * Redis: "essential", "business".
+        * Clickhouse: "production".
+        * MongoDB: "discovery", "production", "advanced".
+        * MySQL, PostgreSQL: "essential", "business", "enterprise".
         * Valkey: "essential", "business".
         """
         return pulumi.get(self, "plan")
@@ -706,24 +702,6 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        cassandradb = ovh.cloudproject.Database("cassandradb",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            description="my-first-cassandra",
-            engine="cassandra",
-            version="4.0",
-            plan="essential",
-            nodes=[
-                {
-                    "region": "BHS",
-                },
-                {
-                    "region": "BHS",
-                },
-                {
-                    "region": "BHS",
-                },
-            ],
-            flavor="db1-4")
         kafkadb = ovh.cloudproject.Database("kafkadb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-kafka",
@@ -744,16 +722,6 @@ class Database(pulumi.CustomResource):
                     "region": "DE",
                 },
             ])
-        m3db = ovh.cloudproject.Database("m3db",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            description="my-first-m3db",
-            engine="m3db",
-            version="1.2",
-            plan="essential",
-            nodes=[{
-                "region": "BHS",
-            }],
-            flavor="db1-7")
         mongodb = ovh.cloudproject.Database("mongodb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-mongodb",
@@ -809,16 +777,6 @@ class Database(pulumi.CustomResource):
                     "ip": "178.97.7.0/24",
                 },
             ])
-        redisdb = ovh.cloudproject.Database("redisdb",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            description="my-first-redis",
-            engine="redis",
-            version="6.2",
-            plan="essential",
-            nodes=[{
-                "region": "BHS",
-            }],
-            flavor="db1-4")
         grafana = ovh.cloudproject.Database("grafana",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-grafana",
@@ -910,7 +868,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
         :param pulumi.Input[_builtins.int] disk_size: The disk size (in GB) of the database service.
@@ -923,10 +881,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[_builtins.str] plan: Plan of the cluster.
-               * MongoDB: Enum: "discovery", "production", "advanced".
-               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-               * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business".
+               * Clickhouse: "production".
+               * MongoDB: "discovery", "production", "advanced".
+               * MySQL, PostgreSQL: "essential", "business", "enterprise".
                * Valkey: "essential", "business".
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] version: The version of the engine in which the service should be deployed
@@ -946,24 +903,6 @@ class Database(pulumi.CustomResource):
         import pulumi
         import pulumi_ovh as ovh
 
-        cassandradb = ovh.cloudproject.Database("cassandradb",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            description="my-first-cassandra",
-            engine="cassandra",
-            version="4.0",
-            plan="essential",
-            nodes=[
-                {
-                    "region": "BHS",
-                },
-                {
-                    "region": "BHS",
-                },
-                {
-                    "region": "BHS",
-                },
-            ],
-            flavor="db1-4")
         kafkadb = ovh.cloudproject.Database("kafkadb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-kafka",
@@ -984,16 +923,6 @@ class Database(pulumi.CustomResource):
                     "region": "DE",
                 },
             ])
-        m3db = ovh.cloudproject.Database("m3db",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            description="my-first-m3db",
-            engine="m3db",
-            version="1.2",
-            plan="essential",
-            nodes=[{
-                "region": "BHS",
-            }],
-            flavor="db1-7")
         mongodb = ovh.cloudproject.Database("mongodb",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-mongodb",
@@ -1049,16 +978,6 @@ class Database(pulumi.CustomResource):
                     "ip": "178.97.7.0/24",
                 },
             ])
-        redisdb = ovh.cloudproject.Database("redisdb",
-            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-            description="my-first-redis",
-            engine="redis",
-            version="6.2",
-            plan="essential",
-            nodes=[{
-                "region": "BHS",
-            }],
-            flavor="db1-4")
         grafana = ovh.cloudproject.Database("grafana",
             service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
             description="my-first-grafana",
@@ -1260,7 +1179,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] advanced_configuration: Advanced configuration key / value.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] backup_regions: List of region where backups are pushed. Not more than 1 regions for MongoDB. Not more than 2 regions for the other engines with one being the same as the nodes[].region field
-        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        :param pulumi.Input[_builtins.str] backup_time: Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         :param pulumi.Input[_builtins.str] created_at: Date of the creation of the cluster.
         :param pulumi.Input[_builtins.bool] deletion_protection: Enable deletion protection
         :param pulumi.Input[_builtins.str] description: Small description of the database service.
@@ -1277,10 +1196,9 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[_builtins.str] plan: Plan of the cluster.
-               * MongoDB: Enum: "discovery", "production", "advanced".
-               * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-               * M3 Aggregator: "business", "enterprise".
-               * Redis: "essential", "business".
+               * Clickhouse: "production".
+               * MongoDB: "discovery", "production", "advanced".
+               * MySQL, PostgreSQL: "essential", "business", "enterprise".
                * Valkey: "essential", "business".
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] status: Current status of the cluster.
@@ -1334,7 +1252,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+        Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
         """
         return pulumi.get(self, "backup_time")
 
@@ -1463,10 +1381,9 @@ class Database(pulumi.CustomResource):
     def plan(self) -> pulumi.Output[_builtins.str]:
         """
         Plan of the cluster.
-        * MongoDB: Enum: "discovery", "production", "advanced".
-        * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-        * M3 Aggregator: "business", "enterprise".
-        * Redis: "essential", "business".
+        * Clickhouse: "production".
+        * MongoDB: "discovery", "production", "advanced".
+        * MySQL, PostgreSQL: "essential", "business", "enterprise".
         * Valkey: "essential", "business".
         """
         return pulumi.get(self, "plan")

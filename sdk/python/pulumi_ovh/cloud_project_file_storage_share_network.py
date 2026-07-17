@@ -331,6 +331,8 @@ class CloudProjectFileStorageShareNetwork(pulumi.CustomResource):
                  subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE** Prefer using the new `CloudStorageFileShareNetwork` resource instead.
+
         Creates a share network in a public cloud project.
 
         ## Example Usage
@@ -375,6 +377,8 @@ class CloudProjectFileStorageShareNetwork(pulumi.CustomResource):
                  args: CloudProjectFileStorageShareNetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE** Prefer using the new `CloudStorageFileShareNetwork` resource instead.
+
         Creates a share network in a public cloud project.
 
         ## Example Usage

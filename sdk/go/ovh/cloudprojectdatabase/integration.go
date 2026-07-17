@@ -99,6 +99,8 @@ type Integration struct {
 	// * `kafkaConnect`
 	// * `kafkaLogs`
 	// * `kafkaMirrorMaker`
+	// * `opensearchLogs`
+	// * `postgresqlMetrics`
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -164,6 +166,8 @@ type integrationState struct {
 	// * `kafkaConnect`
 	// * `kafkaLogs`
 	// * `kafkaMirrorMaker`
+	// * `opensearchLogs`
+	// * `postgresqlMetrics`
 	Type *string `pulumi:"type"`
 }
 
@@ -188,6 +192,8 @@ type IntegrationState struct {
 	// * `kafkaConnect`
 	// * `kafkaLogs`
 	// * `kafkaMirrorMaker`
+	// * `opensearchLogs`
+	// * `postgresqlMetrics`
 	Type pulumi.StringPtrInput
 }
 
@@ -214,6 +220,8 @@ type integrationArgs struct {
 	// * `kafkaConnect`
 	// * `kafkaLogs`
 	// * `kafkaMirrorMaker`
+	// * `opensearchLogs`
+	// * `postgresqlMetrics`
 	Type *string `pulumi:"type"`
 }
 
@@ -237,6 +245,8 @@ type IntegrationArgs struct {
 	// * `kafkaConnect`
 	// * `kafkaLogs`
 	// * `kafkaMirrorMaker`
+	// * `opensearchLogs`
+	// * `postgresqlMetrics`
 	Type pulumi.StringPtrInput
 }
 
@@ -368,6 +378,8 @@ func (o IntegrationOutput) Status() pulumi.StringOutput {
 // * `kafkaConnect`
 // * `kafkaLogs`
 // * `kafkaMirrorMaker`
+// * `opensearchLogs`
+// * `postgresqlMetrics`
 func (o IntegrationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Integration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

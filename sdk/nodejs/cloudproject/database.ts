@@ -15,25 +15,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as ovh from "@ovhcloud/pulumi-ovh";
  *
- * const cassandradb = new ovh.cloudproject.Database("cassandradb", {
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     description: "my-first-cassandra",
- *     engine: "cassandra",
- *     version: "4.0",
- *     plan: "essential",
- *     nodes: [
- *         {
- *             region: "BHS",
- *         },
- *         {
- *             region: "BHS",
- *         },
- *         {
- *             region: "BHS",
- *         },
- *     ],
- *     flavor: "db1-4",
- * });
  * const kafkadb = new ovh.cloudproject.Database("kafkadb", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
  *     description: "my-first-kafka",
@@ -54,17 +35,6 @@ import * as utilities from "../utilities";
  *             region: "DE",
  *         },
  *     ],
- * });
- * const m3db = new ovh.cloudproject.Database("m3db", {
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     description: "my-first-m3db",
- *     engine: "m3db",
- *     version: "1.2",
- *     plan: "essential",
- *     nodes: [{
- *         region: "BHS",
- *     }],
- *     flavor: "db1-7",
  * });
  * const mongodb = new ovh.cloudproject.Database("mongodb", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -124,17 +94,6 @@ import * as utilities from "../utilities";
  *             ip: "178.97.7.0/24",
  *         },
  *     ],
- * });
- * const redisdb = new ovh.cloudproject.Database("redisdb", {
- *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
- *     description: "my-first-redis",
- *     engine: "redis",
- *     version: "6.2",
- *     plan: "essential",
- *     nodes: [{
- *         region: "BHS",
- *     }],
- *     flavor: "db1-4",
  * });
  * const grafana = new ovh.cloudproject.Database("grafana", {
  *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -264,7 +223,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly backupRegions!: pulumi.Output<string[]>;
     /**
-     * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+     * Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
@@ -329,10 +288,9 @@ export class Database extends pulumi.CustomResource {
     public readonly opensearchAclsEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Plan of the cluster.
-     * * MongoDB: Enum: "discovery", "production", "advanced".
-     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-     * * M3 Aggregator: "business", "enterprise".
-     * * Redis: "essential", "business".
+     * * Clickhouse: "production".
+     * * MongoDB: "discovery", "production", "advanced".
+     * * MySQL, PostgreSQL: "essential", "business", "enterprise".
      * * Valkey: "essential", "business".
      */
     public readonly plan!: pulumi.Output<string>;
@@ -442,7 +400,7 @@ export interface DatabaseState {
      */
     backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+     * Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -507,10 +465,9 @@ export interface DatabaseState {
     opensearchAclsEnabled?: pulumi.Input<boolean>;
     /**
      * Plan of the cluster.
-     * * MongoDB: Enum: "discovery", "production", "advanced".
-     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-     * * M3 Aggregator: "business", "enterprise".
-     * * Redis: "essential", "business".
+     * * Clickhouse: "production".
+     * * MongoDB: "discovery", "production", "advanced".
+     * * MySQL, PostgreSQL: "essential", "business", "enterprise".
      * * Valkey: "essential", "business".
      */
     plan?: pulumi.Input<string>;
@@ -541,7 +498,7 @@ export interface DatabaseArgs {
      */
     backupRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Time on which backups start every day (this parameter is not usable on the following engines: "m3db", "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch", "m3aggregator").
+     * Time on which backups start every day (this parameter is not usable on the following engines: "grafana", "kafka", "kafkaconnect", "kafkamirrormaker", "opensearch").
      */
     backupTime?: pulumi.Input<string>;
     /**
@@ -590,10 +547,9 @@ export interface DatabaseArgs {
     opensearchAclsEnabled?: pulumi.Input<boolean>;
     /**
      * Plan of the cluster.
-     * * MongoDB: Enum: "discovery", "production", "advanced".
-     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: "essential", "business", "enterprise".
-     * * M3 Aggregator: "business", "enterprise".
-     * * Redis: "essential", "business".
+     * * Clickhouse: "production".
+     * * MongoDB: "discovery", "production", "advanced".
+     * * MySQL, PostgreSQL: "essential", "business", "enterprise".
      * * Valkey: "essential", "business".
      */
     plan: pulumi.Input<string>;

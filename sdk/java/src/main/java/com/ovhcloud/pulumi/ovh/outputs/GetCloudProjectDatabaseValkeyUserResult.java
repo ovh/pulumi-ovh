@@ -52,7 +52,7 @@ public final class GetCloudProjectDatabaseValkeyUserResult {
      */
     private String name;
     /**
-     * @return Current status of the user.
+     * @return See Argument Reference above.
      * 
      */
     private String serviceName;
@@ -120,7 +120,7 @@ public final class GetCloudProjectDatabaseValkeyUserResult {
         return this.name;
     }
     /**
-     * @return Current status of the user.
+     * @return See Argument Reference above.
      * 
      */
     public String serviceName() {

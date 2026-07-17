@@ -71,7 +71,7 @@ type GetOpenSearchPatternResult struct {
 	MaxIndexCount int `pulumi:"maxIndexCount"`
 	// Pattern format.
 	Pattern string `pulumi:"pattern"`
-	// Current status of the pattern.
+	// See Argument Reference above.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -133,7 +133,7 @@ func (o GetOpenSearchPatternResultOutput) Pattern() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) string { return v.Pattern }).(pulumi.StringOutput)
 }
 
-// Current status of the pattern.
+// See Argument Reference above.
 func (o GetOpenSearchPatternResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenSearchPatternResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

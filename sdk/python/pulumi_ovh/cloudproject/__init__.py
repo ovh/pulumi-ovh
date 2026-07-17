@@ -41,9 +41,6 @@ from .get_kube_oidc import *
 from .get_load_balancer import *
 from .get_load_balancer_flavors import *
 from .get_load_balancers import *
-from .get_m3db_namespace import *
-from .get_m3db_namespaces import *
-from .get_m3db_user import *
 from .get_mongo_db_prometheus import *
 from .get_mongo_db_user import *
 from .get_network_private import *
@@ -56,7 +53,6 @@ from .get_prometheus import *
 from .get_rancher import *
 from .get_rancher_plan import *
 from .get_rancher_version import *
-from .get_redis_user import *
 from .get_region import *
 from .get_region_load_balancer_log_subscription import *
 from .get_region_load_balancer_log_subscriptions import *

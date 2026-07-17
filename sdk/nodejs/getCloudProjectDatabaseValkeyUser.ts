@@ -85,7 +85,7 @@ export interface GetCloudProjectDatabaseValkeyUserResult {
      */
     readonly name: string;
     /**
-     * Current status of the user.
+     * See Argument Reference above.
      */
     readonly serviceName: string;
     /**

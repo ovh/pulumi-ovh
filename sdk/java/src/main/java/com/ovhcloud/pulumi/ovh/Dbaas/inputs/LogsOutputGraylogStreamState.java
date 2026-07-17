@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -48,14 +49,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+     * ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
      * 
      */
     @Import(name="coldStorageContent")
     private @Nullable Output<String> coldStorageContent;
 
     /**
-     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
      * 
      */
     public Optional<Output<String>> coldStorageContent() {
@@ -153,6 +154,21 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
+     * Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    @Import(name="encryptionKeysIds")
+    private @Nullable Output<List<String>> encryptionKeysIds;
+
+    /**
+     * @return Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    public Optional<Output<List<String>>> encryptionKeysIds() {
+        return Optional.ofNullable(this.encryptionKeysIds);
+    }
+
+    /**
      * Enable ES indexing
      * 
      */
@@ -243,14 +259,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * Number of coldstored archivesr
+     * Number of coldstored archives
      * 
      */
     @Import(name="nbArchive")
     private @Nullable Output<Integer> nbArchive;
 
     /**
-     * @return Number of coldstored archivesr
+     * @return Number of coldstored archives
      * 
      */
     public Optional<Output<Integer>> nbArchive() {
@@ -348,14 +364,14 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
     }
 
     /**
-     * Stream last updater
+     * Stream last update
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Stream last updater
+     * @return Stream last update
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -404,6 +420,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         this.coldStorageTarget = $.coldStorageTarget;
         this.createdAt = $.createdAt;
         this.description = $.description;
+        this.encryptionKeysIds = $.encryptionKeysIds;
         this.indexingEnabled = $.indexingEnabled;
         this.indexingMaxSize = $.indexingMaxSize;
         this.indexingNotifyEnabled = $.indexingNotifyEnabled;
@@ -483,7 +500,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -494,7 +511,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+         * @param coldStorageContent ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
          * 
          * @return builder
          * 
@@ -630,6 +647,37 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param encryptionKeysIds Set of encryption key IDs used to encrypt stream archives
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKeysIds(@Nullable Output<List<String>> encryptionKeysIds) {
+            $.encryptionKeysIds = encryptionKeysIds;
+            return this;
+        }
+
+        /**
+         * @param encryptionKeysIds Set of encryption key IDs used to encrypt stream archives
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKeysIds(List<String> encryptionKeysIds) {
+            return encryptionKeysIds(Output.of(encryptionKeysIds));
+        }
+
+        /**
+         * @param encryptionKeysIds Set of encryption key IDs used to encrypt stream archives
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptionKeysIds(String... encryptionKeysIds) {
+            return encryptionKeysIds(List.of(encryptionKeysIds));
+        }
+
+        /**
          * @param indexingEnabled Enable ES indexing
          * 
          * @return builder
@@ -756,7 +804,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nbArchive Number of coldstored archivesr
+         * @param nbArchive Number of coldstored archives
          * 
          * @return builder
          * 
@@ -767,7 +815,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nbArchive Number of coldstored archivesr
+         * @param nbArchive Number of coldstored archives
          * 
          * @return builder
          * 
@@ -903,7 +951,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param updatedAt Stream last updater
+         * @param updatedAt Stream last update
          * 
          * @return builder
          * 
@@ -914,7 +962,7 @@ public final class LogsOutputGraylogStreamState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param updatedAt Stream last updater
+         * @param updatedAt Stream last update
          * 
          * @return builder
          * 

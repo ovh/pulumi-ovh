@@ -15,6 +15,18 @@ else:
 from . import _utilities
 
 __all__ = [
+    'CloudFloatingIpCurrentStateArgs',
+    'CloudFloatingIpCurrentStateArgsDict',
+    'CloudFloatingIpCurrentStateAssociatedResourceArgs',
+    'CloudFloatingIpCurrentStateAssociatedResourceArgsDict',
+    'CloudFloatingIpCurrentStateLocationArgs',
+    'CloudFloatingIpCurrentStateLocationArgsDict',
+    'CloudFloatingIpCurrentStateNetworkArgs',
+    'CloudFloatingIpCurrentStateNetworkArgsDict',
+    'CloudFloatingIpCurrentTaskArgs',
+    'CloudFloatingIpCurrentTaskArgsDict',
+    'CloudFloatingIpCurrentTaskErrorArgs',
+    'CloudFloatingIpCurrentTaskErrorArgsDict',
     'CloudGatewayCurrentStateArgs',
     'CloudGatewayCurrentStateArgsDict',
     'CloudGatewayCurrentStateExternalGatewayArgs',
@@ -25,6 +37,18 @@ __all__ = [
     'CloudGatewayCurrentStateSubnetArgsDict',
     'CloudGatewayExternalGatewayArgs',
     'CloudGatewayExternalGatewayArgsDict',
+    'CloudKeyManagerContainerCurrentStateArgs',
+    'CloudKeyManagerContainerCurrentStateArgsDict',
+    'CloudKeyManagerContainerCurrentStateLocationArgs',
+    'CloudKeyManagerContainerCurrentStateLocationArgsDict',
+    'CloudKeyManagerContainerCurrentStateSecretRefArgs',
+    'CloudKeyManagerContainerCurrentStateSecretRefArgsDict',
+    'CloudKeyManagerContainerSecretRefArgs',
+    'CloudKeyManagerContainerSecretRefArgsDict',
+    'CloudKeyManagerSecretCurrentStateArgs',
+    'CloudKeyManagerSecretCurrentStateArgsDict',
+    'CloudKeyManagerSecretCurrentStateLocationArgs',
+    'CloudKeyManagerSecretCurrentStateLocationArgsDict',
     'CloudNetworkPrivateVrackCurrentStateArgs',
     'CloudNetworkPrivateVrackCurrentStateArgsDict',
     'CloudNetworkPrivateVrackCurrentStateLocationArgs',
@@ -59,6 +83,108 @@ __all__ = [
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionArgsDict',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs',
     'CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgsDict',
+    'CloudQuotaCurrentStateArgs',
+    'CloudQuotaCurrentStateArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileArgs',
+    'CloudQuotaCurrentStateAvailableProfileArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileComputeArgs',
+    'CloudQuotaCurrentStateAvailableProfileComputeArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileKeyManagerArgs',
+    'CloudQuotaCurrentStateAvailableProfileKeyManagerArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileKeypairArgs',
+    'CloudQuotaCurrentStateAvailableProfileKeypairArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileLoadbalancerArgs',
+    'CloudQuotaCurrentStateAvailableProfileLoadbalancerArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileNetworkArgs',
+    'CloudQuotaCurrentStateAvailableProfileNetworkArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileShareArgs',
+    'CloudQuotaCurrentStateAvailableProfileShareArgsDict',
+    'CloudQuotaCurrentStateAvailableProfileVolumeArgs',
+    'CloudQuotaCurrentStateAvailableProfileVolumeArgsDict',
+    'CloudQuotaCurrentStateRegionArgs',
+    'CloudQuotaCurrentStateRegionArgsDict',
+    'CloudQuotaCurrentStateRegionComputeArgs',
+    'CloudQuotaCurrentStateRegionComputeArgsDict',
+    'CloudQuotaCurrentStateRegionComputeCoresArgs',
+    'CloudQuotaCurrentStateRegionComputeCoresArgsDict',
+    'CloudQuotaCurrentStateRegionComputeInstancesArgs',
+    'CloudQuotaCurrentStateRegionComputeInstancesArgsDict',
+    'CloudQuotaCurrentStateRegionComputeMemoryArgs',
+    'CloudQuotaCurrentStateRegionComputeMemoryArgsDict',
+    'CloudQuotaCurrentStateRegionKeyManagerArgs',
+    'CloudQuotaCurrentStateRegionKeyManagerArgsDict',
+    'CloudQuotaCurrentStateRegionKeyManagerContainersArgs',
+    'CloudQuotaCurrentStateRegionKeyManagerContainersArgsDict',
+    'CloudQuotaCurrentStateRegionKeyManagerSecretsArgs',
+    'CloudQuotaCurrentStateRegionKeyManagerSecretsArgsDict',
+    'CloudQuotaCurrentStateRegionKeypairArgs',
+    'CloudQuotaCurrentStateRegionKeypairArgsDict',
+    'CloudQuotaCurrentStateRegionKeypairKeypairsArgs',
+    'CloudQuotaCurrentStateRegionKeypairKeypairsArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerListenersArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerListenersArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerMembersArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerMembersArgsDict',
+    'CloudQuotaCurrentStateRegionLoadbalancerPoolsArgs',
+    'CloudQuotaCurrentStateRegionLoadbalancerPoolsArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkArgs',
+    'CloudQuotaCurrentStateRegionNetworkArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkFloatingIpsArgs',
+    'CloudQuotaCurrentStateRegionNetworkFloatingIpsArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkGatewaysArgs',
+    'CloudQuotaCurrentStateRegionNetworkGatewaysArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkNetworksArgs',
+    'CloudQuotaCurrentStateRegionNetworkNetworksArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgs',
+    'CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgs',
+    'CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgsDict',
+    'CloudQuotaCurrentStateRegionNetworkSubnetsArgs',
+    'CloudQuotaCurrentStateRegionNetworkSubnetsArgsDict',
+    'CloudQuotaCurrentStateRegionShareArgs',
+    'CloudQuotaCurrentStateRegionShareArgsDict',
+    'CloudQuotaCurrentStateRegionShareBackupSizeTotalArgs',
+    'CloudQuotaCurrentStateRegionShareBackupSizeTotalArgsDict',
+    'CloudQuotaCurrentStateRegionShareBackupsArgs',
+    'CloudQuotaCurrentStateRegionShareBackupsArgsDict',
+    'CloudQuotaCurrentStateRegionSharePerShareSizeArgs',
+    'CloudQuotaCurrentStateRegionSharePerShareSizeArgsDict',
+    'CloudQuotaCurrentStateRegionShareShareNetworksArgs',
+    'CloudQuotaCurrentStateRegionShareShareNetworksArgsDict',
+    'CloudQuotaCurrentStateRegionShareSharesArgs',
+    'CloudQuotaCurrentStateRegionShareSharesArgsDict',
+    'CloudQuotaCurrentStateRegionShareSizeTotalArgs',
+    'CloudQuotaCurrentStateRegionShareSizeTotalArgsDict',
+    'CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgs',
+    'CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgsDict',
+    'CloudQuotaCurrentStateRegionShareSnapshotsArgs',
+    'CloudQuotaCurrentStateRegionShareSnapshotsArgsDict',
+    'CloudQuotaCurrentStateRegionVolumeArgs',
+    'CloudQuotaCurrentStateRegionVolumeArgsDict',
+    'CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgs',
+    'CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgsDict',
+    'CloudQuotaCurrentStateRegionVolumeBackupsArgs',
+    'CloudQuotaCurrentStateRegionVolumeBackupsArgsDict',
+    'CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgs',
+    'CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgsDict',
+    'CloudQuotaCurrentStateRegionVolumeSizeTotalArgs',
+    'CloudQuotaCurrentStateRegionVolumeSizeTotalArgsDict',
+    'CloudQuotaCurrentStateRegionVolumeSnapshotsArgs',
+    'CloudQuotaCurrentStateRegionVolumeSnapshotsArgsDict',
+    'CloudQuotaCurrentStateRegionVolumeVolumesArgs',
+    'CloudQuotaCurrentStateRegionVolumeVolumesArgsDict',
+    'CloudQuotaRegionArgs',
+    'CloudQuotaRegionArgsDict',
     'CloudSecurityGroupCurrentStateArgs',
     'CloudSecurityGroupCurrentStateArgsDict',
     'CloudSecurityGroupCurrentStateDefaultRuleArgs',
@@ -89,6 +215,26 @@ __all__ = [
     'CloudStorageBlockVolumeSnapshotCurrentStateArgsDict',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict',
+    'CloudStorageFileShareAccessRuleArgs',
+    'CloudStorageFileShareAccessRuleArgsDict',
+    'CloudStorageFileShareCurrentStateArgs',
+    'CloudStorageFileShareCurrentStateArgsDict',
+    'CloudStorageFileShareCurrentStateAccessRuleArgs',
+    'CloudStorageFileShareCurrentStateAccessRuleArgsDict',
+    'CloudStorageFileShareCurrentStateCapabilityArgs',
+    'CloudStorageFileShareCurrentStateCapabilityArgsDict',
+    'CloudStorageFileShareCurrentStateExportLocationArgs',
+    'CloudStorageFileShareCurrentStateExportLocationArgsDict',
+    'CloudStorageFileShareCurrentStateLocationArgs',
+    'CloudStorageFileShareCurrentStateLocationArgsDict',
+    'CloudStorageFileShareNetworkCurrentStateArgs',
+    'CloudStorageFileShareNetworkCurrentStateArgsDict',
+    'CloudStorageFileShareNetworkCurrentStateLocationArgs',
+    'CloudStorageFileShareNetworkCurrentStateLocationArgsDict',
+    'CloudStorageFileShareSnapshotCurrentStateArgs',
+    'CloudStorageFileShareSnapshotCurrentStateArgsDict',
+    'CloudStorageFileShareSnapshotCurrentStateLocationArgs',
+    'CloudStorageFileShareSnapshotCurrentStateLocationArgsDict',
     'StorageEfsIamArgs',
     'StorageEfsIamArgsDict',
     'StorageEfsOrderArgs',
@@ -142,6 +288,438 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class CloudFloatingIpCurrentStateArgsDict(TypedDict):
+        associated_resource: NotRequired[pulumi.Input['CloudFloatingIpCurrentStateAssociatedResourceArgsDict']]
+        """
+        Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the floating IP. This is the only argument that can be updated in place.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier of the current task.
+        """
+        ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP address of the floating IP.
+        """
+        location: NotRequired[pulumi.Input['CloudFloatingIpCurrentStateLocationArgsDict']]
+        """
+        Location details:
+        """
+        network: NotRequired[pulumi.Input['CloudFloatingIpCurrentStateNetworkArgsDict']]
+        """
+        External network the floating IP belongs to:
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Current global status of the current task.
+        """
+elif False:
+    CloudFloatingIpCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudFloatingIpCurrentStateArgs:
+    def __init__(__self__, *,
+                 associated_resource: Optional[pulumi.Input['CloudFloatingIpCurrentStateAssociatedResourceArgs']] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudFloatingIpCurrentStateLocationArgs']] = None,
+                 network: Optional[pulumi.Input['CloudFloatingIpCurrentStateNetworkArgs']] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['CloudFloatingIpCurrentStateAssociatedResourceArgs'] associated_resource: Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        :param pulumi.Input[_builtins.str] description: Description of the floating IP. This is the only argument that can be updated in place.
+        :param pulumi.Input[_builtins.str] id: Identifier of the current task.
+        :param pulumi.Input[_builtins.str] ip: IP address of the floating IP.
+        :param pulumi.Input['CloudFloatingIpCurrentStateLocationArgs'] location: Location details:
+        :param pulumi.Input['CloudFloatingIpCurrentStateNetworkArgs'] network: External network the floating IP belongs to:
+        :param pulumi.Input[_builtins.str] status: Current global status of the current task.
+        """
+        if associated_resource is not None:
+            pulumi.set(__self__, "associated_resource", associated_resource)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="associatedResource")
+    def associated_resource(self) -> Optional[pulumi.Input['CloudFloatingIpCurrentStateAssociatedResourceArgs']]:
+        """
+        Resource the floating IP is currently attached to. Null when the floating IP is not attached to any resource:
+        """
+        return pulumi.get(self, "associated_resource")
+
+    @associated_resource.setter
+    def associated_resource(self, value: Optional[pulumi.Input['CloudFloatingIpCurrentStateAssociatedResourceArgs']]):
+        pulumi.set(self, "associated_resource", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the floating IP. This is the only argument that can be updated in place.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP address of the floating IP.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudFloatingIpCurrentStateLocationArgs']]:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudFloatingIpCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['CloudFloatingIpCurrentStateNetworkArgs']]:
+        """
+        External network the floating IP belongs to:
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['CloudFloatingIpCurrentStateNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class CloudFloatingIpCurrentStateAssociatedResourceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier of the current task.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the current task.
+        """
+elif False:
+    CloudFloatingIpCurrentStateAssociatedResourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudFloatingIpCurrentStateAssociatedResourceArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Identifier of the current task.
+        :param pulumi.Input[_builtins.str] type: Type of the current task.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CloudFloatingIpCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone for the floating IP. **Changing this value recreates the resource.**
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the floating IP will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudFloatingIpCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudFloatingIpCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone for the floating IP. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] region: Region where the floating IP will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone for the floating IP. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the floating IP will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudFloatingIpCurrentStateNetworkArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier of the current task.
+        """
+elif False:
+    CloudFloatingIpCurrentStateNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudFloatingIpCurrentStateNetworkArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Identifier of the current task.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class CloudFloatingIpCurrentTaskArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudFloatingIpCurrentTaskErrorArgsDict']]]]
+        """
+        Errors that occurred on the task:
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Identifier of the current task.
+        """
+        link: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Link to the task details.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Current global status of the current task.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the current task.
+        """
+elif False:
+    CloudFloatingIpCurrentTaskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudFloatingIpCurrentTaskArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['CloudFloatingIpCurrentTaskErrorArgs']]]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 link: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudFloatingIpCurrentTaskErrorArgs']]] errors: Errors that occurred on the task:
+        :param pulumi.Input[_builtins.str] id: Identifier of the current task.
+        :param pulumi.Input[_builtins.str] link: Link to the task details.
+        :param pulumi.Input[_builtins.str] status: Current global status of the current task.
+        :param pulumi.Input[_builtins.str] type: Type of the current task.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if link is not None:
+            pulumi.set(__self__, "link", link)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudFloatingIpCurrentTaskErrorArgs']]]]:
+        """
+        Errors that occurred on the task:
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudFloatingIpCurrentTaskErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier of the current task.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def link(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Link to the task details.
+        """
+        return pulumi.get(self, "link")
+
+    @link.setter
+    def link(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "link", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current global status of the current task.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the current task.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CloudFloatingIpCurrentTaskErrorArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Error description.
+        """
+elif False:
+    CloudFloatingIpCurrentTaskErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudFloatingIpCurrentTaskErrorArgs:
+    def __init__(__self__, *,
+                 message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] message: Error description.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Error description.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "message", value)
+
 
 if not MYPY:
     class CloudGatewayCurrentStateArgsDict(TypedDict):
@@ -480,6 +1058,576 @@ class CloudGatewayExternalGatewayArgs:
     @model.setter
     def model(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "model", value)
+
+
+if not MYPY:
+    class CloudKeyManagerContainerCurrentStateArgsDict(TypedDict):
+        container_ref: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        OpenStack reference URL for the container.
+        """
+        location: NotRequired[pulumi.Input['CloudKeyManagerContainerCurrentStateLocationArgsDict']]
+        """
+        Location of the container:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the container.
+        """
+        secret_refs: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudKeyManagerContainerCurrentStateSecretRefArgsDict']]]]
+        """
+        List of secret references in the container. Each element supports:
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+elif False:
+    CloudKeyManagerContainerCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudKeyManagerContainerCurrentStateArgs:
+    def __init__(__self__, *,
+                 container_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudKeyManagerContainerCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_refs: Optional[pulumi.Input[Sequence[pulumi.Input['CloudKeyManagerContainerCurrentStateSecretRefArgs']]]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] container_ref: OpenStack reference URL for the container.
+        :param pulumi.Input['CloudKeyManagerContainerCurrentStateLocationArgs'] location: Location of the container:
+        :param pulumi.Input[_builtins.str] name: Name of the container.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudKeyManagerContainerCurrentStateSecretRefArgs']]] secret_refs: List of secret references in the container. Each element supports:
+        :param pulumi.Input[_builtins.str] status: Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        :param pulumi.Input[_builtins.str] type: Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        if container_ref is not None:
+            pulumi.set(__self__, "container_ref", container_ref)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_refs is not None:
+            pulumi.set(__self__, "secret_refs", secret_refs)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="containerRef")
+    def container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OpenStack reference URL for the container.
+        """
+        return pulumi.get(self, "container_ref")
+
+    @container_ref.setter
+    def container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "container_ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudKeyManagerContainerCurrentStateLocationArgs']]:
+        """
+        Location of the container:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudKeyManagerContainerCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the container.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretRefs")
+    def secret_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudKeyManagerContainerCurrentStateSecretRefArgs']]]]:
+        """
+        List of secret references in the container. Each element supports:
+        """
+        return pulumi.get(self, "secret_refs")
+
+    @secret_refs.setter
+    def secret_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudKeyManagerContainerCurrentStateSecretRefArgs']]]]):
+        pulumi.set(self, "secret_refs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the container. Possible values: `ACTIVE`, `ERROR`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the container. Possible values: `CERTIFICATE`, `GENERIC`, `RSA`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CloudKeyManagerContainerCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone where the container will be created.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the container will be created.
+        """
+elif False:
+    CloudKeyManagerContainerCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudKeyManagerContainerCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the container will be created.
+        :param pulumi.Input[_builtins.str] region: Region where the container will be created.
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone where the container will be created.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the container will be created.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudKeyManagerContainerCurrentStateSecretRefArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        """
+        secret_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the referenced secret.
+        """
+elif False:
+    CloudKeyManagerContainerCurrentStateSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudKeyManagerContainerCurrentStateSecretRefArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        :param pulumi.Input[_builtins.str] secret_id: ID of the referenced secret.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_id is not None:
+            pulumi.set(__self__, "secret_id", secret_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the referenced secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_id", value)
+
+
+if not MYPY:
+    class CloudKeyManagerContainerSecretRefArgsDict(TypedDict):
+        name: pulumi.Input[_builtins.str]
+        """
+        Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        """
+        secret_id: pulumi.Input[_builtins.str]
+        """
+        ID of the referenced secret.
+        """
+elif False:
+    CloudKeyManagerContainerSecretRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudKeyManagerContainerSecretRefArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 secret_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        :param pulumi.Input[_builtins.str] secret_id: ID of the referenced secret.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret_id", secret_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the secret reference (e.g., `certificate`, `private_key`, `public_key`).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the referenced secret.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @secret_id.setter
+    def secret_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret_id", value)
+
+
+if not MYPY:
+    class CloudKeyManagerSecretCurrentStateArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        """
+        bit_length: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Bit length of the secret (e.g., `256`).
+        """
+        expiration: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Expiration date of the secret in RFC3339 format.
+        """
+        location: NotRequired[pulumi.Input['CloudKeyManagerSecretCurrentStateLocationArgsDict']]
+        """
+        Location of the secret:
+        """
+        metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Key-value metadata for the secret. This is the only mutable field on a secret.
+        """
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Mode of the secret algorithm (e.g., `CBC`).
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the secret.
+        """
+        payload_content_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+        """
+        secret_ref: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        OpenStack reference URL for the secret.
+        """
+        secret_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the secret (`ACTIVE`, `ERROR`).
+        """
+elif False:
+    CloudKeyManagerSecretCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudKeyManagerSecretCurrentStateArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 bit_length: Optional[pulumi.Input[_builtins.int]] = None,
+                 expiration: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudKeyManagerSecretCurrentStateLocationArgs']] = None,
+                 metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 payload_content_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param pulumi.Input[_builtins.int] bit_length: Bit length of the secret (e.g., `256`).
+        :param pulumi.Input[_builtins.str] expiration: Expiration date of the secret in RFC3339 format.
+        :param pulumi.Input['CloudKeyManagerSecretCurrentStateLocationArgs'] location: Location of the secret:
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
+        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param pulumi.Input[_builtins.str] name: Name of the secret.
+        :param pulumi.Input[_builtins.str] payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+        :param pulumi.Input[_builtins.str] secret_ref: OpenStack reference URL for the secret.
+        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param pulumi.Input[_builtins.str] status: Status of the secret (`ACTIVE`, `ERROR`).
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if bit_length is not None:
+            pulumi.set(__self__, "bit_length", bit_length)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if payload_content_type is not None:
+            pulumi.set(__self__, "payload_content_type", payload_content_type)
+        if secret_ref is not None:
+            pulumi.set(__self__, "secret_ref", secret_ref)
+        if secret_type is not None:
+            pulumi.set(__self__, "secret_type", secret_type)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bitLength")
+    def bit_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Bit length of the secret (e.g., `256`).
+        """
+        return pulumi.get(self, "bit_length")
+
+    @bit_length.setter
+    def bit_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "bit_length", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Expiration date of the secret in RFC3339 format.
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expiration", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudKeyManagerSecretCurrentStateLocationArgs']]:
+        """
+        Location of the secret:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudKeyManagerSecretCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Key-value metadata for the secret. This is the only mutable field on a secret.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "metadata", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Mode of the secret algorithm (e.g., `CBC`).
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the secret.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="payloadContentType")
+    def payload_content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
+        """
+        return pulumi.get(self, "payload_content_type")
+
+    @payload_content_type.setter
+    def payload_content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "payload_content_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretRef")
+    def secret_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OpenStack reference URL for the secret.
+        """
+        return pulumi.get(self, "secret_ref")
+
+    @secret_ref.setter
+    def secret_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_ref", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        """
+        return pulumi.get(self, "secret_type")
+
+    @secret_type.setter
+    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the secret (`ACTIVE`, `ERROR`).
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class CloudKeyManagerSecretCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone where the secret will be created.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the secret will be created.
+        """
+elif False:
+    CloudKeyManagerSecretCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudKeyManagerSecretCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the secret will be created.
+        :param pulumi.Input[_builtins.str] region: Region where the secret will be created.
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone where the secret will be created.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the secret will be created.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
 
 if not MYPY:
@@ -1762,6 +2910,2943 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleTransitionArgs:
     @days.setter
     def days(self, value: Optional[pulumi.Input[_builtins.float]]):
         pulumi.set(self, "days", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateArgsDict(TypedDict):
+        available_profiles: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateAvailableProfileArgsDict']]]]
+        """
+        — All quota profiles offered to the project, with
+        their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+        `key_manager`, `share`, `keypair`).
+        """
+        prevent_automatic_quota_upgrade: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        — When true, automatic
+        quota upgrades are disabled for this project.
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateRegionArgsDict']]]]
+        """
+        — Target quota profile per region:
+        """
+elif False:
+    CloudQuotaCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateArgs:
+    def __init__(__self__, *,
+                 available_profiles: Optional[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateAvailableProfileArgs']]]] = None,
+                 prevent_automatic_quota_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateRegionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateAvailableProfileArgs']]] available_profiles: — All quota profiles offered to the project, with
+               their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+               `key_manager`, `share`, `keypair`).
+        :param pulumi.Input[_builtins.bool] prevent_automatic_quota_upgrade: — When true, automatic
+               quota upgrades are disabled for this project.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateRegionArgs']]] regions: — Target quota profile per region:
+        """
+        if available_profiles is not None:
+            pulumi.set(__self__, "available_profiles", available_profiles)
+        if prevent_automatic_quota_upgrade is not None:
+            pulumi.set(__self__, "prevent_automatic_quota_upgrade", prevent_automatic_quota_upgrade)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+
+    @_builtins.property
+    @pulumi.getter(name="availableProfiles")
+    def available_profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateAvailableProfileArgs']]]]:
+        """
+        — All quota profiles offered to the project, with
+        their per-service caps (`compute`, `volume`, `network`, `loadbalancer`,
+        `key_manager`, `share`, `keypair`).
+        """
+        return pulumi.get(self, "available_profiles")
+
+    @available_profiles.setter
+    def available_profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateAvailableProfileArgs']]]]):
+        pulumi.set(self, "available_profiles", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preventAutomaticQuotaUpgrade")
+    def prevent_automatic_quota_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        — When true, automatic
+        quota upgrades are disabled for this project.
+        """
+        return pulumi.get(self, "prevent_automatic_quota_upgrade")
+
+    @prevent_automatic_quota_upgrade.setter
+    def prevent_automatic_quota_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "prevent_automatic_quota_upgrade", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateRegionArgs']]]]:
+        """
+        — Target quota profile per region:
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudQuotaCurrentStateRegionArgs']]]]):
+        pulumi.set(self, "regions", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileArgsDict(TypedDict):
+        compute: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileComputeArgsDict']]
+        key_manager: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeyManagerArgsDict']]
+        keypair: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeypairArgsDict']]
+        loadbalancer: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileLoadbalancerArgsDict']]
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        network: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileNetworkArgsDict']]
+        share: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileShareArgsDict']]
+        volume: NotRequired[pulumi.Input['CloudQuotaCurrentStateAvailableProfileVolumeArgsDict']]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileArgs:
+    def __init__(__self__, *,
+                 compute: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileComputeArgs']] = None,
+                 key_manager: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeyManagerArgs']] = None,
+                 keypair: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeypairArgs']] = None,
+                 loadbalancer: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileLoadbalancerArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileNetworkArgs']] = None,
+                 share: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileShareArgs']] = None,
+                 volume: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileVolumeArgs']] = None):
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+        if key_manager is not None:
+            pulumi.set(__self__, "key_manager", key_manager)
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+        if loadbalancer is not None:
+            pulumi.set(__self__, "loadbalancer", loadbalancer)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if share is not None:
+            pulumi.set(__self__, "share", share)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileComputeArgs']]:
+        return pulumi.get(self, "compute")
+
+    @compute.setter
+    def compute(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileComputeArgs']]):
+        pulumi.set(self, "compute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyManager")
+    def key_manager(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeyManagerArgs']]:
+        return pulumi.get(self, "key_manager")
+
+    @key_manager.setter
+    def key_manager(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeyManagerArgs']]):
+        pulumi.set(self, "key_manager", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeypairArgs']]:
+        return pulumi.get(self, "keypair")
+
+    @keypair.setter
+    def keypair(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileKeypairArgs']]):
+        pulumi.set(self, "keypair", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancer(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileLoadbalancerArgs']]:
+        return pulumi.get(self, "loadbalancer")
+
+    @loadbalancer.setter
+    def loadbalancer(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileLoadbalancerArgs']]):
+        pulumi.set(self, "loadbalancer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileNetworkArgs']]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def share(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileShareArgs']]:
+        return pulumi.get(self, "share")
+
+    @share.setter
+    def share(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileShareArgs']]):
+        pulumi.set(self, "share", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileVolumeArgs']]:
+        return pulumi.get(self, "volume")
+
+    @volume.setter
+    def volume(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateAvailableProfileVolumeArgs']]):
+        pulumi.set(self, "volume", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileComputeArgsDict(TypedDict):
+        cores: NotRequired[pulumi.Input[_builtins.int]]
+        instances: NotRequired[pulumi.Input[_builtins.int]]
+        memory: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileComputeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileComputeArgs:
+    def __init__(__self__, *,
+                 cores: Optional[pulumi.Input[_builtins.int]] = None,
+                 instances: Optional[pulumi.Input[_builtins.int]] = None,
+                 memory: Optional[pulumi.Input[_builtins.int]] = None):
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "cores")
+
+    @cores.setter
+    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "cores", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "instances", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileKeyManagerArgsDict(TypedDict):
+        containers: NotRequired[pulumi.Input[_builtins.int]]
+        secrets: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileKeyManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileKeyManagerArgs:
+    def __init__(__self__, *,
+                 containers: Optional[pulumi.Input[_builtins.int]] = None,
+                 secrets: Optional[pulumi.Input[_builtins.int]] = None):
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "containers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "secrets", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileKeypairArgsDict(TypedDict):
+        keypairs: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileKeypairArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileKeypairArgs:
+    def __init__(__self__, *,
+                 keypairs: Optional[pulumi.Input[_builtins.int]] = None):
+        if keypairs is not None:
+            pulumi.set(__self__, "keypairs", keypairs)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypairs(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "keypairs")
+
+    @keypairs.setter
+    def keypairs(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "keypairs", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileLoadbalancerArgsDict(TypedDict):
+        health_monitors: NotRequired[pulumi.Input[_builtins.int]]
+        l7_policies: NotRequired[pulumi.Input[_builtins.int]]
+        l7_rules: NotRequired[pulumi.Input[_builtins.int]]
+        listeners: NotRequired[pulumi.Input[_builtins.int]]
+        loadbalancers: NotRequired[pulumi.Input[_builtins.int]]
+        members: NotRequired[pulumi.Input[_builtins.int]]
+        pools: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileLoadbalancerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileLoadbalancerArgs:
+    def __init__(__self__, *,
+                 health_monitors: Optional[pulumi.Input[_builtins.int]] = None,
+                 l7_policies: Optional[pulumi.Input[_builtins.int]] = None,
+                 l7_rules: Optional[pulumi.Input[_builtins.int]] = None,
+                 listeners: Optional[pulumi.Input[_builtins.int]] = None,
+                 loadbalancers: Optional[pulumi.Input[_builtins.int]] = None,
+                 members: Optional[pulumi.Input[_builtins.int]] = None,
+                 pools: Optional[pulumi.Input[_builtins.int]] = None):
+        if health_monitors is not None:
+            pulumi.set(__self__, "health_monitors", health_monitors)
+        if l7_policies is not None:
+            pulumi.set(__self__, "l7_policies", l7_policies)
+        if l7_rules is not None:
+            pulumi.set(__self__, "l7_rules", l7_rules)
+        if listeners is not None:
+            pulumi.set(__self__, "listeners", listeners)
+        if loadbalancers is not None:
+            pulumi.set(__self__, "loadbalancers", loadbalancers)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if pools is not None:
+            pulumi.set(__self__, "pools", pools)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitors")
+    def health_monitors(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "health_monitors")
+
+    @health_monitors.setter
+    def health_monitors(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "health_monitors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="l7Policies")
+    def l7_policies(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "l7_policies")
+
+    @l7_policies.setter
+    def l7_policies(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "l7_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="l7Rules")
+    def l7_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "l7_rules")
+
+    @l7_rules.setter
+    def l7_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "l7_rules", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def listeners(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "listeners")
+
+    @listeners.setter
+    def listeners(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "listeners", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancers(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "loadbalancers")
+
+    @loadbalancers.setter
+    def loadbalancers(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "loadbalancers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "members", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "pools")
+
+    @pools.setter
+    def pools(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "pools", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileNetworkArgsDict(TypedDict):
+        floating_ips: NotRequired[pulumi.Input[_builtins.int]]
+        gateways: NotRequired[pulumi.Input[_builtins.int]]
+        networks: NotRequired[pulumi.Input[_builtins.int]]
+        security_group_rules: NotRequired[pulumi.Input[_builtins.int]]
+        security_groups: NotRequired[pulumi.Input[_builtins.int]]
+        subnets: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileNetworkArgs:
+    def __init__(__self__, *,
+                 floating_ips: Optional[pulumi.Input[_builtins.int]] = None,
+                 gateways: Optional[pulumi.Input[_builtins.int]] = None,
+                 networks: Optional[pulumi.Input[_builtins.int]] = None,
+                 security_group_rules: Optional[pulumi.Input[_builtins.int]] = None,
+                 security_groups: Optional[pulumi.Input[_builtins.int]] = None,
+                 subnets: Optional[pulumi.Input[_builtins.int]] = None):
+        if floating_ips is not None:
+            pulumi.set(__self__, "floating_ips", floating_ips)
+        if gateways is not None:
+            pulumi.set(__self__, "gateways", gateways)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if security_group_rules is not None:
+            pulumi.set(__self__, "security_group_rules", security_group_rules)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIps")
+    def floating_ips(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "floating_ips")
+
+    @floating_ips.setter
+    def floating_ips(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "floating_ips", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateways(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "gateways")
+
+    @gateways.setter
+    def gateways(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "gateways", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "networks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupRules")
+    def security_group_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "security_group_rules")
+
+    @security_group_rules.setter
+    def security_group_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "security_group_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "security_groups", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "subnets")
+
+    @subnets.setter
+    def subnets(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "subnets", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileShareArgsDict(TypedDict):
+        backup_size_total: NotRequired[pulumi.Input[_builtins.int]]
+        backups: NotRequired[pulumi.Input[_builtins.int]]
+        shares: NotRequired[pulumi.Input[_builtins.int]]
+        size_total: NotRequired[pulumi.Input[_builtins.int]]
+        snapshots: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileShareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileShareArgs:
+    def __init__(__self__, *,
+                 backup_size_total: Optional[pulumi.Input[_builtins.int]] = None,
+                 backups: Optional[pulumi.Input[_builtins.int]] = None,
+                 shares: Optional[pulumi.Input[_builtins.int]] = None,
+                 size_total: Optional[pulumi.Input[_builtins.int]] = None,
+                 snapshots: Optional[pulumi.Input[_builtins.int]] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if shares is not None:
+            pulumi.set(__self__, "shares", shares)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "backup_size_total")
+
+    @backup_size_total.setter
+    def backup_size_total(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "backup_size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "backups", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "shares")
+
+    @shares.setter
+    def shares(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "shares", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "size_total")
+
+    @size_total.setter
+    def size_total(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "snapshots")
+
+    @snapshots.setter
+    def snapshots(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "snapshots", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateAvailableProfileVolumeArgsDict(TypedDict):
+        backup_size_total: NotRequired[pulumi.Input[_builtins.int]]
+        backups: NotRequired[pulumi.Input[_builtins.int]]
+        size_total: NotRequired[pulumi.Input[_builtins.int]]
+        snapshots: NotRequired[pulumi.Input[_builtins.int]]
+        volumes: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateAvailableProfileVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateAvailableProfileVolumeArgs:
+    def __init__(__self__, *,
+                 backup_size_total: Optional[pulumi.Input[_builtins.int]] = None,
+                 backups: Optional[pulumi.Input[_builtins.int]] = None,
+                 size_total: Optional[pulumi.Input[_builtins.int]] = None,
+                 snapshots: Optional[pulumi.Input[_builtins.int]] = None,
+                 volumes: Optional[pulumi.Input[_builtins.int]] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "backup_size_total")
+
+    @backup_size_total.setter
+    def backup_size_total(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "backup_size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "backups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "size_total")
+
+    @size_total.setter
+    def size_total(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "snapshots")
+
+    @snapshots.setter
+    def snapshots(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "snapshots", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "volumes", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionArgsDict(TypedDict):
+        compute: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionComputeArgsDict']]
+        key_manager: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerArgsDict']]
+        keypair: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionKeypairArgsDict']]
+        loadbalancer: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerArgsDict']]
+        network: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkArgsDict']]
+        profile: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        — Quota profile to apply. Available values
+        are exposed live in `current_state.available_profiles`.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        — Region where the profile applies
+        (e.g. `GRA11`).
+        """
+        share: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareArgsDict']]
+        volume: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumeArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionArgs:
+    def __init__(__self__, *,
+                 compute: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeArgs']] = None,
+                 key_manager: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerArgs']] = None,
+                 keypair: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeypairArgs']] = None,
+                 loadbalancer: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerArgs']] = None,
+                 network: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkArgs']] = None,
+                 profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 share: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareArgs']] = None,
+                 volume: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] profile: — Quota profile to apply. Available values
+               are exposed live in `current_state.available_profiles`.
+        :param pulumi.Input[_builtins.str] region: — Region where the profile applies
+               (e.g. `GRA11`).
+        """
+        if compute is not None:
+            pulumi.set(__self__, "compute", compute)
+        if key_manager is not None:
+            pulumi.set(__self__, "key_manager", key_manager)
+        if keypair is not None:
+            pulumi.set(__self__, "keypair", keypair)
+        if loadbalancer is not None:
+            pulumi.set(__self__, "loadbalancer", loadbalancer)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if share is not None:
+            pulumi.set(__self__, "share", share)
+        if volume is not None:
+            pulumi.set(__self__, "volume", volume)
+
+    @_builtins.property
+    @pulumi.getter
+    def compute(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeArgs']]:
+        return pulumi.get(self, "compute")
+
+    @compute.setter
+    def compute(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeArgs']]):
+        pulumi.set(self, "compute", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyManager")
+    def key_manager(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerArgs']]:
+        return pulumi.get(self, "key_manager")
+
+    @key_manager.setter
+    def key_manager(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerArgs']]):
+        pulumi.set(self, "key_manager", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypair(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeypairArgs']]:
+        return pulumi.get(self, "keypair")
+
+    @keypair.setter
+    def keypair(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeypairArgs']]):
+        pulumi.set(self, "keypair", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancer(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerArgs']]:
+        return pulumi.get(self, "loadbalancer")
+
+    @loadbalancer.setter
+    def loadbalancer(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerArgs']]):
+        pulumi.set(self, "loadbalancer", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkArgs']]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        — Quota profile to apply. Available values
+        are exposed live in `current_state.available_profiles`.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "profile", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        — Region where the profile applies
+        (e.g. `GRA11`).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def share(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareArgs']]:
+        return pulumi.get(self, "share")
+
+    @share.setter
+    def share(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareArgs']]):
+        pulumi.set(self, "share", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def volume(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeArgs']]:
+        return pulumi.get(self, "volume")
+
+    @volume.setter
+    def volume(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeArgs']]):
+        pulumi.set(self, "volume", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionComputeArgsDict(TypedDict):
+        cores: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionComputeCoresArgsDict']]
+        instances: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionComputeInstancesArgsDict']]
+        memory: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionComputeMemoryArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionComputeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionComputeArgs:
+    def __init__(__self__, *,
+                 cores: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeCoresArgs']] = None,
+                 instances: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeInstancesArgs']] = None,
+                 memory: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeMemoryArgs']] = None):
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if instances is not None:
+            pulumi.set(__self__, "instances", instances)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeCoresArgs']]:
+        return pulumi.get(self, "cores")
+
+    @cores.setter
+    def cores(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeCoresArgs']]):
+        pulumi.set(self, "cores", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def instances(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeInstancesArgs']]:
+        return pulumi.get(self, "instances")
+
+    @instances.setter
+    def instances(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeInstancesArgs']]):
+        pulumi.set(self, "instances", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeMemoryArgs']]:
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionComputeMemoryArgs']]):
+        pulumi.set(self, "memory", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionComputeCoresArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionComputeCoresArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionComputeCoresArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionComputeInstancesArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionComputeInstancesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionComputeInstancesArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionComputeMemoryArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionComputeMemoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionComputeMemoryArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionKeyManagerArgsDict(TypedDict):
+        containers: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerContainersArgsDict']]
+        secrets: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerSecretsArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionKeyManagerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionKeyManagerArgs:
+    def __init__(__self__, *,
+                 containers: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerContainersArgs']] = None,
+                 secrets: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerSecretsArgs']] = None):
+        if containers is not None:
+            pulumi.set(__self__, "containers", containers)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+
+    @_builtins.property
+    @pulumi.getter
+    def containers(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerContainersArgs']]:
+        return pulumi.get(self, "containers")
+
+    @containers.setter
+    def containers(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerContainersArgs']]):
+        pulumi.set(self, "containers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def secrets(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerSecretsArgs']]:
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeyManagerSecretsArgs']]):
+        pulumi.set(self, "secrets", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionKeyManagerContainersArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionKeyManagerContainersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionKeyManagerContainersArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionKeyManagerSecretsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionKeyManagerSecretsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionKeyManagerSecretsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionKeypairArgsDict(TypedDict):
+        keypairs: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionKeypairKeypairsArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionKeypairArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionKeypairArgs:
+    def __init__(__self__, *,
+                 keypairs: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeypairKeypairsArgs']] = None):
+        if keypairs is not None:
+            pulumi.set(__self__, "keypairs", keypairs)
+
+    @_builtins.property
+    @pulumi.getter
+    def keypairs(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeypairKeypairsArgs']]:
+        return pulumi.get(self, "keypairs")
+
+    @keypairs.setter
+    def keypairs(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionKeypairKeypairsArgs']]):
+        pulumi.set(self, "keypairs", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionKeypairKeypairsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionKeypairKeypairsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionKeypairKeypairsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerArgsDict(TypedDict):
+        health_monitors: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgsDict']]
+        l7_policies: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgsDict']]
+        l7_rules: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgsDict']]
+        listeners: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerListenersArgsDict']]
+        loadbalancers: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgsDict']]
+        members: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerMembersArgsDict']]
+        pools: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerPoolsArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerArgs:
+    def __init__(__self__, *,
+                 health_monitors: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgs']] = None,
+                 l7_policies: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgs']] = None,
+                 l7_rules: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgs']] = None,
+                 listeners: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerListenersArgs']] = None,
+                 loadbalancers: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgs']] = None,
+                 members: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerMembersArgs']] = None,
+                 pools: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerPoolsArgs']] = None):
+        if health_monitors is not None:
+            pulumi.set(__self__, "health_monitors", health_monitors)
+        if l7_policies is not None:
+            pulumi.set(__self__, "l7_policies", l7_policies)
+        if l7_rules is not None:
+            pulumi.set(__self__, "l7_rules", l7_rules)
+        if listeners is not None:
+            pulumi.set(__self__, "listeners", listeners)
+        if loadbalancers is not None:
+            pulumi.set(__self__, "loadbalancers", loadbalancers)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if pools is not None:
+            pulumi.set(__self__, "pools", pools)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitors")
+    def health_monitors(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgs']]:
+        return pulumi.get(self, "health_monitors")
+
+    @health_monitors.setter
+    def health_monitors(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgs']]):
+        pulumi.set(self, "health_monitors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="l7Policies")
+    def l7_policies(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgs']]:
+        return pulumi.get(self, "l7_policies")
+
+    @l7_policies.setter
+    def l7_policies(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgs']]):
+        pulumi.set(self, "l7_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="l7Rules")
+    def l7_rules(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgs']]:
+        return pulumi.get(self, "l7_rules")
+
+    @l7_rules.setter
+    def l7_rules(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgs']]):
+        pulumi.set(self, "l7_rules", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def listeners(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerListenersArgs']]:
+        return pulumi.get(self, "listeners")
+
+    @listeners.setter
+    def listeners(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerListenersArgs']]):
+        pulumi.set(self, "listeners", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def loadbalancers(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgs']]:
+        return pulumi.get(self, "loadbalancers")
+
+    @loadbalancers.setter
+    def loadbalancers(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgs']]):
+        pulumi.set(self, "loadbalancers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerMembersArgs']]:
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerMembersArgs']]):
+        pulumi.set(self, "members", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def pools(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerPoolsArgs']]:
+        return pulumi.get(self, "pools")
+
+    @pools.setter
+    def pools(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionLoadbalancerPoolsArgs']]):
+        pulumi.set(self, "pools", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerHealthMonitorsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerL7PoliciesArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerL7RulesArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerListenersArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerListenersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerListenersArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerLoadbalancersArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerMembersArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerMembersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerMembersArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionLoadbalancerPoolsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionLoadbalancerPoolsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionLoadbalancerPoolsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkArgsDict(TypedDict):
+        floating_ips: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkFloatingIpsArgsDict']]
+        gateways: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkGatewaysArgsDict']]
+        networks: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkNetworksArgsDict']]
+        security_group_rules: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgsDict']]
+        security_groups: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgsDict']]
+        subnets: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSubnetsArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkArgs:
+    def __init__(__self__, *,
+                 floating_ips: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkFloatingIpsArgs']] = None,
+                 gateways: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkGatewaysArgs']] = None,
+                 networks: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkNetworksArgs']] = None,
+                 security_group_rules: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgs']] = None,
+                 security_groups: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgs']] = None,
+                 subnets: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSubnetsArgs']] = None):
+        if floating_ips is not None:
+            pulumi.set(__self__, "floating_ips", floating_ips)
+        if gateways is not None:
+            pulumi.set(__self__, "gateways", gateways)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if security_group_rules is not None:
+            pulumi.set(__self__, "security_group_rules", security_group_rules)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
+
+    @_builtins.property
+    @pulumi.getter(name="floatingIps")
+    def floating_ips(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkFloatingIpsArgs']]:
+        return pulumi.get(self, "floating_ips")
+
+    @floating_ips.setter
+    def floating_ips(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkFloatingIpsArgs']]):
+        pulumi.set(self, "floating_ips", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def gateways(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkGatewaysArgs']]:
+        return pulumi.get(self, "gateways")
+
+    @gateways.setter
+    def gateways(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkGatewaysArgs']]):
+        pulumi.set(self, "gateways", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkNetworksArgs']]:
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkNetworksArgs']]):
+        pulumi.set(self, "networks", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupRules")
+    def security_group_rules(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgs']]:
+        return pulumi.get(self, "security_group_rules")
+
+    @security_group_rules.setter
+    def security_group_rules(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgs']]):
+        pulumi.set(self, "security_group_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgs']]:
+        return pulumi.get(self, "security_groups")
+
+    @security_groups.setter
+    def security_groups(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgs']]):
+        pulumi.set(self, "security_groups", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSubnetsArgs']]:
+        return pulumi.get(self, "subnets")
+
+    @subnets.setter
+    def subnets(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionNetworkSubnetsArgs']]):
+        pulumi.set(self, "subnets", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkFloatingIpsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkFloatingIpsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkFloatingIpsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkGatewaysArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkGatewaysArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkGatewaysArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkNetworksArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkNetworksArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkNetworksArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkSecurityGroupRulesArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkSecurityGroupsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionNetworkSubnetsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionNetworkSubnetsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionNetworkSubnetsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareArgsDict(TypedDict):
+        backup_size_total: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupSizeTotalArgsDict']]
+        backups: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupsArgsDict']]
+        per_share_size: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionSharePerShareSizeArgsDict']]
+        share_networks: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareShareNetworksArgsDict']]
+        shares: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareSharesArgsDict']]
+        size_total: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareSizeTotalArgsDict']]
+        snapshot_size_total: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgsDict']]
+        snapshots: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotsArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionShareArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareArgs:
+    def __init__(__self__, *,
+                 backup_size_total: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupSizeTotalArgs']] = None,
+                 backups: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupsArgs']] = None,
+                 per_share_size: Optional[pulumi.Input['CloudQuotaCurrentStateRegionSharePerShareSizeArgs']] = None,
+                 share_networks: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareShareNetworksArgs']] = None,
+                 shares: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSharesArgs']] = None,
+                 size_total: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSizeTotalArgs']] = None,
+                 snapshot_size_total: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgs']] = None,
+                 snapshots: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotsArgs']] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if per_share_size is not None:
+            pulumi.set(__self__, "per_share_size", per_share_size)
+        if share_networks is not None:
+            pulumi.set(__self__, "share_networks", share_networks)
+        if shares is not None:
+            pulumi.set(__self__, "shares", shares)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshot_size_total is not None:
+            pulumi.set(__self__, "snapshot_size_total", snapshot_size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupSizeTotalArgs']]:
+        return pulumi.get(self, "backup_size_total")
+
+    @backup_size_total.setter
+    def backup_size_total(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupSizeTotalArgs']]):
+        pulumi.set(self, "backup_size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupsArgs']]:
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareBackupsArgs']]):
+        pulumi.set(self, "backups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perShareSize")
+    def per_share_size(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionSharePerShareSizeArgs']]:
+        return pulumi.get(self, "per_share_size")
+
+    @per_share_size.setter
+    def per_share_size(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionSharePerShareSizeArgs']]):
+        pulumi.set(self, "per_share_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworks")
+    def share_networks(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareShareNetworksArgs']]:
+        return pulumi.get(self, "share_networks")
+
+    @share_networks.setter
+    def share_networks(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareShareNetworksArgs']]):
+        pulumi.set(self, "share_networks", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSharesArgs']]:
+        return pulumi.get(self, "shares")
+
+    @shares.setter
+    def shares(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSharesArgs']]):
+        pulumi.set(self, "shares", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSizeTotalArgs']]:
+        return pulumi.get(self, "size_total")
+
+    @size_total.setter
+    def size_total(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSizeTotalArgs']]):
+        pulumi.set(self, "size_total", value)
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotSizeTotal")
+    def snapshot_size_total(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgs']]:
+        return pulumi.get(self, "snapshot_size_total")
+
+    @snapshot_size_total.setter
+    def snapshot_size_total(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgs']]):
+        pulumi.set(self, "snapshot_size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotsArgs']]:
+        return pulumi.get(self, "snapshots")
+
+    @snapshots.setter
+    def snapshots(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionShareSnapshotsArgs']]):
+        pulumi.set(self, "snapshots", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareBackupSizeTotalArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareBackupSizeTotalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareBackupSizeTotalArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareBackupsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareBackupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareBackupsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionSharePerShareSizeArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    CloudQuotaCurrentStateRegionSharePerShareSizeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionSharePerShareSizeArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareShareNetworksArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareShareNetworksArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareShareNetworksArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareSharesArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareSharesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareSharesArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareSizeTotalArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareSizeTotalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareSizeTotalArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareSnapshotSizeTotalArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionShareSnapshotsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionShareSnapshotsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionShareSnapshotsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumeArgsDict(TypedDict):
+        backup_size_total: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgsDict']]
+        backups: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupsArgsDict']]
+        per_volume_size: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgsDict']]
+        size_total: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSizeTotalArgsDict']]
+        snapshots: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSnapshotsArgsDict']]
+        volumes: NotRequired[pulumi.Input['CloudQuotaCurrentStateRegionVolumeVolumesArgsDict']]
+elif False:
+    CloudQuotaCurrentStateRegionVolumeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumeArgs:
+    def __init__(__self__, *,
+                 backup_size_total: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgs']] = None,
+                 backups: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupsArgs']] = None,
+                 per_volume_size: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgs']] = None,
+                 size_total: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSizeTotalArgs']] = None,
+                 snapshots: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSnapshotsArgs']] = None,
+                 volumes: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeVolumesArgs']] = None):
+        if backup_size_total is not None:
+            pulumi.set(__self__, "backup_size_total", backup_size_total)
+        if backups is not None:
+            pulumi.set(__self__, "backups", backups)
+        if per_volume_size is not None:
+            pulumi.set(__self__, "per_volume_size", per_volume_size)
+        if size_total is not None:
+            pulumi.set(__self__, "size_total", size_total)
+        if snapshots is not None:
+            pulumi.set(__self__, "snapshots", snapshots)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter(name="backupSizeTotal")
+    def backup_size_total(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgs']]:
+        return pulumi.get(self, "backup_size_total")
+
+    @backup_size_total.setter
+    def backup_size_total(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgs']]):
+        pulumi.set(self, "backup_size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def backups(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupsArgs']]:
+        return pulumi.get(self, "backups")
+
+    @backups.setter
+    def backups(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeBackupsArgs']]):
+        pulumi.set(self, "backups", value)
+
+    @_builtins.property
+    @pulumi.getter(name="perVolumeSize")
+    def per_volume_size(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgs']]:
+        return pulumi.get(self, "per_volume_size")
+
+    @per_volume_size.setter
+    def per_volume_size(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgs']]):
+        pulumi.set(self, "per_volume_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeTotal")
+    def size_total(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSizeTotalArgs']]:
+        return pulumi.get(self, "size_total")
+
+    @size_total.setter
+    def size_total(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSizeTotalArgs']]):
+        pulumi.set(self, "size_total", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshots(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSnapshotsArgs']]:
+        return pulumi.get(self, "snapshots")
+
+    @snapshots.setter
+    def snapshots(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeSnapshotsArgs']]):
+        pulumi.set(self, "snapshots", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeVolumesArgs']]:
+        return pulumi.get(self, "volumes")
+
+    @volumes.setter
+    def volumes(self, value: Optional[pulumi.Input['CloudQuotaCurrentStateRegionVolumeVolumesArgs']]):
+        pulumi.set(self, "volumes", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumeBackupSizeTotalArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumeBackupsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionVolumeBackupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumeBackupsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumePerVolumeSizeArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumeSizeTotalArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionVolumeSizeTotalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumeSizeTotalArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumeSnapshotsArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionVolumeSnapshotsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumeSnapshotsArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaCurrentStateRegionVolumeVolumesArgsDict(TypedDict):
+        limit: NotRequired[pulumi.Input[_builtins.int]]
+        unit: NotRequired[pulumi.Input[_builtins.str]]
+        used: NotRequired[pulumi.Input[_builtins.int]]
+elif False:
+    CloudQuotaCurrentStateRegionVolumeVolumesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaCurrentStateRegionVolumeVolumesArgs:
+    def __init__(__self__, *,
+                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 unit: Optional[pulumi.Input[_builtins.str]] = None,
+                 used: Optional[pulumi.Input[_builtins.int]] = None):
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+        if used is not None:
+            pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "limit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> Optional[pulumi.Input[_builtins.int]]:
+        return pulumi.get(self, "used")
+
+    @used.setter
+    def used(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "used", value)
+
+
+if not MYPY:
+    class CloudQuotaRegionArgsDict(TypedDict):
+        profile: pulumi.Input[_builtins.str]
+        """
+        — Quota profile to apply. Available values
+        are exposed live in `current_state.available_profiles`.
+        """
+        region: pulumi.Input[_builtins.str]
+        """
+        — Region where the profile applies
+        (e.g. `GRA11`).
+        """
+elif False:
+    CloudQuotaRegionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudQuotaRegionArgs:
+    def __init__(__self__, *,
+                 profile: pulumi.Input[_builtins.str],
+                 region: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] profile: — Quota profile to apply. Available values
+               are exposed live in `current_state.available_profiles`.
+        :param pulumi.Input[_builtins.str] region: — Region where the profile applies
+               (e.g. `GRA11`).
+        """
+        pulumi.set(__self__, "profile", profile)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def profile(self) -> pulumi.Input[_builtins.str]:
+        """
+        — Quota profile to apply. Available values
+        are exposed live in `current_state.available_profiles`.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "profile", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[_builtins.str]:
+        """
+        — Region where the profile applies
+        (e.g. `GRA11`).
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "region", value)
 
 
 if not MYPY:
@@ -3132,6 +7217,884 @@ class CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs:
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareAccessRuleArgsDict(TypedDict):
+        access_level: pulumi.Input[_builtins.str]
+        """
+        Access level (`READ_WRITE`, `READ_ONLY`).
+        """
+        access_to: pulumi.Input[_builtins.str]
+        """
+        IP address or CIDR to grant access to.
+        """
+elif False:
+    CloudStorageFileShareAccessRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareAccessRuleArgs:
+    def __init__(__self__, *,
+                 access_level: pulumi.Input[_builtins.str],
+                 access_to: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] access_level: Access level (`READ_WRITE`, `READ_ONLY`).
+        :param pulumi.Input[_builtins.str] access_to: IP address or CIDR to grant access to.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> pulumi.Input[_builtins.str]:
+        """
+        Access level (`READ_WRITE`, `READ_ONLY`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> pulumi.Input[_builtins.str]:
+        """
+        IP address or CIDR to grant access to.
+        """
+        return pulumi.get(self, "access_to")
+
+    @access_to.setter
+    def access_to(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_to", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareCurrentStateArgsDict(TypedDict):
+        access_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgsDict']]]]
+        """
+        Access rules for the file share. Each rule has:
+        """
+        capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgsDict']]]]
+        """
+        Action-availability flags derived from the file share status:
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        File share description.
+        """
+        export_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgsDict']]]]
+        """
+        Export locations for the file share:
+        """
+        location: NotRequired[pulumi.Input['CloudStorageFileShareCurrentStateLocationArgsDict']]
+        """
+        Current location:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        File share name.
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        File share protocol (`NFS`). **Changing this value recreates the resource.**
+        """
+        share_network_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        """
+        share_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Size of the file share in GB.
+        """
+elif False:
+    CloudStorageFileShareCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareCurrentStateArgs:
+    def __init__(__self__, *,
+                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]]] = None,
+                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 export_locations: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]]] = None,
+                 location: Optional[pulumi.Input['CloudStorageFileShareCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]] access_rules: Access rules for the file share. Each rule has:
+        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]] capabilities: Action-availability flags derived from the file share status:
+        :param pulumi.Input[_builtins.str] description: File share description.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]] export_locations: Export locations for the file share:
+        :param pulumi.Input['CloudStorageFileShareCurrentStateLocationArgs'] location: Current location:
+        :param pulumi.Input[_builtins.str] name: File share name.
+        :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
+        """
+        if access_rules is not None:
+            pulumi.set(__self__, "access_rules", access_rules)
+        if capabilities is not None:
+            pulumi.set(__self__, "capabilities", capabilities)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if export_locations is not None:
+            pulumi.set(__self__, "export_locations", export_locations)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if share_network_id is not None:
+            pulumi.set(__self__, "share_network_id", share_network_id)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter(name="accessRules")
+    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]]]:
+        """
+        Access rules for the file share. Each rule has:
+        """
+        return pulumi.get(self, "access_rules")
+
+    @access_rules.setter
+    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]]]):
+        pulumi.set(self, "access_rules", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]]]:
+        """
+        Action-availability flags derived from the file share status:
+        """
+        return pulumi.get(self, "capabilities")
+
+    @capabilities.setter
+    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]]]):
+        pulumi.set(self, "capabilities", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File share description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportLocations")
+    def export_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]]]:
+        """
+        Export locations for the file share:
+        """
+        return pulumi.get(self, "export_locations")
+
+    @export_locations.setter
+    def export_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]]]):
+        pulumi.set(self, "export_locations", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageFileShareCurrentStateLocationArgs']]:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageFileShareCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File share name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File share protocol (`NFS`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @share_network_id.setter
+    def share_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "share_network_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_type")
+
+    @share_type.setter
+    def share_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "share_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Size of the file share in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareCurrentStateAccessRuleArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Access level (`READ_WRITE`, `READ_ONLY`).
+        """
+        access_to: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP address or CIDR to grant access to.
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Access rule creation date.
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Access rule ID.
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Access rule state.
+        """
+elif False:
+    CloudStorageFileShareCurrentStateAccessRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareCurrentStateAccessRuleArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_to: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_level: Access level (`READ_WRITE`, `READ_ONLY`).
+        :param pulumi.Input[_builtins.str] access_to: IP address or CIDR to grant access to.
+        :param pulumi.Input[_builtins.str] created_at: Access rule creation date.
+        :param pulumi.Input[_builtins.str] id: Access rule ID.
+        :param pulumi.Input[_builtins.str] state: Access rule state.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_to is not None:
+            pulumi.set(__self__, "access_to", access_to)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Access level (`READ_WRITE`, `READ_ONLY`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP address or CIDR to grant access to.
+        """
+        return pulumi.get(self, "access_to")
+
+    @access_to.setter
+    def access_to(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "access_to", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Access rule creation date.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Access rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Access rule state.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareCurrentStateCapabilityArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether the capability is enabled.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        File share name.
+        """
+        reason: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Reason why the capability is disabled, when applicable.
+        """
+elif False:
+    CloudStorageFileShareCurrentStateCapabilityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareCurrentStateCapabilityArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Whether the capability is enabled.
+        :param pulumi.Input[_builtins.str] name: File share name.
+        :param pulumi.Input[_builtins.str] reason: Reason why the capability is disabled, when applicable.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File share name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reason why the capability is disabled, when applicable.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "reason", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareCurrentStateExportLocationArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Export path.
+        """
+        preferred: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether this is the preferred export location.
+        """
+elif False:
+    CloudStorageFileShareCurrentStateExportLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareCurrentStateExportLocationArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[_builtins.str]] = None,
+                 preferred: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] path: Export path.
+        :param pulumi.Input[_builtins.bool] preferred: Whether this is the preferred export location.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if preferred is not None:
+            pulumi.set(__self__, "preferred", preferred)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Export path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def preferred(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether this is the preferred export location.
+        """
+        return pulumi.get(self, "preferred")
+
+    @preferred.setter
+    def preferred(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "preferred", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the file share will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudStorageFileShareCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the file share will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareNetworkCurrentStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+        """
+        location: NotRequired[pulumi.Input['CloudStorageFileShareNetworkCurrentStateLocationArgsDict']]
+        """
+        Current location:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Share network name. **Changing this value recreates the resource.**
+        """
+        network_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the network backing the share network. **Changing this value recreates the resource.**
+        """
+        subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the subnet backing the share network. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudStorageFileShareNetworkCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareNetworkCurrentStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudStorageFileShareNetworkCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudStorageFileShareNetworkCurrentStateLocationArgs'] location: Current location:
+        :param pulumi.Input[_builtins.str] name: Share network name. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] network_id: ID of the network backing the share network. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet backing the share network. **Changing this value recreates the resource.**
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Share network description. When omitted, this value is computed by the API (which may return an empty value). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageFileShareNetworkCurrentStateLocationArgs']]:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageFileShareNetworkCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Share network name. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the network backing the share network. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the subnet backing the share network. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet_id", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareNetworkCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the share network will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudStorageFileShareNetworkCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareNetworkCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
+        :param pulumi.Input[_builtins.str] region: Region where the share network will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the share network will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareSnapshotCurrentStateArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Snapshot description.
+        """
+        location: NotRequired[pulumi.Input['CloudStorageFileShareSnapshotCurrentStateLocationArgsDict']]
+        """
+        Current location:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Snapshot name.
+        """
+        share_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the file share to snapshot. **Changing this value recreates the resource.**
+        """
+        size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Size of the snapshot in GB.
+        """
+elif False:
+    CloudStorageFileShareSnapshotCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareSnapshotCurrentStateArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 location: Optional[pulumi.Input['CloudStorageFileShareSnapshotCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Snapshot description.
+        :param pulumi.Input['CloudStorageFileShareSnapshotCurrentStateLocationArgs'] location: Current location:
+        :param pulumi.Input[_builtins.str] name: Snapshot name.
+        :param pulumi.Input[_builtins.str] share_id: ID of the file share to snapshot. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the snapshot in GB.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if share_id is not None:
+            pulumi.set(__self__, "share_id", share_id)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Snapshot description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageFileShareSnapshotCurrentStateLocationArgs']]:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageFileShareSnapshotCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shareId")
+    def share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the file share to snapshot. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_id")
+
+    @share_id.setter
+    def share_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "share_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Size of the snapshot in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
+
+if not MYPY:
+    class CloudStorageFileShareSnapshotCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region.
+        """
+elif False:
+    CloudStorageFileShareSnapshotCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareSnapshotCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
+        :param pulumi.Input[_builtins.str] region: Region.
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region.
         """
         return pulumi.get(self, "region")
 

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Example 1 - Basic stream
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -57,7 +59,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * To define the retention of the stream, you can use the following configuration:
+ * ### Example 2 - Stream retention
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -145,14 +147,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.coldStorageCompression;
     }
     /**
-     * ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+     * ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
      * 
      */
     @Export(name="coldStorageContent", refs={String.class}, tree="[0]")
     private Output<String> coldStorageContent;
 
     /**
-     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GLEF&#34;, &#34;PLAIN&#34;
+     * @return ColdStorage content. One of &#34;ALL&#34;, &#34;GELF&#34;, &#34;PLAIN&#34;
      * 
      */
     public Output<String> coldStorageContent() {
@@ -243,6 +245,20 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.description;
     }
     /**
+     * Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    @Export(name="encryptionKeysIds", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> encryptionKeysIds;
+
+    /**
+     * @return Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    public Output<Optional<List<String>>> encryptionKeysIds() {
+        return Codegen.optional(this.encryptionKeysIds);
+    }
+    /**
      * Enable ES indexing
      * 
      */
@@ -327,14 +343,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.nbAlertCondition;
     }
     /**
-     * Number of coldstored archivesr
+     * Number of coldstored archives
      * 
      */
     @Export(name="nbArchive", refs={Integer.class}, tree="[0]")
     private Output<Integer> nbArchive;
 
     /**
-     * @return Number of coldstored archivesr
+     * @return Number of coldstored archives
      * 
      */
     public Output<Integer> nbArchive() {
@@ -425,14 +441,14 @@ public class LogsOutputGraylogStream extends com.pulumi.resources.CustomResource
         return this.title;
     }
     /**
-     * Stream last updater
+     * Stream last update
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return Stream last updater
+     * @return Stream last update
      * 
      */
     public Output<String> updatedAt() {

@@ -196,6 +196,8 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -208,6 +210,8 @@ public class Integration extends com.pulumi.resources.CustomResource {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      * 
      */
     public Output<String> type() {

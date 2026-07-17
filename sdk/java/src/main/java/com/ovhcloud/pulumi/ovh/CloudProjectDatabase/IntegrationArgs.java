@@ -114,6 +114,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      * 
      */
     @Import(name="type")
@@ -126,6 +128,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      * 
      */
     public Optional<Output<String>> type() {
@@ -295,6 +299,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          * * `kafkaConnect`
          * * `kafkaLogs`
          * * `kafkaMirrorMaker`
+         * * `opensearchLogs`
+         * * `postgresqlMetrics`
          * 
          * @return builder
          * 
@@ -311,6 +317,8 @@ public final class IntegrationArgs extends com.pulumi.resources.ResourceArgs {
          * * `kafkaConnect`
          * * `kafkaLogs`
          * * `kafkaMirrorMaker`
+         * * `opensearchLogs`
+         * * `postgresqlMetrics`
          * 
          * @return builder
          * 

@@ -32,7 +32,7 @@ public final class GetOpenSearchPatternResult {
      */
     private String pattern;
     /**
-     * @return Current status of the pattern.
+     * @return See Argument Reference above.
      * 
      */
     private String serviceName;
@@ -67,7 +67,7 @@ public final class GetOpenSearchPatternResult {
         return this.pattern;
     }
     /**
-     * @return Current status of the pattern.
+     * @return See Argument Reference above.
      * 
      */
     public String serviceName() {

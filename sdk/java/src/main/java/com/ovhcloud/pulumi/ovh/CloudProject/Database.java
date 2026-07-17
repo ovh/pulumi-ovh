@@ -51,25 +51,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cassandradb = new Database("cassandradb", DatabaseArgs.builder()
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
- *             .description("my-first-cassandra")
- *             .engine("cassandra")
- *             .version("4.0")
- *             .plan("essential")
- *             .nodes(            
- *                 DatabaseNodeArgs.builder()
- *                     .region("BHS")
- *                     .build(),
- *                 DatabaseNodeArgs.builder()
- *                     .region("BHS")
- *                     .build(),
- *                 DatabaseNodeArgs.builder()
- *                     .region("BHS")
- *                     .build())
- *             .flavor("db1-4")
- *             .build());
- * 
  *         var kafkadb = new Database("kafkadb", DatabaseArgs.builder()
  *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
  *             .description("my-first-kafka")
@@ -89,18 +70,6 @@ import javax.annotation.Nullable;
  *                 DatabaseNodeArgs.builder()
  *                     .region("DE")
  *                     .build())
- *             .build());
- * 
- *         var m3db = new Database("m3db", DatabaseArgs.builder()
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
- *             .description("my-first-m3db")
- *             .engine("m3db")
- *             .version("1.2")
- *             .plan("essential")
- *             .nodes(DatabaseNodeArgs.builder()
- *                 .region("BHS")
- *                 .build())
- *             .flavor("db1-7")
  *             .build());
  * 
  *         var mongodb = new Database("mongodb", DatabaseArgs.builder()
@@ -163,18 +132,6 @@ import javax.annotation.Nullable;
  *                     .description("ip 2")
  *                     .ip("178.97.7.0/24")
  *                     .build())
- *             .build());
- * 
- *         var redisdb = new Database("redisdb", DatabaseArgs.builder()
- *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
- *             .description("my-first-redis")
- *             .engine("redis")
- *             .version("6.2")
- *             .plan("essential")
- *             .nodes(DatabaseNodeArgs.builder()
- *                 .region("BHS")
- *                 .build())
- *             .flavor("db1-4")
  *             .build());
  * 
  *         var grafana = new Database("grafana", DatabaseArgs.builder()
@@ -354,14 +311,14 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.backupRegions;
     }
     /**
-     * Time on which backups start every day (this parameter is not usable on the following engines: &#34;m3db&#34;, &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;, &#34;m3aggregator&#34;).
+     * Time on which backups start every day (this parameter is not usable on the following engines: &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;).
      * 
      */
     @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
-     * @return Time on which backups start every day (this parameter is not usable on the following engines: &#34;m3db&#34;, &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;, &#34;m3aggregator&#34;).
+     * @return Time on which backups start every day (this parameter is not usable on the following engines: &#34;grafana&#34;, &#34;kafka&#34;, &#34;kafkaconnect&#34;, &#34;kafkamirrormaker&#34;, &#34;opensearch&#34;).
      * 
      */
     public Output<String> backupTime() {
@@ -579,10 +536,9 @@ public class Database extends com.pulumi.resources.CustomResource {
     }
     /**
      * Plan of the cluster.
-     * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
-     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
-     * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;.
+     * * Clickhouse: &#34;production&#34;.
+     * * MongoDB: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+     * * MySQL, PostgreSQL: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * Valkey: &#34;essential&#34;, &#34;business&#34;.
      * 
      */
@@ -591,10 +547,9 @@ public class Database extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Plan of the cluster.
-     * * MongoDB: Enum: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
-     * * Mysql, PosgreSQL, Cassandra, M3DB, : Enum: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
-     * * M3 Aggregator: &#34;business&#34;, &#34;enterprise&#34;.
-     * * Redis: &#34;essential&#34;, &#34;business&#34;.
+     * * Clickhouse: &#34;production&#34;.
+     * * MongoDB: &#34;discovery&#34;, &#34;production&#34;, &#34;advanced&#34;.
+     * * MySQL, PostgreSQL: &#34;essential&#34;, &#34;business&#34;, &#34;enterprise&#34;.
      * * Valkey: &#34;essential&#34;, &#34;business&#34;.
      * 
      */

@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseInstance{}
 	case "ovh:CloudProjectDatabase/integration:Integration":
 		r = &Integration{}
-	case "ovh:CloudProjectDatabase/ipRestriction:IpRestriction":
-		r = &IpRestriction{}
 	case "ovh:CloudProjectDatabase/kafkaAcl:KafkaAcl":
 		r = &KafkaAcl{}
 	case "ovh:CloudProjectDatabase/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl":
@@ -35,10 +33,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &KafkaTopic{}
 	case "ovh:CloudProjectDatabase/logSubscription:LogSubscription":
 		r = &LogSubscription{}
-	case "ovh:CloudProjectDatabase/m3DbNamespace:M3DbNamespace":
-		r = &M3DbNamespace{}
-	case "ovh:CloudProjectDatabase/m3DbUser:M3DbUser":
-		r = &M3DbUser{}
 	case "ovh:CloudProjectDatabase/mongoDbPrometheus:MongoDbPrometheus":
 		r = &MongoDbPrometheus{}
 	case "ovh:CloudProjectDatabase/mongoDbUser:MongoDbUser":
@@ -53,8 +47,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &PostgresSqlUser{}
 	case "ovh:CloudProjectDatabase/prometheus:Prometheus":
 		r = &Prometheus{}
-	case "ovh:CloudProjectDatabase/redisUser:RedisUser":
-		r = &RedisUser{}
 	case "ovh:CloudProjectDatabase/user:User":
 		r = &User{}
 	default:
@@ -82,11 +74,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"ovh",
-		"CloudProjectDatabase/ipRestriction",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
 		"CloudProjectDatabase/kafkaAcl",
 		&module{version},
 	)
@@ -103,16 +90,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProjectDatabase/logSubscription",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"CloudProjectDatabase/m3DbNamespace",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"CloudProjectDatabase/m3DbUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -148,11 +125,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"CloudProjectDatabase/prometheus",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"ovh",
-		"CloudProjectDatabase/redisUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

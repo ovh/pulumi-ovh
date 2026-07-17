@@ -37,7 +37,7 @@ public final class GetMongoDbUserResult {
      */
     private List<String> roles;
     /**
-     * @return Current status of the user.
+     * @return See Argument Reference above.
      * 
      */
     private String serviceName;
@@ -84,7 +84,7 @@ public final class GetMongoDbUserResult {
         return this.roles;
     }
     /**
-     * @return Current status of the user.
+     * @return See Argument Reference above.
      * 
      */
     public String serviceName() {

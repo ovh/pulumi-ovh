@@ -37,7 +37,7 @@ public final class GetDatabaseInstanceResult {
      */
     private String name;
     /**
-     * @return Current status of the database.
+     * @return See Argument Reference above.
      * 
      */
     private String serviceName;
@@ -79,7 +79,7 @@ public final class GetDatabaseInstanceResult {
         return this.name;
     }
     /**
-     * @return Current status of the database.
+     * @return See Argument Reference above.
      * 
      */
     public String serviceName() {

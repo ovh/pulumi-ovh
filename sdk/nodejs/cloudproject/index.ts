@@ -180,21 +180,6 @@ export const getLoadBalancers: typeof import("./getLoadBalancers").getLoadBalanc
 export const getLoadBalancersOutput: typeof import("./getLoadBalancers").getLoadBalancersOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancers","getLoadBalancersOutput"], () => require("./getLoadBalancers"));
 
-export { GetM3dbNamespaceArgs, GetM3dbNamespaceResult, GetM3dbNamespaceOutputArgs } from "./getM3dbNamespace";
-export const getM3dbNamespace: typeof import("./getM3dbNamespace").getM3dbNamespace = null as any;
-export const getM3dbNamespaceOutput: typeof import("./getM3dbNamespace").getM3dbNamespaceOutput = null as any;
-utilities.lazyLoad(exports, ["getM3dbNamespace","getM3dbNamespaceOutput"], () => require("./getM3dbNamespace"));
-
-export { GetM3dbNamespacesArgs, GetM3dbNamespacesResult, GetM3dbNamespacesOutputArgs } from "./getM3dbNamespaces";
-export const getM3dbNamespaces: typeof import("./getM3dbNamespaces").getM3dbNamespaces = null as any;
-export const getM3dbNamespacesOutput: typeof import("./getM3dbNamespaces").getM3dbNamespacesOutput = null as any;
-utilities.lazyLoad(exports, ["getM3dbNamespaces","getM3dbNamespacesOutput"], () => require("./getM3dbNamespaces"));
-
-export { GetM3dbUserArgs, GetM3dbUserResult, GetM3dbUserOutputArgs } from "./getM3dbUser";
-export const getM3dbUser: typeof import("./getM3dbUser").getM3dbUser = null as any;
-export const getM3dbUserOutput: typeof import("./getM3dbUser").getM3dbUserOutput = null as any;
-utilities.lazyLoad(exports, ["getM3dbUser","getM3dbUserOutput"], () => require("./getM3dbUser"));
-
 export { GetMongoDbPrometheusArgs, GetMongoDbPrometheusResult, GetMongoDbPrometheusOutputArgs } from "./getMongoDbPrometheus";
 export const getMongoDbPrometheus: typeof import("./getMongoDbPrometheus").getMongoDbPrometheus = null as any;
 export const getMongoDbPrometheusOutput: typeof import("./getMongoDbPrometheus").getMongoDbPrometheusOutput = null as any;
@@ -254,11 +239,6 @@ export { GetRancherVersionArgs, GetRancherVersionResult, GetRancherVersionOutput
 export const getRancherVersion: typeof import("./getRancherVersion").getRancherVersion = null as any;
 export const getRancherVersionOutput: typeof import("./getRancherVersion").getRancherVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getRancherVersion","getRancherVersionOutput"], () => require("./getRancherVersion"));
-
-export { GetRedisUserArgs, GetRedisUserResult, GetRedisUserOutputArgs } from "./getRedisUser";
-export const getRedisUser: typeof import("./getRedisUser").getRedisUser = null as any;
-export const getRedisUserOutput: typeof import("./getRedisUser").getRedisUserOutput = null as any;
-utilities.lazyLoad(exports, ["getRedisUser","getRedisUserOutput"], () => require("./getRedisUser"));
 
 export { GetRegionArgs, GetRegionResult, GetRegionOutputArgs } from "./getRegion";
 export const getRegion: typeof import("./getRegion").getRegion = null as any;

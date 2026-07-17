@@ -195,7 +195,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Current status of the database.
+        /// See Argument Reference above.
         /// </summary>
         public readonly string ServiceName;
 

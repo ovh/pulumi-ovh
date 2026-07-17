@@ -112,6 +112,8 @@ export class Integration extends pulumi.CustomResource {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -203,6 +205,8 @@ export interface IntegrationState {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      */
     type?: pulumi.Input<string>;
 }
@@ -242,6 +246,8 @@ export interface IntegrationArgs {
      * * `kafkaConnect`
      * * `kafkaLogs`
      * * `kafkaMirrorMaker`
+     * * `opensearchLogs`
+     * * `postgresqlMetrics`
      */
     type?: pulumi.Input<string>;
 }

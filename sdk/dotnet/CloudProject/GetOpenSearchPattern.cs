@@ -176,7 +176,7 @@ namespace Pulumi.Ovh.CloudProject
         /// </summary>
         public readonly string Pattern;
         /// <summary>
-        /// Current status of the pattern.
+        /// See Argument Reference above.
         /// </summary>
         public readonly string ServiceName;
 

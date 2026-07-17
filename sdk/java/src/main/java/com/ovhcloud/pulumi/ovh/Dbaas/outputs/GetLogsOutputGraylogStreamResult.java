@@ -8,10 +8,15 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetLogsOutputGraylogStreamResult {
+    /**
+     * @return Indicates if the current user can create alert on the stream
+     * 
+     */
     private Boolean canAlert;
     /**
      * @return Cold storage compression method
@@ -53,6 +58,11 @@ public final class GetLogsOutputGraylogStreamResult {
      * 
      */
     private String description;
+    /**
+     * @return Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    private List<String> encryptionKeysIds;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -99,7 +109,7 @@ public final class GetLogsOutputGraylogStreamResult {
      */
     private String parentStreamId;
     /**
-     * @return If set, pause indexing when maximum size is reach
+     * @return If set, pause indexing when maximum size is reached
      * 
      */
     private Boolean pauseIndexingOnMaxSize;
@@ -132,6 +142,10 @@ public final class GetLogsOutputGraylogStreamResult {
     private String writeToken;
 
     private GetLogsOutputGraylogStreamResult() {}
+    /**
+     * @return Indicates if the current user can create alert on the stream
+     * 
+     */
     public Boolean canAlert() {
         return this.canAlert;
     }
@@ -190,6 +204,13 @@ public final class GetLogsOutputGraylogStreamResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Set of encryption key IDs used to encrypt stream archives
+     * 
+     */
+    public List<String> encryptionKeysIds() {
+        return this.encryptionKeysIds;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -255,7 +276,7 @@ public final class GetLogsOutputGraylogStreamResult {
         return this.parentStreamId;
     }
     /**
-     * @return If set, pause indexing when maximum size is reach
+     * @return If set, pause indexing when maximum size is reached
      * 
      */
     public Boolean pauseIndexingOnMaxSize() {
@@ -321,6 +342,7 @@ public final class GetLogsOutputGraylogStreamResult {
         private String coldStorageTarget;
         private String createdAt;
         private String description;
+        private List<String> encryptionKeysIds;
         private String id;
         private Boolean indexingEnabled;
         private Integer indexingMaxSize;
@@ -350,6 +372,7 @@ public final class GetLogsOutputGraylogStreamResult {
     	      this.coldStorageTarget = defaults.coldStorageTarget;
     	      this.createdAt = defaults.createdAt;
     	      this.description = defaults.description;
+    	      this.encryptionKeysIds = defaults.encryptionKeysIds;
     	      this.id = defaults.id;
     	      this.indexingEnabled = defaults.indexingEnabled;
     	      this.indexingMaxSize = defaults.indexingMaxSize;
@@ -440,6 +463,17 @@ public final class GetLogsOutputGraylogStreamResult {
             }
             this.description = description;
             return this;
+        }
+        @CustomType.Setter
+        public Builder encryptionKeysIds(List<String> encryptionKeysIds) {
+            if (encryptionKeysIds == null) {
+              throw new MissingRequiredPropertyException("GetLogsOutputGraylogStreamResult", "encryptionKeysIds");
+            }
+            this.encryptionKeysIds = encryptionKeysIds;
+            return this;
+        }
+        public Builder encryptionKeysIds(String... encryptionKeysIds) {
+            return encryptionKeysIds(List.of(encryptionKeysIds));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -588,6 +622,7 @@ public final class GetLogsOutputGraylogStreamResult {
             _resultValue.coldStorageTarget = coldStorageTarget;
             _resultValue.createdAt = createdAt;
             _resultValue.description = description;
+            _resultValue.encryptionKeysIds = encryptionKeysIds;
             _resultValue.id = id;
             _resultValue.indexingEnabled = indexingEnabled;
             _resultValue.indexingMaxSize = indexingMaxSize;

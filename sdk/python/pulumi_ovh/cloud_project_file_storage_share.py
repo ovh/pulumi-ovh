@@ -465,6 +465,8 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        > **NOTE** Prefer using the new `CloudStorageFileShare` resource instead.
+
         Creates a file storage share in a public cloud project.
 
         ## Example Usage
@@ -515,6 +517,8 @@ class CloudProjectFileStorageShare(pulumi.CustomResource):
                  args: CloudProjectFileStorageShareArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **NOTE** Prefer using the new `CloudStorageFileShare` resource instead.
+
         Creates a file storage share in a public cloud project.
 
         ## Example Usage

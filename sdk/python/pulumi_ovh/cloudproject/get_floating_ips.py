@@ -84,6 +84,8 @@ def get_floating_ips(region_name: Optional[_builtins.str] = None,
                      service_name: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIPsResult:
     """
+    > **NOTE** We recommend using the `get_cloud_floating_ips` data source instead. Floating IPs can now also be managed directly with the `CloudFloatingIp` resource.
+
     Use this data source to get the floating IPs of a public cloud project.
 
 
@@ -105,6 +107,8 @@ def get_floating_ips_output(region_name: Optional[pulumi.Input[_builtins.str]] =
                             service_name: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFloatingIPsResult]:
     """
+    > **NOTE** We recommend using the `get_cloud_floating_ips` data source instead. Floating IPs can now also be managed directly with the `CloudFloatingIp` resource.
+
     Use this data source to get the floating IPs of a public cloud project.
 
 

@@ -28,6 +28,7 @@ class LogsOutputGraylogStreamArgs:
                  cold_storage_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  cold_storage_retention: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_storage_target: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_keys_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  indexing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  indexing_max_size: Optional[pulumi.Input[_builtins.int]] = None,
                  indexing_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -41,11 +42,12 @@ class LogsOutputGraylogStreamArgs:
         :param pulumi.Input[_builtins.str] service_name: The service name
         :param pulumi.Input[_builtins.str] title: Stream name
         :param pulumi.Input[_builtins.str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
-        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GELF", "PLAIN"
         :param pulumi.Input[_builtins.bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[_builtins.bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[_builtins.int] cold_storage_retention: Cold storage retention in year
         :param pulumi.Input[_builtins.str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_keys_ids: Set of encryption key IDs used to encrypt stream archives
         :param pulumi.Input[_builtins.bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[_builtins.int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[_builtins.bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
@@ -69,6 +71,8 @@ class LogsOutputGraylogStreamArgs:
             pulumi.set(__self__, "cold_storage_retention", cold_storage_retention)
         if cold_storage_target is not None:
             pulumi.set(__self__, "cold_storage_target", cold_storage_target)
+        if encryption_keys_ids is not None:
+            pulumi.set(__self__, "encryption_keys_ids", encryption_keys_ids)
         if indexing_enabled is not None:
             pulumi.set(__self__, "indexing_enabled", indexing_enabled)
         if indexing_max_size is not None:
@@ -136,7 +140,7 @@ class LogsOutputGraylogStreamArgs:
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        ColdStorage content. One of "ALL", "GELF", "PLAIN"
         """
         return pulumi.get(self, "cold_storage_content")
 
@@ -191,6 +195,18 @@ class LogsOutputGraylogStreamArgs:
     @cold_storage_target.setter
     def cold_storage_target(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "cold_storage_target", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionKeysIds")
+    def encryption_keys_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Set of encryption key IDs used to encrypt stream archives
+        """
+        return pulumi.get(self, "encryption_keys_ids")
+
+    @encryption_keys_ids.setter
+    def encryption_keys_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "encryption_keys_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="indexingEnabled")
@@ -289,6 +305,7 @@ class _LogsOutputGraylogStreamState:
                  cold_storage_target: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_keys_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  indexing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  indexing_max_size: Optional[pulumi.Input[_builtins.int]] = None,
                  indexing_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -309,27 +326,28 @@ class _LogsOutputGraylogStreamState:
         Input properties used for looking up and filtering LogsOutputGraylogStream resources.
         :param pulumi.Input[_builtins.bool] can_alert: Indicates if the current user can create alert on the stream
         :param pulumi.Input[_builtins.str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
-        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GELF", "PLAIN"
         :param pulumi.Input[_builtins.bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[_builtins.bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[_builtins.int] cold_storage_retention: Cold storage retention in year
         :param pulumi.Input[_builtins.str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[_builtins.str] created_at: Stream creation
         :param pulumi.Input[_builtins.str] description: Stream description
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_keys_ids: Set of encryption key IDs used to encrypt stream archives
         :param pulumi.Input[_builtins.bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[_builtins.int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[_builtins.bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
         :param pulumi.Input[_builtins.bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[_builtins.bool] is_shareable: Indicates if you are allowed to share entry
         :param pulumi.Input[_builtins.int] nb_alert_condition: Number of alert condition
-        :param pulumi.Input[_builtins.int] nb_archive: Number of coldstored archivesr
+        :param pulumi.Input[_builtins.int] nb_archive: Number of coldstored archives
         :param pulumi.Input[_builtins.str] parent_stream_id: Parent stream ID
         :param pulumi.Input[_builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reached
         :param pulumi.Input[_builtins.str] retention_id: Retention ID
         :param pulumi.Input[_builtins.str] service_name: The service name
         :param pulumi.Input[_builtins.str] stream_id: Stream ID
         :param pulumi.Input[_builtins.str] title: Stream name
-        :param pulumi.Input[_builtins.str] updated_at: Stream last updater
+        :param pulumi.Input[_builtins.str] updated_at: Stream last update
         :param pulumi.Input[_builtins.bool] web_socket_enabled: Enable Websocket
         :param pulumi.Input[_builtins.str] write_token: Write token of the stream (empty if the caller is not the owner of the stream)
         """
@@ -351,6 +369,8 @@ class _LogsOutputGraylogStreamState:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption_keys_ids is not None:
+            pulumi.set(__self__, "encryption_keys_ids", encryption_keys_ids)
         if indexing_enabled is not None:
             pulumi.set(__self__, "indexing_enabled", indexing_enabled)
         if indexing_max_size is not None:
@@ -412,7 +432,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        ColdStorage content. One of "ALL", "GELF", "PLAIN"
         """
         return pulumi.get(self, "cold_storage_content")
 
@@ -493,6 +513,18 @@ class _LogsOutputGraylogStreamState:
         pulumi.set(self, "description", value)
 
     @_builtins.property
+    @pulumi.getter(name="encryptionKeysIds")
+    def encryption_keys_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Set of encryption key IDs used to encrypt stream archives
+        """
+        return pulumi.get(self, "encryption_keys_ids")
+
+    @encryption_keys_ids.setter
+    def encryption_keys_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "encryption_keys_ids", value)
+
+    @_builtins.property
     @pulumi.getter(name="indexingEnabled")
     def indexing_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -568,7 +600,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="nbArchive")
     def nb_archive(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of coldstored archivesr
+        Number of coldstored archives
         """
         return pulumi.get(self, "nb_archive")
 
@@ -652,7 +684,7 @@ class _LogsOutputGraylogStreamState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Stream last updater
+        Stream last update
         """
         return pulumi.get(self, "updated_at")
 
@@ -698,6 +730,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
                  cold_storage_retention: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_storage_target: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_keys_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  indexing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  indexing_max_size: Optional[pulumi.Input[_builtins.int]] = None,
                  indexing_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -713,6 +746,8 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Example 1 - Basic stream
+
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -723,7 +758,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             description="my graylog stream")
         ```
 
-        To define the retention of the stream, you can use the following configuration:
+        ### Example 2 - Stream retention
 
         ```python
         import pulumi
@@ -752,12 +787,13 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
-        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GELF", "PLAIN"
         :param pulumi.Input[_builtins.bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[_builtins.bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[_builtins.int] cold_storage_retention: Cold storage retention in year
         :param pulumi.Input[_builtins.str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[_builtins.str] description: Stream description
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_keys_ids: Set of encryption key IDs used to encrypt stream archives
         :param pulumi.Input[_builtins.bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[_builtins.int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[_builtins.bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
@@ -779,6 +815,8 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Example 1 - Basic stream
+
         ```python
         import pulumi
         import pulumi_ovh as ovh
@@ -789,7 +827,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             description="my graylog stream")
         ```
 
-        To define the retention of the stream, you can use the following configuration:
+        ### Example 2 - Stream retention
 
         ```python
         import pulumi
@@ -837,6 +875,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
                  cold_storage_retention: Optional[pulumi.Input[_builtins.int]] = None,
                  cold_storage_target: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_keys_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  indexing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  indexing_max_size: Optional[pulumi.Input[_builtins.int]] = None,
                  indexing_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -864,6 +903,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["encryption_keys_ids"] = encryption_keys_ids
             __props__.__dict__["indexing_enabled"] = indexing_enabled
             __props__.__dict__["indexing_max_size"] = indexing_max_size
             __props__.__dict__["indexing_notify_enabled"] = indexing_notify_enabled
@@ -907,6 +947,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
             cold_storage_target: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            encryption_keys_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             indexing_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
             indexing_max_size: Optional[pulumi.Input[_builtins.int]] = None,
             indexing_notify_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -932,27 +973,28 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] can_alert: Indicates if the current user can create alert on the stream
         :param pulumi.Input[_builtins.str] cold_storage_compression: Cold storage compression method. One of "LZMA", "GZIP", "DEFLATED", "ZSTD"
-        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        :param pulumi.Input[_builtins.str] cold_storage_content: ColdStorage content. One of "ALL", "GELF", "PLAIN"
         :param pulumi.Input[_builtins.bool] cold_storage_enabled: Is Cold storage enabled?
         :param pulumi.Input[_builtins.bool] cold_storage_notify_enabled: Notify on new Cold storage archive
         :param pulumi.Input[_builtins.int] cold_storage_retention: Cold storage retention in year
         :param pulumi.Input[_builtins.str] cold_storage_target: ColdStorage destination. One of "PCA", "PCS"
         :param pulumi.Input[_builtins.str] created_at: Stream creation
         :param pulumi.Input[_builtins.str] description: Stream description
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_keys_ids: Set of encryption key IDs used to encrypt stream archives
         :param pulumi.Input[_builtins.bool] indexing_enabled: Enable ES indexing
         :param pulumi.Input[_builtins.int] indexing_max_size: Maximum indexing size (in GB)
         :param pulumi.Input[_builtins.bool] indexing_notify_enabled: If set, notify when size is near 80, 90 or 100 % of the maximum configured setting
         :param pulumi.Input[_builtins.bool] is_editable: Indicates if you are allowed to edit entry
         :param pulumi.Input[_builtins.bool] is_shareable: Indicates if you are allowed to share entry
         :param pulumi.Input[_builtins.int] nb_alert_condition: Number of alert condition
-        :param pulumi.Input[_builtins.int] nb_archive: Number of coldstored archivesr
+        :param pulumi.Input[_builtins.int] nb_archive: Number of coldstored archives
         :param pulumi.Input[_builtins.str] parent_stream_id: Parent stream ID
         :param pulumi.Input[_builtins.bool] pause_indexing_on_max_size: If set, pause indexing when maximum size is reached
         :param pulumi.Input[_builtins.str] retention_id: Retention ID
         :param pulumi.Input[_builtins.str] service_name: The service name
         :param pulumi.Input[_builtins.str] stream_id: Stream ID
         :param pulumi.Input[_builtins.str] title: Stream name
-        :param pulumi.Input[_builtins.str] updated_at: Stream last updater
+        :param pulumi.Input[_builtins.str] updated_at: Stream last update
         :param pulumi.Input[_builtins.bool] web_socket_enabled: Enable Websocket
         :param pulumi.Input[_builtins.str] write_token: Write token of the stream (empty if the caller is not the owner of the stream)
         """
@@ -969,6 +1011,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         __props__.__dict__["cold_storage_target"] = cold_storage_target
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
+        __props__.__dict__["encryption_keys_ids"] = encryption_keys_ids
         __props__.__dict__["indexing_enabled"] = indexing_enabled
         __props__.__dict__["indexing_max_size"] = indexing_max_size
         __props__.__dict__["indexing_notify_enabled"] = indexing_notify_enabled
@@ -1007,7 +1050,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="coldStorageContent")
     def cold_storage_content(self) -> pulumi.Output[_builtins.str]:
         """
-        ColdStorage content. One of "ALL", "GLEF", "PLAIN"
+        ColdStorage content. One of "ALL", "GELF", "PLAIN"
         """
         return pulumi.get(self, "cold_storage_content")
 
@@ -1058,6 +1101,14 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
         Stream description
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionKeysIds")
+    def encryption_keys_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+        """
+        Set of encryption key IDs used to encrypt stream archives
+        """
+        return pulumi.get(self, "encryption_keys_ids")
 
     @_builtins.property
     @pulumi.getter(name="indexingEnabled")
@@ -1111,7 +1162,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="nbArchive")
     def nb_archive(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of coldstored archivesr
+        Number of coldstored archives
         """
         return pulumi.get(self, "nb_archive")
 
@@ -1167,7 +1218,7 @@ class LogsOutputGraylogStream(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Stream last updater
+        Stream last update
         """
         return pulumi.get(self, "updated_at")
 

@@ -12,18 +12,24 @@ namespace Pulumi.Ovh.CloudProject
     public static class GetFloatingIPs
     {
         /// <summary>
+        /// &gt; **NOTE** We recommend using the `ovh.getCloudFloatingIps` data source instead. Floating IPs can now also be managed directly with the `ovh.CloudFloatingIp` resource.
+        /// 
         /// Use this data source to get the floating IPs of a public cloud project.
         /// </summary>
         public static Task<GetFloatingIPsResult> InvokeAsync(GetFloatingIPsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIPsResult>("ovh:CloudProject/getFloatingIPs:getFloatingIPs", args ?? new GetFloatingIPsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** We recommend using the `ovh.getCloudFloatingIps` data source instead. Floating IPs can now also be managed directly with the `ovh.CloudFloatingIp` resource.
+        /// 
         /// Use this data source to get the floating IPs of a public cloud project.
         /// </summary>
         public static Output<GetFloatingIPsResult> Invoke(GetFloatingIPsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIPsResult>("ovh:CloudProject/getFloatingIPs:getFloatingIPs", args ?? new GetFloatingIPsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **NOTE** We recommend using the `ovh.getCloudFloatingIps` data source instead. Floating IPs can now also be managed directly with the `ovh.CloudFloatingIp` resource.
+        /// 
         /// Use this data source to get the floating IPs of a public cloud project.
         /// </summary>
         public static Output<GetFloatingIPsResult> Invoke(GetFloatingIPsInvokeArgs args, InvokeOutputOptions options)

@@ -26,7 +26,7 @@ class GetLogsOutputGraylogStreamResult:
     """
     A collection of values returned by getLogsOutputGraylogStream.
     """
-    def __init__(__self__, can_alert=None, cold_storage_compression=None, cold_storage_content=None, cold_storage_enabled=None, cold_storage_notify_enabled=None, cold_storage_retention=None, cold_storage_target=None, created_at=None, description=None, id=None, indexing_enabled=None, indexing_max_size=None, indexing_notify_enabled=None, is_editable=None, is_shareable=None, nb_alert_condition=None, nb_archive=None, parent_stream_id=None, pause_indexing_on_max_size=None, retention_id=None, service_name=None, stream_id=None, title=None, updated_at=None, web_socket_enabled=None, write_token=None):
+    def __init__(__self__, can_alert=None, cold_storage_compression=None, cold_storage_content=None, cold_storage_enabled=None, cold_storage_notify_enabled=None, cold_storage_retention=None, cold_storage_target=None, created_at=None, description=None, encryption_keys_ids=None, id=None, indexing_enabled=None, indexing_max_size=None, indexing_notify_enabled=None, is_editable=None, is_shareable=None, nb_alert_condition=None, nb_archive=None, parent_stream_id=None, pause_indexing_on_max_size=None, retention_id=None, service_name=None, stream_id=None, title=None, updated_at=None, web_socket_enabled=None, write_token=None):
         if can_alert and not isinstance(can_alert, bool):
             raise TypeError("Expected argument 'can_alert' to be a bool")
         pulumi.set(__self__, "can_alert", can_alert)
@@ -54,6 +54,9 @@ class GetLogsOutputGraylogStreamResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if encryption_keys_ids and not isinstance(encryption_keys_ids, list):
+            raise TypeError("Expected argument 'encryption_keys_ids' to be a list")
+        pulumi.set(__self__, "encryption_keys_ids", encryption_keys_ids)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -109,6 +112,9 @@ class GetLogsOutputGraylogStreamResult:
     @_builtins.property
     @pulumi.getter(name="canAlert")
     def can_alert(self) -> _builtins.bool:
+        """
+        Indicates if the current user can create alert on the stream
+        """
         return pulumi.get(self, "can_alert")
 
     @_builtins.property
@@ -174,6 +180,14 @@ class GetLogsOutputGraylogStreamResult:
         Stream description
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionKeysIds")
+    def encryption_keys_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of encryption key IDs used to encrypt stream archives
+        """
+        return pulumi.get(self, "encryption_keys_ids")
 
     @_builtins.property
     @pulumi.getter
@@ -251,7 +265,7 @@ class GetLogsOutputGraylogStreamResult:
     @pulumi.getter(name="pauseIndexingOnMaxSize")
     def pause_indexing_on_max_size(self) -> _builtins.bool:
         """
-        If set, pause indexing when maximum size is reach
+        If set, pause indexing when maximum size is reached
         """
         return pulumi.get(self, "pause_indexing_on_max_size")
 
@@ -321,6 +335,7 @@ class AwaitableGetLogsOutputGraylogStreamResult(GetLogsOutputGraylogStreamResult
             cold_storage_target=self.cold_storage_target,
             created_at=self.created_at,
             description=self.description,
+            encryption_keys_ids=self.encryption_keys_ids,
             id=self.id,
             indexing_enabled=self.indexing_enabled,
             indexing_max_size=self.indexing_max_size,
@@ -376,6 +391,7 @@ def get_logs_output_graylog_stream(service_name: Optional[_builtins.str] = None,
         cold_storage_target=pulumi.get(__ret__, 'cold_storage_target'),
         created_at=pulumi.get(__ret__, 'created_at'),
         description=pulumi.get(__ret__, 'description'),
+        encryption_keys_ids=pulumi.get(__ret__, 'encryption_keys_ids'),
         id=pulumi.get(__ret__, 'id'),
         indexing_enabled=pulumi.get(__ret__, 'indexing_enabled'),
         indexing_max_size=pulumi.get(__ret__, 'indexing_max_size'),
@@ -428,6 +444,7 @@ def get_logs_output_graylog_stream_output(service_name: Optional[pulumi.Input[_b
         cold_storage_target=pulumi.get(__response__, 'cold_storage_target'),
         created_at=pulumi.get(__response__, 'created_at'),
         description=pulumi.get(__response__, 'description'),
+        encryption_keys_ids=pulumi.get(__response__, 'encryption_keys_ids'),
         id=pulumi.get(__response__, 'id'),
         indexing_enabled=pulumi.get(__response__, 'indexing_enabled'),
         indexing_max_size=pulumi.get(__response__, 'indexing_max_size'),
