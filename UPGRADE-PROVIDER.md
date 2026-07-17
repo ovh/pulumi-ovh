@@ -1,13 +1,13 @@
 # Pre-requisites
 
 ```bash
-# Install Node 20.5 minimum
+# Install Node 22.16 minimum
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 source ~/.bashrc
-nvm install v20.5.0
+nvm install v22.16.0
 
 node -v
-#v20.5.0
+#v22.16.0
 
 # Install SDK
 curl -s "https://get.sdkman.io" | bash
