@@ -939,14 +939,8 @@
                 "current": "ovh:index/cloudStorageFileShare:CloudStorageFileShare",
                 "majorVersion": 2,
                 "fields": {
-                    "access_rules": {
-                        "maxItemsOne": false
-                    },
                     "current_state": {
                         "fields": {
-                            "access_rules": {
-                                "maxItemsOne": false
-                            },
                             "capabilities": {
                                 "maxItemsOne": false
                             },
@@ -956,6 +950,10 @@
                         }
                     }
                 }
+            },
+            "ovh_cloud_storage_file_share_acl": {
+                "current": "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl",
+                "majorVersion": 2
             },
             "ovh_cloud_storage_file_share_network": {
                 "current": "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork",
@@ -3528,14 +3526,8 @@
                 "current": "ovh:index/getCloudStorageFileShare:getCloudStorageFileShare",
                 "majorVersion": 2,
                 "fields": {
-                    "access_rules": {
-                        "maxItemsOne": false
-                    },
                     "current_state": {
                         "fields": {
-                            "access_rules": {
-                                "maxItemsOne": false
-                            },
                             "capabilities": {
                                 "maxItemsOne": false
                             },
@@ -3580,14 +3572,8 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "access_rules": {
-                                    "maxItemsOne": false
-                                },
                                 "current_state": {
                                     "fields": {
-                                        "access_rules": {
-                                            "maxItemsOne": false
-                                        },
                                         "capabilities": {
                                             "maxItemsOne": false
                                         },
@@ -4785,6 +4771,7 @@
             "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": 1,
             "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": 1,
             "ovh:index/cloudStorageFileShare:CloudStorageFileShare": 1,
+            "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl": 1,
             "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork": 1,
             "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": 1,
             "ovh:index/clousSSHKey:ClousSSHKey": 1,

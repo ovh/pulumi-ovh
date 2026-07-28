@@ -10,41 +10,35 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh.Inputs
 {
 
-    public sealed class CloudStorageFileShareCurrentStateAccessRuleArgs : global::Pulumi.ResourceArgs
+    public sealed class CloudStorageFileShareAclCurrentStateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access level (`READ_WRITE`, `READ_ONLY`).
+        /// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
         /// </summary>
         [Input("accessLevel")]
         public Input<string>? AccessLevel { get; set; }
 
         /// <summary>
-        /// IP address or CIDR to grant access to.
+        /// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
         /// </summary>
         [Input("accessTo")]
         public Input<string>? AccessTo { get; set; }
 
         /// <summary>
-        /// Access rule creation date.
+        /// Creation date of the access rule.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Access rule ID.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Access rule state.
+        /// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        public CloudStorageFileShareCurrentStateAccessRuleArgs()
+        public CloudStorageFileShareAclCurrentStateArgs()
         {
         }
-        public static new CloudStorageFileShareCurrentStateAccessRuleArgs Empty => new CloudStorageFileShareCurrentStateAccessRuleArgs();
+        public static new CloudStorageFileShareAclCurrentStateArgs Empty => new CloudStorageFileShareAclCurrentStateArgs();
     }
 }

@@ -116,9 +116,8 @@ __all__ = [
     'CloudStorageBlockVolumeEncryption',
     'CloudStorageBlockVolumeSnapshotCurrentState',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocation',
-    'CloudStorageFileShareAccessRule',
+    'CloudStorageFileShareAclCurrentState',
     'CloudStorageFileShareCurrentState',
-    'CloudStorageFileShareCurrentStateAccessRule',
     'CloudStorageFileShareCurrentStateCapability',
     'CloudStorageFileShareCurrentStateExportLocation',
     'CloudStorageFileShareCurrentStateLocation',
@@ -335,9 +334,7 @@ __all__ = [
     'GetCloudStorageBlockVolumesVolumeAttachedInstanceResult',
     'GetCloudStorageBlockVolumesVolumeEncryptionResult',
     'GetCloudStorageBlockVolumesVolumeLocationResult',
-    'GetCloudStorageFileShareAccessRuleResult',
     'GetCloudStorageFileShareCurrentStateResult',
-    'GetCloudStorageFileShareCurrentStateAccessRuleResult',
     'GetCloudStorageFileShareCurrentStateCapabilityResult',
     'GetCloudStorageFileShareCurrentStateExportLocationResult',
     'GetCloudStorageFileShareCurrentStateLocationResult',
@@ -355,9 +352,7 @@ __all__ = [
     'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateResult',
     'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult',
     'GetCloudStorageFileSharesFileShareResult',
-    'GetCloudStorageFileSharesFileShareAccessRuleResult',
     'GetCloudStorageFileSharesFileShareCurrentStateResult',
-    'GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult',
     'GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult',
     'GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult',
     'GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
@@ -5178,13 +5173,42 @@ class CloudStorageBlockVolumeCurrentStateEncryption(dict):
 
 @pulumi.output_type
 class CloudStorageBlockVolumeCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None):
         """
+        :param _builtins.str availability_zone: Availability zone
         :param _builtins.str region: Region where the volume will be created. **Changing this value recreates the resource.**
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if region is not None:
             pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
@@ -5318,7 +5342,7 @@ class CloudStorageBlockVolumeSnapshotCurrentStateLocation(dict):
 
 
 @pulumi.output_type
-class CloudStorageFileShareAccessRule(dict):
+class CloudStorageFileShareAclCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5326,43 +5350,71 @@ class CloudStorageFileShareAccessRule(dict):
             suggest = "access_level"
         elif key == "accessTo":
             suggest = "access_to"
+        elif key == "createdAt":
+            suggest = "created_at"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareAccessRule. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareAclCurrentState. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        CloudStorageFileShareAccessRule.__key_warning(key)
+        CloudStorageFileShareAclCurrentState.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        CloudStorageFileShareAccessRule.__key_warning(key)
+        CloudStorageFileShareAclCurrentState.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str):
+                 access_level: Optional[_builtins.str] = None,
+                 access_to: Optional[_builtins.str] = None,
+                 created_at: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
         """
-        :param _builtins.str access_level: Access level (`READ_WRITE`, `READ_ONLY`).
-        :param _builtins.str access_to: IP address or CIDR to grant access to.
+        :param _builtins.str access_level: Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+        :param _builtins.str access_to: IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+        :param _builtins.str created_at: Creation date of the access rule.
+        :param _builtins.str state: Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_to is not None:
+            pulumi.set(__self__, "access_to", access_to)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
+    def access_level(self) -> Optional[_builtins.str]:
         """
-        Access level (`READ_WRITE`, `READ_ONLY`).
+        Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
+    def access_to(self) -> Optional[_builtins.str]:
         """
-        IP address or CIDR to grant access to.
+        IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        Creation date of the access rule.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -5370,9 +5422,7 @@ class CloudStorageFileShareCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accessRules":
-            suggest = "access_rules"
-        elif key == "exportLocations":
+        if key == "exportLocations":
             suggest = "export_locations"
         elif key == "shareNetworkId":
             suggest = "share_network_id"
@@ -5391,7 +5441,6 @@ class CloudStorageFileShareCurrentState(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_rules: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateAccessRule']] = None,
                  capabilities: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateCapability']] = None,
                  description: Optional[_builtins.str] = None,
                  export_locations: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateExportLocation']] = None,
@@ -5402,7 +5451,6 @@ class CloudStorageFileShareCurrentState(dict):
                  share_type: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param Sequence['CloudStorageFileShareCurrentStateAccessRuleArgs'] access_rules: Access rules for the file share. Each rule has:
         :param Sequence['CloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
         :param Sequence['CloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
@@ -5413,8 +5461,6 @@ class CloudStorageFileShareCurrentState(dict):
         :param _builtins.str share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
         :param _builtins.int size: Size of the file share in GB.
         """
-        if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
         if description is not None:
@@ -5433,14 +5479,6 @@ class CloudStorageFileShareCurrentState(dict):
             pulumi.set(__self__, "share_type", share_type)
         if size is not None:
             pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[Sequence['outputs.CloudStorageFileShareCurrentStateAccessRule']]:
-        """
-        Access rules for the file share. Each rule has:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -5513,94 +5551,6 @@ class CloudStorageFileShareCurrentState(dict):
         Size of the file share in GB.
         """
         return pulumi.get(self, "size")
-
-
-@pulumi.output_type
-class CloudStorageFileShareCurrentStateAccessRule(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessLevel":
-            suggest = "access_level"
-        elif key == "accessTo":
-            suggest = "access_to"
-        elif key == "createdAt":
-            suggest = "created_at"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareCurrentStateAccessRule. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudStorageFileShareCurrentStateAccessRule.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudStorageFileShareCurrentStateAccessRule.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 access_level: Optional[_builtins.str] = None,
-                 access_to: Optional[_builtins.str] = None,
-                 created_at: Optional[_builtins.str] = None,
-                 id: Optional[_builtins.str] = None,
-                 state: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str access_level: Access level (`READ_WRITE`, `READ_ONLY`).
-        :param _builtins.str access_to: IP address or CIDR to grant access to.
-        :param _builtins.str created_at: Access rule creation date.
-        :param _builtins.str id: Access rule ID.
-        :param _builtins.str state: Access rule state.
-        """
-        if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
-        if access_to is not None:
-            pulumi.set(__self__, "access_to", access_to)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[_builtins.str]:
-        """
-        Access level (`READ_WRITE`, `READ_ONLY`).
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> Optional[_builtins.str]:
-        """
-        IP address or CIDR to grant access to.
-        """
-        return pulumi.get(self, "access_to")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[_builtins.str]:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        """
-        Access rule ID.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> Optional[_builtins.str]:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -15697,38 +15647,8 @@ class GetCloudStorageBlockVolumesVolumeLocationResult(dict):
 
 
 @pulumi.output_type
-class GetCloudStorageFileShareAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-
-@pulumi.output_type
 class GetCloudStorageFileShareCurrentStateResult(dict):
     def __init__(__self__, *,
-                 access_rules: Sequence['outputs.GetCloudStorageFileShareCurrentStateAccessRuleResult'],
                  capabilities: Sequence['outputs.GetCloudStorageFileShareCurrentStateCapabilityResult'],
                  description: _builtins.str,
                  export_locations: Sequence['outputs.GetCloudStorageFileShareCurrentStateExportLocationResult'],
@@ -15739,7 +15659,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
                  share_type: _builtins.str,
                  size: _builtins.int):
         """
-        :param Sequence['GetCloudStorageFileShareCurrentStateAccessRuleArgs'] access_rules: Current access rules for the file share:
         :param Sequence['GetCloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
         :param Sequence['GetCloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
@@ -15750,7 +15669,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         :param _builtins.str share_type: File share type.
         :param _builtins.int size: Size of the file share in GB.
         """
-        pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "export_locations", export_locations)
@@ -15760,14 +15678,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         pulumi.set(__self__, "share_network_id", share_network_id)
         pulumi.set(__self__, "share_type", share_type)
         pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileShareCurrentStateAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -15840,68 +15750,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         Size of the file share in GB.
         """
         return pulumi.get(self, "size")
-
-
-@pulumi.output_type
-class GetCloudStorageFileShareCurrentStateAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str,
-                 created_at: _builtins.str,
-                 id: _builtins.str,
-                 state: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        :param _builtins.str created_at: Access rule creation date.
-        :param _builtins.str id: The ID of the file share.
-        :param _builtins.str state: Access rule state.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The ID of the file share.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -16690,7 +16538,6 @@ class GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult(d
 @pulumi.output_type
 class GetCloudStorageFileSharesFileShareResult(dict):
     def __init__(__self__, *,
-                 access_rules: Sequence['outputs.GetCloudStorageFileSharesFileShareAccessRuleResult'],
                  checksum: _builtins.str,
                  created_at: _builtins.str,
                  current_state: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateResult',
@@ -16705,12 +16552,11 @@ class GetCloudStorageFileSharesFileShareResult(dict):
                  size: _builtins.int,
                  updated_at: _builtins.str):
         """
-        :param Sequence['GetCloudStorageFileSharesFileShareAccessRuleArgs'] access_rules: Current access rules for the file share:
         :param _builtins.str checksum: Computed hash representing the current target specification value.
-        :param _builtins.str created_at: Access rule creation date.
+        :param _builtins.str created_at: Creation date of the file share.
         :param 'GetCloudStorageFileSharesFileShareCurrentStateArgs' current_state: Current state of the file storage share:
         :param _builtins.str description: File share description.
-        :param _builtins.str id: Access rule ID.
+        :param _builtins.str id: File share ID.
         :param 'GetCloudStorageFileSharesFileShareLocationArgs' location: Current location:
         :param _builtins.str name: Capability name.
         :param _builtins.str protocol: File share protocol.
@@ -16720,7 +16566,6 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         :param _builtins.int size: Size of the file share in GB.
         :param _builtins.str updated_at: Last update date of the file share.
         """
-        pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "checksum", checksum)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "current_state", current_state)
@@ -16736,14 +16581,6 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
-
-    @_builtins.property
     @pulumi.getter
     def checksum(self) -> _builtins.str:
         """
@@ -16755,7 +16592,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        Access rule creation date.
+        Creation date of the file share.
         """
         return pulumi.get(self, "created_at")
 
@@ -16779,7 +16616,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Access rule ID.
+        File share ID.
         """
         return pulumi.get(self, "id")
 
@@ -16849,38 +16686,8 @@ class GetCloudStorageFileSharesFileShareResult(dict):
 
 
 @pulumi.output_type
-class GetCloudStorageFileSharesFileShareAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-
-@pulumi.output_type
 class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
     def __init__(__self__, *,
-                 access_rules: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult'],
                  capabilities: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult'],
                  description: _builtins.str,
                  export_locations: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult'],
@@ -16891,7 +16698,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
                  share_type: _builtins.str,
                  size: _builtins.int):
         """
-        :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs'] access_rules: Current access rules for the file share:
         :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
         :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
@@ -16902,7 +16708,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         :param _builtins.str share_type: File share type.
         :param _builtins.int size: Size of the file share in GB.
         """
-        pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "export_locations", export_locations)
@@ -16912,14 +16717,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         pulumi.set(__self__, "share_network_id", share_network_id)
         pulumi.set(__self__, "share_type", share_type)
         pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -16992,68 +16789,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         Size of the file share in GB.
         """
         return pulumi.get(self, "size")
-
-
-@pulumi.output_type
-class GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str,
-                 created_at: _builtins.str,
-                 id: _builtins.str,
-                 state: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        :param _builtins.str created_at: Access rule creation date.
-        :param _builtins.str id: Access rule ID.
-        :param _builtins.str state: Access rule state.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        Access rule ID.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

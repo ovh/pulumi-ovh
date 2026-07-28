@@ -1158,6 +1158,10 @@ export interface CloudStorageBlockVolumeCurrentStateEncryption {
 
 export interface CloudStorageBlockVolumeCurrentStateLocation {
     /**
+     * Availability zone
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
      * Region where the volume will be created. **Changing this value recreates the resource.**
      */
     region?: pulumi.Input<string>;
@@ -1200,22 +1204,26 @@ export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     region?: pulumi.Input<string>;
 }
 
-export interface CloudStorageFileShareAccessRule {
+export interface CloudStorageFileShareAclCurrentState {
     /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
+     * Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      */
-    accessLevel: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
-     * IP address or CIDR to grant access to.
+     * IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      */
-    accessTo: pulumi.Input<string>;
+    accessTo?: pulumi.Input<string>;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+     */
+    state?: pulumi.Input<string>;
 }
 
 export interface CloudStorageFileShareCurrentState {
-    /**
-     * Access rules for the file share. Each rule has:
-     */
-    accessRules?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareCurrentStateAccessRule>[]>;
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -1252,29 +1260,6 @@ export interface CloudStorageFileShareCurrentState {
      * Size of the file share in GB.
      */
     size?: pulumi.Input<number>;
-}
-
-export interface CloudStorageFileShareCurrentStateAccessRule {
-    /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
-     */
-    accessLevel?: pulumi.Input<string>;
-    /**
-     * IP address or CIDR to grant access to.
-     */
-    accessTo?: pulumi.Input<string>;
-    /**
-     * Access rule creation date.
-     */
-    createdAt?: pulumi.Input<string>;
-    /**
-     * Access rule ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Access rule state.
-     */
-    state?: pulumi.Input<string>;
 }
 
 export interface CloudStorageFileShareCurrentStateCapability {

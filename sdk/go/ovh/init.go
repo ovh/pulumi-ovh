@@ -69,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudStorageBlockVolumeSnapshot{}
 	case "ovh:index/cloudStorageFileShare:CloudStorageFileShare":
 		r = &CloudStorageFileShare{}
+	case "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl":
+		r = &CloudStorageFileShareAcl{}
 	case "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork":
 		r = &CloudStorageFileShareNetwork{}
 	case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
@@ -252,6 +254,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudStorageFileShare",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageFileShareAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -30,6 +30,7 @@ from .cloud_storage_block_volume import *
 from .cloud_storage_block_volume_backup import *
 from .cloud_storage_block_volume_snapshot import *
 from .cloud_storage_file_share import *
+from .cloud_storage_file_share_acl import *
 from .cloud_storage_file_share_network import *
 from .cloud_storage_file_share_snapshot import *
 from .clous_ssh_key import *
@@ -1391,6 +1392,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudStorageFileShare:CloudStorageFileShare": "CloudStorageFileShare"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageFileShareAcl",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl": "CloudStorageFileShareAcl"
   }
  },
  {

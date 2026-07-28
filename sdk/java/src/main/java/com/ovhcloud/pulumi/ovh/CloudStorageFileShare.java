@@ -6,7 +6,6 @@ package com.ovhcloud.pulumi.ovh;
 import com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareState;
-import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareAccessRule;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentState;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -14,7 +13,6 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -23,6 +21,42 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudStorageFileShare;
+ * import com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var share = new CloudStorageFileShare("share", CloudStorageFileShareArgs.builder()
+ *             .serviceName("<public cloud project ID>")
+ *             .name("my-share")
+ *             .size(150)
+ *             .region("GRA1")
+ *             .protocol("NFS")
+ *             .shareType("STANDARD_1AZ")
+ *             .description("My NFS share")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -48,20 +82,6 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="ovh:index/cloudStorageFileShare:CloudStorageFileShare")
 public class CloudStorageFileShare extends com.pulumi.resources.CustomResource {
-    /**
-     * Access rules for the file share. Each rule has:
-     * 
-     */
-    @Export(name="accessRules", refs={List.class,CloudStorageFileShareAccessRule.class}, tree="[0,1]")
-    private Output<List<CloudStorageFileShareAccessRule>> accessRules;
-
-    /**
-     * @return Access rules for the file share. Each rule has:
-     * 
-     */
-    public Output<List<CloudStorageFileShareAccessRule>> accessRules() {
-        return this.accessRules;
-    }
     /**
      * Availability zone where the file share will be created. **Changing this value recreates the resource.**
      * 
@@ -91,14 +111,14 @@ public class CloudStorageFileShare extends com.pulumi.resources.CustomResource {
         return this.checksum;
     }
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the file share.
      * 
      */
     public Output<String> createdAt() {

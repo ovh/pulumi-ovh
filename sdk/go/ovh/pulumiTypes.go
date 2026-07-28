@@ -15876,6 +15876,8 @@ func (o CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) Enabled() pulumi
 }
 
 type CloudStorageBlockVolumeCurrentStateLocation struct {
+	// Availability zone
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Region where the volume will be created. **Changing this value recreates the resource.**
 	Region *string `pulumi:"region"`
 }
@@ -15892,6 +15894,8 @@ type CloudStorageBlockVolumeCurrentStateLocationInput interface {
 }
 
 type CloudStorageBlockVolumeCurrentStateLocationArgs struct {
+	// Availability zone
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
 	// Region where the volume will be created. **Changing this value recreates the resource.**
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
@@ -15973,6 +15977,11 @@ func (o CloudStorageBlockVolumeCurrentStateLocationOutput) ToCloudStorageBlockVo
 	}).(CloudStorageBlockVolumeCurrentStateLocationPtrOutput)
 }
 
+// Availability zone
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateLocation) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
 // Region where the volume will be created. **Changing this value recreates the resource.**
 func (o CloudStorageBlockVolumeCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -16000,6 +16009,16 @@ func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) Elem() CloudStorag
 		var ret CloudStorageBlockVolumeCurrentStateLocation
 		return ret
 	}).(CloudStorageBlockVolumeCurrentStateLocationOutput)
+}
+
+// Availability zone
+func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
 }
 
 // Region where the volume will be created. **Changing this value recreates the resource.**
@@ -16501,115 +16520,201 @@ func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) Region() p
 	}).(pulumi.StringPtrOutput)
 }
 
-type CloudStorageFileShareAccessRule struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo string `pulumi:"accessTo"`
+type CloudStorageFileShareAclCurrentState struct {
+	// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+	AccessLevel *string `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+	AccessTo *string `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State *string `pulumi:"state"`
 }
 
-// CloudStorageFileShareAccessRuleInput is an input type that accepts CloudStorageFileShareAccessRuleArgs and CloudStorageFileShareAccessRuleOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareAccessRuleInput` via:
+// CloudStorageFileShareAclCurrentStateInput is an input type that accepts CloudStorageFileShareAclCurrentStateArgs and CloudStorageFileShareAclCurrentStateOutput values.
+// You can construct a concrete instance of `CloudStorageFileShareAclCurrentStateInput` via:
 //
-//	CloudStorageFileShareAccessRuleArgs{...}
-type CloudStorageFileShareAccessRuleInput interface {
+//	CloudStorageFileShareAclCurrentStateArgs{...}
+type CloudStorageFileShareAclCurrentStateInput interface {
 	pulumi.Input
 
-	ToCloudStorageFileShareAccessRuleOutput() CloudStorageFileShareAccessRuleOutput
-	ToCloudStorageFileShareAccessRuleOutputWithContext(context.Context) CloudStorageFileShareAccessRuleOutput
+	ToCloudStorageFileShareAclCurrentStateOutput() CloudStorageFileShareAclCurrentStateOutput
+	ToCloudStorageFileShareAclCurrentStateOutputWithContext(context.Context) CloudStorageFileShareAclCurrentStateOutput
 }
 
-type CloudStorageFileShareAccessRuleArgs struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+type CloudStorageFileShareAclCurrentStateArgs struct {
+	// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+	AccessTo pulumi.StringPtrInput `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
-func (CloudStorageFileShareAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareAccessRule)(nil)).Elem()
+func (CloudStorageFileShareAclCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageFileShareAclCurrentState)(nil)).Elem()
 }
 
-func (i CloudStorageFileShareAccessRuleArgs) ToCloudStorageFileShareAccessRuleOutput() CloudStorageFileShareAccessRuleOutput {
-	return i.ToCloudStorageFileShareAccessRuleOutputWithContext(context.Background())
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStateOutput() CloudStorageFileShareAclCurrentStateOutput {
+	return i.ToCloudStorageFileShareAclCurrentStateOutputWithContext(context.Background())
 }
 
-func (i CloudStorageFileShareAccessRuleArgs) ToCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAccessRuleOutput)
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStateOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAclCurrentStateOutput)
 }
 
-// CloudStorageFileShareAccessRuleArrayInput is an input type that accepts CloudStorageFileShareAccessRuleArray and CloudStorageFileShareAccessRuleArrayOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareAccessRuleArrayInput` via:
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
+	return i.ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAclCurrentStateOutput).ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudStorageFileShareAclCurrentStatePtrInput is an input type that accepts CloudStorageFileShareAclCurrentStateArgs, CloudStorageFileShareAclCurrentStatePtr and CloudStorageFileShareAclCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudStorageFileShareAclCurrentStatePtrInput` via:
 //
-//	CloudStorageFileShareAccessRuleArray{ CloudStorageFileShareAccessRuleArgs{...} }
-type CloudStorageFileShareAccessRuleArrayInput interface {
+//	        CloudStorageFileShareAclCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageFileShareAclCurrentStatePtrInput interface {
 	pulumi.Input
 
-	ToCloudStorageFileShareAccessRuleArrayOutput() CloudStorageFileShareAccessRuleArrayOutput
-	ToCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Context) CloudStorageFileShareAccessRuleArrayOutput
+	ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput
+	ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Context) CloudStorageFileShareAclCurrentStatePtrOutput
 }
 
-type CloudStorageFileShareAccessRuleArray []CloudStorageFileShareAccessRuleInput
+type cloudStorageFileShareAclCurrentStatePtrType CloudStorageFileShareAclCurrentStateArgs
 
-func (CloudStorageFileShareAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareAccessRule)(nil)).Elem()
+func CloudStorageFileShareAclCurrentStatePtr(v *CloudStorageFileShareAclCurrentStateArgs) CloudStorageFileShareAclCurrentStatePtrInput {
+	return (*cloudStorageFileShareAclCurrentStatePtrType)(v)
 }
 
-func (i CloudStorageFileShareAccessRuleArray) ToCloudStorageFileShareAccessRuleArrayOutput() CloudStorageFileShareAccessRuleArrayOutput {
-	return i.ToCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Background())
+func (*cloudStorageFileShareAclCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageFileShareAclCurrentState)(nil)).Elem()
 }
 
-func (i CloudStorageFileShareAccessRuleArray) ToCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAccessRuleArrayOutput)
+func (i *cloudStorageFileShareAclCurrentStatePtrType) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
+	return i.ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Background())
 }
 
-type CloudStorageFileShareAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareAccessRule)(nil)).Elem()
+func (i *cloudStorageFileShareAclCurrentStatePtrType) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAclCurrentStatePtrOutput)
 }
 
-func (o CloudStorageFileShareAccessRuleOutput) ToCloudStorageFileShareAccessRuleOutput() CloudStorageFileShareAccessRuleOutput {
+type CloudStorageFileShareAclCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageFileShareAclCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageFileShareAclCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStateOutput() CloudStorageFileShareAclCurrentStateOutput {
 	return o
 }
 
-func (o CloudStorageFileShareAccessRuleOutput) ToCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleOutput {
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStateOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStateOutput {
 	return o
 }
 
-// Access level (`READ_WRITE`, `READ_ONLY`).
-func (o CloudStorageFileShareAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v CloudStorageFileShareAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
+	return o.ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Background())
 }
 
-// IP address or CIDR to grant access to.
-func (o CloudStorageFileShareAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v CloudStorageFileShareAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageFileShareAclCurrentState) *CloudStorageFileShareAclCurrentState {
+		return &v
+	}).(CloudStorageFileShareAclCurrentStatePtrOutput)
 }
 
-type CloudStorageFileShareAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareAccessRule)(nil)).Elem()
+// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStateOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o CloudStorageFileShareAccessRuleArrayOutput) ToCloudStorageFileShareAccessRuleArrayOutput() CloudStorageFileShareAccessRuleArrayOutput {
+// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStateOutput) AccessTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.AccessTo }).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the access rule.
+func (o CloudStorageFileShareAclCurrentStateOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+func (o CloudStorageFileShareAclCurrentStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageFileShareAclCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageFileShareAclCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageFileShareAclCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
 	return o
 }
 
-func (o CloudStorageFileShareAccessRuleArrayOutput) ToCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleArrayOutput {
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
 	return o
 }
 
-func (o CloudStorageFileShareAccessRuleArrayOutput) Index(i pulumi.IntInput) CloudStorageFileShareAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudStorageFileShareAccessRule {
-		return vs[0].([]CloudStorageFileShareAccessRule)[vs[1].(int)]
-	}).(CloudStorageFileShareAccessRuleOutput)
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) Elem() CloudStorageFileShareAclCurrentStateOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) CloudStorageFileShareAclCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageFileShareAclCurrentState
+		return ret
+	}).(CloudStorageFileShareAclCurrentStateOutput)
+}
+
+// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) AccessTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the access rule.
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
 }
 
 type CloudStorageFileShareCurrentState struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules []CloudStorageFileShareCurrentStateAccessRule `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities []CloudStorageFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
@@ -16642,8 +16747,6 @@ type CloudStorageFileShareCurrentStateInput interface {
 }
 
 type CloudStorageFileShareCurrentStateArgs struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules CloudStorageFileShareCurrentStateAccessRuleArrayInput `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities CloudStorageFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
@@ -16741,13 +16844,6 @@ func (o CloudStorageFileShareCurrentStateOutput) ToCloudStorageFileShareCurrentS
 	}).(CloudStorageFileShareCurrentStatePtrOutput)
 }
 
-// Access rules for the file share. Each rule has:
-func (o CloudStorageFileShareCurrentStateOutput) AccessRules() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentState) []CloudStorageFileShareCurrentStateAccessRule {
-		return v.AccessRules
-	}).(CloudStorageFileShareCurrentStateAccessRuleArrayOutput)
-}
-
 // Action-availability flags derived from the file share status:
 func (o CloudStorageFileShareCurrentStateOutput) Capabilities() CloudStorageFileShareCurrentStateCapabilityArrayOutput {
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) []CloudStorageFileShareCurrentStateCapability {
@@ -16821,16 +16917,6 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) Elem() CloudStorageFileShare
 		var ret CloudStorageFileShareCurrentState
 		return ret
 	}).(CloudStorageFileShareCurrentStateOutput)
-}
-
-// Access rules for the file share. Each rule has:
-func (o CloudStorageFileShareCurrentStatePtrOutput) AccessRules() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v *CloudStorageFileShareCurrentState) []CloudStorageFileShareCurrentStateAccessRule {
-		if v == nil {
-			return nil
-		}
-		return v.AccessRules
-	}).(CloudStorageFileShareCurrentStateAccessRuleArrayOutput)
 }
 
 // Action-availability flags derived from the file share status:
@@ -16921,139 +17007,6 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) Size() pulumi.IntPtrOutput {
 		}
 		return v.Size
 	}).(pulumi.IntPtrOutput)
-}
-
-type CloudStorageFileShareCurrentStateAccessRule struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel *string `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo *string `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Access rule ID.
-	Id *string `pulumi:"id"`
-	// Access rule state.
-	State *string `pulumi:"state"`
-}
-
-// CloudStorageFileShareCurrentStateAccessRuleInput is an input type that accepts CloudStorageFileShareCurrentStateAccessRuleArgs and CloudStorageFileShareCurrentStateAccessRuleOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareCurrentStateAccessRuleInput` via:
-//
-//	CloudStorageFileShareCurrentStateAccessRuleArgs{...}
-type CloudStorageFileShareCurrentStateAccessRuleInput interface {
-	pulumi.Input
-
-	ToCloudStorageFileShareCurrentStateAccessRuleOutput() CloudStorageFileShareCurrentStateAccessRuleOutput
-	ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Context) CloudStorageFileShareCurrentStateAccessRuleOutput
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleArgs struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo pulumi.StringPtrInput `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Access rule ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Access rule state.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (CloudStorageFileShareCurrentStateAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArgs) ToCloudStorageFileShareCurrentStateAccessRuleOutput() CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return i.ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Background())
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArgs) ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCurrentStateAccessRuleOutput)
-}
-
-// CloudStorageFileShareCurrentStateAccessRuleArrayInput is an input type that accepts CloudStorageFileShareCurrentStateAccessRuleArray and CloudStorageFileShareCurrentStateAccessRuleArrayOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareCurrentStateAccessRuleArrayInput` via:
-//
-//	CloudStorageFileShareCurrentStateAccessRuleArray{ CloudStorageFileShareCurrentStateAccessRuleArgs{...} }
-type CloudStorageFileShareCurrentStateAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToCloudStorageFileShareCurrentStateAccessRuleArrayOutput() CloudStorageFileShareCurrentStateAccessRuleArrayOutput
-	ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Context) CloudStorageFileShareCurrentStateAccessRuleArrayOutput
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleArray []CloudStorageFileShareCurrentStateAccessRuleInput
-
-func (CloudStorageFileShareCurrentStateAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArray) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutput() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return i.ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArray) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCurrentStateAccessRuleArrayOutput)
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareCurrentStateAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) ToCloudStorageFileShareCurrentStateAccessRuleOutput() CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-// Access level (`READ_WRITE`, `READ_ONLY`).
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) AccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
-}
-
-// IP address or CIDR to grant access to.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) AccessTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.AccessTo }).(pulumi.StringPtrOutput)
-}
-
-// Access rule creation date.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// Access rule ID.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Access rule state.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareCurrentStateAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutput() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleArrayOutput) Index(i pulumi.IntInput) CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudStorageFileShareCurrentStateAccessRule {
-		return vs[0].([]CloudStorageFileShareCurrentStateAccessRule)[vs[1].(int)]
-	}).(CloudStorageFileShareCurrentStateAccessRuleOutput)
 }
 
 type CloudStorageFileShareCurrentStateCapability struct {
@@ -38114,115 +38067,7 @@ func (o GetCloudStorageBlockVolumesVolumeLocationOutput) Region() pulumi.StringO
 	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolumeLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetCloudStorageFileShareAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-}
-
-// GetCloudStorageFileShareAccessRuleInput is an input type that accepts GetCloudStorageFileShareAccessRuleArgs and GetCloudStorageFileShareAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareAccessRuleInput` via:
-//
-//	GetCloudStorageFileShareAccessRuleArgs{...}
-type GetCloudStorageFileShareAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileShareAccessRuleOutput() GetCloudStorageFileShareAccessRuleOutput
-	ToGetCloudStorageFileShareAccessRuleOutputWithContext(context.Context) GetCloudStorageFileShareAccessRuleOutput
-}
-
-type GetCloudStorageFileShareAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-}
-
-func (GetCloudStorageFileShareAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileShareAccessRuleArgs) ToGetCloudStorageFileShareAccessRuleOutput() GetCloudStorageFileShareAccessRuleOutput {
-	return i.ToGetCloudStorageFileShareAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileShareAccessRuleArgs) ToGetCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAccessRuleOutput)
-}
-
-// GetCloudStorageFileShareAccessRuleArrayInput is an input type that accepts GetCloudStorageFileShareAccessRuleArray and GetCloudStorageFileShareAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileShareAccessRuleArray{ GetCloudStorageFileShareAccessRuleArgs{...} }
-type GetCloudStorageFileShareAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileShareAccessRuleArrayOutput() GetCloudStorageFileShareAccessRuleArrayOutput
-	ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileShareAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileShareAccessRuleArray []GetCloudStorageFileShareAccessRuleInput
-
-func (GetCloudStorageFileShareAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileShareAccessRuleArray) ToGetCloudStorageFileShareAccessRuleArrayOutput() GetCloudStorageFileShareAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileShareAccessRuleArray) ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileShareAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileShareAccessRuleOutput) ToGetCloudStorageFileShareAccessRuleOutput() GetCloudStorageFileShareAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareAccessRuleOutput) ToGetCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileShareAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileShareAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileShareAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileShareAccessRuleArrayOutput) ToGetCloudStorageFileShareAccessRuleArrayOutput() GetCloudStorageFileShareAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareAccessRuleArrayOutput) ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileShareAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileShareAccessRule {
-		return vs[0].([]GetCloudStorageFileShareAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileShareAccessRuleOutput)
-}
-
 type GetCloudStorageFileShareCurrentState struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileShareCurrentStateAccessRule `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities []GetCloudStorageFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
@@ -38255,8 +38100,6 @@ type GetCloudStorageFileShareCurrentStateInput interface {
 }
 
 type GetCloudStorageFileShareCurrentStateArgs struct {
-	// Current access rules for the file share:
-	AccessRules GetCloudStorageFileShareCurrentStateAccessRuleArrayInput `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities GetCloudStorageFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
@@ -38301,13 +38144,6 @@ func (o GetCloudStorageFileShareCurrentStateOutput) ToGetCloudStorageFileShareCu
 
 func (o GetCloudStorageFileShareCurrentStateOutput) ToGetCloudStorageFileShareCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateOutput {
 	return o
-}
-
-// Current access rules for the file share:
-func (o GetCloudStorageFileShareCurrentStateOutput) AccessRules() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentState) []GetCloudStorageFileShareCurrentStateAccessRule {
-		return v.AccessRules
-	}).(GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput)
 }
 
 // Action-availability flags derived from the file share status:
@@ -38359,139 +38195,6 @@ func (o GetCloudStorageFileShareCurrentStateOutput) ShareType() pulumi.StringOut
 // Size of the file share in GB.
 func (o GetCloudStorageFileShareCurrentStateOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCloudStorageFileShareCurrentState) int { return v.Size }).(pulumi.IntOutput)
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt string `pulumi:"createdAt"`
-	// The ID of the file share.
-	Id string `pulumi:"id"`
-	// Access rule state.
-	State string `pulumi:"state"`
-}
-
-// GetCloudStorageFileShareCurrentStateAccessRuleInput is an input type that accepts GetCloudStorageFileShareCurrentStateAccessRuleArgs and GetCloudStorageFileShareCurrentStateAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareCurrentStateAccessRuleInput` via:
-//
-//	GetCloudStorageFileShareCurrentStateAccessRuleArgs{...}
-type GetCloudStorageFileShareCurrentStateAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileShareCurrentStateAccessRuleOutput
-	ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Context) GetCloudStorageFileShareCurrentStateAccessRuleOutput
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The ID of the file share.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Access rule state.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return i.ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareCurrentStateAccessRuleOutput)
-}
-
-// GetCloudStorageFileShareCurrentStateAccessRuleArrayInput is an input type that accepts GetCloudStorageFileShareCurrentStateAccessRuleArray and GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareCurrentStateAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileShareCurrentStateAccessRuleArray{ GetCloudStorageFileShareCurrentStateAccessRuleArgs{...} }
-type GetCloudStorageFileShareCurrentStateAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput
-	ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleArray []GetCloudStorageFileShareCurrentStateAccessRuleInput
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-// Access rule creation date.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The ID of the file share.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Access rule state.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.State }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileShareCurrentStateAccessRule {
-		return vs[0].([]GetCloudStorageFileShareCurrentStateAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileShareCurrentStateAccessRuleOutput)
 }
 
 type GetCloudStorageFileShareCurrentStateCapability struct {
@@ -39930,17 +39633,15 @@ func (o GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationOutput
 }
 
 type GetCloudStorageFileSharesFileShare struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileSharesFileShareAccessRule `pulumi:"accessRules"`
 	// Computed hash representing the current target specification value.
 	Checksum string `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt string `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState GetCloudStorageFileSharesFileShareCurrentState `pulumi:"currentState"`
 	// File share description.
 	Description string `pulumi:"description"`
-	// Access rule ID.
+	// File share ID.
 	Id string `pulumi:"id"`
 	// Current location:
 	Location GetCloudStorageFileSharesFileShareLocation `pulumi:"location"`
@@ -39972,17 +39673,15 @@ type GetCloudStorageFileSharesFileShareInput interface {
 }
 
 type GetCloudStorageFileSharesFileShareArgs struct {
-	// Current access rules for the file share:
-	AccessRules GetCloudStorageFileSharesFileShareAccessRuleArrayInput `pulumi:"accessRules"`
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState GetCloudStorageFileSharesFileShareCurrentStateInput `pulumi:"currentState"`
 	// File share description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Access rule ID.
+	// File share ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Current location:
 	Location GetCloudStorageFileSharesFileShareLocationInput `pulumi:"location"`
@@ -40053,19 +39752,12 @@ func (o GetCloudStorageFileSharesFileShareOutput) ToGetCloudStorageFileSharesFil
 	return o
 }
 
-// Current access rules for the file share:
-func (o GetCloudStorageFileSharesFileShareOutput) AccessRules() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) []GetCloudStorageFileSharesFileShareAccessRule {
-		return v.AccessRules
-	}).(GetCloudStorageFileSharesFileShareAccessRuleArrayOutput)
-}
-
 // Computed hash representing the current target specification value.
 func (o GetCloudStorageFileSharesFileShareOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
-// Access rule creation date.
+// Creation date of the file share.
 func (o GetCloudStorageFileSharesFileShareOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -40082,7 +39774,7 @@ func (o GetCloudStorageFileSharesFileShareOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Access rule ID.
+// File share ID.
 func (o GetCloudStorageFileSharesFileShareOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -40149,115 +39841,7 @@ func (o GetCloudStorageFileSharesFileShareArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetCloudStorageFileSharesFileShareOutput)
 }
 
-type GetCloudStorageFileSharesFileShareAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-}
-
-// GetCloudStorageFileSharesFileShareAccessRuleInput is an input type that accepts GetCloudStorageFileSharesFileShareAccessRuleArgs and GetCloudStorageFileSharesFileShareAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareAccessRuleInput` via:
-//
-//	GetCloudStorageFileSharesFileShareAccessRuleArgs{...}
-type GetCloudStorageFileSharesFileShareAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareAccessRuleOutput() GetCloudStorageFileSharesFileShareAccessRuleOutput
-	ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareAccessRuleOutput
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-}
-
-func (GetCloudStorageFileSharesFileShareAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArgs) ToGetCloudStorageFileSharesFileShareAccessRuleOutput() GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return i.ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArgs) ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareAccessRuleOutput)
-}
-
-// GetCloudStorageFileSharesFileShareAccessRuleArrayInput is an input type that accepts GetCloudStorageFileSharesFileShareAccessRuleArray and GetCloudStorageFileSharesFileShareAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileSharesFileShareAccessRuleArray{ GetCloudStorageFileSharesFileShareAccessRuleArgs{...} }
-type GetCloudStorageFileSharesFileShareAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput
-	ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleArray []GetCloudStorageFileSharesFileShareAccessRuleInput
-
-func (GetCloudStorageFileSharesFileShareAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArray) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArray) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) ToGetCloudStorageFileSharesFileShareAccessRuleOutput() GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileSharesFileShareAccessRule {
-		return vs[0].([]GetCloudStorageFileSharesFileShareAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileSharesFileShareAccessRuleOutput)
-}
-
 type GetCloudStorageFileSharesFileShareCurrentState struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileSharesFileShareCurrentStateAccessRule `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities []GetCloudStorageFileSharesFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
@@ -40290,8 +39874,6 @@ type GetCloudStorageFileSharesFileShareCurrentStateInput interface {
 }
 
 type GetCloudStorageFileSharesFileShareCurrentStateArgs struct {
-	// Current access rules for the file share:
-	AccessRules GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities GetCloudStorageFileSharesFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
@@ -40336,13 +39918,6 @@ func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) ToGetCloudStorageF
 
 func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) ToGetCloudStorageFileSharesFileShareCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateOutput {
 	return o
-}
-
-// Current access rules for the file share:
-func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) AccessRules() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentState) []GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
-		return v.AccessRules
-	}).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput)
 }
 
 // Action-availability flags derived from the file share status:
@@ -40394,139 +39969,6 @@ func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) ShareType() pulumi
 // Size of the file share in GB.
 func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentState) int { return v.Size }).(pulumi.IntOutput)
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt string `pulumi:"createdAt"`
-	// Access rule ID.
-	Id string `pulumi:"id"`
-	// Access rule state.
-	State string `pulumi:"state"`
-}
-
-// GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput is an input type that accepts GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs and GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput` via:
-//
-//	GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs{...}
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Access rule ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Access rule state.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return i.ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput)
-}
-
-// GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput is an input type that accepts GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray and GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray{ GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs{...} }
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray []GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-// Access rule creation date.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Access rule ID.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Access rule state.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.State }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
-		return vs[0].([]GetCloudStorageFileSharesFileShareCurrentStateAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput)
 }
 
 type GetCloudStorageFileSharesFileShareCurrentStateCapability struct {
@@ -45553,12 +44995,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStatePtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAccessRuleInput)(nil)).Elem(), CloudStorageFileShareAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAccessRuleArrayInput)(nil)).Elem(), CloudStorageFileShareAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAclCurrentStateInput)(nil)).Elem(), CloudStorageFileShareAclCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAclCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareAclCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateInput)(nil)).Elem(), CloudStorageFileShareCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRuleInput)(nil)).Elem(), CloudStorageFileShareCurrentStateAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRuleArrayInput)(nil)).Elem(), CloudStorageFileShareCurrentStateAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateCapabilityInput)(nil)).Elem(), CloudStorageFileShareCurrentStateCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateCapabilityArrayInput)(nil)).Elem(), CloudStorageFileShareCurrentStateCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateExportLocationInput)(nil)).Elem(), CloudStorageFileShareCurrentStateExportLocationArgs{})
@@ -45866,11 +45306,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeAttachedInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeEncryptionInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAccessRuleInput)(nil)).Elem(), GetCloudStorageFileShareAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileShareAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRuleInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateCapabilityInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateCapabilityArrayInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateExportLocationInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateExportLocationArgs{})
@@ -45893,11 +45329,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationInput)(nil)).Elem(), GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRuleInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateCapabilityInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateCapabilityArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateExportLocationInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateExportLocationArgs{})
@@ -46174,12 +45606,10 @@ func init() {
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareAccessRuleOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudStorageFileShareAclCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudStorageFileShareAclCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStatePtrOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateAccessRuleOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateCapabilityOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateExportLocationOutput{})
@@ -46487,11 +45917,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeEncryptionOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeLocationOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateExportLocationOutput{})
@@ -46514,11 +45940,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareArrayOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateExportLocationOutput{})

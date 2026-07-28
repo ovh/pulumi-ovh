@@ -13427,6 +13427,10 @@
         },
         "ovh:index/CloudStorageBlockVolumeCurrentStateLocation:CloudStorageBlockVolumeCurrentStateLocation": {
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "Region where the volume will be created. **Changing this value recreates the resource.**\n"
@@ -13436,6 +13440,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "availabilityZone",
                         "region"
                     ]
                 }
@@ -13509,32 +13514,39 @@
                 }
             }
         },
-        "ovh:index/CloudStorageFileShareAccessRule:CloudStorageFileShareAccessRule": {
+        "ovh:index/CloudStorageFileShareAclCurrentState:CloudStorageFileShareAclCurrentState": {
             "properties": {
                 "accessLevel": {
                     "type": "string",
-                    "description": "Access level (`READ_WRITE`, `READ_ONLY`).\n"
+                    "description": "Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**\n"
                 },
                 "accessTo": {
                     "type": "string",
-                    "description": "IP address or CIDR to grant access to.\n"
+                    "description": "IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation date of the access rule.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).\n"
                 }
             },
             "type": "object",
-            "required": [
-                "accessLevel",
-                "accessTo"
-            ]
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessLevel",
+                        "accessTo",
+                        "createdAt",
+                        "state"
+                    ]
+                }
+            }
         },
         "ovh:index/CloudStorageFileShareCurrentState:CloudStorageFileShareCurrentState": {
             "properties": {
-                "accessRules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/ovh:index/CloudStorageFileShareCurrentStateAccessRule:CloudStorageFileShareCurrentStateAccessRule"
-                    },
-                    "description": "Access rules for the file share. Each rule has:\n"
-                },
                 "capabilities": {
                     "type": "array",
                     "items": {
@@ -13582,7 +13594,6 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "accessRules",
                         "capabilities",
                         "description",
                         "exportLocations",
@@ -13592,42 +13603,6 @@
                         "shareNetworkId",
                         "shareType",
                         "size"
-                    ]
-                }
-            }
-        },
-        "ovh:index/CloudStorageFileShareCurrentStateAccessRule:CloudStorageFileShareCurrentStateAccessRule": {
-            "properties": {
-                "accessLevel": {
-                    "type": "string",
-                    "description": "Access level (`READ_WRITE`, `READ_ONLY`).\n"
-                },
-                "accessTo": {
-                    "type": "string",
-                    "description": "IP address or CIDR to grant access to.\n"
-                },
-                "createdAt": {
-                    "type": "string",
-                    "description": "Access rule creation date.\n"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Access rule ID.\n"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "Access rule state.\n"
-                }
-            },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "accessLevel",
-                        "accessTo",
-                        "createdAt",
-                        "id",
-                        "state"
                     ]
                 }
             }
@@ -20082,37 +20057,8 @@
                 }
             }
         },
-        "ovh:index/getCloudStorageFileShareAccessRule:getCloudStorageFileShareAccessRule": {
-            "properties": {
-                "accessLevel": {
-                    "type": "string",
-                    "description": "Access level.\n"
-                },
-                "accessTo": {
-                    "type": "string",
-                    "description": "IP address or CIDR.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "accessLevel",
-                "accessTo"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
         "ovh:index/getCloudStorageFileShareCurrentState:getCloudStorageFileShareCurrentState": {
             "properties": {
-                "accessRules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/ovh:index/getCloudStorageFileShareCurrentStateAccessRule:getCloudStorageFileShareCurrentStateAccessRule"
-                    },
-                    "description": "Current access rules for the file share:\n"
-                },
                 "capabilities": {
                     "type": "array",
                     "items": {
@@ -20158,7 +20104,6 @@
             },
             "type": "object",
             "required": [
-                "accessRules",
                 "capabilities",
                 "description",
                 "exportLocations",
@@ -20168,43 +20113,6 @@
                 "shareNetworkId",
                 "shareType",
                 "size"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "ovh:index/getCloudStorageFileShareCurrentStateAccessRule:getCloudStorageFileShareCurrentStateAccessRule": {
-            "properties": {
-                "accessLevel": {
-                    "type": "string",
-                    "description": "Access level.\n"
-                },
-                "accessTo": {
-                    "type": "string",
-                    "description": "IP address or CIDR.\n"
-                },
-                "createdAt": {
-                    "type": "string",
-                    "description": "Access rule creation date.\n"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "The ID of the file share.\n"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "Access rule state.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "accessLevel",
-                "accessTo",
-                "createdAt",
-                "id",
-                "state"
             ],
             "language": {
                 "nodejs": {
@@ -20711,20 +20619,13 @@
         },
         "ovh:index/getCloudStorageFileSharesFileShare:getCloudStorageFileSharesFileShare": {
             "properties": {
-                "accessRules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/ovh:index/getCloudStorageFileSharesFileShareAccessRule:getCloudStorageFileSharesFileShareAccessRule"
-                    },
-                    "description": "Current access rules for the file share:\n"
-                },
                 "checksum": {
                     "type": "string",
                     "description": "Computed hash representing the current target specification value.\n"
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "Access rule creation date.\n"
+                    "description": "Creation date of the file share.\n"
                 },
                 "currentState": {
                     "$ref": "#/types/ovh:index/getCloudStorageFileSharesFileShareCurrentState:getCloudStorageFileSharesFileShareCurrentState",
@@ -20736,7 +20637,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "Access rule ID.\n"
+                    "description": "File share ID.\n"
                 },
                 "location": {
                     "$ref": "#/types/ovh:index/getCloudStorageFileSharesFileShareLocation:getCloudStorageFileSharesFileShareLocation",
@@ -20773,7 +20674,6 @@
             },
             "type": "object",
             "required": [
-                "accessRules",
                 "checksum",
                 "createdAt",
                 "currentState",
@@ -20794,37 +20694,8 @@
                 }
             }
         },
-        "ovh:index/getCloudStorageFileSharesFileShareAccessRule:getCloudStorageFileSharesFileShareAccessRule": {
-            "properties": {
-                "accessLevel": {
-                    "type": "string",
-                    "description": "Access level.\n"
-                },
-                "accessTo": {
-                    "type": "string",
-                    "description": "IP address or CIDR.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "accessLevel",
-                "accessTo"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
         "ovh:index/getCloudStorageFileSharesFileShareCurrentState:getCloudStorageFileSharesFileShareCurrentState": {
             "properties": {
-                "accessRules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/ovh:index/getCloudStorageFileSharesFileShareCurrentStateAccessRule:getCloudStorageFileSharesFileShareCurrentStateAccessRule"
-                    },
-                    "description": "Current access rules for the file share:\n"
-                },
                 "capabilities": {
                     "type": "array",
                     "items": {
@@ -20870,7 +20741,6 @@
             },
             "type": "object",
             "required": [
-                "accessRules",
                 "capabilities",
                 "description",
                 "exportLocations",
@@ -20880,43 +20750,6 @@
                 "shareNetworkId",
                 "shareType",
                 "size"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredInputs": []
-                }
-            }
-        },
-        "ovh:index/getCloudStorageFileSharesFileShareCurrentStateAccessRule:getCloudStorageFileSharesFileShareCurrentStateAccessRule": {
-            "properties": {
-                "accessLevel": {
-                    "type": "string",
-                    "description": "Access level.\n"
-                },
-                "accessTo": {
-                    "type": "string",
-                    "description": "IP address or CIDR.\n"
-                },
-                "createdAt": {
-                    "type": "string",
-                    "description": "Access rule creation date.\n"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Access rule ID.\n"
-                },
-                "state": {
-                    "type": "string",
-                    "description": "Access rule state.\n"
-                }
-            },
-            "type": "object",
-            "required": [
-                "accessLevel",
-                "accessTo",
-                "createdAt",
-                "id",
-                "state"
             ],
             "language": {
                 "nodejs": {
@@ -42242,6 +42075,10 @@
         "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": {
             "description": "Creates a block storage volume in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst volume = new ovh.CloudStorageBlockVolume(\"volume\", {\n    serviceName: \"xxxxxxxxxx\",\n    name: \"my-volume\",\n    size: 10,\n    region: \"GRA1\",\n    volumeType: \"CLASSIC\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvolume = ovh.CloudStorageBlockVolume(\"volume\",\n    service_name=\"xxxxxxxxxx\",\n    name=\"my-volume\",\n    size=10,\n    region=\"GRA1\",\n    volume_type=\"CLASSIC\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume = new Ovh.CloudStorageBlockVolume(\"volume\", new()\n    {\n        ServiceName = \"xxxxxxxxxx\",\n        Name = \"my-volume\",\n        Size = 10,\n        Region = \"GRA1\",\n        VolumeType = \"CLASSIC\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageBlockVolume(ctx, \"volume\", \u0026ovh.CloudStorageBlockVolumeArgs{\n\t\t\tServiceName: pulumi.String(\"xxxxxxxxxx\"),\n\t\t\tName:        pulumi.String(\"my-volume\"),\n\t\t\tSize:        pulumi.Int(10),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tVolumeType:  pulumi.String(\"CLASSIC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolume;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume = new CloudStorageBlockVolume(\"volume\", CloudStorageBlockVolumeArgs.builder()\n            .serviceName(\"xxxxxxxxxx\")\n            .name(\"my-volume\")\n            .size(10)\n            .region(\"GRA1\")\n            .volumeType(\"CLASSIC\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-volume\n      size: 10\n      region: GRA1\n      volumeType: CLASSIC\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create from backup\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  restored:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-restored-volume\n      size: 10\n      region: GRA1\n      volumeType: CLASSIC\n      createFrom:\n        backup_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_block_volume.volume\n\n  id = \"\u003cservice_name\u003e/\u003cvolume_id\u003e\"\n\n}\n\nbash\n\n$ pulumi preview -generate-config-out=volume.tf\n\n$ pulumi up\n\n",
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone where the volume will be created\n"
+                },
                 "checksum": {
                     "type": "string",
                     "description": "Computed hash representing the current target specification value.\n"
@@ -42292,6 +42129,7 @@
                 }
             },
             "required": [
+                "availabilityZone",
                 "checksum",
                 "createdAt",
                 "currentState",
@@ -42305,6 +42143,10 @@
                 "volumeType"
             ],
             "inputProperties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone where the volume will be created\n"
+                },
                 "createFrom": {
                     "$ref": "#/types/ovh:index/CloudStorageBlockVolumeCreateFrom:CloudStorageBlockVolumeCreateFrom",
                     "description": "Source to create the volume from. **Changing this value recreates the resource.**\n"
@@ -42341,6 +42183,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudStorageBlockVolume resources.\n",
                 "properties": {
+                    "availabilityZone": {
+                        "type": "string",
+                        "description": "Availability zone where the volume will be created\n"
+                    },
                     "checksum": {
                         "type": "string",
                         "description": "Computed hash representing the current target specification value.\n"
@@ -42652,15 +42498,8 @@
             }
         },
         "ovh:index/cloudStorageFileShare:CloudStorageFileShare": {
-            "description": "Creates a file storage share (NFS) in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cpublic cloud project ID\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      description: My NFS share\n      accessRules:\n        - access_to: 10.0.0.0/24\n          access_level: READ_WRITE\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share.share\n\n  id = \"\u003cservice_name\u003e/\u003cfile_share_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShare:CloudStorageFileShare share service_name/file_share_id\n```\n\n",
+            "description": "Creates a file storage share (NFS) in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudStorageFileShare(\"share\", {\n    serviceName: \"\u003cpublic cloud project ID\u003e\",\n    name: \"my-share\",\n    size: 150,\n    region: \"GRA1\",\n    protocol: \"NFS\",\n    shareType: \"STANDARD_1AZ\",\n    description: \"My NFS share\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudStorageFileShare(\"share\",\n    service_name=\"\u003cpublic cloud project ID\u003e\",\n    name=\"my-share\",\n    size=150,\n    region=\"GRA1\",\n    protocol=\"NFS\",\n    share_type=\"STANDARD_1AZ\",\n    description=\"My NFS share\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudStorageFileShare(\"share\", new()\n    {\n        ServiceName = \"\u003cpublic cloud project ID\u003e\",\n        Name = \"my-share\",\n        Size = 150,\n        Region = \"GRA1\",\n        Protocol = \"NFS\",\n        ShareType = \"STANDARD_1AZ\",\n        Description = \"My NFS share\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageFileShare(ctx, \"share\", \u0026ovh.CloudStorageFileShareArgs{\n\t\t\tServiceName: pulumi.String(\"\u003cpublic cloud project ID\u003e\"),\n\t\t\tName:        pulumi.String(\"my-share\"),\n\t\t\tSize:        pulumi.Int(150),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tProtocol:    pulumi.String(\"NFS\"),\n\t\t\tShareType:   pulumi.String(\"STANDARD_1AZ\"),\n\t\t\tDescription: pulumi.String(\"My NFS share\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShare;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudStorageFileShare(\"share\", CloudStorageFileShareArgs.builder()\n            .serviceName(\"\u003cpublic cloud project ID\u003e\")\n            .name(\"my-share\")\n            .size(150)\n            .region(\"GRA1\")\n            .protocol(\"NFS\")\n            .shareType(\"STANDARD_1AZ\")\n            .description(\"My NFS share\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cpublic cloud project ID\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      description: My NFS share\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share.share\n\n  id = \"\u003cservice_name\u003e/\u003cfile_share_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShare:CloudStorageFileShare share service_name/file_share_id\n```\n\n",
             "properties": {
-                "accessRules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/ovh:index/CloudStorageFileShareAccessRule:CloudStorageFileShareAccessRule"
-                    },
-                    "description": "Access rules for the file share. Each rule has:\n"
-                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "Availability zone where the file share will be created. **Changing this value recreates the resource.**\n"
@@ -42671,7 +42510,7 @@
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "Access rule creation date.\n"
+                    "description": "Creation date of the file share.\n"
                 },
                 "currentState": {
                     "$ref": "#/types/ovh:index/CloudStorageFileShareCurrentState:CloudStorageFileShareCurrentState",
@@ -42719,7 +42558,6 @@
                 }
             },
             "required": [
-                "accessRules",
                 "availabilityZone",
                 "checksum",
                 "createdAt",
@@ -42736,13 +42574,6 @@
                 "updatedAt"
             ],
             "inputProperties": {
-                "accessRules": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/ovh:index/CloudStorageFileShareAccessRule:CloudStorageFileShareAccessRule"
-                    },
-                    "description": "Access rules for the file share. Each rule has:\n"
-                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "Availability zone where the file share will be created. **Changing this value recreates the resource.**\n"
@@ -42791,13 +42622,6 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudStorageFileShare resources.\n",
                 "properties": {
-                    "accessRules": {
-                        "type": "array",
-                        "items": {
-                            "$ref": "#/types/ovh:index/CloudStorageFileShareAccessRule:CloudStorageFileShareAccessRule"
-                        },
-                        "description": "Access rules for the file share. Each rule has:\n"
-                    },
                     "availabilityZone": {
                         "type": "string",
                         "description": "Availability zone where the file share will be created. **Changing this value recreates the resource.**\n"
@@ -42808,7 +42632,7 @@
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "Access rule creation date.\n"
+                        "description": "Creation date of the file share.\n"
                     },
                     "currentState": {
                         "$ref": "#/types/ovh:index/CloudStorageFileShareCurrentState:CloudStorageFileShareCurrentState",
@@ -42853,6 +42677,124 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "Last update date of the file share.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl": {
+            "description": "Creates an access rule (ACL) on a public cloud file storage share, controlling which IP addresses can access it. The region is inherited from the parent share.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudStorageFileShare(\"share\", {\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    name: \"my-share\",\n    size: 150,\n    region: \"GRA1\",\n    protocol: \"NFS\",\n    shareType: \"STANDARD_1AZ\",\n});\nconst acl = new ovh.CloudStorageFileShareAcl(\"acl\", {\n    serviceName: share.serviceName,\n    shareId: share.id,\n    accessTo: \"10.0.0.0/24\",\n    accessLevel: \"READ_WRITE\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudStorageFileShare(\"share\",\n    service_name=\"\u003cPublic cloud project id\u003e\",\n    name=\"my-share\",\n    size=150,\n    region=\"GRA1\",\n    protocol=\"NFS\",\n    share_type=\"STANDARD_1AZ\")\nacl = ovh.CloudStorageFileShareAcl(\"acl\",\n    service_name=share.service_name,\n    share_id=share.id,\n    access_to=\"10.0.0.0/24\",\n    access_level=\"READ_WRITE\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudStorageFileShare(\"share\", new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Name = \"my-share\",\n        Size = 150,\n        Region = \"GRA1\",\n        Protocol = \"NFS\",\n        ShareType = \"STANDARD_1AZ\",\n    });\n\n    var acl = new Ovh.CloudStorageFileShareAcl(\"acl\", new()\n    {\n        ServiceName = share.ServiceName,\n        ShareId = share.Id,\n        AccessTo = \"10.0.0.0/24\",\n        AccessLevel = \"READ_WRITE\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tshare, err := ovh.NewCloudStorageFileShare(ctx, \"share\", \u0026ovh.CloudStorageFileShareArgs{\n\t\t\tServiceName: pulumi.String(\"\u003cPublic cloud project id\u003e\"),\n\t\t\tName:        pulumi.String(\"my-share\"),\n\t\t\tSize:        pulumi.Int(150),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tProtocol:    pulumi.String(\"NFS\"),\n\t\t\tShareType:   pulumi.String(\"STANDARD_1AZ\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = ovh.NewCloudStorageFileShareAcl(ctx, \"acl\", \u0026ovh.CloudStorageFileShareAclArgs{\n\t\t\tServiceName: share.ServiceName,\n\t\t\tShareId:     share.ID(),\n\t\t\tAccessTo:    pulumi.String(\"10.0.0.0/24\"),\n\t\t\tAccessLevel: pulumi.String(\"READ_WRITE\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShare;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareAcl;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareAclArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudStorageFileShare(\"share\", CloudStorageFileShareArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .name(\"my-share\")\n            .size(150)\n            .region(\"GRA1\")\n            .protocol(\"NFS\")\n            .shareType(\"STANDARD_1AZ\")\n            .build());\n\n        var acl = new CloudStorageFileShareAcl(\"acl\", CloudStorageFileShareAclArgs.builder()\n            .serviceName(share.serviceName())\n            .shareId(share.id())\n            .accessTo(\"10.0.0.0/24\")\n            .accessLevel(\"READ_WRITE\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n  acl:\n    type: ovh:CloudStorageFileShareAcl\n    properties:\n      serviceName: ${share.serviceName}\n      shareId: ${share.id}\n      accessTo: 10.0.0.0/24\n      accessLevel: READ_WRITE\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud file storage access rule can be imported using the `service_name`, `share_id` and `acl_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share_acl.acl\n\n  id = \"\u003cservice_name\u003e/\u003cshare_id\u003e/\u003cacl_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl acl service_name/share_id/acl_id\n```\n\n",
+            "properties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**\n"
+                },
+                "accessTo": {
+                    "type": "string",
+                    "description": "IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**\n"
+                },
+                "checksum": {
+                    "type": "string",
+                    "description": "Computed hash representing the current target specification value.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation date of the access rule.\n"
+                },
+                "currentState": {
+                    "$ref": "#/types/ovh:index/CloudStorageFileShareAclCurrentState:CloudStorageFileShareAclCurrentState",
+                    "description": "Current observed state of the access rule:\n"
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Access rule readiness in the system (CREATING, DELETING, ERROR, OUT_OF_SYNC, READY, UPDATING)\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**\n"
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "ID of the file storage share the access rule applies to. **Changing this value recreates the resource.**\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Last update date of the access rule.\n"
+                }
+            },
+            "required": [
+                "accessLevel",
+                "accessTo",
+                "checksum",
+                "createdAt",
+                "currentState",
+                "resourceStatus",
+                "serviceName",
+                "shareId",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "accessLevel": {
+                    "type": "string",
+                    "description": "Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**\n"
+                },
+                "accessTo": {
+                    "type": "string",
+                    "description": "IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**\n"
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "ID of the file storage share the access rule applies to. **Changing this value recreates the resource.**\n"
+                }
+            },
+            "requiredInputs": [
+                "accessLevel",
+                "accessTo",
+                "serviceName",
+                "shareId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CloudStorageFileShareAcl resources.\n",
+                "properties": {
+                    "accessLevel": {
+                        "type": "string",
+                        "description": "Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**\n"
+                    },
+                    "accessTo": {
+                        "type": "string",
+                        "description": "IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**\n"
+                    },
+                    "checksum": {
+                        "type": "string",
+                        "description": "Computed hash representing the current target specification value.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Creation date of the access rule.\n"
+                    },
+                    "currentState": {
+                        "$ref": "#/types/ovh:index/CloudStorageFileShareAclCurrentState:CloudStorageFileShareAclCurrentState",
+                        "description": "Current observed state of the access rule:\n"
+                    },
+                    "resourceStatus": {
+                        "type": "string",
+                        "description": "Access rule readiness in the system (CREATING, DELETING, ERROR, OUT_OF_SYNC, READY, UPDATING)\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**\n"
+                    },
+                    "shareId": {
+                        "type": "string",
+                        "description": "ID of the file storage share the access rule applies to. **Changing this value recreates the resource.**\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Last update date of the access rule.\n"
                     }
                 },
                 "type": "object"
@@ -57495,19 +57437,12 @@
             "outputs": {
                 "description": "A collection of values returned by getCloudStorageFileShare.\n",
                 "properties": {
-                    "accessRules": {
-                        "description": "Current access rules for the file share:\n",
-                        "items": {
-                            "$ref": "#/types/ovh:index/getCloudStorageFileShareAccessRule:getCloudStorageFileShareAccessRule"
-                        },
-                        "type": "array"
-                    },
                     "checksum": {
                         "description": "Computed hash representing the current target specification value.\n",
                         "type": "string"
                     },
                     "createdAt": {
-                        "description": "Access rule creation date.\n",
+                        "description": "Creation date of the file share.\n",
                         "type": "string"
                     },
                     "currentState": {
@@ -57519,7 +57454,6 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "Access rule ID.\n",
                         "type": "string"
                     },
                     "location": {
@@ -57559,7 +57493,6 @@
                     }
                 },
                 "required": [
-                    "accessRules",
                     "checksum",
                     "createdAt",
                     "currentState",

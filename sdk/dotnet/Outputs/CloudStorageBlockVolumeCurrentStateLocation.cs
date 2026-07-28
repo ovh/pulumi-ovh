@@ -14,13 +14,21 @@ namespace Pulumi.Ovh.Outputs
     public sealed class CloudStorageBlockVolumeCurrentStateLocation
     {
         /// <summary>
+        /// Availability zone
+        /// </summary>
+        public readonly string? AvailabilityZone;
+        /// <summary>
         /// Region where the volume will be created. **Changing this value recreates the resource.**
         /// </summary>
         public readonly string? Region;
 
         [OutputConstructor]
-        private CloudStorageBlockVolumeCurrentStateLocation(string? region)
+        private CloudStorageBlockVolumeCurrentStateLocation(
+            string? availabilityZone,
+
+            string? region)
         {
+            AvailabilityZone = availabilityZone;
             Region = region;
         }
     }

@@ -11,45 +11,38 @@ namespace Pulumi.Ovh.Outputs
 {
 
     [OutputType]
-    public sealed class CloudStorageFileShareCurrentStateAccessRule
+    public sealed class CloudStorageFileShareAclCurrentState
     {
         /// <summary>
-        /// Access level (`READ_WRITE`, `READ_ONLY`).
+        /// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
         /// </summary>
         public readonly string? AccessLevel;
         /// <summary>
-        /// IP address or CIDR to grant access to.
+        /// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
         /// </summary>
         public readonly string? AccessTo;
         /// <summary>
-        /// Access rule creation date.
+        /// Creation date of the access rule.
         /// </summary>
         public readonly string? CreatedAt;
         /// <summary>
-        /// Access rule ID.
-        /// </summary>
-        public readonly string? Id;
-        /// <summary>
-        /// Access rule state.
+        /// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         /// </summary>
         public readonly string? State;
 
         [OutputConstructor]
-        private CloudStorageFileShareCurrentStateAccessRule(
+        private CloudStorageFileShareAclCurrentState(
             string? accessLevel,
 
             string? accessTo,
 
             string? createdAt,
 
-            string? id,
-
             string? state)
         {
             AccessLevel = accessLevel;
             AccessTo = accessTo;
             CreatedAt = createdAt;
-            Id = id;
             State = state;
         }
     }

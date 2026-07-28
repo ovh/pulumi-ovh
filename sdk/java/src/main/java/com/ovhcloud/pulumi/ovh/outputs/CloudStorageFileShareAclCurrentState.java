@@ -10,64 +10,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class CloudStorageFileShareCurrentStateAccessRule {
+public final class CloudStorageFileShareAclCurrentState {
     /**
-     * @return Access level (`READ_WRITE`, `READ_ONLY`).
+     * @return Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      * 
      */
     private @Nullable String accessLevel;
     /**
-     * @return IP address or CIDR to grant access to.
+     * @return IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      * 
      */
     private @Nullable String accessTo;
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the access rule.
      * 
      */
     private @Nullable String createdAt;
     /**
-     * @return Access rule ID.
-     * 
-     */
-    private @Nullable String id;
-    /**
-     * @return Access rule state.
+     * @return Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
      * 
      */
     private @Nullable String state;
 
-    private CloudStorageFileShareCurrentStateAccessRule() {}
+    private CloudStorageFileShareAclCurrentState() {}
     /**
-     * @return Access level (`READ_WRITE`, `READ_ONLY`).
+     * @return Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      * 
      */
     public Optional<String> accessLevel() {
         return Optional.ofNullable(this.accessLevel);
     }
     /**
-     * @return IP address or CIDR to grant access to.
+     * @return IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      * 
      */
     public Optional<String> accessTo() {
         return Optional.ofNullable(this.accessTo);
     }
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the access rule.
      * 
      */
     public Optional<String> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return Access rule ID.
-     * 
-     */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
-    }
-    /**
-     * @return Access rule state.
+     * @return Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
      * 
      */
     public Optional<String> state() {
@@ -78,7 +66,7 @@ public final class CloudStorageFileShareCurrentStateAccessRule {
         return new Builder();
     }
 
-    public static Builder builder(CloudStorageFileShareCurrentStateAccessRule defaults) {
+    public static Builder builder(CloudStorageFileShareAclCurrentState defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -86,15 +74,13 @@ public final class CloudStorageFileShareCurrentStateAccessRule {
         private @Nullable String accessLevel;
         private @Nullable String accessTo;
         private @Nullable String createdAt;
-        private @Nullable String id;
         private @Nullable String state;
         public Builder() {}
-        public Builder(CloudStorageFileShareCurrentStateAccessRule defaults) {
+        public Builder(CloudStorageFileShareAclCurrentState defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessLevel = defaults.accessLevel;
     	      this.accessTo = defaults.accessTo;
     	      this.createdAt = defaults.createdAt;
-    	      this.id = defaults.id;
     	      this.state = defaults.state;
         }
 
@@ -117,23 +103,16 @@ public final class CloudStorageFileShareCurrentStateAccessRule {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder state(@Nullable String state) {
 
             this.state = state;
             return this;
         }
-        public CloudStorageFileShareCurrentStateAccessRule build() {
-            final var _resultValue = new CloudStorageFileShareCurrentStateAccessRule();
+        public CloudStorageFileShareAclCurrentState build() {
+            final var _resultValue = new CloudStorageFileShareAclCurrentState();
             _resultValue.accessLevel = accessLevel;
             _resultValue.accessTo = accessTo;
             _resultValue.createdAt = createdAt;
-            _resultValue.id = id;
             _resultValue.state = state;
             return _resultValue;
         }

@@ -1158,6 +1158,10 @@ export interface CloudStorageBlockVolumeCurrentStateEncryption {
 
 export interface CloudStorageBlockVolumeCurrentStateLocation {
     /**
+     * Availability zone
+     */
+    availabilityZone: string;
+    /**
      * Region where the volume will be created. **Changing this value recreates the resource.**
      */
     region: string;
@@ -1200,22 +1204,26 @@ export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     region: string;
 }
 
-export interface CloudStorageFileShareAccessRule {
+export interface CloudStorageFileShareAclCurrentState {
     /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
+     * Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      */
     accessLevel: string;
     /**
-     * IP address or CIDR to grant access to.
+     * IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      */
     accessTo: string;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt: string;
+    /**
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+     */
+    state: string;
 }
 
 export interface CloudStorageFileShareCurrentState {
-    /**
-     * Access rules for the file share. Each rule has:
-     */
-    accessRules: outputs.CloudStorageFileShareCurrentStateAccessRule[];
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -1252,29 +1260,6 @@ export interface CloudStorageFileShareCurrentState {
      * Size of the file share in GB.
      */
     size: number;
-}
-
-export interface CloudStorageFileShareCurrentStateAccessRule {
-    /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR to grant access to.
-     */
-    accessTo: string;
-    /**
-     * Access rule creation date.
-     */
-    createdAt: string;
-    /**
-     * Access rule ID.
-     */
-    id: string;
-    /**
-     * Access rule state.
-     */
-    state: string;
 }
 
 export interface CloudStorageFileShareCurrentStateCapability {
@@ -4388,22 +4373,7 @@ export interface GetCloudStorageBlockVolumesVolumeLocation {
     region: string;
 }
 
-export interface GetCloudStorageFileShareAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-}
-
 export interface GetCloudStorageFileShareCurrentState {
-    /**
-     * Current access rules for the file share:
-     */
-    accessRules: outputs.GetCloudStorageFileShareCurrentStateAccessRule[];
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -4440,29 +4410,6 @@ export interface GetCloudStorageFileShareCurrentState {
      * Size of the file share in GB.
      */
     size: number;
-}
-
-export interface GetCloudStorageFileShareCurrentStateAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-    /**
-     * Access rule creation date.
-     */
-    createdAt: string;
-    /**
-     * The ID of the file share.
-     */
-    id: string;
-    /**
-     * Access rule state.
-     */
-    state: string;
 }
 
 export interface GetCloudStorageFileShareCurrentStateCapability {
@@ -4759,15 +4706,11 @@ export interface GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocat
 
 export interface GetCloudStorageFileSharesFileShare {
     /**
-     * Current access rules for the file share:
-     */
-    accessRules: outputs.GetCloudStorageFileSharesFileShareAccessRule[];
-    /**
      * Computed hash representing the current target specification value.
      */
     checksum: string;
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      */
     createdAt: string;
     /**
@@ -4779,7 +4722,7 @@ export interface GetCloudStorageFileSharesFileShare {
      */
     description: string;
     /**
-     * Access rule ID.
+     * File share ID.
      */
     id: string;
     /**
@@ -4816,22 +4759,7 @@ export interface GetCloudStorageFileSharesFileShare {
     updatedAt: string;
 }
 
-export interface GetCloudStorageFileSharesFileShareAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-}
-
 export interface GetCloudStorageFileSharesFileShareCurrentState {
-    /**
-     * Current access rules for the file share:
-     */
-    accessRules: outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRule[];
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -4868,29 +4796,6 @@ export interface GetCloudStorageFileSharesFileShareCurrentState {
      * Size of the file share in GB.
      */
     size: number;
-}
-
-export interface GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-    /**
-     * Access rule creation date.
-     */
-    createdAt: string;
-    /**
-     * Access rule ID.
-     */
-    id: string;
-    /**
-     * Access rule state.
-     */
-    state: string;
 }
 
 export interface GetCloudStorageFileSharesFileShareCurrentStateCapability {

@@ -125,6 +125,11 @@ export type CloudStorageFileShare = import("./cloudStorageFileShare").CloudStora
 export const CloudStorageFileShare: typeof import("./cloudStorageFileShare").CloudStorageFileShare = null as any;
 utilities.lazyLoad(exports, ["CloudStorageFileShare"], () => require("./cloudStorageFileShare"));
 
+export { CloudStorageFileShareAclArgs, CloudStorageFileShareAclState } from "./cloudStorageFileShareAcl";
+export type CloudStorageFileShareAcl = import("./cloudStorageFileShareAcl").CloudStorageFileShareAcl;
+export const CloudStorageFileShareAcl: typeof import("./cloudStorageFileShareAcl").CloudStorageFileShareAcl = null as any;
+utilities.lazyLoad(exports, ["CloudStorageFileShareAcl"], () => require("./cloudStorageFileShareAcl"));
+
 export { CloudStorageFileShareNetworkArgs, CloudStorageFileShareNetworkState } from "./cloudStorageFileShareNetwork";
 export type CloudStorageFileShareNetwork = import("./cloudStorageFileShareNetwork").CloudStorageFileShareNetwork;
 export const CloudStorageFileShareNetwork: typeof import("./cloudStorageFileShareNetwork").CloudStorageFileShareNetwork = null as any;
@@ -701,6 +706,8 @@ const _module = {
                 return new CloudStorageBlockVolumeSnapshot(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShare:CloudStorageFileShare":
                 return new CloudStorageFileShare(name, <any>undefined, { urn })
+            case "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl":
+                return new CloudStorageFileShareAcl(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork":
                 return new CloudStorageFileShareNetwork(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
@@ -764,6 +771,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolume", _m
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeBackup", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShare", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/clousSSHKey", _module)

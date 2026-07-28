@@ -12,18 +12,6 @@ namespace Pulumi.Ovh.Inputs
 
     public sealed class CloudStorageFileShareCurrentStateArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessRules")]
-        private InputList<Inputs.CloudStorageFileShareCurrentStateAccessRuleArgs>? _accessRules;
-
-        /// <summary>
-        /// Access rules for the file share. Each rule has:
-        /// </summary>
-        public InputList<Inputs.CloudStorageFileShareCurrentStateAccessRuleArgs> AccessRules
-        {
-            get => _accessRules ?? (_accessRules = new InputList<Inputs.CloudStorageFileShareCurrentStateAccessRuleArgs>());
-            set => _accessRules = value;
-        }
-
         [Input("capabilities")]
         private InputList<Inputs.CloudStorageFileShareCurrentStateCapabilityArgs>? _capabilities;
 

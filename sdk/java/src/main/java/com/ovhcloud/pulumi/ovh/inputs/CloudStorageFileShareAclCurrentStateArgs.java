@@ -11,19 +11,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.pulumi.resources.ResourceArgs {
+public final class CloudStorageFileShareAclCurrentStateArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final CloudStorageFileShareCurrentStateAccessRuleArgs Empty = new CloudStorageFileShareCurrentStateAccessRuleArgs();
+    public static final CloudStorageFileShareAclCurrentStateArgs Empty = new CloudStorageFileShareAclCurrentStateArgs();
 
     /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
+     * Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      * 
      */
     @Import(name="accessLevel")
     private @Nullable Output<String> accessLevel;
 
     /**
-     * @return Access level (`READ_WRITE`, `READ_ONLY`).
+     * @return Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> accessLevel() {
@@ -31,14 +31,14 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
     }
 
     /**
-     * IP address or CIDR to grant access to.
+     * IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="accessTo")
     private @Nullable Output<String> accessTo;
 
     /**
-     * @return IP address or CIDR to grant access to.
+     * @return IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> accessTo() {
@@ -46,14 +46,14 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
     }
 
     /**
-     * Access rule creation date.
+     * Creation date of the access rule.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the access rule.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -61,65 +61,49 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
     }
 
     /**
-     * Access rule ID.
-     * 
-     */
-    @Import(name="id")
-    private @Nullable Output<String> id;
-
-    /**
-     * @return Access rule ID.
-     * 
-     */
-    public Optional<Output<String>> id() {
-        return Optional.ofNullable(this.id);
-    }
-
-    /**
-     * Access rule state.
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Access rule state.
+     * @return Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
      * 
      */
     public Optional<Output<String>> state() {
         return Optional.ofNullable(this.state);
     }
 
-    private CloudStorageFileShareCurrentStateAccessRuleArgs() {}
+    private CloudStorageFileShareAclCurrentStateArgs() {}
 
-    private CloudStorageFileShareCurrentStateAccessRuleArgs(CloudStorageFileShareCurrentStateAccessRuleArgs $) {
+    private CloudStorageFileShareAclCurrentStateArgs(CloudStorageFileShareAclCurrentStateArgs $) {
         this.accessLevel = $.accessLevel;
         this.accessTo = $.accessTo;
         this.createdAt = $.createdAt;
-        this.id = $.id;
         this.state = $.state;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(CloudStorageFileShareCurrentStateAccessRuleArgs defaults) {
+    public static Builder builder(CloudStorageFileShareAclCurrentStateArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private CloudStorageFileShareCurrentStateAccessRuleArgs $;
+        private CloudStorageFileShareAclCurrentStateArgs $;
 
         public Builder() {
-            $ = new CloudStorageFileShareCurrentStateAccessRuleArgs();
+            $ = new CloudStorageFileShareAclCurrentStateArgs();
         }
 
-        public Builder(CloudStorageFileShareCurrentStateAccessRuleArgs defaults) {
-            $ = new CloudStorageFileShareCurrentStateAccessRuleArgs(Objects.requireNonNull(defaults));
+        public Builder(CloudStorageFileShareAclCurrentStateArgs defaults) {
+            $ = new CloudStorageFileShareAclCurrentStateArgs(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param accessLevel Access level (`READ_WRITE`, `READ_ONLY`).
+         * @param accessLevel Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -130,7 +114,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param accessLevel Access level (`READ_WRITE`, `READ_ONLY`).
+         * @param accessLevel Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -140,7 +124,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param accessTo IP address or CIDR to grant access to.
+         * @param accessTo IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -151,7 +135,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param accessTo IP address or CIDR to grant access to.
+         * @param accessTo IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -161,7 +145,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param createdAt Access rule creation date.
+         * @param createdAt Creation date of the access rule.
          * 
          * @return builder
          * 
@@ -172,7 +156,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param createdAt Access rule creation date.
+         * @param createdAt Creation date of the access rule.
          * 
          * @return builder
          * 
@@ -182,28 +166,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param id Access rule ID.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(@Nullable Output<String> id) {
-            $.id = id;
-            return this;
-        }
-
-        /**
-         * @param id Access rule ID.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder id(String id) {
-            return id(Output.of(id));
-        }
-
-        /**
-         * @param state Access rule state.
+         * @param state Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
          * 
          * @return builder
          * 
@@ -214,7 +177,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
         }
 
         /**
-         * @param state Access rule state.
+         * @param state Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
          * 
          * @return builder
          * 
@@ -223,7 +186,7 @@ public final class CloudStorageFileShareCurrentStateAccessRuleArgs extends com.p
             return state(Output.of(state));
         }
 
-        public CloudStorageFileShareCurrentStateAccessRuleArgs build() {
+        public CloudStorageFileShareAclCurrentStateArgs build() {
             return $;
         }
     }

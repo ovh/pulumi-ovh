@@ -215,12 +215,10 @@ __all__ = [
     'CloudStorageBlockVolumeSnapshotCurrentStateArgsDict',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict',
-    'CloudStorageFileShareAccessRuleArgs',
-    'CloudStorageFileShareAccessRuleArgsDict',
+    'CloudStorageFileShareAclCurrentStateArgs',
+    'CloudStorageFileShareAclCurrentStateArgsDict',
     'CloudStorageFileShareCurrentStateArgs',
     'CloudStorageFileShareCurrentStateArgsDict',
-    'CloudStorageFileShareCurrentStateAccessRuleArgs',
-    'CloudStorageFileShareCurrentStateAccessRuleArgsDict',
     'CloudStorageFileShareCurrentStateCapabilityArgs',
     'CloudStorageFileShareCurrentStateCapabilityArgsDict',
     'CloudStorageFileShareCurrentStateExportLocationArgs',
@@ -7019,6 +7017,10 @@ class CloudStorageBlockVolumeCurrentStateEncryptionArgs:
 
 if not MYPY:
     class CloudStorageBlockVolumeCurrentStateLocationArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone
+        """
         region: NotRequired[pulumi.Input[_builtins.str]]
         """
         Region where the volume will be created. **Changing this value recreates the resource.**
@@ -7029,12 +7031,28 @@ elif False:
 @pulumi.input_type
 class CloudStorageBlockVolumeCurrentStateLocationArgs:
     def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone
         :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if region is not None:
             pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7226,61 +7244,99 @@ class CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs:
 
 
 if not MYPY:
-    class CloudStorageFileShareAccessRuleArgsDict(TypedDict):
-        access_level: pulumi.Input[_builtins.str]
+    class CloudStorageFileShareAclCurrentStateArgsDict(TypedDict):
+        access_level: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Access level (`READ_WRITE`, `READ_ONLY`).
+        Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
         """
-        access_to: pulumi.Input[_builtins.str]
+        access_to: NotRequired[pulumi.Input[_builtins.str]]
         """
-        IP address or CIDR to grant access to.
+        IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Creation date of the access rule.
+        """
+        state: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         """
 elif False:
-    CloudStorageFileShareAccessRuleArgsDict: TypeAlias = Mapping[str, Any]
+    CloudStorageFileShareAclCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class CloudStorageFileShareAccessRuleArgs:
+class CloudStorageFileShareAclCurrentStateArgs:
     def __init__(__self__, *,
-                 access_level: pulumi.Input[_builtins.str],
-                 access_to: pulumi.Input[_builtins.str]):
+                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_to: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 state: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] access_level: Access level (`READ_WRITE`, `READ_ONLY`).
-        :param pulumi.Input[_builtins.str] access_to: IP address or CIDR to grant access to.
+        :param pulumi.Input[_builtins.str] access_level: Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] access_to: IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] created_at: Creation date of the access rule.
+        :param pulumi.Input[_builtins.str] state: Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_to is not None:
+            pulumi.set(__self__, "access_to", access_to)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> pulumi.Input[_builtins.str]:
+    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Access level (`READ_WRITE`, `READ_ONLY`).
+        Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "access_level")
 
     @access_level.setter
-    def access_level(self, value: pulumi.Input[_builtins.str]):
+    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "access_level", value)
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
-    def access_to(self) -> pulumi.Input[_builtins.str]:
+    def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        IP address or CIDR to grant access to.
+        IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "access_to")
 
     @access_to.setter
-    def access_to(self, value: pulumi.Input[_builtins.str]):
+    def access_to(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "access_to", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Creation date of the access rule.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:
     class CloudStorageFileShareCurrentStateArgsDict(TypedDict):
-        access_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgsDict']]]]
-        """
-        Access rules for the file share. Each rule has:
-        """
         capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgsDict']]]]
         """
         Action-availability flags derived from the file share status:
@@ -7323,7 +7379,6 @@ elif False:
 @pulumi.input_type
 class CloudStorageFileShareCurrentStateArgs:
     def __init__(__self__, *,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]]] = None,
                  capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  export_locations: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]]] = None,
@@ -7334,7 +7389,6 @@ class CloudStorageFileShareCurrentStateArgs:
                  share_type: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]] access_rules: Access rules for the file share. Each rule has:
         :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]] capabilities: Action-availability flags derived from the file share status:
         :param pulumi.Input[_builtins.str] description: File share description.
         :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]] export_locations: Export locations for the file share:
@@ -7345,8 +7399,6 @@ class CloudStorageFileShareCurrentStateArgs:
         :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
         """
-        if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
         if description is not None:
@@ -7365,18 +7417,6 @@ class CloudStorageFileShareCurrentStateArgs:
             pulumi.set(__self__, "share_type", share_type)
         if size is not None:
             pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]]]:
-        """
-        Access rules for the file share. Each rule has:
-        """
-        return pulumi.get(self, "access_rules")
-
-    @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateAccessRuleArgs']]]]):
-        pulumi.set(self, "access_rules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7485,118 +7525,6 @@ class CloudStorageFileShareCurrentStateArgs:
     @size.setter
     def size(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "size", value)
-
-
-if not MYPY:
-    class CloudStorageFileShareCurrentStateAccessRuleArgsDict(TypedDict):
-        access_level: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Access level (`READ_WRITE`, `READ_ONLY`).
-        """
-        access_to: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IP address or CIDR to grant access to.
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Access rule creation date.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Access rule ID.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Access rule state.
-        """
-elif False:
-    CloudStorageFileShareCurrentStateAccessRuleArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class CloudStorageFileShareCurrentStateAccessRuleArgs:
-    def __init__(__self__, *,
-                 access_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_to: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] access_level: Access level (`READ_WRITE`, `READ_ONLY`).
-        :param pulumi.Input[_builtins.str] access_to: IP address or CIDR to grant access to.
-        :param pulumi.Input[_builtins.str] created_at: Access rule creation date.
-        :param pulumi.Input[_builtins.str] id: Access rule ID.
-        :param pulumi.Input[_builtins.str] state: Access rule state.
-        """
-        if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
-        if access_to is not None:
-            pulumi.set(__self__, "access_to", access_to)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Access level (`READ_WRITE`, `READ_ONLY`).
-        """
-        return pulumi.get(self, "access_level")
-
-    @access_level.setter
-    def access_level(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "access_level", value)
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        IP address or CIDR to grant access to.
-        """
-        return pulumi.get(self, "access_to")
-
-    @access_to.setter
-    def access_to(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "access_to", value)
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "created_at", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Access rule ID.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "state", value)
 
 
 if not MYPY:

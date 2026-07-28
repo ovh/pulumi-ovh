@@ -3,30 +3,23 @@
 
 package com.ovhcloud.pulumi.ovh.outputs;
 
-import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareAccessRule;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentState;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareLocation;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetCloudStorageFileSharesFileShare {
-    /**
-     * @return Current access rules for the file share:
-     * 
-     */
-    private List<GetCloudStorageFileSharesFileShareAccessRule> accessRules;
     /**
      * @return Computed hash representing the current target specification value.
      * 
      */
     private String checksum;
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the file share.
      * 
      */
     private String createdAt;
@@ -41,7 +34,7 @@ public final class GetCloudStorageFileSharesFileShare {
      */
     private String description;
     /**
-     * @return Access rule ID.
+     * @return File share ID.
      * 
      */
     private String id;
@@ -88,13 +81,6 @@ public final class GetCloudStorageFileSharesFileShare {
 
     private GetCloudStorageFileSharesFileShare() {}
     /**
-     * @return Current access rules for the file share:
-     * 
-     */
-    public List<GetCloudStorageFileSharesFileShareAccessRule> accessRules() {
-        return this.accessRules;
-    }
-    /**
      * @return Computed hash representing the current target specification value.
      * 
      */
@@ -102,7 +88,7 @@ public final class GetCloudStorageFileSharesFileShare {
         return this.checksum;
     }
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the file share.
      * 
      */
     public String createdAt() {
@@ -123,7 +109,7 @@ public final class GetCloudStorageFileSharesFileShare {
         return this.description;
     }
     /**
-     * @return Access rule ID.
+     * @return File share ID.
      * 
      */
     public String id() {
@@ -195,7 +181,6 @@ public final class GetCloudStorageFileSharesFileShare {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetCloudStorageFileSharesFileShareAccessRule> accessRules;
         private String checksum;
         private String createdAt;
         private GetCloudStorageFileSharesFileShareCurrentState currentState;
@@ -212,7 +197,6 @@ public final class GetCloudStorageFileSharesFileShare {
         public Builder() {}
         public Builder(GetCloudStorageFileSharesFileShare defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessRules = defaults.accessRules;
     	      this.checksum = defaults.checksum;
     	      this.createdAt = defaults.createdAt;
     	      this.currentState = defaults.currentState;
@@ -228,17 +212,6 @@ public final class GetCloudStorageFileSharesFileShare {
     	      this.updatedAt = defaults.updatedAt;
         }
 
-        @CustomType.Setter
-        public Builder accessRules(List<GetCloudStorageFileSharesFileShareAccessRule> accessRules) {
-            if (accessRules == null) {
-              throw new MissingRequiredPropertyException("GetCloudStorageFileSharesFileShare", "accessRules");
-            }
-            this.accessRules = accessRules;
-            return this;
-        }
-        public Builder accessRules(GetCloudStorageFileSharesFileShareAccessRule... accessRules) {
-            return accessRules(List.of(accessRules));
-        }
         @CustomType.Setter
         public Builder checksum(String checksum) {
             if (checksum == null) {
@@ -345,7 +318,6 @@ public final class GetCloudStorageFileSharesFileShare {
         }
         public GetCloudStorageFileSharesFileShare build() {
             final var _resultValue = new GetCloudStorageFileSharesFileShare();
-            _resultValue.accessRules = accessRules;
             _resultValue.checksum = checksum;
             _resultValue.createdAt = createdAt;
             _resultValue.currentState = currentState;

@@ -133,15 +133,11 @@ namespace Pulumi.Ovh
     public sealed class GetCloudStorageFileShareResult
     {
         /// <summary>
-        /// Current access rules for the file share:
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetCloudStorageFileShareAccessRuleResult> AccessRules;
-        /// <summary>
         /// Computed hash representing the current target specification value.
         /// </summary>
         public readonly string Checksum;
         /// <summary>
-        /// Access rule creation date.
+        /// Creation date of the file share.
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
@@ -152,9 +148,6 @@ namespace Pulumi.Ovh
         /// File share description.
         /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Access rule ID.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Current location:
@@ -192,8 +185,6 @@ namespace Pulumi.Ovh
 
         [OutputConstructor]
         private GetCloudStorageFileShareResult(
-            ImmutableArray<Outputs.GetCloudStorageFileShareAccessRuleResult> accessRules,
-
             string checksum,
 
             string createdAt,
@@ -222,7 +213,6 @@ namespace Pulumi.Ovh
 
             string updatedAt)
         {
-            AccessRules = accessRules;
             Checksum = checksum;
             CreatedAt = createdAt;
             CurrentState = currentState;

@@ -27,10 +27,7 @@ class GetCloudStorageFileShareResult:
     """
     A collection of values returned by getCloudStorageFileShare.
     """
-    def __init__(__self__, access_rules=None, checksum=None, created_at=None, current_state=None, description=None, id=None, location=None, name=None, protocol=None, resource_status=None, service_name=None, share_network_id=None, share_type=None, size=None, updated_at=None):
-        if access_rules and not isinstance(access_rules, list):
-            raise TypeError("Expected argument 'access_rules' to be a list")
-        pulumi.set(__self__, "access_rules", access_rules)
+    def __init__(__self__, checksum=None, created_at=None, current_state=None, description=None, id=None, location=None, name=None, protocol=None, resource_status=None, service_name=None, share_network_id=None, share_type=None, size=None, updated_at=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         pulumi.set(__self__, "checksum", checksum)
@@ -75,14 +72,6 @@ class GetCloudStorageFileShareResult:
         pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileShareAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
-
-    @_builtins.property
     @pulumi.getter
     def checksum(self) -> _builtins.str:
         """
@@ -94,7 +83,7 @@ class GetCloudStorageFileShareResult:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        Access rule creation date.
+        Creation date of the file share.
         """
         return pulumi.get(self, "created_at")
 
@@ -117,9 +106,6 @@ class GetCloudStorageFileShareResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
-        """
-        Access rule ID.
-        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -198,7 +184,6 @@ class AwaitableGetCloudStorageFileShareResult(GetCloudStorageFileShareResult):
         if False:
             yield self
         return GetCloudStorageFileShareResult(
-            access_rules=self.access_rules,
             checksum=self.checksum,
             created_at=self.created_at,
             current_state=self.current_state,
@@ -242,7 +227,6 @@ def get_cloud_storage_file_share(id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('ovh:index/getCloudStorageFileShare:getCloudStorageFileShare', __args__, opts=opts, typ=GetCloudStorageFileShareResult).value
 
     return AwaitableGetCloudStorageFileShareResult(
-        access_rules=pulumi.get(__ret__, 'access_rules'),
         checksum=pulumi.get(__ret__, 'checksum'),
         created_at=pulumi.get(__ret__, 'created_at'),
         current_state=pulumi.get(__ret__, 'current_state'),
@@ -283,7 +267,6 @@ def get_cloud_storage_file_share_output(id: Optional[pulumi.Input[_builtins.str]
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('ovh:index/getCloudStorageFileShare:getCloudStorageFileShare', __args__, opts=opts, typ=GetCloudStorageFileShareResult)
     return __ret__.apply(lambda __response__: GetCloudStorageFileShareResult(
-        access_rules=pulumi.get(__response__, 'access_rules'),
         checksum=pulumi.get(__response__, 'checksum'),
         created_at=pulumi.get(__response__, 'created_at'),
         current_state=pulumi.get(__response__, 'current_state'),

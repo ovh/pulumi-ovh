@@ -23,6 +23,7 @@ class CloudStorageBlockVolumeArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  create_from: Optional[pulumi.Input['CloudStorageBlockVolumeCreateFromArgs']] = None,
                  encryption: Optional[pulumi.Input['CloudStorageBlockVolumeEncryptionArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -32,6 +33,7 @@ class CloudStorageBlockVolumeArgs:
         The set of arguments for constructing a CloudStorageBlockVolume resource.
         :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] size: Size of the volume in GB.
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the volume will be created
         :param pulumi.Input['CloudStorageBlockVolumeCreateFromArgs'] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input['CloudStorageBlockVolumeEncryptionArgs'] encryption: Encryption configuration for the volume.
         :param pulumi.Input[_builtins.str] name: Volume name.
@@ -40,6 +42,8 @@ class CloudStorageBlockVolumeArgs:
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "size", size)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if create_from is not None:
             pulumi.set(__self__, "create_from", create_from)
         if encryption is not None:
@@ -74,6 +78,18 @@ class CloudStorageBlockVolumeArgs:
     @size.setter
     def size(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone where the volume will be created
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="createFrom")
@@ -139,6 +155,7 @@ class CloudStorageBlockVolumeArgs:
 @pulumi.input_type
 class _CloudStorageBlockVolumeState:
     def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  checksum: Optional[pulumi.Input[_builtins.str]] = None,
                  create_from: Optional[pulumi.Input['CloudStorageBlockVolumeCreateFromArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -153,6 +170,7 @@ class _CloudStorageBlockVolumeState:
                  volume_type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudStorageBlockVolume resources.
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the volume will be created
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
         :param pulumi.Input['CloudStorageBlockVolumeCreateFromArgs'] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] created_at: Creation date of the volume.
@@ -166,6 +184,8 @@ class _CloudStorageBlockVolumeState:
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the volume.
         :param pulumi.Input[_builtins.str] volume_type: Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
         if create_from is not None:
@@ -190,6 +210,18 @@ class _CloudStorageBlockVolumeState:
             pulumi.set(__self__, "updated_at", updated_at)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone where the volume will be created
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -342,6 +374,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  create_from: Optional[pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']]] = None,
                  encryption: Optional[pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -369,6 +402,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the volume will be created
         :param pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']] encryption: Encryption configuration for the volume.
         :param pulumi.Input[_builtins.str] name: Volume name.
@@ -415,6 +449,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  create_from: Optional[pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']]] = None,
                  encryption: Optional[pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -431,6 +466,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudStorageBlockVolumeArgs.__new__(CloudStorageBlockVolumeArgs)
 
+            __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["create_from"] = create_from
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["name"] = name
@@ -457,6 +493,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             checksum: Optional[pulumi.Input[_builtins.str]] = None,
             create_from: Optional[pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -476,6 +513,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the volume will be created
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
         :param pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] created_at: Creation date of the volume.
@@ -493,6 +531,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
 
         __props__ = _CloudStorageBlockVolumeState.__new__(_CloudStorageBlockVolumeState)
 
+        __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["checksum"] = checksum
         __props__.__dict__["create_from"] = create_from
         __props__.__dict__["created_at"] = created_at
@@ -506,6 +545,14 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["volume_type"] = volume_type
         return CloudStorageBlockVolume(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> pulumi.Output[_builtins.str]:
+        """
+        Availability zone where the volume will be created
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter

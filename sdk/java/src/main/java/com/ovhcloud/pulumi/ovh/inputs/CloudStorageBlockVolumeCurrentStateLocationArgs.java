@@ -16,6 +16,21 @@ public final class CloudStorageBlockVolumeCurrentStateLocationArgs extends com.p
     public static final CloudStorageBlockVolumeCurrentStateLocationArgs Empty = new CloudStorageBlockVolumeCurrentStateLocationArgs();
 
     /**
+     * Availability zone
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return Availability zone
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
+
+    /**
      * Region where the volume will be created. **Changing this value recreates the resource.**
      * 
      */
@@ -33,6 +48,7 @@ public final class CloudStorageBlockVolumeCurrentStateLocationArgs extends com.p
     private CloudStorageBlockVolumeCurrentStateLocationArgs() {}
 
     private CloudStorageBlockVolumeCurrentStateLocationArgs(CloudStorageBlockVolumeCurrentStateLocationArgs $) {
+        this.availabilityZone = $.availabilityZone;
         this.region = $.region;
     }
 
@@ -52,6 +68,27 @@ public final class CloudStorageBlockVolumeCurrentStateLocationArgs extends com.p
 
         public Builder(CloudStorageBlockVolumeCurrentStateLocationArgs defaults) {
             $ = new CloudStorageBlockVolumeCurrentStateLocationArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availabilityZone Availability zone
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone Availability zone
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**
