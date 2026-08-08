@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.Outputs
     public sealed class CloudKeyManagerSecretCurrentState
     {
         /// <summary>
-        /// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        /// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         /// </summary>
         public readonly string? Algorithm;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Metadata;
         /// <summary>
-        /// Mode of the secret algorithm (e.g., `CBC`).
+        /// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         /// </summary>
         public readonly string? Mode;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly string? SecretRef;
         /// <summary>
-        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         /// </summary>
         public readonly string? SecretType;
         /// <summary>

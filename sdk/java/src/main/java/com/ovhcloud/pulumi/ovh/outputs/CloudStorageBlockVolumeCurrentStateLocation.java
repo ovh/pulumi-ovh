@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudStorageBlockVolumeCurrentStateLocation {
     /**
+     * @return Availability zone
+     * 
+     */
+    private @Nullable String availabilityZone;
+    /**
      * @return Region where the volume will be created. **Changing this value recreates the resource.**
      * 
      */
     private @Nullable String region;
 
     private CloudStorageBlockVolumeCurrentStateLocation() {}
+    /**
+     * @return Availability zone
+     * 
+     */
+    public Optional<String> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
     /**
      * @return Region where the volume will be created. **Changing this value recreates the resource.**
      * 
@@ -35,13 +47,21 @@ public final class CloudStorageBlockVolumeCurrentStateLocation {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String availabilityZone;
         private @Nullable String region;
         public Builder() {}
         public Builder(CloudStorageBlockVolumeCurrentStateLocation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
+        public Builder availabilityZone(@Nullable String availabilityZone) {
+
+            this.availabilityZone = availabilityZone;
+            return this;
+        }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
 
@@ -50,6 +70,7 @@ public final class CloudStorageBlockVolumeCurrentStateLocation {
         }
         public CloudStorageBlockVolumeCurrentStateLocation build() {
             final var _resultValue = new CloudStorageBlockVolumeCurrentStateLocation();
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.region = region;
             return _resultValue;
         }

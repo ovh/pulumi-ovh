@@ -8,6 +8,8 @@ import typing
 # Export this package's modules as members:
 from .cloud_floating_ip import *
 from .cloud_gateway import *
+from .cloud_instance import *
+from .cloud_instance_group import *
 from .cloud_key_manager_container import *
 from .cloud_key_manager_container_consumer import *
 from .cloud_key_manager_secret import *
@@ -30,6 +32,7 @@ from .cloud_storage_block_volume import *
 from .cloud_storage_block_volume_backup import *
 from .cloud_storage_block_volume_snapshot import *
 from .cloud_storage_file_share import *
+from .cloud_storage_file_share_acl import *
 from .cloud_storage_file_share_network import *
 from .cloud_storage_file_share_snapshot import *
 from .clous_ssh_key import *
@@ -44,6 +47,14 @@ from .get_cloud_floating_ip import *
 from .get_cloud_floating_ips import *
 from .get_cloud_gateway import *
 from .get_cloud_gateways import *
+from .get_cloud_instance import *
+from .get_cloud_instance_flavor import *
+from .get_cloud_instance_flavors import *
+from .get_cloud_instance_group import *
+from .get_cloud_instance_groups import *
+from .get_cloud_instance_image import *
+from .get_cloud_instance_images import *
+from .get_cloud_instances import *
 from .get_cloud_key_manager_container import *
 from .get_cloud_key_manager_container_consumer import *
 from .get_cloud_key_manager_container_consumers import *
@@ -82,6 +93,8 @@ from .get_cloud_storage_block_volume_snapshot import *
 from .get_cloud_storage_block_volume_snapshots import *
 from .get_cloud_storage_block_volumes import *
 from .get_cloud_storage_file_share import *
+from .get_cloud_storage_file_share_acl import *
+from .get_cloud_storage_file_share_acls import *
 from .get_cloud_storage_file_share_network import *
 from .get_cloud_storage_file_share_networks import *
 from .get_cloud_storage_file_share_snapshot import *
@@ -1219,6 +1232,22 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudInstance",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudInstance:CloudInstance": "CloudInstance"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudInstanceGroup",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudInstanceGroup:CloudInstanceGroup": "CloudInstanceGroup"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudKeyManagerContainer",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1391,6 +1420,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudStorageFileShare:CloudStorageFileShare": "CloudStorageFileShare"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageFileShareAcl",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl": "CloudStorageFileShareAcl"
   }
  },
  {

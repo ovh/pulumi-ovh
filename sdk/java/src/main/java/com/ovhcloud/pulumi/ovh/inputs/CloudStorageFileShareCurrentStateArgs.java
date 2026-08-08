@@ -3,7 +3,6 @@
 
 package com.ovhcloud.pulumi.ovh.inputs;
 
-import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateAccessRuleArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateCapabilityArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateExportLocationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateLocationArgs;
@@ -20,21 +19,6 @@ import javax.annotation.Nullable;
 public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CloudStorageFileShareCurrentStateArgs Empty = new CloudStorageFileShareCurrentStateArgs();
-
-    /**
-     * Access rules for the file share. Each rule has:
-     * 
-     */
-    @Import(name="accessRules")
-    private @Nullable Output<List<CloudStorageFileShareCurrentStateAccessRuleArgs>> accessRules;
-
-    /**
-     * @return Access rules for the file share. Each rule has:
-     * 
-     */
-    public Optional<Output<List<CloudStorageFileShareCurrentStateAccessRuleArgs>>> accessRules() {
-        return Optional.ofNullable(this.accessRules);
-    }
 
     /**
      * Action-availability flags derived from the file share status:
@@ -174,7 +158,6 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
     private CloudStorageFileShareCurrentStateArgs() {}
 
     private CloudStorageFileShareCurrentStateArgs(CloudStorageFileShareCurrentStateArgs $) {
-        this.accessRules = $.accessRules;
         this.capabilities = $.capabilities;
         this.description = $.description;
         this.exportLocations = $.exportLocations;
@@ -202,37 +185,6 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
 
         public Builder(CloudStorageFileShareCurrentStateArgs defaults) {
             $ = new CloudStorageFileShareCurrentStateArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessRules Access rules for the file share. Each rule has:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessRules(@Nullable Output<List<CloudStorageFileShareCurrentStateAccessRuleArgs>> accessRules) {
-            $.accessRules = accessRules;
-            return this;
-        }
-
-        /**
-         * @param accessRules Access rules for the file share. Each rule has:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessRules(List<CloudStorageFileShareCurrentStateAccessRuleArgs> accessRules) {
-            return accessRules(Output.of(accessRules));
-        }
-
-        /**
-         * @param accessRules Access rules for the file share. Each rule has:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessRules(CloudStorageFileShareCurrentStateAccessRuleArgs... accessRules) {
-            return accessRules(List.of(accessRules));
         }
 
         /**

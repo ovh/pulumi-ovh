@@ -53,6 +53,10 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
     }
 
     /**
+     * Availability zone where the volume will be created
+     */
+    public readonly availabilityZone!: pulumi.Output<string>;
+    /**
      * Computed hash representing the current target specification value.
      */
     public /*out*/ readonly checksum!: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudStorageBlockVolumeState | undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["checksum"] = state ? state.checksum : undefined;
             resourceInputs["createFrom"] = state ? state.createFrom : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
@@ -134,6 +139,7 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["createFrom"] = args ? args.createFrom : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -156,6 +162,10 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudStorageBlockVolume resources.
  */
 export interface CloudStorageBlockVolumeState {
+    /**
+     * Availability zone where the volume will be created
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Computed hash representing the current target specification value.
      */
@@ -210,6 +220,10 @@ export interface CloudStorageBlockVolumeState {
  * The set of arguments for constructing a CloudStorageBlockVolume resource.
  */
 export interface CloudStorageBlockVolumeArgs {
+    /**
+     * Availability zone where the volume will be created
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Source to create the volume from. **Changing this value recreates the resource.**
      */

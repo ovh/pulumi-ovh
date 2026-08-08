@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly double? NoncurrentDays;
         /// <summary>
-        /// The storage class to transition noncurrent objects to.
+        /// The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
         /// </summary>
         public readonly string? StorageClass;
 

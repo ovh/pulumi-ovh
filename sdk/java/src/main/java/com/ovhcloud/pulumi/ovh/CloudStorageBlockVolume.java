@@ -89,6 +89,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume")
 public class CloudStorageBlockVolume extends com.pulumi.resources.CustomResource {
     /**
+     * Availability zone where the volume will be created
+     * 
+     */
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    private Output<String> availabilityZone;
+
+    /**
+     * @return Availability zone where the volume will be created
+     * 
+     */
+    public Output<String> availabilityZone() {
+        return this.availabilityZone;
+    }
+    /**
      * Computed hash representing the current target specification value.
      * 
      */

@@ -35,14 +35,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret")
 public class CloudKeyManagerSecret extends com.pulumi.resources.CustomResource {
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      * 
      */
     @Export(name="algorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> algorithm;
 
     /**
-     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      * 
      */
     public Output<Optional<String>> algorithm() {
@@ -147,14 +147,14 @@ public class CloudKeyManagerSecret extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metadata);
     }
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      * 
      */
     @Export(name="mode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mode;
 
     /**
-     * @return Mode of the secret algorithm (e.g., `CBC`).
+     * @return Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      * 
      */
     public Output<Optional<String>> mode() {
@@ -231,14 +231,14 @@ public class CloudKeyManagerSecret extends com.pulumi.resources.CustomResource {
         return this.resourceStatus;
     }
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      * 
      */
     @Export(name="secretType", refs={String.class}, tree="[0]")
     private Output<String> secretType;
 
     /**
-     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      * 
      */
     public Output<String> secretType() {

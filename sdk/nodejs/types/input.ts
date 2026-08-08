@@ -166,6 +166,287 @@ export interface CloudGatewayExternalGateway {
     model?: pulumi.Input<string>;
 }
 
+export interface CloudInstanceCurrentState {
+    /**
+     * Observed flavor of the instance, with its full sizing details:
+     */
+    flavor?: pulumi.Input<inputs.CloudInstanceCurrentStateFlavor>;
+    /**
+     * Instance (placement) group the instance belongs to, null when it is not part of any group:
+     */
+    group?: pulumi.Input<inputs.CloudInstanceCurrentStateGroup>;
+    /**
+     * Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+     */
+    hostId?: pulumi.Input<string>;
+    /**
+     * Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+     */
+    image?: pulumi.Input<inputs.CloudInstanceCurrentStateImage>;
+    /**
+     * Observed region and availability zone where the instance is provisioned:
+     */
+    location?: pulumi.Input<inputs.CloudInstanceCurrentStateLocation>;
+    /**
+     * Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+     */
+    locked?: pulumi.Input<boolean>;
+    /**
+     * Instance name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+     */
+    networks?: pulumi.Input<pulumi.Input<inputs.CloudInstanceCurrentStateNetwork>[]>;
+    /**
+     * Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+     */
+    powerState?: pulumi.Input<string>;
+    /**
+     * Identifier of the Public Cloud project the instance belongs to.
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Security groups currently attached to the instance's ports:
+     */
+    securityGroups?: pulumi.Input<pulumi.Input<inputs.CloudInstanceCurrentStateSecurityGroup>[]>;
+    /**
+     * Filesystem shares attached to the instance. Each entry supports:
+     */
+    shares?: pulumi.Input<pulumi.Input<inputs.CloudInstanceCurrentStateShare>[]>;
+    /**
+     * Name of the SSH key injected at boot (immutable). Point it at the `name` of an `ovh.CloudSSHKey`. **Changing this value recreates the resource.**
+     */
+    sshKeyName?: pulumi.Input<string>;
+    /**
+     * Identifier of the OpenStack user that owns the instance.
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * Observed block volumes attached to the instance:
+     */
+    volumes?: pulumi.Input<pulumi.Input<inputs.CloudInstanceCurrentStateVolume>[]>;
+}
+
+export interface CloudInstanceCurrentStateFlavor {
+    /**
+     * Size of the flavor's local root disk, in GB.
+     */
+    disk?: pulumi.Input<number>;
+    /**
+     * Size of the flavor's ephemeral disk, in GB.
+     */
+    ephemeral?: pulumi.Input<number>;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Instance name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Amount of RAM provided by the flavor, in MB.
+     */
+    ram?: pulumi.Input<number>;
+    /**
+     * Size of the flavor's swap space, in MB.
+     */
+    swap?: pulumi.Input<number>;
+    /**
+     * Number of virtual CPUs provided by the flavor.
+     */
+    vcpus?: pulumi.Input<number>;
+}
+
+export interface CloudInstanceCurrentStateGroup {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceCurrentStateImage {
+    /**
+     * Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+     */
+    deprecated?: pulumi.Input<boolean>;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Instance name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * Lifecycle status of the image as reported by Glance.
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceCurrentStateLocation {
+    /**
+     * Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the instance is created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceCurrentStateNetwork {
+    /**
+     * Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+     */
+    addresses?: pulumi.Input<pulumi.Input<inputs.CloudInstanceCurrentStateNetworkAddress>[]>;
+    /**
+     * Identifier of the gateway providing egress for this interface, null when none applies.
+     */
+    gatewayId?: pulumi.Input<string>;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Subnet ID within the private network. Required with `networkId`.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceCurrentStateNetworkAddress {
+    /**
+     * IP address assigned to the interface (IPv4 or IPv6).
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+     */
+    mac?: pulumi.Input<string>;
+    /**
+     * How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * IP version of the address (4 for IPv4, 6 for IPv6).
+     */
+    version?: pulumi.Input<number>;
+}
+
+export interface CloudInstanceCurrentStateSecurityGroup {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceCurrentStateShare {
+    /**
+     * Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+     */
+    accessTo?: pulumi.Input<string>;
+    /**
+     * Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+     */
+    state?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceCurrentStateVolume {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Instance name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size?: pulumi.Input<number>;
+}
+
+export interface CloudInstanceGroupCurrentState {
+    /**
+     * Location details:
+     */
+    location?: pulumi.Input<inputs.CloudInstanceGroupCurrentStateLocation>;
+    /**
+     * Instances currently belonging to the group:
+     */
+    members?: pulumi.Input<pulumi.Input<inputs.CloudInstanceGroupCurrentStateMember>[]>;
+    /**
+     * Instance group name. **Changing this value recreates the resource.**
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+     */
+    policy?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceGroupCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Region where the instance group will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceGroupCurrentStateMember {
+    /**
+     * Instance ID.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceNetwork {
+    /**
+     * Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+     */
+    autoAssignPublicIp?: pulumi.Input<boolean>;
+    /**
+     * IP address of this interface. Without `networkId`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `networkId` + `subnetId`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * Private network ID. Omit for a public interface.
+     */
+    networkId?: pulumi.Input<string>;
+    /**
+     * Subnet ID within the private network. Required with `networkId`.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceShare {
+    /**
+     * Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+     */
+    accessLevel?: pulumi.Input<string>;
+    /**
+     * Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface CloudKeyManagerContainerCurrentState {
     /**
      * OpenStack reference URL for the container.
@@ -228,7 +509,7 @@ export interface CloudKeyManagerContainerSecretRef {
 
 export interface CloudKeyManagerSecretCurrentState {
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      */
     algorithm?: pulumi.Input<string>;
     /**
@@ -248,7 +529,7 @@ export interface CloudKeyManagerSecretCurrentState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -264,7 +545,7 @@ export interface CloudKeyManagerSecretCurrentState {
      */
     secretRef?: pulumi.Input<string>;
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      */
     secretType?: pulumi.Input<string>;
     /**
@@ -531,7 +812,7 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncur
      */
     noncurrentDays?: pulumi.Input<number>;
     /**
-     * The storage class to transition noncurrent objects to.
+     * The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      */
     storageClass?: pulumi.Input<string>;
 }
@@ -1158,6 +1439,10 @@ export interface CloudStorageBlockVolumeCurrentStateEncryption {
 
 export interface CloudStorageBlockVolumeCurrentStateLocation {
     /**
+     * Availability zone
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
      * Region where the volume will be created. **Changing this value recreates the resource.**
      */
     region?: pulumi.Input<string>;
@@ -1200,22 +1485,26 @@ export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     region?: pulumi.Input<string>;
 }
 
-export interface CloudStorageFileShareAccessRule {
+export interface CloudStorageFileShareAclCurrentState {
     /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
+     * Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      */
-    accessLevel: pulumi.Input<string>;
+    accessLevel?: pulumi.Input<string>;
     /**
-     * IP address or CIDR to grant access to.
+     * IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      */
-    accessTo: pulumi.Input<string>;
+    accessTo?: pulumi.Input<string>;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+     */
+    state?: pulumi.Input<string>;
 }
 
 export interface CloudStorageFileShareCurrentState {
-    /**
-     * Access rules for the file share. Each rule has:
-     */
-    accessRules?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareCurrentStateAccessRule>[]>;
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -1252,29 +1541,6 @@ export interface CloudStorageFileShareCurrentState {
      * Size of the file share in GB.
      */
     size?: pulumi.Input<number>;
-}
-
-export interface CloudStorageFileShareCurrentStateAccessRule {
-    /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
-     */
-    accessLevel?: pulumi.Input<string>;
-    /**
-     * IP address or CIDR to grant access to.
-     */
-    accessTo?: pulumi.Input<string>;
-    /**
-     * Access rule creation date.
-     */
-    createdAt?: pulumi.Input<string>;
-    /**
-     * Access rule ID.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Access rule state.
-     */
-    state?: pulumi.Input<string>;
 }
 
 export interface CloudStorageFileShareCurrentStateCapability {

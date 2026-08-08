@@ -47,14 +47,14 @@ public final class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNonc
     }
 
     /**
-     * The storage class to transition noncurrent objects to.
+     * The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      * 
      */
     @Import(name="storageClass")
     private @Nullable Output<String> storageClass;
 
     /**
-     * @return The storage class to transition noncurrent objects to.
+     * @return The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      * 
      */
     public Optional<Output<String>> storageClass() {
@@ -130,7 +130,7 @@ public final class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNonc
         }
 
         /**
-         * @param storageClass The storage class to transition noncurrent objects to.
+         * @param storageClass The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNonc
         }
 
         /**
-         * @param storageClass The storage class to transition noncurrent objects to.
+         * @param storageClass The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
          * 
          * @return builder
          * 

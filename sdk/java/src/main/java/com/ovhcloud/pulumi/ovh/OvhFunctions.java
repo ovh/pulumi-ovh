@@ -20,6 +20,22 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewayArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewayPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewaysArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudGatewaysPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceFlavorArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceFlavorPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceFlavorsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceFlavorsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceGroupArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceGroupPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceGroupsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceGroupsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImageArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImagePlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImagesArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImagesPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstancePlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstancesArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstancesPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerConsumerPlainArgs;
@@ -94,6 +110,10 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumeSnapshotsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageBlockVolumesPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareAclArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareAclPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareAclsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareAclsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareNetworkPlainArgs;
@@ -160,6 +180,14 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudFloatingIpResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudFloatingIpsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudGatewayResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudGatewaysResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceFlavorResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceFlavorsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceGroupResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceGroupsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceImageResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceImagesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstancesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerConsumerResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerConsumersResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerResult;
@@ -197,6 +225,8 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeSnapshotResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeSnapshotsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareAclResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareAclsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareNetworkResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareNetworksResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareResult;
@@ -1430,6 +1460,321 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudGatewaysResult> getCloudGatewaysPlain(GetCloudGatewaysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudGateways:getCloudGateways", TypeShape.of(GetCloudGatewaysResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance in a public cloud project.
+     * 
+     */
+    public static Output<GetCloudInstanceResult> getCloudInstance(GetCloudInstanceArgs args) {
+        return getCloudInstance(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an instance in a public cloud project.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceResult> getCloudInstancePlain(GetCloudInstancePlainArgs args) {
+        return getCloudInstancePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an instance in a public cloud project.
+     * 
+     */
+    public static Output<GetCloudInstanceResult> getCloudInstance(GetCloudInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstance:getCloudInstance", TypeShape.of(GetCloudInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance in a public cloud project.
+     * 
+     */
+    public static Output<GetCloudInstanceResult> getCloudInstance(GetCloudInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstance:getCloudInstance", TypeShape.of(GetCloudInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance in a public cloud project.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceResult> getCloudInstancePlain(GetCloudInstancePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstance:getCloudInstance", TypeShape.of(GetCloudInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a flavor available in a public cloud project. This is read-only reference data: it describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceFlavorResult> getCloudInstanceFlavor(GetCloudInstanceFlavorArgs args) {
+        return getCloudInstanceFlavor(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a flavor available in a public cloud project. This is read-only reference data: it describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceFlavorResult> getCloudInstanceFlavorPlain(GetCloudInstanceFlavorPlainArgs args) {
+        return getCloudInstanceFlavorPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about a flavor available in a public cloud project. This is read-only reference data: it describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceFlavorResult> getCloudInstanceFlavor(GetCloudInstanceFlavorArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceFlavor:getCloudInstanceFlavor", TypeShape.of(GetCloudInstanceFlavorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a flavor available in a public cloud project. This is read-only reference data: it describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceFlavorResult> getCloudInstanceFlavor(GetCloudInstanceFlavorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceFlavor:getCloudInstanceFlavor", TypeShape.of(GetCloudInstanceFlavorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about a flavor available in a public cloud project. This is read-only reference data: it describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceFlavorResult> getCloudInstanceFlavorPlain(GetCloudInstanceFlavorPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceFlavor:getCloudInstanceFlavor", TypeShape.of(GetCloudInstanceFlavorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the flavors available in a public cloud project. This is read-only reference data: each entry describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceFlavorsResult> getCloudInstanceFlavors(GetCloudInstanceFlavorsArgs args) {
+        return getCloudInstanceFlavors(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the flavors available in a public cloud project. This is read-only reference data: each entry describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceFlavorsResult> getCloudInstanceFlavorsPlain(GetCloudInstanceFlavorsPlainArgs args) {
+        return getCloudInstanceFlavorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the flavors available in a public cloud project. This is read-only reference data: each entry describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceFlavorsResult> getCloudInstanceFlavors(GetCloudInstanceFlavorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceFlavors:getCloudInstanceFlavors", TypeShape.of(GetCloudInstanceFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the flavors available in a public cloud project. This is read-only reference data: each entry describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceFlavorsResult> getCloudInstanceFlavors(GetCloudInstanceFlavorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceFlavors:getCloudInstanceFlavors", TypeShape.of(GetCloudInstanceFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the flavors available in a public cloud project. This is read-only reference data: each entry describes a hardware sizing (vCPUs, RAM, disks) the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceFlavorsResult> getCloudInstanceFlavorsPlain(GetCloudInstanceFlavorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceFlavors:getCloudInstanceFlavors", TypeShape.of(GetCloudInstanceFlavorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance group (placement group) in a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceGroupResult> getCloudInstanceGroup(GetCloudInstanceGroupArgs args) {
+        return getCloudInstanceGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an instance group (placement group) in a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceGroupResult> getCloudInstanceGroupPlain(GetCloudInstanceGroupPlainArgs args) {
+        return getCloudInstanceGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an instance group (placement group) in a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceGroupResult> getCloudInstanceGroup(GetCloudInstanceGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceGroup:getCloudInstanceGroup", TypeShape.of(GetCloudInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance group (placement group) in a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceGroupResult> getCloudInstanceGroup(GetCloudInstanceGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceGroup:getCloudInstanceGroup", TypeShape.of(GetCloudInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance group (placement group) in a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceGroupResult> getCloudInstanceGroupPlain(GetCloudInstanceGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceGroup:getCloudInstanceGroup", TypeShape.of(GetCloudInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the instance groups (placement groups) of a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     */
+    public static Output<GetCloudInstanceGroupsResult> getCloudInstanceGroups(GetCloudInstanceGroupsArgs args) {
+        return getCloudInstanceGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the instance groups (placement groups) of a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceGroupsResult> getCloudInstanceGroupsPlain(GetCloudInstanceGroupsPlainArgs args) {
+        return getCloudInstanceGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the instance groups (placement groups) of a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     */
+    public static Output<GetCloudInstanceGroupsResult> getCloudInstanceGroups(GetCloudInstanceGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceGroups:getCloudInstanceGroups", TypeShape.of(GetCloudInstanceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the instance groups (placement groups) of a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     */
+    public static Output<GetCloudInstanceGroupsResult> getCloudInstanceGroups(GetCloudInstanceGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceGroups:getCloudInstanceGroups", TypeShape.of(GetCloudInstanceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the instance groups (placement groups) of a public cloud project. An instance group is immutable once created: there is no update route and its membership is fixed at instance-creation time.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceGroupsResult> getCloudInstanceGroupsPlain(GetCloudInstanceGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceGroups:getCloudInstanceGroups", TypeShape.of(GetCloudInstanceGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an image available in a public cloud project. This is read-only reference data: it describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceImageResult> getCloudInstanceImage(GetCloudInstanceImageArgs args) {
+        return getCloudInstanceImage(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an image available in a public cloud project. This is read-only reference data: it describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceImageResult> getCloudInstanceImagePlain(GetCloudInstanceImagePlainArgs args) {
+        return getCloudInstanceImagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an image available in a public cloud project. This is read-only reference data: it describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceImageResult> getCloudInstanceImage(GetCloudInstanceImageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceImage:getCloudInstanceImage", TypeShape.of(GetCloudInstanceImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an image available in a public cloud project. This is read-only reference data: it describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceImageResult> getCloudInstanceImage(GetCloudInstanceImageArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceImage:getCloudInstanceImage", TypeShape.of(GetCloudInstanceImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an image available in a public cloud project. This is read-only reference data: it describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceImageResult> getCloudInstanceImagePlain(GetCloudInstanceImagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceImage:getCloudInstanceImage", TypeShape.of(GetCloudInstanceImageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the images available in a public cloud project. This is read-only reference data: each entry describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceImagesResult> getCloudInstanceImages(GetCloudInstanceImagesArgs args) {
+        return getCloudInstanceImages(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the images available in a public cloud project. This is read-only reference data: each entry describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceImagesResult> getCloudInstanceImagesPlain(GetCloudInstanceImagesPlainArgs args) {
+        return getCloudInstanceImagesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the images available in a public cloud project. This is read-only reference data: each entry describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceImagesResult> getCloudInstanceImages(GetCloudInstanceImagesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceImages:getCloudInstanceImages", TypeShape.of(GetCloudInstanceImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the images available in a public cloud project. This is read-only reference data: each entry describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static Output<GetCloudInstanceImagesResult> getCloudInstanceImages(GetCloudInstanceImagesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceImages:getCloudInstanceImages", TypeShape.of(GetCloudInstanceImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the images available in a public cloud project. This is read-only reference data: each entry describes a bootable image the project can create instances from, not an existing resource.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceImagesResult> getCloudInstanceImagesPlain(GetCloudInstanceImagesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceImages:getCloudInstanceImages", TypeShape.of(GetCloudInstanceImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the instances of a public cloud project.
+     * 
+     * &gt; **NOTE** `current_state.shares` is not populated by the list endpoint. Use the `ovh.CloudInstance` data source to retrieve the shares attached to a specific instance.
+     * 
+     */
+    public static Output<GetCloudInstancesResult> getCloudInstances(GetCloudInstancesArgs args) {
+        return getCloudInstances(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the instances of a public cloud project.
+     * 
+     * &gt; **NOTE** `current_state.shares` is not populated by the list endpoint. Use the `ovh.CloudInstance` data source to retrieve the shares attached to a specific instance.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstancesResult> getCloudInstancesPlain(GetCloudInstancesPlainArgs args) {
+        return getCloudInstancesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the instances of a public cloud project.
+     * 
+     * &gt; **NOTE** `current_state.shares` is not populated by the list endpoint. Use the `ovh.CloudInstance` data source to retrieve the shares attached to a specific instance.
+     * 
+     */
+    public static Output<GetCloudInstancesResult> getCloudInstances(GetCloudInstancesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstances:getCloudInstances", TypeShape.of(GetCloudInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the instances of a public cloud project.
+     * 
+     * &gt; **NOTE** `current_state.shares` is not populated by the list endpoint. Use the `ovh.CloudInstance` data source to retrieve the shares attached to a specific instance.
+     * 
+     */
+    public static Output<GetCloudInstancesResult> getCloudInstances(GetCloudInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstances:getCloudInstances", TypeShape.of(GetCloudInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the instances of a public cloud project.
+     * 
+     * &gt; **NOTE** `current_state.shares` is not populated by the list endpoint. Use the `ovh.CloudInstance` data source to retrieve the shares attached to a specific instance.
+     * 
+     */
+    public static CompletableFuture<GetCloudInstancesResult> getCloudInstancesPlain(GetCloudInstancesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstances:getCloudInstances", TypeShape.of(GetCloudInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a single container in the Barbican Key Manager service.
@@ -8622,6 +8967,441 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudStorageFileShareResult> getCloudStorageFileSharePlain(GetCloudStorageFileSharePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShare:getCloudStorageFileShare", TypeShape.of(GetCloudStorageFileShareResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get an access rule (ACL) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acl = OvhFunctions.getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareAclResult> getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs args) {
+        return getCloudStorageFileShareAcl(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get an access rule (ACL) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acl = OvhFunctions.getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareAclResult> getCloudStorageFileShareAclPlain(GetCloudStorageFileShareAclPlainArgs args) {
+        return getCloudStorageFileShareAclPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get an access rule (ACL) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acl = OvhFunctions.getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareAclResult> getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareAcl:getCloudStorageFileShareAcl", TypeShape.of(GetCloudStorageFileShareAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get an access rule (ACL) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acl = OvhFunctions.getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareAclResult> getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareAcl:getCloudStorageFileShareAcl", TypeShape.of(GetCloudStorageFileShareAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get an access rule (ACL) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acl = OvhFunctions.getCloudStorageFileShareAcl(GetCloudStorageFileShareAclArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .id("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareAclResult> getCloudStorageFileShareAclPlain(GetCloudStorageFileShareAclPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShareAcl:getCloudStorageFileShareAcl", TypeShape.of(GetCloudStorageFileShareAclResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the access rules (ACLs) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acls = OvhFunctions.getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareAclsResult> getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs args) {
+        return getCloudStorageFileShareAcls(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the access rules (ACLs) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acls = OvhFunctions.getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareAclsResult> getCloudStorageFileShareAclsPlain(GetCloudStorageFileShareAclsPlainArgs args) {
+        return getCloudStorageFileShareAclsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the access rules (ACLs) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acls = OvhFunctions.getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareAclsResult> getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareAcls:getCloudStorageFileShareAcls", TypeShape.of(GetCloudStorageFileShareAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the access rules (ACLs) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acls = OvhFunctions.getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudStorageFileShareAclsResult> getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageFileShareAcls:getCloudStorageFileShareAcls", TypeShape.of(GetCloudStorageFileShareAclsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the access rules (ACLs) of a public cloud file storage share.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudStorageFileShareAclsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acls = OvhFunctions.getCloudStorageFileShareAcls(GetCloudStorageFileShareAclsArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .shareId("00000000-0000-0000-0000-000000000000")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageFileShareAclsResult> getCloudStorageFileShareAclsPlain(GetCloudStorageFileShareAclsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShareAcls:getCloudStorageFileShareAcls", TypeShape.of(GetCloudStorageFileShareAclsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a file storage share network in a public cloud project.

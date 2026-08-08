@@ -33,6 +33,60 @@
                     }
                 }
             },
+            "ovh_cloud_instance": {
+                "current": "ovh:index/cloudInstance:CloudInstance",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "networks": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "addresses": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "security_groups": {
+                                "maxItemsOne": false
+                            },
+                            "shares": {
+                                "maxItemsOne": false
+                            },
+                            "volumes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "shares": {
+                        "maxItemsOne": false
+                    },
+                    "volume_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_instance_group": {
+                "current": "ovh:index/cloudInstanceGroup:CloudInstanceGroup",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "members": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "ovh_cloud_key_manager_container": {
                 "current": "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer",
                 "majorVersion": 2,
@@ -939,14 +993,8 @@
                 "current": "ovh:index/cloudStorageFileShare:CloudStorageFileShare",
                 "majorVersion": 2,
                 "fields": {
-                    "access_rules": {
-                        "maxItemsOne": false
-                    },
                     "current_state": {
                         "fields": {
-                            "access_rules": {
-                                "maxItemsOne": false
-                            },
                             "capabilities": {
                                 "maxItemsOne": false
                             },
@@ -956,6 +1004,10 @@
                         }
                     }
                 }
+            },
+            "ovh_cloud_storage_file_share_acl": {
+                "current": "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl",
+                "majorVersion": 2
             },
             "ovh_cloud_storage_file_share_network": {
                 "current": "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork",
@@ -2182,6 +2234,142 @@
                                 "current_state": {
                                     "fields": {
                                         "subnets": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_instance": {
+                "current": "ovh:index/getCloudInstance:getCloudInstance",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "networks": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "addresses": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "security_groups": {
+                                "maxItemsOne": false
+                            },
+                            "shares": {
+                                "maxItemsOne": false
+                            },
+                            "volumes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "shares": {
+                        "maxItemsOne": false
+                    },
+                    "volume_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_instance_flavor": {
+                "current": "ovh:index/getCloudInstanceFlavor:getCloudInstanceFlavor",
+                "majorVersion": 2
+            },
+            "ovh_cloud_instance_flavors": {
+                "current": "ovh:index/getCloudInstanceFlavors:getCloudInstanceFlavors",
+                "majorVersion": 2,
+                "fields": {
+                    "flavors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_instance_group": {
+                "current": "ovh:index/getCloudInstanceGroup:getCloudInstanceGroup",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "members": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_instance_groups": {
+                "current": "ovh:index/getCloudInstanceGroups:getCloudInstanceGroups",
+                "majorVersion": 2,
+                "fields": {
+                    "instance_groups": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "members": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_instance_image": {
+                "current": "ovh:index/getCloudInstanceImage:getCloudInstanceImage",
+                "majorVersion": 2
+            },
+            "ovh_cloud_instance_images": {
+                "current": "ovh:index/getCloudInstanceImages:getCloudInstanceImages",
+                "majorVersion": 2,
+                "fields": {
+                    "images": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_instances": {
+                "current": "ovh:index/getCloudInstances:getCloudInstances",
+                "majorVersion": 2,
+                "fields": {
+                    "instances": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "networks": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "addresses": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "security_groups": {
+                                            "maxItemsOne": false
+                                        },
+                                        "shares": {
+                                            "maxItemsOne": false
+                                        },
+                                        "volumes": {
                                             "maxItemsOne": false
                                         }
                                     }
@@ -3528,14 +3716,8 @@
                 "current": "ovh:index/getCloudStorageFileShare:getCloudStorageFileShare",
                 "majorVersion": 2,
                 "fields": {
-                    "access_rules": {
-                        "maxItemsOne": false
-                    },
                     "current_state": {
                         "fields": {
-                            "access_rules": {
-                                "maxItemsOne": false
-                            },
                             "capabilities": {
                                 "maxItemsOne": false
                             },
@@ -3543,6 +3725,19 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "ovh_cloud_storage_file_share_acl": {
+                "current": "ovh:index/getCloudStorageFileShareAcl:getCloudStorageFileShareAcl",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_file_share_acls": {
+                "current": "ovh:index/getCloudStorageFileShareAcls:getCloudStorageFileShareAcls",
+                "majorVersion": 2,
+                "fields": {
+                    "share_acls": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -3580,14 +3775,8 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
-                                "access_rules": {
-                                    "maxItemsOne": false
-                                },
                                 "current_state": {
                                     "fields": {
-                                        "access_rules": {
-                                            "maxItemsOne": false
-                                        },
                                         "capabilities": {
                                             "maxItemsOne": false
                                         },
@@ -4763,6 +4952,8 @@
             "ovh:Vrack/vrackservices:Vrackservices": 0,
             "ovh:index/cloudFloatingIp:CloudFloatingIp": 1,
             "ovh:index/cloudGateway:CloudGateway": 1,
+            "ovh:index/cloudInstance:CloudInstance": 1,
+            "ovh:index/cloudInstanceGroup:CloudInstanceGroup": 1,
             "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer": 1,
             "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer": 1,
             "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret": 1,
@@ -4785,6 +4976,7 @@
             "ovh:index/cloudStorageBlockVolumeBackup:CloudStorageBlockVolumeBackup": 1,
             "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": 1,
             "ovh:index/cloudStorageFileShare:CloudStorageFileShare": 1,
+            "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl": 1,
             "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork": 1,
             "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": 1,
             "ovh:index/clousSSHKey:ClousSSHKey": 1,
@@ -4949,6 +5141,14 @@
             "ovh:index/getCloudFloatingIps:getCloudFloatingIps": 1,
             "ovh:index/getCloudGateway:getCloudGateway": 1,
             "ovh:index/getCloudGateways:getCloudGateways": 1,
+            "ovh:index/getCloudInstance:getCloudInstance": 1,
+            "ovh:index/getCloudInstanceFlavor:getCloudInstanceFlavor": 1,
+            "ovh:index/getCloudInstanceFlavors:getCloudInstanceFlavors": 1,
+            "ovh:index/getCloudInstanceGroup:getCloudInstanceGroup": 1,
+            "ovh:index/getCloudInstanceGroups:getCloudInstanceGroups": 1,
+            "ovh:index/getCloudInstanceImage:getCloudInstanceImage": 1,
+            "ovh:index/getCloudInstanceImages:getCloudInstanceImages": 1,
+            "ovh:index/getCloudInstances:getCloudInstances": 1,
             "ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer": 1,
             "ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer": 1,
             "ovh:index/getCloudKeyManagerContainerConsumers:getCloudKeyManagerContainerConsumers": 1,
@@ -4987,6 +5187,8 @@
             "ovh:index/getCloudStorageBlockVolumeSnapshots:getCloudStorageBlockVolumeSnapshots": 1,
             "ovh:index/getCloudStorageBlockVolumes:getCloudStorageBlockVolumes": 1,
             "ovh:index/getCloudStorageFileShare:getCloudStorageFileShare": 1,
+            "ovh:index/getCloudStorageFileShareAcl:getCloudStorageFileShareAcl": 1,
+            "ovh:index/getCloudStorageFileShareAcls:getCloudStorageFileShareAcls": 1,
             "ovh:index/getCloudStorageFileShareNetwork:getCloudStorageFileShareNetwork": 1,
             "ovh:index/getCloudStorageFileShareNetworks:getCloudStorageFileShareNetworks": 1,
             "ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot": 1,

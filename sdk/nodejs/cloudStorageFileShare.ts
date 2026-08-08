@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
 /**
  * Creates a file storage share (NFS) in a public cloud project.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const share = new ovh.CloudStorageFileShare("share", {
+ *     serviceName: "<Public cloud project id>",
+ *     name: "my-share",
+ *     size: 150,
+ *     region: "GRA1",
+ *     protocol: "NFS",
+ *     shareType: "STANDARD_1AZ",
+ *     shareNetworkId: "<share network id>",
+ *     description: "My NFS share",
+ * });
+ * ```
+ *
  * ## Import
  *
  * A cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:
@@ -58,10 +76,6 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
     }
 
     /**
-     * Access rules for the file share. Each rule has:
-     */
-    public readonly accessRules!: pulumi.Output<outputs.CloudStorageFileShareAccessRule[]>;
-    /**
      * Availability zone where the file share will be created. **Changing this value recreates the resource.**
      */
     public readonly availabilityZone!: pulumi.Output<string>;
@@ -70,7 +84,7 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
      */
     public /*out*/ readonly checksum!: pulumi.Output<string>;
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
@@ -131,7 +145,6 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudStorageFileShareState | undefined;
-            resourceInputs["accessRules"] = state ? state.accessRules : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["checksum"] = state ? state.checksum : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
@@ -166,7 +179,6 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
             if ((!args || args.size === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["accessRules"] = args ? args.accessRules : undefined;
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -192,10 +204,6 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
  */
 export interface CloudStorageFileShareState {
     /**
-     * Access rules for the file share. Each rule has:
-     */
-    accessRules?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareAccessRule>[]>;
-    /**
      * Availability zone where the file share will be created. **Changing this value recreates the resource.**
      */
     availabilityZone?: pulumi.Input<string>;
@@ -204,7 +212,7 @@ export interface CloudStorageFileShareState {
      */
     checksum?: pulumi.Input<string>;
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      */
     createdAt?: pulumi.Input<string>;
     /**
@@ -257,10 +265,6 @@ export interface CloudStorageFileShareState {
  * The set of arguments for constructing a CloudStorageFileShare resource.
  */
 export interface CloudStorageFileShareArgs {
-    /**
-     * Access rules for the file share. Each rule has:
-     */
-    accessRules?: pulumi.Input<pulumi.Input<inputs.CloudStorageFileShareAccessRule>[]>;
     /**
      * Availability zone where the file share will be created. **Changing this value recreates the resource.**
      */

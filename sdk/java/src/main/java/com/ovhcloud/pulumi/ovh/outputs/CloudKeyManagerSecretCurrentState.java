@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudKeyManagerSecretCurrentState {
     /**
-     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      * 
      */
     private @Nullable String algorithm;
@@ -40,7 +40,7 @@ public final class CloudKeyManagerSecretCurrentState {
      */
     private @Nullable Map<String,String> metadata;
     /**
-     * @return Mode of the secret algorithm (e.g., `CBC`).
+     * @return Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      * 
      */
     private @Nullable String mode;
@@ -60,7 +60,7 @@ public final class CloudKeyManagerSecretCurrentState {
      */
     private @Nullable String secretRef;
     /**
-     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      * 
      */
     private @Nullable String secretType;
@@ -72,7 +72,7 @@ public final class CloudKeyManagerSecretCurrentState {
 
     private CloudKeyManagerSecretCurrentState() {}
     /**
-     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      * 
      */
     public Optional<String> algorithm() {
@@ -107,7 +107,7 @@ public final class CloudKeyManagerSecretCurrentState {
         return this.metadata == null ? Map.of() : this.metadata;
     }
     /**
-     * @return Mode of the secret algorithm (e.g., `CBC`).
+     * @return Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      * 
      */
     public Optional<String> mode() {
@@ -135,7 +135,7 @@ public final class CloudKeyManagerSecretCurrentState {
         return Optional.ofNullable(this.secretRef);
     }
     /**
-     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      * 
      */
     public Optional<String> secretType() {

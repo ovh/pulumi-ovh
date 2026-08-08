@@ -14,6 +14,39 @@ import (
 
 // Creates a file storage share (NFS) in a public cloud project.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ovh.NewCloudStorageFileShare(ctx, "share", &ovh.CloudStorageFileShareArgs{
+//				ServiceName:    pulumi.String("<Public cloud project id>"),
+//				Name:           pulumi.String("my-share"),
+//				Size:           pulumi.Int(150),
+//				Region:         pulumi.String("GRA1"),
+//				Protocol:       pulumi.String("NFS"),
+//				ShareType:      pulumi.String("STANDARD_1AZ"),
+//				ShareNetworkId: pulumi.String("<share network id>"),
+//				Description:    pulumi.String("My NFS share"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // A cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:
@@ -36,13 +69,11 @@ import (
 type CloudStorageFileShare struct {
 	pulumi.CustomResourceState
 
-	// Access rules for the file share. Each rule has:
-	AccessRules CloudStorageFileShareAccessRuleArrayOutput `pulumi:"accessRules"`
 	// Availability zone where the file share will be created. **Changing this value recreates the resource.**
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringOutput `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState CloudStorageFileShareCurrentStateOutput `pulumi:"currentState"`
@@ -116,13 +147,11 @@ func GetCloudStorageFileShare(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudStorageFileShare resources.
 type cloudStorageFileShareState struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules []CloudStorageFileShareAccessRule `pulumi:"accessRules"`
 	// Availability zone where the file share will be created. **Changing this value recreates the resource.**
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Computed hash representing the current target specification value.
 	Checksum *string `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt *string `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState *CloudStorageFileShareCurrentState `pulumi:"currentState"`
@@ -149,13 +178,11 @@ type cloudStorageFileShareState struct {
 }
 
 type CloudStorageFileShareState struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules CloudStorageFileShareAccessRuleArrayInput
 	// Availability zone where the file share will be created. **Changing this value recreates the resource.**
 	AvailabilityZone pulumi.StringPtrInput
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringPtrInput
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt pulumi.StringPtrInput
 	// Current state of the file storage share:
 	CurrentState CloudStorageFileShareCurrentStatePtrInput
@@ -186,8 +213,6 @@ func (CloudStorageFileShareState) ElementType() reflect.Type {
 }
 
 type cloudStorageFileShareArgs struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules []CloudStorageFileShareAccessRule `pulumi:"accessRules"`
 	// Availability zone where the file share will be created. **Changing this value recreates the resource.**
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// File share description.
@@ -210,8 +235,6 @@ type cloudStorageFileShareArgs struct {
 
 // The set of arguments for constructing a CloudStorageFileShare resource.
 type CloudStorageFileShareArgs struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules CloudStorageFileShareAccessRuleArrayInput
 	// Availability zone where the file share will be created. **Changing this value recreates the resource.**
 	AvailabilityZone pulumi.StringPtrInput
 	// File share description.
@@ -319,11 +342,6 @@ func (o CloudStorageFileShareOutput) ToCloudStorageFileShareOutputWithContext(ct
 	return o
 }
 
-// Access rules for the file share. Each rule has:
-func (o CloudStorageFileShareOutput) AccessRules() CloudStorageFileShareAccessRuleArrayOutput {
-	return o.ApplyT(func(v *CloudStorageFileShare) CloudStorageFileShareAccessRuleArrayOutput { return v.AccessRules }).(CloudStorageFileShareAccessRuleArrayOutput)
-}
-
 // Availability zone where the file share will be created. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStorageFileShare) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
@@ -334,7 +352,7 @@ func (o CloudStorageFileShareOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStorageFileShare) pulumi.StringOutput { return v.Checksum }).(pulumi.StringOutput)
 }
 
-// Access rule creation date.
+// Creation date of the file share.
 func (o CloudStorageFileShareOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStorageFileShare) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }

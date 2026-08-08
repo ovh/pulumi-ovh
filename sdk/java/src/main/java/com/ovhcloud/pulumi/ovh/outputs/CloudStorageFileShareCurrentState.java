@@ -3,7 +3,6 @@
 
 package com.ovhcloud.pulumi.ovh.outputs;
 
-import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateAccessRule;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateCapability;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateExportLocation;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateLocation;
@@ -17,11 +16,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CloudStorageFileShareCurrentState {
-    /**
-     * @return Access rules for the file share. Each rule has:
-     * 
-     */
-    private @Nullable List<CloudStorageFileShareCurrentStateAccessRule> accessRules;
     /**
      * @return Action-availability flags derived from the file share status:
      * 
@@ -69,13 +63,6 @@ public final class CloudStorageFileShareCurrentState {
     private @Nullable Integer size;
 
     private CloudStorageFileShareCurrentState() {}
-    /**
-     * @return Access rules for the file share. Each rule has:
-     * 
-     */
-    public List<CloudStorageFileShareCurrentStateAccessRule> accessRules() {
-        return this.accessRules == null ? List.of() : this.accessRules;
-    }
     /**
      * @return Action-availability flags derived from the file share status:
      * 
@@ -149,7 +136,6 @@ public final class CloudStorageFileShareCurrentState {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<CloudStorageFileShareCurrentStateAccessRule> accessRules;
         private @Nullable List<CloudStorageFileShareCurrentStateCapability> capabilities;
         private @Nullable String description;
         private @Nullable List<CloudStorageFileShareCurrentStateExportLocation> exportLocations;
@@ -162,7 +148,6 @@ public final class CloudStorageFileShareCurrentState {
         public Builder() {}
         public Builder(CloudStorageFileShareCurrentState defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessRules = defaults.accessRules;
     	      this.capabilities = defaults.capabilities;
     	      this.description = defaults.description;
     	      this.exportLocations = defaults.exportLocations;
@@ -174,15 +159,6 @@ public final class CloudStorageFileShareCurrentState {
     	      this.size = defaults.size;
         }
 
-        @CustomType.Setter
-        public Builder accessRules(@Nullable List<CloudStorageFileShareCurrentStateAccessRule> accessRules) {
-
-            this.accessRules = accessRules;
-            return this;
-        }
-        public Builder accessRules(CloudStorageFileShareCurrentStateAccessRule... accessRules) {
-            return accessRules(List.of(accessRules));
-        }
         @CustomType.Setter
         public Builder capabilities(@Nullable List<CloudStorageFileShareCurrentStateCapability> capabilities) {
 
@@ -245,7 +221,6 @@ public final class CloudStorageFileShareCurrentState {
         }
         public CloudStorageFileShareCurrentState build() {
             final var _resultValue = new CloudStorageFileShareCurrentState();
-            _resultValue.accessRules = accessRules;
             _resultValue.capabilities = capabilities;
             _resultValue.description = description;
             _resultValue.exportLocations = exportLocations;

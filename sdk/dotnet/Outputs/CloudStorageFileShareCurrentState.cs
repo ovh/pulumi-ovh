@@ -14,10 +14,6 @@ namespace Pulumi.Ovh.Outputs
     public sealed class CloudStorageFileShareCurrentState
     {
         /// <summary>
-        /// Access rules for the file share. Each rule has:
-        /// </summary>
-        public readonly ImmutableArray<Outputs.CloudStorageFileShareCurrentStateAccessRule> AccessRules;
-        /// <summary>
         /// Action-availability flags derived from the file share status:
         /// </summary>
         public readonly ImmutableArray<Outputs.CloudStorageFileShareCurrentStateCapability> Capabilities;
@@ -56,8 +52,6 @@ namespace Pulumi.Ovh.Outputs
 
         [OutputConstructor]
         private CloudStorageFileShareCurrentState(
-            ImmutableArray<Outputs.CloudStorageFileShareCurrentStateAccessRule> accessRules,
-
             ImmutableArray<Outputs.CloudStorageFileShareCurrentStateCapability> capabilities,
 
             string? description,
@@ -76,7 +70,6 @@ namespace Pulumi.Ovh.Outputs
 
             int? size)
         {
-            AccessRules = accessRules;
             Capabilities = capabilities;
             Description = description;
             ExportLocations = exportLocations;

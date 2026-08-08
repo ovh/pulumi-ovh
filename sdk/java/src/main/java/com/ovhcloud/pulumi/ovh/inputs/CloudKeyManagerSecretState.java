@@ -19,14 +19,14 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
     public static final CloudKeyManagerSecretState Empty = new CloudKeyManagerSecretState();
 
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      * 
      */
     @Import(name="algorithm")
     private @Nullable Output<String> algorithm;
 
     /**
-     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * @return Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      * 
      */
     public Optional<Output<String>> algorithm() {
@@ -139,14 +139,14 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Mode of the secret algorithm (e.g., `CBC`).
+     * @return Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -229,14 +229,14 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      * 
      */
     @Import(name="secretType")
     private @Nullable Output<String> secretType;
 
     /**
-     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * @return Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      * 
      */
     public Optional<Output<String>> secretType() {
@@ -314,7 +314,7 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param algorithm Algorithm associated with the secret (e.g., `AES`, `RSA`).
+         * @param algorithm Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param algorithm Algorithm associated with the secret (e.g., `AES`, `RSA`).
+         * @param algorithm Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
          * 
          * @return builder
          * 
@@ -482,7 +482,7 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mode Mode of the secret algorithm (e.g., `CBC`).
+         * @param mode Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
          * 
          * @return builder
          * 
@@ -493,7 +493,7 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param mode Mode of the secret algorithm (e.g., `CBC`).
+         * @param mode Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
          * 
          * @return builder
          * 
@@ -608,7 +608,7 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secretType Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+         * @param secretType Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
          * 
          * @return builder
          * 
@@ -619,7 +619,7 @@ public final class CloudKeyManagerSecretState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param secretType Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+         * @param secretType Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
          * 
          * @return builder
          * 

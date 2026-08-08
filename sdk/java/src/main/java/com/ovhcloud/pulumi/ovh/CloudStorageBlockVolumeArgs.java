@@ -20,6 +20,21 @@ public final class CloudStorageBlockVolumeArgs extends com.pulumi.resources.Reso
     public static final CloudStorageBlockVolumeArgs Empty = new CloudStorageBlockVolumeArgs();
 
     /**
+     * Availability zone where the volume will be created
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return Availability zone where the volume will be created
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
+
+    /**
      * Source to create the volume from. **Changing this value recreates the resource.**
      * 
      */
@@ -127,6 +142,7 @@ public final class CloudStorageBlockVolumeArgs extends com.pulumi.resources.Reso
     private CloudStorageBlockVolumeArgs() {}
 
     private CloudStorageBlockVolumeArgs(CloudStorageBlockVolumeArgs $) {
+        this.availabilityZone = $.availabilityZone;
         this.createFrom = $.createFrom;
         this.encryption = $.encryption;
         this.name = $.name;
@@ -152,6 +168,27 @@ public final class CloudStorageBlockVolumeArgs extends com.pulumi.resources.Reso
 
         public Builder(CloudStorageBlockVolumeArgs defaults) {
             $ = new CloudStorageBlockVolumeArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availabilityZone Availability zone where the volume will be created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone Availability zone where the volume will be created
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**
