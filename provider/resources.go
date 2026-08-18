@@ -320,7 +320,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_dedicated_server": {
 				Tok:       ovhResource(dedicatedMod, "Server"),
-				ComputeID: delegateID("display_name"),
+				ComputeID: delegateID("displayName"),
 			},
 			"ovh_dedicated_server_reinstall_task": {
 				Tok: ovhResource(dedicatedMod, "ServerReinstallTask"),
@@ -356,11 +356,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_domain_zone_dnssec": {
 				Tok:       ovhResource(domainMod, "ZoneDNSSec"),
-				ComputeID: delegateID("zone_name"),
+				ComputeID: delegateID("zoneName"),
 			},
 			"ovh_domain_zone_import": {
 				Tok:       ovhResource(domainMod, "ZoneImport"),
-				ComputeID: delegateID("zone_name"),
+				ComputeID: delegateID("zoneName"),
 			},
 			"ovh_domain_zone_dynhost_login": {
 				Tok: ovhResource(domainMod, "DynhostLogin"),
@@ -452,7 +452,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iploadbalancing_ssl": {
 				Tok:       ovhResource(ipLoadBalancingMod, "Ssl"),
-				ComputeID: delegateID("display_name"),
+				ComputeID: delegateID("displayName"),
 			},
 			"ovh_iploadbalancing_tcp_farm": {
 				Tok: ovhResource(ipLoadBalancingMod, "TcpFarm"),
@@ -471,15 +471,15 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_iploadbalancing_udp_farm": {
 				Tok:       ovhResource(ipLoadBalancingMod, "UdpFarm"),
-				ComputeID: delegateID("display_name"),
+				ComputeID: delegateID("displayName"),
 			},
 			"ovh_iploadbalancing_udp_farm_server": {
 				Tok:       ovhResource(ipLoadBalancingMod, "UdpFarmServer"),
-				ComputeID: delegateID("display_name"),
+				ComputeID: delegateID("displayName"),
 			},
 			"ovh_iploadbalancing_udp_frontend": {
 				Tok:       ovhResource(ipLoadBalancingMod, "UdpFrontend"),
-				ComputeID: delegateID("display_name"),
+				ComputeID: delegateID("displayName"),
 			},
 			"ovh_iploadbalancing_vrack_network": {
 				Tok: ovhResource(ipLoadBalancingMod, "VrackNetwork"),
@@ -533,7 +533,7 @@ func Provider() tfbridge.ProviderInfo {
 				// VrackDedicatedCloud instead of DedicatedCloud fix until we don't have to create a ComputeID
 				// based on a dedicated_cloud field (error in dotnet sdk generation)
 				Tok:       ovhResource(vrackMod, "VrackDedicatedCloud"),
-				ComputeID: delegateID("dedicated_cloud"),
+				ComputeID: delegateID("dedicatedCloud"),
 			},
 			"ovh_vrack_dedicated_cloud_datacenter": {
 				Tok:       ovhResource(vrackMod, "DedicatedCloudDatacenter"),
@@ -561,7 +561,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_vrack_ovhcloudconnect": {
 				Tok:       ovhResource(vrackMod, "OVHcloudConnect"),
-				ComputeID: delegateID("ovh_cloud_connect"),
+				ComputeID: delegateID("ovhCloudConnect"),
 			},
 			"ovh_vrack_vrackservices": {
 				// "Vrackservices" Mandatory name to avoid CSharp issue: member names cannot be the same as their enclosing type
@@ -604,7 +604,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"ovh_vps": {
 				Tok:       ovhResource(vpsMod, "Vps"),
-				ComputeID: delegateID("display_name"),
+				ComputeID: delegateID("displayName"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
