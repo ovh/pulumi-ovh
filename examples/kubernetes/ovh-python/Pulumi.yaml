@@ -1,8 +1,0 @@
-name: ovh-python
-runtime:
-  name: python
-  options:
-    virtualenv: venv
-description: A minimal Python Pulumi program
-config:
-  serviceName: <your-service-name>
