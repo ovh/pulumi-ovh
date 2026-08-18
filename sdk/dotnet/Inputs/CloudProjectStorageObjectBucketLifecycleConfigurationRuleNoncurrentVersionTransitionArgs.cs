@@ -25,7 +25,7 @@ namespace Pulumi.Ovh.Inputs
         public Input<double>? NoncurrentDays { get; set; }
 
         /// <summary>
-        /// The storage class to transition noncurrent objects to.
+        /// The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
         /// </summary>
         [Input("storageClass")]
         public Input<string>? StorageClass { get; set; }

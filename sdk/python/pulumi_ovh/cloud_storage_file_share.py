@@ -27,7 +27,6 @@ class CloudStorageFileShareArgs:
                  share_network_id: pulumi.Input[_builtins.str],
                  share_type: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
@@ -39,7 +38,6 @@ class CloudStorageFileShareArgs:
         :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
-        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]] access_rules: Access rules for the file share. Each rule has:
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: File share description.
         :param pulumi.Input[_builtins.str] name: File share name.
@@ -50,8 +48,6 @@ class CloudStorageFileShareArgs:
         pulumi.set(__self__, "share_network_id", share_network_id)
         pulumi.set(__self__, "share_type", share_type)
         pulumi.set(__self__, "size", size)
-        if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
@@ -132,18 +128,6 @@ class CloudStorageFileShareArgs:
         pulumi.set(self, "size", value)
 
     @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]]]:
-        """
-        Access rules for the file share. Each rule has:
-        """
-        return pulumi.get(self, "access_rules")
-
-    @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]]]):
-        pulumi.set(self, "access_rules", value)
-
-    @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -183,7 +167,6 @@ class CloudStorageFileShareArgs:
 @pulumi.input_type
 class _CloudStorageFileShareState:
     def __init__(__self__, *,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  checksum: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -200,10 +183,9 @@ class _CloudStorageFileShareState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudStorageFileShare resources.
-        :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]] access_rules: Access rules for the file share. Each rule has:
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
-        :param pulumi.Input[_builtins.str] created_at: Access rule creation date.
+        :param pulumi.Input[_builtins.str] created_at: Creation date of the file share.
         :param pulumi.Input['CloudStorageFileShareCurrentStateArgs'] current_state: Current state of the file storage share:
         :param pulumi.Input[_builtins.str] description: File share description.
         :param pulumi.Input[_builtins.str] name: File share name.
@@ -216,8 +198,6 @@ class _CloudStorageFileShareState:
         :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the file share.
         """
-        if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if checksum is not None:
@@ -248,18 +228,6 @@ class _CloudStorageFileShareState:
             pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]]]:
-        """
-        Access rules for the file share. Each rule has:
-        """
-        return pulumi.get(self, "access_rules")
-
-    @access_rules.setter
-    def access_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareAccessRuleArgs']]]]):
-        pulumi.set(self, "access_rules", value)
-
-    @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -287,7 +255,7 @@ class _CloudStorageFileShareState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Access rule creation date.
+        Creation date of the file share.
         """
         return pulumi.get(self, "created_at")
 
@@ -434,7 +402,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudStorageFileShareAccessRuleArgs', 'CloudStorageFileShareAccessRuleArgsDict']]]]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -447,6 +414,23 @@ class CloudStorageFileShare(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a file storage share (NFS) in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        share = ovh.CloudStorageFileShare("share",
+            service_name="<Public cloud project id>",
+            name="my-share",
+            size=150,
+            region="GRA1",
+            protocol="NFS",
+            share_type="STANDARD_1AZ",
+            share_network_id="<share network id>",
+            description="My NFS share")
+        ```
 
         ## Import
 
@@ -470,7 +454,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudStorageFileShareAccessRuleArgs', 'CloudStorageFileShareAccessRuleArgsDict']]]] access_rules: Access rules for the file share. Each rule has:
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: File share description.
         :param pulumi.Input[_builtins.str] name: File share name.
@@ -489,6 +472,23 @@ class CloudStorageFileShare(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a file storage share (NFS) in a public cloud project.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        share = ovh.CloudStorageFileShare("share",
+            service_name="<Public cloud project id>",
+            name="my-share",
+            size=150,
+            region="GRA1",
+            protocol="NFS",
+            share_type="STANDARD_1AZ",
+            share_network_id="<share network id>",
+            description="My NFS share")
+        ```
 
         ## Import
 
@@ -525,7 +525,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudStorageFileShareAccessRuleArgs', 'CloudStorageFileShareAccessRuleArgsDict']]]]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -544,7 +543,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudStorageFileShareArgs.__new__(CloudStorageFileShareArgs)
 
-            __props__.__dict__["access_rules"] = access_rules
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -581,7 +579,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudStorageFileShareAccessRuleArgs', 'CloudStorageFileShareAccessRuleArgsDict']]]]] = None,
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             checksum: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -603,10 +600,9 @@ class CloudStorageFileShare(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudStorageFileShareAccessRuleArgs', 'CloudStorageFileShareAccessRuleArgsDict']]]] access_rules: Access rules for the file share. Each rule has:
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
-        :param pulumi.Input[_builtins.str] created_at: Access rule creation date.
+        :param pulumi.Input[_builtins.str] created_at: Creation date of the file share.
         :param pulumi.Input[Union['CloudStorageFileShareCurrentStateArgs', 'CloudStorageFileShareCurrentStateArgsDict']] current_state: Current state of the file storage share:
         :param pulumi.Input[_builtins.str] description: File share description.
         :param pulumi.Input[_builtins.str] name: File share name.
@@ -623,7 +619,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
 
         __props__ = _CloudStorageFileShareState.__new__(_CloudStorageFileShareState)
 
-        __props__.__dict__["access_rules"] = access_rules
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["checksum"] = checksum
         __props__.__dict__["created_at"] = created_at
@@ -639,14 +634,6 @@ class CloudStorageFileShare(pulumi.CustomResource):
         __props__.__dict__["size"] = size
         __props__.__dict__["updated_at"] = updated_at
         return CloudStorageFileShare(resource_name, opts=opts, __props__=__props__)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> pulumi.Output[Sequence['outputs.CloudStorageFileShareAccessRule']]:
-        """
-        Access rules for the file share. Each rule has:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -668,7 +655,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        Access rule creation date.
+        Creation date of the file share.
         """
         return pulumi.get(self, "created_at")
 

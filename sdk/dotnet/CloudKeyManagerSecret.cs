@@ -26,7 +26,7 @@ namespace Pulumi.Ovh
     public partial class CloudKeyManagerSecret : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        /// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         /// </summary>
         [Output("algorithm")]
         public Output<string?> Algorithm { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.Ovh
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Mode of the secret algorithm (e.g., `CBC`).
+        /// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         /// </summary>
         [Output("mode")]
         public Output<string?> Mode { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.Ovh
         public Output<string> ResourceStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         /// </summary>
         [Output("secretType")]
         public Output<string> SecretType { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Ovh
     public sealed class CloudKeyManagerSecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        /// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.Ovh
         }
 
         /// <summary>
-        /// Mode of the secret algorithm (e.g., `CBC`).
+        /// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.Ovh
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         /// </summary>
         [Input("secretType", required: true)]
         public Input<string> SecretType { get; set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Ovh
     public sealed class CloudKeyManagerSecretState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        /// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.Ovh
         }
 
         /// <summary>
-        /// Mode of the secret algorithm (e.g., `CBC`).
+        /// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.Ovh
         public Input<string>? ResourceStatus { get; set; }
 
         /// <summary>
-        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }

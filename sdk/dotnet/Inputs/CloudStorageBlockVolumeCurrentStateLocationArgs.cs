@@ -13,6 +13,12 @@ namespace Pulumi.Ovh.Inputs
     public sealed class CloudStorageBlockVolumeCurrentStateLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Availability zone
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// Region where the volume will be created. **Changing this value recreates the resource.**
         /// </summary>
         [Input("region")]

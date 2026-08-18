@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudFloatingIp{}
 	case "ovh:index/cloudGateway:CloudGateway":
 		r = &CloudGateway{}
+	case "ovh:index/cloudInstance:CloudInstance":
+		r = &CloudInstance{}
+	case "ovh:index/cloudInstanceGroup:CloudInstanceGroup":
+		r = &CloudInstanceGroup{}
 	case "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer":
 		r = &CloudKeyManagerContainer{}
 	case "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer":
@@ -69,6 +73,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudStorageBlockVolumeSnapshot{}
 	case "ovh:index/cloudStorageFileShare:CloudStorageFileShare":
 		r = &CloudStorageFileShare{}
+	case "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl":
+		r = &CloudStorageFileShareAcl{}
 	case "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork":
 		r = &CloudStorageFileShareNetwork{}
 	case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
@@ -142,6 +148,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudInstanceGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -252,6 +268,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudStorageFileShare",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageFileShareAcl",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -23,7 +23,7 @@ public final class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNonc
      */
     private @Nullable Double noncurrentDays;
     /**
-     * @return The storage class to transition noncurrent objects to.
+     * @return The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      * 
      */
     private @Nullable String storageClass;
@@ -44,7 +44,7 @@ public final class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNonc
         return Optional.ofNullable(this.noncurrentDays);
     }
     /**
-     * @return The storage class to transition noncurrent objects to.
+     * @return The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      * 
      */
     public Optional<String> storageClass() {

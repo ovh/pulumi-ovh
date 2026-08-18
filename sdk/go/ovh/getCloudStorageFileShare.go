@@ -59,18 +59,15 @@ type LookupCloudStorageFileShareArgs struct {
 
 // A collection of values returned by getCloudStorageFileShare.
 type LookupCloudStorageFileShareResult struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileShareAccessRule `pulumi:"accessRules"`
 	// Computed hash representing the current target specification value.
 	Checksum string `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt string `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState GetCloudStorageFileShareCurrentState `pulumi:"currentState"`
 	// File share description.
 	Description string `pulumi:"description"`
-	// Access rule ID.
-	Id string `pulumi:"id"`
+	Id          string `pulumi:"id"`
 	// Current location:
 	Location GetCloudStorageFileShareLocation `pulumi:"location"`
 	// Capability name.
@@ -126,17 +123,12 @@ func (o LookupCloudStorageFileShareResultOutput) ToLookupCloudStorageFileShareRe
 	return o
 }
 
-// Current access rules for the file share:
-func (o LookupCloudStorageFileShareResultOutput) AccessRules() GetCloudStorageFileShareAccessRuleArrayOutput {
-	return o.ApplyT(func(v LookupCloudStorageFileShareResult) []GetCloudStorageFileShareAccessRule { return v.AccessRules }).(GetCloudStorageFileShareAccessRuleArrayOutput)
-}
-
 // Computed hash representing the current target specification value.
 func (o LookupCloudStorageFileShareResultOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudStorageFileShareResult) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
-// Access rule creation date.
+// Creation date of the file share.
 func (o LookupCloudStorageFileShareResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudStorageFileShareResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -151,7 +143,6 @@ func (o LookupCloudStorageFileShareResultOutput) Description() pulumi.StringOutp
 	return o.ApplyT(func(v LookupCloudStorageFileShareResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Access rule ID.
 func (o LookupCloudStorageFileShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudStorageFileShareResult) string { return v.Id }).(pulumi.StringOutput)
 }

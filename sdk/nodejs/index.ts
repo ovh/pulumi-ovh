@@ -15,6 +15,16 @@ export type CloudGateway = import("./cloudGateway").CloudGateway;
 export const CloudGateway: typeof import("./cloudGateway").CloudGateway = null as any;
 utilities.lazyLoad(exports, ["CloudGateway"], () => require("./cloudGateway"));
 
+export { CloudInstanceArgs, CloudInstanceState } from "./cloudInstance";
+export type CloudInstance = import("./cloudInstance").CloudInstance;
+export const CloudInstance: typeof import("./cloudInstance").CloudInstance = null as any;
+utilities.lazyLoad(exports, ["CloudInstance"], () => require("./cloudInstance"));
+
+export { CloudInstanceGroupArgs, CloudInstanceGroupState } from "./cloudInstanceGroup";
+export type CloudInstanceGroup = import("./cloudInstanceGroup").CloudInstanceGroup;
+export const CloudInstanceGroup: typeof import("./cloudInstanceGroup").CloudInstanceGroup = null as any;
+utilities.lazyLoad(exports, ["CloudInstanceGroup"], () => require("./cloudInstanceGroup"));
+
 export { CloudKeyManagerContainerArgs, CloudKeyManagerContainerState } from "./cloudKeyManagerContainer";
 export type CloudKeyManagerContainer = import("./cloudKeyManagerContainer").CloudKeyManagerContainer;
 export const CloudKeyManagerContainer: typeof import("./cloudKeyManagerContainer").CloudKeyManagerContainer = null as any;
@@ -125,6 +135,11 @@ export type CloudStorageFileShare = import("./cloudStorageFileShare").CloudStora
 export const CloudStorageFileShare: typeof import("./cloudStorageFileShare").CloudStorageFileShare = null as any;
 utilities.lazyLoad(exports, ["CloudStorageFileShare"], () => require("./cloudStorageFileShare"));
 
+export { CloudStorageFileShareAclArgs, CloudStorageFileShareAclState } from "./cloudStorageFileShareAcl";
+export type CloudStorageFileShareAcl = import("./cloudStorageFileShareAcl").CloudStorageFileShareAcl;
+export const CloudStorageFileShareAcl: typeof import("./cloudStorageFileShareAcl").CloudStorageFileShareAcl = null as any;
+utilities.lazyLoad(exports, ["CloudStorageFileShareAcl"], () => require("./cloudStorageFileShareAcl"));
+
 export { CloudStorageFileShareNetworkArgs, CloudStorageFileShareNetworkState } from "./cloudStorageFileShareNetwork";
 export type CloudStorageFileShareNetwork = import("./cloudStorageFileShareNetwork").CloudStorageFileShareNetwork;
 export const CloudStorageFileShareNetwork: typeof import("./cloudStorageFileShareNetwork").CloudStorageFileShareNetwork = null as any;
@@ -194,6 +209,46 @@ export { GetCloudGatewaysArgs, GetCloudGatewaysResult, GetCloudGatewaysOutputArg
 export const getCloudGateways: typeof import("./getCloudGateways").getCloudGateways = null as any;
 export const getCloudGatewaysOutput: typeof import("./getCloudGateways").getCloudGatewaysOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudGateways","getCloudGatewaysOutput"], () => require("./getCloudGateways"));
+
+export { GetCloudInstanceArgs, GetCloudInstanceResult, GetCloudInstanceOutputArgs } from "./getCloudInstance";
+export const getCloudInstance: typeof import("./getCloudInstance").getCloudInstance = null as any;
+export const getCloudInstanceOutput: typeof import("./getCloudInstance").getCloudInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstance","getCloudInstanceOutput"], () => require("./getCloudInstance"));
+
+export { GetCloudInstanceFlavorArgs, GetCloudInstanceFlavorResult, GetCloudInstanceFlavorOutputArgs } from "./getCloudInstanceFlavor";
+export const getCloudInstanceFlavor: typeof import("./getCloudInstanceFlavor").getCloudInstanceFlavor = null as any;
+export const getCloudInstanceFlavorOutput: typeof import("./getCloudInstanceFlavor").getCloudInstanceFlavorOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceFlavor","getCloudInstanceFlavorOutput"], () => require("./getCloudInstanceFlavor"));
+
+export { GetCloudInstanceFlavorsArgs, GetCloudInstanceFlavorsResult, GetCloudInstanceFlavorsOutputArgs } from "./getCloudInstanceFlavors";
+export const getCloudInstanceFlavors: typeof import("./getCloudInstanceFlavors").getCloudInstanceFlavors = null as any;
+export const getCloudInstanceFlavorsOutput: typeof import("./getCloudInstanceFlavors").getCloudInstanceFlavorsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceFlavors","getCloudInstanceFlavorsOutput"], () => require("./getCloudInstanceFlavors"));
+
+export { GetCloudInstanceGroupArgs, GetCloudInstanceGroupResult, GetCloudInstanceGroupOutputArgs } from "./getCloudInstanceGroup";
+export const getCloudInstanceGroup: typeof import("./getCloudInstanceGroup").getCloudInstanceGroup = null as any;
+export const getCloudInstanceGroupOutput: typeof import("./getCloudInstanceGroup").getCloudInstanceGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceGroup","getCloudInstanceGroupOutput"], () => require("./getCloudInstanceGroup"));
+
+export { GetCloudInstanceGroupsArgs, GetCloudInstanceGroupsResult, GetCloudInstanceGroupsOutputArgs } from "./getCloudInstanceGroups";
+export const getCloudInstanceGroups: typeof import("./getCloudInstanceGroups").getCloudInstanceGroups = null as any;
+export const getCloudInstanceGroupsOutput: typeof import("./getCloudInstanceGroups").getCloudInstanceGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceGroups","getCloudInstanceGroupsOutput"], () => require("./getCloudInstanceGroups"));
+
+export { GetCloudInstanceImageArgs, GetCloudInstanceImageResult, GetCloudInstanceImageOutputArgs } from "./getCloudInstanceImage";
+export const getCloudInstanceImage: typeof import("./getCloudInstanceImage").getCloudInstanceImage = null as any;
+export const getCloudInstanceImageOutput: typeof import("./getCloudInstanceImage").getCloudInstanceImageOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceImage","getCloudInstanceImageOutput"], () => require("./getCloudInstanceImage"));
+
+export { GetCloudInstanceImagesArgs, GetCloudInstanceImagesResult, GetCloudInstanceImagesOutputArgs } from "./getCloudInstanceImages";
+export const getCloudInstanceImages: typeof import("./getCloudInstanceImages").getCloudInstanceImages = null as any;
+export const getCloudInstanceImagesOutput: typeof import("./getCloudInstanceImages").getCloudInstanceImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceImages","getCloudInstanceImagesOutput"], () => require("./getCloudInstanceImages"));
+
+export { GetCloudInstancesArgs, GetCloudInstancesResult, GetCloudInstancesOutputArgs } from "./getCloudInstances";
+export const getCloudInstances: typeof import("./getCloudInstances").getCloudInstances = null as any;
+export const getCloudInstancesOutput: typeof import("./getCloudInstances").getCloudInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstances","getCloudInstancesOutput"], () => require("./getCloudInstances"));
 
 export { GetCloudKeyManagerContainerArgs, GetCloudKeyManagerContainerResult, GetCloudKeyManagerContainerOutputArgs } from "./getCloudKeyManagerContainer";
 export const getCloudKeyManagerContainer: typeof import("./getCloudKeyManagerContainer").getCloudKeyManagerContainer = null as any;
@@ -384,6 +439,16 @@ export { GetCloudStorageFileShareArgs, GetCloudStorageFileShareResult, GetCloudS
 export const getCloudStorageFileShare: typeof import("./getCloudStorageFileShare").getCloudStorageFileShare = null as any;
 export const getCloudStorageFileShareOutput: typeof import("./getCloudStorageFileShare").getCloudStorageFileShareOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudStorageFileShare","getCloudStorageFileShareOutput"], () => require("./getCloudStorageFileShare"));
+
+export { GetCloudStorageFileShareAclArgs, GetCloudStorageFileShareAclResult, GetCloudStorageFileShareAclOutputArgs } from "./getCloudStorageFileShareAcl";
+export const getCloudStorageFileShareAcl: typeof import("./getCloudStorageFileShareAcl").getCloudStorageFileShareAcl = null as any;
+export const getCloudStorageFileShareAclOutput: typeof import("./getCloudStorageFileShareAcl").getCloudStorageFileShareAclOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageFileShareAcl","getCloudStorageFileShareAclOutput"], () => require("./getCloudStorageFileShareAcl"));
+
+export { GetCloudStorageFileShareAclsArgs, GetCloudStorageFileShareAclsResult, GetCloudStorageFileShareAclsOutputArgs } from "./getCloudStorageFileShareAcls";
+export const getCloudStorageFileShareAcls: typeof import("./getCloudStorageFileShareAcls").getCloudStorageFileShareAcls = null as any;
+export const getCloudStorageFileShareAclsOutput: typeof import("./getCloudStorageFileShareAcls").getCloudStorageFileShareAclsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageFileShareAcls","getCloudStorageFileShareAclsOutput"], () => require("./getCloudStorageFileShareAcls"));
 
 export { GetCloudStorageFileShareNetworkArgs, GetCloudStorageFileShareNetworkResult, GetCloudStorageFileShareNetworkOutputArgs } from "./getCloudStorageFileShareNetwork";
 export const getCloudStorageFileShareNetwork: typeof import("./getCloudStorageFileShareNetwork").getCloudStorageFileShareNetwork = null as any;
@@ -657,6 +722,10 @@ const _module = {
                 return new CloudFloatingIp(name, <any>undefined, { urn })
             case "ovh:index/cloudGateway:CloudGateway":
                 return new CloudGateway(name, <any>undefined, { urn })
+            case "ovh:index/cloudInstance:CloudInstance":
+                return new CloudInstance(name, <any>undefined, { urn })
+            case "ovh:index/cloudInstanceGroup:CloudInstanceGroup":
+                return new CloudInstanceGroup(name, <any>undefined, { urn })
             case "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer":
                 return new CloudKeyManagerContainer(name, <any>undefined, { urn })
             case "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer":
@@ -701,6 +770,8 @@ const _module = {
                 return new CloudStorageBlockVolumeSnapshot(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShare:CloudStorageFileShare":
                 return new CloudStorageFileShare(name, <any>undefined, { urn })
+            case "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl":
+                return new CloudStorageFileShareAcl(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork":
                 return new CloudStorageFileShareNetwork(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
@@ -742,6 +813,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("ovh", "index/cloudFloatingIp", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudGateway", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudInstance", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudInstanceGroup", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerContainer", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerContainerConsumer", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerSecret", _module)
@@ -764,6 +837,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolume", _m
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeBackup", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageBlockVolumeSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShare", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/clousSSHKey", _module)

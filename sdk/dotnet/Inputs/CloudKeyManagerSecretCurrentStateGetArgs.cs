@@ -13,7 +13,7 @@ namespace Pulumi.Ovh.Inputs
     public sealed class CloudKeyManagerSecretCurrentStateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        /// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Ovh.Inputs
         }
 
         /// <summary>
-        /// Mode of the secret algorithm (e.g., `CBC`).
+        /// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Ovh.Inputs
         public Input<string>? SecretRef { get; set; }
 
         /// <summary>
-        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        /// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }

@@ -27,6 +27,21 @@ __all__ = [
     'CloudGatewayCurrentStateLocation',
     'CloudGatewayCurrentStateSubnet',
     'CloudGatewayExternalGateway',
+    'CloudInstanceCurrentState',
+    'CloudInstanceCurrentStateFlavor',
+    'CloudInstanceCurrentStateGroup',
+    'CloudInstanceCurrentStateImage',
+    'CloudInstanceCurrentStateLocation',
+    'CloudInstanceCurrentStateNetwork',
+    'CloudInstanceCurrentStateNetworkAddress',
+    'CloudInstanceCurrentStateSecurityGroup',
+    'CloudInstanceCurrentStateShare',
+    'CloudInstanceCurrentStateVolume',
+    'CloudInstanceGroupCurrentState',
+    'CloudInstanceGroupCurrentStateLocation',
+    'CloudInstanceGroupCurrentStateMember',
+    'CloudInstanceNetwork',
+    'CloudInstanceShare',
     'CloudKeyManagerContainerCurrentState',
     'CloudKeyManagerContainerCurrentStateLocation',
     'CloudKeyManagerContainerCurrentStateSecretRef',
@@ -116,9 +131,8 @@ __all__ = [
     'CloudStorageBlockVolumeEncryption',
     'CloudStorageBlockVolumeSnapshotCurrentState',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocation',
-    'CloudStorageFileShareAccessRule',
+    'CloudStorageFileShareAclCurrentState',
     'CloudStorageFileShareCurrentState',
-    'CloudStorageFileShareCurrentStateAccessRule',
     'CloudStorageFileShareCurrentStateCapability',
     'CloudStorageFileShareCurrentStateExportLocation',
     'CloudStorageFileShareCurrentStateLocation',
@@ -201,6 +215,42 @@ __all__ = [
     'GetCloudGatewaysGatewayCurrentStateSubnetResult',
     'GetCloudGatewaysGatewayExternalGatewayResult',
     'GetCloudGatewaysGatewayLocationResult',
+    'GetCloudInstanceCurrentStateResult',
+    'GetCloudInstanceCurrentStateFlavorResult',
+    'GetCloudInstanceCurrentStateGroupResult',
+    'GetCloudInstanceCurrentStateImageResult',
+    'GetCloudInstanceCurrentStateLocationResult',
+    'GetCloudInstanceCurrentStateNetworkResult',
+    'GetCloudInstanceCurrentStateNetworkAddressResult',
+    'GetCloudInstanceCurrentStateSecurityGroupResult',
+    'GetCloudInstanceCurrentStateShareResult',
+    'GetCloudInstanceCurrentStateVolumeResult',
+    'GetCloudInstanceFlavorLocationResult',
+    'GetCloudInstanceFlavorsFlavorResult',
+    'GetCloudInstanceFlavorsFlavorLocationResult',
+    'GetCloudInstanceGroupCurrentStateResult',
+    'GetCloudInstanceGroupCurrentStateLocationResult',
+    'GetCloudInstanceGroupCurrentStateMemberResult',
+    'GetCloudInstanceGroupsInstanceGroupResult',
+    'GetCloudInstanceGroupsInstanceGroupCurrentStateResult',
+    'GetCloudInstanceGroupsInstanceGroupCurrentStateLocationResult',
+    'GetCloudInstanceGroupsInstanceGroupCurrentStateMemberResult',
+    'GetCloudInstanceImageLocationResult',
+    'GetCloudInstanceImagesImageResult',
+    'GetCloudInstanceImagesImageLocationResult',
+    'GetCloudInstanceNetworkResult',
+    'GetCloudInstanceShareResult',
+    'GetCloudInstancesInstanceResult',
+    'GetCloudInstancesInstanceCurrentStateResult',
+    'GetCloudInstancesInstanceCurrentStateFlavorResult',
+    'GetCloudInstancesInstanceCurrentStateGroupResult',
+    'GetCloudInstancesInstanceCurrentStateImageResult',
+    'GetCloudInstancesInstanceCurrentStateLocationResult',
+    'GetCloudInstancesInstanceCurrentStateNetworkResult',
+    'GetCloudInstancesInstanceCurrentStateNetworkAddressResult',
+    'GetCloudInstancesInstanceCurrentStateSecurityGroupResult',
+    'GetCloudInstancesInstanceCurrentStateShareResult',
+    'GetCloudInstancesInstanceCurrentStateVolumeResult',
     'GetCloudKeyManagerContainerConsumersConsumerResult',
     'GetCloudKeyManagerContainerCurrentStateResult',
     'GetCloudKeyManagerContainerCurrentStateLocationResult',
@@ -335,9 +385,10 @@ __all__ = [
     'GetCloudStorageBlockVolumesVolumeAttachedInstanceResult',
     'GetCloudStorageBlockVolumesVolumeEncryptionResult',
     'GetCloudStorageBlockVolumesVolumeLocationResult',
-    'GetCloudStorageFileShareAccessRuleResult',
+    'GetCloudStorageFileShareAclCurrentStateResult',
+    'GetCloudStorageFileShareAclsShareAclResult',
+    'GetCloudStorageFileShareAclsShareAclCurrentStateResult',
     'GetCloudStorageFileShareCurrentStateResult',
-    'GetCloudStorageFileShareCurrentStateAccessRuleResult',
     'GetCloudStorageFileShareCurrentStateCapabilityResult',
     'GetCloudStorageFileShareCurrentStateExportLocationResult',
     'GetCloudStorageFileShareCurrentStateLocationResult',
@@ -355,9 +406,7 @@ __all__ = [
     'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateResult',
     'GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult',
     'GetCloudStorageFileSharesFileShareResult',
-    'GetCloudStorageFileSharesFileShareAccessRuleResult',
     'GetCloudStorageFileSharesFileShareCurrentStateResult',
-    'GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult',
     'GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult',
     'GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult',
     'GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
@@ -937,6 +986,955 @@ class CloudGatewayExternalGateway(dict):
 
 
 @pulumi.output_type
+class CloudInstanceCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostId":
+            suggest = "host_id"
+        elif key == "powerState":
+            suggest = "power_state"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "securityGroups":
+            suggest = "security_groups"
+        elif key == "sshKeyName":
+            suggest = "ssh_key_name"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 flavor: Optional['outputs.CloudInstanceCurrentStateFlavor'] = None,
+                 group: Optional['outputs.CloudInstanceCurrentStateGroup'] = None,
+                 host_id: Optional[_builtins.str] = None,
+                 image: Optional['outputs.CloudInstanceCurrentStateImage'] = None,
+                 location: Optional['outputs.CloudInstanceCurrentStateLocation'] = None,
+                 locked: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 networks: Optional[Sequence['outputs.CloudInstanceCurrentStateNetwork']] = None,
+                 power_state: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
+                 security_groups: Optional[Sequence['outputs.CloudInstanceCurrentStateSecurityGroup']] = None,
+                 shares: Optional[Sequence['outputs.CloudInstanceCurrentStateShare']] = None,
+                 ssh_key_name: Optional[_builtins.str] = None,
+                 user_id: Optional[_builtins.str] = None,
+                 volumes: Optional[Sequence['outputs.CloudInstanceCurrentStateVolume']] = None):
+        """
+        :param 'CloudInstanceCurrentStateFlavorArgs' flavor: Observed flavor of the instance, with its full sizing details:
+        :param 'CloudInstanceCurrentStateGroupArgs' group: Instance (placement) group the instance belongs to, null when it is not part of any group:
+        :param _builtins.str host_id: Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+        :param 'CloudInstanceCurrentStateImageArgs' image: Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+        :param 'CloudInstanceCurrentStateLocationArgs' location: Observed region and availability zone where the instance is provisioned:
+        :param _builtins.bool locked: Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+        :param _builtins.str name: Instance name.
+        :param Sequence['CloudInstanceCurrentStateNetworkArgs'] networks: Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+        :param _builtins.str power_state: Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+        :param _builtins.str project_id: Identifier of the Public Cloud project the instance belongs to.
+        :param Sequence['CloudInstanceCurrentStateSecurityGroupArgs'] security_groups: Security groups currently attached to the instance's ports:
+        :param Sequence['CloudInstanceCurrentStateShareArgs'] shares: Filesystem shares attached to the instance. Each entry supports:
+        :param _builtins.str ssh_key_name: Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
+        :param _builtins.str user_id: Identifier of the OpenStack user that owns the instance.
+        :param Sequence['CloudInstanceCurrentStateVolumeArgs'] volumes: Observed block volumes attached to the instance:
+        """
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
+        if host_id is not None:
+            pulumi.set(__self__, "host_id", host_id)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+        if power_state is not None:
+            pulumi.set(__self__, "power_state", power_state)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if security_groups is not None:
+            pulumi.set(__self__, "security_groups", security_groups)
+        if shares is not None:
+            pulumi.set(__self__, "shares", shares)
+        if ssh_key_name is not None:
+            pulumi.set(__self__, "ssh_key_name", ssh_key_name)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> Optional['outputs.CloudInstanceCurrentStateFlavor']:
+        """
+        Observed flavor of the instance, with its full sizing details:
+        """
+        return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> Optional['outputs.CloudInstanceCurrentStateGroup']:
+        """
+        Instance (placement) group the instance belongs to, null when it is not part of any group:
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> Optional[_builtins.str]:
+        """
+        Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+        """
+        return pulumi.get(self, "host_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> Optional['outputs.CloudInstanceCurrentStateImage']:
+        """
+        Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudInstanceCurrentStateLocation']:
+        """
+        Observed region and availability zone where the instance is provisioned:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def locked(self) -> Optional[_builtins.bool]:
+        """
+        Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+        """
+        return pulumi.get(self, "locked")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence['outputs.CloudInstanceCurrentStateNetwork']]:
+        """
+        Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+        """
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> Optional[_builtins.str]:
+        """
+        Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+        """
+        return pulumi.get(self, "power_state")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the Public Cloud project the instance belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Optional[Sequence['outputs.CloudInstanceCurrentStateSecurityGroup']]:
+        """
+        Security groups currently attached to the instance's ports:
+        """
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Optional[Sequence['outputs.CloudInstanceCurrentStateShare']]:
+        """
+        Filesystem shares attached to the instance. Each entry supports:
+        """
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sshKeyName")
+    def ssh_key_name(self) -> Optional[_builtins.str]:
+        """
+        Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "ssh_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the OpenStack user that owns the instance.
+        """
+        return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.CloudInstanceCurrentStateVolume']]:
+        """
+        Observed block volumes attached to the instance:
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateFlavor(dict):
+    def __init__(__self__, *,
+                 disk: Optional[_builtins.int] = None,
+                 ephemeral: Optional[_builtins.int] = None,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 ram: Optional[_builtins.int] = None,
+                 swap: Optional[_builtins.int] = None,
+                 vcpus: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk: Size of the flavor's local root disk, in GB.
+        :param _builtins.int ephemeral: Size of the flavor's ephemeral disk, in GB.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str name: Instance name.
+        :param _builtins.int ram: Amount of RAM provided by the flavor, in MB.
+        :param _builtins.int swap: Size of the flavor's swap space, in MB.
+        :param _builtins.int vcpus: Number of virtual CPUs provided by the flavor.
+        """
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if ephemeral is not None:
+            pulumi.set(__self__, "ephemeral", ephemeral)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ram is not None:
+            pulumi.set(__self__, "ram", ram)
+        if swap is not None:
+            pulumi.set(__self__, "swap", swap)
+        if vcpus is not None:
+            pulumi.set(__self__, "vcpus", vcpus)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Size of the flavor's local root disk, in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def ephemeral(self) -> Optional[_builtins.int]:
+        """
+        Size of the flavor's ephemeral disk, in GB.
+        """
+        return pulumi.get(self, "ephemeral")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> Optional[_builtins.int]:
+        """
+        Amount of RAM provided by the flavor, in MB.
+        """
+        return pulumi.get(self, "ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def swap(self) -> Optional[_builtins.int]:
+        """
+        Size of the flavor's swap space, in MB.
+        """
+        return pulumi.get(self, "swap")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> Optional[_builtins.int]:
+        """
+        Number of virtual CPUs provided by the flavor.
+        """
+        return pulumi.get(self, "vcpus")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateGroup(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateImage(dict):
+    def __init__(__self__, *,
+                 deprecated: Optional[_builtins.bool] = None,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool deprecated: Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str name: Instance name.
+        :param _builtins.int size: Size of the attached volume, in GB.
+        :param _builtins.str status: Lifecycle status of the image as reported by Glance.
+        """
+        if deprecated is not None:
+            pulumi.set(__self__, "deprecated", deprecated)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> Optional[_builtins.bool]:
+        """
+        Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached volume, in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Lifecycle status of the image as reported by Glance.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+        :param _builtins.str region: Region where the instance is created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the instance is created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayId":
+            suggest = "gateway_id"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceCurrentStateNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceCurrentStateNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceCurrentStateNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 addresses: Optional[Sequence['outputs.CloudInstanceCurrentStateNetworkAddress']] = None,
+                 gateway_id: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 subnet_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CloudInstanceCurrentStateNetworkAddressArgs'] addresses: Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+        :param _builtins.str gateway_id: Identifier of the gateway providing egress for this interface, null when none applies.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str subnet_id: Subnet ID within the private network. Required with `network_id`.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if gateway_id is not None:
+            pulumi.set(__self__, "gateway_id", gateway_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence['outputs.CloudInstanceCurrentStateNetworkAddress']]:
+        """
+        Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the gateway providing egress for this interface, null when none applies.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[_builtins.str]:
+        """
+        Subnet ID within the private network. Required with `network_id`.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateNetworkAddress(dict):
+    def __init__(__self__, *,
+                 ip: Optional[_builtins.str] = None,
+                 mac: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 version: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str ip: IP address assigned to the interface (IPv4 or IPv6).
+        :param _builtins.str mac: MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+        :param _builtins.str type: How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+        :param _builtins.int version: IP version of the address (4 for IPv4, 6 for IPv6).
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if mac is not None:
+            pulumi.set(__self__, "mac", mac)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        IP address assigned to the interface (IPv4 or IPv6).
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def mac(self) -> Optional[_builtins.str]:
+        """
+        MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+        """
+        return pulumi.get(self, "mac")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[_builtins.int]:
+        """
+        IP version of the address (4 for IPv4, 6 for IPv6).
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateSecurityGroup(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateShare(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+        elif key == "accessTo":
+            suggest = "access_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceCurrentStateShare. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceCurrentStateShare.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceCurrentStateShare.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_level: Optional[_builtins.str] = None,
+                 access_to: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_level: Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+        :param _builtins.str access_to: The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+        :param _builtins.str id: Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+        :param _builtins.str state: Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_to is not None:
+            pulumi.set(__self__, "access_to", access_to)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[_builtins.str]:
+        """
+        Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> Optional[_builtins.str]:
+        """
+        The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class CloudInstanceCurrentStateVolume(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str name: Instance name.
+        :param _builtins.int size: Size of the attached volume, in GB.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Instance name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Size of the attached volume, in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class CloudInstanceGroupCurrentState(dict):
+    def __init__(__self__, *,
+                 location: Optional['outputs.CloudInstanceGroupCurrentStateLocation'] = None,
+                 members: Optional[Sequence['outputs.CloudInstanceGroupCurrentStateMember']] = None,
+                 name: Optional[_builtins.str] = None,
+                 policy: Optional[_builtins.str] = None):
+        """
+        :param 'CloudInstanceGroupCurrentStateLocationArgs' location: Location details:
+        :param Sequence['CloudInstanceGroupCurrentStateMemberArgs'] members: Instances currently belonging to the group:
+        :param _builtins.str name: Instance group name. **Changing this value recreates the resource.**
+        :param _builtins.str policy: Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudInstanceGroupCurrentStateLocation']:
+        """
+        Location details:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Optional[Sequence['outputs.CloudInstanceGroupCurrentStateMember']]:
+        """
+        Instances currently belonging to the group:
+        """
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Instance group name. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> Optional[_builtins.str]:
+        """
+        Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class CloudInstanceGroupCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceGroupCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceGroupCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceGroupCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str region: Region where the instance group will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the instance group will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudInstanceGroupCurrentStateMember(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Instance ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Instance ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudInstanceNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoAssignPublicIp":
+            suggest = "auto_assign_public_ip"
+        elif key == "networkId":
+            suggest = "network_id"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_assign_public_ip: Optional[_builtins.bool] = None,
+                 ip: Optional[_builtins.str] = None,
+                 network_id: Optional[_builtins.str] = None,
+                 subnet_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool auto_assign_public_ip: Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `network_id` and no `ip`, and on at most one entry.
+        :param _builtins.str ip: IP address of this interface. Without `network_id`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `network_id` + `subnet_id`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+        :param _builtins.str network_id: Private network ID. Omit for a public interface.
+        :param _builtins.str subnet_id: Subnet ID within the private network. Required with `network_id`.
+        """
+        if auto_assign_public_ip is not None:
+            pulumi.set(__self__, "auto_assign_public_ip", auto_assign_public_ip)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if network_id is not None:
+            pulumi.set(__self__, "network_id", network_id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="autoAssignPublicIp")
+    def auto_assign_public_ip(self) -> Optional[_builtins.bool]:
+        """
+        Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `network_id` and no `ip`, and on at most one entry.
+        """
+        return pulumi.get(self, "auto_assign_public_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        IP address of this interface. Without `network_id`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `network_id` + `subnet_id`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> Optional[_builtins.str]:
+        """
+        Private network ID. Omit for a public interface.
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[_builtins.str]:
+        """
+        Subnet ID within the private network. Required with `network_id`.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class CloudInstanceShare(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceShare. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceShare.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceShare.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 access_level: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+        :param _builtins.str access_level: Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+        """
+        pulumi.set(__self__, "id", id)
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[_builtins.str]:
+        """
+        Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+        """
+        return pulumi.get(self, "access_level")
+
+
+@pulumi.output_type
 class CloudKeyManagerContainerCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1214,16 +2212,16 @@ class CloudKeyManagerSecretCurrentState(dict):
                  secret_type: Optional[_builtins.str] = None,
                  status: Optional[_builtins.str] = None):
         """
-        :param _builtins.str algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param _builtins.str algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         :param _builtins.int bit_length: Bit length of the secret (e.g., `256`).
         :param _builtins.str expiration: Expiration date of the secret in RFC3339 format.
         :param 'CloudKeyManagerSecretCurrentStateLocationArgs' location: Location of the secret:
         :param Mapping[str, _builtins.str] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
-        :param _builtins.str mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param _builtins.str mode: Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         :param _builtins.str name: Name of the secret.
         :param _builtins.str payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
         :param _builtins.str secret_ref: OpenStack reference URL for the secret.
-        :param _builtins.str secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param _builtins.str secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         :param _builtins.str status: Status of the secret (`ACTIVE`, `ERROR`).
         """
         if algorithm is not None:
@@ -1253,7 +2251,7 @@ class CloudKeyManagerSecretCurrentState(dict):
     @pulumi.getter
     def algorithm(self) -> Optional[_builtins.str]:
         """
-        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "algorithm")
 
@@ -1293,7 +2291,7 @@ class CloudKeyManagerSecretCurrentState(dict):
     @pulumi.getter
     def mode(self) -> Optional[_builtins.str]:
         """
-        Mode of the secret algorithm (e.g., `CBC`).
+        Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "mode")
 
@@ -1325,7 +2323,7 @@ class CloudKeyManagerSecretCurrentState(dict):
     @pulumi.getter(name="secretType")
     def secret_type(self) -> Optional[_builtins.str]:
         """
-        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         """
         return pulumi.get(self, "secret_type")
 
@@ -2265,7 +3263,7 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersion
         """
         :param _builtins.float newer_noncurrent_versions: Number of noncurrent versions to retain in the same storage class before transitioning.
         :param _builtins.float noncurrent_days: Number of days after an object becomes noncurrent before it is transitioned.
-        :param _builtins.str storage_class: The storage class to transition noncurrent objects to.
+        :param _builtins.str storage_class: The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
         """
         if newer_noncurrent_versions is not None:
             pulumi.set(__self__, "newer_noncurrent_versions", newer_noncurrent_versions)
@@ -2294,7 +3292,7 @@ class CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersion
     @pulumi.getter(name="storageClass")
     def storage_class(self) -> Optional[_builtins.str]:
         """
-        The storage class to transition noncurrent objects to.
+        The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
         """
         return pulumi.get(self, "storage_class")
 
@@ -5178,13 +6176,42 @@ class CloudStorageBlockVolumeCurrentStateEncryption(dict):
 
 @pulumi.output_type
 class CloudStorageBlockVolumeCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None):
         """
+        :param _builtins.str availability_zone: Availability zone
         :param _builtins.str region: Region where the volume will be created. **Changing this value recreates the resource.**
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if region is not None:
             pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
@@ -5318,7 +6345,7 @@ class CloudStorageBlockVolumeSnapshotCurrentStateLocation(dict):
 
 
 @pulumi.output_type
-class CloudStorageFileShareAccessRule(dict):
+class CloudStorageFileShareAclCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -5326,43 +6353,71 @@ class CloudStorageFileShareAccessRule(dict):
             suggest = "access_level"
         elif key == "accessTo":
             suggest = "access_to"
+        elif key == "createdAt":
+            suggest = "created_at"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareAccessRule. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareAclCurrentState. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        CloudStorageFileShareAccessRule.__key_warning(key)
+        CloudStorageFileShareAclCurrentState.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        CloudStorageFileShareAccessRule.__key_warning(key)
+        CloudStorageFileShareAclCurrentState.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str):
+                 access_level: Optional[_builtins.str] = None,
+                 access_to: Optional[_builtins.str] = None,
+                 created_at: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
         """
-        :param _builtins.str access_level: Access level (`READ_WRITE`, `READ_ONLY`).
-        :param _builtins.str access_to: IP address or CIDR to grant access to.
+        :param _builtins.str access_level: Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+        :param _builtins.str access_to: IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+        :param _builtins.str created_at: Creation date of the access rule.
+        :param _builtins.str state: Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if access_to is not None:
+            pulumi.set(__self__, "access_to", access_to)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
+    def access_level(self) -> Optional[_builtins.str]:
         """
-        Access level (`READ_WRITE`, `READ_ONLY`).
+        Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "access_level")
 
     @_builtins.property
     @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
+    def access_to(self) -> Optional[_builtins.str]:
         """
-        IP address or CIDR to grant access to.
+        IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[_builtins.str]:
+        """
+        Creation date of the access rule.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -5370,9 +6425,7 @@ class CloudStorageFileShareCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "accessRules":
-            suggest = "access_rules"
-        elif key == "exportLocations":
+        if key == "exportLocations":
             suggest = "export_locations"
         elif key == "shareNetworkId":
             suggest = "share_network_id"
@@ -5391,7 +6444,6 @@ class CloudStorageFileShareCurrentState(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_rules: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateAccessRule']] = None,
                  capabilities: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateCapability']] = None,
                  description: Optional[_builtins.str] = None,
                  export_locations: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateExportLocation']] = None,
@@ -5402,7 +6454,6 @@ class CloudStorageFileShareCurrentState(dict):
                  share_type: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param Sequence['CloudStorageFileShareCurrentStateAccessRuleArgs'] access_rules: Access rules for the file share. Each rule has:
         :param Sequence['CloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
         :param Sequence['CloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
@@ -5413,8 +6464,6 @@ class CloudStorageFileShareCurrentState(dict):
         :param _builtins.str share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
         :param _builtins.int size: Size of the file share in GB.
         """
-        if access_rules is not None:
-            pulumi.set(__self__, "access_rules", access_rules)
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
         if description is not None:
@@ -5433,14 +6482,6 @@ class CloudStorageFileShareCurrentState(dict):
             pulumi.set(__self__, "share_type", share_type)
         if size is not None:
             pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Optional[Sequence['outputs.CloudStorageFileShareCurrentStateAccessRule']]:
-        """
-        Access rules for the file share. Each rule has:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -5513,94 +6554,6 @@ class CloudStorageFileShareCurrentState(dict):
         Size of the file share in GB.
         """
         return pulumi.get(self, "size")
-
-
-@pulumi.output_type
-class CloudStorageFileShareCurrentStateAccessRule(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "accessLevel":
-            suggest = "access_level"
-        elif key == "accessTo":
-            suggest = "access_to"
-        elif key == "createdAt":
-            suggest = "created_at"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareCurrentStateAccessRule. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        CloudStorageFileShareCurrentStateAccessRule.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        CloudStorageFileShareCurrentStateAccessRule.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 access_level: Optional[_builtins.str] = None,
-                 access_to: Optional[_builtins.str] = None,
-                 created_at: Optional[_builtins.str] = None,
-                 id: Optional[_builtins.str] = None,
-                 state: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str access_level: Access level (`READ_WRITE`, `READ_ONLY`).
-        :param _builtins.str access_to: IP address or CIDR to grant access to.
-        :param _builtins.str created_at: Access rule creation date.
-        :param _builtins.str id: Access rule ID.
-        :param _builtins.str state: Access rule state.
-        """
-        if access_level is not None:
-            pulumi.set(__self__, "access_level", access_level)
-        if access_to is not None:
-            pulumi.set(__self__, "access_to", access_to)
-        if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> Optional[_builtins.str]:
-        """
-        Access level (`READ_WRITE`, `READ_ONLY`).
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> Optional[_builtins.str]:
-        """
-        IP address or CIDR to grant access to.
-        """
-        return pulumi.get(self, "access_to")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[_builtins.str]:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        """
-        Access rule ID.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> Optional[_builtins.str]:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -9509,6 +10462,2018 @@ class GetCloudGatewaysGatewayLocationResult(dict):
         Region.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 flavor: 'outputs.GetCloudInstanceCurrentStateFlavorResult',
+                 group: 'outputs.GetCloudInstanceCurrentStateGroupResult',
+                 host_id: _builtins.str,
+                 image: 'outputs.GetCloudInstanceCurrentStateImageResult',
+                 location: 'outputs.GetCloudInstanceCurrentStateLocationResult',
+                 locked: _builtins.bool,
+                 name: _builtins.str,
+                 networks: Sequence['outputs.GetCloudInstanceCurrentStateNetworkResult'],
+                 power_state: _builtins.str,
+                 project_id: _builtins.str,
+                 security_groups: Sequence['outputs.GetCloudInstanceCurrentStateSecurityGroupResult'],
+                 shares: Sequence['outputs.GetCloudInstanceCurrentStateShareResult'],
+                 ssh_key_name: _builtins.str,
+                 user_id: _builtins.str,
+                 volumes: Sequence['outputs.GetCloudInstanceCurrentStateVolumeResult']):
+        """
+        :param 'GetCloudInstanceCurrentStateFlavorArgs' flavor: Observed flavor of the instance, with its full sizing details:
+        :param 'GetCloudInstanceCurrentStateGroupArgs' group: Instance (placement) group the instance belongs to, null when it is not part of any group:
+        :param _builtins.str host_id: Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+        :param 'GetCloudInstanceCurrentStateImageArgs' image: Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+        :param 'GetCloudInstanceCurrentStateLocationArgs' location: Observed region and availability zone where the instance is provisioned:
+        :param _builtins.bool locked: Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+        :param _builtins.str name: Display name of the attached volume.
+        :param Sequence['GetCloudInstanceCurrentStateNetworkArgs'] networks: Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested `networks`:
+        :param _builtins.str power_state: Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `power_state` while a power transition is in progress.
+        :param _builtins.str project_id: Identifier of the Public Cloud project the instance belongs to.
+        :param Sequence['GetCloudInstanceCurrentStateSecurityGroupArgs'] security_groups: Security groups currently attached to the instance's ports:
+        :param Sequence['GetCloudInstanceCurrentStateShareArgs'] shares: Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, never in the list data source:
+        :param _builtins.str ssh_key_name: Name of the SSH key pair injected into the instance at boot, null when none was provided.
+        :param _builtins.str user_id: Identifier of the OpenStack user that owns the instance.
+        :param Sequence['GetCloudInstanceCurrentStateVolumeArgs'] volumes: Observed block volumes attached to the instance:
+        """
+        pulumi.set(__self__, "flavor", flavor)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "locked", locked)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "networks", networks)
+        pulumi.set(__self__, "power_state", power_state)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "shares", shares)
+        pulumi.set(__self__, "ssh_key_name", ssh_key_name)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> 'outputs.GetCloudInstanceCurrentStateFlavorResult':
+        """
+        Observed flavor of the instance, with its full sizing details:
+        """
+        return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> 'outputs.GetCloudInstanceCurrentStateGroupResult':
+        """
+        Instance (placement) group the instance belongs to, null when it is not part of any group:
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> _builtins.str:
+        """
+        Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+        """
+        return pulumi.get(self, "host_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> 'outputs.GetCloudInstanceCurrentStateImageResult':
+        """
+        Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstanceCurrentStateLocationResult':
+        """
+        Observed region and availability zone where the instance is provisioned:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def locked(self) -> _builtins.bool:
+        """
+        Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+        """
+        return pulumi.get(self, "locked")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Sequence['outputs.GetCloudInstanceCurrentStateNetworkResult']:
+        """
+        Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested `networks`:
+        """
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> _builtins.str:
+        """
+        Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `power_state` while a power transition is in progress.
+        """
+        return pulumi.get(self, "power_state")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Identifier of the Public Cloud project the instance belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Sequence['outputs.GetCloudInstanceCurrentStateSecurityGroupResult']:
+        """
+        Security groups currently attached to the instance's ports:
+        """
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Sequence['outputs.GetCloudInstanceCurrentStateShareResult']:
+        """
+        Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, never in the list data source:
+        """
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sshKeyName")
+    def ssh_key_name(self) -> _builtins.str:
+        """
+        Name of the SSH key pair injected into the instance at boot, null when none was provided.
+        """
+        return pulumi.get(self, "ssh_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        Identifier of the OpenStack user that owns the instance.
+        """
+        return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetCloudInstanceCurrentStateVolumeResult']:
+        """
+        Observed block volumes attached to the instance:
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateFlavorResult(dict):
+    def __init__(__self__, *,
+                 disk: _builtins.int,
+                 ephemeral: _builtins.int,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 ram: _builtins.int,
+                 swap: _builtins.int,
+                 vcpus: _builtins.int):
+        """
+        :param _builtins.int disk: Size of the flavor's local root disk, in GB.
+        :param _builtins.int ephemeral: Size of the flavor's ephemeral disk, in GB.
+        :param _builtins.str id: Unique identifier of the instance.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.int ram: Amount of RAM provided by the flavor, in MB.
+        :param _builtins.int swap: Size of the flavor's swap space, in MB.
+        :param _builtins.int vcpus: Number of virtual CPUs provided by the flavor.
+        """
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "ephemeral", ephemeral)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "swap", swap)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        Size of the flavor's local root disk, in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def ephemeral(self) -> _builtins.int:
+        """
+        Size of the flavor's ephemeral disk, in GB.
+        """
+        return pulumi.get(self, "ephemeral")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> _builtins.int:
+        """
+        Amount of RAM provided by the flavor, in MB.
+        """
+        return pulumi.get(self, "ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def swap(self) -> _builtins.int:
+        """
+        Size of the flavor's swap space, in MB.
+        """
+        return pulumi.get(self, "swap")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> _builtins.int:
+        """
+        Number of virtual CPUs provided by the flavor.
+        """
+        return pulumi.get(self, "vcpus")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateGroupResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Unique identifier of the instance.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateImageResult(dict):
+    def __init__(__self__, *,
+                 deprecated: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str):
+        """
+        :param _builtins.bool deprecated: Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+        :param _builtins.str id: Unique identifier of the instance.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.int size: Size of the attached volume, in GB.
+        :param _builtins.str status: Lifecycle status of the image as reported by Glance.
+        """
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> _builtins.bool:
+        """
+        Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the attached volume, in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Lifecycle status of the image as reported by Glance.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region where the instance is placed, null in regions that have none.
+        :param _builtins.str region: Code of the region where the instance is provisioned (for example GRA11, BHS5).
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region where the instance is placed, null in regions that have none.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Code of the region where the instance is provisioned (for example GRA11, BHS5).
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateNetworkResult(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetCloudInstanceCurrentStateNetworkAddressResult'],
+                 gateway_id: _builtins.str,
+                 id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param Sequence['GetCloudInstanceCurrentStateNetworkAddressArgs'] addresses: Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+        :param _builtins.str gateway_id: Identifier of the gateway providing egress for this interface, null when none applies.
+        :param _builtins.str id: Unique identifier of the instance.
+        :param _builtins.str subnet_id: Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetCloudInstanceCurrentStateNetworkAddressResult']:
+        """
+        Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        Identifier of the gateway providing egress for this interface, null when none applies.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateNetworkAddressResult(dict):
+    def __init__(__self__, *,
+                 ip: _builtins.str,
+                 mac: _builtins.str,
+                 type: _builtins.str,
+                 version: _builtins.int):
+        """
+        :param _builtins.str ip: IP address assigned to the interface (IPv4 or IPv6).
+        :param _builtins.str mac: MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+        :param _builtins.str type: How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+        :param _builtins.int version: IP version of the address (4 for IPv4, 6 for IPv6).
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address assigned to the interface (IPv4 or IPv6).
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def mac(self) -> _builtins.str:
+        """
+        MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+        """
+        return pulumi.get(self, "mac")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        IP version of the address (4 for IPv4, 6 for IPv6).
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateSecurityGroupResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Unique identifier of the instance.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateShareResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str,
+                 id: _builtins.str,
+                 state: _builtins.str):
+        """
+        :param _builtins.str access_level: Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+        :param _builtins.str access_to: The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+        :param _builtins.str id: Unique identifier of the instance.
+        :param _builtins.str state: Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCloudInstanceCurrentStateVolumeResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 size: _builtins.int):
+        """
+        :param _builtins.str id: Unique identifier of the instance.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.int size: Size of the attached volume, in GB.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the attached volume, in GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class GetCloudInstanceFlavorLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceFlavorsFlavorResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 disk: _builtins.int,
+                 ephemeral: _builtins.int,
+                 id: _builtins.str,
+                 is_public: _builtins.bool,
+                 location: 'outputs.GetCloudInstanceFlavorsFlavorLocationResult',
+                 name: _builtins.str,
+                 ram: _builtins.int,
+                 swap: _builtins.int,
+                 vcpus: _builtins.int):
+        """
+        :param _builtins.str description: Free-form description of the flavor as reported by the backend. May be empty when no description is advertised for this flavor.
+        :param _builtins.int disk: Size of the flavor's root disk in GB. This is the primary system disk provisioned for instances created from this flavor.
+        :param _builtins.int ephemeral: Size of the flavor's ephemeral disk in GB. Ephemeral storage is transient: its contents do not survive a rebuild or deletion of the instance. Zero when the flavor provides no ephemeral disk.
+        :param _builtins.str id: The OpenStack/Nova flavor ID. Stable within a region and used to reference the flavor when creating an instance.
+        :param _builtins.bool is_public: Whether the flavor is publicly available to the project. Private flavors are only visible to the projects they have been explicitly shared with.
+        :param 'GetCloudInstanceFlavorsFlavorLocationArgs' location: Region (and, where applicable, availability zone) where this flavor is offered. The flavor catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another:
+        :param _builtins.str name: The backend flavor name (for example `b2-7`, `c2-15`). This is the commercial/technical name used to identify the sizing in the catalog.
+        :param _builtins.int ram: Amount of memory provided by the flavor, expressed in MB.
+        :param _builtins.int swap: Size of the flavor's swap space in MB. Zero when the flavor provides no swap.
+        :param _builtins.int vcpus: Number of virtual CPUs provided by the flavor.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "ephemeral", ephemeral)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_public", is_public)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "swap", swap)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Free-form description of the flavor as reported by the backend. May be empty when no description is advertised for this flavor.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        Size of the flavor's root disk in GB. This is the primary system disk provisioned for instances created from this flavor.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def ephemeral(self) -> _builtins.int:
+        """
+        Size of the flavor's ephemeral disk in GB. Ephemeral storage is transient: its contents do not survive a rebuild or deletion of the instance. Zero when the flavor provides no ephemeral disk.
+        """
+        return pulumi.get(self, "ephemeral")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The OpenStack/Nova flavor ID. Stable within a region and used to reference the flavor when creating an instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> _builtins.bool:
+        """
+        Whether the flavor is publicly available to the project. Private flavors are only visible to the projects they have been explicitly shared with.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstanceFlavorsFlavorLocationResult':
+        """
+        Region (and, where applicable, availability zone) where this flavor is offered. The flavor catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The backend flavor name (for example `b2-7`, `c2-15`). This is the commercial/technical name used to identify the sizing in the catalog.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> _builtins.int:
+        """
+        Amount of memory provided by the flavor, expressed in MB.
+        """
+        return pulumi.get(self, "ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def swap(self) -> _builtins.int:
+        """
+        Size of the flavor's swap space in MB. Zero when the flavor provides no swap.
+        """
+        return pulumi.get(self, "swap")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> _builtins.int:
+        """
+        Number of virtual CPUs provided by the flavor.
+        """
+        return pulumi.get(self, "vcpus")
+
+
+@pulumi.output_type
+class GetCloudInstanceFlavorsFlavorLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Restrict the listing to the flavors offered in this region. The catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Restrict the listing to the flavors offered in this region. The catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 location: 'outputs.GetCloudInstanceGroupCurrentStateLocationResult',
+                 members: Sequence['outputs.GetCloudInstanceGroupCurrentStateMemberResult'],
+                 name: _builtins.str,
+                 policy: _builtins.str):
+        """
+        :param 'GetCloudInstanceGroupCurrentStateLocationArgs' location: Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+        :param Sequence['GetCloudInstanceGroupCurrentStateMemberArgs'] members: Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+        :param _builtins.str name: Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+        :param _builtins.str policy: Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstanceGroupCurrentStateLocationResult':
+        """
+        Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Sequence['outputs.GetCloudInstanceGroupCurrentStateMemberResult']:
+        """
+        Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+        """
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupCurrentStateMemberResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Unique identifier of the instance group to look up.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance group to look up.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupsInstanceGroupResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateResult',
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 policy: _builtins.str,
+                 region: _builtins.str,
+                 resource_status: _builtins.str):
+        """
+        :param _builtins.str checksum: Computed hash of the current target specification, used for optimistic concurrency control. Because an instance group has no update route, this value never changes after creation.
+        :param _builtins.str created_at: Timestamp at which the instance group was created, in RFC 3339 format.
+        :param 'GetCloudInstanceGroupsInstanceGroupCurrentStateArgs' current_state: State of the instance group as observed on the backend:
+        :param _builtins.str id: Identifier of the member instance.
+        :param _builtins.str name: Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+        :param _builtins.str policy: Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+        :param _builtins.str region: Region code.
+        :param _builtins.str resource_status: Instance group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`). `OUT_OF_SYNC` means the group has drifted from its target specification; a group managed by `CloudInstanceGroup` is destroyed and recreated on the next `pulumi up` to converge.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy", policy)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "resource_status", resource_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash of the current target specification, used for optimistic concurrency control. Because an instance group has no update route, this value never changes after creation.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp at which the instance group was created, in RFC 3339 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateResult':
+        """
+        State of the instance group as observed on the backend:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the member instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+        """
+        return pulumi.get(self, "policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Instance group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`). `OUT_OF_SYNC` means the group has drifted from its target specification; a group managed by `CloudInstanceGroup` is destroyed and recreated on the next `pulumi up` to converge.
+        """
+        return pulumi.get(self, "resource_status")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupsInstanceGroupCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 location: 'outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateLocationResult',
+                 members: Sequence['outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateMemberResult'],
+                 name: _builtins.str,
+                 policy: _builtins.str):
+        """
+        :param 'GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs' location: Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+        :param Sequence['GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs'] members: Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+        :param _builtins.str name: Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+        :param _builtins.str policy: Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+        """
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policy", policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateLocationResult':
+        """
+        Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def members(self) -> Sequence['outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateMemberResult']:
+        """
+        Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+        """
+        return pulumi.get(self, "members")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def policy(self) -> _builtins.str:
+        """
+        Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+        """
+        return pulumi.get(self, "policy")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupsInstanceGroupCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceGroupsInstanceGroupCurrentStateMemberResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the member instance.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the member instance.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstanceImageLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Region code.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region code.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceImagesImageResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudInstanceImagesImageLocationResult',
+                 min_disk: _builtins.int,
+                 min_ram: _builtins.int,
+                 name: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str,
+                 updated_at: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str created_at: Timestamp at which the image was created on the backend, in RFC 3339 format.
+        :param _builtins.str id: The OpenStack/Glance image ID. Stable within a region and used to reference the image when creating an instance.
+        :param 'GetCloudInstanceImagesImageLocationArgs' location: Region (and, where applicable, availability zone) where this image is offered. The image catalog is per-region: an image returned for one region is not guaranteed to exist in another:
+        :param _builtins.int min_disk: Minimum root disk size, in GB, that an instance must provide to boot from this image. A flavor whose disk is smaller than this value cannot be used with the image.
+        :param _builtins.int min_ram: Minimum amount of memory, in MB, that an instance must provide to boot from this image. A flavor whose RAM is below this value cannot be used with the image.
+        :param _builtins.str name: Display name of the image as reported by the backend (for example the distribution and version, such as `Debian 12`).
+        :param _builtins.int size: Size of the image on the backend, expressed in bytes.
+        :param _builtins.str status: Availability status of the image as reported by the backend. Only images in an active status can be used to create an instance.
+        :param _builtins.str updated_at: Timestamp of the last modification of the image on the backend, in RFC 3339 format.
+        :param _builtins.str visibility: Visibility scope of the image, for example whether it is a public OVHcloud-provided image or private to the project.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "min_disk", min_disk)
+        pulumi.set(__self__, "min_ram", min_ram)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp at which the image was created on the backend, in RFC 3339 format.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The OpenStack/Glance image ID. Stable within a region and used to reference the image when creating an instance.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstanceImagesImageLocationResult':
+        """
+        Region (and, where applicable, availability zone) where this image is offered. The image catalog is per-region: an image returned for one region is not guaranteed to exist in another:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> _builtins.int:
+        """
+        Minimum root disk size, in GB, that an instance must provide to boot from this image. A flavor whose disk is smaller than this value cannot be used with the image.
+        """
+        return pulumi.get(self, "min_disk")
+
+    @_builtins.property
+    @pulumi.getter(name="minRam")
+    def min_ram(self) -> _builtins.int:
+        """
+        Minimum amount of memory, in MB, that an instance must provide to boot from this image. A flavor whose RAM is below this value cannot be used with the image.
+        """
+        return pulumi.get(self, "min_ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the image as reported by the backend (for example the distribution and version, such as `Debian 12`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the image on the backend, expressed in bytes.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Availability status of the image as reported by the backend. Only images in an active status can be used to create an instance.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp of the last modification of the image on the backend, in RFC 3339 format.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Visibility scope of the image, for example whether it is a public OVHcloud-provided image or private to the project.
+        """
+        return pulumi.get(self, "visibility")
+
+
+@pulumi.output_type
+class GetCloudInstanceImagesImageLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region.
+        :param _builtins.str region: Restrict the listing to the images offered in this region. The catalog is per-region: an image returned for one region is not guaranteed to exist in another.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Restrict the listing to the images offered in this region. The catalog is per-region: an image returned for one region is not guaranteed to exist in another.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceNetworkResult(dict):
+    def __init__(__self__, *,
+                 auto_assign_public_ip: _builtins.bool,
+                 ip: _builtins.str,
+                 network_id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.bool auto_assign_public_ip: Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `network_id` and no `ip`, and on at most one entry.
+        :param _builtins.str ip: IP address assigned to the interface (IPv4 or IPv6).
+        :param _builtins.str network_id: Private network ID. Omit for a public interface.
+        :param _builtins.str subnet_id: Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+        """
+        pulumi.set(__self__, "auto_assign_public_ip", auto_assign_public_ip)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter(name="autoAssignPublicIp")
+    def auto_assign_public_ip(self) -> _builtins.bool:
+        """
+        Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `network_id` and no `ip`, and on at most one entry.
+        """
+        return pulumi.get(self, "auto_assign_public_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address assigned to the interface (IPv4 or IPv6).
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> _builtins.str:
+        """
+        Private network ID. Omit for a public interface.
+        """
+        return pulumi.get(self, "network_id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudInstanceShareResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 id: _builtins.str):
+        """
+        :param _builtins.str access_level: Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+        :param _builtins.str id: Unique identifier of the instance.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Unique identifier of the instance.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudInstancesInstanceCurrentStateResult',
+                 flavor_id: _builtins.str,
+                 id: _builtins.str,
+                 image_id: _builtins.str,
+                 name: _builtins.str,
+                 power_state: _builtins.str,
+                 region: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region where the instance is placed, null in regions that have none.
+        :param _builtins.str checksum: Computed hash representing the current target specification value. It implements optimistic concurrency control: the value is echoed back on update and the request is rejected when it no longer matches server-side.
+        :param _builtins.str created_at: Creation date of the instance, as an RFC 3339 timestamp.
+        :param 'GetCloudInstancesInstanceCurrentStateArgs' current_state: Observed state of the instance as reported by the compute backend, as opposed to the requested specification exposed at root level. Null while the instance is still being created and no backend state is available yet:
+        :param _builtins.str flavor_id: Unique identifier of the flavor.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str image_id: Identifier of the image the instance boots from, null for a boot-from-volume instance.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.str power_state: Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `power_state` while a power transition is in progress.
+        :param _builtins.str region: Code of the region where the instance is provisioned (for example GRA11, BHS5).
+        :param _builtins.str resource_status: Instance readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`). Distinct from `current_state.power_state`, which carries the lower-level OpenStack administrative power state.
+        :param _builtins.str updated_at: Last modification date of the instance, as an RFC 3339 timestamp.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "flavor_id", flavor_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "power_state", power_state)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region where the instance is placed, null in regions that have none.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value. It implements optimistic concurrency control: the value is echoed back on update and the request is rejected when it no longer matches server-side.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the instance, as an RFC 3339 timestamp.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudInstancesInstanceCurrentStateResult':
+        """
+        Observed state of the instance as reported by the compute backend, as opposed to the requested specification exposed at root level. Null while the instance is still being created and no backend state is available yet:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> _builtins.str:
+        """
+        Unique identifier of the flavor.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> _builtins.str:
+        """
+        Identifier of the image the instance boots from, null for a boot-from-volume instance.
+        """
+        return pulumi.get(self, "image_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> _builtins.str:
+        """
+        Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `power_state` while a power transition is in progress.
+        """
+        return pulumi.get(self, "power_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Code of the region where the instance is provisioned (for example GRA11, BHS5).
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Instance readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`). Distinct from `current_state.power_state`, which carries the lower-level OpenStack administrative power state.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last modification date of the instance, as an RFC 3339 timestamp.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 flavor: 'outputs.GetCloudInstancesInstanceCurrentStateFlavorResult',
+                 group: 'outputs.GetCloudInstancesInstanceCurrentStateGroupResult',
+                 host_id: _builtins.str,
+                 image: 'outputs.GetCloudInstancesInstanceCurrentStateImageResult',
+                 location: 'outputs.GetCloudInstancesInstanceCurrentStateLocationResult',
+                 locked: _builtins.bool,
+                 name: _builtins.str,
+                 networks: Sequence['outputs.GetCloudInstancesInstanceCurrentStateNetworkResult'],
+                 power_state: _builtins.str,
+                 project_id: _builtins.str,
+                 security_groups: Sequence['outputs.GetCloudInstancesInstanceCurrentStateSecurityGroupResult'],
+                 shares: Sequence['outputs.GetCloudInstancesInstanceCurrentStateShareResult'],
+                 ssh_key_name: _builtins.str,
+                 user_id: _builtins.str,
+                 volumes: Sequence['outputs.GetCloudInstancesInstanceCurrentStateVolumeResult']):
+        """
+        :param 'GetCloudInstancesInstanceCurrentStateFlavorArgs' flavor: Observed flavor of the instance, with its full sizing details:
+        :param 'GetCloudInstancesInstanceCurrentStateGroupArgs' group: Instance (placement) group the instance belongs to, null when it is not part of any group:
+        :param _builtins.str host_id: Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+        :param 'GetCloudInstancesInstanceCurrentStateImageArgs' image: Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+        :param 'GetCloudInstancesInstanceCurrentStateLocationArgs' location: Observed region and availability zone where the instance is provisioned:
+        :param _builtins.bool locked: Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+        :param _builtins.str name: Display name of the attached volume.
+        :param Sequence['GetCloudInstancesInstanceCurrentStateNetworkArgs'] networks: Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested networks:
+        :param _builtins.str power_state: Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `power_state` while a power transition is in progress.
+        :param _builtins.str project_id: Identifier of the Public Cloud project the instance belongs to.
+        :param Sequence['GetCloudInstancesInstanceCurrentStateSecurityGroupArgs'] security_groups: Security groups currently attached to the instance's ports:
+        :param Sequence['GetCloudInstancesInstanceCurrentStateShareArgs'] shares: Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, so always null here:
+        :param _builtins.str ssh_key_name: Name of the SSH key pair injected into the instance at boot, null when none was provided.
+        :param _builtins.str user_id: Identifier of the OpenStack user that owns the instance.
+        :param Sequence['GetCloudInstancesInstanceCurrentStateVolumeArgs'] volumes: Observed block volumes attached to the instance:
+        """
+        pulumi.set(__self__, "flavor", flavor)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "image", image)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "locked", locked)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "networks", networks)
+        pulumi.set(__self__, "power_state", power_state)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "security_groups", security_groups)
+        pulumi.set(__self__, "shares", shares)
+        pulumi.set(__self__, "ssh_key_name", ssh_key_name)
+        pulumi.set(__self__, "user_id", user_id)
+        pulumi.set(__self__, "volumes", volumes)
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> 'outputs.GetCloudInstancesInstanceCurrentStateFlavorResult':
+        """
+        Observed flavor of the instance, with its full sizing details:
+        """
+        return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter
+    def group(self) -> 'outputs.GetCloudInstancesInstanceCurrentStateGroupResult':
+        """
+        Instance (placement) group the instance belongs to, null when it is not part of any group:
+        """
+        return pulumi.get(self, "group")
+
+    @_builtins.property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> _builtins.str:
+        """
+        Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+        """
+        return pulumi.get(self, "host_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> 'outputs.GetCloudInstancesInstanceCurrentStateImageResult':
+        """
+        Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+        """
+        return pulumi.get(self, "image")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstancesInstanceCurrentStateLocationResult':
+        """
+        Observed region and availability zone where the instance is provisioned:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def locked(self) -> _builtins.bool:
+        """
+        Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+        """
+        return pulumi.get(self, "locked")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Sequence['outputs.GetCloudInstancesInstanceCurrentStateNetworkResult']:
+        """
+        Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested networks:
+        """
+        return pulumi.get(self, "networks")
+
+    @_builtins.property
+    @pulumi.getter(name="powerState")
+    def power_state(self) -> _builtins.str:
+        """
+        Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `power_state` while a power transition is in progress.
+        """
+        return pulumi.get(self, "power_state")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        Identifier of the Public Cloud project the instance belongs to.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroups")
+    def security_groups(self) -> Sequence['outputs.GetCloudInstancesInstanceCurrentStateSecurityGroupResult']:
+        """
+        Security groups currently attached to the instance's ports:
+        """
+        return pulumi.get(self, "security_groups")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Sequence['outputs.GetCloudInstancesInstanceCurrentStateShareResult']:
+        """
+        Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, so always null here:
+        """
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter(name="sshKeyName")
+    def ssh_key_name(self) -> _builtins.str:
+        """
+        Name of the SSH key pair injected into the instance at boot, null when none was provided.
+        """
+        return pulumi.get(self, "ssh_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> _builtins.str:
+        """
+        Identifier of the OpenStack user that owns the instance.
+        """
+        return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def volumes(self) -> Sequence['outputs.GetCloudInstancesInstanceCurrentStateVolumeResult']:
+        """
+        Observed block volumes attached to the instance:
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateFlavorResult(dict):
+    def __init__(__self__, *,
+                 disk: _builtins.int,
+                 ephemeral: _builtins.int,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 ram: _builtins.int,
+                 swap: _builtins.int,
+                 vcpus: _builtins.int):
+        """
+        :param _builtins.int disk: Size of the flavor's local root disk, in GB.
+        :param _builtins.int ephemeral: Size of the flavor's ephemeral disk, in GB.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.int ram: Amount of RAM provided by the flavor, in MB.
+        :param _builtins.int swap: Size of the flavor's swap space, in MB.
+        :param _builtins.int vcpus: Number of virtual CPUs provided by the flavor.
+        """
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "ephemeral", ephemeral)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "swap", swap)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        Size of the flavor's local root disk, in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter
+    def ephemeral(self) -> _builtins.int:
+        """
+        Size of the flavor's ephemeral disk, in GB.
+        """
+        return pulumi.get(self, "ephemeral")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> _builtins.int:
+        """
+        Amount of RAM provided by the flavor, in MB.
+        """
+        return pulumi.get(self, "ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def swap(self) -> _builtins.int:
+        """
+        Size of the flavor's swap space, in MB.
+        """
+        return pulumi.get(self, "swap")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> _builtins.int:
+        """
+        Number of virtual CPUs provided by the flavor.
+        """
+        return pulumi.get(self, "vcpus")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateGroupResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateImageResult(dict):
+    def __init__(__self__, *,
+                 deprecated: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str):
+        """
+        :param _builtins.bool deprecated: Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.int size: Size of the attached volume, in GB.
+        :param _builtins.str status: Lifecycle status of the image as reported by Glance.
+        """
+        pulumi.set(__self__, "deprecated", deprecated)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def deprecated(self) -> _builtins.bool:
+        """
+        Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+        """
+        return pulumi.get(self, "deprecated")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the attached volume, in GB.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Lifecycle status of the image as reported by Glance.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone within the region where the instance is placed, null in regions that have none.
+        :param _builtins.str region: Code of the region where the instance is provisioned (for example GRA11, BHS5).
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone within the region where the instance is placed, null in regions that have none.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Code of the region where the instance is provisioned (for example GRA11, BHS5).
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateNetworkResult(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetCloudInstancesInstanceCurrentStateNetworkAddressResult'],
+                 gateway_id: _builtins.str,
+                 id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param Sequence['GetCloudInstancesInstanceCurrentStateNetworkAddressArgs'] addresses: Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+        :param _builtins.str gateway_id: Identifier of the gateway providing egress for this interface, null when none applies.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str subnet_id: Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "gateway_id", gateway_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetCloudInstancesInstanceCurrentStateNetworkAddressResult']:
+        """
+        Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> _builtins.str:
+        """
+        Identifier of the gateway providing egress for this interface, null when none applies.
+        """
+        return pulumi.get(self, "gateway_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateNetworkAddressResult(dict):
+    def __init__(__self__, *,
+                 ip: _builtins.str,
+                 mac: _builtins.str,
+                 type: _builtins.str,
+                 version: _builtins.int):
+        """
+        :param _builtins.str ip: IP address assigned to the interface (IPv4 or IPv6).
+        :param _builtins.str mac: MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+        :param _builtins.str type: How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+        :param _builtins.int version: IP version of the address (4 for IPv4, 6 for IPv6).
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "mac", mac)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address assigned to the interface (IPv4 or IPv6).
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def mac(self) -> _builtins.str:
+        """
+        MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+        """
+        return pulumi.get(self, "mac")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        IP version of the address (4 for IPv4, 6 for IPv6).
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateSecurityGroupResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateShareResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str,
+                 id: _builtins.str,
+                 state: _builtins.str):
+        """
+        :param _builtins.str access_level: Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+        :param _builtins.str access_to: The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str state: Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCloudInstancesInstanceCurrentStateVolumeResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 size: _builtins.int):
+        """
+        :param _builtins.str id: Identifier of the instance (placement) group.
+        :param _builtins.str name: Display name of the attached volume.
+        :param _builtins.int size: Size of the attached volume, in GB.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Identifier of the instance (placement) group.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Display name of the attached volume.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Size of the attached volume, in GB.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -15697,22 +18662,28 @@ class GetCloudStorageBlockVolumesVolumeLocationResult(dict):
 
 
 @pulumi.output_type
-class GetCloudStorageFileShareAccessRuleResult(dict):
+class GetCloudStorageFileShareAclCurrentStateResult(dict):
     def __init__(__self__, *,
                  access_level: _builtins.str,
-                 access_to: _builtins.str):
+                 access_to: _builtins.str,
+                 created_at: _builtins.str,
+                 state: _builtins.str):
         """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
+        :param _builtins.str access_level: Access level granted.
+        :param _builtins.str access_to: IP address or CIDR allowed to access the file storage share.
+        :param _builtins.str created_at: Creation date of the access rule.
+        :param _builtins.str state: Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
         """
         pulumi.set(__self__, "access_level", access_level)
         pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "state", state)
 
     @_builtins.property
     @pulumi.getter(name="accessLevel")
     def access_level(self) -> _builtins.str:
         """
-        Access level.
+        Access level granted.
         """
         return pulumi.get(self, "access_level")
 
@@ -15720,15 +18691,176 @@ class GetCloudStorageFileShareAccessRuleResult(dict):
     @pulumi.getter(name="accessTo")
     def access_to(self) -> _builtins.str:
         """
-        IP address or CIDR.
+        IP address or CIDR allowed to access the file storage share.
         """
         return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the access rule.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareAclsShareAclResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudStorageFileShareAclsShareAclCurrentStateResult',
+                 id: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level granted.
+        :param _builtins.str access_to: IP address or CIDR allowed to access the file storage share.
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the access rule.
+        :param 'GetCloudStorageFileShareAclsShareAclCurrentStateArgs' current_state: Current observed state of the access rule from the infrastructure:
+        :param _builtins.str id: Access rule ID.
+        :param _builtins.str resource_status: Access rule readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the access rule.
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level granted.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR allowed to access the file storage share.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the access rule.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudStorageFileShareAclsShareAclCurrentStateResult':
+        """
+        Current observed state of the access rule from the infrastructure:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Access rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Access rule readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the access rule.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareAclsShareAclCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 access_level: _builtins.str,
+                 access_to: _builtins.str,
+                 created_at: _builtins.str,
+                 state: _builtins.str):
+        """
+        :param _builtins.str access_level: Access level granted.
+        :param _builtins.str access_to: IP address or CIDR allowed to access the file storage share.
+        :param _builtins.str created_at: Creation date of the access rule.
+        :param _builtins.str state: Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+        """
+        pulumi.set(__self__, "access_level", access_level)
+        pulumi.set(__self__, "access_to", access_to)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> _builtins.str:
+        """
+        Access level granted.
+        """
+        return pulumi.get(self, "access_level")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTo")
+    def access_to(self) -> _builtins.str:
+        """
+        IP address or CIDR allowed to access the file storage share.
+        """
+        return pulumi.get(self, "access_to")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the access rule.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
 class GetCloudStorageFileShareCurrentStateResult(dict):
     def __init__(__self__, *,
-                 access_rules: Sequence['outputs.GetCloudStorageFileShareCurrentStateAccessRuleResult'],
                  capabilities: Sequence['outputs.GetCloudStorageFileShareCurrentStateCapabilityResult'],
                  description: _builtins.str,
                  export_locations: Sequence['outputs.GetCloudStorageFileShareCurrentStateExportLocationResult'],
@@ -15739,7 +18871,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
                  share_type: _builtins.str,
                  size: _builtins.int):
         """
-        :param Sequence['GetCloudStorageFileShareCurrentStateAccessRuleArgs'] access_rules: Current access rules for the file share:
         :param Sequence['GetCloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
         :param Sequence['GetCloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
@@ -15750,7 +18881,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         :param _builtins.str share_type: File share type.
         :param _builtins.int size: Size of the file share in GB.
         """
-        pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "export_locations", export_locations)
@@ -15760,14 +18890,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         pulumi.set(__self__, "share_network_id", share_network_id)
         pulumi.set(__self__, "share_type", share_type)
         pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileShareCurrentStateAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -15840,68 +18962,6 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         Size of the file share in GB.
         """
         return pulumi.get(self, "size")
-
-
-@pulumi.output_type
-class GetCloudStorageFileShareCurrentStateAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str,
-                 created_at: _builtins.str,
-                 id: _builtins.str,
-                 state: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        :param _builtins.str created_at: Access rule creation date.
-        :param _builtins.str id: The ID of the file share.
-        :param _builtins.str state: Access rule state.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The ID of the file share.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -16690,7 +19750,6 @@ class GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationResult(d
 @pulumi.output_type
 class GetCloudStorageFileSharesFileShareResult(dict):
     def __init__(__self__, *,
-                 access_rules: Sequence['outputs.GetCloudStorageFileSharesFileShareAccessRuleResult'],
                  checksum: _builtins.str,
                  created_at: _builtins.str,
                  current_state: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateResult',
@@ -16705,12 +19764,11 @@ class GetCloudStorageFileSharesFileShareResult(dict):
                  size: _builtins.int,
                  updated_at: _builtins.str):
         """
-        :param Sequence['GetCloudStorageFileSharesFileShareAccessRuleArgs'] access_rules: Current access rules for the file share:
         :param _builtins.str checksum: Computed hash representing the current target specification value.
-        :param _builtins.str created_at: Access rule creation date.
+        :param _builtins.str created_at: Creation date of the file share.
         :param 'GetCloudStorageFileSharesFileShareCurrentStateArgs' current_state: Current state of the file storage share:
         :param _builtins.str description: File share description.
-        :param _builtins.str id: Access rule ID.
+        :param _builtins.str id: File share ID.
         :param 'GetCloudStorageFileSharesFileShareLocationArgs' location: Current location:
         :param _builtins.str name: Capability name.
         :param _builtins.str protocol: File share protocol.
@@ -16720,7 +19778,6 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         :param _builtins.int size: Size of the file share in GB.
         :param _builtins.str updated_at: Last update date of the file share.
         """
-        pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "checksum", checksum)
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "current_state", current_state)
@@ -16736,14 +19793,6 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         pulumi.set(__self__, "updated_at", updated_at)
 
     @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
-
-    @_builtins.property
     @pulumi.getter
     def checksum(self) -> _builtins.str:
         """
@@ -16755,7 +19804,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> _builtins.str:
         """
-        Access rule creation date.
+        Creation date of the file share.
         """
         return pulumi.get(self, "created_at")
 
@@ -16779,7 +19828,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Access rule ID.
+        File share ID.
         """
         return pulumi.get(self, "id")
 
@@ -16849,38 +19898,8 @@ class GetCloudStorageFileSharesFileShareResult(dict):
 
 
 @pulumi.output_type
-class GetCloudStorageFileSharesFileShareAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-
-@pulumi.output_type
 class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
     def __init__(__self__, *,
-                 access_rules: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult'],
                  capabilities: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult'],
                  description: _builtins.str,
                  export_locations: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult'],
@@ -16891,7 +19910,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
                  share_type: _builtins.str,
                  size: _builtins.int):
         """
-        :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs'] access_rules: Current access rules for the file share:
         :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
         :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
@@ -16902,7 +19920,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         :param _builtins.str share_type: File share type.
         :param _builtins.int size: Size of the file share in GB.
         """
-        pulumi.set(__self__, "access_rules", access_rules)
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "export_locations", export_locations)
@@ -16912,14 +19929,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         pulumi.set(__self__, "share_network_id", share_network_id)
         pulumi.set(__self__, "share_type", share_type)
         pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter(name="accessRules")
-    def access_rules(self) -> Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult']:
-        """
-        Current access rules for the file share:
-        """
-        return pulumi.get(self, "access_rules")
 
     @_builtins.property
     @pulumi.getter
@@ -16992,68 +20001,6 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         Size of the file share in GB.
         """
         return pulumi.get(self, "size")
-
-
-@pulumi.output_type
-class GetCloudStorageFileSharesFileShareCurrentStateAccessRuleResult(dict):
-    def __init__(__self__, *,
-                 access_level: _builtins.str,
-                 access_to: _builtins.str,
-                 created_at: _builtins.str,
-                 id: _builtins.str,
-                 state: _builtins.str):
-        """
-        :param _builtins.str access_level: Access level.
-        :param _builtins.str access_to: IP address or CIDR.
-        :param _builtins.str created_at: Access rule creation date.
-        :param _builtins.str id: Access rule ID.
-        :param _builtins.str state: Access rule state.
-        """
-        pulumi.set(__self__, "access_level", access_level)
-        pulumi.set(__self__, "access_to", access_to)
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "state", state)
-
-    @_builtins.property
-    @pulumi.getter(name="accessLevel")
-    def access_level(self) -> _builtins.str:
-        """
-        Access level.
-        """
-        return pulumi.get(self, "access_level")
-
-    @_builtins.property
-    @pulumi.getter(name="accessTo")
-    def access_to(self) -> _builtins.str:
-        """
-        IP address or CIDR.
-        """
-        return pulumi.get(self, "access_to")
-
-    @_builtins.property
-    @pulumi.getter(name="createdAt")
-    def created_at(self) -> _builtins.str:
-        """
-        Access rule creation date.
-        """
-        return pulumi.get(self, "created_at")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        Access rule ID.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def state(self) -> _builtins.str:
-        """
-        Access rule state.
-        """
-        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

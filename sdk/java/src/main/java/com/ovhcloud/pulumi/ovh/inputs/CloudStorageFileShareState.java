@@ -3,13 +3,11 @@
 
 package com.ovhcloud.pulumi.ovh.inputs;
 
-import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareAccessRuleArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,21 +16,6 @@ import javax.annotation.Nullable;
 public final class CloudStorageFileShareState extends com.pulumi.resources.ResourceArgs {
 
     public static final CloudStorageFileShareState Empty = new CloudStorageFileShareState();
-
-    /**
-     * Access rules for the file share. Each rule has:
-     * 
-     */
-    @Import(name="accessRules")
-    private @Nullable Output<List<CloudStorageFileShareAccessRuleArgs>> accessRules;
-
-    /**
-     * @return Access rules for the file share. Each rule has:
-     * 
-     */
-    public Optional<Output<List<CloudStorageFileShareAccessRuleArgs>>> accessRules() {
-        return Optional.ofNullable(this.accessRules);
-    }
 
     /**
      * Availability zone where the file share will be created. **Changing this value recreates the resource.**
@@ -65,14 +48,14 @@ public final class CloudStorageFileShareState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return Access rule creation date.
+     * @return Creation date of the file share.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -247,7 +230,6 @@ public final class CloudStorageFileShareState extends com.pulumi.resources.Resou
     private CloudStorageFileShareState() {}
 
     private CloudStorageFileShareState(CloudStorageFileShareState $) {
-        this.accessRules = $.accessRules;
         this.availabilityZone = $.availabilityZone;
         this.checksum = $.checksum;
         this.createdAt = $.createdAt;
@@ -280,37 +262,6 @@ public final class CloudStorageFileShareState extends com.pulumi.resources.Resou
 
         public Builder(CloudStorageFileShareState defaults) {
             $ = new CloudStorageFileShareState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accessRules Access rules for the file share. Each rule has:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessRules(@Nullable Output<List<CloudStorageFileShareAccessRuleArgs>> accessRules) {
-            $.accessRules = accessRules;
-            return this;
-        }
-
-        /**
-         * @param accessRules Access rules for the file share. Each rule has:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessRules(List<CloudStorageFileShareAccessRuleArgs> accessRules) {
-            return accessRules(Output.of(accessRules));
-        }
-
-        /**
-         * @param accessRules Access rules for the file share. Each rule has:
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accessRules(CloudStorageFileShareAccessRuleArgs... accessRules) {
-            return accessRules(List.of(accessRules));
         }
 
         /**
@@ -356,7 +307,7 @@ public final class CloudStorageFileShareState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createdAt Access rule creation date.
+         * @param createdAt Creation date of the file share.
          * 
          * @return builder
          * 
@@ -367,7 +318,7 @@ public final class CloudStorageFileShareState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createdAt Access rule creation date.
+         * @param createdAt Creation date of the file share.
          * 
          * @return builder
          * 

@@ -46,6 +46,8 @@ import (
 type CloudStorageBlockVolume struct {
 	pulumi.CustomResourceState
 
+	// Availability zone where the volume will be created
+	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringOutput `pulumi:"checksum"`
 	// Source to create the volume from. **Changing this value recreates the resource.**
@@ -108,6 +110,8 @@ func GetCloudStorageBlockVolume(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudStorageBlockVolume resources.
 type cloudStorageBlockVolumeState struct {
+	// Availability zone where the volume will be created
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Computed hash representing the current target specification value.
 	Checksum *string `pulumi:"checksum"`
 	// Source to create the volume from. **Changing this value recreates the resource.**
@@ -135,6 +139,8 @@ type cloudStorageBlockVolumeState struct {
 }
 
 type CloudStorageBlockVolumeState struct {
+	// Availability zone where the volume will be created
+	AvailabilityZone pulumi.StringPtrInput
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringPtrInput
 	// Source to create the volume from. **Changing this value recreates the resource.**
@@ -166,6 +172,8 @@ func (CloudStorageBlockVolumeState) ElementType() reflect.Type {
 }
 
 type cloudStorageBlockVolumeArgs struct {
+	// Availability zone where the volume will be created
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Source to create the volume from. **Changing this value recreates the resource.**
 	CreateFrom *CloudStorageBlockVolumeCreateFrom `pulumi:"createFrom"`
 	// Encryption configuration for the volume.
@@ -184,6 +192,8 @@ type cloudStorageBlockVolumeArgs struct {
 
 // The set of arguments for constructing a CloudStorageBlockVolume resource.
 type CloudStorageBlockVolumeArgs struct {
+	// Availability zone where the volume will be created
+	AvailabilityZone pulumi.StringPtrInput
 	// Source to create the volume from. **Changing this value recreates the resource.**
 	CreateFrom CloudStorageBlockVolumeCreateFromPtrInput
 	// Encryption configuration for the volume.
@@ -285,6 +295,11 @@ func (o CloudStorageBlockVolumeOutput) ToCloudStorageBlockVolumeOutput() CloudSt
 
 func (o CloudStorageBlockVolumeOutput) ToCloudStorageBlockVolumeOutputWithContext(ctx context.Context) CloudStorageBlockVolumeOutput {
 	return o
+}
+
+// Availability zone where the volume will be created
+func (o CloudStorageBlockVolumeOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolume) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Computed hash representing the current target specification value.

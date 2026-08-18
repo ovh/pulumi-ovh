@@ -1761,6 +1761,2427 @@ func (o CloudGatewayExternalGatewayPtrOutput) Model() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CloudInstanceCurrentState struct {
+	// Observed flavor of the instance, with its full sizing details:
+	Flavor *CloudInstanceCurrentStateFlavor `pulumi:"flavor"`
+	// Instance (placement) group the instance belongs to, null when it is not part of any group:
+	Group *CloudInstanceCurrentStateGroup `pulumi:"group"`
+	// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+	HostId *string `pulumi:"hostId"`
+	// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+	Image *CloudInstanceCurrentStateImage `pulumi:"image"`
+	// Observed region and availability zone where the instance is provisioned:
+	Location *CloudInstanceCurrentStateLocation `pulumi:"location"`
+	// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+	Locked *bool `pulumi:"locked"`
+	// Instance name.
+	Name *string `pulumi:"name"`
+	// Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+	Networks []CloudInstanceCurrentStateNetwork `pulumi:"networks"`
+	// Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+	PowerState *string `pulumi:"powerState"`
+	// Identifier of the Public Cloud project the instance belongs to.
+	ProjectId *string `pulumi:"projectId"`
+	// Security groups currently attached to the instance's ports:
+	SecurityGroups []CloudInstanceCurrentStateSecurityGroup `pulumi:"securityGroups"`
+	// Filesystem shares attached to the instance. Each entry supports:
+	Shares []CloudInstanceCurrentStateShare `pulumi:"shares"`
+	// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
+	SshKeyName *string `pulumi:"sshKeyName"`
+	// Identifier of the OpenStack user that owns the instance.
+	UserId *string `pulumi:"userId"`
+	// Observed block volumes attached to the instance:
+	Volumes []CloudInstanceCurrentStateVolume `pulumi:"volumes"`
+}
+
+// CloudInstanceCurrentStateInput is an input type that accepts CloudInstanceCurrentStateArgs and CloudInstanceCurrentStateOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateInput` via:
+//
+//	CloudInstanceCurrentStateArgs{...}
+type CloudInstanceCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateOutput() CloudInstanceCurrentStateOutput
+	ToCloudInstanceCurrentStateOutputWithContext(context.Context) CloudInstanceCurrentStateOutput
+}
+
+type CloudInstanceCurrentStateArgs struct {
+	// Observed flavor of the instance, with its full sizing details:
+	Flavor CloudInstanceCurrentStateFlavorPtrInput `pulumi:"flavor"`
+	// Instance (placement) group the instance belongs to, null when it is not part of any group:
+	Group CloudInstanceCurrentStateGroupPtrInput `pulumi:"group"`
+	// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+	HostId pulumi.StringPtrInput `pulumi:"hostId"`
+	// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+	Image CloudInstanceCurrentStateImagePtrInput `pulumi:"image"`
+	// Observed region and availability zone where the instance is provisioned:
+	Location CloudInstanceCurrentStateLocationPtrInput `pulumi:"location"`
+	// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+	Locked pulumi.BoolPtrInput `pulumi:"locked"`
+	// Instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+	Networks CloudInstanceCurrentStateNetworkArrayInput `pulumi:"networks"`
+	// Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+	PowerState pulumi.StringPtrInput `pulumi:"powerState"`
+	// Identifier of the Public Cloud project the instance belongs to.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Security groups currently attached to the instance's ports:
+	SecurityGroups CloudInstanceCurrentStateSecurityGroupArrayInput `pulumi:"securityGroups"`
+	// Filesystem shares attached to the instance. Each entry supports:
+	Shares CloudInstanceCurrentStateShareArrayInput `pulumi:"shares"`
+	// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
+	SshKeyName pulumi.StringPtrInput `pulumi:"sshKeyName"`
+	// Identifier of the OpenStack user that owns the instance.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+	// Observed block volumes attached to the instance:
+	Volumes CloudInstanceCurrentStateVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (CloudInstanceCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentState)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateArgs) ToCloudInstanceCurrentStateOutput() CloudInstanceCurrentStateOutput {
+	return i.ToCloudInstanceCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateArgs) ToCloudInstanceCurrentStateOutputWithContext(ctx context.Context) CloudInstanceCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateOutput)
+}
+
+func (i CloudInstanceCurrentStateArgs) ToCloudInstanceCurrentStatePtrOutput() CloudInstanceCurrentStatePtrOutput {
+	return i.ToCloudInstanceCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateArgs) ToCloudInstanceCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateOutput).ToCloudInstanceCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudInstanceCurrentStatePtrInput is an input type that accepts CloudInstanceCurrentStateArgs, CloudInstanceCurrentStatePtr and CloudInstanceCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStatePtrInput` via:
+//
+//	        CloudInstanceCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStatePtrOutput() CloudInstanceCurrentStatePtrOutput
+	ToCloudInstanceCurrentStatePtrOutputWithContext(context.Context) CloudInstanceCurrentStatePtrOutput
+}
+
+type cloudInstanceCurrentStatePtrType CloudInstanceCurrentStateArgs
+
+func CloudInstanceCurrentStatePtr(v *CloudInstanceCurrentStateArgs) CloudInstanceCurrentStatePtrInput {
+	return (*cloudInstanceCurrentStatePtrType)(v)
+}
+
+func (*cloudInstanceCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentState)(nil)).Elem()
+}
+
+func (i *cloudInstanceCurrentStatePtrType) ToCloudInstanceCurrentStatePtrOutput() CloudInstanceCurrentStatePtrOutput {
+	return i.ToCloudInstanceCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceCurrentStatePtrType) ToCloudInstanceCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStatePtrOutput)
+}
+
+type CloudInstanceCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentState)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateOutput) ToCloudInstanceCurrentStateOutput() CloudInstanceCurrentStateOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateOutput) ToCloudInstanceCurrentStateOutputWithContext(ctx context.Context) CloudInstanceCurrentStateOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateOutput) ToCloudInstanceCurrentStatePtrOutput() CloudInstanceCurrentStatePtrOutput {
+	return o.ToCloudInstanceCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceCurrentStateOutput) ToCloudInstanceCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceCurrentState) *CloudInstanceCurrentState {
+		return &v
+	}).(CloudInstanceCurrentStatePtrOutput)
+}
+
+// Observed flavor of the instance, with its full sizing details:
+func (o CloudInstanceCurrentStateOutput) Flavor() CloudInstanceCurrentStateFlavorPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *CloudInstanceCurrentStateFlavor { return v.Flavor }).(CloudInstanceCurrentStateFlavorPtrOutput)
+}
+
+// Instance (placement) group the instance belongs to, null when it is not part of any group:
+func (o CloudInstanceCurrentStateOutput) Group() CloudInstanceCurrentStateGroupPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *CloudInstanceCurrentStateGroup { return v.Group }).(CloudInstanceCurrentStateGroupPtrOutput)
+}
+
+// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+func (o CloudInstanceCurrentStateOutput) HostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *string { return v.HostId }).(pulumi.StringPtrOutput)
+}
+
+// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+func (o CloudInstanceCurrentStateOutput) Image() CloudInstanceCurrentStateImagePtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *CloudInstanceCurrentStateImage { return v.Image }).(CloudInstanceCurrentStateImagePtrOutput)
+}
+
+// Observed region and availability zone where the instance is provisioned:
+func (o CloudInstanceCurrentStateOutput) Location() CloudInstanceCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *CloudInstanceCurrentStateLocation { return v.Location }).(CloudInstanceCurrentStateLocationPtrOutput)
+}
+
+// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+func (o CloudInstanceCurrentStateOutput) Locked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *bool { return v.Locked }).(pulumi.BoolPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+func (o CloudInstanceCurrentStateOutput) Networks() CloudInstanceCurrentStateNetworkArrayOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) []CloudInstanceCurrentStateNetwork { return v.Networks }).(CloudInstanceCurrentStateNetworkArrayOutput)
+}
+
+// Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+func (o CloudInstanceCurrentStateOutput) PowerState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *string { return v.PowerState }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Public Cloud project the instance belongs to.
+func (o CloudInstanceCurrentStateOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Security groups currently attached to the instance's ports:
+func (o CloudInstanceCurrentStateOutput) SecurityGroups() CloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) []CloudInstanceCurrentStateSecurityGroup { return v.SecurityGroups }).(CloudInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+// Filesystem shares attached to the instance. Each entry supports:
+func (o CloudInstanceCurrentStateOutput) Shares() CloudInstanceCurrentStateShareArrayOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) []CloudInstanceCurrentStateShare { return v.Shares }).(CloudInstanceCurrentStateShareArrayOutput)
+}
+
+// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
+func (o CloudInstanceCurrentStateOutput) SshKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *string { return v.SshKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the OpenStack user that owns the instance.
+func (o CloudInstanceCurrentStateOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+// Observed block volumes attached to the instance:
+func (o CloudInstanceCurrentStateOutput) Volumes() CloudInstanceCurrentStateVolumeArrayOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentState) []CloudInstanceCurrentStateVolume { return v.Volumes }).(CloudInstanceCurrentStateVolumeArrayOutput)
+}
+
+type CloudInstanceCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentState)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStatePtrOutput) ToCloudInstanceCurrentStatePtrOutput() CloudInstanceCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStatePtrOutput) ToCloudInstanceCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStatePtrOutput) Elem() CloudInstanceCurrentStateOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) CloudInstanceCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceCurrentState
+		return ret
+	}).(CloudInstanceCurrentStateOutput)
+}
+
+// Observed flavor of the instance, with its full sizing details:
+func (o CloudInstanceCurrentStatePtrOutput) Flavor() CloudInstanceCurrentStateFlavorPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *CloudInstanceCurrentStateFlavor {
+		if v == nil {
+			return nil
+		}
+		return v.Flavor
+	}).(CloudInstanceCurrentStateFlavorPtrOutput)
+}
+
+// Instance (placement) group the instance belongs to, null when it is not part of any group:
+func (o CloudInstanceCurrentStatePtrOutput) Group() CloudInstanceCurrentStateGroupPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *CloudInstanceCurrentStateGroup {
+		if v == nil {
+			return nil
+		}
+		return v.Group
+	}).(CloudInstanceCurrentStateGroupPtrOutput)
+}
+
+// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+func (o CloudInstanceCurrentStatePtrOutput) HostId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+func (o CloudInstanceCurrentStatePtrOutput) Image() CloudInstanceCurrentStateImagePtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *CloudInstanceCurrentStateImage {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(CloudInstanceCurrentStateImagePtrOutput)
+}
+
+// Observed region and availability zone where the instance is provisioned:
+func (o CloudInstanceCurrentStatePtrOutput) Location() CloudInstanceCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *CloudInstanceCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudInstanceCurrentStateLocationPtrOutput)
+}
+
+// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+func (o CloudInstanceCurrentStatePtrOutput) Locked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Locked
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+func (o CloudInstanceCurrentStatePtrOutput) Networks() CloudInstanceCurrentStateNetworkArrayOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) []CloudInstanceCurrentStateNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(CloudInstanceCurrentStateNetworkArrayOutput)
+}
+
+// Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+func (o CloudInstanceCurrentStatePtrOutput) PowerState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PowerState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the Public Cloud project the instance belongs to.
+func (o CloudInstanceCurrentStatePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Security groups currently attached to the instance's ports:
+func (o CloudInstanceCurrentStatePtrOutput) SecurityGroups() CloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) []CloudInstanceCurrentStateSecurityGroup {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroups
+	}).(CloudInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+// Filesystem shares attached to the instance. Each entry supports:
+func (o CloudInstanceCurrentStatePtrOutput) Shares() CloudInstanceCurrentStateShareArrayOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) []CloudInstanceCurrentStateShare {
+		if v == nil {
+			return nil
+		}
+		return v.Shares
+	}).(CloudInstanceCurrentStateShareArrayOutput)
+}
+
+// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
+func (o CloudInstanceCurrentStatePtrOutput) SshKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the OpenStack user that owns the instance.
+func (o CloudInstanceCurrentStatePtrOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Observed block volumes attached to the instance:
+func (o CloudInstanceCurrentStatePtrOutput) Volumes() CloudInstanceCurrentStateVolumeArrayOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentState) []CloudInstanceCurrentStateVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(CloudInstanceCurrentStateVolumeArrayOutput)
+}
+
+type CloudInstanceCurrentStateFlavor struct {
+	// Size of the flavor's local root disk, in GB.
+	Disk *int `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk, in GB.
+	Ephemeral *int `pulumi:"ephemeral"`
+	// Identifier of the instance (placement) group.
+	Id *string `pulumi:"id"`
+	// Instance name.
+	Name *string `pulumi:"name"`
+	// Amount of RAM provided by the flavor, in MB.
+	Ram *int `pulumi:"ram"`
+	// Size of the flavor's swap space, in MB.
+	Swap *int `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus *int `pulumi:"vcpus"`
+}
+
+// CloudInstanceCurrentStateFlavorInput is an input type that accepts CloudInstanceCurrentStateFlavorArgs and CloudInstanceCurrentStateFlavorOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateFlavorInput` via:
+//
+//	CloudInstanceCurrentStateFlavorArgs{...}
+type CloudInstanceCurrentStateFlavorInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateFlavorOutput() CloudInstanceCurrentStateFlavorOutput
+	ToCloudInstanceCurrentStateFlavorOutputWithContext(context.Context) CloudInstanceCurrentStateFlavorOutput
+}
+
+type CloudInstanceCurrentStateFlavorArgs struct {
+	// Size of the flavor's local root disk, in GB.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk, in GB.
+	Ephemeral pulumi.IntPtrInput `pulumi:"ephemeral"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Amount of RAM provided by the flavor, in MB.
+	Ram pulumi.IntPtrInput `pulumi:"ram"`
+	// Size of the flavor's swap space, in MB.
+	Swap pulumi.IntPtrInput `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
+}
+
+func (CloudInstanceCurrentStateFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateFlavorArgs) ToCloudInstanceCurrentStateFlavorOutput() CloudInstanceCurrentStateFlavorOutput {
+	return i.ToCloudInstanceCurrentStateFlavorOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateFlavorArgs) ToCloudInstanceCurrentStateFlavorOutputWithContext(ctx context.Context) CloudInstanceCurrentStateFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateFlavorOutput)
+}
+
+func (i CloudInstanceCurrentStateFlavorArgs) ToCloudInstanceCurrentStateFlavorPtrOutput() CloudInstanceCurrentStateFlavorPtrOutput {
+	return i.ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateFlavorArgs) ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateFlavorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateFlavorOutput).ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(ctx)
+}
+
+// CloudInstanceCurrentStateFlavorPtrInput is an input type that accepts CloudInstanceCurrentStateFlavorArgs, CloudInstanceCurrentStateFlavorPtr and CloudInstanceCurrentStateFlavorPtrOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateFlavorPtrInput` via:
+//
+//	        CloudInstanceCurrentStateFlavorArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceCurrentStateFlavorPtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateFlavorPtrOutput() CloudInstanceCurrentStateFlavorPtrOutput
+	ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(context.Context) CloudInstanceCurrentStateFlavorPtrOutput
+}
+
+type cloudInstanceCurrentStateFlavorPtrType CloudInstanceCurrentStateFlavorArgs
+
+func CloudInstanceCurrentStateFlavorPtr(v *CloudInstanceCurrentStateFlavorArgs) CloudInstanceCurrentStateFlavorPtrInput {
+	return (*cloudInstanceCurrentStateFlavorPtrType)(v)
+}
+
+func (*cloudInstanceCurrentStateFlavorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i *cloudInstanceCurrentStateFlavorPtrType) ToCloudInstanceCurrentStateFlavorPtrOutput() CloudInstanceCurrentStateFlavorPtrOutput {
+	return i.ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceCurrentStateFlavorPtrType) ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateFlavorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateFlavorPtrOutput)
+}
+
+type CloudInstanceCurrentStateFlavorOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateFlavorOutput) ToCloudInstanceCurrentStateFlavorOutput() CloudInstanceCurrentStateFlavorOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateFlavorOutput) ToCloudInstanceCurrentStateFlavorOutputWithContext(ctx context.Context) CloudInstanceCurrentStateFlavorOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateFlavorOutput) ToCloudInstanceCurrentStateFlavorPtrOutput() CloudInstanceCurrentStateFlavorPtrOutput {
+	return o.ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceCurrentStateFlavorOutput) ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateFlavorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceCurrentStateFlavor) *CloudInstanceCurrentStateFlavor {
+		return &v
+	}).(CloudInstanceCurrentStateFlavorPtrOutput)
+}
+
+// Size of the flavor's local root disk, in GB.
+func (o CloudInstanceCurrentStateFlavorOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Size of the flavor's ephemeral disk, in GB.
+func (o CloudInstanceCurrentStateFlavorOutput) Ephemeral() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *int { return v.Ephemeral }).(pulumi.IntPtrOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateFlavorOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStateFlavorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Amount of RAM provided by the flavor, in MB.
+func (o CloudInstanceCurrentStateFlavorOutput) Ram() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *int { return v.Ram }).(pulumi.IntPtrOutput)
+}
+
+// Size of the flavor's swap space, in MB.
+func (o CloudInstanceCurrentStateFlavorOutput) Swap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *int { return v.Swap }).(pulumi.IntPtrOutput)
+}
+
+// Number of virtual CPUs provided by the flavor.
+func (o CloudInstanceCurrentStateFlavorOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateFlavor) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
+}
+
+type CloudInstanceCurrentStateFlavorPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateFlavorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateFlavorPtrOutput) ToCloudInstanceCurrentStateFlavorPtrOutput() CloudInstanceCurrentStateFlavorPtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateFlavorPtrOutput) ToCloudInstanceCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateFlavorPtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Elem() CloudInstanceCurrentStateFlavorOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) CloudInstanceCurrentStateFlavor {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceCurrentStateFlavor
+		return ret
+	}).(CloudInstanceCurrentStateFlavorOutput)
+}
+
+// Size of the flavor's local root disk, in GB.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size of the flavor's ephemeral disk, in GB.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Ephemeral() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ephemeral
+	}).(pulumi.IntPtrOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Amount of RAM provided by the flavor, in MB.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Ram() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ram
+	}).(pulumi.IntPtrOutput)
+}
+
+// Size of the flavor's swap space, in MB.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Swap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Swap
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of virtual CPUs provided by the flavor.
+func (o CloudInstanceCurrentStateFlavorPtrOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateFlavor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vcpus
+	}).(pulumi.IntPtrOutput)
+}
+
+type CloudInstanceCurrentStateGroup struct {
+	// Identifier of the instance (placement) group.
+	Id *string `pulumi:"id"`
+}
+
+// CloudInstanceCurrentStateGroupInput is an input type that accepts CloudInstanceCurrentStateGroupArgs and CloudInstanceCurrentStateGroupOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateGroupInput` via:
+//
+//	CloudInstanceCurrentStateGroupArgs{...}
+type CloudInstanceCurrentStateGroupInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateGroupOutput() CloudInstanceCurrentStateGroupOutput
+	ToCloudInstanceCurrentStateGroupOutputWithContext(context.Context) CloudInstanceCurrentStateGroupOutput
+}
+
+type CloudInstanceCurrentStateGroupArgs struct {
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (CloudInstanceCurrentStateGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateGroupArgs) ToCloudInstanceCurrentStateGroupOutput() CloudInstanceCurrentStateGroupOutput {
+	return i.ToCloudInstanceCurrentStateGroupOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateGroupArgs) ToCloudInstanceCurrentStateGroupOutputWithContext(ctx context.Context) CloudInstanceCurrentStateGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateGroupOutput)
+}
+
+func (i CloudInstanceCurrentStateGroupArgs) ToCloudInstanceCurrentStateGroupPtrOutput() CloudInstanceCurrentStateGroupPtrOutput {
+	return i.ToCloudInstanceCurrentStateGroupPtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateGroupArgs) ToCloudInstanceCurrentStateGroupPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateGroupOutput).ToCloudInstanceCurrentStateGroupPtrOutputWithContext(ctx)
+}
+
+// CloudInstanceCurrentStateGroupPtrInput is an input type that accepts CloudInstanceCurrentStateGroupArgs, CloudInstanceCurrentStateGroupPtr and CloudInstanceCurrentStateGroupPtrOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateGroupPtrInput` via:
+//
+//	        CloudInstanceCurrentStateGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceCurrentStateGroupPtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateGroupPtrOutput() CloudInstanceCurrentStateGroupPtrOutput
+	ToCloudInstanceCurrentStateGroupPtrOutputWithContext(context.Context) CloudInstanceCurrentStateGroupPtrOutput
+}
+
+type cloudInstanceCurrentStateGroupPtrType CloudInstanceCurrentStateGroupArgs
+
+func CloudInstanceCurrentStateGroupPtr(v *CloudInstanceCurrentStateGroupArgs) CloudInstanceCurrentStateGroupPtrInput {
+	return (*cloudInstanceCurrentStateGroupPtrType)(v)
+}
+
+func (*cloudInstanceCurrentStateGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (i *cloudInstanceCurrentStateGroupPtrType) ToCloudInstanceCurrentStateGroupPtrOutput() CloudInstanceCurrentStateGroupPtrOutput {
+	return i.ToCloudInstanceCurrentStateGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceCurrentStateGroupPtrType) ToCloudInstanceCurrentStateGroupPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateGroupPtrOutput)
+}
+
+type CloudInstanceCurrentStateGroupOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateGroupOutput) ToCloudInstanceCurrentStateGroupOutput() CloudInstanceCurrentStateGroupOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateGroupOutput) ToCloudInstanceCurrentStateGroupOutputWithContext(ctx context.Context) CloudInstanceCurrentStateGroupOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateGroupOutput) ToCloudInstanceCurrentStateGroupPtrOutput() CloudInstanceCurrentStateGroupPtrOutput {
+	return o.ToCloudInstanceCurrentStateGroupPtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceCurrentStateGroupOutput) ToCloudInstanceCurrentStateGroupPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceCurrentStateGroup) *CloudInstanceCurrentStateGroup {
+		return &v
+	}).(CloudInstanceCurrentStateGroupPtrOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateGroupPtrOutput) ToCloudInstanceCurrentStateGroupPtrOutput() CloudInstanceCurrentStateGroupPtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateGroupPtrOutput) ToCloudInstanceCurrentStateGroupPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateGroupPtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateGroupPtrOutput) Elem() CloudInstanceCurrentStateGroupOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateGroup) CloudInstanceCurrentStateGroup {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceCurrentStateGroup
+		return ret
+	}).(CloudInstanceCurrentStateGroupOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateImage struct {
+	// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+	Deprecated *bool `pulumi:"deprecated"`
+	// Identifier of the instance (placement) group.
+	Id *string `pulumi:"id"`
+	// Instance name.
+	Name *string `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size *int `pulumi:"size"`
+	// Lifecycle status of the image as reported by Glance.
+	Status *string `pulumi:"status"`
+}
+
+// CloudInstanceCurrentStateImageInput is an input type that accepts CloudInstanceCurrentStateImageArgs and CloudInstanceCurrentStateImageOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateImageInput` via:
+//
+//	CloudInstanceCurrentStateImageArgs{...}
+type CloudInstanceCurrentStateImageInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateImageOutput() CloudInstanceCurrentStateImageOutput
+	ToCloudInstanceCurrentStateImageOutputWithContext(context.Context) CloudInstanceCurrentStateImageOutput
+}
+
+type CloudInstanceCurrentStateImageArgs struct {
+	// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+	Deprecated pulumi.BoolPtrInput `pulumi:"deprecated"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// Lifecycle status of the image as reported by Glance.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (CloudInstanceCurrentStateImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateImageArgs) ToCloudInstanceCurrentStateImageOutput() CloudInstanceCurrentStateImageOutput {
+	return i.ToCloudInstanceCurrentStateImageOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateImageArgs) ToCloudInstanceCurrentStateImageOutputWithContext(ctx context.Context) CloudInstanceCurrentStateImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateImageOutput)
+}
+
+func (i CloudInstanceCurrentStateImageArgs) ToCloudInstanceCurrentStateImagePtrOutput() CloudInstanceCurrentStateImagePtrOutput {
+	return i.ToCloudInstanceCurrentStateImagePtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateImageArgs) ToCloudInstanceCurrentStateImagePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateImageOutput).ToCloudInstanceCurrentStateImagePtrOutputWithContext(ctx)
+}
+
+// CloudInstanceCurrentStateImagePtrInput is an input type that accepts CloudInstanceCurrentStateImageArgs, CloudInstanceCurrentStateImagePtr and CloudInstanceCurrentStateImagePtrOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateImagePtrInput` via:
+//
+//	        CloudInstanceCurrentStateImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceCurrentStateImagePtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateImagePtrOutput() CloudInstanceCurrentStateImagePtrOutput
+	ToCloudInstanceCurrentStateImagePtrOutputWithContext(context.Context) CloudInstanceCurrentStateImagePtrOutput
+}
+
+type cloudInstanceCurrentStateImagePtrType CloudInstanceCurrentStateImageArgs
+
+func CloudInstanceCurrentStateImagePtr(v *CloudInstanceCurrentStateImageArgs) CloudInstanceCurrentStateImagePtrInput {
+	return (*cloudInstanceCurrentStateImagePtrType)(v)
+}
+
+func (*cloudInstanceCurrentStateImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (i *cloudInstanceCurrentStateImagePtrType) ToCloudInstanceCurrentStateImagePtrOutput() CloudInstanceCurrentStateImagePtrOutput {
+	return i.ToCloudInstanceCurrentStateImagePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceCurrentStateImagePtrType) ToCloudInstanceCurrentStateImagePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateImagePtrOutput)
+}
+
+type CloudInstanceCurrentStateImageOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateImageOutput) ToCloudInstanceCurrentStateImageOutput() CloudInstanceCurrentStateImageOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateImageOutput) ToCloudInstanceCurrentStateImageOutputWithContext(ctx context.Context) CloudInstanceCurrentStateImageOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateImageOutput) ToCloudInstanceCurrentStateImagePtrOutput() CloudInstanceCurrentStateImagePtrOutput {
+	return o.ToCloudInstanceCurrentStateImagePtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceCurrentStateImageOutput) ToCloudInstanceCurrentStateImagePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceCurrentStateImage) *CloudInstanceCurrentStateImage {
+		return &v
+	}).(CloudInstanceCurrentStateImagePtrOutput)
+}
+
+// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+func (o CloudInstanceCurrentStateImageOutput) Deprecated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateImage) *bool { return v.Deprecated }).(pulumi.BoolPtrOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateImageOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateImage) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStateImageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateImage) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o CloudInstanceCurrentStateImageOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateImage) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// Lifecycle status of the image as reported by Glance.
+func (o CloudInstanceCurrentStateImageOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateImage) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateImagePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateImagePtrOutput) ToCloudInstanceCurrentStateImagePtrOutput() CloudInstanceCurrentStateImagePtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateImagePtrOutput) ToCloudInstanceCurrentStateImagePtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateImagePtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateImagePtrOutput) Elem() CloudInstanceCurrentStateImageOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateImage) CloudInstanceCurrentStateImage {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceCurrentStateImage
+		return ret
+	}).(CloudInstanceCurrentStateImageOutput)
+}
+
+// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+func (o CloudInstanceCurrentStateImagePtrOutput) Deprecated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateImage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Deprecated
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateImagePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStateImagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o CloudInstanceCurrentStateImagePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateImage) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+// Lifecycle status of the image as reported by Glance.
+func (o CloudInstanceCurrentStateImagePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateLocation struct {
+	// Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Region where the instance is created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudInstanceCurrentStateLocationInput is an input type that accepts CloudInstanceCurrentStateLocationArgs and CloudInstanceCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateLocationInput` via:
+//
+//	CloudInstanceCurrentStateLocationArgs{...}
+type CloudInstanceCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateLocationOutput() CloudInstanceCurrentStateLocationOutput
+	ToCloudInstanceCurrentStateLocationOutputWithContext(context.Context) CloudInstanceCurrentStateLocationOutput
+}
+
+type CloudInstanceCurrentStateLocationArgs struct {
+	// Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Region where the instance is created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudInstanceCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateLocationArgs) ToCloudInstanceCurrentStateLocationOutput() CloudInstanceCurrentStateLocationOutput {
+	return i.ToCloudInstanceCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateLocationArgs) ToCloudInstanceCurrentStateLocationOutputWithContext(ctx context.Context) CloudInstanceCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateLocationOutput)
+}
+
+func (i CloudInstanceCurrentStateLocationArgs) ToCloudInstanceCurrentStateLocationPtrOutput() CloudInstanceCurrentStateLocationPtrOutput {
+	return i.ToCloudInstanceCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateLocationArgs) ToCloudInstanceCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateLocationOutput).ToCloudInstanceCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudInstanceCurrentStateLocationPtrInput is an input type that accepts CloudInstanceCurrentStateLocationArgs, CloudInstanceCurrentStateLocationPtr and CloudInstanceCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateLocationPtrInput` via:
+//
+//	        CloudInstanceCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateLocationPtrOutput() CloudInstanceCurrentStateLocationPtrOutput
+	ToCloudInstanceCurrentStateLocationPtrOutputWithContext(context.Context) CloudInstanceCurrentStateLocationPtrOutput
+}
+
+type cloudInstanceCurrentStateLocationPtrType CloudInstanceCurrentStateLocationArgs
+
+func CloudInstanceCurrentStateLocationPtr(v *CloudInstanceCurrentStateLocationArgs) CloudInstanceCurrentStateLocationPtrInput {
+	return (*cloudInstanceCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudInstanceCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudInstanceCurrentStateLocationPtrType) ToCloudInstanceCurrentStateLocationPtrOutput() CloudInstanceCurrentStateLocationPtrOutput {
+	return i.ToCloudInstanceCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceCurrentStateLocationPtrType) ToCloudInstanceCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateLocationPtrOutput)
+}
+
+type CloudInstanceCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateLocationOutput) ToCloudInstanceCurrentStateLocationOutput() CloudInstanceCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateLocationOutput) ToCloudInstanceCurrentStateLocationOutputWithContext(ctx context.Context) CloudInstanceCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateLocationOutput) ToCloudInstanceCurrentStateLocationPtrOutput() CloudInstanceCurrentStateLocationPtrOutput {
+	return o.ToCloudInstanceCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceCurrentStateLocationOutput) ToCloudInstanceCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceCurrentStateLocation) *CloudInstanceCurrentStateLocation {
+		return &v
+	}).(CloudInstanceCurrentStateLocationPtrOutput)
+}
+
+// Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+func (o CloudInstanceCurrentStateLocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateLocation) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Region where the instance is created. **Changing this value recreates the resource.**
+func (o CloudInstanceCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateLocationPtrOutput) ToCloudInstanceCurrentStateLocationPtrOutput() CloudInstanceCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateLocationPtrOutput) ToCloudInstanceCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateLocationPtrOutput) Elem() CloudInstanceCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateLocation) CloudInstanceCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceCurrentStateLocation
+		return ret
+	}).(CloudInstanceCurrentStateLocationOutput)
+}
+
+// Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+func (o CloudInstanceCurrentStateLocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region where the instance is created. **Changing this value recreates the resource.**
+func (o CloudInstanceCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateNetwork struct {
+	// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+	Addresses []CloudInstanceCurrentStateNetworkAddress `pulumi:"addresses"`
+	// Identifier of the gateway providing egress for this interface, null when none applies.
+	GatewayId *string `pulumi:"gatewayId"`
+	// Identifier of the instance (placement) group.
+	Id *string `pulumi:"id"`
+	// Subnet ID within the private network. Required with `networkId`.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// CloudInstanceCurrentStateNetworkInput is an input type that accepts CloudInstanceCurrentStateNetworkArgs and CloudInstanceCurrentStateNetworkOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateNetworkInput` via:
+//
+//	CloudInstanceCurrentStateNetworkArgs{...}
+type CloudInstanceCurrentStateNetworkInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateNetworkOutput() CloudInstanceCurrentStateNetworkOutput
+	ToCloudInstanceCurrentStateNetworkOutputWithContext(context.Context) CloudInstanceCurrentStateNetworkOutput
+}
+
+type CloudInstanceCurrentStateNetworkArgs struct {
+	// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+	Addresses CloudInstanceCurrentStateNetworkAddressArrayInput `pulumi:"addresses"`
+	// Identifier of the gateway providing egress for this interface, null when none applies.
+	GatewayId pulumi.StringPtrInput `pulumi:"gatewayId"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Subnet ID within the private network. Required with `networkId`.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (CloudInstanceCurrentStateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateNetworkArgs) ToCloudInstanceCurrentStateNetworkOutput() CloudInstanceCurrentStateNetworkOutput {
+	return i.ToCloudInstanceCurrentStateNetworkOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateNetworkArgs) ToCloudInstanceCurrentStateNetworkOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateNetworkOutput)
+}
+
+// CloudInstanceCurrentStateNetworkArrayInput is an input type that accepts CloudInstanceCurrentStateNetworkArray and CloudInstanceCurrentStateNetworkArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateNetworkArrayInput` via:
+//
+//	CloudInstanceCurrentStateNetworkArray{ CloudInstanceCurrentStateNetworkArgs{...} }
+type CloudInstanceCurrentStateNetworkArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateNetworkArrayOutput() CloudInstanceCurrentStateNetworkArrayOutput
+	ToCloudInstanceCurrentStateNetworkArrayOutputWithContext(context.Context) CloudInstanceCurrentStateNetworkArrayOutput
+}
+
+type CloudInstanceCurrentStateNetworkArray []CloudInstanceCurrentStateNetworkInput
+
+func (CloudInstanceCurrentStateNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateNetworkArray) ToCloudInstanceCurrentStateNetworkArrayOutput() CloudInstanceCurrentStateNetworkArrayOutput {
+	return i.ToCloudInstanceCurrentStateNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateNetworkArray) ToCloudInstanceCurrentStateNetworkArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateNetworkArrayOutput)
+}
+
+type CloudInstanceCurrentStateNetworkOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateNetworkOutput) ToCloudInstanceCurrentStateNetworkOutput() CloudInstanceCurrentStateNetworkOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateNetworkOutput) ToCloudInstanceCurrentStateNetworkOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkOutput {
+	return o
+}
+
+// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+func (o CloudInstanceCurrentStateNetworkOutput) Addresses() CloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetwork) []CloudInstanceCurrentStateNetworkAddress { return v.Addresses }).(CloudInstanceCurrentStateNetworkAddressArrayOutput)
+}
+
+// Identifier of the gateway providing egress for this interface, null when none applies.
+func (o CloudInstanceCurrentStateNetworkOutput) GatewayId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetwork) *string { return v.GatewayId }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateNetworkOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Subnet ID within the private network. Required with `networkId`.
+func (o CloudInstanceCurrentStateNetworkOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetwork) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateNetworkArrayOutput) ToCloudInstanceCurrentStateNetworkArrayOutput() CloudInstanceCurrentStateNetworkArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateNetworkArrayOutput) ToCloudInstanceCurrentStateNetworkArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateNetworkArrayOutput) Index(i pulumi.IntInput) CloudInstanceCurrentStateNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceCurrentStateNetwork {
+		return vs[0].([]CloudInstanceCurrentStateNetwork)[vs[1].(int)]
+	}).(CloudInstanceCurrentStateNetworkOutput)
+}
+
+type CloudInstanceCurrentStateNetworkAddress struct {
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip *string `pulumi:"ip"`
+	// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+	Mac *string `pulumi:"mac"`
+	// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+	Type *string `pulumi:"type"`
+	// IP version of the address (4 for IPv4, 6 for IPv6).
+	Version *int `pulumi:"version"`
+}
+
+// CloudInstanceCurrentStateNetworkAddressInput is an input type that accepts CloudInstanceCurrentStateNetworkAddressArgs and CloudInstanceCurrentStateNetworkAddressOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateNetworkAddressInput` via:
+//
+//	CloudInstanceCurrentStateNetworkAddressArgs{...}
+type CloudInstanceCurrentStateNetworkAddressInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateNetworkAddressOutput() CloudInstanceCurrentStateNetworkAddressOutput
+	ToCloudInstanceCurrentStateNetworkAddressOutputWithContext(context.Context) CloudInstanceCurrentStateNetworkAddressOutput
+}
+
+type CloudInstanceCurrentStateNetworkAddressArgs struct {
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+	Mac pulumi.StringPtrInput `pulumi:"mac"`
+	// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// IP version of the address (4 for IPv4, 6 for IPv6).
+	Version pulumi.IntPtrInput `pulumi:"version"`
+}
+
+func (CloudInstanceCurrentStateNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateNetworkAddressArgs) ToCloudInstanceCurrentStateNetworkAddressOutput() CloudInstanceCurrentStateNetworkAddressOutput {
+	return i.ToCloudInstanceCurrentStateNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateNetworkAddressArgs) ToCloudInstanceCurrentStateNetworkAddressOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateNetworkAddressOutput)
+}
+
+// CloudInstanceCurrentStateNetworkAddressArrayInput is an input type that accepts CloudInstanceCurrentStateNetworkAddressArray and CloudInstanceCurrentStateNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateNetworkAddressArrayInput` via:
+//
+//	CloudInstanceCurrentStateNetworkAddressArray{ CloudInstanceCurrentStateNetworkAddressArgs{...} }
+type CloudInstanceCurrentStateNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateNetworkAddressArrayOutput() CloudInstanceCurrentStateNetworkAddressArrayOutput
+	ToCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(context.Context) CloudInstanceCurrentStateNetworkAddressArrayOutput
+}
+
+type CloudInstanceCurrentStateNetworkAddressArray []CloudInstanceCurrentStateNetworkAddressInput
+
+func (CloudInstanceCurrentStateNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateNetworkAddressArray) ToCloudInstanceCurrentStateNetworkAddressArrayOutput() CloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return i.ToCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateNetworkAddressArray) ToCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateNetworkAddressArrayOutput)
+}
+
+type CloudInstanceCurrentStateNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateNetworkAddressOutput) ToCloudInstanceCurrentStateNetworkAddressOutput() CloudInstanceCurrentStateNetworkAddressOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateNetworkAddressOutput) ToCloudInstanceCurrentStateNetworkAddressOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkAddressOutput {
+	return o
+}
+
+// IP address assigned to the interface (IPv4 or IPv6).
+func (o CloudInstanceCurrentStateNetworkAddressOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetworkAddress) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+func (o CloudInstanceCurrentStateNetworkAddressOutput) Mac() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetworkAddress) *string { return v.Mac }).(pulumi.StringPtrOutput)
+}
+
+// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+func (o CloudInstanceCurrentStateNetworkAddressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetworkAddress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// IP version of the address (4 for IPv4, 6 for IPv6).
+func (o CloudInstanceCurrentStateNetworkAddressOutput) Version() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateNetworkAddress) *int { return v.Version }).(pulumi.IntPtrOutput)
+}
+
+type CloudInstanceCurrentStateNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateNetworkAddressArrayOutput) ToCloudInstanceCurrentStateNetworkAddressArrayOutput() CloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateNetworkAddressArrayOutput) ToCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateNetworkAddressArrayOutput) Index(i pulumi.IntInput) CloudInstanceCurrentStateNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceCurrentStateNetworkAddress {
+		return vs[0].([]CloudInstanceCurrentStateNetworkAddress)[vs[1].(int)]
+	}).(CloudInstanceCurrentStateNetworkAddressOutput)
+}
+
+type CloudInstanceCurrentStateSecurityGroup struct {
+	// Identifier of the instance (placement) group.
+	Id *string `pulumi:"id"`
+}
+
+// CloudInstanceCurrentStateSecurityGroupInput is an input type that accepts CloudInstanceCurrentStateSecurityGroupArgs and CloudInstanceCurrentStateSecurityGroupOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateSecurityGroupInput` via:
+//
+//	CloudInstanceCurrentStateSecurityGroupArgs{...}
+type CloudInstanceCurrentStateSecurityGroupInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateSecurityGroupOutput() CloudInstanceCurrentStateSecurityGroupOutput
+	ToCloudInstanceCurrentStateSecurityGroupOutputWithContext(context.Context) CloudInstanceCurrentStateSecurityGroupOutput
+}
+
+type CloudInstanceCurrentStateSecurityGroupArgs struct {
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (CloudInstanceCurrentStateSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateSecurityGroupArgs) ToCloudInstanceCurrentStateSecurityGroupOutput() CloudInstanceCurrentStateSecurityGroupOutput {
+	return i.ToCloudInstanceCurrentStateSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateSecurityGroupArgs) ToCloudInstanceCurrentStateSecurityGroupOutputWithContext(ctx context.Context) CloudInstanceCurrentStateSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateSecurityGroupOutput)
+}
+
+// CloudInstanceCurrentStateSecurityGroupArrayInput is an input type that accepts CloudInstanceCurrentStateSecurityGroupArray and CloudInstanceCurrentStateSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateSecurityGroupArrayInput` via:
+//
+//	CloudInstanceCurrentStateSecurityGroupArray{ CloudInstanceCurrentStateSecurityGroupArgs{...} }
+type CloudInstanceCurrentStateSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateSecurityGroupArrayOutput() CloudInstanceCurrentStateSecurityGroupArrayOutput
+	ToCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(context.Context) CloudInstanceCurrentStateSecurityGroupArrayOutput
+}
+
+type CloudInstanceCurrentStateSecurityGroupArray []CloudInstanceCurrentStateSecurityGroupInput
+
+func (CloudInstanceCurrentStateSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateSecurityGroupArray) ToCloudInstanceCurrentStateSecurityGroupArrayOutput() CloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return i.ToCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateSecurityGroupArray) ToCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+type CloudInstanceCurrentStateSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateSecurityGroupOutput) ToCloudInstanceCurrentStateSecurityGroupOutput() CloudInstanceCurrentStateSecurityGroupOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateSecurityGroupOutput) ToCloudInstanceCurrentStateSecurityGroupOutputWithContext(ctx context.Context) CloudInstanceCurrentStateSecurityGroupOutput {
+	return o
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateSecurityGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateSecurityGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateSecurityGroupArrayOutput) ToCloudInstanceCurrentStateSecurityGroupArrayOutput() CloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateSecurityGroupArrayOutput) ToCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateSecurityGroupArrayOutput) Index(i pulumi.IntInput) CloudInstanceCurrentStateSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceCurrentStateSecurityGroup {
+		return vs[0].([]CloudInstanceCurrentStateSecurityGroup)[vs[1].(int)]
+	}).(CloudInstanceCurrentStateSecurityGroupOutput)
+}
+
+type CloudInstanceCurrentStateShare struct {
+	// Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+	AccessTo *string `pulumi:"accessTo"`
+	// Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+	Id *string `pulumi:"id"`
+	// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+	State *string `pulumi:"state"`
+}
+
+// CloudInstanceCurrentStateShareInput is an input type that accepts CloudInstanceCurrentStateShareArgs and CloudInstanceCurrentStateShareOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateShareInput` via:
+//
+//	CloudInstanceCurrentStateShareArgs{...}
+type CloudInstanceCurrentStateShareInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateShareOutput() CloudInstanceCurrentStateShareOutput
+	ToCloudInstanceCurrentStateShareOutputWithContext(context.Context) CloudInstanceCurrentStateShareOutput
+}
+
+type CloudInstanceCurrentStateShareArgs struct {
+	// Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+	AccessTo pulumi.StringPtrInput `pulumi:"accessTo"`
+	// Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (CloudInstanceCurrentStateShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateShareArgs) ToCloudInstanceCurrentStateShareOutput() CloudInstanceCurrentStateShareOutput {
+	return i.ToCloudInstanceCurrentStateShareOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateShareArgs) ToCloudInstanceCurrentStateShareOutputWithContext(ctx context.Context) CloudInstanceCurrentStateShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateShareOutput)
+}
+
+// CloudInstanceCurrentStateShareArrayInput is an input type that accepts CloudInstanceCurrentStateShareArray and CloudInstanceCurrentStateShareArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateShareArrayInput` via:
+//
+//	CloudInstanceCurrentStateShareArray{ CloudInstanceCurrentStateShareArgs{...} }
+type CloudInstanceCurrentStateShareArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateShareArrayOutput() CloudInstanceCurrentStateShareArrayOutput
+	ToCloudInstanceCurrentStateShareArrayOutputWithContext(context.Context) CloudInstanceCurrentStateShareArrayOutput
+}
+
+type CloudInstanceCurrentStateShareArray []CloudInstanceCurrentStateShareInput
+
+func (CloudInstanceCurrentStateShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateShareArray) ToCloudInstanceCurrentStateShareArrayOutput() CloudInstanceCurrentStateShareArrayOutput {
+	return i.ToCloudInstanceCurrentStateShareArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateShareArray) ToCloudInstanceCurrentStateShareArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateShareArrayOutput)
+}
+
+type CloudInstanceCurrentStateShareOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateShareOutput) ToCloudInstanceCurrentStateShareOutput() CloudInstanceCurrentStateShareOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateShareOutput) ToCloudInstanceCurrentStateShareOutputWithContext(ctx context.Context) CloudInstanceCurrentStateShareOutput {
+	return o
+}
+
+// Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+func (o CloudInstanceCurrentStateShareOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateShare) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+func (o CloudInstanceCurrentStateShareOutput) AccessTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateShare) *string { return v.AccessTo }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+func (o CloudInstanceCurrentStateShareOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateShare) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+func (o CloudInstanceCurrentStateShareOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateShare) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceCurrentStateShareArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateShareArrayOutput) ToCloudInstanceCurrentStateShareArrayOutput() CloudInstanceCurrentStateShareArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateShareArrayOutput) ToCloudInstanceCurrentStateShareArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateShareArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateShareArrayOutput) Index(i pulumi.IntInput) CloudInstanceCurrentStateShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceCurrentStateShare {
+		return vs[0].([]CloudInstanceCurrentStateShare)[vs[1].(int)]
+	}).(CloudInstanceCurrentStateShareOutput)
+}
+
+type CloudInstanceCurrentStateVolume struct {
+	// Identifier of the instance (placement) group.
+	Id *string `pulumi:"id"`
+	// Instance name.
+	Name *string `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size *int `pulumi:"size"`
+}
+
+// CloudInstanceCurrentStateVolumeInput is an input type that accepts CloudInstanceCurrentStateVolumeArgs and CloudInstanceCurrentStateVolumeOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateVolumeInput` via:
+//
+//	CloudInstanceCurrentStateVolumeArgs{...}
+type CloudInstanceCurrentStateVolumeInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateVolumeOutput() CloudInstanceCurrentStateVolumeOutput
+	ToCloudInstanceCurrentStateVolumeOutputWithContext(context.Context) CloudInstanceCurrentStateVolumeOutput
+}
+
+type CloudInstanceCurrentStateVolumeArgs struct {
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Instance name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (CloudInstanceCurrentStateVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateVolumeArgs) ToCloudInstanceCurrentStateVolumeOutput() CloudInstanceCurrentStateVolumeOutput {
+	return i.ToCloudInstanceCurrentStateVolumeOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateVolumeArgs) ToCloudInstanceCurrentStateVolumeOutputWithContext(ctx context.Context) CloudInstanceCurrentStateVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateVolumeOutput)
+}
+
+// CloudInstanceCurrentStateVolumeArrayInput is an input type that accepts CloudInstanceCurrentStateVolumeArray and CloudInstanceCurrentStateVolumeArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceCurrentStateVolumeArrayInput` via:
+//
+//	CloudInstanceCurrentStateVolumeArray{ CloudInstanceCurrentStateVolumeArgs{...} }
+type CloudInstanceCurrentStateVolumeArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceCurrentStateVolumeArrayOutput() CloudInstanceCurrentStateVolumeArrayOutput
+	ToCloudInstanceCurrentStateVolumeArrayOutputWithContext(context.Context) CloudInstanceCurrentStateVolumeArrayOutput
+}
+
+type CloudInstanceCurrentStateVolumeArray []CloudInstanceCurrentStateVolumeInput
+
+func (CloudInstanceCurrentStateVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (i CloudInstanceCurrentStateVolumeArray) ToCloudInstanceCurrentStateVolumeArrayOutput() CloudInstanceCurrentStateVolumeArrayOutput {
+	return i.ToCloudInstanceCurrentStateVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceCurrentStateVolumeArray) ToCloudInstanceCurrentStateVolumeArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceCurrentStateVolumeArrayOutput)
+}
+
+type CloudInstanceCurrentStateVolumeOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateVolumeOutput) ToCloudInstanceCurrentStateVolumeOutput() CloudInstanceCurrentStateVolumeOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateVolumeOutput) ToCloudInstanceCurrentStateVolumeOutputWithContext(ctx context.Context) CloudInstanceCurrentStateVolumeOutput {
+	return o
+}
+
+// Identifier of the instance (placement) group.
+func (o CloudInstanceCurrentStateVolumeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateVolume) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Instance name.
+func (o CloudInstanceCurrentStateVolumeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateVolume) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o CloudInstanceCurrentStateVolumeOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudInstanceCurrentStateVolume) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type CloudInstanceCurrentStateVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceCurrentStateVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (o CloudInstanceCurrentStateVolumeArrayOutput) ToCloudInstanceCurrentStateVolumeArrayOutput() CloudInstanceCurrentStateVolumeArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateVolumeArrayOutput) ToCloudInstanceCurrentStateVolumeArrayOutputWithContext(ctx context.Context) CloudInstanceCurrentStateVolumeArrayOutput {
+	return o
+}
+
+func (o CloudInstanceCurrentStateVolumeArrayOutput) Index(i pulumi.IntInput) CloudInstanceCurrentStateVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceCurrentStateVolume {
+		return vs[0].([]CloudInstanceCurrentStateVolume)[vs[1].(int)]
+	}).(CloudInstanceCurrentStateVolumeOutput)
+}
+
+type CloudInstanceGroupCurrentState struct {
+	// Location details:
+	Location *CloudInstanceGroupCurrentStateLocation `pulumi:"location"`
+	// Instances currently belonging to the group:
+	Members []CloudInstanceGroupCurrentStateMember `pulumi:"members"`
+	// Instance group name. **Changing this value recreates the resource.**
+	Name *string `pulumi:"name"`
+	// Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+	Policy *string `pulumi:"policy"`
+}
+
+// CloudInstanceGroupCurrentStateInput is an input type that accepts CloudInstanceGroupCurrentStateArgs and CloudInstanceGroupCurrentStateOutput values.
+// You can construct a concrete instance of `CloudInstanceGroupCurrentStateInput` via:
+//
+//	CloudInstanceGroupCurrentStateArgs{...}
+type CloudInstanceGroupCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudInstanceGroupCurrentStateOutput() CloudInstanceGroupCurrentStateOutput
+	ToCloudInstanceGroupCurrentStateOutputWithContext(context.Context) CloudInstanceGroupCurrentStateOutput
+}
+
+type CloudInstanceGroupCurrentStateArgs struct {
+	// Location details:
+	Location CloudInstanceGroupCurrentStateLocationPtrInput `pulumi:"location"`
+	// Instances currently belonging to the group:
+	Members CloudInstanceGroupCurrentStateMemberArrayInput `pulumi:"members"`
+	// Instance group name. **Changing this value recreates the resource.**
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (CloudInstanceGroupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (i CloudInstanceGroupCurrentStateArgs) ToCloudInstanceGroupCurrentStateOutput() CloudInstanceGroupCurrentStateOutput {
+	return i.ToCloudInstanceGroupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceGroupCurrentStateArgs) ToCloudInstanceGroupCurrentStateOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateOutput)
+}
+
+func (i CloudInstanceGroupCurrentStateArgs) ToCloudInstanceGroupCurrentStatePtrOutput() CloudInstanceGroupCurrentStatePtrOutput {
+	return i.ToCloudInstanceGroupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceGroupCurrentStateArgs) ToCloudInstanceGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateOutput).ToCloudInstanceGroupCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudInstanceGroupCurrentStatePtrInput is an input type that accepts CloudInstanceGroupCurrentStateArgs, CloudInstanceGroupCurrentStatePtr and CloudInstanceGroupCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudInstanceGroupCurrentStatePtrInput` via:
+//
+//	        CloudInstanceGroupCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceGroupCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceGroupCurrentStatePtrOutput() CloudInstanceGroupCurrentStatePtrOutput
+	ToCloudInstanceGroupCurrentStatePtrOutputWithContext(context.Context) CloudInstanceGroupCurrentStatePtrOutput
+}
+
+type cloudInstanceGroupCurrentStatePtrType CloudInstanceGroupCurrentStateArgs
+
+func CloudInstanceGroupCurrentStatePtr(v *CloudInstanceGroupCurrentStateArgs) CloudInstanceGroupCurrentStatePtrInput {
+	return (*cloudInstanceGroupCurrentStatePtrType)(v)
+}
+
+func (*cloudInstanceGroupCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (i *cloudInstanceGroupCurrentStatePtrType) ToCloudInstanceGroupCurrentStatePtrOutput() CloudInstanceGroupCurrentStatePtrOutput {
+	return i.ToCloudInstanceGroupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceGroupCurrentStatePtrType) ToCloudInstanceGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStatePtrOutput)
+}
+
+type CloudInstanceGroupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceGroupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (o CloudInstanceGroupCurrentStateOutput) ToCloudInstanceGroupCurrentStateOutput() CloudInstanceGroupCurrentStateOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateOutput) ToCloudInstanceGroupCurrentStateOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateOutput) ToCloudInstanceGroupCurrentStatePtrOutput() CloudInstanceGroupCurrentStatePtrOutput {
+	return o.ToCloudInstanceGroupCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceGroupCurrentStateOutput) ToCloudInstanceGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceGroupCurrentState) *CloudInstanceGroupCurrentState {
+		return &v
+	}).(CloudInstanceGroupCurrentStatePtrOutput)
+}
+
+// Location details:
+func (o CloudInstanceGroupCurrentStateOutput) Location() CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentState) *CloudInstanceGroupCurrentStateLocation { return v.Location }).(CloudInstanceGroupCurrentStateLocationPtrOutput)
+}
+
+// Instances currently belonging to the group:
+func (o CloudInstanceGroupCurrentStateOutput) Members() CloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentState) []CloudInstanceGroupCurrentStateMember { return v.Members }).(CloudInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+// Instance group name. **Changing this value recreates the resource.**
+func (o CloudInstanceGroupCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+func (o CloudInstanceGroupCurrentStateOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentState) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceGroupCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceGroupCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (o CloudInstanceGroupCurrentStatePtrOutput) ToCloudInstanceGroupCurrentStatePtrOutput() CloudInstanceGroupCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStatePtrOutput) ToCloudInstanceGroupCurrentStatePtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStatePtrOutput) Elem() CloudInstanceGroupCurrentStateOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentState) CloudInstanceGroupCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceGroupCurrentState
+		return ret
+	}).(CloudInstanceGroupCurrentStateOutput)
+}
+
+// Location details:
+func (o CloudInstanceGroupCurrentStatePtrOutput) Location() CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentState) *CloudInstanceGroupCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudInstanceGroupCurrentStateLocationPtrOutput)
+}
+
+// Instances currently belonging to the group:
+func (o CloudInstanceGroupCurrentStatePtrOutput) Members() CloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentState) []CloudInstanceGroupCurrentStateMember {
+		if v == nil {
+			return nil
+		}
+		return v.Members
+	}).(CloudInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+// Instance group name. **Changing this value recreates the resource.**
+func (o CloudInstanceGroupCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+func (o CloudInstanceGroupCurrentStatePtrOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Policy
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceGroupCurrentStateLocation struct {
+	// Availability zone.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Region where the instance group will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudInstanceGroupCurrentStateLocationInput is an input type that accepts CloudInstanceGroupCurrentStateLocationArgs and CloudInstanceGroupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudInstanceGroupCurrentStateLocationInput` via:
+//
+//	CloudInstanceGroupCurrentStateLocationArgs{...}
+type CloudInstanceGroupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudInstanceGroupCurrentStateLocationOutput() CloudInstanceGroupCurrentStateLocationOutput
+	ToCloudInstanceGroupCurrentStateLocationOutputWithContext(context.Context) CloudInstanceGroupCurrentStateLocationOutput
+}
+
+type CloudInstanceGroupCurrentStateLocationArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Region where the instance group will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudInstanceGroupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudInstanceGroupCurrentStateLocationArgs) ToCloudInstanceGroupCurrentStateLocationOutput() CloudInstanceGroupCurrentStateLocationOutput {
+	return i.ToCloudInstanceGroupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceGroupCurrentStateLocationArgs) ToCloudInstanceGroupCurrentStateLocationOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateLocationOutput)
+}
+
+func (i CloudInstanceGroupCurrentStateLocationArgs) ToCloudInstanceGroupCurrentStateLocationPtrOutput() CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return i.ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceGroupCurrentStateLocationArgs) ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateLocationOutput).ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudInstanceGroupCurrentStateLocationPtrInput is an input type that accepts CloudInstanceGroupCurrentStateLocationArgs, CloudInstanceGroupCurrentStateLocationPtr and CloudInstanceGroupCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudInstanceGroupCurrentStateLocationPtrInput` via:
+//
+//	        CloudInstanceGroupCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudInstanceGroupCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudInstanceGroupCurrentStateLocationPtrOutput() CloudInstanceGroupCurrentStateLocationPtrOutput
+	ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(context.Context) CloudInstanceGroupCurrentStateLocationPtrOutput
+}
+
+type cloudInstanceGroupCurrentStateLocationPtrType CloudInstanceGroupCurrentStateLocationArgs
+
+func CloudInstanceGroupCurrentStateLocationPtr(v *CloudInstanceGroupCurrentStateLocationArgs) CloudInstanceGroupCurrentStateLocationPtrInput {
+	return (*cloudInstanceGroupCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudInstanceGroupCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudInstanceGroupCurrentStateLocationPtrType) ToCloudInstanceGroupCurrentStateLocationPtrOutput() CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return i.ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudInstanceGroupCurrentStateLocationPtrType) ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateLocationPtrOutput)
+}
+
+type CloudInstanceGroupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceGroupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudInstanceGroupCurrentStateLocationOutput) ToCloudInstanceGroupCurrentStateLocationOutput() CloudInstanceGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateLocationOutput) ToCloudInstanceGroupCurrentStateLocationOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateLocationOutput) ToCloudInstanceGroupCurrentStateLocationPtrOutput() CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return o.ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudInstanceGroupCurrentStateLocationOutput) ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudInstanceGroupCurrentStateLocation) *CloudInstanceGroupCurrentStateLocation {
+		return &v
+	}).(CloudInstanceGroupCurrentStateLocationPtrOutput)
+}
+
+// Availability zone.
+func (o CloudInstanceGroupCurrentStateLocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentStateLocation) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Region where the instance group will be created. **Changing this value recreates the resource.**
+func (o CloudInstanceGroupCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceGroupCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceGroupCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudInstanceGroupCurrentStateLocationPtrOutput) ToCloudInstanceGroupCurrentStateLocationPtrOutput() CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateLocationPtrOutput) ToCloudInstanceGroupCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateLocationPtrOutput) Elem() CloudInstanceGroupCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentStateLocation) CloudInstanceGroupCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudInstanceGroupCurrentStateLocation
+		return ret
+	}).(CloudInstanceGroupCurrentStateLocationOutput)
+}
+
+// Availability zone.
+func (o CloudInstanceGroupCurrentStateLocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region where the instance group will be created. **Changing this value recreates the resource.**
+func (o CloudInstanceGroupCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstanceGroupCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceGroupCurrentStateMember struct {
+	// Instance ID.
+	Id *string `pulumi:"id"`
+}
+
+// CloudInstanceGroupCurrentStateMemberInput is an input type that accepts CloudInstanceGroupCurrentStateMemberArgs and CloudInstanceGroupCurrentStateMemberOutput values.
+// You can construct a concrete instance of `CloudInstanceGroupCurrentStateMemberInput` via:
+//
+//	CloudInstanceGroupCurrentStateMemberArgs{...}
+type CloudInstanceGroupCurrentStateMemberInput interface {
+	pulumi.Input
+
+	ToCloudInstanceGroupCurrentStateMemberOutput() CloudInstanceGroupCurrentStateMemberOutput
+	ToCloudInstanceGroupCurrentStateMemberOutputWithContext(context.Context) CloudInstanceGroupCurrentStateMemberOutput
+}
+
+type CloudInstanceGroupCurrentStateMemberArgs struct {
+	// Instance ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (CloudInstanceGroupCurrentStateMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (i CloudInstanceGroupCurrentStateMemberArgs) ToCloudInstanceGroupCurrentStateMemberOutput() CloudInstanceGroupCurrentStateMemberOutput {
+	return i.ToCloudInstanceGroupCurrentStateMemberOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceGroupCurrentStateMemberArgs) ToCloudInstanceGroupCurrentStateMemberOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateMemberOutput)
+}
+
+// CloudInstanceGroupCurrentStateMemberArrayInput is an input type that accepts CloudInstanceGroupCurrentStateMemberArray and CloudInstanceGroupCurrentStateMemberArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceGroupCurrentStateMemberArrayInput` via:
+//
+//	CloudInstanceGroupCurrentStateMemberArray{ CloudInstanceGroupCurrentStateMemberArgs{...} }
+type CloudInstanceGroupCurrentStateMemberArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceGroupCurrentStateMemberArrayOutput() CloudInstanceGroupCurrentStateMemberArrayOutput
+	ToCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(context.Context) CloudInstanceGroupCurrentStateMemberArrayOutput
+}
+
+type CloudInstanceGroupCurrentStateMemberArray []CloudInstanceGroupCurrentStateMemberInput
+
+func (CloudInstanceGroupCurrentStateMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (i CloudInstanceGroupCurrentStateMemberArray) ToCloudInstanceGroupCurrentStateMemberArrayOutput() CloudInstanceGroupCurrentStateMemberArrayOutput {
+	return i.ToCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceGroupCurrentStateMemberArray) ToCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+type CloudInstanceGroupCurrentStateMemberOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceGroupCurrentStateMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (o CloudInstanceGroupCurrentStateMemberOutput) ToCloudInstanceGroupCurrentStateMemberOutput() CloudInstanceGroupCurrentStateMemberOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateMemberOutput) ToCloudInstanceGroupCurrentStateMemberOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateMemberOutput {
+	return o
+}
+
+// Instance ID.
+func (o CloudInstanceGroupCurrentStateMemberOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceGroupCurrentStateMember) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceGroupCurrentStateMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceGroupCurrentStateMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (o CloudInstanceGroupCurrentStateMemberArrayOutput) ToCloudInstanceGroupCurrentStateMemberArrayOutput() CloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateMemberArrayOutput) ToCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(ctx context.Context) CloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o
+}
+
+func (o CloudInstanceGroupCurrentStateMemberArrayOutput) Index(i pulumi.IntInput) CloudInstanceGroupCurrentStateMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceGroupCurrentStateMember {
+		return vs[0].([]CloudInstanceGroupCurrentStateMember)[vs[1].(int)]
+	}).(CloudInstanceGroupCurrentStateMemberOutput)
+}
+
+type CloudInstanceNetwork struct {
+	// Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+	AutoAssignPublicIp *bool `pulumi:"autoAssignPublicIp"`
+	// IP address of this interface. Without `networkId`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `networkId` + `subnetId`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+	Ip *string `pulumi:"ip"`
+	// Private network ID. Omit for a public interface.
+	NetworkId *string `pulumi:"networkId"`
+	// Subnet ID within the private network. Required with `networkId`.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// CloudInstanceNetworkInput is an input type that accepts CloudInstanceNetworkArgs and CloudInstanceNetworkOutput values.
+// You can construct a concrete instance of `CloudInstanceNetworkInput` via:
+//
+//	CloudInstanceNetworkArgs{...}
+type CloudInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToCloudInstanceNetworkOutput() CloudInstanceNetworkOutput
+	ToCloudInstanceNetworkOutputWithContext(context.Context) CloudInstanceNetworkOutput
+}
+
+type CloudInstanceNetworkArgs struct {
+	// Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+	AutoAssignPublicIp pulumi.BoolPtrInput `pulumi:"autoAssignPublicIp"`
+	// IP address of this interface. Without `networkId`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `networkId` + `subnetId`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// Private network ID. Omit for a public interface.
+	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
+	// Subnet ID within the private network. Required with `networkId`.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (CloudInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceNetwork)(nil)).Elem()
+}
+
+func (i CloudInstanceNetworkArgs) ToCloudInstanceNetworkOutput() CloudInstanceNetworkOutput {
+	return i.ToCloudInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceNetworkArgs) ToCloudInstanceNetworkOutputWithContext(ctx context.Context) CloudInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceNetworkOutput)
+}
+
+// CloudInstanceNetworkArrayInput is an input type that accepts CloudInstanceNetworkArray and CloudInstanceNetworkArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceNetworkArrayInput` via:
+//
+//	CloudInstanceNetworkArray{ CloudInstanceNetworkArgs{...} }
+type CloudInstanceNetworkArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceNetworkArrayOutput() CloudInstanceNetworkArrayOutput
+	ToCloudInstanceNetworkArrayOutputWithContext(context.Context) CloudInstanceNetworkArrayOutput
+}
+
+type CloudInstanceNetworkArray []CloudInstanceNetworkInput
+
+func (CloudInstanceNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceNetwork)(nil)).Elem()
+}
+
+func (i CloudInstanceNetworkArray) ToCloudInstanceNetworkArrayOutput() CloudInstanceNetworkArrayOutput {
+	return i.ToCloudInstanceNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceNetworkArray) ToCloudInstanceNetworkArrayOutputWithContext(ctx context.Context) CloudInstanceNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceNetworkArrayOutput)
+}
+
+type CloudInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceNetwork)(nil)).Elem()
+}
+
+func (o CloudInstanceNetworkOutput) ToCloudInstanceNetworkOutput() CloudInstanceNetworkOutput {
+	return o
+}
+
+func (o CloudInstanceNetworkOutput) ToCloudInstanceNetworkOutputWithContext(ctx context.Context) CloudInstanceNetworkOutput {
+	return o
+}
+
+// Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+func (o CloudInstanceNetworkOutput) AutoAssignPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudInstanceNetwork) *bool { return v.AutoAssignPublicIp }).(pulumi.BoolPtrOutput)
+}
+
+// IP address of this interface. Without `networkId`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `networkId` + `subnetId`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+func (o CloudInstanceNetworkOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceNetwork) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// Private network ID. Omit for a public interface.
+func (o CloudInstanceNetworkOutput) NetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceNetwork) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
+}
+
+// Subnet ID within the private network. Required with `networkId`.
+func (o CloudInstanceNetworkOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceNetwork) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type CloudInstanceNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceNetwork)(nil)).Elem()
+}
+
+func (o CloudInstanceNetworkArrayOutput) ToCloudInstanceNetworkArrayOutput() CloudInstanceNetworkArrayOutput {
+	return o
+}
+
+func (o CloudInstanceNetworkArrayOutput) ToCloudInstanceNetworkArrayOutputWithContext(ctx context.Context) CloudInstanceNetworkArrayOutput {
+	return o
+}
+
+func (o CloudInstanceNetworkArrayOutput) Index(i pulumi.IntInput) CloudInstanceNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceNetwork {
+		return vs[0].([]CloudInstanceNetwork)[vs[1].(int)]
+	}).(CloudInstanceNetworkOutput)
+}
+
+type CloudInstanceShare struct {
+	// Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+	Id string `pulumi:"id"`
+}
+
+// CloudInstanceShareInput is an input type that accepts CloudInstanceShareArgs and CloudInstanceShareOutput values.
+// You can construct a concrete instance of `CloudInstanceShareInput` via:
+//
+//	CloudInstanceShareArgs{...}
+type CloudInstanceShareInput interface {
+	pulumi.Input
+
+	ToCloudInstanceShareOutput() CloudInstanceShareOutput
+	ToCloudInstanceShareOutputWithContext(context.Context) CloudInstanceShareOutput
+}
+
+type CloudInstanceShareArgs struct {
+	// Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (CloudInstanceShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceShare)(nil)).Elem()
+}
+
+func (i CloudInstanceShareArgs) ToCloudInstanceShareOutput() CloudInstanceShareOutput {
+	return i.ToCloudInstanceShareOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceShareArgs) ToCloudInstanceShareOutputWithContext(ctx context.Context) CloudInstanceShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceShareOutput)
+}
+
+// CloudInstanceShareArrayInput is an input type that accepts CloudInstanceShareArray and CloudInstanceShareArrayOutput values.
+// You can construct a concrete instance of `CloudInstanceShareArrayInput` via:
+//
+//	CloudInstanceShareArray{ CloudInstanceShareArgs{...} }
+type CloudInstanceShareArrayInput interface {
+	pulumi.Input
+
+	ToCloudInstanceShareArrayOutput() CloudInstanceShareArrayOutput
+	ToCloudInstanceShareArrayOutputWithContext(context.Context) CloudInstanceShareArrayOutput
+}
+
+type CloudInstanceShareArray []CloudInstanceShareInput
+
+func (CloudInstanceShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceShare)(nil)).Elem()
+}
+
+func (i CloudInstanceShareArray) ToCloudInstanceShareArrayOutput() CloudInstanceShareArrayOutput {
+	return i.ToCloudInstanceShareArrayOutputWithContext(context.Background())
+}
+
+func (i CloudInstanceShareArray) ToCloudInstanceShareArrayOutputWithContext(ctx context.Context) CloudInstanceShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudInstanceShareArrayOutput)
+}
+
+type CloudInstanceShareOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudInstanceShare)(nil)).Elem()
+}
+
+func (o CloudInstanceShareOutput) ToCloudInstanceShareOutput() CloudInstanceShareOutput {
+	return o
+}
+
+func (o CloudInstanceShareOutput) ToCloudInstanceShareOutputWithContext(ctx context.Context) CloudInstanceShareOutput {
+	return o
+}
+
+// Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+func (o CloudInstanceShareOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudInstanceShare) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+func (o CloudInstanceShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudInstanceShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type CloudInstanceShareArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudInstanceShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudInstanceShare)(nil)).Elem()
+}
+
+func (o CloudInstanceShareArrayOutput) ToCloudInstanceShareArrayOutput() CloudInstanceShareArrayOutput {
+	return o
+}
+
+func (o CloudInstanceShareArrayOutput) ToCloudInstanceShareArrayOutputWithContext(ctx context.Context) CloudInstanceShareArrayOutput {
+	return o
+}
+
+func (o CloudInstanceShareArrayOutput) Index(i pulumi.IntInput) CloudInstanceShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudInstanceShare {
+		return vs[0].([]CloudInstanceShare)[vs[1].(int)]
+	}).(CloudInstanceShareOutput)
+}
+
 type CloudKeyManagerContainerCurrentState struct {
 	// OpenStack reference URL for the container.
 	ContainerRef *string `pulumi:"containerRef"`
@@ -2366,7 +4787,7 @@ func (o CloudKeyManagerContainerSecretRefArrayOutput) Index(i pulumi.IntInput) C
 }
 
 type CloudKeyManagerSecretCurrentState struct {
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm *string `pulumi:"algorithm"`
 	// Bit length of the secret (e.g., `256`).
 	BitLength *int `pulumi:"bitLength"`
@@ -2376,7 +4797,7 @@ type CloudKeyManagerSecretCurrentState struct {
 	Location *CloudKeyManagerSecretCurrentStateLocation `pulumi:"location"`
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode *string `pulumi:"mode"`
 	// Name of the secret.
 	Name *string `pulumi:"name"`
@@ -2384,7 +4805,7 @@ type CloudKeyManagerSecretCurrentState struct {
 	PayloadContentType *string `pulumi:"payloadContentType"`
 	// OpenStack reference URL for the secret.
 	SecretRef *string `pulumi:"secretRef"`
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType *string `pulumi:"secretType"`
 	// Status of the secret (`ACTIVE`, `ERROR`).
 	Status *string `pulumi:"status"`
@@ -2402,7 +4823,7 @@ type CloudKeyManagerSecretCurrentStateInput interface {
 }
 
 type CloudKeyManagerSecretCurrentStateArgs struct {
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// Bit length of the secret (e.g., `256`).
 	BitLength pulumi.IntPtrInput `pulumi:"bitLength"`
@@ -2412,7 +4833,7 @@ type CloudKeyManagerSecretCurrentStateArgs struct {
 	Location CloudKeyManagerSecretCurrentStateLocationPtrInput `pulumi:"location"`
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Name of the secret.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -2420,7 +4841,7 @@ type CloudKeyManagerSecretCurrentStateArgs struct {
 	PayloadContentType pulumi.StringPtrInput `pulumi:"payloadContentType"`
 	// OpenStack reference URL for the secret.
 	SecretRef pulumi.StringPtrInput `pulumi:"secretRef"`
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType pulumi.StringPtrInput `pulumi:"secretType"`
 	// Status of the secret (`ACTIVE`, `ERROR`).
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -2503,7 +4924,7 @@ func (o CloudKeyManagerSecretCurrentStateOutput) ToCloudKeyManagerSecretCurrentS
 	}).(CloudKeyManagerSecretCurrentStatePtrOutput)
 }
 
-// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 func (o CloudKeyManagerSecretCurrentStateOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudKeyManagerSecretCurrentState) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -2530,7 +4951,7 @@ func (o CloudKeyManagerSecretCurrentStateOutput) Metadata() pulumi.StringMapOutp
 	return o.ApplyT(func(v CloudKeyManagerSecretCurrentState) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Mode of the secret algorithm (e.g., `CBC`).
+// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 func (o CloudKeyManagerSecretCurrentStateOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudKeyManagerSecretCurrentState) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -2550,7 +4971,7 @@ func (o CloudKeyManagerSecretCurrentStateOutput) SecretRef() pulumi.StringPtrOut
 	return o.ApplyT(func(v CloudKeyManagerSecretCurrentState) *string { return v.SecretRef }).(pulumi.StringPtrOutput)
 }
 
-// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 func (o CloudKeyManagerSecretCurrentStateOutput) SecretType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudKeyManagerSecretCurrentState) *string { return v.SecretType }).(pulumi.StringPtrOutput)
 }
@@ -2584,7 +5005,7 @@ func (o CloudKeyManagerSecretCurrentStatePtrOutput) Elem() CloudKeyManagerSecret
 	}).(CloudKeyManagerSecretCurrentStateOutput)
 }
 
-// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 func (o CloudKeyManagerSecretCurrentStatePtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecretCurrentState) *string {
 		if v == nil {
@@ -2634,7 +5055,7 @@ func (o CloudKeyManagerSecretCurrentStatePtrOutput) Metadata() pulumi.StringMapO
 	}).(pulumi.StringMapOutput)
 }
 
-// Mode of the secret algorithm (e.g., `CBC`).
+// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 func (o CloudKeyManagerSecretCurrentStatePtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecretCurrentState) *string {
 		if v == nil {
@@ -2674,7 +5095,7 @@ func (o CloudKeyManagerSecretCurrentStatePtrOutput) SecretRef() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 func (o CloudKeyManagerSecretCurrentStatePtrOutput) SecretType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecretCurrentState) *string {
 		if v == nil {
@@ -5143,7 +7564,7 @@ type CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionT
 	NewerNoncurrentVersions *float64 `pulumi:"newerNoncurrentVersions"`
 	// Number of days after an object becomes noncurrent before it is transitioned.
 	NoncurrentDays *float64 `pulumi:"noncurrentDays"`
-	// The storage class to transition noncurrent objects to.
+	// The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
 	StorageClass *string `pulumi:"storageClass"`
 }
 
@@ -5163,7 +7584,7 @@ type CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionT
 	NewerNoncurrentVersions pulumi.Float64PtrInput `pulumi:"newerNoncurrentVersions"`
 	// Number of days after an object becomes noncurrent before it is transitioned.
 	NoncurrentDays pulumi.Float64PtrInput `pulumi:"noncurrentDays"`
-	// The storage class to transition noncurrent objects to.
+	// The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
 	StorageClass pulumi.StringPtrInput `pulumi:"storageClass"`
 }
 
@@ -5232,7 +7653,7 @@ func (o CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersi
 	}).(pulumi.Float64PtrOutput)
 }
 
-// The storage class to transition noncurrent objects to.
+// The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
 func (o CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransitionOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncurrentVersionTransition) *string {
 		return v.StorageClass
@@ -15876,6 +18297,8 @@ func (o CloudStorageBlockVolumeCurrentStateEncryptionPtrOutput) Enabled() pulumi
 }
 
 type CloudStorageBlockVolumeCurrentStateLocation struct {
+	// Availability zone
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Region where the volume will be created. **Changing this value recreates the resource.**
 	Region *string `pulumi:"region"`
 }
@@ -15892,6 +18315,8 @@ type CloudStorageBlockVolumeCurrentStateLocationInput interface {
 }
 
 type CloudStorageBlockVolumeCurrentStateLocationArgs struct {
+	// Availability zone
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
 	// Region where the volume will be created. **Changing this value recreates the resource.**
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
@@ -15973,6 +18398,11 @@ func (o CloudStorageBlockVolumeCurrentStateLocationOutput) ToCloudStorageBlockVo
 	}).(CloudStorageBlockVolumeCurrentStateLocationPtrOutput)
 }
 
+// Availability zone
+func (o CloudStorageBlockVolumeCurrentStateLocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateLocation) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
 // Region where the volume will be created. **Changing this value recreates the resource.**
 func (o CloudStorageBlockVolumeCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudStorageBlockVolumeCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -16000,6 +18430,16 @@ func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) Elem() CloudStorag
 		var ret CloudStorageBlockVolumeCurrentStateLocation
 		return ret
 	}).(CloudStorageBlockVolumeCurrentStateLocationOutput)
+}
+
+// Availability zone
+func (o CloudStorageBlockVolumeCurrentStateLocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
 }
 
 // Region where the volume will be created. **Changing this value recreates the resource.**
@@ -16501,115 +18941,201 @@ func (o CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput) Region() p
 	}).(pulumi.StringPtrOutput)
 }
 
-type CloudStorageFileShareAccessRule struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo string `pulumi:"accessTo"`
+type CloudStorageFileShareAclCurrentState struct {
+	// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+	AccessLevel *string `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+	AccessTo *string `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State *string `pulumi:"state"`
 }
 
-// CloudStorageFileShareAccessRuleInput is an input type that accepts CloudStorageFileShareAccessRuleArgs and CloudStorageFileShareAccessRuleOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareAccessRuleInput` via:
+// CloudStorageFileShareAclCurrentStateInput is an input type that accepts CloudStorageFileShareAclCurrentStateArgs and CloudStorageFileShareAclCurrentStateOutput values.
+// You can construct a concrete instance of `CloudStorageFileShareAclCurrentStateInput` via:
 //
-//	CloudStorageFileShareAccessRuleArgs{...}
-type CloudStorageFileShareAccessRuleInput interface {
+//	CloudStorageFileShareAclCurrentStateArgs{...}
+type CloudStorageFileShareAclCurrentStateInput interface {
 	pulumi.Input
 
-	ToCloudStorageFileShareAccessRuleOutput() CloudStorageFileShareAccessRuleOutput
-	ToCloudStorageFileShareAccessRuleOutputWithContext(context.Context) CloudStorageFileShareAccessRuleOutput
+	ToCloudStorageFileShareAclCurrentStateOutput() CloudStorageFileShareAclCurrentStateOutput
+	ToCloudStorageFileShareAclCurrentStateOutputWithContext(context.Context) CloudStorageFileShareAclCurrentStateOutput
 }
 
-type CloudStorageFileShareAccessRuleArgs struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+type CloudStorageFileShareAclCurrentStateArgs struct {
+	// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+	AccessTo pulumi.StringPtrInput `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
-func (CloudStorageFileShareAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareAccessRule)(nil)).Elem()
+func (CloudStorageFileShareAclCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageFileShareAclCurrentState)(nil)).Elem()
 }
 
-func (i CloudStorageFileShareAccessRuleArgs) ToCloudStorageFileShareAccessRuleOutput() CloudStorageFileShareAccessRuleOutput {
-	return i.ToCloudStorageFileShareAccessRuleOutputWithContext(context.Background())
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStateOutput() CloudStorageFileShareAclCurrentStateOutput {
+	return i.ToCloudStorageFileShareAclCurrentStateOutputWithContext(context.Background())
 }
 
-func (i CloudStorageFileShareAccessRuleArgs) ToCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAccessRuleOutput)
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStateOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAclCurrentStateOutput)
 }
 
-// CloudStorageFileShareAccessRuleArrayInput is an input type that accepts CloudStorageFileShareAccessRuleArray and CloudStorageFileShareAccessRuleArrayOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareAccessRuleArrayInput` via:
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
+	return i.ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageFileShareAclCurrentStateArgs) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAclCurrentStateOutput).ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudStorageFileShareAclCurrentStatePtrInput is an input type that accepts CloudStorageFileShareAclCurrentStateArgs, CloudStorageFileShareAclCurrentStatePtr and CloudStorageFileShareAclCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudStorageFileShareAclCurrentStatePtrInput` via:
 //
-//	CloudStorageFileShareAccessRuleArray{ CloudStorageFileShareAccessRuleArgs{...} }
-type CloudStorageFileShareAccessRuleArrayInput interface {
+//	        CloudStorageFileShareAclCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageFileShareAclCurrentStatePtrInput interface {
 	pulumi.Input
 
-	ToCloudStorageFileShareAccessRuleArrayOutput() CloudStorageFileShareAccessRuleArrayOutput
-	ToCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Context) CloudStorageFileShareAccessRuleArrayOutput
+	ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput
+	ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Context) CloudStorageFileShareAclCurrentStatePtrOutput
 }
 
-type CloudStorageFileShareAccessRuleArray []CloudStorageFileShareAccessRuleInput
+type cloudStorageFileShareAclCurrentStatePtrType CloudStorageFileShareAclCurrentStateArgs
 
-func (CloudStorageFileShareAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareAccessRule)(nil)).Elem()
+func CloudStorageFileShareAclCurrentStatePtr(v *CloudStorageFileShareAclCurrentStateArgs) CloudStorageFileShareAclCurrentStatePtrInput {
+	return (*cloudStorageFileShareAclCurrentStatePtrType)(v)
 }
 
-func (i CloudStorageFileShareAccessRuleArray) ToCloudStorageFileShareAccessRuleArrayOutput() CloudStorageFileShareAccessRuleArrayOutput {
-	return i.ToCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Background())
+func (*cloudStorageFileShareAclCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageFileShareAclCurrentState)(nil)).Elem()
 }
 
-func (i CloudStorageFileShareAccessRuleArray) ToCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAccessRuleArrayOutput)
+func (i *cloudStorageFileShareAclCurrentStatePtrType) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
+	return i.ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Background())
 }
 
-type CloudStorageFileShareAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareAccessRule)(nil)).Elem()
+func (i *cloudStorageFileShareAclCurrentStatePtrType) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareAclCurrentStatePtrOutput)
 }
 
-func (o CloudStorageFileShareAccessRuleOutput) ToCloudStorageFileShareAccessRuleOutput() CloudStorageFileShareAccessRuleOutput {
+type CloudStorageFileShareAclCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageFileShareAclCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageFileShareAclCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStateOutput() CloudStorageFileShareAclCurrentStateOutput {
 	return o
 }
 
-func (o CloudStorageFileShareAccessRuleOutput) ToCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleOutput {
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStateOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStateOutput {
 	return o
 }
 
-// Access level (`READ_WRITE`, `READ_ONLY`).
-func (o CloudStorageFileShareAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v CloudStorageFileShareAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
+	return o.ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(context.Background())
 }
 
-// IP address or CIDR to grant access to.
-func (o CloudStorageFileShareAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v CloudStorageFileShareAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
+func (o CloudStorageFileShareAclCurrentStateOutput) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageFileShareAclCurrentState) *CloudStorageFileShareAclCurrentState {
+		return &v
+	}).(CloudStorageFileShareAclCurrentStatePtrOutput)
 }
 
-type CloudStorageFileShareAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareAccessRule)(nil)).Elem()
+// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStateOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o CloudStorageFileShareAccessRuleArrayOutput) ToCloudStorageFileShareAccessRuleArrayOutput() CloudStorageFileShareAccessRuleArrayOutput {
+// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStateOutput) AccessTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.AccessTo }).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the access rule.
+func (o CloudStorageFileShareAclCurrentStateOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+func (o CloudStorageFileShareAclCurrentStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageFileShareAclCurrentState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageFileShareAclCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageFileShareAclCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageFileShareAclCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) ToCloudStorageFileShareAclCurrentStatePtrOutput() CloudStorageFileShareAclCurrentStatePtrOutput {
 	return o
 }
 
-func (o CloudStorageFileShareAccessRuleArrayOutput) ToCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareAccessRuleArrayOutput {
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) ToCloudStorageFileShareAclCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageFileShareAclCurrentStatePtrOutput {
 	return o
 }
 
-func (o CloudStorageFileShareAccessRuleArrayOutput) Index(i pulumi.IntInput) CloudStorageFileShareAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudStorageFileShareAccessRule {
-		return vs[0].([]CloudStorageFileShareAccessRule)[vs[1].(int)]
-	}).(CloudStorageFileShareAccessRuleOutput)
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) Elem() CloudStorageFileShareAclCurrentStateOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) CloudStorageFileShareAclCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageFileShareAclCurrentState
+		return ret
+	}).(CloudStorageFileShareAclCurrentStateOutput)
+}
+
+// Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) AccessTo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTo
+	}).(pulumi.StringPtrOutput)
+}
+
+// Creation date of the access rule.
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+func (o CloudStorageFileShareAclCurrentStatePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareAclCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
 }
 
 type CloudStorageFileShareCurrentState struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules []CloudStorageFileShareCurrentStateAccessRule `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities []CloudStorageFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
@@ -16642,8 +19168,6 @@ type CloudStorageFileShareCurrentStateInput interface {
 }
 
 type CloudStorageFileShareCurrentStateArgs struct {
-	// Access rules for the file share. Each rule has:
-	AccessRules CloudStorageFileShareCurrentStateAccessRuleArrayInput `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities CloudStorageFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
@@ -16741,13 +19265,6 @@ func (o CloudStorageFileShareCurrentStateOutput) ToCloudStorageFileShareCurrentS
 	}).(CloudStorageFileShareCurrentStatePtrOutput)
 }
 
-// Access rules for the file share. Each rule has:
-func (o CloudStorageFileShareCurrentStateOutput) AccessRules() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentState) []CloudStorageFileShareCurrentStateAccessRule {
-		return v.AccessRules
-	}).(CloudStorageFileShareCurrentStateAccessRuleArrayOutput)
-}
-
 // Action-availability flags derived from the file share status:
 func (o CloudStorageFileShareCurrentStateOutput) Capabilities() CloudStorageFileShareCurrentStateCapabilityArrayOutput {
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) []CloudStorageFileShareCurrentStateCapability {
@@ -16821,16 +19338,6 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) Elem() CloudStorageFileShare
 		var ret CloudStorageFileShareCurrentState
 		return ret
 	}).(CloudStorageFileShareCurrentStateOutput)
-}
-
-// Access rules for the file share. Each rule has:
-func (o CloudStorageFileShareCurrentStatePtrOutput) AccessRules() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v *CloudStorageFileShareCurrentState) []CloudStorageFileShareCurrentStateAccessRule {
-		if v == nil {
-			return nil
-		}
-		return v.AccessRules
-	}).(CloudStorageFileShareCurrentStateAccessRuleArrayOutput)
 }
 
 // Action-availability flags derived from the file share status:
@@ -16921,139 +19428,6 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) Size() pulumi.IntPtrOutput {
 		}
 		return v.Size
 	}).(pulumi.IntPtrOutput)
-}
-
-type CloudStorageFileShareCurrentStateAccessRule struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel *string `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo *string `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Access rule ID.
-	Id *string `pulumi:"id"`
-	// Access rule state.
-	State *string `pulumi:"state"`
-}
-
-// CloudStorageFileShareCurrentStateAccessRuleInput is an input type that accepts CloudStorageFileShareCurrentStateAccessRuleArgs and CloudStorageFileShareCurrentStateAccessRuleOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareCurrentStateAccessRuleInput` via:
-//
-//	CloudStorageFileShareCurrentStateAccessRuleArgs{...}
-type CloudStorageFileShareCurrentStateAccessRuleInput interface {
-	pulumi.Input
-
-	ToCloudStorageFileShareCurrentStateAccessRuleOutput() CloudStorageFileShareCurrentStateAccessRuleOutput
-	ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Context) CloudStorageFileShareCurrentStateAccessRuleOutput
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleArgs struct {
-	// Access level (`READ_WRITE`, `READ_ONLY`).
-	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// IP address or CIDR to grant access to.
-	AccessTo pulumi.StringPtrInput `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Access rule ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Access rule state.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (CloudStorageFileShareCurrentStateAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArgs) ToCloudStorageFileShareCurrentStateAccessRuleOutput() CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return i.ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Background())
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArgs) ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCurrentStateAccessRuleOutput)
-}
-
-// CloudStorageFileShareCurrentStateAccessRuleArrayInput is an input type that accepts CloudStorageFileShareCurrentStateAccessRuleArray and CloudStorageFileShareCurrentStateAccessRuleArrayOutput values.
-// You can construct a concrete instance of `CloudStorageFileShareCurrentStateAccessRuleArrayInput` via:
-//
-//	CloudStorageFileShareCurrentStateAccessRuleArray{ CloudStorageFileShareCurrentStateAccessRuleArgs{...} }
-type CloudStorageFileShareCurrentStateAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToCloudStorageFileShareCurrentStateAccessRuleArrayOutput() CloudStorageFileShareCurrentStateAccessRuleArrayOutput
-	ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Context) CloudStorageFileShareCurrentStateAccessRuleArrayOutput
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleArray []CloudStorageFileShareCurrentStateAccessRuleInput
-
-func (CloudStorageFileShareCurrentStateAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArray) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutput() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return i.ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i CloudStorageFileShareCurrentStateAccessRuleArray) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCurrentStateAccessRuleArrayOutput)
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareCurrentStateAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) ToCloudStorageFileShareCurrentStateAccessRuleOutput() CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) ToCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-// Access level (`READ_WRITE`, `READ_ONLY`).
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) AccessLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
-}
-
-// IP address or CIDR to grant access to.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) AccessTo() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.AccessTo }).(pulumi.StringPtrOutput)
-}
-
-// Access rule creation date.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// Access rule ID.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Access rule state.
-func (o CloudStorageFileShareCurrentStateAccessRuleOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudStorageFileShareCurrentStateAccessRule) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type CloudStorageFileShareCurrentStateAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (CloudStorageFileShareCurrentStateAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutput() CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) CloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o CloudStorageFileShareCurrentStateAccessRuleArrayOutput) Index(i pulumi.IntInput) CloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudStorageFileShareCurrentStateAccessRule {
-		return vs[0].([]CloudStorageFileShareCurrentStateAccessRule)[vs[1].(int)]
-	}).(CloudStorageFileShareCurrentStateAccessRuleOutput)
 }
 
 type CloudStorageFileShareCurrentStateCapability struct {
@@ -25941,6 +28315,3832 @@ func (o GetCloudGatewaysGatewayLocationOutput) AvailabilityZone() pulumi.StringO
 // Region.
 func (o GetCloudGatewaysGatewayLocationOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudGatewaysGatewayLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentState struct {
+	// Observed flavor of the instance, with its full sizing details:
+	Flavor GetCloudInstanceCurrentStateFlavor `pulumi:"flavor"`
+	// Instance (placement) group the instance belongs to, null when it is not part of any group:
+	Group GetCloudInstanceCurrentStateGroup `pulumi:"group"`
+	// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+	HostId string `pulumi:"hostId"`
+	// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+	Image GetCloudInstanceCurrentStateImage `pulumi:"image"`
+	// Observed region and availability zone where the instance is provisioned:
+	Location GetCloudInstanceCurrentStateLocation `pulumi:"location"`
+	// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+	Locked bool `pulumi:"locked"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested `networks`:
+	Networks []GetCloudInstanceCurrentStateNetwork `pulumi:"networks"`
+	// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+	PowerState string `pulumi:"powerState"`
+	// Identifier of the Public Cloud project the instance belongs to.
+	ProjectId string `pulumi:"projectId"`
+	// Security groups currently attached to the instance's ports:
+	SecurityGroups []GetCloudInstanceCurrentStateSecurityGroup `pulumi:"securityGroups"`
+	// Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, never in the list data source:
+	Shares []GetCloudInstanceCurrentStateShare `pulumi:"shares"`
+	// Name of the SSH key pair injected into the instance at boot, null when none was provided.
+	SshKeyName string `pulumi:"sshKeyName"`
+	// Identifier of the OpenStack user that owns the instance.
+	UserId string `pulumi:"userId"`
+	// Observed block volumes attached to the instance:
+	Volumes []GetCloudInstanceCurrentStateVolume `pulumi:"volumes"`
+}
+
+// GetCloudInstanceCurrentStateInput is an input type that accepts GetCloudInstanceCurrentStateArgs and GetCloudInstanceCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateInput` via:
+//
+//	GetCloudInstanceCurrentStateArgs{...}
+type GetCloudInstanceCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateOutput() GetCloudInstanceCurrentStateOutput
+	ToGetCloudInstanceCurrentStateOutputWithContext(context.Context) GetCloudInstanceCurrentStateOutput
+}
+
+type GetCloudInstanceCurrentStateArgs struct {
+	// Observed flavor of the instance, with its full sizing details:
+	Flavor GetCloudInstanceCurrentStateFlavorInput `pulumi:"flavor"`
+	// Instance (placement) group the instance belongs to, null when it is not part of any group:
+	Group GetCloudInstanceCurrentStateGroupInput `pulumi:"group"`
+	// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+	HostId pulumi.StringInput `pulumi:"hostId"`
+	// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+	Image GetCloudInstanceCurrentStateImageInput `pulumi:"image"`
+	// Observed region and availability zone where the instance is provisioned:
+	Location GetCloudInstanceCurrentStateLocationInput `pulumi:"location"`
+	// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+	Locked pulumi.BoolInput `pulumi:"locked"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested `networks`:
+	Networks GetCloudInstanceCurrentStateNetworkArrayInput `pulumi:"networks"`
+	// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+	PowerState pulumi.StringInput `pulumi:"powerState"`
+	// Identifier of the Public Cloud project the instance belongs to.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Security groups currently attached to the instance's ports:
+	SecurityGroups GetCloudInstanceCurrentStateSecurityGroupArrayInput `pulumi:"securityGroups"`
+	// Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, never in the list data source:
+	Shares GetCloudInstanceCurrentStateShareArrayInput `pulumi:"shares"`
+	// Name of the SSH key pair injected into the instance at boot, null when none was provided.
+	SshKeyName pulumi.StringInput `pulumi:"sshKeyName"`
+	// Identifier of the OpenStack user that owns the instance.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// Observed block volumes attached to the instance:
+	Volumes GetCloudInstanceCurrentStateVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (GetCloudInstanceCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateArgs) ToGetCloudInstanceCurrentStateOutput() GetCloudInstanceCurrentStateOutput {
+	return i.ToGetCloudInstanceCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateArgs) ToGetCloudInstanceCurrentStateOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateOutput)
+}
+
+type GetCloudInstanceCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateOutput) ToGetCloudInstanceCurrentStateOutput() GetCloudInstanceCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateOutput) ToGetCloudInstanceCurrentStateOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateOutput {
+	return o
+}
+
+// Observed flavor of the instance, with its full sizing details:
+func (o GetCloudInstanceCurrentStateOutput) Flavor() GetCloudInstanceCurrentStateFlavorOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) GetCloudInstanceCurrentStateFlavor { return v.Flavor }).(GetCloudInstanceCurrentStateFlavorOutput)
+}
+
+// Instance (placement) group the instance belongs to, null when it is not part of any group:
+func (o GetCloudInstanceCurrentStateOutput) Group() GetCloudInstanceCurrentStateGroupOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) GetCloudInstanceCurrentStateGroup { return v.Group }).(GetCloudInstanceCurrentStateGroupOutput)
+}
+
+// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+func (o GetCloudInstanceCurrentStateOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+func (o GetCloudInstanceCurrentStateOutput) Image() GetCloudInstanceCurrentStateImageOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) GetCloudInstanceCurrentStateImage { return v.Image }).(GetCloudInstanceCurrentStateImageOutput)
+}
+
+// Observed region and availability zone where the instance is provisioned:
+func (o GetCloudInstanceCurrentStateOutput) Location() GetCloudInstanceCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) GetCloudInstanceCurrentStateLocation { return v.Location }).(GetCloudInstanceCurrentStateLocationOutput)
+}
+
+// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+func (o GetCloudInstanceCurrentStateOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstanceCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested `networks`:
+func (o GetCloudInstanceCurrentStateOutput) Networks() GetCloudInstanceCurrentStateNetworkArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) []GetCloudInstanceCurrentStateNetwork { return v.Networks }).(GetCloudInstanceCurrentStateNetworkArrayOutput)
+}
+
+// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+func (o GetCloudInstanceCurrentStateOutput) PowerState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) string { return v.PowerState }).(pulumi.StringOutput)
+}
+
+// Identifier of the Public Cloud project the instance belongs to.
+func (o GetCloudInstanceCurrentStateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Security groups currently attached to the instance's ports:
+func (o GetCloudInstanceCurrentStateOutput) SecurityGroups() GetCloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) []GetCloudInstanceCurrentStateSecurityGroup {
+		return v.SecurityGroups
+	}).(GetCloudInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+// Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, never in the list data source:
+func (o GetCloudInstanceCurrentStateOutput) Shares() GetCloudInstanceCurrentStateShareArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) []GetCloudInstanceCurrentStateShare { return v.Shares }).(GetCloudInstanceCurrentStateShareArrayOutput)
+}
+
+// Name of the SSH key pair injected into the instance at boot, null when none was provided.
+func (o GetCloudInstanceCurrentStateOutput) SshKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) string { return v.SshKeyName }).(pulumi.StringOutput)
+}
+
+// Identifier of the OpenStack user that owns the instance.
+func (o GetCloudInstanceCurrentStateOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Observed block volumes attached to the instance:
+func (o GetCloudInstanceCurrentStateOutput) Volumes() GetCloudInstanceCurrentStateVolumeArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentState) []GetCloudInstanceCurrentStateVolume { return v.Volumes }).(GetCloudInstanceCurrentStateVolumeArrayOutput)
+}
+
+type GetCloudInstanceCurrentStateFlavor struct {
+	// Size of the flavor's local root disk, in GB.
+	Disk int `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk, in GB.
+	Ephemeral int `pulumi:"ephemeral"`
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Amount of RAM provided by the flavor, in MB.
+	Ram int `pulumi:"ram"`
+	// Size of the flavor's swap space, in MB.
+	Swap int `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus int `pulumi:"vcpus"`
+}
+
+// GetCloudInstanceCurrentStateFlavorInput is an input type that accepts GetCloudInstanceCurrentStateFlavorArgs and GetCloudInstanceCurrentStateFlavorOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateFlavorInput` via:
+//
+//	GetCloudInstanceCurrentStateFlavorArgs{...}
+type GetCloudInstanceCurrentStateFlavorInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateFlavorOutput() GetCloudInstanceCurrentStateFlavorOutput
+	ToGetCloudInstanceCurrentStateFlavorOutputWithContext(context.Context) GetCloudInstanceCurrentStateFlavorOutput
+}
+
+type GetCloudInstanceCurrentStateFlavorArgs struct {
+	// Size of the flavor's local root disk, in GB.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk, in GB.
+	Ephemeral pulumi.IntInput `pulumi:"ephemeral"`
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Amount of RAM provided by the flavor, in MB.
+	Ram pulumi.IntInput `pulumi:"ram"`
+	// Size of the flavor's swap space, in MB.
+	Swap pulumi.IntInput `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+}
+
+func (GetCloudInstanceCurrentStateFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateFlavorArgs) ToGetCloudInstanceCurrentStateFlavorOutput() GetCloudInstanceCurrentStateFlavorOutput {
+	return i.ToGetCloudInstanceCurrentStateFlavorOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateFlavorArgs) ToGetCloudInstanceCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateFlavorOutput)
+}
+
+type GetCloudInstanceCurrentStateFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateFlavorOutput) ToGetCloudInstanceCurrentStateFlavorOutput() GetCloudInstanceCurrentStateFlavorOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateFlavorOutput) ToGetCloudInstanceCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateFlavorOutput {
+	return o
+}
+
+// Size of the flavor's local root disk, in GB.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// Size of the flavor's ephemeral disk, in GB.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Ephemeral() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) int { return v.Ephemeral }).(pulumi.IntOutput)
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Amount of RAM provided by the flavor, in MB.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+// Size of the flavor's swap space, in MB.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Swap() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) int { return v.Swap }).(pulumi.IntOutput)
+}
+
+// Number of virtual CPUs provided by the flavor.
+func (o GetCloudInstanceCurrentStateFlavorOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+type GetCloudInstanceCurrentStateGroup struct {
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstanceCurrentStateGroupInput is an input type that accepts GetCloudInstanceCurrentStateGroupArgs and GetCloudInstanceCurrentStateGroupOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateGroupInput` via:
+//
+//	GetCloudInstanceCurrentStateGroupArgs{...}
+type GetCloudInstanceCurrentStateGroupInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateGroupOutput() GetCloudInstanceCurrentStateGroupOutput
+	ToGetCloudInstanceCurrentStateGroupOutputWithContext(context.Context) GetCloudInstanceCurrentStateGroupOutput
+}
+
+type GetCloudInstanceCurrentStateGroupArgs struct {
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstanceCurrentStateGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateGroupArgs) ToGetCloudInstanceCurrentStateGroupOutput() GetCloudInstanceCurrentStateGroupOutput {
+	return i.ToGetCloudInstanceCurrentStateGroupOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateGroupArgs) ToGetCloudInstanceCurrentStateGroupOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateGroupOutput)
+}
+
+type GetCloudInstanceCurrentStateGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateGroupOutput) ToGetCloudInstanceCurrentStateGroupOutput() GetCloudInstanceCurrentStateGroupOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateGroupOutput) ToGetCloudInstanceCurrentStateGroupOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateGroupOutput {
+	return o
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentStateImage struct {
+	// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+	Deprecated bool `pulumi:"deprecated"`
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size int `pulumi:"size"`
+	// Lifecycle status of the image as reported by Glance.
+	Status string `pulumi:"status"`
+}
+
+// GetCloudInstanceCurrentStateImageInput is an input type that accepts GetCloudInstanceCurrentStateImageArgs and GetCloudInstanceCurrentStateImageOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateImageInput` via:
+//
+//	GetCloudInstanceCurrentStateImageArgs{...}
+type GetCloudInstanceCurrentStateImageInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateImageOutput() GetCloudInstanceCurrentStateImageOutput
+	ToGetCloudInstanceCurrentStateImageOutputWithContext(context.Context) GetCloudInstanceCurrentStateImageOutput
+}
+
+type GetCloudInstanceCurrentStateImageArgs struct {
+	// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Lifecycle status of the image as reported by Glance.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudInstanceCurrentStateImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateImageArgs) ToGetCloudInstanceCurrentStateImageOutput() GetCloudInstanceCurrentStateImageOutput {
+	return i.ToGetCloudInstanceCurrentStateImageOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateImageArgs) ToGetCloudInstanceCurrentStateImageOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateImageOutput)
+}
+
+type GetCloudInstanceCurrentStateImageOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateImageOutput) ToGetCloudInstanceCurrentStateImageOutput() GetCloudInstanceCurrentStateImageOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateImageOutput) ToGetCloudInstanceCurrentStateImageOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateImageOutput {
+	return o
+}
+
+// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+func (o GetCloudInstanceCurrentStateImageOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateImage) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstanceCurrentStateImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o GetCloudInstanceCurrentStateImageOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateImage) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Lifecycle status of the image as reported by Glance.
+func (o GetCloudInstanceCurrentStateImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentStateLocation struct {
+	// Availability zone within the region where the instance is placed, null in regions that have none.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceCurrentStateLocationInput is an input type that accepts GetCloudInstanceCurrentStateLocationArgs and GetCloudInstanceCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateLocationInput` via:
+//
+//	GetCloudInstanceCurrentStateLocationArgs{...}
+type GetCloudInstanceCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateLocationOutput() GetCloudInstanceCurrentStateLocationOutput
+	ToGetCloudInstanceCurrentStateLocationOutputWithContext(context.Context) GetCloudInstanceCurrentStateLocationOutput
+}
+
+type GetCloudInstanceCurrentStateLocationArgs struct {
+	// Availability zone within the region where the instance is placed, null in regions that have none.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateLocationArgs) ToGetCloudInstanceCurrentStateLocationOutput() GetCloudInstanceCurrentStateLocationOutput {
+	return i.ToGetCloudInstanceCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateLocationArgs) ToGetCloudInstanceCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateLocationOutput)
+}
+
+type GetCloudInstanceCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateLocationOutput) ToGetCloudInstanceCurrentStateLocationOutput() GetCloudInstanceCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateLocationOutput) ToGetCloudInstanceCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateLocationOutput {
+	return o
+}
+
+// Availability zone within the region where the instance is placed, null in regions that have none.
+func (o GetCloudInstanceCurrentStateLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+func (o GetCloudInstanceCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentStateNetwork struct {
+	// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+	Addresses []GetCloudInstanceCurrentStateNetworkAddress `pulumi:"addresses"`
+	// Identifier of the gateway providing egress for this interface, null when none applies.
+	GatewayId string `pulumi:"gatewayId"`
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+	// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudInstanceCurrentStateNetworkInput is an input type that accepts GetCloudInstanceCurrentStateNetworkArgs and GetCloudInstanceCurrentStateNetworkOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateNetworkInput` via:
+//
+//	GetCloudInstanceCurrentStateNetworkArgs{...}
+type GetCloudInstanceCurrentStateNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateNetworkOutput() GetCloudInstanceCurrentStateNetworkOutput
+	ToGetCloudInstanceCurrentStateNetworkOutputWithContext(context.Context) GetCloudInstanceCurrentStateNetworkOutput
+}
+
+type GetCloudInstanceCurrentStateNetworkArgs struct {
+	// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+	Addresses GetCloudInstanceCurrentStateNetworkAddressArrayInput `pulumi:"addresses"`
+	// Identifier of the gateway providing egress for this interface, null when none applies.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudInstanceCurrentStateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateNetworkArgs) ToGetCloudInstanceCurrentStateNetworkOutput() GetCloudInstanceCurrentStateNetworkOutput {
+	return i.ToGetCloudInstanceCurrentStateNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateNetworkArgs) ToGetCloudInstanceCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateNetworkOutput)
+}
+
+// GetCloudInstanceCurrentStateNetworkArrayInput is an input type that accepts GetCloudInstanceCurrentStateNetworkArray and GetCloudInstanceCurrentStateNetworkArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateNetworkArrayInput` via:
+//
+//	GetCloudInstanceCurrentStateNetworkArray{ GetCloudInstanceCurrentStateNetworkArgs{...} }
+type GetCloudInstanceCurrentStateNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateNetworkArrayOutput() GetCloudInstanceCurrentStateNetworkArrayOutput
+	ToGetCloudInstanceCurrentStateNetworkArrayOutputWithContext(context.Context) GetCloudInstanceCurrentStateNetworkArrayOutput
+}
+
+type GetCloudInstanceCurrentStateNetworkArray []GetCloudInstanceCurrentStateNetworkInput
+
+func (GetCloudInstanceCurrentStateNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateNetworkArray) ToGetCloudInstanceCurrentStateNetworkArrayOutput() GetCloudInstanceCurrentStateNetworkArrayOutput {
+	return i.ToGetCloudInstanceCurrentStateNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateNetworkArray) ToGetCloudInstanceCurrentStateNetworkArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateNetworkArrayOutput)
+}
+
+type GetCloudInstanceCurrentStateNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateNetworkOutput) ToGetCloudInstanceCurrentStateNetworkOutput() GetCloudInstanceCurrentStateNetworkOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateNetworkOutput) ToGetCloudInstanceCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkOutput {
+	return o
+}
+
+// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+func (o GetCloudInstanceCurrentStateNetworkOutput) Addresses() GetCloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetwork) []GetCloudInstanceCurrentStateNetworkAddress {
+		return v.Addresses
+	}).(GetCloudInstanceCurrentStateNetworkAddressArrayOutput)
+}
+
+// Identifier of the gateway providing egress for this interface, null when none applies.
+func (o GetCloudInstanceCurrentStateNetworkOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetwork) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+func (o GetCloudInstanceCurrentStateNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentStateNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateNetworkArrayOutput) ToGetCloudInstanceCurrentStateNetworkArrayOutput() GetCloudInstanceCurrentStateNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateNetworkArrayOutput) ToGetCloudInstanceCurrentStateNetworkArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateNetworkArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceCurrentStateNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceCurrentStateNetwork {
+		return vs[0].([]GetCloudInstanceCurrentStateNetwork)[vs[1].(int)]
+	}).(GetCloudInstanceCurrentStateNetworkOutput)
+}
+
+type GetCloudInstanceCurrentStateNetworkAddress struct {
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip string `pulumi:"ip"`
+	// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+	Mac string `pulumi:"mac"`
+	// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+	Type string `pulumi:"type"`
+	// IP version of the address (4 for IPv4, 6 for IPv6).
+	Version int `pulumi:"version"`
+}
+
+// GetCloudInstanceCurrentStateNetworkAddressInput is an input type that accepts GetCloudInstanceCurrentStateNetworkAddressArgs and GetCloudInstanceCurrentStateNetworkAddressOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateNetworkAddressInput` via:
+//
+//	GetCloudInstanceCurrentStateNetworkAddressArgs{...}
+type GetCloudInstanceCurrentStateNetworkAddressInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateNetworkAddressOutput() GetCloudInstanceCurrentStateNetworkAddressOutput
+	ToGetCloudInstanceCurrentStateNetworkAddressOutputWithContext(context.Context) GetCloudInstanceCurrentStateNetworkAddressOutput
+}
+
+type GetCloudInstanceCurrentStateNetworkAddressArgs struct {
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+	Type pulumi.StringInput `pulumi:"type"`
+	// IP version of the address (4 for IPv4, 6 for IPv6).
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetCloudInstanceCurrentStateNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateNetworkAddressArgs) ToGetCloudInstanceCurrentStateNetworkAddressOutput() GetCloudInstanceCurrentStateNetworkAddressOutput {
+	return i.ToGetCloudInstanceCurrentStateNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateNetworkAddressArgs) ToGetCloudInstanceCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateNetworkAddressOutput)
+}
+
+// GetCloudInstanceCurrentStateNetworkAddressArrayInput is an input type that accepts GetCloudInstanceCurrentStateNetworkAddressArray and GetCloudInstanceCurrentStateNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateNetworkAddressArrayInput` via:
+//
+//	GetCloudInstanceCurrentStateNetworkAddressArray{ GetCloudInstanceCurrentStateNetworkAddressArgs{...} }
+type GetCloudInstanceCurrentStateNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateNetworkAddressArrayOutput() GetCloudInstanceCurrentStateNetworkAddressArrayOutput
+	ToGetCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(context.Context) GetCloudInstanceCurrentStateNetworkAddressArrayOutput
+}
+
+type GetCloudInstanceCurrentStateNetworkAddressArray []GetCloudInstanceCurrentStateNetworkAddressInput
+
+func (GetCloudInstanceCurrentStateNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateNetworkAddressArray) ToGetCloudInstanceCurrentStateNetworkAddressArrayOutput() GetCloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return i.ToGetCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateNetworkAddressArray) ToGetCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateNetworkAddressArrayOutput)
+}
+
+type GetCloudInstanceCurrentStateNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateNetworkAddressOutput) ToGetCloudInstanceCurrentStateNetworkAddressOutput() GetCloudInstanceCurrentStateNetworkAddressOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateNetworkAddressOutput) ToGetCloudInstanceCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkAddressOutput {
+	return o
+}
+
+// IP address assigned to the interface (IPv4 or IPv6).
+func (o GetCloudInstanceCurrentStateNetworkAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetworkAddress) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+func (o GetCloudInstanceCurrentStateNetworkAddressOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetworkAddress) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+func (o GetCloudInstanceCurrentStateNetworkAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetworkAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// IP version of the address (4 for IPv4, 6 for IPv6).
+func (o GetCloudInstanceCurrentStateNetworkAddressOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateNetworkAddress) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetCloudInstanceCurrentStateNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateNetworkAddressArrayOutput) ToGetCloudInstanceCurrentStateNetworkAddressArrayOutput() GetCloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateNetworkAddressArrayOutput) ToGetCloudInstanceCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateNetworkAddressArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceCurrentStateNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceCurrentStateNetworkAddress {
+		return vs[0].([]GetCloudInstanceCurrentStateNetworkAddress)[vs[1].(int)]
+	}).(GetCloudInstanceCurrentStateNetworkAddressOutput)
+}
+
+type GetCloudInstanceCurrentStateSecurityGroup struct {
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstanceCurrentStateSecurityGroupInput is an input type that accepts GetCloudInstanceCurrentStateSecurityGroupArgs and GetCloudInstanceCurrentStateSecurityGroupOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateSecurityGroupInput` via:
+//
+//	GetCloudInstanceCurrentStateSecurityGroupArgs{...}
+type GetCloudInstanceCurrentStateSecurityGroupInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateSecurityGroupOutput() GetCloudInstanceCurrentStateSecurityGroupOutput
+	ToGetCloudInstanceCurrentStateSecurityGroupOutputWithContext(context.Context) GetCloudInstanceCurrentStateSecurityGroupOutput
+}
+
+type GetCloudInstanceCurrentStateSecurityGroupArgs struct {
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstanceCurrentStateSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateSecurityGroupArgs) ToGetCloudInstanceCurrentStateSecurityGroupOutput() GetCloudInstanceCurrentStateSecurityGroupOutput {
+	return i.ToGetCloudInstanceCurrentStateSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateSecurityGroupArgs) ToGetCloudInstanceCurrentStateSecurityGroupOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateSecurityGroupOutput)
+}
+
+// GetCloudInstanceCurrentStateSecurityGroupArrayInput is an input type that accepts GetCloudInstanceCurrentStateSecurityGroupArray and GetCloudInstanceCurrentStateSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateSecurityGroupArrayInput` via:
+//
+//	GetCloudInstanceCurrentStateSecurityGroupArray{ GetCloudInstanceCurrentStateSecurityGroupArgs{...} }
+type GetCloudInstanceCurrentStateSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateSecurityGroupArrayOutput() GetCloudInstanceCurrentStateSecurityGroupArrayOutput
+	ToGetCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(context.Context) GetCloudInstanceCurrentStateSecurityGroupArrayOutput
+}
+
+type GetCloudInstanceCurrentStateSecurityGroupArray []GetCloudInstanceCurrentStateSecurityGroupInput
+
+func (GetCloudInstanceCurrentStateSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateSecurityGroupArray) ToGetCloudInstanceCurrentStateSecurityGroupArrayOutput() GetCloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return i.ToGetCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateSecurityGroupArray) ToGetCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+type GetCloudInstanceCurrentStateSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateSecurityGroupOutput) ToGetCloudInstanceCurrentStateSecurityGroupOutput() GetCloudInstanceCurrentStateSecurityGroupOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateSecurityGroupOutput) ToGetCloudInstanceCurrentStateSecurityGroupOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateSecurityGroupOutput {
+	return o
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateSecurityGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateSecurityGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentStateSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateSecurityGroupArrayOutput) ToGetCloudInstanceCurrentStateSecurityGroupArrayOutput() GetCloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateSecurityGroupArrayOutput) ToGetCloudInstanceCurrentStateSecurityGroupArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateSecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceCurrentStateSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceCurrentStateSecurityGroup {
+		return vs[0].([]GetCloudInstanceCurrentStateSecurityGroup)[vs[1].(int)]
+	}).(GetCloudInstanceCurrentStateSecurityGroupOutput)
+}
+
+type GetCloudInstanceCurrentStateShare struct {
+	// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+	AccessLevel string `pulumi:"accessLevel"`
+	// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+	AccessTo string `pulumi:"accessTo"`
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+	// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+	State string `pulumi:"state"`
+}
+
+// GetCloudInstanceCurrentStateShareInput is an input type that accepts GetCloudInstanceCurrentStateShareArgs and GetCloudInstanceCurrentStateShareOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateShareInput` via:
+//
+//	GetCloudInstanceCurrentStateShareArgs{...}
+type GetCloudInstanceCurrentStateShareInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateShareOutput() GetCloudInstanceCurrentStateShareOutput
+	ToGetCloudInstanceCurrentStateShareOutputWithContext(context.Context) GetCloudInstanceCurrentStateShareOutput
+}
+
+type GetCloudInstanceCurrentStateShareArgs struct {
+	// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetCloudInstanceCurrentStateShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateShareArgs) ToGetCloudInstanceCurrentStateShareOutput() GetCloudInstanceCurrentStateShareOutput {
+	return i.ToGetCloudInstanceCurrentStateShareOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateShareArgs) ToGetCloudInstanceCurrentStateShareOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateShareOutput)
+}
+
+// GetCloudInstanceCurrentStateShareArrayInput is an input type that accepts GetCloudInstanceCurrentStateShareArray and GetCloudInstanceCurrentStateShareArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateShareArrayInput` via:
+//
+//	GetCloudInstanceCurrentStateShareArray{ GetCloudInstanceCurrentStateShareArgs{...} }
+type GetCloudInstanceCurrentStateShareArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateShareArrayOutput() GetCloudInstanceCurrentStateShareArrayOutput
+	ToGetCloudInstanceCurrentStateShareArrayOutputWithContext(context.Context) GetCloudInstanceCurrentStateShareArrayOutput
+}
+
+type GetCloudInstanceCurrentStateShareArray []GetCloudInstanceCurrentStateShareInput
+
+func (GetCloudInstanceCurrentStateShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateShareArray) ToGetCloudInstanceCurrentStateShareArrayOutput() GetCloudInstanceCurrentStateShareArrayOutput {
+	return i.ToGetCloudInstanceCurrentStateShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateShareArray) ToGetCloudInstanceCurrentStateShareArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateShareArrayOutput)
+}
+
+type GetCloudInstanceCurrentStateShareOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateShareOutput) ToGetCloudInstanceCurrentStateShareOutput() GetCloudInstanceCurrentStateShareOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateShareOutput) ToGetCloudInstanceCurrentStateShareOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateShareOutput {
+	return o
+}
+
+// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+func (o GetCloudInstanceCurrentStateShareOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateShare) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+func (o GetCloudInstanceCurrentStateShareOutput) AccessTo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateShare) string { return v.AccessTo }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+func (o GetCloudInstanceCurrentStateShareOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateShare) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceCurrentStateShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateShareArrayOutput) ToGetCloudInstanceCurrentStateShareArrayOutput() GetCloudInstanceCurrentStateShareArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateShareArrayOutput) ToGetCloudInstanceCurrentStateShareArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateShareArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateShareArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceCurrentStateShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceCurrentStateShare {
+		return vs[0].([]GetCloudInstanceCurrentStateShare)[vs[1].(int)]
+	}).(GetCloudInstanceCurrentStateShareOutput)
+}
+
+type GetCloudInstanceCurrentStateVolume struct {
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size int `pulumi:"size"`
+}
+
+// GetCloudInstanceCurrentStateVolumeInput is an input type that accepts GetCloudInstanceCurrentStateVolumeArgs and GetCloudInstanceCurrentStateVolumeOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateVolumeInput` via:
+//
+//	GetCloudInstanceCurrentStateVolumeArgs{...}
+type GetCloudInstanceCurrentStateVolumeInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateVolumeOutput() GetCloudInstanceCurrentStateVolumeOutput
+	ToGetCloudInstanceCurrentStateVolumeOutputWithContext(context.Context) GetCloudInstanceCurrentStateVolumeOutput
+}
+
+type GetCloudInstanceCurrentStateVolumeArgs struct {
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+}
+
+func (GetCloudInstanceCurrentStateVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateVolumeArgs) ToGetCloudInstanceCurrentStateVolumeOutput() GetCloudInstanceCurrentStateVolumeOutput {
+	return i.ToGetCloudInstanceCurrentStateVolumeOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateVolumeArgs) ToGetCloudInstanceCurrentStateVolumeOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateVolumeOutput)
+}
+
+// GetCloudInstanceCurrentStateVolumeArrayInput is an input type that accepts GetCloudInstanceCurrentStateVolumeArray and GetCloudInstanceCurrentStateVolumeArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceCurrentStateVolumeArrayInput` via:
+//
+//	GetCloudInstanceCurrentStateVolumeArray{ GetCloudInstanceCurrentStateVolumeArgs{...} }
+type GetCloudInstanceCurrentStateVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceCurrentStateVolumeArrayOutput() GetCloudInstanceCurrentStateVolumeArrayOutput
+	ToGetCloudInstanceCurrentStateVolumeArrayOutputWithContext(context.Context) GetCloudInstanceCurrentStateVolumeArrayOutput
+}
+
+type GetCloudInstanceCurrentStateVolumeArray []GetCloudInstanceCurrentStateVolumeInput
+
+func (GetCloudInstanceCurrentStateVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (i GetCloudInstanceCurrentStateVolumeArray) ToGetCloudInstanceCurrentStateVolumeArrayOutput() GetCloudInstanceCurrentStateVolumeArrayOutput {
+	return i.ToGetCloudInstanceCurrentStateVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceCurrentStateVolumeArray) ToGetCloudInstanceCurrentStateVolumeArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceCurrentStateVolumeArrayOutput)
+}
+
+type GetCloudInstanceCurrentStateVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateVolumeOutput) ToGetCloudInstanceCurrentStateVolumeOutput() GetCloudInstanceCurrentStateVolumeOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateVolumeOutput) ToGetCloudInstanceCurrentStateVolumeOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateVolumeOutput {
+	return o
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceCurrentStateVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstanceCurrentStateVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o GetCloudInstanceCurrentStateVolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceCurrentStateVolume) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetCloudInstanceCurrentStateVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceCurrentStateVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (o GetCloudInstanceCurrentStateVolumeArrayOutput) ToGetCloudInstanceCurrentStateVolumeArrayOutput() GetCloudInstanceCurrentStateVolumeArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateVolumeArrayOutput) ToGetCloudInstanceCurrentStateVolumeArrayOutputWithContext(ctx context.Context) GetCloudInstanceCurrentStateVolumeArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceCurrentStateVolumeArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceCurrentStateVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceCurrentStateVolume {
+		return vs[0].([]GetCloudInstanceCurrentStateVolume)[vs[1].(int)]
+	}).(GetCloudInstanceCurrentStateVolumeOutput)
+}
+
+type GetCloudInstanceFlavorLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceFlavorLocationInput is an input type that accepts GetCloudInstanceFlavorLocationArgs and GetCloudInstanceFlavorLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceFlavorLocationInput` via:
+//
+//	GetCloudInstanceFlavorLocationArgs{...}
+type GetCloudInstanceFlavorLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceFlavorLocationOutput() GetCloudInstanceFlavorLocationOutput
+	ToGetCloudInstanceFlavorLocationOutputWithContext(context.Context) GetCloudInstanceFlavorLocationOutput
+}
+
+type GetCloudInstanceFlavorLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceFlavorLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceFlavorLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceFlavorLocationArgs) ToGetCloudInstanceFlavorLocationOutput() GetCloudInstanceFlavorLocationOutput {
+	return i.ToGetCloudInstanceFlavorLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceFlavorLocationArgs) ToGetCloudInstanceFlavorLocationOutputWithContext(ctx context.Context) GetCloudInstanceFlavorLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceFlavorLocationOutput)
+}
+
+type GetCloudInstanceFlavorLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceFlavorLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceFlavorLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceFlavorLocationOutput) ToGetCloudInstanceFlavorLocationOutput() GetCloudInstanceFlavorLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceFlavorLocationOutput) ToGetCloudInstanceFlavorLocationOutputWithContext(ctx context.Context) GetCloudInstanceFlavorLocationOutput {
+	return o
+}
+
+// Availability zone within the region.
+func (o GetCloudInstanceFlavorLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region code.
+func (o GetCloudInstanceFlavorLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceFlavorsFlavor struct {
+	// Free-form description of the flavor as reported by the backend. May be empty when no description is advertised for this flavor.
+	Description string `pulumi:"description"`
+	// Size of the flavor's root disk in GB. This is the primary system disk provisioned for instances created from this flavor.
+	Disk int `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk in GB. Ephemeral storage is transient: its contents do not survive a rebuild or deletion of the instance. Zero when the flavor provides no ephemeral disk.
+	Ephemeral int `pulumi:"ephemeral"`
+	// The OpenStack/Nova flavor ID. Stable within a region and used to reference the flavor when creating an instance.
+	Id string `pulumi:"id"`
+	// Whether the flavor is publicly available to the project. Private flavors are only visible to the projects they have been explicitly shared with.
+	IsPublic bool `pulumi:"isPublic"`
+	// Region (and, where applicable, availability zone) where this flavor is offered. The flavor catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another:
+	Location GetCloudInstanceFlavorsFlavorLocation `pulumi:"location"`
+	// The backend flavor name (for example `b2-7`, `c2-15`). This is the commercial/technical name used to identify the sizing in the catalog.
+	Name string `pulumi:"name"`
+	// Amount of memory provided by the flavor, expressed in MB.
+	Ram int `pulumi:"ram"`
+	// Size of the flavor's swap space in MB. Zero when the flavor provides no swap.
+	Swap int `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus int `pulumi:"vcpus"`
+}
+
+// GetCloudInstanceFlavorsFlavorInput is an input type that accepts GetCloudInstanceFlavorsFlavorArgs and GetCloudInstanceFlavorsFlavorOutput values.
+// You can construct a concrete instance of `GetCloudInstanceFlavorsFlavorInput` via:
+//
+//	GetCloudInstanceFlavorsFlavorArgs{...}
+type GetCloudInstanceFlavorsFlavorInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceFlavorsFlavorOutput() GetCloudInstanceFlavorsFlavorOutput
+	ToGetCloudInstanceFlavorsFlavorOutputWithContext(context.Context) GetCloudInstanceFlavorsFlavorOutput
+}
+
+type GetCloudInstanceFlavorsFlavorArgs struct {
+	// Free-form description of the flavor as reported by the backend. May be empty when no description is advertised for this flavor.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Size of the flavor's root disk in GB. This is the primary system disk provisioned for instances created from this flavor.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk in GB. Ephemeral storage is transient: its contents do not survive a rebuild or deletion of the instance. Zero when the flavor provides no ephemeral disk.
+	Ephemeral pulumi.IntInput `pulumi:"ephemeral"`
+	// The OpenStack/Nova flavor ID. Stable within a region and used to reference the flavor when creating an instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether the flavor is publicly available to the project. Private flavors are only visible to the projects they have been explicitly shared with.
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// Region (and, where applicable, availability zone) where this flavor is offered. The flavor catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another:
+	Location GetCloudInstanceFlavorsFlavorLocationInput `pulumi:"location"`
+	// The backend flavor name (for example `b2-7`, `c2-15`). This is the commercial/technical name used to identify the sizing in the catalog.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Amount of memory provided by the flavor, expressed in MB.
+	Ram pulumi.IntInput `pulumi:"ram"`
+	// Size of the flavor's swap space in MB. Zero when the flavor provides no swap.
+	Swap pulumi.IntInput `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+}
+
+func (GetCloudInstanceFlavorsFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetCloudInstanceFlavorsFlavorArgs) ToGetCloudInstanceFlavorsFlavorOutput() GetCloudInstanceFlavorsFlavorOutput {
+	return i.ToGetCloudInstanceFlavorsFlavorOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceFlavorsFlavorArgs) ToGetCloudInstanceFlavorsFlavorOutputWithContext(ctx context.Context) GetCloudInstanceFlavorsFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceFlavorsFlavorOutput)
+}
+
+// GetCloudInstanceFlavorsFlavorArrayInput is an input type that accepts GetCloudInstanceFlavorsFlavorArray and GetCloudInstanceFlavorsFlavorArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceFlavorsFlavorArrayInput` via:
+//
+//	GetCloudInstanceFlavorsFlavorArray{ GetCloudInstanceFlavorsFlavorArgs{...} }
+type GetCloudInstanceFlavorsFlavorArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceFlavorsFlavorArrayOutput() GetCloudInstanceFlavorsFlavorArrayOutput
+	ToGetCloudInstanceFlavorsFlavorArrayOutputWithContext(context.Context) GetCloudInstanceFlavorsFlavorArrayOutput
+}
+
+type GetCloudInstanceFlavorsFlavorArray []GetCloudInstanceFlavorsFlavorInput
+
+func (GetCloudInstanceFlavorsFlavorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetCloudInstanceFlavorsFlavorArray) ToGetCloudInstanceFlavorsFlavorArrayOutput() GetCloudInstanceFlavorsFlavorArrayOutput {
+	return i.ToGetCloudInstanceFlavorsFlavorArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceFlavorsFlavorArray) ToGetCloudInstanceFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetCloudInstanceFlavorsFlavorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceFlavorsFlavorArrayOutput)
+}
+
+type GetCloudInstanceFlavorsFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceFlavorsFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetCloudInstanceFlavorsFlavorOutput) ToGetCloudInstanceFlavorsFlavorOutput() GetCloudInstanceFlavorsFlavorOutput {
+	return o
+}
+
+func (o GetCloudInstanceFlavorsFlavorOutput) ToGetCloudInstanceFlavorsFlavorOutputWithContext(ctx context.Context) GetCloudInstanceFlavorsFlavorOutput {
+	return o
+}
+
+// Free-form description of the flavor as reported by the backend. May be empty when no description is advertised for this flavor.
+func (o GetCloudInstanceFlavorsFlavorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Size of the flavor's root disk in GB. This is the primary system disk provisioned for instances created from this flavor.
+func (o GetCloudInstanceFlavorsFlavorOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// Size of the flavor's ephemeral disk in GB. Ephemeral storage is transient: its contents do not survive a rebuild or deletion of the instance. Zero when the flavor provides no ephemeral disk.
+func (o GetCloudInstanceFlavorsFlavorOutput) Ephemeral() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) int { return v.Ephemeral }).(pulumi.IntOutput)
+}
+
+// The OpenStack/Nova flavor ID. Stable within a region and used to reference the flavor when creating an instance.
+func (o GetCloudInstanceFlavorsFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether the flavor is publicly available to the project. Private flavors are only visible to the projects they have been explicitly shared with.
+func (o GetCloudInstanceFlavorsFlavorOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// Region (and, where applicable, availability zone) where this flavor is offered. The flavor catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another:
+func (o GetCloudInstanceFlavorsFlavorOutput) Location() GetCloudInstanceFlavorsFlavorLocationOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) GetCloudInstanceFlavorsFlavorLocation { return v.Location }).(GetCloudInstanceFlavorsFlavorLocationOutput)
+}
+
+// The backend flavor name (for example `b2-7`, `c2-15`). This is the commercial/technical name used to identify the sizing in the catalog.
+func (o GetCloudInstanceFlavorsFlavorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Amount of memory provided by the flavor, expressed in MB.
+func (o GetCloudInstanceFlavorsFlavorOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+// Size of the flavor's swap space in MB. Zero when the flavor provides no swap.
+func (o GetCloudInstanceFlavorsFlavorOutput) Swap() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) int { return v.Swap }).(pulumi.IntOutput)
+}
+
+// Number of virtual CPUs provided by the flavor.
+func (o GetCloudInstanceFlavorsFlavorOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+type GetCloudInstanceFlavorsFlavorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceFlavorsFlavorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetCloudInstanceFlavorsFlavorArrayOutput) ToGetCloudInstanceFlavorsFlavorArrayOutput() GetCloudInstanceFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceFlavorsFlavorArrayOutput) ToGetCloudInstanceFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetCloudInstanceFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceFlavorsFlavorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceFlavorsFlavor {
+		return vs[0].([]GetCloudInstanceFlavorsFlavor)[vs[1].(int)]
+	}).(GetCloudInstanceFlavorsFlavorOutput)
+}
+
+type GetCloudInstanceFlavorsFlavorLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Restrict the listing to the flavors offered in this region. The catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceFlavorsFlavorLocationInput is an input type that accepts GetCloudInstanceFlavorsFlavorLocationArgs and GetCloudInstanceFlavorsFlavorLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceFlavorsFlavorLocationInput` via:
+//
+//	GetCloudInstanceFlavorsFlavorLocationArgs{...}
+type GetCloudInstanceFlavorsFlavorLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceFlavorsFlavorLocationOutput() GetCloudInstanceFlavorsFlavorLocationOutput
+	ToGetCloudInstanceFlavorsFlavorLocationOutputWithContext(context.Context) GetCloudInstanceFlavorsFlavorLocationOutput
+}
+
+type GetCloudInstanceFlavorsFlavorLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Restrict the listing to the flavors offered in this region. The catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceFlavorsFlavorLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceFlavorsFlavorLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceFlavorsFlavorLocationArgs) ToGetCloudInstanceFlavorsFlavorLocationOutput() GetCloudInstanceFlavorsFlavorLocationOutput {
+	return i.ToGetCloudInstanceFlavorsFlavorLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceFlavorsFlavorLocationArgs) ToGetCloudInstanceFlavorsFlavorLocationOutputWithContext(ctx context.Context) GetCloudInstanceFlavorsFlavorLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceFlavorsFlavorLocationOutput)
+}
+
+type GetCloudInstanceFlavorsFlavorLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceFlavorsFlavorLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceFlavorsFlavorLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceFlavorsFlavorLocationOutput) ToGetCloudInstanceFlavorsFlavorLocationOutput() GetCloudInstanceFlavorsFlavorLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceFlavorsFlavorLocationOutput) ToGetCloudInstanceFlavorsFlavorLocationOutputWithContext(ctx context.Context) GetCloudInstanceFlavorsFlavorLocationOutput {
+	return o
+}
+
+// Availability zone within the region.
+func (o GetCloudInstanceFlavorsFlavorLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavorLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Restrict the listing to the flavors offered in this region. The catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another.
+func (o GetCloudInstanceFlavorsFlavorLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceFlavorsFlavorLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupCurrentState struct {
+	// Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+	Location GetCloudInstanceGroupCurrentStateLocation `pulumi:"location"`
+	// Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+	Members []GetCloudInstanceGroupCurrentStateMember `pulumi:"members"`
+	// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+	Name string `pulumi:"name"`
+	// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+	Policy string `pulumi:"policy"`
+}
+
+// GetCloudInstanceGroupCurrentStateInput is an input type that accepts GetCloudInstanceGroupCurrentStateArgs and GetCloudInstanceGroupCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupCurrentStateInput` via:
+//
+//	GetCloudInstanceGroupCurrentStateArgs{...}
+type GetCloudInstanceGroupCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupCurrentStateOutput() GetCloudInstanceGroupCurrentStateOutput
+	ToGetCloudInstanceGroupCurrentStateOutputWithContext(context.Context) GetCloudInstanceGroupCurrentStateOutput
+}
+
+type GetCloudInstanceGroupCurrentStateArgs struct {
+	// Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+	Location GetCloudInstanceGroupCurrentStateLocationInput `pulumi:"location"`
+	// Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+	Members GetCloudInstanceGroupCurrentStateMemberArrayInput `pulumi:"members"`
+	// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetCloudInstanceGroupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupCurrentStateArgs) ToGetCloudInstanceGroupCurrentStateOutput() GetCloudInstanceGroupCurrentStateOutput {
+	return i.ToGetCloudInstanceGroupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupCurrentStateArgs) ToGetCloudInstanceGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupCurrentStateOutput)
+}
+
+type GetCloudInstanceGroupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupCurrentStateOutput) ToGetCloudInstanceGroupCurrentStateOutput() GetCloudInstanceGroupCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupCurrentStateOutput) ToGetCloudInstanceGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateOutput {
+	return o
+}
+
+// Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+func (o GetCloudInstanceGroupCurrentStateOutput) Location() GetCloudInstanceGroupCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentState) GetCloudInstanceGroupCurrentStateLocation { return v.Location }).(GetCloudInstanceGroupCurrentStateLocationOutput)
+}
+
+// Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+func (o GetCloudInstanceGroupCurrentStateOutput) Members() GetCloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentState) []GetCloudInstanceGroupCurrentStateMember { return v.Members }).(GetCloudInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+func (o GetCloudInstanceGroupCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+func (o GetCloudInstanceGroupCurrentStateOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentState) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupCurrentStateLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceGroupCurrentStateLocationInput is an input type that accepts GetCloudInstanceGroupCurrentStateLocationArgs and GetCloudInstanceGroupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupCurrentStateLocationInput` via:
+//
+//	GetCloudInstanceGroupCurrentStateLocationArgs{...}
+type GetCloudInstanceGroupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupCurrentStateLocationOutput() GetCloudInstanceGroupCurrentStateLocationOutput
+	ToGetCloudInstanceGroupCurrentStateLocationOutputWithContext(context.Context) GetCloudInstanceGroupCurrentStateLocationOutput
+}
+
+type GetCloudInstanceGroupCurrentStateLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceGroupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupCurrentStateLocationArgs) ToGetCloudInstanceGroupCurrentStateLocationOutput() GetCloudInstanceGroupCurrentStateLocationOutput {
+	return i.ToGetCloudInstanceGroupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupCurrentStateLocationArgs) ToGetCloudInstanceGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupCurrentStateLocationOutput)
+}
+
+type GetCloudInstanceGroupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupCurrentStateLocationOutput) ToGetCloudInstanceGroupCurrentStateLocationOutput() GetCloudInstanceGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupCurrentStateLocationOutput) ToGetCloudInstanceGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateLocationOutput {
+	return o
+}
+
+// Availability zone within the region.
+func (o GetCloudInstanceGroupCurrentStateLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentStateLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region code.
+func (o GetCloudInstanceGroupCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupCurrentStateMember struct {
+	// Unique identifier of the instance group to look up.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstanceGroupCurrentStateMemberInput is an input type that accepts GetCloudInstanceGroupCurrentStateMemberArgs and GetCloudInstanceGroupCurrentStateMemberOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupCurrentStateMemberInput` via:
+//
+//	GetCloudInstanceGroupCurrentStateMemberArgs{...}
+type GetCloudInstanceGroupCurrentStateMemberInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupCurrentStateMemberOutput() GetCloudInstanceGroupCurrentStateMemberOutput
+	ToGetCloudInstanceGroupCurrentStateMemberOutputWithContext(context.Context) GetCloudInstanceGroupCurrentStateMemberOutput
+}
+
+type GetCloudInstanceGroupCurrentStateMemberArgs struct {
+	// Unique identifier of the instance group to look up.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstanceGroupCurrentStateMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupCurrentStateMemberArgs) ToGetCloudInstanceGroupCurrentStateMemberOutput() GetCloudInstanceGroupCurrentStateMemberOutput {
+	return i.ToGetCloudInstanceGroupCurrentStateMemberOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupCurrentStateMemberArgs) ToGetCloudInstanceGroupCurrentStateMemberOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupCurrentStateMemberOutput)
+}
+
+// GetCloudInstanceGroupCurrentStateMemberArrayInput is an input type that accepts GetCloudInstanceGroupCurrentStateMemberArray and GetCloudInstanceGroupCurrentStateMemberArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupCurrentStateMemberArrayInput` via:
+//
+//	GetCloudInstanceGroupCurrentStateMemberArray{ GetCloudInstanceGroupCurrentStateMemberArgs{...} }
+type GetCloudInstanceGroupCurrentStateMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupCurrentStateMemberArrayOutput() GetCloudInstanceGroupCurrentStateMemberArrayOutput
+	ToGetCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(context.Context) GetCloudInstanceGroupCurrentStateMemberArrayOutput
+}
+
+type GetCloudInstanceGroupCurrentStateMemberArray []GetCloudInstanceGroupCurrentStateMemberInput
+
+func (GetCloudInstanceGroupCurrentStateMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupCurrentStateMemberArray) ToGetCloudInstanceGroupCurrentStateMemberArrayOutput() GetCloudInstanceGroupCurrentStateMemberArrayOutput {
+	return i.ToGetCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupCurrentStateMemberArray) ToGetCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+type GetCloudInstanceGroupCurrentStateMemberOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupCurrentStateMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupCurrentStateMemberOutput) ToGetCloudInstanceGroupCurrentStateMemberOutput() GetCloudInstanceGroupCurrentStateMemberOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupCurrentStateMemberOutput) ToGetCloudInstanceGroupCurrentStateMemberOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateMemberOutput {
+	return o
+}
+
+// Unique identifier of the instance group to look up.
+func (o GetCloudInstanceGroupCurrentStateMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupCurrentStateMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupCurrentStateMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupCurrentStateMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupCurrentStateMemberArrayOutput) ToGetCloudInstanceGroupCurrentStateMemberArrayOutput() GetCloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupCurrentStateMemberArrayOutput) ToGetCloudInstanceGroupCurrentStateMemberArrayOutputWithContext(ctx context.Context) GetCloudInstanceGroupCurrentStateMemberArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupCurrentStateMemberArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceGroupCurrentStateMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceGroupCurrentStateMember {
+		return vs[0].([]GetCloudInstanceGroupCurrentStateMember)[vs[1].(int)]
+	}).(GetCloudInstanceGroupCurrentStateMemberOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroup struct {
+	// Computed hash of the current target specification, used for optimistic concurrency control. Because an instance group has no update route, this value never changes after creation.
+	Checksum string `pulumi:"checksum"`
+	// Timestamp at which the instance group was created, in RFC 3339 format.
+	CreatedAt string `pulumi:"createdAt"`
+	// State of the instance group as observed on the backend:
+	CurrentState GetCloudInstanceGroupsInstanceGroupCurrentState `pulumi:"currentState"`
+	// Identifier of the member instance.
+	Id string `pulumi:"id"`
+	// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+	Name string `pulumi:"name"`
+	// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+	Policy string `pulumi:"policy"`
+	// Region code.
+	Region string `pulumi:"region"`
+	// Instance group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`). `OUT_OF_SYNC` means the group has drifted from its target specification; a group managed by `CloudInstanceGroup` is destroyed and recreated on the next `pulumi up` to converge.
+	ResourceStatus string `pulumi:"resourceStatus"`
+}
+
+// GetCloudInstanceGroupsInstanceGroupInput is an input type that accepts GetCloudInstanceGroupsInstanceGroupArgs and GetCloudInstanceGroupsInstanceGroupOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupsInstanceGroupInput` via:
+//
+//	GetCloudInstanceGroupsInstanceGroupArgs{...}
+type GetCloudInstanceGroupsInstanceGroupInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupsInstanceGroupOutput() GetCloudInstanceGroupsInstanceGroupOutput
+	ToGetCloudInstanceGroupsInstanceGroupOutputWithContext(context.Context) GetCloudInstanceGroupsInstanceGroupOutput
+}
+
+type GetCloudInstanceGroupsInstanceGroupArgs struct {
+	// Computed hash of the current target specification, used for optimistic concurrency control. Because an instance group has no update route, this value never changes after creation.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Timestamp at which the instance group was created, in RFC 3339 format.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// State of the instance group as observed on the backend:
+	CurrentState GetCloudInstanceGroupsInstanceGroupCurrentStateInput `pulumi:"currentState"`
+	// Identifier of the member instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Instance group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`). `OUT_OF_SYNC` means the group has drifted from its target specification; a group managed by `CloudInstanceGroup` is destroyed and recreated on the next `pulumi up` to converge.
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+}
+
+func (GetCloudInstanceGroupsInstanceGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupArgs) ToGetCloudInstanceGroupsInstanceGroupOutput() GetCloudInstanceGroupsInstanceGroupOutput {
+	return i.ToGetCloudInstanceGroupsInstanceGroupOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupArgs) ToGetCloudInstanceGroupsInstanceGroupOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupsInstanceGroupOutput)
+}
+
+// GetCloudInstanceGroupsInstanceGroupArrayInput is an input type that accepts GetCloudInstanceGroupsInstanceGroupArray and GetCloudInstanceGroupsInstanceGroupArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupsInstanceGroupArrayInput` via:
+//
+//	GetCloudInstanceGroupsInstanceGroupArray{ GetCloudInstanceGroupsInstanceGroupArgs{...} }
+type GetCloudInstanceGroupsInstanceGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupsInstanceGroupArrayOutput() GetCloudInstanceGroupsInstanceGroupArrayOutput
+	ToGetCloudInstanceGroupsInstanceGroupArrayOutputWithContext(context.Context) GetCloudInstanceGroupsInstanceGroupArrayOutput
+}
+
+type GetCloudInstanceGroupsInstanceGroupArray []GetCloudInstanceGroupsInstanceGroupInput
+
+func (GetCloudInstanceGroupsInstanceGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupArray) ToGetCloudInstanceGroupsInstanceGroupArrayOutput() GetCloudInstanceGroupsInstanceGroupArrayOutput {
+	return i.ToGetCloudInstanceGroupsInstanceGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupArray) ToGetCloudInstanceGroupsInstanceGroupArrayOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupsInstanceGroupArrayOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupsInstanceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupOutput) ToGetCloudInstanceGroupsInstanceGroupOutput() GetCloudInstanceGroupsInstanceGroupOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupOutput) ToGetCloudInstanceGroupsInstanceGroupOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupOutput {
+	return o
+}
+
+// Computed hash of the current target specification, used for optimistic concurrency control. Because an instance group has no update route, this value never changes after creation.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Timestamp at which the instance group was created, in RFC 3339 format.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// State of the instance group as observed on the backend:
+func (o GetCloudInstanceGroupsInstanceGroupOutput) CurrentState() GetCloudInstanceGroupsInstanceGroupCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) GetCloudInstanceGroupsInstanceGroupCurrentState {
+		return v.CurrentState
+	}).(GetCloudInstanceGroupsInstanceGroupCurrentStateOutput)
+}
+
+// Identifier of the member instance.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// Region code.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Instance group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`). `OUT_OF_SYNC` means the group has drifted from its target specification; a group managed by `CloudInstanceGroup` is destroyed and recreated on the next `pulumi up` to converge.
+func (o GetCloudInstanceGroupsInstanceGroupOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroup) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupsInstanceGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceGroupsInstanceGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupArrayOutput) ToGetCloudInstanceGroupsInstanceGroupArrayOutput() GetCloudInstanceGroupsInstanceGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupArrayOutput) ToGetCloudInstanceGroupsInstanceGroupArrayOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceGroupsInstanceGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceGroupsInstanceGroup {
+		return vs[0].([]GetCloudInstanceGroupsInstanceGroup)[vs[1].(int)]
+	}).(GetCloudInstanceGroupsInstanceGroupOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentState struct {
+	// Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+	Location GetCloudInstanceGroupsInstanceGroupCurrentStateLocation `pulumi:"location"`
+	// Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+	Members []GetCloudInstanceGroupsInstanceGroupCurrentStateMember `pulumi:"members"`
+	// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+	Name string `pulumi:"name"`
+	// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+	Policy string `pulumi:"policy"`
+}
+
+// GetCloudInstanceGroupsInstanceGroupCurrentStateInput is an input type that accepts GetCloudInstanceGroupsInstanceGroupCurrentStateArgs and GetCloudInstanceGroupsInstanceGroupCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupsInstanceGroupCurrentStateInput` via:
+//
+//	GetCloudInstanceGroupsInstanceGroupCurrentStateArgs{...}
+type GetCloudInstanceGroupsInstanceGroupCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateOutput
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutputWithContext(context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateOutput
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateArgs struct {
+	// Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+	Location GetCloudInstanceGroupsInstanceGroupCurrentStateLocationInput `pulumi:"location"`
+	// Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+	Members GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayInput `pulumi:"members"`
+	// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+	Policy pulumi.StringInput `pulumi:"policy"`
+}
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateArgs) ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateOutput {
+	return i.ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateArgs) ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupsInstanceGroupCurrentStateOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateOutput {
+	return o
+}
+
+// Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) Location() GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentState) GetCloudInstanceGroupsInstanceGroupCurrentStateLocation {
+		return v.Location
+	}).(GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput)
+}
+
+// Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) Members() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentState) []GetCloudInstanceGroupsInstanceGroupCurrentStateMember {
+		return v.Members
+	}).(GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+// Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentState) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceGroupsInstanceGroupCurrentStateLocationInput is an input type that accepts GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs and GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupsInstanceGroupCurrentStateLocationInput` via:
+//
+//	GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs{...}
+type GetCloudInstanceGroupsInstanceGroupCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutputWithContext(context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs) ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput {
+	return i.ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs) ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput {
+	return o
+}
+
+// Availability zone within the region.
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentStateLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region code.
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMember struct {
+	// Identifier of the member instance.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstanceGroupsInstanceGroupCurrentStateMemberInput is an input type that accepts GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs and GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupsInstanceGroupCurrentStateMemberInput` via:
+//
+//	GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs{...}
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMemberInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutputWithContext(context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs struct {
+	// Identifier of the member instance.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput {
+	return i.ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput)
+}
+
+// GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayInput is an input type that accepts GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray and GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayInput` via:
+//
+//	GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray{ GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs{...} }
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput
+	ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutputWithContext(context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray []GetCloudInstanceGroupsInstanceGroupCurrentStateMemberInput
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceGroupsInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput {
+	return i.ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput {
+	return o
+}
+
+// Identifier of the member instance.
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceGroupsInstanceGroupCurrentStateMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceGroupsInstanceGroupCurrentStateMember)(nil)).Elem()
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput() GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput) ToGetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutputWithContext(ctx context.Context) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceGroupsInstanceGroupCurrentStateMember {
+		return vs[0].([]GetCloudInstanceGroupsInstanceGroupCurrentStateMember)[vs[1].(int)]
+	}).(GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput)
+}
+
+type GetCloudInstanceImageLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Region code.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceImageLocationInput is an input type that accepts GetCloudInstanceImageLocationArgs and GetCloudInstanceImageLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceImageLocationInput` via:
+//
+//	GetCloudInstanceImageLocationArgs{...}
+type GetCloudInstanceImageLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceImageLocationOutput() GetCloudInstanceImageLocationOutput
+	ToGetCloudInstanceImageLocationOutputWithContext(context.Context) GetCloudInstanceImageLocationOutput
+}
+
+type GetCloudInstanceImageLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Region code.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceImageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceImageLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceImageLocationArgs) ToGetCloudInstanceImageLocationOutput() GetCloudInstanceImageLocationOutput {
+	return i.ToGetCloudInstanceImageLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceImageLocationArgs) ToGetCloudInstanceImageLocationOutputWithContext(ctx context.Context) GetCloudInstanceImageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceImageLocationOutput)
+}
+
+type GetCloudInstanceImageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceImageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceImageLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceImageLocationOutput) ToGetCloudInstanceImageLocationOutput() GetCloudInstanceImageLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceImageLocationOutput) ToGetCloudInstanceImageLocationOutputWithContext(ctx context.Context) GetCloudInstanceImageLocationOutput {
+	return o
+}
+
+// Availability zone within the region.
+func (o GetCloudInstanceImageLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImageLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Region code.
+func (o GetCloudInstanceImageLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImageLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceImagesImage struct {
+	// Timestamp at which the image was created on the backend, in RFC 3339 format.
+	CreatedAt string `pulumi:"createdAt"`
+	// The OpenStack/Glance image ID. Stable within a region and used to reference the image when creating an instance.
+	Id string `pulumi:"id"`
+	// Region (and, where applicable, availability zone) where this image is offered. The image catalog is per-region: an image returned for one region is not guaranteed to exist in another:
+	Location GetCloudInstanceImagesImageLocation `pulumi:"location"`
+	// Minimum root disk size, in GB, that an instance must provide to boot from this image. A flavor whose disk is smaller than this value cannot be used with the image.
+	MinDisk int `pulumi:"minDisk"`
+	// Minimum amount of memory, in MB, that an instance must provide to boot from this image. A flavor whose RAM is below this value cannot be used with the image.
+	MinRam int `pulumi:"minRam"`
+	// Display name of the image as reported by the backend (for example the distribution and version, such as `Debian 12`).
+	Name string `pulumi:"name"`
+	// Size of the image on the backend, expressed in bytes.
+	Size int `pulumi:"size"`
+	// Availability status of the image as reported by the backend. Only images in an active status can be used to create an instance.
+	Status string `pulumi:"status"`
+	// Timestamp of the last modification of the image on the backend, in RFC 3339 format.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Visibility scope of the image, for example whether it is a public OVHcloud-provided image or private to the project.
+	Visibility string `pulumi:"visibility"`
+}
+
+// GetCloudInstanceImagesImageInput is an input type that accepts GetCloudInstanceImagesImageArgs and GetCloudInstanceImagesImageOutput values.
+// You can construct a concrete instance of `GetCloudInstanceImagesImageInput` via:
+//
+//	GetCloudInstanceImagesImageArgs{...}
+type GetCloudInstanceImagesImageInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceImagesImageOutput() GetCloudInstanceImagesImageOutput
+	ToGetCloudInstanceImagesImageOutputWithContext(context.Context) GetCloudInstanceImagesImageOutput
+}
+
+type GetCloudInstanceImagesImageArgs struct {
+	// Timestamp at which the image was created on the backend, in RFC 3339 format.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The OpenStack/Glance image ID. Stable within a region and used to reference the image when creating an instance.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Region (and, where applicable, availability zone) where this image is offered. The image catalog is per-region: an image returned for one region is not guaranteed to exist in another:
+	Location GetCloudInstanceImagesImageLocationInput `pulumi:"location"`
+	// Minimum root disk size, in GB, that an instance must provide to boot from this image. A flavor whose disk is smaller than this value cannot be used with the image.
+	MinDisk pulumi.IntInput `pulumi:"minDisk"`
+	// Minimum amount of memory, in MB, that an instance must provide to boot from this image. A flavor whose RAM is below this value cannot be used with the image.
+	MinRam pulumi.IntInput `pulumi:"minRam"`
+	// Display name of the image as reported by the backend (for example the distribution and version, such as `Debian 12`).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Size of the image on the backend, expressed in bytes.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Availability status of the image as reported by the backend. Only images in an active status can be used to create an instance.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Timestamp of the last modification of the image on the backend, in RFC 3339 format.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Visibility scope of the image, for example whether it is a public OVHcloud-provided image or private to the project.
+	Visibility pulumi.StringInput `pulumi:"visibility"`
+}
+
+func (GetCloudInstanceImagesImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceImagesImage)(nil)).Elem()
+}
+
+func (i GetCloudInstanceImagesImageArgs) ToGetCloudInstanceImagesImageOutput() GetCloudInstanceImagesImageOutput {
+	return i.ToGetCloudInstanceImagesImageOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceImagesImageArgs) ToGetCloudInstanceImagesImageOutputWithContext(ctx context.Context) GetCloudInstanceImagesImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceImagesImageOutput)
+}
+
+// GetCloudInstanceImagesImageArrayInput is an input type that accepts GetCloudInstanceImagesImageArray and GetCloudInstanceImagesImageArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceImagesImageArrayInput` via:
+//
+//	GetCloudInstanceImagesImageArray{ GetCloudInstanceImagesImageArgs{...} }
+type GetCloudInstanceImagesImageArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceImagesImageArrayOutput() GetCloudInstanceImagesImageArrayOutput
+	ToGetCloudInstanceImagesImageArrayOutputWithContext(context.Context) GetCloudInstanceImagesImageArrayOutput
+}
+
+type GetCloudInstanceImagesImageArray []GetCloudInstanceImagesImageInput
+
+func (GetCloudInstanceImagesImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceImagesImage)(nil)).Elem()
+}
+
+func (i GetCloudInstanceImagesImageArray) ToGetCloudInstanceImagesImageArrayOutput() GetCloudInstanceImagesImageArrayOutput {
+	return i.ToGetCloudInstanceImagesImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceImagesImageArray) ToGetCloudInstanceImagesImageArrayOutputWithContext(ctx context.Context) GetCloudInstanceImagesImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceImagesImageArrayOutput)
+}
+
+type GetCloudInstanceImagesImageOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceImagesImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceImagesImage)(nil)).Elem()
+}
+
+func (o GetCloudInstanceImagesImageOutput) ToGetCloudInstanceImagesImageOutput() GetCloudInstanceImagesImageOutput {
+	return o
+}
+
+func (o GetCloudInstanceImagesImageOutput) ToGetCloudInstanceImagesImageOutputWithContext(ctx context.Context) GetCloudInstanceImagesImageOutput {
+	return o
+}
+
+// Timestamp at which the image was created on the backend, in RFC 3339 format.
+func (o GetCloudInstanceImagesImageOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The OpenStack/Glance image ID. Stable within a region and used to reference the image when creating an instance.
+func (o GetCloudInstanceImagesImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Region (and, where applicable, availability zone) where this image is offered. The image catalog is per-region: an image returned for one region is not guaranteed to exist in another:
+func (o GetCloudInstanceImagesImageOutput) Location() GetCloudInstanceImagesImageLocationOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) GetCloudInstanceImagesImageLocation { return v.Location }).(GetCloudInstanceImagesImageLocationOutput)
+}
+
+// Minimum root disk size, in GB, that an instance must provide to boot from this image. A flavor whose disk is smaller than this value cannot be used with the image.
+func (o GetCloudInstanceImagesImageOutput) MinDisk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) int { return v.MinDisk }).(pulumi.IntOutput)
+}
+
+// Minimum amount of memory, in MB, that an instance must provide to boot from this image. A flavor whose RAM is below this value cannot be used with the image.
+func (o GetCloudInstanceImagesImageOutput) MinRam() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) int { return v.MinRam }).(pulumi.IntOutput)
+}
+
+// Display name of the image as reported by the backend (for example the distribution and version, such as `Debian 12`).
+func (o GetCloudInstanceImagesImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Size of the image on the backend, expressed in bytes.
+func (o GetCloudInstanceImagesImageOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Availability status of the image as reported by the backend. Only images in an active status can be used to create an instance.
+func (o GetCloudInstanceImagesImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Timestamp of the last modification of the image on the backend, in RFC 3339 format.
+func (o GetCloudInstanceImagesImageOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Visibility scope of the image, for example whether it is a public OVHcloud-provided image or private to the project.
+func (o GetCloudInstanceImagesImageOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImage) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceImagesImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceImagesImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceImagesImage)(nil)).Elem()
+}
+
+func (o GetCloudInstanceImagesImageArrayOutput) ToGetCloudInstanceImagesImageArrayOutput() GetCloudInstanceImagesImageArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceImagesImageArrayOutput) ToGetCloudInstanceImagesImageArrayOutputWithContext(ctx context.Context) GetCloudInstanceImagesImageArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceImagesImageArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceImagesImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceImagesImage {
+		return vs[0].([]GetCloudInstanceImagesImage)[vs[1].(int)]
+	}).(GetCloudInstanceImagesImageOutput)
+}
+
+type GetCloudInstanceImagesImageLocation struct {
+	// Availability zone within the region.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Restrict the listing to the images offered in this region. The catalog is per-region: an image returned for one region is not guaranteed to exist in another.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstanceImagesImageLocationInput is an input type that accepts GetCloudInstanceImagesImageLocationArgs and GetCloudInstanceImagesImageLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstanceImagesImageLocationInput` via:
+//
+//	GetCloudInstanceImagesImageLocationArgs{...}
+type GetCloudInstanceImagesImageLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceImagesImageLocationOutput() GetCloudInstanceImagesImageLocationOutput
+	ToGetCloudInstanceImagesImageLocationOutputWithContext(context.Context) GetCloudInstanceImagesImageLocationOutput
+}
+
+type GetCloudInstanceImagesImageLocationArgs struct {
+	// Availability zone within the region.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Restrict the listing to the images offered in this region. The catalog is per-region: an image returned for one region is not guaranteed to exist in another.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstanceImagesImageLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceImagesImageLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstanceImagesImageLocationArgs) ToGetCloudInstanceImagesImageLocationOutput() GetCloudInstanceImagesImageLocationOutput {
+	return i.ToGetCloudInstanceImagesImageLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceImagesImageLocationArgs) ToGetCloudInstanceImagesImageLocationOutputWithContext(ctx context.Context) GetCloudInstanceImagesImageLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceImagesImageLocationOutput)
+}
+
+type GetCloudInstanceImagesImageLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceImagesImageLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceImagesImageLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstanceImagesImageLocationOutput) ToGetCloudInstanceImagesImageLocationOutput() GetCloudInstanceImagesImageLocationOutput {
+	return o
+}
+
+func (o GetCloudInstanceImagesImageLocationOutput) ToGetCloudInstanceImagesImageLocationOutputWithContext(ctx context.Context) GetCloudInstanceImagesImageLocationOutput {
+	return o
+}
+
+// Availability zone within the region.
+func (o GetCloudInstanceImagesImageLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImageLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Restrict the listing to the images offered in this region. The catalog is per-region: an image returned for one region is not guaranteed to exist in another.
+func (o GetCloudInstanceImagesImageLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceImagesImageLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceNetwork struct {
+	// Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+	AutoAssignPublicIp bool `pulumi:"autoAssignPublicIp"`
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip string `pulumi:"ip"`
+	// Private network ID. Omit for a public interface.
+	NetworkId string `pulumi:"networkId"`
+	// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudInstanceNetworkInput is an input type that accepts GetCloudInstanceNetworkArgs and GetCloudInstanceNetworkOutput values.
+// You can construct a concrete instance of `GetCloudInstanceNetworkInput` via:
+//
+//	GetCloudInstanceNetworkArgs{...}
+type GetCloudInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceNetworkOutput() GetCloudInstanceNetworkOutput
+	ToGetCloudInstanceNetworkOutputWithContext(context.Context) GetCloudInstanceNetworkOutput
+}
+
+type GetCloudInstanceNetworkArgs struct {
+	// Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+	AutoAssignPublicIp pulumi.BoolInput `pulumi:"autoAssignPublicIp"`
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Private network ID. Omit for a public interface.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceNetwork)(nil)).Elem()
+}
+
+func (i GetCloudInstanceNetworkArgs) ToGetCloudInstanceNetworkOutput() GetCloudInstanceNetworkOutput {
+	return i.ToGetCloudInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceNetworkArgs) ToGetCloudInstanceNetworkOutputWithContext(ctx context.Context) GetCloudInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceNetworkOutput)
+}
+
+// GetCloudInstanceNetworkArrayInput is an input type that accepts GetCloudInstanceNetworkArray and GetCloudInstanceNetworkArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceNetworkArrayInput` via:
+//
+//	GetCloudInstanceNetworkArray{ GetCloudInstanceNetworkArgs{...} }
+type GetCloudInstanceNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceNetworkArrayOutput() GetCloudInstanceNetworkArrayOutput
+	ToGetCloudInstanceNetworkArrayOutputWithContext(context.Context) GetCloudInstanceNetworkArrayOutput
+}
+
+type GetCloudInstanceNetworkArray []GetCloudInstanceNetworkInput
+
+func (GetCloudInstanceNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceNetwork)(nil)).Elem()
+}
+
+func (i GetCloudInstanceNetworkArray) ToGetCloudInstanceNetworkArrayOutput() GetCloudInstanceNetworkArrayOutput {
+	return i.ToGetCloudInstanceNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceNetworkArray) ToGetCloudInstanceNetworkArrayOutputWithContext(ctx context.Context) GetCloudInstanceNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceNetworkArrayOutput)
+}
+
+type GetCloudInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetCloudInstanceNetworkOutput) ToGetCloudInstanceNetworkOutput() GetCloudInstanceNetworkOutput {
+	return o
+}
+
+func (o GetCloudInstanceNetworkOutput) ToGetCloudInstanceNetworkOutputWithContext(ctx context.Context) GetCloudInstanceNetworkOutput {
+	return o
+}
+
+// Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+func (o GetCloudInstanceNetworkOutput) AutoAssignPublicIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudInstanceNetwork) bool { return v.AutoAssignPublicIp }).(pulumi.BoolOutput)
+}
+
+// IP address assigned to the interface (IPv4 or IPv6).
+func (o GetCloudInstanceNetworkOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceNetwork) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Private network ID. Omit for a public interface.
+func (o GetCloudInstanceNetworkOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceNetwork) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+func (o GetCloudInstanceNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetCloudInstanceNetworkArrayOutput) ToGetCloudInstanceNetworkArrayOutput() GetCloudInstanceNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceNetworkArrayOutput) ToGetCloudInstanceNetworkArrayOutputWithContext(ctx context.Context) GetCloudInstanceNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceNetworkArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceNetwork {
+		return vs[0].([]GetCloudInstanceNetwork)[vs[1].(int)]
+	}).(GetCloudInstanceNetworkOutput)
+}
+
+type GetCloudInstanceShare struct {
+	// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+	AccessLevel string `pulumi:"accessLevel"`
+	// Unique identifier of the instance.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstanceShareInput is an input type that accepts GetCloudInstanceShareArgs and GetCloudInstanceShareOutput values.
+// You can construct a concrete instance of `GetCloudInstanceShareInput` via:
+//
+//	GetCloudInstanceShareArgs{...}
+type GetCloudInstanceShareInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceShareOutput() GetCloudInstanceShareOutput
+	ToGetCloudInstanceShareOutputWithContext(context.Context) GetCloudInstanceShareOutput
+}
+
+type GetCloudInstanceShareArgs struct {
+	// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// Unique identifier of the instance.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstanceShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceShare)(nil)).Elem()
+}
+
+func (i GetCloudInstanceShareArgs) ToGetCloudInstanceShareOutput() GetCloudInstanceShareOutput {
+	return i.ToGetCloudInstanceShareOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceShareArgs) ToGetCloudInstanceShareOutputWithContext(ctx context.Context) GetCloudInstanceShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceShareOutput)
+}
+
+// GetCloudInstanceShareArrayInput is an input type that accepts GetCloudInstanceShareArray and GetCloudInstanceShareArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstanceShareArrayInput` via:
+//
+//	GetCloudInstanceShareArray{ GetCloudInstanceShareArgs{...} }
+type GetCloudInstanceShareArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstanceShareArrayOutput() GetCloudInstanceShareArrayOutput
+	ToGetCloudInstanceShareArrayOutputWithContext(context.Context) GetCloudInstanceShareArrayOutput
+}
+
+type GetCloudInstanceShareArray []GetCloudInstanceShareInput
+
+func (GetCloudInstanceShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceShare)(nil)).Elem()
+}
+
+func (i GetCloudInstanceShareArray) ToGetCloudInstanceShareArrayOutput() GetCloudInstanceShareArrayOutput {
+	return i.ToGetCloudInstanceShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstanceShareArray) ToGetCloudInstanceShareArrayOutputWithContext(ctx context.Context) GetCloudInstanceShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstanceShareArrayOutput)
+}
+
+type GetCloudInstanceShareOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstanceShare)(nil)).Elem()
+}
+
+func (o GetCloudInstanceShareOutput) ToGetCloudInstanceShareOutput() GetCloudInstanceShareOutput {
+	return o
+}
+
+func (o GetCloudInstanceShareOutput) ToGetCloudInstanceShareOutputWithContext(ctx context.Context) GetCloudInstanceShareOutput {
+	return o
+}
+
+// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+func (o GetCloudInstanceShareOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceShare) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the instance.
+func (o GetCloudInstanceShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstanceShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstanceShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstanceShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstanceShare)(nil)).Elem()
+}
+
+func (o GetCloudInstanceShareArrayOutput) ToGetCloudInstanceShareArrayOutput() GetCloudInstanceShareArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceShareArrayOutput) ToGetCloudInstanceShareArrayOutputWithContext(ctx context.Context) GetCloudInstanceShareArrayOutput {
+	return o
+}
+
+func (o GetCloudInstanceShareArrayOutput) Index(i pulumi.IntInput) GetCloudInstanceShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstanceShare {
+		return vs[0].([]GetCloudInstanceShare)[vs[1].(int)]
+	}).(GetCloudInstanceShareOutput)
+}
+
+type GetCloudInstancesInstance struct {
+	// Availability zone within the region where the instance is placed, null in regions that have none.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Computed hash representing the current target specification value. It implements optimistic concurrency control: the value is echoed back on update and the request is rejected when it no longer matches server-side.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the instance, as an RFC 3339 timestamp.
+	CreatedAt string `pulumi:"createdAt"`
+	// Observed state of the instance as reported by the compute backend, as opposed to the requested specification exposed at root level. Null while the instance is still being created and no backend state is available yet:
+	CurrentState GetCloudInstancesInstanceCurrentState `pulumi:"currentState"`
+	// Unique identifier of the flavor.
+	FlavorId string `pulumi:"flavorId"`
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+	// Identifier of the image the instance boots from, null for a boot-from-volume instance.
+	ImageId string `pulumi:"imageId"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+	PowerState string `pulumi:"powerState"`
+	// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+	Region string `pulumi:"region"`
+	// Instance readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`). Distinct from `current_state.power_state`, which carries the lower-level OpenStack administrative power state.
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last modification date of the instance, as an RFC 3339 timestamp.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudInstancesInstanceInput is an input type that accepts GetCloudInstancesInstanceArgs and GetCloudInstancesInstanceOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceInput` via:
+//
+//	GetCloudInstancesInstanceArgs{...}
+type GetCloudInstancesInstanceInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceOutput() GetCloudInstancesInstanceOutput
+	ToGetCloudInstancesInstanceOutputWithContext(context.Context) GetCloudInstancesInstanceOutput
+}
+
+type GetCloudInstancesInstanceArgs struct {
+	// Availability zone within the region where the instance is placed, null in regions that have none.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Computed hash representing the current target specification value. It implements optimistic concurrency control: the value is echoed back on update and the request is rejected when it no longer matches server-side.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the instance, as an RFC 3339 timestamp.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Observed state of the instance as reported by the compute backend, as opposed to the requested specification exposed at root level. Null while the instance is still being created and no backend state is available yet:
+	CurrentState GetCloudInstancesInstanceCurrentStateInput `pulumi:"currentState"`
+	// Unique identifier of the flavor.
+	FlavorId pulumi.StringInput `pulumi:"flavorId"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Identifier of the image the instance boots from, null for a boot-from-volume instance.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+	PowerState pulumi.StringInput `pulumi:"powerState"`
+	// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+	Region pulumi.StringInput `pulumi:"region"`
+	// Instance readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`). Distinct from `current_state.power_state`, which carries the lower-level OpenStack administrative power state.
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last modification date of the instance, as an RFC 3339 timestamp.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudInstancesInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstance)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceArgs) ToGetCloudInstancesInstanceOutput() GetCloudInstancesInstanceOutput {
+	return i.ToGetCloudInstancesInstanceOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceArgs) ToGetCloudInstancesInstanceOutputWithContext(ctx context.Context) GetCloudInstancesInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceOutput)
+}
+
+// GetCloudInstancesInstanceArrayInput is an input type that accepts GetCloudInstancesInstanceArray and GetCloudInstancesInstanceArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceArrayInput` via:
+//
+//	GetCloudInstancesInstanceArray{ GetCloudInstancesInstanceArgs{...} }
+type GetCloudInstancesInstanceArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceArrayOutput() GetCloudInstancesInstanceArrayOutput
+	ToGetCloudInstancesInstanceArrayOutputWithContext(context.Context) GetCloudInstancesInstanceArrayOutput
+}
+
+type GetCloudInstancesInstanceArray []GetCloudInstancesInstanceInput
+
+func (GetCloudInstancesInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstance)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceArray) ToGetCloudInstancesInstanceArrayOutput() GetCloudInstancesInstanceArrayOutput {
+	return i.ToGetCloudInstancesInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceArray) ToGetCloudInstancesInstanceArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceArrayOutput)
+}
+
+type GetCloudInstancesInstanceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstance)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceOutput) ToGetCloudInstancesInstanceOutput() GetCloudInstancesInstanceOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceOutput) ToGetCloudInstancesInstanceOutputWithContext(ctx context.Context) GetCloudInstancesInstanceOutput {
+	return o
+}
+
+// Availability zone within the region where the instance is placed, null in regions that have none.
+func (o GetCloudInstancesInstanceOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Computed hash representing the current target specification value. It implements optimistic concurrency control: the value is echoed back on update and the request is rejected when it no longer matches server-side.
+func (o GetCloudInstancesInstanceOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the instance, as an RFC 3339 timestamp.
+func (o GetCloudInstancesInstanceOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Observed state of the instance as reported by the compute backend, as opposed to the requested specification exposed at root level. Null while the instance is still being created and no backend state is available yet:
+func (o GetCloudInstancesInstanceOutput) CurrentState() GetCloudInstancesInstanceCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) GetCloudInstancesInstanceCurrentState { return v.CurrentState }).(GetCloudInstancesInstanceCurrentStateOutput)
+}
+
+// Unique identifier of the flavor.
+func (o GetCloudInstancesInstanceOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.FlavorId }).(pulumi.StringOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Identifier of the image the instance boots from, null for a boot-from-volume instance.
+func (o GetCloudInstancesInstanceOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstancesInstanceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+func (o GetCloudInstancesInstanceOutput) PowerState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.PowerState }).(pulumi.StringOutput)
+}
+
+// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+func (o GetCloudInstancesInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Instance readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`). Distinct from `current_state.power_state`, which carries the lower-level OpenStack administrative power state.
+func (o GetCloudInstancesInstanceOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last modification date of the instance, as an RFC 3339 timestamp.
+func (o GetCloudInstancesInstanceOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstance) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstance)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceArrayOutput) ToGetCloudInstancesInstanceArrayOutput() GetCloudInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceArrayOutput) ToGetCloudInstancesInstanceArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetCloudInstancesInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstancesInstance {
+		return vs[0].([]GetCloudInstancesInstance)[vs[1].(int)]
+	}).(GetCloudInstancesInstanceOutput)
+}
+
+type GetCloudInstancesInstanceCurrentState struct {
+	// Observed flavor of the instance, with its full sizing details:
+	Flavor GetCloudInstancesInstanceCurrentStateFlavor `pulumi:"flavor"`
+	// Instance (placement) group the instance belongs to, null when it is not part of any group:
+	Group GetCloudInstancesInstanceCurrentStateGroup `pulumi:"group"`
+	// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+	HostId string `pulumi:"hostId"`
+	// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+	Image GetCloudInstancesInstanceCurrentStateImage `pulumi:"image"`
+	// Observed region and availability zone where the instance is provisioned:
+	Location GetCloudInstancesInstanceCurrentStateLocation `pulumi:"location"`
+	// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+	Locked bool `pulumi:"locked"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested networks:
+	Networks []GetCloudInstancesInstanceCurrentStateNetwork `pulumi:"networks"`
+	// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+	PowerState string `pulumi:"powerState"`
+	// Identifier of the Public Cloud project the instance belongs to.
+	ProjectId string `pulumi:"projectId"`
+	// Security groups currently attached to the instance's ports:
+	SecurityGroups []GetCloudInstancesInstanceCurrentStateSecurityGroup `pulumi:"securityGroups"`
+	// Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, so always null here:
+	Shares []GetCloudInstancesInstanceCurrentStateShare `pulumi:"shares"`
+	// Name of the SSH key pair injected into the instance at boot, null when none was provided.
+	SshKeyName string `pulumi:"sshKeyName"`
+	// Identifier of the OpenStack user that owns the instance.
+	UserId string `pulumi:"userId"`
+	// Observed block volumes attached to the instance:
+	Volumes []GetCloudInstancesInstanceCurrentStateVolume `pulumi:"volumes"`
+}
+
+// GetCloudInstancesInstanceCurrentStateInput is an input type that accepts GetCloudInstancesInstanceCurrentStateArgs and GetCloudInstancesInstanceCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateArgs{...}
+type GetCloudInstancesInstanceCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateOutput() GetCloudInstancesInstanceCurrentStateOutput
+	ToGetCloudInstancesInstanceCurrentStateOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateArgs struct {
+	// Observed flavor of the instance, with its full sizing details:
+	Flavor GetCloudInstancesInstanceCurrentStateFlavorInput `pulumi:"flavor"`
+	// Instance (placement) group the instance belongs to, null when it is not part of any group:
+	Group GetCloudInstancesInstanceCurrentStateGroupInput `pulumi:"group"`
+	// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+	HostId pulumi.StringInput `pulumi:"hostId"`
+	// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+	Image GetCloudInstancesInstanceCurrentStateImageInput `pulumi:"image"`
+	// Observed region and availability zone where the instance is provisioned:
+	Location GetCloudInstancesInstanceCurrentStateLocationInput `pulumi:"location"`
+	// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+	Locked pulumi.BoolInput `pulumi:"locked"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested networks:
+	Networks GetCloudInstancesInstanceCurrentStateNetworkArrayInput `pulumi:"networks"`
+	// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+	PowerState pulumi.StringInput `pulumi:"powerState"`
+	// Identifier of the Public Cloud project the instance belongs to.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Security groups currently attached to the instance's ports:
+	SecurityGroups GetCloudInstancesInstanceCurrentStateSecurityGroupArrayInput `pulumi:"securityGroups"`
+	// Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, so always null here:
+	Shares GetCloudInstancesInstanceCurrentStateShareArrayInput `pulumi:"shares"`
+	// Name of the SSH key pair injected into the instance at boot, null when none was provided.
+	SshKeyName pulumi.StringInput `pulumi:"sshKeyName"`
+	// Identifier of the OpenStack user that owns the instance.
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// Observed block volumes attached to the instance:
+	Volumes GetCloudInstancesInstanceCurrentStateVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateArgs) ToGetCloudInstancesInstanceCurrentStateOutput() GetCloudInstancesInstanceCurrentStateOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateArgs) ToGetCloudInstancesInstanceCurrentStateOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateOutput) ToGetCloudInstancesInstanceCurrentStateOutput() GetCloudInstancesInstanceCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateOutput) ToGetCloudInstancesInstanceCurrentStateOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateOutput {
+	return o
+}
+
+// Observed flavor of the instance, with its full sizing details:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Flavor() GetCloudInstancesInstanceCurrentStateFlavorOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) GetCloudInstancesInstanceCurrentStateFlavor {
+		return v.Flavor
+	}).(GetCloudInstancesInstanceCurrentStateFlavorOutput)
+}
+
+// Instance (placement) group the instance belongs to, null when it is not part of any group:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Group() GetCloudInstancesInstanceCurrentStateGroupOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) GetCloudInstancesInstanceCurrentStateGroup {
+		return v.Group
+	}).(GetCloudInstancesInstanceCurrentStateGroupOutput)
+}
+
+// Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+func (o GetCloudInstancesInstanceCurrentStateOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+// Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Image() GetCloudInstancesInstanceCurrentStateImageOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) GetCloudInstancesInstanceCurrentStateImage {
+		return v.Image
+	}).(GetCloudInstancesInstanceCurrentStateImageOutput)
+}
+
+// Observed region and availability zone where the instance is provisioned:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Location() GetCloudInstancesInstanceCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) GetCloudInstancesInstanceCurrentStateLocation {
+		return v.Location
+	}).(GetCloudInstancesInstanceCurrentStateLocationOutput)
+}
+
+// Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+func (o GetCloudInstancesInstanceCurrentStateOutput) Locked() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) bool { return v.Locked }).(pulumi.BoolOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstancesInstanceCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested networks:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Networks() GetCloudInstancesInstanceCurrentStateNetworkArrayOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) []GetCloudInstancesInstanceCurrentStateNetwork {
+		return v.Networks
+	}).(GetCloudInstancesInstanceCurrentStateNetworkArrayOutput)
+}
+
+// Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+func (o GetCloudInstancesInstanceCurrentStateOutput) PowerState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) string { return v.PowerState }).(pulumi.StringOutput)
+}
+
+// Identifier of the Public Cloud project the instance belongs to.
+func (o GetCloudInstancesInstanceCurrentStateOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Security groups currently attached to the instance's ports:
+func (o GetCloudInstancesInstanceCurrentStateOutput) SecurityGroups() GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) []GetCloudInstancesInstanceCurrentStateSecurityGroup {
+		return v.SecurityGroups
+	}).(GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+// Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, so always null here:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Shares() GetCloudInstancesInstanceCurrentStateShareArrayOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) []GetCloudInstancesInstanceCurrentStateShare {
+		return v.Shares
+	}).(GetCloudInstancesInstanceCurrentStateShareArrayOutput)
+}
+
+// Name of the SSH key pair injected into the instance at boot, null when none was provided.
+func (o GetCloudInstancesInstanceCurrentStateOutput) SshKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) string { return v.SshKeyName }).(pulumi.StringOutput)
+}
+
+// Identifier of the OpenStack user that owns the instance.
+func (o GetCloudInstancesInstanceCurrentStateOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// Observed block volumes attached to the instance:
+func (o GetCloudInstancesInstanceCurrentStateOutput) Volumes() GetCloudInstancesInstanceCurrentStateVolumeArrayOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentState) []GetCloudInstancesInstanceCurrentStateVolume {
+		return v.Volumes
+	}).(GetCloudInstancesInstanceCurrentStateVolumeArrayOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateFlavor struct {
+	// Size of the flavor's local root disk, in GB.
+	Disk int `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk, in GB.
+	Ephemeral int `pulumi:"ephemeral"`
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Amount of RAM provided by the flavor, in MB.
+	Ram int `pulumi:"ram"`
+	// Size of the flavor's swap space, in MB.
+	Swap int `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus int `pulumi:"vcpus"`
+}
+
+// GetCloudInstancesInstanceCurrentStateFlavorInput is an input type that accepts GetCloudInstancesInstanceCurrentStateFlavorArgs and GetCloudInstancesInstanceCurrentStateFlavorOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateFlavorInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateFlavorArgs{...}
+type GetCloudInstancesInstanceCurrentStateFlavorInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateFlavorOutput() GetCloudInstancesInstanceCurrentStateFlavorOutput
+	ToGetCloudInstancesInstanceCurrentStateFlavorOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateFlavorOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateFlavorArgs struct {
+	// Size of the flavor's local root disk, in GB.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// Size of the flavor's ephemeral disk, in GB.
+	Ephemeral pulumi.IntInput `pulumi:"ephemeral"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Amount of RAM provided by the flavor, in MB.
+	Ram pulumi.IntInput `pulumi:"ram"`
+	// Size of the flavor's swap space, in MB.
+	Swap pulumi.IntInput `pulumi:"swap"`
+	// Number of virtual CPUs provided by the flavor.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateFlavorArgs) ToGetCloudInstancesInstanceCurrentStateFlavorOutput() GetCloudInstancesInstanceCurrentStateFlavorOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateFlavorOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateFlavorArgs) ToGetCloudInstancesInstanceCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateFlavorOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) ToGetCloudInstancesInstanceCurrentStateFlavorOutput() GetCloudInstancesInstanceCurrentStateFlavorOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) ToGetCloudInstancesInstanceCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateFlavorOutput {
+	return o
+}
+
+// Size of the flavor's local root disk, in GB.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// Size of the flavor's ephemeral disk, in GB.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Ephemeral() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) int { return v.Ephemeral }).(pulumi.IntOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Amount of RAM provided by the flavor, in MB.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+// Size of the flavor's swap space, in MB.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Swap() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) int { return v.Swap }).(pulumi.IntOutput)
+}
+
+// Number of virtual CPUs provided by the flavor.
+func (o GetCloudInstancesInstanceCurrentStateFlavorOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateFlavor) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateGroup struct {
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstancesInstanceCurrentStateGroupInput is an input type that accepts GetCloudInstancesInstanceCurrentStateGroupArgs and GetCloudInstancesInstanceCurrentStateGroupOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateGroupInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateGroupArgs{...}
+type GetCloudInstancesInstanceCurrentStateGroupInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateGroupOutput() GetCloudInstancesInstanceCurrentStateGroupOutput
+	ToGetCloudInstancesInstanceCurrentStateGroupOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateGroupOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateGroupArgs struct {
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateGroupArgs) ToGetCloudInstancesInstanceCurrentStateGroupOutput() GetCloudInstancesInstanceCurrentStateGroupOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateGroupOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateGroupArgs) ToGetCloudInstancesInstanceCurrentStateGroupOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateGroupOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateGroupOutput) ToGetCloudInstancesInstanceCurrentStateGroupOutput() GetCloudInstancesInstanceCurrentStateGroupOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateGroupOutput) ToGetCloudInstancesInstanceCurrentStateGroupOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateGroupOutput {
+	return o
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateImage struct {
+	// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+	Deprecated bool `pulumi:"deprecated"`
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size int `pulumi:"size"`
+	// Lifecycle status of the image as reported by Glance.
+	Status string `pulumi:"status"`
+}
+
+// GetCloudInstancesInstanceCurrentStateImageInput is an input type that accepts GetCloudInstancesInstanceCurrentStateImageArgs and GetCloudInstancesInstanceCurrentStateImageOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateImageInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateImageArgs{...}
+type GetCloudInstancesInstanceCurrentStateImageInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateImageOutput() GetCloudInstancesInstanceCurrentStateImageOutput
+	ToGetCloudInstancesInstanceCurrentStateImageOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateImageOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateImageArgs struct {
+	// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+	Deprecated pulumi.BoolInput `pulumi:"deprecated"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+	// Lifecycle status of the image as reported by Glance.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateImageArgs) ToGetCloudInstancesInstanceCurrentStateImageOutput() GetCloudInstancesInstanceCurrentStateImageOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateImageOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateImageArgs) ToGetCloudInstancesInstanceCurrentStateImageOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateImageOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateImageOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateImage)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) ToGetCloudInstancesInstanceCurrentStateImageOutput() GetCloudInstancesInstanceCurrentStateImageOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) ToGetCloudInstancesInstanceCurrentStateImageOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateImageOutput {
+	return o
+}
+
+// Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) Deprecated() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateImage) bool { return v.Deprecated }).(pulumi.BoolOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateImage) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateImage) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Lifecycle status of the image as reported by Glance.
+func (o GetCloudInstancesInstanceCurrentStateImageOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateImage) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateLocation struct {
+	// Availability zone within the region where the instance is placed, null in regions that have none.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+	Region string `pulumi:"region"`
+}
+
+// GetCloudInstancesInstanceCurrentStateLocationInput is an input type that accepts GetCloudInstancesInstanceCurrentStateLocationArgs and GetCloudInstancesInstanceCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateLocationInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateLocationArgs{...}
+type GetCloudInstancesInstanceCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateLocationOutput() GetCloudInstancesInstanceCurrentStateLocationOutput
+	ToGetCloudInstancesInstanceCurrentStateLocationOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateLocationOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateLocationArgs struct {
+	// Availability zone within the region where the instance is placed, null in regions that have none.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateLocationArgs) ToGetCloudInstancesInstanceCurrentStateLocationOutput() GetCloudInstancesInstanceCurrentStateLocationOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateLocationArgs) ToGetCloudInstancesInstanceCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateLocationOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateLocationOutput) ToGetCloudInstancesInstanceCurrentStateLocationOutput() GetCloudInstancesInstanceCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateLocationOutput) ToGetCloudInstancesInstanceCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateLocationOutput {
+	return o
+}
+
+// Availability zone within the region where the instance is placed, null in regions that have none.
+func (o GetCloudInstancesInstanceCurrentStateLocationOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateLocation) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Code of the region where the instance is provisioned (for example GRA11, BHS5).
+func (o GetCloudInstancesInstanceCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateNetwork struct {
+	// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+	Addresses []GetCloudInstancesInstanceCurrentStateNetworkAddress `pulumi:"addresses"`
+	// Identifier of the gateway providing egress for this interface, null when none applies.
+	GatewayId string `pulumi:"gatewayId"`
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+	// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudInstancesInstanceCurrentStateNetworkInput is an input type that accepts GetCloudInstancesInstanceCurrentStateNetworkArgs and GetCloudInstancesInstanceCurrentStateNetworkOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateNetworkInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateNetworkArgs{...}
+type GetCloudInstancesInstanceCurrentStateNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateNetworkOutput() GetCloudInstancesInstanceCurrentStateNetworkOutput
+	ToGetCloudInstancesInstanceCurrentStateNetworkOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateNetworkOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkArgs struct {
+	// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+	Addresses GetCloudInstancesInstanceCurrentStateNetworkAddressArrayInput `pulumi:"addresses"`
+	// Identifier of the gateway providing egress for this interface, null when none applies.
+	GatewayId pulumi.StringInput `pulumi:"gatewayId"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkArgs) ToGetCloudInstancesInstanceCurrentStateNetworkOutput() GetCloudInstancesInstanceCurrentStateNetworkOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkArgs) ToGetCloudInstancesInstanceCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateNetworkOutput)
+}
+
+// GetCloudInstancesInstanceCurrentStateNetworkArrayInput is an input type that accepts GetCloudInstancesInstanceCurrentStateNetworkArray and GetCloudInstancesInstanceCurrentStateNetworkArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateNetworkArrayInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateNetworkArray{ GetCloudInstancesInstanceCurrentStateNetworkArgs{...} }
+type GetCloudInstancesInstanceCurrentStateNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutput() GetCloudInstancesInstanceCurrentStateNetworkArrayOutput
+	ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateNetworkArrayOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkArray []GetCloudInstancesInstanceCurrentStateNetworkInput
+
+func (GetCloudInstancesInstanceCurrentStateNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkArray) ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutput() GetCloudInstancesInstanceCurrentStateNetworkArrayOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkArray) ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateNetworkArrayOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkOutput) ToGetCloudInstancesInstanceCurrentStateNetworkOutput() GetCloudInstancesInstanceCurrentStateNetworkOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkOutput) ToGetCloudInstancesInstanceCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkOutput {
+	return o
+}
+
+// Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+func (o GetCloudInstancesInstanceCurrentStateNetworkOutput) Addresses() GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetwork) []GetCloudInstancesInstanceCurrentStateNetworkAddress {
+		return v.Addresses
+	}).(GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput)
+}
+
+// Identifier of the gateway providing egress for this interface, null when none applies.
+func (o GetCloudInstancesInstanceCurrentStateNetworkOutput) GatewayId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetwork) string { return v.GatewayId }).(pulumi.StringOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+func (o GetCloudInstancesInstanceCurrentStateNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkArrayOutput) ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutput() GetCloudInstancesInstanceCurrentStateNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkArrayOutput) ToGetCloudInstancesInstanceCurrentStateNetworkArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkArrayOutput) Index(i pulumi.IntInput) GetCloudInstancesInstanceCurrentStateNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstancesInstanceCurrentStateNetwork {
+		return vs[0].([]GetCloudInstancesInstanceCurrentStateNetwork)[vs[1].(int)]
+	}).(GetCloudInstancesInstanceCurrentStateNetworkOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkAddress struct {
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip string `pulumi:"ip"`
+	// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+	Mac string `pulumi:"mac"`
+	// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+	Type string `pulumi:"type"`
+	// IP version of the address (4 for IPv4, 6 for IPv6).
+	Version int `pulumi:"version"`
+}
+
+// GetCloudInstancesInstanceCurrentStateNetworkAddressInput is an input type that accepts GetCloudInstancesInstanceCurrentStateNetworkAddressArgs and GetCloudInstancesInstanceCurrentStateNetworkAddressOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateNetworkAddressInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateNetworkAddressArgs{...}
+type GetCloudInstancesInstanceCurrentStateNetworkAddressInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutput() GetCloudInstancesInstanceCurrentStateNetworkAddressOutput
+	ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateNetworkAddressOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkAddressArgs struct {
+	// IP address assigned to the interface (IPv4 or IPv6).
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+	Mac pulumi.StringInput `pulumi:"mac"`
+	// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+	Type pulumi.StringInput `pulumi:"type"`
+	// IP version of the address (4 for IPv4, 6 for IPv6).
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkAddressArgs) ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutput() GetCloudInstancesInstanceCurrentStateNetworkAddressOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkAddressArgs) ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateNetworkAddressOutput)
+}
+
+// GetCloudInstancesInstanceCurrentStateNetworkAddressArrayInput is an input type that accepts GetCloudInstancesInstanceCurrentStateNetworkAddressArray and GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateNetworkAddressArrayInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateNetworkAddressArray{ GetCloudInstancesInstanceCurrentStateNetworkAddressArgs{...} }
+type GetCloudInstancesInstanceCurrentStateNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput() GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput
+	ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkAddressArray []GetCloudInstancesInstanceCurrentStateNetworkAddressInput
+
+func (GetCloudInstancesInstanceCurrentStateNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkAddressArray) ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput() GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateNetworkAddressArray) ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutput() GetCloudInstancesInstanceCurrentStateNetworkAddressOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) ToGetCloudInstancesInstanceCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkAddressOutput {
+	return o
+}
+
+// IP address assigned to the interface (IPv4 or IPv6).
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetworkAddress) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) Mac() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetworkAddress) string { return v.Mac }).(pulumi.StringOutput)
+}
+
+// How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetworkAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// IP version of the address (4 for IPv4, 6 for IPv6).
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateNetworkAddress) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput) ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput() GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput) ToGetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput) Index(i pulumi.IntInput) GetCloudInstancesInstanceCurrentStateNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstancesInstanceCurrentStateNetworkAddress {
+		return vs[0].([]GetCloudInstancesInstanceCurrentStateNetworkAddress)[vs[1].(int)]
+	}).(GetCloudInstancesInstanceCurrentStateNetworkAddressOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateSecurityGroup struct {
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudInstancesInstanceCurrentStateSecurityGroupInput is an input type that accepts GetCloudInstancesInstanceCurrentStateSecurityGroupArgs and GetCloudInstancesInstanceCurrentStateSecurityGroupOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateSecurityGroupInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateSecurityGroupArgs{...}
+type GetCloudInstancesInstanceCurrentStateSecurityGroupInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutput() GetCloudInstancesInstanceCurrentStateSecurityGroupOutput
+	ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateSecurityGroupOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateSecurityGroupArgs struct {
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateSecurityGroupArgs) ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutput() GetCloudInstancesInstanceCurrentStateSecurityGroupOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateSecurityGroupArgs) ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateSecurityGroupOutput)
+}
+
+// GetCloudInstancesInstanceCurrentStateSecurityGroupArrayInput is an input type that accepts GetCloudInstancesInstanceCurrentStateSecurityGroupArray and GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateSecurityGroupArrayInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateSecurityGroupArray{ GetCloudInstancesInstanceCurrentStateSecurityGroupArgs{...} }
+type GetCloudInstancesInstanceCurrentStateSecurityGroupArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput() GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput
+	ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateSecurityGroupArray []GetCloudInstancesInstanceCurrentStateSecurityGroupInput
+
+func (GetCloudInstancesInstanceCurrentStateSecurityGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateSecurityGroupArray) ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput() GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateSecurityGroupArray) ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateSecurityGroupOutput) ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutput() GetCloudInstancesInstanceCurrentStateSecurityGroupOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateSecurityGroupOutput) ToGetCloudInstancesInstanceCurrentStateSecurityGroupOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateSecurityGroupOutput {
+	return o
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateSecurityGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateSecurityGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateSecurityGroup)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput) ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput() GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput) ToGetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput) Index(i pulumi.IntInput) GetCloudInstancesInstanceCurrentStateSecurityGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstancesInstanceCurrentStateSecurityGroup {
+		return vs[0].([]GetCloudInstancesInstanceCurrentStateSecurityGroup)[vs[1].(int)]
+	}).(GetCloudInstancesInstanceCurrentStateSecurityGroupOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateShare struct {
+	// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+	AccessLevel string `pulumi:"accessLevel"`
+	// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+	AccessTo string `pulumi:"accessTo"`
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+	// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+	State string `pulumi:"state"`
+}
+
+// GetCloudInstancesInstanceCurrentStateShareInput is an input type that accepts GetCloudInstancesInstanceCurrentStateShareArgs and GetCloudInstancesInstanceCurrentStateShareOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateShareInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateShareArgs{...}
+type GetCloudInstancesInstanceCurrentStateShareInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateShareOutput() GetCloudInstancesInstanceCurrentStateShareOutput
+	ToGetCloudInstancesInstanceCurrentStateShareOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateShareOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateShareArgs struct {
+	// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateShareArgs) ToGetCloudInstancesInstanceCurrentStateShareOutput() GetCloudInstancesInstanceCurrentStateShareOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateShareOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateShareArgs) ToGetCloudInstancesInstanceCurrentStateShareOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateShareOutput)
+}
+
+// GetCloudInstancesInstanceCurrentStateShareArrayInput is an input type that accepts GetCloudInstancesInstanceCurrentStateShareArray and GetCloudInstancesInstanceCurrentStateShareArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateShareArrayInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateShareArray{ GetCloudInstancesInstanceCurrentStateShareArgs{...} }
+type GetCloudInstancesInstanceCurrentStateShareArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateShareArrayOutput() GetCloudInstancesInstanceCurrentStateShareArrayOutput
+	ToGetCloudInstancesInstanceCurrentStateShareArrayOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateShareArrayOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateShareArray []GetCloudInstancesInstanceCurrentStateShareInput
+
+func (GetCloudInstancesInstanceCurrentStateShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateShareArray) ToGetCloudInstancesInstanceCurrentStateShareArrayOutput() GetCloudInstancesInstanceCurrentStateShareArrayOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateShareArray) ToGetCloudInstancesInstanceCurrentStateShareArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateShareArrayOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateShareOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateShareOutput) ToGetCloudInstancesInstanceCurrentStateShareOutput() GetCloudInstancesInstanceCurrentStateShareOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateShareOutput) ToGetCloudInstancesInstanceCurrentStateShareOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateShareOutput {
+	return o
+}
+
+// Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+func (o GetCloudInstancesInstanceCurrentStateShareOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateShare) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+func (o GetCloudInstancesInstanceCurrentStateShareOutput) AccessTo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateShare) string { return v.AccessTo }).(pulumi.StringOutput)
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateShareOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateShare) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+func (o GetCloudInstancesInstanceCurrentStateShareOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateShare) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateShare)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateShareArrayOutput) ToGetCloudInstancesInstanceCurrentStateShareArrayOutput() GetCloudInstancesInstanceCurrentStateShareArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateShareArrayOutput) ToGetCloudInstancesInstanceCurrentStateShareArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateShareArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateShareArrayOutput) Index(i pulumi.IntInput) GetCloudInstancesInstanceCurrentStateShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstancesInstanceCurrentStateShare {
+		return vs[0].([]GetCloudInstancesInstanceCurrentStateShare)[vs[1].(int)]
+	}).(GetCloudInstancesInstanceCurrentStateShareOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateVolume struct {
+	// Identifier of the instance (placement) group.
+	Id string `pulumi:"id"`
+	// Display name of the attached volume.
+	Name string `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size int `pulumi:"size"`
+}
+
+// GetCloudInstancesInstanceCurrentStateVolumeInput is an input type that accepts GetCloudInstancesInstanceCurrentStateVolumeArgs and GetCloudInstancesInstanceCurrentStateVolumeOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateVolumeInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateVolumeArgs{...}
+type GetCloudInstancesInstanceCurrentStateVolumeInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateVolumeOutput() GetCloudInstancesInstanceCurrentStateVolumeOutput
+	ToGetCloudInstancesInstanceCurrentStateVolumeOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateVolumeOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateVolumeArgs struct {
+	// Identifier of the instance (placement) group.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Display name of the attached volume.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Size of the attached volume, in GB.
+	Size pulumi.IntInput `pulumi:"size"`
+}
+
+func (GetCloudInstancesInstanceCurrentStateVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateVolumeArgs) ToGetCloudInstancesInstanceCurrentStateVolumeOutput() GetCloudInstancesInstanceCurrentStateVolumeOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateVolumeOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateVolumeArgs) ToGetCloudInstancesInstanceCurrentStateVolumeOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateVolumeOutput)
+}
+
+// GetCloudInstancesInstanceCurrentStateVolumeArrayInput is an input type that accepts GetCloudInstancesInstanceCurrentStateVolumeArray and GetCloudInstancesInstanceCurrentStateVolumeArrayOutput values.
+// You can construct a concrete instance of `GetCloudInstancesInstanceCurrentStateVolumeArrayInput` via:
+//
+//	GetCloudInstancesInstanceCurrentStateVolumeArray{ GetCloudInstancesInstanceCurrentStateVolumeArgs{...} }
+type GetCloudInstancesInstanceCurrentStateVolumeArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutput() GetCloudInstancesInstanceCurrentStateVolumeArrayOutput
+	ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutputWithContext(context.Context) GetCloudInstancesInstanceCurrentStateVolumeArrayOutput
+}
+
+type GetCloudInstancesInstanceCurrentStateVolumeArray []GetCloudInstancesInstanceCurrentStateVolumeInput
+
+func (GetCloudInstancesInstanceCurrentStateVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (i GetCloudInstancesInstanceCurrentStateVolumeArray) ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutput() GetCloudInstancesInstanceCurrentStateVolumeArrayOutput {
+	return i.ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudInstancesInstanceCurrentStateVolumeArray) ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudInstancesInstanceCurrentStateVolumeArrayOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateVolumeOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateVolumeOutput) ToGetCloudInstancesInstanceCurrentStateVolumeOutput() GetCloudInstancesInstanceCurrentStateVolumeOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateVolumeOutput) ToGetCloudInstancesInstanceCurrentStateVolumeOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateVolumeOutput {
+	return o
+}
+
+// Identifier of the instance (placement) group.
+func (o GetCloudInstancesInstanceCurrentStateVolumeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateVolume) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Display name of the attached volume.
+func (o GetCloudInstancesInstanceCurrentStateVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Size of the attached volume, in GB.
+func (o GetCloudInstancesInstanceCurrentStateVolumeOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudInstancesInstanceCurrentStateVolume) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type GetCloudInstancesInstanceCurrentStateVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudInstancesInstanceCurrentStateVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudInstancesInstanceCurrentStateVolume)(nil)).Elem()
+}
+
+func (o GetCloudInstancesInstanceCurrentStateVolumeArrayOutput) ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutput() GetCloudInstancesInstanceCurrentStateVolumeArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateVolumeArrayOutput) ToGetCloudInstancesInstanceCurrentStateVolumeArrayOutputWithContext(ctx context.Context) GetCloudInstancesInstanceCurrentStateVolumeArrayOutput {
+	return o
+}
+
+func (o GetCloudInstancesInstanceCurrentStateVolumeArrayOutput) Index(i pulumi.IntInput) GetCloudInstancesInstanceCurrentStateVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudInstancesInstanceCurrentStateVolume {
+		return vs[0].([]GetCloudInstancesInstanceCurrentStateVolume)[vs[1].(int)]
+	}).(GetCloudInstancesInstanceCurrentStateVolumeOutput)
 }
 
 type GetCloudKeyManagerContainerConsumersConsumer struct {
@@ -38114,115 +44314,327 @@ func (o GetCloudStorageBlockVolumesVolumeLocationOutput) Region() pulumi.StringO
 	return o.ApplyT(func(v GetCloudStorageBlockVolumesVolumeLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetCloudStorageFileShareAccessRule struct {
-	// Access level.
+type GetCloudStorageFileShareAclCurrentState struct {
+	// Access level granted.
 	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
+	// IP address or CIDR allowed to access the file storage share.
 	AccessTo string `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State string `pulumi:"state"`
 }
 
-// GetCloudStorageFileShareAccessRuleInput is an input type that accepts GetCloudStorageFileShareAccessRuleArgs and GetCloudStorageFileShareAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareAccessRuleInput` via:
+// GetCloudStorageFileShareAclCurrentStateInput is an input type that accepts GetCloudStorageFileShareAclCurrentStateArgs and GetCloudStorageFileShareAclCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudStorageFileShareAclCurrentStateInput` via:
 //
-//	GetCloudStorageFileShareAccessRuleArgs{...}
-type GetCloudStorageFileShareAccessRuleInput interface {
+//	GetCloudStorageFileShareAclCurrentStateArgs{...}
+type GetCloudStorageFileShareAclCurrentStateInput interface {
 	pulumi.Input
 
-	ToGetCloudStorageFileShareAccessRuleOutput() GetCloudStorageFileShareAccessRuleOutput
-	ToGetCloudStorageFileShareAccessRuleOutputWithContext(context.Context) GetCloudStorageFileShareAccessRuleOutput
+	ToGetCloudStorageFileShareAclCurrentStateOutput() GetCloudStorageFileShareAclCurrentStateOutput
+	ToGetCloudStorageFileShareAclCurrentStateOutputWithContext(context.Context) GetCloudStorageFileShareAclCurrentStateOutput
 }
 
-type GetCloudStorageFileShareAccessRuleArgs struct {
-	// Access level.
+type GetCloudStorageFileShareAclCurrentStateArgs struct {
+	// Access level granted.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
+	// IP address or CIDR allowed to access the file storage share.
 	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State pulumi.StringInput `pulumi:"state"`
 }
 
-func (GetCloudStorageFileShareAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareAccessRule)(nil)).Elem()
+func (GetCloudStorageFileShareAclCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageFileShareAclCurrentState)(nil)).Elem()
 }
 
-func (i GetCloudStorageFileShareAccessRuleArgs) ToGetCloudStorageFileShareAccessRuleOutput() GetCloudStorageFileShareAccessRuleOutput {
-	return i.ToGetCloudStorageFileShareAccessRuleOutputWithContext(context.Background())
+func (i GetCloudStorageFileShareAclCurrentStateArgs) ToGetCloudStorageFileShareAclCurrentStateOutput() GetCloudStorageFileShareAclCurrentStateOutput {
+	return i.ToGetCloudStorageFileShareAclCurrentStateOutputWithContext(context.Background())
 }
 
-func (i GetCloudStorageFileShareAccessRuleArgs) ToGetCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAccessRuleOutput)
+func (i GetCloudStorageFileShareAclCurrentStateArgs) ToGetCloudStorageFileShareAclCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAclCurrentStateOutput)
 }
 
-// GetCloudStorageFileShareAccessRuleArrayInput is an input type that accepts GetCloudStorageFileShareAccessRuleArray and GetCloudStorageFileShareAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareAccessRuleArrayInput` via:
+type GetCloudStorageFileShareAclCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageFileShareAclCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageFileShareAclCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudStorageFileShareAclCurrentStateOutput) ToGetCloudStorageFileShareAclCurrentStateOutput() GetCloudStorageFileShareAclCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudStorageFileShareAclCurrentStateOutput) ToGetCloudStorageFileShareAclCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclCurrentStateOutput {
+	return o
+}
+
+// Access level granted.
+func (o GetCloudStorageFileShareAclCurrentStateOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclCurrentState) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// IP address or CIDR allowed to access the file storage share.
+func (o GetCloudStorageFileShareAclCurrentStateOutput) AccessTo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclCurrentState) string { return v.AccessTo }).(pulumi.StringOutput)
+}
+
+// Creation date of the access rule.
+func (o GetCloudStorageFileShareAclCurrentStateOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclCurrentState) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+func (o GetCloudStorageFileShareAclCurrentStateOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclCurrentState) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageFileShareAclsShareAcl struct {
+	// Access level granted.
+	AccessLevel string `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share.
+	AccessTo string `pulumi:"accessTo"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the access rule.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current observed state of the access rule from the infrastructure:
+	CurrentState GetCloudStorageFileShareAclsShareAclCurrentState `pulumi:"currentState"`
+	// Access rule ID.
+	Id string `pulumi:"id"`
+	// Access rule readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last update date of the access rule.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudStorageFileShareAclsShareAclInput is an input type that accepts GetCloudStorageFileShareAclsShareAclArgs and GetCloudStorageFileShareAclsShareAclOutput values.
+// You can construct a concrete instance of `GetCloudStorageFileShareAclsShareAclInput` via:
 //
-//	GetCloudStorageFileShareAccessRuleArray{ GetCloudStorageFileShareAccessRuleArgs{...} }
-type GetCloudStorageFileShareAccessRuleArrayInput interface {
+//	GetCloudStorageFileShareAclsShareAclArgs{...}
+type GetCloudStorageFileShareAclsShareAclInput interface {
 	pulumi.Input
 
-	ToGetCloudStorageFileShareAccessRuleArrayOutput() GetCloudStorageFileShareAccessRuleArrayOutput
-	ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileShareAccessRuleArrayOutput
+	ToGetCloudStorageFileShareAclsShareAclOutput() GetCloudStorageFileShareAclsShareAclOutput
+	ToGetCloudStorageFileShareAclsShareAclOutputWithContext(context.Context) GetCloudStorageFileShareAclsShareAclOutput
 }
 
-type GetCloudStorageFileShareAccessRuleArray []GetCloudStorageFileShareAccessRuleInput
-
-func (GetCloudStorageFileShareAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareAccessRule)(nil)).Elem()
+type GetCloudStorageFileShareAclsShareAclArgs struct {
+	// Access level granted.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share.
+	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the access rule.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current observed state of the access rule from the infrastructure:
+	CurrentState GetCloudStorageFileShareAclsShareAclCurrentStateInput `pulumi:"currentState"`
+	// Access rule ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Access rule readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last update date of the access rule.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
-func (i GetCloudStorageFileShareAccessRuleArray) ToGetCloudStorageFileShareAccessRuleArrayOutput() GetCloudStorageFileShareAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(context.Background())
+func (GetCloudStorageFileShareAclsShareAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageFileShareAclsShareAcl)(nil)).Elem()
 }
 
-func (i GetCloudStorageFileShareAccessRuleArray) ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAccessRuleArrayOutput)
+func (i GetCloudStorageFileShareAclsShareAclArgs) ToGetCloudStorageFileShareAclsShareAclOutput() GetCloudStorageFileShareAclsShareAclOutput {
+	return i.ToGetCloudStorageFileShareAclsShareAclOutputWithContext(context.Background())
 }
 
-type GetCloudStorageFileShareAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareAccessRule)(nil)).Elem()
+func (i GetCloudStorageFileShareAclsShareAclArgs) ToGetCloudStorageFileShareAclsShareAclOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclsShareAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAclsShareAclOutput)
 }
 
-func (o GetCloudStorageFileShareAccessRuleOutput) ToGetCloudStorageFileShareAccessRuleOutput() GetCloudStorageFileShareAccessRuleOutput {
+// GetCloudStorageFileShareAclsShareAclArrayInput is an input type that accepts GetCloudStorageFileShareAclsShareAclArray and GetCloudStorageFileShareAclsShareAclArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageFileShareAclsShareAclArrayInput` via:
+//
+//	GetCloudStorageFileShareAclsShareAclArray{ GetCloudStorageFileShareAclsShareAclArgs{...} }
+type GetCloudStorageFileShareAclsShareAclArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageFileShareAclsShareAclArrayOutput() GetCloudStorageFileShareAclsShareAclArrayOutput
+	ToGetCloudStorageFileShareAclsShareAclArrayOutputWithContext(context.Context) GetCloudStorageFileShareAclsShareAclArrayOutput
+}
+
+type GetCloudStorageFileShareAclsShareAclArray []GetCloudStorageFileShareAclsShareAclInput
+
+func (GetCloudStorageFileShareAclsShareAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageFileShareAclsShareAcl)(nil)).Elem()
+}
+
+func (i GetCloudStorageFileShareAclsShareAclArray) ToGetCloudStorageFileShareAclsShareAclArrayOutput() GetCloudStorageFileShareAclsShareAclArrayOutput {
+	return i.ToGetCloudStorageFileShareAclsShareAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageFileShareAclsShareAclArray) ToGetCloudStorageFileShareAclsShareAclArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclsShareAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAclsShareAclArrayOutput)
+}
+
+type GetCloudStorageFileShareAclsShareAclOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageFileShareAclsShareAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageFileShareAclsShareAcl)(nil)).Elem()
+}
+
+func (o GetCloudStorageFileShareAclsShareAclOutput) ToGetCloudStorageFileShareAclsShareAclOutput() GetCloudStorageFileShareAclsShareAclOutput {
 	return o
 }
 
-func (o GetCloudStorageFileShareAccessRuleOutput) ToGetCloudStorageFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleOutput {
+func (o GetCloudStorageFileShareAclsShareAclOutput) ToGetCloudStorageFileShareAclsShareAclOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclsShareAclOutput {
 	return o
 }
 
-// Access level.
-func (o GetCloudStorageFileShareAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
+// Access level granted.
+func (o GetCloudStorageFileShareAclsShareAclOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
-// IP address or CIDR.
-func (o GetCloudStorageFileShareAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
+// IP address or CIDR allowed to access the file storage share.
+func (o GetCloudStorageFileShareAclsShareAclOutput) AccessTo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.AccessTo }).(pulumi.StringOutput)
 }
 
-type GetCloudStorageFileShareAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareAccessRule)(nil)).Elem()
+// Computed hash representing the current target specification value.
+func (o GetCloudStorageFileShareAclsShareAclOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
-func (o GetCloudStorageFileShareAccessRuleArrayOutput) ToGetCloudStorageFileShareAccessRuleArrayOutput() GetCloudStorageFileShareAccessRuleArrayOutput {
+// Creation date of the access rule.
+func (o GetCloudStorageFileShareAclsShareAclOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current observed state of the access rule from the infrastructure:
+func (o GetCloudStorageFileShareAclsShareAclOutput) CurrentState() GetCloudStorageFileShareAclsShareAclCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) GetCloudStorageFileShareAclsShareAclCurrentState {
+		return v.CurrentState
+	}).(GetCloudStorageFileShareAclsShareAclCurrentStateOutput)
+}
+
+// Access rule ID.
+func (o GetCloudStorageFileShareAclsShareAclOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Access rule readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudStorageFileShareAclsShareAclOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last update date of the access rule.
+func (o GetCloudStorageFileShareAclsShareAclOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAcl) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageFileShareAclsShareAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageFileShareAclsShareAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageFileShareAclsShareAcl)(nil)).Elem()
+}
+
+func (o GetCloudStorageFileShareAclsShareAclArrayOutput) ToGetCloudStorageFileShareAclsShareAclArrayOutput() GetCloudStorageFileShareAclsShareAclArrayOutput {
 	return o
 }
 
-func (o GetCloudStorageFileShareAccessRuleArrayOutput) ToGetCloudStorageFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareAccessRuleArrayOutput {
+func (o GetCloudStorageFileShareAclsShareAclArrayOutput) ToGetCloudStorageFileShareAclsShareAclArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclsShareAclArrayOutput {
 	return o
 }
 
-func (o GetCloudStorageFileShareAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileShareAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileShareAccessRule {
-		return vs[0].([]GetCloudStorageFileShareAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileShareAccessRuleOutput)
+func (o GetCloudStorageFileShareAclsShareAclArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileShareAclsShareAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileShareAclsShareAcl {
+		return vs[0].([]GetCloudStorageFileShareAclsShareAcl)[vs[1].(int)]
+	}).(GetCloudStorageFileShareAclsShareAclOutput)
+}
+
+type GetCloudStorageFileShareAclsShareAclCurrentState struct {
+	// Access level granted.
+	AccessLevel string `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share.
+	AccessTo string `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State string `pulumi:"state"`
+}
+
+// GetCloudStorageFileShareAclsShareAclCurrentStateInput is an input type that accepts GetCloudStorageFileShareAclsShareAclCurrentStateArgs and GetCloudStorageFileShareAclsShareAclCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudStorageFileShareAclsShareAclCurrentStateInput` via:
+//
+//	GetCloudStorageFileShareAclsShareAclCurrentStateArgs{...}
+type GetCloudStorageFileShareAclsShareAclCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageFileShareAclsShareAclCurrentStateOutput() GetCloudStorageFileShareAclsShareAclCurrentStateOutput
+	ToGetCloudStorageFileShareAclsShareAclCurrentStateOutputWithContext(context.Context) GetCloudStorageFileShareAclsShareAclCurrentStateOutput
+}
+
+type GetCloudStorageFileShareAclsShareAclCurrentStateArgs struct {
+	// Access level granted.
+	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
+	// IP address or CIDR allowed to access the file storage share.
+	AccessTo pulumi.StringInput `pulumi:"accessTo"`
+	// Creation date of the access rule.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetCloudStorageFileShareAclsShareAclCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageFileShareAclsShareAclCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudStorageFileShareAclsShareAclCurrentStateArgs) ToGetCloudStorageFileShareAclsShareAclCurrentStateOutput() GetCloudStorageFileShareAclsShareAclCurrentStateOutput {
+	return i.ToGetCloudStorageFileShareAclsShareAclCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageFileShareAclsShareAclCurrentStateArgs) ToGetCloudStorageFileShareAclsShareAclCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclsShareAclCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareAclsShareAclCurrentStateOutput)
+}
+
+type GetCloudStorageFileShareAclsShareAclCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageFileShareAclsShareAclCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageFileShareAclsShareAclCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudStorageFileShareAclsShareAclCurrentStateOutput) ToGetCloudStorageFileShareAclsShareAclCurrentStateOutput() GetCloudStorageFileShareAclsShareAclCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudStorageFileShareAclsShareAclCurrentStateOutput) ToGetCloudStorageFileShareAclsShareAclCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileShareAclsShareAclCurrentStateOutput {
+	return o
+}
+
+// Access level granted.
+func (o GetCloudStorageFileShareAclsShareAclCurrentStateOutput) AccessLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAclCurrentState) string { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// IP address or CIDR allowed to access the file storage share.
+func (o GetCloudStorageFileShareAclsShareAclCurrentStateOutput) AccessTo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAclCurrentState) string { return v.AccessTo }).(pulumi.StringOutput)
+}
+
+// Creation date of the access rule.
+func (o GetCloudStorageFileShareAclsShareAclCurrentStateOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAclCurrentState) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+func (o GetCloudStorageFileShareAclsShareAclCurrentStateOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageFileShareAclsShareAclCurrentState) string { return v.State }).(pulumi.StringOutput)
 }
 
 type GetCloudStorageFileShareCurrentState struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileShareCurrentStateAccessRule `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities []GetCloudStorageFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
@@ -38255,8 +44667,6 @@ type GetCloudStorageFileShareCurrentStateInput interface {
 }
 
 type GetCloudStorageFileShareCurrentStateArgs struct {
-	// Current access rules for the file share:
-	AccessRules GetCloudStorageFileShareCurrentStateAccessRuleArrayInput `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities GetCloudStorageFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
@@ -38301,13 +44711,6 @@ func (o GetCloudStorageFileShareCurrentStateOutput) ToGetCloudStorageFileShareCu
 
 func (o GetCloudStorageFileShareCurrentStateOutput) ToGetCloudStorageFileShareCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateOutput {
 	return o
-}
-
-// Current access rules for the file share:
-func (o GetCloudStorageFileShareCurrentStateOutput) AccessRules() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentState) []GetCloudStorageFileShareCurrentStateAccessRule {
-		return v.AccessRules
-	}).(GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput)
 }
 
 // Action-availability flags derived from the file share status:
@@ -38359,139 +44762,6 @@ func (o GetCloudStorageFileShareCurrentStateOutput) ShareType() pulumi.StringOut
 // Size of the file share in GB.
 func (o GetCloudStorageFileShareCurrentStateOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCloudStorageFileShareCurrentState) int { return v.Size }).(pulumi.IntOutput)
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt string `pulumi:"createdAt"`
-	// The ID of the file share.
-	Id string `pulumi:"id"`
-	// Access rule state.
-	State string `pulumi:"state"`
-}
-
-// GetCloudStorageFileShareCurrentStateAccessRuleInput is an input type that accepts GetCloudStorageFileShareCurrentStateAccessRuleArgs and GetCloudStorageFileShareCurrentStateAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareCurrentStateAccessRuleInput` via:
-//
-//	GetCloudStorageFileShareCurrentStateAccessRuleArgs{...}
-type GetCloudStorageFileShareCurrentStateAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileShareCurrentStateAccessRuleOutput
-	ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Context) GetCloudStorageFileShareCurrentStateAccessRuleOutput
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The ID of the file share.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Access rule state.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return i.ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareCurrentStateAccessRuleOutput)
-}
-
-// GetCloudStorageFileShareCurrentStateAccessRuleArrayInput is an input type that accepts GetCloudStorageFileShareCurrentStateAccessRuleArray and GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileShareCurrentStateAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileShareCurrentStateAccessRuleArray{ GetCloudStorageFileShareCurrentStateAccessRuleArgs{...} }
-type GetCloudStorageFileShareCurrentStateAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput
-	ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleArray []GetCloudStorageFileShareCurrentStateAccessRuleInput
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-// Access rule creation date.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The ID of the file share.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Access rule state.
-func (o GetCloudStorageFileShareCurrentStateAccessRuleOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileShareCurrentStateAccessRule) string { return v.State }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileShareCurrentStateAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileShareCurrentStateAccessRule {
-		return vs[0].([]GetCloudStorageFileShareCurrentStateAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileShareCurrentStateAccessRuleOutput)
 }
 
 type GetCloudStorageFileShareCurrentStateCapability struct {
@@ -39930,17 +46200,15 @@ func (o GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationOutput
 }
 
 type GetCloudStorageFileSharesFileShare struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileSharesFileShareAccessRule `pulumi:"accessRules"`
 	// Computed hash representing the current target specification value.
 	Checksum string `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt string `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState GetCloudStorageFileSharesFileShareCurrentState `pulumi:"currentState"`
 	// File share description.
 	Description string `pulumi:"description"`
-	// Access rule ID.
+	// File share ID.
 	Id string `pulumi:"id"`
 	// Current location:
 	Location GetCloudStorageFileSharesFileShareLocation `pulumi:"location"`
@@ -39972,17 +46240,15 @@ type GetCloudStorageFileSharesFileShareInput interface {
 }
 
 type GetCloudStorageFileSharesFileShareArgs struct {
-	// Current access rules for the file share:
-	AccessRules GetCloudStorageFileSharesFileShareAccessRuleArrayInput `pulumi:"accessRules"`
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Access rule creation date.
+	// Creation date of the file share.
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Current state of the file storage share:
 	CurrentState GetCloudStorageFileSharesFileShareCurrentStateInput `pulumi:"currentState"`
 	// File share description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Access rule ID.
+	// File share ID.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Current location:
 	Location GetCloudStorageFileSharesFileShareLocationInput `pulumi:"location"`
@@ -40053,19 +46319,12 @@ func (o GetCloudStorageFileSharesFileShareOutput) ToGetCloudStorageFileSharesFil
 	return o
 }
 
-// Current access rules for the file share:
-func (o GetCloudStorageFileSharesFileShareOutput) AccessRules() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) []GetCloudStorageFileSharesFileShareAccessRule {
-		return v.AccessRules
-	}).(GetCloudStorageFileSharesFileShareAccessRuleArrayOutput)
-}
-
 // Computed hash representing the current target specification value.
 func (o GetCloudStorageFileSharesFileShareOutput) Checksum() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.Checksum }).(pulumi.StringOutput)
 }
 
-// Access rule creation date.
+// Creation date of the file share.
 func (o GetCloudStorageFileSharesFileShareOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -40082,7 +46341,7 @@ func (o GetCloudStorageFileSharesFileShareOutput) Description() pulumi.StringOut
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Access rule ID.
+// File share ID.
 func (o GetCloudStorageFileSharesFileShareOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShare) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -40149,115 +46408,7 @@ func (o GetCloudStorageFileSharesFileShareArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetCloudStorageFileSharesFileShareOutput)
 }
 
-type GetCloudStorageFileSharesFileShareAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-}
-
-// GetCloudStorageFileSharesFileShareAccessRuleInput is an input type that accepts GetCloudStorageFileSharesFileShareAccessRuleArgs and GetCloudStorageFileSharesFileShareAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareAccessRuleInput` via:
-//
-//	GetCloudStorageFileSharesFileShareAccessRuleArgs{...}
-type GetCloudStorageFileSharesFileShareAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareAccessRuleOutput() GetCloudStorageFileSharesFileShareAccessRuleOutput
-	ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareAccessRuleOutput
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-}
-
-func (GetCloudStorageFileSharesFileShareAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArgs) ToGetCloudStorageFileSharesFileShareAccessRuleOutput() GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return i.ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArgs) ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareAccessRuleOutput)
-}
-
-// GetCloudStorageFileSharesFileShareAccessRuleArrayInput is an input type that accepts GetCloudStorageFileSharesFileShareAccessRuleArray and GetCloudStorageFileSharesFileShareAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileSharesFileShareAccessRuleArray{ GetCloudStorageFileSharesFileShareAccessRuleArgs{...} }
-type GetCloudStorageFileSharesFileShareAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput
-	ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleArray []GetCloudStorageFileSharesFileShareAccessRuleInput
-
-func (GetCloudStorageFileSharesFileShareAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArray) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareAccessRuleArray) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) ToGetCloudStorageFileSharesFileShareAccessRuleOutput() GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) ToGetCloudStorageFileSharesFileShareAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileSharesFileShareAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileSharesFileShareAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileSharesFileShareAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileSharesFileShareAccessRule {
-		return vs[0].([]GetCloudStorageFileSharesFileShareAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileSharesFileShareAccessRuleOutput)
-}
-
 type GetCloudStorageFileSharesFileShareCurrentState struct {
-	// Current access rules for the file share:
-	AccessRules []GetCloudStorageFileSharesFileShareCurrentStateAccessRule `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities []GetCloudStorageFileSharesFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
@@ -40290,8 +46441,6 @@ type GetCloudStorageFileSharesFileShareCurrentStateInput interface {
 }
 
 type GetCloudStorageFileSharesFileShareCurrentStateArgs struct {
-	// Current access rules for the file share:
-	AccessRules GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput `pulumi:"accessRules"`
 	// Action-availability flags derived from the file share status:
 	Capabilities GetCloudStorageFileSharesFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
@@ -40336,13 +46485,6 @@ func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) ToGetCloudStorageF
 
 func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) ToGetCloudStorageFileSharesFileShareCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateOutput {
 	return o
-}
-
-// Current access rules for the file share:
-func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) AccessRules() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentState) []GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
-		return v.AccessRules
-	}).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput)
 }
 
 // Action-availability flags derived from the file share status:
@@ -40394,139 +46536,6 @@ func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) ShareType() pulumi
 // Size of the file share in GB.
 func (o GetCloudStorageFileSharesFileShareCurrentStateOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentState) int { return v.Size }).(pulumi.IntOutput)
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRule struct {
-	// Access level.
-	AccessLevel string `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo string `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt string `pulumi:"createdAt"`
-	// Access rule ID.
-	Id string `pulumi:"id"`
-	// Access rule state.
-	State string `pulumi:"state"`
-}
-
-// GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput is an input type that accepts GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs and GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput` via:
-//
-//	GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs{...}
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs struct {
-	// Access level.
-	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
-	// IP address or CIDR.
-	AccessTo pulumi.StringInput `pulumi:"accessTo"`
-	// Access rule creation date.
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Access rule ID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Access rule state.
-	State pulumi.StringInput `pulumi:"state"`
-}
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return i.ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput)
-}
-
-// GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput is an input type that accepts GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray and GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput values.
-// You can construct a concrete instance of `GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput` via:
-//
-//	GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray{ GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs{...} }
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput interface {
-	pulumi.Input
-
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput
-	ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray []GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return i.ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(context.Background())
-}
-
-func (i GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput)
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return o
-}
-
-// Access level.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) AccessLevel() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.AccessLevel }).(pulumi.StringOutput)
-}
-
-// IP address or CIDR.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) AccessTo() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.AccessTo }).(pulumi.StringOutput)
-}
-
-// Access rule creation date.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Access rule ID.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Access rule state.
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareCurrentStateAccessRule) string { return v.State }).(pulumi.StringOutput)
-}
-
-type GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetCloudStorageFileSharesFileShareCurrentStateAccessRule)(nil)).Elem()
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput() GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) ToGetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutputWithContext(ctx context.Context) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput {
-	return o
-}
-
-func (o GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput) Index(i pulumi.IntInput) GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
-		return vs[0].([]GetCloudStorageFileSharesFileShareCurrentStateAccessRule)[vs[1].(int)]
-	}).(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput)
 }
 
 type GetCloudStorageFileSharesFileShareCurrentStateCapability struct {
@@ -45375,6 +51384,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayCurrentStateSubnetArrayInput)(nil)).Elem(), CloudGatewayCurrentStateSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayExternalGatewayInput)(nil)).Elem(), CloudGatewayExternalGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudGatewayExternalGatewayPtrInput)(nil)).Elem(), CloudGatewayExternalGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateInput)(nil)).Elem(), CloudInstanceCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStatePtrInput)(nil)).Elem(), CloudInstanceCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateFlavorInput)(nil)).Elem(), CloudInstanceCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateFlavorPtrInput)(nil)).Elem(), CloudInstanceCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateGroupInput)(nil)).Elem(), CloudInstanceCurrentStateGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateGroupPtrInput)(nil)).Elem(), CloudInstanceCurrentStateGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateImageInput)(nil)).Elem(), CloudInstanceCurrentStateImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateImagePtrInput)(nil)).Elem(), CloudInstanceCurrentStateImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateLocationInput)(nil)).Elem(), CloudInstanceCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateLocationPtrInput)(nil)).Elem(), CloudInstanceCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateNetworkInput)(nil)).Elem(), CloudInstanceCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateNetworkArrayInput)(nil)).Elem(), CloudInstanceCurrentStateNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateNetworkAddressInput)(nil)).Elem(), CloudInstanceCurrentStateNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateNetworkAddressArrayInput)(nil)).Elem(), CloudInstanceCurrentStateNetworkAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateSecurityGroupInput)(nil)).Elem(), CloudInstanceCurrentStateSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateSecurityGroupArrayInput)(nil)).Elem(), CloudInstanceCurrentStateSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateShareInput)(nil)).Elem(), CloudInstanceCurrentStateShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateShareArrayInput)(nil)).Elem(), CloudInstanceCurrentStateShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateVolumeInput)(nil)).Elem(), CloudInstanceCurrentStateVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceCurrentStateVolumeArrayInput)(nil)).Elem(), CloudInstanceCurrentStateVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceGroupCurrentStateInput)(nil)).Elem(), CloudInstanceGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceGroupCurrentStatePtrInput)(nil)).Elem(), CloudInstanceGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceGroupCurrentStateLocationInput)(nil)).Elem(), CloudInstanceGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceGroupCurrentStateLocationPtrInput)(nil)).Elem(), CloudInstanceGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceGroupCurrentStateMemberInput)(nil)).Elem(), CloudInstanceGroupCurrentStateMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceGroupCurrentStateMemberArrayInput)(nil)).Elem(), CloudInstanceGroupCurrentStateMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceNetworkInput)(nil)).Elem(), CloudInstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceNetworkArrayInput)(nil)).Elem(), CloudInstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceShareInput)(nil)).Elem(), CloudInstanceShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudInstanceShareArrayInput)(nil)).Elem(), CloudInstanceShareArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudKeyManagerContainerCurrentStateInput)(nil)).Elem(), CloudKeyManagerContainerCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudKeyManagerContainerCurrentStatePtrInput)(nil)).Elem(), CloudKeyManagerContainerCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudKeyManagerContainerCurrentStateLocationInput)(nil)).Elem(), CloudKeyManagerContainerCurrentStateLocationArgs{})
@@ -45553,12 +51592,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStatePtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAccessRuleInput)(nil)).Elem(), CloudStorageFileShareAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAccessRuleArrayInput)(nil)).Elem(), CloudStorageFileShareAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAclCurrentStateInput)(nil)).Elem(), CloudStorageFileShareAclCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAclCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareAclCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateInput)(nil)).Elem(), CloudStorageFileShareCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRuleInput)(nil)).Elem(), CloudStorageFileShareCurrentStateAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateAccessRuleArrayInput)(nil)).Elem(), CloudStorageFileShareCurrentStateAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateCapabilityInput)(nil)).Elem(), CloudStorageFileShareCurrentStateCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateCapabilityArrayInput)(nil)).Elem(), CloudStorageFileShareCurrentStateCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateExportLocationInput)(nil)).Elem(), CloudStorageFileShareCurrentStateExportLocationArgs{})
@@ -45690,6 +51727,60 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayCurrentStateSubnetArrayInput)(nil)).Elem(), GetCloudGatewaysGatewayCurrentStateSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayExternalGatewayInput)(nil)).Elem(), GetCloudGatewaysGatewayExternalGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudGatewaysGatewayLocationInput)(nil)).Elem(), GetCloudGatewaysGatewayLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateInput)(nil)).Elem(), GetCloudInstanceCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateFlavorInput)(nil)).Elem(), GetCloudInstanceCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateGroupInput)(nil)).Elem(), GetCloudInstanceCurrentStateGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateImageInput)(nil)).Elem(), GetCloudInstanceCurrentStateImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateLocationInput)(nil)).Elem(), GetCloudInstanceCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateNetworkInput)(nil)).Elem(), GetCloudInstanceCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateNetworkArrayInput)(nil)).Elem(), GetCloudInstanceCurrentStateNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateNetworkAddressInput)(nil)).Elem(), GetCloudInstanceCurrentStateNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateNetworkAddressArrayInput)(nil)).Elem(), GetCloudInstanceCurrentStateNetworkAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateSecurityGroupInput)(nil)).Elem(), GetCloudInstanceCurrentStateSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateSecurityGroupArrayInput)(nil)).Elem(), GetCloudInstanceCurrentStateSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateShareInput)(nil)).Elem(), GetCloudInstanceCurrentStateShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateShareArrayInput)(nil)).Elem(), GetCloudInstanceCurrentStateShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateVolumeInput)(nil)).Elem(), GetCloudInstanceCurrentStateVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceCurrentStateVolumeArrayInput)(nil)).Elem(), GetCloudInstanceCurrentStateVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceFlavorLocationInput)(nil)).Elem(), GetCloudInstanceFlavorLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceFlavorsFlavorInput)(nil)).Elem(), GetCloudInstanceFlavorsFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceFlavorsFlavorArrayInput)(nil)).Elem(), GetCloudInstanceFlavorsFlavorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceFlavorsFlavorLocationInput)(nil)).Elem(), GetCloudInstanceFlavorsFlavorLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupCurrentStateInput)(nil)).Elem(), GetCloudInstanceGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupCurrentStateLocationInput)(nil)).Elem(), GetCloudInstanceGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupCurrentStateMemberInput)(nil)).Elem(), GetCloudInstanceGroupCurrentStateMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupCurrentStateMemberArrayInput)(nil)).Elem(), GetCloudInstanceGroupCurrentStateMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupInput)(nil)).Elem(), GetCloudInstanceGroupsInstanceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupArrayInput)(nil)).Elem(), GetCloudInstanceGroupsInstanceGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateInput)(nil)).Elem(), GetCloudInstanceGroupsInstanceGroupCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateLocationInput)(nil)).Elem(), GetCloudInstanceGroupsInstanceGroupCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateMemberInput)(nil)).Elem(), GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayInput)(nil)).Elem(), GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceImageLocationInput)(nil)).Elem(), GetCloudInstanceImageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceImagesImageInput)(nil)).Elem(), GetCloudInstanceImagesImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceImagesImageArrayInput)(nil)).Elem(), GetCloudInstanceImagesImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceImagesImageLocationInput)(nil)).Elem(), GetCloudInstanceImagesImageLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceNetworkInput)(nil)).Elem(), GetCloudInstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceNetworkArrayInput)(nil)).Elem(), GetCloudInstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceShareInput)(nil)).Elem(), GetCloudInstanceShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstanceShareArrayInput)(nil)).Elem(), GetCloudInstanceShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceInput)(nil)).Elem(), GetCloudInstancesInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceArrayInput)(nil)).Elem(), GetCloudInstancesInstanceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateFlavorInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateGroupInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateImageInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateLocationInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetworkInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetworkArrayInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetworkAddressInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateNetworkAddressArrayInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateNetworkAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateSecurityGroupInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateSecurityGroupArrayInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateSecurityGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateShareInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateShareArrayInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateVolumeInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudInstancesInstanceCurrentStateVolumeArrayInput)(nil)).Elem(), GetCloudInstancesInstanceCurrentStateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudKeyManagerContainerConsumersConsumerInput)(nil)).Elem(), GetCloudKeyManagerContainerConsumersConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudKeyManagerContainerConsumersConsumerArrayInput)(nil)).Elem(), GetCloudKeyManagerContainerConsumersConsumerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudKeyManagerContainerCurrentStateInput)(nil)).Elem(), GetCloudKeyManagerContainerCurrentStateArgs{})
@@ -45866,11 +51957,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeAttachedInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeEncryptionInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageBlockVolumesVolumeLocationInput)(nil)).Elem(), GetCloudStorageBlockVolumesVolumeLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAccessRuleInput)(nil)).Elem(), GetCloudStorageFileShareAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileShareAccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAclCurrentStateInput)(nil)).Elem(), GetCloudStorageFileShareAclCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAclsShareAclInput)(nil)).Elem(), GetCloudStorageFileShareAclsShareAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAclsShareAclArrayInput)(nil)).Elem(), GetCloudStorageFileShareAclsShareAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareAclsShareAclCurrentStateInput)(nil)).Elem(), GetCloudStorageFileShareAclsShareAclCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRuleInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateCapabilityInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateCapabilityArrayInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareCurrentStateExportLocationInput)(nil)).Elem(), GetCloudStorageFileShareCurrentStateExportLocationArgs{})
@@ -45893,11 +51984,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationInput)(nil)).Elem(), GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRuleInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRuleInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateCapabilityInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateCapabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateCapabilityArrayInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateCapabilityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateExportLocationInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateExportLocationArgs{})
@@ -45996,6 +52083,36 @@ func init() {
 	pulumi.RegisterOutputType(CloudGatewayCurrentStateSubnetArrayOutput{})
 	pulumi.RegisterOutputType(CloudGatewayExternalGatewayOutput{})
 	pulumi.RegisterOutputType(CloudGatewayExternalGatewayPtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateFlavorOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateFlavorPtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateGroupOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateGroupPtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateImageOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateImagePtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateNetworkOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateNetworkArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateNetworkAddressOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateNetworkAddressArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateSecurityGroupOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateShareOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateShareArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateVolumeOutput{})
+	pulumi.RegisterOutputType(CloudInstanceCurrentStateVolumeArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceGroupCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudInstanceGroupCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceGroupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudInstanceGroupCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudInstanceGroupCurrentStateMemberOutput{})
+	pulumi.RegisterOutputType(CloudInstanceGroupCurrentStateMemberArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceNetworkOutput{})
+	pulumi.RegisterOutputType(CloudInstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(CloudInstanceShareOutput{})
+	pulumi.RegisterOutputType(CloudInstanceShareArrayOutput{})
 	pulumi.RegisterOutputType(CloudKeyManagerContainerCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudKeyManagerContainerCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudKeyManagerContainerCurrentStateLocationOutput{})
@@ -46174,12 +52291,10 @@ func init() {
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareAccessRuleOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudStorageFileShareAclCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudStorageFileShareAclCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStatePtrOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateAccessRuleOutput{})
-	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateCapabilityOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateExportLocationOutput{})
@@ -46311,6 +52426,60 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudGatewaysGatewayCurrentStateSubnetArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudGatewaysGatewayExternalGatewayOutput{})
 	pulumi.RegisterOutputType(GetCloudGatewaysGatewayLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateFlavorOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateGroupOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateImageOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateNetworkAddressOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateNetworkAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateSecurityGroupOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateShareOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateShareArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateVolumeOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceCurrentStateVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceFlavorLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceFlavorsFlavorOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceFlavorsFlavorArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceFlavorsFlavorLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupCurrentStateMemberOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupCurrentStateMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupsInstanceGroupOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupsInstanceGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupsInstanceGroupCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupsInstanceGroupCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupsInstanceGroupCurrentStateMemberOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceGroupsInstanceGroupCurrentStateMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceImageLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceImagesImageOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceImagesImageArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceImagesImageLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceShareOutput{})
+	pulumi.RegisterOutputType(GetCloudInstanceShareArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateFlavorOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateGroupOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateImageOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateNetworkAddressOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateNetworkAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateSecurityGroupOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateSecurityGroupArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateShareOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateShareArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateVolumeOutput{})
+	pulumi.RegisterOutputType(GetCloudInstancesInstanceCurrentStateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudKeyManagerContainerConsumersConsumerOutput{})
 	pulumi.RegisterOutputType(GetCloudKeyManagerContainerConsumersConsumerArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudKeyManagerContainerCurrentStateOutput{})
@@ -46487,11 +52656,11 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeAttachedInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeEncryptionOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageBlockVolumesVolumeLocationOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareAccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageFileShareAclCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageFileShareAclsShareAclOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageFileShareAclsShareAclArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageFileShareAclsShareAclCurrentStateOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileShareCurrentStateExportLocationOutput{})
@@ -46514,11 +52683,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareArrayOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleOutput{})
-	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateAccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateCapabilityOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateCapabilityArrayOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateExportLocationOutput{})

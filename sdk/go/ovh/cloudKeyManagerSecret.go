@@ -26,7 +26,7 @@ import (
 type CloudKeyManagerSecret struct {
 	pulumi.CustomResourceState
 
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm pulumi.StringPtrOutput `pulumi:"algorithm"`
 	// Availability zone where the secret will be created.
 	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
@@ -42,7 +42,7 @@ type CloudKeyManagerSecret struct {
 	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// Name of the secret.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -54,7 +54,7 @@ type CloudKeyManagerSecret struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Secret readiness status (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
 	ResourceStatus pulumi.StringOutput `pulumi:"resourceStatus"`
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType pulumi.StringOutput `pulumi:"secretType"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -108,7 +108,7 @@ func GetCloudKeyManagerSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudKeyManagerSecret resources.
 type cloudKeyManagerSecretState struct {
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm *string `pulumi:"algorithm"`
 	// Availability zone where the secret will be created.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -124,7 +124,7 @@ type cloudKeyManagerSecretState struct {
 	Expiration *string `pulumi:"expiration"`
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode *string `pulumi:"mode"`
 	// Name of the secret.
 	Name *string `pulumi:"name"`
@@ -136,7 +136,7 @@ type cloudKeyManagerSecretState struct {
 	Region *string `pulumi:"region"`
 	// Secret readiness status (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
 	ResourceStatus *string `pulumi:"resourceStatus"`
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType *string `pulumi:"secretType"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName *string `pulumi:"serviceName"`
@@ -145,7 +145,7 @@ type cloudKeyManagerSecretState struct {
 }
 
 type CloudKeyManagerSecretState struct {
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm pulumi.StringPtrInput
 	// Availability zone where the secret will be created.
 	AvailabilityZone pulumi.StringPtrInput
@@ -161,7 +161,7 @@ type CloudKeyManagerSecretState struct {
 	Expiration pulumi.StringPtrInput
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata pulumi.StringMapInput
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode pulumi.StringPtrInput
 	// Name of the secret.
 	Name pulumi.StringPtrInput
@@ -173,7 +173,7 @@ type CloudKeyManagerSecretState struct {
 	Region pulumi.StringPtrInput
 	// Secret readiness status (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
 	ResourceStatus pulumi.StringPtrInput
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType pulumi.StringPtrInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringPtrInput
@@ -186,7 +186,7 @@ func (CloudKeyManagerSecretState) ElementType() reflect.Type {
 }
 
 type cloudKeyManagerSecretArgs struct {
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm *string `pulumi:"algorithm"`
 	// Availability zone where the secret will be created.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -196,7 +196,7 @@ type cloudKeyManagerSecretArgs struct {
 	Expiration *string `pulumi:"expiration"`
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode *string `pulumi:"mode"`
 	// Name of the secret.
 	Name *string `pulumi:"name"`
@@ -206,7 +206,7 @@ type cloudKeyManagerSecretArgs struct {
 	PayloadContentType *string `pulumi:"payloadContentType"`
 	// Region where the secret will be created.
 	Region string `pulumi:"region"`
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType string `pulumi:"secretType"`
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName string `pulumi:"serviceName"`
@@ -214,7 +214,7 @@ type cloudKeyManagerSecretArgs struct {
 
 // The set of arguments for constructing a CloudKeyManagerSecret resource.
 type CloudKeyManagerSecretArgs struct {
-	// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+	// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 	Algorithm pulumi.StringPtrInput
 	// Availability zone where the secret will be created.
 	AvailabilityZone pulumi.StringPtrInput
@@ -224,7 +224,7 @@ type CloudKeyManagerSecretArgs struct {
 	Expiration pulumi.StringPtrInput
 	// Key-value metadata for the secret. This is the only mutable field on a secret.
 	Metadata pulumi.StringMapInput
-	// Mode of the secret algorithm (e.g., `CBC`).
+	// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 	Mode pulumi.StringPtrInput
 	// Name of the secret.
 	Name pulumi.StringPtrInput
@@ -234,7 +234,7 @@ type CloudKeyManagerSecretArgs struct {
 	PayloadContentType pulumi.StringPtrInput
 	// Region where the secret will be created.
 	Region pulumi.StringInput
-	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+	// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 	SecretType pulumi.StringInput
 	// The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
 	ServiceName pulumi.StringInput
@@ -327,7 +327,7 @@ func (o CloudKeyManagerSecretOutput) ToCloudKeyManagerSecretOutputWithContext(ct
 	return o
 }
 
-// Algorithm associated with the secret (e.g., `AES`, `RSA`).
+// Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
 func (o CloudKeyManagerSecretOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecret) pulumi.StringPtrOutput { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -367,7 +367,7 @@ func (o CloudKeyManagerSecretOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecret) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Mode of the secret algorithm (e.g., `CBC`).
+// Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
 func (o CloudKeyManagerSecretOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecret) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -397,7 +397,7 @@ func (o CloudKeyManagerSecretOutput) ResourceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecret) pulumi.StringOutput { return v.ResourceStatus }).(pulumi.StringOutput)
 }
 
-// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+// Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
 func (o CloudKeyManagerSecretOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudKeyManagerSecret) pulumi.StringOutput { return v.SecretType }).(pulumi.StringOutput)
 }

@@ -166,6 +166,287 @@ export interface CloudGatewayExternalGateway {
     model?: string;
 }
 
+export interface CloudInstanceCurrentState {
+    /**
+     * Observed flavor of the instance, with its full sizing details:
+     */
+    flavor: outputs.CloudInstanceCurrentStateFlavor;
+    /**
+     * Instance (placement) group the instance belongs to, null when it is not part of any group:
+     */
+    group: outputs.CloudInstanceCurrentStateGroup;
+    /**
+     * Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+     */
+    hostId: string;
+    /**
+     * Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+     */
+    image: outputs.CloudInstanceCurrentStateImage;
+    /**
+     * Observed region and availability zone where the instance is provisioned:
+     */
+    location: outputs.CloudInstanceCurrentStateLocation;
+    /**
+     * Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+     */
+    locked: boolean;
+    /**
+     * Instance name.
+     */
+    name: string;
+    /**
+     * Network interfaces attached to the instance. Entries keep the order they are written in; the API returns them sorted by network id and the provider re-orders them back to the configuration. Four shapes:
+     */
+    networks: outputs.CloudInstanceCurrentStateNetwork[];
+    /**
+     * Desired power state: `ACTIVE`, `SHUTOFF` or `SHELVED`. When omitted, the API applies `ACTIVE` server-side and echoes it back; the provider declares no default of its own.
+     */
+    powerState: string;
+    /**
+     * Identifier of the Public Cloud project the instance belongs to.
+     */
+    projectId: string;
+    /**
+     * Security groups currently attached to the instance's ports:
+     */
+    securityGroups: outputs.CloudInstanceCurrentStateSecurityGroup[];
+    /**
+     * Filesystem shares attached to the instance. Each entry supports:
+     */
+    shares: outputs.CloudInstanceCurrentStateShare[];
+    /**
+     * Name of the SSH key injected at boot (immutable). Point it at the `name` of an `ovh.CloudSSHKey`. **Changing this value recreates the resource.**
+     */
+    sshKeyName: string;
+    /**
+     * Identifier of the OpenStack user that owns the instance.
+     */
+    userId: string;
+    /**
+     * Observed block volumes attached to the instance:
+     */
+    volumes: outputs.CloudInstanceCurrentStateVolume[];
+}
+
+export interface CloudInstanceCurrentStateFlavor {
+    /**
+     * Size of the flavor's local root disk, in GB.
+     */
+    disk: number;
+    /**
+     * Size of the flavor's ephemeral disk, in GB.
+     */
+    ephemeral: number;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Instance name.
+     */
+    name: string;
+    /**
+     * Amount of RAM provided by the flavor, in MB.
+     */
+    ram: number;
+    /**
+     * Size of the flavor's swap space, in MB.
+     */
+    swap: number;
+    /**
+     * Number of virtual CPUs provided by the flavor.
+     */
+    vcpus: number;
+}
+
+export interface CloudInstanceCurrentStateGroup {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+}
+
+export interface CloudInstanceCurrentStateImage {
+    /**
+     * Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+     */
+    deprecated: boolean;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Instance name.
+     */
+    name: string;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size: number;
+    /**
+     * Lifecycle status of the image as reported by Glance.
+     */
+    status: string;
+}
+
+export interface CloudInstanceCurrentStateLocation {
+    /**
+     * Availability zone of the instance (immutable; assigned by the platform if omitted). **Changing this value recreates the resource** — only when it is set in the configuration; a value assigned by the platform is never treated as a change.
+     */
+    availabilityZone: string;
+    /**
+     * Region where the instance is created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudInstanceCurrentStateNetwork {
+    /**
+     * Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+     */
+    addresses: outputs.CloudInstanceCurrentStateNetworkAddress[];
+    /**
+     * Identifier of the gateway providing egress for this interface, null when none applies.
+     */
+    gatewayId: string;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Subnet ID within the private network. Required with `networkId`.
+     */
+    subnetId: string;
+}
+
+export interface CloudInstanceCurrentStateNetworkAddress {
+    /**
+     * IP address assigned to the interface (IPv4 or IPv6).
+     */
+    ip: string;
+    /**
+     * MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+     */
+    mac: string;
+    /**
+     * How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+     */
+    type: string;
+    /**
+     * IP version of the address (4 for IPv4, 6 for IPv6).
+     */
+    version: number;
+}
+
+export interface CloudInstanceCurrentStateSecurityGroup {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+}
+
+export interface CloudInstanceCurrentStateShare {
+    /**
+     * Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+     */
+    accessLevel: string;
+    /**
+     * The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+     */
+    accessTo: string;
+    /**
+     * Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+     */
+    id: string;
+    /**
+     * Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+     */
+    state: string;
+}
+
+export interface CloudInstanceCurrentStateVolume {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Instance name.
+     */
+    name: string;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size: number;
+}
+
+export interface CloudInstanceGroupCurrentState {
+    /**
+     * Location details:
+     */
+    location: outputs.CloudInstanceGroupCurrentStateLocation;
+    /**
+     * Instances currently belonging to the group:
+     */
+    members: outputs.CloudInstanceGroupCurrentStateMember[];
+    /**
+     * Instance group name. **Changing this value recreates the resource.**
+     */
+    name: string;
+    /**
+     * Placement policy applied to the group's member instances (`AFFINITY`, `ANTI_AFFINITY`). **Changing this value recreates the resource.**
+     */
+    policy: string;
+}
+
+export interface CloudInstanceGroupCurrentStateLocation {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Region where the instance group will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudInstanceGroupCurrentStateMember {
+    /**
+     * Instance ID.
+     */
+    id: string;
+}
+
+export interface CloudInstanceNetwork {
+    /**
+     * Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+     */
+    autoAssignPublicIp?: boolean;
+    /**
+     * IP address of this interface. Without `networkId`: a public IP the project already owns (additional IP, or an Ext-Net IP of the project in the instance's region). With `networkId` + `subnetId`: pins the port's fixed address when inside the subnet CIDR, otherwise associates the existing floating IP with that address.
+     */
+    ip?: string;
+    /**
+     * Private network ID. Omit for a public interface.
+     */
+    networkId?: string;
+    /**
+     * Subnet ID within the private network. Required with `networkId`.
+     */
+    subnetId?: string;
+}
+
+export interface CloudInstanceShare {
+    /**
+     * Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
+     */
+    accessLevel?: string;
+    /**
+     * Identifier of the file storage share to attach. Adding the reference attaches the share to the instance, removing it detaches it.
+     */
+    id: string;
+}
+
 export interface CloudKeyManagerContainerCurrentState {
     /**
      * OpenStack reference URL for the container.
@@ -228,7 +509,7 @@ export interface CloudKeyManagerContainerSecretRef {
 
 export interface CloudKeyManagerSecretCurrentState {
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      */
     algorithm: string;
     /**
@@ -248,7 +529,7 @@ export interface CloudKeyManagerSecretCurrentState {
      */
     metadata: {[key: string]: string};
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      */
     mode: string;
     /**
@@ -264,7 +545,7 @@ export interface CloudKeyManagerSecretCurrentState {
      */
     secretRef: string;
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      */
     secretType: string;
     /**
@@ -531,7 +812,7 @@ export interface CloudProjectStorageObjectBucketLifecycleConfigurationRuleNoncur
      */
     noncurrentDays?: number;
     /**
-     * The storage class to transition noncurrent objects to.
+     * The storage class to transition noncurrent objects to. Accepted values: `STANDARD`, `STANDARD_IA`, `GLACIER_IR`, `DEEP_ARCHIVE`.
      */
     storageClass?: string;
 }
@@ -1158,6 +1439,10 @@ export interface CloudStorageBlockVolumeCurrentStateEncryption {
 
 export interface CloudStorageBlockVolumeCurrentStateLocation {
     /**
+     * Availability zone
+     */
+    availabilityZone: string;
+    /**
      * Region where the volume will be created. **Changing this value recreates the resource.**
      */
     region: string;
@@ -1200,22 +1485,26 @@ export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     region: string;
 }
 
-export interface CloudStorageFileShareAccessRule {
+export interface CloudStorageFileShareAclCurrentState {
     /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
+     * Access level granted (`READ_WRITE`, `READ_ONLY`). **Changing this value recreates the resource.**
      */
     accessLevel: string;
     /**
-     * IP address or CIDR to grant access to.
+     * IP address or CIDR allowed to access the file storage share. **Changing this value recreates the resource.**
      */
     accessTo: string;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt: string;
+    /**
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+     */
+    state: string;
 }
 
 export interface CloudStorageFileShareCurrentState {
-    /**
-     * Access rules for the file share. Each rule has:
-     */
-    accessRules: outputs.CloudStorageFileShareCurrentStateAccessRule[];
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -1252,29 +1541,6 @@ export interface CloudStorageFileShareCurrentState {
      * Size of the file share in GB.
      */
     size: number;
-}
-
-export interface CloudStorageFileShareCurrentStateAccessRule {
-    /**
-     * Access level (`READ_WRITE`, `READ_ONLY`).
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR to grant access to.
-     */
-    accessTo: string;
-    /**
-     * Access rule creation date.
-     */
-    createdAt: string;
-    /**
-     * Access rule ID.
-     */
-    id: string;
-    /**
-     * Access rule state.
-     */
-    state: string;
 }
 
 export interface CloudStorageFileShareCurrentStateCapability {
@@ -2174,6 +2440,754 @@ export interface GetCloudGatewaysGatewayLocation {
      * Region.
      */
     region: string;
+}
+
+export interface GetCloudInstanceCurrentState {
+    /**
+     * Observed flavor of the instance, with its full sizing details:
+     */
+    flavor: outputs.GetCloudInstanceCurrentStateFlavor;
+    /**
+     * Instance (placement) group the instance belongs to, null when it is not part of any group:
+     */
+    group: outputs.GetCloudInstanceCurrentStateGroup;
+    /**
+     * Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+     */
+    hostId: string;
+    /**
+     * Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+     */
+    image: outputs.GetCloudInstanceCurrentStateImage;
+    /**
+     * Observed region and availability zone where the instance is provisioned:
+     */
+    location: outputs.GetCloudInstanceCurrentStateLocation;
+    /**
+     * Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+     */
+    locked: boolean;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested `networks`:
+     */
+    networks: outputs.GetCloudInstanceCurrentStateNetwork[];
+    /**
+     * Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+     */
+    powerState: string;
+    /**
+     * Identifier of the Public Cloud project the instance belongs to.
+     */
+    projectId: string;
+    /**
+     * Security groups currently attached to the instance's ports:
+     */
+    securityGroups: outputs.GetCloudInstanceCurrentStateSecurityGroup[];
+    /**
+     * Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, never in the list data source:
+     */
+    shares: outputs.GetCloudInstanceCurrentStateShare[];
+    /**
+     * Name of the SSH key pair injected into the instance at boot, null when none was provided.
+     */
+    sshKeyName: string;
+    /**
+     * Identifier of the OpenStack user that owns the instance.
+     */
+    userId: string;
+    /**
+     * Observed block volumes attached to the instance:
+     */
+    volumes: outputs.GetCloudInstanceCurrentStateVolume[];
+}
+
+export interface GetCloudInstanceCurrentStateFlavor {
+    /**
+     * Size of the flavor's local root disk, in GB.
+     */
+    disk: number;
+    /**
+     * Size of the flavor's ephemeral disk, in GB.
+     */
+    ephemeral: number;
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Amount of RAM provided by the flavor, in MB.
+     */
+    ram: number;
+    /**
+     * Size of the flavor's swap space, in MB.
+     */
+    swap: number;
+    /**
+     * Number of virtual CPUs provided by the flavor.
+     */
+    vcpus: number;
+}
+
+export interface GetCloudInstanceCurrentStateGroup {
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+}
+
+export interface GetCloudInstanceCurrentStateImage {
+    /**
+     * Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+     */
+    deprecated: boolean;
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size: number;
+    /**
+     * Lifecycle status of the image as reported by Glance.
+     */
+    status: string;
+}
+
+export interface GetCloudInstanceCurrentStateLocation {
+    /**
+     * Availability zone within the region where the instance is placed, null in regions that have none.
+     */
+    availabilityZone: string;
+    /**
+     * Code of the region where the instance is provisioned (for example GRA11, BHS5).
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceCurrentStateNetwork {
+    /**
+     * Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+     */
+    addresses: outputs.GetCloudInstanceCurrentStateNetworkAddress[];
+    /**
+     * Identifier of the gateway providing egress for this interface, null when none applies.
+     */
+    gatewayId: string;
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+    /**
+     * Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudInstanceCurrentStateNetworkAddress {
+    /**
+     * IP address assigned to the interface (IPv4 or IPv6).
+     */
+    ip: string;
+    /**
+     * MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+     */
+    mac: string;
+    /**
+     * How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+     */
+    type: string;
+    /**
+     * IP version of the address (4 for IPv4, 6 for IPv6).
+     */
+    version: number;
+}
+
+export interface GetCloudInstanceCurrentStateSecurityGroup {
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+}
+
+export interface GetCloudInstanceCurrentStateShare {
+    /**
+     * Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+     */
+    accessLevel: string;
+    /**
+     * The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+     */
+    accessTo: string;
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+    /**
+     * Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+     */
+    state: string;
+}
+
+export interface GetCloudInstanceCurrentStateVolume {
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size: number;
+}
+
+export interface GetCloudInstanceFlavorLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceFlavorsFlavor {
+    /**
+     * Free-form description of the flavor as reported by the backend. May be empty when no description is advertised for this flavor.
+     */
+    description: string;
+    /**
+     * Size of the flavor's root disk in GB. This is the primary system disk provisioned for instances created from this flavor.
+     */
+    disk: number;
+    /**
+     * Size of the flavor's ephemeral disk in GB. Ephemeral storage is transient: its contents do not survive a rebuild or deletion of the instance. Zero when the flavor provides no ephemeral disk.
+     */
+    ephemeral: number;
+    /**
+     * The OpenStack/Nova flavor ID. Stable within a region and used to reference the flavor when creating an instance.
+     */
+    id: string;
+    /**
+     * Whether the flavor is publicly available to the project. Private flavors are only visible to the projects they have been explicitly shared with.
+     */
+    isPublic: boolean;
+    /**
+     * Region (and, where applicable, availability zone) where this flavor is offered. The flavor catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another:
+     */
+    location: outputs.GetCloudInstanceFlavorsFlavorLocation;
+    /**
+     * The backend flavor name (for example `b2-7`, `c2-15`). This is the commercial/technical name used to identify the sizing in the catalog.
+     */
+    name: string;
+    /**
+     * Amount of memory provided by the flavor, expressed in MB.
+     */
+    ram: number;
+    /**
+     * Size of the flavor's swap space in MB. Zero when the flavor provides no swap.
+     */
+    swap: number;
+    /**
+     * Number of virtual CPUs provided by the flavor.
+     */
+    vcpus: number;
+}
+
+export interface GetCloudInstanceFlavorsFlavorLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Restrict the listing to the flavors offered in this region. The catalog is per-region: a flavor returned for one region is not guaranteed to exist, or to carry the same characteristics, in another.
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceGroupCurrentState {
+    /**
+     * Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+     */
+    location: outputs.GetCloudInstanceGroupCurrentStateLocation;
+    /**
+     * Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+     */
+    members: outputs.GetCloudInstanceGroupCurrentStateMember[];
+    /**
+     * Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+     */
+    name: string;
+    /**
+     * Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+     */
+    policy: string;
+}
+
+export interface GetCloudInstanceGroupCurrentStateLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceGroupCurrentStateMember {
+    /**
+     * Unique identifier of the instance group to look up.
+     */
+    id: string;
+}
+
+export interface GetCloudInstanceGroupsInstanceGroup {
+    /**
+     * Computed hash of the current target specification, used for optimistic concurrency control. Because an instance group has no update route, this value never changes after creation.
+     */
+    checksum: string;
+    /**
+     * Timestamp at which the instance group was created, in RFC 3339 format.
+     */
+    createdAt: string;
+    /**
+     * State of the instance group as observed on the backend:
+     */
+    currentState: outputs.GetCloudInstanceGroupsInstanceGroupCurrentState;
+    /**
+     * Identifier of the member instance.
+     */
+    id: string;
+    /**
+     * Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+     */
+    name: string;
+    /**
+     * Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+     */
+    policy: string;
+    /**
+     * Region code.
+     */
+    region: string;
+    /**
+     * Instance group readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`). `OUT_OF_SYNC` means the group has drifted from its target specification; a group managed by `ovh.CloudInstanceGroup` is destroyed and recreated on the next `pulumi up` to converge.
+     */
+    resourceStatus: string;
+}
+
+export interface GetCloudInstanceGroupsInstanceGroupCurrentState {
+    /**
+     * Region (and, where applicable, availability zone) where the instance group and its member instances are deployed, as observed on the backend:
+     */
+    location: outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateLocation;
+    /**
+     * Instances currently belonging to this group. Membership is determined at instance-creation time via the instance's `group` field and cannot be changed afterwards. Empty when the group has no member instances:
+     */
+    members: outputs.GetCloudInstanceGroupsInstanceGroupCurrentStateMember[];
+    /**
+     * Display name of the instance group as reported by the backend. Fixed for the lifetime of the group, since instance groups cannot be updated.
+     */
+    name: string;
+    /**
+     * Placement policy currently enforced for the group's members (`AFFINITY`, `ANTI_AFFINITY`). Mirrors the underlying OpenStack/Nova server group policy and is fixed at creation.
+     */
+    policy: string;
+}
+
+export interface GetCloudInstanceGroupsInstanceGroupCurrentStateLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceGroupsInstanceGroupCurrentStateMember {
+    /**
+     * Identifier of the member instance.
+     */
+    id: string;
+}
+
+export interface GetCloudInstanceImageLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Region code.
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceImagesImage {
+    /**
+     * Timestamp at which the image was created on the backend, in RFC 3339 format.
+     */
+    createdAt: string;
+    /**
+     * The OpenStack/Glance image ID. Stable within a region and used to reference the image when creating an instance.
+     */
+    id: string;
+    /**
+     * Region (and, where applicable, availability zone) where this image is offered. The image catalog is per-region: an image returned for one region is not guaranteed to exist in another:
+     */
+    location: outputs.GetCloudInstanceImagesImageLocation;
+    /**
+     * Minimum root disk size, in GB, that an instance must provide to boot from this image. A flavor whose disk is smaller than this value cannot be used with the image.
+     */
+    minDisk: number;
+    /**
+     * Minimum amount of memory, in MB, that an instance must provide to boot from this image. A flavor whose RAM is below this value cannot be used with the image.
+     */
+    minRam: number;
+    /**
+     * Display name of the image as reported by the backend (for example the distribution and version, such as `Debian 12`).
+     */
+    name: string;
+    /**
+     * Size of the image on the backend, expressed in bytes.
+     */
+    size: number;
+    /**
+     * Availability status of the image as reported by the backend. Only images in an active status can be used to create an instance.
+     */
+    status: string;
+    /**
+     * Timestamp of the last modification of the image on the backend, in RFC 3339 format.
+     */
+    updatedAt: string;
+    /**
+     * Visibility scope of the image, for example whether it is a public OVHcloud-provided image or private to the project.
+     */
+    visibility: string;
+}
+
+export interface GetCloudInstanceImagesImageLocation {
+    /**
+     * Availability zone within the region.
+     */
+    availabilityZone: string;
+    /**
+     * Restrict the listing to the images offered in this region. The catalog is per-region: an image returned for one region is not guaranteed to exist in another.
+     */
+    region: string;
+}
+
+export interface GetCloudInstanceNetwork {
+    /**
+     * Attach a public interface with a public IP assigned by the platform. Only valid on an entry with no `networkId` and no `ip`, and on at most one entry.
+     */
+    autoAssignPublicIp: boolean;
+    /**
+     * IP address assigned to the interface (IPv4 or IPv6).
+     */
+    ip: string;
+    /**
+     * Private network ID. Omit for a public interface.
+     */
+    networkId: string;
+    /**
+     * Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudInstanceShare {
+    /**
+     * Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+     */
+    accessLevel: string;
+    /**
+     * Unique identifier of the instance.
+     */
+    id: string;
+}
+
+export interface GetCloudInstancesInstance {
+    /**
+     * Availability zone within the region where the instance is placed, null in regions that have none.
+     */
+    availabilityZone: string;
+    /**
+     * Computed hash representing the current target specification value. It implements optimistic concurrency control: the value is echoed back on update and the request is rejected when it no longer matches server-side.
+     */
+    checksum: string;
+    /**
+     * Creation date of the instance, as an RFC 3339 timestamp.
+     */
+    createdAt: string;
+    /**
+     * Observed state of the instance as reported by the compute backend, as opposed to the requested specification exposed at root level. Null while the instance is still being created and no backend state is available yet:
+     */
+    currentState: outputs.GetCloudInstancesInstanceCurrentState;
+    /**
+     * Unique identifier of the flavor.
+     */
+    flavorId: string;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Identifier of the image the instance boots from, null for a boot-from-volume instance.
+     */
+    imageId: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+     */
+    powerState: string;
+    /**
+     * Code of the region where the instance is provisioned (for example GRA11, BHS5).
+     */
+    region: string;
+    /**
+     * Instance readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`). Distinct from `current_state.power_state`, which carries the lower-level OpenStack administrative power state.
+     */
+    resourceStatus: string;
+    /**
+     * Last modification date of the instance, as an RFC 3339 timestamp.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentState {
+    /**
+     * Observed flavor of the instance, with its full sizing details:
+     */
+    flavor: outputs.GetCloudInstancesInstanceCurrentStateFlavor;
+    /**
+     * Instance (placement) group the instance belongs to, null when it is not part of any group:
+     */
+    group: outputs.GetCloudInstancesInstanceCurrentStateGroup;
+    /**
+     * Opaque identifier of the physical host the instance is running on, as exposed by OpenStack. Null when not available.
+     */
+    hostId: string;
+    /**
+     * Observed image the instance was booted from, null for a boot-from-volume instance which has no image:
+     */
+    image: outputs.GetCloudInstancesInstanceCurrentStateImage;
+    /**
+     * Observed region and availability zone where the instance is provisioned:
+     */
+    location: outputs.GetCloudInstancesInstanceCurrentStateLocation;
+    /**
+     * Whether the instance is locked against modifications. While locked, mutating actions are refused until it is unlocked.
+     */
+    locked: boolean;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Observed network interfaces of the instance: one entry per private network plus at most one entry without a network id for the public (Ext-Net) interface. Entries are ordered by network id, so they do not follow the order of the requested networks:
+     */
+    networks: outputs.GetCloudInstancesInstanceCurrentStateNetwork[];
+    /**
+     * Observed administrative power state of the instance as reported by OpenStack. It may transiently differ from the requested `powerState` while a power transition is in progress.
+     */
+    powerState: string;
+    /**
+     * Identifier of the Public Cloud project the instance belongs to.
+     */
+    projectId: string;
+    /**
+     * Security groups currently attached to the instance's ports:
+     */
+    securityGroups: outputs.GetCloudInstancesInstanceCurrentStateSecurityGroup[];
+    /**
+     * Observed instance-side share attachments, derived from the Manila access rules that target one of the instance's IPs. Only populated on a single-instance read, so always null here:
+     */
+    shares: outputs.GetCloudInstancesInstanceCurrentStateShare[];
+    /**
+     * Name of the SSH key pair injected into the instance at boot, null when none was provided.
+     */
+    sshKeyName: string;
+    /**
+     * Identifier of the OpenStack user that owns the instance.
+     */
+    userId: string;
+    /**
+     * Observed block volumes attached to the instance:
+     */
+    volumes: outputs.GetCloudInstancesInstanceCurrentStateVolume[];
+}
+
+export interface GetCloudInstancesInstanceCurrentStateFlavor {
+    /**
+     * Size of the flavor's local root disk, in GB.
+     */
+    disk: number;
+    /**
+     * Size of the flavor's ephemeral disk, in GB.
+     */
+    ephemeral: number;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Amount of RAM provided by the flavor, in MB.
+     */
+    ram: number;
+    /**
+     * Size of the flavor's swap space, in MB.
+     */
+    swap: number;
+    /**
+     * Number of virtual CPUs provided by the flavor.
+     */
+    vcpus: number;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateGroup {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateImage {
+    /**
+     * Whether the image is flagged as deprecated. A deprecated image still boots existing instances but is no longer recommended for new ones.
+     */
+    deprecated: boolean;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size: number;
+    /**
+     * Lifecycle status of the image as reported by Glance.
+     */
+    status: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateLocation {
+    /**
+     * Availability zone within the region where the instance is placed, null in regions that have none.
+     */
+    availabilityZone: string;
+    /**
+     * Code of the region where the instance is provisioned (for example GRA11, BHS5).
+     */
+    region: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateNetwork {
+    /**
+     * Addresses observed on this interface: its fixed addresses plus, where applicable, its floating IP and any additional IPs routed to it. Each address carries a type of `FIXED`, `FLOATING` or `ADDITIONAL`:
+     */
+    addresses: outputs.GetCloudInstancesInstanceCurrentStateNetworkAddress[];
+    /**
+     * Identifier of the gateway providing egress for this interface, null when none applies.
+     */
+    gatewayId: string;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Identifier of the subnet this interface draws its fixed address from, null for an entry without a network id.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateNetworkAddress {
+    /**
+     * IP address assigned to the interface (IPv4 or IPv6).
+     */
+    ip: string;
+    /**
+     * MAC address of the interface this IP is bound to. Null when the backend reports no interface for the address, which happens for an additional IP routed to an instance whose public interface has no visible Ext-Net address yet.
+     */
+    mac: string;
+    /**
+     * How this address reaches the instance: `FIXED` for an address assigned to the interface itself, `FLOATING` for a floating IP NAT'd onto it, `ADDITIONAL` for an additional IP routed to the public interface.
+     */
+    type: string;
+    /**
+     * IP version of the address (4 for IPv4, 6 for IPv6).
+     */
+    version: number;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateSecurityGroup {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateShare {
+    /**
+     * Observed access level of the access rule for this instance (`READ_ONLY` or `READ_WRITE`).
+     */
+    accessLevel: string;
+    /**
+     * The instance IP address the Manila access rule targets: its fixed IPv4 address on the share's network.
+     */
+    accessTo: string;
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Observed state of the underlying access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`). Null while no state has been reported yet.
+     */
+    state: string;
+}
+
+export interface GetCloudInstancesInstanceCurrentStateVolume {
+    /**
+     * Identifier of the instance (placement) group.
+     */
+    id: string;
+    /**
+     * Display name of the attached volume.
+     */
+    name: string;
+    /**
+     * Size of the attached volume, in GB.
+     */
+    size: number;
 }
 
 export interface GetCloudKeyManagerContainerConsumersConsumer {
@@ -4388,22 +5402,80 @@ export interface GetCloudStorageBlockVolumesVolumeLocation {
     region: string;
 }
 
-export interface GetCloudStorageFileShareAccessRule {
+export interface GetCloudStorageFileShareAclCurrentState {
     /**
-     * Access level.
+     * Access level granted.
      */
     accessLevel: string;
     /**
-     * IP address or CIDR.
+     * IP address or CIDR allowed to access the file storage share.
      */
     accessTo: string;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt: string;
+    /**
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+     */
+    state: string;
+}
+
+export interface GetCloudStorageFileShareAclsShareAcl {
+    /**
+     * Access level granted.
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR allowed to access the file storage share.
+     */
+    accessTo: string;
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt: string;
+    /**
+     * Current observed state of the access rule from the infrastructure:
+     */
+    currentState: outputs.GetCloudStorageFileShareAclsShareAclCurrentState;
+    /**
+     * Access rule ID.
+     */
+    id: string;
+    /**
+     * Access rule readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the access rule.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudStorageFileShareAclsShareAclCurrentState {
+    /**
+     * Access level granted.
+     */
+    accessLevel: string;
+    /**
+     * IP address or CIDR allowed to access the file storage share.
+     */
+    accessTo: string;
+    /**
+     * Creation date of the access rule.
+     */
+    createdAt: string;
+    /**
+     * Current state of the access rule (`ACTIVE`, `APPLYING`, `DENYING`, `ERROR`).
+     */
+    state: string;
 }
 
 export interface GetCloudStorageFileShareCurrentState {
-    /**
-     * Current access rules for the file share:
-     */
-    accessRules: outputs.GetCloudStorageFileShareCurrentStateAccessRule[];
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -4440,29 +5512,6 @@ export interface GetCloudStorageFileShareCurrentState {
      * Size of the file share in GB.
      */
     size: number;
-}
-
-export interface GetCloudStorageFileShareCurrentStateAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-    /**
-     * Access rule creation date.
-     */
-    createdAt: string;
-    /**
-     * The ID of the file share.
-     */
-    id: string;
-    /**
-     * Access rule state.
-     */
-    state: string;
 }
 
 export interface GetCloudStorageFileShareCurrentStateCapability {
@@ -4759,15 +5808,11 @@ export interface GetCloudStorageFileShareSnapshotsShareSnapshotCurrentStateLocat
 
 export interface GetCloudStorageFileSharesFileShare {
     /**
-     * Current access rules for the file share:
-     */
-    accessRules: outputs.GetCloudStorageFileSharesFileShareAccessRule[];
-    /**
      * Computed hash representing the current target specification value.
      */
     checksum: string;
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      */
     createdAt: string;
     /**
@@ -4779,7 +5824,7 @@ export interface GetCloudStorageFileSharesFileShare {
      */
     description: string;
     /**
-     * Access rule ID.
+     * File share ID.
      */
     id: string;
     /**
@@ -4816,22 +5861,7 @@ export interface GetCloudStorageFileSharesFileShare {
     updatedAt: string;
 }
 
-export interface GetCloudStorageFileSharesFileShareAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-}
-
 export interface GetCloudStorageFileSharesFileShareCurrentState {
-    /**
-     * Current access rules for the file share:
-     */
-    accessRules: outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRule[];
     /**
      * Action-availability flags derived from the file share status:
      */
@@ -4868,29 +5898,6 @@ export interface GetCloudStorageFileSharesFileShareCurrentState {
      * Size of the file share in GB.
      */
     size: number;
-}
-
-export interface GetCloudStorageFileSharesFileShareCurrentStateAccessRule {
-    /**
-     * Access level.
-     */
-    accessLevel: string;
-    /**
-     * IP address or CIDR.
-     */
-    accessTo: string;
-    /**
-     * Access rule creation date.
-     */
-    createdAt: string;
-    /**
-     * Access rule ID.
-     */
-    id: string;
-    /**
-     * Access rule state.
-     */
-    state: string;
 }
 
 export interface GetCloudStorageFileSharesFileShareCurrentStateCapability {

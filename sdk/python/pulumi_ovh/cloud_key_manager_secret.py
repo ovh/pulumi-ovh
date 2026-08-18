@@ -36,14 +36,14 @@ class CloudKeyManagerSecretArgs:
         """
         The set of arguments for constructing a CloudKeyManagerSecret resource.
         :param pulumi.Input[_builtins.str] region: Region where the secret will be created.
-        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
-        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the secret will be created.
         :param pulumi.Input[_builtins.int] bit_length: Bit length of the secret (e.g., `256`).
         :param pulumi.Input[_builtins.str] expiration: Expiration date of the secret in RFC3339 format.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
-        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] name: Name of the secret.
         :param pulumi.Input[_builtins.str] payload: Secret payload data (base64-encoded). Write-only, never returned in responses. Requires `payload_content_type`.
         :param pulumi.Input[_builtins.str] payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
@@ -86,7 +86,7 @@ class CloudKeyManagerSecretArgs:
     @pulumi.getter(name="secretType")
     def secret_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         """
         return pulumi.get(self, "secret_type")
 
@@ -110,7 +110,7 @@ class CloudKeyManagerSecretArgs:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "algorithm")
 
@@ -170,7 +170,7 @@ class CloudKeyManagerSecretArgs:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Mode of the secret algorithm (e.g., `CBC`).
+        Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "mode")
 
@@ -237,7 +237,7 @@ class _CloudKeyManagerSecretState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudKeyManagerSecret resources.
-        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the secret will be created.
         :param pulumi.Input[_builtins.int] bit_length: Bit length of the secret (e.g., `256`).
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current resource state.
@@ -245,13 +245,13 @@ class _CloudKeyManagerSecretState:
         :param pulumi.Input['CloudKeyManagerSecretCurrentStateArgs'] current_state: Current state of the secret as reported by OpenStack Barbican:
         :param pulumi.Input[_builtins.str] expiration: Expiration date of the secret in RFC3339 format.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
-        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] name: Name of the secret.
         :param pulumi.Input[_builtins.str] payload: Secret payload data (base64-encoded). Write-only, never returned in responses. Requires `payload_content_type`.
         :param pulumi.Input[_builtins.str] payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
         :param pulumi.Input[_builtins.str] region: Region where the secret will be created.
         :param pulumi.Input[_builtins.str] resource_status: Secret readiness status (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
-        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the secret.
         """
@@ -294,7 +294,7 @@ class _CloudKeyManagerSecretState:
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "algorithm")
 
@@ -390,7 +390,7 @@ class _CloudKeyManagerSecretState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Mode of the secret algorithm (e.g., `CBC`).
+        Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "mode")
 
@@ -462,7 +462,7 @@ class _CloudKeyManagerSecretState:
     @pulumi.getter(name="secretType")
     def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         """
         return pulumi.get(self, "secret_type")
 
@@ -529,17 +529,17 @@ class CloudKeyManagerSecret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the secret will be created.
         :param pulumi.Input[_builtins.int] bit_length: Bit length of the secret (e.g., `256`).
         :param pulumi.Input[_builtins.str] expiration: Expiration date of the secret in RFC3339 format.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
-        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] name: Name of the secret.
         :param pulumi.Input[_builtins.str] payload: Secret payload data (base64-encoded). Write-only, never returned in responses. Requires `payload_content_type`.
         :param pulumi.Input[_builtins.str] payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
         :param pulumi.Input[_builtins.str] region: Region where the secret will be created.
-        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
         ...
@@ -656,7 +656,7 @@ class CloudKeyManagerSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        :param pulumi.Input[_builtins.str] algorithm: Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the secret will be created.
         :param pulumi.Input[_builtins.int] bit_length: Bit length of the secret (e.g., `256`).
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current resource state.
@@ -664,13 +664,13 @@ class CloudKeyManagerSecret(pulumi.CustomResource):
         :param pulumi.Input[Union['CloudKeyManagerSecretCurrentStateArgs', 'CloudKeyManagerSecretCurrentStateArgsDict']] current_state: Current state of the secret as reported by OpenStack Barbican:
         :param pulumi.Input[_builtins.str] expiration: Expiration date of the secret in RFC3339 format.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: Key-value metadata for the secret. This is the only mutable field on a secret.
-        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (e.g., `CBC`).
+        :param pulumi.Input[_builtins.str] mode: Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         :param pulumi.Input[_builtins.str] name: Name of the secret.
         :param pulumi.Input[_builtins.str] payload: Secret payload data (base64-encoded). Write-only, never returned in responses. Requires `payload_content_type`.
         :param pulumi.Input[_builtins.str] payload_content_type: Content type of the secret payload. Possible values: `TEXT_PLAIN`, `APPLICATION_OCTET_STREAM`, `APPLICATION_PKIX_CERT`, `APPLICATION_PKCS8`.
         :param pulumi.Input[_builtins.str] region: Region where the secret will be created.
         :param pulumi.Input[_builtins.str] resource_status: Secret readiness status (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
-        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        :param pulumi.Input[_builtins.str] secret_type: Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the secret.
         """
@@ -701,7 +701,7 @@ class CloudKeyManagerSecret(pulumi.CustomResource):
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Algorithm associated with the secret (e.g., `AES`, `RSA`).
+        Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "algorithm")
 
@@ -765,7 +765,7 @@ class CloudKeyManagerSecret(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Mode of the secret algorithm (e.g., `CBC`).
+        Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
         """
         return pulumi.get(self, "mode")
 
@@ -813,7 +813,7 @@ class CloudKeyManagerSecret(pulumi.CustomResource):
     @pulumi.getter(name="secretType")
     def secret_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+        Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
         """
         return pulumi.get(self, "secret_type")
 

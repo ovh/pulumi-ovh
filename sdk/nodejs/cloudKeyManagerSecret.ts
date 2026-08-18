@@ -48,7 +48,7 @@ export class CloudKeyManagerSecret extends pulumi.CustomResource {
     }
 
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      */
     public readonly algorithm!: pulumi.Output<string | undefined>;
     /**
@@ -80,7 +80,7 @@ export class CloudKeyManagerSecret extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      */
     public readonly mode!: pulumi.Output<string | undefined>;
     /**
@@ -104,7 +104,7 @@ export class CloudKeyManagerSecret extends pulumi.CustomResource {
      */
     public /*out*/ readonly resourceStatus!: pulumi.Output<string>;
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      */
     public readonly secretType!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export class CloudKeyManagerSecret extends pulumi.CustomResource {
  */
 export interface CloudKeyManagerSecretState {
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      */
     algorithm?: pulumi.Input<string>;
     /**
@@ -219,7 +219,7 @@ export interface CloudKeyManagerSecretState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -243,7 +243,7 @@ export interface CloudKeyManagerSecretState {
      */
     resourceStatus?: pulumi.Input<string>;
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      */
     secretType?: pulumi.Input<string>;
     /**
@@ -261,7 +261,7 @@ export interface CloudKeyManagerSecretState {
  */
 export interface CloudKeyManagerSecretArgs {
     /**
-     * Algorithm associated with the secret (e.g., `AES`, `RSA`).
+     * Algorithm associated with the secret (e.g., `AES`, `RSA`). The value is normalized to upper case to match the API.
      */
     algorithm?: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface CloudKeyManagerSecretArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Mode of the secret algorithm (e.g., `CBC`).
+     * Mode of the secret algorithm (`CBC`, `CTR`). The value is normalized to upper case to match the API.
      */
     mode?: pulumi.Input<string>;
     /**
@@ -301,7 +301,7 @@ export interface CloudKeyManagerSecretArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`.
+     * Type of the secret. Possible values: `SYMMETRIC`, `PUBLIC`, `PRIVATE`, `PASSPHRASE`, `CERTIFICATE`, `OPAQUE`. The value is normalized to upper case to match the API, so `opaque` and `OPAQUE` are equivalent and neither shows up as drift.
      */
     secretType: pulumi.Input<string>;
     /**

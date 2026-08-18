@@ -3,7 +3,6 @@
 
 package com.ovhcloud.pulumi.ovh.outputs;
 
-import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateAccessRule;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateCapability;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocation;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateLocation;
@@ -16,11 +15,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCloudStorageFileSharesFileShareCurrentState {
-    /**
-     * @return Current access rules for the file share:
-     * 
-     */
-    private List<GetCloudStorageFileSharesFileShareCurrentStateAccessRule> accessRules;
     /**
      * @return Action-availability flags derived from the file share status:
      * 
@@ -68,13 +62,6 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
     private Integer size;
 
     private GetCloudStorageFileSharesFileShareCurrentState() {}
-    /**
-     * @return Current access rules for the file share:
-     * 
-     */
-    public List<GetCloudStorageFileSharesFileShareCurrentStateAccessRule> accessRules() {
-        return this.accessRules;
-    }
     /**
      * @return Action-availability flags derived from the file share status:
      * 
@@ -148,7 +135,6 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetCloudStorageFileSharesFileShareCurrentStateAccessRule> accessRules;
         private List<GetCloudStorageFileSharesFileShareCurrentStateCapability> capabilities;
         private String description;
         private List<GetCloudStorageFileSharesFileShareCurrentStateExportLocation> exportLocations;
@@ -161,7 +147,6 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
         public Builder() {}
         public Builder(GetCloudStorageFileSharesFileShareCurrentState defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accessRules = defaults.accessRules;
     	      this.capabilities = defaults.capabilities;
     	      this.description = defaults.description;
     	      this.exportLocations = defaults.exportLocations;
@@ -173,17 +158,6 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
     	      this.size = defaults.size;
         }
 
-        @CustomType.Setter
-        public Builder accessRules(List<GetCloudStorageFileSharesFileShareCurrentStateAccessRule> accessRules) {
-            if (accessRules == null) {
-              throw new MissingRequiredPropertyException("GetCloudStorageFileSharesFileShareCurrentState", "accessRules");
-            }
-            this.accessRules = accessRules;
-            return this;
-        }
-        public Builder accessRules(GetCloudStorageFileSharesFileShareCurrentStateAccessRule... accessRules) {
-            return accessRules(List.of(accessRules));
-        }
         @CustomType.Setter
         public Builder capabilities(List<GetCloudStorageFileSharesFileShareCurrentStateCapability> capabilities) {
             if (capabilities == null) {
@@ -264,7 +238,6 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
         }
         public GetCloudStorageFileSharesFileShareCurrentState build() {
             final var _resultValue = new GetCloudStorageFileSharesFileShareCurrentState();
-            _resultValue.accessRules = accessRules;
             _resultValue.capabilities = capabilities;
             _resultValue.description = description;
             _resultValue.exportLocations = exportLocations;

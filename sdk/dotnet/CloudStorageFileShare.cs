@@ -12,6 +12,31 @@ namespace Pulumi.Ovh
     /// <summary>
     /// Creates a file storage share (NFS) in a public cloud project.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var share = new Ovh.CloudStorageFileShare("share", new()
+    ///     {
+    ///         ServiceName = "&lt;Public cloud project id&gt;",
+    ///         Name = "my-share",
+    ///         Size = 150,
+    ///         Region = "GRA1",
+    ///         Protocol = "NFS",
+    ///         ShareType = "STANDARD_1AZ",
+    ///         ShareNetworkId = "&lt;share network id&gt;",
+    ///         Description = "My NFS share",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// A cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:
@@ -36,12 +61,6 @@ namespace Pulumi.Ovh
     public partial class CloudStorageFileShare : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Access rules for the file share. Each rule has:
-        /// </summary>
-        [Output("accessRules")]
-        public Output<ImmutableArray<Outputs.CloudStorageFileShareAccessRule>> AccessRules { get; private set; } = null!;
-
-        /// <summary>
         /// Availability zone where the file share will be created. **Changing this value recreates the resource.**
         /// </summary>
         [Output("availabilityZone")]
@@ -54,7 +73,7 @@ namespace Pulumi.Ovh
         public Output<string> Checksum { get; private set; } = null!;
 
         /// <summary>
-        /// Access rule creation date.
+        /// Creation date of the file share.
         /// </summary>
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
@@ -172,18 +191,6 @@ namespace Pulumi.Ovh
 
     public sealed class CloudStorageFileShareArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accessRules")]
-        private InputList<Inputs.CloudStorageFileShareAccessRuleArgs>? _accessRules;
-
-        /// <summary>
-        /// Access rules for the file share. Each rule has:
-        /// </summary>
-        public InputList<Inputs.CloudStorageFileShareAccessRuleArgs> AccessRules
-        {
-            get => _accessRules ?? (_accessRules = new InputList<Inputs.CloudStorageFileShareAccessRuleArgs>());
-            set => _accessRules = value;
-        }
-
         /// <summary>
         /// Availability zone where the file share will be created. **Changing this value recreates the resource.**
         /// </summary>
@@ -246,18 +253,6 @@ namespace Pulumi.Ovh
 
     public sealed class CloudStorageFileShareState : global::Pulumi.ResourceArgs
     {
-        [Input("accessRules")]
-        private InputList<Inputs.CloudStorageFileShareAccessRuleGetArgs>? _accessRules;
-
-        /// <summary>
-        /// Access rules for the file share. Each rule has:
-        /// </summary>
-        public InputList<Inputs.CloudStorageFileShareAccessRuleGetArgs> AccessRules
-        {
-            get => _accessRules ?? (_accessRules = new InputList<Inputs.CloudStorageFileShareAccessRuleGetArgs>());
-            set => _accessRules = value;
-        }
-
         /// <summary>
         /// Availability zone where the file share will be created. **Changing this value recreates the resource.**
         /// </summary>
@@ -271,7 +266,7 @@ namespace Pulumi.Ovh
         public Input<string>? Checksum { get; set; }
 
         /// <summary>
-        /// Access rule creation date.
+        /// Creation date of the file share.
         /// </summary>
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }

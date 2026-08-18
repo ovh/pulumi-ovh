@@ -38,6 +38,12 @@ namespace Pulumi.Ovh
     public partial class CloudStorageBlockVolume : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Availability zone where the volume will be created
+        /// </summary>
+        [Output("availabilityZone")]
+        public Output<string> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
         /// Computed hash representing the current target specification value.
         /// </summary>
         [Output("checksum")]
@@ -157,6 +163,12 @@ namespace Pulumi.Ovh
     public sealed class CloudStorageBlockVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Availability zone where the volume will be created
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// Source to create the volume from. **Changing this value recreates the resource.**
         /// </summary>
         [Input("createFrom")]
@@ -206,6 +218,12 @@ namespace Pulumi.Ovh
 
     public sealed class CloudStorageBlockVolumeState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Availability zone where the volume will be created
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
         /// <summary>
         /// Computed hash representing the current target specification value.
         /// </summary>

@@ -48,15 +48,11 @@ export interface GetCloudStorageFileShareArgs {
  */
 export interface GetCloudStorageFileShareResult {
     /**
-     * Current access rules for the file share:
-     */
-    readonly accessRules: outputs.GetCloudStorageFileShareAccessRule[];
-    /**
      * Computed hash representing the current target specification value.
      */
     readonly checksum: string;
     /**
-     * Access rule creation date.
+     * Creation date of the file share.
      */
     readonly createdAt: string;
     /**
@@ -67,9 +63,6 @@ export interface GetCloudStorageFileShareResult {
      * File share description.
      */
     readonly description: string;
-    /**
-     * Access rule ID.
-     */
     readonly id: string;
     /**
      * Current location:
