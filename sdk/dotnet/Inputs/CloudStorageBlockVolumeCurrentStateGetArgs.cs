@@ -31,7 +31,7 @@ namespace Pulumi.Ovh.Inputs
         public Input<bool>? Bootable { get; set; }
 
         /// <summary>
-        /// Encryption configuration for the volume.
+        /// Encryption configuration for the volume. **Changing this value recreates the resource.**
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.CloudStorageBlockVolumeCurrentStateEncryptionGetArgs>? Encryption { get; set; }

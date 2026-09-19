@@ -23,6 +23,48 @@ import * as utilities from "./utilities";
  *     volumeType: "CLASSIC",
  * });
  * ```
+ *
+ * ### Create with a customer-managed key (CMK)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const cmkVolume = new ovh.CloudStorageBlockVolume("cmk_volume", {
+ *     serviceName: "xxxxxxxxxx",
+ *     name: "my-cmk-volume",
+ *     size: 10,
+ *     region: "GRA1",
+ *     volumeType: "HIGH_SPEED",
+ *     encryption: {
+ *         enabled: true,
+ *         kms: {
+ *             domainId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *             serviceKeyId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * A cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:
+ *
+ * terraform
+ *
+ * import {
+ *
+ *   to = ovh_cloud_storage_block_volume.volume
+ *
+ *   id = "<service_name>/<volume_id>"
+ *
+ * }
+ *
+ * bash
+ *
+ * $ pulumi preview -generate-config-out=volume.tf
+ *
+ * $ pulumi up
  */
 export class CloudStorageBlockVolume extends pulumi.CustomResource {
     /**
@@ -73,7 +115,7 @@ export class CloudStorageBlockVolume extends pulumi.CustomResource {
      */
     public /*out*/ readonly currentState!: pulumi.Output<outputs.CloudStorageBlockVolumeCurrentState>;
     /**
-     * Encryption configuration for the volume.
+     * Encryption configuration for the volume. **Changing this value recreates the resource.**
      */
     public readonly encryption!: pulumi.Output<outputs.CloudStorageBlockVolumeEncryption>;
     /**
@@ -183,7 +225,7 @@ export interface CloudStorageBlockVolumeState {
      */
     currentState?: pulumi.Input<inputs.CloudStorageBlockVolumeCurrentState>;
     /**
-     * Encryption configuration for the volume.
+     * Encryption configuration for the volume. **Changing this value recreates the resource.**
      */
     encryption?: pulumi.Input<inputs.CloudStorageBlockVolumeEncryption>;
     /**
@@ -229,7 +271,7 @@ export interface CloudStorageBlockVolumeArgs {
      */
     createFrom?: pulumi.Input<inputs.CloudStorageBlockVolumeCreateFrom>;
     /**
-     * Encryption configuration for the volume.
+     * Encryption configuration for the volume. **Changing this value recreates the resource.**
      */
     encryption?: pulumi.Input<inputs.CloudStorageBlockVolumeEncryption>;
     /**

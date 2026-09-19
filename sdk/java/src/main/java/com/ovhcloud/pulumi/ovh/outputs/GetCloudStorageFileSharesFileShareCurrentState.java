@@ -4,6 +4,7 @@
 package com.ovhcloud.pulumi.ovh.outputs;
 
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateCapability;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateEncryption;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocation;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentStateLocation;
 import com.pulumi.core.annotations.CustomType;
@@ -25,6 +26,11 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
      * 
      */
     private String description;
+    /**
+     * @return Encryption configuration of the file share:
+     * 
+     */
+    private GetCloudStorageFileSharesFileShareCurrentStateEncryption encryption;
     /**
      * @return Export locations for the file share:
      * 
@@ -75,6 +81,13 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Encryption configuration of the file share:
+     * 
+     */
+    public GetCloudStorageFileSharesFileShareCurrentStateEncryption encryption() {
+        return this.encryption;
     }
     /**
      * @return Export locations for the file share:
@@ -137,6 +150,7 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
     public static final class Builder {
         private List<GetCloudStorageFileSharesFileShareCurrentStateCapability> capabilities;
         private String description;
+        private GetCloudStorageFileSharesFileShareCurrentStateEncryption encryption;
         private List<GetCloudStorageFileSharesFileShareCurrentStateExportLocation> exportLocations;
         private GetCloudStorageFileSharesFileShareCurrentStateLocation location;
         private String name;
@@ -149,6 +163,7 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
     	      Objects.requireNonNull(defaults);
     	      this.capabilities = defaults.capabilities;
     	      this.description = defaults.description;
+    	      this.encryption = defaults.encryption;
     	      this.exportLocations = defaults.exportLocations;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -175,6 +190,14 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
               throw new MissingRequiredPropertyException("GetCloudStorageFileSharesFileShareCurrentState", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryption(GetCloudStorageFileSharesFileShareCurrentStateEncryption encryption) {
+            if (encryption == null) {
+              throw new MissingRequiredPropertyException("GetCloudStorageFileSharesFileShareCurrentState", "encryption");
+            }
+            this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
@@ -240,6 +263,7 @@ public final class GetCloudStorageFileSharesFileShareCurrentState {
             final var _resultValue = new GetCloudStorageFileSharesFileShareCurrentState();
             _resultValue.capabilities = capabilities;
             _resultValue.description = description;
+            _resultValue.encryption = encryption;
             _resultValue.exportLocations = exportLocations;
             _resultValue.location = location;
             _resultValue.name = name;

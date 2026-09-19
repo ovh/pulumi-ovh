@@ -77,6 +77,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('endpoint')
 
     @_builtins.property
+    def http_headers(self) -> Optional[str]:
+        """
+        Extra HTTP headers to add to every request made to the OVH API
+        """
+        return __config__.get('httpHeaders')
+
+    @_builtins.property
     def ignore_init_error(self) -> Optional[bool]:
         """
         If set to true, initialization errors (like invalid OAuth credentials) will be ignored

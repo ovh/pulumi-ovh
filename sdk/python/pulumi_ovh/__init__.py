@@ -10,6 +10,7 @@ from .cloud_floating_ip import *
 from .cloud_gateway import *
 from .cloud_instance import *
 from .cloud_instance_group import *
+from .cloud_instance_snapshot import *
 from .cloud_key_manager_container import *
 from .cloud_key_manager_container_consumer import *
 from .cloud_key_manager_secret import *
@@ -54,6 +55,8 @@ from .get_cloud_instance_group import *
 from .get_cloud_instance_groups import *
 from .get_cloud_instance_image import *
 from .get_cloud_instance_images import *
+from .get_cloud_instance_snapshot import *
+from .get_cloud_instance_snapshots import *
 from .get_cloud_instances import *
 from .get_cloud_key_manager_container import *
 from .get_cloud_key_manager_container_consumer import *
@@ -127,6 +130,7 @@ from .get_vrack import *
 from .get_vrack_networks import *
 from .get_vrackservices import *
 from .get_vrackservicess import *
+from .hosting_privatedatabase_webhosting_network import *
 from .iam_resource_tags import *
 from .ovhcloud_connect_pop_config import *
 from .ovhcloud_connect_pop_datacenter_config import *
@@ -1248,6 +1252,14 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudInstanceSnapshot",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot": "CloudInstanceSnapshot"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudKeyManagerContainer",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1476,6 +1488,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/emailDomainAccount:EmailDomainAccount": "EmailDomainAccount"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/hostingPrivatedatabaseWebhostingNetwork",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork": "HostingPrivatedatabaseWebhostingNetwork"
   }
  },
  {

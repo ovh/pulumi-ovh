@@ -18,6 +18,12 @@ namespace Pulumi.Ovh.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+        /// </summary>
+        [Input("kms")]
+        public Input<Inputs.CloudStorageBlockVolumeEncryptionKmsGetArgs>? Kms { get; set; }
+
         public CloudStorageBlockVolumeEncryptionGetArgs()
         {
         }

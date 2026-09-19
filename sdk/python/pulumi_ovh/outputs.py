@@ -42,6 +42,9 @@ __all__ = [
     'CloudInstanceGroupCurrentStateMember',
     'CloudInstanceNetwork',
     'CloudInstanceShare',
+    'CloudInstanceSnapshotCurrentState',
+    'CloudInstanceSnapshotCurrentStateInstance',
+    'CloudInstanceSnapshotCurrentStateLocation',
     'CloudKeyManagerContainerCurrentState',
     'CloudKeyManagerContainerCurrentStateLocation',
     'CloudKeyManagerContainerCurrentStateSecretRef',
@@ -127,15 +130,19 @@ __all__ = [
     'CloudStorageBlockVolumeCurrentState',
     'CloudStorageBlockVolumeCurrentStateAttachedInstance',
     'CloudStorageBlockVolumeCurrentStateEncryption',
+    'CloudStorageBlockVolumeCurrentStateEncryptionKms',
     'CloudStorageBlockVolumeCurrentStateLocation',
     'CloudStorageBlockVolumeEncryption',
+    'CloudStorageBlockVolumeEncryptionKms',
     'CloudStorageBlockVolumeSnapshotCurrentState',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocation',
     'CloudStorageFileShareAclCurrentState',
     'CloudStorageFileShareCurrentState',
     'CloudStorageFileShareCurrentStateCapability',
+    'CloudStorageFileShareCurrentStateEncryption',
     'CloudStorageFileShareCurrentStateExportLocation',
     'CloudStorageFileShareCurrentStateLocation',
+    'CloudStorageFileShareEncryption',
     'CloudStorageFileShareNetworkCurrentState',
     'CloudStorageFileShareNetworkCurrentStateLocation',
     'CloudStorageFileShareSnapshotCurrentState',
@@ -240,6 +247,9 @@ __all__ = [
     'GetCloudInstanceImagesImageLocationResult',
     'GetCloudInstanceNetworkResult',
     'GetCloudInstanceShareResult',
+    'GetCloudInstanceSnapshotLocationResult',
+    'GetCloudInstanceSnapshotsSnapshotResult',
+    'GetCloudInstanceSnapshotsSnapshotLocationResult',
     'GetCloudInstancesInstanceResult',
     'GetCloudInstancesInstanceCurrentStateResult',
     'GetCloudInstancesInstanceCurrentStateFlavorResult',
@@ -377,6 +387,7 @@ __all__ = [
     'GetCloudStorageBlockVolumeBackupsBackupResult',
     'GetCloudStorageBlockVolumeBackupsBackupLocationResult',
     'GetCloudStorageBlockVolumeEncryptionResult',
+    'GetCloudStorageBlockVolumeEncryptionKmsResult',
     'GetCloudStorageBlockVolumeLocationResult',
     'GetCloudStorageBlockVolumeSnapshotLocationResult',
     'GetCloudStorageBlockVolumeSnapshotsSnapshotResult',
@@ -384,14 +395,17 @@ __all__ = [
     'GetCloudStorageBlockVolumesVolumeResult',
     'GetCloudStorageBlockVolumesVolumeAttachedInstanceResult',
     'GetCloudStorageBlockVolumesVolumeEncryptionResult',
+    'GetCloudStorageBlockVolumesVolumeEncryptionKmsResult',
     'GetCloudStorageBlockVolumesVolumeLocationResult',
     'GetCloudStorageFileShareAclCurrentStateResult',
     'GetCloudStorageFileShareAclsShareAclResult',
     'GetCloudStorageFileShareAclsShareAclCurrentStateResult',
     'GetCloudStorageFileShareCurrentStateResult',
     'GetCloudStorageFileShareCurrentStateCapabilityResult',
+    'GetCloudStorageFileShareCurrentStateEncryptionResult',
     'GetCloudStorageFileShareCurrentStateExportLocationResult',
     'GetCloudStorageFileShareCurrentStateLocationResult',
+    'GetCloudStorageFileShareEncryptionResult',
     'GetCloudStorageFileShareLocationResult',
     'GetCloudStorageFileShareNetworkCurrentStateResult',
     'GetCloudStorageFileShareNetworkCurrentStateLocationResult',
@@ -408,8 +422,10 @@ __all__ = [
     'GetCloudStorageFileSharesFileShareResult',
     'GetCloudStorageFileSharesFileShareCurrentStateResult',
     'GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult',
+    'GetCloudStorageFileSharesFileShareCurrentStateEncryptionResult',
     'GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult',
     'GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
+    'GetCloudStorageFileSharesFileShareEncryptionResult',
     'GetCloudStorageFileSharesFileShareLocationResult',
     'GetDbaasLogsOutputGraylogStreamUrlUrlResult',
     'GetInstallationTemplateInputResult',
@@ -1932,6 +1948,170 @@ class CloudInstanceShare(dict):
         Access level granted to the instance for this share: `READ_ONLY` or `READ_WRITE`. Omit it to let the API apply its default (`READ_WRITE`). When omitted, the attribute stays null in state even though the API echoes `READ_WRITE` back, so an omitted level never shows up as drift.
         """
         return pulumi.get(self, "access_level")
+
+
+@pulumi.output_type
+class CloudInstanceSnapshotCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minDisk":
+            suggest = "min_disk"
+        elif key == "minRam":
+            suggest = "min_ram"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudInstanceSnapshotCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudInstanceSnapshotCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudInstanceSnapshotCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance: Optional['outputs.CloudInstanceSnapshotCurrentStateInstance'] = None,
+                 location: Optional['outputs.CloudInstanceSnapshotCurrentStateLocation'] = None,
+                 min_disk: Optional[_builtins.int] = None,
+                 min_ram: Optional[_builtins.int] = None,
+                 name: Optional[_builtins.str] = None,
+                 size: Optional[_builtins.int] = None,
+                 status: Optional[_builtins.str] = None,
+                 visibility: Optional[_builtins.str] = None):
+        """
+        :param 'CloudInstanceSnapshotCurrentStateInstanceArgs' instance: Source instance reference:
+        :param 'CloudInstanceSnapshotCurrentStateLocationArgs' location: Current location:
+        :param _builtins.int min_disk: Minimum disk size in GB required to boot.
+        :param _builtins.int min_ram: Minimum RAM in MB required to boot.
+        :param _builtins.str name: Snapshot name. Changing this value recreates the resource.
+               
+               > All attributes are immutable: the resource does not support in-place updates, any change requires replacement.
+        :param _builtins.int size: Image size in bytes.
+        :param _builtins.str status: Image status in the backend.
+        :param _builtins.str visibility: Image visibility.
+        """
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if min_disk is not None:
+            pulumi.set(__self__, "min_disk", min_disk)
+        if min_ram is not None:
+            pulumi.set(__self__, "min_ram", min_ram)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter
+    def instance(self) -> Optional['outputs.CloudInstanceSnapshotCurrentStateInstance']:
+        """
+        Source instance reference:
+        """
+        return pulumi.get(self, "instance")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudInstanceSnapshotCurrentStateLocation']:
+        """
+        Current location:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter(name="minDisk")
+    def min_disk(self) -> Optional[_builtins.int]:
+        """
+        Minimum disk size in GB required to boot.
+        """
+        return pulumi.get(self, "min_disk")
+
+    @_builtins.property
+    @pulumi.getter(name="minRam")
+    def min_ram(self) -> Optional[_builtins.int]:
+        """
+        Minimum RAM in MB required to boot.
+        """
+        return pulumi.get(self, "min_ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Snapshot name. Changing this value recreates the resource.
+
+        > All attributes are immutable: the resource does not support in-place updates, any change requires replacement.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Image size in bytes.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Image status in the backend.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> Optional[_builtins.str]:
+        """
+        Image visibility.
+        """
+        return pulumi.get(self, "visibility")
+
+
+@pulumi.output_type
+class CloudInstanceSnapshotCurrentStateInstance(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Instance unique identifier.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Instance unique identifier.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudInstanceSnapshotCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: Region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the snapshot will be created. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -6047,7 +6227,7 @@ class CloudStorageBlockVolumeCurrentState(dict):
         """
         :param Sequence['CloudStorageBlockVolumeCurrentStateAttachedInstanceArgs'] attached_instances: Instances currently attached to this volume
         :param _builtins.bool bootable: Whether the volume is bootable.
-        :param 'CloudStorageBlockVolumeCurrentStateEncryptionArgs' encryption: Encryption configuration for the volume.
+        :param 'CloudStorageBlockVolumeCurrentStateEncryptionArgs' encryption: Encryption configuration for the volume. **Changing this value recreates the resource.**
         :param 'CloudStorageBlockVolumeCurrentStateLocationArgs' location: Current location:
         :param _builtins.str name: Volume name.
         :param _builtins.int size: Size of the volume in GB.
@@ -6091,7 +6271,7 @@ class CloudStorageBlockVolumeCurrentState(dict):
     @pulumi.getter
     def encryption(self) -> Optional['outputs.CloudStorageBlockVolumeCurrentStateEncryption']:
         """
-        Encryption configuration for the volume.
+        Encryption configuration for the volume. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -6158,12 +6338,16 @@ class CloudStorageBlockVolumeCurrentStateAttachedInstance(dict):
 @pulumi.output_type
 class CloudStorageBlockVolumeCurrentStateEncryption(dict):
     def __init__(__self__, *,
-                 enabled: Optional[_builtins.bool] = None):
+                 enabled: Optional[_builtins.bool] = None,
+                 kms: Optional['outputs.CloudStorageBlockVolumeCurrentStateEncryptionKms'] = None):
         """
         :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        :param 'CloudStorageBlockVolumeCurrentStateEncryptionKmsArgs' kms: Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if kms is not None:
+            pulumi.set(__self__, "kms", kms)
 
     @_builtins.property
     @pulumi.getter
@@ -6172,6 +6356,64 @@ class CloudStorageBlockVolumeCurrentStateEncryption(dict):
         Whether the volume is encrypted at rest with LUKS.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def kms(self) -> Optional['outputs.CloudStorageBlockVolumeCurrentStateEncryptionKms']:
+        """
+        Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+        """
+        return pulumi.get(self, "kms")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeCurrentStateEncryptionKms(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainId":
+            suggest = "domain_id"
+        elif key == "serviceKeyId":
+            suggest = "service_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeCurrentStateEncryptionKms. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeCurrentStateEncryptionKms.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeCurrentStateEncryptionKms.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_id: Optional[_builtins.str] = None,
+                 service_key_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain_id: OKMS domain ID owning the service key.
+        :param _builtins.str service_key_id: OKMS service key ID used to encrypt the volume.
+        """
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if service_key_id is not None:
+            pulumi.set(__self__, "service_key_id", service_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[_builtins.str]:
+        """
+        OKMS domain ID owning the service key.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyId")
+    def service_key_id(self) -> Optional[_builtins.str]:
+        """
+        OKMS service key ID used to encrypt the volume.
+        """
+        return pulumi.get(self, "service_key_id")
 
 
 @pulumi.output_type
@@ -6225,12 +6467,16 @@ class CloudStorageBlockVolumeCurrentStateLocation(dict):
 @pulumi.output_type
 class CloudStorageBlockVolumeEncryption(dict):
     def __init__(__self__, *,
-                 enabled: Optional[_builtins.bool] = None):
+                 enabled: Optional[_builtins.bool] = None,
+                 kms: Optional['outputs.CloudStorageBlockVolumeEncryptionKms'] = None):
         """
         :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        :param 'CloudStorageBlockVolumeEncryptionKmsArgs' kms: Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if kms is not None:
+            pulumi.set(__self__, "kms", kms)
 
     @_builtins.property
     @pulumi.getter
@@ -6239,6 +6485,64 @@ class CloudStorageBlockVolumeEncryption(dict):
         Whether the volume is encrypted at rest with LUKS.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def kms(self) -> Optional['outputs.CloudStorageBlockVolumeEncryptionKms']:
+        """
+        Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+        """
+        return pulumi.get(self, "kms")
+
+
+@pulumi.output_type
+class CloudStorageBlockVolumeEncryptionKms(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainId":
+            suggest = "domain_id"
+        elif key == "serviceKeyId":
+            suggest = "service_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeEncryptionKms. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeEncryptionKms.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeEncryptionKms.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 domain_id: Optional[_builtins.str] = None,
+                 service_key_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain_id: OKMS domain ID owning the service key.
+        :param _builtins.str service_key_id: OKMS service key ID used to encrypt the volume.
+        """
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if service_key_id is not None:
+            pulumi.set(__self__, "service_key_id", service_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[_builtins.str]:
+        """
+        OKMS domain ID owning the service key.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyId")
+    def service_key_id(self) -> Optional[_builtins.str]:
+        """
+        OKMS service key ID used to encrypt the volume.
+        """
+        return pulumi.get(self, "service_key_id")
 
 
 @pulumi.output_type
@@ -6327,13 +6631,42 @@ class CloudStorageBlockVolumeSnapshotCurrentState(dict):
 
 @pulumi.output_type
 class CloudStorageBlockVolumeSnapshotCurrentStateLocation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageBlockVolumeSnapshotCurrentStateLocation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageBlockVolumeSnapshotCurrentStateLocation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageBlockVolumeSnapshotCurrentStateLocation.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None):
         """
+        :param _builtins.str availability_zone: The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
         :param _builtins.str region: The region where the snapshot will be created. Changing this value recreates the resource.
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if region is not None:
             pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
@@ -6446,6 +6779,7 @@ class CloudStorageFileShareCurrentState(dict):
     def __init__(__self__, *,
                  capabilities: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateCapability']] = None,
                  description: Optional[_builtins.str] = None,
+                 encryption: Optional['outputs.CloudStorageFileShareCurrentStateEncryption'] = None,
                  export_locations: Optional[Sequence['outputs.CloudStorageFileShareCurrentStateExportLocation']] = None,
                  location: Optional['outputs.CloudStorageFileShareCurrentStateLocation'] = None,
                  name: Optional[_builtins.str] = None,
@@ -6456,6 +6790,7 @@ class CloudStorageFileShareCurrentState(dict):
         """
         :param Sequence['CloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
+        :param 'CloudStorageFileShareCurrentStateEncryptionArgs' encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
         :param Sequence['CloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
         :param 'CloudStorageFileShareCurrentStateLocationArgs' location: Current location:
         :param _builtins.str name: File share name.
@@ -6468,6 +6803,8 @@ class CloudStorageFileShareCurrentState(dict):
             pulumi.set(__self__, "capabilities", capabilities)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if export_locations is not None:
             pulumi.set(__self__, "export_locations", export_locations)
         if location is not None:
@@ -6498,6 +6835,14 @@ class CloudStorageFileShareCurrentState(dict):
         File share description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional['outputs.CloudStorageFileShareCurrentStateEncryption']:
+        """
+        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter(name="exportLocations")
@@ -6600,6 +6945,25 @@ class CloudStorageFileShareCurrentStateCapability(dict):
 
 
 @pulumi.output_type
+class CloudStorageFileShareCurrentStateEncryption(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether the file share is encrypted at rest with LUKS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the file share is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class CloudStorageFileShareCurrentStateExportLocation(dict):
     def __init__(__self__, *,
                  path: Optional[_builtins.str] = None,
@@ -6676,6 +7040,25 @@ class CloudStorageFileShareCurrentStateLocation(dict):
         Region where the file share will be created. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageFileShareEncryption(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Whether the file share is encrypted at rest with LUKS.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the file share is encrypted at rest with LUKS.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -11759,6 +12142,137 @@ class GetCloudInstanceShareResult(dict):
         Unique identifier of the instance.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudInstanceSnapshotLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudInstanceSnapshotsSnapshotResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 instance_id: _builtins.str,
+                 location: 'outputs.GetCloudInstanceSnapshotsSnapshotLocationResult',
+                 name: _builtins.str,
+                 resource_status: _builtins.str,
+                 size: _builtins.int,
+                 status: _builtins.str,
+                 visibility: _builtins.str):
+        """
+        :param _builtins.str id: Snapshot ID.
+        :param _builtins.str instance_id: ID of the instance whose snapshots to list.
+        :param 'GetCloudInstanceSnapshotsSnapshotLocationArgs' location: Location of the snapshot:
+        :param _builtins.str name: Snapshot name.
+        :param _builtins.str resource_status: Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`).
+        :param _builtins.int size: Image size in bytes.
+        :param _builtins.str status: Image status in the backend.
+        :param _builtins.str visibility: Image visibility.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "size", size)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Snapshot ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> _builtins.str:
+        """
+        ID of the instance whose snapshots to list.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudInstanceSnapshotsSnapshotLocationResult':
+        """
+        Location of the snapshot:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Snapshot name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> _builtins.int:
+        """
+        Image size in bytes.
+        """
+        return pulumi.get(self, "size")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Image status in the backend.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> _builtins.str:
+        """
+        Image visibility.
+        """
+        return pulumi.get(self, "visibility")
+
+
+@pulumi.output_type
+class GetCloudInstanceSnapshotsSnapshotLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region where the instance snapshots reside.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region where the instance snapshots reside.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -18337,11 +18851,14 @@ class GetCloudStorageBlockVolumeBackupsBackupLocationResult(dict):
 @pulumi.output_type
 class GetCloudStorageBlockVolumeEncryptionResult(dict):
     def __init__(__self__, *,
-                 enabled: _builtins.bool):
+                 enabled: _builtins.bool,
+                 kms: 'outputs.GetCloudStorageBlockVolumeEncryptionKmsResult'):
         """
         :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        :param 'GetCloudStorageBlockVolumeEncryptionKmsArgs' kms: Customer-managed key (CMK) reference used to encrypt the volume:
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "kms", kms)
 
     @_builtins.property
     @pulumi.getter
@@ -18350,6 +18867,43 @@ class GetCloudStorageBlockVolumeEncryptionResult(dict):
         Whether the volume is encrypted at rest with LUKS.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def kms(self) -> 'outputs.GetCloudStorageBlockVolumeEncryptionKmsResult':
+        """
+        Customer-managed key (CMK) reference used to encrypt the volume:
+        """
+        return pulumi.get(self, "kms")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumeEncryptionKmsResult(dict):
+    def __init__(__self__, *,
+                 domain_id: _builtins.str,
+                 service_key_id: _builtins.str):
+        """
+        :param _builtins.str domain_id: OKMS domain ID owning the service key.
+        :param _builtins.str service_key_id: OKMS service key ID used to encrypt the volume.
+        """
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "service_key_id", service_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        OKMS domain ID owning the service key.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyId")
+    def service_key_id(self) -> _builtins.str:
+        """
+        OKMS service key ID used to encrypt the volume.
+        """
+        return pulumi.get(self, "service_key_id")
 
 
 @pulumi.output_type
@@ -18373,11 +18927,22 @@ class GetCloudStorageBlockVolumeLocationResult(dict):
 @pulumi.output_type
 class GetCloudStorageBlockVolumeSnapshotLocationResult(dict):
     def __init__(__self__, *,
+                 availability_zone: _builtins.str,
                  region: _builtins.str):
         """
+        :param _builtins.str availability_zone: Availability zone. Empty in 1AZ regions.
         :param _builtins.str region: Region.
         """
+        pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone. Empty in 1AZ regions.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
@@ -18475,11 +19040,22 @@ class GetCloudStorageBlockVolumeSnapshotsSnapshotResult(dict):
 @pulumi.output_type
 class GetCloudStorageBlockVolumeSnapshotsSnapshotLocationResult(dict):
     def __init__(__self__, *,
+                 availability_zone: _builtins.str,
                  region: _builtins.str):
         """
+        :param _builtins.str availability_zone: Availability zone. Empty in 1AZ regions.
         :param _builtins.str region: The region where the snapshots reside.
         """
+        pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone. Empty in 1AZ regions.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter
@@ -18628,11 +19204,14 @@ class GetCloudStorageBlockVolumesVolumeAttachedInstanceResult(dict):
 @pulumi.output_type
 class GetCloudStorageBlockVolumesVolumeEncryptionResult(dict):
     def __init__(__self__, *,
-                 enabled: _builtins.bool):
+                 enabled: _builtins.bool,
+                 kms: 'outputs.GetCloudStorageBlockVolumesVolumeEncryptionKmsResult'):
         """
         :param _builtins.bool enabled: Whether the volume is encrypted at rest with LUKS.
+        :param 'GetCloudStorageBlockVolumesVolumeEncryptionKmsArgs' kms: Customer-managed key (CMK) reference used to encrypt the volume:
         """
         pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "kms", kms)
 
     @_builtins.property
     @pulumi.getter
@@ -18641,6 +19220,43 @@ class GetCloudStorageBlockVolumesVolumeEncryptionResult(dict):
         Whether the volume is encrypted at rest with LUKS.
         """
         return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def kms(self) -> 'outputs.GetCloudStorageBlockVolumesVolumeEncryptionKmsResult':
+        """
+        Customer-managed key (CMK) reference used to encrypt the volume:
+        """
+        return pulumi.get(self, "kms")
+
+
+@pulumi.output_type
+class GetCloudStorageBlockVolumesVolumeEncryptionKmsResult(dict):
+    def __init__(__self__, *,
+                 domain_id: _builtins.str,
+                 service_key_id: _builtins.str):
+        """
+        :param _builtins.str domain_id: OKMS domain ID owning the service key.
+        :param _builtins.str service_key_id: OKMS service key ID used to encrypt the volume.
+        """
+        pulumi.set(__self__, "domain_id", domain_id)
+        pulumi.set(__self__, "service_key_id", service_key_id)
+
+    @_builtins.property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> _builtins.str:
+        """
+        OKMS domain ID owning the service key.
+        """
+        return pulumi.get(self, "domain_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceKeyId")
+    def service_key_id(self) -> _builtins.str:
+        """
+        OKMS service key ID used to encrypt the volume.
+        """
+        return pulumi.get(self, "service_key_id")
 
 
 @pulumi.output_type
@@ -18863,6 +19479,7 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
     def __init__(__self__, *,
                  capabilities: Sequence['outputs.GetCloudStorageFileShareCurrentStateCapabilityResult'],
                  description: _builtins.str,
+                 encryption: 'outputs.GetCloudStorageFileShareCurrentStateEncryptionResult',
                  export_locations: Sequence['outputs.GetCloudStorageFileShareCurrentStateExportLocationResult'],
                  location: 'outputs.GetCloudStorageFileShareCurrentStateLocationResult',
                  name: _builtins.str,
@@ -18873,6 +19490,7 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         """
         :param Sequence['GetCloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
+        :param 'GetCloudStorageFileShareCurrentStateEncryptionArgs' encryption: Encryption configuration of the file share:
         :param Sequence['GetCloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
         :param 'GetCloudStorageFileShareCurrentStateLocationArgs' location: Current location:
         :param _builtins.str name: Capability name.
@@ -18883,6 +19501,7 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption", encryption)
         pulumi.set(__self__, "export_locations", export_locations)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -18906,6 +19525,14 @@ class GetCloudStorageFileShareCurrentStateResult(dict):
         File share description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageFileShareCurrentStateEncryptionResult':
+        """
+        Encryption configuration of the file share:
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter(name="exportLocations")
@@ -19005,6 +19632,24 @@ class GetCloudStorageFileShareCurrentStateCapabilityResult(dict):
 
 
 @pulumi.output_type
+class GetCloudStorageFileShareCurrentStateEncryptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetCloudStorageFileShareCurrentStateExportLocationResult(dict):
     def __init__(__self__, *,
                  path: _builtins.str,
@@ -19060,6 +19705,24 @@ class GetCloudStorageFileShareCurrentStateLocationResult(dict):
         Region.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileShareEncryptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -19754,6 +20417,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
                  created_at: _builtins.str,
                  current_state: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateResult',
                  description: _builtins.str,
+                 encryption: 'outputs.GetCloudStorageFileSharesFileShareEncryptionResult',
                  id: _builtins.str,
                  location: 'outputs.GetCloudStorageFileSharesFileShareLocationResult',
                  name: _builtins.str,
@@ -19768,6 +20432,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         :param _builtins.str created_at: Creation date of the file share.
         :param 'GetCloudStorageFileSharesFileShareCurrentStateArgs' current_state: Current state of the file storage share:
         :param _builtins.str description: File share description.
+        :param 'GetCloudStorageFileSharesFileShareEncryptionArgs' encryption: Encryption configuration of the file share:
         :param _builtins.str id: File share ID.
         :param 'GetCloudStorageFileSharesFileShareLocationArgs' location: Current location:
         :param _builtins.str name: Capability name.
@@ -19782,6 +20447,7 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "current_state", current_state)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption", encryption)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -19823,6 +20489,14 @@ class GetCloudStorageFileSharesFileShareResult(dict):
         File share description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageFileSharesFileShareEncryptionResult':
+        """
+        Encryption configuration of the file share:
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter
@@ -19902,6 +20576,7 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
     def __init__(__self__, *,
                  capabilities: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult'],
                  description: _builtins.str,
+                 encryption: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateEncryptionResult',
                  export_locations: Sequence['outputs.GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult'],
                  location: 'outputs.GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
                  name: _builtins.str,
@@ -19912,6 +20587,7 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         """
         :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
+        :param 'GetCloudStorageFileSharesFileShareCurrentStateEncryptionArgs' encryption: Encryption configuration of the file share:
         :param Sequence['GetCloudStorageFileSharesFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
         :param 'GetCloudStorageFileSharesFileShareCurrentStateLocationArgs' location: Current location:
         :param _builtins.str name: Capability name.
@@ -19922,6 +20598,7 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         """
         pulumi.set(__self__, "capabilities", capabilities)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "encryption", encryption)
         pulumi.set(__self__, "export_locations", export_locations)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -19945,6 +20622,14 @@ class GetCloudStorageFileSharesFileShareCurrentStateResult(dict):
         File share description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageFileSharesFileShareCurrentStateEncryptionResult':
+        """
+        Encryption configuration of the file share:
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter(name="exportLocations")
@@ -20044,6 +20729,24 @@ class GetCloudStorageFileSharesFileShareCurrentStateCapabilityResult(dict):
 
 
 @pulumi.output_type
+class GetCloudStorageFileSharesFileShareCurrentStateEncryptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetCloudStorageFileSharesFileShareCurrentStateExportLocationResult(dict):
     def __init__(__self__, *,
                  path: _builtins.str,
@@ -20099,6 +20802,24 @@ class GetCloudStorageFileSharesFileShareCurrentStateLocationResult(dict):
         If set, only file shares located in this region are returned.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageFileSharesFileShareEncryptionResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Whether the capability is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the capability is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

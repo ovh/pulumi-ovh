@@ -87,6 +87,10 @@
                     }
                 }
             },
+            "ovh_cloud_instance_snapshot": {
+                "current": "ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot",
+                "majorVersion": 2
+            },
             "ovh_cloud_key_manager_container": {
                 "current": "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer",
                 "majorVersion": 2,
@@ -1442,6 +1446,10 @@
                 "current": "ovh:Hosting/privateDatabaseUserGrant:PrivateDatabaseUserGrant",
                 "majorVersion": 2
             },
+            "ovh_hosting_privatedatabase_webhosting_network": {
+                "current": "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork",
+                "majorVersion": 2
+            },
             "ovh_hosting_privatedatabase_whitelist": {
                 "current": "ovh:Hosting/privateDatabaseAllowlist:PrivateDatabaseAllowlist",
                 "majorVersion": 2
@@ -2339,6 +2347,19 @@
                 "majorVersion": 2,
                 "fields": {
                     "images": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_instance_snapshot": {
+                "current": "ovh:index/getCloudInstanceSnapshot:getCloudInstanceSnapshot",
+                "majorVersion": 2
+            },
+            "ovh_cloud_instance_snapshots": {
+                "current": "ovh:index/getCloudInstanceSnapshots:getCloudInstanceSnapshots",
+                "majorVersion": 2,
+                "fields": {
+                    "snapshots": {
                         "maxItemsOne": false
                     }
                 }
@@ -4954,6 +4975,7 @@
             "ovh:index/cloudGateway:CloudGateway": 1,
             "ovh:index/cloudInstance:CloudInstance": 1,
             "ovh:index/cloudInstanceGroup:CloudInstanceGroup": 1,
+            "ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot": 1,
             "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer": 1,
             "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer": 1,
             "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret": 1,
@@ -4983,6 +5005,7 @@
             "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": 1,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
             "ovh:index/emailDomainAccount:EmailDomainAccount": 1,
+            "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork": 1,
             "ovh:index/iamResourceTags:IamResourceTags": 0,
             "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig": 1,
             "ovh:index/ovhcloudConnectPopDatacenterConfig:OvhcloudConnectPopDatacenterConfig": 1,
@@ -5148,6 +5171,8 @@
             "ovh:index/getCloudInstanceGroups:getCloudInstanceGroups": 1,
             "ovh:index/getCloudInstanceImage:getCloudInstanceImage": 1,
             "ovh:index/getCloudInstanceImages:getCloudInstanceImages": 1,
+            "ovh:index/getCloudInstanceSnapshot:getCloudInstanceSnapshot": 1,
+            "ovh:index/getCloudInstanceSnapshots:getCloudInstanceSnapshots": 1,
             "ovh:index/getCloudInstances:getCloudInstances": 1,
             "ovh:index/getCloudKeyManagerContainer:getCloudKeyManagerContainer": 1,
             "ovh:index/getCloudKeyManagerContainerConsumer:getCloudKeyManagerContainerConsumer": 1,

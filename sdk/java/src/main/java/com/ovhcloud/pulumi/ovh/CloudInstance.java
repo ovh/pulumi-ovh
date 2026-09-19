@@ -19,92 +19,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates an instance in a public cloud project.
- * 
- * &gt; **WARNING** Changing `image_id` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Network interfaces
- * 
- * A `networks[]` entry supports four shapes. Entries keep the order they are
- * written in: the API returns them sorted by network id and the provider
- * re-orders them back to the configuration.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Private-network-only instance
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Boot from volume
- * 
- * Omit `image_id` and pass a bootable volume in `volume_ids`. The instance&#39;s
- * `current_state.image` stays null for a boot-from-volume instance.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Attaching additional block volumes
- * 
- * `volume_ids` is mutable: adding or removing an id attaches or detaches the
- * volume in place, without recreating the instance.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Security groups
- * 
- * `security_group_ids` is optional and computed:
- * 
- * * **omitted** — the platform applies the project&#39;s `default` security group and
- *   writes it into the target spec, so after the first apply `security_group_ids`
- *   holds exactly that one group id. Removing the attribute from a configuration
- *   that used to set it therefore keeps the groups already attached; it does not
- *   detach them.
- * * **explicit empty list** (`security_group_ids = []`) — no security group is
- *   applied at all. The instance accepts **no inbound traffic**; use it only when
- *   the filtering is handled elsewhere.
- * * **explicit list of ids** — exactly those groups are applied to every interface.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Attaching file storage shares
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Power state
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Joining an instance group
- * 
- * Group membership is only settable here, through the instance&#39;s `group_id`. See
- * `ovh.CloudInstanceGroup`.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Operational notes
- * 
- * * Create, update and delete poll the API until the instance settles, for up to
- *   **60 minutes** each. The resource offers no `timeouts {}` block, so that
- *   budget cannot be shortened or extended from the configuration.
- * * An update re-reads the instance immediately before issuing the `PUT`, so the
- *   `checksum` it sends is the freshest one. This keeps a concurrent server-side
- *   change from failing the apply with a `ChecksumMismatch` (HTTP 409).
- * * `resource_status = &#34;ERROR&#34;` is terminal: polling stops at once and the
- *   provider surfaces the summary of the failed task(s) instead of a generic
- *   unexpected-state error.
- * 
  * ## Import
  * 
  * An instance in a public cloud project can be imported using the `service_name`
@@ -126,6 +40,16 @@ import javax.annotation.Nullable;
  * ```sh
  * $ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id
  * ```
+ * 
+ * An imported instance carries no `user_data` in state, since the API never returns
+ * 
+ * it. If the configuration sets `user_data`, the first apply after the import will
+ * 
+ * therefore see a change and **reinstall the instance** (root disk wiped). Import an
+ * 
+ * instance whose user data matters with `user_data` absent from the configuration
+ * 
+ * first, then add it only when a rebuild is acceptable.
  * 
  */
 @ResourceType(type="ovh:index/cloudInstance:CloudInstance")
@@ -368,6 +292,12 @@ public class CloudInstance extends com.pulumi.resources.CustomResource {
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
+    @Export(name="userData", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userData;
+
+    public Output<Optional<String>> userData() {
+        return Codegen.optional(this.userData);
+    }
     /**
      * IDs of block-storage volumes attached to the instance.
      * 
@@ -423,6 +353,9 @@ public class CloudInstance extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/ovh/pulumi-ovh")
+            .additionalSecretOutputs(List.of(
+                "userData"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

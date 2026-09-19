@@ -69,6 +69,8 @@ type providerArgs struct {
 	ConsumerKey *string `pulumi:"consumerKey"`
 	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint *string `pulumi:"endpoint"`
+	// Extra HTTP headers to add to every request made to the OVH API
+	HttpHeaders map[string]string `pulumi:"httpHeaders"`
 	// If set to true, initialization errors (like invalid OAuth credentials) will be ignored
 	IgnoreInitError *bool `pulumi:"ignoreInitError"`
 	// Extra information to append to the user-agent
@@ -93,6 +95,8 @@ type ProviderArgs struct {
 	ConsumerKey pulumi.StringPtrInput
 	// The OVH API endpoint to target (ex: "ovh-eu")
 	Endpoint pulumi.StringPtrInput
+	// Extra HTTP headers to add to every request made to the OVH API
+	HttpHeaders pulumi.StringMapInput
 	// If set to true, initialization errors (like invalid OAuth credentials) will be ignored
 	IgnoreInitError pulumi.BoolPtrInput
 	// Extra information to append to the user-agent

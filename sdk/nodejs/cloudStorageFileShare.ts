@@ -24,6 +24,9 @@ import * as utilities from "./utilities";
  *     shareType: "STANDARD_1AZ",
  *     shareNetworkId: "<share network id>",
  *     description: "My NFS share",
+ *     encryption: {
+ *         enabled: true,
+ *     },
  * });
  * ```
  *
@@ -96,6 +99,10 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     */
+    public readonly encryption!: pulumi.Output<outputs.CloudStorageFileShareEncryption>;
+    /**
      * File share name.
      */
     public readonly name!: pulumi.Output<string>;
@@ -150,6 +157,7 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["currentState"] = state ? state.currentState : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -181,6 +189,7 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
             }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -223,6 +232,10 @@ export interface CloudStorageFileShareState {
      * File share description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     */
+    encryption?: pulumi.Input<inputs.CloudStorageFileShareEncryption>;
     /**
      * File share name.
      */
@@ -273,6 +286,10 @@ export interface CloudStorageFileShareArgs {
      * File share description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     */
+    encryption?: pulumi.Input<inputs.CloudStorageFileShareEncryption>;
     /**
      * File share name.
      */

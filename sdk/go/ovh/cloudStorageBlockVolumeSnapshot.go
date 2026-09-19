@@ -56,6 +56,8 @@ import (
 type CloudStorageBlockVolumeSnapshot struct {
 	pulumi.CustomResourceState
 
+	// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringOutput `pulumi:"checksum"`
 	// Creation date of the snapshot.
@@ -114,6 +116,8 @@ func GetCloudStorageBlockVolumeSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CloudStorageBlockVolumeSnapshot resources.
 type cloudStorageBlockVolumeSnapshotState struct {
+	// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Computed hash representing the current target specification value.
 	Checksum *string `pulumi:"checksum"`
 	// Creation date of the snapshot.
@@ -137,6 +141,8 @@ type cloudStorageBlockVolumeSnapshotState struct {
 }
 
 type CloudStorageBlockVolumeSnapshotState struct {
+	// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+	AvailabilityZone pulumi.StringPtrInput
 	// Computed hash representing the current target specification value.
 	Checksum pulumi.StringPtrInput
 	// Creation date of the snapshot.
@@ -164,6 +170,8 @@ func (CloudStorageBlockVolumeSnapshotState) ElementType() reflect.Type {
 }
 
 type cloudStorageBlockVolumeSnapshotArgs struct {
+	// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// A description for the snapshot.
 	Description *string `pulumi:"description"`
 	// The name of the snapshot.
@@ -178,6 +186,8 @@ type cloudStorageBlockVolumeSnapshotArgs struct {
 
 // The set of arguments for constructing a CloudStorageBlockVolumeSnapshot resource.
 type CloudStorageBlockVolumeSnapshotArgs struct {
+	// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+	AvailabilityZone pulumi.StringPtrInput
 	// A description for the snapshot.
 	Description pulumi.StringPtrInput
 	// The name of the snapshot.
@@ -275,6 +285,11 @@ func (o CloudStorageBlockVolumeSnapshotOutput) ToCloudStorageBlockVolumeSnapshot
 
 func (o CloudStorageBlockVolumeSnapshotOutput) ToCloudStorageBlockVolumeSnapshotOutputWithContext(ctx context.Context) CloudStorageBlockVolumeSnapshotOutput {
 	return o
+}
+
+// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+func (o CloudStorageBlockVolumeSnapshotOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudStorageBlockVolumeSnapshot) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
 // Computed hash representing the current target specification value.

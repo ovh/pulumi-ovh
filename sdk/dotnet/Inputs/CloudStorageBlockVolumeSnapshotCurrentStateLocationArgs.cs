@@ -13,6 +13,12 @@ namespace Pulumi.Ovh.Inputs
     public sealed class CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// The region where the snapshot will be created. Changing this value recreates the resource.
         /// </summary>
         [Input("region")]

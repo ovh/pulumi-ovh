@@ -112,6 +112,16 @@ namespace Pulumi.Ovh
             set => _endpoint.Set(value);
         }
 
+        private static readonly __Value<ImmutableDictionary<string, string>?> _httpHeaders = new __Value<ImmutableDictionary<string, string>?>(() => __config.GetObject<ImmutableDictionary<string, string>>("httpHeaders"));
+        /// <summary>
+        /// Extra HTTP headers to add to every request made to the OVH API
+        /// </summary>
+        public static ImmutableDictionary<string, string>? HttpHeaders
+        {
+            get => _httpHeaders.Get();
+            set => _httpHeaders.Set(value);
+        }
+
         private static readonly __Value<bool?> _ignoreInitError = new __Value<bool?>(() => __config.GetBoolean("ignoreInitError"));
         /// <summary>
         /// If set to true, initialization errors (like invalid OAuth credentials) will be ignored

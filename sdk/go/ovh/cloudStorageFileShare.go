@@ -37,6 +37,9 @@ import (
 //				ShareType:      pulumi.String("STANDARD_1AZ"),
 //				ShareNetworkId: pulumi.String("<share network id>"),
 //				Description:    pulumi.String("My NFS share"),
+//				Encryption: &ovh.CloudStorageFileShareEncryptionArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -79,6 +82,8 @@ type CloudStorageFileShare struct {
 	CurrentState CloudStorageFileShareCurrentStateOutput `pulumi:"currentState"`
 	// File share description.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	Encryption CloudStorageFileShareEncryptionOutput `pulumi:"encryption"`
 	// File share name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
@@ -157,6 +162,8 @@ type cloudStorageFileShareState struct {
 	CurrentState *CloudStorageFileShareCurrentState `pulumi:"currentState"`
 	// File share description.
 	Description *string `pulumi:"description"`
+	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	Encryption *CloudStorageFileShareEncryption `pulumi:"encryption"`
 	// File share name.
 	Name *string `pulumi:"name"`
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
@@ -188,6 +195,8 @@ type CloudStorageFileShareState struct {
 	CurrentState CloudStorageFileShareCurrentStatePtrInput
 	// File share description.
 	Description pulumi.StringPtrInput
+	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	Encryption CloudStorageFileShareEncryptionPtrInput
 	// File share name.
 	Name pulumi.StringPtrInput
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
@@ -217,6 +226,8 @@ type cloudStorageFileShareArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// File share description.
 	Description *string `pulumi:"description"`
+	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	Encryption *CloudStorageFileShareEncryption `pulumi:"encryption"`
 	// File share name.
 	Name *string `pulumi:"name"`
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
@@ -239,6 +250,8 @@ type CloudStorageFileShareArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// File share description.
 	Description pulumi.StringPtrInput
+	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	Encryption CloudStorageFileShareEncryptionPtrInput
 	// File share name.
 	Name pulumi.StringPtrInput
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
@@ -365,6 +378,11 @@ func (o CloudStorageFileShareOutput) CurrentState() CloudStorageFileShareCurrent
 // File share description.
 func (o CloudStorageFileShareOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudStorageFileShare) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+func (o CloudStorageFileShareOutput) Encryption() CloudStorageFileShareEncryptionOutput {
+	return o.ApplyT(func(v *CloudStorageFileShare) CloudStorageFileShareEncryptionOutput { return v.Encryption }).(CloudStorageFileShareEncryptionOutput)
 }
 
 // File share name.

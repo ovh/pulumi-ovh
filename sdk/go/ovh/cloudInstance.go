@@ -12,10 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an instance in a public cloud project.
-//
-// > **WARNING** Changing `imageId` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.
-//
 // ## Import
 //
 // An instance in a public cloud project can be imported using the `service_name`
@@ -37,6 +33,16 @@ import (
 // ```sh
 // $ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id
 // ```
+//
+// An imported instance carries no `user_data` in state, since the API never returns
+//
+// it. If the configuration sets `user_data`, the first apply after the import will
+//
+// therefore see a change and **reinstall the instance** (root disk wiped). Import an
+//
+// instance whose user data matters with `user_data` absent from the configuration
+//
+// first, then add it only when a rebuild is acceptable.
 type CloudInstance struct {
 	pulumi.CustomResourceState
 
@@ -73,7 +79,8 @@ type CloudInstance struct {
 	// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
 	SshKeyName pulumi.StringPtrOutput `pulumi:"sshKeyName"`
 	// Last modification date of the instance, as an RFC 3339 timestamp.
-	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
+	UserData  pulumi.StringPtrOutput `pulumi:"userData"`
 	// IDs of block-storage volumes attached to the instance.
 	VolumeIds pulumi.StringArrayOutput `pulumi:"volumeIds"`
 }
@@ -94,6 +101,13 @@ func NewCloudInstance(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.UserData != nil {
+		args.UserData = pulumi.ToSecret(args.UserData).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"userData",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CloudInstance
 	err := ctx.RegisterResource("ovh:index/cloudInstance:CloudInstance", name, args, &resource, opts...)
@@ -151,6 +165,7 @@ type cloudInstanceState struct {
 	SshKeyName *string `pulumi:"sshKeyName"`
 	// Last modification date of the instance, as an RFC 3339 timestamp.
 	UpdatedAt *string `pulumi:"updatedAt"`
+	UserData  *string `pulumi:"userData"`
 	// IDs of block-storage volumes attached to the instance.
 	VolumeIds []string `pulumi:"volumeIds"`
 }
@@ -190,6 +205,7 @@ type CloudInstanceState struct {
 	SshKeyName pulumi.StringPtrInput
 	// Last modification date of the instance, as an RFC 3339 timestamp.
 	UpdatedAt pulumi.StringPtrInput
+	UserData  pulumi.StringPtrInput
 	// IDs of block-storage volumes attached to the instance.
 	VolumeIds pulumi.StringArrayInput
 }
@@ -223,6 +239,7 @@ type cloudInstanceArgs struct {
 	Shares []CloudInstanceShare `pulumi:"shares"`
 	// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
 	SshKeyName *string `pulumi:"sshKeyName"`
+	UserData   *string `pulumi:"userData"`
 	// IDs of block-storage volumes attached to the instance.
 	VolumeIds []string `pulumi:"volumeIds"`
 }
@@ -253,6 +270,7 @@ type CloudInstanceArgs struct {
 	Shares CloudInstanceShareArrayInput
 	// Name of the SSH key injected at boot (immutable). Point it at the `name` of an `CloudSSHKey`. **Changing this value recreates the resource.**
 	SshKeyName pulumi.StringPtrInput
+	UserData   pulumi.StringPtrInput
 	// IDs of block-storage volumes attached to the instance.
 	VolumeIds pulumi.StringArrayInput
 }
@@ -427,6 +445,10 @@ func (o CloudInstanceOutput) SshKeyName() pulumi.StringPtrOutput {
 // Last modification date of the instance, as an RFC 3339 timestamp.
 func (o CloudInstanceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudInstance) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+func (o CloudInstanceOutput) UserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudInstance) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }
 
 // IDs of block-storage volumes attached to the instance.

@@ -149,6 +149,18 @@ namespace Pulumi.Ovh
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
+        [Input("httpHeaders", json: true)]
+        private InputMap<string>? _httpHeaders;
+
+        /// <summary>
+        /// Extra HTTP headers to add to every request made to the OVH API
+        /// </summary>
+        public InputMap<string> HttpHeaders
+        {
+            get => _httpHeaders ?? (_httpHeaders = new InputMap<string>());
+            set => _httpHeaders = value;
+        }
+
         /// <summary>
         /// If set to true, initialization errors (like invalid OAuth credentials) will be ignored
         /// </summary>

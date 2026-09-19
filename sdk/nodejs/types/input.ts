@@ -447,6 +447,57 @@ export interface CloudInstanceShare {
     id: pulumi.Input<string>;
 }
 
+export interface CloudInstanceSnapshotCurrentState {
+    /**
+     * Source instance reference:
+     */
+    instance?: pulumi.Input<inputs.CloudInstanceSnapshotCurrentStateInstance>;
+    /**
+     * Current location:
+     */
+    location?: pulumi.Input<inputs.CloudInstanceSnapshotCurrentStateLocation>;
+    /**
+     * Minimum disk size in GB required to boot.
+     */
+    minDisk?: pulumi.Input<number>;
+    /**
+     * Minimum RAM in MB required to boot.
+     */
+    minRam?: pulumi.Input<number>;
+    /**
+     * Snapshot name. Changing this value recreates the resource.
+     *
+     * > All attributes are immutable: the resource does not support in-place updates, any change requires replacement.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Image size in bytes.
+     */
+    size?: pulumi.Input<number>;
+    /**
+     * Image status in the backend.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Image visibility.
+     */
+    visibility?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceSnapshotCurrentStateInstance {
+    /**
+     * Instance unique identifier.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudInstanceSnapshotCurrentStateLocation {
+    /**
+     * Region where the snapshot will be created. Changing this value recreates the resource.
+     */
+    region?: pulumi.Input<string>;
+}
+
 export interface CloudKeyManagerContainerCurrentState {
     /**
      * OpenStack reference URL for the container.
@@ -1398,7 +1449,7 @@ export interface CloudStorageBlockVolumeCurrentState {
      */
     bootable?: pulumi.Input<boolean>;
     /**
-     * Encryption configuration for the volume.
+     * Encryption configuration for the volume. **Changing this value recreates the resource.**
      */
     encryption?: pulumi.Input<inputs.CloudStorageBlockVolumeCurrentStateEncryption>;
     /**
@@ -1435,6 +1486,21 @@ export interface CloudStorageBlockVolumeCurrentStateEncryption {
      * Whether the volume is encrypted at rest with LUKS.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     */
+    kms?: pulumi.Input<inputs.CloudStorageBlockVolumeCurrentStateEncryptionKms>;
+}
+
+export interface CloudStorageBlockVolumeCurrentStateEncryptionKms {
+    /**
+     * OKMS domain ID owning the service key.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * OKMS service key ID used to encrypt the volume.
+     */
+    serviceKeyId?: pulumi.Input<string>;
 }
 
 export interface CloudStorageBlockVolumeCurrentStateLocation {
@@ -1453,6 +1519,21 @@ export interface CloudStorageBlockVolumeEncryption {
      * Whether the volume is encrypted at rest with LUKS.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     */
+    kms?: pulumi.Input<inputs.CloudStorageBlockVolumeEncryptionKms>;
+}
+
+export interface CloudStorageBlockVolumeEncryptionKms {
+    /**
+     * OKMS domain ID owning the service key.
+     */
+    domainId?: pulumi.Input<string>;
+    /**
+     * OKMS service key ID used to encrypt the volume.
+     */
+    serviceKeyId?: pulumi.Input<string>;
 }
 
 export interface CloudStorageBlockVolumeSnapshotCurrentState {
@@ -1479,6 +1560,10 @@ export interface CloudStorageBlockVolumeSnapshotCurrentState {
 }
 
 export interface CloudStorageBlockVolumeSnapshotCurrentStateLocation {
+    /**
+     * The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * The region where the snapshot will be created. Changing this value recreates the resource.
      */
@@ -1513,6 +1598,10 @@ export interface CloudStorageFileShareCurrentState {
      * File share description.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     */
+    encryption?: pulumi.Input<inputs.CloudStorageFileShareCurrentStateEncryption>;
     /**
      * Export locations for the file share:
      */
@@ -1558,6 +1647,13 @@ export interface CloudStorageFileShareCurrentStateCapability {
     reason?: pulumi.Input<string>;
 }
 
+export interface CloudStorageFileShareCurrentStateEncryption {
+    /**
+     * Whether the file share is encrypted at rest with LUKS.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface CloudStorageFileShareCurrentStateExportLocation {
     /**
      * Export path.
@@ -1578,6 +1674,13 @@ export interface CloudStorageFileShareCurrentStateLocation {
      * Region where the file share will be created. **Changing this value recreates the resource.**
      */
     region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageFileShareEncryption {
+    /**
+     * Whether the file share is encrypted at rest with LUKS.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface CloudStorageFileShareNetworkCurrentState {

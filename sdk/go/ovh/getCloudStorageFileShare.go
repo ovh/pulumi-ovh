@@ -67,7 +67,9 @@ type LookupCloudStorageFileShareResult struct {
 	CurrentState GetCloudStorageFileShareCurrentState `pulumi:"currentState"`
 	// File share description.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// Encryption configuration of the file share:
+	Encryption GetCloudStorageFileShareEncryption `pulumi:"encryption"`
+	Id         string                             `pulumi:"id"`
 	// Current location:
 	Location GetCloudStorageFileShareLocation `pulumi:"location"`
 	// Capability name.
@@ -141,6 +143,11 @@ func (o LookupCloudStorageFileShareResultOutput) CurrentState() GetCloudStorageF
 // File share description.
 func (o LookupCloudStorageFileShareResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudStorageFileShareResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Encryption configuration of the file share:
+func (o LookupCloudStorageFileShareResultOutput) Encryption() GetCloudStorageFileShareEncryptionOutput {
+	return o.ApplyT(func(v LookupCloudStorageFileShareResult) GetCloudStorageFileShareEncryption { return v.Encryption }).(GetCloudStorageFileShareEncryptionOutput)
 }
 
 func (o LookupCloudStorageFileShareResultOutput) Id() pulumi.StringOutput {

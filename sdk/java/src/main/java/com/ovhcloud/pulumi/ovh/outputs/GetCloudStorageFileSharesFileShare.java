@@ -4,6 +4,7 @@
 package com.ovhcloud.pulumi.ovh.outputs;
 
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareCurrentState;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareEncryption;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesFileShareLocation;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -33,6 +34,11 @@ public final class GetCloudStorageFileSharesFileShare {
      * 
      */
     private String description;
+    /**
+     * @return Encryption configuration of the file share:
+     * 
+     */
+    private GetCloudStorageFileSharesFileShareEncryption encryption;
     /**
      * @return File share ID.
      * 
@@ -107,6 +113,13 @@ public final class GetCloudStorageFileSharesFileShare {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return Encryption configuration of the file share:
+     * 
+     */
+    public GetCloudStorageFileSharesFileShareEncryption encryption() {
+        return this.encryption;
     }
     /**
      * @return File share ID.
@@ -185,6 +198,7 @@ public final class GetCloudStorageFileSharesFileShare {
         private String createdAt;
         private GetCloudStorageFileSharesFileShareCurrentState currentState;
         private String description;
+        private GetCloudStorageFileSharesFileShareEncryption encryption;
         private String id;
         private GetCloudStorageFileSharesFileShareLocation location;
         private String name;
@@ -201,6 +215,7 @@ public final class GetCloudStorageFileSharesFileShare {
     	      this.createdAt = defaults.createdAt;
     	      this.currentState = defaults.currentState;
     	      this.description = defaults.description;
+    	      this.encryption = defaults.encryption;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -242,6 +257,14 @@ public final class GetCloudStorageFileSharesFileShare {
               throw new MissingRequiredPropertyException("GetCloudStorageFileSharesFileShare", "description");
             }
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryption(GetCloudStorageFileSharesFileShareEncryption encryption) {
+            if (encryption == null) {
+              throw new MissingRequiredPropertyException("GetCloudStorageFileSharesFileShare", "encryption");
+            }
+            this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
@@ -322,6 +345,7 @@ public final class GetCloudStorageFileSharesFileShare {
             _resultValue.createdAt = createdAt;
             _resultValue.currentState = currentState;
             _resultValue.description = description;
+            _resultValue.encryption = encryption;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.name = name;

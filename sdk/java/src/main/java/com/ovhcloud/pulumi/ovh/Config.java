@@ -3,10 +3,12 @@
 
 package com.ovhcloud.pulumi.ovh;
 
+import com.pulumi.core.TypeShape;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 
 public final class Config {
@@ -67,6 +69,13 @@ public final class Config {
  */
     public Optional<String> endpoint() {
         return Codegen.stringProp("endpoint").config(config).get();
+    }
+/**
+ * Extra HTTP headers to add to every request made to the OVH API
+ * 
+ */
+    public Optional<Map<String,String>> httpHeaders() {
+        return Codegen.objectProp("httpHeaders", TypeShape.<Map<String,String>>builder(Map.class).addParameter(String.class).addParameter(String.class).build()).config(config).get();
     }
 /**
  * If set to true, initialization errors (like invalid OAuth credentials) will be ignored

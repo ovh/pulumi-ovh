@@ -274,6 +274,13 @@ public final class CloudInstanceState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.updatedAt);
     }
 
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
     /**
      * IDs of block-storage volumes attached to the instance.
      * 
@@ -309,6 +316,7 @@ public final class CloudInstanceState extends com.pulumi.resources.ResourceArgs 
         this.shares = $.shares;
         this.sshKeyName = $.sshKeyName;
         this.updatedAt = $.updatedAt;
+        this.userData = $.userData;
         this.volumeIds = $.volumeIds;
     }
 
@@ -715,6 +723,15 @@ public final class CloudInstanceState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
+        }
+
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
         }
 
         /**

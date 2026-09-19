@@ -28,7 +28,7 @@ public final class CloudStorageBlockVolumeCurrentState {
      */
     private @Nullable Boolean bootable;
     /**
-     * @return Encryption configuration for the volume.
+     * @return Encryption configuration for the volume. **Changing this value recreates the resource.**
      * 
      */
     private @Nullable CloudStorageBlockVolumeCurrentStateEncryption encryption;
@@ -74,7 +74,7 @@ public final class CloudStorageBlockVolumeCurrentState {
         return Optional.ofNullable(this.bootable);
     }
     /**
-     * @return Encryption configuration for the volume.
+     * @return Encryption configuration for the volume. **Changing this value recreates the resource.**
      * 
      */
     public Optional<CloudStorageBlockVolumeCurrentStateEncryption> encryption() {

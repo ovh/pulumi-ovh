@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     /**
+     * @return The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     * 
+     */
+    private @Nullable String availabilityZone;
+    /**
      * @return The region where the snapshot will be created. Changing this value recreates the resource.
      * 
      */
     private @Nullable String region;
 
     private CloudStorageBlockVolumeSnapshotCurrentStateLocation() {}
+    /**
+     * @return The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     * 
+     */
+    public Optional<String> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
     /**
      * @return The region where the snapshot will be created. Changing this value recreates the resource.
      * 
@@ -35,13 +47,21 @@ public final class CloudStorageBlockVolumeSnapshotCurrentStateLocation {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String availabilityZone;
         private @Nullable String region;
         public Builder() {}
         public Builder(CloudStorageBlockVolumeSnapshotCurrentStateLocation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
+        public Builder availabilityZone(@Nullable String availabilityZone) {
+
+            this.availabilityZone = availabilityZone;
+            return this;
+        }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
 
@@ -50,6 +70,7 @@ public final class CloudStorageBlockVolumeSnapshotCurrentStateLocation {
         }
         public CloudStorageBlockVolumeSnapshotCurrentStateLocation build() {
             final var _resultValue = new CloudStorageBlockVolumeSnapshotCurrentStateLocation();
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.region = region;
             return _resultValue;
         }

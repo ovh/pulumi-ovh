@@ -32,6 +32,10 @@ namespace Pulumi.Ovh
     ///         ShareType = "STANDARD_1AZ",
     ///         ShareNetworkId = "&lt;share network id&gt;",
     ///         Description = "My NFS share",
+    ///         Encryption = new Ovh.Inputs.CloudStorageFileShareEncryptionArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
     ///     });
     /// 
     /// });
@@ -89,6 +93,12 @@ namespace Pulumi.Ovh
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        /// </summary>
+        [Output("encryption")]
+        public Output<Outputs.CloudStorageFileShareEncryption> Encryption { get; private set; } = null!;
 
         /// <summary>
         /// File share name.
@@ -204,6 +214,12 @@ namespace Pulumi.Ovh
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.CloudStorageFileShareEncryptionArgs>? Encryption { get; set; }
+
+        /// <summary>
         /// File share name.
         /// </summary>
         [Input("name")]
@@ -282,6 +298,12 @@ namespace Pulumi.Ovh
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.CloudStorageFileShareEncryptionGetArgs>? Encryption { get; set; }
 
         /// <summary>
         /// File share name.

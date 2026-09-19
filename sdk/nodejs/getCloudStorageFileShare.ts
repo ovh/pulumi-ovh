@@ -63,6 +63,10 @@ export interface GetCloudStorageFileShareResult {
      * File share description.
      */
     readonly description: string;
+    /**
+     * Encryption configuration of the file share:
+     */
+    readonly encryption: outputs.GetCloudStorageFileShareEncryption;
     readonly id: string;
     /**
      * Current location:

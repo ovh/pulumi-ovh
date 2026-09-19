@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetCloudStorageBlockVolumeSnapshotsSnapshotLocation {
     /**
+     * @return Availability zone. Empty in 1AZ regions.
+     * 
+     */
+    private String availabilityZone;
+    /**
      * @return The region where the snapshots reside.
      * 
      */
     private String region;
 
     private GetCloudStorageBlockVolumeSnapshotsSnapshotLocation() {}
+    /**
+     * @return Availability zone. Empty in 1AZ regions.
+     * 
+     */
+    public String availabilityZone() {
+        return this.availabilityZone;
+    }
     /**
      * @return The region where the snapshots reside.
      * 
@@ -34,13 +46,23 @@ public final class GetCloudStorageBlockVolumeSnapshotsSnapshotLocation {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String availabilityZone;
         private String region;
         public Builder() {}
         public Builder(GetCloudStorageBlockVolumeSnapshotsSnapshotLocation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
+        public Builder availabilityZone(String availabilityZone) {
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetCloudStorageBlockVolumeSnapshotsSnapshotLocation", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
+            return this;
+        }
         @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
@@ -51,6 +73,7 @@ public final class GetCloudStorageBlockVolumeSnapshotsSnapshotLocation {
         }
         public GetCloudStorageBlockVolumeSnapshotsSnapshotLocation build() {
             final var _resultValue = new GetCloudStorageBlockVolumeSnapshotsSnapshotLocation();
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.region = region;
             return _resultValue;
         }

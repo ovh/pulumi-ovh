@@ -22,6 +22,10 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Encryption configuration of the file share:
+        /// </summary>
+        public readonly Outputs.GetCloudStorageFileShareCurrentStateEncryptionResult Encryption;
+        /// <summary>
         /// Export locations for the file share:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCloudStorageFileShareCurrentStateExportLocationResult> ExportLocations;
@@ -56,6 +60,8 @@ namespace Pulumi.Ovh.Outputs
 
             string description,
 
+            Outputs.GetCloudStorageFileShareCurrentStateEncryptionResult encryption,
+
             ImmutableArray<Outputs.GetCloudStorageFileShareCurrentStateExportLocationResult> exportLocations,
 
             Outputs.GetCloudStorageFileShareCurrentStateLocationResult location,
@@ -72,6 +78,7 @@ namespace Pulumi.Ovh.Outputs
         {
             Capabilities = capabilities;
             Description = description;
+            Encryption = encryption;
             ExportLocations = exportLocations;
             Location = location;
             Name = name;

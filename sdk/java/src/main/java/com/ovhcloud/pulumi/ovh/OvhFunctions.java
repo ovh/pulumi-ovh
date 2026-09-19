@@ -34,6 +34,10 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImagePlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImagesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceImagesPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstancePlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceSnapshotPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceSnapshotsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstanceSnapshotsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstancesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudInstancesPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerContainerArgs;
@@ -187,6 +191,8 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceGroupsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceImageResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceImagesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceSnapshotResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstanceSnapshotsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudInstancesResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerConsumerResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerContainerConsumersResult;
@@ -1730,6 +1736,286 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudInstanceImagesResult> getCloudInstanceImagesPlain(GetCloudInstanceImagesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceImages:getCloudInstanceImages", TypeShape.of(GetCloudInstanceImagesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance snapshot in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs.builder()
+     *             .serviceName("<Public cloud project id>")
+     *             .id("<snapshot id>")
+     *             .build());
+     * 
+     *         ctx.export("snapshotStatus", snapshot.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceSnapshotResult> getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs args) {
+        return getCloudInstanceSnapshot(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an instance snapshot in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs.builder()
+     *             .serviceName("<Public cloud project id>")
+     *             .id("<snapshot id>")
+     *             .build());
+     * 
+     *         ctx.export("snapshotStatus", snapshot.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceSnapshotResult> getCloudInstanceSnapshotPlain(GetCloudInstanceSnapshotPlainArgs args) {
+        return getCloudInstanceSnapshotPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an instance snapshot in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs.builder()
+     *             .serviceName("<Public cloud project id>")
+     *             .id("<snapshot id>")
+     *             .build());
+     * 
+     *         ctx.export("snapshotStatus", snapshot.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceSnapshotResult> getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceSnapshot:getCloudInstanceSnapshot", TypeShape.of(GetCloudInstanceSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance snapshot in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs.builder()
+     *             .serviceName("<Public cloud project id>")
+     *             .id("<snapshot id>")
+     *             .build());
+     * 
+     *         ctx.export("snapshotStatus", snapshot.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceSnapshotResult> getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceSnapshot:getCloudInstanceSnapshot", TypeShape.of(GetCloudInstanceSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an instance snapshot in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var snapshot = OvhFunctions.getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs.builder()
+     *             .serviceName("<Public cloud project id>")
+     *             .id("<snapshot id>")
+     *             .build());
+     * 
+     *         ctx.export("snapshotStatus", snapshot.resourceStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceSnapshotResult> getCloudInstanceSnapshotPlain(GetCloudInstanceSnapshotPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceSnapshot:getCloudInstanceSnapshot", TypeShape.of(GetCloudInstanceSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the snapshots of an instance in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceSnapshotsResult> getCloudInstanceSnapshots(GetCloudInstanceSnapshotsArgs args) {
+        return getCloudInstanceSnapshots(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the snapshots of an instance in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceSnapshotsResult> getCloudInstanceSnapshotsPlain(GetCloudInstanceSnapshotsPlainArgs args) {
+        return getCloudInstanceSnapshotsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the snapshots of an instance in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceSnapshotsResult> getCloudInstanceSnapshots(GetCloudInstanceSnapshotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceSnapshots:getCloudInstanceSnapshots", TypeShape.of(GetCloudInstanceSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the snapshots of an instance in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudInstanceSnapshotsResult> getCloudInstanceSnapshots(GetCloudInstanceSnapshotsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudInstanceSnapshots:getCloudInstanceSnapshots", TypeShape.of(GetCloudInstanceSnapshotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the snapshots of an instance in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudInstanceSnapshotsResult> getCloudInstanceSnapshotsPlain(GetCloudInstanceSnapshotsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudInstanceSnapshots:getCloudInstanceSnapshots", TypeShape.of(GetCloudInstanceSnapshotsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to list the instances of a public cloud project.

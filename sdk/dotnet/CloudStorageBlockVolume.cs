@@ -33,6 +33,57 @@ namespace Pulumi.Ovh
     /// 
     /// });
     /// ```
+    /// 
+    /// ### Create with a customer-managed key (CMK)
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Ovh = Pulumi.Ovh;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cmkVolume = new Ovh.CloudStorageBlockVolume("cmk_volume", new()
+    ///     {
+    ///         ServiceName = "xxxxxxxxxx",
+    ///         Name = "my-cmk-volume",
+    ///         Size = 10,
+    ///         Region = "GRA1",
+    ///         VolumeType = "HIGH_SPEED",
+    ///         Encryption = new Ovh.Inputs.CloudStorageBlockVolumeEncryptionArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Kms = new Ovh.Inputs.CloudStorageBlockVolumeEncryptionKmsArgs
+    ///             {
+    ///                 DomainId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///                 ServiceKeyId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// A cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:
+    /// 
+    /// terraform
+    /// 
+    /// import {
+    /// 
+    ///   to = ovh_cloud_storage_block_volume.volume
+    /// 
+    ///   id = "&lt;service_name&gt;/&lt;volume_id&gt;"
+    /// 
+    /// }
+    /// 
+    /// bash
+    /// 
+    /// $ pulumi preview -generate-config-out=volume.tf
+    /// 
+    /// $ pulumi up
     /// </summary>
     [OvhResourceType("ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume")]
     public partial class CloudStorageBlockVolume : global::Pulumi.CustomResource
@@ -68,7 +119,7 @@ namespace Pulumi.Ovh
         public Output<Outputs.CloudStorageBlockVolumeCurrentState> CurrentState { get; private set; } = null!;
 
         /// <summary>
-        /// Encryption configuration for the volume.
+        /// Encryption configuration for the volume. **Changing this value recreates the resource.**
         /// </summary>
         [Output("encryption")]
         public Output<Outputs.CloudStorageBlockVolumeEncryption> Encryption { get; private set; } = null!;
@@ -175,7 +226,7 @@ namespace Pulumi.Ovh
         public Input<Inputs.CloudStorageBlockVolumeCreateFromArgs>? CreateFrom { get; set; }
 
         /// <summary>
-        /// Encryption configuration for the volume.
+        /// Encryption configuration for the volume. **Changing this value recreates the resource.**
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.CloudStorageBlockVolumeEncryptionArgs>? Encryption { get; set; }
@@ -249,7 +300,7 @@ namespace Pulumi.Ovh
         public Input<Inputs.CloudStorageBlockVolumeCurrentStateGetArgs>? CurrentState { get; set; }
 
         /// <summary>
-        /// Encryption configuration for the volume.
+        /// Encryption configuration for the volume. **Changing this value recreates the resource.**
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.CloudStorageBlockVolumeEncryptionGetArgs>? Encryption { get; set; }

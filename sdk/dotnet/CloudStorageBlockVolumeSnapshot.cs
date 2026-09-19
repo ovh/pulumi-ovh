@@ -48,6 +48,12 @@ namespace Pulumi.Ovh
     public partial class CloudStorageBlockVolumeSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        /// </summary>
+        [Output("availabilityZone")]
+        public Output<string> AvailabilityZone { get; private set; } = null!;
+
+        /// <summary>
         /// Computed hash representing the current target specification value.
         /// </summary>
         [Output("checksum")]
@@ -155,6 +161,12 @@ namespace Pulumi.Ovh
     public sealed class CloudStorageBlockVolumeSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
+        /// <summary>
         /// A description for the snapshot.
         /// </summary>
         [Input("description")]
@@ -192,6 +204,12 @@ namespace Pulumi.Ovh
 
     public sealed class CloudStorageBlockVolumeSnapshotState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        /// </summary>
+        [Input("availabilityZone")]
+        public Input<string>? AvailabilityZone { get; set; }
+
         /// <summary>
         /// Computed hash representing the current target specification value.
         /// </summary>

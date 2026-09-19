@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly bool? Bootable;
         /// <summary>
-        /// Encryption configuration for the volume.
+        /// Encryption configuration for the volume. **Changing this value recreates the resource.**
         /// </summary>
         public readonly Outputs.CloudStorageBlockVolumeCurrentStateEncryption? Encryption;
         /// <summary>

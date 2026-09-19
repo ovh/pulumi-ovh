@@ -27,7 +27,7 @@ class GetCloudStorageFileShareResult:
     """
     A collection of values returned by getCloudStorageFileShare.
     """
-    def __init__(__self__, checksum=None, created_at=None, current_state=None, description=None, id=None, location=None, name=None, protocol=None, resource_status=None, service_name=None, share_network_id=None, share_type=None, size=None, updated_at=None):
+    def __init__(__self__, checksum=None, created_at=None, current_state=None, description=None, encryption=None, id=None, location=None, name=None, protocol=None, resource_status=None, service_name=None, share_network_id=None, share_type=None, size=None, updated_at=None):
         if checksum and not isinstance(checksum, str):
             raise TypeError("Expected argument 'checksum' to be a str")
         pulumi.set(__self__, "checksum", checksum)
@@ -40,6 +40,9 @@ class GetCloudStorageFileShareResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if encryption and not isinstance(encryption, dict):
+            raise TypeError("Expected argument 'encryption' to be a dict")
+        pulumi.set(__self__, "encryption", encryption)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -102,6 +105,14 @@ class GetCloudStorageFileShareResult:
         File share description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageFileShareEncryptionResult':
+        """
+        Encryption configuration of the file share:
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter
@@ -188,6 +199,7 @@ class AwaitableGetCloudStorageFileShareResult(GetCloudStorageFileShareResult):
             created_at=self.created_at,
             current_state=self.current_state,
             description=self.description,
+            encryption=self.encryption,
             id=self.id,
             location=self.location,
             name=self.name,
@@ -231,6 +243,7 @@ def get_cloud_storage_file_share(id: Optional[_builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         current_state=pulumi.get(__ret__, 'current_state'),
         description=pulumi.get(__ret__, 'description'),
+        encryption=pulumi.get(__ret__, 'encryption'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
@@ -271,6 +284,7 @@ def get_cloud_storage_file_share_output(id: Optional[pulumi.Input[_builtins.str]
         created_at=pulumi.get(__response__, 'created_at'),
         current_state=pulumi.get(__response__, 'current_state'),
         description=pulumi.get(__response__, 'description'),
+        encryption=pulumi.get(__response__, 'encryption'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),

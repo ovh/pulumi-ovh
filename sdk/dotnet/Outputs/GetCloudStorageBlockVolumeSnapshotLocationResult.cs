@@ -14,13 +14,21 @@ namespace Pulumi.Ovh.Outputs
     public sealed class GetCloudStorageBlockVolumeSnapshotLocationResult
     {
         /// <summary>
+        /// Availability zone. Empty in 1AZ regions.
+        /// </summary>
+        public readonly string AvailabilityZone;
+        /// <summary>
         /// Region.
         /// </summary>
         public readonly string Region;
 
         [OutputConstructor]
-        private GetCloudStorageBlockVolumeSnapshotLocationResult(string region)
+        private GetCloudStorageBlockVolumeSnapshotLocationResult(
+            string availabilityZone,
+
+            string region)
         {
+            AvailabilityZone = availabilityZone;
             Region = region;
         }
     }

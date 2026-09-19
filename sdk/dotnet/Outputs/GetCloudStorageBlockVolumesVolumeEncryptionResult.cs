@@ -17,11 +17,19 @@ namespace Pulumi.Ovh.Outputs
         /// Whether the volume is encrypted at rest with LUKS.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Customer-managed key (CMK) reference used to encrypt the volume:
+        /// </summary>
+        public readonly Outputs.GetCloudStorageBlockVolumesVolumeEncryptionKmsResult Kms;
 
         [OutputConstructor]
-        private GetCloudStorageBlockVolumesVolumeEncryptionResult(bool enabled)
+        private GetCloudStorageBlockVolumesVolumeEncryptionResult(
+            bool enabled,
+
+            Outputs.GetCloudStorageBlockVolumesVolumeEncryptionKmsResult kms)
         {
             Enabled = enabled;
+            Kms = kms;
         }
     }
 }
