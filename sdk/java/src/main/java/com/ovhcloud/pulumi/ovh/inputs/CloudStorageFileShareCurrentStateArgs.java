@@ -4,6 +4,7 @@
 package com.ovhcloud.pulumi.ovh.inputs;
 
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateCapabilityArgs;
+import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateEncryptionArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateExportLocationArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCurrentStateLocationArgs;
 import com.pulumi.core.Output;
@@ -48,6 +49,21 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * 
+     */
+    @Import(name="encryption")
+    private @Nullable Output<CloudStorageFileShareCurrentStateEncryptionArgs> encryption;
+
+    /**
+     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * 
+     */
+    public Optional<Output<CloudStorageFileShareCurrentStateEncryptionArgs>> encryption() {
+        return Optional.ofNullable(this.encryption);
     }
 
     /**
@@ -160,6 +176,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
     private CloudStorageFileShareCurrentStateArgs(CloudStorageFileShareCurrentStateArgs $) {
         this.capabilities = $.capabilities;
         this.description = $.description;
+        this.encryption = $.encryption;
         this.exportLocations = $.exportLocations;
         this.location = $.location;
         this.name = $.name;
@@ -237,6 +254,27 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param encryption Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(@Nullable Output<CloudStorageFileShareCurrentStateEncryptionArgs> encryption) {
+            $.encryption = encryption;
+            return this;
+        }
+
+        /**
+         * @param encryption Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryption(CloudStorageFileShareCurrentStateEncryptionArgs encryption) {
+            return encryption(Output.of(encryption));
         }
 
         /**

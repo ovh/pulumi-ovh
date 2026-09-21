@@ -51,6 +51,11 @@ func GetEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "ovh:endpoint")
 }
 
+// Extra HTTP headers to add to every request made to the OVH API
+func GetHttpHeaders(ctx *pulumi.Context) string {
+	return config.Get(ctx, "ovh:httpHeaders")
+}
+
 // If set to true, initialization errors (like invalid OAuth credentials) will be ignored
 func GetIgnoreInitError(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "ovh:ignoreInitError")

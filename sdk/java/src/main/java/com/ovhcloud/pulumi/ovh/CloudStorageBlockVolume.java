@@ -65,6 +65,54 @@ import javax.annotation.Nullable;
  * &lt;!--Start PulumiCodeChooser --&gt;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Create with a customer-managed key (CMK)
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudStorageBlockVolume;
+ * import com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeArgs;
+ * import com.pulumi.ovh.inputs.CloudStorageBlockVolumeEncryptionArgs;
+ * import com.pulumi.ovh.inputs.CloudStorageBlockVolumeEncryptionKmsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cmkVolume = new CloudStorageBlockVolume("cmkVolume", CloudStorageBlockVolumeArgs.builder()
+ *             .serviceName("xxxxxxxxxx")
+ *             .name("my-cmk-volume")
+ *             .size(10)
+ *             .region("GRA1")
+ *             .volumeType("HIGH_SPEED")
+ *             .encryption(CloudStorageBlockVolumeEncryptionArgs.builder()
+ *                 .enabled(true)
+ *                 .kms(CloudStorageBlockVolumeEncryptionKmsArgs.builder()
+ *                     .domainId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *                     .serviceKeyId("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * A cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:
@@ -159,14 +207,14 @@ public class CloudStorageBlockVolume extends com.pulumi.resources.CustomResource
         return this.currentState;
     }
     /**
-     * Encryption configuration for the volume.
+     * Encryption configuration for the volume. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="encryption", refs={CloudStorageBlockVolumeEncryption.class}, tree="[0]")
     private Output<CloudStorageBlockVolumeEncryption> encryption;
 
     /**
-     * @return Encryption configuration for the volume.
+     * @return Encryption configuration for the volume. **Changing this value recreates the resource.**
      * 
      */
     public Output<CloudStorageBlockVolumeEncryption> encryption() {

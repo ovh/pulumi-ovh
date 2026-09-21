@@ -148,6 +148,10 @@ namespace Pulumi.Ovh
         /// File share description.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Encryption configuration of the file share:
+        /// </summary>
+        public readonly Outputs.GetCloudStorageFileShareEncryptionResult Encryption;
         public readonly string Id;
         /// <summary>
         /// Current location:
@@ -193,6 +197,8 @@ namespace Pulumi.Ovh
 
             string description,
 
+            Outputs.GetCloudStorageFileShareEncryptionResult encryption,
+
             string id,
 
             Outputs.GetCloudStorageFileShareLocationResult location,
@@ -217,6 +223,7 @@ namespace Pulumi.Ovh
             CreatedAt = createdAt;
             CurrentState = currentState;
             Description = description;
+            Encryption = encryption;
             Id = id;
             Location = location;
             Name = name;

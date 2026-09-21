@@ -33,6 +33,7 @@ class CloudInstanceArgs:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  shares: Optional[pulumi.Input[Sequence[pulumi.Input['CloudInstanceShareArgs']]]] = None,
                  ssh_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CloudInstance resource.
@@ -71,6 +72,8 @@ class CloudInstanceArgs:
             pulumi.set(__self__, "shares", shares)
         if ssh_key_name is not None:
             pulumi.set(__self__, "ssh_key_name", ssh_key_name)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
         if volume_ids is not None:
             pulumi.set(__self__, "volume_ids", volume_ids)
 
@@ -219,6 +222,15 @@ class CloudInstanceArgs:
         pulumi.set(self, "ssh_key_name", value)
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
     @pulumi.getter(name="volumeIds")
     def volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -251,6 +263,7 @@ class _CloudInstanceState:
                  shares: Optional[pulumi.Input[Sequence[pulumi.Input['CloudInstanceShareArgs']]]] = None,
                  ssh_key_name: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CloudInstance resources.
@@ -307,6 +320,8 @@ class _CloudInstanceState:
             pulumi.set(__self__, "ssh_key_name", ssh_key_name)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
+        if user_data is not None:
+            pulumi.set(__self__, "user_data", user_data)
         if volume_ids is not None:
             pulumi.set(__self__, "volume_ids", volume_ids)
 
@@ -515,6 +530,15 @@ class _CloudInstanceState:
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "user_data")
+
+    @user_data.setter
+    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_data", value)
+
+    @_builtins.property
     @pulumi.getter(name="volumeIds")
     def volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -545,13 +569,10 @@ class CloudInstance(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudInstanceShareArgs', 'CloudInstanceShareArgsDict']]]]] = None,
                  ssh_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Creates an instance in a public cloud project.
-
-        > **WARNING** Changing `image_id` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.
-
         ## Import
 
         An instance in a public cloud project can be imported using the `service_name`
@@ -573,6 +594,16 @@ class CloudInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id
         ```
+
+        An imported instance carries no `user_data` in state, since the API never returns
+
+        it. If the configuration sets `user_data`, the first apply after the import will
+
+        therefore see a change and **reinstall the instance** (root disk wiped). Import an
+
+        instance whose user data matters with `user_data` absent from the configuration
+
+        first, then add it only when a rebuild is acceptable.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -597,10 +628,6 @@ class CloudInstance(pulumi.CustomResource):
                  args: CloudInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an instance in a public cloud project.
-
-        > **WARNING** Changing `image_id` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.
-
         ## Import
 
         An instance in a public cloud project can be imported using the `service_name`
@@ -622,6 +649,16 @@ class CloudInstance(pulumi.CustomResource):
         ```sh
         $ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id
         ```
+
+        An imported instance carries no `user_data` in state, since the API never returns
+
+        it. If the configuration sets `user_data`, the first apply after the import will
+
+        therefore see a change and **reinstall the instance** (root disk wiped). Import an
+
+        instance whose user data matters with `user_data` absent from the configuration
+
+        first, then add it only when a rebuild is acceptable.
 
         :param str resource_name: The name of the resource.
         :param CloudInstanceArgs args: The arguments to use to populate this resource's properties.
@@ -650,6 +687,7 @@ class CloudInstance(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[_builtins.str]] = None,
                  shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudInstanceShareArgs', 'CloudInstanceShareArgsDict']]]]] = None,
                  ssh_key_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
                  volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -678,12 +716,15 @@ class CloudInstance(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["shares"] = shares
             __props__.__dict__["ssh_key_name"] = ssh_key_name
+            __props__.__dict__["user_data"] = None if user_data is None else pulumi.Output.secret(user_data)
             __props__.__dict__["volume_ids"] = volume_ids
             __props__.__dict__["checksum"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["current_state"] = None
             __props__.__dict__["resource_status"] = None
             __props__.__dict__["updated_at"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["userData"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(CloudInstance, __self__).__init__(
             'ovh:index/cloudInstance:CloudInstance',
             resource_name,
@@ -711,6 +752,7 @@ class CloudInstance(pulumi.CustomResource):
             shares: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CloudInstanceShareArgs', 'CloudInstanceShareArgsDict']]]]] = None,
             ssh_key_name: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+            user_data: Optional[pulumi.Input[_builtins.str]] = None,
             volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CloudInstance':
         """
         Get an existing CloudInstance resource's state with the given name, id, and optional extra
@@ -759,6 +801,7 @@ class CloudInstance(pulumi.CustomResource):
         __props__.__dict__["shares"] = shares
         __props__.__dict__["ssh_key_name"] = ssh_key_name
         __props__.__dict__["updated_at"] = updated_at
+        __props__.__dict__["user_data"] = user_data
         __props__.__dict__["volume_ids"] = volume_ids
         return CloudInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -897,6 +940,11 @@ class CloudInstance(pulumi.CustomResource):
         Last modification date of the instance, as an RFC 3339 timestamp.
         """
         return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="userData")
+    def user_data(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "user_data")
 
     @_builtins.property
     @pulumi.getter(name="volumeIds")

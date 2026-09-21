@@ -23,6 +23,7 @@ class CloudStorageBlockVolumeSnapshotArgs:
     def __init__(__self__, *,
                  region: pulumi.Input[_builtins.str],
                  volume_id: pulumi.Input[_builtins.str],
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  service_name: Optional[pulumi.Input[_builtins.str]] = None):
@@ -30,12 +31,15 @@ class CloudStorageBlockVolumeSnapshotArgs:
         The set of arguments for constructing a CloudStorageBlockVolumeSnapshot resource.
         :param pulumi.Input[_builtins.str] region: The region where the snapshot will be created. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume to snapshot. Changing this value recreates the resource.
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.str] name: The name of the snapshot.
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. Changing this value recreates the resource.
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "volume_id", volume_id)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -66,6 +70,18 @@ class CloudStorageBlockVolumeSnapshotArgs:
     @volume_id.setter
     def volume_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "volume_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -107,6 +123,7 @@ class CloudStorageBlockVolumeSnapshotArgs:
 @pulumi.input_type
 class _CloudStorageBlockVolumeSnapshotState:
     def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  checksum: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  current_state: Optional[pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateArgs']] = None,
@@ -119,6 +136,7 @@ class _CloudStorageBlockVolumeSnapshotState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudStorageBlockVolumeSnapshot resources.
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
         :param pulumi.Input[_builtins.str] created_at: Creation date of the snapshot.
         :param pulumi.Input['CloudStorageBlockVolumeSnapshotCurrentStateArgs'] current_state: Current state of the snapshot:
@@ -130,6 +148,8 @@ class _CloudStorageBlockVolumeSnapshotState:
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the snapshot.
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume to snapshot. Changing this value recreates the resource.
         """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
         if created_at is not None:
@@ -150,6 +170,18 @@ class _CloudStorageBlockVolumeSnapshotState:
             pulumi.set(__self__, "updated_at", updated_at)
         if volume_id is not None:
             pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -278,6 +310,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -313,6 +346,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] description: A description for the snapshot.
         :param pulumi.Input[_builtins.str] name: The name of the snapshot.
         :param pulumi.Input[_builtins.str] region: The region where the snapshot will be created. Changing this value recreates the resource.
@@ -367,6 +401,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -381,6 +416,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CloudStorageBlockVolumeSnapshotArgs.__new__(CloudStorageBlockVolumeSnapshotArgs)
 
+            __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if region is None and not opts.urn:
@@ -405,6 +441,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             checksum: Optional[pulumi.Input[_builtins.str]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             current_state: Optional[pulumi.Input[Union['CloudStorageBlockVolumeSnapshotCurrentStateArgs', 'CloudStorageBlockVolumeSnapshotCurrentStateArgsDict']]] = None,
@@ -422,6 +459,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] availability_zone: The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
         :param pulumi.Input[_builtins.str] created_at: Creation date of the snapshot.
         :param pulumi.Input[Union['CloudStorageBlockVolumeSnapshotCurrentStateArgs', 'CloudStorageBlockVolumeSnapshotCurrentStateArgsDict']] current_state: Current state of the snapshot:
@@ -437,6 +475,7 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
 
         __props__ = _CloudStorageBlockVolumeSnapshotState.__new__(_CloudStorageBlockVolumeSnapshotState)
 
+        __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["checksum"] = checksum
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["current_state"] = current_state
@@ -448,6 +487,14 @@ class CloudStorageBlockVolumeSnapshot(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["volume_id"] = volume_id
         return CloudStorageBlockVolumeSnapshot(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> pulumi.Output[_builtins.str]:
+        """
+        The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        """
+        return pulumi.get(self, "availability_zone")
 
     @_builtins.property
     @pulumi.getter

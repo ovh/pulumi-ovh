@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -138,6 +139,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Extra HTTP headers to add to every request made to the OVH API
+     * 
+     */
+    @Import(name="httpHeaders", json=true)
+    private @Nullable Output<Map<String,String>> httpHeaders;
+
+    /**
+     * @return Extra HTTP headers to add to every request made to the OVH API
+     * 
+     */
+    public Optional<Output<Map<String,String>>> httpHeaders() {
+        return Optional.ofNullable(this.httpHeaders);
+    }
+
+    /**
      * If set to true, initialization errors (like invalid OAuth credentials) will be ignored
      * 
      */
@@ -178,6 +194,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientSecret = $.clientSecret;
         this.consumerKey = $.consumerKey;
         this.endpoint = $.endpoint;
+        this.httpHeaders = $.httpHeaders;
         this.ignoreInitError = $.ignoreInitError;
         this.userAgentExtra = $.userAgentExtra;
     }
@@ -366,6 +383,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param httpHeaders Extra HTTP headers to add to every request made to the OVH API
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpHeaders(@Nullable Output<Map<String,String>> httpHeaders) {
+            $.httpHeaders = httpHeaders;
+            return this;
+        }
+
+        /**
+         * @param httpHeaders Extra HTTP headers to add to every request made to the OVH API
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpHeaders(Map<String,String> httpHeaders) {
+            return httpHeaders(Output.of(httpHeaders));
         }
 
         /**

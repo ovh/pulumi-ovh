@@ -52,14 +52,14 @@ public final class CloudStorageBlockVolumeCurrentStateArgs extends com.pulumi.re
     }
 
     /**
-     * Encryption configuration for the volume.
+     * Encryption configuration for the volume. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<CloudStorageBlockVolumeCurrentStateEncryptionArgs> encryption;
 
     /**
-     * @return Encryption configuration for the volume.
+     * @return Encryption configuration for the volume. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<CloudStorageBlockVolumeCurrentStateEncryptionArgs>> encryption() {
@@ -225,7 +225,7 @@ public final class CloudStorageBlockVolumeCurrentStateArgs extends com.pulumi.re
         }
 
         /**
-         * @param encryption Encryption configuration for the volume.
+         * @param encryption Encryption configuration for the volume. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class CloudStorageBlockVolumeCurrentStateArgs extends com.pulumi.re
         }
 
         /**
-         * @param encryption Encryption configuration for the volume.
+         * @param encryption Encryption configuration for the volume. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 

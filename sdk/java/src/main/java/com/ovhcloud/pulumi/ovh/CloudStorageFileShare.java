@@ -7,6 +7,7 @@ import com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareState;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentState;
+import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareEncryption;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -30,6 +31,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.ovhcloud.pulumi.ovh.CloudStorageFileShare;
  * import com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;
+ * import com.pulumi.ovh.inputs.CloudStorageFileShareEncryptionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -52,6 +54,9 @@ import javax.annotation.Nullable;
  *             .shareType("STANDARD_1AZ")
  *             .shareNetworkId("<share network id>")
  *             .description("My NFS share")
+ *             .encryption(CloudStorageFileShareEncryptionArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -152,6 +157,20 @@ public class CloudStorageFileShare extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * 
+     */
+    @Export(name="encryption", refs={CloudStorageFileShareEncryption.class}, tree="[0]")
+    private Output<CloudStorageFileShareEncryption> encryption;
+
+    /**
+     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * 
+     */
+    public Output<CloudStorageFileShareEncryption> encryption() {
+        return this.encryption;
     }
     /**
      * File share name.

@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.inputs;
 
+import com.ovhcloud.pulumi.ovh.inputs.CloudStorageBlockVolumeCurrentStateEncryptionKmsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -30,10 +31,26 @@ public final class CloudStorageBlockVolumeCurrentStateEncryptionArgs extends com
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     * 
+     */
+    @Import(name="kms")
+    private @Nullable Output<CloudStorageBlockVolumeCurrentStateEncryptionKmsArgs> kms;
+
+    /**
+     * @return Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     * 
+     */
+    public Optional<Output<CloudStorageBlockVolumeCurrentStateEncryptionKmsArgs>> kms() {
+        return Optional.ofNullable(this.kms);
+    }
+
     private CloudStorageBlockVolumeCurrentStateEncryptionArgs() {}
 
     private CloudStorageBlockVolumeCurrentStateEncryptionArgs(CloudStorageBlockVolumeCurrentStateEncryptionArgs $) {
         this.enabled = $.enabled;
+        this.kms = $.kms;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class CloudStorageBlockVolumeCurrentStateEncryptionArgs extends com
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param kms Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kms(@Nullable Output<CloudStorageBlockVolumeCurrentStateEncryptionKmsArgs> kms) {
+            $.kms = kms;
+            return this;
+        }
+
+        /**
+         * @param kms Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kms(CloudStorageBlockVolumeCurrentStateEncryptionKmsArgs kms) {
+            return kms(Output.of(kms));
         }
 
         public CloudStorageBlockVolumeCurrentStateEncryptionArgs build() {

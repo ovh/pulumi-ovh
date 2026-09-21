@@ -29,6 +29,7 @@ class CloudStorageFileShareArgs:
                  size: pulumi.Input[_builtins.int],
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudStorageFileShare resource.
@@ -40,6 +41,7 @@ class CloudStorageFileShareArgs:
         :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: File share description.
+        :param pulumi.Input['CloudStorageFileShareEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         """
         pulumi.set(__self__, "protocol", protocol)
@@ -52,6 +54,8 @@ class CloudStorageFileShareArgs:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -153,6 +157,18 @@ class CloudStorageFileShareArgs:
 
     @_builtins.property
     @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']]:
+        """
+        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         File share name.
@@ -172,6 +188,7 @@ class _CloudStorageFileShareState:
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  current_state: Optional[pulumi.Input['CloudStorageFileShareCurrentStateArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -188,6 +205,7 @@ class _CloudStorageFileShareState:
         :param pulumi.Input[_builtins.str] created_at: Creation date of the file share.
         :param pulumi.Input['CloudStorageFileShareCurrentStateArgs'] current_state: Current state of the file storage share:
         :param pulumi.Input[_builtins.str] description: File share description.
+        :param pulumi.Input['CloudStorageFileShareEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
@@ -208,6 +226,8 @@ class _CloudStorageFileShareState:
             pulumi.set(__self__, "current_state", current_state)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protocol is not None:
@@ -286,6 +306,18 @@ class _CloudStorageFileShareState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']]:
+        """
+        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter
@@ -404,6 +436,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -429,7 +462,10 @@ class CloudStorageFileShare(pulumi.CustomResource):
             protocol="NFS",
             share_type="STANDARD_1AZ",
             share_network_id="<share network id>",
-            description="My NFS share")
+            description="My NFS share",
+            encryption={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -456,6 +492,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: File share description.
+        :param pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
@@ -487,7 +524,10 @@ class CloudStorageFileShare(pulumi.CustomResource):
             protocol="NFS",
             share_type="STANDARD_1AZ",
             share_network_id="<share network id>",
-            description="My NFS share")
+            description="My NFS share",
+            encryption={
+                "enabled": True,
+            })
         ```
 
         ## Import
@@ -527,6 +567,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption: Optional[pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  protocol: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -545,6 +586,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
 
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
+            __props__.__dict__["encryption"] = encryption
             __props__.__dict__["name"] = name
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
@@ -584,6 +626,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             current_state: Optional[pulumi.Input[Union['CloudStorageFileShareCurrentStateArgs', 'CloudStorageFileShareCurrentStateArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            encryption: Optional[pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             protocol: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -605,6 +648,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: Creation date of the file share.
         :param pulumi.Input[Union['CloudStorageFileShareCurrentStateArgs', 'CloudStorageFileShareCurrentStateArgsDict']] current_state: Current state of the file storage share:
         :param pulumi.Input[_builtins.str] description: File share description.
+        :param pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
@@ -624,6 +668,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["current_state"] = current_state
         __props__.__dict__["description"] = description
+        __props__.__dict__["encryption"] = encryption
         __props__.__dict__["name"] = name
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region"] = region
@@ -674,6 +719,14 @@ class CloudStorageFileShare(pulumi.CustomResource):
         File share description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Output['outputs.CloudStorageFileShareEncryption']:
+        """
+        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "encryption")
 
     @_builtins.property
     @pulumi.getter

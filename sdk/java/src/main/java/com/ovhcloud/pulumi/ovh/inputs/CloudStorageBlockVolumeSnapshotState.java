@@ -17,6 +17,21 @@ public final class CloudStorageBlockVolumeSnapshotState extends com.pulumi.resou
     public static final CloudStorageBlockVolumeSnapshotState Empty = new CloudStorageBlockVolumeSnapshotState();
 
     /**
+     * The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     * 
+     */
+    @Import(name="availabilityZone")
+    private @Nullable Output<String> availabilityZone;
+
+    /**
+     * @return The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     * 
+     */
+    public Optional<Output<String>> availabilityZone() {
+        return Optional.ofNullable(this.availabilityZone);
+    }
+
+    /**
      * Computed hash representing the current target specification value.
      * 
      */
@@ -169,6 +184,7 @@ public final class CloudStorageBlockVolumeSnapshotState extends com.pulumi.resou
     private CloudStorageBlockVolumeSnapshotState() {}
 
     private CloudStorageBlockVolumeSnapshotState(CloudStorageBlockVolumeSnapshotState $) {
+        this.availabilityZone = $.availabilityZone;
         this.checksum = $.checksum;
         this.createdAt = $.createdAt;
         this.currentState = $.currentState;
@@ -197,6 +213,27 @@ public final class CloudStorageBlockVolumeSnapshotState extends com.pulumi.resou
 
         public Builder(CloudStorageBlockVolumeSnapshotState defaults) {
             $ = new CloudStorageBlockVolumeSnapshotState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param availabilityZone The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(@Nullable Output<String> availabilityZone) {
+            $.availabilityZone = availabilityZone;
+            return this;
+        }
+
+        /**
+         * @param availabilityZone The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityZone(String availabilityZone) {
+            return availabilityZone(Output.of(availabilityZone));
         }
 
         /**

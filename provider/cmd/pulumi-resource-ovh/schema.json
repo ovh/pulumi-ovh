@@ -99,6 +99,13 @@
                 "type": "string",
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
             },
+            "httpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "Extra HTTP headers to add to every request made to the OVH API\n"
+            },
             "ignoreInitError": {
                 "type": "boolean",
                 "description": "If set to true, initialization errors (like invalid OAuth credentials) will be ignored\n"
@@ -11609,6 +11616,89 @@
                 "id"
             ]
         },
+        "ovh:index/CloudInstanceSnapshotCurrentState:CloudInstanceSnapshotCurrentState": {
+            "properties": {
+                "instance": {
+                    "$ref": "#/types/ovh:index/CloudInstanceSnapshotCurrentStateInstance:CloudInstanceSnapshotCurrentStateInstance",
+                    "description": "Source instance reference:\n"
+                },
+                "location": {
+                    "$ref": "#/types/ovh:index/CloudInstanceSnapshotCurrentStateLocation:CloudInstanceSnapshotCurrentStateLocation",
+                    "description": "Current location:\n"
+                },
+                "minDisk": {
+                    "type": "integer",
+                    "description": "Minimum disk size in GB required to boot.\n"
+                },
+                "minRam": {
+                    "type": "integer",
+                    "description": "Minimum RAM in MB required to boot.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Snapshot name. Changing this value recreates the resource.\n\n\u003e All attributes are immutable: the resource does not support in-place updates, any change requires replacement.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Image size in bytes.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Image status in the backend.\n"
+                },
+                "visibility": {
+                    "type": "string",
+                    "description": "Image visibility.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "instance",
+                        "location",
+                        "minDisk",
+                        "minRam",
+                        "name",
+                        "size",
+                        "status",
+                        "visibility"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudInstanceSnapshotCurrentStateInstance:CloudInstanceSnapshotCurrentStateInstance": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Instance unique identifier.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudInstanceSnapshotCurrentStateLocation:CloudInstanceSnapshotCurrentStateLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region where the snapshot will be created. Changing this value recreates the resource.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "region"
+                    ]
+                }
+            }
+        },
         "ovh:index/CloudKeyManagerContainerCurrentState:CloudKeyManagerContainerCurrentState": {
             "properties": {
                 "containerRef": {
@@ -13817,7 +13907,7 @@
                 },
                 "encryption": {
                     "$ref": "#/types/ovh:index/CloudStorageBlockVolumeCurrentStateEncryption:CloudStorageBlockVolumeCurrentStateEncryption",
-                    "description": "Encryption configuration for the volume.\n"
+                    "description": "Encryption configuration for the volume. **Changing this value recreates the resource.**\n"
                 },
                 "location": {
                     "$ref": "#/types/ovh:index/CloudStorageBlockVolumeCurrentStateLocation:CloudStorageBlockVolumeCurrentStateLocation",
@@ -13877,13 +13967,39 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the volume is encrypted at rest with LUKS.\n"
+                },
+                "kms": {
+                    "$ref": "#/types/ovh:index/CloudStorageBlockVolumeCurrentStateEncryptionKms:CloudStorageBlockVolumeCurrentStateEncryptionKms",
+                    "description": "Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "enabled"
+                        "enabled",
+                        "kms"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageBlockVolumeCurrentStateEncryptionKms:CloudStorageBlockVolumeCurrentStateEncryptionKms": {
+            "properties": {
+                "domainId": {
+                    "type": "string",
+                    "description": "OKMS domain ID owning the service key.\n"
+                },
+                "serviceKeyId": {
+                    "type": "string",
+                    "description": "OKMS service key ID used to encrypt the volume.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "domainId",
+                        "serviceKeyId"
                     ]
                 }
             }
@@ -13914,6 +14030,10 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the volume is encrypted at rest with LUKS.\n"
+                },
+                "kms": {
+                    "$ref": "#/types/ovh:index/CloudStorageBlockVolumeEncryptionKms:CloudStorageBlockVolumeEncryptionKms",
+                    "description": "Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**\n"
                 }
             },
             "type": "object",
@@ -13924,6 +14044,19 @@
                     ]
                 }
             }
+        },
+        "ovh:index/CloudStorageBlockVolumeEncryptionKms:CloudStorageBlockVolumeEncryptionKms": {
+            "properties": {
+                "domainId": {
+                    "type": "string",
+                    "description": "OKMS domain ID owning the service key.\n"
+                },
+                "serviceKeyId": {
+                    "type": "string",
+                    "description": "OKMS service key ID used to encrypt the volume.\n"
+                }
+            },
+            "type": "object"
         },
         "ovh:index/CloudStorageBlockVolumeSnapshotCurrentState:CloudStorageBlockVolumeSnapshotCurrentState": {
             "properties": {
@@ -13963,6 +14096,10 @@
         },
         "ovh:index/CloudStorageBlockVolumeSnapshotCurrentStateLocation:CloudStorageBlockVolumeSnapshotCurrentStateLocation": {
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region where the snapshot will be created. Changing this value recreates the resource.\n"
@@ -13972,6 +14109,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "availabilityZone",
                         "region"
                     ]
                 }
@@ -14021,6 +14159,10 @@
                     "type": "string",
                     "description": "File share description.\n"
                 },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/CloudStorageFileShareCurrentStateEncryption:CloudStorageFileShareCurrentStateEncryption",
+                    "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
+                },
                 "exportLocations": {
                     "type": "array",
                     "items": {
@@ -14059,6 +14201,7 @@
                     "requiredOutputs": [
                         "capabilities",
                         "description",
+                        "encryption",
                         "exportLocations",
                         "location",
                         "name",
@@ -14092,6 +14235,22 @@
                         "enabled",
                         "name",
                         "reason"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageFileShareCurrentStateEncryption:CloudStorageFileShareCurrentStateEncryption": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the file share is encrypted at rest with LUKS.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
                     ]
                 }
             }
@@ -14134,6 +14293,22 @@
                     "requiredOutputs": [
                         "availabilityZone",
                         "region"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the file share is encrypted at rest with LUKS.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled"
                     ]
                 }
             }
@@ -17200,6 +17375,92 @@
             "required": [
                 "accessLevel",
                 "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudInstanceSnapshotLocation:getCloudInstanceSnapshotLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudInstanceSnapshotsSnapshot:getCloudInstanceSnapshotsSnapshot": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Snapshot ID.\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of the instance whose snapshots to list.\n"
+                },
+                "location": {
+                    "$ref": "#/types/ovh:index/getCloudInstanceSnapshotsSnapshotLocation:getCloudInstanceSnapshotsSnapshotLocation",
+                    "description": "Location of the snapshot:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Snapshot name.\n"
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`).\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "Image size in bytes.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Image status in the backend.\n"
+                },
+                "visibility": {
+                    "type": "string",
+                    "description": "Image visibility.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "instanceId",
+                "location",
+                "name",
+                "resourceStatus",
+                "size",
+                "status",
+                "visibility"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudInstanceSnapshotsSnapshotLocation:getCloudInstanceSnapshotsSnapshotLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region where the instance snapshots reside.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region"
             ],
             "language": {
                 "nodejs": {
@@ -21562,11 +21823,38 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the volume is encrypted at rest with LUKS.\n"
+                },
+                "kms": {
+                    "$ref": "#/types/ovh:index/getCloudStorageBlockVolumeEncryptionKms:getCloudStorageBlockVolumeEncryptionKms",
+                    "description": "Customer-managed key (CMK) reference used to encrypt the volume:\n"
                 }
             },
             "type": "object",
             "required": [
-                "enabled"
+                "enabled",
+                "kms"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageBlockVolumeEncryptionKms:getCloudStorageBlockVolumeEncryptionKms": {
+            "properties": {
+                "domainId": {
+                    "type": "string",
+                    "description": "OKMS domain ID owning the service key.\n"
+                },
+                "serviceKeyId": {
+                    "type": "string",
+                    "description": "OKMS service key ID used to encrypt the volume.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domainId",
+                "serviceKeyId"
             ],
             "language": {
                 "nodejs": {
@@ -21593,6 +21881,10 @@
         },
         "ovh:index/getCloudStorageBlockVolumeSnapshotLocation:getCloudStorageBlockVolumeSnapshotLocation": {
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone. Empty in 1AZ regions.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "Region.\n"
@@ -21600,6 +21892,7 @@
             },
             "type": "object",
             "required": [
+                "availabilityZone",
                 "region"
             ],
             "language": {
@@ -21657,6 +21950,10 @@
         },
         "ovh:index/getCloudStorageBlockVolumeSnapshotsSnapshotLocation:getCloudStorageBlockVolumeSnapshotsSnapshotLocation": {
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "Availability zone. Empty in 1AZ regions.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region where the snapshots reside.\n"
@@ -21664,6 +21961,7 @@
             },
             "type": "object",
             "required": [
+                "availabilityZone",
                 "region"
             ],
             "language": {
@@ -21759,11 +22057,38 @@
                 "enabled": {
                     "type": "boolean",
                     "description": "Whether the volume is encrypted at rest with LUKS.\n"
+                },
+                "kms": {
+                    "$ref": "#/types/ovh:index/getCloudStorageBlockVolumesVolumeEncryptionKms:getCloudStorageBlockVolumesVolumeEncryptionKms",
+                    "description": "Customer-managed key (CMK) reference used to encrypt the volume:\n"
                 }
             },
             "type": "object",
             "required": [
-                "enabled"
+                "enabled",
+                "kms"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageBlockVolumesVolumeEncryptionKms:getCloudStorageBlockVolumesVolumeEncryptionKms": {
+            "properties": {
+                "domainId": {
+                    "type": "string",
+                    "description": "OKMS domain ID owning the service key.\n"
+                },
+                "serviceKeyId": {
+                    "type": "string",
+                    "description": "OKMS service key ID used to encrypt the volume.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "domainId",
+                "serviceKeyId"
             ],
             "language": {
                 "nodejs": {
@@ -21917,6 +22242,10 @@
                     "type": "string",
                     "description": "File share description.\n"
                 },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/getCloudStorageFileShareCurrentStateEncryption:getCloudStorageFileShareCurrentStateEncryption",
+                    "description": "Encryption configuration of the file share:\n"
+                },
                 "exportLocations": {
                     "type": "array",
                     "items": {
@@ -21953,6 +22282,7 @@
             "required": [
                 "capabilities",
                 "description",
+                "encryption",
                 "exportLocations",
                 "location",
                 "name",
@@ -21987,6 +22317,23 @@
                 "enabled",
                 "name",
                 "reason"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageFileShareCurrentStateEncryption:getCloudStorageFileShareCurrentStateEncryption": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the capability is enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
@@ -22031,6 +22378,23 @@
             "required": [
                 "availabilityZone",
                 "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageFileShareEncryption:getCloudStorageFileShareEncryption": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the capability is enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
@@ -22482,6 +22846,10 @@
                     "type": "string",
                     "description": "File share description.\n"
                 },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/getCloudStorageFileSharesFileShareEncryption:getCloudStorageFileSharesFileShareEncryption",
+                    "description": "Encryption configuration of the file share:\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "File share ID.\n"
@@ -22525,6 +22893,7 @@
                 "createdAt",
                 "currentState",
                 "description",
+                "encryption",
                 "id",
                 "location",
                 "name",
@@ -22553,6 +22922,10 @@
                 "description": {
                     "type": "string",
                     "description": "File share description.\n"
+                },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/getCloudStorageFileSharesFileShareCurrentStateEncryption:getCloudStorageFileSharesFileShareCurrentStateEncryption",
+                    "description": "Encryption configuration of the file share:\n"
                 },
                 "exportLocations": {
                     "type": "array",
@@ -22590,6 +22963,7 @@
             "required": [
                 "capabilities",
                 "description",
+                "encryption",
                 "exportLocations",
                 "location",
                 "name",
@@ -22624,6 +22998,23 @@
                 "enabled",
                 "name",
                 "reason"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageFileSharesFileShareCurrentStateEncryption:getCloudStorageFileSharesFileShareCurrentStateEncryption": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the capability is enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
@@ -22668,6 +23059,23 @@
             "required": [
                 "availabilityZone",
                 "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageFileSharesFileShareEncryption:getCloudStorageFileSharesFileShareEncryption": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the capability is enabled.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ],
             "language": {
                 "nodejs": {
@@ -24097,6 +24505,13 @@
                 "type": "string",
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
             },
+            "httpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "Extra HTTP headers to add to every request made to the OVH API\n"
+            },
             "ignoreInitError": {
                 "type": "boolean",
                 "description": "If set to true, initialization errors (like invalid OAuth credentials) will be ignored\n"
@@ -24138,6 +24553,13 @@
             "endpoint": {
                 "type": "string",
                 "description": "The OVH API endpoint to target (ex: \"ovh-eu\")\n"
+            },
+            "httpHeaders": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                },
+                "description": "Extra HTTP headers to add to every request made to the OVH API\n"
             },
             "ignoreInitError": {
                 "type": "boolean",
@@ -41597,7 +42019,7 @@
             }
         },
         "ovh:index/cloudInstance:CloudInstance": {
-            "description": "Creates an instance in a public cloud project.\n\n\u003e **WARNING** Changing `image_id` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  instance:\n    type: ovh:CloudInstance\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      sshKeyName: my-ssh-key\n      networks:\n        - auto_assign_public_ip: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Network interfaces\n\nA `networks[]` entry supports four shapes. Entries keep the order they are\nwritten in: the API returns them sorted by network id and the provider\nre-orders them back to the configuration.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  networks:\n    type: ovh:CloudInstance\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-multi-homed-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      networks:\n        - auto_assign_public_ip: true\n        - ip: 203.0.113.10\n        - network_id: \u003cprivate network id\u003e\n          subnet_id: \u003csubnet id\u003e\n        - network_id: \u003cprivate network id\u003e\n          subnet_id: \u003csubnet id\u003e\n          ip: 10.0.0.42\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Private-network-only instance\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  private:\n    type: ovh:CloudNetworkPrivateVrack\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-private-network\n      region: GRA11\n  privateCloudNetworkPrivateVrackSubnet:\n    type: ovh:CloudNetworkPrivateVrackSubnet\n    name: private\n    properties:\n      serviceName: ${private.serviceName}\n      networkId: ${private.id}\n      name: my-subnet\n      cidr: 10.0.0.0/24\n      region: GRA11\n  # No public interface at all: the instance is only reachable from the vRack.\n  # Add an ovh_cloud_gateway on the same subnet to give it egress.\n  privateOnly:\n    type: ovh:CloudInstance\n    name: private_only\n    properties:\n      serviceName: ${private.serviceName}\n      region: GRA11\n      name: my-private-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      networks:\n        - network_id: ${private.id}\n          subnet_id: ${privateCloudNetworkPrivateVrackSubnet.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Boot from volume\n\nOmit `image_id` and pass a bootable volume in `volume_ids`. The instance's\n`current_state.image` stays null for a boot-from-volume instance.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  boot:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-boot-volume\n      size: 50\n      region: GRA11\n      volumeType: HIGH_SPEED_GEN2\n      createFrom:\n        image_id: \u003cimage id\u003e\n  bootFromVolume:\n    type: ovh:CloudInstance\n    name: boot_from_volume\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-boot-from-volume-instance\n      flavorId: \u003cflavor id\u003e\n      volumeIds:\n        - ${boot.id}\n      networks:\n        - auto_assign_public_ip: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Attaching additional block volumes\n\n`volume_ids` is mutable: adding or removing an id attaches or detaches the\nvolume in place, without recreating the instance.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  data:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-data-volume\n      size: 100\n      region: GRA11\n      volumeType: CLASSIC\n  withVolumes:\n    type: ovh:CloudInstance\n    name: with_volumes\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-instance-with-volumes\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      volumeIds:\n        - ${data.id}\n      networks:\n        - auto_assign_public_ip: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Security groups\n\n`security_group_ids` is optional and computed:\n\n* **omitted** — the platform applies the project's `default` security group and\n  writes it into the target spec, so after the first apply `security_group_ids`\n  holds exactly that one group id. Removing the attribute from a configuration\n  that used to set it therefore keeps the groups already attached; it does not\n  detach them.\n* **explicit empty list** (`security_group_ids = []`) — no security group is\n  applied at all. The instance accepts **no inbound traffic**; use it only when\n  the filtering is handled elsewhere.\n* **explicit list of ids** — exactly those groups are applied to every interface.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  web:\n    type: ovh:CloudSecurityGroup\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-web-security-group\n      description: Allow SSH and HTTPS\n      rules:\n        - direction: INGRESS\n          ethernet_type: IPV4\n          protocol: TCP\n          port_range_min: 22\n          port_range_max: 22\n          remote_ip_prefix: 0.0.0.0/0\n          description: SSH\n  filtered:\n    type: ovh:CloudInstance\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-filtered-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      securityGroupIds:\n        - ${web.id}\n      networks:\n        - auto_assign_public_ip: true\n  # No security group at all: the instance accepts no inbound traffic.\n  noFiltering:\n    type: ovh:CloudInstance\n    name: no_filtering\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-unfiltered-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      securityGroupIds: []\n      networks:\n        - auto_assign_public_ip: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Attaching file storage shares\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-share\n      size: 150\n      region: GRA11\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      shareNetworkId: \u003cshare network id\u003e\n  # No ovh_cloud_storage_file_share_acl resource targets this share: the instance\n  # below owns its access rules.\n  withShares:\n    type: ovh:CloudInstance\n    name: with_shares\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-instance-with-shares\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      shares:\n        - id: ${share.id}\n        - id: \u003cread only share id\u003e\n          access_level: READ_ONLY\n      networks:\n        - network_id: \u003cprivate network id\u003e\n          subnet_id: \u003csubnet id\u003e\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Power state\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  # The instance stays provisioned and keeps its disks, ports and IPs, but the\n  # VM is powered off.\n  stopped:\n    type: ovh:CloudInstance\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-stopped-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      powerState: SHUTOFF\n      networks:\n        - auto_assign_public_ip: true\n  # Powered off and released on the hypervisor. Switching power_state back to\n  # ACTIVE unshelves it in place.\n  shelved:\n    type: ovh:CloudInstance\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-shelved-instance\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      powerState: SHELVED\n      networks:\n        - auto_assign_public_ip: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Joining an instance group\n\nGroup membership is only settable here, through the instance's `group_id`. See\n`ovh.CloudInstanceGroup`.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  spread:\n    type: ovh:CloudInstanceGroup\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      name: my-anti-affinity-group\n      policy: ANTI_AFFINITY\n  grouped:\n    type: ovh:CloudInstance\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: ${spread.region}\n      name: my-grouped-instance-${range.value}\n      flavorId: \u003cflavor id\u003e\n      imageId: \u003cimage id\u003e\n      groupId: ${spread.id}\n      networks:\n        - auto_assign_public_ip: true\n    options: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Operational notes\n\n* Create, update and delete poll the API until the instance settles, for up to\n  **60 minutes** each. The resource offers no `timeouts {}` block, so that\n  budget cannot be shortened or extended from the configuration.\n* An update re-reads the instance immediately before issuing the `PUT`, so the\n  `checksum` it sends is the freshest one. This keeps a concurrent server-side\n  change from failing the apply with a `ChecksumMismatch` (HTTP 409).\n* `resource_status = \"ERROR\"` is terminal: polling stops at once and the\n  provider surfaces the summary of the failed task(s) instead of a generic\n  unexpected-state error.\n\n## Import\n\nAn instance in a public cloud project can be imported using the `service_name`\n\nand `instance_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_instance.instance\n\n  id = \"\u003cservice_name\u003e/\u003cinstance_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id\n```\n\n",
+            "description": "\n\n## Import\n\nAn instance in a public cloud project can be imported using the `service_name`\n\nand `instance_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_instance.instance\n\n  id = \"\u003cservice_name\u003e/\u003cinstance_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id\n```\n\nAn imported instance carries no `user_data` in state, since the API never returns\n\nit. If the configuration sets `user_data`, the first apply after the import will\n\ntherefore see a change and **reinstall the instance** (root disk wiped). Import an\n\ninstance whose user data matters with `user_data` absent from the configuration\n\nfirst, then add it only when a rebuild is acceptable.\n\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -41675,6 +42097,10 @@
                 "updatedAt": {
                     "type": "string",
                     "description": "Last modification date of the instance, as an RFC 3339 timestamp.\n"
+                },
+                "userData": {
+                    "type": "string",
+                    "secret": true
                 },
                 "volumeIds": {
                     "type": "array",
@@ -41756,6 +42182,10 @@
                 "sshKeyName": {
                     "type": "string",
                     "description": "Name of the SSH key injected at boot (immutable). Point it at the `name` of an `ovh.CloudSSHKey`. **Changing this value recreates the resource.**\n"
+                },
+                "userData": {
+                    "type": "string",
+                    "secret": true
                 },
                 "volumeIds": {
                     "type": "array",
@@ -41849,6 +42279,10 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "Last modification date of the instance, as an RFC 3339 timestamp.\n"
+                    },
+                    "userData": {
+                        "type": "string",
+                        "secret": true
                     },
                     "volumeIds": {
                         "type": "array",
@@ -41964,6 +42398,122 @@
                     "serviceName": {
                         "type": "string",
                         "description": "Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot": {
+            "description": "Creates an on-demand snapshot of an instance in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst snapshot = new ovh.CloudInstanceSnapshot(\"snapshot\", {\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    region: \"GRA11\",\n    instanceId: \"\u003cinstance id\u003e\",\n    name: \"my-instance-snapshot\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsnapshot = ovh.CloudInstanceSnapshot(\"snapshot\",\n    service_name=\"\u003cPublic cloud project id\u003e\",\n    region=\"GRA11\",\n    instance_id=\"\u003cinstance id\u003e\",\n    name=\"my-instance-snapshot\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshot = new Ovh.CloudInstanceSnapshot(\"snapshot\", new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Region = \"GRA11\",\n        InstanceId = \"\u003cinstance id\u003e\",\n        Name = \"my-instance-snapshot\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudInstanceSnapshot(ctx, \"snapshot\", \u0026ovh.CloudInstanceSnapshotArgs{\n\t\t\tServiceName: pulumi.String(\"\u003cPublic cloud project id\u003e\"),\n\t\t\tRegion:      pulumi.String(\"GRA11\"),\n\t\t\tInstanceId:  pulumi.String(\"\u003cinstance id\u003e\"),\n\t\t\tName:        pulumi.String(\"my-instance-snapshot\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudInstanceSnapshot;\nimport com.ovhcloud.pulumi.ovh.CloudInstanceSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var snapshot = new CloudInstanceSnapshot(\"snapshot\", CloudInstanceSnapshotArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .region(\"GRA11\")\n            .instanceId(\"\u003cinstance id\u003e\")\n            .name(\"my-instance-snapshot\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  snapshot:\n    type: ovh:CloudInstanceSnapshot\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      region: GRA11\n      instanceId: \u003cinstance id\u003e\n      name: my-instance-snapshot\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn instance snapshot can be imported using the `service_name` and the `id` of the snapshot, separated by \"/\":\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot snapshot service_name/snapshot_id\n```\n\n",
+            "properties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "Computed hash representing the current target specification value.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation date of the snapshot.\n"
+                },
+                "currentState": {
+                    "$ref": "#/types/ovh:index/CloudInstanceSnapshotCurrentState:CloudInstanceSnapshotCurrentState",
+                    "description": "Current state of the instance snapshot:\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of the instance to snapshot. Changing this value recreates the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Snapshot name. Changing this value recreates the resource.\n\n\u003e All attributes are immutable: the resource does not support in-place updates, any change requires replacement.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region where the snapshot will be created. Changing this value recreates the resource.\n"
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`).\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name of the resource representing the id of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. Changing this value recreates the resource.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Last update date of the snapshot.\n"
+                }
+            },
+            "required": [
+                "checksum",
+                "createdAt",
+                "currentState",
+                "instanceId",
+                "name",
+                "region",
+                "resourceStatus",
+                "serviceName",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of the instance to snapshot. Changing this value recreates the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Snapshot name. Changing this value recreates the resource.\n\n\u003e All attributes are immutable: the resource does not support in-place updates, any change requires replacement.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region where the snapshot will be created. Changing this value recreates the resource.\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name of the resource representing the id of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. Changing this value recreates the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "instanceId",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CloudInstanceSnapshot resources.\n",
+                "properties": {
+                    "checksum": {
+                        "type": "string",
+                        "description": "Computed hash representing the current target specification value.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Creation date of the snapshot.\n"
+                    },
+                    "currentState": {
+                        "$ref": "#/types/ovh:index/CloudInstanceSnapshotCurrentState:CloudInstanceSnapshotCurrentState",
+                        "description": "Current state of the instance snapshot:\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the instance to snapshot. Changing this value recreates the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Snapshot name. Changing this value recreates the resource.\n\n\u003e All attributes are immutable: the resource does not support in-place updates, any change requires replacement.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region where the snapshot will be created. Changing this value recreates the resource.\n"
+                    },
+                    "resourceStatus": {
+                        "type": "string",
+                        "description": "Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`).\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Service name of the resource representing the id of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. Changing this value recreates the resource.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Last update date of the snapshot.\n"
                     }
                 },
                 "type": "object"
@@ -44293,7 +44843,7 @@
             }
         },
         "ovh:index/cloudStorageBlockVolume:CloudStorageBlockVolume": {
-            "description": "Creates a block storage volume in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst volume = new ovh.CloudStorageBlockVolume(\"volume\", {\n    serviceName: \"xxxxxxxxxx\",\n    name: \"my-volume\",\n    size: 10,\n    region: \"GRA1\",\n    volumeType: \"CLASSIC\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvolume = ovh.CloudStorageBlockVolume(\"volume\",\n    service_name=\"xxxxxxxxxx\",\n    name=\"my-volume\",\n    size=10,\n    region=\"GRA1\",\n    volume_type=\"CLASSIC\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume = new Ovh.CloudStorageBlockVolume(\"volume\", new()\n    {\n        ServiceName = \"xxxxxxxxxx\",\n        Name = \"my-volume\",\n        Size = 10,\n        Region = \"GRA1\",\n        VolumeType = \"CLASSIC\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageBlockVolume(ctx, \"volume\", \u0026ovh.CloudStorageBlockVolumeArgs{\n\t\t\tServiceName: pulumi.String(\"xxxxxxxxxx\"),\n\t\t\tName:        pulumi.String(\"my-volume\"),\n\t\t\tSize:        pulumi.Int(10),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tVolumeType:  pulumi.String(\"CLASSIC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolume;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume = new CloudStorageBlockVolume(\"volume\", CloudStorageBlockVolumeArgs.builder()\n            .serviceName(\"xxxxxxxxxx\")\n            .name(\"my-volume\")\n            .size(10)\n            .region(\"GRA1\")\n            .volumeType(\"CLASSIC\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-volume\n      size: 10\n      region: GRA1\n      volumeType: CLASSIC\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create from backup\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  restored:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-restored-volume\n      size: 10\n      region: GRA1\n      volumeType: CLASSIC\n      createFrom:\n        backup_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_block_volume.volume\n\n  id = \"\u003cservice_name\u003e/\u003cvolume_id\u003e\"\n\n}\n\nbash\n\n$ pulumi preview -generate-config-out=volume.tf\n\n$ pulumi up\n\n",
+            "description": "Creates a block storage volume in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst volume = new ovh.CloudStorageBlockVolume(\"volume\", {\n    serviceName: \"xxxxxxxxxx\",\n    name: \"my-volume\",\n    size: 10,\n    region: \"GRA1\",\n    volumeType: \"CLASSIC\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nvolume = ovh.CloudStorageBlockVolume(\"volume\",\n    service_name=\"xxxxxxxxxx\",\n    name=\"my-volume\",\n    size=10,\n    region=\"GRA1\",\n    volume_type=\"CLASSIC\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var volume = new Ovh.CloudStorageBlockVolume(\"volume\", new()\n    {\n        ServiceName = \"xxxxxxxxxx\",\n        Name = \"my-volume\",\n        Size = 10,\n        Region = \"GRA1\",\n        VolumeType = \"CLASSIC\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageBlockVolume(ctx, \"volume\", \u0026ovh.CloudStorageBlockVolumeArgs{\n\t\t\tServiceName: pulumi.String(\"xxxxxxxxxx\"),\n\t\t\tName:        pulumi.String(\"my-volume\"),\n\t\t\tSize:        pulumi.Int(10),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tVolumeType:  pulumi.String(\"CLASSIC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolume;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var volume = new CloudStorageBlockVolume(\"volume\", CloudStorageBlockVolumeArgs.builder()\n            .serviceName(\"xxxxxxxxxx\")\n            .name(\"my-volume\")\n            .size(10)\n            .region(\"GRA1\")\n            .volumeType(\"CLASSIC\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  volume:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-volume\n      size: 10\n      region: GRA1\n      volumeType: CLASSIC\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create from backup\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  restored:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-restored-volume\n      size: 10\n      region: GRA1\n      volumeType: CLASSIC\n      createFrom:\n        backup_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create with a customer-managed key (CMK)\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst cmkVolume = new ovh.CloudStorageBlockVolume(\"cmk_volume\", {\n    serviceName: \"xxxxxxxxxx\",\n    name: \"my-cmk-volume\",\n    size: 10,\n    region: \"GRA1\",\n    volumeType: \"HIGH_SPEED\",\n    encryption: {\n        enabled: true,\n        kms: {\n            domainId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            serviceKeyId: \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\ncmk_volume = ovh.CloudStorageBlockVolume(\"cmk_volume\",\n    service_name=\"xxxxxxxxxx\",\n    name=\"my-cmk-volume\",\n    size=10,\n    region=\"GRA1\",\n    volume_type=\"HIGH_SPEED\",\n    encryption={\n        \"enabled\": True,\n        \"kms\": {\n            \"domain_id\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            \"service_key_id\": \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n        },\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var cmkVolume = new Ovh.CloudStorageBlockVolume(\"cmk_volume\", new()\n    {\n        ServiceName = \"xxxxxxxxxx\",\n        Name = \"my-cmk-volume\",\n        Size = 10,\n        Region = \"GRA1\",\n        VolumeType = \"HIGH_SPEED\",\n        Encryption = new Ovh.Inputs.CloudStorageBlockVolumeEncryptionArgs\n        {\n            Enabled = true,\n            Kms = new Ovh.Inputs.CloudStorageBlockVolumeEncryptionKmsArgs\n            {\n                DomainId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n                ServiceKeyId = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageBlockVolume(ctx, \"cmk_volume\", \u0026ovh.CloudStorageBlockVolumeArgs{\n\t\t\tServiceName: pulumi.String(\"xxxxxxxxxx\"),\n\t\t\tName:        pulumi.String(\"my-cmk-volume\"),\n\t\t\tSize:        pulumi.Int(10),\n\t\t\tRegion:      pulumi.String(\"GRA1\"),\n\t\t\tVolumeType:  pulumi.String(\"HIGH_SPEED\"),\n\t\t\tEncryption: \u0026ovh.CloudStorageBlockVolumeEncryptionArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tKms: \u0026ovh.CloudStorageBlockVolumeEncryptionKmsArgs{\n\t\t\t\t\tDomainId:     pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\t\t\tServiceKeyId: pulumi.String(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolume;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeArgs;\nimport com.pulumi.ovh.inputs.CloudStorageBlockVolumeEncryptionArgs;\nimport com.pulumi.ovh.inputs.CloudStorageBlockVolumeEncryptionKmsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var cmkVolume = new CloudStorageBlockVolume(\"cmkVolume\", CloudStorageBlockVolumeArgs.builder()\n            .serviceName(\"xxxxxxxxxx\")\n            .name(\"my-cmk-volume\")\n            .size(10)\n            .region(\"GRA1\")\n            .volumeType(\"HIGH_SPEED\")\n            .encryption(CloudStorageBlockVolumeEncryptionArgs.builder()\n                .enabled(true)\n                .kms(CloudStorageBlockVolumeEncryptionKmsArgs.builder()\n                    .domainId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n                    .serviceKeyId(\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  cmkVolume:\n    type: ovh:CloudStorageBlockVolume\n    name: cmk_volume\n    properties:\n      serviceName: xxxxxxxxxx\n      name: my-cmk-volume\n      size: 10\n      region: GRA1\n      volumeType: HIGH_SPEED\n      encryption:\n        enabled: true\n        kms:\n          domainId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n          serviceKeyId: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_block_volume.volume\n\n  id = \"\u003cservice_name\u003e/\u003cvolume_id\u003e\"\n\n}\n\nbash\n\n$ pulumi preview -generate-config-out=volume.tf\n\n$ pulumi up\n\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -44317,7 +44867,7 @@
                 },
                 "encryption": {
                     "$ref": "#/types/ovh:index/CloudStorageBlockVolumeEncryption:CloudStorageBlockVolumeEncryption",
-                    "description": "Encryption configuration for the volume.\n"
+                    "description": "Encryption configuration for the volume. **Changing this value recreates the resource.**\n"
                 },
                 "name": {
                     "type": "string",
@@ -44373,7 +44923,7 @@
                 },
                 "encryption": {
                     "$ref": "#/types/ovh:index/CloudStorageBlockVolumeEncryption:CloudStorageBlockVolumeEncryption",
-                    "description": "Encryption configuration for the volume.\n"
+                    "description": "Encryption configuration for the volume. **Changing this value recreates the resource.**\n"
                 },
                 "name": {
                     "type": "string",
@@ -44425,7 +44975,7 @@
                     },
                     "encryption": {
                         "$ref": "#/types/ovh:index/CloudStorageBlockVolumeEncryption:CloudStorageBlockVolumeEncryption",
-                        "description": "Encryption configuration for the volume.\n"
+                        "description": "Encryption configuration for the volume. **Changing this value recreates the resource.**\n"
                     },
                     "name": {
                         "type": "string",
@@ -44591,6 +45141,10 @@
         "ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot": {
             "description": "Creates a block storage volume snapshot in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst snapshot = new ovh.CloudStorageBlockVolumeSnapshot(\"snapshot\", {\n    serviceName: \"xxxxxxxxx\",\n    name: \"my-snapshot\",\n    description: \"Snapshot before upgrade\",\n    region: \"GRA9\",\n    volumeId: volume.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsnapshot = ovh.CloudStorageBlockVolumeSnapshot(\"snapshot\",\n    service_name=\"xxxxxxxxx\",\n    name=\"my-snapshot\",\n    description=\"Snapshot before upgrade\",\n    region=\"GRA9\",\n    volume_id=volume[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshot = new Ovh.CloudStorageBlockVolumeSnapshot(\"snapshot\", new()\n    {\n        ServiceName = \"xxxxxxxxx\",\n        Name = \"my-snapshot\",\n        Description = \"Snapshot before upgrade\",\n        Region = \"GRA9\",\n        VolumeId = volume.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageBlockVolumeSnapshot(ctx, \"snapshot\", \u0026ovh.CloudStorageBlockVolumeSnapshotArgs{\n\t\t\tServiceName: pulumi.String(\"xxxxxxxxx\"),\n\t\t\tName:        pulumi.String(\"my-snapshot\"),\n\t\t\tDescription: pulumi.String(\"Snapshot before upgrade\"),\n\t\t\tRegion:      pulumi.String(\"GRA9\"),\n\t\t\tVolumeId:    pulumi.Any(volume.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeSnapshot;\nimport com.ovhcloud.pulumi.ovh.CloudStorageBlockVolumeSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var snapshot = new CloudStorageBlockVolumeSnapshot(\"snapshot\", CloudStorageBlockVolumeSnapshotArgs.builder()\n            .serviceName(\"xxxxxxxxx\")\n            .name(\"my-snapshot\")\n            .description(\"Snapshot before upgrade\")\n            .region(\"GRA9\")\n            .volumeId(volume.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  snapshot:\n    type: ovh:CloudStorageBlockVolumeSnapshot\n    properties:\n      serviceName: xxxxxxxxx\n      name: my-snapshot\n      description: Snapshot before upgrade\n      region: GRA9\n      volumeId: ${volume.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Restore a volume from a snapshot\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  restored:\n    type: ovh:CloudStorageBlockVolume\n    properties:\n      serviceName: xxxxxxxxx\n      name: restored-volume\n      size: 10\n      region: GRA9\n      volumeType: CLASSIC\n      createFrom:\n        snapshot_id: ${snapshot.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA block storage volume snapshot can be imported using the `service_name` and `id` separated by a `/`:\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot snapshot service_name/snapshot_id\n```\n\n",
             "properties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.\n"
+                },
                 "checksum": {
                     "type": "string",
                     "description": "Computed hash representing the current target specification value.\n"
@@ -44633,6 +45187,7 @@
                 }
             },
             "required": [
+                "availabilityZone",
                 "checksum",
                 "createdAt",
                 "currentState",
@@ -44645,6 +45200,10 @@
                 "volumeId"
             ],
             "inputProperties": {
+                "availabilityZone": {
+                    "type": "string",
+                    "description": "The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "A description for the snapshot.\n"
@@ -44673,6 +45232,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudStorageBlockVolumeSnapshot resources.\n",
                 "properties": {
+                    "availabilityZone": {
+                        "type": "string",
+                        "description": "The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.\n"
+                    },
                     "checksum": {
                         "type": "string",
                         "description": "Computed hash representing the current target specification value.\n"
@@ -44718,7 +45281,7 @@
             }
         },
         "ovh:index/cloudStorageFileShare:CloudStorageFileShare": {
-            "description": "Creates a file storage share (NFS) in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudStorageFileShare(\"share\", {\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    name: \"my-share\",\n    size: 150,\n    region: \"GRA1\",\n    protocol: \"NFS\",\n    shareType: \"STANDARD_1AZ\",\n    shareNetworkId: \"\u003cshare network id\u003e\",\n    description: \"My NFS share\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudStorageFileShare(\"share\",\n    service_name=\"\u003cPublic cloud project id\u003e\",\n    name=\"my-share\",\n    size=150,\n    region=\"GRA1\",\n    protocol=\"NFS\",\n    share_type=\"STANDARD_1AZ\",\n    share_network_id=\"\u003cshare network id\u003e\",\n    description=\"My NFS share\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudStorageFileShare(\"share\", new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Name = \"my-share\",\n        Size = 150,\n        Region = \"GRA1\",\n        Protocol = \"NFS\",\n        ShareType = \"STANDARD_1AZ\",\n        ShareNetworkId = \"\u003cshare network id\u003e\",\n        Description = \"My NFS share\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageFileShare(ctx, \"share\", \u0026ovh.CloudStorageFileShareArgs{\n\t\t\tServiceName:    pulumi.String(\"\u003cPublic cloud project id\u003e\"),\n\t\t\tName:           pulumi.String(\"my-share\"),\n\t\t\tSize:           pulumi.Int(150),\n\t\t\tRegion:         pulumi.String(\"GRA1\"),\n\t\t\tProtocol:       pulumi.String(\"NFS\"),\n\t\t\tShareType:      pulumi.String(\"STANDARD_1AZ\"),\n\t\t\tShareNetworkId: pulumi.String(\"\u003cshare network id\u003e\"),\n\t\t\tDescription:    pulumi.String(\"My NFS share\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShare;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudStorageFileShare(\"share\", CloudStorageFileShareArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .name(\"my-share\")\n            .size(150)\n            .region(\"GRA1\")\n            .protocol(\"NFS\")\n            .shareType(\"STANDARD_1AZ\")\n            .shareNetworkId(\"\u003cshare network id\u003e\")\n            .description(\"My NFS share\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      shareNetworkId: \u003cshare network id\u003e\n      description: My NFS share\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share.share\n\n  id = \"\u003cservice_name\u003e/\u003cfile_share_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShare:CloudStorageFileShare share service_name/file_share_id\n```\n\n",
+            "description": "Creates a file storage share (NFS) in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudStorageFileShare(\"share\", {\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    name: \"my-share\",\n    size: 150,\n    region: \"GRA1\",\n    protocol: \"NFS\",\n    shareType: \"STANDARD_1AZ\",\n    shareNetworkId: \"\u003cshare network id\u003e\",\n    description: \"My NFS share\",\n    encryption: {\n        enabled: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudStorageFileShare(\"share\",\n    service_name=\"\u003cPublic cloud project id\u003e\",\n    name=\"my-share\",\n    size=150,\n    region=\"GRA1\",\n    protocol=\"NFS\",\n    share_type=\"STANDARD_1AZ\",\n    share_network_id=\"\u003cshare network id\u003e\",\n    description=\"My NFS share\",\n    encryption={\n        \"enabled\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudStorageFileShare(\"share\", new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Name = \"my-share\",\n        Size = 150,\n        Region = \"GRA1\",\n        Protocol = \"NFS\",\n        ShareType = \"STANDARD_1AZ\",\n        ShareNetworkId = \"\u003cshare network id\u003e\",\n        Description = \"My NFS share\",\n        Encryption = new Ovh.Inputs.CloudStorageFileShareEncryptionArgs\n        {\n            Enabled = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageFileShare(ctx, \"share\", \u0026ovh.CloudStorageFileShareArgs{\n\t\t\tServiceName:    pulumi.String(\"\u003cPublic cloud project id\u003e\"),\n\t\t\tName:           pulumi.String(\"my-share\"),\n\t\t\tSize:           pulumi.Int(150),\n\t\t\tRegion:         pulumi.String(\"GRA1\"),\n\t\t\tProtocol:       pulumi.String(\"NFS\"),\n\t\t\tShareType:      pulumi.String(\"STANDARD_1AZ\"),\n\t\t\tShareNetworkId: pulumi.String(\"\u003cshare network id\u003e\"),\n\t\t\tDescription:    pulumi.String(\"My NFS share\"),\n\t\t\tEncryption: \u0026ovh.CloudStorageFileShareEncryptionArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShare;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;\nimport com.pulumi.ovh.inputs.CloudStorageFileShareEncryptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudStorageFileShare(\"share\", CloudStorageFileShareArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .name(\"my-share\")\n            .size(150)\n            .region(\"GRA1\")\n            .protocol(\"NFS\")\n            .shareType(\"STANDARD_1AZ\")\n            .shareNetworkId(\"\u003cshare network id\u003e\")\n            .description(\"My NFS share\")\n            .encryption(CloudStorageFileShareEncryptionArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      shareNetworkId: \u003cshare network id\u003e\n      description: My NFS share\n      encryption:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share.share\n\n  id = \"\u003cservice_name\u003e/\u003cfile_share_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShare:CloudStorageFileShare share service_name/file_share_id\n```\n\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -44739,6 +45302,10 @@
                 "description": {
                     "type": "string",
                     "description": "File share description.\n"
+                },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption",
+                    "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
                 },
                 "name": {
                     "type": "string",
@@ -44783,6 +45350,7 @@
                 "createdAt",
                 "currentState",
                 "description",
+                "encryption",
                 "name",
                 "protocol",
                 "region",
@@ -44801,6 +45369,10 @@
                 "description": {
                     "type": "string",
                     "description": "File share description.\n"
+                },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption",
+                    "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
                 },
                 "name": {
                     "type": "string",
@@ -44861,6 +45433,10 @@
                     "description": {
                         "type": "string",
                         "description": "File share description.\n"
+                    },
+                    "encryption": {
+                        "$ref": "#/types/ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption",
+                        "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
                     },
                     "name": {
                         "type": "string",
@@ -45635,6 +46211,60 @@
                     "size": {
                         "type": "number",
                         "description": "Size of the email account in bytes.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork": {
+            "description": "Allow or deny the OVHcloud webhosting network to connect to your private database.\n\nA private database has this access enabled, so `enabled = true` matches the state of a brand new\ninstance and does nothing. Destroying the resource restores that default rather than leaving the\naccess closed.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst network = new ovh.HostingPrivatedatabaseWebhostingNetwork(\"network\", {\n    serviceName: \"XXXXXX\",\n    enabled: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nnetwork = ovh.HostingPrivatedatabaseWebhostingNetwork(\"network\",\n    service_name=\"XXXXXX\",\n    enabled=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var network = new Ovh.HostingPrivatedatabaseWebhostingNetwork(\"network\", new()\n    {\n        ServiceName = \"XXXXXX\",\n        Enabled = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewHostingPrivatedatabaseWebhostingNetwork(ctx, \"network\", \u0026ovh.HostingPrivatedatabaseWebhostingNetworkArgs{\n\t\t\tServiceName: pulumi.String(\"XXXXXX\"),\n\t\t\tEnabled:     pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.HostingPrivatedatabaseWebhostingNetwork;\nimport com.ovhcloud.pulumi.ovh.HostingPrivatedatabaseWebhostingNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var network = new HostingPrivatedatabaseWebhostingNetwork(\"network\", HostingPrivatedatabaseWebhostingNetworkArgs.builder()\n            .serviceName(\"XXXXXX\")\n            .enabled(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  network:\n    type: ovh:HostingPrivatedatabaseWebhostingNetwork\n    properties:\n      serviceName: XXXXXX\n      enabled: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nThe webhosting network access can be imported using the `service_name`. E.g.,\n\n```sh\n$ pulumi import ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork network service_name\n```\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Allow the OVHcloud webhosting network to connect to the private database. Values can be `true` or `false`\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your private database.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Webhosting network status (`disabled`, `disabling`, `enabled` or `enabling`)\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "serviceName",
+                "status"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Allow the OVHcloud webhosting network to connect to the private database. Values can be `true` or `false`\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "The internal name of your private database.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "serviceName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HostingPrivatedatabaseWebhostingNetwork resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Allow the OVHcloud webhosting network to connect to the private database. Values can be `true` or `false`\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The internal name of your private database.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Webhosting network status (`disabled`, `disabling`, `enabled` or `enabling`)\n"
                     }
                 },
                 "type": "object"
@@ -57761,6 +58391,149 @@
                 "type": "object"
             }
         },
+        "ovh:index/getCloudInstanceSnapshot:getCloudInstanceSnapshot": {
+            "description": "Use this data source to retrieve information about an instance snapshot in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst snapshot = ovh.getCloudInstanceSnapshot({\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    id: \"\u003csnapshot id\u003e\",\n});\nexport const snapshotStatus = snapshot.then(snapshot =\u003e snapshot.resourceStatus);\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsnapshot = ovh.get_cloud_instance_snapshot(service_name=\"\u003cPublic cloud project id\u003e\",\n    id=\"\u003csnapshot id\u003e\")\npulumi.export(\"snapshotStatus\", snapshot.resource_status)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshot = Ovh.GetCloudInstanceSnapshot.Invoke(new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Id = \"\u003csnapshot id\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"snapshotStatus\"] = snapshot.Apply(getCloudInstanceSnapshotResult =\u003e getCloudInstanceSnapshotResult.ResourceStatus),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsnapshot, err := ovh.LookupCloudInstanceSnapshot(ctx, \u0026ovh.LookupCloudInstanceSnapshotArgs{\n\t\t\tServiceName: \"\u003cPublic cloud project id\u003e\",\n\t\t\tId:          \"\u003csnapshot id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"snapshotStatus\", snapshot.ResourceStatus)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetCloudInstanceSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var snapshot = OvhFunctions.getCloudInstanceSnapshot(GetCloudInstanceSnapshotArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .id(\"\u003csnapshot id\u003e\")\n            .build());\n\n        ctx.export(\"snapshotStatus\", snapshot.resourceStatus());\n    }\n}\n```\n```yaml\nvariables:\n  snapshot:\n    fn::invoke:\n      function: ovh:getCloudInstanceSnapshot\n      arguments:\n        serviceName: \u003cPublic cloud project id\u003e\n        id: \u003csnapshot id\u003e\noutputs:\n  snapshotStatus: ${snapshot.resourceStatus}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCloudInstanceSnapshot.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Snapshot ID.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Service name of the resource representing the id of the cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCloudInstanceSnapshot.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "description": "ID of the snapshotted instance.\n",
+                        "type": "string"
+                    },
+                    "location": {
+                        "$ref": "#/types/ovh:index/getCloudInstanceSnapshotLocation:getCloudInstanceSnapshotLocation",
+                        "description": "Location of the snapshot:\n"
+                    },
+                    "minDisk": {
+                        "description": "Minimum disk size in GB required to boot.\n",
+                        "type": "integer"
+                    },
+                    "minRam": {
+                        "description": "Minimum RAM in MB required to boot.\n",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Snapshot name.\n",
+                        "type": "string"
+                    },
+                    "resourceStatus": {
+                        "description": "Snapshot readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`).\n",
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "description": "Image size in bytes.\n",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "Image status in the backend.\n",
+                        "type": "string"
+                    },
+                    "visibility": {
+                        "description": "Image visibility.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "instanceId",
+                    "location",
+                    "minDisk",
+                    "minRam",
+                    "name",
+                    "resourceStatus",
+                    "serviceName",
+                    "size",
+                    "status",
+                    "visibility"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getCloudInstanceSnapshots:getCloudInstanceSnapshots": {
+            "description": "Use this data source to list the snapshots of an instance in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst snapshots = ovh.getCloudInstanceSnapshots({\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    region: \"GRA11\",\n    instanceId: \"\u003cinstance id\u003e\",\n});\nexport const snapshotIds = snapshots.then(snapshots =\u003e .map(snapshot =\u003e (snapshot.id)));\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nsnapshots = ovh.get_cloud_instance_snapshots(service_name=\"\u003cPublic cloud project id\u003e\",\n    region=\"GRA11\",\n    instance_id=\"\u003cinstance id\u003e\")\npulumi.export(\"snapshotIds\", [snapshot.id for snapshot in snapshots.snapshots])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var snapshots = Ovh.GetCloudInstanceSnapshots.Invoke(new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Region = \"GRA11\",\n        InstanceId = \"\u003cinstance id\u003e\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"snapshotIds\"] = .Select(snapshot =\u003e \n        {\n            return snapshot.Id;\n        }).ToList(),\n    };\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCloudInstanceSnapshots.\n",
+                "properties": {
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the instance whose snapshots to list.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region where the instance snapshots reside.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Service name of the resource representing the id of the cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instanceId",
+                    "region",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCloudInstanceSnapshots.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "description": "ID of the snapshotted instance.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "Region.\n",
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "snapshots": {
+                        "description": "List of snapshots for the instance:\n",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getCloudInstanceSnapshotsSnapshot:getCloudInstanceSnapshotsSnapshot"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "instanceId",
+                    "region",
+                    "serviceName",
+                    "snapshots",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "ovh:index/getCloudInstances:getCloudInstances": {
             "description": "Use this data source to list the instances of a public cloud project.\n\n\u003e **NOTE** `current_state.shares` is not populated by the list endpoint. Use the `ovh.CloudInstance` data source to retrieve the shares attached to a specific instance.\n\n",
             "inputs": {
@@ -60225,6 +60998,10 @@
                         "description": "File share description.\n",
                         "type": "string"
                     },
+                    "encryption": {
+                        "$ref": "#/types/ovh:index/getCloudStorageFileShareEncryption:getCloudStorageFileShareEncryption",
+                        "description": "Encryption configuration of the file share:\n"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -60269,6 +61046,7 @@
                     "createdAt",
                     "currentState",
                     "description",
+                    "encryption",
                     "id",
                     "location",
                     "name",

@@ -43,6 +43,63 @@ import (
 //	}
 //
 // ```
+//
+// ### Create with a customer-managed key (CMK)
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := ovh.NewCloudStorageBlockVolume(ctx, "cmk_volume", &ovh.CloudStorageBlockVolumeArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxx"),
+//				Name:        pulumi.String("my-cmk-volume"),
+//				Size:        pulumi.Int(10),
+//				Region:      pulumi.String("GRA1"),
+//				VolumeType:  pulumi.String("HIGH_SPEED"),
+//				Encryption: &ovh.CloudStorageBlockVolumeEncryptionArgs{
+//					Enabled: pulumi.Bool(true),
+//					Kms: &ovh.CloudStorageBlockVolumeEncryptionKmsArgs{
+//						DomainId:     pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//						ServiceKeyId: pulumi.String("xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// A cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:
+//
+// terraform
+//
+// import {
+//
+//	to = ovh_cloud_storage_block_volume.volume
+//
+//	id = "<service_name>/<volume_id>"
+//
+// }
+//
+// bash
+//
+// $ pulumi preview -generate-config-out=volume.tf
+//
+// $ pulumi up
 type CloudStorageBlockVolume struct {
 	pulumi.CustomResourceState
 
@@ -56,7 +113,7 @@ type CloudStorageBlockVolume struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Current state of the block storage volume:
 	CurrentState CloudStorageBlockVolumeCurrentStateOutput `pulumi:"currentState"`
-	// Encryption configuration for the volume.
+	// Encryption configuration for the volume. **Changing this value recreates the resource.**
 	Encryption CloudStorageBlockVolumeEncryptionOutput `pulumi:"encryption"`
 	// Volume name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -120,7 +177,7 @@ type cloudStorageBlockVolumeState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Current state of the block storage volume:
 	CurrentState *CloudStorageBlockVolumeCurrentState `pulumi:"currentState"`
-	// Encryption configuration for the volume.
+	// Encryption configuration for the volume. **Changing this value recreates the resource.**
 	Encryption *CloudStorageBlockVolumeEncryption `pulumi:"encryption"`
 	// Volume name.
 	Name *string `pulumi:"name"`
@@ -149,7 +206,7 @@ type CloudStorageBlockVolumeState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Current state of the block storage volume:
 	CurrentState CloudStorageBlockVolumeCurrentStatePtrInput
-	// Encryption configuration for the volume.
+	// Encryption configuration for the volume. **Changing this value recreates the resource.**
 	Encryption CloudStorageBlockVolumeEncryptionPtrInput
 	// Volume name.
 	Name pulumi.StringPtrInput
@@ -176,7 +233,7 @@ type cloudStorageBlockVolumeArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Source to create the volume from. **Changing this value recreates the resource.**
 	CreateFrom *CloudStorageBlockVolumeCreateFrom `pulumi:"createFrom"`
-	// Encryption configuration for the volume.
+	// Encryption configuration for the volume. **Changing this value recreates the resource.**
 	Encryption *CloudStorageBlockVolumeEncryption `pulumi:"encryption"`
 	// Volume name.
 	Name *string `pulumi:"name"`
@@ -196,7 +253,7 @@ type CloudStorageBlockVolumeArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// Source to create the volume from. **Changing this value recreates the resource.**
 	CreateFrom CloudStorageBlockVolumeCreateFromPtrInput
-	// Encryption configuration for the volume.
+	// Encryption configuration for the volume. **Changing this value recreates the resource.**
 	Encryption CloudStorageBlockVolumeEncryptionPtrInput
 	// Volume name.
 	Name pulumi.StringPtrInput
@@ -322,7 +379,7 @@ func (o CloudStorageBlockVolumeOutput) CurrentState() CloudStorageBlockVolumeCur
 	return o.ApplyT(func(v *CloudStorageBlockVolume) CloudStorageBlockVolumeCurrentStateOutput { return v.CurrentState }).(CloudStorageBlockVolumeCurrentStateOutput)
 }
 
-// Encryption configuration for the volume.
+// Encryption configuration for the volume. **Changing this value recreates the resource.**
 func (o CloudStorageBlockVolumeOutput) Encryption() CloudStorageBlockVolumeEncryptionOutput {
 	return o.ApplyT(func(v *CloudStorageBlockVolume) CloudStorageBlockVolumeEncryptionOutput { return v.Encryption }).(CloudStorageBlockVolumeEncryptionOutput)
 }

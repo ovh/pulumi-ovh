@@ -10,10 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Ovh
 {
     /// <summary>
-    /// Creates an instance in a public cloud project.
-    /// 
-    /// &gt; **WARNING** Changing `image_id` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.
-    /// 
     /// ## Import
     /// 
     /// An instance in a public cloud project can be imported using the `service_name`
@@ -35,6 +31,16 @@ namespace Pulumi.Ovh
     /// ```sh
     /// $ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id
     /// ```
+    /// 
+    /// An imported instance carries no `user_data` in state, since the API never returns
+    /// 
+    /// it. If the configuration sets `user_data`, the first apply after the import will
+    /// 
+    /// therefore see a change and **reinstall the instance** (root disk wiped). Import an
+    /// 
+    /// instance whose user data matters with `user_data` absent from the configuration
+    /// 
+    /// first, then add it only when a rebuild is acceptable.
     /// </summary>
     [OvhResourceType("ovh:index/cloudInstance:CloudInstance")]
     public partial class CloudInstance : global::Pulumi.CustomResource
@@ -141,6 +147,9 @@ namespace Pulumi.Ovh
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
+        [Output("userData")]
+        public Output<string?> UserData { get; private set; } = null!;
+
         /// <summary>
         /// IDs of block-storage volumes attached to the instance.
         /// </summary>
@@ -171,6 +180,10 @@ namespace Pulumi.Ovh
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/ovh/pulumi-ovh",
+                AdditionalSecretOutputs =
+                {
+                    "userData",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -283,6 +296,18 @@ namespace Pulumi.Ovh
         /// </summary>
         [Input("sshKeyName")]
         public Input<string>? SshKeyName { get; set; }
+
+        [Input("userData")]
+        private Input<string>? _userData;
+        public Input<string>? UserData
+        {
+            get => _userData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _userData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("volumeIds")]
         private InputList<string>? _volumeIds;
@@ -423,6 +448,18 @@ namespace Pulumi.Ovh
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
+
+        [Input("userData")]
+        private Input<string>? _userData;
+        public Input<string>? UserData
+        {
+            get => _userData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _userData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("volumeIds")]
         private InputList<string>? _volumeIds;

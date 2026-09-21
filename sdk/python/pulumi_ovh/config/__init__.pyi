@@ -54,6 +54,11 @@ endpoint: Optional[str]
 The OVH API endpoint to target (ex: "ovh-eu")
 """
 
+httpHeaders: Optional[str]
+"""
+Extra HTTP headers to add to every request made to the OVH API
+"""
+
 ignoreInitError: Optional[bool]
 """
 If set to true, initialization errors (like invalid OAuth credentials) will be ignored

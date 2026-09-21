@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudInstance{}
 	case "ovh:index/cloudInstanceGroup:CloudInstanceGroup":
 		r = &CloudInstanceGroup{}
+	case "ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot":
+		r = &CloudInstanceSnapshot{}
 	case "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer":
 		r = &CloudKeyManagerContainer{}
 	case "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer":
@@ -87,6 +89,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainZoneDynhostRecord{}
 	case "ovh:index/emailDomainAccount:EmailDomainAccount":
 		r = &EmailDomainAccount{}
+	case "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork":
+		r = &HostingPrivatedatabaseWebhostingNetwork{}
 	case "ovh:index/iamResourceTags:IamResourceTags":
 		r = &IamResourceTags{}
 	case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
@@ -158,6 +162,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudInstanceGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudInstanceSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -303,6 +312,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/emailDomainAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/hostingPrivatedatabaseWebhostingNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

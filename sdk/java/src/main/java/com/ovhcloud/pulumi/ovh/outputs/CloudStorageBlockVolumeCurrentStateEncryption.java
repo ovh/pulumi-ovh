@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.outputs;
 
+import com.ovhcloud.pulumi.ovh.outputs.CloudStorageBlockVolumeCurrentStateEncryptionKms;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -16,6 +17,11 @@ public final class CloudStorageBlockVolumeCurrentStateEncryption {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     * 
+     */
+    private @Nullable CloudStorageBlockVolumeCurrentStateEncryptionKms kms;
 
     private CloudStorageBlockVolumeCurrentStateEncryption() {}
     /**
@@ -24,6 +30,13 @@ public final class CloudStorageBlockVolumeCurrentStateEncryption {
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
+    }
+    /**
+     * @return Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     * 
+     */
+    public Optional<CloudStorageBlockVolumeCurrentStateEncryptionKms> kms() {
+        return Optional.ofNullable(this.kms);
     }
 
     public static Builder builder() {
@@ -36,10 +49,12 @@ public final class CloudStorageBlockVolumeCurrentStateEncryption {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable CloudStorageBlockVolumeCurrentStateEncryptionKms kms;
         public Builder() {}
         public Builder(CloudStorageBlockVolumeCurrentStateEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.kms = defaults.kms;
         }
 
         @CustomType.Setter
@@ -48,9 +63,16 @@ public final class CloudStorageBlockVolumeCurrentStateEncryption {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder kms(@Nullable CloudStorageBlockVolumeCurrentStateEncryptionKms kms) {
+
+            this.kms = kms;
+            return this;
+        }
         public CloudStorageBlockVolumeCurrentStateEncryption build() {
             final var _resultValue = new CloudStorageBlockVolumeCurrentStateEncryption();
             _resultValue.enabled = enabled;
+            _resultValue.kms = kms;
             return _resultValue;
         }
     }

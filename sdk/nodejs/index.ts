@@ -25,6 +25,11 @@ export type CloudInstanceGroup = import("./cloudInstanceGroup").CloudInstanceGro
 export const CloudInstanceGroup: typeof import("./cloudInstanceGroup").CloudInstanceGroup = null as any;
 utilities.lazyLoad(exports, ["CloudInstanceGroup"], () => require("./cloudInstanceGroup"));
 
+export { CloudInstanceSnapshotArgs, CloudInstanceSnapshotState } from "./cloudInstanceSnapshot";
+export type CloudInstanceSnapshot = import("./cloudInstanceSnapshot").CloudInstanceSnapshot;
+export const CloudInstanceSnapshot: typeof import("./cloudInstanceSnapshot").CloudInstanceSnapshot = null as any;
+utilities.lazyLoad(exports, ["CloudInstanceSnapshot"], () => require("./cloudInstanceSnapshot"));
+
 export { CloudKeyManagerContainerArgs, CloudKeyManagerContainerState } from "./cloudKeyManagerContainer";
 export type CloudKeyManagerContainer = import("./cloudKeyManagerContainer").CloudKeyManagerContainer;
 export const CloudKeyManagerContainer: typeof import("./cloudKeyManagerContainer").CloudKeyManagerContainer = null as any;
@@ -244,6 +249,16 @@ export { GetCloudInstanceImagesArgs, GetCloudInstanceImagesResult, GetCloudInsta
 export const getCloudInstanceImages: typeof import("./getCloudInstanceImages").getCloudInstanceImages = null as any;
 export const getCloudInstanceImagesOutput: typeof import("./getCloudInstanceImages").getCloudInstanceImagesOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudInstanceImages","getCloudInstanceImagesOutput"], () => require("./getCloudInstanceImages"));
+
+export { GetCloudInstanceSnapshotArgs, GetCloudInstanceSnapshotResult, GetCloudInstanceSnapshotOutputArgs } from "./getCloudInstanceSnapshot";
+export const getCloudInstanceSnapshot: typeof import("./getCloudInstanceSnapshot").getCloudInstanceSnapshot = null as any;
+export const getCloudInstanceSnapshotOutput: typeof import("./getCloudInstanceSnapshot").getCloudInstanceSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceSnapshot","getCloudInstanceSnapshotOutput"], () => require("./getCloudInstanceSnapshot"));
+
+export { GetCloudInstanceSnapshotsArgs, GetCloudInstanceSnapshotsResult, GetCloudInstanceSnapshotsOutputArgs } from "./getCloudInstanceSnapshots";
+export const getCloudInstanceSnapshots: typeof import("./getCloudInstanceSnapshots").getCloudInstanceSnapshots = null as any;
+export const getCloudInstanceSnapshotsOutput: typeof import("./getCloudInstanceSnapshots").getCloudInstanceSnapshotsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudInstanceSnapshots","getCloudInstanceSnapshotsOutput"], () => require("./getCloudInstanceSnapshots"));
 
 export { GetCloudInstancesArgs, GetCloudInstancesResult, GetCloudInstancesOutputArgs } from "./getCloudInstances";
 export const getCloudInstances: typeof import("./getCloudInstances").getCloudInstances = null as any;
@@ -610,6 +625,11 @@ export const getVrackservicess: typeof import("./getVrackservicess").getVrackser
 export const getVrackservicessOutput: typeof import("./getVrackservicess").getVrackservicessOutput = null as any;
 utilities.lazyLoad(exports, ["getVrackservicess","getVrackservicessOutput"], () => require("./getVrackservicess"));
 
+export { HostingPrivatedatabaseWebhostingNetworkArgs, HostingPrivatedatabaseWebhostingNetworkState } from "./hostingPrivatedatabaseWebhostingNetwork";
+export type HostingPrivatedatabaseWebhostingNetwork = import("./hostingPrivatedatabaseWebhostingNetwork").HostingPrivatedatabaseWebhostingNetwork;
+export const HostingPrivatedatabaseWebhostingNetwork: typeof import("./hostingPrivatedatabaseWebhostingNetwork").HostingPrivatedatabaseWebhostingNetwork = null as any;
+utilities.lazyLoad(exports, ["HostingPrivatedatabaseWebhostingNetwork"], () => require("./hostingPrivatedatabaseWebhostingNetwork"));
+
 export { IamResourceTagsArgs, IamResourceTagsState } from "./iamResourceTags";
 export type IamResourceTags = import("./iamResourceTags").IamResourceTags;
 export const IamResourceTags: typeof import("./iamResourceTags").IamResourceTags = null as any;
@@ -726,6 +746,8 @@ const _module = {
                 return new CloudInstance(name, <any>undefined, { urn })
             case "ovh:index/cloudInstanceGroup:CloudInstanceGroup":
                 return new CloudInstanceGroup(name, <any>undefined, { urn })
+            case "ovh:index/cloudInstanceSnapshot:CloudInstanceSnapshot":
+                return new CloudInstanceSnapshot(name, <any>undefined, { urn })
             case "ovh:index/cloudKeyManagerContainer:CloudKeyManagerContainer":
                 return new CloudKeyManagerContainer(name, <any>undefined, { urn })
             case "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer":
@@ -784,6 +806,8 @@ const _module = {
                 return new DomainZoneDynhostRecord(name, <any>undefined, { urn })
             case "ovh:index/emailDomainAccount:EmailDomainAccount":
                 return new EmailDomainAccount(name, <any>undefined, { urn })
+            case "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork":
+                return new HostingPrivatedatabaseWebhostingNetwork(name, <any>undefined, { urn })
             case "ovh:index/iamResourceTags:IamResourceTags":
                 return new IamResourceTags(name, <any>undefined, { urn })
             case "ovh:index/ovhcloudConnectPopConfig:OvhcloudConnectPopConfig":
@@ -815,6 +839,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudFloatingIp", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudGateway", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudInstance", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudInstanceGroup", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudInstanceSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerContainer", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerContainerConsumer", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerSecret", _module)
@@ -844,6 +869,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/clousSSHKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/dbaasLogsEncryptionKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/emailDomainAccount", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/hostingPrivatedatabaseWebhostingNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/iamResourceTags", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopConfig", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/ovhcloudConnectPopDatacenterConfig", _module)

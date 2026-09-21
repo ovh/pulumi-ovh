@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.inputs;
 
+import com.ovhcloud.pulumi.ovh.inputs.CloudStorageBlockVolumeEncryptionKmsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -30,10 +31,26 @@ public final class CloudStorageBlockVolumeEncryptionArgs extends com.pulumi.reso
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     * 
+     */
+    @Import(name="kms")
+    private @Nullable Output<CloudStorageBlockVolumeEncryptionKmsArgs> kms;
+
+    /**
+     * @return Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+     * 
+     */
+    public Optional<Output<CloudStorageBlockVolumeEncryptionKmsArgs>> kms() {
+        return Optional.ofNullable(this.kms);
+    }
+
     private CloudStorageBlockVolumeEncryptionArgs() {}
 
     private CloudStorageBlockVolumeEncryptionArgs(CloudStorageBlockVolumeEncryptionArgs $) {
         this.enabled = $.enabled;
+        this.kms = $.kms;
     }
 
     public static Builder builder() {
@@ -73,6 +90,27 @@ public final class CloudStorageBlockVolumeEncryptionArgs extends com.pulumi.reso
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param kms Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kms(@Nullable Output<CloudStorageBlockVolumeEncryptionKmsArgs> kms) {
+            $.kms = kms;
+            return this;
+        }
+
+        /**
+         * @param kms Customer-managed key (CMK) reference used to encrypt the volume. Set at creation only; the whole `encryption` block is immutable and **cannot be changed afterwards.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kms(CloudStorageBlockVolumeEncryptionKmsArgs kms) {
+            return kms(Output.of(kms));
         }
 
         public CloudStorageBlockVolumeEncryptionArgs build() {

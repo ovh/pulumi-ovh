@@ -30,6 +30,12 @@ namespace Pulumi.Ovh.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.CloudStorageFileShareCurrentStateEncryptionArgs>? Encryption { get; set; }
+
         [Input("exportLocations")]
         private InputList<Inputs.CloudStorageFileShareCurrentStateExportLocationArgs>? _exportLocations;
 

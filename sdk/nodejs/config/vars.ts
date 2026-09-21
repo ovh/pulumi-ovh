@@ -96,6 +96,17 @@ Object.defineProperty(exports, "endpoint", {
 });
 
 /**
+ * Extra HTTP headers to add to every request made to the OVH API
+ */
+export declare const httpHeaders: {[key: string]: string} | undefined;
+Object.defineProperty(exports, "httpHeaders", {
+    get() {
+        return __config.getObject<{[key: string]: string}>("httpHeaders");
+    },
+    enumerable: true,
+});
+
+/**
  * If set to true, initialization errors (like invalid OAuth credentials) will be ignored
  */
 export declare const ignoreInitError: boolean | undefined;

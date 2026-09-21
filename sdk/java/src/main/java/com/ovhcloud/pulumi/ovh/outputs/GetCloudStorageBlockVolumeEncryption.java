@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh.outputs;
 
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageBlockVolumeEncryptionKms;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -15,6 +16,11 @@ public final class GetCloudStorageBlockVolumeEncryption {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Customer-managed key (CMK) reference used to encrypt the volume:
+     * 
+     */
+    private GetCloudStorageBlockVolumeEncryptionKms kms;
 
     private GetCloudStorageBlockVolumeEncryption() {}
     /**
@@ -23,6 +29,13 @@ public final class GetCloudStorageBlockVolumeEncryption {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Customer-managed key (CMK) reference used to encrypt the volume:
+     * 
+     */
+    public GetCloudStorageBlockVolumeEncryptionKms kms() {
+        return this.kms;
     }
 
     public static Builder builder() {
@@ -35,10 +48,12 @@ public final class GetCloudStorageBlockVolumeEncryption {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private GetCloudStorageBlockVolumeEncryptionKms kms;
         public Builder() {}
         public Builder(GetCloudStorageBlockVolumeEncryption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.kms = defaults.kms;
         }
 
         @CustomType.Setter
@@ -49,9 +64,18 @@ public final class GetCloudStorageBlockVolumeEncryption {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder kms(GetCloudStorageBlockVolumeEncryptionKms kms) {
+            if (kms == null) {
+              throw new MissingRequiredPropertyException("GetCloudStorageBlockVolumeEncryption", "kms");
+            }
+            this.kms = kms;
+            return this;
+        }
         public GetCloudStorageBlockVolumeEncryption build() {
             final var _resultValue = new GetCloudStorageBlockVolumeEncryption();
             _resultValue.enabled = enabled;
+            _resultValue.kms = kms;
             return _resultValue;
         }
     }

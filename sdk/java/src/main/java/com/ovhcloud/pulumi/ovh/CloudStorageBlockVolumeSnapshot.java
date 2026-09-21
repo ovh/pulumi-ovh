@@ -75,6 +75,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="ovh:index/cloudStorageBlockVolumeSnapshot:CloudStorageBlockVolumeSnapshot")
 public class CloudStorageBlockVolumeSnapshot extends com.pulumi.resources.CustomResource {
     /**
+     * The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     * 
+     */
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
+    private Output<String> availabilityZone;
+
+    /**
+     * @return The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     * 
+     */
+    public Output<String> availabilityZone() {
+        return this.availabilityZone;
+    }
+    /**
      * Computed hash representing the current target specification value.
      * 
      */

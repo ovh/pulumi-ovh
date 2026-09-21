@@ -199,6 +199,13 @@ public final class CloudInstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sshKeyName);
     }
 
+    @Import(name="userData")
+    private @Nullable Output<String> userData;
+
+    public Optional<Output<String>> userData() {
+        return Optional.ofNullable(this.userData);
+    }
+
     /**
      * IDs of block-storage volumes attached to the instance.
      * 
@@ -229,6 +236,7 @@ public final class CloudInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceName = $.serviceName;
         this.shares = $.shares;
         this.sshKeyName = $.sshKeyName;
+        this.userData = $.userData;
         this.volumeIds = $.volumeIds;
     }
 
@@ -530,6 +538,15 @@ public final class CloudInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sshKeyName(String sshKeyName) {
             return sshKeyName(Output.of(sshKeyName));
+        }
+
+        public Builder userData(@Nullable Output<String> userData) {
+            $.userData = userData;
+            return this;
+        }
+
+        public Builder userData(String userData) {
+            return userData(Output.of(userData));
         }
 
         /**

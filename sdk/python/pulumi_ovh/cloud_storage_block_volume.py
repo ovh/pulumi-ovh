@@ -35,7 +35,7 @@ class CloudStorageBlockVolumeArgs:
         :param pulumi.Input[_builtins.int] size: Size of the volume in GB.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the volume will be created
         :param pulumi.Input['CloudStorageBlockVolumeCreateFromArgs'] create_from: Source to create the volume from. **Changing this value recreates the resource.**
-        :param pulumi.Input['CloudStorageBlockVolumeEncryptionArgs'] encryption: Encryption configuration for the volume.
+        :param pulumi.Input['CloudStorageBlockVolumeEncryptionArgs'] encryption: Encryption configuration for the volume. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: Volume name.
         :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] volume_type: Volume type (`CLASSIC`, `HIGH_SPEED`, `HIGH_SPEED_GEN2`). Can be changed after creation (triggers online retype).
@@ -107,7 +107,7 @@ class CloudStorageBlockVolumeArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['CloudStorageBlockVolumeEncryptionArgs']]:
         """
-        Encryption configuration for the volume.
+        Encryption configuration for the volume. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -175,7 +175,7 @@ class _CloudStorageBlockVolumeState:
         :param pulumi.Input['CloudStorageBlockVolumeCreateFromArgs'] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] created_at: Creation date of the volume.
         :param pulumi.Input['CloudStorageBlockVolumeCurrentStateArgs'] current_state: Current state of the block storage volume:
-        :param pulumi.Input['CloudStorageBlockVolumeEncryptionArgs'] encryption: Encryption configuration for the volume.
+        :param pulumi.Input['CloudStorageBlockVolumeEncryptionArgs'] encryption: Encryption configuration for the volume. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: Volume name.
         :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] resource_status: Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
@@ -275,7 +275,7 @@ class _CloudStorageBlockVolumeState:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['CloudStorageBlockVolumeEncryptionArgs']]:
         """
-        Encryption configuration for the volume.
+        Encryption configuration for the volume. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -400,11 +400,52 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
             volume_type="CLASSIC")
         ```
 
+        ### Create with a customer-managed key (CMK)
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        cmk_volume = ovh.CloudStorageBlockVolume("cmk_volume",
+            service_name="xxxxxxxxxx",
+            name="my-cmk-volume",
+            size=10,
+            region="GRA1",
+            volume_type="HIGH_SPEED",
+            encryption={
+                "enabled": True,
+                "kms": {
+                    "domain_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                    "service_key_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                },
+            })
+        ```
+
+        ## Import
+
+        A cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:
+
+        terraform
+
+        import {
+
+          to = ovh_cloud_storage_block_volume.volume
+
+          id = "<service_name>/<volume_id>"
+
+        }
+
+        bash
+
+        $ pulumi preview -generate-config-out=volume.tf
+
+        $ pulumi up
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the volume will be created
         :param pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']] create_from: Source to create the volume from. **Changing this value recreates the resource.**
-        :param pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']] encryption: Encryption configuration for the volume.
+        :param pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']] encryption: Encryption configuration for the volume. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: Volume name.
         :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
@@ -433,6 +474,47 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
             region="GRA1",
             volume_type="CLASSIC")
         ```
+
+        ### Create with a customer-managed key (CMK)
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        cmk_volume = ovh.CloudStorageBlockVolume("cmk_volume",
+            service_name="xxxxxxxxxx",
+            name="my-cmk-volume",
+            size=10,
+            region="GRA1",
+            volume_type="HIGH_SPEED",
+            encryption={
+                "enabled": True,
+                "kms": {
+                    "domain_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                    "service_key_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                },
+            })
+        ```
+
+        ## Import
+
+        A cloud storage block volume can be imported using the `service_name` and `volume_id`, separated by `/`:
+
+        terraform
+
+        import {
+
+          to = ovh_cloud_storage_block_volume.volume
+
+          id = "<service_name>/<volume_id>"
+
+        }
+
+        bash
+
+        $ pulumi preview -generate-config-out=volume.tf
+
+        $ pulumi up
 
         :param str resource_name: The name of the resource.
         :param CloudStorageBlockVolumeArgs args: The arguments to use to populate this resource's properties.
@@ -518,7 +600,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
         :param pulumi.Input[Union['CloudStorageBlockVolumeCreateFromArgs', 'CloudStorageBlockVolumeCreateFromArgsDict']] create_from: Source to create the volume from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] created_at: Creation date of the volume.
         :param pulumi.Input[Union['CloudStorageBlockVolumeCurrentStateArgs', 'CloudStorageBlockVolumeCurrentStateArgsDict']] current_state: Current state of the block storage volume:
-        :param pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']] encryption: Encryption configuration for the volume.
+        :param pulumi.Input[Union['CloudStorageBlockVolumeEncryptionArgs', 'CloudStorageBlockVolumeEncryptionArgsDict']] encryption: Encryption configuration for the volume. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: Volume name.
         :param pulumi.Input[_builtins.str] region: Region where the volume will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] resource_status: Volume readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
@@ -590,7 +672,7 @@ class CloudStorageBlockVolume(pulumi.CustomResource):
     @pulumi.getter
     def encryption(self) -> pulumi.Output['outputs.CloudStorageBlockVolumeEncryption']:
         """
-        Encryption configuration for the volume.
+        Encryption configuration for the volume. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 

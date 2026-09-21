@@ -14,13 +14,21 @@ namespace Pulumi.Ovh.Outputs
     public sealed class CloudStorageBlockVolumeSnapshotCurrentStateLocation
     {
         /// <summary>
+        /// The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+        /// </summary>
+        public readonly string? AvailabilityZone;
+        /// <summary>
         /// The region where the snapshot will be created. Changing this value recreates the resource.
         /// </summary>
         public readonly string? Region;
 
         [OutputConstructor]
-        private CloudStorageBlockVolumeSnapshotCurrentStateLocation(string? region)
+        private CloudStorageBlockVolumeSnapshotCurrentStateLocation(
+            string? availabilityZone,
+
+            string? region)
         {
+            AvailabilityZone = availabilityZone;
             Region = region;
         }
     }

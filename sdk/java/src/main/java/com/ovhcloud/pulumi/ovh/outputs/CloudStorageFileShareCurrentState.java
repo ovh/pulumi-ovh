@@ -4,6 +4,7 @@
 package com.ovhcloud.pulumi.ovh.outputs;
 
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateCapability;
+import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateEncryption;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateExportLocation;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentStateLocation;
 import com.pulumi.core.annotations.CustomType;
@@ -26,6 +27,11 @@ public final class CloudStorageFileShareCurrentState {
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * 
+     */
+    private @Nullable CloudStorageFileShareCurrentStateEncryption encryption;
     /**
      * @return Export locations for the file share:
      * 
@@ -76,6 +82,13 @@ public final class CloudStorageFileShareCurrentState {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * 
+     */
+    public Optional<CloudStorageFileShareCurrentStateEncryption> encryption() {
+        return Optional.ofNullable(this.encryption);
     }
     /**
      * @return Export locations for the file share:
@@ -138,6 +151,7 @@ public final class CloudStorageFileShareCurrentState {
     public static final class Builder {
         private @Nullable List<CloudStorageFileShareCurrentStateCapability> capabilities;
         private @Nullable String description;
+        private @Nullable CloudStorageFileShareCurrentStateEncryption encryption;
         private @Nullable List<CloudStorageFileShareCurrentStateExportLocation> exportLocations;
         private @Nullable CloudStorageFileShareCurrentStateLocation location;
         private @Nullable String name;
@@ -150,6 +164,7 @@ public final class CloudStorageFileShareCurrentState {
     	      Objects.requireNonNull(defaults);
     	      this.capabilities = defaults.capabilities;
     	      this.description = defaults.description;
+    	      this.encryption = defaults.encryption;
     	      this.exportLocations = defaults.exportLocations;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -172,6 +187,12 @@ public final class CloudStorageFileShareCurrentState {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encryption(@Nullable CloudStorageFileShareCurrentStateEncryption encryption) {
+
+            this.encryption = encryption;
             return this;
         }
         @CustomType.Setter
@@ -223,6 +244,7 @@ public final class CloudStorageFileShareCurrentState {
             final var _resultValue = new CloudStorageFileShareCurrentState();
             _resultValue.capabilities = capabilities;
             _resultValue.description = description;
+            _resultValue.encryption = encryption;
             _resultValue.exportLocations = exportLocations;
             _resultValue.location = location;
             _resultValue.name = name;

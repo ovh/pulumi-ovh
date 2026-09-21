@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetCloudStorageBlockVolumeSnapshotLocation {
     /**
+     * @return Availability zone. Empty in 1AZ regions.
+     * 
+     */
+    private String availabilityZone;
+    /**
      * @return Region.
      * 
      */
     private String region;
 
     private GetCloudStorageBlockVolumeSnapshotLocation() {}
+    /**
+     * @return Availability zone. Empty in 1AZ regions.
+     * 
+     */
+    public String availabilityZone() {
+        return this.availabilityZone;
+    }
     /**
      * @return Region.
      * 
@@ -34,13 +46,23 @@ public final class GetCloudStorageBlockVolumeSnapshotLocation {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String availabilityZone;
         private String region;
         public Builder() {}
         public Builder(GetCloudStorageBlockVolumeSnapshotLocation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.availabilityZone = defaults.availabilityZone;
     	      this.region = defaults.region;
         }
 
+        @CustomType.Setter
+        public Builder availabilityZone(String availabilityZone) {
+            if (availabilityZone == null) {
+              throw new MissingRequiredPropertyException("GetCloudStorageBlockVolumeSnapshotLocation", "availabilityZone");
+            }
+            this.availabilityZone = availabilityZone;
+            return this;
+        }
         @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
@@ -51,6 +73,7 @@ public final class GetCloudStorageBlockVolumeSnapshotLocation {
         }
         public GetCloudStorageBlockVolumeSnapshotLocation build() {
             final var _resultValue = new GetCloudStorageBlockVolumeSnapshotLocation();
+            _resultValue.availabilityZone = availabilityZone;
             _resultValue.region = region;
             return _resultValue;
         }

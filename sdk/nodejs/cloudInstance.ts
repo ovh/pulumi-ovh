@@ -7,10 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates an instance in a public cloud project.
- *
- * > **WARNING** Changing `imageId` rebuilds the instance and **wipes the root disk**. Back up any data on the root disk before changing the image.
- *
  * ## Import
  *
  * An instance in a public cloud project can be imported using the `service_name`
@@ -32,6 +28,16 @@ import * as utilities from "./utilities";
  * ```sh
  * $ pulumi import ovh:index/cloudInstance:CloudInstance instance service_name/instance_id
  * ```
+ *
+ * An imported instance carries no `user_data` in state, since the API never returns
+ *
+ * it. If the configuration sets `user_data`, the first apply after the import will
+ *
+ * therefore see a change and **reinstall the instance** (root disk wiped). Import an
+ *
+ * instance whose user data matters with `user_data` absent from the configuration
+ *
+ * first, then add it only when a rebuild is acceptable.
  */
 export class CloudInstance extends pulumi.CustomResource {
     /**
@@ -129,6 +135,7 @@ export class CloudInstance extends pulumi.CustomResource {
      * Last modification date of the instance, as an RFC 3339 timestamp.
      */
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    public readonly userData!: pulumi.Output<string | undefined>;
     /**
      * IDs of block-storage volumes attached to the instance.
      */
@@ -164,6 +171,7 @@ export class CloudInstance extends pulumi.CustomResource {
             resourceInputs["shares"] = state ? state.shares : undefined;
             resourceInputs["sshKeyName"] = state ? state.sshKeyName : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["volumeIds"] = state ? state.volumeIds : undefined;
         } else {
             const args = argsOrState as CloudInstanceArgs | undefined;
@@ -188,6 +196,7 @@ export class CloudInstance extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["shares"] = args ? args.shares : undefined;
             resourceInputs["sshKeyName"] = args ? args.sshKeyName : undefined;
+            resourceInputs["userData"] = args?.userData ? pulumi.secret(args.userData) : undefined;
             resourceInputs["volumeIds"] = args ? args.volumeIds : undefined;
             resourceInputs["checksum"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -196,6 +205,8 @@ export class CloudInstance extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["userData"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(CloudInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -272,6 +283,7 @@ export interface CloudInstanceState {
      * Last modification date of the instance, as an RFC 3339 timestamp.
      */
     updatedAt?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * IDs of block-storage volumes attached to the instance.
      */
@@ -330,6 +342,7 @@ export interface CloudInstanceArgs {
      * Name of the SSH key injected at boot (immutable). Point it at the `name` of an `ovh.CloudSSHKey`. **Changing this value recreates the resource.**
      */
     sshKeyName?: pulumi.Input<string>;
+    userData?: pulumi.Input<string>;
     /**
      * IDs of block-storage volumes attached to the instance.
      */

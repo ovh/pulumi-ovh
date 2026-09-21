@@ -63,6 +63,10 @@ export class CloudStorageBlockVolumeSnapshot extends pulumi.CustomResource {
     }
 
     /**
+     * The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     */
+    public readonly availabilityZone!: pulumi.Output<string>;
+    /**
      * Computed hash representing the current target specification value.
      */
     public /*out*/ readonly checksum!: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class CloudStorageBlockVolumeSnapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CloudStorageBlockVolumeSnapshotState | undefined;
+            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["checksum"] = state ? state.checksum : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["currentState"] = state ? state.currentState : undefined;
@@ -134,6 +139,7 @@ export class CloudStorageBlockVolumeSnapshot extends pulumi.CustomResource {
             if ((!args || args.volumeId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
+            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -154,6 +160,10 @@ export class CloudStorageBlockVolumeSnapshot extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CloudStorageBlockVolumeSnapshot resources.
  */
 export interface CloudStorageBlockVolumeSnapshotState {
+    /**
+     * The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * Computed hash representing the current target specification value.
      */
@@ -200,6 +210,10 @@ export interface CloudStorageBlockVolumeSnapshotState {
  * The set of arguments for constructing a CloudStorageBlockVolumeSnapshot resource.
  */
 export interface CloudStorageBlockVolumeSnapshotArgs {
+    /**
+     * The availability zone where the snapshot will be created. Only meaningful in 3AZ regions; leave unset in 1AZ regions, where it is empty. Defaults to the value returned by the API. Changing this value recreates the resource.
+     */
+    availabilityZone?: pulumi.Input<string>;
     /**
      * A description for the snapshot.
      */
