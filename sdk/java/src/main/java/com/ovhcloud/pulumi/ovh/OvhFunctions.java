@@ -58,6 +58,26 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretPayloadPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudKeyManagerSecretsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerL7policiesArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerL7policiesPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerListenerArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerListenerPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerListenersArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerListenersPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMembersArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMembersPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancerPoolsPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancersArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudLoadbalancersPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudNetworkPrivateVrackSubnetArgs;
@@ -203,6 +223,16 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretConsumersResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretPayloadResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudKeyManagerSecretsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerL7policiesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerL7policyResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerListenerResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerListenersResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerPoolMemberResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerPoolMembersResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerPoolResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerPoolsResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancerResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudLoadbalancersResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackSubnetResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudNetworkPrivateVrackSubnetsResult;
@@ -3401,6 +3431,1436 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetCloudKeyManagerSecretsResult> getCloudKeyManagerSecretsPlain(GetCloudKeyManagerSecretsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets", TypeShape.of(GetCloudKeyManagerSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lb = OvhFunctions.getCloudLoadbalancer(GetCloudLoadbalancerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<load balancer ID>")
+     *             .build());
+     * 
+     *         ctx.export("loadbalancerVip", lb.currentState().network().addresses());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerResult> getCloudLoadbalancer(GetCloudLoadbalancerArgs args) {
+        return getCloudLoadbalancer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lb = OvhFunctions.getCloudLoadbalancer(GetCloudLoadbalancerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<load balancer ID>")
+     *             .build());
+     * 
+     *         ctx.export("loadbalancerVip", lb.currentState().network().addresses());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerResult> getCloudLoadbalancerPlain(GetCloudLoadbalancerPlainArgs args) {
+        return getCloudLoadbalancerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lb = OvhFunctions.getCloudLoadbalancer(GetCloudLoadbalancerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<load balancer ID>")
+     *             .build());
+     * 
+     *         ctx.export("loadbalancerVip", lb.currentState().network().addresses());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerResult> getCloudLoadbalancer(GetCloudLoadbalancerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancer:getCloudLoadbalancer", TypeShape.of(GetCloudLoadbalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lb = OvhFunctions.getCloudLoadbalancer(GetCloudLoadbalancerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<load balancer ID>")
+     *             .build());
+     * 
+     *         ctx.export("loadbalancerVip", lb.currentState().network().addresses());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerResult> getCloudLoadbalancer(GetCloudLoadbalancerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancer:getCloudLoadbalancer", TypeShape.of(GetCloudLoadbalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var lb = OvhFunctions.getCloudLoadbalancer(GetCloudLoadbalancerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .id("<load balancer ID>")
+     *             .build());
+     * 
+     *         ctx.export("loadbalancerVip", lb.currentState().network().addresses());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerResult> getCloudLoadbalancerPlain(GetCloudLoadbalancerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancer:getCloudLoadbalancer", TypeShape.of(GetCloudLoadbalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the L7 policies of a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerL7policiesResult> getCloudLoadbalancerL7policies(GetCloudLoadbalancerL7policiesArgs args) {
+        return getCloudLoadbalancerL7policies(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the L7 policies of a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerL7policiesResult> getCloudLoadbalancerL7policiesPlain(GetCloudLoadbalancerL7policiesPlainArgs args) {
+        return getCloudLoadbalancerL7policiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the L7 policies of a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerL7policiesResult> getCloudLoadbalancerL7policies(GetCloudLoadbalancerL7policiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerL7policies:getCloudLoadbalancerL7policies", TypeShape.of(GetCloudLoadbalancerL7policiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the L7 policies of a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerL7policiesResult> getCloudLoadbalancerL7policies(GetCloudLoadbalancerL7policiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerL7policies:getCloudLoadbalancerL7policies", TypeShape.of(GetCloudLoadbalancerL7policiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the L7 policies of a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerL7policiesResult> getCloudLoadbalancerL7policiesPlain(GetCloudLoadbalancerL7policiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerL7policies:getCloudLoadbalancerL7policies", TypeShape.of(GetCloudLoadbalancerL7policiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about an L7 policy on a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OvhFunctions.getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .listenerId("<listener ID>")
+     *             .id("<L7 policy ID>")
+     *             .build());
+     * 
+     *         ctx.export("l7policyAction", policy.action());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerL7policyResult> getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs args) {
+        return getCloudLoadbalancerL7policy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about an L7 policy on a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OvhFunctions.getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .listenerId("<listener ID>")
+     *             .id("<L7 policy ID>")
+     *             .build());
+     * 
+     *         ctx.export("l7policyAction", policy.action());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerL7policyResult> getCloudLoadbalancerL7policyPlain(GetCloudLoadbalancerL7policyPlainArgs args) {
+        return getCloudLoadbalancerL7policyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about an L7 policy on a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OvhFunctions.getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .listenerId("<listener ID>")
+     *             .id("<L7 policy ID>")
+     *             .build());
+     * 
+     *         ctx.export("l7policyAction", policy.action());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerL7policyResult> getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerL7policy:getCloudLoadbalancerL7policy", TypeShape.of(GetCloudLoadbalancerL7policyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about an L7 policy on a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OvhFunctions.getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .listenerId("<listener ID>")
+     *             .id("<L7 policy ID>")
+     *             .build());
+     * 
+     *         ctx.export("l7policyAction", policy.action());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerL7policyResult> getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerL7policy:getCloudLoadbalancerL7policy", TypeShape.of(GetCloudLoadbalancerL7policyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about an L7 policy on a load balancer listener in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerL7policyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = OvhFunctions.getCloudLoadbalancerL7policy(GetCloudLoadbalancerL7policyArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .listenerId("<listener ID>")
+     *             .id("<L7 policy ID>")
+     *             .build());
+     * 
+     *         ctx.export("l7policyAction", policy.action());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerL7policyResult> getCloudLoadbalancerL7policyPlain(GetCloudLoadbalancerL7policyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerL7policy:getCloudLoadbalancerL7policy", TypeShape.of(GetCloudLoadbalancerL7policyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a listener on a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerListenerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var http = OvhFunctions.getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<listener ID>")
+     *             .build());
+     * 
+     *         ctx.export("listenerPort", http.protocolPort());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerListenerResult> getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs args) {
+        return getCloudLoadbalancerListener(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a listener on a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerListenerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var http = OvhFunctions.getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<listener ID>")
+     *             .build());
+     * 
+     *         ctx.export("listenerPort", http.protocolPort());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerListenerResult> getCloudLoadbalancerListenerPlain(GetCloudLoadbalancerListenerPlainArgs args) {
+        return getCloudLoadbalancerListenerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a listener on a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerListenerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var http = OvhFunctions.getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<listener ID>")
+     *             .build());
+     * 
+     *         ctx.export("listenerPort", http.protocolPort());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerListenerResult> getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerListener:getCloudLoadbalancerListener", TypeShape.of(GetCloudLoadbalancerListenerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a listener on a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerListenerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var http = OvhFunctions.getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<listener ID>")
+     *             .build());
+     * 
+     *         ctx.export("listenerPort", http.protocolPort());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerListenerResult> getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerListener:getCloudLoadbalancerListener", TypeShape.of(GetCloudLoadbalancerListenerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a listener on a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerListenerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var http = OvhFunctions.getCloudLoadbalancerListener(GetCloudLoadbalancerListenerArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<listener ID>")
+     *             .build());
+     * 
+     *         ctx.export("listenerPort", http.protocolPort());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerListenerResult> getCloudLoadbalancerListenerPlain(GetCloudLoadbalancerListenerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerListener:getCloudLoadbalancerListener", TypeShape.of(GetCloudLoadbalancerListenerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the listeners of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerListenersResult> getCloudLoadbalancerListeners(GetCloudLoadbalancerListenersArgs args) {
+        return getCloudLoadbalancerListeners(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the listeners of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerListenersResult> getCloudLoadbalancerListenersPlain(GetCloudLoadbalancerListenersPlainArgs args) {
+        return getCloudLoadbalancerListenersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the listeners of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerListenersResult> getCloudLoadbalancerListeners(GetCloudLoadbalancerListenersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerListeners:getCloudLoadbalancerListeners", TypeShape.of(GetCloudLoadbalancerListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the listeners of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerListenersResult> getCloudLoadbalancerListeners(GetCloudLoadbalancerListenersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerListeners:getCloudLoadbalancerListeners", TypeShape.of(GetCloudLoadbalancerListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the listeners of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerListenersResult> getCloudLoadbalancerListenersPlain(GetCloudLoadbalancerListenersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerListeners:getCloudLoadbalancerListeners", TypeShape.of(GetCloudLoadbalancerListenersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = OvhFunctions.getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<pool ID>")
+     *             .build());
+     * 
+     *         ctx.export("poolAlgorithm", pool.algorithm());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolResult> getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs args) {
+        return getCloudLoadbalancerPool(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = OvhFunctions.getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<pool ID>")
+     *             .build());
+     * 
+     *         ctx.export("poolAlgorithm", pool.algorithm());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolResult> getCloudLoadbalancerPoolPlain(GetCloudLoadbalancerPoolPlainArgs args) {
+        return getCloudLoadbalancerPoolPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = OvhFunctions.getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<pool ID>")
+     *             .build());
+     * 
+     *         ctx.export("poolAlgorithm", pool.algorithm());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolResult> getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPool:getCloudLoadbalancerPool", TypeShape.of(GetCloudLoadbalancerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = OvhFunctions.getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<pool ID>")
+     *             .build());
+     * 
+     *         ctx.export("poolAlgorithm", pool.algorithm());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolResult> getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPool:getCloudLoadbalancerPool", TypeShape.of(GetCloudLoadbalancerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var pool = OvhFunctions.getCloudLoadbalancerPool(GetCloudLoadbalancerPoolArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .id("<pool ID>")
+     *             .build());
+     * 
+     *         ctx.export("poolAlgorithm", pool.algorithm());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolResult> getCloudLoadbalancerPoolPlain(GetCloudLoadbalancerPoolPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerPool:getCloudLoadbalancerPool", TypeShape.of(GetCloudLoadbalancerPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a member of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = OvhFunctions.getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .poolId("<pool ID>")
+     *             .id("<member ID>")
+     *             .build());
+     * 
+     *         ctx.export("memberStatus", member.currentState().operatingStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolMemberResult> getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs args) {
+        return getCloudLoadbalancerPoolMember(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a member of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = OvhFunctions.getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .poolId("<pool ID>")
+     *             .id("<member ID>")
+     *             .build());
+     * 
+     *         ctx.export("memberStatus", member.currentState().operatingStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolMemberResult> getCloudLoadbalancerPoolMemberPlain(GetCloudLoadbalancerPoolMemberPlainArgs args) {
+        return getCloudLoadbalancerPoolMemberPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get information about a member of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = OvhFunctions.getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .poolId("<pool ID>")
+     *             .id("<member ID>")
+     *             .build());
+     * 
+     *         ctx.export("memberStatus", member.currentState().operatingStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolMemberResult> getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPoolMember:getCloudLoadbalancerPoolMember", TypeShape.of(GetCloudLoadbalancerPoolMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a member of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = OvhFunctions.getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .poolId("<pool ID>")
+     *             .id("<member ID>")
+     *             .build());
+     * 
+     *         ctx.export("memberStatus", member.currentState().operatingStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolMemberResult> getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPoolMember:getCloudLoadbalancerPoolMember", TypeShape.of(GetCloudLoadbalancerPoolMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a member of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.ovh.OvhFunctions;
+     * import com.pulumi.ovh.inputs.GetCloudLoadbalancerPoolMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var member = OvhFunctions.getCloudLoadbalancerPoolMember(GetCloudLoadbalancerPoolMemberArgs.builder()
+     *             .serviceName("<public cloud project ID>")
+     *             .loadbalancerId("<load balancer ID>")
+     *             .poolId("<pool ID>")
+     *             .id("<member ID>")
+     *             .build());
+     * 
+     *         ctx.export("memberStatus", member.currentState().operatingStatus());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolMemberResult> getCloudLoadbalancerPoolMemberPlain(GetCloudLoadbalancerPoolMemberPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerPoolMember:getCloudLoadbalancerPoolMember", TypeShape.of(GetCloudLoadbalancerPoolMemberResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the members of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolMembersResult> getCloudLoadbalancerPoolMembers(GetCloudLoadbalancerPoolMembersArgs args) {
+        return getCloudLoadbalancerPoolMembers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the members of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolMembersResult> getCloudLoadbalancerPoolMembersPlain(GetCloudLoadbalancerPoolMembersPlainArgs args) {
+        return getCloudLoadbalancerPoolMembersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the members of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolMembersResult> getCloudLoadbalancerPoolMembers(GetCloudLoadbalancerPoolMembersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPoolMembers:getCloudLoadbalancerPoolMembers", TypeShape.of(GetCloudLoadbalancerPoolMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the members of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolMembersResult> getCloudLoadbalancerPoolMembers(GetCloudLoadbalancerPoolMembersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPoolMembers:getCloudLoadbalancerPoolMembers", TypeShape.of(GetCloudLoadbalancerPoolMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the members of a pool in a public cloud load balancer.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolMembersResult> getCloudLoadbalancerPoolMembersPlain(GetCloudLoadbalancerPoolMembersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerPoolMembers:getCloudLoadbalancerPoolMembers", TypeShape.of(GetCloudLoadbalancerPoolMembersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the pools of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolsResult> getCloudLoadbalancerPools(GetCloudLoadbalancerPoolsArgs args) {
+        return getCloudLoadbalancerPools(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the pools of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolsResult> getCloudLoadbalancerPoolsPlain(GetCloudLoadbalancerPoolsPlainArgs args) {
+        return getCloudLoadbalancerPoolsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the pools of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolsResult> getCloudLoadbalancerPools(GetCloudLoadbalancerPoolsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPools:getCloudLoadbalancerPools", TypeShape.of(GetCloudLoadbalancerPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the pools of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancerPoolsResult> getCloudLoadbalancerPools(GetCloudLoadbalancerPoolsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancerPools:getCloudLoadbalancerPools", TypeShape.of(GetCloudLoadbalancerPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the pools of a load balancer in a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancerPoolsResult> getCloudLoadbalancerPoolsPlain(GetCloudLoadbalancerPoolsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancerPools:getCloudLoadbalancerPools", TypeShape.of(GetCloudLoadbalancerPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the load balancers of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancersResult> getCloudLoadbalancers(GetCloudLoadbalancersArgs args) {
+        return getCloudLoadbalancers(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the load balancers of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancersResult> getCloudLoadbalancersPlain(GetCloudLoadbalancersPlainArgs args) {
+        return getCloudLoadbalancersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the load balancers of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancersResult> getCloudLoadbalancers(GetCloudLoadbalancersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancers:getCloudLoadbalancers", TypeShape.of(GetCloudLoadbalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the load balancers of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCloudLoadbalancersResult> getCloudLoadbalancers(GetCloudLoadbalancersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudLoadbalancers:getCloudLoadbalancers", TypeShape.of(GetCloudLoadbalancersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the load balancers of a public cloud project.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCloudLoadbalancersResult> getCloudLoadbalancersPlain(GetCloudLoadbalancersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudLoadbalancers:getCloudLoadbalancers", TypeShape.of(GetCloudLoadbalancersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about a private network (vRack) in a public cloud project.

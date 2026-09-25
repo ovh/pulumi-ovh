@@ -269,6 +269,112 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Network Update
+ * 
+ * You can update the network of an existing database service without recreating it.
+ * 
+ * To switch from public to private network, add `network_id` and `subnet_id` to the nodes:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Database;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.DatabaseArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.DatabaseNodeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-database")
+ *             .engine("postgresql")
+ *             .version("14")
+ *             .plan("business")
+ *             .nodes(            
+ *                 DatabaseNodeArgs.builder()
+ *                     .region("GRA")
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .subnetId("YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY")
+ *                     .build(),
+ *                 DatabaseNodeArgs.builder()
+ *                     .region("GRA")
+ *                     .networkId("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
+ *                     .subnetId("YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY")
+ *                     .build())
+ *             .flavor("db1-4")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * To switch from private to public network, remove `network_id` and `subnet_id` from the nodes:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.Database;
+ * import com.ovhcloud.pulumi.ovh.CloudProject.DatabaseArgs;
+ * import com.pulumi.ovh.CloudProject.inputs.DatabaseNodeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .serviceName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+ *             .description("my-database")
+ *             .engine("postgresql")
+ *             .version("14")
+ *             .plan("business")
+ *             .nodes(            
+ *                 DatabaseNodeArgs.builder()
+ *                     .region("GRA")
+ *                     .build(),
+ *                 DatabaseNodeArgs.builder()
+ *                     .region("GRA")
+ *                     .build())
+ *             .flavor("db1-4")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &gt; **Important:** Changing the network triggers a service rebuild. The service will go through `UPDATING` / `REBUILDING` states before returning to `RUNNING`. During this time the service may be temporarily unavailable. IP restrictions are cleared during a network change as the old IPs are no longer valid on the new network.
+ * 
  * ## Import
  * 
  * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by &#34;/&#34; E.g.,

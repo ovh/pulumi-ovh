@@ -5827,6 +5827,4338 @@ func (o CloudKeyManagerSecretCurrentStateLocationPtrOutput) Region() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type CloudLoadbalancerCurrentState struct {
+	// Availability zone for the load balancer. **Changing this value recreates the resource.**
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Load balancer description.
+	Description *string `pulumi:"description"`
+	// Load balancer flavor reference:
+	Flavor *CloudLoadbalancerCurrentStateFlavor `pulumi:"flavor"`
+	// Load balancer name.
+	Name *string `pulumi:"name"`
+	// Network of the VIP. **Changing any value of this block recreates the resource.**
+	Network *CloudLoadbalancerCurrentStateNetwork `pulumi:"network"`
+	// Operating status of the load balancer.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Provisioning status of the load balancer.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// Region where the load balancer will be created. **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudLoadbalancerCurrentStateInput is an input type that accepts CloudLoadbalancerCurrentStateArgs and CloudLoadbalancerCurrentStateOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateInput` via:
+//
+//	CloudLoadbalancerCurrentStateArgs{...}
+type CloudLoadbalancerCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateOutput() CloudLoadbalancerCurrentStateOutput
+	ToCloudLoadbalancerCurrentStateOutputWithContext(context.Context) CloudLoadbalancerCurrentStateOutput
+}
+
+type CloudLoadbalancerCurrentStateArgs struct {
+	// Availability zone for the load balancer. **Changing this value recreates the resource.**
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Load balancer description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Load balancer flavor reference:
+	Flavor CloudLoadbalancerCurrentStateFlavorPtrInput `pulumi:"flavor"`
+	// Load balancer name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Network of the VIP. **Changing any value of this block recreates the resource.**
+	Network CloudLoadbalancerCurrentStateNetworkPtrInput `pulumi:"network"`
+	// Operating status of the load balancer.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Provisioning status of the load balancer.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// Region where the load balancer will be created. **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudLoadbalancerCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerCurrentStateArgs) ToCloudLoadbalancerCurrentStateOutput() CloudLoadbalancerCurrentStateOutput {
+	return i.ToCloudLoadbalancerCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateArgs) ToCloudLoadbalancerCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateOutput)
+}
+
+func (i CloudLoadbalancerCurrentStateArgs) ToCloudLoadbalancerCurrentStatePtrOutput() CloudLoadbalancerCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateArgs) ToCloudLoadbalancerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateOutput).ToCloudLoadbalancerCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerCurrentStatePtrInput is an input type that accepts CloudLoadbalancerCurrentStateArgs, CloudLoadbalancerCurrentStatePtr and CloudLoadbalancerCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStatePtrInput` via:
+//
+//	        CloudLoadbalancerCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStatePtrOutput() CloudLoadbalancerCurrentStatePtrOutput
+	ToCloudLoadbalancerCurrentStatePtrOutputWithContext(context.Context) CloudLoadbalancerCurrentStatePtrOutput
+}
+
+type cloudLoadbalancerCurrentStatePtrType CloudLoadbalancerCurrentStateArgs
+
+func CloudLoadbalancerCurrentStatePtr(v *CloudLoadbalancerCurrentStateArgs) CloudLoadbalancerCurrentStatePtrInput {
+	return (*cloudLoadbalancerCurrentStatePtrType)(v)
+}
+
+func (*cloudLoadbalancerCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerCurrentStatePtrType) ToCloudLoadbalancerCurrentStatePtrOutput() CloudLoadbalancerCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerCurrentStatePtrType) ToCloudLoadbalancerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStatePtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateOutput) ToCloudLoadbalancerCurrentStateOutput() CloudLoadbalancerCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateOutput) ToCloudLoadbalancerCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateOutput) ToCloudLoadbalancerCurrentStatePtrOutput() CloudLoadbalancerCurrentStatePtrOutput {
+	return o.ToCloudLoadbalancerCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerCurrentStateOutput) ToCloudLoadbalancerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerCurrentState) *CloudLoadbalancerCurrentState {
+		return &v
+	}).(CloudLoadbalancerCurrentStatePtrOutput)
+}
+
+// Availability zone for the load balancer. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerCurrentStateOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Load balancer description.
+func (o CloudLoadbalancerCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Load balancer flavor reference:
+func (o CloudLoadbalancerCurrentStateOutput) Flavor() CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *CloudLoadbalancerCurrentStateFlavor { return v.Flavor }).(CloudLoadbalancerCurrentStateFlavorPtrOutput)
+}
+
+// Load balancer name.
+func (o CloudLoadbalancerCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Network of the VIP. **Changing any value of this block recreates the resource.**
+func (o CloudLoadbalancerCurrentStateOutput) Network() CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *CloudLoadbalancerCurrentStateNetwork { return v.Network }).(CloudLoadbalancerCurrentStateNetworkPtrOutput)
+}
+
+// Operating status of the load balancer.
+func (o CloudLoadbalancerCurrentStateOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the load balancer.
+func (o CloudLoadbalancerCurrentStateOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Region where the load balancer will be created. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerCurrentStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentState) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStatePtrOutput) ToCloudLoadbalancerCurrentStatePtrOutput() CloudLoadbalancerCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStatePtrOutput) ToCloudLoadbalancerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStatePtrOutput) Elem() CloudLoadbalancerCurrentStateOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) CloudLoadbalancerCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerCurrentState
+		return ret
+	}).(CloudLoadbalancerCurrentStateOutput)
+}
+
+// Availability zone for the load balancer. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerCurrentStatePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load balancer description.
+func (o CloudLoadbalancerCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Load balancer flavor reference:
+func (o CloudLoadbalancerCurrentStatePtrOutput) Flavor() CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *CloudLoadbalancerCurrentStateFlavor {
+		if v == nil {
+			return nil
+		}
+		return v.Flavor
+	}).(CloudLoadbalancerCurrentStateFlavorPtrOutput)
+}
+
+// Load balancer name.
+func (o CloudLoadbalancerCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Network of the VIP. **Changing any value of this block recreates the resource.**
+func (o CloudLoadbalancerCurrentStatePtrOutput) Network() CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *CloudLoadbalancerCurrentStateNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(CloudLoadbalancerCurrentStateNetworkPtrOutput)
+}
+
+// Operating status of the load balancer.
+func (o CloudLoadbalancerCurrentStatePtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the load balancer.
+func (o CloudLoadbalancerCurrentStatePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region where the load balancer will be created. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerCurrentStatePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateFlavor struct {
+	// Flavor ID.
+	Id *string `pulumi:"id"`
+}
+
+// CloudLoadbalancerCurrentStateFlavorInput is an input type that accepts CloudLoadbalancerCurrentStateFlavorArgs and CloudLoadbalancerCurrentStateFlavorOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateFlavorInput` via:
+//
+//	CloudLoadbalancerCurrentStateFlavorArgs{...}
+type CloudLoadbalancerCurrentStateFlavorInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateFlavorOutput() CloudLoadbalancerCurrentStateFlavorOutput
+	ToCloudLoadbalancerCurrentStateFlavorOutputWithContext(context.Context) CloudLoadbalancerCurrentStateFlavorOutput
+}
+
+type CloudLoadbalancerCurrentStateFlavorArgs struct {
+	// Flavor ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (CloudLoadbalancerCurrentStateFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerCurrentStateFlavorArgs) ToCloudLoadbalancerCurrentStateFlavorOutput() CloudLoadbalancerCurrentStateFlavorOutput {
+	return i.ToCloudLoadbalancerCurrentStateFlavorOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateFlavorArgs) ToCloudLoadbalancerCurrentStateFlavorOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateFlavorOutput)
+}
+
+func (i CloudLoadbalancerCurrentStateFlavorArgs) ToCloudLoadbalancerCurrentStateFlavorPtrOutput() CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return i.ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateFlavorArgs) ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateFlavorOutput).ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerCurrentStateFlavorPtrInput is an input type that accepts CloudLoadbalancerCurrentStateFlavorArgs, CloudLoadbalancerCurrentStateFlavorPtr and CloudLoadbalancerCurrentStateFlavorPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateFlavorPtrInput` via:
+//
+//	        CloudLoadbalancerCurrentStateFlavorArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerCurrentStateFlavorPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateFlavorPtrOutput() CloudLoadbalancerCurrentStateFlavorPtrOutput
+	ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(context.Context) CloudLoadbalancerCurrentStateFlavorPtrOutput
+}
+
+type cloudLoadbalancerCurrentStateFlavorPtrType CloudLoadbalancerCurrentStateFlavorArgs
+
+func CloudLoadbalancerCurrentStateFlavorPtr(v *CloudLoadbalancerCurrentStateFlavorArgs) CloudLoadbalancerCurrentStateFlavorPtrInput {
+	return (*cloudLoadbalancerCurrentStateFlavorPtrType)(v)
+}
+
+func (*cloudLoadbalancerCurrentStateFlavorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerCurrentStateFlavorPtrType) ToCloudLoadbalancerCurrentStateFlavorPtrOutput() CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return i.ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerCurrentStateFlavorPtrType) ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateFlavorPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateFlavorOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorOutput) ToCloudLoadbalancerCurrentStateFlavorOutput() CloudLoadbalancerCurrentStateFlavorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorOutput) ToCloudLoadbalancerCurrentStateFlavorOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateFlavorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorOutput) ToCloudLoadbalancerCurrentStateFlavorPtrOutput() CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return o.ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorOutput) ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerCurrentStateFlavor) *CloudLoadbalancerCurrentStateFlavor {
+		return &v
+	}).(CloudLoadbalancerCurrentStateFlavorPtrOutput)
+}
+
+// Flavor ID.
+func (o CloudLoadbalancerCurrentStateFlavorOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentStateFlavor) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateFlavorPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateFlavorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorPtrOutput) ToCloudLoadbalancerCurrentStateFlavorPtrOutput() CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorPtrOutput) ToCloudLoadbalancerCurrentStateFlavorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateFlavorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateFlavorPtrOutput) Elem() CloudLoadbalancerCurrentStateFlavorOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentStateFlavor) CloudLoadbalancerCurrentStateFlavor {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerCurrentStateFlavor
+		return ret
+	}).(CloudLoadbalancerCurrentStateFlavorOutput)
+}
+
+// Flavor ID.
+func (o CloudLoadbalancerCurrentStateFlavorPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentStateFlavor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateNetwork struct {
+	// Addresses carried by the VIP port:
+	Addresses []CloudLoadbalancerCurrentStateNetworkAddress `pulumi:"addresses"`
+	// ID of the network for the VIP.
+	Id *string `pulumi:"id"`
+	// ID of the subnet for the VIP. The subnet must belong to the network above.
+	SubnetId *string `pulumi:"subnetId"`
+}
+
+// CloudLoadbalancerCurrentStateNetworkInput is an input type that accepts CloudLoadbalancerCurrentStateNetworkArgs and CloudLoadbalancerCurrentStateNetworkOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateNetworkInput` via:
+//
+//	CloudLoadbalancerCurrentStateNetworkArgs{...}
+type CloudLoadbalancerCurrentStateNetworkInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateNetworkOutput() CloudLoadbalancerCurrentStateNetworkOutput
+	ToCloudLoadbalancerCurrentStateNetworkOutputWithContext(context.Context) CloudLoadbalancerCurrentStateNetworkOutput
+}
+
+type CloudLoadbalancerCurrentStateNetworkArgs struct {
+	// Addresses carried by the VIP port:
+	Addresses CloudLoadbalancerCurrentStateNetworkAddressArrayInput `pulumi:"addresses"`
+	// ID of the network for the VIP.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// ID of the subnet for the VIP. The subnet must belong to the network above.
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+}
+
+func (CloudLoadbalancerCurrentStateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkArgs) ToCloudLoadbalancerCurrentStateNetworkOutput() CloudLoadbalancerCurrentStateNetworkOutput {
+	return i.ToCloudLoadbalancerCurrentStateNetworkOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkArgs) ToCloudLoadbalancerCurrentStateNetworkOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateNetworkOutput)
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkArgs) ToCloudLoadbalancerCurrentStateNetworkPtrOutput() CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return i.ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkArgs) ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateNetworkOutput).ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerCurrentStateNetworkPtrInput is an input type that accepts CloudLoadbalancerCurrentStateNetworkArgs, CloudLoadbalancerCurrentStateNetworkPtr and CloudLoadbalancerCurrentStateNetworkPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateNetworkPtrInput` via:
+//
+//	        CloudLoadbalancerCurrentStateNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerCurrentStateNetworkPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateNetworkPtrOutput() CloudLoadbalancerCurrentStateNetworkPtrOutput
+	ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(context.Context) CloudLoadbalancerCurrentStateNetworkPtrOutput
+}
+
+type cloudLoadbalancerCurrentStateNetworkPtrType CloudLoadbalancerCurrentStateNetworkArgs
+
+func CloudLoadbalancerCurrentStateNetworkPtr(v *CloudLoadbalancerCurrentStateNetworkArgs) CloudLoadbalancerCurrentStateNetworkPtrInput {
+	return (*cloudLoadbalancerCurrentStateNetworkPtrType)(v)
+}
+
+func (*cloudLoadbalancerCurrentStateNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerCurrentStateNetworkPtrType) ToCloudLoadbalancerCurrentStateNetworkPtrOutput() CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return i.ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerCurrentStateNetworkPtrType) ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateNetworkPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateNetworkOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkOutput) ToCloudLoadbalancerCurrentStateNetworkOutput() CloudLoadbalancerCurrentStateNetworkOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkOutput) ToCloudLoadbalancerCurrentStateNetworkOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkOutput) ToCloudLoadbalancerCurrentStateNetworkPtrOutput() CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return o.ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkOutput) ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerCurrentStateNetwork) *CloudLoadbalancerCurrentStateNetwork {
+		return &v
+	}).(CloudLoadbalancerCurrentStateNetworkPtrOutput)
+}
+
+// Addresses carried by the VIP port:
+func (o CloudLoadbalancerCurrentStateNetworkOutput) Addresses() CloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentStateNetwork) []CloudLoadbalancerCurrentStateNetworkAddress {
+		return v.Addresses
+	}).(CloudLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+// ID of the network for the VIP.
+func (o CloudLoadbalancerCurrentStateNetworkOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentStateNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet for the VIP. The subnet must belong to the network above.
+func (o CloudLoadbalancerCurrentStateNetworkOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentStateNetwork) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkPtrOutput) ToCloudLoadbalancerCurrentStateNetworkPtrOutput() CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkPtrOutput) ToCloudLoadbalancerCurrentStateNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkPtrOutput) Elem() CloudLoadbalancerCurrentStateNetworkOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentStateNetwork) CloudLoadbalancerCurrentStateNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerCurrentStateNetwork
+		return ret
+	}).(CloudLoadbalancerCurrentStateNetworkOutput)
+}
+
+// Addresses carried by the VIP port:
+func (o CloudLoadbalancerCurrentStateNetworkPtrOutput) Addresses() CloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentStateNetwork) []CloudLoadbalancerCurrentStateNetworkAddress {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(CloudLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+// ID of the network for the VIP.
+func (o CloudLoadbalancerCurrentStateNetworkPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentStateNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet for the VIP. The subnet must belong to the network above.
+func (o CloudLoadbalancerCurrentStateNetworkPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerCurrentStateNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateNetworkAddress struct {
+	// IP address.
+	Ip *string `pulumi:"ip"`
+	// Address type (`FIXED`, `FLOATING`).
+	Type *string `pulumi:"type"`
+}
+
+// CloudLoadbalancerCurrentStateNetworkAddressInput is an input type that accepts CloudLoadbalancerCurrentStateNetworkAddressArgs and CloudLoadbalancerCurrentStateNetworkAddressOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateNetworkAddressInput` via:
+//
+//	CloudLoadbalancerCurrentStateNetworkAddressArgs{...}
+type CloudLoadbalancerCurrentStateNetworkAddressInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateNetworkAddressOutput() CloudLoadbalancerCurrentStateNetworkAddressOutput
+	ToCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(context.Context) CloudLoadbalancerCurrentStateNetworkAddressOutput
+}
+
+type CloudLoadbalancerCurrentStateNetworkAddressArgs struct {
+	// IP address.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// Address type (`FIXED`, `FLOATING`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CloudLoadbalancerCurrentStateNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkAddressArgs) ToCloudLoadbalancerCurrentStateNetworkAddressOutput() CloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return i.ToCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkAddressArgs) ToCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateNetworkAddressOutput)
+}
+
+// CloudLoadbalancerCurrentStateNetworkAddressArrayInput is an input type that accepts CloudLoadbalancerCurrentStateNetworkAddressArray and CloudLoadbalancerCurrentStateNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerCurrentStateNetworkAddressArrayInput` via:
+//
+//	CloudLoadbalancerCurrentStateNetworkAddressArray{ CloudLoadbalancerCurrentStateNetworkAddressArgs{...} }
+type CloudLoadbalancerCurrentStateNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutput() CloudLoadbalancerCurrentStateNetworkAddressArrayOutput
+	ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(context.Context) CloudLoadbalancerCurrentStateNetworkAddressArrayOutput
+}
+
+type CloudLoadbalancerCurrentStateNetworkAddressArray []CloudLoadbalancerCurrentStateNetworkAddressInput
+
+func (CloudLoadbalancerCurrentStateNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkAddressArray) ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutput() CloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return i.ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerCurrentStateNetworkAddressArray) ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+type CloudLoadbalancerCurrentStateNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkAddressOutput) ToCloudLoadbalancerCurrentStateNetworkAddressOutput() CloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkAddressOutput) ToCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return o
+}
+
+// IP address.
+func (o CloudLoadbalancerCurrentStateNetworkAddressOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentStateNetworkAddress) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// Address type (`FIXED`, `FLOATING`).
+func (o CloudLoadbalancerCurrentStateNetworkAddressOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerCurrentStateNetworkAddress) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerCurrentStateNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerCurrentStateNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkAddressArrayOutput) ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutput() CloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkAddressArrayOutput) ToCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) CloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o CloudLoadbalancerCurrentStateNetworkAddressArrayOutput) Index(i pulumi.IntInput) CloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudLoadbalancerCurrentStateNetworkAddress {
+		return vs[0].([]CloudLoadbalancerCurrentStateNetworkAddress)[vs[1].(int)]
+	}).(CloudLoadbalancerCurrentStateNetworkAddressOutput)
+}
+
+type CloudLoadbalancerL7policyCurrentState struct {
+	// Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+	Action *string `pulumi:"action"`
+	// Description of the L7 policy.
+	Description *string `pulumi:"description"`
+	// Name of the L7 policy.
+	Name *string `pulumi:"name"`
+	// Operating status of the rule.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+	Position *int `pulumi:"position"`
+	// Provisioning status of the rule.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+	RedirectHttpCode *int `pulumi:"redirectHttpCode"`
+	// ID of the pool for `REDIRECT_TO_POOL` action.
+	RedirectPoolId *string `pulumi:"redirectPoolId"`
+	// Redirect prefix for `REDIRECT_PREFIX` action.
+	RedirectPrefix *string `pulumi:"redirectPrefix"`
+	// Redirect URL for `REDIRECT_TO_URL` action.
+	RedirectUrl *string `pulumi:"redirectUrl"`
+	// List of L7 rules for this policy. All rules must match for the policy to apply:
+	Rules []CloudLoadbalancerL7policyCurrentStateRule `pulumi:"rules"`
+}
+
+// CloudLoadbalancerL7policyCurrentStateInput is an input type that accepts CloudLoadbalancerL7policyCurrentStateArgs and CloudLoadbalancerL7policyCurrentStateOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerL7policyCurrentStateInput` via:
+//
+//	CloudLoadbalancerL7policyCurrentStateArgs{...}
+type CloudLoadbalancerL7policyCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerL7policyCurrentStateOutput() CloudLoadbalancerL7policyCurrentStateOutput
+	ToCloudLoadbalancerL7policyCurrentStateOutputWithContext(context.Context) CloudLoadbalancerL7policyCurrentStateOutput
+}
+
+type CloudLoadbalancerL7policyCurrentStateArgs struct {
+	// Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Description of the L7 policy.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the L7 policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Operating status of the rule.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+	Position pulumi.IntPtrInput `pulumi:"position"`
+	// Provisioning status of the rule.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+	RedirectHttpCode pulumi.IntPtrInput `pulumi:"redirectHttpCode"`
+	// ID of the pool for `REDIRECT_TO_POOL` action.
+	RedirectPoolId pulumi.StringPtrInput `pulumi:"redirectPoolId"`
+	// Redirect prefix for `REDIRECT_PREFIX` action.
+	RedirectPrefix pulumi.StringPtrInput `pulumi:"redirectPrefix"`
+	// Redirect URL for `REDIRECT_TO_URL` action.
+	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
+	// List of L7 rules for this policy. All rules must match for the policy to apply:
+	Rules CloudLoadbalancerL7policyCurrentStateRuleArrayInput `pulumi:"rules"`
+}
+
+func (CloudLoadbalancerL7policyCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerL7policyCurrentState)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateArgs) ToCloudLoadbalancerL7policyCurrentStateOutput() CloudLoadbalancerL7policyCurrentStateOutput {
+	return i.ToCloudLoadbalancerL7policyCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateArgs) ToCloudLoadbalancerL7policyCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyCurrentStateOutput)
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateArgs) ToCloudLoadbalancerL7policyCurrentStatePtrOutput() CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateArgs) ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyCurrentStateOutput).ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerL7policyCurrentStatePtrInput is an input type that accepts CloudLoadbalancerL7policyCurrentStateArgs, CloudLoadbalancerL7policyCurrentStatePtr and CloudLoadbalancerL7policyCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerL7policyCurrentStatePtrInput` via:
+//
+//	        CloudLoadbalancerL7policyCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerL7policyCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerL7policyCurrentStatePtrOutput() CloudLoadbalancerL7policyCurrentStatePtrOutput
+	ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(context.Context) CloudLoadbalancerL7policyCurrentStatePtrOutput
+}
+
+type cloudLoadbalancerL7policyCurrentStatePtrType CloudLoadbalancerL7policyCurrentStateArgs
+
+func CloudLoadbalancerL7policyCurrentStatePtr(v *CloudLoadbalancerL7policyCurrentStateArgs) CloudLoadbalancerL7policyCurrentStatePtrInput {
+	return (*cloudLoadbalancerL7policyCurrentStatePtrType)(v)
+}
+
+func (*cloudLoadbalancerL7policyCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerL7policyCurrentState)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerL7policyCurrentStatePtrType) ToCloudLoadbalancerL7policyCurrentStatePtrOutput() CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerL7policyCurrentStatePtrType) ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyCurrentStatePtrOutput)
+}
+
+type CloudLoadbalancerL7policyCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerL7policyCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerL7policyCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateOutput) ToCloudLoadbalancerL7policyCurrentStateOutput() CloudLoadbalancerL7policyCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateOutput) ToCloudLoadbalancerL7policyCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateOutput) ToCloudLoadbalancerL7policyCurrentStatePtrOutput() CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return o.ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateOutput) ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerL7policyCurrentState) *CloudLoadbalancerL7policyCurrentState {
+		return &v
+	}).(CloudLoadbalancerL7policyCurrentStatePtrOutput)
+}
+
+// Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+func (o CloudLoadbalancerL7policyCurrentStateOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Description of the L7 policy.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the L7 policy.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the rule.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *int { return v.Position }).(pulumi.IntPtrOutput)
+}
+
+// Provisioning status of the rule.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) RedirectHttpCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *int { return v.RedirectHttpCode }).(pulumi.IntPtrOutput)
+}
+
+// ID of the pool for `REDIRECT_TO_POOL` action.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) RedirectPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.RedirectPoolId }).(pulumi.StringPtrOutput)
+}
+
+// Redirect prefix for `REDIRECT_PREFIX` action.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) RedirectPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.RedirectPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Redirect URL for `REDIRECT_TO_URL` action.
+func (o CloudLoadbalancerL7policyCurrentStateOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+// List of L7 rules for this policy. All rules must match for the policy to apply:
+func (o CloudLoadbalancerL7policyCurrentStateOutput) Rules() CloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentState) []CloudLoadbalancerL7policyCurrentStateRule {
+		return v.Rules
+	}).(CloudLoadbalancerL7policyCurrentStateRuleArrayOutput)
+}
+
+type CloudLoadbalancerL7policyCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerL7policyCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerL7policyCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) ToCloudLoadbalancerL7policyCurrentStatePtrOutput() CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) ToCloudLoadbalancerL7policyCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) Elem() CloudLoadbalancerL7policyCurrentStateOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) CloudLoadbalancerL7policyCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerL7policyCurrentState
+		return ret
+	}).(CloudLoadbalancerL7policyCurrentStateOutput)
+}
+
+// Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the L7 policy.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the L7 policy.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the rule.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) Position() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Position
+	}).(pulumi.IntPtrOutput)
+}
+
+// Provisioning status of the rule.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) RedirectHttpCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectHttpCode
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the pool for `REDIRECT_TO_POOL` action.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) RedirectPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectPoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redirect prefix for `REDIRECT_PREFIX` action.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) RedirectPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redirect URL for `REDIRECT_TO_URL` action.
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of L7 rules for this policy. All rules must match for the policy to apply:
+func (o CloudLoadbalancerL7policyCurrentStatePtrOutput) Rules() CloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerL7policyCurrentState) []CloudLoadbalancerL7policyCurrentStateRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(CloudLoadbalancerL7policyCurrentStateRuleArrayOutput)
+}
+
+type CloudLoadbalancerL7policyCurrentStateRule struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType *string `pulumi:"compareType"`
+	// Rule ID.
+	Id *string `pulumi:"id"`
+	// Whether to invert the rule match. Defaults to the value assigned by the API.
+	Invert *bool `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key *string `pulumi:"key"`
+	// Operating status of the rule.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Provisioning status of the rule.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type *string `pulumi:"type"`
+	// Value to compare against.
+	Value *string `pulumi:"value"`
+}
+
+// CloudLoadbalancerL7policyCurrentStateRuleInput is an input type that accepts CloudLoadbalancerL7policyCurrentStateRuleArgs and CloudLoadbalancerL7policyCurrentStateRuleOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerL7policyCurrentStateRuleInput` via:
+//
+//	CloudLoadbalancerL7policyCurrentStateRuleArgs{...}
+type CloudLoadbalancerL7policyCurrentStateRuleInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerL7policyCurrentStateRuleOutput() CloudLoadbalancerL7policyCurrentStateRuleOutput
+	ToCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(context.Context) CloudLoadbalancerL7policyCurrentStateRuleOutput
+}
+
+type CloudLoadbalancerL7policyCurrentStateRuleArgs struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType pulumi.StringPtrInput `pulumi:"compareType"`
+	// Rule ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether to invert the rule match. Defaults to the value assigned by the API.
+	Invert pulumi.BoolPtrInput `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Operating status of the rule.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Provisioning status of the rule.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Value to compare against.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CloudLoadbalancerL7policyCurrentStateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateRuleArgs) ToCloudLoadbalancerL7policyCurrentStateRuleOutput() CloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return i.ToCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateRuleArgs) ToCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyCurrentStateRuleOutput)
+}
+
+// CloudLoadbalancerL7policyCurrentStateRuleArrayInput is an input type that accepts CloudLoadbalancerL7policyCurrentStateRuleArray and CloudLoadbalancerL7policyCurrentStateRuleArrayOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerL7policyCurrentStateRuleArrayInput` via:
+//
+//	CloudLoadbalancerL7policyCurrentStateRuleArray{ CloudLoadbalancerL7policyCurrentStateRuleArgs{...} }
+type CloudLoadbalancerL7policyCurrentStateRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutput() CloudLoadbalancerL7policyCurrentStateRuleArrayOutput
+	ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(context.Context) CloudLoadbalancerL7policyCurrentStateRuleArrayOutput
+}
+
+type CloudLoadbalancerL7policyCurrentStateRuleArray []CloudLoadbalancerL7policyCurrentStateRuleInput
+
+func (CloudLoadbalancerL7policyCurrentStateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateRuleArray) ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutput() CloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return i.ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerL7policyCurrentStateRuleArray) ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyCurrentStateRuleArrayOutput)
+}
+
+type CloudLoadbalancerL7policyCurrentStateRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerL7policyCurrentStateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) ToCloudLoadbalancerL7policyCurrentStateRuleOutput() CloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) ToCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return o
+}
+
+// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) CompareType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.CompareType }).(pulumi.StringPtrOutput)
+}
+
+// Rule ID.
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Whether to invert the rule match. Defaults to the value assigned by the API.
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) Invert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *bool { return v.Invert }).(pulumi.BoolPtrOutput)
+}
+
+// Key for `COOKIE` and `HEADER` rule types.
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the rule.
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the rule.
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Value to compare against.
+func (o CloudLoadbalancerL7policyCurrentStateRuleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyCurrentStateRule) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerL7policyCurrentStateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerL7policyCurrentStateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateRuleArrayOutput) ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutput() CloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateRuleArrayOutput) ToCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyCurrentStateRuleArrayOutput) Index(i pulumi.IntInput) CloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudLoadbalancerL7policyCurrentStateRule {
+		return vs[0].([]CloudLoadbalancerL7policyCurrentStateRule)[vs[1].(int)]
+	}).(CloudLoadbalancerL7policyCurrentStateRuleOutput)
+}
+
+type CloudLoadbalancerL7policyRule struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType string `pulumi:"compareType"`
+	// Whether to invert the rule match. Defaults to the value assigned by the API.
+	Invert *bool `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key *string `pulumi:"key"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type string `pulumi:"type"`
+	// Value to compare against.
+	Value string `pulumi:"value"`
+}
+
+// CloudLoadbalancerL7policyRuleInput is an input type that accepts CloudLoadbalancerL7policyRuleArgs and CloudLoadbalancerL7policyRuleOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerL7policyRuleInput` via:
+//
+//	CloudLoadbalancerL7policyRuleArgs{...}
+type CloudLoadbalancerL7policyRuleInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerL7policyRuleOutput() CloudLoadbalancerL7policyRuleOutput
+	ToCloudLoadbalancerL7policyRuleOutputWithContext(context.Context) CloudLoadbalancerL7policyRuleOutput
+}
+
+type CloudLoadbalancerL7policyRuleArgs struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType pulumi.StringInput `pulumi:"compareType"`
+	// Whether to invert the rule match. Defaults to the value assigned by the API.
+	Invert pulumi.BoolPtrInput `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value to compare against.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CloudLoadbalancerL7policyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerL7policyRuleArgs) ToCloudLoadbalancerL7policyRuleOutput() CloudLoadbalancerL7policyRuleOutput {
+	return i.ToCloudLoadbalancerL7policyRuleOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerL7policyRuleArgs) ToCloudLoadbalancerL7policyRuleOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyRuleOutput)
+}
+
+// CloudLoadbalancerL7policyRuleArrayInput is an input type that accepts CloudLoadbalancerL7policyRuleArray and CloudLoadbalancerL7policyRuleArrayOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerL7policyRuleArrayInput` via:
+//
+//	CloudLoadbalancerL7policyRuleArray{ CloudLoadbalancerL7policyRuleArgs{...} }
+type CloudLoadbalancerL7policyRuleArrayInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerL7policyRuleArrayOutput() CloudLoadbalancerL7policyRuleArrayOutput
+	ToCloudLoadbalancerL7policyRuleArrayOutputWithContext(context.Context) CloudLoadbalancerL7policyRuleArrayOutput
+}
+
+type CloudLoadbalancerL7policyRuleArray []CloudLoadbalancerL7policyRuleInput
+
+func (CloudLoadbalancerL7policyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerL7policyRuleArray) ToCloudLoadbalancerL7policyRuleArrayOutput() CloudLoadbalancerL7policyRuleArrayOutput {
+	return i.ToCloudLoadbalancerL7policyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerL7policyRuleArray) ToCloudLoadbalancerL7policyRuleArrayOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerL7policyRuleArrayOutput)
+}
+
+type CloudLoadbalancerL7policyRuleOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerL7policyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerL7policyRuleOutput) ToCloudLoadbalancerL7policyRuleOutput() CloudLoadbalancerL7policyRuleOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyRuleOutput) ToCloudLoadbalancerL7policyRuleOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyRuleOutput {
+	return o
+}
+
+// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+func (o CloudLoadbalancerL7policyRuleOutput) CompareType() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyRule) string { return v.CompareType }).(pulumi.StringOutput)
+}
+
+// Whether to invert the rule match. Defaults to the value assigned by the API.
+func (o CloudLoadbalancerL7policyRuleOutput) Invert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyRule) *bool { return v.Invert }).(pulumi.BoolPtrOutput)
+}
+
+// Key for `COOKIE` and `HEADER` rule types.
+func (o CloudLoadbalancerL7policyRuleOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyRule) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+func (o CloudLoadbalancerL7policyRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value to compare against.
+func (o CloudLoadbalancerL7policyRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerL7policyRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CloudLoadbalancerL7policyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerL7policyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerL7policyRuleArrayOutput) ToCloudLoadbalancerL7policyRuleArrayOutput() CloudLoadbalancerL7policyRuleArrayOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyRuleArrayOutput) ToCloudLoadbalancerL7policyRuleArrayOutputWithContext(ctx context.Context) CloudLoadbalancerL7policyRuleArrayOutput {
+	return o
+}
+
+func (o CloudLoadbalancerL7policyRuleArrayOutput) Index(i pulumi.IntInput) CloudLoadbalancerL7policyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudLoadbalancerL7policyRule {
+		return vs[0].([]CloudLoadbalancerL7policyRule)[vs[1].(int)]
+	}).(CloudLoadbalancerL7policyRuleOutput)
+}
+
+type CloudLoadbalancerListenerCurrentState struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
+	// Availability zone.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+	ConnectionLimit *int `pulumi:"connectionLimit"`
+	// ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+	DefaultPoolId *string `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef *string `pulumi:"defaultTlsContainerRef"`
+	// Description of the listener.
+	Description *string `pulumi:"description"`
+	// Headers to insert into requests:
+	InsertHeaders *CloudLoadbalancerListenerCurrentStateInsertHeaders `pulumi:"insertHeaders"`
+	// Name of the listener.
+	Name *string `pulumi:"name"`
+	// Operating status of the listener.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+	Protocol *string `pulumi:"protocol"`
+	// Port number the listener listens on. **Changing this value recreates the resource.**
+	ProtocolPort *int `pulumi:"protocolPort"`
+	// Provisioning status of the listener.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// Region.
+	Region *string `pulumi:"region"`
+	// List of SNI container references.
+	SniContainerRefs []string `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutClientData *int `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutMemberConnect *int `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutMemberData *int `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutTcpInspect *int `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions []string `pulumi:"tlsVersions"`
+}
+
+// CloudLoadbalancerListenerCurrentStateInput is an input type that accepts CloudLoadbalancerListenerCurrentStateArgs and CloudLoadbalancerListenerCurrentStateOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerListenerCurrentStateInput` via:
+//
+//	CloudLoadbalancerListenerCurrentStateArgs{...}
+type CloudLoadbalancerListenerCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerListenerCurrentStateOutput() CloudLoadbalancerListenerCurrentStateOutput
+	ToCloudLoadbalancerListenerCurrentStateOutputWithContext(context.Context) CloudLoadbalancerListenerCurrentStateOutput
+}
+
+type CloudLoadbalancerListenerCurrentStateArgs struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs pulumi.StringArrayInput `pulumi:"allowedCidrs"`
+	// Availability zone.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+	ConnectionLimit pulumi.IntPtrInput `pulumi:"connectionLimit"`
+	// ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+	DefaultPoolId pulumi.StringPtrInput `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef pulumi.StringPtrInput `pulumi:"defaultTlsContainerRef"`
+	// Description of the listener.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Headers to insert into requests:
+	InsertHeaders CloudLoadbalancerListenerCurrentStateInsertHeadersPtrInput `pulumi:"insertHeaders"`
+	// Name of the listener.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Operating status of the listener.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Port number the listener listens on. **Changing this value recreates the resource.**
+	ProtocolPort pulumi.IntPtrInput `pulumi:"protocolPort"`
+	// Provisioning status of the listener.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// Region.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// List of SNI container references.
+	SniContainerRefs pulumi.StringArrayInput `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutClientData pulumi.IntPtrInput `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutMemberConnect pulumi.IntPtrInput `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutMemberData pulumi.IntPtrInput `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+	TimeoutTcpInspect pulumi.IntPtrInput `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
+}
+
+func (CloudLoadbalancerListenerCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerListenerCurrentState)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerListenerCurrentStateArgs) ToCloudLoadbalancerListenerCurrentStateOutput() CloudLoadbalancerListenerCurrentStateOutput {
+	return i.ToCloudLoadbalancerListenerCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerListenerCurrentStateArgs) ToCloudLoadbalancerListenerCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerCurrentStateOutput)
+}
+
+func (i CloudLoadbalancerListenerCurrentStateArgs) ToCloudLoadbalancerListenerCurrentStatePtrOutput() CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerListenerCurrentStateArgs) ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerCurrentStateOutput).ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerListenerCurrentStatePtrInput is an input type that accepts CloudLoadbalancerListenerCurrentStateArgs, CloudLoadbalancerListenerCurrentStatePtr and CloudLoadbalancerListenerCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerListenerCurrentStatePtrInput` via:
+//
+//	        CloudLoadbalancerListenerCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerListenerCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerListenerCurrentStatePtrOutput() CloudLoadbalancerListenerCurrentStatePtrOutput
+	ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(context.Context) CloudLoadbalancerListenerCurrentStatePtrOutput
+}
+
+type cloudLoadbalancerListenerCurrentStatePtrType CloudLoadbalancerListenerCurrentStateArgs
+
+func CloudLoadbalancerListenerCurrentStatePtr(v *CloudLoadbalancerListenerCurrentStateArgs) CloudLoadbalancerListenerCurrentStatePtrInput {
+	return (*cloudLoadbalancerListenerCurrentStatePtrType)(v)
+}
+
+func (*cloudLoadbalancerListenerCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerListenerCurrentState)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerListenerCurrentStatePtrType) ToCloudLoadbalancerListenerCurrentStatePtrOutput() CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerListenerCurrentStatePtrType) ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerCurrentStatePtrOutput)
+}
+
+type CloudLoadbalancerListenerCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerListenerCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerListenerCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerListenerCurrentStateOutput) ToCloudLoadbalancerListenerCurrentStateOutput() CloudLoadbalancerListenerCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStateOutput) ToCloudLoadbalancerListenerCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStateOutput) ToCloudLoadbalancerListenerCurrentStatePtrOutput() CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return o.ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerListenerCurrentStateOutput) ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerListenerCurrentState) *CloudLoadbalancerListenerCurrentState {
+		return &v
+	}).(CloudLoadbalancerListenerCurrentStatePtrOutput)
+}
+
+// List of CIDRs allowed to access the listener.
+func (o CloudLoadbalancerListenerCurrentStateOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+}
+
+// Availability zone.
+func (o CloudLoadbalancerListenerCurrentStateOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStateOutput) ConnectionLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *int { return v.ConnectionLimit }).(pulumi.IntPtrOutput)
+}
+
+// ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStateOutput) DefaultPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.DefaultPoolId }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the default TLS container.
+func (o CloudLoadbalancerListenerCurrentStateOutput) DefaultTlsContainerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.DefaultTlsContainerRef }).(pulumi.StringPtrOutput)
+}
+
+// Description of the listener.
+func (o CloudLoadbalancerListenerCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Headers to insert into requests:
+func (o CloudLoadbalancerListenerCurrentStateOutput) InsertHeaders() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *CloudLoadbalancerListenerCurrentStateInsertHeaders {
+		return v.InsertHeaders
+	}).(CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput)
+}
+
+// Name of the listener.
+func (o CloudLoadbalancerListenerCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the listener.
+func (o CloudLoadbalancerListenerCurrentStateOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerListenerCurrentStateOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Port number the listener listens on. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerListenerCurrentStateOutput) ProtocolPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *int { return v.ProtocolPort }).(pulumi.IntPtrOutput)
+}
+
+// Provisioning status of the listener.
+func (o CloudLoadbalancerListenerCurrentStateOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Region.
+func (o CloudLoadbalancerListenerCurrentStateOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// List of SNI container references.
+func (o CloudLoadbalancerListenerCurrentStateOutput) SniContainerRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) []string { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
+}
+
+// Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStateOutput) TimeoutClientData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *int { return v.TimeoutClientData }).(pulumi.IntPtrOutput)
+}
+
+// Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStateOutput) TimeoutMemberConnect() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *int { return v.TimeoutMemberConnect }).(pulumi.IntPtrOutput)
+}
+
+// Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStateOutput) TimeoutMemberData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *int { return v.TimeoutMemberData }).(pulumi.IntPtrOutput)
+}
+
+// Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStateOutput) TimeoutTcpInspect() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) *int { return v.TimeoutTcpInspect }).(pulumi.IntPtrOutput)
+}
+
+// List of TLS versions allowed.
+func (o CloudLoadbalancerListenerCurrentStateOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentState) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
+type CloudLoadbalancerListenerCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerListenerCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerListenerCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) ToCloudLoadbalancerListenerCurrentStatePtrOutput() CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) ToCloudLoadbalancerListenerCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) Elem() CloudLoadbalancerListenerCurrentStateOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) CloudLoadbalancerListenerCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerListenerCurrentState
+		return ret
+	}).(CloudLoadbalancerListenerCurrentStateOutput)
+}
+
+// List of CIDRs allowed to access the listener.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedCidrs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Availability zone.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) ConnectionLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) DefaultPoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the default TLS container.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) DefaultTlsContainerRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTlsContainerRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Description of the listener.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Headers to insert into requests:
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) InsertHeaders() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *CloudLoadbalancerListenerCurrentStateInsertHeaders {
+		if v == nil {
+			return nil
+		}
+		return v.InsertHeaders
+	}).(CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput)
+}
+
+// Name of the listener.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the listener.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port number the listener listens on. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) ProtocolPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProtocolPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Provisioning status of the listener.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Region.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of SNI container references.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) SniContainerRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SniContainerRefs
+	}).(pulumi.StringArrayOutput)
+}
+
+// Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) TimeoutClientData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutClientData
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) TimeoutMemberConnect() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMemberConnect
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) TimeoutMemberData() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutMemberData
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) TimeoutTcpInspect() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TimeoutTcpInspect
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of TLS versions allowed.
+func (o CloudLoadbalancerListenerCurrentStatePtrOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentState) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsVersions
+	}).(pulumi.StringArrayOutput)
+}
+
+type CloudLoadbalancerListenerCurrentStateInsertHeaders struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor *bool `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort *bool `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto *bool `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn *bool `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert *bool `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify *bool `pulumi:"xSslClientVerify"`
+}
+
+// CloudLoadbalancerListenerCurrentStateInsertHeadersInput is an input type that accepts CloudLoadbalancerListenerCurrentStateInsertHeadersArgs and CloudLoadbalancerListenerCurrentStateInsertHeadersOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerListenerCurrentStateInsertHeadersInput` via:
+//
+//	CloudLoadbalancerListenerCurrentStateInsertHeadersArgs{...}
+type CloudLoadbalancerListenerCurrentStateInsertHeadersInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersOutput
+	ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersOutput
+}
+
+type CloudLoadbalancerListenerCurrentStateInsertHeadersArgs struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor pulumi.BoolPtrInput `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort pulumi.BoolPtrInput `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto pulumi.BoolPtrInput `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn pulumi.BoolPtrInput `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert pulumi.BoolPtrInput `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify pulumi.BoolPtrInput `pulumi:"xSslClientVerify"`
+}
+
+func (CloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return i.ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerCurrentStateInsertHeadersOutput)
+}
+
+func (i CloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return i.ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerCurrentStateInsertHeadersOutput).ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerListenerCurrentStateInsertHeadersPtrInput is an input type that accepts CloudLoadbalancerListenerCurrentStateInsertHeadersArgs, CloudLoadbalancerListenerCurrentStateInsertHeadersPtr and CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerListenerCurrentStateInsertHeadersPtrInput` via:
+//
+//	        CloudLoadbalancerListenerCurrentStateInsertHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerListenerCurrentStateInsertHeadersPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput
+	ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput
+}
+
+type cloudLoadbalancerListenerCurrentStateInsertHeadersPtrType CloudLoadbalancerListenerCurrentStateInsertHeadersArgs
+
+func CloudLoadbalancerListenerCurrentStateInsertHeadersPtr(v *CloudLoadbalancerListenerCurrentStateInsertHeadersArgs) CloudLoadbalancerListenerCurrentStateInsertHeadersPtrInput {
+	return (*cloudLoadbalancerListenerCurrentStateInsertHeadersPtrType)(v)
+}
+
+func (*cloudLoadbalancerListenerCurrentStateInsertHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerListenerCurrentStateInsertHeadersPtrType) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return i.ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerListenerCurrentStateInsertHeadersPtrType) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput)
+}
+
+type CloudLoadbalancerListenerCurrentStateInsertHeadersOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ToCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return o.ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerListenerCurrentStateInsertHeaders) *CloudLoadbalancerListenerCurrentStateInsertHeaders {
+		return &v
+	}).(CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput)
+}
+
+// Insert X-Forwarded-For header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XForwardedFor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool { return v.XForwardedFor }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XForwardedPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool { return v.XForwardedPort }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XForwardedProto() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool { return v.XForwardedProto }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XSslClientDn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool { return v.XSslClientDn }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XSslClientHasCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool { return v.XSslClientHasCert }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XSslClientVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool { return v.XSslClientVerify }).(pulumi.BoolPtrOutput)
+}
+
+type CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput() CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) ToCloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) Elem() CloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) CloudLoadbalancerListenerCurrentStateInsertHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerListenerCurrentStateInsertHeaders
+		return ret
+	}).(CloudLoadbalancerListenerCurrentStateInsertHeadersOutput)
+}
+
+// Insert X-Forwarded-For header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) XForwardedFor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedFor
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) XForwardedPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedPort
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) XForwardedProto() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedProto
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) XSslClientDn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XSslClientDn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) XSslClientHasCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XSslClientHasCert
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput) XSslClientVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerCurrentStateInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XSslClientVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CloudLoadbalancerListenerInsertHeaders struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor *bool `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort *bool `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto *bool `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn *bool `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert *bool `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify *bool `pulumi:"xSslClientVerify"`
+}
+
+// CloudLoadbalancerListenerInsertHeadersInput is an input type that accepts CloudLoadbalancerListenerInsertHeadersArgs and CloudLoadbalancerListenerInsertHeadersOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerListenerInsertHeadersInput` via:
+//
+//	CloudLoadbalancerListenerInsertHeadersArgs{...}
+type CloudLoadbalancerListenerInsertHeadersInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerListenerInsertHeadersOutput() CloudLoadbalancerListenerInsertHeadersOutput
+	ToCloudLoadbalancerListenerInsertHeadersOutputWithContext(context.Context) CloudLoadbalancerListenerInsertHeadersOutput
+}
+
+type CloudLoadbalancerListenerInsertHeadersArgs struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor pulumi.BoolPtrInput `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort pulumi.BoolPtrInput `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto pulumi.BoolPtrInput `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn pulumi.BoolPtrInput `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert pulumi.BoolPtrInput `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify pulumi.BoolPtrInput `pulumi:"xSslClientVerify"`
+}
+
+func (CloudLoadbalancerListenerInsertHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerListenerInsertHeaders)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerListenerInsertHeadersArgs) ToCloudLoadbalancerListenerInsertHeadersOutput() CloudLoadbalancerListenerInsertHeadersOutput {
+	return i.ToCloudLoadbalancerListenerInsertHeadersOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerListenerInsertHeadersArgs) ToCloudLoadbalancerListenerInsertHeadersOutputWithContext(ctx context.Context) CloudLoadbalancerListenerInsertHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerInsertHeadersOutput)
+}
+
+func (i CloudLoadbalancerListenerInsertHeadersArgs) ToCloudLoadbalancerListenerInsertHeadersPtrOutput() CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return i.ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerListenerInsertHeadersArgs) ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerInsertHeadersOutput).ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerListenerInsertHeadersPtrInput is an input type that accepts CloudLoadbalancerListenerInsertHeadersArgs, CloudLoadbalancerListenerInsertHeadersPtr and CloudLoadbalancerListenerInsertHeadersPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerListenerInsertHeadersPtrInput` via:
+//
+//	        CloudLoadbalancerListenerInsertHeadersArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerListenerInsertHeadersPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerListenerInsertHeadersPtrOutput() CloudLoadbalancerListenerInsertHeadersPtrOutput
+	ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(context.Context) CloudLoadbalancerListenerInsertHeadersPtrOutput
+}
+
+type cloudLoadbalancerListenerInsertHeadersPtrType CloudLoadbalancerListenerInsertHeadersArgs
+
+func CloudLoadbalancerListenerInsertHeadersPtr(v *CloudLoadbalancerListenerInsertHeadersArgs) CloudLoadbalancerListenerInsertHeadersPtrInput {
+	return (*cloudLoadbalancerListenerInsertHeadersPtrType)(v)
+}
+
+func (*cloudLoadbalancerListenerInsertHeadersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerListenerInsertHeaders)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerListenerInsertHeadersPtrType) ToCloudLoadbalancerListenerInsertHeadersPtrOutput() CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return i.ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerListenerInsertHeadersPtrType) ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerListenerInsertHeadersPtrOutput)
+}
+
+type CloudLoadbalancerListenerInsertHeadersOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerListenerInsertHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerListenerInsertHeaders)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersOutput) ToCloudLoadbalancerListenerInsertHeadersOutput() CloudLoadbalancerListenerInsertHeadersOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersOutput) ToCloudLoadbalancerListenerInsertHeadersOutputWithContext(ctx context.Context) CloudLoadbalancerListenerInsertHeadersOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersOutput) ToCloudLoadbalancerListenerInsertHeadersPtrOutput() CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return o.ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersOutput) ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerListenerInsertHeaders) *CloudLoadbalancerListenerInsertHeaders {
+		return &v
+	}).(CloudLoadbalancerListenerInsertHeadersPtrOutput)
+}
+
+// Insert X-Forwarded-For header.
+func (o CloudLoadbalancerListenerInsertHeadersOutput) XForwardedFor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerInsertHeaders) *bool { return v.XForwardedFor }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o CloudLoadbalancerListenerInsertHeadersOutput) XForwardedPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerInsertHeaders) *bool { return v.XForwardedPort }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o CloudLoadbalancerListenerInsertHeadersOutput) XForwardedProto() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerInsertHeaders) *bool { return v.XForwardedProto }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o CloudLoadbalancerListenerInsertHeadersOutput) XSslClientDn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerInsertHeaders) *bool { return v.XSslClientDn }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o CloudLoadbalancerListenerInsertHeadersOutput) XSslClientHasCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerInsertHeaders) *bool { return v.XSslClientHasCert }).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o CloudLoadbalancerListenerInsertHeadersOutput) XSslClientVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerListenerInsertHeaders) *bool { return v.XSslClientVerify }).(pulumi.BoolPtrOutput)
+}
+
+type CloudLoadbalancerListenerInsertHeadersPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerListenerInsertHeadersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerListenerInsertHeaders)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) ToCloudLoadbalancerListenerInsertHeadersPtrOutput() CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) ToCloudLoadbalancerListenerInsertHeadersPtrOutputWithContext(ctx context.Context) CloudLoadbalancerListenerInsertHeadersPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) Elem() CloudLoadbalancerListenerInsertHeadersOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) CloudLoadbalancerListenerInsertHeaders {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerListenerInsertHeaders
+		return ret
+	}).(CloudLoadbalancerListenerInsertHeadersOutput)
+}
+
+// Insert X-Forwarded-For header.
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) XForwardedFor() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedFor
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) XForwardedPort() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedPort
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) XForwardedProto() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XForwardedProto
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) XSslClientDn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XSslClientDn
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) XSslClientHasCert() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XSslClientHasCert
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o CloudLoadbalancerListenerInsertHeadersPtrOutput) XSslClientVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerListenerInsertHeaders) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.XSslClientVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CloudLoadbalancerNetwork struct {
+	// ID of the network for the VIP.
+	Id string `pulumi:"id"`
+	// IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+	Ip *string `pulumi:"ip"`
+	// ID of the subnet for the VIP. The subnet must belong to the network above.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// CloudLoadbalancerNetworkInput is an input type that accepts CloudLoadbalancerNetworkArgs and CloudLoadbalancerNetworkOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerNetworkInput` via:
+//
+//	CloudLoadbalancerNetworkArgs{...}
+type CloudLoadbalancerNetworkInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerNetworkOutput() CloudLoadbalancerNetworkOutput
+	ToCloudLoadbalancerNetworkOutputWithContext(context.Context) CloudLoadbalancerNetworkOutput
+}
+
+type CloudLoadbalancerNetworkArgs struct {
+	// ID of the network for the VIP.
+	Id pulumi.StringInput `pulumi:"id"`
+	// IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// ID of the subnet for the VIP. The subnet must belong to the network above.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (CloudLoadbalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerNetworkArgs) ToCloudLoadbalancerNetworkOutput() CloudLoadbalancerNetworkOutput {
+	return i.ToCloudLoadbalancerNetworkOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerNetworkArgs) ToCloudLoadbalancerNetworkOutputWithContext(ctx context.Context) CloudLoadbalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerNetworkOutput)
+}
+
+func (i CloudLoadbalancerNetworkArgs) ToCloudLoadbalancerNetworkPtrOutput() CloudLoadbalancerNetworkPtrOutput {
+	return i.ToCloudLoadbalancerNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerNetworkArgs) ToCloudLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerNetworkOutput).ToCloudLoadbalancerNetworkPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerNetworkPtrInput is an input type that accepts CloudLoadbalancerNetworkArgs, CloudLoadbalancerNetworkPtr and CloudLoadbalancerNetworkPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerNetworkPtrInput` via:
+//
+//	        CloudLoadbalancerNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerNetworkPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerNetworkPtrOutput() CloudLoadbalancerNetworkPtrOutput
+	ToCloudLoadbalancerNetworkPtrOutputWithContext(context.Context) CloudLoadbalancerNetworkPtrOutput
+}
+
+type cloudLoadbalancerNetworkPtrType CloudLoadbalancerNetworkArgs
+
+func CloudLoadbalancerNetworkPtr(v *CloudLoadbalancerNetworkArgs) CloudLoadbalancerNetworkPtrInput {
+	return (*cloudLoadbalancerNetworkPtrType)(v)
+}
+
+func (*cloudLoadbalancerNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerNetworkPtrType) ToCloudLoadbalancerNetworkPtrOutput() CloudLoadbalancerNetworkPtrOutput {
+	return i.ToCloudLoadbalancerNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerNetworkPtrType) ToCloudLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerNetworkPtrOutput)
+}
+
+type CloudLoadbalancerNetworkOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerNetworkOutput) ToCloudLoadbalancerNetworkOutput() CloudLoadbalancerNetworkOutput {
+	return o
+}
+
+func (o CloudLoadbalancerNetworkOutput) ToCloudLoadbalancerNetworkOutputWithContext(ctx context.Context) CloudLoadbalancerNetworkOutput {
+	return o
+}
+
+func (o CloudLoadbalancerNetworkOutput) ToCloudLoadbalancerNetworkPtrOutput() CloudLoadbalancerNetworkPtrOutput {
+	return o.ToCloudLoadbalancerNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerNetworkOutput) ToCloudLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerNetwork) *CloudLoadbalancerNetwork {
+		return &v
+	}).(CloudLoadbalancerNetworkPtrOutput)
+}
+
+// ID of the network for the VIP.
+func (o CloudLoadbalancerNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+func (o CloudLoadbalancerNetworkOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerNetwork) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet for the VIP. The subnet must belong to the network above.
+func (o CloudLoadbalancerNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type CloudLoadbalancerNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerNetworkPtrOutput) ToCloudLoadbalancerNetworkPtrOutput() CloudLoadbalancerNetworkPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerNetworkPtrOutput) ToCloudLoadbalancerNetworkPtrOutputWithContext(ctx context.Context) CloudLoadbalancerNetworkPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerNetworkPtrOutput) Elem() CloudLoadbalancerNetworkOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerNetwork) CloudLoadbalancerNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerNetwork
+		return ret
+	}).(CloudLoadbalancerNetworkOutput)
+}
+
+// ID of the network for the VIP.
+func (o CloudLoadbalancerNetworkPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+func (o CloudLoadbalancerNetworkPtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet for the VIP. The subnet must belong to the network above.
+func (o CloudLoadbalancerNetworkPtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentState struct {
+	// Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+	Algorithm *string `pulumi:"algorithm"`
+	// Pool description.
+	Description *string `pulumi:"description"`
+	// Health monitor configuration:
+	HealthMonitor *CloudLoadbalancerPoolCurrentStateHealthMonitor `pulumi:"healthMonitor"`
+	// Pool name.
+	Name *string `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Session persistence configuration:
+	Persistence *CloudLoadbalancerPoolCurrentStatePersistence `pulumi:"persistence"`
+	// Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+	Protocol *string `pulumi:"protocol"`
+	// Provisioning status of the pool.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+}
+
+// CloudLoadbalancerPoolCurrentStateInput is an input type that accepts CloudLoadbalancerPoolCurrentStateArgs and CloudLoadbalancerPoolCurrentStateOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolCurrentStateInput` via:
+//
+//	CloudLoadbalancerPoolCurrentStateArgs{...}
+type CloudLoadbalancerPoolCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolCurrentStateOutput() CloudLoadbalancerPoolCurrentStateOutput
+	ToCloudLoadbalancerPoolCurrentStateOutputWithContext(context.Context) CloudLoadbalancerPoolCurrentStateOutput
+}
+
+type CloudLoadbalancerPoolCurrentStateArgs struct {
+	// Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// Pool description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Health monitor configuration:
+	HealthMonitor CloudLoadbalancerPoolCurrentStateHealthMonitorPtrInput `pulumi:"healthMonitor"`
+	// Pool name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Session persistence configuration:
+	Persistence CloudLoadbalancerPoolCurrentStatePersistencePtrInput `pulumi:"persistence"`
+	// Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// Provisioning status of the pool.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+}
+
+func (CloudLoadbalancerPoolCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolCurrentState)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolCurrentStateArgs) ToCloudLoadbalancerPoolCurrentStateOutput() CloudLoadbalancerPoolCurrentStateOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolCurrentStateArgs) ToCloudLoadbalancerPoolCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStateOutput)
+}
+
+func (i CloudLoadbalancerPoolCurrentStateArgs) ToCloudLoadbalancerPoolCurrentStatePtrOutput() CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolCurrentStateArgs) ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStateOutput).ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolCurrentStatePtrInput is an input type that accepts CloudLoadbalancerPoolCurrentStateArgs, CloudLoadbalancerPoolCurrentStatePtr and CloudLoadbalancerPoolCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolCurrentStatePtrInput` via:
+//
+//	        CloudLoadbalancerPoolCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolCurrentStatePtrOutput() CloudLoadbalancerPoolCurrentStatePtrOutput
+	ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(context.Context) CloudLoadbalancerPoolCurrentStatePtrOutput
+}
+
+type cloudLoadbalancerPoolCurrentStatePtrType CloudLoadbalancerPoolCurrentStateArgs
+
+func CloudLoadbalancerPoolCurrentStatePtr(v *CloudLoadbalancerPoolCurrentStateArgs) CloudLoadbalancerPoolCurrentStatePtrInput {
+	return (*cloudLoadbalancerPoolCurrentStatePtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolCurrentState)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolCurrentStatePtrType) ToCloudLoadbalancerPoolCurrentStatePtrOutput() CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolCurrentStatePtrType) ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStatePtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolCurrentStateOutput) ToCloudLoadbalancerPoolCurrentStateOutput() CloudLoadbalancerPoolCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStateOutput) ToCloudLoadbalancerPoolCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStateOutput) ToCloudLoadbalancerPoolCurrentStatePtrOutput() CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return o.ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolCurrentStateOutput) ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolCurrentState) *CloudLoadbalancerPoolCurrentState {
+		return &v
+	}).(CloudLoadbalancerPoolCurrentStatePtrOutput)
+}
+
+// Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+func (o CloudLoadbalancerPoolCurrentStateOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// Pool description.
+func (o CloudLoadbalancerPoolCurrentStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Health monitor configuration:
+func (o CloudLoadbalancerPoolCurrentStateOutput) HealthMonitor() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *CloudLoadbalancerPoolCurrentStateHealthMonitor {
+		return v.HealthMonitor
+	}).(CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput)
+}
+
+// Pool name.
+func (o CloudLoadbalancerPoolCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the pool.
+func (o CloudLoadbalancerPoolCurrentStateOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Session persistence configuration:
+func (o CloudLoadbalancerPoolCurrentStateOutput) Persistence() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *CloudLoadbalancerPoolCurrentStatePersistence {
+		return v.Persistence
+	}).(CloudLoadbalancerPoolCurrentStatePersistencePtrOutput)
+}
+
+// Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolCurrentStateOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the pool.
+func (o CloudLoadbalancerPoolCurrentStateOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentState) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) ToCloudLoadbalancerPoolCurrentStatePtrOutput() CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) ToCloudLoadbalancerPoolCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) Elem() CloudLoadbalancerPoolCurrentStateOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) CloudLoadbalancerPoolCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolCurrentState
+		return ret
+	}).(CloudLoadbalancerPoolCurrentStateOutput)
+}
+
+// Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// Pool description.
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health monitor configuration:
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) HealthMonitor() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *CloudLoadbalancerPoolCurrentStateHealthMonitor {
+		if v == nil {
+			return nil
+		}
+		return v.HealthMonitor
+	}).(CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput)
+}
+
+// Pool name.
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the pool.
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session persistence configuration:
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) Persistence() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *CloudLoadbalancerPoolCurrentStatePersistence {
+		if v == nil {
+			return nil
+		}
+		return v.Persistence
+	}).(CloudLoadbalancerPoolCurrentStatePersistencePtrOutput)
+}
+
+// Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the pool.
+func (o CloudLoadbalancerPoolCurrentStatePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStateHealthMonitor struct {
+	// Seconds between health checks.
+	Delay *int `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName *string `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes *string `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod *string `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion *string `pulumi:"httpVersion"`
+	// Health monitor ID.
+	Id *string `pulumi:"id"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries *int `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown *int `pulumi:"maxRetriesDown"`
+	// Health monitor name.
+	Name *string `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Provisioning status of the pool.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// Seconds to wait for a health check response.
+	Timeout *int `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+	Type *string `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath *string `pulumi:"urlPath"`
+}
+
+// CloudLoadbalancerPoolCurrentStateHealthMonitorInput is an input type that accepts CloudLoadbalancerPoolCurrentStateHealthMonitorArgs and CloudLoadbalancerPoolCurrentStateHealthMonitorOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolCurrentStateHealthMonitorInput` via:
+//
+//	CloudLoadbalancerPoolCurrentStateHealthMonitorArgs{...}
+type CloudLoadbalancerPoolCurrentStateHealthMonitorInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorOutput
+	ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorOutput
+}
+
+type CloudLoadbalancerPoolCurrentStateHealthMonitorArgs struct {
+	// Seconds between health checks.
+	Delay pulumi.IntPtrInput `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes pulumi.StringPtrInput `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion pulumi.StringPtrInput `pulumi:"httpVersion"`
+	// Health monitor ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown pulumi.IntPtrInput `pulumi:"maxRetriesDown"`
+	// Health monitor name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Provisioning status of the pool.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// Seconds to wait for a health check response.
+	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath pulumi.StringPtrInput `pulumi:"urlPath"`
+}
+
+func (CloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStateHealthMonitorOutput)
+}
+
+func (i CloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStateHealthMonitorOutput).ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolCurrentStateHealthMonitorPtrInput is an input type that accepts CloudLoadbalancerPoolCurrentStateHealthMonitorArgs, CloudLoadbalancerPoolCurrentStateHealthMonitorPtr and CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolCurrentStateHealthMonitorPtrInput` via:
+//
+//	        CloudLoadbalancerPoolCurrentStateHealthMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolCurrentStateHealthMonitorPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput
+	ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput
+}
+
+type cloudLoadbalancerPoolCurrentStateHealthMonitorPtrType CloudLoadbalancerPoolCurrentStateHealthMonitorArgs
+
+func CloudLoadbalancerPoolCurrentStateHealthMonitorPtr(v *CloudLoadbalancerPoolCurrentStateHealthMonitorArgs) CloudLoadbalancerPoolCurrentStateHealthMonitorPtrInput {
+	return (*cloudLoadbalancerPoolCurrentStateHealthMonitorPtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolCurrentStateHealthMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolCurrentStateHealthMonitorPtrType) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolCurrentStateHealthMonitorPtrType) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStateHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ToCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return o.ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolCurrentStateHealthMonitor) *CloudLoadbalancerPoolCurrentStateHealthMonitor {
+		return &v
+	}).(CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput)
+}
+
+// Seconds between health checks.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *int { return v.Delay }).(pulumi.IntPtrOutput)
+}
+
+// Domain name for health check requests.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Expected HTTP response codes (e.g. `200`, `200-202`).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+}
+
+// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// HTTP version for health checks (`1.0` or `1.1`).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.HttpVersion }).(pulumi.StringPtrOutput)
+}
+
+// Health monitor ID.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) MaxRetriesDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *int { return v.MaxRetriesDown }).(pulumi.IntPtrOutput)
+}
+
+// Health monitor name.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the pool.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the pool.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStateHealthMonitor) *string { return v.UrlPath }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput() CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) ToCloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) Elem() CloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) CloudLoadbalancerPoolCurrentStateHealthMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolCurrentStateHealthMonitor
+		return ret
+	}).(CloudLoadbalancerPoolCurrentStateHealthMonitorOutput)
+}
+
+// Seconds between health checks.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Domain name for health check requests.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected HTTP response codes (e.g. `200`, `200-202`).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedCodes
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP version for health checks (`1.0` or `1.1`).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Health monitor ID.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) MaxRetriesDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetriesDown
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health monitor name.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the pool.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Provisioning status of the pool.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStateHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStatePersistence struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName *string `pulumi:"cookieName"`
+	// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+	Type *string `pulumi:"type"`
+}
+
+// CloudLoadbalancerPoolCurrentStatePersistenceInput is an input type that accepts CloudLoadbalancerPoolCurrentStatePersistenceArgs and CloudLoadbalancerPoolCurrentStatePersistenceOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolCurrentStatePersistenceInput` via:
+//
+//	CloudLoadbalancerPoolCurrentStatePersistenceArgs{...}
+type CloudLoadbalancerPoolCurrentStatePersistenceInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolCurrentStatePersistenceOutput() CloudLoadbalancerPoolCurrentStatePersistenceOutput
+	ToCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(context.Context) CloudLoadbalancerPoolCurrentStatePersistenceOutput
+}
+
+type CloudLoadbalancerPoolCurrentStatePersistenceArgs struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
+	// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CloudLoadbalancerPoolCurrentStatePersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolCurrentStatePersistenceArgs) ToCloudLoadbalancerPoolCurrentStatePersistenceOutput() CloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolCurrentStatePersistenceArgs) ToCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStatePersistenceOutput)
+}
+
+func (i CloudLoadbalancerPoolCurrentStatePersistenceArgs) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutput() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolCurrentStatePersistenceArgs) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStatePersistenceOutput).ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolCurrentStatePersistencePtrInput is an input type that accepts CloudLoadbalancerPoolCurrentStatePersistenceArgs, CloudLoadbalancerPoolCurrentStatePersistencePtr and CloudLoadbalancerPoolCurrentStatePersistencePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolCurrentStatePersistencePtrInput` via:
+//
+//	        CloudLoadbalancerPoolCurrentStatePersistenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolCurrentStatePersistencePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutput() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput
+	ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(context.Context) CloudLoadbalancerPoolCurrentStatePersistencePtrOutput
+}
+
+type cloudLoadbalancerPoolCurrentStatePersistencePtrType CloudLoadbalancerPoolCurrentStatePersistenceArgs
+
+func CloudLoadbalancerPoolCurrentStatePersistencePtr(v *CloudLoadbalancerPoolCurrentStatePersistenceArgs) CloudLoadbalancerPoolCurrentStatePersistencePtrInput {
+	return (*cloudLoadbalancerPoolCurrentStatePersistencePtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolCurrentStatePersistencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolCurrentStatePersistencePtrType) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutput() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return i.ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolCurrentStatePersistencePtrType) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolCurrentStatePersistencePtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStatePersistenceOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolCurrentStatePersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistenceOutput) ToCloudLoadbalancerPoolCurrentStatePersistenceOutput() CloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistenceOutput) ToCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistenceOutput) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutput() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return o.ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistenceOutput) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolCurrentStatePersistence) *CloudLoadbalancerPoolCurrentStatePersistence {
+		return &v
+	}).(CloudLoadbalancerPoolCurrentStatePersistencePtrOutput)
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o CloudLoadbalancerPoolCurrentStatePersistenceOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStatePersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+}
+
+// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+func (o CloudLoadbalancerPoolCurrentStatePersistenceOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolCurrentStatePersistence) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolCurrentStatePersistencePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolCurrentStatePersistencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistencePtrOutput) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutput() CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistencePtrOutput) ToCloudLoadbalancerPoolCurrentStatePersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolCurrentStatePersistencePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolCurrentStatePersistencePtrOutput) Elem() CloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStatePersistence) CloudLoadbalancerPoolCurrentStatePersistence {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolCurrentStatePersistence
+		return ret
+	}).(CloudLoadbalancerPoolCurrentStatePersistenceOutput)
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o CloudLoadbalancerPoolCurrentStatePersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStatePersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+func (o CloudLoadbalancerPoolCurrentStatePersistencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolCurrentStatePersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolHealthMonitor struct {
+	// Seconds between health checks.
+	Delay int `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName *string `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes *string `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod *string `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion *string `pulumi:"httpVersion"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries int `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown *int `pulumi:"maxRetriesDown"`
+	// Health monitor name.
+	Name *string `pulumi:"name"`
+	// Seconds to wait for a health check response.
+	Timeout int `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+	Type string `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath *string `pulumi:"urlPath"`
+}
+
+// CloudLoadbalancerPoolHealthMonitorInput is an input type that accepts CloudLoadbalancerPoolHealthMonitorArgs and CloudLoadbalancerPoolHealthMonitorOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolHealthMonitorInput` via:
+//
+//	CloudLoadbalancerPoolHealthMonitorArgs{...}
+type CloudLoadbalancerPoolHealthMonitorInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolHealthMonitorOutput() CloudLoadbalancerPoolHealthMonitorOutput
+	ToCloudLoadbalancerPoolHealthMonitorOutputWithContext(context.Context) CloudLoadbalancerPoolHealthMonitorOutput
+}
+
+type CloudLoadbalancerPoolHealthMonitorArgs struct {
+	// Seconds between health checks.
+	Delay pulumi.IntInput `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes pulumi.StringPtrInput `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion pulumi.StringPtrInput `pulumi:"httpVersion"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown pulumi.IntPtrInput `pulumi:"maxRetriesDown"`
+	// Health monitor name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Seconds to wait for a health check response.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+	Type pulumi.StringInput `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath pulumi.StringPtrInput `pulumi:"urlPath"`
+}
+
+func (CloudLoadbalancerPoolHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolHealthMonitorArgs) ToCloudLoadbalancerPoolHealthMonitorOutput() CloudLoadbalancerPoolHealthMonitorOutput {
+	return i.ToCloudLoadbalancerPoolHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolHealthMonitorArgs) ToCloudLoadbalancerPoolHealthMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolHealthMonitorOutput)
+}
+
+func (i CloudLoadbalancerPoolHealthMonitorArgs) ToCloudLoadbalancerPoolHealthMonitorPtrOutput() CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolHealthMonitorArgs) ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolHealthMonitorOutput).ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolHealthMonitorPtrInput is an input type that accepts CloudLoadbalancerPoolHealthMonitorArgs, CloudLoadbalancerPoolHealthMonitorPtr and CloudLoadbalancerPoolHealthMonitorPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolHealthMonitorPtrInput` via:
+//
+//	        CloudLoadbalancerPoolHealthMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolHealthMonitorPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolHealthMonitorPtrOutput() CloudLoadbalancerPoolHealthMonitorPtrOutput
+	ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(context.Context) CloudLoadbalancerPoolHealthMonitorPtrOutput
+}
+
+type cloudLoadbalancerPoolHealthMonitorPtrType CloudLoadbalancerPoolHealthMonitorArgs
+
+func CloudLoadbalancerPoolHealthMonitorPtr(v *CloudLoadbalancerPoolHealthMonitorArgs) CloudLoadbalancerPoolHealthMonitorPtrInput {
+	return (*cloudLoadbalancerPoolHealthMonitorPtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolHealthMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolHealthMonitorPtrType) ToCloudLoadbalancerPoolHealthMonitorPtrOutput() CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolHealthMonitorPtrType) ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolHealthMonitorPtrOutput)
+}
+
+type CloudLoadbalancerPoolHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorOutput) ToCloudLoadbalancerPoolHealthMonitorOutput() CloudLoadbalancerPoolHealthMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorOutput) ToCloudLoadbalancerPoolHealthMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolHealthMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorOutput) ToCloudLoadbalancerPoolHealthMonitorPtrOutput() CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return o.ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorOutput) ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolHealthMonitor) *CloudLoadbalancerPoolHealthMonitor {
+		return &v
+	}).(CloudLoadbalancerPoolHealthMonitorPtrOutput)
+}
+
+// Seconds between health checks.
+func (o CloudLoadbalancerPoolHealthMonitorOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) int { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Domain name for health check requests.
+func (o CloudLoadbalancerPoolHealthMonitorOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+}
+
+// Expected HTTP response codes (e.g. `200`, `200-202`).
+func (o CloudLoadbalancerPoolHealthMonitorOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *string { return v.ExpectedCodes }).(pulumi.StringPtrOutput)
+}
+
+// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+func (o CloudLoadbalancerPoolHealthMonitorOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// HTTP version for health checks (`1.0` or `1.1`).
+func (o CloudLoadbalancerPoolHealthMonitorOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *string { return v.HttpVersion }).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+func (o CloudLoadbalancerPoolHealthMonitorOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+func (o CloudLoadbalancerPoolHealthMonitorOutput) MaxRetriesDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *int { return v.MaxRetriesDown }).(pulumi.IntPtrOutput)
+}
+
+// Health monitor name.
+func (o CloudLoadbalancerPoolHealthMonitorOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o CloudLoadbalancerPoolHealthMonitorOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolHealthMonitorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o CloudLoadbalancerPoolHealthMonitorOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolHealthMonitor) *string { return v.UrlPath }).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolHealthMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolHealthMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) ToCloudLoadbalancerPoolHealthMonitorPtrOutput() CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) ToCloudLoadbalancerPoolHealthMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolHealthMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) Elem() CloudLoadbalancerPoolHealthMonitorOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) CloudLoadbalancerPoolHealthMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolHealthMonitor
+		return ret
+	}).(CloudLoadbalancerPoolHealthMonitorOutput)
+}
+
+// Seconds between health checks.
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) Delay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Delay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Domain name for health check requests.
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) DomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Expected HTTP response codes (e.g. `200`, `200-202`).
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) ExpectedCodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpectedCodes
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// HTTP version for health checks (`1.0` or `1.1`).
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) HttpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) MaxRetriesDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetriesDown
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health monitor name.
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o CloudLoadbalancerPoolHealthMonitorPtrOutput) UrlPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolHealthMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberCurrentState struct {
+	// IP address of the member. **Changing this value recreates the resource.**
+	Address *string `pulumi:"address"`
+	// When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+	Backup *bool `pulumi:"backup"`
+	// Health monitor address and port override for this member:
+	Monitor *CloudLoadbalancerPoolMemberCurrentStateMonitor `pulumi:"monitor"`
+	// Member name.
+	Name *string `pulumi:"name"`
+	// Operating status of the member.
+	OperatingStatus *string `pulumi:"operatingStatus"`
+	// Port used by the member to receive traffic. **Changing this value recreates the resource.**
+	ProtocolPort *int `pulumi:"protocolPort"`
+	// Provisioning status of the member.
+	ProvisioningStatus *string `pulumi:"provisioningStatus"`
+	// ID of the subnet the member is in. **Changing this value recreates the resource.**
+	SubnetId *string `pulumi:"subnetId"`
+	// Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+	Weight *int `pulumi:"weight"`
+}
+
+// CloudLoadbalancerPoolMemberCurrentStateInput is an input type that accepts CloudLoadbalancerPoolMemberCurrentStateArgs and CloudLoadbalancerPoolMemberCurrentStateOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolMemberCurrentStateInput` via:
+//
+//	CloudLoadbalancerPoolMemberCurrentStateArgs{...}
+type CloudLoadbalancerPoolMemberCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolMemberCurrentStateOutput() CloudLoadbalancerPoolMemberCurrentStateOutput
+	ToCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(context.Context) CloudLoadbalancerPoolMemberCurrentStateOutput
+}
+
+type CloudLoadbalancerPoolMemberCurrentStateArgs struct {
+	// IP address of the member. **Changing this value recreates the resource.**
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// Health monitor address and port override for this member:
+	Monitor CloudLoadbalancerPoolMemberCurrentStateMonitorPtrInput `pulumi:"monitor"`
+	// Member name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Operating status of the member.
+	OperatingStatus pulumi.StringPtrInput `pulumi:"operatingStatus"`
+	// Port used by the member to receive traffic. **Changing this value recreates the resource.**
+	ProtocolPort pulumi.IntPtrInput `pulumi:"protocolPort"`
+	// Provisioning status of the member.
+	ProvisioningStatus pulumi.StringPtrInput `pulumi:"provisioningStatus"`
+	// ID of the subnet the member is in. **Changing this value recreates the resource.**
+	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
+	// Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (CloudLoadbalancerPoolMemberCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentState)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateArgs) ToCloudLoadbalancerPoolMemberCurrentStateOutput() CloudLoadbalancerPoolMemberCurrentStateOutput {
+	return i.ToCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateArgs) ToCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberCurrentStateOutput)
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateArgs) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutput() CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateArgs) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberCurrentStateOutput).ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolMemberCurrentStatePtrInput is an input type that accepts CloudLoadbalancerPoolMemberCurrentStateArgs, CloudLoadbalancerPoolMemberCurrentStatePtr and CloudLoadbalancerPoolMemberCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolMemberCurrentStatePtrInput` via:
+//
+//	        CloudLoadbalancerPoolMemberCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolMemberCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolMemberCurrentStatePtrOutput() CloudLoadbalancerPoolMemberCurrentStatePtrOutput
+	ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(context.Context) CloudLoadbalancerPoolMemberCurrentStatePtrOutput
+}
+
+type cloudLoadbalancerPoolMemberCurrentStatePtrType CloudLoadbalancerPoolMemberCurrentStateArgs
+
+func CloudLoadbalancerPoolMemberCurrentStatePtr(v *CloudLoadbalancerPoolMemberCurrentStateArgs) CloudLoadbalancerPoolMemberCurrentStatePtrInput {
+	return (*cloudLoadbalancerPoolMemberCurrentStatePtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolMemberCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolMemberCurrentState)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolMemberCurrentStatePtrType) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutput() CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return i.ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolMemberCurrentStatePtrType) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberCurrentStatePtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolMemberCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) ToCloudLoadbalancerPoolMemberCurrentStateOutput() CloudLoadbalancerPoolMemberCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) ToCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutput() CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return o.ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolMemberCurrentState) *CloudLoadbalancerPoolMemberCurrentState {
+		return &v
+	}).(CloudLoadbalancerPoolMemberCurrentStatePtrOutput)
+}
+
+// IP address of the member. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// Health monitor address and port override for this member:
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) Monitor() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *CloudLoadbalancerPoolMemberCurrentStateMonitor {
+		return v.Monitor
+	}).(CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput)
+}
+
+// Member name.
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the member.
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *string { return v.OperatingStatus }).(pulumi.StringPtrOutput)
+}
+
+// Port used by the member to receive traffic. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) ProtocolPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *int { return v.ProtocolPort }).(pulumi.IntPtrOutput)
+}
+
+// Provisioning status of the member.
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *string { return v.ProvisioningStatus }).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet the member is in. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
+}
+
+// Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerPoolMemberCurrentStateOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentState) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolMemberCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolMemberCurrentState)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutput() CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) ToCloudLoadbalancerPoolMemberCurrentStatePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) Elem() CloudLoadbalancerPoolMemberCurrentStateOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) CloudLoadbalancerPoolMemberCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolMemberCurrentState
+		return ret
+	}).(CloudLoadbalancerPoolMemberCurrentStateOutput)
+}
+
+// IP address of the member. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Backup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Health monitor address and port override for this member:
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) Monitor() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *CloudLoadbalancerPoolMemberCurrentStateMonitor {
+		if v == nil {
+			return nil
+		}
+		return v.Monitor
+	}).(CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput)
+}
+
+// Member name.
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Operating status of the member.
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) OperatingStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port used by the member to receive traffic. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) ProtocolPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProtocolPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Provisioning status of the member.
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID of the subnet the member is in. **Changing this value recreates the resource.**
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) SubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+func (o CloudLoadbalancerPoolMemberCurrentStatePtrOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Weight
+	}).(pulumi.IntPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberCurrentStateMonitor struct {
+	// IP address used by the health monitor for this member.
+	Address *string `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port *int `pulumi:"port"`
+}
+
+// CloudLoadbalancerPoolMemberCurrentStateMonitorInput is an input type that accepts CloudLoadbalancerPoolMemberCurrentStateMonitorArgs and CloudLoadbalancerPoolMemberCurrentStateMonitorOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolMemberCurrentStateMonitorInput` via:
+//
+//	CloudLoadbalancerPoolMemberCurrentStateMonitorArgs{...}
+type CloudLoadbalancerPoolMemberCurrentStateMonitorInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorOutput
+	ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorOutput
+}
+
+type CloudLoadbalancerPoolMemberCurrentStateMonitorArgs struct {
+	// IP address used by the health monitor for this member.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (CloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return i.ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberCurrentStateMonitorOutput)
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberCurrentStateMonitorOutput).ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolMemberCurrentStateMonitorPtrInput is an input type that accepts CloudLoadbalancerPoolMemberCurrentStateMonitorArgs, CloudLoadbalancerPoolMemberCurrentStateMonitorPtr and CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolMemberCurrentStateMonitorPtrInput` via:
+//
+//	        CloudLoadbalancerPoolMemberCurrentStateMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolMemberCurrentStateMonitorPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput
+	ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput
+}
+
+type cloudLoadbalancerPoolMemberCurrentStateMonitorPtrType CloudLoadbalancerPoolMemberCurrentStateMonitorArgs
+
+func CloudLoadbalancerPoolMemberCurrentStateMonitorPtr(v *CloudLoadbalancerPoolMemberCurrentStateMonitorArgs) CloudLoadbalancerPoolMemberCurrentStateMonitorPtrInput {
+	return (*cloudLoadbalancerPoolMemberCurrentStateMonitorPtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolMemberCurrentStateMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolMemberCurrentStateMonitorPtrType) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolMemberCurrentStateMonitorPtrType) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberCurrentStateMonitorOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ToCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return o.ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolMemberCurrentStateMonitor) *CloudLoadbalancerPoolMemberCurrentStateMonitor {
+		return &v
+	}).(CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput)
+}
+
+// IP address used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentStateMonitor) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberCurrentStateMonitor) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput() CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput) ToCloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput) Elem() CloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentStateMonitor) CloudLoadbalancerPoolMemberCurrentStateMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolMemberCurrentStateMonitor
+		return ret
+	}).(CloudLoadbalancerPoolMemberCurrentStateMonitorOutput)
+}
+
+// IP address used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentStateMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberCurrentStateMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberMonitor struct {
+	// IP address used by the health monitor for this member.
+	Address *string `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port *int `pulumi:"port"`
+}
+
+// CloudLoadbalancerPoolMemberMonitorInput is an input type that accepts CloudLoadbalancerPoolMemberMonitorArgs and CloudLoadbalancerPoolMemberMonitorOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolMemberMonitorInput` via:
+//
+//	CloudLoadbalancerPoolMemberMonitorArgs{...}
+type CloudLoadbalancerPoolMemberMonitorInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolMemberMonitorOutput() CloudLoadbalancerPoolMemberMonitorOutput
+	ToCloudLoadbalancerPoolMemberMonitorOutputWithContext(context.Context) CloudLoadbalancerPoolMemberMonitorOutput
+}
+
+type CloudLoadbalancerPoolMemberMonitorArgs struct {
+	// IP address used by the health monitor for this member.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (CloudLoadbalancerPoolMemberMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolMemberMonitor)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolMemberMonitorArgs) ToCloudLoadbalancerPoolMemberMonitorOutput() CloudLoadbalancerPoolMemberMonitorOutput {
+	return i.ToCloudLoadbalancerPoolMemberMonitorOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolMemberMonitorArgs) ToCloudLoadbalancerPoolMemberMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberMonitorOutput)
+}
+
+func (i CloudLoadbalancerPoolMemberMonitorArgs) ToCloudLoadbalancerPoolMemberMonitorPtrOutput() CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolMemberMonitorArgs) ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberMonitorOutput).ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolMemberMonitorPtrInput is an input type that accepts CloudLoadbalancerPoolMemberMonitorArgs, CloudLoadbalancerPoolMemberMonitorPtr and CloudLoadbalancerPoolMemberMonitorPtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolMemberMonitorPtrInput` via:
+//
+//	        CloudLoadbalancerPoolMemberMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolMemberMonitorPtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolMemberMonitorPtrOutput() CloudLoadbalancerPoolMemberMonitorPtrOutput
+	ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(context.Context) CloudLoadbalancerPoolMemberMonitorPtrOutput
+}
+
+type cloudLoadbalancerPoolMemberMonitorPtrType CloudLoadbalancerPoolMemberMonitorArgs
+
+func CloudLoadbalancerPoolMemberMonitorPtr(v *CloudLoadbalancerPoolMemberMonitorArgs) CloudLoadbalancerPoolMemberMonitorPtrInput {
+	return (*cloudLoadbalancerPoolMemberMonitorPtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolMemberMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolMemberMonitor)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolMemberMonitorPtrType) ToCloudLoadbalancerPoolMemberMonitorPtrOutput() CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return i.ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolMemberMonitorPtrType) ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolMemberMonitorPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberMonitorOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolMemberMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolMemberMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorOutput) ToCloudLoadbalancerPoolMemberMonitorOutput() CloudLoadbalancerPoolMemberMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorOutput) ToCloudLoadbalancerPoolMemberMonitorOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberMonitorOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorOutput) ToCloudLoadbalancerPoolMemberMonitorPtrOutput() CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return o.ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorOutput) ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolMemberMonitor) *CloudLoadbalancerPoolMemberMonitor {
+		return &v
+	}).(CloudLoadbalancerPoolMemberMonitorPtrOutput)
+}
+
+// IP address used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberMonitorOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberMonitor) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberMonitorOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolMemberMonitor) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type CloudLoadbalancerPoolMemberMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolMemberMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolMemberMonitor)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorPtrOutput) ToCloudLoadbalancerPoolMemberMonitorPtrOutput() CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorPtrOutput) ToCloudLoadbalancerPoolMemberMonitorPtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolMemberMonitorPtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolMemberMonitorPtrOutput) Elem() CloudLoadbalancerPoolMemberMonitorOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberMonitor) CloudLoadbalancerPoolMemberMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolMemberMonitor
+		return ret
+	}).(CloudLoadbalancerPoolMemberMonitorOutput)
+}
+
+// IP address used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberMonitorPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberMonitor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o CloudLoadbalancerPoolMemberMonitorPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolMemberMonitor) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type CloudLoadbalancerPoolPersistence struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName *string `pulumi:"cookieName"`
+	// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+	Type string `pulumi:"type"`
+}
+
+// CloudLoadbalancerPoolPersistenceInput is an input type that accepts CloudLoadbalancerPoolPersistenceArgs and CloudLoadbalancerPoolPersistenceOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolPersistenceInput` via:
+//
+//	CloudLoadbalancerPoolPersistenceArgs{...}
+type CloudLoadbalancerPoolPersistenceInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolPersistenceOutput() CloudLoadbalancerPoolPersistenceOutput
+	ToCloudLoadbalancerPoolPersistenceOutputWithContext(context.Context) CloudLoadbalancerPoolPersistenceOutput
+}
+
+type CloudLoadbalancerPoolPersistenceArgs struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName pulumi.StringPtrInput `pulumi:"cookieName"`
+	// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (CloudLoadbalancerPoolPersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolPersistence)(nil)).Elem()
+}
+
+func (i CloudLoadbalancerPoolPersistenceArgs) ToCloudLoadbalancerPoolPersistenceOutput() CloudLoadbalancerPoolPersistenceOutput {
+	return i.ToCloudLoadbalancerPoolPersistenceOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolPersistenceArgs) ToCloudLoadbalancerPoolPersistenceOutputWithContext(ctx context.Context) CloudLoadbalancerPoolPersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolPersistenceOutput)
+}
+
+func (i CloudLoadbalancerPoolPersistenceArgs) ToCloudLoadbalancerPoolPersistencePtrOutput() CloudLoadbalancerPoolPersistencePtrOutput {
+	return i.ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(context.Background())
+}
+
+func (i CloudLoadbalancerPoolPersistenceArgs) ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolPersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolPersistenceOutput).ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(ctx)
+}
+
+// CloudLoadbalancerPoolPersistencePtrInput is an input type that accepts CloudLoadbalancerPoolPersistenceArgs, CloudLoadbalancerPoolPersistencePtr and CloudLoadbalancerPoolPersistencePtrOutput values.
+// You can construct a concrete instance of `CloudLoadbalancerPoolPersistencePtrInput` via:
+//
+//	        CloudLoadbalancerPoolPersistenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudLoadbalancerPoolPersistencePtrInput interface {
+	pulumi.Input
+
+	ToCloudLoadbalancerPoolPersistencePtrOutput() CloudLoadbalancerPoolPersistencePtrOutput
+	ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(context.Context) CloudLoadbalancerPoolPersistencePtrOutput
+}
+
+type cloudLoadbalancerPoolPersistencePtrType CloudLoadbalancerPoolPersistenceArgs
+
+func CloudLoadbalancerPoolPersistencePtr(v *CloudLoadbalancerPoolPersistenceArgs) CloudLoadbalancerPoolPersistencePtrInput {
+	return (*cloudLoadbalancerPoolPersistencePtrType)(v)
+}
+
+func (*cloudLoadbalancerPoolPersistencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolPersistence)(nil)).Elem()
+}
+
+func (i *cloudLoadbalancerPoolPersistencePtrType) ToCloudLoadbalancerPoolPersistencePtrOutput() CloudLoadbalancerPoolPersistencePtrOutput {
+	return i.ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudLoadbalancerPoolPersistencePtrType) ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolPersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudLoadbalancerPoolPersistencePtrOutput)
+}
+
+type CloudLoadbalancerPoolPersistenceOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolPersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudLoadbalancerPoolPersistence)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolPersistenceOutput) ToCloudLoadbalancerPoolPersistenceOutput() CloudLoadbalancerPoolPersistenceOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolPersistenceOutput) ToCloudLoadbalancerPoolPersistenceOutputWithContext(ctx context.Context) CloudLoadbalancerPoolPersistenceOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolPersistenceOutput) ToCloudLoadbalancerPoolPersistencePtrOutput() CloudLoadbalancerPoolPersistencePtrOutput {
+	return o.ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(context.Background())
+}
+
+func (o CloudLoadbalancerPoolPersistenceOutput) ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolPersistencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudLoadbalancerPoolPersistence) *CloudLoadbalancerPoolPersistence {
+		return &v
+	}).(CloudLoadbalancerPoolPersistencePtrOutput)
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o CloudLoadbalancerPoolPersistenceOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolPersistence) *string { return v.CookieName }).(pulumi.StringPtrOutput)
+}
+
+// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+func (o CloudLoadbalancerPoolPersistenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudLoadbalancerPoolPersistence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type CloudLoadbalancerPoolPersistencePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudLoadbalancerPoolPersistencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudLoadbalancerPoolPersistence)(nil)).Elem()
+}
+
+func (o CloudLoadbalancerPoolPersistencePtrOutput) ToCloudLoadbalancerPoolPersistencePtrOutput() CloudLoadbalancerPoolPersistencePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolPersistencePtrOutput) ToCloudLoadbalancerPoolPersistencePtrOutputWithContext(ctx context.Context) CloudLoadbalancerPoolPersistencePtrOutput {
+	return o
+}
+
+func (o CloudLoadbalancerPoolPersistencePtrOutput) Elem() CloudLoadbalancerPoolPersistenceOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolPersistence) CloudLoadbalancerPoolPersistence {
+		if v != nil {
+			return *v
+		}
+		var ret CloudLoadbalancerPoolPersistence
+		return ret
+	}).(CloudLoadbalancerPoolPersistenceOutput)
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o CloudLoadbalancerPoolPersistencePtrOutput) CookieName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolPersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+func (o CloudLoadbalancerPoolPersistencePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudLoadbalancerPoolPersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type CloudNetworkPrivateVrackCurrentState struct {
 	// Network description. **Changing this value recreates the resource.**
 	Description *string `pulumi:"description"`
@@ -35387,6 +39719,5249 @@ func (o GetCloudKeyManagerSecretsSecretLocationOutput) Region() pulumi.StringOut
 	return o.ApplyT(func(v GetCloudKeyManagerSecretsSecretLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
+type GetCloudLoadbalancerCurrentState struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Load balancer description.
+	Description string `pulumi:"description"`
+	// Load balancer flavor reference:
+	Flavor GetCloudLoadbalancerCurrentStateFlavor `pulumi:"flavor"`
+	// Load balancer name.
+	Name string `pulumi:"name"`
+	// VIP network:
+	Network GetCloudLoadbalancerCurrentStateNetwork `pulumi:"network"`
+	// Operating status of the load balancer.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the load balancer.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudLoadbalancerCurrentStateInput is an input type that accepts GetCloudLoadbalancerCurrentStateArgs and GetCloudLoadbalancerCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerCurrentStateArgs{...}
+type GetCloudLoadbalancerCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerCurrentStateOutput() GetCloudLoadbalancerCurrentStateOutput
+	ToGetCloudLoadbalancerCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerCurrentStateOutput
+}
+
+type GetCloudLoadbalancerCurrentStateArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Load balancer description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Load balancer flavor reference:
+	Flavor GetCloudLoadbalancerCurrentStateFlavorInput `pulumi:"flavor"`
+	// Load balancer name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// VIP network:
+	Network GetCloudLoadbalancerCurrentStateNetworkInput `pulumi:"network"`
+	// Operating status of the load balancer.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the load balancer.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudLoadbalancerCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerCurrentStateArgs) ToGetCloudLoadbalancerCurrentStateOutput() GetCloudLoadbalancerCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerCurrentStateArgs) ToGetCloudLoadbalancerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerCurrentStateOutput) ToGetCloudLoadbalancerCurrentStateOutput() GetCloudLoadbalancerCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerCurrentStateOutput) ToGetCloudLoadbalancerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudLoadbalancerCurrentStateOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Load balancer description.
+func (o GetCloudLoadbalancerCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Load balancer flavor reference:
+func (o GetCloudLoadbalancerCurrentStateOutput) Flavor() GetCloudLoadbalancerCurrentStateFlavorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) GetCloudLoadbalancerCurrentStateFlavor { return v.Flavor }).(GetCloudLoadbalancerCurrentStateFlavorOutput)
+}
+
+// Load balancer name.
+func (o GetCloudLoadbalancerCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// VIP network:
+func (o GetCloudLoadbalancerCurrentStateOutput) Network() GetCloudLoadbalancerCurrentStateNetworkOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) GetCloudLoadbalancerCurrentStateNetwork { return v.Network }).(GetCloudLoadbalancerCurrentStateNetworkOutput)
+}
+
+// Operating status of the load balancer.
+func (o GetCloudLoadbalancerCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the load balancer.
+func (o GetCloudLoadbalancerCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudLoadbalancerCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateFlavor struct {
+	// ID of the load balancer.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudLoadbalancerCurrentStateFlavorInput is an input type that accepts GetCloudLoadbalancerCurrentStateFlavorArgs and GetCloudLoadbalancerCurrentStateFlavorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerCurrentStateFlavorInput` via:
+//
+//	GetCloudLoadbalancerCurrentStateFlavorArgs{...}
+type GetCloudLoadbalancerCurrentStateFlavorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerCurrentStateFlavorOutput() GetCloudLoadbalancerCurrentStateFlavorOutput
+	ToGetCloudLoadbalancerCurrentStateFlavorOutputWithContext(context.Context) GetCloudLoadbalancerCurrentStateFlavorOutput
+}
+
+type GetCloudLoadbalancerCurrentStateFlavorArgs struct {
+	// ID of the load balancer.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudLoadbalancerCurrentStateFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerCurrentStateFlavorArgs) ToGetCloudLoadbalancerCurrentStateFlavorOutput() GetCloudLoadbalancerCurrentStateFlavorOutput {
+	return i.ToGetCloudLoadbalancerCurrentStateFlavorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerCurrentStateFlavorArgs) ToGetCloudLoadbalancerCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerCurrentStateFlavorOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerCurrentStateFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerCurrentStateFlavorOutput) ToGetCloudLoadbalancerCurrentStateFlavorOutput() GetCloudLoadbalancerCurrentStateFlavorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerCurrentStateFlavorOutput) ToGetCloudLoadbalancerCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateFlavorOutput {
+	return o
+}
+
+// ID of the load balancer.
+func (o GetCloudLoadbalancerCurrentStateFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentStateFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateNetwork struct {
+	// Addresses carried by the VIP port:
+	Addresses []GetCloudLoadbalancerCurrentStateNetworkAddress `pulumi:"addresses"`
+	// ID of the load balancer.
+	Id string `pulumi:"id"`
+	// Subnet ID.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudLoadbalancerCurrentStateNetworkInput is an input type that accepts GetCloudLoadbalancerCurrentStateNetworkArgs and GetCloudLoadbalancerCurrentStateNetworkOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerCurrentStateNetworkInput` via:
+//
+//	GetCloudLoadbalancerCurrentStateNetworkArgs{...}
+type GetCloudLoadbalancerCurrentStateNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerCurrentStateNetworkOutput() GetCloudLoadbalancerCurrentStateNetworkOutput
+	ToGetCloudLoadbalancerCurrentStateNetworkOutputWithContext(context.Context) GetCloudLoadbalancerCurrentStateNetworkOutput
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkArgs struct {
+	// Addresses carried by the VIP port:
+	Addresses GetCloudLoadbalancerCurrentStateNetworkAddressArrayInput `pulumi:"addresses"`
+	// ID of the load balancer.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Subnet ID.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudLoadbalancerCurrentStateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerCurrentStateNetworkArgs) ToGetCloudLoadbalancerCurrentStateNetworkOutput() GetCloudLoadbalancerCurrentStateNetworkOutput {
+	return i.ToGetCloudLoadbalancerCurrentStateNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerCurrentStateNetworkArgs) ToGetCloudLoadbalancerCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerCurrentStateNetworkOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerCurrentStateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkOutput) ToGetCloudLoadbalancerCurrentStateNetworkOutput() GetCloudLoadbalancerCurrentStateNetworkOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkOutput) ToGetCloudLoadbalancerCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateNetworkOutput {
+	return o
+}
+
+// Addresses carried by the VIP port:
+func (o GetCloudLoadbalancerCurrentStateNetworkOutput) Addresses() GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentStateNetwork) []GetCloudLoadbalancerCurrentStateNetworkAddress {
+		return v.Addresses
+	}).(GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+// ID of the load balancer.
+func (o GetCloudLoadbalancerCurrentStateNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentStateNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Subnet ID.
+func (o GetCloudLoadbalancerCurrentStateNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentStateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkAddress struct {
+	// IP address.
+	Ip string `pulumi:"ip"`
+	// Address type (`FIXED`, `FLOATING`).
+	Type string `pulumi:"type"`
+}
+
+// GetCloudLoadbalancerCurrentStateNetworkAddressInput is an input type that accepts GetCloudLoadbalancerCurrentStateNetworkAddressArgs and GetCloudLoadbalancerCurrentStateNetworkAddressOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerCurrentStateNetworkAddressInput` via:
+//
+//	GetCloudLoadbalancerCurrentStateNetworkAddressArgs{...}
+type GetCloudLoadbalancerCurrentStateNetworkAddressInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerCurrentStateNetworkAddressOutput() GetCloudLoadbalancerCurrentStateNetworkAddressOutput
+	ToGetCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(context.Context) GetCloudLoadbalancerCurrentStateNetworkAddressOutput
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkAddressArgs struct {
+	// IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Address type (`FIXED`, `FLOATING`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudLoadbalancerCurrentStateNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerCurrentStateNetworkAddressArgs) ToGetCloudLoadbalancerCurrentStateNetworkAddressOutput() GetCloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return i.ToGetCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerCurrentStateNetworkAddressArgs) ToGetCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerCurrentStateNetworkAddressOutput)
+}
+
+// GetCloudLoadbalancerCurrentStateNetworkAddressArrayInput is an input type that accepts GetCloudLoadbalancerCurrentStateNetworkAddressArray and GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerCurrentStateNetworkAddressArrayInput` via:
+//
+//	GetCloudLoadbalancerCurrentStateNetworkAddressArray{ GetCloudLoadbalancerCurrentStateNetworkAddressArgs{...} }
+type GetCloudLoadbalancerCurrentStateNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput() GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput
+	ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(context.Context) GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkAddressArray []GetCloudLoadbalancerCurrentStateNetworkAddressInput
+
+func (GetCloudLoadbalancerCurrentStateNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerCurrentStateNetworkAddressArray) ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput() GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return i.ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerCurrentStateNetworkAddressArray) ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerCurrentStateNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressOutput) ToGetCloudLoadbalancerCurrentStateNetworkAddressOutput() GetCloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressOutput) ToGetCloudLoadbalancerCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return o
+}
+
+// IP address.
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentStateNetworkAddress) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Address type (`FIXED`, `FLOATING`).
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerCurrentStateNetworkAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput) ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput() GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput) ToGetCloudLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerCurrentStateNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerCurrentStateNetworkAddress {
+		return vs[0].([]GetCloudLoadbalancerCurrentStateNetworkAddress)[vs[1].(int)]
+	}).(GetCloudLoadbalancerCurrentStateNetworkAddressOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policy struct {
+	// L7 policy action.
+	Action string `pulumi:"action"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the L7 policy.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the L7 policy:
+	CurrentState GetCloudLoadbalancerL7policiesL7policyCurrentState `pulumi:"currentState"`
+	// L7 policy description.
+	Description string `pulumi:"description"`
+	// L7 policy ID.
+	Id string `pulumi:"id"`
+	// L7 policy name.
+	Name string `pulumi:"name"`
+	// L7 policy position.
+	Position int `pulumi:"position"`
+	// HTTP redirect code.
+	RedirectHttpCode int `pulumi:"redirectHttpCode"`
+	// Redirect pool ID.
+	RedirectPoolId string `pulumi:"redirectPoolId"`
+	// Redirect prefix.
+	RedirectPrefix string `pulumi:"redirectPrefix"`
+	// Redirect URL.
+	RedirectUrl string `pulumi:"redirectUrl"`
+	// L7 policy readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+	Rules []GetCloudLoadbalancerL7policiesL7policyRule `pulumi:"rules"`
+	// Last update date of the L7 policy.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudLoadbalancerL7policiesL7policyInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyArgs and GetCloudLoadbalancerL7policiesL7policyOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyArgs{...}
+type GetCloudLoadbalancerL7policiesL7policyInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyOutput() GetCloudLoadbalancerL7policiesL7policyOutput
+	ToGetCloudLoadbalancerL7policiesL7policyOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyArgs struct {
+	// L7 policy action.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the L7 policy.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the L7 policy:
+	CurrentState GetCloudLoadbalancerL7policiesL7policyCurrentStateInput `pulumi:"currentState"`
+	// L7 policy description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// L7 policy ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// L7 policy name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// L7 policy position.
+	Position pulumi.IntInput `pulumi:"position"`
+	// HTTP redirect code.
+	RedirectHttpCode pulumi.IntInput `pulumi:"redirectHttpCode"`
+	// Redirect pool ID.
+	RedirectPoolId pulumi.StringInput `pulumi:"redirectPoolId"`
+	// Redirect prefix.
+	RedirectPrefix pulumi.StringInput `pulumi:"redirectPrefix"`
+	// Redirect URL.
+	RedirectUrl pulumi.StringInput `pulumi:"redirectUrl"`
+	// L7 policy readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+	Rules GetCloudLoadbalancerL7policiesL7policyRuleArrayInput `pulumi:"rules"`
+	// Last update date of the L7 policy.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudLoadbalancerL7policiesL7policyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policy)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyArgs) ToGetCloudLoadbalancerL7policiesL7policyOutput() GetCloudLoadbalancerL7policiesL7policyOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyArgs) ToGetCloudLoadbalancerL7policiesL7policyOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyOutput)
+}
+
+// GetCloudLoadbalancerL7policiesL7policyArrayInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyArray and GetCloudLoadbalancerL7policiesL7policyArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyArrayInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyArray{ GetCloudLoadbalancerL7policiesL7policyArgs{...} }
+type GetCloudLoadbalancerL7policiesL7policyArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyArrayOutput() GetCloudLoadbalancerL7policiesL7policyArrayOutput
+	ToGetCloudLoadbalancerL7policiesL7policyArrayOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyArrayOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyArray []GetCloudLoadbalancerL7policiesL7policyInput
+
+func (GetCloudLoadbalancerL7policiesL7policyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policiesL7policy)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyArray) ToGetCloudLoadbalancerL7policiesL7policyArrayOutput() GetCloudLoadbalancerL7policiesL7policyArrayOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyArray) ToGetCloudLoadbalancerL7policiesL7policyArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policy)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) ToGetCloudLoadbalancerL7policiesL7policyOutput() GetCloudLoadbalancerL7policiesL7policyOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) ToGetCloudLoadbalancerL7policiesL7policyOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyOutput {
+	return o
+}
+
+// L7 policy action.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the L7 policy.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the L7 policy:
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) CurrentState() GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) GetCloudLoadbalancerL7policiesL7policyCurrentState {
+		return v.CurrentState
+	}).(GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput)
+}
+
+// L7 policy description.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// L7 policy ID.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// L7 policy name.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// L7 policy position.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// HTTP redirect code.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) RedirectHttpCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) int { return v.RedirectHttpCode }).(pulumi.IntOutput)
+}
+
+// Redirect pool ID.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) RedirectPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.RedirectPoolId }).(pulumi.StringOutput)
+}
+
+// Redirect prefix.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) RedirectPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.RedirectPrefix }).(pulumi.StringOutput)
+}
+
+// Redirect URL.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) RedirectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.RedirectUrl }).(pulumi.StringOutput)
+}
+
+// L7 policy readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) Rules() GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) []GetCloudLoadbalancerL7policiesL7policyRule {
+		return v.Rules
+	}).(GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput)
+}
+
+// Last update date of the L7 policy.
+func (o GetCloudLoadbalancerL7policiesL7policyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policy) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policiesL7policy)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyArrayOutput) ToGetCloudLoadbalancerL7policiesL7policyArrayOutput() GetCloudLoadbalancerL7policiesL7policyArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyArrayOutput) ToGetCloudLoadbalancerL7policiesL7policyArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerL7policiesL7policyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerL7policiesL7policy {
+		return vs[0].([]GetCloudLoadbalancerL7policiesL7policy)[vs[1].(int)]
+	}).(GetCloudLoadbalancerL7policiesL7policyOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentState struct {
+	// L7 policy action.
+	Action string `pulumi:"action"`
+	// L7 policy description.
+	Description string `pulumi:"description"`
+	// L7 policy name.
+	Name string `pulumi:"name"`
+	// Operating status of the L7 policy.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// L7 policy position.
+	Position int `pulumi:"position"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// HTTP redirect code.
+	RedirectHttpCode int `pulumi:"redirectHttpCode"`
+	// Redirect pool ID.
+	RedirectPoolId string `pulumi:"redirectPoolId"`
+	// Redirect prefix.
+	RedirectPrefix string `pulumi:"redirectPrefix"`
+	// Redirect URL.
+	RedirectUrl string `pulumi:"redirectUrl"`
+	// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+	Rules []GetCloudLoadbalancerL7policiesL7policyCurrentStateRule `pulumi:"rules"`
+}
+
+// GetCloudLoadbalancerL7policiesL7policyCurrentStateInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs and GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs{...}
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput
+	ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs struct {
+	// L7 policy action.
+	Action pulumi.StringInput `pulumi:"action"`
+	// L7 policy description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// L7 policy name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the L7 policy.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// L7 policy position.
+	Position pulumi.IntInput `pulumi:"position"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// HTTP redirect code.
+	RedirectHttpCode pulumi.IntInput `pulumi:"redirectHttpCode"`
+	// Redirect pool ID.
+	RedirectPoolId pulumi.StringInput `pulumi:"redirectPoolId"`
+	// Redirect prefix.
+	RedirectPrefix pulumi.StringInput `pulumi:"redirectPrefix"`
+	// Redirect URL.
+	RedirectUrl pulumi.StringInput `pulumi:"redirectUrl"`
+	// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+	Rules GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput {
+	return o
+}
+
+// L7 policy action.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// L7 policy description.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// L7 policy name.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the L7 policy.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// L7 policy position.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// Provisioning status of the L7 policy.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// HTTP redirect code.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) RedirectHttpCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) int { return v.RedirectHttpCode }).(pulumi.IntOutput)
+}
+
+// Redirect pool ID.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) RedirectPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.RedirectPoolId }).(pulumi.StringOutput)
+}
+
+// Redirect prefix.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) RedirectPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.RedirectPrefix }).(pulumi.StringOutput)
+}
+
+// Redirect URL.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) RedirectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) string { return v.RedirectUrl }).(pulumi.StringOutput)
+}
+
+// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput) Rules() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentState) []GetCloudLoadbalancerL7policiesL7policyCurrentStateRule {
+		return v.Rules
+	}).(GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRule struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType string `pulumi:"compareType"`
+	// L7 policy ID.
+	Id string `pulumi:"id"`
+	// Whether to invert the rule match.
+	Invert bool `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key string `pulumi:"key"`
+	// Operating status of the L7 policy.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type string `pulumi:"type"`
+	// Value to compare against.
+	Value string `pulumi:"value"`
+}
+
+// GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs and GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs{...}
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput
+	ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType pulumi.StringInput `pulumi:"compareType"`
+	// L7 policy ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to invert the rule match.
+	Invert pulumi.BoolInput `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Operating status of the L7 policy.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value to compare against.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput)
+}
+
+// GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray and GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray{ GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs{...} }
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput
+	ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray []GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleInput
+
+func (GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policiesL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput {
+	return o
+}
+
+// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) CompareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.CompareType }).(pulumi.StringOutput)
+}
+
+// L7 policy ID.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to invert the rule match.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) Invert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) bool { return v.Invert }).(pulumi.BoolOutput)
+}
+
+// Key for `COOKIE` and `HEADER` rule types.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Operating status of the L7 policy.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the L7 policy.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value to compare against.
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyCurrentStateRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policiesL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput() GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput) ToGetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerL7policiesL7policyCurrentStateRule {
+		return vs[0].([]GetCloudLoadbalancerL7policiesL7policyCurrentStateRule)[vs[1].(int)]
+	}).(GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyRule struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType string `pulumi:"compareType"`
+	// Whether to invert the rule match.
+	Invert bool `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key string `pulumi:"key"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type string `pulumi:"type"`
+	// Value to compare against.
+	Value string `pulumi:"value"`
+}
+
+// GetCloudLoadbalancerL7policiesL7policyRuleInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyRuleArgs and GetCloudLoadbalancerL7policiesL7policyRuleOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyRuleInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyRuleArgs{...}
+type GetCloudLoadbalancerL7policiesL7policyRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyRuleOutput() GetCloudLoadbalancerL7policiesL7policyRuleOutput
+	ToGetCloudLoadbalancerL7policiesL7policyRuleOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyRuleOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyRuleArgs struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType pulumi.StringInput `pulumi:"compareType"`
+	// Whether to invert the rule match.
+	Invert pulumi.BoolInput `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value to compare against.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCloudLoadbalancerL7policiesL7policyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyRuleArgs) ToGetCloudLoadbalancerL7policiesL7policyRuleOutput() GetCloudLoadbalancerL7policiesL7policyRuleOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyRuleArgs) ToGetCloudLoadbalancerL7policiesL7policyRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyRuleOutput)
+}
+
+// GetCloudLoadbalancerL7policiesL7policyRuleArrayInput is an input type that accepts GetCloudLoadbalancerL7policiesL7policyRuleArray and GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policiesL7policyRuleArrayInput` via:
+//
+//	GetCloudLoadbalancerL7policiesL7policyRuleArray{ GetCloudLoadbalancerL7policiesL7policyRuleArgs{...} }
+type GetCloudLoadbalancerL7policiesL7policyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutput() GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput
+	ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutputWithContext(context.Context) GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput
+}
+
+type GetCloudLoadbalancerL7policiesL7policyRuleArray []GetCloudLoadbalancerL7policiesL7policyRuleInput
+
+func (GetCloudLoadbalancerL7policiesL7policyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policiesL7policyRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyRuleArray) ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutput() GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput {
+	return i.ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policiesL7policyRuleArray) ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) ToGetCloudLoadbalancerL7policiesL7policyRuleOutput() GetCloudLoadbalancerL7policiesL7policyRuleOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) ToGetCloudLoadbalancerL7policiesL7policyRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyRuleOutput {
+	return o
+}
+
+// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) CompareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyRule) string { return v.CompareType }).(pulumi.StringOutput)
+}
+
+// Whether to invert the rule match.
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) Invert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyRule) bool { return v.Invert }).(pulumi.BoolOutput)
+}
+
+// Key for `COOKIE` and `HEADER` rule types.
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyRule) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value to compare against.
+func (o GetCloudLoadbalancerL7policiesL7policyRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policiesL7policyRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policiesL7policyRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput) ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutput() GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput) ToGetCloudLoadbalancerL7policiesL7policyRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerL7policiesL7policyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerL7policiesL7policyRule {
+		return vs[0].([]GetCloudLoadbalancerL7policiesL7policyRule)[vs[1].(int)]
+	}).(GetCloudLoadbalancerL7policiesL7policyRuleOutput)
+}
+
+type GetCloudLoadbalancerL7policyCurrentState struct {
+	// L7 policy action.
+	Action string `pulumi:"action"`
+	// L7 policy description.
+	Description string `pulumi:"description"`
+	// L7 policy name.
+	Name string `pulumi:"name"`
+	// Operating status of the L7 policy.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// L7 policy position.
+	Position int `pulumi:"position"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// HTTP redirect code.
+	RedirectHttpCode int `pulumi:"redirectHttpCode"`
+	// Redirect pool ID.
+	RedirectPoolId string `pulumi:"redirectPoolId"`
+	// Redirect prefix.
+	RedirectPrefix string `pulumi:"redirectPrefix"`
+	// Redirect URL.
+	RedirectUrl string `pulumi:"redirectUrl"`
+	// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+	Rules []GetCloudLoadbalancerL7policyCurrentStateRule `pulumi:"rules"`
+}
+
+// GetCloudLoadbalancerL7policyCurrentStateInput is an input type that accepts GetCloudLoadbalancerL7policyCurrentStateArgs and GetCloudLoadbalancerL7policyCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policyCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerL7policyCurrentStateArgs{...}
+type GetCloudLoadbalancerL7policyCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policyCurrentStateOutput() GetCloudLoadbalancerL7policyCurrentStateOutput
+	ToGetCloudLoadbalancerL7policyCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerL7policyCurrentStateOutput
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateArgs struct {
+	// L7 policy action.
+	Action pulumi.StringInput `pulumi:"action"`
+	// L7 policy description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// L7 policy name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the L7 policy.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// L7 policy position.
+	Position pulumi.IntInput `pulumi:"position"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// HTTP redirect code.
+	RedirectHttpCode pulumi.IntInput `pulumi:"redirectHttpCode"`
+	// Redirect pool ID.
+	RedirectPoolId pulumi.StringInput `pulumi:"redirectPoolId"`
+	// Redirect prefix.
+	RedirectPrefix pulumi.StringInput `pulumi:"redirectPrefix"`
+	// Redirect URL.
+	RedirectUrl pulumi.StringInput `pulumi:"redirectUrl"`
+	// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+	Rules GetCloudLoadbalancerL7policyCurrentStateRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetCloudLoadbalancerL7policyCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policyCurrentStateArgs) ToGetCloudLoadbalancerL7policyCurrentStateOutput() GetCloudLoadbalancerL7policyCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerL7policyCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policyCurrentStateArgs) ToGetCloudLoadbalancerL7policyCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policyCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policyCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) ToGetCloudLoadbalancerL7policyCurrentStateOutput() GetCloudLoadbalancerL7policyCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) ToGetCloudLoadbalancerL7policyCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyCurrentStateOutput {
+	return o
+}
+
+// L7 policy action.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// L7 policy description.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// L7 policy name.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the L7 policy.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// L7 policy position.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) Position() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) int { return v.Position }).(pulumi.IntOutput)
+}
+
+// Provisioning status of the L7 policy.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// HTTP redirect code.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) RedirectHttpCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) int { return v.RedirectHttpCode }).(pulumi.IntOutput)
+}
+
+// Redirect pool ID.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) RedirectPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.RedirectPoolId }).(pulumi.StringOutput)
+}
+
+// Redirect prefix.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) RedirectPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.RedirectPrefix }).(pulumi.StringOutput)
+}
+
+// Redirect URL.
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) RedirectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) string { return v.RedirectUrl }).(pulumi.StringOutput)
+}
+
+// Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+func (o GetCloudLoadbalancerL7policyCurrentStateOutput) Rules() GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentState) []GetCloudLoadbalancerL7policyCurrentStateRule {
+		return v.Rules
+	}).(GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateRule struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType string `pulumi:"compareType"`
+	// ID of the L7 policy.
+	Id string `pulumi:"id"`
+	// Whether to invert the rule match.
+	Invert bool `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key string `pulumi:"key"`
+	// Operating status of the L7 policy.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type string `pulumi:"type"`
+	// Value to compare against.
+	Value string `pulumi:"value"`
+}
+
+// GetCloudLoadbalancerL7policyCurrentStateRuleInput is an input type that accepts GetCloudLoadbalancerL7policyCurrentStateRuleArgs and GetCloudLoadbalancerL7policyCurrentStateRuleOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policyCurrentStateRuleInput` via:
+//
+//	GetCloudLoadbalancerL7policyCurrentStateRuleArgs{...}
+type GetCloudLoadbalancerL7policyCurrentStateRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policyCurrentStateRuleOutput() GetCloudLoadbalancerL7policyCurrentStateRuleOutput
+	ToGetCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(context.Context) GetCloudLoadbalancerL7policyCurrentStateRuleOutput
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateRuleArgs struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType pulumi.StringInput `pulumi:"compareType"`
+	// ID of the L7 policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether to invert the rule match.
+	Invert pulumi.BoolInput `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Operating status of the L7 policy.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the L7 policy.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value to compare against.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCloudLoadbalancerL7policyCurrentStateRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policyCurrentStateRuleArgs) ToGetCloudLoadbalancerL7policyCurrentStateRuleOutput() GetCloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return i.ToGetCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policyCurrentStateRuleArgs) ToGetCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policyCurrentStateRuleOutput)
+}
+
+// GetCloudLoadbalancerL7policyCurrentStateRuleArrayInput is an input type that accepts GetCloudLoadbalancerL7policyCurrentStateRuleArray and GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policyCurrentStateRuleArrayInput` via:
+//
+//	GetCloudLoadbalancerL7policyCurrentStateRuleArray{ GetCloudLoadbalancerL7policyCurrentStateRuleArgs{...} }
+type GetCloudLoadbalancerL7policyCurrentStateRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput() GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput
+	ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(context.Context) GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateRuleArray []GetCloudLoadbalancerL7policyCurrentStateRuleInput
+
+func (GetCloudLoadbalancerL7policyCurrentStateRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policyCurrentStateRuleArray) ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput() GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return i.ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policyCurrentStateRuleArray) ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policyCurrentStateRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) ToGetCloudLoadbalancerL7policyCurrentStateRuleOutput() GetCloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) ToGetCloudLoadbalancerL7policyCurrentStateRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return o
+}
+
+// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) CompareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.CompareType }).(pulumi.StringOutput)
+}
+
+// ID of the L7 policy.
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Whether to invert the rule match.
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) Invert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) bool { return v.Invert }).(pulumi.BoolOutput)
+}
+
+// Key for `COOKIE` and `HEADER` rule types.
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Operating status of the L7 policy.
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the L7 policy.
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value to compare against.
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyCurrentStateRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policyCurrentStateRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput) ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput() GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput) ToGetCloudLoadbalancerL7policyCurrentStateRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerL7policyCurrentStateRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerL7policyCurrentStateRule {
+		return vs[0].([]GetCloudLoadbalancerL7policyCurrentStateRule)[vs[1].(int)]
+	}).(GetCloudLoadbalancerL7policyCurrentStateRuleOutput)
+}
+
+type GetCloudLoadbalancerL7policyRule struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType string `pulumi:"compareType"`
+	// Whether to invert the rule match.
+	Invert bool `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key string `pulumi:"key"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type string `pulumi:"type"`
+	// Value to compare against.
+	Value string `pulumi:"value"`
+}
+
+// GetCloudLoadbalancerL7policyRuleInput is an input type that accepts GetCloudLoadbalancerL7policyRuleArgs and GetCloudLoadbalancerL7policyRuleOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policyRuleInput` via:
+//
+//	GetCloudLoadbalancerL7policyRuleArgs{...}
+type GetCloudLoadbalancerL7policyRuleInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policyRuleOutput() GetCloudLoadbalancerL7policyRuleOutput
+	ToGetCloudLoadbalancerL7policyRuleOutputWithContext(context.Context) GetCloudLoadbalancerL7policyRuleOutput
+}
+
+type GetCloudLoadbalancerL7policyRuleArgs struct {
+	// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+	CompareType pulumi.StringInput `pulumi:"compareType"`
+	// Whether to invert the rule match.
+	Invert pulumi.BoolInput `pulumi:"invert"`
+	// Key for `COOKIE` and `HEADER` rule types.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value to compare against.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetCloudLoadbalancerL7policyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policyRuleArgs) ToGetCloudLoadbalancerL7policyRuleOutput() GetCloudLoadbalancerL7policyRuleOutput {
+	return i.ToGetCloudLoadbalancerL7policyRuleOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policyRuleArgs) ToGetCloudLoadbalancerL7policyRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policyRuleOutput)
+}
+
+// GetCloudLoadbalancerL7policyRuleArrayInput is an input type that accepts GetCloudLoadbalancerL7policyRuleArray and GetCloudLoadbalancerL7policyRuleArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerL7policyRuleArrayInput` via:
+//
+//	GetCloudLoadbalancerL7policyRuleArray{ GetCloudLoadbalancerL7policyRuleArgs{...} }
+type GetCloudLoadbalancerL7policyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerL7policyRuleArrayOutput() GetCloudLoadbalancerL7policyRuleArrayOutput
+	ToGetCloudLoadbalancerL7policyRuleArrayOutputWithContext(context.Context) GetCloudLoadbalancerL7policyRuleArrayOutput
+}
+
+type GetCloudLoadbalancerL7policyRuleArray []GetCloudLoadbalancerL7policyRuleInput
+
+func (GetCloudLoadbalancerL7policyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerL7policyRuleArray) ToGetCloudLoadbalancerL7policyRuleArrayOutput() GetCloudLoadbalancerL7policyRuleArrayOutput {
+	return i.ToGetCloudLoadbalancerL7policyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerL7policyRuleArray) ToGetCloudLoadbalancerL7policyRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerL7policyRuleArrayOutput)
+}
+
+type GetCloudLoadbalancerL7policyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policyRuleOutput) ToGetCloudLoadbalancerL7policyRuleOutput() GetCloudLoadbalancerL7policyRuleOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyRuleOutput) ToGetCloudLoadbalancerL7policyRuleOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyRuleOutput {
+	return o
+}
+
+// Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+func (o GetCloudLoadbalancerL7policyRuleOutput) CompareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyRule) string { return v.CompareType }).(pulumi.StringOutput)
+}
+
+// Whether to invert the rule match.
+func (o GetCloudLoadbalancerL7policyRuleOutput) Invert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyRule) bool { return v.Invert }).(pulumi.BoolOutput)
+}
+
+// Key for `COOKIE` and `HEADER` rule types.
+func (o GetCloudLoadbalancerL7policyRuleOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyRule) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+func (o GetCloudLoadbalancerL7policyRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value to compare against.
+func (o GetCloudLoadbalancerL7policyRuleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerL7policyRule) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerL7policyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerL7policyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerL7policyRule)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerL7policyRuleArrayOutput) ToGetCloudLoadbalancerL7policyRuleArrayOutput() GetCloudLoadbalancerL7policyRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyRuleArrayOutput) ToGetCloudLoadbalancerL7policyRuleArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerL7policyRuleArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerL7policyRuleArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerL7policyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerL7policyRule {
+		return vs[0].([]GetCloudLoadbalancerL7policyRule)[vs[1].(int)]
+	}).(GetCloudLoadbalancerL7policyRuleOutput)
+}
+
+type GetCloudLoadbalancerListenerCurrentState struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Maximum number of connections allowed.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// ID of the default pool for this listener.
+	DefaultPoolId string `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef string `pulumi:"defaultTlsContainerRef"`
+	// Listener description.
+	Description string `pulumi:"description"`
+	// Headers inserted into requests (same schema as `insertHeaders`).
+	InsertHeaders GetCloudLoadbalancerListenerCurrentStateInsertHeaders `pulumi:"insertHeaders"`
+	// Listener name.
+	Name string `pulumi:"name"`
+	// Operating status of the listener.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Listener protocol.
+	Protocol string `pulumi:"protocol"`
+	// Port number the listener listens on.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Provisioning status of the listener.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Region.
+	Region string `pulumi:"region"`
+	// List of SNI container references.
+	SniContainerRefs []string `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds.
+	TimeoutClientData int `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds.
+	TimeoutMemberConnect int `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds.
+	TimeoutMemberData int `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds.
+	TimeoutTcpInspect int `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions []string `pulumi:"tlsVersions"`
+}
+
+// GetCloudLoadbalancerListenerCurrentStateInput is an input type that accepts GetCloudLoadbalancerListenerCurrentStateArgs and GetCloudLoadbalancerListenerCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenerCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerListenerCurrentStateArgs{...}
+type GetCloudLoadbalancerListenerCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenerCurrentStateOutput() GetCloudLoadbalancerListenerCurrentStateOutput
+	ToGetCloudLoadbalancerListenerCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerListenerCurrentStateOutput
+}
+
+type GetCloudLoadbalancerListenerCurrentStateArgs struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs pulumi.StringArrayInput `pulumi:"allowedCidrs"`
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Maximum number of connections allowed.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// ID of the default pool for this listener.
+	DefaultPoolId pulumi.StringInput `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef pulumi.StringInput `pulumi:"defaultTlsContainerRef"`
+	// Listener description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Headers inserted into requests (same schema as `insertHeaders`).
+	InsertHeaders GetCloudLoadbalancerListenerCurrentStateInsertHeadersInput `pulumi:"insertHeaders"`
+	// Listener name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the listener.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Listener protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Port number the listener listens on.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Provisioning status of the listener.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// List of SNI container references.
+	SniContainerRefs pulumi.StringArrayInput `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds.
+	TimeoutClientData pulumi.IntInput `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds.
+	TimeoutMemberConnect pulumi.IntInput `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds.
+	TimeoutMemberData pulumi.IntInput `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds.
+	TimeoutTcpInspect pulumi.IntInput `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
+}
+
+func (GetCloudLoadbalancerListenerCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenerCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenerCurrentStateArgs) ToGetCloudLoadbalancerListenerCurrentStateOutput() GetCloudLoadbalancerListenerCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerListenerCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenerCurrentStateArgs) ToGetCloudLoadbalancerListenerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenerCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenerCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerListenerCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenerCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenerCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) ToGetCloudLoadbalancerListenerCurrentStateOutput() GetCloudLoadbalancerListenerCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) ToGetCloudLoadbalancerListenerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenerCurrentStateOutput {
+	return o
+}
+
+// List of CIDRs allowed to access the listener.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+}
+
+// Availability zone.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Maximum number of connections allowed.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// ID of the default pool for this listener.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) DefaultPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.DefaultPoolId }).(pulumi.StringOutput)
+}
+
+// Reference to the default TLS container.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) DefaultTlsContainerRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.DefaultTlsContainerRef }).(pulumi.StringOutput)
+}
+
+// Listener description.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Headers inserted into requests (same schema as `insertHeaders`).
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) InsertHeaders() GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) GetCloudLoadbalancerListenerCurrentStateInsertHeaders {
+		return v.InsertHeaders
+	}).(GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput)
+}
+
+// Listener name.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the listener.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Listener protocol.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Port number the listener listens on.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Provisioning status of the listener.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// List of SNI container references.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) SniContainerRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) []string { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
+}
+
+// Timeout for client data in milliseconds.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) TimeoutClientData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) int { return v.TimeoutClientData }).(pulumi.IntOutput)
+}
+
+// Timeout for member connection in milliseconds.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) TimeoutMemberConnect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) int { return v.TimeoutMemberConnect }).(pulumi.IntOutput)
+}
+
+// Timeout for member data in milliseconds.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) TimeoutMemberData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) int { return v.TimeoutMemberData }).(pulumi.IntOutput)
+}
+
+// Timeout for TCP inspect in milliseconds.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) TimeoutTcpInspect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) int { return v.TimeoutTcpInspect }).(pulumi.IntOutput)
+}
+
+// List of TLS versions allowed.
+func (o GetCloudLoadbalancerListenerCurrentStateOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentState) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
+type GetCloudLoadbalancerListenerCurrentStateInsertHeaders struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor bool `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort bool `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto bool `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn bool `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert bool `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify bool `pulumi:"xSslClientVerify"`
+}
+
+// GetCloudLoadbalancerListenerCurrentStateInsertHeadersInput is an input type that accepts GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs and GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenerCurrentStateInsertHeadersInput` via:
+//
+//	GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs{...}
+type GetCloudLoadbalancerListenerCurrentStateInsertHeadersInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput() GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput
+	ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(context.Context) GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput
+}
+
+type GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor pulumi.BoolInput `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort pulumi.BoolInput `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto pulumi.BoolInput `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn pulumi.BoolInput `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert pulumi.BoolInput `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify pulumi.BoolInput `pulumi:"xSslClientVerify"`
+}
+
+func (GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput() GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return i.ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs) ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput)
+}
+
+type GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput() GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) ToGetCloudLoadbalancerListenerCurrentStateInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput {
+	return o
+}
+
+// Insert X-Forwarded-For header.
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XForwardedFor() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentStateInsertHeaders) bool { return v.XForwardedFor }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XForwardedPort() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentStateInsertHeaders) bool { return v.XForwardedPort }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XForwardedProto() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentStateInsertHeaders) bool { return v.XForwardedProto }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XSslClientDn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentStateInsertHeaders) bool { return v.XSslClientDn }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XSslClientHasCert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentStateInsertHeaders) bool { return v.XSslClientHasCert }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput) XSslClientVerify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerCurrentStateInsertHeaders) bool { return v.XSslClientVerify }).(pulumi.BoolOutput)
+}
+
+type GetCloudLoadbalancerListenerInsertHeaders struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor bool `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort bool `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto bool `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn bool `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert bool `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify bool `pulumi:"xSslClientVerify"`
+}
+
+// GetCloudLoadbalancerListenerInsertHeadersInput is an input type that accepts GetCloudLoadbalancerListenerInsertHeadersArgs and GetCloudLoadbalancerListenerInsertHeadersOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenerInsertHeadersInput` via:
+//
+//	GetCloudLoadbalancerListenerInsertHeadersArgs{...}
+type GetCloudLoadbalancerListenerInsertHeadersInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenerInsertHeadersOutput() GetCloudLoadbalancerListenerInsertHeadersOutput
+	ToGetCloudLoadbalancerListenerInsertHeadersOutputWithContext(context.Context) GetCloudLoadbalancerListenerInsertHeadersOutput
+}
+
+type GetCloudLoadbalancerListenerInsertHeadersArgs struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor pulumi.BoolInput `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort pulumi.BoolInput `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto pulumi.BoolInput `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn pulumi.BoolInput `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert pulumi.BoolInput `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify pulumi.BoolInput `pulumi:"xSslClientVerify"`
+}
+
+func (GetCloudLoadbalancerListenerInsertHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenerInsertHeaders)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenerInsertHeadersArgs) ToGetCloudLoadbalancerListenerInsertHeadersOutput() GetCloudLoadbalancerListenerInsertHeadersOutput {
+	return i.ToGetCloudLoadbalancerListenerInsertHeadersOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenerInsertHeadersArgs) ToGetCloudLoadbalancerListenerInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenerInsertHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenerInsertHeadersOutput)
+}
+
+type GetCloudLoadbalancerListenerInsertHeadersOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenerInsertHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenerInsertHeaders)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) ToGetCloudLoadbalancerListenerInsertHeadersOutput() GetCloudLoadbalancerListenerInsertHeadersOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) ToGetCloudLoadbalancerListenerInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenerInsertHeadersOutput {
+	return o
+}
+
+// Insert X-Forwarded-For header.
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) XForwardedFor() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerInsertHeaders) bool { return v.XForwardedFor }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) XForwardedPort() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerInsertHeaders) bool { return v.XForwardedPort }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) XForwardedProto() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerInsertHeaders) bool { return v.XForwardedProto }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) XSslClientDn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerInsertHeaders) bool { return v.XSslClientDn }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) XSslClientHasCert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerInsertHeaders) bool { return v.XSslClientHasCert }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o GetCloudLoadbalancerListenerInsertHeadersOutput) XSslClientVerify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenerInsertHeaders) bool { return v.XSslClientVerify }).(pulumi.BoolOutput)
+}
+
+type GetCloudLoadbalancerListenersListener struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Maximum number of connections allowed.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// Creation date of the listener.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the listener:
+	CurrentState GetCloudLoadbalancerListenersListenerCurrentState `pulumi:"currentState"`
+	// ID of the default pool for this listener.
+	DefaultPoolId string `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef string `pulumi:"defaultTlsContainerRef"`
+	// Listener description.
+	Description string `pulumi:"description"`
+	// Listener ID.
+	Id string `pulumi:"id"`
+	// Headers inserted into requests (same schema as above).
+	InsertHeaders GetCloudLoadbalancerListenersListenerInsertHeaders `pulumi:"insertHeaders"`
+	// Listener name.
+	Name string `pulumi:"name"`
+	// Listener protocol.
+	Protocol string `pulumi:"protocol"`
+	// Port number the listener listens on.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Listener readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// List of SNI container references.
+	SniContainerRefs []string `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds.
+	TimeoutClientData int `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds.
+	TimeoutMemberConnect int `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds.
+	TimeoutMemberData int `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds.
+	TimeoutTcpInspect int `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions []string `pulumi:"tlsVersions"`
+	// Last update date of the listener.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudLoadbalancerListenersListenerInput is an input type that accepts GetCloudLoadbalancerListenersListenerArgs and GetCloudLoadbalancerListenersListenerOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenersListenerInput` via:
+//
+//	GetCloudLoadbalancerListenersListenerArgs{...}
+type GetCloudLoadbalancerListenersListenerInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenersListenerOutput() GetCloudLoadbalancerListenersListenerOutput
+	ToGetCloudLoadbalancerListenersListenerOutputWithContext(context.Context) GetCloudLoadbalancerListenersListenerOutput
+}
+
+type GetCloudLoadbalancerListenersListenerArgs struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs pulumi.StringArrayInput `pulumi:"allowedCidrs"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Maximum number of connections allowed.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// Creation date of the listener.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the listener:
+	CurrentState GetCloudLoadbalancerListenersListenerCurrentStateInput `pulumi:"currentState"`
+	// ID of the default pool for this listener.
+	DefaultPoolId pulumi.StringInput `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef pulumi.StringInput `pulumi:"defaultTlsContainerRef"`
+	// Listener description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Listener ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Headers inserted into requests (same schema as above).
+	InsertHeaders GetCloudLoadbalancerListenersListenerInsertHeadersInput `pulumi:"insertHeaders"`
+	// Listener name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Listener protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Port number the listener listens on.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Listener readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// List of SNI container references.
+	SniContainerRefs pulumi.StringArrayInput `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds.
+	TimeoutClientData pulumi.IntInput `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds.
+	TimeoutMemberConnect pulumi.IntInput `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds.
+	TimeoutMemberData pulumi.IntInput `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds.
+	TimeoutTcpInspect pulumi.IntInput `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
+	// Last update date of the listener.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudLoadbalancerListenersListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListener)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenersListenerArgs) ToGetCloudLoadbalancerListenersListenerOutput() GetCloudLoadbalancerListenersListenerOutput {
+	return i.ToGetCloudLoadbalancerListenersListenerOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenersListenerArgs) ToGetCloudLoadbalancerListenersListenerOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenersListenerOutput)
+}
+
+// GetCloudLoadbalancerListenersListenerArrayInput is an input type that accepts GetCloudLoadbalancerListenersListenerArray and GetCloudLoadbalancerListenersListenerArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenersListenerArrayInput` via:
+//
+//	GetCloudLoadbalancerListenersListenerArray{ GetCloudLoadbalancerListenersListenerArgs{...} }
+type GetCloudLoadbalancerListenersListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenersListenerArrayOutput() GetCloudLoadbalancerListenersListenerArrayOutput
+	ToGetCloudLoadbalancerListenersListenerArrayOutputWithContext(context.Context) GetCloudLoadbalancerListenersListenerArrayOutput
+}
+
+type GetCloudLoadbalancerListenersListenerArray []GetCloudLoadbalancerListenersListenerInput
+
+func (GetCloudLoadbalancerListenersListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerListenersListener)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenersListenerArray) ToGetCloudLoadbalancerListenersListenerArrayOutput() GetCloudLoadbalancerListenersListenerArrayOutput {
+	return i.ToGetCloudLoadbalancerListenersListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenersListenerArray) ToGetCloudLoadbalancerListenersListenerArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenersListenerArrayOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenersListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListener)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenersListenerOutput) ToGetCloudLoadbalancerListenersListenerOutput() GetCloudLoadbalancerListenersListenerOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenersListenerOutput) ToGetCloudLoadbalancerListenersListenerOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerOutput {
+	return o
+}
+
+// List of CIDRs allowed to access the listener.
+func (o GetCloudLoadbalancerListenersListenerOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudLoadbalancerListenersListenerOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Maximum number of connections allowed.
+func (o GetCloudLoadbalancerListenersListenerOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// Creation date of the listener.
+func (o GetCloudLoadbalancerListenersListenerOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the listener:
+func (o GetCloudLoadbalancerListenersListenerOutput) CurrentState() GetCloudLoadbalancerListenersListenerCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) GetCloudLoadbalancerListenersListenerCurrentState {
+		return v.CurrentState
+	}).(GetCloudLoadbalancerListenersListenerCurrentStateOutput)
+}
+
+// ID of the default pool for this listener.
+func (o GetCloudLoadbalancerListenersListenerOutput) DefaultPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.DefaultPoolId }).(pulumi.StringOutput)
+}
+
+// Reference to the default TLS container.
+func (o GetCloudLoadbalancerListenersListenerOutput) DefaultTlsContainerRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.DefaultTlsContainerRef }).(pulumi.StringOutput)
+}
+
+// Listener description.
+func (o GetCloudLoadbalancerListenersListenerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Listener ID.
+func (o GetCloudLoadbalancerListenersListenerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Headers inserted into requests (same schema as above).
+func (o GetCloudLoadbalancerListenersListenerOutput) InsertHeaders() GetCloudLoadbalancerListenersListenerInsertHeadersOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) GetCloudLoadbalancerListenersListenerInsertHeaders {
+		return v.InsertHeaders
+	}).(GetCloudLoadbalancerListenersListenerInsertHeadersOutput)
+}
+
+// Listener name.
+func (o GetCloudLoadbalancerListenersListenerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Listener protocol.
+func (o GetCloudLoadbalancerListenersListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Port number the listener listens on.
+func (o GetCloudLoadbalancerListenersListenerOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Listener readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudLoadbalancerListenersListenerOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// List of SNI container references.
+func (o GetCloudLoadbalancerListenersListenerOutput) SniContainerRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) []string { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
+}
+
+// Timeout for client data in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerOutput) TimeoutClientData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) int { return v.TimeoutClientData }).(pulumi.IntOutput)
+}
+
+// Timeout for member connection in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerOutput) TimeoutMemberConnect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) int { return v.TimeoutMemberConnect }).(pulumi.IntOutput)
+}
+
+// Timeout for member data in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerOutput) TimeoutMemberData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) int { return v.TimeoutMemberData }).(pulumi.IntOutput)
+}
+
+// Timeout for TCP inspect in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerOutput) TimeoutTcpInspect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) int { return v.TimeoutTcpInspect }).(pulumi.IntOutput)
+}
+
+// List of TLS versions allowed.
+func (o GetCloudLoadbalancerListenersListenerOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
+// Last update date of the listener.
+func (o GetCloudLoadbalancerListenersListenerOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListener) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenersListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerListenersListener)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenersListenerArrayOutput) ToGetCloudLoadbalancerListenersListenerArrayOutput() GetCloudLoadbalancerListenersListenerArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenersListenerArrayOutput) ToGetCloudLoadbalancerListenersListenerArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenersListenerArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerListenersListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerListenersListener {
+		return vs[0].([]GetCloudLoadbalancerListenersListener)[vs[1].(int)]
+	}).(GetCloudLoadbalancerListenersListenerOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerCurrentState struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs []string `pulumi:"allowedCidrs"`
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Maximum number of connections allowed.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// ID of the default pool for this listener.
+	DefaultPoolId string `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef string `pulumi:"defaultTlsContainerRef"`
+	// Listener description.
+	Description string `pulumi:"description"`
+	// Headers inserted into requests (same schema as above).
+	InsertHeaders GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders `pulumi:"insertHeaders"`
+	// Listener name.
+	Name string `pulumi:"name"`
+	// Operating status of the listener.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Listener protocol.
+	Protocol string `pulumi:"protocol"`
+	// Port number the listener listens on.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Provisioning status of the listener.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Region.
+	Region string `pulumi:"region"`
+	// List of SNI container references.
+	SniContainerRefs []string `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds.
+	TimeoutClientData int `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds.
+	TimeoutMemberConnect int `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds.
+	TimeoutMemberData int `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds.
+	TimeoutTcpInspect int `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions []string `pulumi:"tlsVersions"`
+}
+
+// GetCloudLoadbalancerListenersListenerCurrentStateInput is an input type that accepts GetCloudLoadbalancerListenersListenerCurrentStateArgs and GetCloudLoadbalancerListenersListenerCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenersListenerCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerListenersListenerCurrentStateArgs{...}
+type GetCloudLoadbalancerListenersListenerCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenersListenerCurrentStateOutput() GetCloudLoadbalancerListenersListenerCurrentStateOutput
+	ToGetCloudLoadbalancerListenersListenerCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerListenersListenerCurrentStateOutput
+}
+
+type GetCloudLoadbalancerListenersListenerCurrentStateArgs struct {
+	// List of CIDRs allowed to access the listener.
+	AllowedCidrs pulumi.StringArrayInput `pulumi:"allowedCidrs"`
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Maximum number of connections allowed.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// ID of the default pool for this listener.
+	DefaultPoolId pulumi.StringInput `pulumi:"defaultPoolId"`
+	// Reference to the default TLS container.
+	DefaultTlsContainerRef pulumi.StringInput `pulumi:"defaultTlsContainerRef"`
+	// Listener description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Headers inserted into requests (same schema as above).
+	InsertHeaders GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersInput `pulumi:"insertHeaders"`
+	// Listener name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the listener.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Listener protocol.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Port number the listener listens on.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Provisioning status of the listener.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// List of SNI container references.
+	SniContainerRefs pulumi.StringArrayInput `pulumi:"sniContainerRefs"`
+	// Timeout for client data in milliseconds.
+	TimeoutClientData pulumi.IntInput `pulumi:"timeoutClientData"`
+	// Timeout for member connection in milliseconds.
+	TimeoutMemberConnect pulumi.IntInput `pulumi:"timeoutMemberConnect"`
+	// Timeout for member data in milliseconds.
+	TimeoutMemberData pulumi.IntInput `pulumi:"timeoutMemberData"`
+	// Timeout for TCP inspect in milliseconds.
+	TimeoutTcpInspect pulumi.IntInput `pulumi:"timeoutTcpInspect"`
+	// List of TLS versions allowed.
+	TlsVersions pulumi.StringArrayInput `pulumi:"tlsVersions"`
+}
+
+func (GetCloudLoadbalancerListenersListenerCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListenerCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenersListenerCurrentStateArgs) ToGetCloudLoadbalancerListenersListenerCurrentStateOutput() GetCloudLoadbalancerListenersListenerCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerListenersListenerCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenersListenerCurrentStateArgs) ToGetCloudLoadbalancerListenersListenerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenersListenerCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenersListenerCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListenerCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) ToGetCloudLoadbalancerListenersListenerCurrentStateOutput() GetCloudLoadbalancerListenersListenerCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) ToGetCloudLoadbalancerListenersListenerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerCurrentStateOutput {
+	return o
+}
+
+// List of CIDRs allowed to access the listener.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) AllowedCidrs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) []string { return v.AllowedCidrs }).(pulumi.StringArrayOutput)
+}
+
+// Availability zone.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Maximum number of connections allowed.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// ID of the default pool for this listener.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) DefaultPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.DefaultPoolId }).(pulumi.StringOutput)
+}
+
+// Reference to the default TLS container.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) DefaultTlsContainerRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.DefaultTlsContainerRef }).(pulumi.StringOutput)
+}
+
+// Listener description.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Headers inserted into requests (same schema as above).
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) InsertHeaders() GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders {
+		return v.InsertHeaders
+	}).(GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput)
+}
+
+// Listener name.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the listener.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Listener protocol.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Port number the listener listens on.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Provisioning status of the listener.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// List of SNI container references.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) SniContainerRefs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) []string { return v.SniContainerRefs }).(pulumi.StringArrayOutput)
+}
+
+// Timeout for client data in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) TimeoutClientData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) int { return v.TimeoutClientData }).(pulumi.IntOutput)
+}
+
+// Timeout for member connection in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) TimeoutMemberConnect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) int { return v.TimeoutMemberConnect }).(pulumi.IntOutput)
+}
+
+// Timeout for member data in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) TimeoutMemberData() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) int { return v.TimeoutMemberData }).(pulumi.IntOutput)
+}
+
+// Timeout for TCP inspect in milliseconds.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) TimeoutTcpInspect() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) int { return v.TimeoutTcpInspect }).(pulumi.IntOutput)
+}
+
+// List of TLS versions allowed.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateOutput) TlsVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentState) []string { return v.TlsVersions }).(pulumi.StringArrayOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor bool `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort bool `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto bool `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn bool `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert bool `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify bool `pulumi:"xSslClientVerify"`
+}
+
+// GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersInput is an input type that accepts GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs and GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersInput` via:
+//
+//	GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs{...}
+type GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput() GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput
+	ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutputWithContext(context.Context) GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput
+}
+
+type GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor pulumi.BoolInput `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort pulumi.BoolInput `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto pulumi.BoolInput `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn pulumi.BoolInput `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert pulumi.BoolInput `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify pulumi.BoolInput `pulumi:"xSslClientVerify"`
+}
+
+func (GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs) ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput() GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput {
+	return i.ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs) ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput() GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) ToGetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput {
+	return o
+}
+
+// Insert X-Forwarded-For header.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) XForwardedFor() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders) bool { return v.XForwardedFor }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) XForwardedPort() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders) bool { return v.XForwardedPort }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) XForwardedProto() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders) bool { return v.XForwardedProto }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) XSslClientDn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders) bool { return v.XSslClientDn }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) XSslClientHasCert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders) bool {
+		return v.XSslClientHasCert
+	}).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput) XSslClientVerify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders) bool { return v.XSslClientVerify }).(pulumi.BoolOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerInsertHeaders struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor bool `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort bool `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto bool `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn bool `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert bool `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify bool `pulumi:"xSslClientVerify"`
+}
+
+// GetCloudLoadbalancerListenersListenerInsertHeadersInput is an input type that accepts GetCloudLoadbalancerListenersListenerInsertHeadersArgs and GetCloudLoadbalancerListenersListenerInsertHeadersOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerListenersListenerInsertHeadersInput` via:
+//
+//	GetCloudLoadbalancerListenersListenerInsertHeadersArgs{...}
+type GetCloudLoadbalancerListenersListenerInsertHeadersInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerListenersListenerInsertHeadersOutput() GetCloudLoadbalancerListenersListenerInsertHeadersOutput
+	ToGetCloudLoadbalancerListenersListenerInsertHeadersOutputWithContext(context.Context) GetCloudLoadbalancerListenersListenerInsertHeadersOutput
+}
+
+type GetCloudLoadbalancerListenersListenerInsertHeadersArgs struct {
+	// Insert X-Forwarded-For header.
+	XForwardedFor pulumi.BoolInput `pulumi:"xForwardedFor"`
+	// Insert X-Forwarded-Port header.
+	XForwardedPort pulumi.BoolInput `pulumi:"xForwardedPort"`
+	// Insert X-Forwarded-Proto header.
+	XForwardedProto pulumi.BoolInput `pulumi:"xForwardedProto"`
+	// Insert X-SSL-Client-DN header.
+	XSslClientDn pulumi.BoolInput `pulumi:"xSslClientDn"`
+	// Insert X-SSL-Client-Has-Cert header.
+	XSslClientHasCert pulumi.BoolInput `pulumi:"xSslClientHasCert"`
+	// Insert X-SSL-Client-Verify header.
+	XSslClientVerify pulumi.BoolInput `pulumi:"xSslClientVerify"`
+}
+
+func (GetCloudLoadbalancerListenersListenerInsertHeadersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListenerInsertHeaders)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerListenersListenerInsertHeadersArgs) ToGetCloudLoadbalancerListenersListenerInsertHeadersOutput() GetCloudLoadbalancerListenersListenerInsertHeadersOutput {
+	return i.ToGetCloudLoadbalancerListenersListenerInsertHeadersOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerListenersListenerInsertHeadersArgs) ToGetCloudLoadbalancerListenersListenerInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerInsertHeadersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerListenersListenerInsertHeadersOutput)
+}
+
+type GetCloudLoadbalancerListenersListenerInsertHeadersOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerListenersListenerInsertHeadersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerListenersListenerInsertHeaders)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) ToGetCloudLoadbalancerListenersListenerInsertHeadersOutput() GetCloudLoadbalancerListenersListenerInsertHeadersOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) ToGetCloudLoadbalancerListenersListenerInsertHeadersOutputWithContext(ctx context.Context) GetCloudLoadbalancerListenersListenerInsertHeadersOutput {
+	return o
+}
+
+// Insert X-Forwarded-For header.
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) XForwardedFor() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerInsertHeaders) bool { return v.XForwardedFor }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Port header.
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) XForwardedPort() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerInsertHeaders) bool { return v.XForwardedPort }).(pulumi.BoolOutput)
+}
+
+// Insert X-Forwarded-Proto header.
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) XForwardedProto() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerInsertHeaders) bool { return v.XForwardedProto }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-DN header.
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) XSslClientDn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerInsertHeaders) bool { return v.XSslClientDn }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Has-Cert header.
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) XSslClientHasCert() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerInsertHeaders) bool { return v.XSslClientHasCert }).(pulumi.BoolOutput)
+}
+
+// Insert X-SSL-Client-Verify header.
+func (o GetCloudLoadbalancerListenersListenerInsertHeadersOutput) XSslClientVerify() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerListenersListenerInsertHeaders) bool { return v.XSslClientVerify }).(pulumi.BoolOutput)
+}
+
+type GetCloudLoadbalancerNetwork struct {
+	// ID of the load balancer.
+	Id string `pulumi:"id"`
+	// IP address.
+	Ip string `pulumi:"ip"`
+	// Subnet ID.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudLoadbalancerNetworkInput is an input type that accepts GetCloudLoadbalancerNetworkArgs and GetCloudLoadbalancerNetworkOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerNetworkInput` via:
+//
+//	GetCloudLoadbalancerNetworkArgs{...}
+type GetCloudLoadbalancerNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerNetworkOutput() GetCloudLoadbalancerNetworkOutput
+	ToGetCloudLoadbalancerNetworkOutputWithContext(context.Context) GetCloudLoadbalancerNetworkOutput
+}
+
+type GetCloudLoadbalancerNetworkArgs struct {
+	// ID of the load balancer.
+	Id pulumi.StringInput `pulumi:"id"`
+	// IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Subnet ID.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudLoadbalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerNetworkArgs) ToGetCloudLoadbalancerNetworkOutput() GetCloudLoadbalancerNetworkOutput {
+	return i.ToGetCloudLoadbalancerNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerNetworkArgs) ToGetCloudLoadbalancerNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerNetworkOutput)
+}
+
+type GetCloudLoadbalancerNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerNetworkOutput) ToGetCloudLoadbalancerNetworkOutput() GetCloudLoadbalancerNetworkOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerNetworkOutput) ToGetCloudLoadbalancerNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancerNetworkOutput {
+	return o
+}
+
+// ID of the load balancer.
+func (o GetCloudLoadbalancerNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP address.
+func (o GetCloudLoadbalancerNetworkOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerNetwork) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Subnet ID.
+func (o GetCloudLoadbalancerNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolCurrentState struct {
+	// Load balancing algorithm.
+	Algorithm string `pulumi:"algorithm"`
+	// Pool description.
+	Description string `pulumi:"description"`
+	// Health monitor configuration (same schema as `healthMonitor`), plus:
+	HealthMonitor GetCloudLoadbalancerPoolCurrentStateHealthMonitor `pulumi:"healthMonitor"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Session persistence configuration (same schema as `persistence`).
+	Persistence GetCloudLoadbalancerPoolCurrentStatePersistence `pulumi:"persistence"`
+	// Protocol used by the pool.
+	Protocol string `pulumi:"protocol"`
+	// Provisioning status of the pool.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+}
+
+// GetCloudLoadbalancerPoolCurrentStateInput is an input type that accepts GetCloudLoadbalancerPoolCurrentStateArgs and GetCloudLoadbalancerPoolCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerPoolCurrentStateArgs{...}
+type GetCloudLoadbalancerPoolCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolCurrentStateOutput() GetCloudLoadbalancerPoolCurrentStateOutput
+	ToGetCloudLoadbalancerPoolCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerPoolCurrentStateOutput
+}
+
+type GetCloudLoadbalancerPoolCurrentStateArgs struct {
+	// Load balancing algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Pool description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Health monitor configuration (same schema as `healthMonitor`), plus:
+	HealthMonitor GetCloudLoadbalancerPoolCurrentStateHealthMonitorInput `pulumi:"healthMonitor"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Session persistence configuration (same schema as `persistence`).
+	Persistence GetCloudLoadbalancerPoolCurrentStatePersistenceInput `pulumi:"persistence"`
+	// Protocol used by the pool.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Provisioning status of the pool.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+}
+
+func (GetCloudLoadbalancerPoolCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolCurrentStateArgs) ToGetCloudLoadbalancerPoolCurrentStateOutput() GetCloudLoadbalancerPoolCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerPoolCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolCurrentStateArgs) ToGetCloudLoadbalancerPoolCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerPoolCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) ToGetCloudLoadbalancerPoolCurrentStateOutput() GetCloudLoadbalancerPoolCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) ToGetCloudLoadbalancerPoolCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolCurrentStateOutput {
+	return o
+}
+
+// Load balancing algorithm.
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Pool description.
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Health monitor configuration (same schema as `healthMonitor`), plus:
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) HealthMonitor() GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) GetCloudLoadbalancerPoolCurrentStateHealthMonitor {
+		return v.HealthMonitor
+	}).(GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the pool.
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Session persistence configuration (same schema as `persistence`).
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) Persistence() GetCloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) GetCloudLoadbalancerPoolCurrentStatePersistence {
+		return v.Persistence
+	}).(GetCloudLoadbalancerPoolCurrentStatePersistenceOutput)
+}
+
+// Protocol used by the pool.
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the pool.
+func (o GetCloudLoadbalancerPoolCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolCurrentStateHealthMonitor struct {
+	// Seconds between health checks.
+	Delay int `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName string `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes string `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod string `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion string `pulumi:"httpVersion"`
+	// ID of the pool.
+	Id string `pulumi:"id"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries int `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown int `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the pool.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Seconds to wait for a health check response.
+	Timeout int `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath string `pulumi:"urlPath"`
+}
+
+// GetCloudLoadbalancerPoolCurrentStateHealthMonitorInput is an input type that accepts GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs and GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolCurrentStateHealthMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs{...}
+type GetCloudLoadbalancerPoolCurrentStateHealthMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput() GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput
+	ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs struct {
+	// Seconds between health checks.
+	Delay pulumi.IntInput `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes pulumi.StringInput `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion pulumi.StringInput `pulumi:"httpVersion"`
+	// ID of the pool.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown pulumi.IntInput `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the pool.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Seconds to wait for a health check response.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath pulumi.StringInput `pulumi:"urlPath"`
+}
+
+func (GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput() GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs) ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput() GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ToGetCloudLoadbalancerPoolCurrentStateHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput {
+	return o
+}
+
+// Seconds between health checks.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) int { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Domain name for health check requests.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Expected HTTP response codes (e.g. `200`, `200-202`).
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ExpectedCodes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.ExpectedCodes }).(pulumi.StringOutput)
+}
+
+// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// HTTP version for health checks (`1.0` or `1.1`).
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) HttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.HttpVersion }).(pulumi.StringOutput)
+}
+
+// ID of the pool.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) MaxRetriesDown() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) int { return v.MaxRetriesDown }).(pulumi.IntOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the pool.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the pool.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput) UrlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStateHealthMonitor) string { return v.UrlPath }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolCurrentStatePersistence struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName string `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+}
+
+// GetCloudLoadbalancerPoolCurrentStatePersistenceInput is an input type that accepts GetCloudLoadbalancerPoolCurrentStatePersistenceArgs and GetCloudLoadbalancerPoolCurrentStatePersistenceOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolCurrentStatePersistenceInput` via:
+//
+//	GetCloudLoadbalancerPoolCurrentStatePersistenceArgs{...}
+type GetCloudLoadbalancerPoolCurrentStatePersistenceInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutput() GetCloudLoadbalancerPoolCurrentStatePersistenceOutput
+	ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(context.Context) GetCloudLoadbalancerPoolCurrentStatePersistenceOutput
+}
+
+type GetCloudLoadbalancerPoolCurrentStatePersistenceArgs struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName pulumi.StringInput `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudLoadbalancerPoolCurrentStatePersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolCurrentStatePersistenceArgs) ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutput() GetCloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return i.ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolCurrentStatePersistenceArgs) ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolCurrentStatePersistenceOutput)
+}
+
+type GetCloudLoadbalancerPoolCurrentStatePersistenceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolCurrentStatePersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolCurrentStatePersistenceOutput) ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutput() GetCloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolCurrentStatePersistenceOutput) ToGetCloudLoadbalancerPoolCurrentStatePersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolCurrentStatePersistenceOutput {
+	return o
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o GetCloudLoadbalancerPoolCurrentStatePersistenceOutput) CookieName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStatePersistence) string { return v.CookieName }).(pulumi.StringOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolCurrentStatePersistenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolCurrentStatePersistence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolHealthMonitor struct {
+	// Seconds between health checks.
+	Delay int `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName string `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes string `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod string `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion string `pulumi:"httpVersion"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries int `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown int `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Seconds to wait for a health check response.
+	Timeout int `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath string `pulumi:"urlPath"`
+}
+
+// GetCloudLoadbalancerPoolHealthMonitorInput is an input type that accepts GetCloudLoadbalancerPoolHealthMonitorArgs and GetCloudLoadbalancerPoolHealthMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolHealthMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolHealthMonitorArgs{...}
+type GetCloudLoadbalancerPoolHealthMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolHealthMonitorOutput() GetCloudLoadbalancerPoolHealthMonitorOutput
+	ToGetCloudLoadbalancerPoolHealthMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolHealthMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolHealthMonitorArgs struct {
+	// Seconds between health checks.
+	Delay pulumi.IntInput `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Expected HTTP response codes (e.g. `200`, `200-202`).
+	ExpectedCodes pulumi.StringInput `pulumi:"expectedCodes"`
+	// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
+	// HTTP version for health checks (`1.0` or `1.1`).
+	HttpVersion pulumi.StringInput `pulumi:"httpVersion"`
+	// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+	MaxRetriesDown pulumi.IntInput `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Seconds to wait for a health check response.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath pulumi.StringInput `pulumi:"urlPath"`
+}
+
+func (GetCloudLoadbalancerPoolHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolHealthMonitorArgs) ToGetCloudLoadbalancerPoolHealthMonitorOutput() GetCloudLoadbalancerPoolHealthMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolHealthMonitorArgs) ToGetCloudLoadbalancerPoolHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolHealthMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolHealthMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) ToGetCloudLoadbalancerPoolHealthMonitorOutput() GetCloudLoadbalancerPoolHealthMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) ToGetCloudLoadbalancerPoolHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolHealthMonitorOutput {
+	return o
+}
+
+// Seconds between health checks.
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) int { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Domain name for health check requests.
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Expected HTTP response codes (e.g. `200`, `200-202`).
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) ExpectedCodes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.ExpectedCodes }).(pulumi.StringOutput)
+}
+
+// HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// HTTP version for health checks (`1.0` or `1.1`).
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) HttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.HttpVersion }).(pulumi.StringOutput)
+}
+
+// Number of consecutive health check failures before marking a member as unhealthy (1-10).
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) MaxRetriesDown() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) int { return v.MaxRetriesDown }).(pulumi.IntOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o GetCloudLoadbalancerPoolHealthMonitorOutput) UrlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolHealthMonitor) string { return v.UrlPath }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolMemberCurrentState struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Whether this member is a backup member.
+	Backup bool `pulumi:"backup"`
+	// Health monitor address and port override (same schema as `monitor`).
+	Monitor GetCloudLoadbalancerPoolMemberCurrentStateMonitor `pulumi:"monitor"`
+	// Member name.
+	Name string `pulumi:"name"`
+	// Operating status of the member.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Port used by the member.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Provisioning status of the member.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// ID of the subnet the member is in.
+	SubnetId string `pulumi:"subnetId"`
+	// Weight of the member.
+	Weight int `pulumi:"weight"`
+}
+
+// GetCloudLoadbalancerPoolMemberCurrentStateInput is an input type that accepts GetCloudLoadbalancerPoolMemberCurrentStateArgs and GetCloudLoadbalancerPoolMemberCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMemberCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerPoolMemberCurrentStateArgs{...}
+type GetCloudLoadbalancerPoolMemberCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMemberCurrentStateOutput() GetCloudLoadbalancerPoolMemberCurrentStateOutput
+	ToGetCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerPoolMemberCurrentStateOutput
+}
+
+type GetCloudLoadbalancerPoolMemberCurrentStateArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Whether this member is a backup member.
+	Backup pulumi.BoolInput `pulumi:"backup"`
+	// Health monitor address and port override (same schema as `monitor`).
+	Monitor GetCloudLoadbalancerPoolMemberCurrentStateMonitorInput `pulumi:"monitor"`
+	// Member name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the member.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Port used by the member.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Provisioning status of the member.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// ID of the subnet the member is in.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Weight of the member.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetCloudLoadbalancerPoolMemberCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMemberCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMemberCurrentStateArgs) ToGetCloudLoadbalancerPoolMemberCurrentStateOutput() GetCloudLoadbalancerPoolMemberCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMemberCurrentStateArgs) ToGetCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMemberCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMemberCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerPoolMemberCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMemberCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMemberCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) ToGetCloudLoadbalancerPoolMemberCurrentStateOutput() GetCloudLoadbalancerPoolMemberCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) ToGetCloudLoadbalancerPoolMemberCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMemberCurrentStateOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Whether this member is a backup member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) Backup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) bool { return v.Backup }).(pulumi.BoolOutput)
+}
+
+// Health monitor address and port override (same schema as `monitor`).
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) Monitor() GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) GetCloudLoadbalancerPoolMemberCurrentStateMonitor {
+		return v.Monitor
+	}).(GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput)
+}
+
+// Member name.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Port used by the member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Provisioning status of the member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// ID of the subnet the member is in.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Weight of the member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentState) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolMemberCurrentStateMonitor struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port int `pulumi:"port"`
+}
+
+// GetCloudLoadbalancerPoolMemberCurrentStateMonitorInput is an input type that accepts GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs and GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMemberCurrentStateMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs{...}
+type GetCloudLoadbalancerPoolMemberCurrentStateMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput() GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput
+	ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput() GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs) ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput() GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput) ToGetCloudLoadbalancerPoolMemberCurrentStateMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentStateMonitor) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberCurrentStateMonitor) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolMemberMonitor struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port int `pulumi:"port"`
+}
+
+// GetCloudLoadbalancerPoolMemberMonitorInput is an input type that accepts GetCloudLoadbalancerPoolMemberMonitorArgs and GetCloudLoadbalancerPoolMemberMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMemberMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolMemberMonitorArgs{...}
+type GetCloudLoadbalancerPoolMemberMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMemberMonitorOutput() GetCloudLoadbalancerPoolMemberMonitorOutput
+	ToGetCloudLoadbalancerPoolMemberMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolMemberMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolMemberMonitorArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetCloudLoadbalancerPoolMemberMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMemberMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMemberMonitorArgs) ToGetCloudLoadbalancerPoolMemberMonitorOutput() GetCloudLoadbalancerPoolMemberMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolMemberMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMemberMonitorArgs) ToGetCloudLoadbalancerPoolMemberMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMemberMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMemberMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolMemberMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMemberMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMemberMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMemberMonitorOutput) ToGetCloudLoadbalancerPoolMemberMonitorOutput() GetCloudLoadbalancerPoolMemberMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMemberMonitorOutput) ToGetCloudLoadbalancerPoolMemberMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMemberMonitorOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMemberMonitorOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberMonitor) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o GetCloudLoadbalancerPoolMemberMonitorOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMemberMonitor) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMember struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Whether this member is a backup member.
+	Backup bool `pulumi:"backup"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the member.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the member:
+	CurrentState GetCloudLoadbalancerPoolMembersMemberCurrentState `pulumi:"currentState"`
+	// Member ID.
+	Id string `pulumi:"id"`
+	// Health monitor address and port override (same schema as above).
+	Monitor GetCloudLoadbalancerPoolMembersMemberMonitor `pulumi:"monitor"`
+	// Member name.
+	Name string `pulumi:"name"`
+	// Port used by the member.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Member readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// ID of the subnet the member is in.
+	SubnetId string `pulumi:"subnetId"`
+	// Last update date of the member.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Weight of the member.
+	Weight int `pulumi:"weight"`
+}
+
+// GetCloudLoadbalancerPoolMembersMemberInput is an input type that accepts GetCloudLoadbalancerPoolMembersMemberArgs and GetCloudLoadbalancerPoolMembersMemberOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMembersMemberInput` via:
+//
+//	GetCloudLoadbalancerPoolMembersMemberArgs{...}
+type GetCloudLoadbalancerPoolMembersMemberInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMembersMemberOutput() GetCloudLoadbalancerPoolMembersMemberOutput
+	ToGetCloudLoadbalancerPoolMembersMemberOutputWithContext(context.Context) GetCloudLoadbalancerPoolMembersMemberOutput
+}
+
+type GetCloudLoadbalancerPoolMembersMemberArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Whether this member is a backup member.
+	Backup pulumi.BoolInput `pulumi:"backup"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the member.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the member:
+	CurrentState GetCloudLoadbalancerPoolMembersMemberCurrentStateInput `pulumi:"currentState"`
+	// Member ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Health monitor address and port override (same schema as above).
+	Monitor GetCloudLoadbalancerPoolMembersMemberMonitorInput `pulumi:"monitor"`
+	// Member name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port used by the member.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Member readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// ID of the subnet the member is in.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Last update date of the member.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Weight of the member.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetCloudLoadbalancerPoolMembersMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMember)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberArgs) ToGetCloudLoadbalancerPoolMembersMemberOutput() GetCloudLoadbalancerPoolMembersMemberOutput {
+	return i.ToGetCloudLoadbalancerPoolMembersMemberOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberArgs) ToGetCloudLoadbalancerPoolMembersMemberOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMembersMemberOutput)
+}
+
+// GetCloudLoadbalancerPoolMembersMemberArrayInput is an input type that accepts GetCloudLoadbalancerPoolMembersMemberArray and GetCloudLoadbalancerPoolMembersMemberArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMembersMemberArrayInput` via:
+//
+//	GetCloudLoadbalancerPoolMembersMemberArray{ GetCloudLoadbalancerPoolMembersMemberArgs{...} }
+type GetCloudLoadbalancerPoolMembersMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMembersMemberArrayOutput() GetCloudLoadbalancerPoolMembersMemberArrayOutput
+	ToGetCloudLoadbalancerPoolMembersMemberArrayOutputWithContext(context.Context) GetCloudLoadbalancerPoolMembersMemberArrayOutput
+}
+
+type GetCloudLoadbalancerPoolMembersMemberArray []GetCloudLoadbalancerPoolMembersMemberInput
+
+func (GetCloudLoadbalancerPoolMembersMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerPoolMembersMember)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberArray) ToGetCloudLoadbalancerPoolMembersMemberArrayOutput() GetCloudLoadbalancerPoolMembersMemberArrayOutput {
+	return i.ToGetCloudLoadbalancerPoolMembersMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberArray) ToGetCloudLoadbalancerPoolMembersMemberArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMembersMemberArrayOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMembersMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMember)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) ToGetCloudLoadbalancerPoolMembersMemberOutput() GetCloudLoadbalancerPoolMembersMemberOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) ToGetCloudLoadbalancerPoolMembersMemberOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Whether this member is a backup member.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Backup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) bool { return v.Backup }).(pulumi.BoolOutput)
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the member:
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) CurrentState() GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) GetCloudLoadbalancerPoolMembersMemberCurrentState {
+		return v.CurrentState
+	}).(GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput)
+}
+
+// Member ID.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Health monitor address and port override (same schema as above).
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Monitor() GetCloudLoadbalancerPoolMembersMemberMonitorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) GetCloudLoadbalancerPoolMembersMemberMonitor {
+		return v.Monitor
+	}).(GetCloudLoadbalancerPoolMembersMemberMonitorOutput)
+}
+
+// Member name.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port used by the member.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Member readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// ID of the subnet the member is in.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Last update date of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Weight of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMember) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMembersMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerPoolMembersMember)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberArrayOutput) ToGetCloudLoadbalancerPoolMembersMemberArrayOutput() GetCloudLoadbalancerPoolMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberArrayOutput) ToGetCloudLoadbalancerPoolMembersMemberArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerPoolMembersMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerPoolMembersMember {
+		return vs[0].([]GetCloudLoadbalancerPoolMembersMember)[vs[1].(int)]
+	}).(GetCloudLoadbalancerPoolMembersMemberOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberCurrentState struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Whether this member is a backup member.
+	Backup bool `pulumi:"backup"`
+	// Health monitor address and port override (same schema as above).
+	Monitor GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor `pulumi:"monitor"`
+	// Member name.
+	Name string `pulumi:"name"`
+	// Operating status of the member.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Port used by the member.
+	ProtocolPort int `pulumi:"protocolPort"`
+	// Provisioning status of the member.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// ID of the subnet the member is in.
+	SubnetId string `pulumi:"subnetId"`
+	// Weight of the member.
+	Weight int `pulumi:"weight"`
+}
+
+// GetCloudLoadbalancerPoolMembersMemberCurrentStateInput is an input type that accepts GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs and GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMembersMemberCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs{...}
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutput() GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput
+	ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput
+}
+
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Whether this member is a backup member.
+	Backup pulumi.BoolInput `pulumi:"backup"`
+	// Health monitor address and port override (same schema as above).
+	Monitor GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorInput `pulumi:"monitor"`
+	// Member name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the member.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Port used by the member.
+	ProtocolPort pulumi.IntInput `pulumi:"protocolPort"`
+	// Provisioning status of the member.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// ID of the subnet the member is in.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+	// Weight of the member.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutput() GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutput() GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Whether this member is a backup member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) Backup() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) bool { return v.Backup }).(pulumi.BoolOutput)
+}
+
+// Health monitor address and port override (same schema as above).
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) Monitor() GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor {
+		return v.Monitor
+	}).(GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput)
+}
+
+// Member name.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Port used by the member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) ProtocolPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) int { return v.ProtocolPort }).(pulumi.IntOutput)
+}
+
+// Provisioning status of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// ID of the subnet the member is in.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+// Weight of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentState) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port int `pulumi:"port"`
+}
+
+// GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorInput is an input type that accepts GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs and GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs{...}
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput() GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput
+	ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput() GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput() GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput) ToGetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberMonitor struct {
+	// IP address of the member.
+	Address string `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port int `pulumi:"port"`
+}
+
+// GetCloudLoadbalancerPoolMembersMemberMonitorInput is an input type that accepts GetCloudLoadbalancerPoolMembersMemberMonitorArgs and GetCloudLoadbalancerPoolMembersMemberMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolMembersMemberMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolMembersMemberMonitorArgs{...}
+type GetCloudLoadbalancerPoolMembersMemberMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolMembersMemberMonitorOutput() GetCloudLoadbalancerPoolMembersMemberMonitorOutput
+	ToGetCloudLoadbalancerPoolMembersMemberMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolMembersMemberMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolMembersMemberMonitorArgs struct {
+	// IP address of the member.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Port used by the health monitor for this member.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetCloudLoadbalancerPoolMembersMemberMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberMonitorArgs) ToGetCloudLoadbalancerPoolMembersMemberMonitorOutput() GetCloudLoadbalancerPoolMembersMemberMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolMembersMemberMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolMembersMemberMonitorArgs) ToGetCloudLoadbalancerPoolMembersMemberMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolMembersMemberMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolMembersMemberMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolMembersMemberMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberMonitorOutput) ToGetCloudLoadbalancerPoolMembersMemberMonitorOutput() GetCloudLoadbalancerPoolMembersMemberMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolMembersMemberMonitorOutput) ToGetCloudLoadbalancerPoolMembersMemberMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolMembersMemberMonitorOutput {
+	return o
+}
+
+// IP address of the member.
+func (o GetCloudLoadbalancerPoolMembersMemberMonitorOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberMonitor) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Port used by the health monitor for this member.
+func (o GetCloudLoadbalancerPoolMembersMemberMonitorOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolMembersMemberMonitor) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetCloudLoadbalancerPoolPersistence struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName string `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+}
+
+// GetCloudLoadbalancerPoolPersistenceInput is an input type that accepts GetCloudLoadbalancerPoolPersistenceArgs and GetCloudLoadbalancerPoolPersistenceOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolPersistenceInput` via:
+//
+//	GetCloudLoadbalancerPoolPersistenceArgs{...}
+type GetCloudLoadbalancerPoolPersistenceInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolPersistenceOutput() GetCloudLoadbalancerPoolPersistenceOutput
+	ToGetCloudLoadbalancerPoolPersistenceOutputWithContext(context.Context) GetCloudLoadbalancerPoolPersistenceOutput
+}
+
+type GetCloudLoadbalancerPoolPersistenceArgs struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName pulumi.StringInput `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudLoadbalancerPoolPersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolPersistence)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolPersistenceArgs) ToGetCloudLoadbalancerPoolPersistenceOutput() GetCloudLoadbalancerPoolPersistenceOutput {
+	return i.ToGetCloudLoadbalancerPoolPersistenceOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolPersistenceArgs) ToGetCloudLoadbalancerPoolPersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolPersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolPersistenceOutput)
+}
+
+type GetCloudLoadbalancerPoolPersistenceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolPersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolPersistence)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolPersistenceOutput) ToGetCloudLoadbalancerPoolPersistenceOutput() GetCloudLoadbalancerPoolPersistenceOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolPersistenceOutput) ToGetCloudLoadbalancerPoolPersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolPersistenceOutput {
+	return o
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o GetCloudLoadbalancerPoolPersistenceOutput) CookieName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolPersistence) string { return v.CookieName }).(pulumi.StringOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolPersistenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolPersistence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolsPool struct {
+	// Load balancing algorithm.
+	Algorithm string `pulumi:"algorithm"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the pool.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the pool:
+	CurrentState GetCloudLoadbalancerPoolsPoolCurrentState `pulumi:"currentState"`
+	// Pool description.
+	Description string `pulumi:"description"`
+	// Health monitor configuration, plus:
+	HealthMonitor GetCloudLoadbalancerPoolsPoolHealthMonitor `pulumi:"healthMonitor"`
+	// Health monitor ID.
+	Id string `pulumi:"id"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Session persistence configuration (same schema as above).
+	Persistence GetCloudLoadbalancerPoolsPoolPersistence `pulumi:"persistence"`
+	// Protocol used by the pool.
+	Protocol string `pulumi:"protocol"`
+	// Pool readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last update date of the pool.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudLoadbalancerPoolsPoolInput is an input type that accepts GetCloudLoadbalancerPoolsPoolArgs and GetCloudLoadbalancerPoolsPoolOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolArgs{...}
+type GetCloudLoadbalancerPoolsPoolInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolOutput() GetCloudLoadbalancerPoolsPoolOutput
+	ToGetCloudLoadbalancerPoolsPoolOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolArgs struct {
+	// Load balancing algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the pool.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the pool:
+	CurrentState GetCloudLoadbalancerPoolsPoolCurrentStateInput `pulumi:"currentState"`
+	// Pool description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Health monitor configuration, plus:
+	HealthMonitor GetCloudLoadbalancerPoolsPoolHealthMonitorInput `pulumi:"healthMonitor"`
+	// Health monitor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Session persistence configuration (same schema as above).
+	Persistence GetCloudLoadbalancerPoolsPoolPersistenceInput `pulumi:"persistence"`
+	// Protocol used by the pool.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Pool readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last update date of the pool.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudLoadbalancerPoolsPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPool)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolArgs) ToGetCloudLoadbalancerPoolsPoolOutput() GetCloudLoadbalancerPoolsPoolOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolArgs) ToGetCloudLoadbalancerPoolsPoolOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolOutput)
+}
+
+// GetCloudLoadbalancerPoolsPoolArrayInput is an input type that accepts GetCloudLoadbalancerPoolsPoolArray and GetCloudLoadbalancerPoolsPoolArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolArrayInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolArray{ GetCloudLoadbalancerPoolsPoolArgs{...} }
+type GetCloudLoadbalancerPoolsPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolArrayOutput() GetCloudLoadbalancerPoolsPoolArrayOutput
+	ToGetCloudLoadbalancerPoolsPoolArrayOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolArrayOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolArray []GetCloudLoadbalancerPoolsPoolInput
+
+func (GetCloudLoadbalancerPoolsPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerPoolsPool)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolArray) ToGetCloudLoadbalancerPoolsPoolArrayOutput() GetCloudLoadbalancerPoolsPoolArrayOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolArray) ToGetCloudLoadbalancerPoolsPoolArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolArrayOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPool)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolOutput) ToGetCloudLoadbalancerPoolsPoolOutput() GetCloudLoadbalancerPoolsPoolOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolOutput) ToGetCloudLoadbalancerPoolsPoolOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolOutput {
+	return o
+}
+
+// Load balancing algorithm.
+func (o GetCloudLoadbalancerPoolsPoolOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudLoadbalancerPoolsPoolOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the pool.
+func (o GetCloudLoadbalancerPoolsPoolOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the pool:
+func (o GetCloudLoadbalancerPoolsPoolOutput) CurrentState() GetCloudLoadbalancerPoolsPoolCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) GetCloudLoadbalancerPoolsPoolCurrentState { return v.CurrentState }).(GetCloudLoadbalancerPoolsPoolCurrentStateOutput)
+}
+
+// Pool description.
+func (o GetCloudLoadbalancerPoolsPoolOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Health monitor configuration, plus:
+func (o GetCloudLoadbalancerPoolsPoolOutput) HealthMonitor() GetCloudLoadbalancerPoolsPoolHealthMonitorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) GetCloudLoadbalancerPoolsPoolHealthMonitor {
+		return v.HealthMonitor
+	}).(GetCloudLoadbalancerPoolsPoolHealthMonitorOutput)
+}
+
+// Health monitor ID.
+func (o GetCloudLoadbalancerPoolsPoolOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolsPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Session persistence configuration (same schema as above).
+func (o GetCloudLoadbalancerPoolsPoolOutput) Persistence() GetCloudLoadbalancerPoolsPoolPersistenceOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) GetCloudLoadbalancerPoolsPoolPersistence { return v.Persistence }).(GetCloudLoadbalancerPoolsPoolPersistenceOutput)
+}
+
+// Protocol used by the pool.
+func (o GetCloudLoadbalancerPoolsPoolOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Pool readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudLoadbalancerPoolsPoolOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last update date of the pool.
+func (o GetCloudLoadbalancerPoolsPoolOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPool) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancerPoolsPool)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolArrayOutput) ToGetCloudLoadbalancerPoolsPoolArrayOutput() GetCloudLoadbalancerPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolArrayOutput) ToGetCloudLoadbalancerPoolsPoolArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancerPoolsPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancerPoolsPool {
+		return vs[0].([]GetCloudLoadbalancerPoolsPool)[vs[1].(int)]
+	}).(GetCloudLoadbalancerPoolsPoolOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentState struct {
+	// Load balancing algorithm.
+	Algorithm string `pulumi:"algorithm"`
+	// Pool description.
+	Description string `pulumi:"description"`
+	// Health monitor configuration, plus:
+	HealthMonitor GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor `pulumi:"healthMonitor"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Session persistence configuration (same schema as above).
+	Persistence GetCloudLoadbalancerPoolsPoolCurrentStatePersistence `pulumi:"persistence"`
+	// Protocol used by the pool.
+	Protocol string `pulumi:"protocol"`
+	// Provisioning status of the pool.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+}
+
+// GetCloudLoadbalancerPoolsPoolCurrentStateInput is an input type that accepts GetCloudLoadbalancerPoolsPoolCurrentStateArgs and GetCloudLoadbalancerPoolsPoolCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolCurrentStateInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolCurrentStateArgs{...}
+type GetCloudLoadbalancerPoolsPoolCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolCurrentStateOutput() GetCloudLoadbalancerPoolsPoolCurrentStateOutput
+	ToGetCloudLoadbalancerPoolsPoolCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolCurrentStateOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStateArgs struct {
+	// Load balancing algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// Pool description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Health monitor configuration, plus:
+	HealthMonitor GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorInput `pulumi:"healthMonitor"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Session persistence configuration (same schema as above).
+	Persistence GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceInput `pulumi:"persistence"`
+	// Protocol used by the pool.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Provisioning status of the pool.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+}
+
+func (GetCloudLoadbalancerPoolsPoolCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolCurrentStateArgs) ToGetCloudLoadbalancerPoolsPoolCurrentStateOutput() GetCloudLoadbalancerPoolsPoolCurrentStateOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolCurrentStateArgs) ToGetCloudLoadbalancerPoolsPoolCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolCurrentStateOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) ToGetCloudLoadbalancerPoolsPoolCurrentStateOutput() GetCloudLoadbalancerPoolsPoolCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) ToGetCloudLoadbalancerPoolsPoolCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolCurrentStateOutput {
+	return o
+}
+
+// Load balancing algorithm.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Pool description.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Health monitor configuration, plus:
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) HealthMonitor() GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor {
+		return v.HealthMonitor
+	}).(GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the pool.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Session persistence configuration (same schema as above).
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) Persistence() GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) GetCloudLoadbalancerPoolsPoolCurrentStatePersistence {
+		return v.Persistence
+	}).(GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput)
+}
+
+// Protocol used by the pool.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the pool.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor struct {
+	// Seconds between health checks.
+	Delay int `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName string `pulumi:"domainName"`
+	// Expected HTTP response codes.
+	ExpectedCodes string `pulumi:"expectedCodes"`
+	// HTTP method for health checks.
+	HttpMethod string `pulumi:"httpMethod"`
+	// HTTP version for health checks.
+	HttpVersion string `pulumi:"httpVersion"`
+	// Health monitor ID.
+	Id string `pulumi:"id"`
+	// Number of consecutive health check failures before marking member as unhealthy.
+	MaxRetries int `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking member as `ERROR`.
+	MaxRetriesDown int `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the pool.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Seconds to wait for a health check response.
+	Timeout int `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath string `pulumi:"urlPath"`
+}
+
+// GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorInput is an input type that accepts GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs and GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs{...}
+type GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput() GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput
+	ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs struct {
+	// Seconds between health checks.
+	Delay pulumi.IntInput `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Expected HTTP response codes.
+	ExpectedCodes pulumi.StringInput `pulumi:"expectedCodes"`
+	// HTTP method for health checks.
+	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
+	// HTTP version for health checks.
+	HttpVersion pulumi.StringInput `pulumi:"httpVersion"`
+	// Health monitor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Number of consecutive health check failures before marking member as unhealthy.
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking member as `ERROR`.
+	MaxRetriesDown pulumi.IntInput `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Operating status of the pool.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the pool.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Seconds to wait for a health check response.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath pulumi.StringInput `pulumi:"urlPath"`
+}
+
+func (GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs) ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput() GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs) ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput() GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) ToGetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput {
+	return o
+}
+
+// Seconds between health checks.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) int { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Domain name for health check requests.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Expected HTTP response codes.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) ExpectedCodes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.ExpectedCodes }).(pulumi.StringOutput)
+}
+
+// HTTP method for health checks.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// HTTP version for health checks.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) HttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.HttpVersion }).(pulumi.StringOutput)
+}
+
+// Health monitor ID.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Number of consecutive health check failures before marking member as unhealthy.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Number of consecutive health check failures before marking member as `ERROR`.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) MaxRetriesDown() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) int { return v.MaxRetriesDown }).(pulumi.IntOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Operating status of the pool.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the pool.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput) UrlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor) string { return v.UrlPath }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStatePersistence struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName string `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+}
+
+// GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceInput is an input type that accepts GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs and GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs{...}
+type GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput() GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput
+	ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName pulumi.StringInput `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs) ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput() GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs) ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStatePersistence)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput) ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput() GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput) ToGetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput {
+	return o
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput) CookieName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStatePersistence) string { return v.CookieName }).(pulumi.StringOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolCurrentStatePersistence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolHealthMonitor struct {
+	// Seconds between health checks.
+	Delay int `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName string `pulumi:"domainName"`
+	// Expected HTTP response codes.
+	ExpectedCodes string `pulumi:"expectedCodes"`
+	// HTTP method for health checks.
+	HttpMethod string `pulumi:"httpMethod"`
+	// HTTP version for health checks.
+	HttpVersion string `pulumi:"httpVersion"`
+	// Number of consecutive health check failures before marking member as unhealthy.
+	MaxRetries int `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking member as `ERROR`.
+	MaxRetriesDown int `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name string `pulumi:"name"`
+	// Seconds to wait for a health check response.
+	Timeout int `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath string `pulumi:"urlPath"`
+}
+
+// GetCloudLoadbalancerPoolsPoolHealthMonitorInput is an input type that accepts GetCloudLoadbalancerPoolsPoolHealthMonitorArgs and GetCloudLoadbalancerPoolsPoolHealthMonitorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolHealthMonitorInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolHealthMonitorArgs{...}
+type GetCloudLoadbalancerPoolsPoolHealthMonitorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutput() GetCloudLoadbalancerPoolsPoolHealthMonitorOutput
+	ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolHealthMonitorOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolHealthMonitorArgs struct {
+	// Seconds between health checks.
+	Delay pulumi.IntInput `pulumi:"delay"`
+	// Domain name for health check requests.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Expected HTTP response codes.
+	ExpectedCodes pulumi.StringInput `pulumi:"expectedCodes"`
+	// HTTP method for health checks.
+	HttpMethod pulumi.StringInput `pulumi:"httpMethod"`
+	// HTTP version for health checks.
+	HttpVersion pulumi.StringInput `pulumi:"httpVersion"`
+	// Number of consecutive health check failures before marking member as unhealthy.
+	MaxRetries pulumi.IntInput `pulumi:"maxRetries"`
+	// Number of consecutive health check failures before marking member as `ERROR`.
+	MaxRetriesDown pulumi.IntInput `pulumi:"maxRetriesDown"`
+	// Pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Seconds to wait for a health check response.
+	Timeout pulumi.IntInput `pulumi:"timeout"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+	// URL path for HTTP/HTTPS health checks.
+	UrlPath pulumi.StringInput `pulumi:"urlPath"`
+}
+
+func (GetCloudLoadbalancerPoolsPoolHealthMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolHealthMonitor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolHealthMonitorArgs) ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutput() GetCloudLoadbalancerPoolsPoolHealthMonitorOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolHealthMonitorArgs) ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolHealthMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolHealthMonitorOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolHealthMonitorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolHealthMonitor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutput() GetCloudLoadbalancerPoolsPoolHealthMonitorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) ToGetCloudLoadbalancerPoolsPoolHealthMonitorOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolHealthMonitorOutput {
+	return o
+}
+
+// Seconds between health checks.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) Delay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) int { return v.Delay }).(pulumi.IntOutput)
+}
+
+// Domain name for health check requests.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.DomainName }).(pulumi.StringOutput)
+}
+
+// Expected HTTP response codes.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) ExpectedCodes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.ExpectedCodes }).(pulumi.StringOutput)
+}
+
+// HTTP method for health checks.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// HTTP version for health checks.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) HttpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.HttpVersion }).(pulumi.StringOutput)
+}
+
+// Number of consecutive health check failures before marking member as unhealthy.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) MaxRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) int { return v.MaxRetries }).(pulumi.IntOutput)
+}
+
+// Number of consecutive health check failures before marking member as `ERROR`.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) MaxRetriesDown() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) int { return v.MaxRetriesDown }).(pulumi.IntOutput)
+}
+
+// Pool name.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Seconds to wait for a health check response.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) Timeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) int { return v.Timeout }).(pulumi.IntOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL path for HTTP/HTTPS health checks.
+func (o GetCloudLoadbalancerPoolsPoolHealthMonitorOutput) UrlPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolHealthMonitor) string { return v.UrlPath }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolPersistence struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName string `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type string `pulumi:"type"`
+}
+
+// GetCloudLoadbalancerPoolsPoolPersistenceInput is an input type that accepts GetCloudLoadbalancerPoolsPoolPersistenceArgs and GetCloudLoadbalancerPoolsPoolPersistenceOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancerPoolsPoolPersistenceInput` via:
+//
+//	GetCloudLoadbalancerPoolsPoolPersistenceArgs{...}
+type GetCloudLoadbalancerPoolsPoolPersistenceInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancerPoolsPoolPersistenceOutput() GetCloudLoadbalancerPoolsPoolPersistenceOutput
+	ToGetCloudLoadbalancerPoolsPoolPersistenceOutputWithContext(context.Context) GetCloudLoadbalancerPoolsPoolPersistenceOutput
+}
+
+type GetCloudLoadbalancerPoolsPoolPersistenceArgs struct {
+	// Cookie name for `APP_COOKIE` persistence type.
+	CookieName pulumi.StringInput `pulumi:"cookieName"`
+	// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudLoadbalancerPoolsPoolPersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolPersistence)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancerPoolsPoolPersistenceArgs) ToGetCloudLoadbalancerPoolsPoolPersistenceOutput() GetCloudLoadbalancerPoolsPoolPersistenceOutput {
+	return i.ToGetCloudLoadbalancerPoolsPoolPersistenceOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancerPoolsPoolPersistenceArgs) ToGetCloudLoadbalancerPoolsPoolPersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolPersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancerPoolsPoolPersistenceOutput)
+}
+
+type GetCloudLoadbalancerPoolsPoolPersistenceOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancerPoolsPoolPersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolPersistence)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancerPoolsPoolPersistenceOutput) ToGetCloudLoadbalancerPoolsPoolPersistenceOutput() GetCloudLoadbalancerPoolsPoolPersistenceOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancerPoolsPoolPersistenceOutput) ToGetCloudLoadbalancerPoolsPoolPersistenceOutputWithContext(ctx context.Context) GetCloudLoadbalancerPoolsPoolPersistenceOutput {
+	return o
+}
+
+// Cookie name for `APP_COOKIE` persistence type.
+func (o GetCloudLoadbalancerPoolsPoolPersistenceOutput) CookieName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolPersistence) string { return v.CookieName }).(pulumi.StringOutput)
+}
+
+// Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+func (o GetCloudLoadbalancerPoolsPoolPersistenceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancerPoolsPoolPersistence) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancer struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the load balancer.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current state of the load balancer:
+	CurrentState GetCloudLoadbalancersLoadbalancerCurrentState `pulumi:"currentState"`
+	// Load balancer description.
+	Description string `pulumi:"description"`
+	// Name of the load balancer flavor.
+	FlavorName string `pulumi:"flavorName"`
+	// Flavor ID.
+	Id string `pulumi:"id"`
+	// Load balancer name.
+	Name string `pulumi:"name"`
+	// VIP network:
+	Network GetCloudLoadbalancersLoadbalancerNetwork `pulumi:"network"`
+	// Region.
+	Region string `pulumi:"region"`
+	// Load balancer readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Last update date of the load balancer.
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetCloudLoadbalancersLoadbalancerInput is an input type that accepts GetCloudLoadbalancersLoadbalancerArgs and GetCloudLoadbalancersLoadbalancerOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerArgs{...}
+type GetCloudLoadbalancersLoadbalancerInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerOutput() GetCloudLoadbalancersLoadbalancerOutput
+	ToGetCloudLoadbalancersLoadbalancerOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the load balancer.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current state of the load balancer:
+	CurrentState GetCloudLoadbalancersLoadbalancerCurrentStateInput `pulumi:"currentState"`
+	// Load balancer description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Name of the load balancer flavor.
+	FlavorName pulumi.StringInput `pulumi:"flavorName"`
+	// Flavor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Load balancer name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// VIP network:
+	Network GetCloudLoadbalancersLoadbalancerNetworkInput `pulumi:"network"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+	// Load balancer readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Last update date of the load balancer.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetCloudLoadbalancersLoadbalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancer)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerArgs) ToGetCloudLoadbalancersLoadbalancerOutput() GetCloudLoadbalancersLoadbalancerOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerArgs) ToGetCloudLoadbalancersLoadbalancerOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerOutput)
+}
+
+// GetCloudLoadbalancersLoadbalancerArrayInput is an input type that accepts GetCloudLoadbalancersLoadbalancerArray and GetCloudLoadbalancersLoadbalancerArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerArrayInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerArray{ GetCloudLoadbalancersLoadbalancerArgs{...} }
+type GetCloudLoadbalancersLoadbalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerArrayOutput() GetCloudLoadbalancersLoadbalancerArrayOutput
+	ToGetCloudLoadbalancersLoadbalancerArrayOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerArrayOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerArray []GetCloudLoadbalancersLoadbalancerInput
+
+func (GetCloudLoadbalancersLoadbalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancersLoadbalancer)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerArray) ToGetCloudLoadbalancersLoadbalancerArrayOutput() GetCloudLoadbalancersLoadbalancerArrayOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerArray) ToGetCloudLoadbalancersLoadbalancerArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerArrayOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancer)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerOutput) ToGetCloudLoadbalancersLoadbalancerOutput() GetCloudLoadbalancersLoadbalancerOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerOutput) ToGetCloudLoadbalancersLoadbalancerOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudLoadbalancersLoadbalancerOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Computed hash representing the current target specification value.
+func (o GetCloudLoadbalancersLoadbalancerOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the load balancer.
+func (o GetCloudLoadbalancersLoadbalancerOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current state of the load balancer:
+func (o GetCloudLoadbalancersLoadbalancerOutput) CurrentState() GetCloudLoadbalancersLoadbalancerCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) GetCloudLoadbalancersLoadbalancerCurrentState {
+		return v.CurrentState
+	}).(GetCloudLoadbalancersLoadbalancerCurrentStateOutput)
+}
+
+// Load balancer description.
+func (o GetCloudLoadbalancersLoadbalancerOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Name of the load balancer flavor.
+func (o GetCloudLoadbalancersLoadbalancerOutput) FlavorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.FlavorName }).(pulumi.StringOutput)
+}
+
+// Flavor ID.
+func (o GetCloudLoadbalancersLoadbalancerOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Load balancer name.
+func (o GetCloudLoadbalancersLoadbalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// VIP network:
+func (o GetCloudLoadbalancersLoadbalancerOutput) Network() GetCloudLoadbalancersLoadbalancerNetworkOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) GetCloudLoadbalancersLoadbalancerNetwork { return v.Network }).(GetCloudLoadbalancersLoadbalancerNetworkOutput)
+}
+
+// Region.
+func (o GetCloudLoadbalancersLoadbalancerOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Load balancer readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+func (o GetCloudLoadbalancersLoadbalancerOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Last update date of the load balancer.
+func (o GetCloudLoadbalancersLoadbalancerOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancer) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancersLoadbalancer)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerArrayOutput) ToGetCloudLoadbalancersLoadbalancerArrayOutput() GetCloudLoadbalancersLoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerArrayOutput) ToGetCloudLoadbalancersLoadbalancerArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancersLoadbalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancersLoadbalancer {
+		return vs[0].([]GetCloudLoadbalancersLoadbalancer)[vs[1].(int)]
+	}).(GetCloudLoadbalancersLoadbalancerOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentState struct {
+	// Availability zone.
+	AvailabilityZone string `pulumi:"availabilityZone"`
+	// Load balancer description.
+	Description string `pulumi:"description"`
+	// Load balancer flavor reference:
+	Flavor GetCloudLoadbalancersLoadbalancerCurrentStateFlavor `pulumi:"flavor"`
+	// Load balancer name.
+	Name string `pulumi:"name"`
+	// VIP network:
+	Network GetCloudLoadbalancersLoadbalancerCurrentStateNetwork `pulumi:"network"`
+	// Operating status of the load balancer.
+	OperatingStatus string `pulumi:"operatingStatus"`
+	// Provisioning status of the load balancer.
+	ProvisioningStatus string `pulumi:"provisioningStatus"`
+	// Region.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudLoadbalancersLoadbalancerCurrentStateInput is an input type that accepts GetCloudLoadbalancersLoadbalancerCurrentStateArgs and GetCloudLoadbalancersLoadbalancerCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerCurrentStateInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerCurrentStateArgs{...}
+type GetCloudLoadbalancersLoadbalancerCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateOutput() GetCloudLoadbalancersLoadbalancerCurrentStateOutput
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateArgs struct {
+	// Availability zone.
+	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
+	// Load balancer description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Load balancer flavor reference:
+	Flavor GetCloudLoadbalancersLoadbalancerCurrentStateFlavorInput `pulumi:"flavor"`
+	// Load balancer name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// VIP network:
+	Network GetCloudLoadbalancersLoadbalancerCurrentStateNetworkInput `pulumi:"network"`
+	// Operating status of the load balancer.
+	OperatingStatus pulumi.StringInput `pulumi:"operatingStatus"`
+	// Provisioning status of the load balancer.
+	ProvisioningStatus pulumi.StringInput `pulumi:"provisioningStatus"`
+	// Region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateOutput() GetCloudLoadbalancersLoadbalancerCurrentStateOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerCurrentStateOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateOutput() GetCloudLoadbalancersLoadbalancerCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateOutput {
+	return o
+}
+
+// Availability zone.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) AvailabilityZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) string { return v.AvailabilityZone }).(pulumi.StringOutput)
+}
+
+// Load balancer description.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Load balancer flavor reference:
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) Flavor() GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) GetCloudLoadbalancersLoadbalancerCurrentStateFlavor {
+		return v.Flavor
+	}).(GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput)
+}
+
+// Load balancer name.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// VIP network:
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) Network() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) GetCloudLoadbalancersLoadbalancerCurrentStateNetwork {
+		return v.Network
+	}).(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput)
+}
+
+// Operating status of the load balancer.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) OperatingStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) string { return v.OperatingStatus }).(pulumi.StringOutput)
+}
+
+// Provisioning status of the load balancer.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) ProvisioningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
+}
+
+// Region.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateFlavor struct {
+	// Flavor ID.
+	Id string `pulumi:"id"`
+}
+
+// GetCloudLoadbalancersLoadbalancerCurrentStateFlavorInput is an input type that accepts GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs and GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerCurrentStateFlavorInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs{...}
+type GetCloudLoadbalancersLoadbalancerCurrentStateFlavorInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput() GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs struct {
+	// Flavor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput() GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateFlavor)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput() GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput {
+	return o
+}
+
+// Flavor ID.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentStateFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetwork struct {
+	// Addresses carried by the VIP port:
+	Addresses []GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress `pulumi:"addresses"`
+	// Flavor ID.
+	Id string `pulumi:"id"`
+	// Subnet ID.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudLoadbalancersLoadbalancerCurrentStateNetworkInput is an input type that accepts GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs and GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerCurrentStateNetworkInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs{...}
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs struct {
+	// Addresses carried by the VIP port:
+	Addresses GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayInput `pulumi:"addresses"`
+	// Flavor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Subnet ID.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetwork)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput {
+	return o
+}
+
+// Addresses carried by the VIP port:
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput) Addresses() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentStateNetwork) []GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress {
+		return v.Addresses
+	}).(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+// Flavor ID.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentStateNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Subnet ID.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentStateNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress struct {
+	// IP address.
+	Ip string `pulumi:"ip"`
+	// Address type (`FIXED`, `FLOATING`).
+	Type string `pulumi:"type"`
+}
+
+// GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressInput is an input type that accepts GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs and GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs{...}
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs struct {
+	// IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Address type (`FIXED`, `FLOATING`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput)
+}
+
+// GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayInput is an input type that accepts GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray and GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray{ GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs{...} }
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput
+	ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray []GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressInput
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput {
+	return o
+}
+
+// IP address.
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Address type (`FIXED`, `FLOATING`).
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput() GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput) ToGetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput) Index(i pulumi.IntInput) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress {
+		return vs[0].([]GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress)[vs[1].(int)]
+	}).(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerNetwork struct {
+	// Flavor ID.
+	Id string `pulumi:"id"`
+	// IP address.
+	Ip string `pulumi:"ip"`
+	// Subnet ID.
+	SubnetId string `pulumi:"subnetId"`
+}
+
+// GetCloudLoadbalancersLoadbalancerNetworkInput is an input type that accepts GetCloudLoadbalancersLoadbalancerNetworkArgs and GetCloudLoadbalancersLoadbalancerNetworkOutput values.
+// You can construct a concrete instance of `GetCloudLoadbalancersLoadbalancerNetworkInput` via:
+//
+//	GetCloudLoadbalancersLoadbalancerNetworkArgs{...}
+type GetCloudLoadbalancersLoadbalancerNetworkInput interface {
+	pulumi.Input
+
+	ToGetCloudLoadbalancersLoadbalancerNetworkOutput() GetCloudLoadbalancersLoadbalancerNetworkOutput
+	ToGetCloudLoadbalancersLoadbalancerNetworkOutputWithContext(context.Context) GetCloudLoadbalancersLoadbalancerNetworkOutput
+}
+
+type GetCloudLoadbalancersLoadbalancerNetworkArgs struct {
+	// Flavor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// IP address.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Subnet ID.
+	SubnetId pulumi.StringInput `pulumi:"subnetId"`
+}
+
+func (GetCloudLoadbalancersLoadbalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (i GetCloudLoadbalancersLoadbalancerNetworkArgs) ToGetCloudLoadbalancersLoadbalancerNetworkOutput() GetCloudLoadbalancersLoadbalancerNetworkOutput {
+	return i.ToGetCloudLoadbalancersLoadbalancerNetworkOutputWithContext(context.Background())
+}
+
+func (i GetCloudLoadbalancersLoadbalancerNetworkArgs) ToGetCloudLoadbalancersLoadbalancerNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudLoadbalancersLoadbalancerNetworkOutput)
+}
+
+type GetCloudLoadbalancersLoadbalancerNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetCloudLoadbalancersLoadbalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerNetwork)(nil)).Elem()
+}
+
+func (o GetCloudLoadbalancersLoadbalancerNetworkOutput) ToGetCloudLoadbalancersLoadbalancerNetworkOutput() GetCloudLoadbalancersLoadbalancerNetworkOutput {
+	return o
+}
+
+func (o GetCloudLoadbalancersLoadbalancerNetworkOutput) ToGetCloudLoadbalancersLoadbalancerNetworkOutputWithContext(ctx context.Context) GetCloudLoadbalancersLoadbalancerNetworkOutput {
+	return o
+}
+
+// Flavor ID.
+func (o GetCloudLoadbalancersLoadbalancerNetworkOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// IP address.
+func (o GetCloudLoadbalancersLoadbalancerNetworkOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerNetwork) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Subnet ID.
+func (o GetCloudLoadbalancersLoadbalancerNetworkOutput) SubnetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudLoadbalancersLoadbalancerNetwork) string { return v.SubnetId }).(pulumi.StringOutput)
+}
+
 type GetCloudNetworkPrivateVrackCurrentState struct {
 	// Network description.
 	Description string `pulumi:"description"`
@@ -51720,1534 +61295,6 @@ func (o GetVrackservicesTargetSpecOutput) Subnets() GetVrackservicesTargetSpecSu
 	return o.ApplyT(func(v GetVrackservicesTargetSpec) []GetVrackservicesTargetSpecSubnet { return v.Subnets }).(GetVrackservicesTargetSpecSubnetArrayOutput)
 }
 
-type GetVrackservicesTargetSpecSubnet struct {
-	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
-	Cidr string `pulumi:"cidr"`
-	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
-	DisplayName string `pulumi:"displayName"`
-	// Target specification of the Service Endpoints
-	ServiceEndpoints []GetVrackservicesTargetSpecSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed service IPs
-	ServiceRange GetVrackservicesTargetSpecSubnetServiceRange `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
-	Vlan float64 `pulumi:"vlan"`
-}
-
-// GetVrackservicesTargetSpecSubnetInput is an input type that accepts GetVrackservicesTargetSpecSubnetArgs and GetVrackservicesTargetSpecSubnetOutput values.
-// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetInput` via:
-//
-//	GetVrackservicesTargetSpecSubnetArgs{...}
-type GetVrackservicesTargetSpecSubnetInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesTargetSpecSubnetOutput() GetVrackservicesTargetSpecSubnetOutput
-	ToGetVrackservicesTargetSpecSubnetOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetOutput
-}
-
-type GetVrackservicesTargetSpecSubnetArgs struct {
-	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Target specification of the Service Endpoints
-	ServiceEndpoints GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed service IPs
-	ServiceRange GetVrackservicesTargetSpecSubnetServiceRangeInput `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
-	Vlan pulumi.Float64Input `pulumi:"vlan"`
-}
-
-func (GetVrackservicesTargetSpecSubnetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicesTargetSpecSubnetArgs) ToGetVrackservicesTargetSpecSubnetOutput() GetVrackservicesTargetSpecSubnetOutput {
-	return i.ToGetVrackservicesTargetSpecSubnetOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesTargetSpecSubnetArgs) ToGetVrackservicesTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetOutput)
-}
-
-// GetVrackservicesTargetSpecSubnetArrayInput is an input type that accepts GetVrackservicesTargetSpecSubnetArray and GetVrackservicesTargetSpecSubnetArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetArrayInput` via:
-//
-//	GetVrackservicesTargetSpecSubnetArray{ GetVrackservicesTargetSpecSubnetArgs{...} }
-type GetVrackservicesTargetSpecSubnetArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesTargetSpecSubnetArrayOutput() GetVrackservicesTargetSpecSubnetArrayOutput
-	ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetArrayOutput
-}
-
-type GetVrackservicesTargetSpecSubnetArray []GetVrackservicesTargetSpecSubnetInput
-
-func (GetVrackservicesTargetSpecSubnetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicesTargetSpecSubnetArray) ToGetVrackservicesTargetSpecSubnetArrayOutput() GetVrackservicesTargetSpecSubnetArrayOutput {
-	return i.ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesTargetSpecSubnetArray) ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetArrayOutput)
-}
-
-type GetVrackservicesTargetSpecSubnetOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesTargetSpecSubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicesTargetSpecSubnetOutput) ToGetVrackservicesTargetSpecSubnetOutput() GetVrackservicesTargetSpecSubnetOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetOutput) ToGetVrackservicesTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetOutput {
-	return o
-}
-
-// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
-func (o GetVrackservicesTargetSpecSubnetOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
-func (o GetVrackservicesTargetSpecSubnetOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Target specification of the Service Endpoints
-func (o GetVrackservicesTargetSpecSubnetOutput) ServiceEndpoints() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) []GetVrackservicesTargetSpecSubnetServiceEndpoint {
-		return v.ServiceEndpoints
-	}).(GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput)
-}
-
-// Defines a smaller subnet dedicated to the managed service IPs
-func (o GetVrackservicesTargetSpecSubnetOutput) ServiceRange() GetVrackservicesTargetSpecSubnetServiceRangeOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) GetVrackservicesTargetSpecSubnetServiceRange {
-		return v.ServiceRange
-	}).(GetVrackservicesTargetSpecSubnetServiceRangeOutput)
-}
-
-// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
-func (o GetVrackservicesTargetSpecSubnetOutput) Vlan() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
-}
-
-type GetVrackservicesTargetSpecSubnetArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesTargetSpecSubnetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicesTargetSpecSubnetArrayOutput) ToGetVrackservicesTargetSpecSubnetArrayOutput() GetVrackservicesTargetSpecSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetArrayOutput) ToGetVrackservicesTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicesTargetSpecSubnetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesTargetSpecSubnet {
-		return vs[0].([]GetVrackservicesTargetSpecSubnet)[vs[1].(int)]
-	}).(GetVrackservicesTargetSpecSubnetOutput)
-}
-
-type GetVrackservicesTargetSpecSubnetServiceEndpoint struct {
-	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
-	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
-}
-
-// GetVrackservicesTargetSpecSubnetServiceEndpointInput is an input type that accepts GetVrackservicesTargetSpecSubnetServiceEndpointArgs and GetVrackservicesTargetSpecSubnetServiceEndpointOutput values.
-// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetServiceEndpointInput` via:
-//
-//	GetVrackservicesTargetSpecSubnetServiceEndpointArgs{...}
-type GetVrackservicesTargetSpecSubnetServiceEndpointInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesTargetSpecSubnetServiceEndpointOutput() GetVrackservicesTargetSpecSubnetServiceEndpointOutput
-	ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointOutput
-}
-
-type GetVrackservicesTargetSpecSubnetServiceEndpointArgs struct {
-	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
-	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
-}
-
-func (GetVrackservicesTargetSpecSubnetServiceEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicesTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutput() GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
-	return i.ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetServiceEndpointOutput)
-}
-
-// GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicesTargetSpecSubnetServiceEndpointArray and GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput` via:
-//
-//	GetVrackservicesTargetSpecSubnetServiceEndpointArray{ GetVrackservicesTargetSpecSubnetServiceEndpointArgs{...} }
-type GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput
-	ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput
-}
-
-type GetVrackservicesTargetSpecSubnetServiceEndpointArray []GetVrackservicesTargetSpecSubnetServiceEndpointInput
-
-func (GetVrackservicesTargetSpecSubnetServiceEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicesTargetSpecSubnetServiceEndpointArray) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
-	return i.ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesTargetSpecSubnetServiceEndpointArray) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput)
-}
-
-type GetVrackservicesTargetSpecSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutput() GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
-	return o
-}
-
-// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
-func (o GetVrackservicesTargetSpecSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnetServiceEndpoint) string { return v.ManagedServiceUrn }).(pulumi.StringOutput)
-}
-
-type GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicesTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesTargetSpecSubnetServiceEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesTargetSpecSubnetServiceEndpoint {
-		return vs[0].([]GetVrackservicesTargetSpecSubnetServiceEndpoint)[vs[1].(int)]
-	}).(GetVrackservicesTargetSpecSubnetServiceEndpointOutput)
-}
-
-type GetVrackservicesTargetSpecSubnetServiceRange struct {
-	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
-	Cidr string `pulumi:"cidr"`
-}
-
-// GetVrackservicesTargetSpecSubnetServiceRangeInput is an input type that accepts GetVrackservicesTargetSpecSubnetServiceRangeArgs and GetVrackservicesTargetSpecSubnetServiceRangeOutput values.
-// You can construct a concrete instance of `GetVrackservicesTargetSpecSubnetServiceRangeInput` via:
-//
-//	GetVrackservicesTargetSpecSubnetServiceRangeArgs{...}
-type GetVrackservicesTargetSpecSubnetServiceRangeInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesTargetSpecSubnetServiceRangeOutput() GetVrackservicesTargetSpecSubnetServiceRangeOutput
-	ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicesTargetSpecSubnetServiceRangeOutput
-}
-
-type GetVrackservicesTargetSpecSubnetServiceRangeArgs struct {
-	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-}
-
-func (GetVrackservicesTargetSpecSubnetServiceRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceRange)(nil)).Elem()
-}
-
-func (i GetVrackservicesTargetSpecSubnetServiceRangeArgs) ToGetVrackservicesTargetSpecSubnetServiceRangeOutput() GetVrackservicesTargetSpecSubnetServiceRangeOutput {
-	return i.ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesTargetSpecSubnetServiceRangeArgs) ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecSubnetServiceRangeOutput)
-}
-
-type GetVrackservicesTargetSpecSubnetServiceRangeOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesTargetSpecSubnetServiceRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceRange)(nil)).Elem()
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceRangeOutput) ToGetVrackservicesTargetSpecSubnetServiceRangeOutput() GetVrackservicesTargetSpecSubnetServiceRangeOutput {
-	return o
-}
-
-func (o GetVrackservicesTargetSpecSubnetServiceRangeOutput) ToGetVrackservicesTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecSubnetServiceRangeOutput {
-	return o
-}
-
-// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
-func (o GetVrackservicesTargetSpecSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpecSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicess struct {
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
-	Checksum string `pulumi:"checksum"`
-	// Date of the vRack Services delivery
-	CreatedAt string `pulumi:"createdAt"`
-	// Current configuration applied to the vRack Services
-	CurrentState GetVrackservicessVrackservicessCurrentState `pulumi:"currentState"`
-	// Asynchronous operations ongoing on the vRack Services
-	CurrentTasks []GetVrackservicessVrackservicessCurrentTask `pulumi:"currentTasks"`
-	// IAM resource metadata
-	Iam GetVrackservicessVrackservicessIam `pulumi:"iam"`
-	// Unique identifier
-	Id string `pulumi:"id"`
-	// Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
-	ResourceStatus string `pulumi:"resourceStatus"`
-	// Last target specification of the vRack Services
-	TargetSpec GetVrackservicessVrackservicessTargetSpec `pulumi:"targetSpec"`
-	// Date of the Last vRack Services update
-	UpdatedAt string `pulumi:"updatedAt"`
-}
-
-// GetVrackservicessVrackservicessInput is an input type that accepts GetVrackservicessVrackservicessArgs and GetVrackservicessVrackservicessOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessInput` via:
-//
-//	GetVrackservicessVrackservicessArgs{...}
-type GetVrackservicessVrackservicessInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessOutput() GetVrackservicessVrackservicessOutput
-	ToGetVrackservicessVrackservicessOutputWithContext(context.Context) GetVrackservicessVrackservicessOutput
-}
-
-type GetVrackservicessVrackservicessArgs struct {
-	// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
-	Checksum pulumi.StringInput `pulumi:"checksum"`
-	// Date of the vRack Services delivery
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Current configuration applied to the vRack Services
-	CurrentState GetVrackservicessVrackservicessCurrentStateInput `pulumi:"currentState"`
-	// Asynchronous operations ongoing on the vRack Services
-	CurrentTasks GetVrackservicessVrackservicessCurrentTaskArrayInput `pulumi:"currentTasks"`
-	// IAM resource metadata
-	Iam GetVrackservicessVrackservicessIamInput `pulumi:"iam"`
-	// Unique identifier
-	Id pulumi.StringInput `pulumi:"id"`
-	// Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
-	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
-	// Last target specification of the vRack Services
-	TargetSpec GetVrackservicessVrackservicessTargetSpecInput `pulumi:"targetSpec"`
-	// Date of the Last vRack Services update
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-}
-
-func (GetVrackservicessVrackservicessArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicess)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessArgs) ToGetVrackservicessVrackservicessOutput() GetVrackservicessVrackservicessOutput {
-	return i.ToGetVrackservicessVrackservicessOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessArgs) ToGetVrackservicessVrackservicessOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessOutput)
-}
-
-// GetVrackservicessVrackservicessArrayInput is an input type that accepts GetVrackservicessVrackservicessArray and GetVrackservicessVrackservicessArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessArrayInput` via:
-//
-//	GetVrackservicessVrackservicessArray{ GetVrackservicessVrackservicessArgs{...} }
-type GetVrackservicessVrackservicessArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessArrayOutput() GetVrackservicessVrackservicessArrayOutput
-	ToGetVrackservicessVrackservicessArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessArrayOutput
-}
-
-type GetVrackservicessVrackservicessArray []GetVrackservicessVrackservicessInput
-
-func (GetVrackservicessVrackservicessArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicess)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessArray) ToGetVrackservicessVrackservicessArrayOutput() GetVrackservicessVrackservicessArrayOutput {
-	return i.ToGetVrackservicessVrackservicessArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessArray) ToGetVrackservicessVrackservicessArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessArrayOutput)
-}
-
-type GetVrackservicessVrackservicessOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicess)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessOutput) ToGetVrackservicessVrackservicessOutput() GetVrackservicessVrackservicessOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessOutput) ToGetVrackservicessVrackservicessOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessOutput {
-	return o
-}
-
-// Computed hash used to control concurrent modification requests. Here, it represents the current target specification value
-func (o GetVrackservicessVrackservicessOutput) Checksum() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.Checksum }).(pulumi.StringOutput)
-}
-
-// Date of the vRack Services delivery
-func (o GetVrackservicessVrackservicessOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Current configuration applied to the vRack Services
-func (o GetVrackservicessVrackservicessOutput) CurrentState() GetVrackservicessVrackservicessCurrentStateOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) GetVrackservicessVrackservicessCurrentState {
-		return v.CurrentState
-	}).(GetVrackservicessVrackservicessCurrentStateOutput)
-}
-
-// Asynchronous operations ongoing on the vRack Services
-func (o GetVrackservicessVrackservicessOutput) CurrentTasks() GetVrackservicessVrackservicessCurrentTaskArrayOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) []GetVrackservicessVrackservicessCurrentTask {
-		return v.CurrentTasks
-	}).(GetVrackservicessVrackservicessCurrentTaskArrayOutput)
-}
-
-// IAM resource metadata
-func (o GetVrackservicessVrackservicessOutput) Iam() GetVrackservicessVrackservicessIamOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) GetVrackservicessVrackservicessIam { return v.Iam }).(GetVrackservicessVrackservicessIamOutput)
-}
-
-// Unique identifier
-func (o GetVrackservicessVrackservicessOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Reflects the readiness of the vRack Services. A new target specification request will be accepted only in `READY` status
-func (o GetVrackservicessVrackservicessOutput) ResourceStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.ResourceStatus }).(pulumi.StringOutput)
-}
-
-// Last target specification of the vRack Services
-func (o GetVrackservicessVrackservicessOutput) TargetSpec() GetVrackservicessVrackservicessTargetSpecOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) GetVrackservicessVrackservicessTargetSpec { return v.TargetSpec }).(GetVrackservicessVrackservicessTargetSpecOutput)
-}
-
-// Date of the Last vRack Services update
-func (o GetVrackservicessVrackservicessOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicess) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicess)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessArrayOutput) ToGetVrackservicessVrackservicessArrayOutput() GetVrackservicessVrackservicessArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessArrayOutput) ToGetVrackservicessVrackservicessArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicess {
-		return vs[0].([]GetVrackservicessVrackservicess)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentState struct {
-	// Product status of the vRack Services
-	ProductStatus string `pulumi:"productStatus"`
-	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
-	Region string `pulumi:"region"`
-	// Subnets of the current vRack Services
-	Subnets []GetVrackservicessVrackservicessCurrentStateSubnet `pulumi:"subnets"`
-	// vRack associated to the vRack Services
-	VrackId string `pulumi:"vrackId"`
-}
-
-// GetVrackservicessVrackservicessCurrentStateInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateArgs and GetVrackservicessVrackservicessCurrentStateOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateArgs{...}
-type GetVrackservicessVrackservicessCurrentStateInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateOutput() GetVrackservicessVrackservicessCurrentStateOutput
-	ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateArgs struct {
-	// Product status of the vRack Services
-	ProductStatus pulumi.StringInput `pulumi:"productStatus"`
-	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
-	Region pulumi.StringInput `pulumi:"region"`
-	// Subnets of the current vRack Services
-	Subnets GetVrackservicessVrackservicessCurrentStateSubnetArrayInput `pulumi:"subnets"`
-	// vRack associated to the vRack Services
-	VrackId pulumi.StringInput `pulumi:"vrackId"`
-}
-
-func (GetVrackservicessVrackservicessCurrentStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentState)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateArgs) ToGetVrackservicessVrackservicessCurrentStateOutput() GetVrackservicessVrackservicessCurrentStateOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateArgs) ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentState)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateOutput) ToGetVrackservicessVrackservicessCurrentStateOutput() GetVrackservicessVrackservicessCurrentStateOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateOutput) ToGetVrackservicessVrackservicessCurrentStateOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateOutput {
-	return o
-}
-
-// Product status of the vRack Services
-func (o GetVrackservicessVrackservicessCurrentStateOutput) ProductStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) string { return v.ProductStatus }).(pulumi.StringOutput)
-}
-
-// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
-func (o GetVrackservicessVrackservicessCurrentStateOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// Subnets of the current vRack Services
-func (o GetVrackservicessVrackservicessCurrentStateOutput) Subnets() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) []GetVrackservicessVrackservicessCurrentStateSubnet {
-		return v.Subnets
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput)
-}
-
-// vRack associated to the vRack Services
-func (o GetVrackservicessVrackservicessCurrentStateOutput) VrackId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentState) string { return v.VrackId }).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnet struct {
-	// IP address range of the subnet in CIDR format
-	Cidr string `pulumi:"cidr"`
-	// Display name of the subnet
-	DisplayName string `pulumi:"displayName"`
-	// Service endpoints of the subnet
-	ServiceEndpoints []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed services IPs
-	ServiceRange GetVrackservicessVrackservicessCurrentStateSubnetServiceRange `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation
-	Vlan float64 `pulumi:"vlan"`
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetArgs and GetVrackservicessVrackservicessCurrentStateSubnetOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetArgs{...}
-type GetVrackservicessVrackservicessCurrentStateSubnetInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetOutput() GetVrackservicessVrackservicessCurrentStateSubnetOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetArgs struct {
-	// IP address range of the subnet in CIDR format
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Display name of the subnet
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Service endpoints of the subnet
-	ServiceEndpoints GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed services IPs
-	ServiceRange GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation
-	Vlan pulumi.Float64Input `pulumi:"vlan"`
-}
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetOutput() GetVrackservicessVrackservicessCurrentStateSubnetOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetOutput)
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetArray and GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetArrayInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetArray{ GetVrackservicessVrackservicessCurrentStateSubnetArgs{...} }
-type GetVrackservicessVrackservicessCurrentStateSubnetArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetArray []GetVrackservicessVrackservicessCurrentStateSubnetInput
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetArray) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetArray) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetOutput() GetVrackservicessVrackservicessCurrentStateSubnetOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetOutput {
-	return o
-}
-
-// IP address range of the subnet in CIDR format
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Display name of the subnet
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Service endpoints of the subnet
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ServiceEndpoints() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint {
-		return v.ServiceEndpoints
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput)
-}
-
-// Defines a smaller subnet dedicated to the managed services IPs
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) ServiceRange() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) GetVrackservicessVrackservicessCurrentStateSubnetServiceRange {
-		return v.ServiceRange
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput)
-}
-
-// Unique inner VLAN that allows subnets segregation
-func (o GetVrackservicessVrackservicessCurrentStateSubnetOutput) Vlan() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentStateSubnetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentStateSubnet {
-		return vs[0].([]GetVrackservicessVrackservicessCurrentStateSubnet)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint struct {
-	// Endpoints representing the IPs assigned to the managed services
-	Endpoints []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint `pulumi:"endpoints"`
-	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
-	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs{...}
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs struct {
-	// Endpoints representing the IPs assigned to the managed services
-	Endpoints GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput `pulumi:"endpoints"`
-	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
-	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
-}
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput)
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray{ GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs{...} }
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
-	return o
-}
-
-// Endpoints representing the IPs assigned to the managed services
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) Endpoints() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint) []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint {
-		return v.Endpoints
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput)
-}
-
-// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint) string {
-		return v.ManagedServiceUrn
-	}).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint {
-		return vs[0].([]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpoint)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint struct {
-	// IP description defined in the managed service
-	Description string `pulumi:"description"`
-	// IP address assigned by OVHcloud
-	Ip string `pulumi:"ip"`
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs{...}
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs struct {
-	// IP description defined in the managed service
-	Description pulumi.StringInput `pulumi:"description"`
-	// IP address assigned by OVHcloud
-	Ip pulumi.StringInput `pulumi:"ip"`
-}
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput)
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray and GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray{ GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs{...} }
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray []GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
-	return o
-}
-
-// IP description defined in the managed service
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint) string {
-		return v.Description
-	}).(pulumi.StringOutput)
-}
-
-// IP address assigned by OVHcloud
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint) string { return v.Ip }).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint {
-		return vs[0].([]GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpoint)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceRange struct {
-	// CIDR dedicated to the subnet's services
-	Cidr string `pulumi:"cidr"`
-	// Number of remaining IPs in the service range
-	RemainingIps float64 `pulumi:"remainingIps"`
-	// Number of service range IPs reserved by OVHcloud
-	ReservedIps float64 `pulumi:"reservedIps"`
-	// Number of service range IPs assigned to the managed services
-	UsedIps float64 `pulumi:"usedIps"`
-}
-
-// GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput is an input type that accepts GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs and GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs{...}
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput
-	ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs struct {
-	// CIDR dedicated to the subnet's services
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Number of remaining IPs in the service range
-	RemainingIps pulumi.Float64Input `pulumi:"remainingIps"`
-	// Number of service range IPs reserved by OVHcloud
-	ReservedIps pulumi.Float64Input `pulumi:"reservedIps"`
-	// Number of service range IPs assigned to the managed services
-	UsedIps pulumi.Float64Input `pulumi:"usedIps"`
-}
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceRange)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceRange)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput() GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput {
-	return o
-}
-
-// CIDR dedicated to the subnet's services
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Number of remaining IPs in the service range
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) RemainingIps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) float64 { return v.RemainingIps }).(pulumi.Float64Output)
-}
-
-// Number of service range IPs reserved by OVHcloud
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) ReservedIps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) float64 { return v.ReservedIps }).(pulumi.Float64Output)
-}
-
-// Number of service range IPs assigned to the managed services
-func (o GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput) UsedIps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentStateSubnetServiceRange) float64 { return v.UsedIps }).(pulumi.Float64Output)
-}
-
-type GetVrackservicessVrackservicessCurrentTask struct {
-	// Identifier of the current task
-	Id string `pulumi:"id"`
-	// Link to the task details
-	Link string `pulumi:"link"`
-	// Current global status of the current task
-	Status string `pulumi:"status"`
-	// Type of the current task
-	Type string `pulumi:"type"`
-}
-
-// GetVrackservicessVrackservicessCurrentTaskInput is an input type that accepts GetVrackservicessVrackservicessCurrentTaskArgs and GetVrackservicessVrackservicessCurrentTaskOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentTaskInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentTaskArgs{...}
-type GetVrackservicessVrackservicessCurrentTaskInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentTaskOutput() GetVrackservicessVrackservicessCurrentTaskOutput
-	ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentTaskOutput
-}
-
-type GetVrackservicessVrackservicessCurrentTaskArgs struct {
-	// Identifier of the current task
-	Id pulumi.StringInput `pulumi:"id"`
-	// Link to the task details
-	Link pulumi.StringInput `pulumi:"link"`
-	// Current global status of the current task
-	Status pulumi.StringInput `pulumi:"status"`
-	// Type of the current task
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetVrackservicessVrackservicessCurrentTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentTaskArgs) ToGetVrackservicessVrackservicessCurrentTaskOutput() GetVrackservicessVrackservicessCurrentTaskOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentTaskArgs) ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentTaskOutput)
-}
-
-// GetVrackservicessVrackservicessCurrentTaskArrayInput is an input type that accepts GetVrackservicessVrackservicessCurrentTaskArray and GetVrackservicessVrackservicessCurrentTaskArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessCurrentTaskArrayInput` via:
-//
-//	GetVrackservicessVrackservicessCurrentTaskArray{ GetVrackservicessVrackservicessCurrentTaskArgs{...} }
-type GetVrackservicessVrackservicessCurrentTaskArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessCurrentTaskArrayOutput() GetVrackservicessVrackservicessCurrentTaskArrayOutput
-	ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessCurrentTaskArrayOutput
-}
-
-type GetVrackservicessVrackservicessCurrentTaskArray []GetVrackservicessVrackservicessCurrentTaskInput
-
-func (GetVrackservicessVrackservicessCurrentTaskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessCurrentTaskArray) ToGetVrackservicessVrackservicessCurrentTaskArrayOutput() GetVrackservicessVrackservicessCurrentTaskArrayOutput {
-	return i.ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessCurrentTaskArray) ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessCurrentTaskArrayOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentTaskOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentTaskOutput) ToGetVrackservicessVrackservicessCurrentTaskOutput() GetVrackservicessVrackservicessCurrentTaskOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentTaskOutput) ToGetVrackservicessVrackservicessCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskOutput {
-	return o
-}
-
-// Identifier of the current task
-func (o GetVrackservicessVrackservicessCurrentTaskOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Link to the task details
-func (o GetVrackservicessVrackservicessCurrentTaskOutput) Link() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Link }).(pulumi.StringOutput)
-}
-
-// Current global status of the current task
-func (o GetVrackservicessVrackservicessCurrentTaskOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Type of the current task
-func (o GetVrackservicessVrackservicessCurrentTaskOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessCurrentTask) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessCurrentTaskArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessCurrentTaskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessCurrentTask)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessCurrentTaskArrayOutput) ToGetVrackservicessVrackservicessCurrentTaskArrayOutput() GetVrackservicessVrackservicessCurrentTaskArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentTaskArrayOutput) ToGetVrackservicessVrackservicessCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessCurrentTaskArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessCurrentTaskArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessCurrentTaskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessCurrentTask {
-		return vs[0].([]GetVrackservicessVrackservicessCurrentTask)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessCurrentTaskOutput)
-}
-
-type GetVrackservicessVrackservicessIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// Resource state
-	State string `pulumi:"state"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn string `pulumi:"urn"`
-}
-
-// GetVrackservicessVrackservicessIamInput is an input type that accepts GetVrackservicessVrackservicessIamArgs and GetVrackservicessVrackservicessIamOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessIamInput` via:
-//
-//	GetVrackservicessVrackservicessIamArgs{...}
-type GetVrackservicessVrackservicessIamInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessIamOutput() GetVrackservicessVrackservicessIamOutput
-	ToGetVrackservicessVrackservicessIamOutputWithContext(context.Context) GetVrackservicessVrackservicessIamOutput
-}
-
-type GetVrackservicessVrackservicessIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-	// Resource state
-	State pulumi.StringInput `pulumi:"state"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetVrackservicessVrackservicessIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessIam)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessIamArgs) ToGetVrackservicessVrackservicessIamOutput() GetVrackservicessVrackservicessIamOutput {
-	return i.ToGetVrackservicessVrackservicessIamOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessIamArgs) ToGetVrackservicessVrackservicessIamOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessIamOutput)
-}
-
-type GetVrackservicessVrackservicessIamOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessIam)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessIamOutput) ToGetVrackservicessVrackservicessIamOutput() GetVrackservicessVrackservicessIamOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessIamOutput) ToGetVrackservicessVrackservicessIamOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetVrackservicessVrackservicessIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the resource
-func (o GetVrackservicessVrackservicessIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource state
-func (o GetVrackservicessVrackservicessIamOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetVrackservicessVrackservicessIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Unique resource name used in policies
-func (o GetVrackservicessVrackservicessIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpec struct {
-	// Target specification of the subnets. Maximum one subnet per vRack Services
-	Subnets []GetVrackservicessVrackservicessTargetSpecSubnet `pulumi:"subnets"`
-}
-
-// GetVrackservicessVrackservicessTargetSpecInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecArgs and GetVrackservicessVrackservicessTargetSpecOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecInput` via:
-//
-//	GetVrackservicessVrackservicessTargetSpecArgs{...}
-type GetVrackservicessVrackservicessTargetSpecInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessTargetSpecOutput() GetVrackservicessVrackservicessTargetSpecOutput
-	ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecOutput
-}
-
-type GetVrackservicessVrackservicessTargetSpecArgs struct {
-	// Target specification of the subnets. Maximum one subnet per vRack Services
-	Subnets GetVrackservicessVrackservicessTargetSpecSubnetArrayInput `pulumi:"subnets"`
-}
-
-func (GetVrackservicessVrackservicessTargetSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpec)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecArgs) ToGetVrackservicessVrackservicessTargetSpecOutput() GetVrackservicessVrackservicessTargetSpecOutput {
-	return i.ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecArgs) ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessTargetSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpec)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecOutput) ToGetVrackservicessVrackservicessTargetSpecOutput() GetVrackservicessVrackservicessTargetSpecOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecOutput) ToGetVrackservicessVrackservicessTargetSpecOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecOutput {
-	return o
-}
-
-// Target specification of the subnets. Maximum one subnet per vRack Services
-func (o GetVrackservicessVrackservicessTargetSpecOutput) Subnets() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpec) []GetVrackservicessVrackservicessTargetSpecSubnet {
-		return v.Subnets
-	}).(GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnet struct {
-	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
-	Cidr string `pulumi:"cidr"`
-	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
-	DisplayName string `pulumi:"displayName"`
-	// Target specification of the Service Endpoints
-	ServiceEndpoints []GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed service IPs
-	ServiceRange GetVrackservicessVrackservicessTargetSpecSubnetServiceRange `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
-	Vlan float64 `pulumi:"vlan"`
-}
-
-// GetVrackservicessVrackservicessTargetSpecSubnetInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetArgs and GetVrackservicessVrackservicessTargetSpecSubnetOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetInput` via:
-//
-//	GetVrackservicessVrackservicessTargetSpecSubnetArgs{...}
-type GetVrackservicessVrackservicessTargetSpecSubnetInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessTargetSpecSubnetOutput() GetVrackservicessVrackservicessTargetSpecSubnetOutput
-	ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetOutput
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetArgs struct {
-	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Target specification of the Service Endpoints
-	ServiceEndpoints GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed service IPs
-	ServiceRange GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
-	Vlan pulumi.Float64Input `pulumi:"vlan"`
-}
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetOutput() GetVrackservicessVrackservicessTargetSpecSubnetOutput {
-	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetOutput)
-}
-
-// GetVrackservicessVrackservicessTargetSpecSubnetArrayInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetArray and GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetArrayInput` via:
-//
-//	GetVrackservicessVrackservicessTargetSpecSubnetArray{ GetVrackservicessVrackservicessTargetSpecSubnetArgs{...} }
-type GetVrackservicessVrackservicessTargetSpecSubnetArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput
-	ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetArray []GetVrackservicessVrackservicessTargetSpecSubnetInput
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetArray) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
-	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetArray) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetOutput() GetVrackservicessVrackservicessTargetSpecSubnetOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetOutput {
-	return o
-}
-
-// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Display name of the subnet. Format must follow `^[ a-zA-Z0-9-_.]{0,40}$`
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Target specification of the Service Endpoints
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ServiceEndpoints() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) []GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint {
-		return v.ServiceEndpoints
-	}).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput)
-}
-
-// Defines a smaller subnet dedicated to the managed service IPs
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) ServiceRange() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) GetVrackservicessVrackservicessTargetSpecSubnetServiceRange {
-		return v.ServiceRange
-	}).(GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput)
-}
-
-// Unique inner VLAN that allows subnets segregation. Authorized values: [2 - 4094] and `null` (untagged traffic)
-func (o GetVrackservicessVrackservicessTargetSpecSubnetOutput) Vlan() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessTargetSpecSubnetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessTargetSpecSubnet {
-		return vs[0].([]GetVrackservicessVrackservicessTargetSpecSubnet)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessTargetSpecSubnetOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint struct {
-	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
-	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
-}
-
-// GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs and GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput` via:
-//
-//	GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{...}
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput
-	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs struct {
-	// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
-	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
-}
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
-	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput)
-}
-
-// GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray and GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput` via:
-//
-//	GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray{ GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{...} }
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput
-	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray []GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
-	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
-	return o
-}
-
-// IAM Resource URN of the managed service. Managed service Region must match vRack Services Region. Compatible managed service types are listed by /reference/compatibleManagedServiceType call
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint) string {
-		return v.ManagedServiceUrn
-	}).(pulumi.StringOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint {
-		return vs[0].([]GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpoint)[vs[1].(int)]
-	}).(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceRange struct {
-	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
-	Cidr string `pulumi:"cidr"`
-}
-
-// GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput is an input type that accepts GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs and GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput values.
-// You can construct a concrete instance of `GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput` via:
-//
-//	GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs{...}
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput interface {
-	pulumi.Input
-
-	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput
-	ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs struct {
-	// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-}
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRange)(nil)).Elem()
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
-	return i.ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput)
-}
-
-type GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRange)(nil)).Elem()
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput() GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
-	return o
-}
-
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) ToGetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput {
-	return o
-}
-
-// IP address range dedicated to the subnet's services in CIDR format. Must be a private network address (RFC1918). Must be a sub-network of the subnet. Authorized range for prefix length: /27 to /29
-func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicessVrackservicessTargetSpecSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudFloatingIpCurrentStateInput)(nil)).Elem(), CloudFloatingIpCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudFloatingIpCurrentStatePtrInput)(nil)).Elem(), CloudFloatingIpCurrentStateArgs{})
@@ -53319,6 +61366,44 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudKeyManagerSecretCurrentStatePtrInput)(nil)).Elem(), CloudKeyManagerSecretCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudKeyManagerSecretCurrentStateLocationInput)(nil)).Elem(), CloudKeyManagerSecretCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudKeyManagerSecretCurrentStateLocationPtrInput)(nil)).Elem(), CloudKeyManagerSecretCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateInput)(nil)).Elem(), CloudLoadbalancerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStatePtrInput)(nil)).Elem(), CloudLoadbalancerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateFlavorInput)(nil)).Elem(), CloudLoadbalancerCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateFlavorPtrInput)(nil)).Elem(), CloudLoadbalancerCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateNetworkInput)(nil)).Elem(), CloudLoadbalancerCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateNetworkPtrInput)(nil)).Elem(), CloudLoadbalancerCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateNetworkAddressInput)(nil)).Elem(), CloudLoadbalancerCurrentStateNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerCurrentStateNetworkAddressArrayInput)(nil)).Elem(), CloudLoadbalancerCurrentStateNetworkAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerL7policyCurrentStateInput)(nil)).Elem(), CloudLoadbalancerL7policyCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerL7policyCurrentStatePtrInput)(nil)).Elem(), CloudLoadbalancerL7policyCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerL7policyCurrentStateRuleInput)(nil)).Elem(), CloudLoadbalancerL7policyCurrentStateRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerL7policyCurrentStateRuleArrayInput)(nil)).Elem(), CloudLoadbalancerL7policyCurrentStateRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerL7policyRuleInput)(nil)).Elem(), CloudLoadbalancerL7policyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerL7policyRuleArrayInput)(nil)).Elem(), CloudLoadbalancerL7policyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerListenerCurrentStateInput)(nil)).Elem(), CloudLoadbalancerListenerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerListenerCurrentStatePtrInput)(nil)).Elem(), CloudLoadbalancerListenerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerListenerCurrentStateInsertHeadersInput)(nil)).Elem(), CloudLoadbalancerListenerCurrentStateInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerListenerCurrentStateInsertHeadersPtrInput)(nil)).Elem(), CloudLoadbalancerListenerCurrentStateInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerListenerInsertHeadersInput)(nil)).Elem(), CloudLoadbalancerListenerInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerListenerInsertHeadersPtrInput)(nil)).Elem(), CloudLoadbalancerListenerInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerNetworkInput)(nil)).Elem(), CloudLoadbalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerNetworkPtrInput)(nil)).Elem(), CloudLoadbalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolCurrentStateInput)(nil)).Elem(), CloudLoadbalancerPoolCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolCurrentStatePtrInput)(nil)).Elem(), CloudLoadbalancerPoolCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolCurrentStateHealthMonitorInput)(nil)).Elem(), CloudLoadbalancerPoolCurrentStateHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolCurrentStateHealthMonitorPtrInput)(nil)).Elem(), CloudLoadbalancerPoolCurrentStateHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolCurrentStatePersistenceInput)(nil)).Elem(), CloudLoadbalancerPoolCurrentStatePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolCurrentStatePersistencePtrInput)(nil)).Elem(), CloudLoadbalancerPoolCurrentStatePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolHealthMonitorInput)(nil)).Elem(), CloudLoadbalancerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolHealthMonitorPtrInput)(nil)).Elem(), CloudLoadbalancerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentStateInput)(nil)).Elem(), CloudLoadbalancerPoolMemberCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentStatePtrInput)(nil)).Elem(), CloudLoadbalancerPoolMemberCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentStateMonitorInput)(nil)).Elem(), CloudLoadbalancerPoolMemberCurrentStateMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolMemberCurrentStateMonitorPtrInput)(nil)).Elem(), CloudLoadbalancerPoolMemberCurrentStateMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolMemberMonitorInput)(nil)).Elem(), CloudLoadbalancerPoolMemberMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolMemberMonitorPtrInput)(nil)).Elem(), CloudLoadbalancerPoolMemberMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolPersistenceInput)(nil)).Elem(), CloudLoadbalancerPoolPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudLoadbalancerPoolPersistencePtrInput)(nil)).Elem(), CloudLoadbalancerPoolPersistenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStatePtrInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudNetworkPrivateVrackCurrentStateLocationInput)(nil)).Elem(), CloudNetworkPrivateVrackCurrentStateLocationArgs{})
@@ -53710,6 +61795,60 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudKeyManagerSecretsSecretCurrentStateInput)(nil)).Elem(), GetCloudKeyManagerSecretsSecretCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudKeyManagerSecretsSecretCurrentStateLocationInput)(nil)).Elem(), GetCloudKeyManagerSecretsSecretCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudKeyManagerSecretsSecretLocationInput)(nil)).Elem(), GetCloudKeyManagerSecretsSecretLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerCurrentStateFlavorInput)(nil)).Elem(), GetCloudLoadbalancerCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetworkInput)(nil)).Elem(), GetCloudLoadbalancerCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetworkAddressInput)(nil)).Elem(), GetCloudLoadbalancerCurrentStateNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerCurrentStateNetworkAddressArrayInput)(nil)).Elem(), GetCloudLoadbalancerCurrentStateNetworkAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyArrayInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyRuleInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policiesL7policyRuleArrayInput)(nil)).Elem(), GetCloudLoadbalancerL7policiesL7policyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerL7policyCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentStateRuleInput)(nil)).Elem(), GetCloudLoadbalancerL7policyCurrentStateRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policyCurrentStateRuleArrayInput)(nil)).Elem(), GetCloudLoadbalancerL7policyCurrentStateRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policyRuleInput)(nil)).Elem(), GetCloudLoadbalancerL7policyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerL7policyRuleArrayInput)(nil)).Elem(), GetCloudLoadbalancerL7policyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenerCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerListenerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenerCurrentStateInsertHeadersInput)(nil)).Elem(), GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenerInsertHeadersInput)(nil)).Elem(), GetCloudLoadbalancerListenerInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenersListenerInput)(nil)).Elem(), GetCloudLoadbalancerListenersListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenersListenerArrayInput)(nil)).Elem(), GetCloudLoadbalancerListenersListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenersListenerCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerListenersListenerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersInput)(nil)).Elem(), GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerListenersListenerInsertHeadersInput)(nil)).Elem(), GetCloudLoadbalancerListenersListenerInsertHeadersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerNetworkInput)(nil)).Elem(), GetCloudLoadbalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerPoolCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStateHealthMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolCurrentStatePersistenceInput)(nil)).Elem(), GetCloudLoadbalancerPoolCurrentStatePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolHealthMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMemberCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerPoolMemberCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMemberCurrentStateMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMemberMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolMemberMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberInput)(nil)).Elem(), GetCloudLoadbalancerPoolMembersMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberArrayInput)(nil)).Elem(), GetCloudLoadbalancerPoolMembersMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolMembersMemberMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolMembersMemberMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolPersistenceInput)(nil)).Elem(), GetCloudLoadbalancerPoolPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolArrayInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolHealthMonitorInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolHealthMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancerPoolsPoolPersistenceInput)(nil)).Elem(), GetCloudLoadbalancerPoolsPoolPersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerArrayInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateFlavorInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetworkInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudLoadbalancersLoadbalancerNetworkInput)(nil)).Elem(), GetCloudLoadbalancersLoadbalancerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentStateInput)(nil)).Elem(), GetCloudNetworkPrivateVrackCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackCurrentStateLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudNetworkPrivateVrackLocationInput)(nil)).Elem(), GetCloudNetworkPrivateVrackLocationArgs{})
@@ -53948,30 +62087,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskArrayInput)(nil)).Elem(), GetVrackservicesCurrentTaskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesIamInput)(nil)).Elem(), GetVrackservicesIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecInput)(nil)).Elem(), GetVrackservicesTargetSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetArrayInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessInput)(nil)).Elem(), GetVrackservicessVrackservicessArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTaskInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessCurrentTaskArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessCurrentTaskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessIamInput)(nil)).Elem(), GetVrackservicessVrackservicessIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs{})
 	pulumi.RegisterOutputType(CloudFloatingIpCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudFloatingIpCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudFloatingIpCurrentStateAssociatedResourceOutput{})
@@ -54042,6 +62157,44 @@ func init() {
 	pulumi.RegisterOutputType(CloudKeyManagerSecretCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudKeyManagerSecretCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(CloudKeyManagerSecretCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateFlavorOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateFlavorPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateNetworkOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateNetworkPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateNetworkAddressOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerCurrentStateNetworkAddressArrayOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerL7policyCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerL7policyCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerL7policyCurrentStateRuleOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerL7policyCurrentStateRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerL7policyRuleOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerL7policyRuleArrayOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerListenerCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerListenerCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerListenerCurrentStateInsertHeadersOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerListenerCurrentStateInsertHeadersPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerListenerInsertHeadersOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerListenerInsertHeadersPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerNetworkOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerNetworkPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolCurrentStateHealthMonitorOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolCurrentStateHealthMonitorPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolCurrentStatePersistenceOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolCurrentStatePersistencePtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolHealthMonitorOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolHealthMonitorPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolMemberCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolMemberCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolMemberCurrentStateMonitorOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolMemberCurrentStateMonitorPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolMemberMonitorOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolMemberMonitorPtrOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolPersistenceOutput{})
+	pulumi.RegisterOutputType(CloudLoadbalancerPoolPersistencePtrOutput{})
 	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudNetworkPrivateVrackCurrentStateLocationOutput{})
@@ -54433,6 +62586,60 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudKeyManagerSecretsSecretCurrentStateOutput{})
 	pulumi.RegisterOutputType(GetCloudKeyManagerSecretsSecretCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudKeyManagerSecretsSecretLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerCurrentStateFlavorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerCurrentStateNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerCurrentStateNetworkAddressOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerCurrentStateNetworkAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policiesL7policyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policyCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policyCurrentStateRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policyCurrentStateRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policyRuleOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerL7policyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenerCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenerCurrentStateInsertHeadersOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenerInsertHeadersOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenersListenerOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenersListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenersListenerCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerListenersListenerInsertHeadersOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolCurrentStateHealthMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolCurrentStatePersistenceOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolHealthMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMemberCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMemberCurrentStateMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMemberMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMembersMemberOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMembersMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMembersMemberCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolMembersMemberMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolPersistenceOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolHealthMonitorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancerPoolsPoolPersistenceOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerCurrentStateFlavorOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudLoadbalancersLoadbalancerNetworkOutput{})
 	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackCurrentStateOutput{})
 	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudNetworkPrivateVrackLocationOutput{})
@@ -54671,28 +62878,4 @@ func init() {
 	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskArrayOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesIamOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesTargetSpecOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceEndpointOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceRangeOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceEndpointEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentStateSubnetServiceRangeOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentTaskOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessCurrentTaskArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessIamOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput{})
 }

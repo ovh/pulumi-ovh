@@ -224,7 +224,7 @@ type VpsModel struct {
 	Offer *string `pulumi:"offer"`
 	// Number of vcores
 	Vcore *float64 `pulumi:"vcore"`
-	// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+	// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
 	Version *string `pulumi:"version"`
 }
 
@@ -256,7 +256,7 @@ type VpsModelArgs struct {
 	Offer pulumi.StringPtrInput `pulumi:"offer"`
 	// Number of vcores
 	Vcore pulumi.Float64PtrInput `pulumi:"vcore"`
-	// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+	// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -377,7 +377,7 @@ func (o VpsModelOutput) Vcore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VpsModel) *float64 { return v.Vcore }).(pulumi.Float64PtrOutput)
 }
 
-// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
 func (o VpsModelOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VpsModel) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -486,7 +486,7 @@ func (o VpsModelPtrOutput) Vcore() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
 func (o VpsModelPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpsModel) *string {
 		if v == nil {

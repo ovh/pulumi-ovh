@@ -636,8 +636,8 @@ class DatabaseNode(dict):
                  subnet_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str region: Public cloud region in which the node should be deployed. Ex: "GRA'.
-        :param _builtins.str network_id: Private network id in which the node should be deployed. It's the regional openstackId of the private network
-        :param _builtins.str subnet_id: Private subnet ID in which the node is.
+        :param _builtins.str network_id: Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
+        :param _builtins.str subnet_id: Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
         """
         pulumi.set(__self__, "region", region)
         if network_id is not None:
@@ -657,7 +657,7 @@ class DatabaseNode(dict):
     @pulumi.getter(name="networkId")
     def network_id(self) -> Optional[_builtins.str]:
         """
-        Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
         """
         return pulumi.get(self, "network_id")
 
@@ -665,7 +665,7 @@ class DatabaseNode(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> Optional[_builtins.str]:
         """
-        Private subnet ID in which the node is.
+        Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
         """
         return pulumi.get(self, "subnet_id")
 

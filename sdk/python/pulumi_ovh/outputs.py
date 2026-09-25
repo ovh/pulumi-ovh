@@ -51,6 +51,25 @@ __all__ = [
     'CloudKeyManagerContainerSecretRef',
     'CloudKeyManagerSecretCurrentState',
     'CloudKeyManagerSecretCurrentStateLocation',
+    'CloudLoadbalancerCurrentState',
+    'CloudLoadbalancerCurrentStateFlavor',
+    'CloudLoadbalancerCurrentStateNetwork',
+    'CloudLoadbalancerCurrentStateNetworkAddress',
+    'CloudLoadbalancerL7policyCurrentState',
+    'CloudLoadbalancerL7policyCurrentStateRule',
+    'CloudLoadbalancerL7policyRule',
+    'CloudLoadbalancerListenerCurrentState',
+    'CloudLoadbalancerListenerCurrentStateInsertHeaders',
+    'CloudLoadbalancerListenerInsertHeaders',
+    'CloudLoadbalancerNetwork',
+    'CloudLoadbalancerPoolCurrentState',
+    'CloudLoadbalancerPoolCurrentStateHealthMonitor',
+    'CloudLoadbalancerPoolCurrentStatePersistence',
+    'CloudLoadbalancerPoolHealthMonitor',
+    'CloudLoadbalancerPoolMemberCurrentState',
+    'CloudLoadbalancerPoolMemberCurrentStateMonitor',
+    'CloudLoadbalancerPoolMemberMonitor',
+    'CloudLoadbalancerPoolPersistence',
     'CloudNetworkPrivateVrackCurrentState',
     'CloudNetworkPrivateVrackCurrentStateLocation',
     'CloudNetworkPrivateVrackSubnetAllocationPool',
@@ -279,6 +298,49 @@ __all__ = [
     'GetCloudKeyManagerSecretsSecretCurrentStateResult',
     'GetCloudKeyManagerSecretsSecretCurrentStateLocationResult',
     'GetCloudKeyManagerSecretsSecretLocationResult',
+    'GetCloudLoadbalancerCurrentStateResult',
+    'GetCloudLoadbalancerCurrentStateFlavorResult',
+    'GetCloudLoadbalancerCurrentStateNetworkResult',
+    'GetCloudLoadbalancerCurrentStateNetworkAddressResult',
+    'GetCloudLoadbalancerL7policiesL7policyResult',
+    'GetCloudLoadbalancerL7policiesL7policyCurrentStateResult',
+    'GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleResult',
+    'GetCloudLoadbalancerL7policiesL7policyRuleResult',
+    'GetCloudLoadbalancerL7policyCurrentStateResult',
+    'GetCloudLoadbalancerL7policyCurrentStateRuleResult',
+    'GetCloudLoadbalancerL7policyRuleResult',
+    'GetCloudLoadbalancerListenerCurrentStateResult',
+    'GetCloudLoadbalancerListenerCurrentStateInsertHeadersResult',
+    'GetCloudLoadbalancerListenerInsertHeadersResult',
+    'GetCloudLoadbalancerListenersListenerResult',
+    'GetCloudLoadbalancerListenersListenerCurrentStateResult',
+    'GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersResult',
+    'GetCloudLoadbalancerListenersListenerInsertHeadersResult',
+    'GetCloudLoadbalancerNetworkResult',
+    'GetCloudLoadbalancerPoolCurrentStateResult',
+    'GetCloudLoadbalancerPoolCurrentStateHealthMonitorResult',
+    'GetCloudLoadbalancerPoolCurrentStatePersistenceResult',
+    'GetCloudLoadbalancerPoolHealthMonitorResult',
+    'GetCloudLoadbalancerPoolMemberCurrentStateResult',
+    'GetCloudLoadbalancerPoolMemberCurrentStateMonitorResult',
+    'GetCloudLoadbalancerPoolMemberMonitorResult',
+    'GetCloudLoadbalancerPoolMembersMemberResult',
+    'GetCloudLoadbalancerPoolMembersMemberCurrentStateResult',
+    'GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorResult',
+    'GetCloudLoadbalancerPoolMembersMemberMonitorResult',
+    'GetCloudLoadbalancerPoolPersistenceResult',
+    'GetCloudLoadbalancerPoolsPoolResult',
+    'GetCloudLoadbalancerPoolsPoolCurrentStateResult',
+    'GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorResult',
+    'GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceResult',
+    'GetCloudLoadbalancerPoolsPoolHealthMonitorResult',
+    'GetCloudLoadbalancerPoolsPoolPersistenceResult',
+    'GetCloudLoadbalancersLoadbalancerResult',
+    'GetCloudLoadbalancersLoadbalancerCurrentStateResult',
+    'GetCloudLoadbalancersLoadbalancerCurrentStateFlavorResult',
+    'GetCloudLoadbalancersLoadbalancerCurrentStateNetworkResult',
+    'GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressResult',
+    'GetCloudLoadbalancersLoadbalancerNetworkResult',
     'GetCloudNetworkPrivateVrackCurrentStateResult',
     'GetCloudNetworkPrivateVrackCurrentStateLocationResult',
     'GetCloudNetworkPrivateVrackLocationResult',
@@ -2562,6 +2624,1952 @@ class CloudKeyManagerSecretCurrentStateLocation(dict):
         Region where the secret will be created.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudLoadbalancerCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityZone":
+            suggest = "availability_zone"
+        elif key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_zone: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 flavor: Optional['outputs.CloudLoadbalancerCurrentStateFlavor'] = None,
+                 name: Optional[_builtins.str] = None,
+                 network: Optional['outputs.CloudLoadbalancerCurrentStateNetwork'] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 provisioning_status: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_zone: Availability zone for the load balancer. **Changing this value recreates the resource.**
+        :param _builtins.str description: Load balancer description.
+        :param 'CloudLoadbalancerCurrentStateFlavorArgs' flavor: Load balancer flavor reference:
+        :param _builtins.str name: Load balancer name.
+        :param 'CloudLoadbalancerCurrentStateNetworkArgs' network: Network of the VIP. **Changing any value of this block recreates the resource.**
+        :param _builtins.str operating_status: Operating status of the load balancer.
+        :param _builtins.str provisioning_status: Provisioning status of the load balancer.
+        :param _builtins.str region: Region where the load balancer will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone for the load balancer. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Load balancer description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> Optional['outputs.CloudLoadbalancerCurrentStateFlavor']:
+        """
+        Load balancer flavor reference:
+        """
+        return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Load balancer name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.CloudLoadbalancerCurrentStateNetwork']:
+        """
+        Network of the VIP. **Changing any value of this block recreates the resource.**
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the load balancer.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the load balancer.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region where the load balancer will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudLoadbalancerCurrentStateFlavor(dict):
+    def __init__(__self__, *,
+                 id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: Flavor ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Flavor ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class CloudLoadbalancerCurrentStateNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerCurrentStateNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerCurrentStateNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerCurrentStateNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 addresses: Optional[Sequence['outputs.CloudLoadbalancerCurrentStateNetworkAddress']] = None,
+                 id: Optional[_builtins.str] = None,
+                 subnet_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CloudLoadbalancerCurrentStateNetworkAddressArgs'] addresses: Addresses carried by the VIP port:
+        :param _builtins.str id: ID of the network for the VIP.
+        :param _builtins.str subnet_id: ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence['outputs.CloudLoadbalancerCurrentStateNetworkAddress']]:
+        """
+        Addresses carried by the VIP port:
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        ID of the network for the VIP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class CloudLoadbalancerCurrentStateNetworkAddress(dict):
+    def __init__(__self__, *,
+                 ip: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ip: IP address.
+        :param _builtins.str type: Address type (`FIXED`, `FLOATING`).
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Address type (`FIXED`, `FLOATING`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CloudLoadbalancerL7policyCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+        elif key == "redirectHttpCode":
+            suggest = "redirect_http_code"
+        elif key == "redirectPoolId":
+            suggest = "redirect_pool_id"
+        elif key == "redirectPrefix":
+            suggest = "redirect_prefix"
+        elif key == "redirectUrl":
+            suggest = "redirect_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerL7policyCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerL7policyCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerL7policyCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 position: Optional[_builtins.int] = None,
+                 provisioning_status: Optional[_builtins.str] = None,
+                 redirect_http_code: Optional[_builtins.int] = None,
+                 redirect_pool_id: Optional[_builtins.str] = None,
+                 redirect_prefix: Optional[_builtins.str] = None,
+                 redirect_url: Optional[_builtins.str] = None,
+                 rules: Optional[Sequence['outputs.CloudLoadbalancerL7policyCurrentStateRule']] = None):
+        """
+        :param _builtins.str action: Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+        :param _builtins.str description: Description of the L7 policy.
+        :param _builtins.str name: Name of the L7 policy.
+        :param _builtins.str operating_status: Operating status of the rule.
+        :param _builtins.int position: Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+        :param _builtins.str provisioning_status: Provisioning status of the rule.
+        :param _builtins.int redirect_http_code: HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+        :param _builtins.str redirect_pool_id: ID of the pool for `REDIRECT_TO_POOL` action.
+        :param _builtins.str redirect_prefix: Redirect prefix for `REDIRECT_PREFIX` action.
+        :param _builtins.str redirect_url: Redirect URL for `REDIRECT_TO_URL` action.
+        :param Sequence['CloudLoadbalancerL7policyCurrentStateRuleArgs'] rules: List of L7 rules for this policy. All rules must match for the policy to apply:
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if redirect_http_code is not None:
+            pulumi.set(__self__, "redirect_http_code", redirect_http_code)
+        if redirect_pool_id is not None:
+            pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+        if redirect_prefix is not None:
+            pulumi.set(__self__, "redirect_prefix", redirect_prefix)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[_builtins.str]:
+        """
+        Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the L7 policy.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the L7 policy.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the rule.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[_builtins.int]:
+        """
+        Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the rule.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectHttpCode")
+    def redirect_http_code(self) -> Optional[_builtins.int]:
+        """
+        HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+        """
+        return pulumi.get(self, "redirect_http_code")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPoolId")
+    def redirect_pool_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the pool for `REDIRECT_TO_POOL` action.
+        """
+        return pulumi.get(self, "redirect_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPrefix")
+    def redirect_prefix(self) -> Optional[_builtins.str]:
+        """
+        Redirect prefix for `REDIRECT_PREFIX` action.
+        """
+        return pulumi.get(self, "redirect_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[_builtins.str]:
+        """
+        Redirect URL for `REDIRECT_TO_URL` action.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[Sequence['outputs.CloudLoadbalancerL7policyCurrentStateRule']]:
+        """
+        List of L7 rules for this policy. All rules must match for the policy to apply:
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class CloudLoadbalancerL7policyCurrentStateRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compareType":
+            suggest = "compare_type"
+        elif key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerL7policyCurrentStateRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerL7policyCurrentStateRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerL7policyCurrentStateRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compare_type: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 invert: Optional[_builtins.bool] = None,
+                 key: Optional[_builtins.str] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 provisioning_status: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param _builtins.str id: Rule ID.
+        :param _builtins.bool invert: Whether to invert the rule match. Defaults to the value assigned by the API.
+        :param _builtins.str key: Key for `COOKIE` and `HEADER` rule types.
+        :param _builtins.str operating_status: Operating status of the rule.
+        :param _builtins.str provisioning_status: Provisioning status of the rule.
+        :param _builtins.str type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param _builtins.str value: Value to compare against.
+        """
+        if compare_type is not None:
+            pulumi.set(__self__, "compare_type", compare_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if invert is not None:
+            pulumi.set(__self__, "invert", invert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> Optional[_builtins.str]:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> Optional[_builtins.bool]:
+        """
+        Whether to invert the rule match. Defaults to the value assigned by the API.
+        """
+        return pulumi.get(self, "invert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the rule.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the rule.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class CloudLoadbalancerL7policyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compareType":
+            suggest = "compare_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerL7policyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerL7policyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerL7policyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compare_type: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str,
+                 invert: Optional[_builtins.bool] = None,
+                 key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param _builtins.str type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param _builtins.str value: Value to compare against.
+        :param _builtins.bool invert: Whether to invert the rule match. Defaults to the value assigned by the API.
+        :param _builtins.str key: Key for `COOKIE` and `HEADER` rule types.
+        """
+        pulumi.set(__self__, "compare_type", compare_type)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        if invert is not None:
+            pulumi.set(__self__, "invert", invert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> _builtins.str:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> Optional[_builtins.bool]:
+        """
+        Whether to invert the rule match. Defaults to the value assigned by the API.
+        """
+        return pulumi.get(self, "invert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+
+@pulumi.output_type
+class CloudLoadbalancerListenerCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedCidrs":
+            suggest = "allowed_cidrs"
+        elif key == "availabilityZone":
+            suggest = "availability_zone"
+        elif key == "connectionLimit":
+            suggest = "connection_limit"
+        elif key == "defaultPoolId":
+            suggest = "default_pool_id"
+        elif key == "defaultTlsContainerRef":
+            suggest = "default_tls_container_ref"
+        elif key == "insertHeaders":
+            suggest = "insert_headers"
+        elif key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "protocolPort":
+            suggest = "protocol_port"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+        elif key == "sniContainerRefs":
+            suggest = "sni_container_refs"
+        elif key == "timeoutClientData":
+            suggest = "timeout_client_data"
+        elif key == "timeoutMemberConnect":
+            suggest = "timeout_member_connect"
+        elif key == "timeoutMemberData":
+            suggest = "timeout_member_data"
+        elif key == "timeoutTcpInspect":
+            suggest = "timeout_tcp_inspect"
+        elif key == "tlsVersions":
+            suggest = "tls_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerListenerCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerListenerCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerListenerCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_cidrs: Optional[Sequence[_builtins.str]] = None,
+                 availability_zone: Optional[_builtins.str] = None,
+                 connection_limit: Optional[_builtins.int] = None,
+                 default_pool_id: Optional[_builtins.str] = None,
+                 default_tls_container_ref: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 insert_headers: Optional['outputs.CloudLoadbalancerListenerCurrentStateInsertHeaders'] = None,
+                 name: Optional[_builtins.str] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 protocol_port: Optional[_builtins.int] = None,
+                 provisioning_status: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 sni_container_refs: Optional[Sequence[_builtins.str]] = None,
+                 timeout_client_data: Optional[_builtins.int] = None,
+                 timeout_member_connect: Optional[_builtins.int] = None,
+                 timeout_member_data: Optional[_builtins.int] = None,
+                 timeout_tcp_inspect: Optional[_builtins.int] = None,
+                 tls_versions: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] allowed_cidrs: List of CIDRs allowed to access the listener.
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.int connection_limit: Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+        :param _builtins.str default_pool_id: ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+        :param _builtins.str default_tls_container_ref: Reference to the default TLS container.
+        :param _builtins.str description: Description of the listener.
+        :param 'CloudLoadbalancerListenerCurrentStateInsertHeadersArgs' insert_headers: Headers to insert into requests:
+        :param _builtins.str name: Name of the listener.
+        :param _builtins.str operating_status: Operating status of the listener.
+        :param _builtins.str protocol: Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+        :param _builtins.int protocol_port: Port number the listener listens on. **Changing this value recreates the resource.**
+        :param _builtins.str provisioning_status: Provisioning status of the listener.
+        :param _builtins.str region: Region.
+        :param Sequence[_builtins.str] sni_container_refs: List of SNI container references.
+        :param _builtins.int timeout_client_data: Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param _builtins.int timeout_member_connect: Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param _builtins.int timeout_member_data: Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param _builtins.int timeout_tcp_inspect: Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param Sequence[_builtins.str] tls_versions: List of TLS versions allowed.
+        """
+        if allowed_cidrs is not None:
+            pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if connection_limit is not None:
+            pulumi.set(__self__, "connection_limit", connection_limit)
+        if default_pool_id is not None:
+            pulumi.set(__self__, "default_pool_id", default_pool_id)
+        if default_tls_container_ref is not None:
+            pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if insert_headers is not None:
+            pulumi.set(__self__, "insert_headers", insert_headers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if protocol_port is not None:
+            pulumi.set(__self__, "protocol_port", protocol_port)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if sni_container_refs is not None:
+            pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        if timeout_client_data is not None:
+            pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+        if timeout_member_connect is not None:
+            pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+        if timeout_member_data is not None:
+            pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+        if timeout_tcp_inspect is not None:
+            pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+        if tls_versions is not None:
+            pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCidrs")
+    def allowed_cidrs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of CIDRs allowed to access the listener.
+        """
+        return pulumi.get(self, "allowed_cidrs")
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[_builtins.str]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPoolId")
+    def default_pool_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "default_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTlsContainerRef")
+    def default_tls_container_ref(self) -> Optional[_builtins.str]:
+        """
+        Reference to the default TLS container.
+        """
+        return pulumi.get(self, "default_tls_container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the listener.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="insertHeaders")
+    def insert_headers(self) -> Optional['outputs.CloudLoadbalancerListenerCurrentStateInsertHeaders']:
+        """
+        Headers to insert into requests:
+        """
+        return pulumi.get(self, "insert_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the listener.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the listener.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> Optional[_builtins.int]:
+        """
+        Port number the listener listens on. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the listener.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="sniContainerRefs")
+    def sni_container_refs(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of SNI container references.
+        """
+        return pulumi.get(self, "sni_container_refs")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutClientData")
+    def timeout_client_data(self) -> Optional[_builtins.int]:
+        """
+        Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_client_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberConnect")
+    def timeout_member_connect(self) -> Optional[_builtins.int]:
+        """
+        Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_member_connect")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberData")
+    def timeout_member_data(self) -> Optional[_builtins.int]:
+        """
+        Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_member_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutTcpInspect")
+    def timeout_tcp_inspect(self) -> Optional[_builtins.int]:
+        """
+        Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_tcp_inspect")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of TLS versions allowed.
+        """
+        return pulumi.get(self, "tls_versions")
+
+
+@pulumi.output_type
+class CloudLoadbalancerListenerCurrentStateInsertHeaders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "xForwardedFor":
+            suggest = "x_forwarded_for"
+        elif key == "xForwardedPort":
+            suggest = "x_forwarded_port"
+        elif key == "xForwardedProto":
+            suggest = "x_forwarded_proto"
+        elif key == "xSslClientDn":
+            suggest = "x_ssl_client_dn"
+        elif key == "xSslClientHasCert":
+            suggest = "x_ssl_client_has_cert"
+        elif key == "xSslClientVerify":
+            suggest = "x_ssl_client_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerListenerCurrentStateInsertHeaders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerListenerCurrentStateInsertHeaders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerListenerCurrentStateInsertHeaders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 x_forwarded_for: Optional[_builtins.bool] = None,
+                 x_forwarded_port: Optional[_builtins.bool] = None,
+                 x_forwarded_proto: Optional[_builtins.bool] = None,
+                 x_ssl_client_dn: Optional[_builtins.bool] = None,
+                 x_ssl_client_has_cert: Optional[_builtins.bool] = None,
+                 x_ssl_client_verify: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool x_forwarded_for: Insert X-Forwarded-For header.
+        :param _builtins.bool x_forwarded_port: Insert X-Forwarded-Port header.
+        :param _builtins.bool x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param _builtins.bool x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param _builtins.bool x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param _builtins.bool x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        if x_forwarded_for is not None:
+            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        if x_forwarded_port is not None:
+            pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        if x_forwarded_proto is not None:
+            pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        if x_ssl_client_dn is not None:
+            pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        if x_ssl_client_has_cert is not None:
+            pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        if x_ssl_client_verify is not None:
+            pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+
+@pulumi.output_type
+class CloudLoadbalancerListenerInsertHeaders(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "xForwardedFor":
+            suggest = "x_forwarded_for"
+        elif key == "xForwardedPort":
+            suggest = "x_forwarded_port"
+        elif key == "xForwardedProto":
+            suggest = "x_forwarded_proto"
+        elif key == "xSslClientDn":
+            suggest = "x_ssl_client_dn"
+        elif key == "xSslClientHasCert":
+            suggest = "x_ssl_client_has_cert"
+        elif key == "xSslClientVerify":
+            suggest = "x_ssl_client_verify"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerListenerInsertHeaders. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerListenerInsertHeaders.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerListenerInsertHeaders.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 x_forwarded_for: Optional[_builtins.bool] = None,
+                 x_forwarded_port: Optional[_builtins.bool] = None,
+                 x_forwarded_proto: Optional[_builtins.bool] = None,
+                 x_ssl_client_dn: Optional[_builtins.bool] = None,
+                 x_ssl_client_has_cert: Optional[_builtins.bool] = None,
+                 x_ssl_client_verify: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool x_forwarded_for: Insert X-Forwarded-For header.
+        :param _builtins.bool x_forwarded_port: Insert X-Forwarded-Port header.
+        :param _builtins.bool x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param _builtins.bool x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param _builtins.bool x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param _builtins.bool x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        if x_forwarded_for is not None:
+            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        if x_forwarded_port is not None:
+            pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        if x_forwarded_proto is not None:
+            pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        if x_ssl_client_dn is not None:
+            pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        if x_ssl_client_has_cert is not None:
+            pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        if x_ssl_client_verify is not None:
+            pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> Optional[_builtins.bool]:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+
+@pulumi.output_type
+class CloudLoadbalancerNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 subnet_id: _builtins.str,
+                 ip: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: ID of the network for the VIP.
+        :param _builtins.str subnet_id: ID of the subnet for the VIP. The subnet must belong to the network above.
+        :param _builtins.str ip: IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the network for the VIP.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[_builtins.str]:
+        """
+        IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+        """
+        return pulumi.get(self, "ip")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthMonitor":
+            suggest = "health_monitor"
+        elif key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerPoolCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerPoolCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerPoolCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 algorithm: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 health_monitor: Optional['outputs.CloudLoadbalancerPoolCurrentStateHealthMonitor'] = None,
+                 name: Optional[_builtins.str] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 persistence: Optional['outputs.CloudLoadbalancerPoolCurrentStatePersistence'] = None,
+                 protocol: Optional[_builtins.str] = None,
+                 provisioning_status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str algorithm: Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+        :param _builtins.str description: Pool description.
+        :param 'CloudLoadbalancerPoolCurrentStateHealthMonitorArgs' health_monitor: Health monitor configuration:
+        :param _builtins.str name: Pool name.
+        :param _builtins.str operating_status: Operating status of the pool.
+        :param 'CloudLoadbalancerPoolCurrentStatePersistenceArgs' persistence: Session persistence configuration:
+        :param _builtins.str protocol: Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+        :param _builtins.str provisioning_status: Provisioning status of the pool.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if health_monitor is not None:
+            pulumi.set(__self__, "health_monitor", health_monitor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if persistence is not None:
+            pulumi.set(__self__, "persistence", persistence)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[_builtins.str]:
+        """
+        Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Pool description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitor")
+    def health_monitor(self) -> Optional['outputs.CloudLoadbalancerPoolCurrentStateHealthMonitor']:
+        """
+        Health monitor configuration:
+        """
+        return pulumi.get(self, "health_monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def persistence(self) -> Optional['outputs.CloudLoadbalancerPoolCurrentStatePersistence']:
+        """
+        Session persistence configuration:
+        """
+        return pulumi.get(self, "persistence")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[_builtins.str]:
+        """
+        Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolCurrentStateHealthMonitor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+        elif key == "expectedCodes":
+            suggest = "expected_codes"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "httpVersion":
+            suggest = "http_version"
+        elif key == "maxRetries":
+            suggest = "max_retries"
+        elif key == "maxRetriesDown":
+            suggest = "max_retries_down"
+        elif key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+        elif key == "urlPath":
+            suggest = "url_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerPoolCurrentStateHealthMonitor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerPoolCurrentStateHealthMonitor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerPoolCurrentStateHealthMonitor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay: Optional[_builtins.int] = None,
+                 domain_name: Optional[_builtins.str] = None,
+                 expected_codes: Optional[_builtins.str] = None,
+                 http_method: Optional[_builtins.str] = None,
+                 http_version: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 max_retries: Optional[_builtins.int] = None,
+                 max_retries_down: Optional[_builtins.int] = None,
+                 name: Optional[_builtins.str] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 provisioning_status: Optional[_builtins.str] = None,
+                 timeout: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None,
+                 url_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int delay: Seconds between health checks.
+        :param _builtins.str domain_name: Domain name for health check requests.
+        :param _builtins.str expected_codes: Expected HTTP response codes (e.g. `200`, `200-202`).
+        :param _builtins.str http_method: HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        :param _builtins.str http_version: HTTP version for health checks (`1.0` or `1.1`).
+        :param _builtins.str id: Health monitor ID.
+        :param _builtins.int max_retries: Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        :param _builtins.int max_retries_down: Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        :param _builtins.str name: Health monitor name.
+        :param _builtins.str operating_status: Operating status of the pool.
+        :param _builtins.str provisioning_status: Provisioning status of the pool.
+        :param _builtins.int timeout: Seconds to wait for a health check response.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        :param _builtins.str url_path: URL path for HTTP/HTTPS health checks.
+        """
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if max_retries_down is not None:
+            pulumi.set(__self__, "max_retries_down", max_retries_down)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[_builtins.int]:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[_builtins.str]:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[_builtins.str]:
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[_builtins.str]:
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        return pulumi.get(self, "http_method")
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[_builtins.str]:
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        return pulumi.get(self, "http_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Health monitor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[_builtins.int]:
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> Optional[_builtins.int]:
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Health monitor name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[_builtins.int]:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[_builtins.str]:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolCurrentStatePersistence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieName":
+            suggest = "cookie_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerPoolCurrentStatePersistence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerPoolCurrentStatePersistence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerPoolCurrentStatePersistence.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cookie_name: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        :param _builtins.str type: Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        if cookie_name is not None:
+            pulumi.set(__self__, "cookie_name", cookie_name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> Optional[_builtins.str]:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolHealthMonitor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxRetries":
+            suggest = "max_retries"
+        elif key == "domainName":
+            suggest = "domain_name"
+        elif key == "expectedCodes":
+            suggest = "expected_codes"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "httpVersion":
+            suggest = "http_version"
+        elif key == "maxRetriesDown":
+            suggest = "max_retries_down"
+        elif key == "urlPath":
+            suggest = "url_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerPoolHealthMonitor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerPoolHealthMonitor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerPoolHealthMonitor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delay: _builtins.int,
+                 max_retries: _builtins.int,
+                 timeout: _builtins.int,
+                 type: _builtins.str,
+                 domain_name: Optional[_builtins.str] = None,
+                 expected_codes: Optional[_builtins.str] = None,
+                 http_method: Optional[_builtins.str] = None,
+                 http_version: Optional[_builtins.str] = None,
+                 max_retries_down: Optional[_builtins.int] = None,
+                 name: Optional[_builtins.str] = None,
+                 url_path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int delay: Seconds between health checks.
+        :param _builtins.int max_retries: Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        :param _builtins.int timeout: Seconds to wait for a health check response.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        :param _builtins.str domain_name: Domain name for health check requests.
+        :param _builtins.str expected_codes: Expected HTTP response codes (e.g. `200`, `200-202`).
+        :param _builtins.str http_method: HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        :param _builtins.str http_version: HTTP version for health checks (`1.0` or `1.1`).
+        :param _builtins.int max_retries_down: Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        :param _builtins.str name: Health monitor name.
+        :param _builtins.str url_path: URL path for HTTP/HTTPS health checks.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
+        if max_retries_down is not None:
+            pulumi.set(__self__, "max_retries_down", max_retries_down)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> _builtins.int:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[_builtins.str]:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[_builtins.str]:
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[_builtins.str]:
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        return pulumi.get(self, "http_method")
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[_builtins.str]:
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        return pulumi.get(self, "http_version")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> Optional[_builtins.int]:
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Health monitor name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[_builtins.str]:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolMemberCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operatingStatus":
+            suggest = "operating_status"
+        elif key == "protocolPort":
+            suggest = "protocol_port"
+        elif key == "provisioningStatus":
+            suggest = "provisioning_status"
+        elif key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerPoolMemberCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerPoolMemberCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerPoolMemberCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 backup: Optional[_builtins.bool] = None,
+                 monitor: Optional['outputs.CloudLoadbalancerPoolMemberCurrentStateMonitor'] = None,
+                 name: Optional[_builtins.str] = None,
+                 operating_status: Optional[_builtins.str] = None,
+                 protocol_port: Optional[_builtins.int] = None,
+                 provisioning_status: Optional[_builtins.str] = None,
+                 subnet_id: Optional[_builtins.str] = None,
+                 weight: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str address: IP address of the member. **Changing this value recreates the resource.**
+        :param _builtins.bool backup: When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+        :param 'CloudLoadbalancerPoolMemberCurrentStateMonitorArgs' monitor: Health monitor address and port override for this member:
+        :param _builtins.str name: Member name.
+        :param _builtins.str operating_status: Operating status of the member.
+        :param _builtins.int protocol_port: Port used by the member to receive traffic. **Changing this value recreates the resource.**
+        :param _builtins.str provisioning_status: Provisioning status of the member.
+        :param _builtins.str subnet_id: ID of the subnet the member is in. **Changing this value recreates the resource.**
+        :param _builtins.int weight: Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if monitor is not None:
+            pulumi.set(__self__, "monitor", monitor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if protocol_port is not None:
+            pulumi.set(__self__, "protocol_port", protocol_port)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        IP address of the member. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> Optional[_builtins.bool]:
+        """
+        When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "backup")
+
+    @_builtins.property
+    @pulumi.getter
+    def monitor(self) -> Optional['outputs.CloudLoadbalancerPoolMemberCurrentStateMonitor']:
+        """
+        Health monitor address and port override for this member:
+        """
+        return pulumi.get(self, "monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Member name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[_builtins.str]:
+        """
+        Operating status of the member.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> Optional[_builtins.int]:
+        """
+        Port used by the member to receive traffic. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[_builtins.str]:
+        """
+        Provisioning status of the member.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[_builtins.str]:
+        """
+        ID of the subnet the member is in. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> Optional[_builtins.int]:
+        """
+        Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolMemberCurrentStateMonitor(dict):
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str address: IP address used by the health monitor for this member.
+        :param _builtins.int port: Port used by the health monitor for this member.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        IP address used by the health monitor for this member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolMemberMonitor(dict):
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str address: IP address used by the health monitor for this member.
+        :param _builtins.int port: Port used by the health monitor for this member.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        IP address used by the health monitor for this member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class CloudLoadbalancerPoolPersistence(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cookieName":
+            suggest = "cookie_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudLoadbalancerPoolPersistence. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudLoadbalancerPoolPersistence.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudLoadbalancerPoolPersistence.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 cookie_name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        :param _builtins.str cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        """
+        pulumi.set(__self__, "type", type)
+        if cookie_name is not None:
+            pulumi.set(__self__, "cookie_name", cookie_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> Optional[_builtins.str]:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
 
 
 @pulumi.output_type
@@ -13962,6 +15970,3794 @@ class GetCloudKeyManagerSecretsSecretLocationResult(dict):
         Region of the secret.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 description: _builtins.str,
+                 flavor: 'outputs.GetCloudLoadbalancerCurrentStateFlavorResult',
+                 name: _builtins.str,
+                 network: 'outputs.GetCloudLoadbalancerCurrentStateNetworkResult',
+                 operating_status: _builtins.str,
+                 provisioning_status: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str description: Load balancer description.
+        :param 'GetCloudLoadbalancerCurrentStateFlavorArgs' flavor: Load balancer flavor reference:
+        :param _builtins.str name: Load balancer name.
+        :param 'GetCloudLoadbalancerCurrentStateNetworkArgs' network: VIP network:
+        :param _builtins.str operating_status: Operating status of the load balancer.
+        :param _builtins.str provisioning_status: Provisioning status of the load balancer.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "flavor", flavor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Load balancer description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> 'outputs.GetCloudLoadbalancerCurrentStateFlavorResult':
+        """
+        Load balancer flavor reference:
+        """
+        return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Load balancer name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudLoadbalancerCurrentStateNetworkResult':
+        """
+        VIP network:
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the load balancer.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the load balancer.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerCurrentStateFlavorResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the load balancer.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the load balancer.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerCurrentStateNetworkResult(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetCloudLoadbalancerCurrentStateNetworkAddressResult'],
+                 id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param Sequence['GetCloudLoadbalancerCurrentStateNetworkAddressArgs'] addresses: Addresses carried by the VIP port:
+        :param _builtins.str id: ID of the load balancer.
+        :param _builtins.str subnet_id: Subnet ID.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetCloudLoadbalancerCurrentStateNetworkAddressResult']:
+        """
+        Addresses carried by the VIP port:
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the load balancer.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerCurrentStateNetworkAddressResult(dict):
+    def __init__(__self__, *,
+                 ip: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str ip: IP address.
+        :param _builtins.str type: Address type (`FIXED`, `FLOATING`).
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Address type (`FIXED`, `FLOATING`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policiesL7policyResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudLoadbalancerL7policiesL7policyCurrentStateResult',
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 position: _builtins.int,
+                 redirect_http_code: _builtins.int,
+                 redirect_pool_id: _builtins.str,
+                 redirect_prefix: _builtins.str,
+                 redirect_url: _builtins.str,
+                 resource_status: _builtins.str,
+                 rules: Sequence['outputs.GetCloudLoadbalancerL7policiesL7policyRuleResult'],
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str action: L7 policy action.
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the L7 policy.
+        :param 'GetCloudLoadbalancerL7policiesL7policyCurrentStateArgs' current_state: Current state of the L7 policy:
+        :param _builtins.str description: L7 policy description.
+        :param _builtins.str id: L7 policy ID.
+        :param _builtins.str name: L7 policy name.
+        :param _builtins.int position: L7 policy position.
+        :param _builtins.int redirect_http_code: HTTP redirect code.
+        :param _builtins.str redirect_pool_id: Redirect pool ID.
+        :param _builtins.str redirect_prefix: Redirect prefix.
+        :param _builtins.str redirect_url: Redirect URL.
+        :param _builtins.str resource_status: L7 policy readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param Sequence['GetCloudLoadbalancerL7policiesL7policyRuleArgs'] rules: Current state of the L7 rules (same schema as `rules`, plus `id`, `operating_status` and `provisioning_status`).
+        :param _builtins.str updated_at: Last update date of the L7 policy.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "redirect_http_code", redirect_http_code)
+        pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+        pulumi.set(__self__, "redirect_prefix", redirect_prefix)
+        pulumi.set(__self__, "redirect_url", redirect_url)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        L7 policy action.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the L7 policy.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudLoadbalancerL7policiesL7policyCurrentStateResult':
+        """
+        Current state of the L7 policy:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        L7 policy description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        L7 policy ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        L7 policy name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> _builtins.int:
+        """
+        L7 policy position.
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectHttpCode")
+    def redirect_http_code(self) -> _builtins.int:
+        """
+        HTTP redirect code.
+        """
+        return pulumi.get(self, "redirect_http_code")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPoolId")
+    def redirect_pool_id(self) -> _builtins.str:
+        """
+        Redirect pool ID.
+        """
+        return pulumi.get(self, "redirect_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPrefix")
+    def redirect_prefix(self) -> _builtins.str:
+        """
+        Redirect prefix.
+        """
+        return pulumi.get(self, "redirect_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> _builtins.str:
+        """
+        Redirect URL.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        L7 policy readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCloudLoadbalancerL7policiesL7policyRuleResult']:
+        """
+        Current state of the L7 rules (same schema as `rules`, plus `id`, `operating_status` and `provisioning_status`).
+        """
+        return pulumi.get(self, "rules")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the L7 policy.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policiesL7policyCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 position: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 redirect_http_code: _builtins.int,
+                 redirect_pool_id: _builtins.str,
+                 redirect_prefix: _builtins.str,
+                 redirect_url: _builtins.str,
+                 rules: Sequence['outputs.GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleResult']):
+        """
+        :param _builtins.str action: L7 policy action.
+        :param _builtins.str description: L7 policy description.
+        :param _builtins.str name: L7 policy name.
+        :param _builtins.str operating_status: Operating status of the L7 policy.
+        :param _builtins.int position: L7 policy position.
+        :param _builtins.str provisioning_status: Provisioning status of the L7 policy.
+        :param _builtins.int redirect_http_code: HTTP redirect code.
+        :param _builtins.str redirect_pool_id: Redirect pool ID.
+        :param _builtins.str redirect_prefix: Redirect prefix.
+        :param _builtins.str redirect_url: Redirect URL.
+        :param Sequence['GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleArgs'] rules: Current state of the L7 rules (same schema as `rules`, plus `id`, `operating_status` and `provisioning_status`).
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "redirect_http_code", redirect_http_code)
+        pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+        pulumi.set(__self__, "redirect_prefix", redirect_prefix)
+        pulumi.set(__self__, "redirect_url", redirect_url)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        L7 policy action.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        L7 policy description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        L7 policy name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the L7 policy.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> _builtins.int:
+        """
+        L7 policy position.
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the L7 policy.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectHttpCode")
+    def redirect_http_code(self) -> _builtins.int:
+        """
+        HTTP redirect code.
+        """
+        return pulumi.get(self, "redirect_http_code")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPoolId")
+    def redirect_pool_id(self) -> _builtins.str:
+        """
+        Redirect pool ID.
+        """
+        return pulumi.get(self, "redirect_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPrefix")
+    def redirect_prefix(self) -> _builtins.str:
+        """
+        Redirect prefix.
+        """
+        return pulumi.get(self, "redirect_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> _builtins.str:
+        """
+        Redirect URL.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleResult']:
+        """
+        Current state of the L7 rules (same schema as `rules`, plus `id`, `operating_status` and `provisioning_status`).
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policiesL7policyCurrentStateRuleResult(dict):
+    def __init__(__self__, *,
+                 compare_type: _builtins.str,
+                 id: _builtins.str,
+                 invert: _builtins.bool,
+                 key: _builtins.str,
+                 operating_status: _builtins.str,
+                 provisioning_status: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param _builtins.str id: L7 policy ID.
+        :param _builtins.bool invert: Whether to invert the rule match.
+        :param _builtins.str key: Key for `COOKIE` and `HEADER` rule types.
+        :param _builtins.str operating_status: Operating status of the L7 policy.
+        :param _builtins.str provisioning_status: Provisioning status of the L7 policy.
+        :param _builtins.str type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param _builtins.str value: Value to compare against.
+        """
+        pulumi.set(__self__, "compare_type", compare_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invert", invert)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> _builtins.str:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        L7 policy ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> _builtins.bool:
+        """
+        Whether to invert the rule match.
+        """
+        return pulumi.get(self, "invert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the L7 policy.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the L7 policy.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policiesL7policyRuleResult(dict):
+    def __init__(__self__, *,
+                 compare_type: _builtins.str,
+                 invert: _builtins.bool,
+                 key: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param _builtins.bool invert: Whether to invert the rule match.
+        :param _builtins.str key: Key for `COOKIE` and `HEADER` rule types.
+        :param _builtins.str type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param _builtins.str value: Value to compare against.
+        """
+        pulumi.set(__self__, "compare_type", compare_type)
+        pulumi.set(__self__, "invert", invert)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> _builtins.str:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> _builtins.bool:
+        """
+        Whether to invert the rule match.
+        """
+        return pulumi.get(self, "invert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policyCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 action: _builtins.str,
+                 description: _builtins.str,
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 position: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 redirect_http_code: _builtins.int,
+                 redirect_pool_id: _builtins.str,
+                 redirect_prefix: _builtins.str,
+                 redirect_url: _builtins.str,
+                 rules: Sequence['outputs.GetCloudLoadbalancerL7policyCurrentStateRuleResult']):
+        """
+        :param _builtins.str action: L7 policy action.
+        :param _builtins.str description: L7 policy description.
+        :param _builtins.str name: L7 policy name.
+        :param _builtins.str operating_status: Operating status of the L7 policy.
+        :param _builtins.int position: L7 policy position.
+        :param _builtins.str provisioning_status: Provisioning status of the L7 policy.
+        :param _builtins.int redirect_http_code: HTTP redirect code.
+        :param _builtins.str redirect_pool_id: Redirect pool ID.
+        :param _builtins.str redirect_prefix: Redirect prefix.
+        :param _builtins.str redirect_url: Redirect URL.
+        :param Sequence['GetCloudLoadbalancerL7policyCurrentStateRuleArgs'] rules: Current state of the L7 rules (same schema as `rules`, plus `id`, `operating_status` and `provisioning_status`).
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "position", position)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "redirect_http_code", redirect_http_code)
+        pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+        pulumi.set(__self__, "redirect_prefix", redirect_prefix)
+        pulumi.set(__self__, "redirect_url", redirect_url)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> _builtins.str:
+        """
+        L7 policy action.
+        """
+        return pulumi.get(self, "action")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        L7 policy description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        L7 policy name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the L7 policy.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> _builtins.int:
+        """
+        L7 policy position.
+        """
+        return pulumi.get(self, "position")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the L7 policy.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectHttpCode")
+    def redirect_http_code(self) -> _builtins.int:
+        """
+        HTTP redirect code.
+        """
+        return pulumi.get(self, "redirect_http_code")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPoolId")
+    def redirect_pool_id(self) -> _builtins.str:
+        """
+        Redirect pool ID.
+        """
+        return pulumi.get(self, "redirect_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPrefix")
+    def redirect_prefix(self) -> _builtins.str:
+        """
+        Redirect prefix.
+        """
+        return pulumi.get(self, "redirect_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> _builtins.str:
+        """
+        Redirect URL.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCloudLoadbalancerL7policyCurrentStateRuleResult']:
+        """
+        Current state of the L7 rules (same schema as `rules`, plus `id`, `operating_status` and `provisioning_status`).
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policyCurrentStateRuleResult(dict):
+    def __init__(__self__, *,
+                 compare_type: _builtins.str,
+                 id: _builtins.str,
+                 invert: _builtins.bool,
+                 key: _builtins.str,
+                 operating_status: _builtins.str,
+                 provisioning_status: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param _builtins.str id: ID of the L7 policy.
+        :param _builtins.bool invert: Whether to invert the rule match.
+        :param _builtins.str key: Key for `COOKIE` and `HEADER` rule types.
+        :param _builtins.str operating_status: Operating status of the L7 policy.
+        :param _builtins.str provisioning_status: Provisioning status of the L7 policy.
+        :param _builtins.str type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param _builtins.str value: Value to compare against.
+        """
+        pulumi.set(__self__, "compare_type", compare_type)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "invert", invert)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> _builtins.str:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the L7 policy.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> _builtins.bool:
+        """
+        Whether to invert the rule match.
+        """
+        return pulumi.get(self, "invert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the L7 policy.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the L7 policy.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerL7policyRuleResult(dict):
+    def __init__(__self__, *,
+                 compare_type: _builtins.str,
+                 invert: _builtins.bool,
+                 key: _builtins.str,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param _builtins.bool invert: Whether to invert the rule match.
+        :param _builtins.str key: Key for `COOKIE` and `HEADER` rule types.
+        :param _builtins.str type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param _builtins.str value: Value to compare against.
+        """
+        pulumi.set(__self__, "compare_type", compare_type)
+        pulumi.set(__self__, "invert", invert)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> _builtins.str:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> _builtins.bool:
+        """
+        Whether to invert the rule match.
+        """
+        return pulumi.get(self, "invert")
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenerCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 allowed_cidrs: Sequence[_builtins.str],
+                 availability_zone: _builtins.str,
+                 connection_limit: _builtins.int,
+                 default_pool_id: _builtins.str,
+                 default_tls_container_ref: _builtins.str,
+                 description: _builtins.str,
+                 insert_headers: 'outputs.GetCloudLoadbalancerListenerCurrentStateInsertHeadersResult',
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 protocol: _builtins.str,
+                 protocol_port: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 region: _builtins.str,
+                 sni_container_refs: Sequence[_builtins.str],
+                 timeout_client_data: _builtins.int,
+                 timeout_member_connect: _builtins.int,
+                 timeout_member_data: _builtins.int,
+                 timeout_tcp_inspect: _builtins.int,
+                 tls_versions: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] allowed_cidrs: List of CIDRs allowed to access the listener.
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.int connection_limit: Maximum number of connections allowed.
+        :param _builtins.str default_pool_id: ID of the default pool for this listener.
+        :param _builtins.str default_tls_container_ref: Reference to the default TLS container.
+        :param _builtins.str description: Listener description.
+        :param 'GetCloudLoadbalancerListenerCurrentStateInsertHeadersArgs' insert_headers: Headers inserted into requests (same schema as `insert_headers`).
+        :param _builtins.str name: Listener name.
+        :param _builtins.str operating_status: Operating status of the listener.
+        :param _builtins.str protocol: Listener protocol.
+        :param _builtins.int protocol_port: Port number the listener listens on.
+        :param _builtins.str provisioning_status: Provisioning status of the listener.
+        :param _builtins.str region: Region.
+        :param Sequence[_builtins.str] sni_container_refs: List of SNI container references.
+        :param _builtins.int timeout_client_data: Timeout for client data in milliseconds.
+        :param _builtins.int timeout_member_connect: Timeout for member connection in milliseconds.
+        :param _builtins.int timeout_member_data: Timeout for member data in milliseconds.
+        :param _builtins.int timeout_tcp_inspect: Timeout for TCP inspect in milliseconds.
+        :param Sequence[_builtins.str] tls_versions: List of TLS versions allowed.
+        """
+        pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "default_pool_id", default_pool_id)
+        pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "insert_headers", insert_headers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+        pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+        pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+        pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+        pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCidrs")
+    def allowed_cidrs(self) -> Sequence[_builtins.str]:
+        """
+        List of CIDRs allowed to access the listener.
+        """
+        return pulumi.get(self, "allowed_cidrs")
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> _builtins.int:
+        """
+        Maximum number of connections allowed.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPoolId")
+    def default_pool_id(self) -> _builtins.str:
+        """
+        ID of the default pool for this listener.
+        """
+        return pulumi.get(self, "default_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTlsContainerRef")
+    def default_tls_container_ref(self) -> _builtins.str:
+        """
+        Reference to the default TLS container.
+        """
+        return pulumi.get(self, "default_tls_container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Listener description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="insertHeaders")
+    def insert_headers(self) -> 'outputs.GetCloudLoadbalancerListenerCurrentStateInsertHeadersResult':
+        """
+        Headers inserted into requests (same schema as `insert_headers`).
+        """
+        return pulumi.get(self, "insert_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Listener name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the listener.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Listener protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        """
+        Port number the listener listens on.
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the listener.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="sniContainerRefs")
+    def sni_container_refs(self) -> Sequence[_builtins.str]:
+        """
+        List of SNI container references.
+        """
+        return pulumi.get(self, "sni_container_refs")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutClientData")
+    def timeout_client_data(self) -> _builtins.int:
+        """
+        Timeout for client data in milliseconds.
+        """
+        return pulumi.get(self, "timeout_client_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberConnect")
+    def timeout_member_connect(self) -> _builtins.int:
+        """
+        Timeout for member connection in milliseconds.
+        """
+        return pulumi.get(self, "timeout_member_connect")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberData")
+    def timeout_member_data(self) -> _builtins.int:
+        """
+        Timeout for member data in milliseconds.
+        """
+        return pulumi.get(self, "timeout_member_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutTcpInspect")
+    def timeout_tcp_inspect(self) -> _builtins.int:
+        """
+        Timeout for TCP inspect in milliseconds.
+        """
+        return pulumi.get(self, "timeout_tcp_inspect")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Sequence[_builtins.str]:
+        """
+        List of TLS versions allowed.
+        """
+        return pulumi.get(self, "tls_versions")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenerCurrentStateInsertHeadersResult(dict):
+    def __init__(__self__, *,
+                 x_forwarded_for: _builtins.bool,
+                 x_forwarded_port: _builtins.bool,
+                 x_forwarded_proto: _builtins.bool,
+                 x_ssl_client_dn: _builtins.bool,
+                 x_ssl_client_has_cert: _builtins.bool,
+                 x_ssl_client_verify: _builtins.bool):
+        """
+        :param _builtins.bool x_forwarded_for: Insert X-Forwarded-For header.
+        :param _builtins.bool x_forwarded_port: Insert X-Forwarded-Port header.
+        :param _builtins.bool x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param _builtins.bool x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param _builtins.bool x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param _builtins.bool x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenerInsertHeadersResult(dict):
+    def __init__(__self__, *,
+                 x_forwarded_for: _builtins.bool,
+                 x_forwarded_port: _builtins.bool,
+                 x_forwarded_proto: _builtins.bool,
+                 x_ssl_client_dn: _builtins.bool,
+                 x_ssl_client_has_cert: _builtins.bool,
+                 x_ssl_client_verify: _builtins.bool):
+        """
+        :param _builtins.bool x_forwarded_for: Insert X-Forwarded-For header.
+        :param _builtins.bool x_forwarded_port: Insert X-Forwarded-Port header.
+        :param _builtins.bool x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param _builtins.bool x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param _builtins.bool x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param _builtins.bool x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenersListenerResult(dict):
+    def __init__(__self__, *,
+                 allowed_cidrs: Sequence[_builtins.str],
+                 checksum: _builtins.str,
+                 connection_limit: _builtins.int,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudLoadbalancerListenersListenerCurrentStateResult',
+                 default_pool_id: _builtins.str,
+                 default_tls_container_ref: _builtins.str,
+                 description: _builtins.str,
+                 id: _builtins.str,
+                 insert_headers: 'outputs.GetCloudLoadbalancerListenersListenerInsertHeadersResult',
+                 name: _builtins.str,
+                 protocol: _builtins.str,
+                 protocol_port: _builtins.int,
+                 resource_status: _builtins.str,
+                 sni_container_refs: Sequence[_builtins.str],
+                 timeout_client_data: _builtins.int,
+                 timeout_member_connect: _builtins.int,
+                 timeout_member_data: _builtins.int,
+                 timeout_tcp_inspect: _builtins.int,
+                 tls_versions: Sequence[_builtins.str],
+                 updated_at: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_cidrs: List of CIDRs allowed to access the listener.
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.int connection_limit: Maximum number of connections allowed.
+        :param _builtins.str created_at: Creation date of the listener.
+        :param 'GetCloudLoadbalancerListenersListenerCurrentStateArgs' current_state: Current state of the listener:
+        :param _builtins.str default_pool_id: ID of the default pool for this listener.
+        :param _builtins.str default_tls_container_ref: Reference to the default TLS container.
+        :param _builtins.str description: Listener description.
+        :param _builtins.str id: Listener ID.
+        :param 'GetCloudLoadbalancerListenersListenerInsertHeadersArgs' insert_headers: Headers inserted into requests (same schema as above).
+        :param _builtins.str name: Listener name.
+        :param _builtins.str protocol: Listener protocol.
+        :param _builtins.int protocol_port: Port number the listener listens on.
+        :param _builtins.str resource_status: Listener readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param Sequence[_builtins.str] sni_container_refs: List of SNI container references.
+        :param _builtins.int timeout_client_data: Timeout for client data in milliseconds.
+        :param _builtins.int timeout_member_connect: Timeout for member connection in milliseconds.
+        :param _builtins.int timeout_member_data: Timeout for member data in milliseconds.
+        :param _builtins.int timeout_tcp_inspect: Timeout for TCP inspect in milliseconds.
+        :param Sequence[_builtins.str] tls_versions: List of TLS versions allowed.
+        :param _builtins.str updated_at: Last update date of the listener.
+        """
+        pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "default_pool_id", default_pool_id)
+        pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "insert_headers", insert_headers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+        pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+        pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+        pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+        pulumi.set(__self__, "tls_versions", tls_versions)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCidrs")
+    def allowed_cidrs(self) -> Sequence[_builtins.str]:
+        """
+        List of CIDRs allowed to access the listener.
+        """
+        return pulumi.get(self, "allowed_cidrs")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> _builtins.int:
+        """
+        Maximum number of connections allowed.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the listener.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudLoadbalancerListenersListenerCurrentStateResult':
+        """
+        Current state of the listener:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPoolId")
+    def default_pool_id(self) -> _builtins.str:
+        """
+        ID of the default pool for this listener.
+        """
+        return pulumi.get(self, "default_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTlsContainerRef")
+    def default_tls_container_ref(self) -> _builtins.str:
+        """
+        Reference to the default TLS container.
+        """
+        return pulumi.get(self, "default_tls_container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Listener description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Listener ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="insertHeaders")
+    def insert_headers(self) -> 'outputs.GetCloudLoadbalancerListenersListenerInsertHeadersResult':
+        """
+        Headers inserted into requests (same schema as above).
+        """
+        return pulumi.get(self, "insert_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Listener name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Listener protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        """
+        Port number the listener listens on.
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Listener readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="sniContainerRefs")
+    def sni_container_refs(self) -> Sequence[_builtins.str]:
+        """
+        List of SNI container references.
+        """
+        return pulumi.get(self, "sni_container_refs")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutClientData")
+    def timeout_client_data(self) -> _builtins.int:
+        """
+        Timeout for client data in milliseconds.
+        """
+        return pulumi.get(self, "timeout_client_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberConnect")
+    def timeout_member_connect(self) -> _builtins.int:
+        """
+        Timeout for member connection in milliseconds.
+        """
+        return pulumi.get(self, "timeout_member_connect")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberData")
+    def timeout_member_data(self) -> _builtins.int:
+        """
+        Timeout for member data in milliseconds.
+        """
+        return pulumi.get(self, "timeout_member_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutTcpInspect")
+    def timeout_tcp_inspect(self) -> _builtins.int:
+        """
+        Timeout for TCP inspect in milliseconds.
+        """
+        return pulumi.get(self, "timeout_tcp_inspect")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Sequence[_builtins.str]:
+        """
+        List of TLS versions allowed.
+        """
+        return pulumi.get(self, "tls_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the listener.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenersListenerCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 allowed_cidrs: Sequence[_builtins.str],
+                 availability_zone: _builtins.str,
+                 connection_limit: _builtins.int,
+                 default_pool_id: _builtins.str,
+                 default_tls_container_ref: _builtins.str,
+                 description: _builtins.str,
+                 insert_headers: 'outputs.GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersResult',
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 protocol: _builtins.str,
+                 protocol_port: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 region: _builtins.str,
+                 sni_container_refs: Sequence[_builtins.str],
+                 timeout_client_data: _builtins.int,
+                 timeout_member_connect: _builtins.int,
+                 timeout_member_data: _builtins.int,
+                 timeout_tcp_inspect: _builtins.int,
+                 tls_versions: Sequence[_builtins.str]):
+        """
+        :param Sequence[_builtins.str] allowed_cidrs: List of CIDRs allowed to access the listener.
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.int connection_limit: Maximum number of connections allowed.
+        :param _builtins.str default_pool_id: ID of the default pool for this listener.
+        :param _builtins.str default_tls_container_ref: Reference to the default TLS container.
+        :param _builtins.str description: Listener description.
+        :param 'GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersArgs' insert_headers: Headers inserted into requests (same schema as above).
+        :param _builtins.str name: Listener name.
+        :param _builtins.str operating_status: Operating status of the listener.
+        :param _builtins.str protocol: Listener protocol.
+        :param _builtins.int protocol_port: Port number the listener listens on.
+        :param _builtins.str provisioning_status: Provisioning status of the listener.
+        :param _builtins.str region: Region.
+        :param Sequence[_builtins.str] sni_container_refs: List of SNI container references.
+        :param _builtins.int timeout_client_data: Timeout for client data in milliseconds.
+        :param _builtins.int timeout_member_connect: Timeout for member connection in milliseconds.
+        :param _builtins.int timeout_member_data: Timeout for member data in milliseconds.
+        :param _builtins.int timeout_tcp_inspect: Timeout for TCP inspect in milliseconds.
+        :param Sequence[_builtins.str] tls_versions: List of TLS versions allowed.
+        """
+        pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "default_pool_id", default_pool_id)
+        pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "insert_headers", insert_headers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+        pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+        pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+        pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+        pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCidrs")
+    def allowed_cidrs(self) -> Sequence[_builtins.str]:
+        """
+        List of CIDRs allowed to access the listener.
+        """
+        return pulumi.get(self, "allowed_cidrs")
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> _builtins.int:
+        """
+        Maximum number of connections allowed.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPoolId")
+    def default_pool_id(self) -> _builtins.str:
+        """
+        ID of the default pool for this listener.
+        """
+        return pulumi.get(self, "default_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTlsContainerRef")
+    def default_tls_container_ref(self) -> _builtins.str:
+        """
+        Reference to the default TLS container.
+        """
+        return pulumi.get(self, "default_tls_container_ref")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Listener description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="insertHeaders")
+    def insert_headers(self) -> 'outputs.GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersResult':
+        """
+        Headers inserted into requests (same schema as above).
+        """
+        return pulumi.get(self, "insert_headers")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Listener name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the listener.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Listener protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        """
+        Port number the listener listens on.
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the listener.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="sniContainerRefs")
+    def sni_container_refs(self) -> Sequence[_builtins.str]:
+        """
+        List of SNI container references.
+        """
+        return pulumi.get(self, "sni_container_refs")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutClientData")
+    def timeout_client_data(self) -> _builtins.int:
+        """
+        Timeout for client data in milliseconds.
+        """
+        return pulumi.get(self, "timeout_client_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberConnect")
+    def timeout_member_connect(self) -> _builtins.int:
+        """
+        Timeout for member connection in milliseconds.
+        """
+        return pulumi.get(self, "timeout_member_connect")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberData")
+    def timeout_member_data(self) -> _builtins.int:
+        """
+        Timeout for member data in milliseconds.
+        """
+        return pulumi.get(self, "timeout_member_data")
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutTcpInspect")
+    def timeout_tcp_inspect(self) -> _builtins.int:
+        """
+        Timeout for TCP inspect in milliseconds.
+        """
+        return pulumi.get(self, "timeout_tcp_inspect")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Sequence[_builtins.str]:
+        """
+        List of TLS versions allowed.
+        """
+        return pulumi.get(self, "tls_versions")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenersListenerCurrentStateInsertHeadersResult(dict):
+    def __init__(__self__, *,
+                 x_forwarded_for: _builtins.bool,
+                 x_forwarded_port: _builtins.bool,
+                 x_forwarded_proto: _builtins.bool,
+                 x_ssl_client_dn: _builtins.bool,
+                 x_ssl_client_has_cert: _builtins.bool,
+                 x_ssl_client_verify: _builtins.bool):
+        """
+        :param _builtins.bool x_forwarded_for: Insert X-Forwarded-For header.
+        :param _builtins.bool x_forwarded_port: Insert X-Forwarded-Port header.
+        :param _builtins.bool x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param _builtins.bool x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param _builtins.bool x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param _builtins.bool x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerListenersListenerInsertHeadersResult(dict):
+    def __init__(__self__, *,
+                 x_forwarded_for: _builtins.bool,
+                 x_forwarded_port: _builtins.bool,
+                 x_forwarded_proto: _builtins.bool,
+                 x_ssl_client_dn: _builtins.bool,
+                 x_ssl_client_has_cert: _builtins.bool,
+                 x_ssl_client_verify: _builtins.bool):
+        """
+        :param _builtins.bool x_forwarded_for: Insert X-Forwarded-For header.
+        :param _builtins.bool x_forwarded_port: Insert X-Forwarded-Port header.
+        :param _builtins.bool x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param _builtins.bool x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param _builtins.bool x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param _builtins.bool x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> _builtins.bool:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> _builtins.bool:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerNetworkResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str id: ID of the load balancer.
+        :param _builtins.str ip: IP address.
+        :param _builtins.str subnet_id: Subnet ID.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the load balancer.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 description: _builtins.str,
+                 health_monitor: 'outputs.GetCloudLoadbalancerPoolCurrentStateHealthMonitorResult',
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 persistence: 'outputs.GetCloudLoadbalancerPoolCurrentStatePersistenceResult',
+                 protocol: _builtins.str,
+                 provisioning_status: _builtins.str):
+        """
+        :param _builtins.str algorithm: Load balancing algorithm.
+        :param _builtins.str description: Pool description.
+        :param 'GetCloudLoadbalancerPoolCurrentStateHealthMonitorArgs' health_monitor: Health monitor configuration (same schema as `health_monitor`), plus:
+        :param _builtins.str name: Pool name.
+        :param _builtins.str operating_status: Operating status of the pool.
+        :param 'GetCloudLoadbalancerPoolCurrentStatePersistenceArgs' persistence: Session persistence configuration (same schema as `persistence`).
+        :param _builtins.str protocol: Protocol used by the pool.
+        :param _builtins.str provisioning_status: Provisioning status of the pool.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "health_monitor", health_monitor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "persistence", persistence)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Load balancing algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Pool description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitor")
+    def health_monitor(self) -> 'outputs.GetCloudLoadbalancerPoolCurrentStateHealthMonitorResult':
+        """
+        Health monitor configuration (same schema as `health_monitor`), plus:
+        """
+        return pulumi.get(self, "health_monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def persistence(self) -> 'outputs.GetCloudLoadbalancerPoolCurrentStatePersistenceResult':
+        """
+        Session persistence configuration (same schema as `persistence`).
+        """
+        return pulumi.get(self, "persistence")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol used by the pool.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolCurrentStateHealthMonitorResult(dict):
+    def __init__(__self__, *,
+                 delay: _builtins.int,
+                 domain_name: _builtins.str,
+                 expected_codes: _builtins.str,
+                 http_method: _builtins.str,
+                 http_version: _builtins.str,
+                 id: _builtins.str,
+                 max_retries: _builtins.int,
+                 max_retries_down: _builtins.int,
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 provisioning_status: _builtins.str,
+                 timeout: _builtins.int,
+                 type: _builtins.str,
+                 url_path: _builtins.str):
+        """
+        :param _builtins.int delay: Seconds between health checks.
+        :param _builtins.str domain_name: Domain name for health check requests.
+        :param _builtins.str expected_codes: Expected HTTP response codes (e.g. `200`, `200-202`).
+        :param _builtins.str http_method: HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        :param _builtins.str http_version: HTTP version for health checks (`1.0` or `1.1`).
+        :param _builtins.str id: ID of the pool.
+        :param _builtins.int max_retries: Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        :param _builtins.int max_retries_down: Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        :param _builtins.str name: Pool name.
+        :param _builtins.str operating_status: Operating status of the pool.
+        :param _builtins.str provisioning_status: Provisioning status of the pool.
+        :param _builtins.int timeout: Seconds to wait for a health check response.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        :param _builtins.str url_path: URL path for HTTP/HTTPS health checks.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "expected_codes", expected_codes)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "http_version", http_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "max_retries_down", max_retries_down)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> _builtins.int:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> _builtins.str:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> _builtins.str:
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> _builtins.str:
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        return pulumi.get(self, "http_method")
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> _builtins.str:
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        return pulumi.get(self, "http_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the pool.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> _builtins.str:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolCurrentStatePersistenceResult(dict):
+    def __init__(__self__, *,
+                 cookie_name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        pulumi.set(__self__, "cookie_name", cookie_name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> _builtins.str:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolHealthMonitorResult(dict):
+    def __init__(__self__, *,
+                 delay: _builtins.int,
+                 domain_name: _builtins.str,
+                 expected_codes: _builtins.str,
+                 http_method: _builtins.str,
+                 http_version: _builtins.str,
+                 max_retries: _builtins.int,
+                 max_retries_down: _builtins.int,
+                 name: _builtins.str,
+                 timeout: _builtins.int,
+                 type: _builtins.str,
+                 url_path: _builtins.str):
+        """
+        :param _builtins.int delay: Seconds between health checks.
+        :param _builtins.str domain_name: Domain name for health check requests.
+        :param _builtins.str expected_codes: Expected HTTP response codes (e.g. `200`, `200-202`).
+        :param _builtins.str http_method: HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        :param _builtins.str http_version: HTTP version for health checks (`1.0` or `1.1`).
+        :param _builtins.int max_retries: Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        :param _builtins.int max_retries_down: Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        :param _builtins.str name: Pool name.
+        :param _builtins.int timeout: Seconds to wait for a health check response.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        :param _builtins.str url_path: URL path for HTTP/HTTPS health checks.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "expected_codes", expected_codes)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "http_version", http_version)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "max_retries_down", max_retries_down)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> _builtins.int:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> _builtins.str:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> _builtins.str:
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> _builtins.str:
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        return pulumi.get(self, "http_method")
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> _builtins.str:
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        return pulumi.get(self, "http_version")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> _builtins.str:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMemberCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 backup: _builtins.bool,
+                 monitor: 'outputs.GetCloudLoadbalancerPoolMemberCurrentStateMonitorResult',
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 protocol_port: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 subnet_id: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.bool backup: Whether this member is a backup member.
+        :param 'GetCloudLoadbalancerPoolMemberCurrentStateMonitorArgs' monitor: Health monitor address and port override (same schema as `monitor`).
+        :param _builtins.str name: Member name.
+        :param _builtins.str operating_status: Operating status of the member.
+        :param _builtins.int protocol_port: Port used by the member.
+        :param _builtins.str provisioning_status: Provisioning status of the member.
+        :param _builtins.str subnet_id: ID of the subnet the member is in.
+        :param _builtins.int weight: Weight of the member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "backup", backup)
+        pulumi.set(__self__, "monitor", monitor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.bool:
+        """
+        Whether this member is a backup member.
+        """
+        return pulumi.get(self, "backup")
+
+    @_builtins.property
+    @pulumi.getter
+    def monitor(self) -> 'outputs.GetCloudLoadbalancerPoolMemberCurrentStateMonitorResult':
+        """
+        Health monitor address and port override (same schema as `monitor`).
+        """
+        return pulumi.get(self, "monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Member name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the member.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        """
+        Port used by the member.
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the member.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet the member is in.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Weight of the member.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMemberCurrentStateMonitorResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.int port: Port used by the health monitor for this member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMemberMonitorResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.int port: Port used by the health monitor for this member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMembersMemberResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 backup: _builtins.bool,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudLoadbalancerPoolMembersMemberCurrentStateResult',
+                 id: _builtins.str,
+                 monitor: 'outputs.GetCloudLoadbalancerPoolMembersMemberMonitorResult',
+                 name: _builtins.str,
+                 protocol_port: _builtins.int,
+                 resource_status: _builtins.str,
+                 subnet_id: _builtins.str,
+                 updated_at: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.bool backup: Whether this member is a backup member.
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the member.
+        :param 'GetCloudLoadbalancerPoolMembersMemberCurrentStateArgs' current_state: Current state of the member:
+        :param _builtins.str id: Member ID.
+        :param 'GetCloudLoadbalancerPoolMembersMemberMonitorArgs' monitor: Health monitor address and port override (same schema as above).
+        :param _builtins.str name: Member name.
+        :param _builtins.int protocol_port: Port used by the member.
+        :param _builtins.str resource_status: Member readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str subnet_id: ID of the subnet the member is in.
+        :param _builtins.str updated_at: Last update date of the member.
+        :param _builtins.int weight: Weight of the member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "backup", backup)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "monitor", monitor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.bool:
+        """
+        Whether this member is a backup member.
+        """
+        return pulumi.get(self, "backup")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the member.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudLoadbalancerPoolMembersMemberCurrentStateResult':
+        """
+        Current state of the member:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Member ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def monitor(self) -> 'outputs.GetCloudLoadbalancerPoolMembersMemberMonitorResult':
+        """
+        Health monitor address and port override (same schema as above).
+        """
+        return pulumi.get(self, "monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Member name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        """
+        Port used by the member.
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Member readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet the member is in.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the member.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Weight of the member.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMembersMemberCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 backup: _builtins.bool,
+                 monitor: 'outputs.GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorResult',
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 protocol_port: _builtins.int,
+                 provisioning_status: _builtins.str,
+                 subnet_id: _builtins.str,
+                 weight: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.bool backup: Whether this member is a backup member.
+        :param 'GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorArgs' monitor: Health monitor address and port override (same schema as above).
+        :param _builtins.str name: Member name.
+        :param _builtins.str operating_status: Operating status of the member.
+        :param _builtins.int protocol_port: Port used by the member.
+        :param _builtins.str provisioning_status: Provisioning status of the member.
+        :param _builtins.str subnet_id: ID of the subnet the member is in.
+        :param _builtins.int weight: Weight of the member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "backup", backup)
+        pulumi.set(__self__, "monitor", monitor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "protocol_port", protocol_port)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> _builtins.bool:
+        """
+        Whether this member is a backup member.
+        """
+        return pulumi.get(self, "backup")
+
+    @_builtins.property
+    @pulumi.getter
+    def monitor(self) -> 'outputs.GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorResult':
+        """
+        Health monitor address and port override (same schema as above).
+        """
+        return pulumi.get(self, "monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Member name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the member.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> _builtins.int:
+        """
+        Port used by the member.
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the member.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        ID of the subnet the member is in.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> _builtins.int:
+        """
+        Weight of the member.
+        """
+        return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitorResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.int port: Port used by the health monitor for this member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolMembersMemberMonitorResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 port: _builtins.int):
+        """
+        :param _builtins.str address: IP address of the member.
+        :param _builtins.int port: Port used by the health monitor for this member.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        IP address of the member.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> _builtins.int:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolPersistenceResult(dict):
+    def __init__(__self__, *,
+                 cookie_name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        pulumi.set(__self__, "cookie_name", cookie_name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> _builtins.str:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolsPoolResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudLoadbalancerPoolsPoolCurrentStateResult',
+                 description: _builtins.str,
+                 health_monitor: 'outputs.GetCloudLoadbalancerPoolsPoolHealthMonitorResult',
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 persistence: 'outputs.GetCloudLoadbalancerPoolsPoolPersistenceResult',
+                 protocol: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str algorithm: Load balancing algorithm.
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the pool.
+        :param 'GetCloudLoadbalancerPoolsPoolCurrentStateArgs' current_state: Current state of the pool:
+        :param _builtins.str description: Pool description.
+        :param 'GetCloudLoadbalancerPoolsPoolHealthMonitorArgs' health_monitor: Health monitor configuration, plus:
+        :param _builtins.str id: Health monitor ID.
+        :param _builtins.str name: Pool name.
+        :param 'GetCloudLoadbalancerPoolsPoolPersistenceArgs' persistence: Session persistence configuration (same schema as above).
+        :param _builtins.str protocol: Protocol used by the pool.
+        :param _builtins.str resource_status: Pool readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the pool.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "health_monitor", health_monitor)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "persistence", persistence)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Load balancing algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the pool.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudLoadbalancerPoolsPoolCurrentStateResult':
+        """
+        Current state of the pool:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Pool description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitor")
+    def health_monitor(self) -> 'outputs.GetCloudLoadbalancerPoolsPoolHealthMonitorResult':
+        """
+        Health monitor configuration, plus:
+        """
+        return pulumi.get(self, "health_monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Health monitor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def persistence(self) -> 'outputs.GetCloudLoadbalancerPoolsPoolPersistenceResult':
+        """
+        Session persistence configuration (same schema as above).
+        """
+        return pulumi.get(self, "persistence")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol used by the pool.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Pool readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the pool.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolsPoolCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 description: _builtins.str,
+                 health_monitor: 'outputs.GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorResult',
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 persistence: 'outputs.GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceResult',
+                 protocol: _builtins.str,
+                 provisioning_status: _builtins.str):
+        """
+        :param _builtins.str algorithm: Load balancing algorithm.
+        :param _builtins.str description: Pool description.
+        :param 'GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorArgs' health_monitor: Health monitor configuration, plus:
+        :param _builtins.str name: Pool name.
+        :param _builtins.str operating_status: Operating status of the pool.
+        :param 'GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceArgs' persistence: Session persistence configuration (same schema as above).
+        :param _builtins.str protocol: Protocol used by the pool.
+        :param _builtins.str provisioning_status: Provisioning status of the pool.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "health_monitor", health_monitor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "persistence", persistence)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Load balancing algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Pool description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitor")
+    def health_monitor(self) -> 'outputs.GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorResult':
+        """
+        Health monitor configuration, plus:
+        """
+        return pulumi.get(self, "health_monitor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def persistence(self) -> 'outputs.GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceResult':
+        """
+        Session persistence configuration (same schema as above).
+        """
+        return pulumi.get(self, "persistence")
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> _builtins.str:
+        """
+        Protocol used by the pool.
+        """
+        return pulumi.get(self, "protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitorResult(dict):
+    def __init__(__self__, *,
+                 delay: _builtins.int,
+                 domain_name: _builtins.str,
+                 expected_codes: _builtins.str,
+                 http_method: _builtins.str,
+                 http_version: _builtins.str,
+                 id: _builtins.str,
+                 max_retries: _builtins.int,
+                 max_retries_down: _builtins.int,
+                 name: _builtins.str,
+                 operating_status: _builtins.str,
+                 provisioning_status: _builtins.str,
+                 timeout: _builtins.int,
+                 type: _builtins.str,
+                 url_path: _builtins.str):
+        """
+        :param _builtins.int delay: Seconds between health checks.
+        :param _builtins.str domain_name: Domain name for health check requests.
+        :param _builtins.str expected_codes: Expected HTTP response codes.
+        :param _builtins.str http_method: HTTP method for health checks.
+        :param _builtins.str http_version: HTTP version for health checks.
+        :param _builtins.str id: Health monitor ID.
+        :param _builtins.int max_retries: Number of consecutive health check failures before marking member as unhealthy.
+        :param _builtins.int max_retries_down: Number of consecutive health check failures before marking member as `ERROR`.
+        :param _builtins.str name: Pool name.
+        :param _builtins.str operating_status: Operating status of the pool.
+        :param _builtins.str provisioning_status: Provisioning status of the pool.
+        :param _builtins.int timeout: Seconds to wait for a health check response.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        :param _builtins.str url_path: URL path for HTTP/HTTPS health checks.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "expected_codes", expected_codes)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "http_version", http_version)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "max_retries_down", max_retries_down)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> _builtins.int:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> _builtins.str:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> _builtins.str:
+        """
+        Expected HTTP response codes.
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> _builtins.str:
+        """
+        HTTP method for health checks.
+        """
+        return pulumi.get(self, "http_method")
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> _builtins.str:
+        """
+        HTTP version for health checks.
+        """
+        return pulumi.get(self, "http_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Health monitor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking member as unhealthy.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking member as `ERROR`.
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> _builtins.str:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolsPoolCurrentStatePersistenceResult(dict):
+    def __init__(__self__, *,
+                 cookie_name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        pulumi.set(__self__, "cookie_name", cookie_name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> _builtins.str:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolsPoolHealthMonitorResult(dict):
+    def __init__(__self__, *,
+                 delay: _builtins.int,
+                 domain_name: _builtins.str,
+                 expected_codes: _builtins.str,
+                 http_method: _builtins.str,
+                 http_version: _builtins.str,
+                 max_retries: _builtins.int,
+                 max_retries_down: _builtins.int,
+                 name: _builtins.str,
+                 timeout: _builtins.int,
+                 type: _builtins.str,
+                 url_path: _builtins.str):
+        """
+        :param _builtins.int delay: Seconds between health checks.
+        :param _builtins.str domain_name: Domain name for health check requests.
+        :param _builtins.str expected_codes: Expected HTTP response codes.
+        :param _builtins.str http_method: HTTP method for health checks.
+        :param _builtins.str http_version: HTTP version for health checks.
+        :param _builtins.int max_retries: Number of consecutive health check failures before marking member as unhealthy.
+        :param _builtins.int max_retries_down: Number of consecutive health check failures before marking member as `ERROR`.
+        :param _builtins.str name: Pool name.
+        :param _builtins.int timeout: Seconds to wait for a health check response.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        :param _builtins.str url_path: URL path for HTTP/HTTPS health checks.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "expected_codes", expected_codes)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "http_version", http_version)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "max_retries_down", max_retries_down)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> _builtins.int:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> _builtins.str:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> _builtins.str:
+        """
+        Expected HTTP response codes.
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> _builtins.str:
+        """
+        HTTP method for health checks.
+        """
+        return pulumi.get(self, "http_method")
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> _builtins.str:
+        """
+        HTTP version for health checks.
+        """
+        return pulumi.get(self, "http_version")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking member as unhealthy.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> _builtins.int:
+        """
+        Number of consecutive health check failures before marking member as `ERROR`.
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> _builtins.int:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> _builtins.str:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancerPoolsPoolPersistenceResult(dict):
+    def __init__(__self__, *,
+                 cookie_name: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        :param _builtins.str type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        pulumi.set(__self__, "cookie_name", cookie_name)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> _builtins.str:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancersLoadbalancerResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudLoadbalancersLoadbalancerCurrentStateResult',
+                 description: _builtins.str,
+                 flavor_name: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 network: 'outputs.GetCloudLoadbalancersLoadbalancerNetworkResult',
+                 region: _builtins.str,
+                 resource_status: _builtins.str,
+                 updated_at: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the load balancer.
+        :param 'GetCloudLoadbalancersLoadbalancerCurrentStateArgs' current_state: Current state of the load balancer:
+        :param _builtins.str description: Load balancer description.
+        :param _builtins.str flavor_name: Name of the load balancer flavor.
+        :param _builtins.str id: Flavor ID.
+        :param _builtins.str name: Load balancer name.
+        :param 'GetCloudLoadbalancersLoadbalancerNetworkArgs' network: VIP network:
+        :param _builtins.str region: Region.
+        :param _builtins.str resource_status: Load balancer readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        :param _builtins.str updated_at: Last update date of the load balancer.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "flavor_name", flavor_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "updated_at", updated_at)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the load balancer.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudLoadbalancersLoadbalancerCurrentStateResult':
+        """
+        Current state of the load balancer:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Load balancer description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorName")
+    def flavor_name(self) -> _builtins.str:
+        """
+        Name of the load balancer flavor.
+        """
+        return pulumi.get(self, "flavor_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Flavor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Load balancer name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudLoadbalancersLoadbalancerNetworkResult':
+        """
+        VIP network:
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Load balancer readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the load balancer.
+        """
+        return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancersLoadbalancerCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 availability_zone: _builtins.str,
+                 description: _builtins.str,
+                 flavor: 'outputs.GetCloudLoadbalancersLoadbalancerCurrentStateFlavorResult',
+                 name: _builtins.str,
+                 network: 'outputs.GetCloudLoadbalancersLoadbalancerCurrentStateNetworkResult',
+                 operating_status: _builtins.str,
+                 provisioning_status: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str availability_zone: Availability zone.
+        :param _builtins.str description: Load balancer description.
+        :param 'GetCloudLoadbalancersLoadbalancerCurrentStateFlavorArgs' flavor: Load balancer flavor reference:
+        :param _builtins.str name: Load balancer name.
+        :param 'GetCloudLoadbalancersLoadbalancerCurrentStateNetworkArgs' network: VIP network:
+        :param _builtins.str operating_status: Operating status of the load balancer.
+        :param _builtins.str provisioning_status: Provisioning status of the load balancer.
+        :param _builtins.str region: Region.
+        """
+        pulumi.set(__self__, "availability_zone", availability_zone)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "flavor", flavor)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "operating_status", operating_status)
+        pulumi.set(__self__, "provisioning_status", provisioning_status)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> _builtins.str:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Load balancer description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> 'outputs.GetCloudLoadbalancersLoadbalancerCurrentStateFlavorResult':
+        """
+        Load balancer flavor reference:
+        """
+        return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Load balancer name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetCloudLoadbalancersLoadbalancerCurrentStateNetworkResult':
+        """
+        VIP network:
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> _builtins.str:
+        """
+        Operating status of the load balancer.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> _builtins.str:
+        """
+        Provisioning status of the load balancer.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancersLoadbalancerCurrentStateFlavorResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str):
+        """
+        :param _builtins.str id: Flavor ID.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Flavor ID.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancersLoadbalancerCurrentStateNetworkResult(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressResult'],
+                 id: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param Sequence['GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressArgs'] addresses: Addresses carried by the VIP port:
+        :param _builtins.str id: Flavor ID.
+        :param _builtins.str subnet_id: Subnet ID.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressResult']:
+        """
+        Addresses carried by the VIP port:
+        """
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Flavor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "subnet_id")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddressResult(dict):
+    def __init__(__self__, *,
+                 ip: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str ip: IP address.
+        :param _builtins.str type: Address type (`FIXED`, `FLOATING`).
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Address type (`FIXED`, `FLOATING`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetCloudLoadbalancersLoadbalancerNetworkResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 ip: _builtins.str,
+                 subnet_id: _builtins.str):
+        """
+        :param _builtins.str id: Flavor ID.
+        :param _builtins.str ip: IP address.
+        :param _builtins.str subnet_id: Subnet ID.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Flavor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> _builtins.str:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.str:
+        """
+        Subnet ID.
+        """
+        return pulumi.get(self, "subnet_id")
 
 
 @pulumi.output_type

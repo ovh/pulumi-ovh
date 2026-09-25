@@ -176,6 +176,64 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Network Update
+ *
+ * You can update the network of an existing database service without recreating it.
+ *
+ * To switch from public to private network, add `networkId` and `subnetId` to the nodes:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const db = new ovh.cloudproject.Database("db", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-database",
+ *     engine: "postgresql",
+ *     version: "14",
+ *     plan: "business",
+ *     nodes: [
+ *         {
+ *             region: "GRA",
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             subnetId: "YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY",
+ *         },
+ *         {
+ *             region: "GRA",
+ *             networkId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+ *             subnetId: "YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY",
+ *         },
+ *     ],
+ *     flavor: "db1-4",
+ * });
+ * ```
+ *
+ * To switch from private to public network, remove `networkId` and `subnetId` from the nodes:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as ovh from "@ovhcloud/pulumi-ovh";
+ *
+ * const db = new ovh.cloudproject.Database("db", {
+ *     serviceName: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+ *     description: "my-database",
+ *     engine: "postgresql",
+ *     version: "14",
+ *     plan: "business",
+ *     nodes: [
+ *         {
+ *             region: "GRA",
+ *         },
+ *         {
+ *             region: "GRA",
+ *         },
+ *     ],
+ *     flavor: "db1-4",
+ * });
+ * ```
+ *
+ * > **Important:** Changing the network triggers a service rebuild. The service will go through `UPDATING` / `REBUILDING` states before returning to `RUNNING`. During this time the service may be temporarily unavailable. IP restrictions are cleared during a network change as the old IPs are no longer valid on the new network.
+ *
  * ## Import
  *
  * OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,

@@ -85,6 +85,44 @@ __all__ = [
     'CloudKeyManagerSecretCurrentStateArgsDict',
     'CloudKeyManagerSecretCurrentStateLocationArgs',
     'CloudKeyManagerSecretCurrentStateLocationArgsDict',
+    'CloudLoadbalancerCurrentStateArgs',
+    'CloudLoadbalancerCurrentStateArgsDict',
+    'CloudLoadbalancerCurrentStateFlavorArgs',
+    'CloudLoadbalancerCurrentStateFlavorArgsDict',
+    'CloudLoadbalancerCurrentStateNetworkArgs',
+    'CloudLoadbalancerCurrentStateNetworkArgsDict',
+    'CloudLoadbalancerCurrentStateNetworkAddressArgs',
+    'CloudLoadbalancerCurrentStateNetworkAddressArgsDict',
+    'CloudLoadbalancerL7policyCurrentStateArgs',
+    'CloudLoadbalancerL7policyCurrentStateArgsDict',
+    'CloudLoadbalancerL7policyCurrentStateRuleArgs',
+    'CloudLoadbalancerL7policyCurrentStateRuleArgsDict',
+    'CloudLoadbalancerL7policyRuleArgs',
+    'CloudLoadbalancerL7policyRuleArgsDict',
+    'CloudLoadbalancerListenerCurrentStateArgs',
+    'CloudLoadbalancerListenerCurrentStateArgsDict',
+    'CloudLoadbalancerListenerCurrentStateInsertHeadersArgs',
+    'CloudLoadbalancerListenerCurrentStateInsertHeadersArgsDict',
+    'CloudLoadbalancerListenerInsertHeadersArgs',
+    'CloudLoadbalancerListenerInsertHeadersArgsDict',
+    'CloudLoadbalancerNetworkArgs',
+    'CloudLoadbalancerNetworkArgsDict',
+    'CloudLoadbalancerPoolCurrentStateArgs',
+    'CloudLoadbalancerPoolCurrentStateArgsDict',
+    'CloudLoadbalancerPoolCurrentStateHealthMonitorArgs',
+    'CloudLoadbalancerPoolCurrentStateHealthMonitorArgsDict',
+    'CloudLoadbalancerPoolCurrentStatePersistenceArgs',
+    'CloudLoadbalancerPoolCurrentStatePersistenceArgsDict',
+    'CloudLoadbalancerPoolHealthMonitorArgs',
+    'CloudLoadbalancerPoolHealthMonitorArgsDict',
+    'CloudLoadbalancerPoolMemberCurrentStateArgs',
+    'CloudLoadbalancerPoolMemberCurrentStateArgsDict',
+    'CloudLoadbalancerPoolMemberCurrentStateMonitorArgs',
+    'CloudLoadbalancerPoolMemberCurrentStateMonitorArgsDict',
+    'CloudLoadbalancerPoolMemberMonitorArgs',
+    'CloudLoadbalancerPoolMemberMonitorArgsDict',
+    'CloudLoadbalancerPoolPersistenceArgs',
+    'CloudLoadbalancerPoolPersistenceArgsDict',
     'CloudNetworkPrivateVrackCurrentStateArgs',
     'CloudNetworkPrivateVrackCurrentStateArgsDict',
     'CloudNetworkPrivateVrackCurrentStateLocationArgs',
@@ -3271,6 +3309,2664 @@ class CloudKeyManagerSecretCurrentStateLocationArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerCurrentStateArgsDict(TypedDict):
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone for the load balancer. **Changing this value recreates the resource.**
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Load balancer description.
+        """
+        flavor: NotRequired[pulumi.Input['CloudLoadbalancerCurrentStateFlavorArgsDict']]
+        """
+        Load balancer flavor reference:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Load balancer name.
+        """
+        network: NotRequired[pulumi.Input['CloudLoadbalancerCurrentStateNetworkArgsDict']]
+        """
+        Network of the VIP. **Changing any value of this block recreates the resource.**
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the load balancer.
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the load balancer.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region where the load balancer will be created. **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudLoadbalancerCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerCurrentStateArgs:
+    def __init__(__self__, *,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 flavor: Optional[pulumi.Input['CloudLoadbalancerCurrentStateFlavorArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network: Optional[pulumi.Input['CloudLoadbalancerCurrentStateNetworkArgs']] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone for the load balancer. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] description: Load balancer description.
+        :param pulumi.Input['CloudLoadbalancerCurrentStateFlavorArgs'] flavor: Load balancer flavor reference:
+        :param pulumi.Input[_builtins.str] name: Load balancer name.
+        :param pulumi.Input['CloudLoadbalancerCurrentStateNetworkArgs'] network: Network of the VIP. **Changing any value of this block recreates the resource.**
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the load balancer.
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the load balancer.
+        :param pulumi.Input[_builtins.str] region: Region where the load balancer will be created. **Changing this value recreates the resource.**
+        """
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone for the load balancer. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Load balancer description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> Optional[pulumi.Input['CloudLoadbalancerCurrentStateFlavorArgs']]:
+        """
+        Load balancer flavor reference:
+        """
+        return pulumi.get(self, "flavor")
+
+    @flavor.setter
+    def flavor(self, value: Optional[pulumi.Input['CloudLoadbalancerCurrentStateFlavorArgs']]):
+        pulumi.set(self, "flavor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Load balancer name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input['CloudLoadbalancerCurrentStateNetworkArgs']]:
+        """
+        Network of the VIP. **Changing any value of this block recreates the resource.**
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input['CloudLoadbalancerCurrentStateNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the load balancer.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the load balancer.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region where the load balancer will be created. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerCurrentStateFlavorArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Flavor ID.
+        """
+elif False:
+    CloudLoadbalancerCurrentStateFlavorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerCurrentStateFlavorArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Flavor ID.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Flavor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerCurrentStateNetworkArgsDict(TypedDict):
+        addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerCurrentStateNetworkAddressArgsDict']]]]
+        """
+        Addresses carried by the VIP port:
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the network for the VIP.
+        """
+        subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+elif False:
+    CloudLoadbalancerCurrentStateNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerCurrentStateNetworkArgs:
+    def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerCurrentStateNetworkAddressArgs']]]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerCurrentStateNetworkAddressArgs']]] addresses: Addresses carried by the VIP port:
+        :param pulumi.Input[_builtins.str] id: ID of the network for the VIP.
+        :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerCurrentStateNetworkAddressArgs']]]]:
+        """
+        Addresses carried by the VIP port:
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerCurrentStateNetworkAddressArgs']]]]):
+        pulumi.set(self, "addresses", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the network for the VIP.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet_id", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerCurrentStateNetworkAddressArgsDict(TypedDict):
+        ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP address.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Address type (`FIXED`, `FLOATING`).
+        """
+elif False:
+    CloudLoadbalancerCurrentStateNetworkAddressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerCurrentStateNetworkAddressArgs:
+    def __init__(__self__, *,
+                 ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ip: IP address.
+        :param pulumi.Input[_builtins.str] type: Address type (`FIXED`, `FLOATING`).
+        """
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP address.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Address type (`FIXED`, `FLOATING`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerL7policyCurrentStateArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the L7 policy.
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the L7 policy.
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the rule.
+        """
+        position: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the rule.
+        """
+        redirect_http_code: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+        """
+        redirect_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the pool for `REDIRECT_TO_POOL` action.
+        """
+        redirect_prefix: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Redirect prefix for `REDIRECT_PREFIX` action.
+        """
+        redirect_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Redirect URL for `REDIRECT_TO_URL` action.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerL7policyCurrentStateRuleArgsDict']]]]
+        """
+        List of L7 rules for this policy. All rules must match for the policy to apply:
+        """
+elif False:
+    CloudLoadbalancerL7policyCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerL7policyCurrentStateArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 position: Optional[pulumi.Input[_builtins.int]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 redirect_http_code: Optional[pulumi.Input[_builtins.int]] = None,
+                 redirect_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 redirect_prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 redirect_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerL7policyCurrentStateRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+        :param pulumi.Input[_builtins.str] description: Description of the L7 policy.
+        :param pulumi.Input[_builtins.str] name: Name of the L7 policy.
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the rule.
+        :param pulumi.Input[_builtins.int] position: Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the rule.
+        :param pulumi.Input[_builtins.int] redirect_http_code: HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+        :param pulumi.Input[_builtins.str] redirect_pool_id: ID of the pool for `REDIRECT_TO_POOL` action.
+        :param pulumi.Input[_builtins.str] redirect_prefix: Redirect prefix for `REDIRECT_PREFIX` action.
+        :param pulumi.Input[_builtins.str] redirect_url: Redirect URL for `REDIRECT_TO_URL` action.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerL7policyCurrentStateRuleArgs']]] rules: List of L7 rules for this policy. All rules must match for the policy to apply:
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if redirect_http_code is not None:
+            pulumi.set(__self__, "redirect_http_code", redirect_http_code)
+        if redirect_pool_id is not None:
+            pulumi.set(__self__, "redirect_pool_id", redirect_pool_id)
+        if redirect_prefix is not None:
+            pulumi.set(__self__, "redirect_prefix", redirect_prefix)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the L7 policy.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the L7 policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the rule.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "position", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the rule.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectHttpCode")
+    def redirect_http_code(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+        """
+        return pulumi.get(self, "redirect_http_code")
+
+    @redirect_http_code.setter
+    def redirect_http_code(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "redirect_http_code", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPoolId")
+    def redirect_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the pool for `REDIRECT_TO_POOL` action.
+        """
+        return pulumi.get(self, "redirect_pool_id")
+
+    @redirect_pool_id.setter
+    def redirect_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redirect_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectPrefix")
+    def redirect_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Redirect prefix for `REDIRECT_PREFIX` action.
+        """
+        return pulumi.get(self, "redirect_prefix")
+
+    @redirect_prefix.setter
+    def redirect_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redirect_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Redirect URL for `REDIRECT_TO_URL` action.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @redirect_url.setter
+    def redirect_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "redirect_url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerL7policyCurrentStateRuleArgs']]]]:
+        """
+        List of L7 rules for this policy. All rules must match for the policy to apply:
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CloudLoadbalancerL7policyCurrentStateRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerL7policyCurrentStateRuleArgsDict(TypedDict):
+        compare_type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Rule ID.
+        """
+        invert: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to invert the rule match. Defaults to the value assigned by the API.
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the rule.
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the rule.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Value to compare against.
+        """
+elif False:
+    CloudLoadbalancerL7policyCurrentStateRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerL7policyCurrentStateRuleArgs:
+    def __init__(__self__, *,
+                 compare_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 invert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param pulumi.Input[_builtins.str] id: Rule ID.
+        :param pulumi.Input[_builtins.bool] invert: Whether to invert the rule match. Defaults to the value assigned by the API.
+        :param pulumi.Input[_builtins.str] key: Key for `COOKIE` and `HEADER` rule types.
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the rule.
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the rule.
+        :param pulumi.Input[_builtins.str] type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param pulumi.Input[_builtins.str] value: Value to compare against.
+        """
+        if compare_type is not None:
+            pulumi.set(__self__, "compare_type", compare_type)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if invert is not None:
+            pulumi.set(__self__, "invert", invert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @compare_type.setter
+    def compare_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "compare_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Rule ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to invert the rule match. Defaults to the value assigned by the API.
+        """
+        return pulumi.get(self, "invert")
+
+    @invert.setter
+    def invert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "invert", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the rule.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the rule.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerL7policyRuleArgsDict(TypedDict):
+        compare_type: pulumi.Input[_builtins.str]
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        type: pulumi.Input[_builtins.str]
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        value: pulumi.Input[_builtins.str]
+        """
+        Value to compare against.
+        """
+        invert: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to invert the rule match. Defaults to the value assigned by the API.
+        """
+        key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+elif False:
+    CloudLoadbalancerL7policyRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerL7policyRuleArgs:
+    def __init__(__self__, *,
+                 compare_type: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str],
+                 invert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] compare_type: Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        :param pulumi.Input[_builtins.str] type: Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        :param pulumi.Input[_builtins.str] value: Value to compare against.
+        :param pulumi.Input[_builtins.bool] invert: Whether to invert the rule match. Defaults to the value assigned by the API.
+        :param pulumi.Input[_builtins.str] key: Key for `COOKIE` and `HEADER` rule types.
+        """
+        pulumi.set(__self__, "compare_type", compare_type)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        if invert is not None:
+            pulumi.set(__self__, "invert", invert)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @_builtins.property
+    @pulumi.getter(name="compareType")
+    def compare_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+        """
+        return pulumi.get(self, "compare_type")
+
+    @compare_type.setter
+    def compare_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "compare_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        Value to compare against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def invert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to invert the rule match. Defaults to the value assigned by the API.
+        """
+        return pulumi.get(self, "invert")
+
+    @invert.setter
+    def invert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "invert", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Key for `COOKIE` and `HEADER` rule types.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerListenerCurrentStateArgsDict(TypedDict):
+        allowed_cidrs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of CIDRs allowed to access the listener.
+        """
+        availability_zone: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Availability zone.
+        """
+        connection_limit: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+        """
+        default_pool_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+        """
+        default_tls_container_ref: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Reference to the default TLS container.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the listener.
+        """
+        insert_headers: NotRequired[pulumi.Input['CloudLoadbalancerListenerCurrentStateInsertHeadersArgsDict']]
+        """
+        Headers to insert into requests:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the listener.
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the listener.
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+        """
+        protocol_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port number the listener listens on. **Changing this value recreates the resource.**
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the listener.
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region.
+        """
+        sni_container_refs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of SNI container references.
+        """
+        timeout_client_data: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        timeout_member_connect: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        timeout_member_data: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        timeout_tcp_inspect: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        tls_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of TLS versions allowed.
+        """
+elif False:
+    CloudLoadbalancerListenerCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerListenerCurrentStateArgs:
+    def __init__(__self__, *,
+                 allowed_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 default_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_tls_container_ref: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 insert_headers: Optional[pulumi.Input['CloudLoadbalancerListenerCurrentStateInsertHeadersArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 sni_container_refs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_client_data: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeout_member_connect: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeout_member_data: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeout_tcp_inspect: Optional[pulumi.Input[_builtins.int]] = None,
+                 tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_cidrs: List of CIDRs allowed to access the listener.
+        :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
+        :param pulumi.Input[_builtins.int] connection_limit: Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+        :param pulumi.Input[_builtins.str] default_pool_id: ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+        :param pulumi.Input[_builtins.str] default_tls_container_ref: Reference to the default TLS container.
+        :param pulumi.Input[_builtins.str] description: Description of the listener.
+        :param pulumi.Input['CloudLoadbalancerListenerCurrentStateInsertHeadersArgs'] insert_headers: Headers to insert into requests:
+        :param pulumi.Input[_builtins.str] name: Name of the listener.
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the listener.
+        :param pulumi.Input[_builtins.str] protocol: Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] protocol_port: Port number the listener listens on. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the listener.
+        :param pulumi.Input[_builtins.str] region: Region.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sni_container_refs: List of SNI container references.
+        :param pulumi.Input[_builtins.int] timeout_client_data: Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param pulumi.Input[_builtins.int] timeout_member_connect: Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param pulumi.Input[_builtins.int] timeout_member_data: Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param pulumi.Input[_builtins.int] timeout_tcp_inspect: Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_versions: List of TLS versions allowed.
+        """
+        if allowed_cidrs is not None:
+            pulumi.set(__self__, "allowed_cidrs", allowed_cidrs)
+        if availability_zone is not None:
+            pulumi.set(__self__, "availability_zone", availability_zone)
+        if connection_limit is not None:
+            pulumi.set(__self__, "connection_limit", connection_limit)
+        if default_pool_id is not None:
+            pulumi.set(__self__, "default_pool_id", default_pool_id)
+        if default_tls_container_ref is not None:
+            pulumi.set(__self__, "default_tls_container_ref", default_tls_container_ref)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if insert_headers is not None:
+            pulumi.set(__self__, "insert_headers", insert_headers)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if protocol_port is not None:
+            pulumi.set(__self__, "protocol_port", protocol_port)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if sni_container_refs is not None:
+            pulumi.set(__self__, "sni_container_refs", sni_container_refs)
+        if timeout_client_data is not None:
+            pulumi.set(__self__, "timeout_client_data", timeout_client_data)
+        if timeout_member_connect is not None:
+            pulumi.set(__self__, "timeout_member_connect", timeout_member_connect)
+        if timeout_member_data is not None:
+            pulumi.set(__self__, "timeout_member_data", timeout_member_data)
+        if timeout_tcp_inspect is not None:
+            pulumi.set(__self__, "timeout_tcp_inspect", timeout_tcp_inspect)
+        if tls_versions is not None:
+            pulumi.set(__self__, "tls_versions", tls_versions)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedCidrs")
+    def allowed_cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of CIDRs allowed to access the listener.
+        """
+        return pulumi.get(self, "allowed_cidrs")
+
+    @allowed_cidrs.setter
+    def allowed_cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "allowed_cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityZone")
+    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Availability zone.
+        """
+        return pulumi.get(self, "availability_zone")
+
+    @availability_zone.setter
+    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @connection_limit.setter
+    def connection_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "connection_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPoolId")
+    def default_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the default pool for this listener (see `CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "default_pool_id")
+
+    @default_pool_id.setter
+    def default_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_pool_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultTlsContainerRef")
+    def default_tls_container_ref(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Reference to the default TLS container.
+        """
+        return pulumi.get(self, "default_tls_container_ref")
+
+    @default_tls_container_ref.setter
+    def default_tls_container_ref(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_tls_container_ref", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the listener.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="insertHeaders")
+    def insert_headers(self) -> Optional[pulumi.Input['CloudLoadbalancerListenerCurrentStateInsertHeadersArgs']]:
+        """
+        Headers to insert into requests:
+        """
+        return pulumi.get(self, "insert_headers")
+
+    @insert_headers.setter
+    def insert_headers(self, value: Optional[pulumi.Input['CloudLoadbalancerListenerCurrentStateInsertHeadersArgs']]):
+        pulumi.set(self, "insert_headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the listener.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the listener.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port number the listener listens on. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @protocol_port.setter
+    def protocol_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "protocol_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the listener.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sniContainerRefs")
+    def sni_container_refs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of SNI container references.
+        """
+        return pulumi.get(self, "sni_container_refs")
+
+    @sni_container_refs.setter
+    def sni_container_refs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "sni_container_refs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutClientData")
+    def timeout_client_data(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_client_data")
+
+    @timeout_client_data.setter
+    def timeout_client_data(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_client_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberConnect")
+    def timeout_member_connect(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_member_connect")
+
+    @timeout_member_connect.setter
+    def timeout_member_connect(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_member_connect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutMemberData")
+    def timeout_member_data(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_member_data")
+
+    @timeout_member_data.setter
+    def timeout_member_data(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_member_data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="timeoutTcpInspect")
+    def timeout_tcp_inspect(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "timeout_tcp_inspect")
+
+    @timeout_tcp_inspect.setter
+    def timeout_tcp_inspect(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout_tcp_inspect", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsVersions")
+    def tls_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of TLS versions allowed.
+        """
+        return pulumi.get(self, "tls_versions")
+
+    @tls_versions.setter
+    def tls_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tls_versions", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerListenerCurrentStateInsertHeadersArgsDict(TypedDict):
+        x_forwarded_for: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-Forwarded-For header.
+        """
+        x_forwarded_port: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-Forwarded-Port header.
+        """
+        x_forwarded_proto: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        x_ssl_client_dn: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        x_ssl_client_has_cert: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        x_ssl_client_verify: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+elif False:
+    CloudLoadbalancerListenerCurrentStateInsertHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerListenerCurrentStateInsertHeadersArgs:
+    def __init__(__self__, *,
+                 x_forwarded_for: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_forwarded_port: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_forwarded_proto: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_ssl_client_dn: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_ssl_client_has_cert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_ssl_client_verify: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] x_forwarded_for: Insert X-Forwarded-For header.
+        :param pulumi.Input[_builtins.bool] x_forwarded_port: Insert X-Forwarded-Port header.
+        :param pulumi.Input[_builtins.bool] x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param pulumi.Input[_builtins.bool] x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param pulumi.Input[_builtins.bool] x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param pulumi.Input[_builtins.bool] x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        if x_forwarded_for is not None:
+            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        if x_forwarded_port is not None:
+            pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        if x_forwarded_proto is not None:
+            pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        if x_ssl_client_dn is not None:
+            pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        if x_ssl_client_has_cert is not None:
+            pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        if x_ssl_client_verify is not None:
+            pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @x_forwarded_for.setter
+    def x_forwarded_for(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_forwarded_for", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @x_forwarded_port.setter
+    def x_forwarded_port(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_forwarded_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @x_forwarded_proto.setter
+    def x_forwarded_proto(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_forwarded_proto", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @x_ssl_client_dn.setter
+    def x_ssl_client_dn(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_ssl_client_dn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @x_ssl_client_has_cert.setter
+    def x_ssl_client_has_cert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_ssl_client_has_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+    @x_ssl_client_verify.setter
+    def x_ssl_client_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_ssl_client_verify", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerListenerInsertHeadersArgsDict(TypedDict):
+        x_forwarded_for: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-Forwarded-For header.
+        """
+        x_forwarded_port: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-Forwarded-Port header.
+        """
+        x_forwarded_proto: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        x_ssl_client_dn: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        x_ssl_client_has_cert: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        x_ssl_client_verify: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+elif False:
+    CloudLoadbalancerListenerInsertHeadersArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerListenerInsertHeadersArgs:
+    def __init__(__self__, *,
+                 x_forwarded_for: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_forwarded_port: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_forwarded_proto: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_ssl_client_dn: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_ssl_client_has_cert: Optional[pulumi.Input[_builtins.bool]] = None,
+                 x_ssl_client_verify: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] x_forwarded_for: Insert X-Forwarded-For header.
+        :param pulumi.Input[_builtins.bool] x_forwarded_port: Insert X-Forwarded-Port header.
+        :param pulumi.Input[_builtins.bool] x_forwarded_proto: Insert X-Forwarded-Proto header.
+        :param pulumi.Input[_builtins.bool] x_ssl_client_dn: Insert X-SSL-Client-DN header.
+        :param pulumi.Input[_builtins.bool] x_ssl_client_has_cert: Insert X-SSL-Client-Has-Cert header.
+        :param pulumi.Input[_builtins.bool] x_ssl_client_verify: Insert X-SSL-Client-Verify header.
+        """
+        if x_forwarded_for is not None:
+            pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
+        if x_forwarded_port is not None:
+            pulumi.set(__self__, "x_forwarded_port", x_forwarded_port)
+        if x_forwarded_proto is not None:
+            pulumi.set(__self__, "x_forwarded_proto", x_forwarded_proto)
+        if x_ssl_client_dn is not None:
+            pulumi.set(__self__, "x_ssl_client_dn", x_ssl_client_dn)
+        if x_ssl_client_has_cert is not None:
+            pulumi.set(__self__, "x_ssl_client_has_cert", x_ssl_client_has_cert)
+        if x_ssl_client_verify is not None:
+            pulumi.set(__self__, "x_ssl_client_verify", x_ssl_client_verify)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedFor")
+    def x_forwarded_for(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-Forwarded-For header.
+        """
+        return pulumi.get(self, "x_forwarded_for")
+
+    @x_forwarded_for.setter
+    def x_forwarded_for(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_forwarded_for", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedPort")
+    def x_forwarded_port(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-Forwarded-Port header.
+        """
+        return pulumi.get(self, "x_forwarded_port")
+
+    @x_forwarded_port.setter
+    def x_forwarded_port(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_forwarded_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xForwardedProto")
+    def x_forwarded_proto(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-Forwarded-Proto header.
+        """
+        return pulumi.get(self, "x_forwarded_proto")
+
+    @x_forwarded_proto.setter
+    def x_forwarded_proto(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_forwarded_proto", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientDn")
+    def x_ssl_client_dn(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-SSL-Client-DN header.
+        """
+        return pulumi.get(self, "x_ssl_client_dn")
+
+    @x_ssl_client_dn.setter
+    def x_ssl_client_dn(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_ssl_client_dn", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientHasCert")
+    def x_ssl_client_has_cert(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-SSL-Client-Has-Cert header.
+        """
+        return pulumi.get(self, "x_ssl_client_has_cert")
+
+    @x_ssl_client_has_cert.setter
+    def x_ssl_client_has_cert(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_ssl_client_has_cert", value)
+
+    @_builtins.property
+    @pulumi.getter(name="xSslClientVerify")
+    def x_ssl_client_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Insert X-SSL-Client-Verify header.
+        """
+        return pulumi.get(self, "x_ssl_client_verify")
+
+    @x_ssl_client_verify.setter
+    def x_ssl_client_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "x_ssl_client_verify", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerNetworkArgsDict(TypedDict):
+        id: pulumi.Input[_builtins.str]
+        """
+        ID of the network for the VIP.
+        """
+        subnet_id: pulumi.Input[_builtins.str]
+        """
+        ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        ip: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+        """
+elif False:
+    CloudLoadbalancerNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerNetworkArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str],
+                 subnet_id: pulumi.Input[_builtins.str],
+                 ip: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: ID of the network for the VIP.
+        :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet for the VIP. The subnet must belong to the network above.
+        :param pulumi.Input[_builtins.str] ip: IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ip is not None:
+            pulumi.set(__self__, "ip", ip)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the network for the VIP.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        ID of the subnet for the VIP. The subnet must belong to the network above.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ip", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolCurrentStateArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Pool description.
+        """
+        health_monitor: NotRequired[pulumi.Input['CloudLoadbalancerPoolCurrentStateHealthMonitorArgsDict']]
+        """
+        Health monitor configuration:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Pool name.
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the pool.
+        """
+        persistence: NotRequired[pulumi.Input['CloudLoadbalancerPoolCurrentStatePersistenceArgsDict']]
+        """
+        Session persistence configuration:
+        """
+        protocol: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the pool.
+        """
+elif False:
+    CloudLoadbalancerPoolCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolCurrentStateArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 health_monitor: Optional[pulumi.Input['CloudLoadbalancerPoolCurrentStateHealthMonitorArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 persistence: Optional[pulumi.Input['CloudLoadbalancerPoolCurrentStatePersistenceArgs']] = None,
+                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] algorithm: Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+        :param pulumi.Input[_builtins.str] description: Pool description.
+        :param pulumi.Input['CloudLoadbalancerPoolCurrentStateHealthMonitorArgs'] health_monitor: Health monitor configuration:
+        :param pulumi.Input[_builtins.str] name: Pool name.
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the pool.
+        :param pulumi.Input['CloudLoadbalancerPoolCurrentStatePersistenceArgs'] persistence: Session persistence configuration:
+        :param pulumi.Input[_builtins.str] protocol: Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the pool.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if health_monitor is not None:
+            pulumi.set(__self__, "health_monitor", health_monitor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if persistence is not None:
+            pulumi.set(__self__, "persistence", persistence)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Pool description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="healthMonitor")
+    def health_monitor(self) -> Optional[pulumi.Input['CloudLoadbalancerPoolCurrentStateHealthMonitorArgs']]:
+        """
+        Health monitor configuration:
+        """
+        return pulumi.get(self, "health_monitor")
+
+    @health_monitor.setter
+    def health_monitor(self, value: Optional[pulumi.Input['CloudLoadbalancerPoolCurrentStateHealthMonitorArgs']]):
+        pulumi.set(self, "health_monitor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def persistence(self) -> Optional[pulumi.Input['CloudLoadbalancerPoolCurrentStatePersistenceArgs']]:
+        """
+        Session persistence configuration:
+        """
+        return pulumi.get(self, "persistence")
+
+    @persistence.setter
+    def persistence(self, value: Optional[pulumi.Input['CloudLoadbalancerPoolCurrentStatePersistenceArgs']]):
+        pulumi.set(self, "persistence", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolCurrentStateHealthMonitorArgsDict(TypedDict):
+        delay: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Seconds between health checks.
+        """
+        domain_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Domain name for health check requests.
+        """
+        expected_codes: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        http_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        http_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Health monitor ID.
+        """
+        max_retries: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        max_retries_down: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Health monitor name.
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the pool.
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the pool.
+        """
+        timeout: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Seconds to wait for a health check response.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        """
+        url_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+elif False:
+    CloudLoadbalancerPoolCurrentStateHealthMonitorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolCurrentStateHealthMonitorArgs:
+    def __init__(__self__, *,
+                 delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_retries: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_path: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] delay: Seconds between health checks.
+        :param pulumi.Input[_builtins.str] domain_name: Domain name for health check requests.
+        :param pulumi.Input[_builtins.str] expected_codes: Expected HTTP response codes (e.g. `200`, `200-202`).
+        :param pulumi.Input[_builtins.str] http_method: HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        :param pulumi.Input[_builtins.str] http_version: HTTP version for health checks (`1.0` or `1.1`).
+        :param pulumi.Input[_builtins.str] id: Health monitor ID.
+        :param pulumi.Input[_builtins.int] max_retries: Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        :param pulumi.Input[_builtins.int] max_retries_down: Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        :param pulumi.Input[_builtins.str] name: Health monitor name.
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the pool.
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the pool.
+        :param pulumi.Input[_builtins.int] timeout: Seconds to wait for a health check response.
+        :param pulumi.Input[_builtins.str] type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] url_path: URL path for HTTP/HTTPS health checks.
+        """
+        if delay is not None:
+            pulumi.set(__self__, "delay", delay)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if max_retries_down is not None:
+            pulumi.set(__self__, "max_retries_down", max_retries_down)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @expected_codes.setter
+    def expected_codes(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expected_codes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        return pulumi.get(self, "http_version")
+
+    @http_version.setter
+    def http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Health monitor ID.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        return pulumi.get(self, "max_retries")
+
+    @max_retries.setter
+    def max_retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_retries", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @max_retries_down.setter
+    def max_retries_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_retries_down", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Health monitor name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the pool.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the pool.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+    @url_path.setter
+    def url_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_path", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolCurrentStatePersistenceArgsDict(TypedDict):
+        cookie_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+elif False:
+    CloudLoadbalancerPoolCurrentStatePersistenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolCurrentStatePersistenceArgs:
+    def __init__(__self__, *,
+                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        :param pulumi.Input[_builtins.str] type: Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        if cookie_name is not None:
+            pulumi.set(__self__, "cookie_name", cookie_name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @cookie_name.setter
+    def cookie_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cookie_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolHealthMonitorArgsDict(TypedDict):
+        delay: pulumi.Input[_builtins.int]
+        """
+        Seconds between health checks.
+        """
+        max_retries: pulumi.Input[_builtins.int]
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        timeout: pulumi.Input[_builtins.int]
+        """
+        Seconds to wait for a health check response.
+        """
+        type: pulumi.Input[_builtins.str]
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        """
+        domain_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Domain name for health check requests.
+        """
+        expected_codes: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        http_method: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        http_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        max_retries_down: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Health monitor name.
+        """
+        url_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+elif False:
+    CloudLoadbalancerPoolHealthMonitorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolHealthMonitorArgs:
+    def __init__(__self__, *,
+                 delay: pulumi.Input[_builtins.int],
+                 max_retries: pulumi.Input[_builtins.int],
+                 timeout: pulumi.Input[_builtins.int],
+                 type: pulumi.Input[_builtins.str],
+                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 expected_codes: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
+                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 max_retries_down: Optional[pulumi.Input[_builtins.int]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 url_path: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] delay: Seconds between health checks.
+        :param pulumi.Input[_builtins.int] max_retries: Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        :param pulumi.Input[_builtins.int] timeout: Seconds to wait for a health check response.
+        :param pulumi.Input[_builtins.str] type: Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] domain_name: Domain name for health check requests.
+        :param pulumi.Input[_builtins.str] expected_codes: Expected HTTP response codes (e.g. `200`, `200-202`).
+        :param pulumi.Input[_builtins.str] http_method: HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        :param pulumi.Input[_builtins.str] http_version: HTTP version for health checks (`1.0` or `1.1`).
+        :param pulumi.Input[_builtins.int] max_retries_down: Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        :param pulumi.Input[_builtins.str] name: Health monitor name.
+        :param pulumi.Input[_builtins.str] url_path: URL path for HTTP/HTTPS health checks.
+        """
+        pulumi.set(__self__, "delay", delay)
+        pulumi.set(__self__, "max_retries", max_retries)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "type", type)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if http_version is not None:
+            pulumi.set(__self__, "http_version", http_version)
+        if max_retries_down is not None:
+            pulumi.set(__self__, "max_retries_down", max_retries_down)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url_path is not None:
+            pulumi.set(__self__, "url_path", url_path)
+
+    @_builtins.property
+    @pulumi.getter
+    def delay(self) -> pulumi.Input[_builtins.int]:
+        """
+        Seconds between health checks.
+        """
+        return pulumi.get(self, "delay")
+
+    @delay.setter
+    def delay(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "delay", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> pulumi.Input[_builtins.int]:
+        """
+        Number of consecutive health check failures before marking a member as unhealthy (1-10).
+        """
+        return pulumi.get(self, "max_retries")
+
+    @max_retries.setter
+    def max_retries(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "max_retries", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[_builtins.int]:
+        """
+        Seconds to wait for a health check response.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Domain name for health check requests.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Expected HTTP response codes (e.g. `200`, `200-202`).
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @expected_codes.setter
+    def expected_codes(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "expected_codes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpVersion")
+    def http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        HTTP version for health checks (`1.0` or `1.1`).
+        """
+        return pulumi.get(self, "http_version")
+
+    @http_version.setter
+    def http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "http_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxRetriesDown")
+    def max_retries_down(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+        """
+        return pulumi.get(self, "max_retries_down")
+
+    @max_retries_down.setter
+    def max_retries_down(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_retries_down", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Health monitor name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="urlPath")
+    def url_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL path for HTTP/HTTPS health checks.
+        """
+        return pulumi.get(self, "url_path")
+
+    @url_path.setter
+    def url_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url_path", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolMemberCurrentStateArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP address of the member. **Changing this value recreates the resource.**
+        """
+        backup: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+        """
+        monitor: NotRequired[pulumi.Input['CloudLoadbalancerPoolMemberCurrentStateMonitorArgsDict']]
+        """
+        Health monitor address and port override for this member:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Member name.
+        """
+        operating_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Operating status of the member.
+        """
+        protocol_port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port used by the member to receive traffic. **Changing this value recreates the resource.**
+        """
+        provisioning_status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provisioning status of the member.
+        """
+        subnet_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the subnet the member is in. **Changing this value recreates the resource.**
+        """
+        weight: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+        """
+elif False:
+    CloudLoadbalancerPoolMemberCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolMemberCurrentStateArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
+                 monitor: Optional[pulumi.Input['CloudLoadbalancerPoolMemberCurrentStateMonitorArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 operating_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 protocol_port: Optional[pulumi.Input[_builtins.int]] = None,
+                 provisioning_status: Optional[pulumi.Input[_builtins.str]] = None,
+                 subnet_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: IP address of the member. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.bool] backup: When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+        :param pulumi.Input['CloudLoadbalancerPoolMemberCurrentStateMonitorArgs'] monitor: Health monitor address and port override for this member:
+        :param pulumi.Input[_builtins.str] name: Member name.
+        :param pulumi.Input[_builtins.str] operating_status: Operating status of the member.
+        :param pulumi.Input[_builtins.int] protocol_port: Port used by the member to receive traffic. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] provisioning_status: Provisioning status of the member.
+        :param pulumi.Input[_builtins.str] subnet_id: ID of the subnet the member is in. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] weight: Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if monitor is not None:
+            pulumi.set(__self__, "monitor", monitor)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operating_status is not None:
+            pulumi.set(__self__, "operating_status", operating_status)
+        if protocol_port is not None:
+            pulumi.set(__self__, "protocol_port", protocol_port)
+        if provisioning_status is not None:
+            pulumi.set(__self__, "provisioning_status", provisioning_status)
+        if subnet_id is not None:
+            pulumi.set(__self__, "subnet_id", subnet_id)
+        if weight is not None:
+            pulumi.set(__self__, "weight", weight)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP address of the member. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "backup", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def monitor(self) -> Optional[pulumi.Input['CloudLoadbalancerPoolMemberCurrentStateMonitorArgs']]:
+        """
+        Health monitor address and port override for this member:
+        """
+        return pulumi.get(self, "monitor")
+
+    @monitor.setter
+    def monitor(self, value: Optional[pulumi.Input['CloudLoadbalancerPoolMemberCurrentStateMonitorArgs']]):
+        pulumi.set(self, "monitor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Member name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="operatingStatus")
+    def operating_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Operating status of the member.
+        """
+        return pulumi.get(self, "operating_status")
+
+    @operating_status.setter
+    def operating_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "operating_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="protocolPort")
+    def protocol_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port used by the member to receive traffic. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "protocol_port")
+
+    @protocol_port.setter
+    def protocol_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "protocol_port", value)
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningStatus")
+    def provisioning_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provisioning status of the member.
+        """
+        return pulumi.get(self, "provisioning_status")
+
+    @provisioning_status.setter
+    def provisioning_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provisioning_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the subnet the member is in. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+        """
+        return pulumi.get(self, "weight")
+
+    @weight.setter
+    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "weight", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolMemberCurrentStateMonitorArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP address used by the health monitor for this member.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port used by the health monitor for this member.
+        """
+elif False:
+    CloudLoadbalancerPoolMemberCurrentStateMonitorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolMemberCurrentStateMonitorArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: IP address used by the health monitor for this member.
+        :param pulumi.Input[_builtins.int] port: Port used by the health monitor for this member.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP address used by the health monitor for this member.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolMemberMonitorArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        IP address used by the health monitor for this member.
+        """
+        port: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Port used by the health monitor for this member.
+        """
+elif False:
+    CloudLoadbalancerPoolMemberMonitorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolMemberMonitorArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[_builtins.str]] = None,
+                 port: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] address: IP address used by the health monitor for this member.
+        :param pulumi.Input[_builtins.int] port: Port used by the health monitor for this member.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        IP address used by the health monitor for this member.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Port used by the health monitor for this member.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+if not MYPY:
+    class CloudLoadbalancerPoolPersistenceArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        cookie_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+elif False:
+    CloudLoadbalancerPoolPersistenceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudLoadbalancerPoolPersistenceArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 cookie_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        :param pulumi.Input[_builtins.str] cookie_name: Cookie name for `APP_COOKIE` persistence type.
+        """
+        pulumi.set(__self__, "type", type)
+        if cookie_name is not None:
+            pulumi.set(__self__, "cookie_name", cookie_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cookieName")
+    def cookie_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cookie name for `APP_COOKIE` persistence type.
+        """
+        return pulumi.get(self, "cookie_name")
+
+    @cookie_name.setter
+    def cookie_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "cookie_name", value)
 
 
 if not MYPY:

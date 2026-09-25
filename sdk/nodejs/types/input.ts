@@ -616,6 +616,551 @@ export interface CloudKeyManagerSecretCurrentStateLocation {
     region?: pulumi.Input<string>;
 }
 
+export interface CloudLoadbalancerCurrentState {
+    /**
+     * Availability zone for the load balancer. **Changing this value recreates the resource.**
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Load balancer description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Load balancer flavor reference:
+     */
+    flavor?: pulumi.Input<inputs.CloudLoadbalancerCurrentStateFlavor>;
+    /**
+     * Load balancer name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Network of the VIP. **Changing any value of this block recreates the resource.**
+     */
+    network?: pulumi.Input<inputs.CloudLoadbalancerCurrentStateNetwork>;
+    /**
+     * Operating status of the load balancer.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Provisioning status of the load balancer.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+    /**
+     * Region where the load balancer will be created. **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerCurrentStateFlavor {
+    /**
+     * Flavor ID.
+     */
+    id?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerCurrentStateNetwork {
+    /**
+     * Addresses carried by the VIP port:
+     */
+    addresses?: pulumi.Input<pulumi.Input<inputs.CloudLoadbalancerCurrentStateNetworkAddress>[]>;
+    /**
+     * ID of the network for the VIP.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * ID of the subnet for the VIP. The subnet must belong to the network above.
+     */
+    subnetId?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerCurrentStateNetworkAddress {
+    /**
+     * IP address.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * Address type (`FIXED`, `FLOATING`).
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerL7policyCurrentState {
+    /**
+     * Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Description of the L7 policy.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the L7 policy.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Operating status of the rule.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+     */
+    position?: pulumi.Input<number>;
+    /**
+     * Provisioning status of the rule.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+    /**
+     * HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+     */
+    redirectHttpCode?: pulumi.Input<number>;
+    /**
+     * ID of the pool for `REDIRECT_TO_POOL` action.
+     */
+    redirectPoolId?: pulumi.Input<string>;
+    /**
+     * Redirect prefix for `REDIRECT_PREFIX` action.
+     */
+    redirectPrefix?: pulumi.Input<string>;
+    /**
+     * Redirect URL for `REDIRECT_TO_URL` action.
+     */
+    redirectUrl?: pulumi.Input<string>;
+    /**
+     * List of L7 rules for this policy. All rules must match for the policy to apply:
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.CloudLoadbalancerL7policyCurrentStateRule>[]>;
+}
+
+export interface CloudLoadbalancerL7policyCurrentStateRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType?: pulumi.Input<string>;
+    /**
+     * Rule ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Whether to invert the rule match. Defaults to the value assigned by the API.
+     */
+    invert?: pulumi.Input<boolean>;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Operating status of the rule.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Provisioning status of the rule.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Value to compare against.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerL7policyRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: pulumi.Input<string>;
+    /**
+     * Whether to invert the rule match. Defaults to the value assigned by the API.
+     */
+    invert?: pulumi.Input<boolean>;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key?: pulumi.Input<string>;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Value to compare against.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerListenerCurrentState {
+    /**
+     * List of CIDRs allowed to access the listener.
+     */
+    allowedCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Availability zone.
+     */
+    availabilityZone?: pulumi.Input<string>;
+    /**
+     * Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+     */
+    connectionLimit?: pulumi.Input<number>;
+    /**
+     * ID of the default pool for this listener (see `ovh.CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+     */
+    defaultPoolId?: pulumi.Input<string>;
+    /**
+     * Reference to the default TLS container.
+     */
+    defaultTlsContainerRef?: pulumi.Input<string>;
+    /**
+     * Description of the listener.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Headers to insert into requests:
+     */
+    insertHeaders?: pulumi.Input<inputs.CloudLoadbalancerListenerCurrentStateInsertHeaders>;
+    /**
+     * Name of the listener.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Operating status of the listener.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Port number the listener listens on. **Changing this value recreates the resource.**
+     */
+    protocolPort?: pulumi.Input<number>;
+    /**
+     * Provisioning status of the listener.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+    /**
+     * Region.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * List of SNI container references.
+     */
+    sniContainerRefs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutClientData?: pulumi.Input<number>;
+    /**
+     * Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutMemberConnect?: pulumi.Input<number>;
+    /**
+     * Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutMemberData?: pulumi.Input<number>;
+    /**
+     * Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutTcpInspect?: pulumi.Input<number>;
+    /**
+     * List of TLS versions allowed.
+     */
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface CloudLoadbalancerListenerCurrentStateInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor?: pulumi.Input<boolean>;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort?: pulumi.Input<boolean>;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto?: pulumi.Input<boolean>;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn?: pulumi.Input<boolean>;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert?: pulumi.Input<boolean>;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify?: pulumi.Input<boolean>;
+}
+
+export interface CloudLoadbalancerListenerInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor?: pulumi.Input<boolean>;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort?: pulumi.Input<boolean>;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto?: pulumi.Input<boolean>;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn?: pulumi.Input<boolean>;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert?: pulumi.Input<boolean>;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify?: pulumi.Input<boolean>;
+}
+
+export interface CloudLoadbalancerNetwork {
+    /**
+     * ID of the network for the VIP.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+     */
+    ip?: pulumi.Input<string>;
+    /**
+     * ID of the subnet for the VIP. The subnet must belong to the network above.
+     */
+    subnetId: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerPoolCurrentState {
+    /**
+     * Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+     */
+    algorithm?: pulumi.Input<string>;
+    /**
+     * Pool description.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Health monitor configuration:
+     */
+    healthMonitor?: pulumi.Input<inputs.CloudLoadbalancerPoolCurrentStateHealthMonitor>;
+    /**
+     * Pool name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Session persistence configuration:
+     */
+    persistence?: pulumi.Input<inputs.CloudLoadbalancerPoolCurrentStatePersistence>;
+    /**
+     * Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+     */
+    protocol?: pulumi.Input<string>;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerPoolCurrentStateHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay?: pulumi.Input<number>;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName?: pulumi.Input<string>;
+    /**
+     * Expected HTTP response codes (e.g. `200`, `200-202`).
+     */
+    expectedCodes?: pulumi.Input<string>;
+    /**
+     * HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+     */
+    httpMethod?: pulumi.Input<string>;
+    /**
+     * HTTP version for health checks (`1.0` or `1.1`).
+     */
+    httpVersion?: pulumi.Input<string>;
+    /**
+     * Health monitor ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Number of consecutive health check failures before marking a member as unhealthy (1-10).
+     */
+    maxRetries?: pulumi.Input<number>;
+    /**
+     * Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+     */
+    maxRetriesDown?: pulumi.Input<number>;
+    /**
+     * Health monitor name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout?: pulumi.Input<number>;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerPoolCurrentStatePersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName?: pulumi.Input<string>;
+    /**
+     * Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerPoolHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: pulumi.Input<number>;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName?: pulumi.Input<string>;
+    /**
+     * Expected HTTP response codes (e.g. `200`, `200-202`).
+     */
+    expectedCodes?: pulumi.Input<string>;
+    /**
+     * HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+     */
+    httpMethod?: pulumi.Input<string>;
+    /**
+     * HTTP version for health checks (`1.0` or `1.1`).
+     */
+    httpVersion?: pulumi.Input<string>;
+    /**
+     * Number of consecutive health check failures before marking a member as unhealthy (1-10).
+     */
+    maxRetries: pulumi.Input<number>;
+    /**
+     * Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+     */
+    maxRetriesDown?: pulumi.Input<number>;
+    /**
+     * Health monitor name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: pulumi.Input<number>;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+     */
+    type: pulumi.Input<string>;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath?: pulumi.Input<string>;
+}
+
+export interface CloudLoadbalancerPoolMemberCurrentState {
+    /**
+     * IP address of the member. **Changing this value recreates the resource.**
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * Health monitor address and port override for this member:
+     */
+    monitor?: pulumi.Input<inputs.CloudLoadbalancerPoolMemberCurrentStateMonitor>;
+    /**
+     * Member name.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Operating status of the member.
+     */
+    operatingStatus?: pulumi.Input<string>;
+    /**
+     * Port used by the member to receive traffic. **Changing this value recreates the resource.**
+     */
+    protocolPort?: pulumi.Input<number>;
+    /**
+     * Provisioning status of the member.
+     */
+    provisioningStatus?: pulumi.Input<string>;
+    /**
+     * ID of the subnet the member is in. **Changing this value recreates the resource.**
+     */
+    subnetId?: pulumi.Input<string>;
+    /**
+     * Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+     */
+    weight?: pulumi.Input<number>;
+}
+
+export interface CloudLoadbalancerPoolMemberCurrentStateMonitor {
+    /**
+     * IP address used by the health monitor for this member.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port?: pulumi.Input<number>;
+}
+
+export interface CloudLoadbalancerPoolMemberMonitor {
+    /**
+     * IP address used by the health monitor for this member.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port?: pulumi.Input<number>;
+}
+
+export interface CloudLoadbalancerPoolPersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName?: pulumi.Input<string>;
+    /**
+     * Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface CloudNetworkPrivateVrackCurrentState {
     /**
      * Network description. **Changing this value recreates the resource.**
@@ -2229,7 +2774,7 @@ export namespace CloudProject {
 
     export interface DatabaseNode {
         /**
-         * Private network id in which the node should be deployed. It's the regional openstackId of the private network
+         * Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
          */
         networkId?: pulumi.Input<string>;
         /**
@@ -2237,7 +2782,7 @@ export namespace CloudProject {
          */
         region: pulumi.Input<string>;
         /**
-         * Private subnet ID in which the node is.
+         * Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
          */
         subnetId?: pulumi.Input<string>;
     }
@@ -5769,7 +6314,7 @@ export namespace Vps {
          */
         vcore?: pulumi.Input<number>;
         /**
-         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
          */
         version?: pulumi.Input<string>;
     }
