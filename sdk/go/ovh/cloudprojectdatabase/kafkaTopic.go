@@ -73,7 +73,7 @@ type KafkaTopic struct {
 	MinInsyncReplicas pulumi.IntOutput `pulumi:"minInsyncReplicas"`
 	// Name of the topic. No spaces allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Number of partitions for this topic. Should be superior to 0
+	// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
 	// Number of replication for this topic. Should be superior to 1
 	Replication pulumi.IntOutput `pulumi:"replication"`
@@ -124,7 +124,7 @@ type kafkaTopicState struct {
 	MinInsyncReplicas *int `pulumi:"minInsyncReplicas"`
 	// Name of the topic. No spaces allowed.
 	Name *string `pulumi:"name"`
-	// Number of partitions for this topic. Should be superior to 0
+	// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
 	Partitions *int `pulumi:"partitions"`
 	// Number of replication for this topic. Should be superior to 1
 	Replication *int `pulumi:"replication"`
@@ -143,7 +143,7 @@ type KafkaTopicState struct {
 	MinInsyncReplicas pulumi.IntPtrInput
 	// Name of the topic. No spaces allowed.
 	Name pulumi.StringPtrInput
-	// Number of partitions for this topic. Should be superior to 0
+	// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
 	Partitions pulumi.IntPtrInput
 	// Number of replication for this topic. Should be superior to 1
 	Replication pulumi.IntPtrInput
@@ -166,7 +166,7 @@ type kafkaTopicArgs struct {
 	MinInsyncReplicas *int `pulumi:"minInsyncReplicas"`
 	// Name of the topic. No spaces allowed.
 	Name *string `pulumi:"name"`
-	// Number of partitions for this topic. Should be superior to 0
+	// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
 	Partitions *int `pulumi:"partitions"`
 	// Number of replication for this topic. Should be superior to 1
 	Replication *int `pulumi:"replication"`
@@ -186,7 +186,7 @@ type KafkaTopicArgs struct {
 	MinInsyncReplicas pulumi.IntPtrInput
 	// Name of the topic. No spaces allowed.
 	Name pulumi.StringPtrInput
-	// Number of partitions for this topic. Should be superior to 0
+	// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
 	Partitions pulumi.IntPtrInput
 	// Number of replication for this topic. Should be superior to 1
 	Replication pulumi.IntPtrInput
@@ -300,7 +300,7 @@ func (o KafkaTopicOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Number of partitions for this topic. Should be superior to 0
+// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
 func (o KafkaTopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }

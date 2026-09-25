@@ -138,14 +138,14 @@ public final class VpsModelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+     * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+     * @return All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
      * 
      */
     public Optional<Output<String>> version() {
@@ -373,7 +373,7 @@ public final class VpsModelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         * @param version All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
          * 
          * @return builder
          * 
@@ -384,7 +384,7 @@ public final class VpsModelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         * @param version All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
          * 
          * @return builder
          * 

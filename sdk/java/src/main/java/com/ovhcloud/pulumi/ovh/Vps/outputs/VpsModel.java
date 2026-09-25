@@ -54,7 +54,7 @@ public final class VpsModel {
      */
     private @Nullable Double vcore;
     /**
-     * @return All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+     * @return All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
      * 
      */
     private @Nullable String version;
@@ -117,7 +117,7 @@ public final class VpsModel {
         return Optional.ofNullable(this.vcore);
     }
     /**
-     * @return All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+     * @return All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
      * 
      */
     public Optional<String> version() {

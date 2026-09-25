@@ -854,6 +854,62 @@ class Database(pulumi.CustomResource):
             flavor="db1-30")
         ```
 
+        ### Network Update
+
+        You can update the network of an existing database service without recreating it.
+
+        To switch from public to private network, add `network_id` and `subnet_id` to the nodes:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.cloudproject.Database("db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-database",
+            engine="postgresql",
+            version="14",
+            plan="business",
+            nodes=[
+                {
+                    "region": "GRA",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "subnet_id": "YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY",
+                },
+                {
+                    "region": "GRA",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "subnet_id": "YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY",
+                },
+            ],
+            flavor="db1-4")
+        ```
+
+        To switch from private to public network, remove `network_id` and `subnet_id` from the nodes:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.cloudproject.Database("db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-database",
+            engine="postgresql",
+            version="14",
+            plan="business",
+            nodes=[
+                {
+                    "region": "GRA",
+                },
+                {
+                    "region": "GRA",
+                },
+            ],
+            flavor="db1-4")
+        ```
+
+        > **Important:** Changing the network triggers a service rebuild. The service will go through `UPDATING` / `REBUILDING` states before returning to `RUNNING`. During this time the service may be temporarily unavailable. IP restrictions are cleared during a network change as the old IPs are no longer valid on the new network.
+
         ## Import
 
         OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,
@@ -1054,6 +1110,62 @@ class Database(pulumi.CustomResource):
             ],
             flavor="db1-30")
         ```
+
+        ### Network Update
+
+        You can update the network of an existing database service without recreating it.
+
+        To switch from public to private network, add `network_id` and `subnet_id` to the nodes:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.cloudproject.Database("db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-database",
+            engine="postgresql",
+            version="14",
+            plan="business",
+            nodes=[
+                {
+                    "region": "GRA",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "subnet_id": "YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY",
+                },
+                {
+                    "region": "GRA",
+                    "network_id": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
+                    "subnet_id": "YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY",
+                },
+            ],
+            flavor="db1-4")
+        ```
+
+        To switch from private to public network, remove `network_id` and `subnet_id` from the nodes:
+
+        ```python
+        import pulumi
+        import pulumi_ovh as ovh
+
+        db = ovh.cloudproject.Database("db",
+            service_name="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            description="my-database",
+            engine="postgresql",
+            version="14",
+            plan="business",
+            nodes=[
+                {
+                    "region": "GRA",
+                },
+                {
+                    "region": "GRA",
+                },
+            ],
+            flavor="db1-4")
+        ```
+
+        > **Important:** Changing the network triggers a service rebuild. The service will go through `UPDATING` / `REBUILDING` states before returning to `RUNNING`. During this time the service may be temporarily unavailable. IP restrictions are cleared during a network change as the old IPs are no longer valid on the new network.
 
         ## Import
 

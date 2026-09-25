@@ -62,14 +62,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of partitions for this topic. Should be superior to 0
+     * Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      * 
      */
     @Import(name="partitions")
     private @Nullable Output<Integer> partitions;
 
     /**
-     * @return Number of partitions for this topic. Should be superior to 0
+     * @return Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      * 
      */
     public Optional<Output<Integer>> partitions() {
@@ -231,7 +231,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions Number of partitions for this topic. Should be superior to 0
+         * @param partitions Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param partitions Number of partitions for this topic. Should be superior to 0
+         * @param partitions Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
          * 
          * @return builder
          * 

@@ -616,6 +616,551 @@ export interface CloudKeyManagerSecretCurrentStateLocation {
     region: string;
 }
 
+export interface CloudLoadbalancerCurrentState {
+    /**
+     * Availability zone for the load balancer. **Changing this value recreates the resource.**
+     */
+    availabilityZone: string;
+    /**
+     * Load balancer description.
+     */
+    description: string;
+    /**
+     * Load balancer flavor reference:
+     */
+    flavor: outputs.CloudLoadbalancerCurrentStateFlavor;
+    /**
+     * Load balancer name.
+     */
+    name: string;
+    /**
+     * Network of the VIP. **Changing any value of this block recreates the resource.**
+     */
+    network: outputs.CloudLoadbalancerCurrentStateNetwork;
+    /**
+     * Operating status of the load balancer.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the load balancer.
+     */
+    provisioningStatus: string;
+    /**
+     * Region where the load balancer will be created. **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudLoadbalancerCurrentStateFlavor {
+    /**
+     * Flavor ID.
+     */
+    id: string;
+}
+
+export interface CloudLoadbalancerCurrentStateNetwork {
+    /**
+     * Addresses carried by the VIP port:
+     */
+    addresses: outputs.CloudLoadbalancerCurrentStateNetworkAddress[];
+    /**
+     * ID of the network for the VIP.
+     */
+    id: string;
+    /**
+     * ID of the subnet for the VIP. The subnet must belong to the network above.
+     */
+    subnetId: string;
+}
+
+export interface CloudLoadbalancerCurrentStateNetworkAddress {
+    /**
+     * IP address.
+     */
+    ip: string;
+    /**
+     * Address type (`FIXED`, `FLOATING`).
+     */
+    type: string;
+}
+
+export interface CloudLoadbalancerL7policyCurrentState {
+    /**
+     * Action of the L7 policy (`REDIRECT_PREFIX`, `REDIRECT_TO_POOL`, `REDIRECT_TO_URL`, `REJECT`).
+     */
+    action: string;
+    /**
+     * Description of the L7 policy.
+     */
+    description: string;
+    /**
+     * Name of the L7 policy.
+     */
+    name: string;
+    /**
+     * Operating status of the rule.
+     */
+    operatingStatus: string;
+    /**
+     * Position of the L7 policy in the listener's policy list. If omitted, the value assigned by the API is stored in the state.
+     */
+    position: number;
+    /**
+     * Provisioning status of the rule.
+     */
+    provisioningStatus: string;
+    /**
+     * HTTP redirect code (`301`, `302`, `303`, `307`, `308`) for the `REDIRECT_PREFIX` and `REDIRECT_TO_URL` actions. If omitted, the value assigned by the API (`302`) is stored in the state.
+     */
+    redirectHttpCode: number;
+    /**
+     * ID of the pool for `REDIRECT_TO_POOL` action.
+     */
+    redirectPoolId: string;
+    /**
+     * Redirect prefix for `REDIRECT_PREFIX` action.
+     */
+    redirectPrefix: string;
+    /**
+     * Redirect URL for `REDIRECT_TO_URL` action.
+     */
+    redirectUrl: string;
+    /**
+     * List of L7 rules for this policy. All rules must match for the policy to apply:
+     */
+    rules: outputs.CloudLoadbalancerL7policyCurrentStateRule[];
+}
+
+export interface CloudLoadbalancerL7policyCurrentStateRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: string;
+    /**
+     * Rule ID.
+     */
+    id: string;
+    /**
+     * Whether to invert the rule match. Defaults to the value assigned by the API.
+     */
+    invert: boolean;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key: string;
+    /**
+     * Operating status of the rule.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the rule.
+     */
+    provisioningStatus: string;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: string;
+    /**
+     * Value to compare against.
+     */
+    value: string;
+}
+
+export interface CloudLoadbalancerL7policyRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: string;
+    /**
+     * Whether to invert the rule match. Defaults to the value assigned by the API.
+     */
+    invert: boolean;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key?: string;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: string;
+    /**
+     * Value to compare against.
+     */
+    value: string;
+}
+
+export interface CloudLoadbalancerListenerCurrentState {
+    /**
+     * List of CIDRs allowed to access the listener.
+     */
+    allowedCidrs: string[];
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Maximum number of connections allowed. If omitted, the value assigned by the API is stored in the state.
+     */
+    connectionLimit: number;
+    /**
+     * ID of the default pool for this listener (see `ovh.CloudLoadbalancerPool`). If omitted, the value assigned by the API is stored in the state.
+     */
+    defaultPoolId: string;
+    /**
+     * Reference to the default TLS container.
+     */
+    defaultTlsContainerRef: string;
+    /**
+     * Description of the listener.
+     */
+    description: string;
+    /**
+     * Headers to insert into requests:
+     */
+    insertHeaders: outputs.CloudLoadbalancerListenerCurrentStateInsertHeaders;
+    /**
+     * Name of the listener.
+     */
+    name: string;
+    /**
+     * Operating status of the listener.
+     */
+    operatingStatus: string;
+    /**
+     * Protocol of the listener (`HTTP`, `HTTPS`, `SCTP`, `TCP`, `TERMINATED_HTTPS`, `UDP`). **Changing this value recreates the resource.**
+     */
+    protocol: string;
+    /**
+     * Port number the listener listens on. **Changing this value recreates the resource.**
+     */
+    protocolPort: number;
+    /**
+     * Provisioning status of the listener.
+     */
+    provisioningStatus: string;
+    /**
+     * Region.
+     */
+    region: string;
+    /**
+     * List of SNI container references.
+     */
+    sniContainerRefs: string[];
+    /**
+     * Timeout for client data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutClientData: number;
+    /**
+     * Timeout for member connection in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutMemberConnect: number;
+    /**
+     * Timeout for member data in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutMemberData: number;
+    /**
+     * Timeout for TCP inspect in milliseconds. If omitted, the default assigned by the API is stored in the state.
+     */
+    timeoutTcpInspect: number;
+    /**
+     * List of TLS versions allowed.
+     */
+    tlsVersions: string[];
+}
+
+export interface CloudLoadbalancerListenerCurrentStateInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor: boolean;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort: boolean;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto: boolean;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn: boolean;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert: boolean;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify: boolean;
+}
+
+export interface CloudLoadbalancerListenerInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor: boolean;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort: boolean;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto: boolean;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn: boolean;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert: boolean;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify: boolean;
+}
+
+export interface CloudLoadbalancerNetwork {
+    /**
+     * ID of the network for the VIP.
+     */
+    id: string;
+    /**
+     * IP of the VIP. When it belongs to the subnet CIDR, it pins the fixed VIP address: it must be inside the subnet allocation pool, must not be the subnet gateway IP and must not already be taken by another port. When it is outside the subnet CIDR, it must be an existing floating IP of the project in that region, not already associated with a port, and the subnet must be attached to a router with an external gateway; the floating IP is then associated to the VIP port. Left empty, the address is picked automatically inside the subnet.
+     */
+    ip?: string;
+    /**
+     * ID of the subnet for the VIP. The subnet must belong to the network above.
+     */
+    subnetId: string;
+}
+
+export interface CloudLoadbalancerPoolCurrentState {
+    /**
+     * Load balancing algorithm (`LEAST_CONNECTIONS`, `ROUND_ROBIN`, `SOURCE_IP`). `SOURCE_IP_PORT` is not accepted: it is implemented by the OVN provider of Octavia only, which is not enabled on OVHcloud Public Cloud.
+     */
+    algorithm: string;
+    /**
+     * Pool description.
+     */
+    description: string;
+    /**
+     * Health monitor configuration:
+     */
+    healthMonitor: outputs.CloudLoadbalancerPoolCurrentStateHealthMonitor;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus: string;
+    /**
+     * Session persistence configuration:
+     */
+    persistence: outputs.CloudLoadbalancerPoolCurrentStatePersistence;
+    /**
+     * Protocol used by the pool (`HTTP`, `HTTPS`, `PROXY`, `PROXYV2`, `SCTP`, `TCP`, `UDP`). **Changing this value recreates the resource.**
+     */
+    protocol: string;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus: string;
+}
+
+export interface CloudLoadbalancerPoolCurrentStateHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: number;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName: string;
+    /**
+     * Expected HTTP response codes (e.g. `200`, `200-202`).
+     */
+    expectedCodes: string;
+    /**
+     * HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+     */
+    httpMethod: string;
+    /**
+     * HTTP version for health checks (`1.0` or `1.1`).
+     */
+    httpVersion: string;
+    /**
+     * Health monitor ID.
+     */
+    id: string;
+    /**
+     * Number of consecutive health check failures before marking a member as unhealthy (1-10).
+     */
+    maxRetries: number;
+    /**
+     * Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+     */
+    maxRetriesDown: number;
+    /**
+     * Health monitor name.
+     */
+    name: string;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus: string;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: number;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+     */
+    type: string;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath: string;
+}
+
+export interface CloudLoadbalancerPoolCurrentStatePersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName: string;
+    /**
+     * Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+     */
+    type: string;
+}
+
+export interface CloudLoadbalancerPoolHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: number;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName?: string;
+    /**
+     * Expected HTTP response codes (e.g. `200`, `200-202`).
+     */
+    expectedCodes?: string;
+    /**
+     * HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+     */
+    httpMethod?: string;
+    /**
+     * HTTP version for health checks (`1.0` or `1.1`).
+     */
+    httpVersion?: string;
+    /**
+     * Number of consecutive health check failures before marking a member as unhealthy (1-10).
+     */
+    maxRetries: number;
+    /**
+     * Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+     */
+    maxRetriesDown?: number;
+    /**
+     * Health monitor name.
+     */
+    name?: string;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: number;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`). **Changing this value recreates the resource.**
+     */
+    type: string;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath?: string;
+}
+
+export interface CloudLoadbalancerPoolMemberCurrentState {
+    /**
+     * IP address of the member. **Changing this value recreates the resource.**
+     */
+    address: string;
+    /**
+     * When `true`, the member is a backup member and only receives traffic when all non-backup members are down. If omitted, the value assigned by the API is stored in the state.
+     */
+    backup: boolean;
+    /**
+     * Health monitor address and port override for this member:
+     */
+    monitor: outputs.CloudLoadbalancerPoolMemberCurrentStateMonitor;
+    /**
+     * Member name.
+     */
+    name: string;
+    /**
+     * Operating status of the member.
+     */
+    operatingStatus: string;
+    /**
+     * Port used by the member to receive traffic. **Changing this value recreates the resource.**
+     */
+    protocolPort: number;
+    /**
+     * Provisioning status of the member.
+     */
+    provisioningStatus: string;
+    /**
+     * ID of the subnet the member is in. **Changing this value recreates the resource.**
+     */
+    subnetId: string;
+    /**
+     * Weight of the member in the pool (0-256). A higher weight receives more traffic. If omitted, the value assigned by the API is stored in the state.
+     */
+    weight: number;
+}
+
+export interface CloudLoadbalancerPoolMemberCurrentStateMonitor {
+    /**
+     * IP address used by the health monitor for this member.
+     */
+    address: string;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port: number;
+}
+
+export interface CloudLoadbalancerPoolMemberMonitor {
+    /**
+     * IP address used by the health monitor for this member.
+     */
+    address?: string;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port?: number;
+}
+
+export interface CloudLoadbalancerPoolPersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName?: string;
+    /**
+     * Session persistence type (`APP_COOKIE`, `HTTP_COOKIE`, `SOURCE_IP`).
+     */
+    type: string;
+}
+
 export interface CloudNetworkPrivateVrackCurrentState {
     /**
      * Network description. **Changing this value recreates the resource.**
@@ -3690,6 +4235,1403 @@ export interface GetCloudKeyManagerSecretsSecretLocation {
      * Region of the secret.
      */
     region: string;
+}
+
+export interface GetCloudLoadbalancerCurrentState {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Load balancer description.
+     */
+    description: string;
+    /**
+     * Load balancer flavor reference:
+     */
+    flavor: outputs.GetCloudLoadbalancerCurrentStateFlavor;
+    /**
+     * Load balancer name.
+     */
+    name: string;
+    /**
+     * VIP network:
+     */
+    network: outputs.GetCloudLoadbalancerCurrentStateNetwork;
+    /**
+     * Operating status of the load balancer.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the load balancer.
+     */
+    provisioningStatus: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudLoadbalancerCurrentStateFlavor {
+    /**
+     * ID of the load balancer.
+     */
+    id: string;
+}
+
+export interface GetCloudLoadbalancerCurrentStateNetwork {
+    /**
+     * Addresses carried by the VIP port:
+     */
+    addresses: outputs.GetCloudLoadbalancerCurrentStateNetworkAddress[];
+    /**
+     * ID of the load balancer.
+     */
+    id: string;
+    /**
+     * Subnet ID.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudLoadbalancerCurrentStateNetworkAddress {
+    /**
+     * IP address.
+     */
+    ip: string;
+    /**
+     * Address type (`FIXED`, `FLOATING`).
+     */
+    type: string;
+}
+
+export interface GetCloudLoadbalancerL7policiesL7policy {
+    /**
+     * L7 policy action.
+     */
+    action: string;
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the L7 policy.
+     */
+    createdAt: string;
+    /**
+     * Current state of the L7 policy:
+     */
+    currentState: outputs.GetCloudLoadbalancerL7policiesL7policyCurrentState;
+    /**
+     * L7 policy description.
+     */
+    description: string;
+    /**
+     * L7 policy ID.
+     */
+    id: string;
+    /**
+     * L7 policy name.
+     */
+    name: string;
+    /**
+     * L7 policy position.
+     */
+    position: number;
+    /**
+     * HTTP redirect code.
+     */
+    redirectHttpCode: number;
+    /**
+     * Redirect pool ID.
+     */
+    redirectPoolId: string;
+    /**
+     * Redirect prefix.
+     */
+    redirectPrefix: string;
+    /**
+     * Redirect URL.
+     */
+    redirectUrl: string;
+    /**
+     * L7 policy readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+     */
+    rules: outputs.GetCloudLoadbalancerL7policiesL7policyRule[];
+    /**
+     * Last update date of the L7 policy.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudLoadbalancerL7policiesL7policyCurrentState {
+    /**
+     * L7 policy action.
+     */
+    action: string;
+    /**
+     * L7 policy description.
+     */
+    description: string;
+    /**
+     * L7 policy name.
+     */
+    name: string;
+    /**
+     * Operating status of the L7 policy.
+     */
+    operatingStatus: string;
+    /**
+     * L7 policy position.
+     */
+    position: number;
+    /**
+     * Provisioning status of the L7 policy.
+     */
+    provisioningStatus: string;
+    /**
+     * HTTP redirect code.
+     */
+    redirectHttpCode: number;
+    /**
+     * Redirect pool ID.
+     */
+    redirectPoolId: string;
+    /**
+     * Redirect prefix.
+     */
+    redirectPrefix: string;
+    /**
+     * Redirect URL.
+     */
+    redirectUrl: string;
+    /**
+     * Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+     */
+    rules: outputs.GetCloudLoadbalancerL7policiesL7policyCurrentStateRule[];
+}
+
+export interface GetCloudLoadbalancerL7policiesL7policyCurrentStateRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: string;
+    /**
+     * L7 policy ID.
+     */
+    id: string;
+    /**
+     * Whether to invert the rule match.
+     */
+    invert: boolean;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key: string;
+    /**
+     * Operating status of the L7 policy.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the L7 policy.
+     */
+    provisioningStatus: string;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: string;
+    /**
+     * Value to compare against.
+     */
+    value: string;
+}
+
+export interface GetCloudLoadbalancerL7policiesL7policyRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: string;
+    /**
+     * Whether to invert the rule match.
+     */
+    invert: boolean;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key: string;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: string;
+    /**
+     * Value to compare against.
+     */
+    value: string;
+}
+
+export interface GetCloudLoadbalancerL7policyCurrentState {
+    /**
+     * L7 policy action.
+     */
+    action: string;
+    /**
+     * L7 policy description.
+     */
+    description: string;
+    /**
+     * L7 policy name.
+     */
+    name: string;
+    /**
+     * Operating status of the L7 policy.
+     */
+    operatingStatus: string;
+    /**
+     * L7 policy position.
+     */
+    position: number;
+    /**
+     * Provisioning status of the L7 policy.
+     */
+    provisioningStatus: string;
+    /**
+     * HTTP redirect code.
+     */
+    redirectHttpCode: number;
+    /**
+     * Redirect pool ID.
+     */
+    redirectPoolId: string;
+    /**
+     * Redirect prefix.
+     */
+    redirectPrefix: string;
+    /**
+     * Redirect URL.
+     */
+    redirectUrl: string;
+    /**
+     * Current state of the L7 rules (same schema as `rules`, plus `id`, `operatingStatus` and `provisioningStatus`).
+     */
+    rules: outputs.GetCloudLoadbalancerL7policyCurrentStateRule[];
+}
+
+export interface GetCloudLoadbalancerL7policyCurrentStateRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: string;
+    /**
+     * ID of the L7 policy.
+     */
+    id: string;
+    /**
+     * Whether to invert the rule match.
+     */
+    invert: boolean;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key: string;
+    /**
+     * Operating status of the L7 policy.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the L7 policy.
+     */
+    provisioningStatus: string;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: string;
+    /**
+     * Value to compare against.
+     */
+    value: string;
+}
+
+export interface GetCloudLoadbalancerL7policyRule {
+    /**
+     * Comparison type (`CONTAINS`, `ENDS_WITH`, `EQUAL_TO`, `REGEX`, `STARTS_WITH`).
+     */
+    compareType: string;
+    /**
+     * Whether to invert the rule match.
+     */
+    invert: boolean;
+    /**
+     * Key for `COOKIE` and `HEADER` rule types.
+     */
+    key: string;
+    /**
+     * Type of the L7 rule (`COOKIE`, `FILE_TYPE`, `HEADER`, `HOST_NAME`, `PATH`).
+     */
+    type: string;
+    /**
+     * Value to compare against.
+     */
+    value: string;
+}
+
+export interface GetCloudLoadbalancerListenerCurrentState {
+    /**
+     * List of CIDRs allowed to access the listener.
+     */
+    allowedCidrs: string[];
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Maximum number of connections allowed.
+     */
+    connectionLimit: number;
+    /**
+     * ID of the default pool for this listener.
+     */
+    defaultPoolId: string;
+    /**
+     * Reference to the default TLS container.
+     */
+    defaultTlsContainerRef: string;
+    /**
+     * Listener description.
+     */
+    description: string;
+    /**
+     * Headers inserted into requests (same schema as `insertHeaders`).
+     */
+    insertHeaders: outputs.GetCloudLoadbalancerListenerCurrentStateInsertHeaders;
+    /**
+     * Listener name.
+     */
+    name: string;
+    /**
+     * Operating status of the listener.
+     */
+    operatingStatus: string;
+    /**
+     * Listener protocol.
+     */
+    protocol: string;
+    /**
+     * Port number the listener listens on.
+     */
+    protocolPort: number;
+    /**
+     * Provisioning status of the listener.
+     */
+    provisioningStatus: string;
+    /**
+     * Region.
+     */
+    region: string;
+    /**
+     * List of SNI container references.
+     */
+    sniContainerRefs: string[];
+    /**
+     * Timeout for client data in milliseconds.
+     */
+    timeoutClientData: number;
+    /**
+     * Timeout for member connection in milliseconds.
+     */
+    timeoutMemberConnect: number;
+    /**
+     * Timeout for member data in milliseconds.
+     */
+    timeoutMemberData: number;
+    /**
+     * Timeout for TCP inspect in milliseconds.
+     */
+    timeoutTcpInspect: number;
+    /**
+     * List of TLS versions allowed.
+     */
+    tlsVersions: string[];
+}
+
+export interface GetCloudLoadbalancerListenerCurrentStateInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor: boolean;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort: boolean;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto: boolean;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn: boolean;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert: boolean;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify: boolean;
+}
+
+export interface GetCloudLoadbalancerListenerInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor: boolean;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort: boolean;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto: boolean;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn: boolean;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert: boolean;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify: boolean;
+}
+
+export interface GetCloudLoadbalancerListenersListener {
+    /**
+     * List of CIDRs allowed to access the listener.
+     */
+    allowedCidrs: string[];
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Maximum number of connections allowed.
+     */
+    connectionLimit: number;
+    /**
+     * Creation date of the listener.
+     */
+    createdAt: string;
+    /**
+     * Current state of the listener:
+     */
+    currentState: outputs.GetCloudLoadbalancerListenersListenerCurrentState;
+    /**
+     * ID of the default pool for this listener.
+     */
+    defaultPoolId: string;
+    /**
+     * Reference to the default TLS container.
+     */
+    defaultTlsContainerRef: string;
+    /**
+     * Listener description.
+     */
+    description: string;
+    /**
+     * Listener ID.
+     */
+    id: string;
+    /**
+     * Headers inserted into requests (same schema as above).
+     */
+    insertHeaders: outputs.GetCloudLoadbalancerListenersListenerInsertHeaders;
+    /**
+     * Listener name.
+     */
+    name: string;
+    /**
+     * Listener protocol.
+     */
+    protocol: string;
+    /**
+     * Port number the listener listens on.
+     */
+    protocolPort: number;
+    /**
+     * Listener readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * List of SNI container references.
+     */
+    sniContainerRefs: string[];
+    /**
+     * Timeout for client data in milliseconds.
+     */
+    timeoutClientData: number;
+    /**
+     * Timeout for member connection in milliseconds.
+     */
+    timeoutMemberConnect: number;
+    /**
+     * Timeout for member data in milliseconds.
+     */
+    timeoutMemberData: number;
+    /**
+     * Timeout for TCP inspect in milliseconds.
+     */
+    timeoutTcpInspect: number;
+    /**
+     * List of TLS versions allowed.
+     */
+    tlsVersions: string[];
+    /**
+     * Last update date of the listener.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudLoadbalancerListenersListenerCurrentState {
+    /**
+     * List of CIDRs allowed to access the listener.
+     */
+    allowedCidrs: string[];
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Maximum number of connections allowed.
+     */
+    connectionLimit: number;
+    /**
+     * ID of the default pool for this listener.
+     */
+    defaultPoolId: string;
+    /**
+     * Reference to the default TLS container.
+     */
+    defaultTlsContainerRef: string;
+    /**
+     * Listener description.
+     */
+    description: string;
+    /**
+     * Headers inserted into requests (same schema as above).
+     */
+    insertHeaders: outputs.GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders;
+    /**
+     * Listener name.
+     */
+    name: string;
+    /**
+     * Operating status of the listener.
+     */
+    operatingStatus: string;
+    /**
+     * Listener protocol.
+     */
+    protocol: string;
+    /**
+     * Port number the listener listens on.
+     */
+    protocolPort: number;
+    /**
+     * Provisioning status of the listener.
+     */
+    provisioningStatus: string;
+    /**
+     * Region.
+     */
+    region: string;
+    /**
+     * List of SNI container references.
+     */
+    sniContainerRefs: string[];
+    /**
+     * Timeout for client data in milliseconds.
+     */
+    timeoutClientData: number;
+    /**
+     * Timeout for member connection in milliseconds.
+     */
+    timeoutMemberConnect: number;
+    /**
+     * Timeout for member data in milliseconds.
+     */
+    timeoutMemberData: number;
+    /**
+     * Timeout for TCP inspect in milliseconds.
+     */
+    timeoutTcpInspect: number;
+    /**
+     * List of TLS versions allowed.
+     */
+    tlsVersions: string[];
+}
+
+export interface GetCloudLoadbalancerListenersListenerCurrentStateInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor: boolean;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort: boolean;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto: boolean;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn: boolean;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert: boolean;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify: boolean;
+}
+
+export interface GetCloudLoadbalancerListenersListenerInsertHeaders {
+    /**
+     * Insert X-Forwarded-For header.
+     */
+    xForwardedFor: boolean;
+    /**
+     * Insert X-Forwarded-Port header.
+     */
+    xForwardedPort: boolean;
+    /**
+     * Insert X-Forwarded-Proto header.
+     */
+    xForwardedProto: boolean;
+    /**
+     * Insert X-SSL-Client-DN header.
+     */
+    xSslClientDn: boolean;
+    /**
+     * Insert X-SSL-Client-Has-Cert header.
+     */
+    xSslClientHasCert: boolean;
+    /**
+     * Insert X-SSL-Client-Verify header.
+     */
+    xSslClientVerify: boolean;
+}
+
+export interface GetCloudLoadbalancerNetwork {
+    /**
+     * ID of the load balancer.
+     */
+    id: string;
+    /**
+     * IP address.
+     */
+    ip: string;
+    /**
+     * Subnet ID.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudLoadbalancerPoolCurrentState {
+    /**
+     * Load balancing algorithm.
+     */
+    algorithm: string;
+    /**
+     * Pool description.
+     */
+    description: string;
+    /**
+     * Health monitor configuration (same schema as `healthMonitor`), plus:
+     */
+    healthMonitor: outputs.GetCloudLoadbalancerPoolCurrentStateHealthMonitor;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus: string;
+    /**
+     * Session persistence configuration (same schema as `persistence`).
+     */
+    persistence: outputs.GetCloudLoadbalancerPoolCurrentStatePersistence;
+    /**
+     * Protocol used by the pool.
+     */
+    protocol: string;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus: string;
+}
+
+export interface GetCloudLoadbalancerPoolCurrentStateHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: number;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName: string;
+    /**
+     * Expected HTTP response codes (e.g. `200`, `200-202`).
+     */
+    expectedCodes: string;
+    /**
+     * HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+     */
+    httpMethod: string;
+    /**
+     * HTTP version for health checks (`1.0` or `1.1`).
+     */
+    httpVersion: string;
+    /**
+     * ID of the pool.
+     */
+    id: string;
+    /**
+     * Number of consecutive health check failures before marking a member as unhealthy (1-10).
+     */
+    maxRetries: number;
+    /**
+     * Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+     */
+    maxRetriesDown: number;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus: string;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: number;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath: string;
+}
+
+export interface GetCloudLoadbalancerPoolCurrentStatePersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName: string;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+}
+
+export interface GetCloudLoadbalancerPoolHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: number;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName: string;
+    /**
+     * Expected HTTP response codes (e.g. `200`, `200-202`).
+     */
+    expectedCodes: string;
+    /**
+     * HTTP method for health checks (`GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`, `TRACE`).
+     */
+    httpMethod: string;
+    /**
+     * HTTP version for health checks (`1.0` or `1.1`).
+     */
+    httpVersion: string;
+    /**
+     * Number of consecutive health check failures before marking a member as unhealthy (1-10).
+     */
+    maxRetries: number;
+    /**
+     * Number of consecutive health check failures before marking a member as `ERROR` (1-10).
+     */
+    maxRetriesDown: number;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: number;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath: string;
+}
+
+export interface GetCloudLoadbalancerPoolMemberCurrentState {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Whether this member is a backup member.
+     */
+    backup: boolean;
+    /**
+     * Health monitor address and port override (same schema as `monitor`).
+     */
+    monitor: outputs.GetCloudLoadbalancerPoolMemberCurrentStateMonitor;
+    /**
+     * Member name.
+     */
+    name: string;
+    /**
+     * Operating status of the member.
+     */
+    operatingStatus: string;
+    /**
+     * Port used by the member.
+     */
+    protocolPort: number;
+    /**
+     * Provisioning status of the member.
+     */
+    provisioningStatus: string;
+    /**
+     * ID of the subnet the member is in.
+     */
+    subnetId: string;
+    /**
+     * Weight of the member.
+     */
+    weight: number;
+}
+
+export interface GetCloudLoadbalancerPoolMemberCurrentStateMonitor {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port: number;
+}
+
+export interface GetCloudLoadbalancerPoolMemberMonitor {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port: number;
+}
+
+export interface GetCloudLoadbalancerPoolMembersMember {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Whether this member is a backup member.
+     */
+    backup: boolean;
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the member.
+     */
+    createdAt: string;
+    /**
+     * Current state of the member:
+     */
+    currentState: outputs.GetCloudLoadbalancerPoolMembersMemberCurrentState;
+    /**
+     * Member ID.
+     */
+    id: string;
+    /**
+     * Health monitor address and port override (same schema as above).
+     */
+    monitor: outputs.GetCloudLoadbalancerPoolMembersMemberMonitor;
+    /**
+     * Member name.
+     */
+    name: string;
+    /**
+     * Port used by the member.
+     */
+    protocolPort: number;
+    /**
+     * Member readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * ID of the subnet the member is in.
+     */
+    subnetId: string;
+    /**
+     * Last update date of the member.
+     */
+    updatedAt: string;
+    /**
+     * Weight of the member.
+     */
+    weight: number;
+}
+
+export interface GetCloudLoadbalancerPoolMembersMemberCurrentState {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Whether this member is a backup member.
+     */
+    backup: boolean;
+    /**
+     * Health monitor address and port override (same schema as above).
+     */
+    monitor: outputs.GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor;
+    /**
+     * Member name.
+     */
+    name: string;
+    /**
+     * Operating status of the member.
+     */
+    operatingStatus: string;
+    /**
+     * Port used by the member.
+     */
+    protocolPort: number;
+    /**
+     * Provisioning status of the member.
+     */
+    provisioningStatus: string;
+    /**
+     * ID of the subnet the member is in.
+     */
+    subnetId: string;
+    /**
+     * Weight of the member.
+     */
+    weight: number;
+}
+
+export interface GetCloudLoadbalancerPoolMembersMemberCurrentStateMonitor {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port: number;
+}
+
+export interface GetCloudLoadbalancerPoolMembersMemberMonitor {
+    /**
+     * IP address of the member.
+     */
+    address: string;
+    /**
+     * Port used by the health monitor for this member.
+     */
+    port: number;
+}
+
+export interface GetCloudLoadbalancerPoolPersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName: string;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+}
+
+export interface GetCloudLoadbalancerPoolsPool {
+    /**
+     * Load balancing algorithm.
+     */
+    algorithm: string;
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the pool.
+     */
+    createdAt: string;
+    /**
+     * Current state of the pool:
+     */
+    currentState: outputs.GetCloudLoadbalancerPoolsPoolCurrentState;
+    /**
+     * Pool description.
+     */
+    description: string;
+    /**
+     * Health monitor configuration, plus:
+     */
+    healthMonitor: outputs.GetCloudLoadbalancerPoolsPoolHealthMonitor;
+    /**
+     * Health monitor ID.
+     */
+    id: string;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Session persistence configuration (same schema as above).
+     */
+    persistence: outputs.GetCloudLoadbalancerPoolsPoolPersistence;
+    /**
+     * Protocol used by the pool.
+     */
+    protocol: string;
+    /**
+     * Pool readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the pool.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudLoadbalancerPoolsPoolCurrentState {
+    /**
+     * Load balancing algorithm.
+     */
+    algorithm: string;
+    /**
+     * Pool description.
+     */
+    description: string;
+    /**
+     * Health monitor configuration, plus:
+     */
+    healthMonitor: outputs.GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus: string;
+    /**
+     * Session persistence configuration (same schema as above).
+     */
+    persistence: outputs.GetCloudLoadbalancerPoolsPoolCurrentStatePersistence;
+    /**
+     * Protocol used by the pool.
+     */
+    protocol: string;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus: string;
+}
+
+export interface GetCloudLoadbalancerPoolsPoolCurrentStateHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: number;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName: string;
+    /**
+     * Expected HTTP response codes.
+     */
+    expectedCodes: string;
+    /**
+     * HTTP method for health checks.
+     */
+    httpMethod: string;
+    /**
+     * HTTP version for health checks.
+     */
+    httpVersion: string;
+    /**
+     * Health monitor ID.
+     */
+    id: string;
+    /**
+     * Number of consecutive health check failures before marking member as unhealthy.
+     */
+    maxRetries: number;
+    /**
+     * Number of consecutive health check failures before marking member as `ERROR`.
+     */
+    maxRetriesDown: number;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Operating status of the pool.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the pool.
+     */
+    provisioningStatus: string;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: number;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath: string;
+}
+
+export interface GetCloudLoadbalancerPoolsPoolCurrentStatePersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName: string;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+}
+
+export interface GetCloudLoadbalancerPoolsPoolHealthMonitor {
+    /**
+     * Seconds between health checks.
+     */
+    delay: number;
+    /**
+     * Domain name for health check requests.
+     */
+    domainName: string;
+    /**
+     * Expected HTTP response codes.
+     */
+    expectedCodes: string;
+    /**
+     * HTTP method for health checks.
+     */
+    httpMethod: string;
+    /**
+     * HTTP version for health checks.
+     */
+    httpVersion: string;
+    /**
+     * Number of consecutive health check failures before marking member as unhealthy.
+     */
+    maxRetries: number;
+    /**
+     * Number of consecutive health check failures before marking member as `ERROR`.
+     */
+    maxRetriesDown: number;
+    /**
+     * Pool name.
+     */
+    name: string;
+    /**
+     * Seconds to wait for a health check response.
+     */
+    timeout: number;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+    /**
+     * URL path for HTTP/HTTPS health checks.
+     */
+    urlPath: string;
+}
+
+export interface GetCloudLoadbalancerPoolsPoolPersistence {
+    /**
+     * Cookie name for `APP_COOKIE` persistence type.
+     */
+    cookieName: string;
+    /**
+     * Health monitor type (`HTTP`, `HTTPS`, `PING`, `TCP`, `UDP_CONNECT`, `SCTP`, `TLS_HELLO`).
+     */
+    type: string;
+}
+
+export interface GetCloudLoadbalancersLoadbalancer {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the load balancer.
+     */
+    createdAt: string;
+    /**
+     * Current state of the load balancer:
+     */
+    currentState: outputs.GetCloudLoadbalancersLoadbalancerCurrentState;
+    /**
+     * Load balancer description.
+     */
+    description: string;
+    /**
+     * Name of the load balancer flavor.
+     */
+    flavorName: string;
+    /**
+     * Flavor ID.
+     */
+    id: string;
+    /**
+     * Load balancer name.
+     */
+    name: string;
+    /**
+     * VIP network:
+     */
+    network: outputs.GetCloudLoadbalancersLoadbalancerNetwork;
+    /**
+     * Region.
+     */
+    region: string;
+    /**
+     * Load balancer readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Last update date of the load balancer.
+     */
+    updatedAt: string;
+}
+
+export interface GetCloudLoadbalancersLoadbalancerCurrentState {
+    /**
+     * Availability zone.
+     */
+    availabilityZone: string;
+    /**
+     * Load balancer description.
+     */
+    description: string;
+    /**
+     * Load balancer flavor reference:
+     */
+    flavor: outputs.GetCloudLoadbalancersLoadbalancerCurrentStateFlavor;
+    /**
+     * Load balancer name.
+     */
+    name: string;
+    /**
+     * VIP network:
+     */
+    network: outputs.GetCloudLoadbalancersLoadbalancerCurrentStateNetwork;
+    /**
+     * Operating status of the load balancer.
+     */
+    operatingStatus: string;
+    /**
+     * Provisioning status of the load balancer.
+     */
+    provisioningStatus: string;
+    /**
+     * Region.
+     */
+    region: string;
+}
+
+export interface GetCloudLoadbalancersLoadbalancerCurrentStateFlavor {
+    /**
+     * Flavor ID.
+     */
+    id: string;
+}
+
+export interface GetCloudLoadbalancersLoadbalancerCurrentStateNetwork {
+    /**
+     * Addresses carried by the VIP port:
+     */
+    addresses: outputs.GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress[];
+    /**
+     * Flavor ID.
+     */
+    id: string;
+    /**
+     * Subnet ID.
+     */
+    subnetId: string;
+}
+
+export interface GetCloudLoadbalancersLoadbalancerCurrentStateNetworkAddress {
+    /**
+     * IP address.
+     */
+    ip: string;
+    /**
+     * Address type (`FIXED`, `FLOATING`).
+     */
+    type: string;
+}
+
+export interface GetCloudLoadbalancersLoadbalancerNetwork {
+    /**
+     * Flavor ID.
+     */
+    id: string;
+    /**
+     * IP address.
+     */
+    ip: string;
+    /**
+     * Subnet ID.
+     */
+    subnetId: string;
 }
 
 export interface GetCloudNetworkPrivateVrackCurrentState {
@@ -7466,7 +9408,7 @@ export namespace CloudProject {
 
     export interface DatabaseNode {
         /**
-         * Private network id in which the node should be deployed. It's the regional openstackId of the private network
+         * Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
          */
         networkId?: string;
         /**
@@ -7474,7 +9416,7 @@ export namespace CloudProject {
          */
         region: string;
         /**
-         * Private subnet ID in which the node is.
+         * Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
          */
         subnetId?: string;
     }
@@ -13437,7 +15379,7 @@ export namespace Vps {
          */
         vcore: number;
         /**
-         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+         * All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
          */
         version: string;
     }

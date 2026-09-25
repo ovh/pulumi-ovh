@@ -119,6 +119,75 @@
                 "current": "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer",
                 "majorVersion": 2
             },
+            "ovh_cloud_loadbalancer": {
+                "current": "ovh:index/cloudLoadbalancer:CloudLoadbalancer",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "network": {
+                                "fields": {
+                                    "addresses": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_l7policy": {
+                "current": "ovh:index/cloudLoadbalancerL7policy:CloudLoadbalancerL7policy",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "rules": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_listener": {
+                "current": "ovh:index/cloudLoadbalancerListener:CloudLoadbalancerListener",
+                "majorVersion": 2,
+                "fields": {
+                    "allowed_cidrs": {
+                        "maxItemsOne": false
+                    },
+                    "current_state": {
+                        "fields": {
+                            "allowed_cidrs": {
+                                "maxItemsOne": false
+                            },
+                            "sni_container_refs": {
+                                "maxItemsOne": false
+                            },
+                            "tls_versions": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "sni_container_refs": {
+                        "maxItemsOne": false
+                    },
+                    "tls_versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_pool": {
+                "current": "ovh:index/cloudLoadbalancerPool:CloudLoadbalancerPool",
+                "majorVersion": 2
+            },
+            "ovh_cloud_loadbalancer_pool_member": {
+                "current": "ovh:index/cloudLoadbalancerPoolMember:CloudLoadbalancerPoolMember",
+                "majorVersion": 2
+            },
             "ovh_cloud_network_private_vrack": {
                 "current": "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack",
                 "majorVersion": 2
@@ -1250,6 +1319,10 @@
             },
             "ovh_dedicated_server_update": {
                 "current": "ovh:Dedicated/serverUpdate:ServerUpdate",
+                "majorVersion": 2
+            },
+            "ovh_dedicated_server_virtual_mac": {
+                "current": "ovh:index/dedicatedServerVirtualMac:DedicatedServerVirtualMac",
                 "majorVersion": 2
             },
             "ovh_domain_ds_records": {
@@ -2473,6 +2546,175 @@
                 "fields": {
                     "secrets": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer": {
+                "current": "ovh:index/getCloudLoadbalancer:getCloudLoadbalancer",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "network": {
+                                "fields": {
+                                    "addresses": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_l7policies": {
+                "current": "ovh:index/getCloudLoadbalancerL7policies:getCloudLoadbalancerL7policies",
+                "majorVersion": 2,
+                "fields": {
+                    "l7policies": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "rules": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "rules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_l7policy": {
+                "current": "ovh:index/getCloudLoadbalancerL7policy:getCloudLoadbalancerL7policy",
+                "majorVersion": 2,
+                "fields": {
+                    "current_state": {
+                        "fields": {
+                            "rules": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_listener": {
+                "current": "ovh:index/getCloudLoadbalancerListener:getCloudLoadbalancerListener",
+                "majorVersion": 2,
+                "fields": {
+                    "allowed_cidrs": {
+                        "maxItemsOne": false
+                    },
+                    "current_state": {
+                        "fields": {
+                            "allowed_cidrs": {
+                                "maxItemsOne": false
+                            },
+                            "sni_container_refs": {
+                                "maxItemsOne": false
+                            },
+                            "tls_versions": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "sni_container_refs": {
+                        "maxItemsOne": false
+                    },
+                    "tls_versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_listeners": {
+                "current": "ovh:index/getCloudLoadbalancerListeners:getCloudLoadbalancerListeners",
+                "majorVersion": 2,
+                "fields": {
+                    "listeners": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_cidrs": {
+                                    "maxItemsOne": false
+                                },
+                                "current_state": {
+                                    "fields": {
+                                        "allowed_cidrs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "sni_container_refs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "tls_versions": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "sni_container_refs": {
+                                    "maxItemsOne": false
+                                },
+                                "tls_versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_pool": {
+                "current": "ovh:index/getCloudLoadbalancerPool:getCloudLoadbalancerPool",
+                "majorVersion": 2
+            },
+            "ovh_cloud_loadbalancer_pool_member": {
+                "current": "ovh:index/getCloudLoadbalancerPoolMember:getCloudLoadbalancerPoolMember",
+                "majorVersion": 2
+            },
+            "ovh_cloud_loadbalancer_pool_members": {
+                "current": "ovh:index/getCloudLoadbalancerPoolMembers:getCloudLoadbalancerPoolMembers",
+                "majorVersion": 2,
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancer_pools": {
+                "current": "ovh:index/getCloudLoadbalancerPools:getCloudLoadbalancerPools",
+                "majorVersion": 2,
+                "fields": {
+                    "pools": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_cloud_loadbalancers": {
+                "current": "ovh:index/getCloudLoadbalancers:getCloudLoadbalancers",
+                "majorVersion": 2,
+                "fields": {
+                    "loadbalancers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "current_state": {
+                                    "fields": {
+                                        "network": {
+                                            "fields": {
+                                                "addresses": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -4980,6 +5222,11 @@
             "ovh:index/cloudKeyManagerContainerConsumer:CloudKeyManagerContainerConsumer": 1,
             "ovh:index/cloudKeyManagerSecret:CloudKeyManagerSecret": 1,
             "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer": 1,
+            "ovh:index/cloudLoadbalancer:CloudLoadbalancer": 1,
+            "ovh:index/cloudLoadbalancerL7policy:CloudLoadbalancerL7policy": 1,
+            "ovh:index/cloudLoadbalancerListener:CloudLoadbalancerListener": 1,
+            "ovh:index/cloudLoadbalancerPool:CloudLoadbalancerPool": 1,
+            "ovh:index/cloudLoadbalancerPoolMember:CloudLoadbalancerPoolMember": 1,
             "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack": 1,
             "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet": 1,
             "ovh:index/cloudProjectContainerregistryIam:CloudProjectContainerregistryIam": 0,
@@ -5003,6 +5250,7 @@
             "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": 1,
             "ovh:index/clousSSHKey:ClousSSHKey": 1,
             "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": 1,
+            "ovh:index/dedicatedServerVirtualMac:DedicatedServerVirtualMac": 0,
             "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord": 1,
             "ovh:index/emailDomainAccount:EmailDomainAccount": 1,
             "ovh:index/hostingPrivatedatabaseWebhostingNetwork:HostingPrivatedatabaseWebhostingNetwork": 1,
@@ -5183,6 +5431,16 @@
             "ovh:index/getCloudKeyManagerSecretConsumers:getCloudKeyManagerSecretConsumers": 1,
             "ovh:index/getCloudKeyManagerSecretPayload:getCloudKeyManagerSecretPayload": 1,
             "ovh:index/getCloudKeyManagerSecrets:getCloudKeyManagerSecrets": 1,
+            "ovh:index/getCloudLoadbalancer:getCloudLoadbalancer": 1,
+            "ovh:index/getCloudLoadbalancerL7policies:getCloudLoadbalancerL7policies": 1,
+            "ovh:index/getCloudLoadbalancerL7policy:getCloudLoadbalancerL7policy": 1,
+            "ovh:index/getCloudLoadbalancerListener:getCloudLoadbalancerListener": 1,
+            "ovh:index/getCloudLoadbalancerListeners:getCloudLoadbalancerListeners": 1,
+            "ovh:index/getCloudLoadbalancerPool:getCloudLoadbalancerPool": 1,
+            "ovh:index/getCloudLoadbalancerPoolMember:getCloudLoadbalancerPoolMember": 1,
+            "ovh:index/getCloudLoadbalancerPoolMembers:getCloudLoadbalancerPoolMembers": 1,
+            "ovh:index/getCloudLoadbalancerPools:getCloudLoadbalancerPools": 1,
+            "ovh:index/getCloudLoadbalancers:getCloudLoadbalancers": 1,
             "ovh:index/getCloudNetworkPrivateVrack:getCloudNetworkPrivateVrack": 1,
             "ovh:index/getCloudNetworkPrivateVrackSubnet:getCloudNetworkPrivateVrackSubnet": 1,
             "ovh:index/getCloudNetworkPrivateVrackSubnets:getCloudNetworkPrivateVrackSubnets": 1,

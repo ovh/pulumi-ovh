@@ -138,7 +138,7 @@ class VpsModel(dict):
         :param _builtins.str name: Name of the VPS
         :param _builtins.str offer: Description of this VPS offer
         :param _builtins.float vcore: Number of vcores
-        :param _builtins.str version: All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        :param _builtins.str version: All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
         """
         if available_options is not None:
             pulumi.set(__self__, "available_options", available_options)
@@ -227,7 +227,7 @@ class VpsModel(dict):
     @pulumi.getter
     def version(self) -> Optional[_builtins.str]:
         """
-        All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
         """
         return pulumi.get(self, "version")
 

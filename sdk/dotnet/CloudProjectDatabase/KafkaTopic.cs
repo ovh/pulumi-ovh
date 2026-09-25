@@ -76,7 +76,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of partitions for this topic. Should be superior to 0
+        /// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         /// </summary>
         [Output("partitions")]
         public Output<int> Partitions { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of partitions for this topic. Should be superior to 0
+        /// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.Ovh.CloudProjectDatabase
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of partitions for this topic. Should be superior to 0
+        /// Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         /// </summary>
         [Input("partitions")]
         public Input<int>? Partitions { get; set; }

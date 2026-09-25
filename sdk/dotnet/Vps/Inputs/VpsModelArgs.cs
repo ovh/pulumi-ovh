@@ -73,7 +73,7 @@ namespace Pulumi.Ovh.Vps.Inputs
         public Input<double>? Vcore { get; set; }
 
         /// <summary>
-        /// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1)
+        /// All versions that VPS can have (2013v1┃2014v1┃2015v1┃2017v1┃2017v2┃2017v3┃2018v1┃2018v2┃2019v1┃2025v1┃2027v1)
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

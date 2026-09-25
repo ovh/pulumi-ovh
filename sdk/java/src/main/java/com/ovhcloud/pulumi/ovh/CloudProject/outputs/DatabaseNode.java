@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DatabaseNode {
     /**
-     * @return Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network
+     * @return Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
      * 
      */
     private @Nullable String networkId;
@@ -23,14 +23,14 @@ public final class DatabaseNode {
      */
     private String region;
     /**
-     * @return Private subnet ID in which the node is.
+     * @return Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
      * 
      */
     private @Nullable String subnetId;
 
     private DatabaseNode() {}
     /**
-     * @return Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network
+     * @return Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
      * 
      */
     public Optional<String> networkId() {
@@ -44,7 +44,7 @@ public final class DatabaseNode {
         return this.region;
     }
     /**
-     * @return Private subnet ID in which the node is.
+     * @return Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
      * 
      */
     public Optional<String> subnetId() {

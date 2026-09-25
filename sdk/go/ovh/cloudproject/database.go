@@ -256,6 +256,94 @@ import (
 //
 // ```
 //
+// ### Network Update
+//
+// You can update the network of an existing database service without recreating it.
+//
+// To switch from public to private network, add `networkId` and `subnetId` to the nodes:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewDatabase(ctx, "db", &cloudproject.DatabaseArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				Description: pulumi.String("my-database"),
+//				Engine:      pulumi.String("postgresql"),
+//				Version:     pulumi.String("14"),
+//				Plan:        pulumi.String("business"),
+//				Nodes: cloudproject.DatabaseNodeArray{
+//					&cloudproject.DatabaseNodeArgs{
+//						Region:    pulumi.String("GRA"),
+//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
+//						SubnetId:  pulumi.String("YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY"),
+//					},
+//					&cloudproject.DatabaseNodeArgs{
+//						Region:    pulumi.String("GRA"),
+//						NetworkId: pulumi.String("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"),
+//						SubnetId:  pulumi.String("YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY"),
+//					},
+//				},
+//				Flavor: pulumi.String("db1-4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// To switch from private to public network, remove `networkId` and `subnetId` from the nodes:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/cloudproject"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudproject.NewDatabase(ctx, "db", &cloudproject.DatabaseArgs{
+//				ServiceName: pulumi.String("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"),
+//				Description: pulumi.String("my-database"),
+//				Engine:      pulumi.String("postgresql"),
+//				Version:     pulumi.String("14"),
+//				Plan:        pulumi.String("business"),
+//				Nodes: cloudproject.DatabaseNodeArray{
+//					&cloudproject.DatabaseNodeArgs{
+//						Region: pulumi.String("GRA"),
+//					},
+//					&cloudproject.DatabaseNodeArgs{
+//						Region: pulumi.String("GRA"),
+//					},
+//				},
+//				Flavor: pulumi.String("db1-4"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > **Important:** Changing the network triggers a service rebuild. The service will go through `UPDATING` / `REBUILDING` states before returning to `RUNNING`. During this time the service may be temporarily unavailable. IP restrictions are cleared during a network change as the old IPs are no longer valid on the new network.
+//
 // ## Import
 //
 // OVHcloud Managed database clusters can be imported using the `service_name`, `engine`, `id` of the cluster, separated by "/" E.g.,

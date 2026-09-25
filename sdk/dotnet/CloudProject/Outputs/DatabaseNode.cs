@@ -14,7 +14,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
     public sealed class DatabaseNode
     {
         /// <summary>
-        /// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+        /// Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
         /// </summary>
         public readonly string? NetworkId;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.CloudProject.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Private subnet ID in which the node is.
+        /// Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
         /// </summary>
         public readonly string? SubnetId;
 

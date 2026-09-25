@@ -17,14 +17,14 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatabaseNodeArgs Empty = new DatabaseNodeArgs();
 
     /**
-     * Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network
+     * Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
      * 
      */
     @Import(name="networkId")
     private @Nullable Output<String> networkId;
 
     /**
-     * @return Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network
+     * @return Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
      * 
      */
     public Optional<Output<String>> networkId() {
@@ -47,14 +47,14 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Private subnet ID in which the node is.
+     * Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
      * 
      */
     @Import(name="subnetId")
     private @Nullable Output<String> subnetId;
 
     /**
-     * @return Private subnet ID in which the node is.
+     * @return Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
      * 
      */
     public Optional<Output<String>> subnetId() {
@@ -88,7 +88,7 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network
+         * @param networkId Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkId Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network
+         * @param networkId Private network id in which the node should be deployed. It&#39;s the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnetId Private subnet ID in which the node is.
+         * @param subnetId Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DatabaseNodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param subnetId Private subnet ID in which the node is.
+         * @param subnetId Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
          * 
          * @return builder
          * 

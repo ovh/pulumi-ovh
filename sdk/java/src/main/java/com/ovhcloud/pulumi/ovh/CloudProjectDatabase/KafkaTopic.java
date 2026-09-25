@@ -123,14 +123,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Number of partitions for this topic. Should be superior to 0
+     * Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      * 
      */
     @Export(name="partitions", refs={Integer.class}, tree="[0]")
     private Output<Integer> partitions;
 
     /**
-     * @return Number of partitions for this topic. Should be superior to 0
+     * @return Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      * 
      */
     public Output<Integer> partitions() {

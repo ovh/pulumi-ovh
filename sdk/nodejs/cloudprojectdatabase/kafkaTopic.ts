@@ -81,7 +81,7 @@ export class KafkaTopic extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Number of partitions for this topic. Should be superior to 0
+     * Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      */
     public readonly partitions!: pulumi.Output<number>;
     /**
@@ -158,7 +158,7 @@ export interface KafkaTopicState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of partitions for this topic. Should be superior to 0
+     * Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      */
     partitions?: pulumi.Input<number>;
     /**
@@ -196,7 +196,7 @@ export interface KafkaTopicArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Number of partitions for this topic. Should be superior to 0
+     * Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
      */
     partitions?: pulumi.Input<number>;
     /**

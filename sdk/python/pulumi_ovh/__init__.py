@@ -15,6 +15,11 @@ from .cloud_key_manager_container import *
 from .cloud_key_manager_container_consumer import *
 from .cloud_key_manager_secret import *
 from .cloud_key_manager_secret_consumer import *
+from .cloud_loadbalancer import *
+from .cloud_loadbalancer_l7policy import *
+from .cloud_loadbalancer_listener import *
+from .cloud_loadbalancer_pool import *
+from .cloud_loadbalancer_pool_member import *
 from .cloud_network_private_vrack import *
 from .cloud_network_private_vrack_subnet import *
 from .cloud_project_containerregistry_iam import *
@@ -38,6 +43,7 @@ from .cloud_storage_file_share_network import *
 from .cloud_storage_file_share_snapshot import *
 from .clous_ssh_key import *
 from .dbaas_logs_encryption_key import *
+from .dedicated_server_virtual_mac import *
 from .domain_zone_dynhost_record import *
 from .email_domain_account import *
 from .get_cloud_additional_ip import *
@@ -67,6 +73,16 @@ from .get_cloud_key_manager_secret_consumer import *
 from .get_cloud_key_manager_secret_consumers import *
 from .get_cloud_key_manager_secret_payload import *
 from .get_cloud_key_manager_secrets import *
+from .get_cloud_loadbalancer import *
+from .get_cloud_loadbalancer_l7policies import *
+from .get_cloud_loadbalancer_l7policy import *
+from .get_cloud_loadbalancer_listener import *
+from .get_cloud_loadbalancer_listeners import *
+from .get_cloud_loadbalancer_pool import *
+from .get_cloud_loadbalancer_pool_member import *
+from .get_cloud_loadbalancer_pool_members import *
+from .get_cloud_loadbalancer_pools import *
+from .get_cloud_loadbalancers import *
 from .get_cloud_network_private_vrack import *
 from .get_cloud_network_private_vrack_subnet import *
 from .get_cloud_network_private_vrack_subnets import *
@@ -1292,6 +1308,46 @@ _utilities.register(
  },
  {
   "pkg": "ovh",
+  "mod": "index/cloudLoadbalancer",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudLoadbalancer:CloudLoadbalancer": "CloudLoadbalancer"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudLoadbalancerL7policy",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudLoadbalancerL7policy:CloudLoadbalancerL7policy": "CloudLoadbalancerL7policy"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudLoadbalancerListener",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudLoadbalancerListener:CloudLoadbalancerListener": "CloudLoadbalancerListener"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudLoadbalancerPool",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudLoadbalancerPool:CloudLoadbalancerPool": "CloudLoadbalancerPool"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudLoadbalancerPoolMember",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudLoadbalancerPoolMember:CloudLoadbalancerPoolMember": "CloudLoadbalancerPoolMember"
+  }
+ },
+ {
+  "pkg": "ovh",
   "mod": "index/cloudNetworkPrivateVrack",
   "fqn": "pulumi_ovh",
   "classes": {
@@ -1472,6 +1528,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": "DbaasLogsEncryptionKey"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/dedicatedServerVirtualMac",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/dedicatedServerVirtualMac:DedicatedServerVirtualMac": "DedicatedServerVirtualMac"
   }
  },
  {

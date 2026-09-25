@@ -818,11 +818,11 @@ func (o DatabaseIpRestrictionArrayOutput) Index(i pulumi.IntInput) DatabaseIpRes
 }
 
 type DatabaseNode struct {
-	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+	// Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
 	NetworkId *string `pulumi:"networkId"`
 	// Public cloud region in which the node should be deployed. Ex: "GRA'.
 	Region string `pulumi:"region"`
-	// Private subnet ID in which the node is.
+	// Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -838,11 +838,11 @@ type DatabaseNodeInput interface {
 }
 
 type DatabaseNodeArgs struct {
-	// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+	// Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
 	NetworkId pulumi.StringPtrInput `pulumi:"networkId"`
 	// Public cloud region in which the node should be deployed. Ex: "GRA'.
 	Region pulumi.StringInput `pulumi:"region"`
-	// Private subnet ID in which the node is.
+	// Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -897,7 +897,7 @@ func (o DatabaseNodeOutput) ToDatabaseNodeOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Private network id in which the node should be deployed. It's the regional openstackId of the private network
+// Private network id in which the node should be deployed. It's the regional openstackId of the private network. Can be updated in-place to change the network without recreating the service.
 func (o DatabaseNodeOutput) NetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.NetworkId }).(pulumi.StringPtrOutput)
 }
@@ -907,7 +907,7 @@ func (o DatabaseNodeOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseNode) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Private subnet ID in which the node is.
+// Private subnet ID in which the node is. Can be updated in-place to change the network without recreating the service.
 func (o DatabaseNodeOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseNode) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }

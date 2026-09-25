@@ -32,7 +32,7 @@ class KafkaTopicArgs:
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
         :param pulumi.Input[_builtins.str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0
+        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         :param pulumi.Input[_builtins.int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[_builtins.int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[_builtins.int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
@@ -94,7 +94,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of partitions for this topic. Should be superior to 0
+        Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         """
         return pulumi.get(self, "partitions")
 
@@ -167,7 +167,7 @@ class _KafkaTopicState:
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
         :param pulumi.Input[_builtins.str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0
+        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         :param pulumi.Input[_builtins.int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[_builtins.int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[_builtins.int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
@@ -230,7 +230,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def partitions(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Number of partitions for this topic. Should be superior to 0
+        Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         """
         return pulumi.get(self, "partitions")
 
@@ -340,7 +340,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
         :param pulumi.Input[_builtins.str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0
+        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         :param pulumi.Input[_builtins.int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[_builtins.int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[_builtins.int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
@@ -455,7 +455,7 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster_id: Cluster ID.
         :param pulumi.Input[_builtins.int] min_insync_replicas: Minimum insync replica accepted for this topic. Should be superior to 0
         :param pulumi.Input[_builtins.str] name: Name of the topic. No spaces allowed.
-        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0
+        :param pulumi.Input[_builtins.int] partitions: Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         :param pulumi.Input[_builtins.int] replication: Number of replication for this topic. Should be superior to 1
         :param pulumi.Input[_builtins.int] retention_bytes: Number of bytes for the retention of the data for this topic. Inferior to 0 means unlimited
         :param pulumi.Input[_builtins.int] retention_hours: Number of hours for the retention of the data for this topic. Should be superior to -2. Inferior to 0 means unlimited
@@ -503,7 +503,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def partitions(self) -> pulumi.Output[_builtins.int]:
         """
-        Number of partitions for this topic. Should be superior to 0
+        Number of partitions for this topic. Should be superior to 0. Can only be increased: lowering it forces a new resource
         """
         return pulumi.get(self, "partitions")
 

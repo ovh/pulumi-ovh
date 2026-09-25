@@ -39,6 +39,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudKeyManagerSecret{}
 	case "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer":
 		r = &CloudKeyManagerSecretConsumer{}
+	case "ovh:index/cloudLoadbalancer:CloudLoadbalancer":
+		r = &CloudLoadbalancer{}
+	case "ovh:index/cloudLoadbalancerL7policy:CloudLoadbalancerL7policy":
+		r = &CloudLoadbalancerL7policy{}
+	case "ovh:index/cloudLoadbalancerListener:CloudLoadbalancerListener":
+		r = &CloudLoadbalancerListener{}
+	case "ovh:index/cloudLoadbalancerPool:CloudLoadbalancerPool":
+		r = &CloudLoadbalancerPool{}
+	case "ovh:index/cloudLoadbalancerPoolMember:CloudLoadbalancerPoolMember":
+		r = &CloudLoadbalancerPoolMember{}
 	case "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack":
 		r = &CloudNetworkPrivateVrack{}
 	case "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet":
@@ -85,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClousSSHKey{}
 	case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
 		r = &DbaasLogsEncryptionKey{}
+	case "ovh:index/dedicatedServerVirtualMac:DedicatedServerVirtualMac":
+		r = &DedicatedServerVirtualMac{}
 	case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
 		r = &DomainZoneDynhostRecord{}
 	case "ovh:index/emailDomainAccount:EmailDomainAccount":
@@ -187,6 +199,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudKeyManagerSecretConsumer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudLoadbalancer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudLoadbalancerL7policy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudLoadbalancerListener",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudLoadbalancerPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudLoadbalancerPoolMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -302,6 +339,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/dbaasLogsEncryptionKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/dedicatedServerVirtualMac",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

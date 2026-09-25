@@ -50,6 +50,31 @@ export type CloudKeyManagerSecretConsumer = import("./cloudKeyManagerSecretConsu
 export const CloudKeyManagerSecretConsumer: typeof import("./cloudKeyManagerSecretConsumer").CloudKeyManagerSecretConsumer = null as any;
 utilities.lazyLoad(exports, ["CloudKeyManagerSecretConsumer"], () => require("./cloudKeyManagerSecretConsumer"));
 
+export { CloudLoadbalancerArgs, CloudLoadbalancerState } from "./cloudLoadbalancer";
+export type CloudLoadbalancer = import("./cloudLoadbalancer").CloudLoadbalancer;
+export const CloudLoadbalancer: typeof import("./cloudLoadbalancer").CloudLoadbalancer = null as any;
+utilities.lazyLoad(exports, ["CloudLoadbalancer"], () => require("./cloudLoadbalancer"));
+
+export { CloudLoadbalancerL7policyArgs, CloudLoadbalancerL7policyState } from "./cloudLoadbalancerL7policy";
+export type CloudLoadbalancerL7policy = import("./cloudLoadbalancerL7policy").CloudLoadbalancerL7policy;
+export const CloudLoadbalancerL7policy: typeof import("./cloudLoadbalancerL7policy").CloudLoadbalancerL7policy = null as any;
+utilities.lazyLoad(exports, ["CloudLoadbalancerL7policy"], () => require("./cloudLoadbalancerL7policy"));
+
+export { CloudLoadbalancerListenerArgs, CloudLoadbalancerListenerState } from "./cloudLoadbalancerListener";
+export type CloudLoadbalancerListener = import("./cloudLoadbalancerListener").CloudLoadbalancerListener;
+export const CloudLoadbalancerListener: typeof import("./cloudLoadbalancerListener").CloudLoadbalancerListener = null as any;
+utilities.lazyLoad(exports, ["CloudLoadbalancerListener"], () => require("./cloudLoadbalancerListener"));
+
+export { CloudLoadbalancerPoolArgs, CloudLoadbalancerPoolState } from "./cloudLoadbalancerPool";
+export type CloudLoadbalancerPool = import("./cloudLoadbalancerPool").CloudLoadbalancerPool;
+export const CloudLoadbalancerPool: typeof import("./cloudLoadbalancerPool").CloudLoadbalancerPool = null as any;
+utilities.lazyLoad(exports, ["CloudLoadbalancerPool"], () => require("./cloudLoadbalancerPool"));
+
+export { CloudLoadbalancerPoolMemberArgs, CloudLoadbalancerPoolMemberState } from "./cloudLoadbalancerPoolMember";
+export type CloudLoadbalancerPoolMember = import("./cloudLoadbalancerPoolMember").CloudLoadbalancerPoolMember;
+export const CloudLoadbalancerPoolMember: typeof import("./cloudLoadbalancerPoolMember").CloudLoadbalancerPoolMember = null as any;
+utilities.lazyLoad(exports, ["CloudLoadbalancerPoolMember"], () => require("./cloudLoadbalancerPoolMember"));
+
 export { CloudNetworkPrivateVrackArgs, CloudNetworkPrivateVrackState } from "./cloudNetworkPrivateVrack";
 export type CloudNetworkPrivateVrack = import("./cloudNetworkPrivateVrack").CloudNetworkPrivateVrack;
 export const CloudNetworkPrivateVrack: typeof import("./cloudNetworkPrivateVrack").CloudNetworkPrivateVrack = null as any;
@@ -164,6 +189,11 @@ export { DbaasLogsEncryptionKeyArgs, DbaasLogsEncryptionKeyState } from "./dbaas
 export type DbaasLogsEncryptionKey = import("./dbaasLogsEncryptionKey").DbaasLogsEncryptionKey;
 export const DbaasLogsEncryptionKey: typeof import("./dbaasLogsEncryptionKey").DbaasLogsEncryptionKey = null as any;
 utilities.lazyLoad(exports, ["DbaasLogsEncryptionKey"], () => require("./dbaasLogsEncryptionKey"));
+
+export { DedicatedServerVirtualMacArgs, DedicatedServerVirtualMacState } from "./dedicatedServerVirtualMac";
+export type DedicatedServerVirtualMac = import("./dedicatedServerVirtualMac").DedicatedServerVirtualMac;
+export const DedicatedServerVirtualMac: typeof import("./dedicatedServerVirtualMac").DedicatedServerVirtualMac = null as any;
+utilities.lazyLoad(exports, ["DedicatedServerVirtualMac"], () => require("./dedicatedServerVirtualMac"));
 
 export { DomainZoneDynhostRecordArgs, DomainZoneDynhostRecordState } from "./domainZoneDynhostRecord";
 export type DomainZoneDynhostRecord = import("./domainZoneDynhostRecord").DomainZoneDynhostRecord;
@@ -309,6 +339,56 @@ export { GetCloudKeyManagerSecretsArgs, GetCloudKeyManagerSecretsResult, GetClou
 export const getCloudKeyManagerSecrets: typeof import("./getCloudKeyManagerSecrets").getCloudKeyManagerSecrets = null as any;
 export const getCloudKeyManagerSecretsOutput: typeof import("./getCloudKeyManagerSecrets").getCloudKeyManagerSecretsOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudKeyManagerSecrets","getCloudKeyManagerSecretsOutput"], () => require("./getCloudKeyManagerSecrets"));
+
+export { GetCloudLoadbalancerArgs, GetCloudLoadbalancerResult, GetCloudLoadbalancerOutputArgs } from "./getCloudLoadbalancer";
+export const getCloudLoadbalancer: typeof import("./getCloudLoadbalancer").getCloudLoadbalancer = null as any;
+export const getCloudLoadbalancerOutput: typeof import("./getCloudLoadbalancer").getCloudLoadbalancerOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancer","getCloudLoadbalancerOutput"], () => require("./getCloudLoadbalancer"));
+
+export { GetCloudLoadbalancerL7policiesArgs, GetCloudLoadbalancerL7policiesResult, GetCloudLoadbalancerL7policiesOutputArgs } from "./getCloudLoadbalancerL7policies";
+export const getCloudLoadbalancerL7policies: typeof import("./getCloudLoadbalancerL7policies").getCloudLoadbalancerL7policies = null as any;
+export const getCloudLoadbalancerL7policiesOutput: typeof import("./getCloudLoadbalancerL7policies").getCloudLoadbalancerL7policiesOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerL7policies","getCloudLoadbalancerL7policiesOutput"], () => require("./getCloudLoadbalancerL7policies"));
+
+export { GetCloudLoadbalancerL7policyArgs, GetCloudLoadbalancerL7policyResult, GetCloudLoadbalancerL7policyOutputArgs } from "./getCloudLoadbalancerL7policy";
+export const getCloudLoadbalancerL7policy: typeof import("./getCloudLoadbalancerL7policy").getCloudLoadbalancerL7policy = null as any;
+export const getCloudLoadbalancerL7policyOutput: typeof import("./getCloudLoadbalancerL7policy").getCloudLoadbalancerL7policyOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerL7policy","getCloudLoadbalancerL7policyOutput"], () => require("./getCloudLoadbalancerL7policy"));
+
+export { GetCloudLoadbalancerListenerArgs, GetCloudLoadbalancerListenerResult, GetCloudLoadbalancerListenerOutputArgs } from "./getCloudLoadbalancerListener";
+export const getCloudLoadbalancerListener: typeof import("./getCloudLoadbalancerListener").getCloudLoadbalancerListener = null as any;
+export const getCloudLoadbalancerListenerOutput: typeof import("./getCloudLoadbalancerListener").getCloudLoadbalancerListenerOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerListener","getCloudLoadbalancerListenerOutput"], () => require("./getCloudLoadbalancerListener"));
+
+export { GetCloudLoadbalancerListenersArgs, GetCloudLoadbalancerListenersResult, GetCloudLoadbalancerListenersOutputArgs } from "./getCloudLoadbalancerListeners";
+export const getCloudLoadbalancerListeners: typeof import("./getCloudLoadbalancerListeners").getCloudLoadbalancerListeners = null as any;
+export const getCloudLoadbalancerListenersOutput: typeof import("./getCloudLoadbalancerListeners").getCloudLoadbalancerListenersOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerListeners","getCloudLoadbalancerListenersOutput"], () => require("./getCloudLoadbalancerListeners"));
+
+export { GetCloudLoadbalancerPoolArgs, GetCloudLoadbalancerPoolResult, GetCloudLoadbalancerPoolOutputArgs } from "./getCloudLoadbalancerPool";
+export const getCloudLoadbalancerPool: typeof import("./getCloudLoadbalancerPool").getCloudLoadbalancerPool = null as any;
+export const getCloudLoadbalancerPoolOutput: typeof import("./getCloudLoadbalancerPool").getCloudLoadbalancerPoolOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerPool","getCloudLoadbalancerPoolOutput"], () => require("./getCloudLoadbalancerPool"));
+
+export { GetCloudLoadbalancerPoolMemberArgs, GetCloudLoadbalancerPoolMemberResult, GetCloudLoadbalancerPoolMemberOutputArgs } from "./getCloudLoadbalancerPoolMember";
+export const getCloudLoadbalancerPoolMember: typeof import("./getCloudLoadbalancerPoolMember").getCloudLoadbalancerPoolMember = null as any;
+export const getCloudLoadbalancerPoolMemberOutput: typeof import("./getCloudLoadbalancerPoolMember").getCloudLoadbalancerPoolMemberOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerPoolMember","getCloudLoadbalancerPoolMemberOutput"], () => require("./getCloudLoadbalancerPoolMember"));
+
+export { GetCloudLoadbalancerPoolMembersArgs, GetCloudLoadbalancerPoolMembersResult, GetCloudLoadbalancerPoolMembersOutputArgs } from "./getCloudLoadbalancerPoolMembers";
+export const getCloudLoadbalancerPoolMembers: typeof import("./getCloudLoadbalancerPoolMembers").getCloudLoadbalancerPoolMembers = null as any;
+export const getCloudLoadbalancerPoolMembersOutput: typeof import("./getCloudLoadbalancerPoolMembers").getCloudLoadbalancerPoolMembersOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerPoolMembers","getCloudLoadbalancerPoolMembersOutput"], () => require("./getCloudLoadbalancerPoolMembers"));
+
+export { GetCloudLoadbalancerPoolsArgs, GetCloudLoadbalancerPoolsResult, GetCloudLoadbalancerPoolsOutputArgs } from "./getCloudLoadbalancerPools";
+export const getCloudLoadbalancerPools: typeof import("./getCloudLoadbalancerPools").getCloudLoadbalancerPools = null as any;
+export const getCloudLoadbalancerPoolsOutput: typeof import("./getCloudLoadbalancerPools").getCloudLoadbalancerPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancerPools","getCloudLoadbalancerPoolsOutput"], () => require("./getCloudLoadbalancerPools"));
+
+export { GetCloudLoadbalancersArgs, GetCloudLoadbalancersResult, GetCloudLoadbalancersOutputArgs } from "./getCloudLoadbalancers";
+export const getCloudLoadbalancers: typeof import("./getCloudLoadbalancers").getCloudLoadbalancers = null as any;
+export const getCloudLoadbalancersOutput: typeof import("./getCloudLoadbalancers").getCloudLoadbalancersOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudLoadbalancers","getCloudLoadbalancersOutput"], () => require("./getCloudLoadbalancers"));
 
 export { GetCloudNetworkPrivateVrackArgs, GetCloudNetworkPrivateVrackResult, GetCloudNetworkPrivateVrackOutputArgs } from "./getCloudNetworkPrivateVrack";
 export const getCloudNetworkPrivateVrack: typeof import("./getCloudNetworkPrivateVrack").getCloudNetworkPrivateVrack = null as any;
@@ -756,6 +836,16 @@ const _module = {
                 return new CloudKeyManagerSecret(name, <any>undefined, { urn })
             case "ovh:index/cloudKeyManagerSecretConsumer:CloudKeyManagerSecretConsumer":
                 return new CloudKeyManagerSecretConsumer(name, <any>undefined, { urn })
+            case "ovh:index/cloudLoadbalancer:CloudLoadbalancer":
+                return new CloudLoadbalancer(name, <any>undefined, { urn })
+            case "ovh:index/cloudLoadbalancerL7policy:CloudLoadbalancerL7policy":
+                return new CloudLoadbalancerL7policy(name, <any>undefined, { urn })
+            case "ovh:index/cloudLoadbalancerListener:CloudLoadbalancerListener":
+                return new CloudLoadbalancerListener(name, <any>undefined, { urn })
+            case "ovh:index/cloudLoadbalancerPool:CloudLoadbalancerPool":
+                return new CloudLoadbalancerPool(name, <any>undefined, { urn })
+            case "ovh:index/cloudLoadbalancerPoolMember:CloudLoadbalancerPoolMember":
+                return new CloudLoadbalancerPoolMember(name, <any>undefined, { urn })
             case "ovh:index/cloudNetworkPrivateVrack:CloudNetworkPrivateVrack":
                 return new CloudNetworkPrivateVrack(name, <any>undefined, { urn })
             case "ovh:index/cloudNetworkPrivateVrackSubnet:CloudNetworkPrivateVrackSubnet":
@@ -802,6 +892,8 @@ const _module = {
                 return new ClousSSHKey(name, <any>undefined, { urn })
             case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
                 return new DbaasLogsEncryptionKey(name, <any>undefined, { urn })
+            case "ovh:index/dedicatedServerVirtualMac:DedicatedServerVirtualMac":
+                return new DedicatedServerVirtualMac(name, <any>undefined, { urn })
             case "ovh:index/domainZoneDynhostRecord:DomainZoneDynhostRecord":
                 return new DomainZoneDynhostRecord(name, <any>undefined, { urn })
             case "ovh:index/emailDomainAccount:EmailDomainAccount":
@@ -844,6 +936,11 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerContainer", _
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerContainerConsumer", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerSecret", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudKeyManagerSecretConsumer", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudLoadbalancer", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudLoadbalancerL7policy", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudLoadbalancerListener", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudLoadbalancerPool", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudLoadbalancerPoolMember", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudNetworkPrivateVrack", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudNetworkPrivateVrackSubnet", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudProjectContainerregistryIam", _module)
@@ -867,6 +964,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareNetwork
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareSnapshot", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/clousSSHKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/dbaasLogsEncryptionKey", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/dedicatedServerVirtualMac", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/domainZoneDynhostRecord", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/emailDomainAccount", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/hostingPrivatedatabaseWebhostingNetwork", _module)
