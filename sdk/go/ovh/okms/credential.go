@@ -12,8 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a credential for an OVHcloud KMS.
-//
 // ## Import
 //
 // An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,

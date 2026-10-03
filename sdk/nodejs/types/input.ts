@@ -2134,6 +2134,13 @@ export interface CloudStorageFileShareAclCurrentState {
     state?: pulumi.Input<string>;
 }
 
+export interface CloudStorageFileShareCreateFrom {
+    /**
+     * Identifier of an `available` file share snapshot of the same project and region.
+     */
+    snapshotId: pulumi.Input<string>;
+}
+
 export interface CloudStorageFileShareCurrentState {
     /**
      * Action-availability flags derived from the file share status:
@@ -2144,7 +2151,7 @@ export interface CloudStorageFileShareCurrentState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      */
     encryption?: pulumi.Input<inputs.CloudStorageFileShareCurrentStateEncryption>;
     /**
@@ -2164,15 +2171,15 @@ export interface CloudStorageFileShareCurrentState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
      */
     shareNetworkId?: pulumi.Input<string>;
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      */
     shareType?: pulumi.Input<string>;
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
      */
     size?: pulumi.Input<number>;
 }
@@ -2294,6 +2301,106 @@ export interface CloudStorageFileShareSnapshotCurrentStateLocation {
      * Region.
      */
     region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageObjectBucketCurrentState {
+    /**
+     * Server-side encryption configuration:
+     */
+    encryption?: pulumi.Input<inputs.CloudStorageObjectBucketCurrentStateEncryption>;
+    /**
+     * Geographic region where the bucket is located:
+     */
+    location?: pulumi.Input<inputs.CloudStorageObjectBucketCurrentStateLocation>;
+    /**
+     * Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+     */
+    objectLock?: pulumi.Input<inputs.CloudStorageObjectBucketCurrentStateObjectLock>;
+    /**
+     * Bucket total objects count. Only returned on a single bucket read.
+     */
+    objectsCount?: pulumi.Input<number>;
+    /**
+     * Bucket total objects size in bytes. Only returned on a single bucket read.
+     */
+    objectsSize?: pulumi.Input<number>;
+    /**
+     * Metadata tags for the bucket, as a map of strings.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Versioning configuration:
+     */
+    versioning?: pulumi.Input<inputs.CloudStorageObjectBucketCurrentStateVersioning>;
+    /**
+     * Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+     */
+    virtualHost?: pulumi.Input<string>;
+}
+
+export interface CloudStorageObjectBucketCurrentStateEncryption {
+    /**
+     * Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+     */
+    algorithm?: pulumi.Input<string>;
+}
+
+export interface CloudStorageObjectBucketCurrentStateLocation {
+    /**
+     * Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface CloudStorageObjectBucketCurrentStateObjectLock {
+    /**
+     * Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Number of days to retain objects. Must be at least `1`.
+     */
+    retentionDays?: pulumi.Input<number>;
+    /**
+     * Number of years to retain objects
+     */
+    retentionYears?: pulumi.Input<number>;
+}
+
+export interface CloudStorageObjectBucketCurrentStateVersioning {
+    /**
+     * Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+     */
+    status?: pulumi.Input<string>;
+}
+
+export interface CloudStorageObjectBucketEncryption {
+    /**
+     * Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+     */
+    algorithm: pulumi.Input<string>;
+}
+
+export interface CloudStorageObjectBucketObjectLock {
+    /**
+     * Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+     */
+    mode: pulumi.Input<string>;
+    /**
+     * Number of days to retain objects. Must be at least `1`.
+     */
+    retentionDays: pulumi.Input<number>;
+}
+
+export interface CloudStorageObjectBucketVersioning {
+    /**
+     * Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+     */
+    status: pulumi.Input<string>;
 }
 
 export interface StorageEfsIam {
@@ -4796,6 +4903,10 @@ export namespace Dedicated {
     }
 
     export interface ServerNetworkingInterface {
+        /**
+         * Mac address of the LACP fallback interface
+         */
+        aggregationFallback?: pulumi.Input<string>;
         /**
          * Interface Mac address
          */

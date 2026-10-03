@@ -22,7 +22,7 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        /// Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         /// </summary>
         public readonly Outputs.CloudStorageFileShareCurrentStateEncryption? Encryption;
         /// <summary>
@@ -42,15 +42,15 @@ namespace Pulumi.Ovh.Outputs
         /// </summary>
         public readonly string? Protocol;
         /// <summary>
-        /// ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        /// ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         /// </summary>
         public readonly string? ShareNetworkId;
         /// <summary>
-        /// File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        /// File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         /// </summary>
         public readonly string? ShareType;
         /// <summary>
-        /// Size of the file share in GB.
+        /// Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         /// </summary>
         public readonly int? Size;
 

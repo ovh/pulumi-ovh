@@ -52,14 +52,14 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
     }
 
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<CloudStorageFileShareCurrentStateEncryptionArgs> encryption;
 
     /**
-     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * @return Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<CloudStorageFileShareCurrentStateEncryptionArgs>> encryption() {
@@ -127,14 +127,14 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
     }
 
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="shareNetworkId")
     private @Nullable Output<String> shareNetworkId;
 
     /**
-     * @return ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * @return ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> shareNetworkId() {
@@ -142,14 +142,14 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
     }
 
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="shareType")
     private @Nullable Output<String> shareType;
 
     /**
-     * @return File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * @return File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<String>> shareType() {
@@ -157,14 +157,14 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
     }
 
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Size of the file share in GB.
+     * @return Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -257,7 +257,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param encryption Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+         * @param encryption Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param encryption Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+         * @param encryption Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -383,7 +383,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param shareType File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+         * @param shareType File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param shareType File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+         * @param shareType File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size Size of the file share in GB.
+         * @param size Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class CloudStorageFileShareCurrentStateArgs extends com.pulumi.reso
         }
 
         /**
-         * @param size Size of the file share in GB.
+         * @param size Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
          * 
          * @return builder
          * 

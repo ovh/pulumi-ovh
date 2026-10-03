@@ -585,14 +585,14 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kafkaSchemaRegistry);
     }
     /**
-     * Time on which maintenances can start every day.
+     * Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
      * 
      */
     @Export(name="maintenanceTime", refs={String.class}, tree="[0]")
     private Output<String> maintenanceTime;
 
     /**
-     * @return Time on which maintenances can start every day.
+     * @return Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
      * 
      */
     public Output<String> maintenanceTime() {

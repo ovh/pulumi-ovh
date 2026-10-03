@@ -427,7 +427,7 @@ namespace Pulumi.Ovh.CloudProject
         public Output<bool?> KafkaSchemaRegistry { get; private set; } = null!;
 
         /// <summary>
-        /// Time on which maintenances can start every day.
+        /// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         /// </summary>
         [Output("maintenanceTime")]
         public Output<string> MaintenanceTime { get; private set; } = null!;
@@ -610,7 +610,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? KafkaSchemaRegistry { get; set; }
 
         /// <summary>
-        /// Time on which maintenances can start every day.
+        /// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         /// </summary>
         [Input("maintenanceTime")]
         public Input<string>? MaintenanceTime { get; set; }
@@ -772,7 +772,7 @@ namespace Pulumi.Ovh.CloudProject
         public Input<bool>? KafkaSchemaRegistry { get; set; }
 
         /// <summary>
-        /// Time on which maintenances can start every day.
+        /// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         /// </summary>
         [Input("maintenanceTime")]
         public Input<string>? MaintenanceTime { get; set; }

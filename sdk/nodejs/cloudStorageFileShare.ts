@@ -87,6 +87,10 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
      */
     public /*out*/ readonly checksum!: pulumi.Output<string>;
     /**
+     * Source to create the file share from. **Changing this value recreates the resource.**
+     */
+    public readonly createFrom!: pulumi.Output<outputs.CloudStorageFileShareCreateFrom | undefined>;
+    /**
      * Creation date of the file share.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
@@ -99,7 +103,7 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      */
     public readonly encryption!: pulumi.Output<outputs.CloudStorageFileShareEncryption>;
     /**
@@ -123,15 +127,15 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
      */
     public readonly shareNetworkId!: pulumi.Output<string>;
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      */
     public readonly shareType!: pulumi.Output<string>;
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -154,6 +158,7 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
             const state = argsOrState as CloudStorageFileShareState | undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["checksum"] = state ? state.checksum : undefined;
+            resourceInputs["createFrom"] = state ? state.createFrom : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["currentState"] = state ? state.currentState : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -178,16 +183,8 @@ export class CloudStorageFileShare extends pulumi.CustomResource {
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
             }
-            if ((!args || args.shareNetworkId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'shareNetworkId'");
-            }
-            if ((!args || args.shareType === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'shareType'");
-            }
-            if ((!args || args.size === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'size'");
-            }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
+            resourceInputs["createFrom"] = args ? args.createFrom : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -221,6 +218,10 @@ export interface CloudStorageFileShareState {
      */
     checksum?: pulumi.Input<string>;
     /**
+     * Source to create the file share from. **Changing this value recreates the resource.**
+     */
+    createFrom?: pulumi.Input<inputs.CloudStorageFileShareCreateFrom>;
+    /**
      * Creation date of the file share.
      */
     createdAt?: pulumi.Input<string>;
@@ -233,7 +234,7 @@ export interface CloudStorageFileShareState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      */
     encryption?: pulumi.Input<inputs.CloudStorageFileShareEncryption>;
     /**
@@ -257,15 +258,15 @@ export interface CloudStorageFileShareState {
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
      */
     shareNetworkId?: pulumi.Input<string>;
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      */
     shareType?: pulumi.Input<string>;
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
      */
     size?: pulumi.Input<number>;
     /**
@@ -283,11 +284,15 @@ export interface CloudStorageFileShareArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
+     * Source to create the file share from. **Changing this value recreates the resource.**
+     */
+    createFrom?: pulumi.Input<inputs.CloudStorageFileShareCreateFrom>;
+    /**
      * File share description.
      */
     description?: pulumi.Input<string>;
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      */
     encryption?: pulumi.Input<inputs.CloudStorageFileShareEncryption>;
     /**
@@ -307,15 +312,15 @@ export interface CloudStorageFileShareArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
      */
-    shareNetworkId: pulumi.Input<string>;
+    shareNetworkId?: pulumi.Input<string>;
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      */
-    shareType: pulumi.Input<string>;
+    shareType?: pulumi.Input<string>;
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
      */
-    size: pulumi.Input<number>;
+    size?: pulumi.Input<number>;
 }

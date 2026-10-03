@@ -31,7 +31,7 @@ namespace Pulumi.Ovh.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        /// Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         /// </summary>
         [Input("encryption")]
         public Input<Inputs.CloudStorageFileShareCurrentStateEncryptionArgs>? Encryption { get; set; }
@@ -67,19 +67,19 @@ namespace Pulumi.Ovh.Inputs
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        /// ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         /// </summary>
         [Input("shareNetworkId")]
         public Input<string>? ShareNetworkId { get; set; }
 
         /// <summary>
-        /// File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        /// File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         /// </summary>
         [Input("shareType")]
         public Input<string>? ShareType { get; set; }
 
         /// <summary>
-        /// Size of the file share in GB.
+        /// Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

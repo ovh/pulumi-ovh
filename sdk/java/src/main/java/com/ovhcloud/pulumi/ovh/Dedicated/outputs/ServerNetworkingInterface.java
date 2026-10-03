@@ -8,9 +8,16 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ServerNetworkingInterface {
+    /**
+     * @return Mac address of the LACP fallback interface
+     * 
+     */
+    private @Nullable String aggregationFallback;
     /**
      * @return Interface Mac address
      * 
@@ -23,6 +30,13 @@ public final class ServerNetworkingInterface {
     private String type;
 
     private ServerNetworkingInterface() {}
+    /**
+     * @return Mac address of the LACP fallback interface
+     * 
+     */
+    public Optional<String> aggregationFallback() {
+        return Optional.ofNullable(this.aggregationFallback);
+    }
     /**
      * @return Interface Mac address
      * 
@@ -47,15 +61,23 @@ public final class ServerNetworkingInterface {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String aggregationFallback;
         private List<String> macs;
         private String type;
         public Builder() {}
         public Builder(ServerNetworkingInterface defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.aggregationFallback = defaults.aggregationFallback;
     	      this.macs = defaults.macs;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder aggregationFallback(@Nullable String aggregationFallback) {
+
+            this.aggregationFallback = aggregationFallback;
+            return this;
+        }
         @CustomType.Setter
         public Builder macs(List<String> macs) {
             if (macs == null) {
@@ -77,6 +99,7 @@ public final class ServerNetworkingInterface {
         }
         public ServerNetworkingInterface build() {
             final var _resultValue = new ServerNetworkingInterface();
+            _resultValue.aggregationFallback = aggregationFallback;
             _resultValue.macs = macs;
             _resultValue.type = type;
             return _resultValue;

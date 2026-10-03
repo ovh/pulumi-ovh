@@ -5757,6 +5757,10 @@
         },
         "ovh:Dedicated/ServerNetworkingInterface:ServerNetworkingInterface": {
             "properties": {
+                "aggregationFallback": {
+                    "type": "string",
+                    "description": "Mac address of the LACP fallback interface\n"
+                },
                 "macs": {
                     "type": "array",
                     "items": {
@@ -5775,7 +5779,16 @@
             "required": [
                 "macs",
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "aggregationFallback",
+                        "macs",
+                        "type"
+                    ]
+                }
+            }
         },
         "ovh:Dedicated/ServerOrder:ServerOrder": {
             "properties": {
@@ -14955,6 +14968,18 @@
                 }
             }
         },
+        "ovh:index/CloudStorageFileShareCreateFrom:CloudStorageFileShareCreateFrom": {
+            "properties": {
+                "snapshotId": {
+                    "type": "string",
+                    "description": "Identifier of an `available` file share snapshot of the same project and region.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "snapshotId"
+            ]
+        },
         "ovh:index/CloudStorageFileShareCurrentState:CloudStorageFileShareCurrentState": {
             "properties": {
                 "capabilities": {
@@ -14970,7 +14995,7 @@
                 },
                 "encryption": {
                     "$ref": "#/types/ovh:index/CloudStorageFileShareCurrentStateEncryption:CloudStorageFileShareCurrentStateEncryption",
-                    "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
+                    "description": "Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**\n"
                 },
                 "exportLocations": {
                     "type": "array",
@@ -14993,15 +15018,15 @@
                 },
                 "shareNetworkId": {
                     "type": "string",
-                    "description": "ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**\n"
+                    "description": "ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**\n"
                 },
                 "shareType": {
                     "type": "string",
-                    "description": "File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**\n"
+                    "description": "File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**\n"
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Size of the file share in GB.\n"
+                    "description": "Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.\n"
                 }
             },
             "type": "object",
@@ -15235,6 +15260,180 @@
                     ]
                 }
             }
+        },
+        "ovh:index/CloudStorageObjectBucketCurrentState:CloudStorageObjectBucketCurrentState": {
+            "properties": {
+                "encryption": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketCurrentStateEncryption:CloudStorageObjectBucketCurrentStateEncryption",
+                    "description": "Server-side encryption configuration:\n"
+                },
+                "location": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketCurrentStateLocation:CloudStorageObjectBucketCurrentStateLocation",
+                    "description": "Geographic region where the bucket is located:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketCurrentStateObjectLock:CloudStorageObjectBucketCurrentStateObjectLock",
+                    "description": "Object lock (WORM) configuration. Requires `versioning` to be set with `status = \"ENABLED\"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**\n"
+                },
+                "objectsCount": {
+                    "type": "integer",
+                    "description": "Bucket total objects count. Only returned on a single bucket read.\n"
+                },
+                "objectsSize": {
+                    "type": "integer",
+                    "description": "Bucket total objects size in bytes. Only returned on a single bucket read.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata tags for the bucket, as a map of strings.\n"
+                },
+                "versioning": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketCurrentStateVersioning:CloudStorageObjectBucketCurrentStateVersioning",
+                    "description": "Versioning configuration:\n"
+                },
+                "virtualHost": {
+                    "type": "string",
+                    "description": "Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "encryption",
+                        "location",
+                        "name",
+                        "objectLock",
+                        "objectsCount",
+                        "objectsSize",
+                        "tags",
+                        "versioning",
+                        "virtualHost"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageObjectBucketCurrentStateEncryption:CloudStorageObjectBucketCurrentStateEncryption": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Encryption algorithm. One of `AES256`, `PLAINTEXT`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "algorithm"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageObjectBucketCurrentStateLocation:CloudStorageObjectBucketCurrentStateLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "region"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageObjectBucketCurrentStateObjectLock:CloudStorageObjectBucketCurrentStateObjectLock": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain objects. Must be at least `1`.\n"
+                },
+                "retentionYears": {
+                    "type": "integer",
+                    "description": "Number of years to retain objects\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "mode",
+                        "retentionDays",
+                        "retentionYears"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageObjectBucketCurrentStateVersioning:CloudStorageObjectBucketCurrentStateVersioning": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "status"
+                    ]
+                }
+            }
+        },
+        "ovh:index/CloudStorageObjectBucketEncryption:CloudStorageObjectBucketEncryption": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Encryption algorithm. One of `AES256`, `PLAINTEXT`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm"
+            ]
+        },
+        "ovh:index/CloudStorageObjectBucketObjectLock:CloudStorageObjectBucketObjectLock": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain objects. Must be at least `1`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "retentionDays"
+            ]
+        },
+        "ovh:index/CloudStorageObjectBucketVersioning:CloudStorageObjectBucketVersioning": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ]
         },
         "ovh:index/StorageEfsIam:StorageEfsIam": {
             "properties": {
@@ -26057,6 +26256,518 @@
                 }
             }
         },
+        "ovh:index/getCloudStorageObjectBucketCurrentState:getCloudStorageObjectBucketCurrentState": {
+            "properties": {
+                "encryption": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketCurrentStateEncryption:getCloudStorageObjectBucketCurrentStateEncryption",
+                    "description": "Current encryption configuration:\n"
+                },
+                "location": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketCurrentStateLocation:getCloudStorageObjectBucketCurrentStateLocation",
+                    "description": "Geographic region where the bucket is located:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Bucket name.\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketCurrentStateObjectLock:getCloudStorageObjectBucketCurrentStateObjectLock",
+                    "description": "Current object lock configuration:\n"
+                },
+                "objectsCount": {
+                    "type": "integer",
+                    "description": "Bucket total objects count.\n"
+                },
+                "objectsSize": {
+                    "type": "integer",
+                    "description": "Bucket total objects size in bytes.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Current metadata tags.\n"
+                },
+                "versioning": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketCurrentStateVersioning:getCloudStorageObjectBucketCurrentStateVersioning",
+                    "description": "Current versioning configuration:\n"
+                },
+                "virtualHost": {
+                    "type": "string",
+                    "description": "Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryption",
+                "location",
+                "name",
+                "objectLock",
+                "objectsCount",
+                "objectsSize",
+                "tags",
+                "versioning",
+                "virtualHost"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketCurrentStateEncryption:getCloudStorageObjectBucketCurrentStateEncryption": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Encryption algorithm.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketCurrentStateLocation:getCloudStorageObjectBucketCurrentStateLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region identifier.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketCurrentStateObjectLock:getCloudStorageObjectBucketCurrentStateObjectLock": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock retention mode.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain objects.\n"
+                },
+                "retentionYears": {
+                    "type": "integer",
+                    "description": "Number of years to retain objects.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "retentionDays",
+                "retentionYears"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketCurrentStateVersioning:getCloudStorageObjectBucketCurrentStateVersioning": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Versioning status.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketEncryption:getCloudStorageObjectBucketEncryption": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Encryption algorithm.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketLocation:getCloudStorageObjectBucketLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "Region identifier.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketObjectLock:getCloudStorageObjectBucketObjectLock": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock retention mode.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain objects.\n"
+                },
+                "retentionYears": {
+                    "type": "integer",
+                    "description": "Number of years to retain objects.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "retentionDays",
+                "retentionYears"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketVersioning:getCloudStorageObjectBucketVersioning": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Versioning status.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucket:getCloudStorageObjectBucketsBucket": {
+            "properties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "Computed hash representing the current target specification value.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation date of the bucket.\n"
+                },
+                "currentState": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketCurrentState:getCloudStorageObjectBucketsBucketCurrentState",
+                    "description": "Current observed state of the bucket:\n"
+                },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketEncryption:getCloudStorageObjectBucketsBucketEncryption",
+                    "description": "Current encryption configuration:\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Bucket identifier.\n"
+                },
+                "location": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketLocation:getCloudStorageObjectBucketsBucketLocation",
+                    "description": "Geographic region where the bucket is located:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Bucket name.\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketObjectLock:getCloudStorageObjectBucketsBucketObjectLock",
+                    "description": "Current object lock configuration:\n"
+                },
+                "ownerUserId": {
+                    "type": "string",
+                    "description": "Owner user identifier.\n"
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Current metadata tags.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Last update date of the bucket.\n"
+                },
+                "versioning": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketVersioning:getCloudStorageObjectBucketsBucketVersioning",
+                    "description": "Current versioning configuration:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "checksum",
+                "createdAt",
+                "currentState",
+                "encryption",
+                "id",
+                "location",
+                "name",
+                "objectLock",
+                "ownerUserId",
+                "resourceStatus",
+                "tags",
+                "updatedAt",
+                "versioning"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketCurrentState:getCloudStorageObjectBucketsBucketCurrentState": {
+            "properties": {
+                "encryption": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketCurrentStateEncryption:getCloudStorageObjectBucketsBucketCurrentStateEncryption",
+                    "description": "Current encryption configuration:\n"
+                },
+                "location": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketCurrentStateLocation:getCloudStorageObjectBucketsBucketCurrentStateLocation",
+                    "description": "Geographic region where the bucket is located:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Bucket name.\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketCurrentStateObjectLock:getCloudStorageObjectBucketsBucketCurrentStateObjectLock",
+                    "description": "Current object lock configuration:\n"
+                },
+                "objectsCount": {
+                    "type": "integer",
+                    "description": "Bucket total objects count. Only returned on a single bucket read, `null` here.\n"
+                },
+                "objectsSize": {
+                    "type": "integer",
+                    "description": "Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Current metadata tags.\n"
+                },
+                "versioning": {
+                    "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucketCurrentStateVersioning:getCloudStorageObjectBucketsBucketCurrentStateVersioning",
+                    "description": "Current versioning configuration:\n"
+                },
+                "virtualHost": {
+                    "type": "string",
+                    "description": "Bucket virtual host. Only returned on a single bucket read, `null` here.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryption",
+                "location",
+                "name",
+                "objectLock",
+                "objectsCount",
+                "objectsSize",
+                "tags",
+                "versioning",
+                "virtualHost"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketCurrentStateEncryption:getCloudStorageObjectBucketsBucketCurrentStateEncryption": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Encryption algorithm.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketCurrentStateLocation:getCloudStorageObjectBucketsBucketCurrentStateLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "If set, only buckets located in this region are returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketCurrentStateObjectLock:getCloudStorageObjectBucketsBucketCurrentStateObjectLock": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock retention mode.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain objects.\n"
+                },
+                "retentionYears": {
+                    "type": "integer",
+                    "description": "Number of years to retain objects.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "retentionDays",
+                "retentionYears"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketCurrentStateVersioning:getCloudStorageObjectBucketsBucketCurrentStateVersioning": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Versioning status.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketEncryption:getCloudStorageObjectBucketsBucketEncryption": {
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Encryption algorithm.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketLocation:getCloudStorageObjectBucketsBucketLocation": {
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "If set, only buckets located in this region are returned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketObjectLock:getCloudStorageObjectBucketsBucketObjectLock": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "Object lock retention mode.\n"
+                },
+                "retentionDays": {
+                    "type": "integer",
+                    "description": "Number of days to retain objects.\n"
+                },
+                "retentionYears": {
+                    "type": "integer",
+                    "description": "Number of years to retain objects.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode",
+                "retentionDays",
+                "retentionYears"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getCloudStorageObjectBucketsBucketVersioning:getCloudStorageObjectBucketsBucketVersioning": {
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "description": "Versioning status.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "ovh:index/getDbaasLogsOutputGraylogStreamUrlUrl:getDbaasLogsOutputGraylogStreamUrlUrl": {
             "properties": {
                 "address": {
@@ -26071,6 +26782,36 @@
             "type": "object",
             "required": [
                 "address",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "ovh:index/getDedicatedServerNetworkingInterface:getDedicatedServerNetworkingInterface": {
+            "properties": {
+                "aggregationFallback": {
+                    "type": "string",
+                    "description": "MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).\n"
+                },
+                "macs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of MAC addresses of the physical interfaces in this aggregation.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The network type of the interface (`public` or `vrack`).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "aggregationFallback",
+                "macs",
                 "type"
             ],
             "language": {
@@ -28314,7 +29055,7 @@
                 },
                 "maintenanceTime": {
                     "type": "string",
-                    "description": "Time on which maintenances can start every day.\n"
+                    "description": "Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).\n"
                 },
                 "networkType": {
                     "type": "string",
@@ -28423,7 +29164,7 @@
                 },
                 "maintenanceTime": {
                     "type": "string",
-                    "description": "Time on which maintenances can start every day.\n"
+                    "description": "Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).\n"
                 },
                 "nodes": {
                     "type": "array",
@@ -28531,7 +29272,7 @@
                     },
                     "maintenanceTime": {
                         "type": "string",
-                        "description": "Time on which maintenances can start every day.\n"
+                        "description": "Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).\n"
                     },
                     "networkType": {
                         "type": "string",
@@ -42368,7 +43109,7 @@
             }
         },
         "ovh:Me/aPIOAuth2Client:APIOAuth2Client": {
-            "description": "Creates an OAuth2 service account.\n\n## Example Usage\n\nAn OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myOauth2ClientAuthCode = new ovh.me.APIOAuth2Client(\"my_oauth2_client_auth_code\", {\n    name: \"OAuth2 authorization code service account\",\n    flow: \"AUTHORIZATION_CODE\",\n    description: \"An OAuth2 client using the authorization code flow for my-app.com\",\n    callbackUrls: [\"https://my-app.com/callback\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_oauth2_client_auth_code = ovh.me.APIOAuth2Client(\"my_oauth2_client_auth_code\",\n    name=\"OAuth2 authorization code service account\",\n    flow=\"AUTHORIZATION_CODE\",\n    description=\"An OAuth2 client using the authorization code flow for my-app.com\",\n    callback_urls=[\"https://my-app.com/callback\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOauth2ClientAuthCode = new Ovh.Me.APIOAuth2Client(\"my_oauth2_client_auth_code\", new()\n    {\n        Name = \"OAuth2 authorization code service account\",\n        Flow = \"AUTHORIZATION_CODE\",\n        Description = \"An OAuth2 client using the authorization code flow for my-app.com\",\n        CallbackUrls = new[]\n        {\n            \"https://my-app.com/callback\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := me.NewAPIOAuth2Client(ctx, \"my_oauth2_client_auth_code\", \u0026me.APIOAuth2ClientArgs{\n\t\t\tName:        pulumi.String(\"OAuth2 authorization code service account\"),\n\t\t\tFlow:        pulumi.String(\"AUTHORIZATION_CODE\"),\n\t\t\tDescription: pulumi.String(\"An OAuth2 client using the authorization code flow for my-app.com\"),\n\t\t\tCallbackUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://my-app.com/callback\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.Me.APIOAuth2Client;\nimport com.ovhcloud.pulumi.ovh.Me.APIOAuth2ClientArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOauth2ClientAuthCode = new APIOAuth2Client(\"myOauth2ClientAuthCode\", APIOAuth2ClientArgs.builder()\n            .name(\"OAuth2 authorization code service account\")\n            .flow(\"AUTHORIZATION_CODE\")\n            .description(\"An OAuth2 client using the authorization code flow for my-app.com\")\n            .callbackUrls(\"https://my-app.com/callback\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myOauth2ClientAuthCode:\n    type: ovh:Me:APIOAuth2Client\n    name: my_oauth2_client_auth_code\n    properties:\n      name: OAuth2 authorization code service account\n      flow: AUTHORIZATION_CODE\n      description: An OAuth2 client using the authorization code flow for my-app.com\n      callbackUrls:\n        - https://my-app.com/callback\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nAn OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst myOauth2ClientClientCreds = new ovh.me.APIOAuth2Client(\"my_oauth2_client_client_creds\", {\n    name: \"client credentials service account\",\n    description: \"An OAuth2 client using the client credentials flow for my app\",\n    flow: \"CLIENT_CREDENTIALS\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nmy_oauth2_client_client_creds = ovh.me.APIOAuth2Client(\"my_oauth2_client_client_creds\",\n    name=\"client credentials service account\",\n    description=\"An OAuth2 client using the client credentials flow for my app\",\n    flow=\"CLIENT_CREDENTIALS\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myOauth2ClientClientCreds = new Ovh.Me.APIOAuth2Client(\"my_oauth2_client_client_creds\", new()\n    {\n        Name = \"client credentials service account\",\n        Description = \"An OAuth2 client using the client credentials flow for my app\",\n        Flow = \"CLIENT_CREDENTIALS\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := me.NewAPIOAuth2Client(ctx, \"my_oauth2_client_client_creds\", \u0026me.APIOAuth2ClientArgs{\n\t\t\tName:        pulumi.String(\"client credentials service account\"),\n\t\t\tDescription: pulumi.String(\"An OAuth2 client using the client credentials flow for my app\"),\n\t\t\tFlow:        pulumi.String(\"CLIENT_CREDENTIALS\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.Me.APIOAuth2Client;\nimport com.ovhcloud.pulumi.ovh.Me.APIOAuth2ClientArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myOauth2ClientClientCreds = new APIOAuth2Client(\"myOauth2ClientClientCreds\", APIOAuth2ClientArgs.builder()\n            .name(\"client credentials service account\")\n            .description(\"An OAuth2 client using the client credentials flow for my app\")\n            .flow(\"CLIENT_CREDENTIALS\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myOauth2ClientClientCreds:\n    type: ovh:Me:APIOAuth2Client\n    name: my_oauth2_client_client_creds\n    properties:\n      name: client credentials service account\n      description: An OAuth2 client using the client credentials flow for my app\n      flow: CLIENT_CREDENTIALS\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nOAuth2 clients can be imported using their `client_id`:\n\nbash\n\n```sh\n$ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id\n```\n\nBecause the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:\n\nbash\n\n```sh\n$ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'\n```\n\n",
+            "description": "\n\n## Import\n\nOAuth2 clients can be imported using their `client_id`:\n\nbash\n\n```sh\n$ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client client_id\n```\n\nBecause the client_secret is only available for resources created using terraform, OAuth2 clients can also be imported using a `client_id` and a `client_secret` with a pipe separator:\n\nbash\n\n```sh\n$ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'\n```\n\nImported OAuth2 clients have `discard_client_secret` set to `false`. If your configuration sets it to `true`, the next `pulumi up` removes the client secret from the state without recreating the OAuth2 client.\n\n",
             "properties": {
                 "callbackUrls": {
                     "type": "array",
@@ -42383,12 +43124,15 @@
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Client secret of the created service account.\n",
+                    "description": "Client secret of the created service account. Empty when `discard_client_secret` is `true`.\n",
                     "secret": true
                 },
                 "description": {
                     "type": "string",
                     "description": "OAuth2 client description.\n"
+                },
+                "discardClientSecret": {
+                    "type": "boolean"
                 },
                 "flow": {
                     "type": "string",
@@ -42423,6 +43167,9 @@
                     "type": "string",
                     "description": "OAuth2 client description.\n"
                 },
+                "discardClientSecret": {
+                    "type": "boolean"
+                },
                 "flow": {
                     "type": "string",
                     "description": "The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.\n",
@@ -42453,12 +43200,15 @@
                     },
                     "clientSecret": {
                         "type": "string",
-                        "description": "Client secret of the created service account.\n",
+                        "description": "Client secret of the created service account. Empty when `discard_client_secret` is `true`.\n",
                         "secret": true
                     },
                     "description": {
                         "type": "string",
                         "description": "OAuth2 client description.\n"
+                    },
+                    "discardClientSecret": {
+                        "type": "boolean"
                     },
                     "flow": {
                         "type": "string",
@@ -42813,7 +43563,7 @@
             }
         },
         "ovh:Okms/credential:Credential": {
-            "description": "Creates a credential for an OVHcloud KMS.\n\n## Import\n\nAn OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Okms/credential:Credential cred okms_id/credential_id\n```\n\n",
+            "description": "\n\n## Import\n\nAn OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by \"/\" E.g.,\n\nbash\n\n```sh\n$ pulumi import ovh:Okms/credential:Credential cred okms_id/credential_id\n```\n\n",
             "properties": {
                 "certificatePem": {
                     "type": "string",
@@ -49274,7 +50024,7 @@
             }
         },
         "ovh:index/cloudStorageFileShare:CloudStorageFileShare": {
-            "description": "Creates a file storage share (NFS) in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudStorageFileShare(\"share\", {\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    name: \"my-share\",\n    size: 150,\n    region: \"GRA1\",\n    protocol: \"NFS\",\n    shareType: \"STANDARD_1AZ\",\n    shareNetworkId: \"\u003cshare network id\u003e\",\n    description: \"My NFS share\",\n    encryption: {\n        enabled: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudStorageFileShare(\"share\",\n    service_name=\"\u003cPublic cloud project id\u003e\",\n    name=\"my-share\",\n    size=150,\n    region=\"GRA1\",\n    protocol=\"NFS\",\n    share_type=\"STANDARD_1AZ\",\n    share_network_id=\"\u003cshare network id\u003e\",\n    description=\"My NFS share\",\n    encryption={\n        \"enabled\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudStorageFileShare(\"share\", new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Name = \"my-share\",\n        Size = 150,\n        Region = \"GRA1\",\n        Protocol = \"NFS\",\n        ShareType = \"STANDARD_1AZ\",\n        ShareNetworkId = \"\u003cshare network id\u003e\",\n        Description = \"My NFS share\",\n        Encryption = new Ovh.Inputs.CloudStorageFileShareEncryptionArgs\n        {\n            Enabled = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageFileShare(ctx, \"share\", \u0026ovh.CloudStorageFileShareArgs{\n\t\t\tServiceName:    pulumi.String(\"\u003cPublic cloud project id\u003e\"),\n\t\t\tName:           pulumi.String(\"my-share\"),\n\t\t\tSize:           pulumi.Int(150),\n\t\t\tRegion:         pulumi.String(\"GRA1\"),\n\t\t\tProtocol:       pulumi.String(\"NFS\"),\n\t\t\tShareType:      pulumi.String(\"STANDARD_1AZ\"),\n\t\t\tShareNetworkId: pulumi.String(\"\u003cshare network id\u003e\"),\n\t\t\tDescription:    pulumi.String(\"My NFS share\"),\n\t\t\tEncryption: \u0026ovh.CloudStorageFileShareEncryptionArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShare;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;\nimport com.pulumi.ovh.inputs.CloudStorageFileShareEncryptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudStorageFileShare(\"share\", CloudStorageFileShareArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .name(\"my-share\")\n            .size(150)\n            .region(\"GRA1\")\n            .protocol(\"NFS\")\n            .shareType(\"STANDARD_1AZ\")\n            .shareNetworkId(\"\u003cshare network id\u003e\")\n            .description(\"My NFS share\")\n            .encryption(CloudStorageFileShareEncryptionArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      shareNetworkId: \u003cshare network id\u003e\n      description: My NFS share\n      encryption:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share.share\n\n  id = \"\u003cservice_name\u003e/\u003cfile_share_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShare:CloudStorageFileShare share service_name/file_share_id\n```\n\n",
+            "description": "Creates a file storage share (NFS) in a public cloud project.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst share = new ovh.CloudStorageFileShare(\"share\", {\n    serviceName: \"\u003cPublic cloud project id\u003e\",\n    name: \"my-share\",\n    size: 150,\n    region: \"GRA1\",\n    protocol: \"NFS\",\n    shareType: \"STANDARD_1AZ\",\n    shareNetworkId: \"\u003cshare network id\u003e\",\n    description: \"My NFS share\",\n    encryption: {\n        enabled: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nshare = ovh.CloudStorageFileShare(\"share\",\n    service_name=\"\u003cPublic cloud project id\u003e\",\n    name=\"my-share\",\n    size=150,\n    region=\"GRA1\",\n    protocol=\"NFS\",\n    share_type=\"STANDARD_1AZ\",\n    share_network_id=\"\u003cshare network id\u003e\",\n    description=\"My NFS share\",\n    encryption={\n        \"enabled\": True,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var share = new Ovh.CloudStorageFileShare(\"share\", new()\n    {\n        ServiceName = \"\u003cPublic cloud project id\u003e\",\n        Name = \"my-share\",\n        Size = 150,\n        Region = \"GRA1\",\n        Protocol = \"NFS\",\n        ShareType = \"STANDARD_1AZ\",\n        ShareNetworkId = \"\u003cshare network id\u003e\",\n        Description = \"My NFS share\",\n        Encryption = new Ovh.Inputs.CloudStorageFileShareEncryptionArgs\n        {\n            Enabled = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.NewCloudStorageFileShare(ctx, \"share\", \u0026ovh.CloudStorageFileShareArgs{\n\t\t\tServiceName:    pulumi.String(\"\u003cPublic cloud project id\u003e\"),\n\t\t\tName:           pulumi.String(\"my-share\"),\n\t\t\tSize:           pulumi.Int(150),\n\t\t\tRegion:         pulumi.String(\"GRA1\"),\n\t\t\tProtocol:       pulumi.String(\"NFS\"),\n\t\t\tShareType:      pulumi.String(\"STANDARD_1AZ\"),\n\t\t\tShareNetworkId: pulumi.String(\"\u003cshare network id\u003e\"),\n\t\t\tDescription:    pulumi.String(\"My NFS share\"),\n\t\t\tEncryption: \u0026ovh.CloudStorageFileShareEncryptionArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShare;\nimport com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;\nimport com.pulumi.ovh.inputs.CloudStorageFileShareEncryptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var share = new CloudStorageFileShare(\"share\", CloudStorageFileShareArgs.builder()\n            .serviceName(\"\u003cPublic cloud project id\u003e\")\n            .name(\"my-share\")\n            .size(150)\n            .region(\"GRA1\")\n            .protocol(\"NFS\")\n            .shareType(\"STANDARD_1AZ\")\n            .shareNetworkId(\"\u003cshare network id\u003e\")\n            .description(\"My NFS share\")\n            .encryption(CloudStorageFileShareEncryptionArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  share:\n    type: ovh:CloudStorageFileShare\n    properties:\n      serviceName: \u003cPublic cloud project id\u003e\n      name: my-share\n      size: 150\n      region: GRA1\n      protocol: NFS\n      shareType: STANDARD_1AZ\n      shareNetworkId: \u003cshare network id\u003e\n      description: My NFS share\n      encryption:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create from a snapshot\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nresources:\n  snapshot:\n    type: ovh:CloudStorageFileShareSnapshot\n    properties:\n      serviceName: ${share.serviceName}\n      shareId: ${share.id}\n      name: my-snapshot\n  shareFromSnapshot:\n    type: ovh:CloudStorageFileShare\n    name: share_from_snapshot\n    properties:\n      serviceName: ${share.serviceName}\n      name: my-share-from-snapshot\n      region: GRA1\n      protocol: NFS\n      createFrom:\n        snapshot_id: ${snapshot.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nWhen `create_from` is set, the new file share takes its `share_type`, `encryption` and, if omitted, `share_network_id` from the snapshot's source file share, and its `size` from the snapshot if omitted. The snapshot must be `available` and in the same `region`.\n\n## Import\n\nA cloud storage file share can be imported using the `service_name` and `file_share_id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_file_share.share\n\n  id = \"\u003cservice_name\u003e/\u003cfile_share_id\u003e\"\n\n}\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageFileShare:CloudStorageFileShare share service_name/file_share_id\n```\n\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -49283,6 +50033,10 @@
                 "checksum": {
                     "type": "string",
                     "description": "Computed hash representing the current target specification value.\n"
+                },
+                "createFrom": {
+                    "$ref": "#/types/ovh:index/CloudStorageFileShareCreateFrom:CloudStorageFileShareCreateFrom",
+                    "description": "Source to create the file share from. **Changing this value recreates the resource.**\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -49298,7 +50052,7 @@
                 },
                 "encryption": {
                     "$ref": "#/types/ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption",
-                    "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
+                    "description": "Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**\n"
                 },
                 "name": {
                     "type": "string",
@@ -49322,15 +50076,15 @@
                 },
                 "shareNetworkId": {
                     "type": "string",
-                    "description": "ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**\n"
+                    "description": "ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**\n"
                 },
                 "shareType": {
                     "type": "string",
-                    "description": "File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**\n"
+                    "description": "File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**\n"
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Size of the file share in GB.\n"
+                    "description": "Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.\n"
                 },
                 "updatedAt": {
                     "type": "string",
@@ -49359,13 +50113,17 @@
                     "type": "string",
                     "description": "Availability zone where the file share will be created. **Changing this value recreates the resource.**\n"
                 },
+                "createFrom": {
+                    "$ref": "#/types/ovh:index/CloudStorageFileShareCreateFrom:CloudStorageFileShareCreateFrom",
+                    "description": "Source to create the file share from. **Changing this value recreates the resource.**\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "File share description.\n"
                 },
                 "encryption": {
                     "$ref": "#/types/ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption",
-                    "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
+                    "description": "Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**\n"
                 },
                 "name": {
                     "type": "string",
@@ -49385,24 +50143,21 @@
                 },
                 "shareNetworkId": {
                     "type": "string",
-                    "description": "ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**\n"
+                    "description": "ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**\n"
                 },
                 "shareType": {
                     "type": "string",
-                    "description": "File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**\n"
+                    "description": "File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**\n"
                 },
                 "size": {
                     "type": "integer",
-                    "description": "Size of the file share in GB.\n"
+                    "description": "Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.\n"
                 }
             },
             "requiredInputs": [
                 "protocol",
                 "region",
-                "serviceName",
-                "shareNetworkId",
-                "shareType",
-                "size"
+                "serviceName"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering CloudStorageFileShare resources.\n",
@@ -49414,6 +50169,10 @@
                     "checksum": {
                         "type": "string",
                         "description": "Computed hash representing the current target specification value.\n"
+                    },
+                    "createFrom": {
+                        "$ref": "#/types/ovh:index/CloudStorageFileShareCreateFrom:CloudStorageFileShareCreateFrom",
+                        "description": "Source to create the file share from. **Changing this value recreates the resource.**\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -49429,7 +50188,7 @@
                     },
                     "encryption": {
                         "$ref": "#/types/ovh:index/CloudStorageFileShareEncryption:CloudStorageFileShareEncryption",
-                        "description": "Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**\n"
+                        "description": "Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**\n"
                     },
                     "name": {
                         "type": "string",
@@ -49453,15 +50212,15 @@
                     },
                     "shareNetworkId": {
                         "type": "string",
-                        "description": "ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**\n"
+                        "description": "ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**\n"
                     },
                     "shareType": {
                         "type": "string",
-                        "description": "File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**\n"
+                        "description": "File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**\n"
                     },
                     "size": {
                         "type": "integer",
-                        "description": "Size of the file share in GB.\n"
+                        "description": "Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.\n"
                     },
                     "updatedAt": {
                         "type": "string",
@@ -49844,6 +50603,177 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "Last update date of the snapshot.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket": {
+            "description": "Creates an S3\u0026trade; compatible object storage bucket in a public cloud project.\n\n\u003e __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.\n\n## Import\n\nAn S3\u0026trade; compatible bucket can be imported using the `service_name` and the bucket `id`, separated by `/`:\n\nterraform\n\nimport {\n\n  to = ovh_cloud_storage_object_bucket.bucket\n\n  id = \"\u003cservice_name\u003e/\u003cbucket_id\u003e\"\n\n}\n\n~\u003e __NOTE__ The bucket `id` is the bare bucket name on a single-region API instance, and `\u003cREGION\u003e_\u003cname\u003e` (for example `GRA_my-data-bucket`) on a multi-region one.\n\nbash\n\n```sh\n$ pulumi import ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket bucket service_name/bucket_id\n```\n\n",
+            "properties": {
+                "checksum": {
+                    "type": "string",
+                    "description": "Computed hash representing the current target specification value.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation date of the bucket.\n"
+                },
+                "currentState": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketCurrentState:CloudStorageObjectBucketCurrentState",
+                    "description": "Current observed state of the bucket:\n"
+                },
+                "encryption": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketEncryption:CloudStorageObjectBucketEncryption",
+                    "description": "Server-side encryption configuration:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketObjectLock:CloudStorageObjectBucketObjectLock",
+                    "description": "Object lock (WORM) configuration. Requires `versioning` to be set with `status = \"ENABLED\"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**\n"
+                },
+                "ownerUserId": {
+                    "type": "string",
+                    "description": "Owner user identifier.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**\n"
+                },
+                "resourceStatus": {
+                    "type": "string",
+                    "description": "Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name of the resource representing the id of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata tags for the bucket, as a map of strings.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Last update date of the bucket.\n"
+                },
+                "versioning": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketVersioning:CloudStorageObjectBucketVersioning",
+                    "description": "Versioning configuration:\n"
+                }
+            },
+            "required": [
+                "checksum",
+                "createdAt",
+                "currentState",
+                "name",
+                "region",
+                "resourceStatus",
+                "serviceName",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "encryption": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketEncryption:CloudStorageObjectBucketEncryption",
+                    "description": "Server-side encryption configuration:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**\n"
+                },
+                "objectLock": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketObjectLock:CloudStorageObjectBucketObjectLock",
+                    "description": "Object lock (WORM) configuration. Requires `versioning` to be set with `status = \"ENABLED\"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**\n"
+                },
+                "ownerUserId": {
+                    "type": "string",
+                    "description": "Owner user identifier.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**\n"
+                },
+                "serviceName": {
+                    "type": "string",
+                    "description": "Service name of the resource representing the id of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n"
+                },
+                "tags": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Metadata tags for the bucket, as a map of strings.\n"
+                },
+                "versioning": {
+                    "$ref": "#/types/ovh:index/CloudStorageObjectBucketVersioning:CloudStorageObjectBucketVersioning",
+                    "description": "Versioning configuration:\n"
+                }
+            },
+            "requiredInputs": [
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CloudStorageObjectBucket resources.\n",
+                "properties": {
+                    "checksum": {
+                        "type": "string",
+                        "description": "Computed hash representing the current target specification value.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Creation date of the bucket.\n"
+                    },
+                    "currentState": {
+                        "$ref": "#/types/ovh:index/CloudStorageObjectBucketCurrentState:CloudStorageObjectBucketCurrentState",
+                        "description": "Current observed state of the bucket:\n"
+                    },
+                    "encryption": {
+                        "$ref": "#/types/ovh:index/CloudStorageObjectBucketEncryption:CloudStorageObjectBucketEncryption",
+                        "description": "Server-side encryption configuration:\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**\n"
+                    },
+                    "objectLock": {
+                        "$ref": "#/types/ovh:index/CloudStorageObjectBucketObjectLock:CloudStorageObjectBucketObjectLock",
+                        "description": "Object lock (WORM) configuration. Requires `versioning` to be set with `status = \"ENABLED\"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**\n"
+                    },
+                    "ownerUserId": {
+                        "type": "string",
+                        "description": "Owner user identifier.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**\n"
+                    },
+                    "resourceStatus": {
+                        "type": "string",
+                        "description": "Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "Service name of the resource representing the id of the cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used. **Changing this value recreates the resource.**\n"
+                    },
+                    "tags": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Metadata tags for the bucket, as a map of strings.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Last update date of the bucket.\n"
+                    },
+                    "versioning": {
+                        "$ref": "#/types/ovh:index/CloudStorageObjectBucketVersioning:CloudStorageObjectBucketVersioning",
+                        "description": "Versioning configuration:\n"
                     }
                 },
                 "type": "object"
@@ -66428,6 +67358,156 @@
                 "type": "object"
             }
         },
+        "ovh:index/getCloudStorageObjectBucket:getCloudStorageObjectBucket": {
+            "description": "Get an S3\u0026trade; compatible object storage bucket in a public cloud project.\n\n\u003e __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCloudStorageObjectBucket.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Bucket identifier, in the `\u003cREGION\u003e_\u003cname\u003e` form (e.g. `GRA_my-data-bucket`).\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCloudStorageObjectBucket.\n",
+                "properties": {
+                    "checksum": {
+                        "description": "Computed hash representing the current target specification value.\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "Creation date of the bucket.\n",
+                        "type": "string"
+                    },
+                    "currentState": {
+                        "$ref": "#/types/ovh:index/getCloudStorageObjectBucketCurrentState:getCloudStorageObjectBucketCurrentState",
+                        "description": "Current observed state of the bucket:\n"
+                    },
+                    "encryption": {
+                        "$ref": "#/types/ovh:index/getCloudStorageObjectBucketEncryption:getCloudStorageObjectBucketEncryption",
+                        "description": "Current encryption configuration:\n"
+                    },
+                    "id": {
+                        "description": "Bucket identifier.\n",
+                        "type": "string"
+                    },
+                    "location": {
+                        "$ref": "#/types/ovh:index/getCloudStorageObjectBucketLocation:getCloudStorageObjectBucketLocation",
+                        "description": "Geographic region where the bucket is located:\n"
+                    },
+                    "name": {
+                        "description": "Bucket name.\n",
+                        "type": "string"
+                    },
+                    "objectLock": {
+                        "$ref": "#/types/ovh:index/getCloudStorageObjectBucketObjectLock:getCloudStorageObjectBucketObjectLock",
+                        "description": "Current object lock configuration:\n"
+                    },
+                    "ownerUserId": {
+                        "description": "Owner user identifier.\n",
+                        "type": "string"
+                    },
+                    "resourceStatus": {
+                        "description": "Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).\n",
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Current metadata tags.\n",
+                        "type": "object"
+                    },
+                    "updatedAt": {
+                        "description": "Last update date of the bucket.\n",
+                        "type": "string"
+                    },
+                    "versioning": {
+                        "$ref": "#/types/ovh:index/getCloudStorageObjectBucketVersioning:getCloudStorageObjectBucketVersioning",
+                        "description": "Current versioning configuration:\n"
+                    }
+                },
+                "required": [
+                    "checksum",
+                    "createdAt",
+                    "currentState",
+                    "encryption",
+                    "id",
+                    "location",
+                    "name",
+                    "objectLock",
+                    "ownerUserId",
+                    "resourceStatus",
+                    "serviceName",
+                    "tags",
+                    "updatedAt",
+                    "versioning"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getCloudStorageObjectBuckets:getCloudStorageObjectBuckets": {
+            "description": "List the S3\u0026trade; compatible object storage buckets in a public cloud project.\n\n\u003e __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud's service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getCloudStorageObjectBuckets.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "If set, only buckets located in this region are returned.\n"
+                    },
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The id of the public cloud project.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCloudStorageObjectBuckets.\n",
+                "properties": {
+                    "buckets": {
+                        "description": "List of buckets:\n",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getCloudStorageObjectBucketsBucket:getCloudStorageObjectBucketsBucket"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "Region identifier.\n",
+                        "type": "string"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "buckets",
+                    "serviceName",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey": {
             "description": "Use this data source to retrieve information about a DBaaS Logs encryption key.\n\n## Example Usage\n\n### By title\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst key = ovh.getDbaasLogsEncryptionKey({\n    serviceName: \"ldp-xx-xxxxx\",\n    title: \"my-encryption-key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkey = ovh.get_dbaas_logs_encryption_key(service_name=\"ldp-xx-xxxxx\",\n    title=\"my-encryption-key\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var key = Ovh.GetDbaasLogsEncryptionKey.Invoke(new()\n    {\n        ServiceName = \"ldp-xx-xxxxx\",\n        Title = \"my-encryption-key\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.LookupDbaasLogsEncryptionKey(ctx, \u0026ovh.LookupDbaasLogsEncryptionKeyArgs{\n\t\t\tServiceName: \"ldp-xx-xxxxx\",\n\t\t\tTitle:       pulumi.StringRef(\"my-encryption-key\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()\n            .serviceName(\"ldp-xx-xxxxx\")\n            .title(\"my-encryption-key\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  key:\n    fn::invoke:\n      function: ovh:getDbaasLogsEncryptionKey\n      arguments:\n        serviceName: ldp-xx-xxxxx\n        title: my-encryption-key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### By encryption key ID\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as ovh from \"@ovhcloud/pulumi-ovh\";\n\nconst key = ovh.getDbaasLogsEncryptionKey({\n    serviceName: \"ldp-xx-xxxxx\",\n    encryptionKeyId: \"dc145bc2-eb01-4efe-a802-XXXXXX\",\n});\n```\n```python\nimport pulumi\nimport pulumi_ovh as ovh\n\nkey = ovh.get_dbaas_logs_encryption_key(service_name=\"ldp-xx-xxxxx\",\n    encryption_key_id=\"dc145bc2-eb01-4efe-a802-XXXXXX\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Ovh = Pulumi.Ovh;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var key = Ovh.GetDbaasLogsEncryptionKey.Invoke(new()\n    {\n        ServiceName = \"ldp-xx-xxxxx\",\n        EncryptionKeyId = \"dc145bc2-eb01-4efe-a802-XXXXXX\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := ovh.LookupDbaasLogsEncryptionKey(ctx, \u0026ovh.LookupDbaasLogsEncryptionKeyArgs{\n\t\t\tServiceName:     \"ldp-xx-xxxxx\",\n\t\t\tEncryptionKeyId: pulumi.StringRef(\"dc145bc2-eb01-4efe-a802-XXXXXX\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.ovh.OvhFunctions;\nimport com.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var key = OvhFunctions.getDbaasLogsEncryptionKey(GetDbaasLogsEncryptionKeyArgs.builder()\n            .serviceName(\"ldp-xx-xxxxx\")\n            .encryptionKeyId(\"dc145bc2-eb01-4efe-a802-XXXXXX\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  key:\n    fn::invoke:\n      function: ovh:getDbaasLogsEncryptionKey\n      arguments:\n        serviceName: ldp-xx-xxxxx\n        encryptionKeyId: dc145bc2-eb01-4efe-a802-XXXXXX\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -66537,6 +67617,57 @@
                     "serviceName",
                     "streamId",
                     "urls",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "ovh:index/getDedicatedServerNetworking:getDedicatedServerNetworking": {
+            "description": "Use this data source to retrieve the network interfaces aggregation (bonding) of a dedicated server, including each interface's LACP fallback MAC address.\n\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDedicatedServerNetworking.\n",
+                "properties": {
+                    "serviceName": {
+                        "type": "string",
+                        "description": "The internal name of your dedicated server.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "serviceName"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedServerNetworking.\n",
+                "properties": {
+                    "description": {
+                        "description": "Operation description.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "interfaces": {
+                        "description": "The list of interface aggregations, ordered by `type`. Each entry exports:\n",
+                        "items": {
+                            "$ref": "#/types/ovh:index/getDedicatedServerNetworkingInterface:getDedicatedServerNetworkingInterface"
+                        },
+                        "type": "array"
+                    },
+                    "serviceName": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "Operation status.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "description",
+                    "interfaces",
+                    "serviceName",
+                    "status",
                     "id"
                 ],
                 "type": "object"

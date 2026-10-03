@@ -329,7 +329,7 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly kafkaSchemaRegistry!: pulumi.Output<boolean | undefined>;
     /**
-     * Time on which maintenances can start every day.
+     * Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
      */
     public readonly maintenanceTime!: pulumi.Output<string>;
     /**
@@ -506,7 +506,7 @@ export interface DatabaseState {
      */
     kafkaSchemaRegistry?: pulumi.Input<boolean>;
     /**
-     * Time on which maintenances can start every day.
+     * Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
      */
     maintenanceTime?: pulumi.Input<string>;
     /**
@@ -592,7 +592,7 @@ export interface DatabaseArgs {
      */
     kafkaSchemaRegistry?: pulumi.Input<boolean>;
     /**
-     * Time on which maintenances can start every day.
+     * Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
      */
     maintenanceTime?: pulumi.Input<string>;
     /**

@@ -24,40 +24,47 @@ class CloudStorageFileShareArgs:
                  protocol: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 share_network_id: pulumi.Input[_builtins.str],
-                 share_type: pulumi.Input[_builtins.str],
-                 size: pulumi.Input[_builtins.int],
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_from: Optional[pulumi.Input['CloudStorageFileShareCreateFromArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption: Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_network_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a CloudStorageFileShare resource.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudStorageFileShareCreateFromArgs'] create_from: Source to create the file share from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: File share description.
-        :param pulumi.Input['CloudStorageFileShareEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudStorageFileShareEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "share_network_id", share_network_id)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "size", size)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if create_from is not None:
+            pulumi.set(__self__, "create_from", create_from)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if share_network_id is not None:
+            pulumi.set(__self__, "share_network_id", share_network_id)
+        if share_type is not None:
+            pulumi.set(__self__, "share_type", share_type)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
 
     @_builtins.property
     @pulumi.getter
@@ -96,42 +103,6 @@ class CloudStorageFileShareArgs:
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
-    @pulumi.getter(name="shareNetworkId")
-    def share_network_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        """
-        return pulumi.get(self, "share_network_id")
-
-    @share_network_id.setter
-    def share_network_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "share_network_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="shareType")
-    def share_type(self) -> pulumi.Input[_builtins.str]:
-        """
-        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        """
-        return pulumi.get(self, "share_type")
-
-    @share_type.setter
-    def share_type(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "share_type", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def size(self) -> pulumi.Input[_builtins.int]:
-        """
-        Size of the file share in GB.
-        """
-        return pulumi.get(self, "size")
-
-    @size.setter
-    def size(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "size", value)
-
-    @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -142,6 +113,18 @@ class CloudStorageFileShareArgs:
     @availability_zone.setter
     def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createFrom")
+    def create_from(self) -> Optional[pulumi.Input['CloudStorageFileShareCreateFromArgs']]:
+        """
+        Source to create the file share from. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "create_from")
+
+    @create_from.setter
+    def create_from(self, value: Optional[pulumi.Input['CloudStorageFileShareCreateFromArgs']]):
+        pulumi.set(self, "create_from", value)
 
     @_builtins.property
     @pulumi.getter
@@ -159,7 +142,7 @@ class CloudStorageFileShareArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']]:
         """
-        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -179,12 +162,49 @@ class CloudStorageFileShareArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="shareNetworkId")
+    def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_network_id")
+
+    @share_network_id.setter
+    def share_network_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "share_network_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "share_type")
+
+    @share_type.setter
+    def share_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "share_type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "size", value)
+
 
 @pulumi.input_type
 class _CloudStorageFileShareState:
     def __init__(__self__, *,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  checksum: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_from: Optional[pulumi.Input['CloudStorageFileShareCreateFromArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  current_state: Optional[pulumi.Input['CloudStorageFileShareCurrentStateArgs']] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -202,24 +222,27 @@ class _CloudStorageFileShareState:
         Input properties used for looking up and filtering CloudStorageFileShare resources.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
+        :param pulumi.Input['CloudStorageFileShareCreateFromArgs'] create_from: Source to create the file share from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] created_at: Creation date of the file share.
         :param pulumi.Input['CloudStorageFileShareCurrentStateArgs'] current_state: Current state of the file storage share:
         :param pulumi.Input[_builtins.str] description: File share description.
-        :param pulumi.Input['CloudStorageFileShareEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudStorageFileShareEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] resource_status: File share readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
         :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the file share.
         """
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
+        if create_from is not None:
+            pulumi.set(__self__, "create_from", create_from)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if current_state is not None:
@@ -272,6 +295,18 @@ class _CloudStorageFileShareState:
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
+    @pulumi.getter(name="createFrom")
+    def create_from(self) -> Optional[pulumi.Input['CloudStorageFileShareCreateFromArgs']]:
+        """
+        Source to create the file share from. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "create_from")
+
+    @create_from.setter
+    def create_from(self, value: Optional[pulumi.Input['CloudStorageFileShareCreateFromArgs']]):
+        pulumi.set(self, "create_from", value)
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -311,7 +346,7 @@ class _CloudStorageFileShareState:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['CloudStorageFileShareEncryptionArgs']]:
         """
-        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -383,7 +418,7 @@ class _CloudStorageFileShareState:
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_network_id")
 
@@ -395,7 +430,7 @@ class _CloudStorageFileShareState:
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_type")
 
@@ -407,7 +442,7 @@ class _CloudStorageFileShareState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Size of the file share in GB.
+        Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         return pulumi.get(self, "size")
 
@@ -435,6 +470,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_from: Optional[pulumi.Input[Union['CloudStorageFileShareCreateFromArgs', 'CloudStorageFileShareCreateFromArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption: Optional[pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -491,15 +527,16 @@ class CloudStorageFileShare(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
+        :param pulumi.Input[Union['CloudStorageFileShareCreateFromArgs', 'CloudStorageFileShareCreateFromArgsDict']] create_from: Source to create the file share from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] description: File share description.
-        :param pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        :param pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']] encryption: Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         ...
     @overload
@@ -566,6 +603,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 create_from: Optional[pulumi.Input[Union['CloudStorageFileShareCreateFromArgs', 'CloudStorageFileShareCreateFromArgsDict']]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  encryption: Optional[pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -585,6 +623,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
             __props__ = CloudStorageFileShareArgs.__new__(CloudStorageFileShareArgs)
 
             __props__.__dict__["availability_zone"] = availability_zone
+            __props__.__dict__["create_from"] = create_from
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["name"] = name
@@ -597,14 +636,8 @@ class CloudStorageFileShare(pulumi.CustomResource):
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__.__dict__["service_name"] = service_name
-            if share_network_id is None and not opts.urn:
-                raise TypeError("Missing required property 'share_network_id'")
             __props__.__dict__["share_network_id"] = share_network_id
-            if share_type is None and not opts.urn:
-                raise TypeError("Missing required property 'share_type'")
             __props__.__dict__["share_type"] = share_type
-            if size is None and not opts.urn:
-                raise TypeError("Missing required property 'size'")
             __props__.__dict__["size"] = size
             __props__.__dict__["checksum"] = None
             __props__.__dict__["created_at"] = None
@@ -623,6 +656,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             checksum: Optional[pulumi.Input[_builtins.str]] = None,
+            create_from: Optional[pulumi.Input[Union['CloudStorageFileShareCreateFromArgs', 'CloudStorageFileShareCreateFromArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             current_state: Optional[pulumi.Input[Union['CloudStorageFileShareCurrentStateArgs', 'CloudStorageFileShareCurrentStateArgsDict']]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -645,18 +679,19 @@ class CloudStorageFileShare(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] checksum: Computed hash representing the current target specification value.
+        :param pulumi.Input[Union['CloudStorageFileShareCreateFromArgs', 'CloudStorageFileShareCreateFromArgsDict']] create_from: Source to create the file share from. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] created_at: Creation date of the file share.
         :param pulumi.Input[Union['CloudStorageFileShareCurrentStateArgs', 'CloudStorageFileShareCurrentStateArgsDict']] current_state: Current state of the file storage share:
         :param pulumi.Input[_builtins.str] description: File share description.
-        :param pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        :param pulumi.Input[Union['CloudStorageFileShareEncryptionArgs', 'CloudStorageFileShareEncryptionArgsDict']] encryption: Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] region: Region where the file share will be created. **Changing this value recreates the resource.**
         :param pulumi.Input[_builtins.str] resource_status: File share readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `UPDATING`).
         :param pulumi.Input[_builtins.str] service_name: Service name of the resource representing the id of the cloud project. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         :param pulumi.Input[_builtins.str] updated_at: Last update date of the file share.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -665,6 +700,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
 
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["checksum"] = checksum
+        __props__.__dict__["create_from"] = create_from
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["current_state"] = current_state
         __props__.__dict__["description"] = description
@@ -697,6 +733,14 @@ class CloudStorageFileShare(pulumi.CustomResource):
         return pulumi.get(self, "checksum")
 
     @_builtins.property
+    @pulumi.getter(name="createFrom")
+    def create_from(self) -> pulumi.Output[Optional['outputs.CloudStorageFileShareCreateFrom']]:
+        """
+        Source to create the file share from. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "create_from")
+
+    @_builtins.property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
@@ -724,7 +768,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
     @pulumi.getter
     def encryption(self) -> pulumi.Output['outputs.CloudStorageFileShareEncryption']:
         """
-        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -772,7 +816,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> pulumi.Output[_builtins.str]:
         """
-        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_network_id")
 
@@ -780,7 +824,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
     @pulumi.getter(name="shareType")
     def share_type(self) -> pulumi.Output[_builtins.str]:
         """
-        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_type")
 
@@ -788,7 +832,7 @@ class CloudStorageFileShare(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[_builtins.int]:
         """
-        Size of the file share in GB.
+        Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         return pulumi.get(self, "size")
 

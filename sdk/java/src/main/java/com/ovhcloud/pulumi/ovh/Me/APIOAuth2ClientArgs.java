@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh.Me;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,13 @@ public final class APIOAuth2ClientArgs extends com.pulumi.resources.ResourceArgs
         return this.description;
     }
 
+    @Import(name="discardClientSecret")
+    private @Nullable Output<Boolean> discardClientSecret;
+
+    public Optional<Output<Boolean>> discardClientSecret() {
+        return Optional.ofNullable(this.discardClientSecret);
+    }
+
     /**
      * The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
      * 
@@ -82,6 +90,7 @@ public final class APIOAuth2ClientArgs extends com.pulumi.resources.ResourceArgs
     private APIOAuth2ClientArgs(APIOAuth2ClientArgs $) {
         this.callbackUrls = $.callbackUrls;
         this.description = $.description;
+        this.discardClientSecret = $.discardClientSecret;
         this.flow = $.flow;
         this.name = $.name;
     }
@@ -154,6 +163,15 @@ public final class APIOAuth2ClientArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder discardClientSecret(@Nullable Output<Boolean> discardClientSecret) {
+            $.discardClientSecret = discardClientSecret;
+            return this;
+        }
+
+        public Builder discardClientSecret(Boolean discardClientSecret) {
+            return discardClientSecret(Output.of(discardClientSecret));
         }
 
         /**

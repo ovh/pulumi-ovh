@@ -295,6 +295,8 @@ __all__ = [
     'CloudStorageBlockVolumeSnapshotCurrentStateLocationArgsDict',
     'CloudStorageFileShareAclCurrentStateArgs',
     'CloudStorageFileShareAclCurrentStateArgsDict',
+    'CloudStorageFileShareCreateFromArgs',
+    'CloudStorageFileShareCreateFromArgsDict',
     'CloudStorageFileShareCurrentStateArgs',
     'CloudStorageFileShareCurrentStateArgsDict',
     'CloudStorageFileShareCurrentStateCapabilityArgs',
@@ -315,6 +317,22 @@ __all__ = [
     'CloudStorageFileShareSnapshotCurrentStateArgsDict',
     'CloudStorageFileShareSnapshotCurrentStateLocationArgs',
     'CloudStorageFileShareSnapshotCurrentStateLocationArgsDict',
+    'CloudStorageObjectBucketCurrentStateArgs',
+    'CloudStorageObjectBucketCurrentStateArgsDict',
+    'CloudStorageObjectBucketCurrentStateEncryptionArgs',
+    'CloudStorageObjectBucketCurrentStateEncryptionArgsDict',
+    'CloudStorageObjectBucketCurrentStateLocationArgs',
+    'CloudStorageObjectBucketCurrentStateLocationArgsDict',
+    'CloudStorageObjectBucketCurrentStateObjectLockArgs',
+    'CloudStorageObjectBucketCurrentStateObjectLockArgsDict',
+    'CloudStorageObjectBucketCurrentStateVersioningArgs',
+    'CloudStorageObjectBucketCurrentStateVersioningArgsDict',
+    'CloudStorageObjectBucketEncryptionArgs',
+    'CloudStorageObjectBucketEncryptionArgsDict',
+    'CloudStorageObjectBucketObjectLockArgs',
+    'CloudStorageObjectBucketObjectLockArgsDict',
+    'CloudStorageObjectBucketVersioningArgs',
+    'CloudStorageObjectBucketVersioningArgsDict',
     'StorageEfsIamArgs',
     'StorageEfsIamArgsDict',
     'StorageEfsOrderArgs',
@@ -11841,6 +11859,37 @@ class CloudStorageFileShareAclCurrentStateArgs:
 
 
 if not MYPY:
+    class CloudStorageFileShareCreateFromArgsDict(TypedDict):
+        snapshot_id: pulumi.Input[_builtins.str]
+        """
+        Identifier of an `available` file share snapshot of the same project and region.
+        """
+elif False:
+    CloudStorageFileShareCreateFromArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageFileShareCreateFromArgs:
+    def __init__(__self__, *,
+                 snapshot_id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] snapshot_id: Identifier of an `available` file share snapshot of the same project and region.
+        """
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Identifier of an `available` file share snapshot of the same project and region.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "snapshot_id", value)
+
+
+if not MYPY:
     class CloudStorageFileShareCurrentStateArgsDict(TypedDict):
         capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgsDict']]]]
         """
@@ -11852,7 +11901,7 @@ if not MYPY:
         """
         encryption: NotRequired[pulumi.Input['CloudStorageFileShareCurrentStateEncryptionArgsDict']]
         """
-        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         """
         export_locations: NotRequired[pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgsDict']]]]
         """
@@ -11872,15 +11921,15 @@ if not MYPY:
         """
         share_network_id: NotRequired[pulumi.Input[_builtins.str]]
         """
-        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         """
         share_type: NotRequired[pulumi.Input[_builtins.str]]
         """
-        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         """
         size: NotRequired[pulumi.Input[_builtins.int]]
         """
-        Size of the file share in GB.
+        Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
 elif False:
     CloudStorageFileShareCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
@@ -11901,14 +11950,14 @@ class CloudStorageFileShareCurrentStateArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateCapabilityArgs']]] capabilities: Action-availability flags derived from the file share status:
         :param pulumi.Input[_builtins.str] description: File share description.
-        :param pulumi.Input['CloudStorageFileShareCurrentStateEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudStorageFileShareCurrentStateEncryptionArgs'] encryption: Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         :param pulumi.Input[Sequence[pulumi.Input['CloudStorageFileShareCurrentStateExportLocationArgs']]] export_locations: Export locations for the file share:
         :param pulumi.Input['CloudStorageFileShareCurrentStateLocationArgs'] location: Current location:
         :param pulumi.Input[_builtins.str] name: File share name.
         :param pulumi.Input[_builtins.str] protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        :param pulumi.Input[_builtins.int] size: Size of the file share in GB.
+        :param pulumi.Input[_builtins.str] share_network_id: ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.str] share_type: File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        :param pulumi.Input[_builtins.int] size: Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
@@ -11959,7 +12008,7 @@ class CloudStorageFileShareCurrentStateArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['CloudStorageFileShareCurrentStateEncryptionArgs']]:
         """
-        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -12019,7 +12068,7 @@ class CloudStorageFileShareCurrentStateArgs:
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_network_id")
 
@@ -12031,7 +12080,7 @@ class CloudStorageFileShareCurrentStateArgs:
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_type")
 
@@ -12043,7 +12092,7 @@ class CloudStorageFileShareCurrentStateArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Size of the file share in GB.
+        Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         return pulumi.get(self, "size")
 
@@ -12618,6 +12667,478 @@ class CloudStorageFileShareSnapshotCurrentStateLocationArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketCurrentStateArgsDict(TypedDict):
+        encryption: NotRequired[pulumi.Input['CloudStorageObjectBucketCurrentStateEncryptionArgsDict']]
+        """
+        Server-side encryption configuration:
+        """
+        location: NotRequired[pulumi.Input['CloudStorageObjectBucketCurrentStateLocationArgsDict']]
+        """
+        Geographic region where the bucket is located:
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+        """
+        object_lock: NotRequired[pulumi.Input['CloudStorageObjectBucketCurrentStateObjectLockArgsDict']]
+        """
+        Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+        """
+        objects_count: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Bucket total objects count. Only returned on a single bucket read.
+        """
+        objects_size: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Bucket total objects size in bytes. Only returned on a single bucket read.
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+        """
+        Metadata tags for the bucket, as a map of strings.
+        """
+        versioning: NotRequired[pulumi.Input['CloudStorageObjectBucketCurrentStateVersioningArgsDict']]
+        """
+        Versioning configuration:
+        """
+        virtual_host: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+        """
+elif False:
+    CloudStorageObjectBucketCurrentStateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketCurrentStateArgs:
+    def __init__(__self__, *,
+                 encryption: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateEncryptionArgs']] = None,
+                 location: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateLocationArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 object_lock: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateObjectLockArgs']] = None,
+                 objects_count: Optional[pulumi.Input[_builtins.int]] = None,
+                 objects_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 versioning: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateVersioningArgs']] = None,
+                 virtual_host: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['CloudStorageObjectBucketCurrentStateEncryptionArgs'] encryption: Server-side encryption configuration:
+        :param pulumi.Input['CloudStorageObjectBucketCurrentStateLocationArgs'] location: Geographic region where the bucket is located:
+        :param pulumi.Input[_builtins.str] name: Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+        :param pulumi.Input['CloudStorageObjectBucketCurrentStateObjectLockArgs'] object_lock: Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+        :param pulumi.Input[_builtins.int] objects_count: Bucket total objects count. Only returned on a single bucket read.
+        :param pulumi.Input[_builtins.int] objects_size: Bucket total objects size in bytes. Only returned on a single bucket read.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: Metadata tags for the bucket, as a map of strings.
+        :param pulumi.Input['CloudStorageObjectBucketCurrentStateVersioningArgs'] versioning: Versioning configuration:
+        :param pulumi.Input[_builtins.str] virtual_host: Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+        """
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if object_lock is not None:
+            pulumi.set(__self__, "object_lock", object_lock)
+        if objects_count is not None:
+            pulumi.set(__self__, "objects_count", objects_count)
+        if objects_size is not None:
+            pulumi.set(__self__, "objects_size", objects_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if versioning is not None:
+            pulumi.set(__self__, "versioning", versioning)
+        if virtual_host is not None:
+            pulumi.set(__self__, "virtual_host", virtual_host)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateEncryptionArgs']]:
+        """
+        Server-side encryption configuration:
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateLocationArgs']]:
+        """
+        Geographic region where the bucket is located:
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateLocationArgs']]):
+        pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateObjectLockArgs']]:
+        """
+        Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+        """
+        return pulumi.get(self, "object_lock")
+
+    @object_lock.setter
+    def object_lock(self, value: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateObjectLockArgs']]):
+        pulumi.set(self, "object_lock", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectsCount")
+    def objects_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Bucket total objects count. Only returned on a single bucket read.
+        """
+        return pulumi.get(self, "objects_count")
+
+    @objects_count.setter
+    def objects_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "objects_count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectsSize")
+    def objects_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Bucket total objects size in bytes. Only returned on a single bucket read.
+        """
+        return pulumi.get(self, "objects_size")
+
+    @objects_size.setter
+    def objects_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "objects_size", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Metadata tags for the bucket, as a map of strings.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versioning(self) -> Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateVersioningArgs']]:
+        """
+        Versioning configuration:
+        """
+        return pulumi.get(self, "versioning")
+
+    @versioning.setter
+    def versioning(self, value: Optional[pulumi.Input['CloudStorageObjectBucketCurrentStateVersioningArgs']]):
+        pulumi.set(self, "versioning", value)
+
+    @_builtins.property
+    @pulumi.getter(name="virtualHost")
+    def virtual_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+        """
+        return pulumi.get(self, "virtual_host")
+
+    @virtual_host.setter
+    def virtual_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "virtual_host", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketCurrentStateEncryptionArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+elif False:
+    CloudStorageObjectBucketCurrentStateEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketCurrentStateEncryptionArgs:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] algorithm: Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "algorithm", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketCurrentStateLocationArgsDict(TypedDict):
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+        """
+elif False:
+    CloudStorageObjectBucketCurrentStateLocationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketCurrentStateLocationArgs:
+    def __init__(__self__, *,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] region: Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketCurrentStateObjectLockArgsDict(TypedDict):
+        mode: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        """
+        retention_days: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of days to retain objects. Must be at least `1`.
+        """
+        retention_years: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of years to retain objects
+        """
+elif False:
+    CloudStorageObjectBucketCurrentStateObjectLockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketCurrentStateObjectLockArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 retention_years: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] mode: Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        :param pulumi.Input[_builtins.int] retention_days: Number of days to retain objects. Must be at least `1`.
+        :param pulumi.Input[_builtins.int] retention_years: Number of years to retain objects
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if retention_years is not None:
+            pulumi.set(__self__, "retention_years", retention_years)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of days to retain objects. Must be at least `1`.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionYears")
+    def retention_years(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of years to retain objects
+        """
+        return pulumi.get(self, "retention_years")
+
+    @retention_years.setter
+    def retention_years(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "retention_years", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketCurrentStateVersioningArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+elif False:
+    CloudStorageObjectBucketCurrentStateVersioningArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketCurrentStateVersioningArgs:
+    def __init__(__self__, *,
+                 status: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] status: Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketEncryptionArgsDict(TypedDict):
+        algorithm: pulumi.Input[_builtins.str]
+        """
+        Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+elif False:
+    CloudStorageObjectBucketEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketEncryptionArgs:
+    def __init__(__self__, *,
+                 algorithm: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] algorithm: Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> pulumi.Input[_builtins.str]:
+        """
+        Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "algorithm", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketObjectLockArgsDict(TypedDict):
+        mode: pulumi.Input[_builtins.str]
+        """
+        Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        """
+        retention_days: pulumi.Input[_builtins.int]
+        """
+        Number of days to retain objects. Must be at least `1`.
+        """
+elif False:
+    CloudStorageObjectBucketObjectLockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketObjectLockArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str],
+                 retention_days: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] mode: Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        :param pulumi.Input[_builtins.int] retention_days: Number of days to retain objects. Must be at least `1`.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retention_days", retention_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[_builtins.int]:
+        """
+        Number of days to retain objects. Must be at least `1`.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "retention_days", value)
+
+
+if not MYPY:
+    class CloudStorageObjectBucketVersioningArgsDict(TypedDict):
+        status: pulumi.Input[_builtins.str]
+        """
+        Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+elif False:
+    CloudStorageObjectBucketVersioningArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CloudStorageObjectBucketVersioningArgs:
+    def __init__(__self__, *,
+                 status: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] status: Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> pulumi.Input[_builtins.str]:
+        """
+        Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "status", value)
 
 
 if not MYPY:

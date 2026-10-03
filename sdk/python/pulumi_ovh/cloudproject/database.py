@@ -58,7 +58,7 @@ class DatabaseArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[_builtins.bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[_builtins.bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[_builtins.str] service_name: The id of the public cloud project. If omitted, the `OVH_CLOUD_PROJECT_SERVICE` environment variable is used.
         """
@@ -268,7 +268,7 @@ class DatabaseArgs:
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time on which maintenances can start every day.
+        Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         """
         return pulumi.get(self, "maintenance_time")
 
@@ -342,7 +342,7 @@ class _DatabaseState:
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseIpRestrictionArgs']]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[_builtins.bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[_builtins.bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         :param pulumi.Input[_builtins.str] network_type: Type of network of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseNodeArgs']]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
@@ -572,7 +572,7 @@ class _DatabaseState:
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Time on which maintenances can start every day.
+        Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         """
         return pulumi.get(self, "maintenance_time")
 
@@ -933,7 +933,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[_builtins.bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[_builtins.bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
         :param pulumi.Input[_builtins.str] plan: Plan of the cluster.
@@ -1303,7 +1303,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseIpRestrictionArgs', 'DatabaseIpRestrictionArgsDict']]]] ip_restrictions: IP Blocks authorized to access to the cluster.
         :param pulumi.Input[_builtins.bool] kafka_rest_api: Defines whether the REST API is enabled on a kafka cluster
         :param pulumi.Input[_builtins.bool] kafka_schema_registry: Defines whether the schema registry is enabled on a Kafka cluster
-        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day.
+        :param pulumi.Input[_builtins.str] maintenance_time: Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         :param pulumi.Input[_builtins.str] network_type: Type of network of the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseNodeArgs', 'DatabaseNodeArgsDict']]]] nodes: List of nodes object. Multi region cluster are not yet available, all node should be identical.
         :param pulumi.Input[_builtins.bool] opensearch_acls_enabled: Defines whether the ACLs are enabled on an OpenSearch cluster
@@ -1460,7 +1460,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="maintenanceTime")
     def maintenance_time(self) -> pulumi.Output[_builtins.str]:
         """
-        Time on which maintenances can start every day.
+        Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
         """
         return pulumi.get(self, "maintenance_time")
 

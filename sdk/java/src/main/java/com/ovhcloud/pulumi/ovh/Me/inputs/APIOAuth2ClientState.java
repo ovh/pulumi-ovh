@@ -5,6 +5,7 @@ package com.ovhcloud.pulumi.ovh.Me.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,14 +48,14 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Client secret of the created service account.
+     * Client secret of the created service account. Empty when `discard_client_secret` is `true`.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return Client secret of the created service account.
+     * @return Client secret of the created service account. Empty when `discard_client_secret` is `true`.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -74,6 +75,13 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    @Import(name="discardClientSecret")
+    private @Nullable Output<Boolean> discardClientSecret;
+
+    public Optional<Output<Boolean>> discardClientSecret() {
+        return Optional.ofNullable(this.discardClientSecret);
     }
 
     /**
@@ -128,6 +136,7 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.description = $.description;
+        this.discardClientSecret = $.discardClientSecret;
         this.flow = $.flow;
         this.identity = $.identity;
         this.name = $.name;
@@ -204,7 +213,7 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientSecret Client secret of the created service account.
+         * @param clientSecret Client secret of the created service account. Empty when `discard_client_secret` is `true`.
          * 
          * @return builder
          * 
@@ -215,7 +224,7 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param clientSecret Client secret of the created service account.
+         * @param clientSecret Client secret of the created service account. Empty when `discard_client_secret` is `true`.
          * 
          * @return builder
          * 
@@ -243,6 +252,15 @@ public final class APIOAuth2ClientState extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder discardClientSecret(@Nullable Output<Boolean> discardClientSecret) {
+            $.discardClientSecret = discardClientSecret;
+            return this;
+        }
+
+        public Builder discardClientSecret(Boolean discardClientSecret) {
+            return discardClientSecret(Output.of(discardClientSecret));
         }
 
         /**

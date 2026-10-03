@@ -12,69 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates an OAuth2 service account.
-//
-// ## Example Usage
-//
-// An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewAPIOAuth2Client(ctx, "my_oauth2_client_auth_code", &me.APIOAuth2ClientArgs{
-//				Name:        pulumi.String("OAuth2 authorization code service account"),
-//				Flow:        pulumi.String("AUTHORIZATION_CODE"),
-//				Description: pulumi.String("An OAuth2 client using the authorization code flow for my-app.com"),
-//				CallbackUrls: pulumi.StringArray{
-//					pulumi.String("https://my-app.com/callback"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/ovh/pulumi-ovh/sdk/v2/go/ovh/me"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := me.NewAPIOAuth2Client(ctx, "my_oauth2_client_client_creds", &me.APIOAuth2ClientArgs{
-//				Name:        pulumi.String("client credentials service account"),
-//				Description: pulumi.String("An OAuth2 client using the client credentials flow for my app"),
-//				Flow:        pulumi.String("CLIENT_CREDENTIALS"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // OAuth2 clients can be imported using their `client_id`:
@@ -92,6 +29,8 @@ import (
 // ```sh
 // $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
 // ```
+//
+// Imported OAuth2 clients have `discard_client_secret` set to `false`. If your configuration sets it to `true`, the next `pulumi up` removes the client secret from the state without recreating the OAuth2 client.
 type APIOAuth2Client struct {
 	pulumi.CustomResourceState
 
@@ -99,10 +38,11 @@ type APIOAuth2Client struct {
 	CallbackUrls pulumi.StringArrayOutput `pulumi:"callbackUrls"`
 	// Client ID of the created service account.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
-	// Client secret of the created service account.
+	// Client secret of the created service account. Empty when `discardClientSecret` is `true`.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// OAuth2 client description.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description         pulumi.StringOutput  `pulumi:"description"`
+	DiscardClientSecret pulumi.BoolPtrOutput `pulumi:"discardClientSecret"`
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringOutput `pulumi:"flow"`
 	// Identity URN of the service account to be used inside an IAM policy.
@@ -155,10 +95,11 @@ type apioauth2ClientState struct {
 	CallbackUrls []string `pulumi:"callbackUrls"`
 	// Client ID of the created service account.
 	ClientId *string `pulumi:"clientId"`
-	// Client secret of the created service account.
+	// Client secret of the created service account. Empty when `discardClientSecret` is `true`.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// OAuth2 client description.
-	Description *string `pulumi:"description"`
+	Description         *string `pulumi:"description"`
+	DiscardClientSecret *bool   `pulumi:"discardClientSecret"`
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow *string `pulumi:"flow"`
 	// Identity URN of the service account to be used inside an IAM policy.
@@ -172,10 +113,11 @@ type APIOAuth2ClientState struct {
 	CallbackUrls pulumi.StringArrayInput
 	// Client ID of the created service account.
 	ClientId pulumi.StringPtrInput
-	// Client secret of the created service account.
+	// Client secret of the created service account. Empty when `discardClientSecret` is `true`.
 	ClientSecret pulumi.StringPtrInput
 	// OAuth2 client description.
-	Description pulumi.StringPtrInput
+	Description         pulumi.StringPtrInput
+	DiscardClientSecret pulumi.BoolPtrInput
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringPtrInput
 	// Identity URN of the service account to be used inside an IAM policy.
@@ -192,7 +134,8 @@ type apioauth2ClientArgs struct {
 	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls []string `pulumi:"callbackUrls"`
 	// OAuth2 client description.
-	Description string `pulumi:"description"`
+	Description         string `pulumi:"description"`
+	DiscardClientSecret *bool  `pulumi:"discardClientSecret"`
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow string `pulumi:"flow"`
 	// OAuth2 client name.
@@ -204,7 +147,8 @@ type APIOAuth2ClientArgs struct {
 	// List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
 	CallbackUrls pulumi.StringArrayInput
 	// OAuth2 client description.
-	Description pulumi.StringInput
+	Description         pulumi.StringInput
+	DiscardClientSecret pulumi.BoolPtrInput
 	// The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
 	Flow pulumi.StringInput
 	// OAuth2 client name.
@@ -308,7 +252,7 @@ func (o APIOAuth2ClientOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// Client secret of the created service account.
+// Client secret of the created service account. Empty when `discardClientSecret` is `true`.
 func (o APIOAuth2ClientOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -316,6 +260,10 @@ func (o APIOAuth2ClientOutput) ClientSecret() pulumi.StringOutput {
 // OAuth2 client description.
 func (o APIOAuth2ClientOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *APIOAuth2Client) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o APIOAuth2ClientOutput) DiscardClientSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *APIOAuth2Client) pulumi.BoolPtrOutput { return v.DiscardClientSecret }).(pulumi.BoolPtrOutput)
 }
 
 // The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
