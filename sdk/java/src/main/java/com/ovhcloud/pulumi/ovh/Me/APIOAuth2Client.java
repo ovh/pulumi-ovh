@@ -10,91 +10,13 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates an OAuth2 service account.
- * 
- * ## Example Usage
- * 
- * An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.Me.APIOAuth2Client;
- * import com.ovhcloud.pulumi.ovh.Me.APIOAuth2ClientArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myOauth2ClientAuthCode = new APIOAuth2Client("myOauth2ClientAuthCode", APIOAuth2ClientArgs.builder()
- *             .name("OAuth2 authorization code service account")
- *             .flow("AUTHORIZATION_CODE")
- *             .description("An OAuth2 client using the authorization code flow for my-app.com")
- *             .callbackUrls("https://my-app.com/callback")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.ovhcloud.pulumi.ovh.Me.APIOAuth2Client;
- * import com.ovhcloud.pulumi.ovh.Me.APIOAuth2ClientArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myOauth2ClientClientCreds = new APIOAuth2Client("myOauth2ClientClientCreds", APIOAuth2ClientArgs.builder()
- *             .name("client credentials service account")
- *             .description("An OAuth2 client using the client credentials flow for my app")
- *             .flow("CLIENT_CREDENTIALS")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * OAuth2 clients can be imported using their `client_id`:
@@ -112,6 +34,8 @@ import javax.annotation.Nullable;
  * ```sh
  * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client &#39;client_id|client_secret&#39;
  * ```
+ * 
+ * Imported OAuth2 clients have `discard_client_secret` set to `false`. If your configuration sets it to `true`, the next `pulumi up` removes the client secret from the state without recreating the OAuth2 client.
  * 
  */
 @ResourceType(type="ovh:Me/aPIOAuth2Client:APIOAuth2Client")
@@ -145,14 +69,14 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
         return this.clientId;
     }
     /**
-     * Client secret of the created service account.
+     * Client secret of the created service account. Empty when `discard_client_secret` is `true`.
      * 
      */
     @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
-     * @return Client secret of the created service account.
+     * @return Client secret of the created service account. Empty when `discard_client_secret` is `true`.
      * 
      */
     public Output<String> clientSecret() {
@@ -171,6 +95,12 @@ public class APIOAuth2Client extends com.pulumi.resources.CustomResource {
      */
     public Output<String> description() {
         return this.description;
+    }
+    @Export(name="discardClientSecret", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> discardClientSecret;
+
+    public Output<Optional<Boolean>> discardClientSecret() {
+        return Codegen.optional(this.discardClientSecret);
     }
     /**
      * The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.

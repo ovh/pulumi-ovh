@@ -13,6 +13,3125 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetCloudStorageObjectBucketsBucketVersioning struct {
+	// Versioning status.
+	Status string `pulumi:"status"`
+}
+
+// GetCloudStorageObjectBucketsBucketVersioningInput is an input type that accepts GetCloudStorageObjectBucketsBucketVersioningArgs and GetCloudStorageObjectBucketsBucketVersioningOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketVersioningInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketVersioningArgs{...}
+type GetCloudStorageObjectBucketsBucketVersioningInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketVersioningOutput() GetCloudStorageObjectBucketsBucketVersioningOutput
+	ToGetCloudStorageObjectBucketsBucketVersioningOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketVersioningOutput
+}
+
+type GetCloudStorageObjectBucketsBucketVersioningArgs struct {
+	// Versioning status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudStorageObjectBucketsBucketVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketVersioning)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketVersioningArgs) ToGetCloudStorageObjectBucketsBucketVersioningOutput() GetCloudStorageObjectBucketsBucketVersioningOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketVersioningOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketVersioningArgs) ToGetCloudStorageObjectBucketsBucketVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketVersioningOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketVersioning)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketVersioningOutput) ToGetCloudStorageObjectBucketsBucketVersioningOutput() GetCloudStorageObjectBucketsBucketVersioningOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketVersioningOutput) ToGetCloudStorageObjectBucketsBucketVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketVersioningOutput {
+	return o
+}
+
+// Versioning status.
+func (o GetCloudStorageObjectBucketsBucketVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDbaasLogsOutputGraylogStreamUrlUrl struct {
+	// URL address
+	Address string `pulumi:"address"`
+	// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
+	Type string `pulumi:"type"`
+}
+
+// GetDbaasLogsOutputGraylogStreamUrlUrlInput is an input type that accepts GetDbaasLogsOutputGraylogStreamUrlUrlArgs and GetDbaasLogsOutputGraylogStreamUrlUrlOutput values.
+// You can construct a concrete instance of `GetDbaasLogsOutputGraylogStreamUrlUrlInput` via:
+//
+//	GetDbaasLogsOutputGraylogStreamUrlUrlArgs{...}
+type GetDbaasLogsOutputGraylogStreamUrlUrlInput interface {
+	pulumi.Input
+
+	ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput
+	ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput
+}
+
+type GetDbaasLogsOutputGraylogStreamUrlUrlArgs struct {
+	// URL address
+	Address pulumi.StringInput `pulumi:"address"`
+	// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
+}
+
+func (i GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
+	return i.ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(context.Background())
+}
+
+func (i GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbaasLogsOutputGraylogStreamUrlUrlOutput)
+}
+
+// GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput is an input type that accepts GetDbaasLogsOutputGraylogStreamUrlUrlArray and GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput values.
+// You can construct a concrete instance of `GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput` via:
+//
+//	GetDbaasLogsOutputGraylogStreamUrlUrlArray{ GetDbaasLogsOutputGraylogStreamUrlUrlArgs{...} }
+type GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput interface {
+	pulumi.Input
+
+	ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput
+	ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput
+}
+
+type GetDbaasLogsOutputGraylogStreamUrlUrlArray []GetDbaasLogsOutputGraylogStreamUrlUrlInput
+
+func (GetDbaasLogsOutputGraylogStreamUrlUrlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
+}
+
+func (i GetDbaasLogsOutputGraylogStreamUrlUrlArray) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
+	return i.ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(context.Background())
+}
+
+func (i GetDbaasLogsOutputGraylogStreamUrlUrlArray) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput)
+}
+
+type GetDbaasLogsOutputGraylogStreamUrlUrlOutput struct{ *pulumi.OutputState }
+
+func (GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
+}
+
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
+	return o
+}
+
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
+	return o
+}
+
+// URL address
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbaasLogsOutputGraylogStreamUrlUrl) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDbaasLogsOutputGraylogStreamUrlUrl) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
+}
+
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
+	return o
+}
+
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
+	return o
+}
+
+func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) Index(i pulumi.IntInput) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbaasLogsOutputGraylogStreamUrlUrl {
+		return vs[0].([]GetDbaasLogsOutputGraylogStreamUrlUrl)[vs[1].(int)]
+	}).(GetDbaasLogsOutputGraylogStreamUrlUrlOutput)
+}
+
+type GetDedicatedServerNetworkingInterface struct {
+	// MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).
+	AggregationFallback string `pulumi:"aggregationFallback"`
+	// The list of MAC addresses of the physical interfaces in this aggregation.
+	Macs []string `pulumi:"macs"`
+	// The network type of the interface (`public` or `vrack`).
+	Type string `pulumi:"type"`
+}
+
+// GetDedicatedServerNetworkingInterfaceInput is an input type that accepts GetDedicatedServerNetworkingInterfaceArgs and GetDedicatedServerNetworkingInterfaceOutput values.
+// You can construct a concrete instance of `GetDedicatedServerNetworkingInterfaceInput` via:
+//
+//	GetDedicatedServerNetworkingInterfaceArgs{...}
+type GetDedicatedServerNetworkingInterfaceInput interface {
+	pulumi.Input
+
+	ToGetDedicatedServerNetworkingInterfaceOutput() GetDedicatedServerNetworkingInterfaceOutput
+	ToGetDedicatedServerNetworkingInterfaceOutputWithContext(context.Context) GetDedicatedServerNetworkingInterfaceOutput
+}
+
+type GetDedicatedServerNetworkingInterfaceArgs struct {
+	// MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).
+	AggregationFallback pulumi.StringInput `pulumi:"aggregationFallback"`
+	// The list of MAC addresses of the physical interfaces in this aggregation.
+	Macs pulumi.StringArrayInput `pulumi:"macs"`
+	// The network type of the interface (`public` or `vrack`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDedicatedServerNetworkingInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedServerNetworkingInterface)(nil)).Elem()
+}
+
+func (i GetDedicatedServerNetworkingInterfaceArgs) ToGetDedicatedServerNetworkingInterfaceOutput() GetDedicatedServerNetworkingInterfaceOutput {
+	return i.ToGetDedicatedServerNetworkingInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedServerNetworkingInterfaceArgs) ToGetDedicatedServerNetworkingInterfaceOutputWithContext(ctx context.Context) GetDedicatedServerNetworkingInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedServerNetworkingInterfaceOutput)
+}
+
+// GetDedicatedServerNetworkingInterfaceArrayInput is an input type that accepts GetDedicatedServerNetworkingInterfaceArray and GetDedicatedServerNetworkingInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetDedicatedServerNetworkingInterfaceArrayInput` via:
+//
+//	GetDedicatedServerNetworkingInterfaceArray{ GetDedicatedServerNetworkingInterfaceArgs{...} }
+type GetDedicatedServerNetworkingInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetDedicatedServerNetworkingInterfaceArrayOutput() GetDedicatedServerNetworkingInterfaceArrayOutput
+	ToGetDedicatedServerNetworkingInterfaceArrayOutputWithContext(context.Context) GetDedicatedServerNetworkingInterfaceArrayOutput
+}
+
+type GetDedicatedServerNetworkingInterfaceArray []GetDedicatedServerNetworkingInterfaceInput
+
+func (GetDedicatedServerNetworkingInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedServerNetworkingInterface)(nil)).Elem()
+}
+
+func (i GetDedicatedServerNetworkingInterfaceArray) ToGetDedicatedServerNetworkingInterfaceArrayOutput() GetDedicatedServerNetworkingInterfaceArrayOutput {
+	return i.ToGetDedicatedServerNetworkingInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDedicatedServerNetworkingInterfaceArray) ToGetDedicatedServerNetworkingInterfaceArrayOutputWithContext(ctx context.Context) GetDedicatedServerNetworkingInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDedicatedServerNetworkingInterfaceArrayOutput)
+}
+
+type GetDedicatedServerNetworkingInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedServerNetworkingInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDedicatedServerNetworkingInterface)(nil)).Elem()
+}
+
+func (o GetDedicatedServerNetworkingInterfaceOutput) ToGetDedicatedServerNetworkingInterfaceOutput() GetDedicatedServerNetworkingInterfaceOutput {
+	return o
+}
+
+func (o GetDedicatedServerNetworkingInterfaceOutput) ToGetDedicatedServerNetworkingInterfaceOutputWithContext(ctx context.Context) GetDedicatedServerNetworkingInterfaceOutput {
+	return o
+}
+
+// MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).
+func (o GetDedicatedServerNetworkingInterfaceOutput) AggregationFallback() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedServerNetworkingInterface) string { return v.AggregationFallback }).(pulumi.StringOutput)
+}
+
+// The list of MAC addresses of the physical interfaces in this aggregation.
+func (o GetDedicatedServerNetworkingInterfaceOutput) Macs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedServerNetworkingInterface) []string { return v.Macs }).(pulumi.StringArrayOutput)
+}
+
+// The network type of the interface (`public` or `vrack`).
+func (o GetDedicatedServerNetworkingInterfaceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedServerNetworkingInterface) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDedicatedServerNetworkingInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDedicatedServerNetworkingInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDedicatedServerNetworkingInterface)(nil)).Elem()
+}
+
+func (o GetDedicatedServerNetworkingInterfaceArrayOutput) ToGetDedicatedServerNetworkingInterfaceArrayOutput() GetDedicatedServerNetworkingInterfaceArrayOutput {
+	return o
+}
+
+func (o GetDedicatedServerNetworkingInterfaceArrayOutput) ToGetDedicatedServerNetworkingInterfaceArrayOutputWithContext(ctx context.Context) GetDedicatedServerNetworkingInterfaceArrayOutput {
+	return o
+}
+
+func (o GetDedicatedServerNetworkingInterfaceArrayOutput) Index(i pulumi.IntInput) GetDedicatedServerNetworkingInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDedicatedServerNetworkingInterface {
+		return vs[0].([]GetDedicatedServerNetworkingInterface)[vs[1].(int)]
+	}).(GetDedicatedServerNetworkingInterfaceOutput)
+}
+
+type GetInstallationTemplateInput struct {
+	Default string `pulumi:"default"`
+	// Information about this template.
+	Description string   `pulumi:"description"`
+	Enums       []string `pulumi:"enums"`
+	Mandatory   bool     `pulumi:"mandatory"`
+	Name        string   `pulumi:"name"`
+	Type        string   `pulumi:"type"`
+}
+
+// GetInstallationTemplateInputInput is an input type that accepts GetInstallationTemplateInputArgs and GetInstallationTemplateInputOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateInputInput` via:
+//
+//	GetInstallationTemplateInputArgs{...}
+type GetInstallationTemplateInputInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput
+	ToGetInstallationTemplateInputOutputWithContext(context.Context) GetInstallationTemplateInputOutput
+}
+
+type GetInstallationTemplateInputArgs struct {
+	Default pulumi.StringInput `pulumi:"default"`
+	// Information about this template.
+	Description pulumi.StringInput      `pulumi:"description"`
+	Enums       pulumi.StringArrayInput `pulumi:"enums"`
+	Mandatory   pulumi.BoolInput        `pulumi:"mandatory"`
+	Name        pulumi.StringInput      `pulumi:"name"`
+	Type        pulumi.StringInput      `pulumi:"type"`
+}
+
+func (GetInstallationTemplateInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
+	return i.ToGetInstallationTemplateInputOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputOutput)
+}
+
+// GetInstallationTemplateInputArrayInput is an input type that accepts GetInstallationTemplateInputArray and GetInstallationTemplateInputArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateInputArrayInput` via:
+//
+//	GetInstallationTemplateInputArray{ GetInstallationTemplateInputArgs{...} }
+type GetInstallationTemplateInputArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput
+	ToGetInstallationTemplateInputArrayOutputWithContext(context.Context) GetInstallationTemplateInputArrayOutput
+}
+
+type GetInstallationTemplateInputArray []GetInstallationTemplateInputInput
+
+func (GetInstallationTemplateInputArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
+	return i.ToGetInstallationTemplateInputArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputArrayOutput)
+}
+
+type GetInstallationTemplateInputOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputOutput) Default() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Default }).(pulumi.StringOutput)
+}
+
+// Information about this template.
+func (o GetInstallationTemplateInputOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Enums() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) []string { return v.Enums }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Mandatory() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) bool { return v.Mandatory }).(pulumi.BoolOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstallationTemplateInputOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateInputArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateInputArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateInputArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateInputOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateInput {
+		return vs[0].([]GetInstallationTemplateInput)[vs[1].(int)]
+	}).(GetInstallationTemplateInputOutput)
+}
+
+type GetInstallationTemplateLicense struct {
+	Os     []GetInstallationTemplateLicenseO     `pulumi:"os"`
+	Usages []GetInstallationTemplateLicenseUsage `pulumi:"usages"`
+}
+
+// GetInstallationTemplateLicenseInput is an input type that accepts GetInstallationTemplateLicenseArgs and GetInstallationTemplateLicenseOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseInput` via:
+//
+//	GetInstallationTemplateLicenseArgs{...}
+type GetInstallationTemplateLicenseInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput
+	ToGetInstallationTemplateLicenseOutputWithContext(context.Context) GetInstallationTemplateLicenseOutput
+}
+
+type GetInstallationTemplateLicenseArgs struct {
+	Os     GetInstallationTemplateLicenseOArrayInput     `pulumi:"os"`
+	Usages GetInstallationTemplateLicenseUsageArrayInput `pulumi:"usages"`
+}
+
+func (GetInstallationTemplateLicenseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseArgs) ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput {
+	return i.ToGetInstallationTemplateLicenseOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseArgs) ToGetInstallationTemplateLicenseOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOutput)
+}
+
+// GetInstallationTemplateLicenseArrayInput is an input type that accepts GetInstallationTemplateLicenseArray and GetInstallationTemplateLicenseArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseArrayInput` via:
+//
+//	GetInstallationTemplateLicenseArray{ GetInstallationTemplateLicenseArgs{...} }
+type GetInstallationTemplateLicenseArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput
+	ToGetInstallationTemplateLicenseArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseArrayOutput
+}
+
+type GetInstallationTemplateLicenseArray []GetInstallationTemplateLicenseInput
+
+func (GetInstallationTemplateLicenseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseArray) ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput {
+	return i.ToGetInstallationTemplateLicenseArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseArray) ToGetInstallationTemplateLicenseArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseArrayOutput)
+}
+
+type GetInstallationTemplateLicenseOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseOutput) ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOutput) ToGetInstallationTemplateLicenseOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOutput) Os() GetInstallationTemplateLicenseOArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicense) []GetInstallationTemplateLicenseO { return v.Os }).(GetInstallationTemplateLicenseOArrayOutput)
+}
+
+func (o GetInstallationTemplateLicenseOutput) Usages() GetInstallationTemplateLicenseUsageArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicense) []GetInstallationTemplateLicenseUsage { return v.Usages }).(GetInstallationTemplateLicenseUsageArrayOutput)
+}
+
+type GetInstallationTemplateLicenseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicense)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseArrayOutput) ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseArrayOutput) ToGetInstallationTemplateLicenseArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicense {
+		return vs[0].([]GetInstallationTemplateLicense)[vs[1].(int)]
+	}).(GetInstallationTemplateLicenseOutput)
+}
+
+type GetInstallationTemplateLicenseO struct {
+	Names []string `pulumi:"names"`
+	Url   string   `pulumi:"url"`
+}
+
+// GetInstallationTemplateLicenseOInput is an input type that accepts GetInstallationTemplateLicenseOArgs and GetInstallationTemplateLicenseOOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseOInput` via:
+//
+//	GetInstallationTemplateLicenseOArgs{...}
+type GetInstallationTemplateLicenseOInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput
+	ToGetInstallationTemplateLicenseOOutputWithContext(context.Context) GetInstallationTemplateLicenseOOutput
+}
+
+type GetInstallationTemplateLicenseOArgs struct {
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	Url   pulumi.StringInput      `pulumi:"url"`
+}
+
+func (GetInstallationTemplateLicenseOArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseOArgs) ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput {
+	return i.ToGetInstallationTemplateLicenseOOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseOArgs) ToGetInstallationTemplateLicenseOOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOOutput)
+}
+
+// GetInstallationTemplateLicenseOArrayInput is an input type that accepts GetInstallationTemplateLicenseOArray and GetInstallationTemplateLicenseOArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseOArrayInput` via:
+//
+//	GetInstallationTemplateLicenseOArray{ GetInstallationTemplateLicenseOArgs{...} }
+type GetInstallationTemplateLicenseOArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput
+	ToGetInstallationTemplateLicenseOArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseOArrayOutput
+}
+
+type GetInstallationTemplateLicenseOArray []GetInstallationTemplateLicenseOInput
+
+func (GetInstallationTemplateLicenseOArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseOArray) ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput {
+	return i.ToGetInstallationTemplateLicenseOArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseOArray) ToGetInstallationTemplateLicenseOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOArrayOutput)
+}
+
+type GetInstallationTemplateLicenseOOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseOOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseOOutput) ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOOutput) ToGetInstallationTemplateLicenseOOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseO) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateLicenseOOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseO) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateLicenseOArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseOArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseOArrayOutput) ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOArrayOutput) ToGetInstallationTemplateLicenseOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseOArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseOOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicenseO {
+		return vs[0].([]GetInstallationTemplateLicenseO)[vs[1].(int)]
+	}).(GetInstallationTemplateLicenseOOutput)
+}
+
+type GetInstallationTemplateLicenseUsage struct {
+	Names []string `pulumi:"names"`
+	Url   string   `pulumi:"url"`
+}
+
+// GetInstallationTemplateLicenseUsageInput is an input type that accepts GetInstallationTemplateLicenseUsageArgs and GetInstallationTemplateLicenseUsageOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseUsageInput` via:
+//
+//	GetInstallationTemplateLicenseUsageArgs{...}
+type GetInstallationTemplateLicenseUsageInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput
+	ToGetInstallationTemplateLicenseUsageOutputWithContext(context.Context) GetInstallationTemplateLicenseUsageOutput
+}
+
+type GetInstallationTemplateLicenseUsageArgs struct {
+	Names pulumi.StringArrayInput `pulumi:"names"`
+	Url   pulumi.StringInput      `pulumi:"url"`
+}
+
+func (GetInstallationTemplateLicenseUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseUsageArgs) ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput {
+	return i.ToGetInstallationTemplateLicenseUsageOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseUsageArgs) ToGetInstallationTemplateLicenseUsageOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseUsageOutput)
+}
+
+// GetInstallationTemplateLicenseUsageArrayInput is an input type that accepts GetInstallationTemplateLicenseUsageArray and GetInstallationTemplateLicenseUsageArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateLicenseUsageArrayInput` via:
+//
+//	GetInstallationTemplateLicenseUsageArray{ GetInstallationTemplateLicenseUsageArgs{...} }
+type GetInstallationTemplateLicenseUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput
+	ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseUsageArrayOutput
+}
+
+type GetInstallationTemplateLicenseUsageArray []GetInstallationTemplateLicenseUsageInput
+
+func (GetInstallationTemplateLicenseUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateLicenseUsageArray) ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput {
+	return i.ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateLicenseUsageArray) ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseUsageArrayOutput)
+}
+
+type GetInstallationTemplateLicenseUsageOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) ToGetInstallationTemplateLicenseUsageOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseUsage) []string { return v.Names }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstallationTemplateLicenseUsageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateLicenseUsage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateLicenseUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateLicenseUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateLicenseUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateLicenseUsageArrayOutput) ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageArrayOutput) ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateLicenseUsageArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicenseUsage {
+		return vs[0].([]GetInstallationTemplateLicenseUsage)[vs[1].(int)]
+	}).(GetInstallationTemplateLicenseUsageOutput)
+}
+
+type GetInstallationTemplateProject struct {
+	// OS template project OS details
+	Os     []GetInstallationTemplateProjectO     `pulumi:"os"`
+	Usages []GetInstallationTemplateProjectUsage `pulumi:"usages"`
+}
+
+// GetInstallationTemplateProjectInput is an input type that accepts GetInstallationTemplateProjectArgs and GetInstallationTemplateProjectOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectInput` via:
+//
+//	GetInstallationTemplateProjectArgs{...}
+type GetInstallationTemplateProjectInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput
+	ToGetInstallationTemplateProjectOutputWithContext(context.Context) GetInstallationTemplateProjectOutput
+}
+
+type GetInstallationTemplateProjectArgs struct {
+	// OS template project OS details
+	Os     GetInstallationTemplateProjectOArrayInput     `pulumi:"os"`
+	Usages GetInstallationTemplateProjectUsageArrayInput `pulumi:"usages"`
+}
+
+func (GetInstallationTemplateProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectArgs) ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput {
+	return i.ToGetInstallationTemplateProjectOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectArgs) ToGetInstallationTemplateProjectOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOutput)
+}
+
+// GetInstallationTemplateProjectArrayInput is an input type that accepts GetInstallationTemplateProjectArray and GetInstallationTemplateProjectArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectArrayInput` via:
+//
+//	GetInstallationTemplateProjectArray{ GetInstallationTemplateProjectArgs{...} }
+type GetInstallationTemplateProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput
+	ToGetInstallationTemplateProjectArrayOutputWithContext(context.Context) GetInstallationTemplateProjectArrayOutput
+}
+
+type GetInstallationTemplateProjectArray []GetInstallationTemplateProjectInput
+
+func (GetInstallationTemplateProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectArray) ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput {
+	return i.ToGetInstallationTemplateProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectArray) ToGetInstallationTemplateProjectArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectArrayOutput)
+}
+
+type GetInstallationTemplateProjectOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectOutput) ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOutput) ToGetInstallationTemplateProjectOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOutput {
+	return o
+}
+
+// OS template project OS details
+func (o GetInstallationTemplateProjectOutput) Os() GetInstallationTemplateProjectOArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProject) []GetInstallationTemplateProjectO { return v.Os }).(GetInstallationTemplateProjectOArrayOutput)
+}
+
+func (o GetInstallationTemplateProjectOutput) Usages() GetInstallationTemplateProjectUsageArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProject) []GetInstallationTemplateProjectUsage { return v.Usages }).(GetInstallationTemplateProjectUsageArrayOutput)
+}
+
+type GetInstallationTemplateProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProject)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectArrayOutput) ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectArrayOutput) ToGetInstallationTemplateProjectArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProject {
+		return vs[0].([]GetInstallationTemplateProject)[vs[1].(int)]
+	}).(GetInstallationTemplateProjectOutput)
+}
+
+type GetInstallationTemplateProjectO struct {
+	// OS template project item governance
+	Governances []string `pulumi:"governances"`
+	// OS template project item name
+	Name string `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes string `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url string `pulumi:"url"`
+	// OS template project item version
+	Version string `pulumi:"version"`
+}
+
+// GetInstallationTemplateProjectOInput is an input type that accepts GetInstallationTemplateProjectOArgs and GetInstallationTemplateProjectOOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectOInput` via:
+//
+//	GetInstallationTemplateProjectOArgs{...}
+type GetInstallationTemplateProjectOInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput
+	ToGetInstallationTemplateProjectOOutputWithContext(context.Context) GetInstallationTemplateProjectOOutput
+}
+
+type GetInstallationTemplateProjectOArgs struct {
+	// OS template project item governance
+	Governances pulumi.StringArrayInput `pulumi:"governances"`
+	// OS template project item name
+	Name pulumi.StringInput `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes pulumi.StringInput `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url pulumi.StringInput `pulumi:"url"`
+	// OS template project item version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetInstallationTemplateProjectOArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectOArgs) ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput {
+	return i.ToGetInstallationTemplateProjectOOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectOArgs) ToGetInstallationTemplateProjectOOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOOutput)
+}
+
+// GetInstallationTemplateProjectOArrayInput is an input type that accepts GetInstallationTemplateProjectOArray and GetInstallationTemplateProjectOArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectOArrayInput` via:
+//
+//	GetInstallationTemplateProjectOArray{ GetInstallationTemplateProjectOArgs{...} }
+type GetInstallationTemplateProjectOArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput
+	ToGetInstallationTemplateProjectOArrayOutputWithContext(context.Context) GetInstallationTemplateProjectOArrayOutput
+}
+
+type GetInstallationTemplateProjectOArray []GetInstallationTemplateProjectOInput
+
+func (GetInstallationTemplateProjectOArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectOArray) ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput {
+	return i.ToGetInstallationTemplateProjectOArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectOArray) ToGetInstallationTemplateProjectOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOArrayOutput)
+}
+
+type GetInstallationTemplateProjectOOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectOOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectOOutput) ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOOutput) ToGetInstallationTemplateProjectOOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOOutput {
+	return o
+}
+
+// OS template project item governance
+func (o GetInstallationTemplateProjectOOutput) Governances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) []string { return v.Governances }).(pulumi.StringArrayOutput)
+}
+
+// OS template project item name
+func (o GetInstallationTemplateProjectOOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OS template project item release notes
+func (o GetInstallationTemplateProjectOOutput) ReleaseNotes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.ReleaseNotes }).(pulumi.StringOutput)
+}
+
+// OS template project item url
+func (o GetInstallationTemplateProjectOOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// OS template project item version
+func (o GetInstallationTemplateProjectOOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateProjectOArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectOArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectO)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectOArrayOutput) ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOArrayOutput) ToGetInstallationTemplateProjectOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectOArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectOOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProjectO {
+		return vs[0].([]GetInstallationTemplateProjectO)[vs[1].(int)]
+	}).(GetInstallationTemplateProjectOOutput)
+}
+
+type GetInstallationTemplateProjectUsage struct {
+	// OS template project item governance
+	Governances []string `pulumi:"governances"`
+	// OS template project item name
+	Name string `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes string `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url string `pulumi:"url"`
+	// OS template project item version
+	Version string `pulumi:"version"`
+}
+
+// GetInstallationTemplateProjectUsageInput is an input type that accepts GetInstallationTemplateProjectUsageArgs and GetInstallationTemplateProjectUsageOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectUsageInput` via:
+//
+//	GetInstallationTemplateProjectUsageArgs{...}
+type GetInstallationTemplateProjectUsageInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput
+	ToGetInstallationTemplateProjectUsageOutputWithContext(context.Context) GetInstallationTemplateProjectUsageOutput
+}
+
+type GetInstallationTemplateProjectUsageArgs struct {
+	// OS template project item governance
+	Governances pulumi.StringArrayInput `pulumi:"governances"`
+	// OS template project item name
+	Name pulumi.StringInput `pulumi:"name"`
+	// OS template project item release notes
+	ReleaseNotes pulumi.StringInput `pulumi:"releaseNotes"`
+	// OS template project item url
+	Url pulumi.StringInput `pulumi:"url"`
+	// OS template project item version
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetInstallationTemplateProjectUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectUsageArgs) ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput {
+	return i.ToGetInstallationTemplateProjectUsageOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectUsageArgs) ToGetInstallationTemplateProjectUsageOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectUsageOutput)
+}
+
+// GetInstallationTemplateProjectUsageArrayInput is an input type that accepts GetInstallationTemplateProjectUsageArray and GetInstallationTemplateProjectUsageArrayOutput values.
+// You can construct a concrete instance of `GetInstallationTemplateProjectUsageArrayInput` via:
+//
+//	GetInstallationTemplateProjectUsageArray{ GetInstallationTemplateProjectUsageArgs{...} }
+type GetInstallationTemplateProjectUsageArrayInput interface {
+	pulumi.Input
+
+	ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput
+	ToGetInstallationTemplateProjectUsageArrayOutputWithContext(context.Context) GetInstallationTemplateProjectUsageArrayOutput
+}
+
+type GetInstallationTemplateProjectUsageArray []GetInstallationTemplateProjectUsageInput
+
+func (GetInstallationTemplateProjectUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (i GetInstallationTemplateProjectUsageArray) ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput {
+	return i.ToGetInstallationTemplateProjectUsageArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstallationTemplateProjectUsageArray) ToGetInstallationTemplateProjectUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectUsageArrayOutput)
+}
+
+type GetInstallationTemplateProjectUsageOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectUsageOutput) ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectUsageOutput) ToGetInstallationTemplateProjectUsageOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageOutput {
+	return o
+}
+
+// OS template project item governance
+func (o GetInstallationTemplateProjectUsageOutput) Governances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) []string { return v.Governances }).(pulumi.StringArrayOutput)
+}
+
+// OS template project item name
+func (o GetInstallationTemplateProjectUsageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OS template project item release notes
+func (o GetInstallationTemplateProjectUsageOutput) ReleaseNotes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.ReleaseNotes }).(pulumi.StringOutput)
+}
+
+// OS template project item url
+func (o GetInstallationTemplateProjectUsageOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// OS template project item version
+func (o GetInstallationTemplateProjectUsageOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetInstallationTemplateProjectUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstallationTemplateProjectUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstallationTemplateProjectUsage)(nil)).Elem()
+}
+
+func (o GetInstallationTemplateProjectUsageArrayOutput) ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectUsageArrayOutput) ToGetInstallationTemplateProjectUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageArrayOutput {
+	return o
+}
+
+func (o GetInstallationTemplateProjectUsageArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProjectUsage {
+		return vs[0].([]GetInstallationTemplateProjectUsage)[vs[1].(int)]
+	}).(GetInstallationTemplateProjectUsageOutput)
+}
+
+type GetIploadbalancingNatIpsNatIp struct {
+	Ips  []string `pulumi:"ips"`
+	Zone string   `pulumi:"zone"`
+}
+
+// GetIploadbalancingNatIpsNatIpInput is an input type that accepts GetIploadbalancingNatIpsNatIpArgs and GetIploadbalancingNatIpsNatIpOutput values.
+// You can construct a concrete instance of `GetIploadbalancingNatIpsNatIpInput` via:
+//
+//	GetIploadbalancingNatIpsNatIpArgs{...}
+type GetIploadbalancingNatIpsNatIpInput interface {
+	pulumi.Input
+
+	ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput
+	ToGetIploadbalancingNatIpsNatIpOutputWithContext(context.Context) GetIploadbalancingNatIpsNatIpOutput
+}
+
+type GetIploadbalancingNatIpsNatIpArgs struct {
+	Ips  pulumi.StringArrayInput `pulumi:"ips"`
+	Zone pulumi.StringInput      `pulumi:"zone"`
+}
+
+func (GetIploadbalancingNatIpsNatIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (i GetIploadbalancingNatIpsNatIpArgs) ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput {
+	return i.ToGetIploadbalancingNatIpsNatIpOutputWithContext(context.Background())
+}
+
+func (i GetIploadbalancingNatIpsNatIpArgs) ToGetIploadbalancingNatIpsNatIpOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIploadbalancingNatIpsNatIpOutput)
+}
+
+// GetIploadbalancingNatIpsNatIpArrayInput is an input type that accepts GetIploadbalancingNatIpsNatIpArray and GetIploadbalancingNatIpsNatIpArrayOutput values.
+// You can construct a concrete instance of `GetIploadbalancingNatIpsNatIpArrayInput` via:
+//
+//	GetIploadbalancingNatIpsNatIpArray{ GetIploadbalancingNatIpsNatIpArgs{...} }
+type GetIploadbalancingNatIpsNatIpArrayInput interface {
+	pulumi.Input
+
+	ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput
+	ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(context.Context) GetIploadbalancingNatIpsNatIpArrayOutput
+}
+
+type GetIploadbalancingNatIpsNatIpArray []GetIploadbalancingNatIpsNatIpInput
+
+func (GetIploadbalancingNatIpsNatIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (i GetIploadbalancingNatIpsNatIpArray) ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput {
+	return i.ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetIploadbalancingNatIpsNatIpArray) ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIploadbalancingNatIpsNatIpArrayOutput)
+}
+
+type GetIploadbalancingNatIpsNatIpOutput struct{ *pulumi.OutputState }
+
+func (GetIploadbalancingNatIpsNatIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) ToGetIploadbalancingNatIpsNatIpOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIploadbalancingNatIpsNatIp) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o GetIploadbalancingNatIpsNatIpOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIploadbalancingNatIpsNatIp) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetIploadbalancingNatIpsNatIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetIploadbalancingNatIpsNatIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIploadbalancingNatIpsNatIp)(nil)).Elem()
+}
+
+func (o GetIploadbalancingNatIpsNatIpArrayOutput) ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpArrayOutput) ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpArrayOutput {
+	return o
+}
+
+func (o GetIploadbalancingNatIpsNatIpArrayOutput) Index(i pulumi.IntInput) GetIploadbalancingNatIpsNatIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIploadbalancingNatIpsNatIp {
+		return vs[0].([]GetIploadbalancingNatIpsNatIp)[vs[1].(int)]
+	}).(GetIploadbalancingNatIpsNatIpOutput)
+}
+
+type GetOkmsSecretIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetOkmsSecretIamInput is an input type that accepts GetOkmsSecretIamArgs and GetOkmsSecretIamOutput values.
+// You can construct a concrete instance of `GetOkmsSecretIamInput` via:
+//
+//	GetOkmsSecretIamArgs{...}
+type GetOkmsSecretIamInput interface {
+	pulumi.Input
+
+	ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput
+	ToGetOkmsSecretIamOutputWithContext(context.Context) GetOkmsSecretIamOutput
+}
+
+type GetOkmsSecretIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetOkmsSecretIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretIam)(nil)).Elem()
+}
+
+func (i GetOkmsSecretIamArgs) ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput {
+	return i.ToGetOkmsSecretIamOutputWithContext(context.Background())
+}
+
+func (i GetOkmsSecretIamArgs) ToGetOkmsSecretIamOutputWithContext(ctx context.Context) GetOkmsSecretIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsSecretIamOutput)
+}
+
+type GetOkmsSecretIamOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsSecretIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretIam)(nil)).Elem()
+}
+
+func (o GetOkmsSecretIamOutput) ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput {
+	return o
+}
+
+func (o GetOkmsSecretIamOutput) ToGetOkmsSecretIamOutputWithContext(ctx context.Context) GetOkmsSecretIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetOkmsSecretIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetOkmsSecretIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetOkmsSecretIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetOkmsSecretIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetOkmsSecretMetadata struct {
+	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+	CasRequired bool `pulumi:"casRequired"`
+	// Time of creation of the secret
+	CreatedAt string `pulumi:"createdAt"`
+	// The secret version
+	CurrentVersion float64 `pulumi:"currentVersion"`
+	// Custom metadata
+	CustomMetadata map[string]string `pulumi:"customMetadata"`
+	// Time duration before a version is deactivated
+	DeactivateVersionAfter string `pulumi:"deactivateVersionAfter"`
+	// The number of versions to keep (10 default)
+	MaxVersions float64 `pulumi:"maxVersions"`
+	// The secret oldest version
+	OldestVersion float64 `pulumi:"oldestVersion"`
+	// Time of the last update of the secret
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetOkmsSecretMetadataInput is an input type that accepts GetOkmsSecretMetadataArgs and GetOkmsSecretMetadataOutput values.
+// You can construct a concrete instance of `GetOkmsSecretMetadataInput` via:
+//
+//	GetOkmsSecretMetadataArgs{...}
+type GetOkmsSecretMetadataInput interface {
+	pulumi.Input
+
+	ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput
+	ToGetOkmsSecretMetadataOutputWithContext(context.Context) GetOkmsSecretMetadataOutput
+}
+
+type GetOkmsSecretMetadataArgs struct {
+	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+	CasRequired pulumi.BoolInput `pulumi:"casRequired"`
+	// Time of creation of the secret
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The secret version
+	CurrentVersion pulumi.Float64Input `pulumi:"currentVersion"`
+	// Custom metadata
+	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
+	// Time duration before a version is deactivated
+	DeactivateVersionAfter pulumi.StringInput `pulumi:"deactivateVersionAfter"`
+	// The number of versions to keep (10 default)
+	MaxVersions pulumi.Float64Input `pulumi:"maxVersions"`
+	// The secret oldest version
+	OldestVersion pulumi.Float64Input `pulumi:"oldestVersion"`
+	// Time of the last update of the secret
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetOkmsSecretMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretMetadata)(nil)).Elem()
+}
+
+func (i GetOkmsSecretMetadataArgs) ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput {
+	return i.ToGetOkmsSecretMetadataOutputWithContext(context.Background())
+}
+
+func (i GetOkmsSecretMetadataArgs) ToGetOkmsSecretMetadataOutputWithContext(ctx context.Context) GetOkmsSecretMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsSecretMetadataOutput)
+}
+
+type GetOkmsSecretMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetOkmsSecretMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOkmsSecretMetadata)(nil)).Elem()
+}
+
+func (o GetOkmsSecretMetadataOutput) ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput {
+	return o
+}
+
+func (o GetOkmsSecretMetadataOutput) ToGetOkmsSecretMetadataOutputWithContext(ctx context.Context) GetOkmsSecretMetadataOutput {
+	return o
+}
+
+// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
+func (o GetOkmsSecretMetadataOutput) CasRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) bool { return v.CasRequired }).(pulumi.BoolOutput)
+}
+
+// Time of creation of the secret
+func (o GetOkmsSecretMetadataOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The secret version
+func (o GetOkmsSecretMetadataOutput) CurrentVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.CurrentVersion }).(pulumi.Float64Output)
+}
+
+// Custom metadata
+func (o GetOkmsSecretMetadataOutput) CustomMetadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
+}
+
+// Time duration before a version is deactivated
+func (o GetOkmsSecretMetadataOutput) DeactivateVersionAfter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.DeactivateVersionAfter }).(pulumi.StringOutput)
+}
+
+// The number of versions to keep (10 default)
+func (o GetOkmsSecretMetadataOutput) MaxVersions() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.MaxVersions }).(pulumi.Float64Output)
+}
+
+// The secret oldest version
+func (o GetOkmsSecretMetadataOutput) OldestVersion() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.OldestVersion }).(pulumi.Float64Output)
+}
+
+// Time of the last update of the secret
+func (o GetOkmsSecretMetadataOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig struct {
+	// BGP AS number
+	BgpNeighborArea float64 `pulumi:"bgpNeighborArea"`
+	// Router IP for BGP
+	BgpNeighborIp string `pulumi:"bgpNeighborIp"`
+	// ID of the extra configuration
+	Id float64 `pulumi:"id"`
+	// Static route next hop
+	NextHop string `pulumi:"nextHop"`
+	// Status of the pop configuration
+	Status string `pulumi:"status"`
+	// Static route ip
+	Subnet string `pulumi:"subnet"`
+	// Type of the configuration
+	Type string `pulumi:"type"`
+}
+
+// GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput is an input type that accepts GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs and GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{...}
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs struct {
+	// BGP AS number
+	BgpNeighborArea pulumi.Float64Input `pulumi:"bgpNeighborArea"`
+	// Router IP for BGP
+	BgpNeighborIp pulumi.StringInput `pulumi:"bgpNeighborIp"`
+	// ID of the extra configuration
+	Id pulumi.Float64Input `pulumi:"id"`
+	// Static route next hop
+	NextHop pulumi.StringInput `pulumi:"nextHop"`
+	// Status of the pop configuration
+	Status pulumi.StringInput `pulumi:"status"`
+	// Static route ip
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Type of the configuration
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput)
+}
+
+// GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray and GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{ GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{...} }
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput
+	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray []GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return o
+}
+
+// BGP AS number
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) BgpNeighborArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) float64 { return v.BgpNeighborArea }).(pulumi.Float64Output)
+}
+
+// Router IP for BGP
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) BgpNeighborIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.BgpNeighborIp }).(pulumi.StringOutput)
+}
+
+// ID of the extra configuration
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// Static route next hop
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) NextHop() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// Status of the pop configuration
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Static route ip
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Type of the configuration
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig {
+		return vs[0].([]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)[vs[1].(int)]
+	}).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfig struct {
+	// Datacenter ID
+	DatacenterId float64 `pulumi:"datacenterId"`
+	// ID of the Datacenter configuration
+	Id float64 `pulumi:"id"`
+	// OVH Private AS
+	OvhBgpArea float64 `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status string `pulumi:"status"`
+	// Subnet should be a /28 min
+	Subnet string `pulumi:"subnet"`
+}
+
+// GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput is an input type that accepts GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs and GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{...}
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs struct {
+	// Datacenter ID
+	DatacenterId pulumi.Float64Input `pulumi:"datacenterId"`
+	// ID of the Datacenter configuration
+	Id pulumi.Float64Input `pulumi:"id"`
+	// OVH Private AS
+	OvhBgpArea pulumi.Float64Input `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status pulumi.StringInput `pulumi:"status"`
+	// Subnet should be a /28 min
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+}
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput)
+}
+
+// GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray and GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput` via:
+//
+//	GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray{ GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{...} }
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput
+	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray []GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return i.ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return o
+}
+
+// Datacenter ID
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) DatacenterId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.DatacenterId }).(pulumi.Float64Output)
+}
+
+// ID of the Datacenter configuration
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// OVH Private AS
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) OvhBgpArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.OvhBgpArea }).(pulumi.Float64Output)
+}
+
+// Status of the pop configuration
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Subnet should be a /28 min
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopDatacentersDatacenterConfig {
+		return vs[0].([]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)[vs[1].(int)]
+	}).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput)
+}
+
+type GetOvhcloudConnectConfigPopsPopConfig struct {
+	// Customer Private AS
+	CustomerBgpArea float64 `pulumi:"customerBgpArea"`
+	// ID of the Pop Configuration
+	Id float64 `pulumi:"id"`
+	// ID of the interface
+	InterfaceId float64 `pulumi:"interfaceId"`
+	// OVH Private AS
+	OvhBgpArea float64 `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status string `pulumi:"status"`
+	// Subnet should be a /30, first IP for OVH, second IP for customer
+	Subnet string `pulumi:"subnet"`
+	// Type of the pop configuration
+	Type string `pulumi:"type"`
+}
+
+// GetOvhcloudConnectConfigPopsPopConfigInput is an input type that accepts GetOvhcloudConnectConfigPopsPopConfigArgs and GetOvhcloudConnectConfigPopsPopConfigOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopsPopConfigInput` via:
+//
+//	GetOvhcloudConnectConfigPopsPopConfigArgs{...}
+type GetOvhcloudConnectConfigPopsPopConfigInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput
+	ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigArgs struct {
+	// Customer Private AS
+	CustomerBgpArea pulumi.Float64Input `pulumi:"customerBgpArea"`
+	// ID of the Pop Configuration
+	Id pulumi.Float64Input `pulumi:"id"`
+	// ID of the interface
+	InterfaceId pulumi.Float64Input `pulumi:"interfaceId"`
+	// OVH Private AS
+	OvhBgpArea pulumi.Float64Input `pulumi:"ovhBgpArea"`
+	// Status of the pop configuration
+	Status pulumi.StringInput `pulumi:"status"`
+	// Subnet should be a /30, first IP for OVH, second IP for customer
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Type of the pop configuration
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetOvhcloudConnectConfigPopsPopConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArgs) ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return i.ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArgs) ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopsPopConfigOutput)
+}
+
+// GetOvhcloudConnectConfigPopsPopConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopsPopConfigArray and GetOvhcloudConnectConfigPopsPopConfigArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectConfigPopsPopConfigArrayInput` via:
+//
+//	GetOvhcloudConnectConfigPopsPopConfigArray{ GetOvhcloudConnectConfigPopsPopConfigArgs{...} }
+type GetOvhcloudConnectConfigPopsPopConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput
+	ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigArray []GetOvhcloudConnectConfigPopsPopConfigInput
+
+func (GetOvhcloudConnectConfigPopsPopConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArray) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return i.ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectConfigPopsPopConfigArray) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopsPopConfigArrayOutput)
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopsPopConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return o
+}
+
+// Customer Private AS
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) CustomerBgpArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.CustomerBgpArea }).(pulumi.Float64Output)
+}
+
+// ID of the Pop Configuration
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// ID of the interface
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) InterfaceId() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.InterfaceId }).(pulumi.Float64Output)
+}
+
+// OVH Private AS
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) OvhBgpArea() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.OvhBgpArea }).(pulumi.Float64Output)
+}
+
+// Status of the pop configuration
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Subnet should be a /30, first IP for OVH, second IP for customer
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Type of the pop configuration
+func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectConfigPopsPopConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopsPopConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopsPopConfig {
+		return vs[0].([]GetOvhcloudConnectConfigPopsPopConfig)[vs[1].(int)]
+	}).(GetOvhcloudConnectConfigPopsPopConfigOutput)
+}
+
+type GetOvhcloudConnectDatacentersDatacenter struct {
+	// Get availability to add new configuration on it
+	Available bool `pulumi:"available"`
+	// Id
+	Id float64 `pulumi:"id"`
+	// name of the datacenter
+	Name string `pulumi:"name"`
+	// region of the datacenter
+	Region string `pulumi:"region"`
+	// region type of the datacenter
+	RegionType string `pulumi:"regionType"`
+}
+
+// GetOvhcloudConnectDatacentersDatacenterInput is an input type that accepts GetOvhcloudConnectDatacentersDatacenterArgs and GetOvhcloudConnectDatacentersDatacenterOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectDatacentersDatacenterInput` via:
+//
+//	GetOvhcloudConnectDatacentersDatacenterArgs{...}
+type GetOvhcloudConnectDatacentersDatacenterInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput
+	ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(context.Context) GetOvhcloudConnectDatacentersDatacenterOutput
+}
+
+type GetOvhcloudConnectDatacentersDatacenterArgs struct {
+	// Get availability to add new configuration on it
+	Available pulumi.BoolInput `pulumi:"available"`
+	// Id
+	Id pulumi.Float64Input `pulumi:"id"`
+	// name of the datacenter
+	Name pulumi.StringInput `pulumi:"name"`
+	// region of the datacenter
+	Region pulumi.StringInput `pulumi:"region"`
+	// region type of the datacenter
+	RegionType pulumi.StringInput `pulumi:"regionType"`
+}
+
+func (GetOvhcloudConnectDatacentersDatacenterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArgs) ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput {
+	return i.ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArgs) ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectDatacentersDatacenterOutput)
+}
+
+// GetOvhcloudConnectDatacentersDatacenterArrayInput is an input type that accepts GetOvhcloudConnectDatacentersDatacenterArray and GetOvhcloudConnectDatacentersDatacenterArrayOutput values.
+// You can construct a concrete instance of `GetOvhcloudConnectDatacentersDatacenterArrayInput` via:
+//
+//	GetOvhcloudConnectDatacentersDatacenterArray{ GetOvhcloudConnectDatacentersDatacenterArgs{...} }
+type GetOvhcloudConnectDatacentersDatacenterArrayInput interface {
+	pulumi.Input
+
+	ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput
+	ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput
+}
+
+type GetOvhcloudConnectDatacentersDatacenterArray []GetOvhcloudConnectDatacentersDatacenterInput
+
+func (GetOvhcloudConnectDatacentersDatacenterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArray) ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return i.ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(context.Background())
+}
+
+func (i GetOvhcloudConnectDatacentersDatacenterArray) ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectDatacentersDatacenterArrayOutput)
+}
+
+type GetOvhcloudConnectDatacentersDatacenterOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectDatacentersDatacenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterOutput {
+	return o
+}
+
+// Get availability to add new configuration on it
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// Id
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Id() pulumi.Float64Output {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) float64 { return v.Id }).(pulumi.Float64Output)
+}
+
+// name of the datacenter
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// region of the datacenter
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// region type of the datacenter
+func (o GetOvhcloudConnectDatacentersDatacenterOutput) RegionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.RegionType }).(pulumi.StringOutput)
+}
+
+type GetOvhcloudConnectDatacentersDatacenterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetOvhcloudConnectDatacentersDatacenterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+	return o
+}
+
+func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectDatacentersDatacenterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectDatacentersDatacenter {
+		return vs[0].([]GetOvhcloudConnectDatacentersDatacenter)[vs[1].(int)]
+	}).(GetOvhcloudConnectDatacentersDatacenterOutput)
+}
+
+type GetServerVni struct {
+	// VirtualNetworkInterface activation state
+	Enabled bool `pulumi:"enabled"`
+	// VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
+	Mode string `pulumi:"mode"`
+	// User defined VirtualNetworkInterface name
+	Name string `pulumi:"name"`
+	// NetworkInterfaceControllers bound to this VirtualNetworkInterface
+	Nics []string `pulumi:"nics"`
+	// Server bound to this VirtualNetworkInterface
+	ServerName string `pulumi:"serverName"`
+	// VirtualNetworkInterface unique id
+	Uuid string `pulumi:"uuid"`
+	// vRack name
+	Vrack string `pulumi:"vrack"`
+}
+
+// GetServerVniInput is an input type that accepts GetServerVniArgs and GetServerVniOutput values.
+// You can construct a concrete instance of `GetServerVniInput` via:
+//
+//	GetServerVniArgs{...}
+type GetServerVniInput interface {
+	pulumi.Input
+
+	ToGetServerVniOutput() GetServerVniOutput
+	ToGetServerVniOutputWithContext(context.Context) GetServerVniOutput
+}
+
+type GetServerVniArgs struct {
+	// VirtualNetworkInterface activation state
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// User defined VirtualNetworkInterface name
+	Name pulumi.StringInput `pulumi:"name"`
+	// NetworkInterfaceControllers bound to this VirtualNetworkInterface
+	Nics pulumi.StringArrayInput `pulumi:"nics"`
+	// Server bound to this VirtualNetworkInterface
+	ServerName pulumi.StringInput `pulumi:"serverName"`
+	// VirtualNetworkInterface unique id
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// vRack name
+	Vrack pulumi.StringInput `pulumi:"vrack"`
+}
+
+func (GetServerVniArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerVni)(nil)).Elem()
+}
+
+func (i GetServerVniArgs) ToGetServerVniOutput() GetServerVniOutput {
+	return i.ToGetServerVniOutputWithContext(context.Background())
+}
+
+func (i GetServerVniArgs) ToGetServerVniOutputWithContext(ctx context.Context) GetServerVniOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerVniOutput)
+}
+
+// GetServerVniArrayInput is an input type that accepts GetServerVniArray and GetServerVniArrayOutput values.
+// You can construct a concrete instance of `GetServerVniArrayInput` via:
+//
+//	GetServerVniArray{ GetServerVniArgs{...} }
+type GetServerVniArrayInput interface {
+	pulumi.Input
+
+	ToGetServerVniArrayOutput() GetServerVniArrayOutput
+	ToGetServerVniArrayOutputWithContext(context.Context) GetServerVniArrayOutput
+}
+
+type GetServerVniArray []GetServerVniInput
+
+func (GetServerVniArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerVni)(nil)).Elem()
+}
+
+func (i GetServerVniArray) ToGetServerVniArrayOutput() GetServerVniArrayOutput {
+	return i.ToGetServerVniArrayOutputWithContext(context.Background())
+}
+
+func (i GetServerVniArray) ToGetServerVniArrayOutputWithContext(ctx context.Context) GetServerVniArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerVniArrayOutput)
+}
+
+type GetServerVniOutput struct{ *pulumi.OutputState }
+
+func (GetServerVniOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerVni)(nil)).Elem()
+}
+
+func (o GetServerVniOutput) ToGetServerVniOutput() GetServerVniOutput {
+	return o
+}
+
+func (o GetServerVniOutput) ToGetServerVniOutputWithContext(ctx context.Context) GetServerVniOutput {
+	return o
+}
+
+// VirtualNetworkInterface activation state
+func (o GetServerVniOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerVni) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
+func (o GetServerVniOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerVni) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// User defined VirtualNetworkInterface name
+func (o GetServerVniOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerVni) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NetworkInterfaceControllers bound to this VirtualNetworkInterface
+func (o GetServerVniOutput) Nics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServerVni) []string { return v.Nics }).(pulumi.StringArrayOutput)
+}
+
+// Server bound to this VirtualNetworkInterface
+func (o GetServerVniOutput) ServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerVni) string { return v.ServerName }).(pulumi.StringOutput)
+}
+
+// VirtualNetworkInterface unique id
+func (o GetServerVniOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerVni) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// vRack name
+func (o GetServerVniOutput) Vrack() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerVni) string { return v.Vrack }).(pulumi.StringOutput)
+}
+
+type GetServerVniArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServerVniArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServerVni)(nil)).Elem()
+}
+
+func (o GetServerVniArrayOutput) ToGetServerVniArrayOutput() GetServerVniArrayOutput {
+	return o
+}
+
+func (o GetServerVniArrayOutput) ToGetServerVniArrayOutputWithContext(ctx context.Context) GetServerVniArrayOutput {
+	return o
+}
+
+func (o GetServerVniArrayOutput) Index(i pulumi.IntInput) GetServerVniOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerVni {
+		return vs[0].([]GetServerVni)[vs[1].(int)]
+	}).(GetServerVniOutput)
+}
+
+type GetStorageEfsIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetStorageEfsIamInput is an input type that accepts GetStorageEfsIamArgs and GetStorageEfsIamOutput values.
+// You can construct a concrete instance of `GetStorageEfsIamInput` via:
+//
+//	GetStorageEfsIamArgs{...}
+type GetStorageEfsIamInput interface {
+	pulumi.Input
+
+	ToGetStorageEfsIamOutput() GetStorageEfsIamOutput
+	ToGetStorageEfsIamOutputWithContext(context.Context) GetStorageEfsIamOutput
+}
+
+type GetStorageEfsIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetStorageEfsIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsIam)(nil)).Elem()
+}
+
+func (i GetStorageEfsIamArgs) ToGetStorageEfsIamOutput() GetStorageEfsIamOutput {
+	return i.ToGetStorageEfsIamOutputWithContext(context.Background())
+}
+
+func (i GetStorageEfsIamArgs) ToGetStorageEfsIamOutputWithContext(ctx context.Context) GetStorageEfsIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsIamOutput)
+}
+
+type GetStorageEfsIamOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEfsIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsIam)(nil)).Elem()
+}
+
+func (o GetStorageEfsIamOutput) ToGetStorageEfsIamOutput() GetStorageEfsIamOutput {
+	return o
+}
+
+func (o GetStorageEfsIamOutput) ToGetStorageEfsIamOutputWithContext(ctx context.Context) GetStorageEfsIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetStorageEfsIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetStorageEfsIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetStorageEfsIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetStorageEfsIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetStorageEfsShareAccessPathsAccessPath struct {
+	// Access path ID
+	Id string `pulumi:"id"`
+	// Access path
+	Path string `pulumi:"path"`
+	// Is this the preferred access path?
+	Preferred bool `pulumi:"preferred"`
+}
+
+// GetStorageEfsShareAccessPathsAccessPathInput is an input type that accepts GetStorageEfsShareAccessPathsAccessPathArgs and GetStorageEfsShareAccessPathsAccessPathOutput values.
+// You can construct a concrete instance of `GetStorageEfsShareAccessPathsAccessPathInput` via:
+//
+//	GetStorageEfsShareAccessPathsAccessPathArgs{...}
+type GetStorageEfsShareAccessPathsAccessPathInput interface {
+	pulumi.Input
+
+	ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput
+	ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(context.Context) GetStorageEfsShareAccessPathsAccessPathOutput
+}
+
+type GetStorageEfsShareAccessPathsAccessPathArgs struct {
+	// Access path ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// Access path
+	Path pulumi.StringInput `pulumi:"path"`
+	// Is this the preferred access path?
+	Preferred pulumi.BoolInput `pulumi:"preferred"`
+}
+
+func (GetStorageEfsShareAccessPathsAccessPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArgs) ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput {
+	return i.ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(context.Background())
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArgs) ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsShareAccessPathsAccessPathOutput)
+}
+
+// GetStorageEfsShareAccessPathsAccessPathArrayInput is an input type that accepts GetStorageEfsShareAccessPathsAccessPathArray and GetStorageEfsShareAccessPathsAccessPathArrayOutput values.
+// You can construct a concrete instance of `GetStorageEfsShareAccessPathsAccessPathArrayInput` via:
+//
+//	GetStorageEfsShareAccessPathsAccessPathArray{ GetStorageEfsShareAccessPathsAccessPathArgs{...} }
+type GetStorageEfsShareAccessPathsAccessPathArrayInput interface {
+	pulumi.Input
+
+	ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput
+	ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput
+}
+
+type GetStorageEfsShareAccessPathsAccessPathArray []GetStorageEfsShareAccessPathsAccessPathInput
+
+func (GetStorageEfsShareAccessPathsAccessPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArray) ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return i.ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(context.Background())
+}
+
+func (i GetStorageEfsShareAccessPathsAccessPathArray) ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsShareAccessPathsAccessPathArrayOutput)
+}
+
+type GetStorageEfsShareAccessPathsAccessPathOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEfsShareAccessPathsAccessPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput {
+	return o
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathOutput {
+	return o
+}
+
+// Access path ID
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Access path
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Is this the preferred access path?
+func (o GetStorageEfsShareAccessPathsAccessPathOutput) Preferred() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) bool { return v.Preferred }).(pulumi.BoolOutput)
+}
+
+type GetStorageEfsShareAccessPathsAccessPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GetStorageEfsShareAccessPathsAccessPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return o
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput {
+	return o
+}
+
+func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) Index(i pulumi.IntInput) GetStorageEfsShareAccessPathsAccessPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageEfsShareAccessPathsAccessPath {
+		return vs[0].([]GetStorageEfsShareAccessPathsAccessPath)[vs[1].(int)]
+	}).(GetStorageEfsShareAccessPathsAccessPathOutput)
+}
+
+type GetVrackIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// (String) Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// (String) Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetVrackIamInput is an input type that accepts GetVrackIamArgs and GetVrackIamOutput values.
+// You can construct a concrete instance of `GetVrackIamInput` via:
+//
+//	GetVrackIamArgs{...}
+type GetVrackIamInput interface {
+	pulumi.Input
+
+	ToGetVrackIamOutput() GetVrackIamOutput
+	ToGetVrackIamOutputWithContext(context.Context) GetVrackIamOutput
+}
+
+type GetVrackIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// (String) Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// (String) Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetVrackIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackIam)(nil)).Elem()
+}
+
+func (i GetVrackIamArgs) ToGetVrackIamOutput() GetVrackIamOutput {
+	return i.ToGetVrackIamOutputWithContext(context.Background())
+}
+
+func (i GetVrackIamArgs) ToGetVrackIamOutputWithContext(ctx context.Context) GetVrackIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackIamOutput)
+}
+
+type GetVrackIamOutput struct{ *pulumi.OutputState }
+
+func (GetVrackIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackIam)(nil)).Elem()
+}
+
+func (o GetVrackIamOutput) ToGetVrackIamOutput() GetVrackIamOutput {
+	return o
+}
+
+func (o GetVrackIamOutput) ToGetVrackIamOutputWithContext(ctx context.Context) GetVrackIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetVrackIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// (String) Unique identifier of the resource
+func (o GetVrackIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetVrackIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVrackIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// (String) Unique resource name used in policies
+func (o GetVrackIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentState struct {
+	// Product status of the vRack Services
+	ProductStatus string `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region string `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets []GetVrackservicesCurrentStateSubnet `pulumi:"subnets"`
+}
+
+// GetVrackservicesCurrentStateInput is an input type that accepts GetVrackservicesCurrentStateArgs and GetVrackservicesCurrentStateOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateInput` via:
+//
+//	GetVrackservicesCurrentStateArgs{...}
+type GetVrackservicesCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput
+	ToGetVrackservicesCurrentStateOutputWithContext(context.Context) GetVrackservicesCurrentStateOutput
+}
+
+type GetVrackservicesCurrentStateArgs struct {
+	// Product status of the vRack Services
+	ProductStatus pulumi.StringInput `pulumi:"productStatus"`
+	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+	Region pulumi.StringInput `pulumi:"region"`
+	// Subnets of the current vRack Services
+	Subnets GetVrackservicesCurrentStateSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetVrackservicesCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentState)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateArgs) ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput {
+	return i.ToGetVrackservicesCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateArgs) ToGetVrackservicesCurrentStateOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateOutput)
+}
+
+type GetVrackservicesCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentState)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateOutput) ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateOutput) ToGetVrackservicesCurrentStateOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateOutput {
+	return o
+}
+
+// Product status of the vRack Services
+func (o GetVrackservicesCurrentStateOutput) ProductStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentState) string { return v.ProductStatus }).(pulumi.StringOutput)
+}
+
+// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
+func (o GetVrackservicesCurrentStateOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentState) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Subnets of the current vRack Services
+func (o GetVrackservicesCurrentStateOutput) Subnets() GetVrackservicesCurrentStateSubnetArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentState) []GetVrackservicesCurrentStateSubnet { return v.Subnets }).(GetVrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnet struct {
+	// IP address range of the subnet in CIDR format
+	Cidr string `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName string `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints []GetVrackservicesCurrentStateSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange GetVrackservicesCurrentStateSubnetServiceRange `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan float64 `pulumi:"vlan"`
+}
+
+// GetVrackservicesCurrentStateSubnetInput is an input type that accepts GetVrackservicesCurrentStateSubnetArgs and GetVrackservicesCurrentStateSubnetOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetArgs{...}
+type GetVrackservicesCurrentStateSubnetInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput
+	ToGetVrackservicesCurrentStateSubnetOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetOutput
+}
+
+type GetVrackservicesCurrentStateSubnetArgs struct {
+	// IP address range of the subnet in CIDR format
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Display name of the subnet
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Service endpoints of the subnet
+	ServiceEndpoints GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
+	// Defines a smaller subnet dedicated to the managed services IPs
+	ServiceRange GetVrackservicesCurrentStateSubnetServiceRangeInput `pulumi:"serviceRange"`
+	// Unique inner VLAN that allows subnets segregation
+	Vlan pulumi.Float64Input `pulumi:"vlan"`
+}
+
+func (GetVrackservicesCurrentStateSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetArgs) ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetArgs) ToGetVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetOutput)
+}
+
+// GetVrackservicesCurrentStateSubnetArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetArray and GetVrackservicesCurrentStateSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetArrayInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetArray{ GetVrackservicesCurrentStateSubnetArgs{...} }
+type GetVrackservicesCurrentStateSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput
+	ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetArrayOutput
+}
+
+type GetVrackservicesCurrentStateSubnetArray []GetVrackservicesCurrentStateSubnetInput
+
+func (GetVrackservicesCurrentStateSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetArray) ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetArray) ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetOutput) ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetOutput) ToGetVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetOutput {
+	return o
+}
+
+// IP address range of the subnet in CIDR format
+func (o GetVrackservicesCurrentStateSubnetOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Display name of the subnet
+func (o GetVrackservicesCurrentStateSubnetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Service endpoints of the subnet
+func (o GetVrackservicesCurrentStateSubnetOutput) ServiceEndpoints() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) []GetVrackservicesCurrentStateSubnetServiceEndpoint {
+		return v.ServiceEndpoints
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+// Defines a smaller subnet dedicated to the managed services IPs
+func (o GetVrackservicesCurrentStateSubnetOutput) ServiceRange() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) GetVrackservicesCurrentStateSubnetServiceRange {
+		return v.ServiceRange
+	}).(GetVrackservicesCurrentStateSubnetServiceRangeOutput)
+}
+
+// Unique inner VLAN that allows subnets segregation
+func (o GetVrackservicesCurrentStateSubnetOutput) Vlan() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
+}
+
+type GetVrackservicesCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnet)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetArrayOutput) ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetArrayOutput) ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnet {
+		return vs[0].([]GetVrackservicesCurrentStateSubnet)[vs[1].(int)]
+	}).(GetVrackservicesCurrentStateSubnetOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpoint struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints []GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointArgs and GetVrackservicesCurrentStateSubnetServiceEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointArgs{...}
+type GetVrackservicesCurrentStateSubnetServiceEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointArgs struct {
+	// Endpoints representing the IPs assigned to the managed services
+	Endpoints GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput `pulumi:"endpoints"`
+	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
+}
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointOutput)
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointArray and GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointArray{ GetVrackservicesCurrentStateSubnetServiceEndpointArgs{...} }
+type GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointArray []GetVrackservicesCurrentStateSubnetServiceEndpointInput
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return o
+}
+
+// Endpoints representing the IPs assigned to the managed services
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) Endpoints() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpoint) []GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+		return v.Endpoints
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpoint) string { return v.ManagedServiceUrn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnetServiceEndpoint {
+		return vs[0].([]GetVrackservicesCurrentStateSubnetServiceEndpoint)[vs[1].(int)]
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint struct {
+	// IP description defined in the managed service
+	Description string `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip string `pulumi:"ip"`
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs and GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...}
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs struct {
+	// IP description defined in the managed service
+	Description pulumi.StringInput `pulumi:"description"`
+	// IP address assigned by OVHcloud
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+// GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray and GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray{ GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...} }
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
+	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray []GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return o
+}
+
+// IP description defined in the managed service
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// IP address assigned by OVHcloud
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
+		return vs[0].([]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)[vs[1].(int)]
+	}).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceRange struct {
+	// CIDR dedicated to the subnet's services
+	Cidr string `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps float64 `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps float64 `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps float64 `pulumi:"usedIps"`
+}
+
+// GetVrackservicesCurrentStateSubnetServiceRangeInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceRangeArgs and GetVrackservicesCurrentStateSubnetServiceRangeOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceRangeInput` via:
+//
+//	GetVrackservicesCurrentStateSubnetServiceRangeArgs{...}
+type GetVrackservicesCurrentStateSubnetServiceRangeInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput
+	ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput
+}
+
+type GetVrackservicesCurrentStateSubnetServiceRangeArgs struct {
+	// CIDR dedicated to the subnet's services
+	Cidr pulumi.StringInput `pulumi:"cidr"`
+	// Number of remaining IPs in the service range
+	RemainingIps pulumi.Float64Input `pulumi:"remainingIps"`
+	// Number of service range IPs reserved by OVHcloud
+	ReservedIps pulumi.Float64Input `pulumi:"reservedIps"`
+	// Number of service range IPs assigned to the managed services
+	UsedIps pulumi.Float64Input `pulumi:"usedIps"`
+}
+
+func (GetVrackservicesCurrentStateSubnetServiceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceRangeArgs) ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return i.ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentStateSubnetServiceRangeArgs) ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceRangeOutput)
+}
+
+type GetVrackservicesCurrentStateSubnetServiceRangeOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentStateSubnetServiceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput {
+	return o
+}
+
+// CIDR dedicated to the subnet's services
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
+}
+
+// Number of remaining IPs in the service range
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) RemainingIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.RemainingIps }).(pulumi.Float64Output)
+}
+
+// Number of service range IPs reserved by OVHcloud
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ReservedIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.ReservedIps }).(pulumi.Float64Output)
+}
+
+// Number of service range IPs assigned to the managed services
+func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) UsedIps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.UsedIps }).(pulumi.Float64Output)
+}
+
+type GetVrackservicesCurrentTask struct {
+	// Identifier of the current task
+	Id string `pulumi:"id"`
+	// Link to the task details
+	Link string `pulumi:"link"`
+	// Current global status of the current task
+	Status string `pulumi:"status"`
+	// Type of the current task
+	Type string `pulumi:"type"`
+}
+
+// GetVrackservicesCurrentTaskInput is an input type that accepts GetVrackservicesCurrentTaskArgs and GetVrackservicesCurrentTaskOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentTaskInput` via:
+//
+//	GetVrackservicesCurrentTaskArgs{...}
+type GetVrackservicesCurrentTaskInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput
+	ToGetVrackservicesCurrentTaskOutputWithContext(context.Context) GetVrackservicesCurrentTaskOutput
+}
+
+type GetVrackservicesCurrentTaskArgs struct {
+	// Identifier of the current task
+	Id pulumi.StringInput `pulumi:"id"`
+	// Link to the task details
+	Link pulumi.StringInput `pulumi:"link"`
+	// Current global status of the current task
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type of the current task
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetVrackservicesCurrentTaskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentTaskArgs) ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput {
+	return i.ToGetVrackservicesCurrentTaskOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentTaskArgs) ToGetVrackservicesCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentTaskOutput)
+}
+
+// GetVrackservicesCurrentTaskArrayInput is an input type that accepts GetVrackservicesCurrentTaskArray and GetVrackservicesCurrentTaskArrayOutput values.
+// You can construct a concrete instance of `GetVrackservicesCurrentTaskArrayInput` via:
+//
+//	GetVrackservicesCurrentTaskArray{ GetVrackservicesCurrentTaskArgs{...} }
+type GetVrackservicesCurrentTaskArrayInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput
+	ToGetVrackservicesCurrentTaskArrayOutputWithContext(context.Context) GetVrackservicesCurrentTaskArrayOutput
+}
+
+type GetVrackservicesCurrentTaskArray []GetVrackservicesCurrentTaskInput
+
+func (GetVrackservicesCurrentTaskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (i GetVrackservicesCurrentTaskArray) ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput {
+	return i.ToGetVrackservicesCurrentTaskArrayOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesCurrentTaskArray) ToGetVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentTaskArrayOutput)
+}
+
+type GetVrackservicesCurrentTaskOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentTaskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentTaskOutput) ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentTaskOutput) ToGetVrackservicesCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskOutput {
+	return o
+}
+
+// Identifier of the current task
+func (o GetVrackservicesCurrentTaskOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Link to the task details
+func (o GetVrackservicesCurrentTaskOutput) Link() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Link }).(pulumi.StringOutput)
+}
+
+// Current global status of the current task
+func (o GetVrackservicesCurrentTaskOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Type of the current task
+func (o GetVrackservicesCurrentTaskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesCurrentTaskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesCurrentTaskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVrackservicesCurrentTask)(nil)).Elem()
+}
+
+func (o GetVrackservicesCurrentTaskArrayOutput) ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentTaskArrayOutput) ToGetVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskArrayOutput {
+	return o
+}
+
+func (o GetVrackservicesCurrentTaskArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentTaskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentTask {
+		return vs[0].([]GetVrackservicesCurrentTask)[vs[1].(int)]
+	}).(GetVrackservicesCurrentTaskOutput)
+}
+
+type GetVrackservicesIam struct {
+	// Resource display name
+	DisplayName string `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id string `pulumi:"id"`
+	// Resource state
+	State string `pulumi:"state"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags map[string]string `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn string `pulumi:"urn"`
+}
+
+// GetVrackservicesIamInput is an input type that accepts GetVrackservicesIamArgs and GetVrackservicesIamOutput values.
+// You can construct a concrete instance of `GetVrackservicesIamInput` via:
+//
+//	GetVrackservicesIamArgs{...}
+type GetVrackservicesIamInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesIamOutput() GetVrackservicesIamOutput
+	ToGetVrackservicesIamOutputWithContext(context.Context) GetVrackservicesIamOutput
+}
+
+type GetVrackservicesIamArgs struct {
+	// Resource display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Unique identifier of the resource
+	Id pulumi.StringInput `pulumi:"id"`
+	// Resource state
+	State pulumi.StringInput `pulumi:"state"`
+	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Unique resource name used in policies
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetVrackservicesIamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesIam)(nil)).Elem()
+}
+
+func (i GetVrackservicesIamArgs) ToGetVrackservicesIamOutput() GetVrackservicesIamOutput {
+	return i.ToGetVrackservicesIamOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesIamArgs) ToGetVrackservicesIamOutputWithContext(ctx context.Context) GetVrackservicesIamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesIamOutput)
+}
+
+type GetVrackservicesIamOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesIamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesIam)(nil)).Elem()
+}
+
+func (o GetVrackservicesIamOutput) ToGetVrackservicesIamOutput() GetVrackservicesIamOutput {
+	return o
+}
+
+func (o GetVrackservicesIamOutput) ToGetVrackservicesIamOutputWithContext(ctx context.Context) GetVrackservicesIamOutput {
+	return o
+}
+
+// Resource display name
+func (o GetVrackservicesIamOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the resource
+func (o GetVrackservicesIamOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Resource state
+func (o GetVrackservicesIamOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Resource tags. Tags that were internally computed are prefixed with ovh:
+func (o GetVrackservicesIamOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Unique resource name used in policies
+func (o GetVrackservicesIamOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVrackservicesIam) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetVrackservicesTargetSpec struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets []GetVrackservicesTargetSpecSubnet `pulumi:"subnets"`
+}
+
+// GetVrackservicesTargetSpecInput is an input type that accepts GetVrackservicesTargetSpecArgs and GetVrackservicesTargetSpecOutput values.
+// You can construct a concrete instance of `GetVrackservicesTargetSpecInput` via:
+//
+//	GetVrackservicesTargetSpecArgs{...}
+type GetVrackservicesTargetSpecInput interface {
+	pulumi.Input
+
+	ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput
+	ToGetVrackservicesTargetSpecOutputWithContext(context.Context) GetVrackservicesTargetSpecOutput
+}
+
+type GetVrackservicesTargetSpecArgs struct {
+	// Target specification of the subnets. Maximum one subnet per vRack Services
+	Subnets GetVrackservicesTargetSpecSubnetArrayInput `pulumi:"subnets"`
+}
+
+func (GetVrackservicesTargetSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (i GetVrackservicesTargetSpecArgs) ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput {
+	return i.ToGetVrackservicesTargetSpecOutputWithContext(context.Background())
+}
+
+func (i GetVrackservicesTargetSpecArgs) ToGetVrackservicesTargetSpecOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecOutput)
+}
+
+type GetVrackservicesTargetSpecOutput struct{ *pulumi.OutputState }
+
+func (GetVrackservicesTargetSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVrackservicesTargetSpec)(nil)).Elem()
+}
+
+func (o GetVrackservicesTargetSpecOutput) ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput {
+	return o
+}
+
+func (o GetVrackservicesTargetSpecOutput) ToGetVrackservicesTargetSpecOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecOutput {
+	return o
+}
+
+// Target specification of the subnets. Maximum one subnet per vRack Services
+func (o GetVrackservicesTargetSpecOutput) Subnets() GetVrackservicesTargetSpecSubnetArrayOutput {
+	return o.ApplyT(func(v GetVrackservicesTargetSpec) []GetVrackservicesTargetSpecSubnet { return v.Subnets }).(GetVrackservicesTargetSpecSubnetArrayOutput)
+}
+
 type GetVrackservicesTargetSpecSubnet struct {
 	// IP address range of the subnet in CIDR format. Must be a private network address (RFC1918). Authorized range for prefix length: /16 to /24
 	Cidr string `pulumi:"cidr"`
@@ -1542,6 +4661,55 @@ func (o GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeOutput) Cidr(
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketVersioningInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedServerNetworkingInterfaceInput)(nil)).Elem(), GetDedicatedServerNetworkingInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDedicatedServerNetworkingInterfaceArrayInput)(nil)).Elem(), GetDedicatedServerNetworkingInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputArrayInput)(nil)).Elem(), GetInstallationTemplateInputArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseInput)(nil)).Elem(), GetInstallationTemplateLicenseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseOInput)(nil)).Elem(), GetInstallationTemplateLicenseOArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseOArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseOArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseUsageInput)(nil)).Elem(), GetInstallationTemplateLicenseUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseUsageArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectInput)(nil)).Elem(), GetInstallationTemplateProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectArrayInput)(nil)).Elem(), GetInstallationTemplateProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOInput)(nil)).Elem(), GetInstallationTemplateProjectOArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOArrayInput)(nil)).Elem(), GetInstallationTemplateProjectOArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageArrayInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIploadbalancingNatIpsNatIpInput)(nil)).Elem(), GetIploadbalancingNatIpsNatIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIploadbalancingNatIpsNatIpArrayInput)(nil)).Elem(), GetIploadbalancingNatIpsNatIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretIamInput)(nil)).Elem(), GetOkmsSecretIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretMetadataInput)(nil)).Elem(), GetOkmsSecretMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopsPopConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopsPopConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterArrayInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniInput)(nil)).Elem(), GetServerVniArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniArrayInput)(nil)).Elem(), GetServerVniArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsIamInput)(nil)).Elem(), GetStorageEfsIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathArrayInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackIamInput)(nil)).Elem(), GetVrackIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateInput)(nil)).Elem(), GetVrackservicesCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskInput)(nil)).Elem(), GetVrackservicesCurrentTaskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskArrayInput)(nil)).Elem(), GetVrackservicesCurrentTaskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesIamInput)(nil)).Elem(), GetVrackservicesIamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecInput)(nil)).Elem(), GetVrackservicesTargetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetArrayInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicesTargetSpecSubnetServiceEndpointArgs{})
@@ -1566,6 +4734,55 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicessVrackservicessTargetSpecSubnetServiceRangeArgs{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketVersioningOutput{})
+	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlOutput{})
+	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput{})
+	pulumi.RegisterOutputType(GetDedicatedServerNetworkingInterfaceOutput{})
+	pulumi.RegisterOutputType(GetDedicatedServerNetworkingInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateInputArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseUsageOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateLicenseUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectOOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectOArrayOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageOutput{})
+	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageArrayOutput{})
+	pulumi.RegisterOutputType(GetIploadbalancingNatIpsNatIpOutput{})
+	pulumi.RegisterOutputType(GetIploadbalancingNatIpsNatIpArrayOutput{})
+	pulumi.RegisterOutputType(GetOkmsSecretIamOutput{})
+	pulumi.RegisterOutputType(GetOkmsSecretMetadataOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopsPopConfigOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopsPopConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterOutput{})
+	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterArrayOutput{})
+	pulumi.RegisterOutputType(GetServerVniOutput{})
+	pulumi.RegisterOutputType(GetServerVniArrayOutput{})
+	pulumi.RegisterOutputType(GetStorageEfsIamOutput{})
+	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathOutput{})
+	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackIamOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceRangeOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskArrayOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesIamOutput{})
+	pulumi.RegisterOutputType(GetVrackservicesTargetSpecOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetArrayOutput{})
 	pulumi.RegisterOutputType(GetVrackservicesTargetSpecSubnetServiceEndpointOutput{})

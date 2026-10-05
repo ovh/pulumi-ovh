@@ -17,8 +17,6 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * Creates a credential for an OVHcloud KMS.
- * 
  * ## Import
  * 
  * An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by &#34;/&#34; E.g.,

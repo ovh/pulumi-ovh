@@ -365,8 +365,6 @@ class Credential(pulumi.CustomResource):
                  validity: Optional[pulumi.Input[_builtins.float]] = None,
                  __props__=None):
         """
-        Creates a credential for an OVHcloud KMS.
-
         ## Import
 
         An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,
@@ -394,8 +392,6 @@ class Credential(pulumi.CustomResource):
                  args: CredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a credential for an OVHcloud KMS.
-
         ## Import
 
         An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,

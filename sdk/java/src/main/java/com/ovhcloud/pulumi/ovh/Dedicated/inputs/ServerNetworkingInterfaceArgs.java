@@ -9,11 +9,28 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ServerNetworkingInterfaceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServerNetworkingInterfaceArgs Empty = new ServerNetworkingInterfaceArgs();
+
+    /**
+     * Mac address of the LACP fallback interface
+     * 
+     */
+    @Import(name="aggregationFallback")
+    private @Nullable Output<String> aggregationFallback;
+
+    /**
+     * @return Mac address of the LACP fallback interface
+     * 
+     */
+    public Optional<Output<String>> aggregationFallback() {
+        return Optional.ofNullable(this.aggregationFallback);
+    }
 
     /**
      * Interface Mac address
@@ -48,6 +65,7 @@ public final class ServerNetworkingInterfaceArgs extends com.pulumi.resources.Re
     private ServerNetworkingInterfaceArgs() {}
 
     private ServerNetworkingInterfaceArgs(ServerNetworkingInterfaceArgs $) {
+        this.aggregationFallback = $.aggregationFallback;
         this.macs = $.macs;
         this.type = $.type;
     }
@@ -68,6 +86,27 @@ public final class ServerNetworkingInterfaceArgs extends com.pulumi.resources.Re
 
         public Builder(ServerNetworkingInterfaceArgs defaults) {
             $ = new ServerNetworkingInterfaceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param aggregationFallback Mac address of the LACP fallback interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregationFallback(@Nullable Output<String> aggregationFallback) {
+            $.aggregationFallback = aggregationFallback;
+            return this;
+        }
+
+        /**
+         * @param aggregationFallback Mac address of the LACP fallback interface
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aggregationFallback(String aggregationFallback) {
+            return aggregationFallback(Output.of(aggregationFallback));
         }
 
         /**

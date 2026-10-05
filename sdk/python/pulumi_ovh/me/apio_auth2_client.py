@@ -22,6 +22,7 @@ class APIOAuth2ClientArgs:
                  description: pulumi.Input[_builtins.str],
                  flow: pulumi.Input[_builtins.str],
                  callback_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 discard_client_secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a APIOAuth2Client resource.
@@ -34,6 +35,8 @@ class APIOAuth2ClientArgs:
         pulumi.set(__self__, "flow", flow)
         if callback_urls is not None:
             pulumi.set(__self__, "callback_urls", callback_urls)
+        if discard_client_secret is not None:
+            pulumi.set(__self__, "discard_client_secret", discard_client_secret)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -74,6 +77,15 @@ class APIOAuth2ClientArgs:
         pulumi.set(self, "callback_urls", value)
 
     @_builtins.property
+    @pulumi.getter(name="discardClientSecret")
+    def discard_client_secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "discard_client_secret")
+
+    @discard_client_secret.setter
+    def discard_client_secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "discard_client_secret", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -93,6 +105,7 @@ class _APIOAuth2ClientState:
                  client_id: Optional[pulumi.Input[_builtins.str]] = None,
                  client_secret: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discard_client_secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  flow: Optional[pulumi.Input[_builtins.str]] = None,
                  identity: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
@@ -100,7 +113,7 @@ class _APIOAuth2ClientState:
         Input properties used for looking up and filtering APIOAuth2Client resources.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_urls: List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
         :param pulumi.Input[_builtins.str] client_id: Client ID of the created service account.
-        :param pulumi.Input[_builtins.str] client_secret: Client secret of the created service account.
+        :param pulumi.Input[_builtins.str] client_secret: Client secret of the created service account. Empty when `discard_client_secret` is `true`.
         :param pulumi.Input[_builtins.str] description: OAuth2 client description.
         :param pulumi.Input[_builtins.str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
         :param pulumi.Input[_builtins.str] identity: Identity URN of the service account to be used inside an IAM policy.
@@ -114,6 +127,8 @@ class _APIOAuth2ClientState:
             pulumi.set(__self__, "client_secret", client_secret)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if discard_client_secret is not None:
+            pulumi.set(__self__, "discard_client_secret", discard_client_secret)
         if flow is not None:
             pulumi.set(__self__, "flow", flow)
         if identity is not None:
@@ -149,7 +164,7 @@ class _APIOAuth2ClientState:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Client secret of the created service account.
+        Client secret of the created service account. Empty when `discard_client_secret` is `true`.
         """
         return pulumi.get(self, "client_secret")
 
@@ -168,6 +183,15 @@ class _APIOAuth2ClientState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="discardClientSecret")
+    def discard_client_secret(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "discard_client_secret")
+
+    @discard_client_secret.setter
+    def discard_client_secret(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "discard_client_secret", value)
 
     @_builtins.property
     @pulumi.getter
@@ -214,39 +238,11 @@ class APIOAuth2Client(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  callback_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discard_client_secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  flow: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Creates an OAuth2 service account.
-
-        ## Example Usage
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("my_oauth2_client_auth_code",
-            name="OAuth2 authorization code service account",
-            flow="AUTHORIZATION_CODE",
-            description="An OAuth2 client using the authorization code flow for my-app.com",
-            callback_urls=["https://my-app.com/callback"])
-        ```
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("my_oauth2_client_client_creds",
-            name="client credentials service account",
-            description="An OAuth2 client using the client credentials flow for my app",
-            flow="CLIENT_CREDENTIALS")
-        ```
-
         ## Import
 
         OAuth2 clients can be imported using their `client_id`:
@@ -264,6 +260,8 @@ class APIOAuth2Client(pulumi.CustomResource):
         ```sh
         $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
         ```
+
+        Imported OAuth2 clients have `discard_client_secret` set to `false`. If your configuration sets it to `true`, the next `pulumi up` removes the client secret from the state without recreating the OAuth2 client.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -279,35 +277,6 @@ class APIOAuth2Client(pulumi.CustomResource):
                  args: APIOAuth2ClientArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an OAuth2 service account.
-
-        ## Example Usage
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_auth_code = ovh.me.APIOAuth2Client("my_oauth2_client_auth_code",
-            name="OAuth2 authorization code service account",
-            flow="AUTHORIZATION_CODE",
-            description="An OAuth2 client using the authorization code flow for my-app.com",
-            callback_urls=["https://my-app.com/callback"])
-        ```
-
-        An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
-
-        ```python
-        import pulumi
-        import pulumi_ovh as ovh
-
-        my_oauth2_client_client_creds = ovh.me.APIOAuth2Client("my_oauth2_client_client_creds",
-            name="client credentials service account",
-            description="An OAuth2 client using the client credentials flow for my app",
-            flow="CLIENT_CREDENTIALS")
-        ```
-
         ## Import
 
         OAuth2 clients can be imported using their `client_id`:
@@ -325,6 +294,8 @@ class APIOAuth2Client(pulumi.CustomResource):
         ```sh
         $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
         ```
+
+        Imported OAuth2 clients have `discard_client_secret` set to `false`. If your configuration sets it to `true`, the next `pulumi up` removes the client secret from the state without recreating the OAuth2 client.
 
         :param str resource_name: The name of the resource.
         :param APIOAuth2ClientArgs args: The arguments to use to populate this resource's properties.
@@ -343,6 +314,7 @@ class APIOAuth2Client(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  callback_urls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 discard_client_secret: Optional[pulumi.Input[_builtins.bool]] = None,
                  flow: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -358,6 +330,7 @@ class APIOAuth2Client(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["discard_client_secret"] = discard_client_secret
             if flow is None and not opts.urn:
                 raise TypeError("Missing required property 'flow'")
             __props__.__dict__["flow"] = flow
@@ -381,6 +354,7 @@ class APIOAuth2Client(pulumi.CustomResource):
             client_id: Optional[pulumi.Input[_builtins.str]] = None,
             client_secret: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            discard_client_secret: Optional[pulumi.Input[_builtins.bool]] = None,
             flow: Optional[pulumi.Input[_builtins.str]] = None,
             identity: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None) -> 'APIOAuth2Client':
@@ -393,7 +367,7 @@ class APIOAuth2Client(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] callback_urls: List of callback urls when configuring the `AUTHORIZATION_CODE` flow.
         :param pulumi.Input[_builtins.str] client_id: Client ID of the created service account.
-        :param pulumi.Input[_builtins.str] client_secret: Client secret of the created service account.
+        :param pulumi.Input[_builtins.str] client_secret: Client secret of the created service account. Empty when `discard_client_secret` is `true`.
         :param pulumi.Input[_builtins.str] description: OAuth2 client description.
         :param pulumi.Input[_builtins.str] flow: The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
         :param pulumi.Input[_builtins.str] identity: Identity URN of the service account to be used inside an IAM policy.
@@ -407,6 +381,7 @@ class APIOAuth2Client(pulumi.CustomResource):
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_secret"] = client_secret
         __props__.__dict__["description"] = description
+        __props__.__dict__["discard_client_secret"] = discard_client_secret
         __props__.__dict__["flow"] = flow
         __props__.__dict__["identity"] = identity
         __props__.__dict__["name"] = name
@@ -432,7 +407,7 @@ class APIOAuth2Client(pulumi.CustomResource):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> pulumi.Output[_builtins.str]:
         """
-        Client secret of the created service account.
+        Client secret of the created service account. Empty when `discard_client_secret` is `true`.
         """
         return pulumi.get(self, "client_secret")
 
@@ -443,6 +418,11 @@ class APIOAuth2Client(pulumi.CustomResource):
         OAuth2 client description.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="discardClientSecret")
+    def discard_client_secret(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        return pulumi.get(self, "discard_client_secret")
 
     @_builtins.property
     @pulumi.getter

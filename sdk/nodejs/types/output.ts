@@ -2134,6 +2134,13 @@ export interface CloudStorageFileShareAclCurrentState {
     state: string;
 }
 
+export interface CloudStorageFileShareCreateFrom {
+    /**
+     * Identifier of an `available` file share snapshot of the same project and region.
+     */
+    snapshotId: string;
+}
+
 export interface CloudStorageFileShareCurrentState {
     /**
      * Action-availability flags derived from the file share status:
@@ -2144,7 +2151,7 @@ export interface CloudStorageFileShareCurrentState {
      */
     description: string;
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      */
     encryption: outputs.CloudStorageFileShareCurrentStateEncryption;
     /**
@@ -2164,15 +2171,15 @@ export interface CloudStorageFileShareCurrentState {
      */
     protocol: string;
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
      */
     shareNetworkId: string;
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      */
     shareType: string;
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
      */
     size: number;
 }
@@ -2294,6 +2301,106 @@ export interface CloudStorageFileShareSnapshotCurrentStateLocation {
      * Region.
      */
     region: string;
+}
+
+export interface CloudStorageObjectBucketCurrentState {
+    /**
+     * Server-side encryption configuration:
+     */
+    encryption: outputs.CloudStorageObjectBucketCurrentStateEncryption;
+    /**
+     * Geographic region where the bucket is located:
+     */
+    location: outputs.CloudStorageObjectBucketCurrentStateLocation;
+    /**
+     * Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+     */
+    name: string;
+    /**
+     * Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+     */
+    objectLock: outputs.CloudStorageObjectBucketCurrentStateObjectLock;
+    /**
+     * Bucket total objects count. Only returned on a single bucket read.
+     */
+    objectsCount: number;
+    /**
+     * Bucket total objects size in bytes. Only returned on a single bucket read.
+     */
+    objectsSize: number;
+    /**
+     * Metadata tags for the bucket, as a map of strings.
+     */
+    tags: {[key: string]: string};
+    /**
+     * Versioning configuration:
+     */
+    versioning: outputs.CloudStorageObjectBucketCurrentStateVersioning;
+    /**
+     * Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+     */
+    virtualHost: string;
+}
+
+export interface CloudStorageObjectBucketCurrentStateEncryption {
+    /**
+     * Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+     */
+    algorithm: string;
+}
+
+export interface CloudStorageObjectBucketCurrentStateLocation {
+    /**
+     * Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+     */
+    region: string;
+}
+
+export interface CloudStorageObjectBucketCurrentStateObjectLock {
+    /**
+     * Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+     */
+    mode: string;
+    /**
+     * Number of days to retain objects. Must be at least `1`.
+     */
+    retentionDays: number;
+    /**
+     * Number of years to retain objects
+     */
+    retentionYears: number;
+}
+
+export interface CloudStorageObjectBucketCurrentStateVersioning {
+    /**
+     * Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+     */
+    status: string;
+}
+
+export interface CloudStorageObjectBucketEncryption {
+    /**
+     * Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+     */
+    algorithm: string;
+}
+
+export interface CloudStorageObjectBucketObjectLock {
+    /**
+     * Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+     */
+    mode: string;
+    /**
+     * Number of days to retain objects. Must be at least `1`.
+     */
+    retentionDays: number;
+}
+
+export interface CloudStorageObjectBucketVersioning {
+    /**
+     * Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+     */
+    status: string;
 }
 
 export interface GetCloudAdditionalIpCurrentState {
@@ -8120,6 +8227,283 @@ export interface GetCloudStorageFileSharesFileShareLocation {
     region: string;
 }
 
+export interface GetCloudStorageObjectBucketCurrentState {
+    /**
+     * Current encryption configuration:
+     */
+    encryption: outputs.GetCloudStorageObjectBucketCurrentStateEncryption;
+    /**
+     * Geographic region where the bucket is located:
+     */
+    location: outputs.GetCloudStorageObjectBucketCurrentStateLocation;
+    /**
+     * Bucket name.
+     */
+    name: string;
+    /**
+     * Current object lock configuration:
+     */
+    objectLock: outputs.GetCloudStorageObjectBucketCurrentStateObjectLock;
+    /**
+     * Bucket total objects count.
+     */
+    objectsCount: number;
+    /**
+     * Bucket total objects size in bytes.
+     */
+    objectsSize: number;
+    /**
+     * Current metadata tags.
+     */
+    tags: {[key: string]: string};
+    /**
+     * Current versioning configuration:
+     */
+    versioning: outputs.GetCloudStorageObjectBucketCurrentStateVersioning;
+    /**
+     * Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).
+     */
+    virtualHost: string;
+}
+
+export interface GetCloudStorageObjectBucketCurrentStateEncryption {
+    /**
+     * Encryption algorithm.
+     */
+    algorithm: string;
+}
+
+export interface GetCloudStorageObjectBucketCurrentStateLocation {
+    /**
+     * Region identifier.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageObjectBucketCurrentStateObjectLock {
+    /**
+     * Object lock retention mode.
+     */
+    mode: string;
+    /**
+     * Number of days to retain objects.
+     */
+    retentionDays: number;
+    /**
+     * Number of years to retain objects.
+     */
+    retentionYears: number;
+}
+
+export interface GetCloudStorageObjectBucketCurrentStateVersioning {
+    /**
+     * Versioning status.
+     */
+    status: string;
+}
+
+export interface GetCloudStorageObjectBucketEncryption {
+    /**
+     * Encryption algorithm.
+     */
+    algorithm: string;
+}
+
+export interface GetCloudStorageObjectBucketLocation {
+    /**
+     * Region identifier.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageObjectBucketObjectLock {
+    /**
+     * Object lock retention mode.
+     */
+    mode: string;
+    /**
+     * Number of days to retain objects.
+     */
+    retentionDays: number;
+    /**
+     * Number of years to retain objects.
+     */
+    retentionYears: number;
+}
+
+export interface GetCloudStorageObjectBucketVersioning {
+    /**
+     * Versioning status.
+     */
+    status: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucket {
+    /**
+     * Computed hash representing the current target specification value.
+     */
+    checksum: string;
+    /**
+     * Creation date of the bucket.
+     */
+    createdAt: string;
+    /**
+     * Current observed state of the bucket:
+     */
+    currentState: outputs.GetCloudStorageObjectBucketsBucketCurrentState;
+    /**
+     * Current encryption configuration:
+     */
+    encryption: outputs.GetCloudStorageObjectBucketsBucketEncryption;
+    /**
+     * Bucket identifier.
+     */
+    id: string;
+    /**
+     * Geographic region where the bucket is located:
+     */
+    location: outputs.GetCloudStorageObjectBucketsBucketLocation;
+    /**
+     * Bucket name.
+     */
+    name: string;
+    /**
+     * Current object lock configuration:
+     */
+    objectLock: outputs.GetCloudStorageObjectBucketsBucketObjectLock;
+    /**
+     * Owner user identifier.
+     */
+    ownerUserId: string;
+    /**
+     * Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).
+     */
+    resourceStatus: string;
+    /**
+     * Current metadata tags.
+     */
+    tags: {[key: string]: string};
+    /**
+     * Last update date of the bucket.
+     */
+    updatedAt: string;
+    /**
+     * Current versioning configuration:
+     */
+    versioning: outputs.GetCloudStorageObjectBucketsBucketVersioning;
+}
+
+export interface GetCloudStorageObjectBucketsBucketCurrentState {
+    /**
+     * Current encryption configuration:
+     */
+    encryption: outputs.GetCloudStorageObjectBucketsBucketCurrentStateEncryption;
+    /**
+     * Geographic region where the bucket is located:
+     */
+    location: outputs.GetCloudStorageObjectBucketsBucketCurrentStateLocation;
+    /**
+     * Bucket name.
+     */
+    name: string;
+    /**
+     * Current object lock configuration:
+     */
+    objectLock: outputs.GetCloudStorageObjectBucketsBucketCurrentStateObjectLock;
+    /**
+     * Bucket total objects count. Only returned on a single bucket read, `null` here.
+     */
+    objectsCount: number;
+    /**
+     * Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.
+     */
+    objectsSize: number;
+    /**
+     * Current metadata tags.
+     */
+    tags: {[key: string]: string};
+    /**
+     * Current versioning configuration:
+     */
+    versioning: outputs.GetCloudStorageObjectBucketsBucketCurrentStateVersioning;
+    /**
+     * Bucket virtual host. Only returned on a single bucket read, `null` here.
+     */
+    virtualHost: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucketCurrentStateEncryption {
+    /**
+     * Encryption algorithm.
+     */
+    algorithm: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucketCurrentStateLocation {
+    /**
+     * If set, only buckets located in this region are returned.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucketCurrentStateObjectLock {
+    /**
+     * Object lock retention mode.
+     */
+    mode: string;
+    /**
+     * Number of days to retain objects.
+     */
+    retentionDays: number;
+    /**
+     * Number of years to retain objects.
+     */
+    retentionYears: number;
+}
+
+export interface GetCloudStorageObjectBucketsBucketCurrentStateVersioning {
+    /**
+     * Versioning status.
+     */
+    status: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucketEncryption {
+    /**
+     * Encryption algorithm.
+     */
+    algorithm: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucketLocation {
+    /**
+     * If set, only buckets located in this region are returned.
+     */
+    region: string;
+}
+
+export interface GetCloudStorageObjectBucketsBucketObjectLock {
+    /**
+     * Object lock retention mode.
+     */
+    mode: string;
+    /**
+     * Number of days to retain objects.
+     */
+    retentionDays: number;
+    /**
+     * Number of years to retain objects.
+     */
+    retentionYears: number;
+}
+
+export interface GetCloudStorageObjectBucketsBucketVersioning {
+    /**
+     * Versioning status.
+     */
+    status: string;
+}
+
 export interface GetDbaasLogsOutputGraylogStreamUrlUrl {
     /**
      * URL address
@@ -8127,6 +8511,21 @@ export interface GetDbaasLogsOutputGraylogStreamUrlUrl {
     address: string;
     /**
      * URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
+     */
+    type: string;
+}
+
+export interface GetDedicatedServerNetworkingInterface {
+    /**
+     * MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).
+     */
+    aggregationFallback: string;
+    /**
+     * The list of MAC addresses of the physical interfaces in this aggregation.
+     */
+    macs: string[];
+    /**
+     * The network type of the interface (`public` or `vrack`).
      */
     type: string;
 }
@@ -12904,6 +13303,10 @@ export namespace Dedicated {
     }
 
     export interface ServerNetworkingInterface {
+        /**
+         * Mac address of the LACP fallback interface
+         */
+        aggregationFallback: string;
         /**
          * Interface Mac address
          */

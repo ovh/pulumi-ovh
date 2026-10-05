@@ -14,6 +14,10 @@ namespace Pulumi.Ovh.Dedicated.Outputs
     public sealed class ServerNetworkingInterface
     {
         /// <summary>
+        /// Mac address of the LACP fallback interface
+        /// </summary>
+        public readonly string? AggregationFallback;
+        /// <summary>
         /// Interface Mac address
         /// </summary>
         public readonly ImmutableArray<string> Macs;
@@ -24,10 +28,13 @@ namespace Pulumi.Ovh.Dedicated.Outputs
 
         [OutputConstructor]
         private ServerNetworkingInterface(
+            string? aggregationFallback,
+
             ImmutableArray<string> macs,
 
             string type)
         {
+            AggregationFallback = aggregationFallback;
             Macs = macs;
             Type = type;
         }

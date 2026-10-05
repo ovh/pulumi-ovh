@@ -91,6 +91,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CloudStorageFileShareNetwork{}
 	case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
 		r = &CloudStorageFileShareSnapshot{}
+	case "ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket":
+		r = &CloudStorageObjectBucket{}
 	case "ovh:index/clousSSHKey:ClousSSHKey":
 		r = &ClousSSHKey{}
 	case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
@@ -329,6 +331,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"ovh",
 		"index/cloudStorageFileShareSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"ovh",
+		"index/cloudStorageObjectBucket",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

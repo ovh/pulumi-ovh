@@ -573,6 +573,8 @@ func (o ServerIamPtrOutput) Urn() pulumi.StringPtrOutput {
 }
 
 type ServerNetworkingInterface struct {
+	// Mac address of the LACP fallback interface
+	AggregationFallback *string `pulumi:"aggregationFallback"`
 	// Interface Mac address
 	Macs []string `pulumi:"macs"`
 	// Interface type
@@ -591,6 +593,8 @@ type ServerNetworkingInterfaceInput interface {
 }
 
 type ServerNetworkingInterfaceArgs struct {
+	// Mac address of the LACP fallback interface
+	AggregationFallback pulumi.StringPtrInput `pulumi:"aggregationFallback"`
 	// Interface Mac address
 	Macs pulumi.StringArrayInput `pulumi:"macs"`
 	// Interface type
@@ -646,6 +650,11 @@ func (o ServerNetworkingInterfaceOutput) ToServerNetworkingInterfaceOutput() Ser
 
 func (o ServerNetworkingInterfaceOutput) ToServerNetworkingInterfaceOutputWithContext(ctx context.Context) ServerNetworkingInterfaceOutput {
 	return o
+}
+
+// Mac address of the LACP fallback interface
+func (o ServerNetworkingInterfaceOutput) AggregationFallback() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerNetworkingInterface) *string { return v.AggregationFallback }).(pulumi.StringPtrOutput)
 }
 
 // Interface Mac address

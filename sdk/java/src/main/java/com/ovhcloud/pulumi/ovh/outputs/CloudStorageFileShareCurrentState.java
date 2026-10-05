@@ -28,7 +28,7 @@ public final class CloudStorageFileShareCurrentState {
      */
     private @Nullable String description;
     /**
-     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * @return Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     private @Nullable CloudStorageFileShareCurrentStateEncryption encryption;
@@ -53,17 +53,17 @@ public final class CloudStorageFileShareCurrentState {
      */
     private @Nullable String protocol;
     /**
-     * @return ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * @return ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
     private @Nullable String shareNetworkId;
     /**
-     * @return File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * @return File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
     private @Nullable String shareType;
     /**
-     * @return Size of the file share in GB.
+     * @return Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
     private @Nullable Integer size;
@@ -84,7 +84,7 @@ public final class CloudStorageFileShareCurrentState {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * @return Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     public Optional<CloudStorageFileShareCurrentStateEncryption> encryption() {
@@ -119,21 +119,21 @@ public final class CloudStorageFileShareCurrentState {
         return Optional.ofNullable(this.protocol);
     }
     /**
-     * @return ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * @return ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
     public Optional<String> shareNetworkId() {
         return Optional.ofNullable(this.shareNetworkId);
     }
     /**
-     * @return File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * @return File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
     public Optional<String> shareType() {
         return Optional.ofNullable(this.shareType);
     }
     /**
-     * @return Size of the file share in GB.
+     * @return Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
     public Optional<Integer> size() {

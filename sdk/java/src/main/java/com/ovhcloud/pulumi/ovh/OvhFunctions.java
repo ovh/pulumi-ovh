@@ -150,10 +150,16 @@ import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileShareSnapshotsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileSharesArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageFileSharesPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageObjectBucketArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageObjectBucketPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageObjectBucketsArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetCloudStorageObjectBucketsPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsEncryptionKeyPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDbaasLogsOutputGraylogStreamUrlPlainArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerNetworkingArgs;
+import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerNetworkingPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthPlainArgs;
 import com.ovhcloud.pulumi.ovh.inputs.GetDedicatedServerOrderableBandwidthVrackArgs;
@@ -269,8 +275,11 @@ import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareSnapshotResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileShareSnapshotsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageFileSharesResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageObjectBucketResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetCloudStorageObjectBucketsResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsEncryptionKeyResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDbaasLogsOutputGraylogStreamUrlResult;
+import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerNetworkingResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDedicatedServerOrderableBandwidthVrackResult;
 import com.ovhcloud.pulumi.ovh.outputs.GetDomainZoneRecordResult;
@@ -12570,6 +12579,96 @@ public final class OvhFunctions {
         return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageFileShares:getCloudStorageFileShares", TypeShape.of(GetCloudStorageFileSharesResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get an S3&amp;trade; compatible object storage bucket in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static Output<GetCloudStorageObjectBucketResult> getCloudStorageObjectBucket(GetCloudStorageObjectBucketArgs args) {
+        return getCloudStorageObjectBucket(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get an S3&amp;trade; compatible object storage bucket in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageObjectBucketResult> getCloudStorageObjectBucketPlain(GetCloudStorageObjectBucketPlainArgs args) {
+        return getCloudStorageObjectBucketPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get an S3&amp;trade; compatible object storage bucket in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static Output<GetCloudStorageObjectBucketResult> getCloudStorageObjectBucket(GetCloudStorageObjectBucketArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageObjectBucket:getCloudStorageObjectBucket", TypeShape.of(GetCloudStorageObjectBucketResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get an S3&amp;trade; compatible object storage bucket in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static Output<GetCloudStorageObjectBucketResult> getCloudStorageObjectBucket(GetCloudStorageObjectBucketArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageObjectBucket:getCloudStorageObjectBucket", TypeShape.of(GetCloudStorageObjectBucketResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get an S3&amp;trade; compatible object storage bucket in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageObjectBucketResult> getCloudStorageObjectBucketPlain(GetCloudStorageObjectBucketPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageObjectBucket:getCloudStorageObjectBucket", TypeShape.of(GetCloudStorageObjectBucketResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the S3&amp;trade; compatible object storage buckets in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static Output<GetCloudStorageObjectBucketsResult> getCloudStorageObjectBuckets(GetCloudStorageObjectBucketsArgs args) {
+        return getCloudStorageObjectBuckets(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the S3&amp;trade; compatible object storage buckets in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageObjectBucketsResult> getCloudStorageObjectBucketsPlain(GetCloudStorageObjectBucketsPlainArgs args) {
+        return getCloudStorageObjectBucketsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List the S3&amp;trade; compatible object storage buckets in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static Output<GetCloudStorageObjectBucketsResult> getCloudStorageObjectBuckets(GetCloudStorageObjectBucketsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageObjectBuckets:getCloudStorageObjectBuckets", TypeShape.of(GetCloudStorageObjectBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the S3&amp;trade; compatible object storage buckets in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static Output<GetCloudStorageObjectBucketsResult> getCloudStorageObjectBuckets(GetCloudStorageObjectBucketsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getCloudStorageObjectBuckets:getCloudStorageObjectBuckets", TypeShape.of(GetCloudStorageObjectBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List the S3&amp;trade; compatible object storage buckets in a public cloud project.
+     * 
+     * &gt; __NOTE__ S3 is a trademark filed by Amazon Technologies, Inc. OVHcloud&#39;s service is not sponsored by, endorsed by, or otherwise affiliated with Amazon Technologies, Inc.
+     * 
+     */
+    public static CompletableFuture<GetCloudStorageObjectBucketsResult> getCloudStorageObjectBucketsPlain(GetCloudStorageObjectBucketsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getCloudStorageObjectBuckets:getCloudStorageObjectBuckets", TypeShape.of(GetCloudStorageObjectBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to retrieve information about a DBaaS Logs encryption key.
      * 
      * ## Example Usage
@@ -13188,6 +13287,41 @@ public final class OvhFunctions {
      */
     public static CompletableFuture<GetDbaasLogsOutputGraylogStreamUrlResult> getDbaasLogsOutputGraylogStreamUrlPlain(GetDbaasLogsOutputGraylogStreamUrlPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl", TypeShape.of(GetDbaasLogsOutputGraylogStreamUrlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve the network interfaces aggregation (bonding) of a dedicated server, including each interface&#39;s LACP fallback MAC address.
+     * 
+     */
+    public static Output<GetDedicatedServerNetworkingResult> getDedicatedServerNetworking(GetDedicatedServerNetworkingArgs args) {
+        return getDedicatedServerNetworking(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve the network interfaces aggregation (bonding) of a dedicated server, including each interface&#39;s LACP fallback MAC address.
+     * 
+     */
+    public static CompletableFuture<GetDedicatedServerNetworkingResult> getDedicatedServerNetworkingPlain(GetDedicatedServerNetworkingPlainArgs args) {
+        return getDedicatedServerNetworkingPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve the network interfaces aggregation (bonding) of a dedicated server, including each interface&#39;s LACP fallback MAC address.
+     * 
+     */
+    public static Output<GetDedicatedServerNetworkingResult> getDedicatedServerNetworking(GetDedicatedServerNetworkingArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDedicatedServerNetworking:getDedicatedServerNetworking", TypeShape.of(GetDedicatedServerNetworkingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve the network interfaces aggregation (bonding) of a dedicated server, including each interface&#39;s LACP fallback MAC address.
+     * 
+     */
+    public static Output<GetDedicatedServerNetworkingResult> getDedicatedServerNetworking(GetDedicatedServerNetworkingArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("ovh:index/getDedicatedServerNetworking:getDedicatedServerNetworking", TypeShape.of(GetDedicatedServerNetworkingResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve the network interfaces aggregation (bonding) of a dedicated server, including each interface&#39;s LACP fallback MAC address.
+     * 
+     */
+    public static CompletableFuture<GetDedicatedServerNetworkingResult> getDedicatedServerNetworkingPlain(GetDedicatedServerNetworkingPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("ovh:index/getDedicatedServerNetworking:getDedicatedServerNetworking", TypeShape.of(GetDedicatedServerNetworkingResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the list of orderable additional bandwidth for a dedicated server associated with your OVHcloud Account.

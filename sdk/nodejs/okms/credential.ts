@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates a credential for an OVHcloud KMS.
- *
  * ## Import
  *
  * An OVHcloud KMS credential can be imported using the `okms_id` and `id`, separated by "/" E.g.,

@@ -156,6 +156,7 @@ __all__ = [
     'CloudStorageBlockVolumeSnapshotCurrentState',
     'CloudStorageBlockVolumeSnapshotCurrentStateLocation',
     'CloudStorageFileShareAclCurrentState',
+    'CloudStorageFileShareCreateFrom',
     'CloudStorageFileShareCurrentState',
     'CloudStorageFileShareCurrentStateCapability',
     'CloudStorageFileShareCurrentStateEncryption',
@@ -166,6 +167,14 @@ __all__ = [
     'CloudStorageFileShareNetworkCurrentStateLocation',
     'CloudStorageFileShareSnapshotCurrentState',
     'CloudStorageFileShareSnapshotCurrentStateLocation',
+    'CloudStorageObjectBucketCurrentState',
+    'CloudStorageObjectBucketCurrentStateEncryption',
+    'CloudStorageObjectBucketCurrentStateLocation',
+    'CloudStorageObjectBucketCurrentStateObjectLock',
+    'CloudStorageObjectBucketCurrentStateVersioning',
+    'CloudStorageObjectBucketEncryption',
+    'CloudStorageObjectBucketObjectLock',
+    'CloudStorageObjectBucketVersioning',
     'StorageEfsIam',
     'StorageEfsOrder',
     'StorageEfsOrderDetail',
@@ -489,7 +498,27 @@ __all__ = [
     'GetCloudStorageFileSharesFileShareCurrentStateLocationResult',
     'GetCloudStorageFileSharesFileShareEncryptionResult',
     'GetCloudStorageFileSharesFileShareLocationResult',
+    'GetCloudStorageObjectBucketCurrentStateResult',
+    'GetCloudStorageObjectBucketCurrentStateEncryptionResult',
+    'GetCloudStorageObjectBucketCurrentStateLocationResult',
+    'GetCloudStorageObjectBucketCurrentStateObjectLockResult',
+    'GetCloudStorageObjectBucketCurrentStateVersioningResult',
+    'GetCloudStorageObjectBucketEncryptionResult',
+    'GetCloudStorageObjectBucketLocationResult',
+    'GetCloudStorageObjectBucketObjectLockResult',
+    'GetCloudStorageObjectBucketVersioningResult',
+    'GetCloudStorageObjectBucketsBucketResult',
+    'GetCloudStorageObjectBucketsBucketCurrentStateResult',
+    'GetCloudStorageObjectBucketsBucketCurrentStateEncryptionResult',
+    'GetCloudStorageObjectBucketsBucketCurrentStateLocationResult',
+    'GetCloudStorageObjectBucketsBucketCurrentStateObjectLockResult',
+    'GetCloudStorageObjectBucketsBucketCurrentStateVersioningResult',
+    'GetCloudStorageObjectBucketsBucketEncryptionResult',
+    'GetCloudStorageObjectBucketsBucketLocationResult',
+    'GetCloudStorageObjectBucketsBucketObjectLockResult',
+    'GetCloudStorageObjectBucketsBucketVersioningResult',
     'GetDbaasLogsOutputGraylogStreamUrlUrlResult',
+    'GetDedicatedServerNetworkingInterfaceResult',
     'GetInstallationTemplateInputResult',
     'GetInstallationTemplateLicenseResult',
     'GetInstallationTemplateLicenseOResult',
@@ -8762,6 +8791,41 @@ class CloudStorageFileShareAclCurrentState(dict):
 
 
 @pulumi.output_type
+class CloudStorageFileShareCreateFrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "snapshotId":
+            suggest = "snapshot_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageFileShareCreateFrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageFileShareCreateFrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageFileShareCreateFrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 snapshot_id: _builtins.str):
+        """
+        :param _builtins.str snapshot_id: Identifier of an `available` file share snapshot of the same project and region.
+        """
+        pulumi.set(__self__, "snapshot_id", snapshot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> _builtins.str:
+        """
+        Identifier of an `available` file share snapshot of the same project and region.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+
+@pulumi.output_type
 class CloudStorageFileShareCurrentState(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8798,14 +8862,14 @@ class CloudStorageFileShareCurrentState(dict):
         """
         :param Sequence['CloudStorageFileShareCurrentStateCapabilityArgs'] capabilities: Action-availability flags derived from the file share status:
         :param _builtins.str description: File share description.
-        :param 'CloudStorageFileShareCurrentStateEncryptionArgs' encryption: Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        :param 'CloudStorageFileShareCurrentStateEncryptionArgs' encryption: Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         :param Sequence['CloudStorageFileShareCurrentStateExportLocationArgs'] export_locations: Export locations for the file share:
         :param 'CloudStorageFileShareCurrentStateLocationArgs' location: Current location:
         :param _builtins.str name: File share name.
         :param _builtins.str protocol: File share protocol (`NFS`). **Changing this value recreates the resource.**
-        :param _builtins.str share_network_id: ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
-        :param _builtins.str share_type: File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
-        :param _builtins.int size: Size of the file share in GB.
+        :param _builtins.str share_network_id: ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
+        :param _builtins.str share_type: File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
+        :param _builtins.int size: Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
@@ -8848,7 +8912,7 @@ class CloudStorageFileShareCurrentState(dict):
     @pulumi.getter
     def encryption(self) -> Optional['outputs.CloudStorageFileShareCurrentStateEncryption']:
         """
-        Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+        Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "encryption")
 
@@ -8888,7 +8952,7 @@ class CloudStorageFileShareCurrentState(dict):
     @pulumi.getter(name="shareNetworkId")
     def share_network_id(self) -> Optional[_builtins.str]:
         """
-        ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+        ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_network_id")
 
@@ -8896,7 +8960,7 @@ class CloudStorageFileShareCurrentState(dict):
     @pulumi.getter(name="shareType")
     def share_type(self) -> Optional[_builtins.str]:
         """
-        File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+        File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
         """
         return pulumi.get(self, "share_type")
 
@@ -8904,7 +8968,7 @@ class CloudStorageFileShareCurrentState(dict):
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         """
-        Size of the file share in GB.
+        Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
         """
         return pulumi.get(self, "size")
 
@@ -9333,6 +9397,345 @@ class CloudStorageFileShareSnapshotCurrentStateLocation(dict):
         Region.
         """
         return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketCurrentState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectLock":
+            suggest = "object_lock"
+        elif key == "objectsCount":
+            suggest = "objects_count"
+        elif key == "objectsSize":
+            suggest = "objects_size"
+        elif key == "virtualHost":
+            suggest = "virtual_host"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageObjectBucketCurrentState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageObjectBucketCurrentState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageObjectBucketCurrentState.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption: Optional['outputs.CloudStorageObjectBucketCurrentStateEncryption'] = None,
+                 location: Optional['outputs.CloudStorageObjectBucketCurrentStateLocation'] = None,
+                 name: Optional[_builtins.str] = None,
+                 object_lock: Optional['outputs.CloudStorageObjectBucketCurrentStateObjectLock'] = None,
+                 objects_count: Optional[_builtins.int] = None,
+                 objects_size: Optional[_builtins.int] = None,
+                 tags: Optional[Mapping[str, _builtins.str]] = None,
+                 versioning: Optional['outputs.CloudStorageObjectBucketCurrentStateVersioning'] = None,
+                 virtual_host: Optional[_builtins.str] = None):
+        """
+        :param 'CloudStorageObjectBucketCurrentStateEncryptionArgs' encryption: Server-side encryption configuration:
+        :param 'CloudStorageObjectBucketCurrentStateLocationArgs' location: Geographic region where the bucket is located:
+        :param _builtins.str name: Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+        :param 'CloudStorageObjectBucketCurrentStateObjectLockArgs' object_lock: Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+        :param _builtins.int objects_count: Bucket total objects count. Only returned on a single bucket read.
+        :param _builtins.int objects_size: Bucket total objects size in bytes. Only returned on a single bucket read.
+        :param Mapping[str, _builtins.str] tags: Metadata tags for the bucket, as a map of strings.
+        :param 'CloudStorageObjectBucketCurrentStateVersioningArgs' versioning: Versioning configuration:
+        :param _builtins.str virtual_host: Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+        """
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if object_lock is not None:
+            pulumi.set(__self__, "object_lock", object_lock)
+        if objects_count is not None:
+            pulumi.set(__self__, "objects_count", objects_count)
+        if objects_size is not None:
+            pulumi.set(__self__, "objects_size", objects_size)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if versioning is not None:
+            pulumi.set(__self__, "versioning", versioning)
+        if virtual_host is not None:
+            pulumi.set(__self__, "virtual_host", virtual_host)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> Optional['outputs.CloudStorageObjectBucketCurrentStateEncryption']:
+        """
+        Server-side encryption configuration:
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> Optional['outputs.CloudStorageObjectBucketCurrentStateLocation']:
+        """
+        Geographic region where the bucket is located:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> Optional['outputs.CloudStorageObjectBucketCurrentStateObjectLock']:
+        """
+        Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+        """
+        return pulumi.get(self, "object_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsCount")
+    def objects_count(self) -> Optional[_builtins.int]:
+        """
+        Bucket total objects count. Only returned on a single bucket read.
+        """
+        return pulumi.get(self, "objects_count")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsSize")
+    def objects_size(self) -> Optional[_builtins.int]:
+        """
+        Bucket total objects size in bytes. Only returned on a single bucket read.
+        """
+        return pulumi.get(self, "objects_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Metadata tags for the bucket, as a map of strings.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def versioning(self) -> Optional['outputs.CloudStorageObjectBucketCurrentStateVersioning']:
+        """
+        Versioning configuration:
+        """
+        return pulumi.get(self, "versioning")
+
+    @_builtins.property
+    @pulumi.getter(name="virtualHost")
+    def virtual_host(self) -> Optional[_builtins.str]:
+        """
+        Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+        """
+        return pulumi.get(self, "virtual_host")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketCurrentStateEncryption(dict):
+    def __init__(__self__, *,
+                 algorithm: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str algorithm: Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> Optional[_builtins.str]:
+        """
+        Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        return pulumi.get(self, "algorithm")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketCurrentStateLocation(dict):
+    def __init__(__self__, *,
+                 region: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str region: Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+        """
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketCurrentStateObjectLock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionDays":
+            suggest = "retention_days"
+        elif key == "retentionYears":
+            suggest = "retention_years"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageObjectBucketCurrentStateObjectLock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageObjectBucketCurrentStateObjectLock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageObjectBucketCurrentStateObjectLock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: Optional[_builtins.str] = None,
+                 retention_days: Optional[_builtins.int] = None,
+                 retention_years: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str mode: Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        :param _builtins.int retention_days: Number of days to retain objects. Must be at least `1`.
+        :param _builtins.int retention_years: Number of years to retain objects
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if retention_years is not None:
+            pulumi.set(__self__, "retention_years", retention_years)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[_builtins.int]:
+        """
+        Number of days to retain objects. Must be at least `1`.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionYears")
+    def retention_years(self) -> Optional[_builtins.int]:
+        """
+        Number of years to retain objects
+        """
+        return pulumi.get(self, "retention_years")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketCurrentStateVersioning(dict):
+    def __init__(__self__, *,
+                 status: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str status: Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketEncryption(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str):
+        """
+        :param _builtins.str algorithm: Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+        """
+        return pulumi.get(self, "algorithm")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketObjectLock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionDays":
+            suggest = "retention_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudStorageObjectBucketObjectLock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudStorageObjectBucketObjectLock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudStorageObjectBucketObjectLock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: _builtins.str,
+                 retention_days: _builtins.int):
+        """
+        :param _builtins.str mode: Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        :param _builtins.int retention_days: Number of days to retain objects. Must be at least `1`.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retention_days", retention_days)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        Number of days to retain objects. Must be at least `1`.
+        """
+        return pulumi.get(self, "retention_days")
+
+
+@pulumi.output_type
+class CloudStorageObjectBucketVersioning(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type
@@ -26648,6 +27051,744 @@ class GetCloudStorageFileSharesFileShareLocationResult(dict):
 
 
 @pulumi.output_type
+class GetCloudStorageObjectBucketCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 encryption: 'outputs.GetCloudStorageObjectBucketCurrentStateEncryptionResult',
+                 location: 'outputs.GetCloudStorageObjectBucketCurrentStateLocationResult',
+                 name: _builtins.str,
+                 object_lock: 'outputs.GetCloudStorageObjectBucketCurrentStateObjectLockResult',
+                 objects_count: _builtins.int,
+                 objects_size: _builtins.int,
+                 tags: Mapping[str, _builtins.str],
+                 versioning: 'outputs.GetCloudStorageObjectBucketCurrentStateVersioningResult',
+                 virtual_host: _builtins.str):
+        """
+        :param 'GetCloudStorageObjectBucketCurrentStateEncryptionArgs' encryption: Current encryption configuration:
+        :param 'GetCloudStorageObjectBucketCurrentStateLocationArgs' location: Geographic region where the bucket is located:
+        :param _builtins.str name: Bucket name.
+        :param 'GetCloudStorageObjectBucketCurrentStateObjectLockArgs' object_lock: Current object lock configuration:
+        :param _builtins.int objects_count: Bucket total objects count.
+        :param _builtins.int objects_size: Bucket total objects size in bytes.
+        :param Mapping[str, _builtins.str] tags: Current metadata tags.
+        :param 'GetCloudStorageObjectBucketCurrentStateVersioningArgs' versioning: Current versioning configuration:
+        :param _builtins.str virtual_host: Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).
+        """
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "object_lock", object_lock)
+        pulumi.set(__self__, "objects_count", objects_count)
+        pulumi.set(__self__, "objects_size", objects_size)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "versioning", versioning)
+        pulumi.set(__self__, "virtual_host", virtual_host)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageObjectBucketCurrentStateEncryptionResult':
+        """
+        Current encryption configuration:
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageObjectBucketCurrentStateLocationResult':
+        """
+        Geographic region where the bucket is located:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Bucket name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> 'outputs.GetCloudStorageObjectBucketCurrentStateObjectLockResult':
+        """
+        Current object lock configuration:
+        """
+        return pulumi.get(self, "object_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsCount")
+    def objects_count(self) -> _builtins.int:
+        """
+        Bucket total objects count.
+        """
+        return pulumi.get(self, "objects_count")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsSize")
+    def objects_size(self) -> _builtins.int:
+        """
+        Bucket total objects size in bytes.
+        """
+        return pulumi.get(self, "objects_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Current metadata tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def versioning(self) -> 'outputs.GetCloudStorageObjectBucketCurrentStateVersioningResult':
+        """
+        Current versioning configuration:
+        """
+        return pulumi.get(self, "versioning")
+
+    @_builtins.property
+    @pulumi.getter(name="virtualHost")
+    def virtual_host(self) -> _builtins.str:
+        """
+        Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).
+        """
+        return pulumi.get(self, "virtual_host")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketCurrentStateEncryptionResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str):
+        """
+        :param _builtins.str algorithm: Encryption algorithm.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Encryption algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region identifier.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region identifier.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketCurrentStateObjectLockResult(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str,
+                 retention_days: _builtins.int,
+                 retention_years: _builtins.int):
+        """
+        :param _builtins.str mode: Object lock retention mode.
+        :param _builtins.int retention_days: Number of days to retain objects.
+        :param _builtins.int retention_years: Number of years to retain objects.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "retention_years", retention_years)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Object lock retention mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        Number of days to retain objects.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionYears")
+    def retention_years(self) -> _builtins.int:
+        """
+        Number of years to retain objects.
+        """
+        return pulumi.get(self, "retention_years")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketCurrentStateVersioningResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Versioning status.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Versioning status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketEncryptionResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str):
+        """
+        :param _builtins.str algorithm: Encryption algorithm.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Encryption algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: Region identifier.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region identifier.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketObjectLockResult(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str,
+                 retention_days: _builtins.int,
+                 retention_years: _builtins.int):
+        """
+        :param _builtins.str mode: Object lock retention mode.
+        :param _builtins.int retention_days: Number of days to retain objects.
+        :param _builtins.int retention_years: Number of years to retain objects.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "retention_years", retention_years)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Object lock retention mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        Number of days to retain objects.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionYears")
+    def retention_years(self) -> _builtins.int:
+        """
+        Number of years to retain objects.
+        """
+        return pulumi.get(self, "retention_years")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketVersioningResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Versioning status.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Versioning status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketResult(dict):
+    def __init__(__self__, *,
+                 checksum: _builtins.str,
+                 created_at: _builtins.str,
+                 current_state: 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateResult',
+                 encryption: 'outputs.GetCloudStorageObjectBucketsBucketEncryptionResult',
+                 id: _builtins.str,
+                 location: 'outputs.GetCloudStorageObjectBucketsBucketLocationResult',
+                 name: _builtins.str,
+                 object_lock: 'outputs.GetCloudStorageObjectBucketsBucketObjectLockResult',
+                 owner_user_id: _builtins.str,
+                 resource_status: _builtins.str,
+                 tags: Mapping[str, _builtins.str],
+                 updated_at: _builtins.str,
+                 versioning: 'outputs.GetCloudStorageObjectBucketsBucketVersioningResult'):
+        """
+        :param _builtins.str checksum: Computed hash representing the current target specification value.
+        :param _builtins.str created_at: Creation date of the bucket.
+        :param 'GetCloudStorageObjectBucketsBucketCurrentStateArgs' current_state: Current observed state of the bucket:
+        :param 'GetCloudStorageObjectBucketsBucketEncryptionArgs' encryption: Current encryption configuration:
+        :param _builtins.str id: Bucket identifier.
+        :param 'GetCloudStorageObjectBucketsBucketLocationArgs' location: Geographic region where the bucket is located:
+        :param _builtins.str name: Bucket name.
+        :param 'GetCloudStorageObjectBucketsBucketObjectLockArgs' object_lock: Current object lock configuration:
+        :param _builtins.str owner_user_id: Owner user identifier.
+        :param _builtins.str resource_status: Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).
+        :param Mapping[str, _builtins.str] tags: Current metadata tags.
+        :param _builtins.str updated_at: Last update date of the bucket.
+        :param 'GetCloudStorageObjectBucketsBucketVersioningArgs' versioning: Current versioning configuration:
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "object_lock", object_lock)
+        pulumi.set(__self__, "owner_user_id", owner_user_id)
+        pulumi.set(__self__, "resource_status", resource_status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "versioning", versioning)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> _builtins.str:
+        """
+        Computed hash representing the current target specification value.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation date of the bucket.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateResult':
+        """
+        Current observed state of the bucket:
+        """
+        return pulumi.get(self, "current_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageObjectBucketsBucketEncryptionResult':
+        """
+        Current encryption configuration:
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        Bucket identifier.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageObjectBucketsBucketLocationResult':
+        """
+        Geographic region where the bucket is located:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Bucket name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> 'outputs.GetCloudStorageObjectBucketsBucketObjectLockResult':
+        """
+        Current object lock configuration:
+        """
+        return pulumi.get(self, "object_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="ownerUserId")
+    def owner_user_id(self) -> _builtins.str:
+        """
+        Owner user identifier.
+        """
+        return pulumi.get(self, "owner_user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> _builtins.str:
+        """
+        Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).
+        """
+        return pulumi.get(self, "resource_status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Current metadata tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update date of the bucket.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def versioning(self) -> 'outputs.GetCloudStorageObjectBucketsBucketVersioningResult':
+        """
+        Current versioning configuration:
+        """
+        return pulumi.get(self, "versioning")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketCurrentStateResult(dict):
+    def __init__(__self__, *,
+                 encryption: 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateEncryptionResult',
+                 location: 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateLocationResult',
+                 name: _builtins.str,
+                 object_lock: 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateObjectLockResult',
+                 objects_count: _builtins.int,
+                 objects_size: _builtins.int,
+                 tags: Mapping[str, _builtins.str],
+                 versioning: 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateVersioningResult',
+                 virtual_host: _builtins.str):
+        """
+        :param 'GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs' encryption: Current encryption configuration:
+        :param 'GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs' location: Geographic region where the bucket is located:
+        :param _builtins.str name: Bucket name.
+        :param 'GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs' object_lock: Current object lock configuration:
+        :param _builtins.int objects_count: Bucket total objects count. Only returned on a single bucket read, `null` here.
+        :param _builtins.int objects_size: Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.
+        :param Mapping[str, _builtins.str] tags: Current metadata tags.
+        :param 'GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs' versioning: Current versioning configuration:
+        :param _builtins.str virtual_host: Bucket virtual host. Only returned on a single bucket read, `null` here.
+        """
+        pulumi.set(__self__, "encryption", encryption)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "object_lock", object_lock)
+        pulumi.set(__self__, "objects_count", objects_count)
+        pulumi.set(__self__, "objects_size", objects_size)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "versioning", versioning)
+        pulumi.set(__self__, "virtual_host", virtual_host)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateEncryptionResult':
+        """
+        Current encryption configuration:
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    def location(self) -> 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateLocationResult':
+        """
+        Geographic region where the bucket is located:
+        """
+        return pulumi.get(self, "location")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Bucket name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateObjectLockResult':
+        """
+        Current object lock configuration:
+        """
+        return pulumi.get(self, "object_lock")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsCount")
+    def objects_count(self) -> _builtins.int:
+        """
+        Bucket total objects count. Only returned on a single bucket read, `null` here.
+        """
+        return pulumi.get(self, "objects_count")
+
+    @_builtins.property
+    @pulumi.getter(name="objectsSize")
+    def objects_size(self) -> _builtins.int:
+        """
+        Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.
+        """
+        return pulumi.get(self, "objects_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, _builtins.str]:
+        """
+        Current metadata tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
+    def versioning(self) -> 'outputs.GetCloudStorageObjectBucketsBucketCurrentStateVersioningResult':
+        """
+        Current versioning configuration:
+        """
+        return pulumi.get(self, "versioning")
+
+    @_builtins.property
+    @pulumi.getter(name="virtualHost")
+    def virtual_host(self) -> _builtins.str:
+        """
+        Bucket virtual host. Only returned on a single bucket read, `null` here.
+        """
+        return pulumi.get(self, "virtual_host")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketCurrentStateEncryptionResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str):
+        """
+        :param _builtins.str algorithm: Encryption algorithm.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Encryption algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketCurrentStateLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: If set, only buckets located in this region are returned.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, only buckets located in this region are returned.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketCurrentStateObjectLockResult(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str,
+                 retention_days: _builtins.int,
+                 retention_years: _builtins.int):
+        """
+        :param _builtins.str mode: Object lock retention mode.
+        :param _builtins.int retention_days: Number of days to retain objects.
+        :param _builtins.int retention_years: Number of years to retain objects.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "retention_years", retention_years)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Object lock retention mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        Number of days to retain objects.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionYears")
+    def retention_years(self) -> _builtins.int:
+        """
+        Number of years to retain objects.
+        """
+        return pulumi.get(self, "retention_years")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketCurrentStateVersioningResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Versioning status.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Versioning status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketEncryptionResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str):
+        """
+        :param _builtins.str algorithm: Encryption algorithm.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        """
+        Encryption algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketLocationResult(dict):
+    def __init__(__self__, *,
+                 region: _builtins.str):
+        """
+        :param _builtins.str region: If set, only buckets located in this region are returned.
+        """
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        If set, only buckets located in this region are returned.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketObjectLockResult(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str,
+                 retention_days: _builtins.int,
+                 retention_years: _builtins.int):
+        """
+        :param _builtins.str mode: Object lock retention mode.
+        :param _builtins.int retention_days: Number of days to retain objects.
+        :param _builtins.int retention_years: Number of years to retain objects.
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "retention_years", retention_years)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        Object lock retention mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        Number of days to retain objects.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionYears")
+    def retention_years(self) -> _builtins.int:
+        """
+        Number of years to retain objects.
+        """
+        return pulumi.get(self, "retention_years")
+
+
+@pulumi.output_type
+class GetCloudStorageObjectBucketsBucketVersioningResult(dict):
+    def __init__(__self__, *,
+                 status: _builtins.str):
+        """
+        :param _builtins.str status: Versioning status.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Versioning status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
 class GetDbaasLogsOutputGraylogStreamUrlUrlResult(dict):
     def __init__(__self__, *,
                  address: _builtins.str,
@@ -26672,6 +27813,46 @@ class GetDbaasLogsOutputGraylogStreamUrlUrlResult(dict):
     def type(self) -> _builtins.str:
         """
         URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDedicatedServerNetworkingInterfaceResult(dict):
+    def __init__(__self__, *,
+                 aggregation_fallback: _builtins.str,
+                 macs: Sequence[_builtins.str],
+                 type: _builtins.str):
+        """
+        :param _builtins.str aggregation_fallback: MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).
+        :param Sequence[_builtins.str] macs: The list of MAC addresses of the physical interfaces in this aggregation.
+        :param _builtins.str type: The network type of the interface (`public` or `vrack`).
+        """
+        pulumi.set(__self__, "aggregation_fallback", aggregation_fallback)
+        pulumi.set(__self__, "macs", macs)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="aggregationFallback")
+    def aggregation_fallback(self) -> _builtins.str:
+        """
+        MAC address of the LACP fallback interface (the address the aggregation falls back to when the bond degrades to a single link).
+        """
+        return pulumi.get(self, "aggregation_fallback")
+
+    @_builtins.property
+    @pulumi.getter
+    def macs(self) -> Sequence[_builtins.str]:
+        """
+        The list of MAC addresses of the physical interfaces in this aggregation.
+        """
+        return pulumi.get(self, "macs")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The network type of the interface (`public` or `vrack`).
         """
         return pulumi.get(self, "type")
 

@@ -24394,12 +24394,149 @@ func (o CloudStorageFileShareAclCurrentStatePtrOutput) State() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type CloudStorageFileShareCreateFrom struct {
+	// Identifier of an `available` file share snapshot of the same project and region.
+	SnapshotId string `pulumi:"snapshotId"`
+}
+
+// CloudStorageFileShareCreateFromInput is an input type that accepts CloudStorageFileShareCreateFromArgs and CloudStorageFileShareCreateFromOutput values.
+// You can construct a concrete instance of `CloudStorageFileShareCreateFromInput` via:
+//
+//	CloudStorageFileShareCreateFromArgs{...}
+type CloudStorageFileShareCreateFromInput interface {
+	pulumi.Input
+
+	ToCloudStorageFileShareCreateFromOutput() CloudStorageFileShareCreateFromOutput
+	ToCloudStorageFileShareCreateFromOutputWithContext(context.Context) CloudStorageFileShareCreateFromOutput
+}
+
+type CloudStorageFileShareCreateFromArgs struct {
+	// Identifier of an `available` file share snapshot of the same project and region.
+	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
+}
+
+func (CloudStorageFileShareCreateFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageFileShareCreateFrom)(nil)).Elem()
+}
+
+func (i CloudStorageFileShareCreateFromArgs) ToCloudStorageFileShareCreateFromOutput() CloudStorageFileShareCreateFromOutput {
+	return i.ToCloudStorageFileShareCreateFromOutputWithContext(context.Background())
+}
+
+func (i CloudStorageFileShareCreateFromArgs) ToCloudStorageFileShareCreateFromOutputWithContext(ctx context.Context) CloudStorageFileShareCreateFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCreateFromOutput)
+}
+
+func (i CloudStorageFileShareCreateFromArgs) ToCloudStorageFileShareCreateFromPtrOutput() CloudStorageFileShareCreateFromPtrOutput {
+	return i.ToCloudStorageFileShareCreateFromPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageFileShareCreateFromArgs) ToCloudStorageFileShareCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageFileShareCreateFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCreateFromOutput).ToCloudStorageFileShareCreateFromPtrOutputWithContext(ctx)
+}
+
+// CloudStorageFileShareCreateFromPtrInput is an input type that accepts CloudStorageFileShareCreateFromArgs, CloudStorageFileShareCreateFromPtr and CloudStorageFileShareCreateFromPtrOutput values.
+// You can construct a concrete instance of `CloudStorageFileShareCreateFromPtrInput` via:
+//
+//	        CloudStorageFileShareCreateFromArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageFileShareCreateFromPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageFileShareCreateFromPtrOutput() CloudStorageFileShareCreateFromPtrOutput
+	ToCloudStorageFileShareCreateFromPtrOutputWithContext(context.Context) CloudStorageFileShareCreateFromPtrOutput
+}
+
+type cloudStorageFileShareCreateFromPtrType CloudStorageFileShareCreateFromArgs
+
+func CloudStorageFileShareCreateFromPtr(v *CloudStorageFileShareCreateFromArgs) CloudStorageFileShareCreateFromPtrInput {
+	return (*cloudStorageFileShareCreateFromPtrType)(v)
+}
+
+func (*cloudStorageFileShareCreateFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageFileShareCreateFrom)(nil)).Elem()
+}
+
+func (i *cloudStorageFileShareCreateFromPtrType) ToCloudStorageFileShareCreateFromPtrOutput() CloudStorageFileShareCreateFromPtrOutput {
+	return i.ToCloudStorageFileShareCreateFromPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageFileShareCreateFromPtrType) ToCloudStorageFileShareCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageFileShareCreateFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageFileShareCreateFromPtrOutput)
+}
+
+type CloudStorageFileShareCreateFromOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageFileShareCreateFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageFileShareCreateFrom)(nil)).Elem()
+}
+
+func (o CloudStorageFileShareCreateFromOutput) ToCloudStorageFileShareCreateFromOutput() CloudStorageFileShareCreateFromOutput {
+	return o
+}
+
+func (o CloudStorageFileShareCreateFromOutput) ToCloudStorageFileShareCreateFromOutputWithContext(ctx context.Context) CloudStorageFileShareCreateFromOutput {
+	return o
+}
+
+func (o CloudStorageFileShareCreateFromOutput) ToCloudStorageFileShareCreateFromPtrOutput() CloudStorageFileShareCreateFromPtrOutput {
+	return o.ToCloudStorageFileShareCreateFromPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageFileShareCreateFromOutput) ToCloudStorageFileShareCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageFileShareCreateFromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageFileShareCreateFrom) *CloudStorageFileShareCreateFrom {
+		return &v
+	}).(CloudStorageFileShareCreateFromPtrOutput)
+}
+
+// Identifier of an `available` file share snapshot of the same project and region.
+func (o CloudStorageFileShareCreateFromOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageFileShareCreateFrom) string { return v.SnapshotId }).(pulumi.StringOutput)
+}
+
+type CloudStorageFileShareCreateFromPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageFileShareCreateFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageFileShareCreateFrom)(nil)).Elem()
+}
+
+func (o CloudStorageFileShareCreateFromPtrOutput) ToCloudStorageFileShareCreateFromPtrOutput() CloudStorageFileShareCreateFromPtrOutput {
+	return o
+}
+
+func (o CloudStorageFileShareCreateFromPtrOutput) ToCloudStorageFileShareCreateFromPtrOutputWithContext(ctx context.Context) CloudStorageFileShareCreateFromPtrOutput {
+	return o
+}
+
+func (o CloudStorageFileShareCreateFromPtrOutput) Elem() CloudStorageFileShareCreateFromOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareCreateFrom) CloudStorageFileShareCreateFrom {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageFileShareCreateFrom
+		return ret
+	}).(CloudStorageFileShareCreateFromOutput)
+}
+
+// Identifier of an `available` file share snapshot of the same project and region.
+func (o CloudStorageFileShareCreateFromPtrOutput) SnapshotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageFileShareCreateFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SnapshotId
+	}).(pulumi.StringPtrOutput)
+}
+
 type CloudStorageFileShareCurrentState struct {
 	// Action-availability flags derived from the file share status:
 	Capabilities []CloudStorageFileShareCurrentStateCapability `pulumi:"capabilities"`
 	// File share description.
 	Description *string `pulumi:"description"`
-	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	// Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
 	Encryption *CloudStorageFileShareCurrentStateEncryption `pulumi:"encryption"`
 	// Export locations for the file share:
 	ExportLocations []CloudStorageFileShareCurrentStateExportLocation `pulumi:"exportLocations"`
@@ -24409,11 +24546,11 @@ type CloudStorageFileShareCurrentState struct {
 	Name *string `pulumi:"name"`
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
 	Protocol *string `pulumi:"protocol"`
-	// ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+	// ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
 	ShareNetworkId *string `pulumi:"shareNetworkId"`
-	// File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+	// File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
 	ShareType *string `pulumi:"shareType"`
-	// Size of the file share in GB.
+	// Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
 	Size *int `pulumi:"size"`
 }
 
@@ -24433,7 +24570,7 @@ type CloudStorageFileShareCurrentStateArgs struct {
 	Capabilities CloudStorageFileShareCurrentStateCapabilityArrayInput `pulumi:"capabilities"`
 	// File share description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+	// Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
 	Encryption CloudStorageFileShareCurrentStateEncryptionPtrInput `pulumi:"encryption"`
 	// Export locations for the file share:
 	ExportLocations CloudStorageFileShareCurrentStateExportLocationArrayInput `pulumi:"exportLocations"`
@@ -24443,11 +24580,11 @@ type CloudStorageFileShareCurrentStateArgs struct {
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// File share protocol (`NFS`). **Changing this value recreates the resource.**
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+	// ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
 	ShareNetworkId pulumi.StringPtrInput `pulumi:"shareNetworkId"`
-	// File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+	// File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
 	ShareType pulumi.StringPtrInput `pulumi:"shareType"`
-	// Size of the file share in GB.
+	// Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -24540,7 +24677,7 @@ func (o CloudStorageFileShareCurrentStateOutput) Description() pulumi.StringPtrO
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+// Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareCurrentStateOutput) Encryption() CloudStorageFileShareCurrentStateEncryptionPtrOutput {
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) *CloudStorageFileShareCurrentStateEncryption {
 		return v.Encryption
@@ -24571,17 +24708,17 @@ func (o CloudStorageFileShareCurrentStateOutput) Protocol() pulumi.StringPtrOutp
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+// ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareCurrentStateOutput) ShareNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) *string { return v.ShareNetworkId }).(pulumi.StringPtrOutput)
 }
 
-// File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+// File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareCurrentStateOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) *string { return v.ShareType }).(pulumi.StringPtrOutput)
 }
 
-// Size of the file share in GB.
+// Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
 func (o CloudStorageFileShareCurrentStateOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CloudStorageFileShareCurrentState) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -24630,7 +24767,7 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) Description() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+// Encryption configuration for the file share. Set at creation only. With `createFrom`, the encryption of the snapshot's source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareCurrentStatePtrOutput) Encryption() CloudStorageFileShareCurrentStateEncryptionPtrOutput {
 	return o.ApplyT(func(v *CloudStorageFileShareCurrentState) *CloudStorageFileShareCurrentStateEncryption {
 		if v == nil {
@@ -24680,7 +24817,7 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) Protocol() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+// ID of a pre-existing share network to attach the file share to. Required unless `createFrom` is set. With `createFrom`, defaults to the share network of the snapshot's source file share and must be that same share network when set. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareCurrentStatePtrOutput) ShareNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudStorageFileShareCurrentState) *string {
 		if v == nil {
@@ -24690,7 +24827,7 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) ShareNetworkId() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+// File share type (e.g. `STANDARD_1AZ`). Required unless `createFrom` is set. With `createFrom`, the type of the snapshot's source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
 func (o CloudStorageFileShareCurrentStatePtrOutput) ShareType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudStorageFileShareCurrentState) *string {
 		if v == nil {
@@ -24700,7 +24837,7 @@ func (o CloudStorageFileShareCurrentStatePtrOutput) ShareType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Size of the file share in GB.
+// Size of the file share in GB. Required unless `createFrom` is set. With `createFrom`, defaults to the snapshot size and must not be smaller than it.
 func (o CloudStorageFileShareCurrentStatePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *CloudStorageFileShareCurrentState) *int {
 		if v == nil {
@@ -26100,6 +26237,1319 @@ func (o CloudStorageFileShareSnapshotCurrentStateLocationPtrOutput) Region() pul
 			return nil
 		}
 		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentState struct {
+	// Server-side encryption configuration:
+	Encryption *CloudStorageObjectBucketCurrentStateEncryption `pulumi:"encryption"`
+	// Geographic region where the bucket is located:
+	Location *CloudStorageObjectBucketCurrentStateLocation `pulumi:"location"`
+	// Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+	Name *string `pulumi:"name"`
+	// Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+	ObjectLock *CloudStorageObjectBucketCurrentStateObjectLock `pulumi:"objectLock"`
+	// Bucket total objects count. Only returned on a single bucket read.
+	ObjectsCount *int `pulumi:"objectsCount"`
+	// Bucket total objects size in bytes. Only returned on a single bucket read.
+	ObjectsSize *int `pulumi:"objectsSize"`
+	// Metadata tags for the bucket, as a map of strings.
+	Tags map[string]string `pulumi:"tags"`
+	// Versioning configuration:
+	Versioning *CloudStorageObjectBucketCurrentStateVersioning `pulumi:"versioning"`
+	// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+	VirtualHost *string `pulumi:"virtualHost"`
+}
+
+// CloudStorageObjectBucketCurrentStateInput is an input type that accepts CloudStorageObjectBucketCurrentStateArgs and CloudStorageObjectBucketCurrentStateOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateInput` via:
+//
+//	CloudStorageObjectBucketCurrentStateArgs{...}
+type CloudStorageObjectBucketCurrentStateInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateOutput() CloudStorageObjectBucketCurrentStateOutput
+	ToCloudStorageObjectBucketCurrentStateOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateOutput
+}
+
+type CloudStorageObjectBucketCurrentStateArgs struct {
+	// Server-side encryption configuration:
+	Encryption CloudStorageObjectBucketCurrentStateEncryptionPtrInput `pulumi:"encryption"`
+	// Geographic region where the bucket is located:
+	Location CloudStorageObjectBucketCurrentStateLocationPtrInput `pulumi:"location"`
+	// Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+	ObjectLock CloudStorageObjectBucketCurrentStateObjectLockPtrInput `pulumi:"objectLock"`
+	// Bucket total objects count. Only returned on a single bucket read.
+	ObjectsCount pulumi.IntPtrInput `pulumi:"objectsCount"`
+	// Bucket total objects size in bytes. Only returned on a single bucket read.
+	ObjectsSize pulumi.IntPtrInput `pulumi:"objectsSize"`
+	// Metadata tags for the bucket, as a map of strings.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Versioning configuration:
+	Versioning CloudStorageObjectBucketCurrentStateVersioningPtrInput `pulumi:"versioning"`
+	// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+	VirtualHost pulumi.StringPtrInput `pulumi:"virtualHost"`
+}
+
+func (CloudStorageObjectBucketCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentState)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketCurrentStateArgs) ToCloudStorageObjectBucketCurrentStateOutput() CloudStorageObjectBucketCurrentStateOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateArgs) ToCloudStorageObjectBucketCurrentStateOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateOutput)
+}
+
+func (i CloudStorageObjectBucketCurrentStateArgs) ToCloudStorageObjectBucketCurrentStatePtrOutput() CloudStorageObjectBucketCurrentStatePtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateArgs) ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateOutput).ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketCurrentStatePtrInput is an input type that accepts CloudStorageObjectBucketCurrentStateArgs, CloudStorageObjectBucketCurrentStatePtr and CloudStorageObjectBucketCurrentStatePtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStatePtrInput` via:
+//
+//	        CloudStorageObjectBucketCurrentStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketCurrentStatePtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStatePtrOutput() CloudStorageObjectBucketCurrentStatePtrOutput
+	ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStatePtrOutput
+}
+
+type cloudStorageObjectBucketCurrentStatePtrType CloudStorageObjectBucketCurrentStateArgs
+
+func CloudStorageObjectBucketCurrentStatePtr(v *CloudStorageObjectBucketCurrentStateArgs) CloudStorageObjectBucketCurrentStatePtrInput {
+	return (*cloudStorageObjectBucketCurrentStatePtrType)(v)
+}
+
+func (*cloudStorageObjectBucketCurrentStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentState)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketCurrentStatePtrType) ToCloudStorageObjectBucketCurrentStatePtrOutput() CloudStorageObjectBucketCurrentStatePtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketCurrentStatePtrType) ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStatePtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateOutput) ToCloudStorageObjectBucketCurrentStateOutput() CloudStorageObjectBucketCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateOutput) ToCloudStorageObjectBucketCurrentStateOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateOutput) ToCloudStorageObjectBucketCurrentStatePtrOutput() CloudStorageObjectBucketCurrentStatePtrOutput {
+	return o.ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketCurrentStateOutput) ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentState {
+		return &v
+	}).(CloudStorageObjectBucketCurrentStatePtrOutput)
+}
+
+// Server-side encryption configuration:
+func (o CloudStorageObjectBucketCurrentStateOutput) Encryption() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateEncryption {
+		return v.Encryption
+	}).(CloudStorageObjectBucketCurrentStateEncryptionPtrOutput)
+}
+
+// Geographic region where the bucket is located:
+func (o CloudStorageObjectBucketCurrentStateOutput) Location() CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateLocation {
+		return v.Location
+	}).(CloudStorageObjectBucketCurrentStateLocationPtrOutput)
+}
+
+// Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+func (o CloudStorageObjectBucketCurrentStateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+func (o CloudStorageObjectBucketCurrentStateOutput) ObjectLock() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateObjectLock {
+		return v.ObjectLock
+	}).(CloudStorageObjectBucketCurrentStateObjectLockPtrOutput)
+}
+
+// Bucket total objects count. Only returned on a single bucket read.
+func (o CloudStorageObjectBucketCurrentStateOutput) ObjectsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *int { return v.ObjectsCount }).(pulumi.IntPtrOutput)
+}
+
+// Bucket total objects size in bytes. Only returned on a single bucket read.
+func (o CloudStorageObjectBucketCurrentStateOutput) ObjectsSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *int { return v.ObjectsSize }).(pulumi.IntPtrOutput)
+}
+
+// Metadata tags for the bucket, as a map of strings.
+func (o CloudStorageObjectBucketCurrentStateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Versioning configuration:
+func (o CloudStorageObjectBucketCurrentStateOutput) Versioning() CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateVersioning {
+		return v.Versioning
+	}).(CloudStorageObjectBucketCurrentStateVersioningPtrOutput)
+}
+
+// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+func (o CloudStorageObjectBucketCurrentStateOutput) VirtualHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentState) *string { return v.VirtualHost }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentState)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) ToCloudStorageObjectBucketCurrentStatePtrOutput() CloudStorageObjectBucketCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) ToCloudStorageObjectBucketCurrentStatePtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStatePtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) Elem() CloudStorageObjectBucketCurrentStateOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) CloudStorageObjectBucketCurrentState {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketCurrentState
+		return ret
+	}).(CloudStorageObjectBucketCurrentStateOutput)
+}
+
+// Server-side encryption configuration:
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) Encryption() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(CloudStorageObjectBucketCurrentStateEncryptionPtrOutput)
+}
+
+// Geographic region where the bucket is located:
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) Location() CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(CloudStorageObjectBucketCurrentStateLocationPtrOutput)
+}
+
+// Bucket name (must be globally unique and DNS-compatible): 3 to 63 characters, lowercase letters, digits, dots and hyphens only, starting and ending with a letter or a digit. **Changing this value recreates the resource.**
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Object lock (WORM) configuration. Requires `versioning` to be set with `status = "ENABLED"`. Object lock can only be armed at bucket creation. **Adding, changing or removing this block recreates the resource.**
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) ObjectLock() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateObjectLock {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectLock
+	}).(CloudStorageObjectBucketCurrentStateObjectLockPtrOutput)
+}
+
+// Bucket total objects count. Only returned on a single bucket read.
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) ObjectsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Bucket total objects size in bytes. Only returned on a single bucket read.
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) ObjectsSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectsSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Metadata tags for the bucket, as a map of strings.
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Versioning configuration:
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) Versioning() CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *CloudStorageObjectBucketCurrentStateVersioning {
+		if v == nil {
+			return nil
+		}
+		return v.Versioning
+	}).(CloudStorageObjectBucketCurrentStateVersioningPtrOutput)
+}
+
+// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`). Only returned on a single bucket read.
+func (o CloudStorageObjectBucketCurrentStatePtrOutput) VirtualHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualHost
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateEncryption struct {
+	// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+	Algorithm *string `pulumi:"algorithm"`
+}
+
+// CloudStorageObjectBucketCurrentStateEncryptionInput is an input type that accepts CloudStorageObjectBucketCurrentStateEncryptionArgs and CloudStorageObjectBucketCurrentStateEncryptionOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateEncryptionInput` via:
+//
+//	CloudStorageObjectBucketCurrentStateEncryptionArgs{...}
+type CloudStorageObjectBucketCurrentStateEncryptionInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateEncryptionOutput() CloudStorageObjectBucketCurrentStateEncryptionOutput
+	ToCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateEncryptionOutput
+}
+
+type CloudStorageObjectBucketCurrentStateEncryptionArgs struct {
+	// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+}
+
+func (CloudStorageObjectBucketCurrentStateEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketCurrentStateEncryptionArgs) ToCloudStorageObjectBucketCurrentStateEncryptionOutput() CloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateEncryptionArgs) ToCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateEncryptionOutput)
+}
+
+func (i CloudStorageObjectBucketCurrentStateEncryptionArgs) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutput() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateEncryptionArgs) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateEncryptionOutput).ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketCurrentStateEncryptionPtrInput is an input type that accepts CloudStorageObjectBucketCurrentStateEncryptionArgs, CloudStorageObjectBucketCurrentStateEncryptionPtr and CloudStorageObjectBucketCurrentStateEncryptionPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateEncryptionPtrInput` via:
+//
+//	        CloudStorageObjectBucketCurrentStateEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketCurrentStateEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutput() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput
+	ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateEncryptionPtrOutput
+}
+
+type cloudStorageObjectBucketCurrentStateEncryptionPtrType CloudStorageObjectBucketCurrentStateEncryptionArgs
+
+func CloudStorageObjectBucketCurrentStateEncryptionPtr(v *CloudStorageObjectBucketCurrentStateEncryptionArgs) CloudStorageObjectBucketCurrentStateEncryptionPtrInput {
+	return (*cloudStorageObjectBucketCurrentStateEncryptionPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketCurrentStateEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketCurrentStateEncryptionPtrType) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutput() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketCurrentStateEncryptionPtrType) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateEncryptionPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateEncryptionOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionOutput) ToCloudStorageObjectBucketCurrentStateEncryptionOutput() CloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionOutput) ToCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionOutput) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutput() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return o.ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionOutput) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketCurrentStateEncryption) *CloudStorageObjectBucketCurrentStateEncryption {
+		return &v
+	}).(CloudStorageObjectBucketCurrentStateEncryptionPtrOutput)
+}
+
+// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+func (o CloudStorageObjectBucketCurrentStateEncryptionOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentStateEncryption) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionPtrOutput) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutput() CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionPtrOutput) ToCloudStorageObjectBucketCurrentStateEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateEncryptionPtrOutput) Elem() CloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateEncryption) CloudStorageObjectBucketCurrentStateEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketCurrentStateEncryption
+		return ret
+	}).(CloudStorageObjectBucketCurrentStateEncryptionOutput)
+}
+
+// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+func (o CloudStorageObjectBucketCurrentStateEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateLocation struct {
+	// Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+	Region *string `pulumi:"region"`
+}
+
+// CloudStorageObjectBucketCurrentStateLocationInput is an input type that accepts CloudStorageObjectBucketCurrentStateLocationArgs and CloudStorageObjectBucketCurrentStateLocationOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateLocationInput` via:
+//
+//	CloudStorageObjectBucketCurrentStateLocationArgs{...}
+type CloudStorageObjectBucketCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateLocationOutput() CloudStorageObjectBucketCurrentStateLocationOutput
+	ToCloudStorageObjectBucketCurrentStateLocationOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateLocationOutput
+}
+
+type CloudStorageObjectBucketCurrentStateLocationArgs struct {
+	// Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (CloudStorageObjectBucketCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketCurrentStateLocationArgs) ToCloudStorageObjectBucketCurrentStateLocationOutput() CloudStorageObjectBucketCurrentStateLocationOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateLocationArgs) ToCloudStorageObjectBucketCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateLocationOutput)
+}
+
+func (i CloudStorageObjectBucketCurrentStateLocationArgs) ToCloudStorageObjectBucketCurrentStateLocationPtrOutput() CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateLocationArgs) ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateLocationOutput).ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketCurrentStateLocationPtrInput is an input type that accepts CloudStorageObjectBucketCurrentStateLocationArgs, CloudStorageObjectBucketCurrentStateLocationPtr and CloudStorageObjectBucketCurrentStateLocationPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateLocationPtrInput` via:
+//
+//	        CloudStorageObjectBucketCurrentStateLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketCurrentStateLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateLocationPtrOutput() CloudStorageObjectBucketCurrentStateLocationPtrOutput
+	ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateLocationPtrOutput
+}
+
+type cloudStorageObjectBucketCurrentStateLocationPtrType CloudStorageObjectBucketCurrentStateLocationArgs
+
+func CloudStorageObjectBucketCurrentStateLocationPtr(v *CloudStorageObjectBucketCurrentStateLocationArgs) CloudStorageObjectBucketCurrentStateLocationPtrInput {
+	return (*cloudStorageObjectBucketCurrentStateLocationPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketCurrentStateLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketCurrentStateLocationPtrType) ToCloudStorageObjectBucketCurrentStateLocationPtrOutput() CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketCurrentStateLocationPtrType) ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateLocationPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationOutput) ToCloudStorageObjectBucketCurrentStateLocationOutput() CloudStorageObjectBucketCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationOutput) ToCloudStorageObjectBucketCurrentStateLocationOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateLocationOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationOutput) ToCloudStorageObjectBucketCurrentStateLocationPtrOutput() CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return o.ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationOutput) ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketCurrentStateLocation) *CloudStorageObjectBucketCurrentStateLocation {
+		return &v
+	}).(CloudStorageObjectBucketCurrentStateLocationPtrOutput)
+}
+
+// Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+func (o CloudStorageObjectBucketCurrentStateLocationOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentStateLocation) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationPtrOutput) ToCloudStorageObjectBucketCurrentStateLocationPtrOutput() CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationPtrOutput) ToCloudStorageObjectBucketCurrentStateLocationPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateLocationPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateLocationPtrOutput) Elem() CloudStorageObjectBucketCurrentStateLocationOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateLocation) CloudStorageObjectBucketCurrentStateLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketCurrentStateLocation
+		return ret
+	}).(CloudStorageObjectBucketCurrentStateLocationOutput)
+}
+
+// Region identifier where the bucket will be created. Must be upper-case (e.g. `GRA`, `SBG`, `BHS`). **Changing this value recreates the resource.**
+func (o CloudStorageObjectBucketCurrentStateLocationPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateObjectLock struct {
+	// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+	Mode *string `pulumi:"mode"`
+	// Number of days to retain objects. Must be at least `1`.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// Number of years to retain objects
+	RetentionYears *int `pulumi:"retentionYears"`
+}
+
+// CloudStorageObjectBucketCurrentStateObjectLockInput is an input type that accepts CloudStorageObjectBucketCurrentStateObjectLockArgs and CloudStorageObjectBucketCurrentStateObjectLockOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateObjectLockInput` via:
+//
+//	CloudStorageObjectBucketCurrentStateObjectLockArgs{...}
+type CloudStorageObjectBucketCurrentStateObjectLockInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateObjectLockOutput() CloudStorageObjectBucketCurrentStateObjectLockOutput
+	ToCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateObjectLockOutput
+}
+
+type CloudStorageObjectBucketCurrentStateObjectLockArgs struct {
+	// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Number of days to retain objects. Must be at least `1`.
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
+	// Number of years to retain objects
+	RetentionYears pulumi.IntPtrInput `pulumi:"retentionYears"`
+}
+
+func (CloudStorageObjectBucketCurrentStateObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateObjectLock)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketCurrentStateObjectLockArgs) ToCloudStorageObjectBucketCurrentStateObjectLockOutput() CloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateObjectLockArgs) ToCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateObjectLockOutput)
+}
+
+func (i CloudStorageObjectBucketCurrentStateObjectLockArgs) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutput() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateObjectLockArgs) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateObjectLockOutput).ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketCurrentStateObjectLockPtrInput is an input type that accepts CloudStorageObjectBucketCurrentStateObjectLockArgs, CloudStorageObjectBucketCurrentStateObjectLockPtr and CloudStorageObjectBucketCurrentStateObjectLockPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateObjectLockPtrInput` via:
+//
+//	        CloudStorageObjectBucketCurrentStateObjectLockArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketCurrentStateObjectLockPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutput() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput
+	ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateObjectLockPtrOutput
+}
+
+type cloudStorageObjectBucketCurrentStateObjectLockPtrType CloudStorageObjectBucketCurrentStateObjectLockArgs
+
+func CloudStorageObjectBucketCurrentStateObjectLockPtr(v *CloudStorageObjectBucketCurrentStateObjectLockArgs) CloudStorageObjectBucketCurrentStateObjectLockPtrInput {
+	return (*cloudStorageObjectBucketCurrentStateObjectLockPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketCurrentStateObjectLockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateObjectLock)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketCurrentStateObjectLockPtrType) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutput() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketCurrentStateObjectLockPtrType) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateObjectLockPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateObjectLockOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateObjectLock)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) ToCloudStorageObjectBucketCurrentStateObjectLockOutput() CloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) ToCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutput() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return o.ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketCurrentStateObjectLock) *CloudStorageObjectBucketCurrentStateObjectLock {
+		return &v
+	}).(CloudStorageObjectBucketCurrentStateObjectLockPtrOutput)
+}
+
+// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentStateObjectLock) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Number of days to retain objects. Must be at least `1`.
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentStateObjectLock) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
+}
+
+// Number of years to retain objects
+func (o CloudStorageObjectBucketCurrentStateObjectLockOutput) RetentionYears() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentStateObjectLock) *int { return v.RetentionYears }).(pulumi.IntPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateObjectLockPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateObjectLock)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutput() CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) ToCloudStorageObjectBucketCurrentStateObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateObjectLockPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) Elem() CloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateObjectLock) CloudStorageObjectBucketCurrentStateObjectLock {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketCurrentStateObjectLock
+		return ret
+	}).(CloudStorageObjectBucketCurrentStateObjectLockOutput)
+}
+
+// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+func (o CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateObjectLock) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of days to retain objects. Must be at least `1`.
+func (o CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateObjectLock) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of years to retain objects
+func (o CloudStorageObjectBucketCurrentStateObjectLockPtrOutput) RetentionYears() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateObjectLock) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionYears
+	}).(pulumi.IntPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateVersioning struct {
+	// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+	Status *string `pulumi:"status"`
+}
+
+// CloudStorageObjectBucketCurrentStateVersioningInput is an input type that accepts CloudStorageObjectBucketCurrentStateVersioningArgs and CloudStorageObjectBucketCurrentStateVersioningOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateVersioningInput` via:
+//
+//	CloudStorageObjectBucketCurrentStateVersioningArgs{...}
+type CloudStorageObjectBucketCurrentStateVersioningInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateVersioningOutput() CloudStorageObjectBucketCurrentStateVersioningOutput
+	ToCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateVersioningOutput
+}
+
+type CloudStorageObjectBucketCurrentStateVersioningArgs struct {
+	// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (CloudStorageObjectBucketCurrentStateVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketCurrentStateVersioningArgs) ToCloudStorageObjectBucketCurrentStateVersioningOutput() CloudStorageObjectBucketCurrentStateVersioningOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateVersioningArgs) ToCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateVersioningOutput)
+}
+
+func (i CloudStorageObjectBucketCurrentStateVersioningArgs) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutput() CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketCurrentStateVersioningArgs) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateVersioningOutput).ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketCurrentStateVersioningPtrInput is an input type that accepts CloudStorageObjectBucketCurrentStateVersioningArgs, CloudStorageObjectBucketCurrentStateVersioningPtr and CloudStorageObjectBucketCurrentStateVersioningPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketCurrentStateVersioningPtrInput` via:
+//
+//	        CloudStorageObjectBucketCurrentStateVersioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketCurrentStateVersioningPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketCurrentStateVersioningPtrOutput() CloudStorageObjectBucketCurrentStateVersioningPtrOutput
+	ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(context.Context) CloudStorageObjectBucketCurrentStateVersioningPtrOutput
+}
+
+type cloudStorageObjectBucketCurrentStateVersioningPtrType CloudStorageObjectBucketCurrentStateVersioningArgs
+
+func CloudStorageObjectBucketCurrentStateVersioningPtr(v *CloudStorageObjectBucketCurrentStateVersioningArgs) CloudStorageObjectBucketCurrentStateVersioningPtrInput {
+	return (*cloudStorageObjectBucketCurrentStateVersioningPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketCurrentStateVersioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketCurrentStateVersioningPtrType) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutput() CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return i.ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketCurrentStateVersioningPtrType) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketCurrentStateVersioningPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateVersioningOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningOutput) ToCloudStorageObjectBucketCurrentStateVersioningOutput() CloudStorageObjectBucketCurrentStateVersioningOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningOutput) ToCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateVersioningOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningOutput) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutput() CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return o.ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningOutput) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketCurrentStateVersioning) *CloudStorageObjectBucketCurrentStateVersioning {
+		return &v
+	}).(CloudStorageObjectBucketCurrentStateVersioningPtrOutput)
+}
+
+// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+func (o CloudStorageObjectBucketCurrentStateVersioningOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketCurrentStateVersioning) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketCurrentStateVersioningPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketCurrentStateVersioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningPtrOutput) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutput() CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningPtrOutput) ToCloudStorageObjectBucketCurrentStateVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketCurrentStateVersioningPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketCurrentStateVersioningPtrOutput) Elem() CloudStorageObjectBucketCurrentStateVersioningOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateVersioning) CloudStorageObjectBucketCurrentStateVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketCurrentStateVersioning
+		return ret
+	}).(CloudStorageObjectBucketCurrentStateVersioningOutput)
+}
+
+// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+func (o CloudStorageObjectBucketCurrentStateVersioningPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketCurrentStateVersioning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketEncryption struct {
+	// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+	Algorithm string `pulumi:"algorithm"`
+}
+
+// CloudStorageObjectBucketEncryptionInput is an input type that accepts CloudStorageObjectBucketEncryptionArgs and CloudStorageObjectBucketEncryptionOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketEncryptionInput` via:
+//
+//	CloudStorageObjectBucketEncryptionArgs{...}
+type CloudStorageObjectBucketEncryptionInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketEncryptionOutput() CloudStorageObjectBucketEncryptionOutput
+	ToCloudStorageObjectBucketEncryptionOutputWithContext(context.Context) CloudStorageObjectBucketEncryptionOutput
+}
+
+type CloudStorageObjectBucketEncryptionArgs struct {
+	// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+}
+
+func (CloudStorageObjectBucketEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketEncryption)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketEncryptionArgs) ToCloudStorageObjectBucketEncryptionOutput() CloudStorageObjectBucketEncryptionOutput {
+	return i.ToCloudStorageObjectBucketEncryptionOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketEncryptionArgs) ToCloudStorageObjectBucketEncryptionOutputWithContext(ctx context.Context) CloudStorageObjectBucketEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketEncryptionOutput)
+}
+
+func (i CloudStorageObjectBucketEncryptionArgs) ToCloudStorageObjectBucketEncryptionPtrOutput() CloudStorageObjectBucketEncryptionPtrOutput {
+	return i.ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketEncryptionArgs) ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketEncryptionOutput).ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketEncryptionPtrInput is an input type that accepts CloudStorageObjectBucketEncryptionArgs, CloudStorageObjectBucketEncryptionPtr and CloudStorageObjectBucketEncryptionPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketEncryptionPtrInput` via:
+//
+//	        CloudStorageObjectBucketEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketEncryptionPtrOutput() CloudStorageObjectBucketEncryptionPtrOutput
+	ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(context.Context) CloudStorageObjectBucketEncryptionPtrOutput
+}
+
+type cloudStorageObjectBucketEncryptionPtrType CloudStorageObjectBucketEncryptionArgs
+
+func CloudStorageObjectBucketEncryptionPtr(v *CloudStorageObjectBucketEncryptionArgs) CloudStorageObjectBucketEncryptionPtrInput {
+	return (*cloudStorageObjectBucketEncryptionPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketEncryption)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketEncryptionPtrType) ToCloudStorageObjectBucketEncryptionPtrOutput() CloudStorageObjectBucketEncryptionPtrOutput {
+	return i.ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketEncryptionPtrType) ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketEncryptionPtrOutput)
+}
+
+type CloudStorageObjectBucketEncryptionOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketEncryptionOutput) ToCloudStorageObjectBucketEncryptionOutput() CloudStorageObjectBucketEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketEncryptionOutput) ToCloudStorageObjectBucketEncryptionOutputWithContext(ctx context.Context) CloudStorageObjectBucketEncryptionOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketEncryptionOutput) ToCloudStorageObjectBucketEncryptionPtrOutput() CloudStorageObjectBucketEncryptionPtrOutput {
+	return o.ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketEncryptionOutput) ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketEncryption) *CloudStorageObjectBucketEncryption {
+		return &v
+	}).(CloudStorageObjectBucketEncryptionPtrOutput)
+}
+
+// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+func (o CloudStorageObjectBucketEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketEncryption) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+type CloudStorageObjectBucketEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketEncryption)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketEncryptionPtrOutput) ToCloudStorageObjectBucketEncryptionPtrOutput() CloudStorageObjectBucketEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketEncryptionPtrOutput) ToCloudStorageObjectBucketEncryptionPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketEncryptionPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketEncryptionPtrOutput) Elem() CloudStorageObjectBucketEncryptionOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketEncryption) CloudStorageObjectBucketEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketEncryption
+		return ret
+	}).(CloudStorageObjectBucketEncryptionOutput)
+}
+
+// Encryption algorithm. One of `AES256`, `PLAINTEXT`.
+func (o CloudStorageObjectBucketEncryptionPtrOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Algorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudStorageObjectBucketObjectLock struct {
+	// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+	Mode string `pulumi:"mode"`
+	// Number of days to retain objects. Must be at least `1`.
+	RetentionDays int `pulumi:"retentionDays"`
+}
+
+// CloudStorageObjectBucketObjectLockInput is an input type that accepts CloudStorageObjectBucketObjectLockArgs and CloudStorageObjectBucketObjectLockOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketObjectLockInput` via:
+//
+//	CloudStorageObjectBucketObjectLockArgs{...}
+type CloudStorageObjectBucketObjectLockInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketObjectLockOutput() CloudStorageObjectBucketObjectLockOutput
+	ToCloudStorageObjectBucketObjectLockOutputWithContext(context.Context) CloudStorageObjectBucketObjectLockOutput
+}
+
+type CloudStorageObjectBucketObjectLockArgs struct {
+	// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Number of days to retain objects. Must be at least `1`.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+}
+
+func (CloudStorageObjectBucketObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketObjectLock)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketObjectLockArgs) ToCloudStorageObjectBucketObjectLockOutput() CloudStorageObjectBucketObjectLockOutput {
+	return i.ToCloudStorageObjectBucketObjectLockOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketObjectLockArgs) ToCloudStorageObjectBucketObjectLockOutputWithContext(ctx context.Context) CloudStorageObjectBucketObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketObjectLockOutput)
+}
+
+func (i CloudStorageObjectBucketObjectLockArgs) ToCloudStorageObjectBucketObjectLockPtrOutput() CloudStorageObjectBucketObjectLockPtrOutput {
+	return i.ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketObjectLockArgs) ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketObjectLockOutput).ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketObjectLockPtrInput is an input type that accepts CloudStorageObjectBucketObjectLockArgs, CloudStorageObjectBucketObjectLockPtr and CloudStorageObjectBucketObjectLockPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketObjectLockPtrInput` via:
+//
+//	        CloudStorageObjectBucketObjectLockArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketObjectLockPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketObjectLockPtrOutput() CloudStorageObjectBucketObjectLockPtrOutput
+	ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(context.Context) CloudStorageObjectBucketObjectLockPtrOutput
+}
+
+type cloudStorageObjectBucketObjectLockPtrType CloudStorageObjectBucketObjectLockArgs
+
+func CloudStorageObjectBucketObjectLockPtr(v *CloudStorageObjectBucketObjectLockArgs) CloudStorageObjectBucketObjectLockPtrInput {
+	return (*cloudStorageObjectBucketObjectLockPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketObjectLockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketObjectLock)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketObjectLockPtrType) ToCloudStorageObjectBucketObjectLockPtrOutput() CloudStorageObjectBucketObjectLockPtrOutput {
+	return i.ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketObjectLockPtrType) ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketObjectLockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketObjectLockPtrOutput)
+}
+
+type CloudStorageObjectBucketObjectLockOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketObjectLock)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketObjectLockOutput) ToCloudStorageObjectBucketObjectLockOutput() CloudStorageObjectBucketObjectLockOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketObjectLockOutput) ToCloudStorageObjectBucketObjectLockOutputWithContext(ctx context.Context) CloudStorageObjectBucketObjectLockOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketObjectLockOutput) ToCloudStorageObjectBucketObjectLockPtrOutput() CloudStorageObjectBucketObjectLockPtrOutput {
+	return o.ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketObjectLockOutput) ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketObjectLockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketObjectLock) *CloudStorageObjectBucketObjectLock {
+		return &v
+	}).(CloudStorageObjectBucketObjectLockPtrOutput)
+}
+
+// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+func (o CloudStorageObjectBucketObjectLockOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketObjectLock) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Number of days to retain objects. Must be at least `1`.
+func (o CloudStorageObjectBucketObjectLockOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketObjectLock) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+type CloudStorageObjectBucketObjectLockPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketObjectLockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketObjectLock)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketObjectLockPtrOutput) ToCloudStorageObjectBucketObjectLockPtrOutput() CloudStorageObjectBucketObjectLockPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketObjectLockPtrOutput) ToCloudStorageObjectBucketObjectLockPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketObjectLockPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketObjectLockPtrOutput) Elem() CloudStorageObjectBucketObjectLockOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketObjectLock) CloudStorageObjectBucketObjectLock {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketObjectLock
+		return ret
+	}).(CloudStorageObjectBucketObjectLockOutput)
+}
+
+// Object lock retention mode. One of `COMPLIANCE`, `GOVERNANCE`.
+func (o CloudStorageObjectBucketObjectLockPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketObjectLock) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of days to retain objects. Must be at least `1`.
+func (o CloudStorageObjectBucketObjectLockPtrOutput) RetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketObjectLock) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type CloudStorageObjectBucketVersioning struct {
+	// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+	Status string `pulumi:"status"`
+}
+
+// CloudStorageObjectBucketVersioningInput is an input type that accepts CloudStorageObjectBucketVersioningArgs and CloudStorageObjectBucketVersioningOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketVersioningInput` via:
+//
+//	CloudStorageObjectBucketVersioningArgs{...}
+type CloudStorageObjectBucketVersioningInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketVersioningOutput() CloudStorageObjectBucketVersioningOutput
+	ToCloudStorageObjectBucketVersioningOutputWithContext(context.Context) CloudStorageObjectBucketVersioningOutput
+}
+
+type CloudStorageObjectBucketVersioningArgs struct {
+	// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (CloudStorageObjectBucketVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketVersioning)(nil)).Elem()
+}
+
+func (i CloudStorageObjectBucketVersioningArgs) ToCloudStorageObjectBucketVersioningOutput() CloudStorageObjectBucketVersioningOutput {
+	return i.ToCloudStorageObjectBucketVersioningOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketVersioningArgs) ToCloudStorageObjectBucketVersioningOutputWithContext(ctx context.Context) CloudStorageObjectBucketVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketVersioningOutput)
+}
+
+func (i CloudStorageObjectBucketVersioningArgs) ToCloudStorageObjectBucketVersioningPtrOutput() CloudStorageObjectBucketVersioningPtrOutput {
+	return i.ToCloudStorageObjectBucketVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i CloudStorageObjectBucketVersioningArgs) ToCloudStorageObjectBucketVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketVersioningOutput).ToCloudStorageObjectBucketVersioningPtrOutputWithContext(ctx)
+}
+
+// CloudStorageObjectBucketVersioningPtrInput is an input type that accepts CloudStorageObjectBucketVersioningArgs, CloudStorageObjectBucketVersioningPtr and CloudStorageObjectBucketVersioningPtrOutput values.
+// You can construct a concrete instance of `CloudStorageObjectBucketVersioningPtrInput` via:
+//
+//	        CloudStorageObjectBucketVersioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudStorageObjectBucketVersioningPtrInput interface {
+	pulumi.Input
+
+	ToCloudStorageObjectBucketVersioningPtrOutput() CloudStorageObjectBucketVersioningPtrOutput
+	ToCloudStorageObjectBucketVersioningPtrOutputWithContext(context.Context) CloudStorageObjectBucketVersioningPtrOutput
+}
+
+type cloudStorageObjectBucketVersioningPtrType CloudStorageObjectBucketVersioningArgs
+
+func CloudStorageObjectBucketVersioningPtr(v *CloudStorageObjectBucketVersioningArgs) CloudStorageObjectBucketVersioningPtrInput {
+	return (*cloudStorageObjectBucketVersioningPtrType)(v)
+}
+
+func (*cloudStorageObjectBucketVersioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketVersioning)(nil)).Elem()
+}
+
+func (i *cloudStorageObjectBucketVersioningPtrType) ToCloudStorageObjectBucketVersioningPtrOutput() CloudStorageObjectBucketVersioningPtrOutput {
+	return i.ToCloudStorageObjectBucketVersioningPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudStorageObjectBucketVersioningPtrType) ToCloudStorageObjectBucketVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketVersioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudStorageObjectBucketVersioningPtrOutput)
+}
+
+type CloudStorageObjectBucketVersioningOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudStorageObjectBucketVersioning)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketVersioningOutput) ToCloudStorageObjectBucketVersioningOutput() CloudStorageObjectBucketVersioningOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketVersioningOutput) ToCloudStorageObjectBucketVersioningOutputWithContext(ctx context.Context) CloudStorageObjectBucketVersioningOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketVersioningOutput) ToCloudStorageObjectBucketVersioningPtrOutput() CloudStorageObjectBucketVersioningPtrOutput {
+	return o.ToCloudStorageObjectBucketVersioningPtrOutputWithContext(context.Background())
+}
+
+func (o CloudStorageObjectBucketVersioningOutput) ToCloudStorageObjectBucketVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketVersioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudStorageObjectBucketVersioning) *CloudStorageObjectBucketVersioning {
+		return &v
+	}).(CloudStorageObjectBucketVersioningPtrOutput)
+}
+
+// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+func (o CloudStorageObjectBucketVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudStorageObjectBucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type CloudStorageObjectBucketVersioningPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudStorageObjectBucketVersioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudStorageObjectBucketVersioning)(nil)).Elem()
+}
+
+func (o CloudStorageObjectBucketVersioningPtrOutput) ToCloudStorageObjectBucketVersioningPtrOutput() CloudStorageObjectBucketVersioningPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketVersioningPtrOutput) ToCloudStorageObjectBucketVersioningPtrOutputWithContext(ctx context.Context) CloudStorageObjectBucketVersioningPtrOutput {
+	return o
+}
+
+func (o CloudStorageObjectBucketVersioningPtrOutput) Elem() CloudStorageObjectBucketVersioningOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketVersioning) CloudStorageObjectBucketVersioning {
+		if v != nil {
+			return *v
+		}
+		var ret CloudStorageObjectBucketVersioning
+		return ret
+	}).(CloudStorageObjectBucketVersioningOutput)
+}
+
+// Versioning status. One of `DISABLED`, `ENABLED`, `SUSPENDED`.
+func (o CloudStorageObjectBucketVersioningPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudStorageObjectBucketVersioning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58343,2956 +59793,1335 @@ func (o GetCloudStorageFileSharesFileShareLocationOutput) Region() pulumi.String
 	return o.ApplyT(func(v GetCloudStorageFileSharesFileShareLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetDbaasLogsOutputGraylogStreamUrlUrl struct {
-	// URL address
-	Address string `pulumi:"address"`
-	// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-	Type string `pulumi:"type"`
-}
-
-// GetDbaasLogsOutputGraylogStreamUrlUrlInput is an input type that accepts GetDbaasLogsOutputGraylogStreamUrlUrlArgs and GetDbaasLogsOutputGraylogStreamUrlUrlOutput values.
-// You can construct a concrete instance of `GetDbaasLogsOutputGraylogStreamUrlUrlInput` via:
-//
-//	GetDbaasLogsOutputGraylogStreamUrlUrlArgs{...}
-type GetDbaasLogsOutputGraylogStreamUrlUrlInput interface {
-	pulumi.Input
-
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlArgs struct {
-	// URL address
-	Address pulumi.StringInput `pulumi:"address"`
-	// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return i.ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(context.Background())
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArgs) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbaasLogsOutputGraylogStreamUrlUrlOutput)
-}
-
-// GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput is an input type that accepts GetDbaasLogsOutputGraylogStreamUrlUrlArray and GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput values.
-// You can construct a concrete instance of `GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput` via:
-//
-//	GetDbaasLogsOutputGraylogStreamUrlUrlArray{ GetDbaasLogsOutputGraylogStreamUrlUrlArgs{...} }
-type GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput interface {
-	pulumi.Input
-
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput
-	ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlArray []GetDbaasLogsOutputGraylogStreamUrlUrlInput
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArray) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return i.ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(context.Background())
-}
-
-func (i GetDbaasLogsOutputGraylogStreamUrlUrlArray) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput)
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlOutput struct{ *pulumi.OutputState }
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutput() GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return o
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return o
-}
-
-// URL address
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbaasLogsOutputGraylogStreamUrlUrl) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// URL type (e.g. `GRAYLOG_WEBUI`, `WEB_SOCKET`)
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDbaasLogsOutputGraylogStreamUrlUrl) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDbaasLogsOutputGraylogStreamUrlUrl)(nil)).Elem()
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput() GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return o
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) ToGetDbaasLogsOutputGraylogStreamUrlUrlArrayOutputWithContext(ctx context.Context) GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput {
-	return o
-}
-
-func (o GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput) Index(i pulumi.IntInput) GetDbaasLogsOutputGraylogStreamUrlUrlOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDbaasLogsOutputGraylogStreamUrlUrl {
-		return vs[0].([]GetDbaasLogsOutputGraylogStreamUrlUrl)[vs[1].(int)]
-	}).(GetDbaasLogsOutputGraylogStreamUrlUrlOutput)
-}
-
-type GetInstallationTemplateInput struct {
-	Default string `pulumi:"default"`
-	// Information about this template.
-	Description string   `pulumi:"description"`
-	Enums       []string `pulumi:"enums"`
-	Mandatory   bool     `pulumi:"mandatory"`
-	Name        string   `pulumi:"name"`
-	Type        string   `pulumi:"type"`
-}
-
-// GetInstallationTemplateInputInput is an input type that accepts GetInstallationTemplateInputArgs and GetInstallationTemplateInputOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateInputInput` via:
-//
-//	GetInstallationTemplateInputArgs{...}
-type GetInstallationTemplateInputInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput
-	ToGetInstallationTemplateInputOutputWithContext(context.Context) GetInstallationTemplateInputOutput
-}
-
-type GetInstallationTemplateInputArgs struct {
-	Default pulumi.StringInput `pulumi:"default"`
-	// Information about this template.
-	Description pulumi.StringInput      `pulumi:"description"`
-	Enums       pulumi.StringArrayInput `pulumi:"enums"`
-	Mandatory   pulumi.BoolInput        `pulumi:"mandatory"`
-	Name        pulumi.StringInput      `pulumi:"name"`
-	Type        pulumi.StringInput      `pulumi:"type"`
-}
-
-func (GetInstallationTemplateInputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
-	return i.ToGetInstallationTemplateInputOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateInputArgs) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputOutput)
-}
-
-// GetInstallationTemplateInputArrayInput is an input type that accepts GetInstallationTemplateInputArray and GetInstallationTemplateInputArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateInputArrayInput` via:
-//
-//	GetInstallationTemplateInputArray{ GetInstallationTemplateInputArgs{...} }
-type GetInstallationTemplateInputArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput
-	ToGetInstallationTemplateInputArrayOutputWithContext(context.Context) GetInstallationTemplateInputArrayOutput
-}
-
-type GetInstallationTemplateInputArray []GetInstallationTemplateInputInput
-
-func (GetInstallationTemplateInputArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
-	return i.ToGetInstallationTemplateInputArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateInputArray) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateInputArrayOutput)
-}
-
-type GetInstallationTemplateInputOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateInputOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateInput)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutput() GetInstallationTemplateInputOutput {
-	return o
-}
-
-func (o GetInstallationTemplateInputOutput) ToGetInstallationTemplateInputOutputWithContext(ctx context.Context) GetInstallationTemplateInputOutput {
-	return o
-}
-
-func (o GetInstallationTemplateInputOutput) Default() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Default }).(pulumi.StringOutput)
-}
-
-// Information about this template.
-func (o GetInstallationTemplateInputOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Description }).(pulumi.StringOutput)
-}
-
-func (o GetInstallationTemplateInputOutput) Enums() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateInput) []string { return v.Enums }).(pulumi.StringArrayOutput)
-}
-
-func (o GetInstallationTemplateInputOutput) Mandatory() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetInstallationTemplateInput) bool { return v.Mandatory }).(pulumi.BoolOutput)
-}
-
-func (o GetInstallationTemplateInputOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Name }).(pulumi.StringOutput)
-}
-
-func (o GetInstallationTemplateInputOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateInput) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetInstallationTemplateInputArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateInputArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateInput)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutput() GetInstallationTemplateInputArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateInputArrayOutput) ToGetInstallationTemplateInputArrayOutputWithContext(ctx context.Context) GetInstallationTemplateInputArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateInputArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateInputOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateInput {
-		return vs[0].([]GetInstallationTemplateInput)[vs[1].(int)]
-	}).(GetInstallationTemplateInputOutput)
-}
-
-type GetInstallationTemplateLicense struct {
-	Os     []GetInstallationTemplateLicenseO     `pulumi:"os"`
-	Usages []GetInstallationTemplateLicenseUsage `pulumi:"usages"`
-}
-
-// GetInstallationTemplateLicenseInput is an input type that accepts GetInstallationTemplateLicenseArgs and GetInstallationTemplateLicenseOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateLicenseInput` via:
-//
-//	GetInstallationTemplateLicenseArgs{...}
-type GetInstallationTemplateLicenseInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput
-	ToGetInstallationTemplateLicenseOutputWithContext(context.Context) GetInstallationTemplateLicenseOutput
-}
-
-type GetInstallationTemplateLicenseArgs struct {
-	Os     GetInstallationTemplateLicenseOArrayInput     `pulumi:"os"`
-	Usages GetInstallationTemplateLicenseUsageArrayInput `pulumi:"usages"`
-}
-
-func (GetInstallationTemplateLicenseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateLicense)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateLicenseArgs) ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput {
-	return i.ToGetInstallationTemplateLicenseOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateLicenseArgs) ToGetInstallationTemplateLicenseOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOutput)
-}
-
-// GetInstallationTemplateLicenseArrayInput is an input type that accepts GetInstallationTemplateLicenseArray and GetInstallationTemplateLicenseArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateLicenseArrayInput` via:
-//
-//	GetInstallationTemplateLicenseArray{ GetInstallationTemplateLicenseArgs{...} }
-type GetInstallationTemplateLicenseArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput
-	ToGetInstallationTemplateLicenseArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseArrayOutput
-}
-
-type GetInstallationTemplateLicenseArray []GetInstallationTemplateLicenseInput
-
-func (GetInstallationTemplateLicenseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateLicense)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateLicenseArray) ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput {
-	return i.ToGetInstallationTemplateLicenseArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateLicenseArray) ToGetInstallationTemplateLicenseArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseArrayOutput)
-}
-
-type GetInstallationTemplateLicenseOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateLicenseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateLicense)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateLicenseOutput) ToGetInstallationTemplateLicenseOutput() GetInstallationTemplateLicenseOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseOutput) ToGetInstallationTemplateLicenseOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseOutput) Os() GetInstallationTemplateLicenseOArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateLicense) []GetInstallationTemplateLicenseO { return v.Os }).(GetInstallationTemplateLicenseOArrayOutput)
-}
-
-func (o GetInstallationTemplateLicenseOutput) Usages() GetInstallationTemplateLicenseUsageArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateLicense) []GetInstallationTemplateLicenseUsage { return v.Usages }).(GetInstallationTemplateLicenseUsageArrayOutput)
-}
-
-type GetInstallationTemplateLicenseArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateLicenseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateLicense)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateLicenseArrayOutput) ToGetInstallationTemplateLicenseArrayOutput() GetInstallationTemplateLicenseArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseArrayOutput) ToGetInstallationTemplateLicenseArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicense {
-		return vs[0].([]GetInstallationTemplateLicense)[vs[1].(int)]
-	}).(GetInstallationTemplateLicenseOutput)
-}
-
-type GetInstallationTemplateLicenseO struct {
-	Names []string `pulumi:"names"`
-	Url   string   `pulumi:"url"`
-}
-
-// GetInstallationTemplateLicenseOInput is an input type that accepts GetInstallationTemplateLicenseOArgs and GetInstallationTemplateLicenseOOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateLicenseOInput` via:
-//
-//	GetInstallationTemplateLicenseOArgs{...}
-type GetInstallationTemplateLicenseOInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput
-	ToGetInstallationTemplateLicenseOOutputWithContext(context.Context) GetInstallationTemplateLicenseOOutput
-}
-
-type GetInstallationTemplateLicenseOArgs struct {
-	Names pulumi.StringArrayInput `pulumi:"names"`
-	Url   pulumi.StringInput      `pulumi:"url"`
-}
-
-func (GetInstallationTemplateLicenseOArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateLicenseO)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateLicenseOArgs) ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput {
-	return i.ToGetInstallationTemplateLicenseOOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateLicenseOArgs) ToGetInstallationTemplateLicenseOOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOOutput)
-}
-
-// GetInstallationTemplateLicenseOArrayInput is an input type that accepts GetInstallationTemplateLicenseOArray and GetInstallationTemplateLicenseOArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateLicenseOArrayInput` via:
-//
-//	GetInstallationTemplateLicenseOArray{ GetInstallationTemplateLicenseOArgs{...} }
-type GetInstallationTemplateLicenseOArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput
-	ToGetInstallationTemplateLicenseOArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseOArrayOutput
-}
-
-type GetInstallationTemplateLicenseOArray []GetInstallationTemplateLicenseOInput
-
-func (GetInstallationTemplateLicenseOArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateLicenseO)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateLicenseOArray) ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput {
-	return i.ToGetInstallationTemplateLicenseOArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateLicenseOArray) ToGetInstallationTemplateLicenseOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseOArrayOutput)
-}
-
-type GetInstallationTemplateLicenseOOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateLicenseOOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateLicenseO)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateLicenseOOutput) ToGetInstallationTemplateLicenseOOutput() GetInstallationTemplateLicenseOOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseOOutput) ToGetInstallationTemplateLicenseOOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseOOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateLicenseO) []string { return v.Names }).(pulumi.StringArrayOutput)
-}
-
-func (o GetInstallationTemplateLicenseOOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateLicenseO) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetInstallationTemplateLicenseOArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateLicenseOArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateLicenseO)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateLicenseOArrayOutput) ToGetInstallationTemplateLicenseOArrayOutput() GetInstallationTemplateLicenseOArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseOArrayOutput) ToGetInstallationTemplateLicenseOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseOArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseOArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseOOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicenseO {
-		return vs[0].([]GetInstallationTemplateLicenseO)[vs[1].(int)]
-	}).(GetInstallationTemplateLicenseOOutput)
-}
-
-type GetInstallationTemplateLicenseUsage struct {
-	Names []string `pulumi:"names"`
-	Url   string   `pulumi:"url"`
-}
-
-// GetInstallationTemplateLicenseUsageInput is an input type that accepts GetInstallationTemplateLicenseUsageArgs and GetInstallationTemplateLicenseUsageOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateLicenseUsageInput` via:
-//
-//	GetInstallationTemplateLicenseUsageArgs{...}
-type GetInstallationTemplateLicenseUsageInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput
-	ToGetInstallationTemplateLicenseUsageOutputWithContext(context.Context) GetInstallationTemplateLicenseUsageOutput
-}
-
-type GetInstallationTemplateLicenseUsageArgs struct {
-	Names pulumi.StringArrayInput `pulumi:"names"`
-	Url   pulumi.StringInput      `pulumi:"url"`
-}
-
-func (GetInstallationTemplateLicenseUsageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateLicenseUsage)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateLicenseUsageArgs) ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput {
-	return i.ToGetInstallationTemplateLicenseUsageOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateLicenseUsageArgs) ToGetInstallationTemplateLicenseUsageOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseUsageOutput)
-}
-
-// GetInstallationTemplateLicenseUsageArrayInput is an input type that accepts GetInstallationTemplateLicenseUsageArray and GetInstallationTemplateLicenseUsageArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateLicenseUsageArrayInput` via:
-//
-//	GetInstallationTemplateLicenseUsageArray{ GetInstallationTemplateLicenseUsageArgs{...} }
-type GetInstallationTemplateLicenseUsageArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput
-	ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(context.Context) GetInstallationTemplateLicenseUsageArrayOutput
-}
-
-type GetInstallationTemplateLicenseUsageArray []GetInstallationTemplateLicenseUsageInput
-
-func (GetInstallationTemplateLicenseUsageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateLicenseUsage)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateLicenseUsageArray) ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput {
-	return i.ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateLicenseUsageArray) ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateLicenseUsageArrayOutput)
-}
-
-type GetInstallationTemplateLicenseUsageOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateLicenseUsageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateLicenseUsage)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateLicenseUsageOutput) ToGetInstallationTemplateLicenseUsageOutput() GetInstallationTemplateLicenseUsageOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseUsageOutput) ToGetInstallationTemplateLicenseUsageOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseUsageOutput) Names() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateLicenseUsage) []string { return v.Names }).(pulumi.StringArrayOutput)
-}
-
-func (o GetInstallationTemplateLicenseUsageOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateLicenseUsage) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetInstallationTemplateLicenseUsageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateLicenseUsageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateLicenseUsage)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateLicenseUsageArrayOutput) ToGetInstallationTemplateLicenseUsageArrayOutput() GetInstallationTemplateLicenseUsageArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseUsageArrayOutput) ToGetInstallationTemplateLicenseUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateLicenseUsageArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateLicenseUsageArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateLicenseUsageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateLicenseUsage {
-		return vs[0].([]GetInstallationTemplateLicenseUsage)[vs[1].(int)]
-	}).(GetInstallationTemplateLicenseUsageOutput)
-}
-
-type GetInstallationTemplateProject struct {
-	// OS template project OS details
-	Os     []GetInstallationTemplateProjectO     `pulumi:"os"`
-	Usages []GetInstallationTemplateProjectUsage `pulumi:"usages"`
-}
-
-// GetInstallationTemplateProjectInput is an input type that accepts GetInstallationTemplateProjectArgs and GetInstallationTemplateProjectOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateProjectInput` via:
-//
-//	GetInstallationTemplateProjectArgs{...}
-type GetInstallationTemplateProjectInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput
-	ToGetInstallationTemplateProjectOutputWithContext(context.Context) GetInstallationTemplateProjectOutput
-}
-
-type GetInstallationTemplateProjectArgs struct {
-	// OS template project OS details
-	Os     GetInstallationTemplateProjectOArrayInput     `pulumi:"os"`
-	Usages GetInstallationTemplateProjectUsageArrayInput `pulumi:"usages"`
-}
-
-func (GetInstallationTemplateProjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateProject)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateProjectArgs) ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput {
-	return i.ToGetInstallationTemplateProjectOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateProjectArgs) ToGetInstallationTemplateProjectOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOutput)
-}
-
-// GetInstallationTemplateProjectArrayInput is an input type that accepts GetInstallationTemplateProjectArray and GetInstallationTemplateProjectArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateProjectArrayInput` via:
-//
-//	GetInstallationTemplateProjectArray{ GetInstallationTemplateProjectArgs{...} }
-type GetInstallationTemplateProjectArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput
-	ToGetInstallationTemplateProjectArrayOutputWithContext(context.Context) GetInstallationTemplateProjectArrayOutput
-}
-
-type GetInstallationTemplateProjectArray []GetInstallationTemplateProjectInput
-
-func (GetInstallationTemplateProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateProject)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateProjectArray) ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput {
-	return i.ToGetInstallationTemplateProjectArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateProjectArray) ToGetInstallationTemplateProjectArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectArrayOutput)
-}
-
-type GetInstallationTemplateProjectOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateProject)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateProjectOutput) ToGetInstallationTemplateProjectOutput() GetInstallationTemplateProjectOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectOutput) ToGetInstallationTemplateProjectOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOutput {
-	return o
-}
-
-// OS template project OS details
-func (o GetInstallationTemplateProjectOutput) Os() GetInstallationTemplateProjectOArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProject) []GetInstallationTemplateProjectO { return v.Os }).(GetInstallationTemplateProjectOArrayOutput)
-}
-
-func (o GetInstallationTemplateProjectOutput) Usages() GetInstallationTemplateProjectUsageArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProject) []GetInstallationTemplateProjectUsage { return v.Usages }).(GetInstallationTemplateProjectUsageArrayOutput)
-}
-
-type GetInstallationTemplateProjectArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateProject)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateProjectArrayOutput) ToGetInstallationTemplateProjectArrayOutput() GetInstallationTemplateProjectArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectArrayOutput) ToGetInstallationTemplateProjectArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProject {
-		return vs[0].([]GetInstallationTemplateProject)[vs[1].(int)]
-	}).(GetInstallationTemplateProjectOutput)
-}
-
-type GetInstallationTemplateProjectO struct {
-	// OS template project item governance
-	Governances []string `pulumi:"governances"`
-	// OS template project item name
+type GetCloudStorageObjectBucketCurrentState struct {
+	// Current encryption configuration:
+	Encryption GetCloudStorageObjectBucketCurrentStateEncryption `pulumi:"encryption"`
+	// Geographic region where the bucket is located:
+	Location GetCloudStorageObjectBucketCurrentStateLocation `pulumi:"location"`
+	// Bucket name.
 	Name string `pulumi:"name"`
-	// OS template project item release notes
-	ReleaseNotes string `pulumi:"releaseNotes"`
-	// OS template project item url
-	Url string `pulumi:"url"`
-	// OS template project item version
-	Version string `pulumi:"version"`
-}
-
-// GetInstallationTemplateProjectOInput is an input type that accepts GetInstallationTemplateProjectOArgs and GetInstallationTemplateProjectOOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateProjectOInput` via:
-//
-//	GetInstallationTemplateProjectOArgs{...}
-type GetInstallationTemplateProjectOInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput
-	ToGetInstallationTemplateProjectOOutputWithContext(context.Context) GetInstallationTemplateProjectOOutput
-}
-
-type GetInstallationTemplateProjectOArgs struct {
-	// OS template project item governance
-	Governances pulumi.StringArrayInput `pulumi:"governances"`
-	// OS template project item name
-	Name pulumi.StringInput `pulumi:"name"`
-	// OS template project item release notes
-	ReleaseNotes pulumi.StringInput `pulumi:"releaseNotes"`
-	// OS template project item url
-	Url pulumi.StringInput `pulumi:"url"`
-	// OS template project item version
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (GetInstallationTemplateProjectOArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateProjectO)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateProjectOArgs) ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput {
-	return i.ToGetInstallationTemplateProjectOOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateProjectOArgs) ToGetInstallationTemplateProjectOOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOOutput)
-}
-
-// GetInstallationTemplateProjectOArrayInput is an input type that accepts GetInstallationTemplateProjectOArray and GetInstallationTemplateProjectOArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateProjectOArrayInput` via:
-//
-//	GetInstallationTemplateProjectOArray{ GetInstallationTemplateProjectOArgs{...} }
-type GetInstallationTemplateProjectOArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput
-	ToGetInstallationTemplateProjectOArrayOutputWithContext(context.Context) GetInstallationTemplateProjectOArrayOutput
-}
-
-type GetInstallationTemplateProjectOArray []GetInstallationTemplateProjectOInput
-
-func (GetInstallationTemplateProjectOArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateProjectO)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateProjectOArray) ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput {
-	return i.ToGetInstallationTemplateProjectOArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateProjectOArray) ToGetInstallationTemplateProjectOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectOArrayOutput)
-}
-
-type GetInstallationTemplateProjectOOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateProjectOOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateProjectO)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateProjectOOutput) ToGetInstallationTemplateProjectOOutput() GetInstallationTemplateProjectOOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectOOutput) ToGetInstallationTemplateProjectOOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOOutput {
-	return o
-}
-
-// OS template project item governance
-func (o GetInstallationTemplateProjectOOutput) Governances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectO) []string { return v.Governances }).(pulumi.StringArrayOutput)
-}
-
-// OS template project item name
-func (o GetInstallationTemplateProjectOOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// OS template project item release notes
-func (o GetInstallationTemplateProjectOOutput) ReleaseNotes() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.ReleaseNotes }).(pulumi.StringOutput)
-}
-
-// OS template project item url
-func (o GetInstallationTemplateProjectOOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Url }).(pulumi.StringOutput)
-}
-
-// OS template project item version
-func (o GetInstallationTemplateProjectOOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectO) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type GetInstallationTemplateProjectOArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateProjectOArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateProjectO)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateProjectOArrayOutput) ToGetInstallationTemplateProjectOArrayOutput() GetInstallationTemplateProjectOArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectOArrayOutput) ToGetInstallationTemplateProjectOArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectOArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectOArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectOOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProjectO {
-		return vs[0].([]GetInstallationTemplateProjectO)[vs[1].(int)]
-	}).(GetInstallationTemplateProjectOOutput)
-}
-
-type GetInstallationTemplateProjectUsage struct {
-	// OS template project item governance
-	Governances []string `pulumi:"governances"`
-	// OS template project item name
-	Name string `pulumi:"name"`
-	// OS template project item release notes
-	ReleaseNotes string `pulumi:"releaseNotes"`
-	// OS template project item url
-	Url string `pulumi:"url"`
-	// OS template project item version
-	Version string `pulumi:"version"`
-}
-
-// GetInstallationTemplateProjectUsageInput is an input type that accepts GetInstallationTemplateProjectUsageArgs and GetInstallationTemplateProjectUsageOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateProjectUsageInput` via:
-//
-//	GetInstallationTemplateProjectUsageArgs{...}
-type GetInstallationTemplateProjectUsageInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput
-	ToGetInstallationTemplateProjectUsageOutputWithContext(context.Context) GetInstallationTemplateProjectUsageOutput
-}
-
-type GetInstallationTemplateProjectUsageArgs struct {
-	// OS template project item governance
-	Governances pulumi.StringArrayInput `pulumi:"governances"`
-	// OS template project item name
-	Name pulumi.StringInput `pulumi:"name"`
-	// OS template project item release notes
-	ReleaseNotes pulumi.StringInput `pulumi:"releaseNotes"`
-	// OS template project item url
-	Url pulumi.StringInput `pulumi:"url"`
-	// OS template project item version
-	Version pulumi.StringInput `pulumi:"version"`
-}
-
-func (GetInstallationTemplateProjectUsageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateProjectUsage)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateProjectUsageArgs) ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput {
-	return i.ToGetInstallationTemplateProjectUsageOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateProjectUsageArgs) ToGetInstallationTemplateProjectUsageOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectUsageOutput)
-}
-
-// GetInstallationTemplateProjectUsageArrayInput is an input type that accepts GetInstallationTemplateProjectUsageArray and GetInstallationTemplateProjectUsageArrayOutput values.
-// You can construct a concrete instance of `GetInstallationTemplateProjectUsageArrayInput` via:
-//
-//	GetInstallationTemplateProjectUsageArray{ GetInstallationTemplateProjectUsageArgs{...} }
-type GetInstallationTemplateProjectUsageArrayInput interface {
-	pulumi.Input
-
-	ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput
-	ToGetInstallationTemplateProjectUsageArrayOutputWithContext(context.Context) GetInstallationTemplateProjectUsageArrayOutput
-}
-
-type GetInstallationTemplateProjectUsageArray []GetInstallationTemplateProjectUsageInput
-
-func (GetInstallationTemplateProjectUsageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateProjectUsage)(nil)).Elem()
-}
-
-func (i GetInstallationTemplateProjectUsageArray) ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput {
-	return i.ToGetInstallationTemplateProjectUsageArrayOutputWithContext(context.Background())
-}
-
-func (i GetInstallationTemplateProjectUsageArray) ToGetInstallationTemplateProjectUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetInstallationTemplateProjectUsageArrayOutput)
-}
-
-type GetInstallationTemplateProjectUsageOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateProjectUsageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstallationTemplateProjectUsage)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateProjectUsageOutput) ToGetInstallationTemplateProjectUsageOutput() GetInstallationTemplateProjectUsageOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectUsageOutput) ToGetInstallationTemplateProjectUsageOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageOutput {
-	return o
-}
-
-// OS template project item governance
-func (o GetInstallationTemplateProjectUsageOutput) Governances() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) []string { return v.Governances }).(pulumi.StringArrayOutput)
-}
-
-// OS template project item name
-func (o GetInstallationTemplateProjectUsageOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// OS template project item release notes
-func (o GetInstallationTemplateProjectUsageOutput) ReleaseNotes() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.ReleaseNotes }).(pulumi.StringOutput)
-}
-
-// OS template project item url
-func (o GetInstallationTemplateProjectUsageOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Url }).(pulumi.StringOutput)
-}
-
-// OS template project item version
-func (o GetInstallationTemplateProjectUsageOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstallationTemplateProjectUsage) string { return v.Version }).(pulumi.StringOutput)
-}
-
-type GetInstallationTemplateProjectUsageArrayOutput struct{ *pulumi.OutputState }
-
-func (GetInstallationTemplateProjectUsageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetInstallationTemplateProjectUsage)(nil)).Elem()
-}
-
-func (o GetInstallationTemplateProjectUsageArrayOutput) ToGetInstallationTemplateProjectUsageArrayOutput() GetInstallationTemplateProjectUsageArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectUsageArrayOutput) ToGetInstallationTemplateProjectUsageArrayOutputWithContext(ctx context.Context) GetInstallationTemplateProjectUsageArrayOutput {
-	return o
-}
-
-func (o GetInstallationTemplateProjectUsageArrayOutput) Index(i pulumi.IntInput) GetInstallationTemplateProjectUsageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstallationTemplateProjectUsage {
-		return vs[0].([]GetInstallationTemplateProjectUsage)[vs[1].(int)]
-	}).(GetInstallationTemplateProjectUsageOutput)
-}
-
-type GetIploadbalancingNatIpsNatIp struct {
-	Ips  []string `pulumi:"ips"`
-	Zone string   `pulumi:"zone"`
-}
-
-// GetIploadbalancingNatIpsNatIpInput is an input type that accepts GetIploadbalancingNatIpsNatIpArgs and GetIploadbalancingNatIpsNatIpOutput values.
-// You can construct a concrete instance of `GetIploadbalancingNatIpsNatIpInput` via:
-//
-//	GetIploadbalancingNatIpsNatIpArgs{...}
-type GetIploadbalancingNatIpsNatIpInput interface {
-	pulumi.Input
-
-	ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput
-	ToGetIploadbalancingNatIpsNatIpOutputWithContext(context.Context) GetIploadbalancingNatIpsNatIpOutput
-}
-
-type GetIploadbalancingNatIpsNatIpArgs struct {
-	Ips  pulumi.StringArrayInput `pulumi:"ips"`
-	Zone pulumi.StringInput      `pulumi:"zone"`
-}
-
-func (GetIploadbalancingNatIpsNatIpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIploadbalancingNatIpsNatIp)(nil)).Elem()
-}
-
-func (i GetIploadbalancingNatIpsNatIpArgs) ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput {
-	return i.ToGetIploadbalancingNatIpsNatIpOutputWithContext(context.Background())
-}
-
-func (i GetIploadbalancingNatIpsNatIpArgs) ToGetIploadbalancingNatIpsNatIpOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIploadbalancingNatIpsNatIpOutput)
-}
-
-// GetIploadbalancingNatIpsNatIpArrayInput is an input type that accepts GetIploadbalancingNatIpsNatIpArray and GetIploadbalancingNatIpsNatIpArrayOutput values.
-// You can construct a concrete instance of `GetIploadbalancingNatIpsNatIpArrayInput` via:
-//
-//	GetIploadbalancingNatIpsNatIpArray{ GetIploadbalancingNatIpsNatIpArgs{...} }
-type GetIploadbalancingNatIpsNatIpArrayInput interface {
-	pulumi.Input
-
-	ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput
-	ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(context.Context) GetIploadbalancingNatIpsNatIpArrayOutput
-}
-
-type GetIploadbalancingNatIpsNatIpArray []GetIploadbalancingNatIpsNatIpInput
-
-func (GetIploadbalancingNatIpsNatIpArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIploadbalancingNatIpsNatIp)(nil)).Elem()
-}
-
-func (i GetIploadbalancingNatIpsNatIpArray) ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput {
-	return i.ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(context.Background())
-}
-
-func (i GetIploadbalancingNatIpsNatIpArray) ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIploadbalancingNatIpsNatIpArrayOutput)
-}
-
-type GetIploadbalancingNatIpsNatIpOutput struct{ *pulumi.OutputState }
-
-func (GetIploadbalancingNatIpsNatIpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIploadbalancingNatIpsNatIp)(nil)).Elem()
-}
-
-func (o GetIploadbalancingNatIpsNatIpOutput) ToGetIploadbalancingNatIpsNatIpOutput() GetIploadbalancingNatIpsNatIpOutput {
-	return o
-}
-
-func (o GetIploadbalancingNatIpsNatIpOutput) ToGetIploadbalancingNatIpsNatIpOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpOutput {
-	return o
-}
-
-func (o GetIploadbalancingNatIpsNatIpOutput) Ips() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIploadbalancingNatIpsNatIp) []string { return v.Ips }).(pulumi.StringArrayOutput)
-}
-
-func (o GetIploadbalancingNatIpsNatIpOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIploadbalancingNatIpsNatIp) string { return v.Zone }).(pulumi.StringOutput)
-}
-
-type GetIploadbalancingNatIpsNatIpArrayOutput struct{ *pulumi.OutputState }
-
-func (GetIploadbalancingNatIpsNatIpArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIploadbalancingNatIpsNatIp)(nil)).Elem()
-}
-
-func (o GetIploadbalancingNatIpsNatIpArrayOutput) ToGetIploadbalancingNatIpsNatIpArrayOutput() GetIploadbalancingNatIpsNatIpArrayOutput {
-	return o
-}
-
-func (o GetIploadbalancingNatIpsNatIpArrayOutput) ToGetIploadbalancingNatIpsNatIpArrayOutputWithContext(ctx context.Context) GetIploadbalancingNatIpsNatIpArrayOutput {
-	return o
-}
-
-func (o GetIploadbalancingNatIpsNatIpArrayOutput) Index(i pulumi.IntInput) GetIploadbalancingNatIpsNatIpOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIploadbalancingNatIpsNatIp {
-		return vs[0].([]GetIploadbalancingNatIpsNatIp)[vs[1].(int)]
-	}).(GetIploadbalancingNatIpsNatIpOutput)
-}
-
-type GetOkmsSecretIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Current object lock configuration:
+	ObjectLock GetCloudStorageObjectBucketCurrentStateObjectLock `pulumi:"objectLock"`
+	// Bucket total objects count.
+	ObjectsCount int `pulumi:"objectsCount"`
+	// Bucket total objects size in bytes.
+	ObjectsSize int `pulumi:"objectsSize"`
+	// Current metadata tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn string `pulumi:"urn"`
+	// Current versioning configuration:
+	Versioning GetCloudStorageObjectBucketCurrentStateVersioning `pulumi:"versioning"`
+	// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).
+	VirtualHost string `pulumi:"virtualHost"`
 }
 
-// GetOkmsSecretIamInput is an input type that accepts GetOkmsSecretIamArgs and GetOkmsSecretIamOutput values.
-// You can construct a concrete instance of `GetOkmsSecretIamInput` via:
+// GetCloudStorageObjectBucketCurrentStateInput is an input type that accepts GetCloudStorageObjectBucketCurrentStateArgs and GetCloudStorageObjectBucketCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketCurrentStateInput` via:
 //
-//	GetOkmsSecretIamArgs{...}
-type GetOkmsSecretIamInput interface {
+//	GetCloudStorageObjectBucketCurrentStateArgs{...}
+type GetCloudStorageObjectBucketCurrentStateInput interface {
 	pulumi.Input
 
-	ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput
-	ToGetOkmsSecretIamOutputWithContext(context.Context) GetOkmsSecretIamOutput
-}
-
-type GetOkmsSecretIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetOkmsSecretIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOkmsSecretIam)(nil)).Elem()
-}
-
-func (i GetOkmsSecretIamArgs) ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput {
-	return i.ToGetOkmsSecretIamOutputWithContext(context.Background())
-}
-
-func (i GetOkmsSecretIamArgs) ToGetOkmsSecretIamOutputWithContext(ctx context.Context) GetOkmsSecretIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsSecretIamOutput)
-}
-
-type GetOkmsSecretIamOutput struct{ *pulumi.OutputState }
-
-func (GetOkmsSecretIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOkmsSecretIam)(nil)).Elem()
-}
-
-func (o GetOkmsSecretIamOutput) ToGetOkmsSecretIamOutput() GetOkmsSecretIamOutput {
-	return o
-}
-
-func (o GetOkmsSecretIamOutput) ToGetOkmsSecretIamOutputWithContext(ctx context.Context) GetOkmsSecretIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetOkmsSecretIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the resource
-func (o GetOkmsSecretIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetOkmsSecretIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetOkmsSecretIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Unique resource name used in policies
-func (o GetOkmsSecretIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOkmsSecretIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetOkmsSecretMetadata struct {
-	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
-	CasRequired bool `pulumi:"casRequired"`
-	// Time of creation of the secret
-	CreatedAt string `pulumi:"createdAt"`
-	// The secret version
-	CurrentVersion float64 `pulumi:"currentVersion"`
-	// Custom metadata
-	CustomMetadata map[string]string `pulumi:"customMetadata"`
-	// Time duration before a version is deactivated
-	DeactivateVersionAfter string `pulumi:"deactivateVersionAfter"`
-	// The number of versions to keep (10 default)
-	MaxVersions float64 `pulumi:"maxVersions"`
-	// The secret oldest version
-	OldestVersion float64 `pulumi:"oldestVersion"`
-	// Time of the last update of the secret
-	UpdatedAt string `pulumi:"updatedAt"`
-}
-
-// GetOkmsSecretMetadataInput is an input type that accepts GetOkmsSecretMetadataArgs and GetOkmsSecretMetadataOutput values.
-// You can construct a concrete instance of `GetOkmsSecretMetadataInput` via:
-//
-//	GetOkmsSecretMetadataArgs{...}
-type GetOkmsSecretMetadataInput interface {
-	pulumi.Input
-
-	ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput
-	ToGetOkmsSecretMetadataOutputWithContext(context.Context) GetOkmsSecretMetadataOutput
-}
-
-type GetOkmsSecretMetadataArgs struct {
-	// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
-	CasRequired pulumi.BoolInput `pulumi:"casRequired"`
-	// Time of creation of the secret
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The secret version
-	CurrentVersion pulumi.Float64Input `pulumi:"currentVersion"`
-	// Custom metadata
-	CustomMetadata pulumi.StringMapInput `pulumi:"customMetadata"`
-	// Time duration before a version is deactivated
-	DeactivateVersionAfter pulumi.StringInput `pulumi:"deactivateVersionAfter"`
-	// The number of versions to keep (10 default)
-	MaxVersions pulumi.Float64Input `pulumi:"maxVersions"`
-	// The secret oldest version
-	OldestVersion pulumi.Float64Input `pulumi:"oldestVersion"`
-	// Time of the last update of the secret
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-}
-
-func (GetOkmsSecretMetadataArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOkmsSecretMetadata)(nil)).Elem()
-}
-
-func (i GetOkmsSecretMetadataArgs) ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput {
-	return i.ToGetOkmsSecretMetadataOutputWithContext(context.Background())
-}
-
-func (i GetOkmsSecretMetadataArgs) ToGetOkmsSecretMetadataOutputWithContext(ctx context.Context) GetOkmsSecretMetadataOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOkmsSecretMetadataOutput)
-}
-
-type GetOkmsSecretMetadataOutput struct{ *pulumi.OutputState }
-
-func (GetOkmsSecretMetadataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOkmsSecretMetadata)(nil)).Elem()
-}
-
-func (o GetOkmsSecretMetadataOutput) ToGetOkmsSecretMetadataOutput() GetOkmsSecretMetadataOutput {
-	return o
-}
-
-func (o GetOkmsSecretMetadataOutput) ToGetOkmsSecretMetadataOutputWithContext(ctx context.Context) GetOkmsSecretMetadataOutput {
-	return o
-}
-
-// The “Cas” parameter will be required for each write request if set to true. When the “cas” (Check and set) is specified, the current version of the secret is verified before updating it.
-func (o GetOkmsSecretMetadataOutput) CasRequired() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) bool { return v.CasRequired }).(pulumi.BoolOutput)
-}
-
-// Time of creation of the secret
-func (o GetOkmsSecretMetadataOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The secret version
-func (o GetOkmsSecretMetadataOutput) CurrentVersion() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.CurrentVersion }).(pulumi.Float64Output)
-}
-
-// Custom metadata
-func (o GetOkmsSecretMetadataOutput) CustomMetadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) map[string]string { return v.CustomMetadata }).(pulumi.StringMapOutput)
-}
-
-// Time duration before a version is deactivated
-func (o GetOkmsSecretMetadataOutput) DeactivateVersionAfter() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.DeactivateVersionAfter }).(pulumi.StringOutput)
-}
-
-// The number of versions to keep (10 default)
-func (o GetOkmsSecretMetadataOutput) MaxVersions() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.MaxVersions }).(pulumi.Float64Output)
-}
-
-// The secret oldest version
-func (o GetOkmsSecretMetadataOutput) OldestVersion() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) float64 { return v.OldestVersion }).(pulumi.Float64Output)
-}
-
-// Time of the last update of the secret
-func (o GetOkmsSecretMetadataOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOkmsSecretMetadata) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig struct {
-	// BGP AS number
-	BgpNeighborArea float64 `pulumi:"bgpNeighborArea"`
-	// Router IP for BGP
-	BgpNeighborIp string `pulumi:"bgpNeighborIp"`
-	// ID of the extra configuration
-	Id float64 `pulumi:"id"`
-	// Static route next hop
-	NextHop string `pulumi:"nextHop"`
-	// Status of the pop configuration
-	Status string `pulumi:"status"`
-	// Static route ip
-	Subnet string `pulumi:"subnet"`
-	// Type of the configuration
-	Type string `pulumi:"type"`
-}
-
-// GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput is an input type that accepts GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs and GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput` via:
-//
-//	GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{...}
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput
-	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput
-}
-
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs struct {
-	// BGP AS number
-	BgpNeighborArea pulumi.Float64Input `pulumi:"bgpNeighborArea"`
-	// Router IP for BGP
-	BgpNeighborIp pulumi.StringInput `pulumi:"bgpNeighborIp"`
-	// ID of the extra configuration
-	Id pulumi.Float64Input `pulumi:"id"`
-	// Static route next hop
-	NextHop pulumi.StringInput `pulumi:"nextHop"`
-	// Status of the pop configuration
-	Status pulumi.StringInput `pulumi:"status"`
-	// Static route ip
-	Subnet pulumi.StringInput `pulumi:"subnet"`
-	// Type of the configuration
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
-}
-
-func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
-	return i.ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(context.Background())
-}
-
-func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput)
-}
-
-// GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray and GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput` via:
-//
-//	GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{ GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{...} }
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput
-	ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput
-}
-
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray []GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput
-
-func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
-}
-
-func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
-	return i.ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput)
-}
-
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
-}
-
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
-	return o
-}
-
-// BGP AS number
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) BgpNeighborArea() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) float64 { return v.BgpNeighborArea }).(pulumi.Float64Output)
-}
-
-// Router IP for BGP
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) BgpNeighborIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.BgpNeighborIp }).(pulumi.StringOutput)
-}
-
-// ID of the extra configuration
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) float64 { return v.Id }).(pulumi.Float64Output)
-}
-
-// Static route next hop
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) NextHop() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.NextHop }).(pulumi.StringOutput)
-}
-
-// Status of the pop configuration
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Static route ip
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Subnet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Subnet }).(pulumi.StringOutput)
-}
-
-// Type of the configuration
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)(nil)).Elem()
-}
-
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput() GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig {
-		return vs[0].([]GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfig)[vs[1].(int)]
-	}).(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput)
-}
-
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfig struct {
-	// Datacenter ID
-	DatacenterId float64 `pulumi:"datacenterId"`
-	// ID of the Datacenter configuration
-	Id float64 `pulumi:"id"`
-	// OVH Private AS
-	OvhBgpArea float64 `pulumi:"ovhBgpArea"`
-	// Status of the pop configuration
-	Status string `pulumi:"status"`
-	// Subnet should be a /28 min
-	Subnet string `pulumi:"subnet"`
-}
-
-// GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput is an input type that accepts GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs and GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput` via:
-//
-//	GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{...}
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput
-	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput
-}
-
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs struct {
-	// Datacenter ID
-	DatacenterId pulumi.Float64Input `pulumi:"datacenterId"`
-	// ID of the Datacenter configuration
-	Id pulumi.Float64Input `pulumi:"id"`
-	// OVH Private AS
-	OvhBgpArea pulumi.Float64Input `pulumi:"ovhBgpArea"`
-	// Status of the pop configuration
-	Status pulumi.StringInput `pulumi:"status"`
-	// Subnet should be a /28 min
-	Subnet pulumi.StringInput `pulumi:"subnet"`
-}
-
-func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
-}
-
-func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
-	return i.ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(context.Background())
-}
-
-func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput)
-}
-
-// GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray and GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput` via:
-//
-//	GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray{ GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{...} }
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput
-	ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput
-}
-
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray []GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput
-
-func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
-}
-
-func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
-	return i.ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput)
-}
-
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
-}
-
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
-	return o
-}
-
-// Datacenter ID
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) DatacenterId() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.DatacenterId }).(pulumi.Float64Output)
-}
-
-// ID of the Datacenter configuration
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.Id }).(pulumi.Float64Output)
-}
-
-// OVH Private AS
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) OvhBgpArea() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) float64 { return v.OvhBgpArea }).(pulumi.Float64Output)
-}
-
-// Status of the pop configuration
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Subnet should be a /28 min
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput) Subnet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopDatacentersDatacenterConfig) string { return v.Subnet }).(pulumi.StringOutput)
-}
-
-type GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)(nil)).Elem()
-}
-
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput() GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) ToGetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopDatacentersDatacenterConfig {
-		return vs[0].([]GetOvhcloudConnectConfigPopDatacentersDatacenterConfig)[vs[1].(int)]
-	}).(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput)
-}
-
-type GetOvhcloudConnectConfigPopsPopConfig struct {
-	// Customer Private AS
-	CustomerBgpArea float64 `pulumi:"customerBgpArea"`
-	// ID of the Pop Configuration
-	Id float64 `pulumi:"id"`
-	// ID of the interface
-	InterfaceId float64 `pulumi:"interfaceId"`
-	// OVH Private AS
-	OvhBgpArea float64 `pulumi:"ovhBgpArea"`
-	// Status of the pop configuration
-	Status string `pulumi:"status"`
-	// Subnet should be a /30, first IP for OVH, second IP for customer
-	Subnet string `pulumi:"subnet"`
-	// Type of the pop configuration
-	Type string `pulumi:"type"`
-}
-
-// GetOvhcloudConnectConfigPopsPopConfigInput is an input type that accepts GetOvhcloudConnectConfigPopsPopConfigArgs and GetOvhcloudConnectConfigPopsPopConfigOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectConfigPopsPopConfigInput` via:
-//
-//	GetOvhcloudConnectConfigPopsPopConfigArgs{...}
-type GetOvhcloudConnectConfigPopsPopConfigInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput
-	ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput
-}
-
-type GetOvhcloudConnectConfigPopsPopConfigArgs struct {
-	// Customer Private AS
-	CustomerBgpArea pulumi.Float64Input `pulumi:"customerBgpArea"`
-	// ID of the Pop Configuration
-	Id pulumi.Float64Input `pulumi:"id"`
-	// ID of the interface
-	InterfaceId pulumi.Float64Input `pulumi:"interfaceId"`
-	// OVH Private AS
-	OvhBgpArea pulumi.Float64Input `pulumi:"ovhBgpArea"`
-	// Status of the pop configuration
-	Status pulumi.StringInput `pulumi:"status"`
-	// Subnet should be a /30, first IP for OVH, second IP for customer
-	Subnet pulumi.StringInput `pulumi:"subnet"`
-	// Type of the pop configuration
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GetOvhcloudConnectConfigPopsPopConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
-}
-
-func (i GetOvhcloudConnectConfigPopsPopConfigArgs) ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput {
-	return i.ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(context.Background())
-}
-
-func (i GetOvhcloudConnectConfigPopsPopConfigArgs) ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopsPopConfigOutput)
-}
-
-// GetOvhcloudConnectConfigPopsPopConfigArrayInput is an input type that accepts GetOvhcloudConnectConfigPopsPopConfigArray and GetOvhcloudConnectConfigPopsPopConfigArrayOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectConfigPopsPopConfigArrayInput` via:
-//
-//	GetOvhcloudConnectConfigPopsPopConfigArray{ GetOvhcloudConnectConfigPopsPopConfigArgs{...} }
-type GetOvhcloudConnectConfigPopsPopConfigArrayInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput
-	ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput
-}
-
-type GetOvhcloudConnectConfigPopsPopConfigArray []GetOvhcloudConnectConfigPopsPopConfigInput
-
-func (GetOvhcloudConnectConfigPopsPopConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
-}
-
-func (i GetOvhcloudConnectConfigPopsPopConfigArray) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
-	return i.ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(context.Background())
-}
-
-func (i GetOvhcloudConnectConfigPopsPopConfigArray) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectConfigPopsPopConfigArrayOutput)
-}
-
-type GetOvhcloudConnectConfigPopsPopConfigOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectConfigPopsPopConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
-}
-
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) ToGetOvhcloudConnectConfigPopsPopConfigOutput() GetOvhcloudConnectConfigPopsPopConfigOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) ToGetOvhcloudConnectConfigPopsPopConfigOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigOutput {
-	return o
-}
-
-// Customer Private AS
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) CustomerBgpArea() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.CustomerBgpArea }).(pulumi.Float64Output)
-}
-
-// ID of the Pop Configuration
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.Id }).(pulumi.Float64Output)
-}
-
-// ID of the interface
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) InterfaceId() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.InterfaceId }).(pulumi.Float64Output)
-}
-
-// OVH Private AS
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) OvhBgpArea() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) float64 { return v.OvhBgpArea }).(pulumi.Float64Output)
-}
-
-// Status of the pop configuration
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Subnet should be a /30, first IP for OVH, second IP for customer
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Subnet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Subnet }).(pulumi.StringOutput)
-}
-
-// Type of the pop configuration
-func (o GetOvhcloudConnectConfigPopsPopConfigOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectConfigPopsPopConfig) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetOvhcloudConnectConfigPopsPopConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectConfigPopsPopConfig)(nil)).Elem()
-}
-
-func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutput() GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) ToGetOvhcloudConnectConfigPopsPopConfigArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectConfigPopsPopConfigArrayOutput {
-	return o
-}
-
-func (o GetOvhcloudConnectConfigPopsPopConfigArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectConfigPopsPopConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectConfigPopsPopConfig {
-		return vs[0].([]GetOvhcloudConnectConfigPopsPopConfig)[vs[1].(int)]
-	}).(GetOvhcloudConnectConfigPopsPopConfigOutput)
-}
-
-type GetOvhcloudConnectDatacentersDatacenter struct {
-	// Get availability to add new configuration on it
-	Available bool `pulumi:"available"`
-	// Id
-	Id float64 `pulumi:"id"`
-	// name of the datacenter
-	Name string `pulumi:"name"`
-	// region of the datacenter
-	Region string `pulumi:"region"`
-	// region type of the datacenter
-	RegionType string `pulumi:"regionType"`
-}
-
-// GetOvhcloudConnectDatacentersDatacenterInput is an input type that accepts GetOvhcloudConnectDatacentersDatacenterArgs and GetOvhcloudConnectDatacentersDatacenterOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectDatacentersDatacenterInput` via:
-//
-//	GetOvhcloudConnectDatacentersDatacenterArgs{...}
-type GetOvhcloudConnectDatacentersDatacenterInput interface {
-	pulumi.Input
-
-	ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput
-	ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(context.Context) GetOvhcloudConnectDatacentersDatacenterOutput
-}
-
-type GetOvhcloudConnectDatacentersDatacenterArgs struct {
-	// Get availability to add new configuration on it
-	Available pulumi.BoolInput `pulumi:"available"`
-	// Id
-	Id pulumi.Float64Input `pulumi:"id"`
-	// name of the datacenter
+	ToGetCloudStorageObjectBucketCurrentStateOutput() GetCloudStorageObjectBucketCurrentStateOutput
+	ToGetCloudStorageObjectBucketCurrentStateOutputWithContext(context.Context) GetCloudStorageObjectBucketCurrentStateOutput
+}
+
+type GetCloudStorageObjectBucketCurrentStateArgs struct {
+	// Current encryption configuration:
+	Encryption GetCloudStorageObjectBucketCurrentStateEncryptionInput `pulumi:"encryption"`
+	// Geographic region where the bucket is located:
+	Location GetCloudStorageObjectBucketCurrentStateLocationInput `pulumi:"location"`
+	// Bucket name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// region of the datacenter
-	Region pulumi.StringInput `pulumi:"region"`
-	// region type of the datacenter
-	RegionType pulumi.StringInput `pulumi:"regionType"`
+	// Current object lock configuration:
+	ObjectLock GetCloudStorageObjectBucketCurrentStateObjectLockInput `pulumi:"objectLock"`
+	// Bucket total objects count.
+	ObjectsCount pulumi.IntInput `pulumi:"objectsCount"`
+	// Bucket total objects size in bytes.
+	ObjectsSize pulumi.IntInput `pulumi:"objectsSize"`
+	// Current metadata tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Current versioning configuration:
+	Versioning GetCloudStorageObjectBucketCurrentStateVersioningInput `pulumi:"versioning"`
+	// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).
+	VirtualHost pulumi.StringInput `pulumi:"virtualHost"`
 }
 
-func (GetOvhcloudConnectDatacentersDatacenterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+func (GetCloudStorageObjectBucketCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentState)(nil)).Elem()
 }
 
-func (i GetOvhcloudConnectDatacentersDatacenterArgs) ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput {
-	return i.ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(context.Background())
+func (i GetCloudStorageObjectBucketCurrentStateArgs) ToGetCloudStorageObjectBucketCurrentStateOutput() GetCloudStorageObjectBucketCurrentStateOutput {
+	return i.ToGetCloudStorageObjectBucketCurrentStateOutputWithContext(context.Background())
 }
 
-func (i GetOvhcloudConnectDatacentersDatacenterArgs) ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectDatacentersDatacenterOutput)
+func (i GetCloudStorageObjectBucketCurrentStateArgs) ToGetCloudStorageObjectBucketCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketCurrentStateOutput)
 }
 
-// GetOvhcloudConnectDatacentersDatacenterArrayInput is an input type that accepts GetOvhcloudConnectDatacentersDatacenterArray and GetOvhcloudConnectDatacentersDatacenterArrayOutput values.
-// You can construct a concrete instance of `GetOvhcloudConnectDatacentersDatacenterArrayInput` via:
+type GetCloudStorageObjectBucketCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketCurrentStateOutput) ToGetCloudStorageObjectBucketCurrentStateOutput() GetCloudStorageObjectBucketCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketCurrentStateOutput) ToGetCloudStorageObjectBucketCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateOutput {
+	return o
+}
+
+// Current encryption configuration:
+func (o GetCloudStorageObjectBucketCurrentStateOutput) Encryption() GetCloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) GetCloudStorageObjectBucketCurrentStateEncryption {
+		return v.Encryption
+	}).(GetCloudStorageObjectBucketCurrentStateEncryptionOutput)
+}
+
+// Geographic region where the bucket is located:
+func (o GetCloudStorageObjectBucketCurrentStateOutput) Location() GetCloudStorageObjectBucketCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) GetCloudStorageObjectBucketCurrentStateLocation {
+		return v.Location
+	}).(GetCloudStorageObjectBucketCurrentStateLocationOutput)
+}
+
+// Bucket name.
+func (o GetCloudStorageObjectBucketCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Current object lock configuration:
+func (o GetCloudStorageObjectBucketCurrentStateOutput) ObjectLock() GetCloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) GetCloudStorageObjectBucketCurrentStateObjectLock {
+		return v.ObjectLock
+	}).(GetCloudStorageObjectBucketCurrentStateObjectLockOutput)
+}
+
+// Bucket total objects count.
+func (o GetCloudStorageObjectBucketCurrentStateOutput) ObjectsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) int { return v.ObjectsCount }).(pulumi.IntOutput)
+}
+
+// Bucket total objects size in bytes.
+func (o GetCloudStorageObjectBucketCurrentStateOutput) ObjectsSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) int { return v.ObjectsSize }).(pulumi.IntOutput)
+}
+
+// Current metadata tags.
+func (o GetCloudStorageObjectBucketCurrentStateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Current versioning configuration:
+func (o GetCloudStorageObjectBucketCurrentStateOutput) Versioning() GetCloudStorageObjectBucketCurrentStateVersioningOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) GetCloudStorageObjectBucketCurrentStateVersioning {
+		return v.Versioning
+	}).(GetCloudStorageObjectBucketCurrentStateVersioningOutput)
+}
+
+// Bucket virtual host, as a hostname without scheme (for example `my-data-bucket.s3.gra.io.cloud.ovh.net`).
+func (o GetCloudStorageObjectBucketCurrentStateOutput) VirtualHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentState) string { return v.VirtualHost }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketCurrentStateEncryption struct {
+	// Encryption algorithm.
+	Algorithm string `pulumi:"algorithm"`
+}
+
+// GetCloudStorageObjectBucketCurrentStateEncryptionInput is an input type that accepts GetCloudStorageObjectBucketCurrentStateEncryptionArgs and GetCloudStorageObjectBucketCurrentStateEncryptionOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketCurrentStateEncryptionInput` via:
 //
-//	GetOvhcloudConnectDatacentersDatacenterArray{ GetOvhcloudConnectDatacentersDatacenterArgs{...} }
-type GetOvhcloudConnectDatacentersDatacenterArrayInput interface {
+//	GetCloudStorageObjectBucketCurrentStateEncryptionArgs{...}
+type GetCloudStorageObjectBucketCurrentStateEncryptionInput interface {
 	pulumi.Input
 
-	ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput
-	ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput
+	ToGetCloudStorageObjectBucketCurrentStateEncryptionOutput() GetCloudStorageObjectBucketCurrentStateEncryptionOutput
+	ToGetCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(context.Context) GetCloudStorageObjectBucketCurrentStateEncryptionOutput
 }
 
-type GetOvhcloudConnectDatacentersDatacenterArray []GetOvhcloudConnectDatacentersDatacenterInput
-
-func (GetOvhcloudConnectDatacentersDatacenterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+type GetCloudStorageObjectBucketCurrentStateEncryptionArgs struct {
+	// Encryption algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
 }
 
-func (i GetOvhcloudConnectDatacentersDatacenterArray) ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput {
-	return i.ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(context.Background())
+func (GetCloudStorageObjectBucketCurrentStateEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateEncryption)(nil)).Elem()
 }
 
-func (i GetOvhcloudConnectDatacentersDatacenterArray) ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetOvhcloudConnectDatacentersDatacenterArrayOutput)
+func (i GetCloudStorageObjectBucketCurrentStateEncryptionArgs) ToGetCloudStorageObjectBucketCurrentStateEncryptionOutput() GetCloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return i.ToGetCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(context.Background())
 }
 
-type GetOvhcloudConnectDatacentersDatacenterOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectDatacentersDatacenterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+func (i GetCloudStorageObjectBucketCurrentStateEncryptionArgs) ToGetCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketCurrentStateEncryptionOutput)
 }
 
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) ToGetOvhcloudConnectDatacentersDatacenterOutput() GetOvhcloudConnectDatacentersDatacenterOutput {
+type GetCloudStorageObjectBucketCurrentStateEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketCurrentStateEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketCurrentStateEncryptionOutput) ToGetCloudStorageObjectBucketCurrentStateEncryptionOutput() GetCloudStorageObjectBucketCurrentStateEncryptionOutput {
 	return o
 }
 
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) ToGetOvhcloudConnectDatacentersDatacenterOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterOutput {
+func (o GetCloudStorageObjectBucketCurrentStateEncryptionOutput) ToGetCloudStorageObjectBucketCurrentStateEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateEncryptionOutput {
 	return o
 }
 
-// Get availability to add new configuration on it
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) bool { return v.Available }).(pulumi.BoolOutput)
+// Encryption algorithm.
+func (o GetCloudStorageObjectBucketCurrentStateEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentStateEncryption) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Id
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) Id() pulumi.Float64Output {
-	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) float64 { return v.Id }).(pulumi.Float64Output)
+type GetCloudStorageObjectBucketCurrentStateLocation struct {
+	// Region identifier.
+	Region string `pulumi:"region"`
 }
 
-// name of the datacenter
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.Name }).(pulumi.StringOutput)
+// GetCloudStorageObjectBucketCurrentStateLocationInput is an input type that accepts GetCloudStorageObjectBucketCurrentStateLocationArgs and GetCloudStorageObjectBucketCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketCurrentStateLocationInput` via:
+//
+//	GetCloudStorageObjectBucketCurrentStateLocationArgs{...}
+type GetCloudStorageObjectBucketCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketCurrentStateLocationOutput() GetCloudStorageObjectBucketCurrentStateLocationOutput
+	ToGetCloudStorageObjectBucketCurrentStateLocationOutputWithContext(context.Context) GetCloudStorageObjectBucketCurrentStateLocationOutput
 }
 
-// region of the datacenter
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.Region }).(pulumi.StringOutput)
+type GetCloudStorageObjectBucketCurrentStateLocationArgs struct {
+	// Region identifier.
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
-// region type of the datacenter
-func (o GetOvhcloudConnectDatacentersDatacenterOutput) RegionType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOvhcloudConnectDatacentersDatacenter) string { return v.RegionType }).(pulumi.StringOutput)
+func (GetCloudStorageObjectBucketCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateLocation)(nil)).Elem()
 }
 
-type GetOvhcloudConnectDatacentersDatacenterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetOvhcloudConnectDatacentersDatacenterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetOvhcloudConnectDatacentersDatacenter)(nil)).Elem()
+func (i GetCloudStorageObjectBucketCurrentStateLocationArgs) ToGetCloudStorageObjectBucketCurrentStateLocationOutput() GetCloudStorageObjectBucketCurrentStateLocationOutput {
+	return i.ToGetCloudStorageObjectBucketCurrentStateLocationOutputWithContext(context.Background())
 }
 
-func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) ToGetOvhcloudConnectDatacentersDatacenterArrayOutput() GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+func (i GetCloudStorageObjectBucketCurrentStateLocationArgs) ToGetCloudStorageObjectBucketCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketCurrentStateLocationOutput)
+}
+
+type GetCloudStorageObjectBucketCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketCurrentStateLocationOutput) ToGetCloudStorageObjectBucketCurrentStateLocationOutput() GetCloudStorageObjectBucketCurrentStateLocationOutput {
 	return o
 }
 
-func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) ToGetOvhcloudConnectDatacentersDatacenterArrayOutputWithContext(ctx context.Context) GetOvhcloudConnectDatacentersDatacenterArrayOutput {
+func (o GetCloudStorageObjectBucketCurrentStateLocationOutput) ToGetCloudStorageObjectBucketCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateLocationOutput {
 	return o
 }
 
-func (o GetOvhcloudConnectDatacentersDatacenterArrayOutput) Index(i pulumi.IntInput) GetOvhcloudConnectDatacentersDatacenterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetOvhcloudConnectDatacentersDatacenter {
-		return vs[0].([]GetOvhcloudConnectDatacentersDatacenter)[vs[1].(int)]
-	}).(GetOvhcloudConnectDatacentersDatacenterOutput)
+// Region identifier.
+func (o GetCloudStorageObjectBucketCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetServerVni struct {
-	// VirtualNetworkInterface activation state
-	Enabled bool `pulumi:"enabled"`
-	// VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
+type GetCloudStorageObjectBucketCurrentStateObjectLock struct {
+	// Object lock retention mode.
 	Mode string `pulumi:"mode"`
-	// User defined VirtualNetworkInterface name
-	Name string `pulumi:"name"`
-	// NetworkInterfaceControllers bound to this VirtualNetworkInterface
-	Nics []string `pulumi:"nics"`
-	// Server bound to this VirtualNetworkInterface
-	ServerName string `pulumi:"serverName"`
-	// VirtualNetworkInterface unique id
-	Uuid string `pulumi:"uuid"`
-	// vRack name
-	Vrack string `pulumi:"vrack"`
+	// Number of days to retain objects.
+	RetentionDays int `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears int `pulumi:"retentionYears"`
 }
 
-// GetServerVniInput is an input type that accepts GetServerVniArgs and GetServerVniOutput values.
-// You can construct a concrete instance of `GetServerVniInput` via:
+// GetCloudStorageObjectBucketCurrentStateObjectLockInput is an input type that accepts GetCloudStorageObjectBucketCurrentStateObjectLockArgs and GetCloudStorageObjectBucketCurrentStateObjectLockOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketCurrentStateObjectLockInput` via:
 //
-//	GetServerVniArgs{...}
-type GetServerVniInput interface {
+//	GetCloudStorageObjectBucketCurrentStateObjectLockArgs{...}
+type GetCloudStorageObjectBucketCurrentStateObjectLockInput interface {
 	pulumi.Input
 
-	ToGetServerVniOutput() GetServerVniOutput
-	ToGetServerVniOutputWithContext(context.Context) GetServerVniOutput
+	ToGetCloudStorageObjectBucketCurrentStateObjectLockOutput() GetCloudStorageObjectBucketCurrentStateObjectLockOutput
+	ToGetCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(context.Context) GetCloudStorageObjectBucketCurrentStateObjectLockOutput
 }
 
-type GetServerVniArgs struct {
-	// VirtualNetworkInterface activation state
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
+type GetCloudStorageObjectBucketCurrentStateObjectLockArgs struct {
+	// Object lock retention mode.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// User defined VirtualNetworkInterface name
-	Name pulumi.StringInput `pulumi:"name"`
-	// NetworkInterfaceControllers bound to this VirtualNetworkInterface
-	Nics pulumi.StringArrayInput `pulumi:"nics"`
-	// Server bound to this VirtualNetworkInterface
-	ServerName pulumi.StringInput `pulumi:"serverName"`
-	// VirtualNetworkInterface unique id
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-	// vRack name
-	Vrack pulumi.StringInput `pulumi:"vrack"`
+	// Number of days to retain objects.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears pulumi.IntInput `pulumi:"retentionYears"`
 }
 
-func (GetServerVniArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServerVni)(nil)).Elem()
+func (GetCloudStorageObjectBucketCurrentStateObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateObjectLock)(nil)).Elem()
 }
 
-func (i GetServerVniArgs) ToGetServerVniOutput() GetServerVniOutput {
-	return i.ToGetServerVniOutputWithContext(context.Background())
+func (i GetCloudStorageObjectBucketCurrentStateObjectLockArgs) ToGetCloudStorageObjectBucketCurrentStateObjectLockOutput() GetCloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return i.ToGetCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(context.Background())
 }
 
-func (i GetServerVniArgs) ToGetServerVniOutputWithContext(ctx context.Context) GetServerVniOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServerVniOutput)
+func (i GetCloudStorageObjectBucketCurrentStateObjectLockArgs) ToGetCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketCurrentStateObjectLockOutput)
 }
 
-// GetServerVniArrayInput is an input type that accepts GetServerVniArray and GetServerVniArrayOutput values.
-// You can construct a concrete instance of `GetServerVniArrayInput` via:
-//
-//	GetServerVniArray{ GetServerVniArgs{...} }
-type GetServerVniArrayInput interface {
-	pulumi.Input
+type GetCloudStorageObjectBucketCurrentStateObjectLockOutput struct{ *pulumi.OutputState }
 
-	ToGetServerVniArrayOutput() GetServerVniArrayOutput
-	ToGetServerVniArrayOutputWithContext(context.Context) GetServerVniArrayOutput
+func (GetCloudStorageObjectBucketCurrentStateObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateObjectLock)(nil)).Elem()
 }
 
-type GetServerVniArray []GetServerVniInput
-
-func (GetServerVniArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServerVni)(nil)).Elem()
-}
-
-func (i GetServerVniArray) ToGetServerVniArrayOutput() GetServerVniArrayOutput {
-	return i.ToGetServerVniArrayOutputWithContext(context.Background())
-}
-
-func (i GetServerVniArray) ToGetServerVniArrayOutputWithContext(ctx context.Context) GetServerVniArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServerVniArrayOutput)
-}
-
-type GetServerVniOutput struct{ *pulumi.OutputState }
-
-func (GetServerVniOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServerVni)(nil)).Elem()
-}
-
-func (o GetServerVniOutput) ToGetServerVniOutput() GetServerVniOutput {
+func (o GetCloudStorageObjectBucketCurrentStateObjectLockOutput) ToGetCloudStorageObjectBucketCurrentStateObjectLockOutput() GetCloudStorageObjectBucketCurrentStateObjectLockOutput {
 	return o
 }
 
-func (o GetServerVniOutput) ToGetServerVniOutputWithContext(ctx context.Context) GetServerVniOutput {
+func (o GetCloudStorageObjectBucketCurrentStateObjectLockOutput) ToGetCloudStorageObjectBucketCurrentStateObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateObjectLockOutput {
 	return o
 }
 
-// VirtualNetworkInterface activation state
-func (o GetServerVniOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServerVni) bool { return v.Enabled }).(pulumi.BoolOutput)
+// Object lock retention mode.
+func (o GetCloudStorageObjectBucketCurrentStateObjectLockOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentStateObjectLock) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// VirtualNetworkInterface mode (public,vrack,vrack_aggregation)
-func (o GetServerVniOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerVni) string { return v.Mode }).(pulumi.StringOutput)
+// Number of days to retain objects.
+func (o GetCloudStorageObjectBucketCurrentStateObjectLockOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentStateObjectLock) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// User defined VirtualNetworkInterface name
-func (o GetServerVniOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerVni) string { return v.Name }).(pulumi.StringOutput)
+// Number of years to retain objects.
+func (o GetCloudStorageObjectBucketCurrentStateObjectLockOutput) RetentionYears() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentStateObjectLock) int { return v.RetentionYears }).(pulumi.IntOutput)
 }
 
-// NetworkInterfaceControllers bound to this VirtualNetworkInterface
-func (o GetServerVniOutput) Nics() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetServerVni) []string { return v.Nics }).(pulumi.StringArrayOutput)
-}
-
-// Server bound to this VirtualNetworkInterface
-func (o GetServerVniOutput) ServerName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerVni) string { return v.ServerName }).(pulumi.StringOutput)
-}
-
-// VirtualNetworkInterface unique id
-func (o GetServerVniOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerVni) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-// vRack name
-func (o GetServerVniOutput) Vrack() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerVni) string { return v.Vrack }).(pulumi.StringOutput)
-}
-
-type GetServerVniArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServerVniArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServerVni)(nil)).Elem()
-}
-
-func (o GetServerVniArrayOutput) ToGetServerVniArrayOutput() GetServerVniArrayOutput {
-	return o
-}
-
-func (o GetServerVniArrayOutput) ToGetServerVniArrayOutputWithContext(ctx context.Context) GetServerVniArrayOutput {
-	return o
-}
-
-func (o GetServerVniArrayOutput) Index(i pulumi.IntInput) GetServerVniOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerVni {
-		return vs[0].([]GetServerVni)[vs[1].(int)]
-	}).(GetServerVniOutput)
-}
-
-type GetStorageEfsIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn string `pulumi:"urn"`
-}
-
-// GetStorageEfsIamInput is an input type that accepts GetStorageEfsIamArgs and GetStorageEfsIamOutput values.
-// You can construct a concrete instance of `GetStorageEfsIamInput` via:
-//
-//	GetStorageEfsIamArgs{...}
-type GetStorageEfsIamInput interface {
-	pulumi.Input
-
-	ToGetStorageEfsIamOutput() GetStorageEfsIamOutput
-	ToGetStorageEfsIamOutputWithContext(context.Context) GetStorageEfsIamOutput
-}
-
-type GetStorageEfsIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetStorageEfsIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStorageEfsIam)(nil)).Elem()
-}
-
-func (i GetStorageEfsIamArgs) ToGetStorageEfsIamOutput() GetStorageEfsIamOutput {
-	return i.ToGetStorageEfsIamOutputWithContext(context.Background())
-}
-
-func (i GetStorageEfsIamArgs) ToGetStorageEfsIamOutputWithContext(ctx context.Context) GetStorageEfsIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsIamOutput)
-}
-
-type GetStorageEfsIamOutput struct{ *pulumi.OutputState }
-
-func (GetStorageEfsIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStorageEfsIam)(nil)).Elem()
-}
-
-func (o GetStorageEfsIamOutput) ToGetStorageEfsIamOutput() GetStorageEfsIamOutput {
-	return o
-}
-
-func (o GetStorageEfsIamOutput) ToGetStorageEfsIamOutputWithContext(ctx context.Context) GetStorageEfsIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetStorageEfsIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the resource
-func (o GetStorageEfsIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetStorageEfsIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetStorageEfsIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Unique resource name used in policies
-func (o GetStorageEfsIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetStorageEfsShareAccessPathsAccessPath struct {
-	// Access path ID
-	Id string `pulumi:"id"`
-	// Access path
-	Path string `pulumi:"path"`
-	// Is this the preferred access path?
-	Preferred bool `pulumi:"preferred"`
-}
-
-// GetStorageEfsShareAccessPathsAccessPathInput is an input type that accepts GetStorageEfsShareAccessPathsAccessPathArgs and GetStorageEfsShareAccessPathsAccessPathOutput values.
-// You can construct a concrete instance of `GetStorageEfsShareAccessPathsAccessPathInput` via:
-//
-//	GetStorageEfsShareAccessPathsAccessPathArgs{...}
-type GetStorageEfsShareAccessPathsAccessPathInput interface {
-	pulumi.Input
-
-	ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput
-	ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(context.Context) GetStorageEfsShareAccessPathsAccessPathOutput
-}
-
-type GetStorageEfsShareAccessPathsAccessPathArgs struct {
-	// Access path ID
-	Id pulumi.StringInput `pulumi:"id"`
-	// Access path
-	Path pulumi.StringInput `pulumi:"path"`
-	// Is this the preferred access path?
-	Preferred pulumi.BoolInput `pulumi:"preferred"`
-}
-
-func (GetStorageEfsShareAccessPathsAccessPathArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
-}
-
-func (i GetStorageEfsShareAccessPathsAccessPathArgs) ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput {
-	return i.ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(context.Background())
-}
-
-func (i GetStorageEfsShareAccessPathsAccessPathArgs) ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsShareAccessPathsAccessPathOutput)
-}
-
-// GetStorageEfsShareAccessPathsAccessPathArrayInput is an input type that accepts GetStorageEfsShareAccessPathsAccessPathArray and GetStorageEfsShareAccessPathsAccessPathArrayOutput values.
-// You can construct a concrete instance of `GetStorageEfsShareAccessPathsAccessPathArrayInput` via:
-//
-//	GetStorageEfsShareAccessPathsAccessPathArray{ GetStorageEfsShareAccessPathsAccessPathArgs{...} }
-type GetStorageEfsShareAccessPathsAccessPathArrayInput interface {
-	pulumi.Input
-
-	ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput
-	ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput
-}
-
-type GetStorageEfsShareAccessPathsAccessPathArray []GetStorageEfsShareAccessPathsAccessPathInput
-
-func (GetStorageEfsShareAccessPathsAccessPathArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
-}
-
-func (i GetStorageEfsShareAccessPathsAccessPathArray) ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput {
-	return i.ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(context.Background())
-}
-
-func (i GetStorageEfsShareAccessPathsAccessPathArray) ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetStorageEfsShareAccessPathsAccessPathArrayOutput)
-}
-
-type GetStorageEfsShareAccessPathsAccessPathOutput struct{ *pulumi.OutputState }
-
-func (GetStorageEfsShareAccessPathsAccessPathOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
-}
-
-func (o GetStorageEfsShareAccessPathsAccessPathOutput) ToGetStorageEfsShareAccessPathsAccessPathOutput() GetStorageEfsShareAccessPathsAccessPathOutput {
-	return o
-}
-
-func (o GetStorageEfsShareAccessPathsAccessPathOutput) ToGetStorageEfsShareAccessPathsAccessPathOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathOutput {
-	return o
-}
-
-// Access path ID
-func (o GetStorageEfsShareAccessPathsAccessPathOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Access path
-func (o GetStorageEfsShareAccessPathsAccessPathOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) string { return v.Path }).(pulumi.StringOutput)
-}
-
-// Is this the preferred access path?
-func (o GetStorageEfsShareAccessPathsAccessPathOutput) Preferred() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetStorageEfsShareAccessPathsAccessPath) bool { return v.Preferred }).(pulumi.BoolOutput)
-}
-
-type GetStorageEfsShareAccessPathsAccessPathArrayOutput struct{ *pulumi.OutputState }
-
-func (GetStorageEfsShareAccessPathsAccessPathArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetStorageEfsShareAccessPathsAccessPath)(nil)).Elem()
-}
-
-func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) ToGetStorageEfsShareAccessPathsAccessPathArrayOutput() GetStorageEfsShareAccessPathsAccessPathArrayOutput {
-	return o
-}
-
-func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) ToGetStorageEfsShareAccessPathsAccessPathArrayOutputWithContext(ctx context.Context) GetStorageEfsShareAccessPathsAccessPathArrayOutput {
-	return o
-}
-
-func (o GetStorageEfsShareAccessPathsAccessPathArrayOutput) Index(i pulumi.IntInput) GetStorageEfsShareAccessPathsAccessPathOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetStorageEfsShareAccessPathsAccessPath {
-		return vs[0].([]GetStorageEfsShareAccessPathsAccessPath)[vs[1].(int)]
-	}).(GetStorageEfsShareAccessPathsAccessPathOutput)
-}
-
-type GetVrackIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// (String) Unique identifier of the resource
-	Id string `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags map[string]string `pulumi:"tags"`
-	// (String) Unique resource name used in policies
-	Urn string `pulumi:"urn"`
-}
-
-// GetVrackIamInput is an input type that accepts GetVrackIamArgs and GetVrackIamOutput values.
-// You can construct a concrete instance of `GetVrackIamInput` via:
-//
-//	GetVrackIamArgs{...}
-type GetVrackIamInput interface {
-	pulumi.Input
-
-	ToGetVrackIamOutput() GetVrackIamOutput
-	ToGetVrackIamOutputWithContext(context.Context) GetVrackIamOutput
-}
-
-type GetVrackIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// (String) Unique identifier of the resource
-	Id pulumi.StringInput `pulumi:"id"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// (String) Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetVrackIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackIam)(nil)).Elem()
-}
-
-func (i GetVrackIamArgs) ToGetVrackIamOutput() GetVrackIamOutput {
-	return i.ToGetVrackIamOutputWithContext(context.Background())
-}
-
-func (i GetVrackIamArgs) ToGetVrackIamOutputWithContext(ctx context.Context) GetVrackIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackIamOutput)
-}
-
-type GetVrackIamOutput struct{ *pulumi.OutputState }
-
-func (GetVrackIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackIam)(nil)).Elem()
-}
-
-func (o GetVrackIamOutput) ToGetVrackIamOutput() GetVrackIamOutput {
-	return o
-}
-
-func (o GetVrackIamOutput) ToGetVrackIamOutputWithContext(ctx context.Context) GetVrackIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetVrackIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// (String) Unique identifier of the resource
-func (o GetVrackIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetVrackIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetVrackIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// (String) Unique resource name used in policies
-func (o GetVrackIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetVrackservicesCurrentState struct {
-	// Product status of the vRack Services
-	ProductStatus string `pulumi:"productStatus"`
-	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
-	Region string `pulumi:"region"`
-	// Subnets of the current vRack Services
-	Subnets []GetVrackservicesCurrentStateSubnet `pulumi:"subnets"`
-}
-
-// GetVrackservicesCurrentStateInput is an input type that accepts GetVrackservicesCurrentStateArgs and GetVrackservicesCurrentStateOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateInput` via:
-//
-//	GetVrackservicesCurrentStateArgs{...}
-type GetVrackservicesCurrentStateInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput
-	ToGetVrackservicesCurrentStateOutputWithContext(context.Context) GetVrackservicesCurrentStateOutput
-}
-
-type GetVrackservicesCurrentStateArgs struct {
-	// Product status of the vRack Services
-	ProductStatus pulumi.StringInput `pulumi:"productStatus"`
-	// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
-	Region pulumi.StringInput `pulumi:"region"`
-	// Subnets of the current vRack Services
-	Subnets GetVrackservicesCurrentStateSubnetArrayInput `pulumi:"subnets"`
-}
-
-func (GetVrackservicesCurrentStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentState)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateArgs) ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput {
-	return i.ToGetVrackservicesCurrentStateOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateArgs) ToGetVrackservicesCurrentStateOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateOutput)
-}
-
-type GetVrackservicesCurrentStateOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentState)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateOutput) ToGetVrackservicesCurrentStateOutput() GetVrackservicesCurrentStateOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateOutput) ToGetVrackservicesCurrentStateOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateOutput {
-	return o
-}
-
-// Product status of the vRack Services
-func (o GetVrackservicesCurrentStateOutput) ProductStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentState) string { return v.ProductStatus }).(pulumi.StringOutput)
-}
-
-// Region of the vRack Services. List of compatible regions can be retrieved from /reference/region
-func (o GetVrackservicesCurrentStateOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentState) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// Subnets of the current vRack Services
-func (o GetVrackservicesCurrentStateOutput) Subnets() GetVrackservicesCurrentStateSubnetArrayOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentState) []GetVrackservicesCurrentStateSubnet { return v.Subnets }).(GetVrackservicesCurrentStateSubnetArrayOutput)
-}
-
-type GetVrackservicesCurrentStateSubnet struct {
-	// IP address range of the subnet in CIDR format
-	Cidr string `pulumi:"cidr"`
-	// Display name of the subnet
-	DisplayName string `pulumi:"displayName"`
-	// Service endpoints of the subnet
-	ServiceEndpoints []GetVrackservicesCurrentStateSubnetServiceEndpoint `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed services IPs
-	ServiceRange GetVrackservicesCurrentStateSubnetServiceRange `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation
-	Vlan float64 `pulumi:"vlan"`
-}
-
-// GetVrackservicesCurrentStateSubnetInput is an input type that accepts GetVrackservicesCurrentStateSubnetArgs and GetVrackservicesCurrentStateSubnetOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetArgs{...}
-type GetVrackservicesCurrentStateSubnetInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput
-	ToGetVrackservicesCurrentStateSubnetOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetOutput
-}
-
-type GetVrackservicesCurrentStateSubnetArgs struct {
-	// IP address range of the subnet in CIDR format
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Display name of the subnet
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Service endpoints of the subnet
-	ServiceEndpoints GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput `pulumi:"serviceEndpoints"`
-	// Defines a smaller subnet dedicated to the managed services IPs
-	ServiceRange GetVrackservicesCurrentStateSubnetServiceRangeInput `pulumi:"serviceRange"`
-	// Unique inner VLAN that allows subnets segregation
-	Vlan pulumi.Float64Input `pulumi:"vlan"`
-}
-
-func (GetVrackservicesCurrentStateSubnetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetArgs) ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetArgs) ToGetVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetOutput)
-}
-
-// GetVrackservicesCurrentStateSubnetArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetArray and GetVrackservicesCurrentStateSubnetArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetArrayInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetArray{ GetVrackservicesCurrentStateSubnetArgs{...} }
-type GetVrackservicesCurrentStateSubnetArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput
-	ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetArrayOutput
-}
-
-type GetVrackservicesCurrentStateSubnetArray []GetVrackservicesCurrentStateSubnetInput
-
-func (GetVrackservicesCurrentStateSubnetArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnet)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetArray) ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetArray) ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetArrayOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetOutput) ToGetVrackservicesCurrentStateSubnetOutput() GetVrackservicesCurrentStateSubnetOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetOutput) ToGetVrackservicesCurrentStateSubnetOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetOutput {
-	return o
-}
-
-// IP address range of the subnet in CIDR format
-func (o GetVrackservicesCurrentStateSubnetOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Display name of the subnet
-func (o GetVrackservicesCurrentStateSubnetOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Service endpoints of the subnet
-func (o GetVrackservicesCurrentStateSubnetOutput) ServiceEndpoints() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) []GetVrackservicesCurrentStateSubnetServiceEndpoint {
-		return v.ServiceEndpoints
-	}).(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
-}
-
-// Defines a smaller subnet dedicated to the managed services IPs
-func (o GetVrackservicesCurrentStateSubnetOutput) ServiceRange() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) GetVrackservicesCurrentStateSubnetServiceRange {
-		return v.ServiceRange
-	}).(GetVrackservicesCurrentStateSubnetServiceRangeOutput)
-}
-
-// Unique inner VLAN that allows subnets segregation
-func (o GetVrackservicesCurrentStateSubnetOutput) Vlan() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnet) float64 { return v.Vlan }).(pulumi.Float64Output)
-}
-
-type GetVrackservicesCurrentStateSubnetArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnet)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetArrayOutput) ToGetVrackservicesCurrentStateSubnetArrayOutput() GetVrackservicesCurrentStateSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetArrayOutput) ToGetVrackservicesCurrentStateSubnetArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnet {
-		return vs[0].([]GetVrackservicesCurrentStateSubnet)[vs[1].(int)]
-	}).(GetVrackservicesCurrentStateSubnetOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpoint struct {
-	// Endpoints representing the IPs assigned to the managed services
-	Endpoints []GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint `pulumi:"endpoints"`
-	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
-	ManagedServiceUrn string `pulumi:"managedServiceUrn"`
-}
-
-// GetVrackservicesCurrentStateSubnetServiceEndpointInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointArgs and GetVrackservicesCurrentStateSubnetServiceEndpointOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetServiceEndpointArgs{...}
-type GetVrackservicesCurrentStateSubnetServiceEndpointInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointArgs struct {
-	// Endpoints representing the IPs assigned to the managed services
-	Endpoints GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput `pulumi:"endpoints"`
-	// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
-	ManagedServiceUrn pulumi.StringInput `pulumi:"managedServiceUrn"`
-}
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointOutput)
-}
-
-// GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointArray and GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetServiceEndpointArray{ GetVrackservicesCurrentStateSubnetServiceEndpointArgs{...} }
-type GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointArray []GetVrackservicesCurrentStateSubnetServiceEndpointInput
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
-	return o
-}
-
-// Endpoints representing the IPs assigned to the managed services
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) Endpoints() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpoint) []GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
-		return v.Endpoints
-	}).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
-}
-
-// IAM Resource URN of the managed service. Compatible managed service types are listed by /reference/compatibleManagedServiceType call.
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointOutput) ManagedServiceUrn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpoint) string { return v.ManagedServiceUrn }).(pulumi.StringOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetServiceEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnetServiceEndpoint {
-		return vs[0].([]GetVrackservicesCurrentStateSubnetServiceEndpoint)[vs[1].(int)]
-	}).(GetVrackservicesCurrentStateSubnetServiceEndpointOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint struct {
-	// IP description defined in the managed service
-	Description string `pulumi:"description"`
-	// IP address assigned by OVHcloud
-	Ip string `pulumi:"ip"`
-}
-
-// GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs and GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...}
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs struct {
-	// IP description defined in the managed service
-	Description pulumi.StringInput `pulumi:"description"`
-	// IP address assigned by OVHcloud
-	Ip pulumi.StringInput `pulumi:"ip"`
-}
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
-}
-
-// GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray and GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray{ GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{...} }
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
-	ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray []GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
-	return o
-}
-
-// IP description defined in the managed service
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// IP address assigned by OVHcloud
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput) Ip() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint) string { return v.Ip }).(pulumi.StringOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput() GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) ToGetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint {
-		return vs[0].([]GetVrackservicesCurrentStateSubnetServiceEndpointEndpoint)[vs[1].(int)]
-	}).(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceRange struct {
-	// CIDR dedicated to the subnet's services
-	Cidr string `pulumi:"cidr"`
-	// Number of remaining IPs in the service range
-	RemainingIps float64 `pulumi:"remainingIps"`
-	// Number of service range IPs reserved by OVHcloud
-	ReservedIps float64 `pulumi:"reservedIps"`
-	// Number of service range IPs assigned to the managed services
-	UsedIps float64 `pulumi:"usedIps"`
-}
-
-// GetVrackservicesCurrentStateSubnetServiceRangeInput is an input type that accepts GetVrackservicesCurrentStateSubnetServiceRangeArgs and GetVrackservicesCurrentStateSubnetServiceRangeOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentStateSubnetServiceRangeInput` via:
-//
-//	GetVrackservicesCurrentStateSubnetServiceRangeArgs{...}
-type GetVrackservicesCurrentStateSubnetServiceRangeInput interface {
-	pulumi.Input
-
-	ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput
-	ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput
-}
-
-type GetVrackservicesCurrentStateSubnetServiceRangeArgs struct {
-	// CIDR dedicated to the subnet's services
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// Number of remaining IPs in the service range
-	RemainingIps pulumi.Float64Input `pulumi:"remainingIps"`
-	// Number of service range IPs reserved by OVHcloud
-	ReservedIps pulumi.Float64Input `pulumi:"reservedIps"`
-	// Number of service range IPs assigned to the managed services
-	UsedIps pulumi.Float64Input `pulumi:"usedIps"`
-}
-
-func (GetVrackservicesCurrentStateSubnetServiceRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceRangeArgs) ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
-	return i.ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(context.Background())
-}
-
-func (i GetVrackservicesCurrentStateSubnetServiceRangeArgs) ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentStateSubnetServiceRangeOutput)
-}
-
-type GetVrackservicesCurrentStateSubnetServiceRangeOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentStateSubnetServiceRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRange)(nil)).Elem()
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ToGetVrackservicesCurrentStateSubnetServiceRangeOutput() GetVrackservicesCurrentStateSubnetServiceRangeOutput {
-	return o
-}
-
-func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ToGetVrackservicesCurrentStateSubnetServiceRangeOutputWithContext(ctx context.Context) GetVrackservicesCurrentStateSubnetServiceRangeOutput {
-	return o
-}
-
-// CIDR dedicated to the subnet's services
-func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) Cidr() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) string { return v.Cidr }).(pulumi.StringOutput)
-}
-
-// Number of remaining IPs in the service range
-func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) RemainingIps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.RemainingIps }).(pulumi.Float64Output)
-}
-
-// Number of service range IPs reserved by OVHcloud
-func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) ReservedIps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.ReservedIps }).(pulumi.Float64Output)
-}
-
-// Number of service range IPs assigned to the managed services
-func (o GetVrackservicesCurrentStateSubnetServiceRangeOutput) UsedIps() pulumi.Float64Output {
-	return o.ApplyT(func(v GetVrackservicesCurrentStateSubnetServiceRange) float64 { return v.UsedIps }).(pulumi.Float64Output)
-}
-
-type GetVrackservicesCurrentTask struct {
-	// Identifier of the current task
-	Id string `pulumi:"id"`
-	// Link to the task details
-	Link string `pulumi:"link"`
-	// Current global status of the current task
+type GetCloudStorageObjectBucketCurrentStateVersioning struct {
+	// Versioning status.
 	Status string `pulumi:"status"`
-	// Type of the current task
-	Type string `pulumi:"type"`
 }
 
-// GetVrackservicesCurrentTaskInput is an input type that accepts GetVrackservicesCurrentTaskArgs and GetVrackservicesCurrentTaskOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentTaskInput` via:
+// GetCloudStorageObjectBucketCurrentStateVersioningInput is an input type that accepts GetCloudStorageObjectBucketCurrentStateVersioningArgs and GetCloudStorageObjectBucketCurrentStateVersioningOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketCurrentStateVersioningInput` via:
 //
-//	GetVrackservicesCurrentTaskArgs{...}
-type GetVrackservicesCurrentTaskInput interface {
+//	GetCloudStorageObjectBucketCurrentStateVersioningArgs{...}
+type GetCloudStorageObjectBucketCurrentStateVersioningInput interface {
 	pulumi.Input
 
-	ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput
-	ToGetVrackservicesCurrentTaskOutputWithContext(context.Context) GetVrackservicesCurrentTaskOutput
+	ToGetCloudStorageObjectBucketCurrentStateVersioningOutput() GetCloudStorageObjectBucketCurrentStateVersioningOutput
+	ToGetCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(context.Context) GetCloudStorageObjectBucketCurrentStateVersioningOutput
 }
 
-type GetVrackservicesCurrentTaskArgs struct {
-	// Identifier of the current task
-	Id pulumi.StringInput `pulumi:"id"`
-	// Link to the task details
-	Link pulumi.StringInput `pulumi:"link"`
-	// Current global status of the current task
+type GetCloudStorageObjectBucketCurrentStateVersioningArgs struct {
+	// Versioning status.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Type of the current task
-	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetVrackservicesCurrentTaskArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentTask)(nil)).Elem()
+func (GetCloudStorageObjectBucketCurrentStateVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateVersioning)(nil)).Elem()
 }
 
-func (i GetVrackservicesCurrentTaskArgs) ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput {
-	return i.ToGetVrackservicesCurrentTaskOutputWithContext(context.Background())
+func (i GetCloudStorageObjectBucketCurrentStateVersioningArgs) ToGetCloudStorageObjectBucketCurrentStateVersioningOutput() GetCloudStorageObjectBucketCurrentStateVersioningOutput {
+	return i.ToGetCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(context.Background())
 }
 
-func (i GetVrackservicesCurrentTaskArgs) ToGetVrackservicesCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentTaskOutput)
+func (i GetCloudStorageObjectBucketCurrentStateVersioningArgs) ToGetCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketCurrentStateVersioningOutput)
 }
 
-// GetVrackservicesCurrentTaskArrayInput is an input type that accepts GetVrackservicesCurrentTaskArray and GetVrackservicesCurrentTaskArrayOutput values.
-// You can construct a concrete instance of `GetVrackservicesCurrentTaskArrayInput` via:
+type GetCloudStorageObjectBucketCurrentStateVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketCurrentStateVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketCurrentStateVersioningOutput) ToGetCloudStorageObjectBucketCurrentStateVersioningOutput() GetCloudStorageObjectBucketCurrentStateVersioningOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketCurrentStateVersioningOutput) ToGetCloudStorageObjectBucketCurrentStateVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketCurrentStateVersioningOutput {
+	return o
+}
+
+// Versioning status.
+func (o GetCloudStorageObjectBucketCurrentStateVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketCurrentStateVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketEncryption struct {
+	// Encryption algorithm.
+	Algorithm string `pulumi:"algorithm"`
+}
+
+// GetCloudStorageObjectBucketEncryptionInput is an input type that accepts GetCloudStorageObjectBucketEncryptionArgs and GetCloudStorageObjectBucketEncryptionOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketEncryptionInput` via:
 //
-//	GetVrackservicesCurrentTaskArray{ GetVrackservicesCurrentTaskArgs{...} }
-type GetVrackservicesCurrentTaskArrayInput interface {
+//	GetCloudStorageObjectBucketEncryptionArgs{...}
+type GetCloudStorageObjectBucketEncryptionInput interface {
 	pulumi.Input
 
-	ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput
-	ToGetVrackservicesCurrentTaskArrayOutputWithContext(context.Context) GetVrackservicesCurrentTaskArrayOutput
+	ToGetCloudStorageObjectBucketEncryptionOutput() GetCloudStorageObjectBucketEncryptionOutput
+	ToGetCloudStorageObjectBucketEncryptionOutputWithContext(context.Context) GetCloudStorageObjectBucketEncryptionOutput
 }
 
-type GetVrackservicesCurrentTaskArray []GetVrackservicesCurrentTaskInput
-
-func (GetVrackservicesCurrentTaskArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentTask)(nil)).Elem()
+type GetCloudStorageObjectBucketEncryptionArgs struct {
+	// Encryption algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
 }
 
-func (i GetVrackservicesCurrentTaskArray) ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput {
-	return i.ToGetVrackservicesCurrentTaskArrayOutputWithContext(context.Background())
+func (GetCloudStorageObjectBucketEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketEncryption)(nil)).Elem()
 }
 
-func (i GetVrackservicesCurrentTaskArray) ToGetVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesCurrentTaskArrayOutput)
+func (i GetCloudStorageObjectBucketEncryptionArgs) ToGetCloudStorageObjectBucketEncryptionOutput() GetCloudStorageObjectBucketEncryptionOutput {
+	return i.ToGetCloudStorageObjectBucketEncryptionOutputWithContext(context.Background())
 }
 
-type GetVrackservicesCurrentTaskOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentTaskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesCurrentTask)(nil)).Elem()
+func (i GetCloudStorageObjectBucketEncryptionArgs) ToGetCloudStorageObjectBucketEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketEncryptionOutput)
 }
 
-func (o GetVrackservicesCurrentTaskOutput) ToGetVrackservicesCurrentTaskOutput() GetVrackservicesCurrentTaskOutput {
+type GetCloudStorageObjectBucketEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketEncryption)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketEncryptionOutput) ToGetCloudStorageObjectBucketEncryptionOutput() GetCloudStorageObjectBucketEncryptionOutput {
 	return o
 }
 
-func (o GetVrackservicesCurrentTaskOutput) ToGetVrackservicesCurrentTaskOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskOutput {
+func (o GetCloudStorageObjectBucketEncryptionOutput) ToGetCloudStorageObjectBucketEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketEncryptionOutput {
 	return o
 }
 
-// Identifier of the current task
-func (o GetVrackservicesCurrentTaskOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Id }).(pulumi.StringOutput)
+// Encryption algorithm.
+func (o GetCloudStorageObjectBucketEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketEncryption) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Link to the task details
-func (o GetVrackservicesCurrentTaskOutput) Link() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Link }).(pulumi.StringOutput)
+type GetCloudStorageObjectBucketLocation struct {
+	// Region identifier.
+	Region string `pulumi:"region"`
 }
 
-// Current global status of the current task
-func (o GetVrackservicesCurrentTaskOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Status }).(pulumi.StringOutput)
+// GetCloudStorageObjectBucketLocationInput is an input type that accepts GetCloudStorageObjectBucketLocationArgs and GetCloudStorageObjectBucketLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketLocationInput` via:
+//
+//	GetCloudStorageObjectBucketLocationArgs{...}
+type GetCloudStorageObjectBucketLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketLocationOutput() GetCloudStorageObjectBucketLocationOutput
+	ToGetCloudStorageObjectBucketLocationOutputWithContext(context.Context) GetCloudStorageObjectBucketLocationOutput
 }
 
-// Type of the current task
-func (o GetVrackservicesCurrentTaskOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesCurrentTask) string { return v.Type }).(pulumi.StringOutput)
+type GetCloudStorageObjectBucketLocationArgs struct {
+	// Region identifier.
+	Region pulumi.StringInput `pulumi:"region"`
 }
 
-type GetVrackservicesCurrentTaskArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesCurrentTaskArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVrackservicesCurrentTask)(nil)).Elem()
+func (GetCloudStorageObjectBucketLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketLocation)(nil)).Elem()
 }
 
-func (o GetVrackservicesCurrentTaskArrayOutput) ToGetVrackservicesCurrentTaskArrayOutput() GetVrackservicesCurrentTaskArrayOutput {
+func (i GetCloudStorageObjectBucketLocationArgs) ToGetCloudStorageObjectBucketLocationOutput() GetCloudStorageObjectBucketLocationOutput {
+	return i.ToGetCloudStorageObjectBucketLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketLocationArgs) ToGetCloudStorageObjectBucketLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketLocationOutput)
+}
+
+type GetCloudStorageObjectBucketLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketLocationOutput) ToGetCloudStorageObjectBucketLocationOutput() GetCloudStorageObjectBucketLocationOutput {
 	return o
 }
 
-func (o GetVrackservicesCurrentTaskArrayOutput) ToGetVrackservicesCurrentTaskArrayOutputWithContext(ctx context.Context) GetVrackservicesCurrentTaskArrayOutput {
+func (o GetCloudStorageObjectBucketLocationOutput) ToGetCloudStorageObjectBucketLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketLocationOutput {
 	return o
 }
 
-func (o GetVrackservicesCurrentTaskArrayOutput) Index(i pulumi.IntInput) GetVrackservicesCurrentTaskOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVrackservicesCurrentTask {
-		return vs[0].([]GetVrackservicesCurrentTask)[vs[1].(int)]
-	}).(GetVrackservicesCurrentTaskOutput)
+// Region identifier.
+func (o GetCloudStorageObjectBucketLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketLocation) string { return v.Region }).(pulumi.StringOutput)
 }
 
-type GetVrackservicesIam struct {
-	// Resource display name
-	DisplayName string `pulumi:"displayName"`
-	// Unique identifier of the resource
+type GetCloudStorageObjectBucketObjectLock struct {
+	// Object lock retention mode.
+	Mode string `pulumi:"mode"`
+	// Number of days to retain objects.
+	RetentionDays int `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears int `pulumi:"retentionYears"`
+}
+
+// GetCloudStorageObjectBucketObjectLockInput is an input type that accepts GetCloudStorageObjectBucketObjectLockArgs and GetCloudStorageObjectBucketObjectLockOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketObjectLockInput` via:
+//
+//	GetCloudStorageObjectBucketObjectLockArgs{...}
+type GetCloudStorageObjectBucketObjectLockInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketObjectLockOutput() GetCloudStorageObjectBucketObjectLockOutput
+	ToGetCloudStorageObjectBucketObjectLockOutputWithContext(context.Context) GetCloudStorageObjectBucketObjectLockOutput
+}
+
+type GetCloudStorageObjectBucketObjectLockArgs struct {
+	// Object lock retention mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Number of days to retain objects.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears pulumi.IntInput `pulumi:"retentionYears"`
+}
+
+func (GetCloudStorageObjectBucketObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketObjectLock)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketObjectLockArgs) ToGetCloudStorageObjectBucketObjectLockOutput() GetCloudStorageObjectBucketObjectLockOutput {
+	return i.ToGetCloudStorageObjectBucketObjectLockOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketObjectLockArgs) ToGetCloudStorageObjectBucketObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketObjectLockOutput)
+}
+
+type GetCloudStorageObjectBucketObjectLockOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketObjectLock)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketObjectLockOutput) ToGetCloudStorageObjectBucketObjectLockOutput() GetCloudStorageObjectBucketObjectLockOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketObjectLockOutput) ToGetCloudStorageObjectBucketObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketObjectLockOutput {
+	return o
+}
+
+// Object lock retention mode.
+func (o GetCloudStorageObjectBucketObjectLockOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketObjectLock) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Number of days to retain objects.
+func (o GetCloudStorageObjectBucketObjectLockOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketObjectLock) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// Number of years to retain objects.
+func (o GetCloudStorageObjectBucketObjectLockOutput) RetentionYears() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketObjectLock) int { return v.RetentionYears }).(pulumi.IntOutput)
+}
+
+type GetCloudStorageObjectBucketVersioning struct {
+	// Versioning status.
+	Status string `pulumi:"status"`
+}
+
+// GetCloudStorageObjectBucketVersioningInput is an input type that accepts GetCloudStorageObjectBucketVersioningArgs and GetCloudStorageObjectBucketVersioningOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketVersioningInput` via:
+//
+//	GetCloudStorageObjectBucketVersioningArgs{...}
+type GetCloudStorageObjectBucketVersioningInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketVersioningOutput() GetCloudStorageObjectBucketVersioningOutput
+	ToGetCloudStorageObjectBucketVersioningOutputWithContext(context.Context) GetCloudStorageObjectBucketVersioningOutput
+}
+
+type GetCloudStorageObjectBucketVersioningArgs struct {
+	// Versioning status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudStorageObjectBucketVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketVersioning)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketVersioningArgs) ToGetCloudStorageObjectBucketVersioningOutput() GetCloudStorageObjectBucketVersioningOutput {
+	return i.ToGetCloudStorageObjectBucketVersioningOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketVersioningArgs) ToGetCloudStorageObjectBucketVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketVersioningOutput)
+}
+
+type GetCloudStorageObjectBucketVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketVersioning)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketVersioningOutput) ToGetCloudStorageObjectBucketVersioningOutput() GetCloudStorageObjectBucketVersioningOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketVersioningOutput) ToGetCloudStorageObjectBucketVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketVersioningOutput {
+	return o
+}
+
+// Versioning status.
+func (o GetCloudStorageObjectBucketVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucket struct {
+	// Computed hash representing the current target specification value.
+	Checksum string `pulumi:"checksum"`
+	// Creation date of the bucket.
+	CreatedAt string `pulumi:"createdAt"`
+	// Current observed state of the bucket:
+	CurrentState GetCloudStorageObjectBucketsBucketCurrentState `pulumi:"currentState"`
+	// Current encryption configuration:
+	Encryption GetCloudStorageObjectBucketsBucketEncryption `pulumi:"encryption"`
+	// Bucket identifier.
 	Id string `pulumi:"id"`
-	// Resource state
-	State string `pulumi:"state"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Geographic region where the bucket is located:
+	Location GetCloudStorageObjectBucketsBucketLocation `pulumi:"location"`
+	// Bucket name.
+	Name string `pulumi:"name"`
+	// Current object lock configuration:
+	ObjectLock GetCloudStorageObjectBucketsBucketObjectLock `pulumi:"objectLock"`
+	// Owner user identifier.
+	OwnerUserId string `pulumi:"ownerUserId"`
+	// Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).
+	ResourceStatus string `pulumi:"resourceStatus"`
+	// Current metadata tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn string `pulumi:"urn"`
+	// Last update date of the bucket.
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Current versioning configuration:
+	Versioning GetCloudStorageObjectBucketsBucketVersioning `pulumi:"versioning"`
 }
 
-// GetVrackservicesIamInput is an input type that accepts GetVrackservicesIamArgs and GetVrackservicesIamOutput values.
-// You can construct a concrete instance of `GetVrackservicesIamInput` via:
+// GetCloudStorageObjectBucketsBucketInput is an input type that accepts GetCloudStorageObjectBucketsBucketArgs and GetCloudStorageObjectBucketsBucketOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketInput` via:
 //
-//	GetVrackservicesIamArgs{...}
-type GetVrackservicesIamInput interface {
+//	GetCloudStorageObjectBucketsBucketArgs{...}
+type GetCloudStorageObjectBucketsBucketInput interface {
 	pulumi.Input
 
-	ToGetVrackservicesIamOutput() GetVrackservicesIamOutput
-	ToGetVrackservicesIamOutputWithContext(context.Context) GetVrackservicesIamOutput
+	ToGetCloudStorageObjectBucketsBucketOutput() GetCloudStorageObjectBucketsBucketOutput
+	ToGetCloudStorageObjectBucketsBucketOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketOutput
 }
 
-type GetVrackservicesIamArgs struct {
-	// Resource display name
-	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Unique identifier of the resource
+type GetCloudStorageObjectBucketsBucketArgs struct {
+	// Computed hash representing the current target specification value.
+	Checksum pulumi.StringInput `pulumi:"checksum"`
+	// Creation date of the bucket.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Current observed state of the bucket:
+	CurrentState GetCloudStorageObjectBucketsBucketCurrentStateInput `pulumi:"currentState"`
+	// Current encryption configuration:
+	Encryption GetCloudStorageObjectBucketsBucketEncryptionInput `pulumi:"encryption"`
+	// Bucket identifier.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Resource state
-	State pulumi.StringInput `pulumi:"state"`
-	// Resource tags. Tags that were internally computed are prefixed with ovh:
+	// Geographic region where the bucket is located:
+	Location GetCloudStorageObjectBucketsBucketLocationInput `pulumi:"location"`
+	// Bucket name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Current object lock configuration:
+	ObjectLock GetCloudStorageObjectBucketsBucketObjectLockInput `pulumi:"objectLock"`
+	// Owner user identifier.
+	OwnerUserId pulumi.StringInput `pulumi:"ownerUserId"`
+	// Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).
+	ResourceStatus pulumi.StringInput `pulumi:"resourceStatus"`
+	// Current metadata tags.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Unique resource name used in policies
-	Urn pulumi.StringInput `pulumi:"urn"`
+	// Last update date of the bucket.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Current versioning configuration:
+	Versioning GetCloudStorageObjectBucketsBucketVersioningInput `pulumi:"versioning"`
 }
 
-func (GetVrackservicesIamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesIam)(nil)).Elem()
+func (GetCloudStorageObjectBucketsBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucket)(nil)).Elem()
 }
 
-func (i GetVrackservicesIamArgs) ToGetVrackservicesIamOutput() GetVrackservicesIamOutput {
-	return i.ToGetVrackservicesIamOutputWithContext(context.Background())
+func (i GetCloudStorageObjectBucketsBucketArgs) ToGetCloudStorageObjectBucketsBucketOutput() GetCloudStorageObjectBucketsBucketOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketOutputWithContext(context.Background())
 }
 
-func (i GetVrackservicesIamArgs) ToGetVrackservicesIamOutputWithContext(ctx context.Context) GetVrackservicesIamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesIamOutput)
+func (i GetCloudStorageObjectBucketsBucketArgs) ToGetCloudStorageObjectBucketsBucketOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketOutput)
 }
 
-type GetVrackservicesIamOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesIamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesIam)(nil)).Elem()
-}
-
-func (o GetVrackservicesIamOutput) ToGetVrackservicesIamOutput() GetVrackservicesIamOutput {
-	return o
-}
-
-func (o GetVrackservicesIamOutput) ToGetVrackservicesIamOutputWithContext(ctx context.Context) GetVrackservicesIamOutput {
-	return o
-}
-
-// Resource display name
-func (o GetVrackservicesIamOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesIam) string { return v.DisplayName }).(pulumi.StringOutput)
-}
-
-// Unique identifier of the resource
-func (o GetVrackservicesIamOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesIam) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource state
-func (o GetVrackservicesIamOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesIam) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Resource tags. Tags that were internally computed are prefixed with ovh:
-func (o GetVrackservicesIamOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v GetVrackservicesIam) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Unique resource name used in policies
-func (o GetVrackservicesIamOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVrackservicesIam) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetVrackservicesTargetSpec struct {
-	// Target specification of the subnets. Maximum one subnet per vRack Services
-	Subnets []GetVrackservicesTargetSpecSubnet `pulumi:"subnets"`
-}
-
-// GetVrackservicesTargetSpecInput is an input type that accepts GetVrackservicesTargetSpecArgs and GetVrackservicesTargetSpecOutput values.
-// You can construct a concrete instance of `GetVrackservicesTargetSpecInput` via:
+// GetCloudStorageObjectBucketsBucketArrayInput is an input type that accepts GetCloudStorageObjectBucketsBucketArray and GetCloudStorageObjectBucketsBucketArrayOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketArrayInput` via:
 //
-//	GetVrackservicesTargetSpecArgs{...}
-type GetVrackservicesTargetSpecInput interface {
+//	GetCloudStorageObjectBucketsBucketArray{ GetCloudStorageObjectBucketsBucketArgs{...} }
+type GetCloudStorageObjectBucketsBucketArrayInput interface {
 	pulumi.Input
 
-	ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput
-	ToGetVrackservicesTargetSpecOutputWithContext(context.Context) GetVrackservicesTargetSpecOutput
+	ToGetCloudStorageObjectBucketsBucketArrayOutput() GetCloudStorageObjectBucketsBucketArrayOutput
+	ToGetCloudStorageObjectBucketsBucketArrayOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketArrayOutput
 }
 
-type GetVrackservicesTargetSpecArgs struct {
-	// Target specification of the subnets. Maximum one subnet per vRack Services
-	Subnets GetVrackservicesTargetSpecSubnetArrayInput `pulumi:"subnets"`
+type GetCloudStorageObjectBucketsBucketArray []GetCloudStorageObjectBucketsBucketInput
+
+func (GetCloudStorageObjectBucketsBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageObjectBucketsBucket)(nil)).Elem()
 }
 
-func (GetVrackservicesTargetSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpec)(nil)).Elem()
+func (i GetCloudStorageObjectBucketsBucketArray) ToGetCloudStorageObjectBucketsBucketArrayOutput() GetCloudStorageObjectBucketsBucketArrayOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketArrayOutputWithContext(context.Background())
 }
 
-func (i GetVrackservicesTargetSpecArgs) ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput {
-	return i.ToGetVrackservicesTargetSpecOutputWithContext(context.Background())
+func (i GetCloudStorageObjectBucketsBucketArray) ToGetCloudStorageObjectBucketsBucketArrayOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketArrayOutput)
 }
 
-func (i GetVrackservicesTargetSpecArgs) ToGetVrackservicesTargetSpecOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVrackservicesTargetSpecOutput)
+type GetCloudStorageObjectBucketsBucketOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucket)(nil)).Elem()
 }
 
-type GetVrackservicesTargetSpecOutput struct{ *pulumi.OutputState }
-
-func (GetVrackservicesTargetSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVrackservicesTargetSpec)(nil)).Elem()
-}
-
-func (o GetVrackservicesTargetSpecOutput) ToGetVrackservicesTargetSpecOutput() GetVrackservicesTargetSpecOutput {
+func (o GetCloudStorageObjectBucketsBucketOutput) ToGetCloudStorageObjectBucketsBucketOutput() GetCloudStorageObjectBucketsBucketOutput {
 	return o
 }
 
-func (o GetVrackservicesTargetSpecOutput) ToGetVrackservicesTargetSpecOutputWithContext(ctx context.Context) GetVrackservicesTargetSpecOutput {
+func (o GetCloudStorageObjectBucketsBucketOutput) ToGetCloudStorageObjectBucketsBucketOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketOutput {
 	return o
 }
 
-// Target specification of the subnets. Maximum one subnet per vRack Services
-func (o GetVrackservicesTargetSpecOutput) Subnets() GetVrackservicesTargetSpecSubnetArrayOutput {
-	return o.ApplyT(func(v GetVrackservicesTargetSpec) []GetVrackservicesTargetSpecSubnet { return v.Subnets }).(GetVrackservicesTargetSpecSubnetArrayOutput)
+// Computed hash representing the current target specification value.
+func (o GetCloudStorageObjectBucketsBucketOutput) Checksum() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.Checksum }).(pulumi.StringOutput)
+}
+
+// Creation date of the bucket.
+func (o GetCloudStorageObjectBucketsBucketOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Current observed state of the bucket:
+func (o GetCloudStorageObjectBucketsBucketOutput) CurrentState() GetCloudStorageObjectBucketsBucketCurrentStateOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) GetCloudStorageObjectBucketsBucketCurrentState {
+		return v.CurrentState
+	}).(GetCloudStorageObjectBucketsBucketCurrentStateOutput)
+}
+
+// Current encryption configuration:
+func (o GetCloudStorageObjectBucketsBucketOutput) Encryption() GetCloudStorageObjectBucketsBucketEncryptionOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) GetCloudStorageObjectBucketsBucketEncryption {
+		return v.Encryption
+	}).(GetCloudStorageObjectBucketsBucketEncryptionOutput)
+}
+
+// Bucket identifier.
+func (o GetCloudStorageObjectBucketsBucketOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Geographic region where the bucket is located:
+func (o GetCloudStorageObjectBucketsBucketOutput) Location() GetCloudStorageObjectBucketsBucketLocationOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) GetCloudStorageObjectBucketsBucketLocation {
+		return v.Location
+	}).(GetCloudStorageObjectBucketsBucketLocationOutput)
+}
+
+// Bucket name.
+func (o GetCloudStorageObjectBucketsBucketOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Current object lock configuration:
+func (o GetCloudStorageObjectBucketsBucketOutput) ObjectLock() GetCloudStorageObjectBucketsBucketObjectLockOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) GetCloudStorageObjectBucketsBucketObjectLock {
+		return v.ObjectLock
+	}).(GetCloudStorageObjectBucketsBucketObjectLockOutput)
+}
+
+// Owner user identifier.
+func (o GetCloudStorageObjectBucketsBucketOutput) OwnerUserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.OwnerUserId }).(pulumi.StringOutput)
+}
+
+// Bucket readiness in the system (`CREATING`, `DELETING`, `ERROR`, `OUT_OF_SYNC`, `READY`, `SUSPENDED`, `UNKNOWN`, `UPDATING`).
+func (o GetCloudStorageObjectBucketsBucketOutput) ResourceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.ResourceStatus }).(pulumi.StringOutput)
+}
+
+// Current metadata tags.
+func (o GetCloudStorageObjectBucketsBucketOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Last update date of the bucket.
+func (o GetCloudStorageObjectBucketsBucketOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Current versioning configuration:
+func (o GetCloudStorageObjectBucketsBucketOutput) Versioning() GetCloudStorageObjectBucketsBucketVersioningOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucket) GetCloudStorageObjectBucketsBucketVersioning {
+		return v.Versioning
+	}).(GetCloudStorageObjectBucketsBucketVersioningOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCloudStorageObjectBucketsBucket)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketArrayOutput) ToGetCloudStorageObjectBucketsBucketArrayOutput() GetCloudStorageObjectBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketArrayOutput) ToGetCloudStorageObjectBucketsBucketArrayOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetCloudStorageObjectBucketsBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCloudStorageObjectBucketsBucket {
+		return vs[0].([]GetCloudStorageObjectBucketsBucket)[vs[1].(int)]
+	}).(GetCloudStorageObjectBucketsBucketOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentState struct {
+	// Current encryption configuration:
+	Encryption GetCloudStorageObjectBucketsBucketCurrentStateEncryption `pulumi:"encryption"`
+	// Geographic region where the bucket is located:
+	Location GetCloudStorageObjectBucketsBucketCurrentStateLocation `pulumi:"location"`
+	// Bucket name.
+	Name string `pulumi:"name"`
+	// Current object lock configuration:
+	ObjectLock GetCloudStorageObjectBucketsBucketCurrentStateObjectLock `pulumi:"objectLock"`
+	// Bucket total objects count. Only returned on a single bucket read, `null` here.
+	ObjectsCount int `pulumi:"objectsCount"`
+	// Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.
+	ObjectsSize int `pulumi:"objectsSize"`
+	// Current metadata tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Current versioning configuration:
+	Versioning GetCloudStorageObjectBucketsBucketCurrentStateVersioning `pulumi:"versioning"`
+	// Bucket virtual host. Only returned on a single bucket read, `null` here.
+	VirtualHost string `pulumi:"virtualHost"`
+}
+
+// GetCloudStorageObjectBucketsBucketCurrentStateInput is an input type that accepts GetCloudStorageObjectBucketsBucketCurrentStateArgs and GetCloudStorageObjectBucketsBucketCurrentStateOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketCurrentStateInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketCurrentStateArgs{...}
+type GetCloudStorageObjectBucketsBucketCurrentStateInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketCurrentStateOutput() GetCloudStorageObjectBucketsBucketCurrentStateOutput
+	ToGetCloudStorageObjectBucketsBucketCurrentStateOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketCurrentStateOutput
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateArgs struct {
+	// Current encryption configuration:
+	Encryption GetCloudStorageObjectBucketsBucketCurrentStateEncryptionInput `pulumi:"encryption"`
+	// Geographic region where the bucket is located:
+	Location GetCloudStorageObjectBucketsBucketCurrentStateLocationInput `pulumi:"location"`
+	// Bucket name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Current object lock configuration:
+	ObjectLock GetCloudStorageObjectBucketsBucketCurrentStateObjectLockInput `pulumi:"objectLock"`
+	// Bucket total objects count. Only returned on a single bucket read, `null` here.
+	ObjectsCount pulumi.IntInput `pulumi:"objectsCount"`
+	// Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.
+	ObjectsSize pulumi.IntInput `pulumi:"objectsSize"`
+	// Current metadata tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Current versioning configuration:
+	Versioning GetCloudStorageObjectBucketsBucketCurrentStateVersioningInput `pulumi:"versioning"`
+	// Bucket virtual host. Only returned on a single bucket read, `null` here.
+	VirtualHost pulumi.StringInput `pulumi:"virtualHost"`
+}
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentState)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateOutput() GetCloudStorageObjectBucketsBucketCurrentStateOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketCurrentStateOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketCurrentStateOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentState)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateOutput() GetCloudStorageObjectBucketsBucketCurrentStateOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateOutput {
+	return o
+}
+
+// Current encryption configuration:
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) Encryption() GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) GetCloudStorageObjectBucketsBucketCurrentStateEncryption {
+		return v.Encryption
+	}).(GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput)
+}
+
+// Geographic region where the bucket is located:
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) Location() GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) GetCloudStorageObjectBucketsBucketCurrentStateLocation {
+		return v.Location
+	}).(GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput)
+}
+
+// Bucket name.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Current object lock configuration:
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) ObjectLock() GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) GetCloudStorageObjectBucketsBucketCurrentStateObjectLock {
+		return v.ObjectLock
+	}).(GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput)
+}
+
+// Bucket total objects count. Only returned on a single bucket read, `null` here.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) ObjectsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) int { return v.ObjectsCount }).(pulumi.IntOutput)
+}
+
+// Bucket total objects size in bytes. Only returned on a single bucket read, `null` here.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) ObjectsSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) int { return v.ObjectsSize }).(pulumi.IntOutput)
+}
+
+// Current metadata tags.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Current versioning configuration:
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) Versioning() GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) GetCloudStorageObjectBucketsBucketCurrentStateVersioning {
+		return v.Versioning
+	}).(GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput)
+}
+
+// Bucket virtual host. Only returned on a single bucket read, `null` here.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateOutput) VirtualHost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentState) string { return v.VirtualHost }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateEncryption struct {
+	// Encryption algorithm.
+	Algorithm string `pulumi:"algorithm"`
+}
+
+// GetCloudStorageObjectBucketsBucketCurrentStateEncryptionInput is an input type that accepts GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs and GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketCurrentStateEncryptionInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs{...}
+type GetCloudStorageObjectBucketsBucketCurrentStateEncryptionInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput() GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput
+	ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs struct {
+	// Encryption algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+}
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput() GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateEncryption)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput() GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput {
+	return o
+}
+
+// Encryption algorithm.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentStateEncryption) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateLocation struct {
+	// If set, only buckets located in this region are returned.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageObjectBucketsBucketCurrentStateLocationInput is an input type that accepts GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs and GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketCurrentStateLocationInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs{...}
+type GetCloudStorageObjectBucketsBucketCurrentStateLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutput() GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput
+	ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs struct {
+	// If set, only buckets located in this region are returned.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutput() GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutput() GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput {
+	return o
+}
+
+// If set, only buckets located in this region are returned.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentStateLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateObjectLock struct {
+	// Object lock retention mode.
+	Mode string `pulumi:"mode"`
+	// Number of days to retain objects.
+	RetentionDays int `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears int `pulumi:"retentionYears"`
+}
+
+// GetCloudStorageObjectBucketsBucketCurrentStateObjectLockInput is an input type that accepts GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs and GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketCurrentStateObjectLockInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs{...}
+type GetCloudStorageObjectBucketsBucketCurrentStateObjectLockInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput() GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput
+	ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs struct {
+	// Object lock retention mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Number of days to retain objects.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears pulumi.IntInput `pulumi:"retentionYears"`
+}
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateObjectLock)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput() GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateObjectLock)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput() GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput {
+	return o
+}
+
+// Object lock retention mode.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentStateObjectLock) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Number of days to retain objects.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentStateObjectLock) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// Number of years to retain objects.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput) RetentionYears() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentStateObjectLock) int { return v.RetentionYears }).(pulumi.IntOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateVersioning struct {
+	// Versioning status.
+	Status string `pulumi:"status"`
+}
+
+// GetCloudStorageObjectBucketsBucketCurrentStateVersioningInput is an input type that accepts GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs and GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketCurrentStateVersioningInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs{...}
+type GetCloudStorageObjectBucketsBucketCurrentStateVersioningInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput() GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput
+	ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs struct {
+	// Versioning status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput() GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs) ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateVersioning)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput() GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput) ToGetCloudStorageObjectBucketsBucketCurrentStateVersioningOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput {
+	return o
+}
+
+// Versioning status.
+func (o GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketCurrentStateVersioning) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketEncryption struct {
+	// Encryption algorithm.
+	Algorithm string `pulumi:"algorithm"`
+}
+
+// GetCloudStorageObjectBucketsBucketEncryptionInput is an input type that accepts GetCloudStorageObjectBucketsBucketEncryptionArgs and GetCloudStorageObjectBucketsBucketEncryptionOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketEncryptionInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketEncryptionArgs{...}
+type GetCloudStorageObjectBucketsBucketEncryptionInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketEncryptionOutput() GetCloudStorageObjectBucketsBucketEncryptionOutput
+	ToGetCloudStorageObjectBucketsBucketEncryptionOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketEncryptionOutput
+}
+
+type GetCloudStorageObjectBucketsBucketEncryptionArgs struct {
+	// Encryption algorithm.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+}
+
+func (GetCloudStorageObjectBucketsBucketEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketEncryption)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketEncryptionArgs) ToGetCloudStorageObjectBucketsBucketEncryptionOutput() GetCloudStorageObjectBucketsBucketEncryptionOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketEncryptionArgs) ToGetCloudStorageObjectBucketsBucketEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketEncryptionOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketEncryption)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketEncryptionOutput) ToGetCloudStorageObjectBucketsBucketEncryptionOutput() GetCloudStorageObjectBucketsBucketEncryptionOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketEncryptionOutput) ToGetCloudStorageObjectBucketsBucketEncryptionOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketEncryptionOutput {
+	return o
+}
+
+// Encryption algorithm.
+func (o GetCloudStorageObjectBucketsBucketEncryptionOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketEncryption) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketLocation struct {
+	// If set, only buckets located in this region are returned.
+	Region string `pulumi:"region"`
+}
+
+// GetCloudStorageObjectBucketsBucketLocationInput is an input type that accepts GetCloudStorageObjectBucketsBucketLocationArgs and GetCloudStorageObjectBucketsBucketLocationOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketLocationInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketLocationArgs{...}
+type GetCloudStorageObjectBucketsBucketLocationInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketLocationOutput() GetCloudStorageObjectBucketsBucketLocationOutput
+	ToGetCloudStorageObjectBucketsBucketLocationOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketLocationOutput
+}
+
+type GetCloudStorageObjectBucketsBucketLocationArgs struct {
+	// If set, only buckets located in this region are returned.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetCloudStorageObjectBucketsBucketLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketLocation)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketLocationArgs) ToGetCloudStorageObjectBucketsBucketLocationOutput() GetCloudStorageObjectBucketsBucketLocationOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketLocationOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketLocationArgs) ToGetCloudStorageObjectBucketsBucketLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketLocationOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketLocationOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketLocation)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketLocationOutput) ToGetCloudStorageObjectBucketsBucketLocationOutput() GetCloudStorageObjectBucketsBucketLocationOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketLocationOutput) ToGetCloudStorageObjectBucketsBucketLocationOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketLocationOutput {
+	return o
+}
+
+// If set, only buckets located in this region are returned.
+func (o GetCloudStorageObjectBucketsBucketLocationOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketLocation) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketObjectLock struct {
+	// Object lock retention mode.
+	Mode string `pulumi:"mode"`
+	// Number of days to retain objects.
+	RetentionDays int `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears int `pulumi:"retentionYears"`
+}
+
+// GetCloudStorageObjectBucketsBucketObjectLockInput is an input type that accepts GetCloudStorageObjectBucketsBucketObjectLockArgs and GetCloudStorageObjectBucketsBucketObjectLockOutput values.
+// You can construct a concrete instance of `GetCloudStorageObjectBucketsBucketObjectLockInput` via:
+//
+//	GetCloudStorageObjectBucketsBucketObjectLockArgs{...}
+type GetCloudStorageObjectBucketsBucketObjectLockInput interface {
+	pulumi.Input
+
+	ToGetCloudStorageObjectBucketsBucketObjectLockOutput() GetCloudStorageObjectBucketsBucketObjectLockOutput
+	ToGetCloudStorageObjectBucketsBucketObjectLockOutputWithContext(context.Context) GetCloudStorageObjectBucketsBucketObjectLockOutput
+}
+
+type GetCloudStorageObjectBucketsBucketObjectLockArgs struct {
+	// Object lock retention mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Number of days to retain objects.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
+	// Number of years to retain objects.
+	RetentionYears pulumi.IntInput `pulumi:"retentionYears"`
+}
+
+func (GetCloudStorageObjectBucketsBucketObjectLockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketObjectLock)(nil)).Elem()
+}
+
+func (i GetCloudStorageObjectBucketsBucketObjectLockArgs) ToGetCloudStorageObjectBucketsBucketObjectLockOutput() GetCloudStorageObjectBucketsBucketObjectLockOutput {
+	return i.ToGetCloudStorageObjectBucketsBucketObjectLockOutputWithContext(context.Background())
+}
+
+func (i GetCloudStorageObjectBucketsBucketObjectLockArgs) ToGetCloudStorageObjectBucketsBucketObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketObjectLockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCloudStorageObjectBucketsBucketObjectLockOutput)
+}
+
+type GetCloudStorageObjectBucketsBucketObjectLockOutput struct{ *pulumi.OutputState }
+
+func (GetCloudStorageObjectBucketsBucketObjectLockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCloudStorageObjectBucketsBucketObjectLock)(nil)).Elem()
+}
+
+func (o GetCloudStorageObjectBucketsBucketObjectLockOutput) ToGetCloudStorageObjectBucketsBucketObjectLockOutput() GetCloudStorageObjectBucketsBucketObjectLockOutput {
+	return o
+}
+
+func (o GetCloudStorageObjectBucketsBucketObjectLockOutput) ToGetCloudStorageObjectBucketsBucketObjectLockOutputWithContext(ctx context.Context) GetCloudStorageObjectBucketsBucketObjectLockOutput {
+	return o
+}
+
+// Object lock retention mode.
+func (o GetCloudStorageObjectBucketsBucketObjectLockOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketObjectLock) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Number of days to retain objects.
+func (o GetCloudStorageObjectBucketsBucketObjectLockOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketObjectLock) int { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// Number of years to retain objects.
+func (o GetCloudStorageObjectBucketsBucketObjectLockOutput) RetentionYears() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCloudStorageObjectBucketsBucketObjectLock) int { return v.RetentionYears }).(pulumi.IntOutput)
 }
 
 func init() {
@@ -61576,6 +61405,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageBlockVolumeSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAclCurrentStateInput)(nil)).Elem(), CloudStorageFileShareAclCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareAclCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareAclCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCreateFromInput)(nil)).Elem(), CloudStorageFileShareCreateFromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCreateFromPtrInput)(nil)).Elem(), CloudStorageFileShareCreateFromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateInput)(nil)).Elem(), CloudStorageFileShareCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareCurrentStateCapabilityInput)(nil)).Elem(), CloudStorageFileShareCurrentStateCapabilityArgs{})
@@ -61596,6 +61427,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareSnapshotCurrentStatePtrInput)(nil)).Elem(), CloudStorageFileShareSnapshotCurrentStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareSnapshotCurrentStateLocationInput)(nil)).Elem(), CloudStorageFileShareSnapshotCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageFileShareSnapshotCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageFileShareSnapshotCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStatePtrInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateEncryptionInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateEncryptionPtrInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateLocationInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateLocationPtrInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateObjectLockInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateObjectLockPtrInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateVersioningInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketCurrentStateVersioningPtrInput)(nil)).Elem(), CloudStorageObjectBucketCurrentStateVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketEncryptionInput)(nil)).Elem(), CloudStorageObjectBucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketEncryptionPtrInput)(nil)).Elem(), CloudStorageObjectBucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketObjectLockInput)(nil)).Elem(), CloudStorageObjectBucketObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketObjectLockPtrInput)(nil)).Elem(), CloudStorageObjectBucketObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketVersioningInput)(nil)).Elem(), CloudStorageObjectBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudStorageObjectBucketVersioningPtrInput)(nil)).Elem(), CloudStorageObjectBucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsIamInput)(nil)).Elem(), StorageEfsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsIamPtrInput)(nil)).Elem(), StorageEfsIamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageEfsOrderInput)(nil)).Elem(), StorageEfsOrderArgs{})
@@ -62041,52 +61888,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareCurrentStateLocationInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareCurrentStateLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareEncryptionInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageFileSharesFileShareLocationInput)(nil)).Elem(), GetCloudStorageFileSharesFileShareLocationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDbaasLogsOutputGraylogStreamUrlUrlArrayInput)(nil)).Elem(), GetDbaasLogsOutputGraylogStreamUrlUrlArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputInput)(nil)).Elem(), GetInstallationTemplateInputArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateInputArrayInput)(nil)).Elem(), GetInstallationTemplateInputArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseInput)(nil)).Elem(), GetInstallationTemplateLicenseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseOInput)(nil)).Elem(), GetInstallationTemplateLicenseOArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseOArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseOArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseUsageInput)(nil)).Elem(), GetInstallationTemplateLicenseUsageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateLicenseUsageArrayInput)(nil)).Elem(), GetInstallationTemplateLicenseUsageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectInput)(nil)).Elem(), GetInstallationTemplateProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectArrayInput)(nil)).Elem(), GetInstallationTemplateProjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOInput)(nil)).Elem(), GetInstallationTemplateProjectOArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectOArrayInput)(nil)).Elem(), GetInstallationTemplateProjectOArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetInstallationTemplateProjectUsageArrayInput)(nil)).Elem(), GetInstallationTemplateProjectUsageArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIploadbalancingNatIpsNatIpInput)(nil)).Elem(), GetIploadbalancingNatIpsNatIpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIploadbalancingNatIpsNatIpArrayInput)(nil)).Elem(), GetIploadbalancingNatIpsNatIpArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretIamInput)(nil)).Elem(), GetOkmsSecretIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOkmsSecretMetadataInput)(nil)).Elem(), GetOkmsSecretMetadataArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfigInput)(nil)).Elem(), GetOvhcloudConnectConfigPopsPopConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectConfigPopsPopConfigArrayInput)(nil)).Elem(), GetOvhcloudConnectConfigPopsPopConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetOvhcloudConnectDatacentersDatacenterArrayInput)(nil)).Elem(), GetOvhcloudConnectDatacentersDatacenterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniInput)(nil)).Elem(), GetServerVniArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetServerVniArrayInput)(nil)).Elem(), GetServerVniArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsIamInput)(nil)).Elem(), GetStorageEfsIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetStorageEfsShareAccessPathsAccessPathArrayInput)(nil)).Elem(), GetStorageEfsShareAccessPathsAccessPathArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackIamInput)(nil)).Elem(), GetVrackIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateInput)(nil)).Elem(), GetVrackservicesCurrentStateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpointInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentStateSubnetServiceRangeInput)(nil)).Elem(), GetVrackservicesCurrentStateSubnetServiceRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskInput)(nil)).Elem(), GetVrackservicesCurrentTaskArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesCurrentTaskArrayInput)(nil)).Elem(), GetVrackservicesCurrentTaskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesIamInput)(nil)).Elem(), GetVrackservicesIamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVrackservicesTargetSpecInput)(nil)).Elem(), GetVrackservicesTargetSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateInput)(nil)).Elem(), GetCloudStorageObjectBucketCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateEncryptionInput)(nil)).Elem(), GetCloudStorageObjectBucketCurrentStateEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateLocationInput)(nil)).Elem(), GetCloudStorageObjectBucketCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateObjectLockInput)(nil)).Elem(), GetCloudStorageObjectBucketCurrentStateObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketCurrentStateVersioningInput)(nil)).Elem(), GetCloudStorageObjectBucketCurrentStateVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketEncryptionInput)(nil)).Elem(), GetCloudStorageObjectBucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketLocationInput)(nil)).Elem(), GetCloudStorageObjectBucketLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketObjectLockInput)(nil)).Elem(), GetCloudStorageObjectBucketObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketVersioningInput)(nil)).Elem(), GetCloudStorageObjectBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketArrayInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketCurrentStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateEncryptionInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketCurrentStateEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateLocationInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketCurrentStateLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateObjectLockInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketCurrentStateObjectLockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketCurrentStateVersioningInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketCurrentStateVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketEncryptionInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketLocationInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCloudStorageObjectBucketsBucketObjectLockInput)(nil)).Elem(), GetCloudStorageObjectBucketsBucketObjectLockArgs{})
 	pulumi.RegisterOutputType(CloudFloatingIpCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudFloatingIpCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudFloatingIpCurrentStateAssociatedResourceOutput{})
@@ -62367,6 +62187,8 @@ func init() {
 	pulumi.RegisterOutputType(CloudStorageBlockVolumeSnapshotCurrentStateLocationPtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareAclCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareAclCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageFileShareCreateFromOutput{})
+	pulumi.RegisterOutputType(CloudStorageFileShareCreateFromPtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareCurrentStateCapabilityOutput{})
@@ -62387,6 +62209,22 @@ func init() {
 	pulumi.RegisterOutputType(CloudStorageFileShareSnapshotCurrentStatePtrOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareSnapshotCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(CloudStorageFileShareSnapshotCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStatePtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateEncryptionOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateObjectLockOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateObjectLockPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateVersioningOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketCurrentStateVersioningPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketEncryptionOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketObjectLockOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketObjectLockPtrOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketVersioningOutput{})
+	pulumi.RegisterOutputType(CloudStorageObjectBucketVersioningPtrOutput{})
 	pulumi.RegisterOutputType(StorageEfsIamOutput{})
 	pulumi.RegisterOutputType(StorageEfsIamPtrOutput{})
 	pulumi.RegisterOutputType(StorageEfsOrderOutput{})
@@ -62832,50 +62670,23 @@ func init() {
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareCurrentStateLocationOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareEncryptionOutput{})
 	pulumi.RegisterOutputType(GetCloudStorageFileSharesFileShareLocationOutput{})
-	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlOutput{})
-	pulumi.RegisterOutputType(GetDbaasLogsOutputGraylogStreamUrlUrlArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateInputOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateInputArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateLicenseArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateLicenseOArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateLicenseUsageOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateLicenseUsageArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateProjectOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateProjectArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateProjectOOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateProjectOArrayOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageOutput{})
-	pulumi.RegisterOutputType(GetInstallationTemplateProjectUsageArrayOutput{})
-	pulumi.RegisterOutputType(GetIploadbalancingNatIpsNatIpOutput{})
-	pulumi.RegisterOutputType(GetIploadbalancingNatIpsNatIpArrayOutput{})
-	pulumi.RegisterOutputType(GetOkmsSecretIamOutput{})
-	pulumi.RegisterOutputType(GetOkmsSecretMetadataOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacenterExtrasExtraConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopDatacentersDatacenterConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopsPopConfigOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectConfigPopsPopConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterOutput{})
-	pulumi.RegisterOutputType(GetOvhcloudConnectDatacentersDatacenterArrayOutput{})
-	pulumi.RegisterOutputType(GetServerVniOutput{})
-	pulumi.RegisterOutputType(GetServerVniArrayOutput{})
-	pulumi.RegisterOutputType(GetStorageEfsIamOutput{})
-	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathOutput{})
-	pulumi.RegisterOutputType(GetStorageEfsShareAccessPathsAccessPathArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackIamOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceEndpointEndpointArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentStateSubnetServiceRangeOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesCurrentTaskArrayOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesIamOutput{})
-	pulumi.RegisterOutputType(GetVrackservicesTargetSpecOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketCurrentStateEncryptionOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketCurrentStateObjectLockOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketCurrentStateVersioningOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketEncryptionOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketObjectLockOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketVersioningOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketCurrentStateOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketCurrentStateEncryptionOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketCurrentStateLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketCurrentStateObjectLockOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketCurrentStateVersioningOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketEncryptionOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketLocationOutput{})
+	pulumi.RegisterOutputType(GetCloudStorageObjectBucketsBucketObjectLockOutput{})
 }

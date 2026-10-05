@@ -3,6 +3,7 @@
 
 package com.ovhcloud.pulumi.ovh;
 
+import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareCreateFromArgs;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareEncryptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -34,6 +35,21 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Source to create the file share from. **Changing this value recreates the resource.**
+     * 
+     */
+    @Import(name="createFrom")
+    private @Nullable Output<CloudStorageFileShareCreateFromArgs> createFrom;
+
+    /**
+     * @return Source to create the file share from. **Changing this value recreates the resource.**
+     * 
+     */
+    public Optional<Output<CloudStorageFileShareCreateFromArgs>> createFrom() {
+        return Optional.ofNullable(this.createFrom);
+    }
+
+    /**
      * File share description.
      * 
      */
@@ -49,14 +65,14 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<CloudStorageFileShareEncryptionArgs> encryption;
 
     /**
-     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * @return Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     public Optional<Output<CloudStorageFileShareEncryptionArgs>> encryption() {
@@ -124,54 +140,55 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="shareNetworkId", required=true)
-    private Output<String> shareNetworkId;
+    @Import(name="shareNetworkId")
+    private @Nullable Output<String> shareNetworkId;
 
     /**
-     * @return ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * @return ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> shareNetworkId() {
-        return this.shareNetworkId;
+    public Optional<Output<String>> shareNetworkId() {
+        return Optional.ofNullable(this.shareNetworkId);
     }
 
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
-    @Import(name="shareType", required=true)
-    private Output<String> shareType;
+    @Import(name="shareType")
+    private @Nullable Output<String> shareType;
 
     /**
-     * @return File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * @return File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
-    public Output<String> shareType() {
-        return this.shareType;
+    public Optional<Output<String>> shareType() {
+        return Optional.ofNullable(this.shareType);
     }
 
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
-    @Import(name="size", required=true)
-    private Output<Integer> size;
+    @Import(name="size")
+    private @Nullable Output<Integer> size;
 
     /**
-     * @return Size of the file share in GB.
+     * @return Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
-    public Output<Integer> size() {
-        return this.size;
+    public Optional<Output<Integer>> size() {
+        return Optional.ofNullable(this.size);
     }
 
     private CloudStorageFileShareArgs() {}
 
     private CloudStorageFileShareArgs(CloudStorageFileShareArgs $) {
         this.availabilityZone = $.availabilityZone;
+        this.createFrom = $.createFrom;
         this.description = $.description;
         this.encryption = $.encryption;
         this.name = $.name;
@@ -223,6 +240,27 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param createFrom Source to create the file share from. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createFrom(@Nullable Output<CloudStorageFileShareCreateFromArgs> createFrom) {
+            $.createFrom = createFrom;
+            return this;
+        }
+
+        /**
+         * @param createFrom Source to create the file share from. **Changing this value recreates the resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createFrom(CloudStorageFileShareCreateFromArgs createFrom) {
+            return createFrom(Output.of(createFrom));
+        }
+
+        /**
          * @param description File share description.
          * 
          * @return builder
@@ -244,7 +282,7 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param encryption Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+         * @param encryption Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -255,7 +293,7 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param encryption Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+         * @param encryption Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -349,18 +387,18 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
          */
-        public Builder shareNetworkId(Output<String> shareNetworkId) {
+        public Builder shareNetworkId(@Nullable Output<String> shareNetworkId) {
             $.shareNetworkId = shareNetworkId;
             return this;
         }
 
         /**
-         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+         * @param shareNetworkId ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -370,18 +408,18 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param shareType File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+         * @param shareType File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
          */
-        public Builder shareType(Output<String> shareType) {
+        public Builder shareType(@Nullable Output<String> shareType) {
             $.shareType = shareType;
             return this;
         }
 
         /**
-         * @param shareType File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+         * @param shareType File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
          * 
          * @return builder
          * 
@@ -391,18 +429,18 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param size Size of the file share in GB.
+         * @param size Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
          * 
          * @return builder
          * 
          */
-        public Builder size(Output<Integer> size) {
+        public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
         /**
-         * @param size Size of the file share in GB.
+         * @param size Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
          * 
          * @return builder
          * 
@@ -420,15 +458,6 @@ public final class CloudStorageFileShareArgs extends com.pulumi.resources.Resour
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("CloudStorageFileShareArgs", "serviceName");
-            }
-            if ($.shareNetworkId == null) {
-                throw new MissingRequiredPropertyException("CloudStorageFileShareArgs", "shareNetworkId");
-            }
-            if ($.shareType == null) {
-                throw new MissingRequiredPropertyException("CloudStorageFileShareArgs", "shareType");
-            }
-            if ($.size == null) {
-                throw new MissingRequiredPropertyException("CloudStorageFileShareArgs", "size");
             }
             return $;
         }

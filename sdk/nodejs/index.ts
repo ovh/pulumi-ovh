@@ -180,6 +180,11 @@ export type CloudStorageFileShareSnapshot = import("./cloudStorageFileShareSnaps
 export const CloudStorageFileShareSnapshot: typeof import("./cloudStorageFileShareSnapshot").CloudStorageFileShareSnapshot = null as any;
 utilities.lazyLoad(exports, ["CloudStorageFileShareSnapshot"], () => require("./cloudStorageFileShareSnapshot"));
 
+export { CloudStorageObjectBucketArgs, CloudStorageObjectBucketState } from "./cloudStorageObjectBucket";
+export type CloudStorageObjectBucket = import("./cloudStorageObjectBucket").CloudStorageObjectBucket;
+export const CloudStorageObjectBucket: typeof import("./cloudStorageObjectBucket").CloudStorageObjectBucket = null as any;
+utilities.lazyLoad(exports, ["CloudStorageObjectBucket"], () => require("./cloudStorageObjectBucket"));
+
 export { ClousSSHKeyArgs, ClousSSHKeyState } from "./clousSSHKey";
 export type ClousSSHKey = import("./clousSSHKey").ClousSSHKey;
 export const ClousSSHKey: typeof import("./clousSSHKey").ClousSSHKey = null as any;
@@ -570,6 +575,16 @@ export const getCloudStorageFileShares: typeof import("./getCloudStorageFileShar
 export const getCloudStorageFileSharesOutput: typeof import("./getCloudStorageFileShares").getCloudStorageFileSharesOutput = null as any;
 utilities.lazyLoad(exports, ["getCloudStorageFileShares","getCloudStorageFileSharesOutput"], () => require("./getCloudStorageFileShares"));
 
+export { GetCloudStorageObjectBucketArgs, GetCloudStorageObjectBucketResult, GetCloudStorageObjectBucketOutputArgs } from "./getCloudStorageObjectBucket";
+export const getCloudStorageObjectBucket: typeof import("./getCloudStorageObjectBucket").getCloudStorageObjectBucket = null as any;
+export const getCloudStorageObjectBucketOutput: typeof import("./getCloudStorageObjectBucket").getCloudStorageObjectBucketOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageObjectBucket","getCloudStorageObjectBucketOutput"], () => require("./getCloudStorageObjectBucket"));
+
+export { GetCloudStorageObjectBucketsArgs, GetCloudStorageObjectBucketsResult, GetCloudStorageObjectBucketsOutputArgs } from "./getCloudStorageObjectBuckets";
+export const getCloudStorageObjectBuckets: typeof import("./getCloudStorageObjectBuckets").getCloudStorageObjectBuckets = null as any;
+export const getCloudStorageObjectBucketsOutput: typeof import("./getCloudStorageObjectBuckets").getCloudStorageObjectBucketsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudStorageObjectBuckets","getCloudStorageObjectBucketsOutput"], () => require("./getCloudStorageObjectBuckets"));
+
 export { GetDbaasLogsEncryptionKeyArgs, GetDbaasLogsEncryptionKeyResult, GetDbaasLogsEncryptionKeyOutputArgs } from "./getDbaasLogsEncryptionKey";
 export const getDbaasLogsEncryptionKey: typeof import("./getDbaasLogsEncryptionKey").getDbaasLogsEncryptionKey = null as any;
 export const getDbaasLogsEncryptionKeyOutput: typeof import("./getDbaasLogsEncryptionKey").getDbaasLogsEncryptionKeyOutput = null as any;
@@ -579,6 +594,11 @@ export { GetDbaasLogsOutputGraylogStreamUrlArgs, GetDbaasLogsOutputGraylogStream
 export const getDbaasLogsOutputGraylogStreamUrl: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrl = null as any;
 export const getDbaasLogsOutputGraylogStreamUrlOutput: typeof import("./getDbaasLogsOutputGraylogStreamUrl").getDbaasLogsOutputGraylogStreamUrlOutput = null as any;
 utilities.lazyLoad(exports, ["getDbaasLogsOutputGraylogStreamUrl","getDbaasLogsOutputGraylogStreamUrlOutput"], () => require("./getDbaasLogsOutputGraylogStreamUrl"));
+
+export { GetDedicatedServerNetworkingArgs, GetDedicatedServerNetworkingResult, GetDedicatedServerNetworkingOutputArgs } from "./getDedicatedServerNetworking";
+export const getDedicatedServerNetworking: typeof import("./getDedicatedServerNetworking").getDedicatedServerNetworking = null as any;
+export const getDedicatedServerNetworkingOutput: typeof import("./getDedicatedServerNetworking").getDedicatedServerNetworkingOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedServerNetworking","getDedicatedServerNetworkingOutput"], () => require("./getDedicatedServerNetworking"));
 
 export { GetDedicatedServerOrderableBandwidthArgs, GetDedicatedServerOrderableBandwidthResult, GetDedicatedServerOrderableBandwidthOutputArgs } from "./getDedicatedServerOrderableBandwidth";
 export const getDedicatedServerOrderableBandwidth: typeof import("./getDedicatedServerOrderableBandwidth").getDedicatedServerOrderableBandwidth = null as any;
@@ -888,6 +908,8 @@ const _module = {
                 return new CloudStorageFileShareNetwork(name, <any>undefined, { urn })
             case "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot":
                 return new CloudStorageFileShareSnapshot(name, <any>undefined, { urn })
+            case "ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket":
+                return new CloudStorageObjectBucket(name, <any>undefined, { urn })
             case "ovh:index/clousSSHKey:ClousSSHKey":
                 return new ClousSSHKey(name, <any>undefined, { urn })
             case "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey":
@@ -962,6 +984,7 @@ pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShare", _mod
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareAcl", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareNetwork", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageFileShareSnapshot", _module)
+pulumi.runtime.registerResourceModule("ovh", "index/cloudStorageObjectBucket", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/clousSSHKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/dbaasLogsEncryptionKey", _module)
 pulumi.runtime.registerResourceModule("ovh", "index/dedicatedServerVirtualMac", _module)

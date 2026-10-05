@@ -41,6 +41,7 @@ from .cloud_storage_file_share import *
 from .cloud_storage_file_share_acl import *
 from .cloud_storage_file_share_network import *
 from .cloud_storage_file_share_snapshot import *
+from .cloud_storage_object_bucket import *
 from .clous_ssh_key import *
 from .dbaas_logs_encryption_key import *
 from .dedicated_server_virtual_mac import *
@@ -119,8 +120,11 @@ from .get_cloud_storage_file_share_networks import *
 from .get_cloud_storage_file_share_snapshot import *
 from .get_cloud_storage_file_share_snapshots import *
 from .get_cloud_storage_file_shares import *
+from .get_cloud_storage_object_bucket import *
+from .get_cloud_storage_object_buckets import *
 from .get_dbaas_logs_encryption_key import *
 from .get_dbaas_logs_output_graylog_stream_url import *
+from .get_dedicated_server_networking import *
 from .get_dedicated_server_orderable_bandwidth import *
 from .get_dedicated_server_orderable_bandwidth_vrack import *
 from .get_domain_zone_record import *
@@ -1512,6 +1516,14 @@ _utilities.register(
   "fqn": "pulumi_ovh",
   "classes": {
    "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": "CloudStorageFileShareSnapshot"
+  }
+ },
+ {
+  "pkg": "ovh",
+  "mod": "index/cloudStorageObjectBucket",
+  "fqn": "pulumi_ovh",
+  "classes": {
+   "ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket": "CloudStorageObjectBucket"
   }
  },
  {

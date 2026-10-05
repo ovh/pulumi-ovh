@@ -345,15 +345,36 @@ class ServerIam(dict):
 
 @pulumi.output_type
 class ServerNetworkingInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationFallback":
+            suggest = "aggregation_fallback"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerNetworkingInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerNetworkingInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerNetworkingInterface.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  macs: Sequence[_builtins.str],
-                 type: _builtins.str):
+                 type: _builtins.str,
+                 aggregation_fallback: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] macs: Interface Mac address
         :param _builtins.str type: Interface type
+        :param _builtins.str aggregation_fallback: Mac address of the LACP fallback interface
         """
         pulumi.set(__self__, "macs", macs)
         pulumi.set(__self__, "type", type)
+        if aggregation_fallback is not None:
+            pulumi.set(__self__, "aggregation_fallback", aggregation_fallback)
 
     @_builtins.property
     @pulumi.getter
@@ -370,6 +391,14 @@ class ServerNetworkingInterface(dict):
         Interface type
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="aggregationFallback")
+    def aggregation_fallback(self) -> Optional[_builtins.str]:
+        """
+        Mac address of the LACP fallback interface
+        """
+        return pulumi.get(self, "aggregation_fallback")
 
 
 @pulumi.output_type

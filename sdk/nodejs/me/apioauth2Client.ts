@@ -5,37 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Creates an OAuth2 service account.
- *
- * ## Example Usage
- *
- * An OAuth2 client for an app hosted at `my-app.com`, that uses the authorization code flow to authenticate.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myOauth2ClientAuthCode = new ovh.me.APIOAuth2Client("my_oauth2_client_auth_code", {
- *     name: "OAuth2 authorization code service account",
- *     flow: "AUTHORIZATION_CODE",
- *     description: "An OAuth2 client using the authorization code flow for my-app.com",
- *     callbackUrls: ["https://my-app.com/callback"],
- * });
- * ```
- *
- * An OAuth2 client for an app hosted at `my-app.com`, that uses the client credentials flow to authenticate.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as ovh from "@ovhcloud/pulumi-ovh";
- *
- * const myOauth2ClientClientCreds = new ovh.me.APIOAuth2Client("my_oauth2_client_client_creds", {
- *     name: "client credentials service account",
- *     description: "An OAuth2 client using the client credentials flow for my app",
- *     flow: "CLIENT_CREDENTIALS",
- * });
- * ```
- *
  * ## Import
  *
  * OAuth2 clients can be imported using their `client_id`:
@@ -53,6 +22,8 @@ import * as utilities from "../utilities";
  * ```sh
  * $ pulumi import ovh:Me/aPIOAuth2Client:APIOAuth2Client my_oauth2_client 'client_id|client_secret'
  * ```
+ *
+ * Imported OAuth2 clients have `discard_client_secret` set to `false`. If your configuration sets it to `true`, the next `pulumi up` removes the client secret from the state without recreating the OAuth2 client.
  */
 export class APIOAuth2Client extends pulumi.CustomResource {
     /**
@@ -91,13 +62,14 @@ export class APIOAuth2Client extends pulumi.CustomResource {
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
-     * Client secret of the created service account.
+     * Client secret of the created service account. Empty when `discardClientSecret` is `true`.
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
      * OAuth2 client description.
      */
     public readonly description!: pulumi.Output<string>;
+    public readonly discardClientSecret!: pulumi.Output<boolean | undefined>;
     /**
      * The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
      */
@@ -128,6 +100,7 @@ export class APIOAuth2Client extends pulumi.CustomResource {
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["discardClientSecret"] = state ? state.discardClientSecret : undefined;
             resourceInputs["flow"] = state ? state.flow : undefined;
             resourceInputs["identity"] = state ? state.identity : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -141,6 +114,7 @@ export class APIOAuth2Client extends pulumi.CustomResource {
             }
             resourceInputs["callbackUrls"] = args ? args.callbackUrls : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["discardClientSecret"] = args ? args.discardClientSecret : undefined;
             resourceInputs["flow"] = args ? args.flow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["clientId"] = undefined /*out*/;
@@ -167,13 +141,14 @@ export interface APIOAuth2ClientState {
      */
     clientId?: pulumi.Input<string>;
     /**
-     * Client secret of the created service account.
+     * Client secret of the created service account. Empty when `discardClientSecret` is `true`.
      */
     clientSecret?: pulumi.Input<string>;
     /**
      * OAuth2 client description.
      */
     description?: pulumi.Input<string>;
+    discardClientSecret?: pulumi.Input<boolean>;
     /**
      * The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
      */
@@ -200,6 +175,7 @@ export interface APIOAuth2ClientArgs {
      * OAuth2 client description.
      */
     description: pulumi.Input<string>;
+    discardClientSecret?: pulumi.Input<boolean>;
     /**
      * The OAuth2 flow to use. `AUTHORIZATION_CODE` or `CLIENT_CREDENTIALS` are supported at the moment.
      */

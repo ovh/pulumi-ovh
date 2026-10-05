@@ -441,6 +441,10 @@ if not MYPY:
         """
         Interface type
         """
+        aggregation_fallback: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Mac address of the LACP fallback interface
+        """
 elif False:
     ServerNetworkingInterfaceArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -448,13 +452,17 @@ elif False:
 class ServerNetworkingInterfaceArgs:
     def __init__(__self__, *,
                  macs: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 type: pulumi.Input[_builtins.str]):
+                 type: pulumi.Input[_builtins.str],
+                 aggregation_fallback: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] macs: Interface Mac address
         :param pulumi.Input[_builtins.str] type: Interface type
+        :param pulumi.Input[_builtins.str] aggregation_fallback: Mac address of the LACP fallback interface
         """
         pulumi.set(__self__, "macs", macs)
         pulumi.set(__self__, "type", type)
+        if aggregation_fallback is not None:
+            pulumi.set(__self__, "aggregation_fallback", aggregation_fallback)
 
     @_builtins.property
     @pulumi.getter
@@ -479,6 +487,18 @@ class ServerNetworkingInterfaceArgs:
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="aggregationFallback")
+    def aggregation_fallback(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Mac address of the LACP fallback interface
+        """
+        return pulumi.get(self, "aggregation_fallback")
+
+    @aggregation_fallback.setter
+    def aggregation_fallback(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "aggregation_fallback", value)
 
 
 if not MYPY:

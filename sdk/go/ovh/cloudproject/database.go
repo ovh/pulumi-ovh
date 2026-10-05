@@ -384,7 +384,7 @@ type Database struct {
 	KafkaRestApi pulumi.BoolPtrOutput `pulumi:"kafkaRestApi"`
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry pulumi.BoolPtrOutput `pulumi:"kafkaSchemaRegistry"`
-	// Time on which maintenances can start every day.
+	// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
 	MaintenanceTime pulumi.StringOutput `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
@@ -479,7 +479,7 @@ type databaseState struct {
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
-	// Time on which maintenances can start every day.
+	// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// Type of network of the cluster.
 	NetworkType *string `pulumi:"networkType"`
@@ -530,7 +530,7 @@ type DatabaseState struct {
 	KafkaRestApi pulumi.BoolPtrInput
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry pulumi.BoolPtrInput
-	// Time on which maintenances can start every day.
+	// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
 	MaintenanceTime pulumi.StringPtrInput
 	// Type of network of the cluster.
 	NetworkType pulumi.StringPtrInput
@@ -579,7 +579,7 @@ type databaseArgs struct {
 	KafkaRestApi *bool `pulumi:"kafkaRestApi"`
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry *bool `pulumi:"kafkaSchemaRegistry"`
-	// Time on which maintenances can start every day.
+	// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
 	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes []DatabaseNode `pulumi:"nodes"`
@@ -621,7 +621,7 @@ type DatabaseArgs struct {
 	KafkaRestApi pulumi.BoolPtrInput
 	// Defines whether the schema registry is enabled on a Kafka cluster
 	KafkaSchemaRegistry pulumi.BoolPtrInput
-	// Time on which maintenances can start every day.
+	// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
 	MaintenanceTime pulumi.StringPtrInput
 	// List of nodes object. Multi region cluster are not yet available, all node should be identical.
 	Nodes DatabaseNodeArrayInput
@@ -796,7 +796,7 @@ func (o DatabaseOutput) KafkaSchemaRegistry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.BoolPtrOutput { return v.KafkaSchemaRegistry }).(pulumi.BoolPtrOutput)
 }
 
-// Time on which maintenances can start every day.
+// Time on which maintenances can start every day. Format is: `hh:mm:ss` in UTC timezone, using 24 hours and zero padded values (e.g. `15:04:05`).
 func (o DatabaseOutput) MaintenanceTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.MaintenanceTime }).(pulumi.StringOutput)
 }

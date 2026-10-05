@@ -1090,6 +1090,10 @@
                 "current": "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot",
                 "majorVersion": 2
             },
+            "ovh_cloud_storage_object_bucket": {
+                "current": "ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket",
+                "majorVersion": 2
+            },
             "ovh_dbaas_logs_cluster": {
                 "current": "ovh:Dbaas/logsCluster:LogsCluster",
                 "majorVersion": 2,
@@ -4053,6 +4057,19 @@
                     }
                 }
             },
+            "ovh_cloud_storage_object_bucket": {
+                "current": "ovh:index/getCloudStorageObjectBucket:getCloudStorageObjectBucket",
+                "majorVersion": 2
+            },
+            "ovh_cloud_storage_object_buckets": {
+                "current": "ovh:index/getCloudStorageObjectBuckets:getCloudStorageObjectBuckets",
+                "majorVersion": 2,
+                "fields": {
+                    "buckets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "ovh_dbaas_logs_cluster": {
                 "current": "ovh:Dbaas/getLogsCluster:getLogsCluster",
                 "majorVersion": 2,
@@ -4253,6 +4270,22 @@
                 "fields": {
                     "result": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "ovh_dedicated_server_networking": {
+                "current": "ovh:index/getDedicatedServerNetworking:getDedicatedServerNetworking",
+                "majorVersion": 2,
+                "fields": {
+                    "interfaces": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "macs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -5248,6 +5281,7 @@
             "ovh:index/cloudStorageFileShareAcl:CloudStorageFileShareAcl": 1,
             "ovh:index/cloudStorageFileShareNetwork:CloudStorageFileShareNetwork": 1,
             "ovh:index/cloudStorageFileShareSnapshot:CloudStorageFileShareSnapshot": 1,
+            "ovh:index/cloudStorageObjectBucket:CloudStorageObjectBucket": 1,
             "ovh:index/clousSSHKey:ClousSSHKey": 1,
             "ovh:index/dbaasLogsEncryptionKey:DbaasLogsEncryptionKey": 1,
             "ovh:index/dedicatedServerVirtualMac:DedicatedServerVirtualMac": 0,
@@ -5477,8 +5511,11 @@
             "ovh:index/getCloudStorageFileShareSnapshot:getCloudStorageFileShareSnapshot": 1,
             "ovh:index/getCloudStorageFileShareSnapshots:getCloudStorageFileShareSnapshots": 1,
             "ovh:index/getCloudStorageFileShares:getCloudStorageFileShares": 1,
+            "ovh:index/getCloudStorageObjectBucket:getCloudStorageObjectBucket": 1,
+            "ovh:index/getCloudStorageObjectBuckets:getCloudStorageObjectBuckets": 1,
             "ovh:index/getDbaasLogsEncryptionKey:getDbaasLogsEncryptionKey": 1,
             "ovh:index/getDbaasLogsOutputGraylogStreamUrl:getDbaasLogsOutputGraylogStreamUrl": 0,
+            "ovh:index/getDedicatedServerNetworking:getDedicatedServerNetworking": 0,
             "ovh:index/getDedicatedServerOrderableBandwidth:getDedicatedServerOrderableBandwidth": 0,
             "ovh:index/getDedicatedServerOrderableBandwidthVrack:getDedicatedServerOrderableBandwidthVrack": 0,
             "ovh:index/getDomainZoneRecord:getDomainZoneRecord": 1,

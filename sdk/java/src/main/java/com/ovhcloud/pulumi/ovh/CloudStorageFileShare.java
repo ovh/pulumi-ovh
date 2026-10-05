@@ -6,6 +6,7 @@ package com.ovhcloud.pulumi.ovh;
 import com.ovhcloud.pulumi.ovh.CloudStorageFileShareArgs;
 import com.ovhcloud.pulumi.ovh.Utilities;
 import com.ovhcloud.pulumi.ovh.inputs.CloudStorageFileShareState;
+import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCreateFrom;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareCurrentState;
 import com.ovhcloud.pulumi.ovh.outputs.CloudStorageFileShareEncryption;
 import com.pulumi.core.Output;
@@ -14,6 +15,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -64,6 +66,13 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Create from a snapshot
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * When `create_from` is set, the new file share takes its `share_type`, `encryption` and, if omitted, `share_network_id` from the snapshot&#39;s source file share, and its `size` from the snapshot if omitted. The snapshot must be `available` and in the same `region`.
  * 
  * ## Import
  * 
@@ -117,6 +126,20 @@ public class CloudStorageFileShare extends com.pulumi.resources.CustomResource {
         return this.checksum;
     }
     /**
+     * Source to create the file share from. **Changing this value recreates the resource.**
+     * 
+     */
+    @Export(name="createFrom", refs={CloudStorageFileShareCreateFrom.class}, tree="[0]")
+    private Output</* @Nullable */ CloudStorageFileShareCreateFrom> createFrom;
+
+    /**
+     * @return Source to create the file share from. **Changing this value recreates the resource.**
+     * 
+     */
+    public Output<Optional<CloudStorageFileShareCreateFrom>> createFrom() {
+        return Codegen.optional(this.createFrom);
+    }
+    /**
      * Creation date of the file share.
      * 
      */
@@ -159,14 +182,14 @@ public class CloudStorageFileShare extends com.pulumi.resources.CustomResource {
         return this.description;
     }
     /**
-     * Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="encryption", refs={CloudStorageFileShareEncryption.class}, tree="[0]")
     private Output<CloudStorageFileShareEncryption> encryption;
 
     /**
-     * @return Encryption configuration for the file share. Set at creation only. **Changing this value recreates the resource.**
+     * @return Encryption configuration for the file share. Set at creation only. With `create_from`, the encryption of the snapshot&#39;s source file share is used: leave it unset or set it to that value; `enabled = true` on a snapshot of an unencrypted file share is rejected. **Changing this value recreates the resource.**
      * 
      */
     public Output<CloudStorageFileShareEncryption> encryption() {
@@ -243,42 +266,42 @@ public class CloudStorageFileShare extends com.pulumi.resources.CustomResource {
         return this.serviceName;
     }
     /**
-     * ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="shareNetworkId", refs={String.class}, tree="[0]")
     private Output<String> shareNetworkId;
 
     /**
-     * @return ID of a pre-existing share network to attach the file share to. **Changing this value recreates the resource.**
+     * @return ID of a pre-existing share network to attach the file share to. Required unless `create_from` is set. With `create_from`, defaults to the share network of the snapshot&#39;s source file share and must be that same share network when set. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> shareNetworkId() {
         return this.shareNetworkId;
     }
     /**
-     * File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
     @Export(name="shareType", refs={String.class}, tree="[0]")
     private Output<String> shareType;
 
     /**
-     * @return File share type (e.g. `STANDARD_1AZ`). **Changing this value recreates the resource.**
+     * @return File share type (e.g. `STANDARD_1AZ`). Required unless `create_from` is set. With `create_from`, the type of the snapshot&#39;s source file share is used: leave it unset or set it to that value. **Changing this value recreates the resource.**
      * 
      */
     public Output<String> shareType() {
         return this.shareType;
     }
     /**
-     * Size of the file share in GB.
+     * Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
     @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
-     * @return Size of the file share in GB.
+     * @return Size of the file share in GB. Required unless `create_from` is set. With `create_from`, defaults to the snapshot size and must not be smaller than it.
      * 
      */
     public Output<Integer> size() {

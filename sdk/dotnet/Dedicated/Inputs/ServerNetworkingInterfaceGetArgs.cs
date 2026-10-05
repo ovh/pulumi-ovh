@@ -12,6 +12,12 @@ namespace Pulumi.Ovh.Dedicated.Inputs
 
     public sealed class ServerNetworkingInterfaceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Mac address of the LACP fallback interface
+        /// </summary>
+        [Input("aggregationFallback")]
+        public Input<string>? AggregationFallback { get; set; }
+
         [Input("macs", required: true)]
         private InputList<string>? _macs;
 
